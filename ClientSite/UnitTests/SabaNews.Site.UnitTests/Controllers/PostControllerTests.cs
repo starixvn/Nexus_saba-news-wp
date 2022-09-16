@@ -401,7 +401,6 @@
             Assert.Equal(expected, okResult.Value);
         }
 
-
         [Fact]
         public async Task GetLastestNews_WhenCalled_ReturnExpectedData()
         {
@@ -418,6 +417,58 @@
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             Assert.Equal(expectedRecentPosts, okResult.Value);
+        }
+
+        [Fact]
+        public async Task GetPostList_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<GetDataViewModel>();
+            var expectedPosts = fixture.Create<IList<GetData>>();
+            var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, param.LastTimestamp, param.Category, param.Subject);
+
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
+
+            postService.GetPostlist(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
+            cacheService.GetAsync<IList<GetData>>(cacheKey).Returns(expectedPosts);
+            //Act
+            var result = await controller.GetPostList(param);
+
+            // Assert
+            var okResult = Assert.IsType<JsonResult>(result);
+            var posts = Assert.IsAssignableFrom<IList<GetData>>(okResult.Value);
+            Assert.Equal(expectedPosts, posts);
+        }
+
+        [Fact]
+        public async Task GetDetailContent_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<GetDataViewModel>();
+            var expectedPosts = fixture.Create<GetDetailContent>();
+            var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, param.PostId);
+
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
+
+            postService.GetPostDetailContent(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
+            cacheService.GetAsync<GetDetailContent>(cacheKey).Returns(expectedPosts);
+            //Act
+            var result = await controller.GetDetailContent(param);
+
+            // Assert
+            var okResult = Assert.IsType<JsonResult>(result);
+            var posts = Assert.IsAssignableFrom<GetDetailContent>(okResult.Value);
+            Assert.Equal(expectedPosts, posts);
         }
 
         #region Helpers

@@ -251,12 +251,12 @@
                 {
                     subjects.Add(new Subjects { Id = Constants.IdBasketballEN, Name = ViewResources.BasketballEN });
                 }
-                else if (item == Constants.TennisSlug ||
+                if (item == Constants.TennisSlug ||
                     item == Constants.TennisVideoSlug)
                 {
                     subjects.Add(new Subjects { Id = Constants.IdTennisEN, Name = ViewResources.TennisEN });
                 }
-                else if (CheckSoccer(item))
+                if (CheckSoccer(item))
                 {
                     subjects.Add(new Subjects { Id = Constants.IdSoccerEN, Name = ViewResources.SoccerEN });
                 }
@@ -270,12 +270,10 @@
 
         private static bool CheckSoccer(string category)
         {
-            if(category == Constants.FootballSlug ||
-                    category == Constants.VideoFootballSlug ||
-                    category == Constants.Euro2020VideoSlug ||
-                    category == Constants.VideoWorldCup2022Slug ||
-                    category == Constants.VideoGuessWorldCup2022Slug ||
-                    category == Constants.VideoHighlightWorldCup2022Slug)
+            var search = Constants.FootballSlug + Constants.VideoFootballSlug +
+                                Constants.Euro2020VideoSlug + Constants.VideoWorldCup2022Slug +
+                                Constants.VideoGuessWorldCup2022Slug + Constants.VideoHighlightWorldCup2022Slug;
+            if (search.Contains(category))
             {
                 return true;
             }
