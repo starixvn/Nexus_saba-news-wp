@@ -22,8 +22,6 @@
     public class PostController : Controller
     {
         private readonly IPostService postService;
-        private readonly LivescoreMainPageCacheConfig cacheConfigs;
-        private readonly ICacheWrapperService cacheService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
         private readonly IUserService userService;
@@ -32,8 +30,6 @@
         private readonly IDataControlService dataControlService;
 
         public PostController(IPostService postService,
-            IOptionsSnapshot<LivescoreMainPageCacheConfig> cacheConfigs,
-            ICacheWrapperService cacheService,
             IConfiguration configuration,
             ISessionService sessionService,
             IUserService userService,
@@ -41,10 +37,7 @@
             IPollService pollService,
             IDataControlService dataControlService)
         {
-            this.cacheConfigs = cacheConfigs.Value;
-            this.cacheConfigs.OutOfRangeTimeout = 1;
             this.postService = postService;
-            this.cacheService = cacheService;
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.userService = userService;
@@ -197,69 +190,6 @@
         {
             var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems});
             return Ok(posts);
-        }
-
-        [HttpGet]
-        [Route("post-list")]
-        public async Task<IActionResult> GetPostList(GetDataViewModel getDataView)
-        {
-            var token = Request.Headers["Token"];
-            IList<GetData> posts = new List<GetData>();
-            
-            if (GetDataViewModel.IsValid(token))
-            {
-                if (cacheConfigs.Enabled)
-                {
-                    var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, getDataView.LastTimestamp, getDataView.Category, getDataView.Subject);
-                    posts = await cacheService.GetAsync<IList<GetData>>(cacheKey);
-                    if (posts is null)
-                    {
-                        posts = await postService.GetPostlist(getDataView);
-
-                        await cacheService.SetAsync(cacheKey, posts,
-                            new CacheItemOptions
-                            {
-                                RelativeExpiration = TimeSpan.FromMinutes(1)
-                            });
-                    }
-                }
-                else
-                {
-                    posts = await postService.GetPostlist(getDataView);
-                }
-            }
-            return Json(posts);
-        }
-
-        [HttpGet]
-        [Route("post-detail-content")]
-        public async Task<IActionResult> GetDetailContent(GetDataViewModel getDataView)
-        {
-            var token = Request.Headers["Token"];
-            var posts = new GetDetailContent();
-            if (GetDataViewModel.IsValid(token)) 
-            {
-                if (cacheConfigs.Enabled)
-                {
-                    var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, getDataView.PostId);
-                    posts = await cacheService.GetAsync<GetDetailContent>(cacheKey);
-                    if (posts is null)
-                    {
-                        posts = await postService.GetPostDetailContent(getDataView);
-
-                        await cacheService.SetAsync(cacheKey, posts,
-                            new CacheItemOptions
-                            {
-                                RelativeExpiration = TimeSpan.FromMinutes(1)
-                            });
-                    }
-                }
-                else
-                {
-                    posts = await postService.GetPostDetailContent(getDataView);
-                }
-            }
-            return Json(posts);
         }
 
         public string GetClientIP()

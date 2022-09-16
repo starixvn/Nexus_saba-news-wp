@@ -28,7 +28,6 @@
     {
         private IPostService postService;
         private IConfiguration configuration;
-        private ICacheWrapperService cacheService;
         private ISessionService sessionService;
         private IUserService userService;
         private IStatisticService statisticService;
@@ -419,78 +418,17 @@
             Assert.Equal(expectedRecentPosts, okResult.Value);
         }
 
-        [Fact]
-        public async Task GetPostList_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var param = fixture.Create<GetDataViewModel>();
-            var expectedPosts = fixture.Create<IList<GetData>>();
-            var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, param.LastTimestamp, param.Category, param.Subject);
-
-            controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext()
-            };
-            controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
-
-            postService.GetPostlist(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
-            cacheService.GetAsync<IList<GetData>>(cacheKey).Returns(expectedPosts);
-            //Act
-            var result = await controller.GetPostList(param);
-
-            // Assert
-            var okResult = Assert.IsType<JsonResult>(result);
-            var posts = Assert.IsAssignableFrom<IList<GetData>>(okResult.Value);
-            Assert.Equal(expectedPosts, posts);
-        }
-
-        [Fact]
-        public async Task GetDetailContent_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var param = fixture.Create<GetDataViewModel>();
-            var expectedPosts = fixture.Create<GetDetailContent>();
-            var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, param.PostId);
-
-            controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext()
-            };
-            controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
-
-            postService.GetPostDetailContent(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
-            cacheService.GetAsync<GetDetailContent>(cacheKey).Returns(expectedPosts);
-            //Act
-            var result = await controller.GetDetailContent(param);
-
-            // Assert
-            var okResult = Assert.IsType<JsonResult>(result);
-            var posts = Assert.IsAssignableFrom<GetDetailContent>(okResult.Value);
-            Assert.Equal(expectedPosts, posts);
-        }
-
         #region Helpers
         private PostController GetController(bool enabledCache = true)
-        {
-            var cacheConfigs = new LivescoreMainPageCacheConfig
-            {
-                Enabled = enabledCache,
-                DateRange = 2,
-                OutOfRangeTimeout = 5
-            };
-            var options = Substitute.For<IOptionsSnapshot<LivescoreMainPageCacheConfig>>();
-            options.Value.Returns(cacheConfigs);
+        {            
             pollService = Substitute.For<IPollService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             userService = Substitute.For<IUserService>();
             sessionService = Substitute.For<ISessionService>();
             statisticService = Substitute.For<IStatisticService>();
-            cacheService = Substitute.For<ICacheWrapperService>();
             dataControlService = Substitute.For<IDataControlService>(); 
-            var controller = new PostController(postService, options, cacheService, configuration, sessionService, userService, statisticService, pollService, dataControlService);
+            var controller = new PostController(postService, configuration, sessionService, userService, statisticService, pollService, dataControlService);
 
             return controller;
         }
