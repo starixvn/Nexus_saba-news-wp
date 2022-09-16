@@ -11,6 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByIds`(
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
             - 20220711@Hank: get country data
+            - 20220915@Hank: get team name & Icon VN
     */
 )
 BEGIN
@@ -40,8 +41,8 @@ BEGIN
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
         ,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon, le.IsMajor, le.Priority, l.CountryVN
         ,c.CountryId, c.CountryLogo, c.CountryLogoCustom
-		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.Icon
-        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.Icon
+		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
+        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.TeamNameVN, a.Icon, a.IconVN
     FROM livescore_match m
 		INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
 		INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
@@ -60,7 +61,7 @@ BEGIN
 			WHEN l.LeagueNameEN IS NOT NULL THEN l.LeagueNameEN
             ELSE l.LeagueFullNameEN END ASC
 		,m.StartTime ASC;
-END;
+END
 
 //
 DELIMITER ;	

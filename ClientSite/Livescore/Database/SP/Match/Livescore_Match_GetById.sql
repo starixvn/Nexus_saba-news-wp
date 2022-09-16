@@ -12,6 +12,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetById`(
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
             - 20220822@Hank add select season, round, stage
+            - 20220915@Hank add Team Name & Icon VN
     */
 )
 BEGIN
@@ -26,8 +27,8 @@ BEGIN
         ,m.LeagueId,  l.LeagueNameVN,  l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon
         ,m.SeasonId
         ,ss.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
-		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.Icon
-        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.Icon
+		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
+        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.TeamNameVN, a.Icon, a.IconVN
     FROM livescore_match m
 		INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
 		INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId

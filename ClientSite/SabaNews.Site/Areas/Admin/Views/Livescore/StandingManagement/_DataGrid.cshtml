@@ -14,14 +14,14 @@
                     <th width="8%">Team Name</th>
                     <th width="8%">Team Icon VN</th>
                     <th width="8%">Team Name VN</th>
-                    <th width="8%">Total</th>
-                    <th width="8%">Won</th>
-                    <th width="8%">Draw</th>
-                    <th width="8%">Loss</th>
-                    <th width="8%">Goal</th>
-                    <th width="8%">GoalsAgainst</th>
-                    <th width="8%">GoalDiff</th>
-                    <th width="8%">Points</th>
+                    <th width="7%">Total</th>
+                    <th width="7%">Won</th>
+                    <th width="7%">Draw</th>
+                    <th width="7%">Loss</th>
+                    <th width="7%">Goal</th>
+                    <th width="7%">GoalsAgainst</th>
+                    <th width="7%">GoalDiff</th>
+                    <th width="7%">Points</th>
                     <th>@ViewResources.Action</th>
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                     {
                         count++;
                                 <tr>
-                                    <td class="text-center">@standing.TeamId @standing.Position</td>
+                                    <td class="text-center">@standing.Position</td>
                                     <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(standing.Icon)" width="100"></td>
                                     <td class="text-center">@(!string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN)</td>
                                     <td class="text-center">

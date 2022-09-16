@@ -14,6 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate`(
 			- 202200517@Tim: get start time for live match
             - 20220711@Hank: get country data
             - 20220712@Hank: get only major league
+            - 20220915@Hank: get Team Name & Icon VN
     */
 )
 BEGIN
@@ -44,8 +45,8 @@ BEGIN
         ,c.CountryId, c.CountryLogo, c.CountryLogoCustom
         ,s.SeasonId, s.Year
         ,ss.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
-		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.Icon
-        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.Icon
+		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
+        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.TeamNameVN, a.Icon, a.IconVN
     FROM livescore_match m
         INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
         INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
@@ -67,7 +68,7 @@ BEGIN
 		,m.StartTime ASC
         ,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
-END;
+END
 
 //
 DELIMITER ;	

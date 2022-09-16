@@ -1,3 +1,4 @@
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
 DROP PROCEDURE IF EXISTS Livescore_Match_GetHeadToHead;
 
 DELIMITER //
@@ -8,6 +9,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetHeadToHead`(
         Revisions:
 			- 20220419@Hank: init
 			- 202200512@Tim: check 2nd leg
+            - 20220916@Hank: select team name & icon vn
     */
 )
 BEGIN
@@ -24,8 +26,8 @@ BEGIN
 		,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
         ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
         ,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon
-		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.Icon
-        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.Icon
+		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
+        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
     FROM livescore_match m
 		INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
 		INNER JOIN livescore_team h ON h.TeamId = m.HomeTeamId
@@ -37,8 +39,7 @@ BEGIN
     ORDER BY m.StartTime DESC;
     
     SELECT homeTeamId AS homeId, awayTeamId AS awayId;
-END;
+END
 
 //
-DELIMITER;
-RANT EXECUTE ON PROCEDURE Livescore_Match_GetHeadToHead TO 'sabasports'@'%';
+DELIMITER ;	

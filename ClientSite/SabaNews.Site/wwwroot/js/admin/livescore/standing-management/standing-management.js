@@ -33,7 +33,7 @@
                 type: 'GET',
                 url: url,
                 success: function (html) {
-                    $('#EditStandingModal .title').html('Edit Match');
+                    $('#EditStandingModal .title').html('Edit Staning');
                     $('#EditStandingModal .modal-body').html(html);
                     $('#EditStandingModal').modal('show');
 

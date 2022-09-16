@@ -14,7 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
             - 202200610@Hank: check deleted match
-            - 2022008100@Hank: add TeamNameVN &  select season
+            - 2022008100@Hank: add TeamNameVN & IconVN,  select season 
     */
 )
 BEGIN    
@@ -35,7 +35,7 @@ BEGIN
         AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
         AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
 	
-    SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, _hasStandings AS HasSeasonStandings, l.Icon
+    SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, _hasStandings AS HasSeasonStandings, l.Icon, l.CurrentStageId
     FROM livescore_league l
 	WHERE l.LeagueId = leagueId;
     
@@ -49,8 +49,8 @@ BEGIN
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
-        ,m.HomeTeamId, h.TeamNameVN as HomeTeamNameVN, h.TeamNameEN AS HomeTeamNameEN, h.TeamFullNameEN AS HomeTeamFullNameEN, h.Icon AS HomeTeamIcon
-        ,m.AwayTeamId, a.TeamNameVN as AwayTeamNameVN, a.TeamNameEN AS AwayTeamNameEN, a.TeamFullNameEN AS AwayTeamFullNameEN, a.Icon AS AwayTeamIcon
+        ,m.HomeTeamId, h.TeamNameVN as HomeTeamNameVN, h.TeamNameEN AS HomeTeamNameEN, h.TeamFullNameEN AS HomeTeamFullNameEN, h.Icon AS HomeTeamIcon, h.IconVN AS HomeTeamIconVN
+        ,m.AwayTeamId, a.TeamNameVN as AwayTeamNameVN, a.TeamNameEN AS AwayTeamNameEN, a.TeamFullNameEN AS AwayTeamFullNameEN, a.Icon AS AwayTeamIcon, a.IconVN AS AwayTeamIconVN
         ,m.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode AS StageMode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
     FROM livescore_match m
         INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
@@ -68,6 +68,5 @@ BEGIN
             
 	
 END
-
 //
 DELIMITER ;	
