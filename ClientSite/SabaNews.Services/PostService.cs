@@ -270,7 +270,7 @@
 
         private static bool CheckSoccer(string category)
         {
-            var search = Constants.FootballSlug + Constants.VideoFootballSlug +
+            const string search = Constants.FootballSlug + Constants.VideoFootballSlug +
                                 Constants.Euro2020VideoSlug + Constants.VideoWorldCup2022Slug +
                                 Constants.VideoGuessWorldCup2022Slug + Constants.VideoHighlightWorldCup2022Slug;
             if (search.Contains(category))
