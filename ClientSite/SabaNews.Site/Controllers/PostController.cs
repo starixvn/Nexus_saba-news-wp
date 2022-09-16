@@ -4,10 +4,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authorization;
+    using Fanex.Caching;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Options;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -21,6 +22,8 @@
     public class PostController : Controller
     {
         private readonly IPostService postService;
+        private readonly LivescoreMainPageCacheConfig cacheConfigs;
+        private readonly ICacheWrapperService cacheService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
         private readonly IUserService userService;
@@ -29,6 +32,8 @@
         private readonly IDataControlService dataControlService;
 
         public PostController(IPostService postService,
+            IOptionsSnapshot<LivescoreMainPageCacheConfig> cacheConfigs,
+            ICacheWrapperService cacheService,
             IConfiguration configuration,
             ISessionService sessionService,
             IUserService userService,
@@ -36,7 +41,10 @@
             IPollService pollService,
             IDataControlService dataControlService)
         {
+            this.cacheConfigs = cacheConfigs.Value;
+            this.cacheConfigs.OutOfRangeTimeout = 1;
             this.postService = postService;
+            this.cacheService = cacheService;
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.userService = userService;
@@ -193,13 +201,32 @@
 
         [HttpGet]
         [Route("post-list")]
-        public async Task<IActionResult> GetData(GetDataViewModel getDataView)
+        public async Task<IActionResult> GetPostList(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
             IList<GetData> posts = new List<GetData>();
+            
             if (GetDataViewModel.IsValid(token))
             {
-                posts = await postService.GetPostlist(getDataView);
+                if (cacheConfigs.Enabled)
+                {
+                    var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, getDataView.LastTimestamp, getDataView.Category, getDataView.Subject);
+                    posts = await cacheService.GetAsync<IList<GetData>>(cacheKey);
+                    if (posts is null)
+                    {
+                        posts = await postService.GetPostlist(getDataView);
+
+                        await cacheService.SetAsync(cacheKey, posts,
+                            new CacheItemOptions
+                            {
+                                RelativeExpiration = TimeSpan.FromMinutes(1)
+                            });
+                    }
+                }
+                else
+                {
+                    posts = await postService.GetPostlist(getDataView);
+                }
             }
             return Json(posts);
         }
@@ -209,12 +236,30 @@
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
+            var posts = new GetDetailContent();
             if (GetDataViewModel.IsValid(token)) 
             {
-                var posts = await postService.GetPostDetailContent(getDataView);
-                return Json(posts);
+                if (cacheConfigs.Enabled)
+                {
+                    var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, getDataView.PostId);
+                    posts = await cacheService.GetAsync<GetDetailContent>(cacheKey);
+                    if (posts is null)
+                    {
+                        posts = await postService.GetPostDetailContent(getDataView);
+
+                        await cacheService.SetAsync(cacheKey, posts,
+                            new CacheItemOptions
+                            {
+                                RelativeExpiration = TimeSpan.FromMinutes(1)
+                            });
+                    }
+                }
+                else
+                {
+                    posts = await postService.GetPostDetailContent(getDataView);
+                }
             }
-            return Ok();
+            return Json(posts);
         }
 
         public string GetClientIP()

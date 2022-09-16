@@ -21,11 +21,14 @@
     using System;
     using SabaNews.Services;
     using SabaNews.Models.Banner;
+    using System.Net.Http;
+    using Microsoft.Extensions.Options;
 
     public class PostControllerTests : Controller
     {
         private IPostService postService;
         private IConfiguration configuration;
+        private ICacheWrapperService cacheService;
         private ISessionService sessionService;
         private IUserService userService;
         private IStatisticService statisticService;
@@ -418,16 +421,25 @@
         }
 
         #region Helpers
-        private PostController GetController()
+        private PostController GetController(bool enabledCache = true)
         {
+            var cacheConfigs = new LivescoreMainPageCacheConfig
+            {
+                Enabled = enabledCache,
+                DateRange = 2,
+                OutOfRangeTimeout = 5
+            };
+            var options = Substitute.For<IOptionsSnapshot<LivescoreMainPageCacheConfig>>();
+            options.Value.Returns(cacheConfigs);
             pollService = Substitute.For<IPollService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             userService = Substitute.For<IUserService>();
             sessionService = Substitute.For<ISessionService>();
             statisticService = Substitute.For<IStatisticService>();
-            dataControlService = Substitute.For<IDataControlService>();
-            var controller = new PostController(postService, configuration, sessionService, userService, statisticService, pollService, dataControlService);
+            cacheService = Substitute.For<ICacheWrapperService>();
+            dataControlService = Substitute.For<IDataControlService>(); 
+            var controller = new PostController(postService, options, cacheService, configuration, sessionService, userService, statisticService, pollService, dataControlService);
 
             return controller;
         }

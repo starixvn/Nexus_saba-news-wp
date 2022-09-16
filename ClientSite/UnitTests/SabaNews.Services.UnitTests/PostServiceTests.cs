@@ -184,7 +184,6 @@
             var actual = await service.GetTopPostsByCateSlugAsync(param);
 
             //Assert
-            expected = expected.Skip(param.Start).Take(param.End - 1).ToList();
             Assert.Equal(expected, actual);
         }
 
