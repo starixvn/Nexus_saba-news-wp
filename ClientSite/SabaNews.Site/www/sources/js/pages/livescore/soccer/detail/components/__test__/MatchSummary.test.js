@@ -45,17 +45,6 @@ describe('MatchSummary', () => {
             expect(result).toEqual(true);
         });
 
-        it('return false when incident type is PenaltyShootoutEnd', () => {
-            // Arrange
-            const container = shallow(<MatchSummary {...defaultProps}/>);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.checkIncidentMainTimeEventType(27);
-
-            // Assert
-            expect(result).toEqual(true);
-        });
 
         it('return false when incident type is Halftime', () => {
             // Arrange
@@ -64,6 +53,17 @@ describe('MatchSummary', () => {
 
             // Act
             const result = instance.checkIncidentMainTimeEventType(11);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+        it('return false when incident type is ExtraTimeEnd', () => {
+            // Arrange
+            const container = shallow(<MatchSummary {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkIncidentMainTimeEventType(26);
 
             // Assert
             expect(result).toEqual(true);
@@ -202,7 +202,7 @@ describe('MatchSummary', () => {
             const awayPenaltyShootoutScore = 0;
             const container = shallow(<MatchSummary {...defaultProps}/>);
             const instance = container.instance();
-
+            instance.getPenaltyShootout
             // Act
             const result = instance.getPenaltyShootout(incident, penaltyShootOutData, homePenaltyShootoutScore, awayPenaltyShootoutScore);
 
@@ -469,6 +469,48 @@ describe('MatchSummary', () => {
         });
     });
 
+    describe('renderPenaltyShootout', () => {
+        it('return null when incident not have penalty shootout data', () => {
+            // Arrange
+            const incidents = [
+                { matchId: 1, position: 0, type: 10, time: 1, second: 34, homeScore: 0, awayScore: 0},
+                { matchId: 1, position: 1, type: 1, time: 10, second: 100, homeScore: 1, awayScore: 0},
+                { matchId: 1, position: 0, type: 11, time: 12, second:150, homeScore: 0, awayScore: 0},
+                { matchId: 1, position: 2, type: 9, time: 15, second: 500, homeScore: 1, awayScore: 0},
+                { matchId: 1, position: 0, type: 12, time: 20, second: 600, homeScore: 1, awayScore: 0},
+                { matchId: 1, position: 1, type: 8, playerName: "name 1", inPlayerId: 3, time: 16, second: 550, homeScore: 1, awayScore: 1},
+                { matchId: 1, position: 2, type: 16, playerName: "name 2", inPlayerId: 3, time: 16, second: 550, homeScore: 1, awayScore: 1},
+            ];
+            const container = shallow(<MatchSummary {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.renderPenaltyShootout(incidents);
+            // Assert
+            expect(result).toEqual(null);
+        });
+    });
+
+    describe('renderPenaltyShootout', () => {
+        it('render correctly when incident have penalty shootout data', () => {
+            // Arrange
+            const incidents = [
+                { matchId: 1, position: 1, type: 8, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 2, type: 16, playerName: "name 2", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 1, type: 16, playerName: "name 3", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 2, type: 8, playerName: "name 4", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 1, type: 8, playerName: "name 5", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+            ];
+            const container = shallow(<MatchSummary {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.renderPenaltyShootout(incidents);
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+    });
+
     describe('render', () => {
         it('render nothing when incidents is null', () => {
             // Arrange
@@ -487,6 +529,7 @@ describe('MatchSummary', () => {
             // Arrange
             const container = shallow(<MatchSummary {...defaultProps}/>);
             const instance = container.instance();
+            instance.renderPenaltyShootout = jest.fn().mockReturnValue('penalty');
             CommonFunctions.isPreMatch = jest.fn().mockReturnValue(true)
             // Act
             const result = instance.render();
@@ -528,6 +571,8 @@ describe('MatchSummary', () => {
             }
             const container = shallow(<MatchSummary {...props}/>);
             const instance = container.instance();
+            instance.checkRenderPenaltyShootout = jest.fn().mockReturnValue(true);
+            instance.renderPenaltyShootout = jest.fn().mockReturnValue('penalty');
             CommonFunctions.produceIncidents = jest.fn().mockReturnValue(incidents);
             CommonFunctions.isPreMatch = jest.fn().mockReturnValue(false);
 

@@ -91,7 +91,7 @@ export class MatchSummary extends Component {
             && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End);
     };
 
-    getPenaltyShootout = (incidents) => {
+    renderPenaltyShootout = incidents => {
         const Pen = incidents.filter(item => item.isPenaltyShootout === true);
         if(Pen.length === 0) {
             return null;
@@ -104,8 +104,8 @@ export class MatchSummary extends Component {
             <>
                 {
                     homePen.map((hPen, index) => {
-                        let component = <Fragment key={index} />
-                        const aPen = awayPen[index]
+                        let component = <Fragment key={index} />;
+                        const aPen = awayPen[index];
                         if(aPen) {
                             if (hPen.position === IncidentPosition.Home && hPen.type === IncidentStatus.Penalty) {
                                 homeScore++;
@@ -119,7 +119,7 @@ export class MatchSummary extends Component {
                                 awayType: aPen.type,
                                 awayPlayerName: aPen.playerName,
                                 score: `${homeScore} -  ${awayScore}`
-                            }
+                            };
                             component = <PenaltyShootOut key={index} penaltyShootOutData={penaltyShootOutData} />;
                         }
                         return component;
@@ -138,10 +138,9 @@ export class MatchSummary extends Component {
         }
 
         const { generalInfo } = this.props.match;
-        let incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
+        const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
         const lastIncident = incidents[incidents.length - 1];
         const mainIncidents = incidents.filter(item => !item.isPenaltyShootout);
-        const test = this.getPenaltyShootout(incidents);
         let homePenaltyShootoutScore = 0;
         let awayPenaltyShootoutScore = 0;
         let hasPenaltyShootout = false;
@@ -207,7 +206,7 @@ export class MatchSummary extends Component {
                                         }
                                     })
                                 }
-                                {this.getPenaltyShootout(incidents)}
+                                {this.renderPenaltyShootout(incidents)}
                                 {
                                     generalInfo.status === MatchStatus.Finished &&
                                     this.renderFinishStatus()

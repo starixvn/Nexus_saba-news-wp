@@ -95,7 +95,7 @@ export default class MatchGeneralInfo extends PureComponent {
             <div className="participant-detail">
                 {
                     goals.map((goal, gkey) => {
-                        var timeShow = goal.timeShow !== '' ? goal.timeShow + "'" : '';
+                        const timeShow = goal.timeShow !== '' ? goal.timeShow + "'" : '';
                         let goalShow = `(${timeShow}) - ${goal.playerName}`;
                         if(position === IncidentPosition.Home) {
                             goalShow = `${goal.playerName} - (${timeShow})`;
