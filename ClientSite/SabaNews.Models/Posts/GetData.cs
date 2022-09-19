@@ -1,4 +1,4 @@
-﻿using SabaNews.Livescore.Provider.API.Constants;
+﻿using SabaNews.Models.Posts;
 using System;
 
 namespace SabaNews.Models.Posts
