@@ -1,18 +1,17 @@
 ﻿namespace SabaNews.Livescore.Services.Tests.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using AutoFixture;
     using NSubstitute;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services.Criteria.League;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class LeagueServiceTests
@@ -427,7 +426,7 @@
             var updatePositionCmd = fixture.Create<UpdateStandingPositionCommand>();
             var league = fixture.Create<League>();
             var leagues = fixture.Create<IList<League>>();
-            var expected = new CommandResult { Message = "msg" };
+            var expected = new CommandResult { Message = "msg", Code = Constants.SuccessCode };
             var expectedUpdatePosition = fixture.Create<CommandResult>();
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingCommand>(x => updateCmd = x)).Returns(expected);
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingPositionCommand>(x => updatePositionCmd = x)).Returns(expectedUpdatePosition);
