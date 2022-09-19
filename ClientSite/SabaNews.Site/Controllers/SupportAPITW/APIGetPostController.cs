@@ -30,7 +30,7 @@
         }
 
         [HttpGet]
-        [Route("post-list")]
+        [Route("api/post/getlist")]
         public async Task<IActionResult> GetPostList(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
@@ -62,7 +62,7 @@
         }
 
         [HttpGet]
-        [Route("post-detail-content")]
+        [Route("api/post/getdetail")]
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
