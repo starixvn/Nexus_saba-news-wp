@@ -36,7 +36,7 @@
                             <div class="wc-table-row">
                                 <div class="wc-table-cell cell-participant">
                                     <ul class="team">
-                                        <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
+                                        <li class="team-logo"><img src=@(string.IsNullOrEmpty(standing.IconVN) ? icon : standing.IconVN) alt="Alternate Text" /></li>
                                         <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
                                     </ul>
                                 </div>

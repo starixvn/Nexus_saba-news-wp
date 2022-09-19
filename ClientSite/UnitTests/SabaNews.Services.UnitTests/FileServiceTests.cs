@@ -19,7 +19,6 @@
         {
             // Arrange
             var service = GetFileService();
-            //var expected = fixture.Create<IFormFile>();
             var content = "Hello World from a Fake File";
             var fileName = "test.pdf";
             var stream = new MemoryStream();
