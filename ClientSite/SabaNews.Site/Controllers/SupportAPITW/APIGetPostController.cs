@@ -13,13 +13,13 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class APIPostController : Controller
+    public class APIGetPostController : Controller
     {
         private readonly LivescoreMainPageCacheConfig cacheConfigs;
         private readonly IPostService postService;
         private readonly ICacheWrapperService cacheService;
 
-        public APIPostController(IPostService postService,
+        public APIGetPostController(IPostService postService,
             IOptionsSnapshot<LivescoreMainPageCacheConfig> cacheConfigs,
             ICacheWrapperService cacheService)
         {

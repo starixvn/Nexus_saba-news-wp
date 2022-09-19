@@ -19,7 +19,7 @@ using Xunit;
 
 namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
 {
-    public class APIPostControllerTests : Controller
+    public class APIGetPostControllerTests : Controller
     {
         private IPostService postService;
         private ICacheWrapperService cacheService;
@@ -79,7 +79,7 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
         }
 
         #region Helpers
-        private APIPostController GetController(bool enabledCache = true)
+        private APIGetPostController GetController(bool enabledCache = true)
         {
             var cacheConfigs = new LivescoreMainPageCacheConfig
             {
@@ -91,7 +91,7 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             options.Value.Returns(cacheConfigs);
             postService = Substitute.For<IPostService>();
             cacheService = Substitute.For<ICacheWrapperService>();
-            var controller = new APIPostController(postService, options, cacheService);
+            var controller = new APIGetPostController(postService, options, cacheService);
 
             return controller;
         }
