@@ -24,7 +24,7 @@
         public const string CollectionSlug = "tong-hop";
         public const string MembershipEventSlug = "membership-event";
         public const string BasketballVideoSlug = "video-bong-ro";
-        public const string TennisVideoSlug = "quan-vot";
+        public const string TennisVideoSlug = "video-quan-vot";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";
