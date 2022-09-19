@@ -60,7 +60,7 @@ export default class Item extends PureComponent {
                 title={match.matchId ? 'Nhấp để xem danh sách trận đấu' : ''}>
                 {
                     match.homeTeam &&
-                    <TeamIcon className="bracket__image bracket__image--home" src={match.homeTeam.icon} />
+                    <TeamIcon className="bracket__image bracket__image--home" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                 }
                 <div className={`bracket__participant bracket__participant--home ${this.getResultClass(matchResult, true)}`}>
                     <span className="bracket__name ">{this.getTeamName(match.homeTeam)}</span>
@@ -70,7 +70,7 @@ export default class Item extends PureComponent {
                 </div>
                 {
                     match.awayTeam &&
-                    <TeamIcon className="bracket__image bracket__image--away" src={match.awayTeam.icon} />
+                    <TeamIcon className="bracket__image bracket__image--away" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                 }
                 <div className={`bracket__participant bracket__participant--away ${this.getResultClass(matchResult, false)}`}>
                     <span className="bracket__name bracket__name--advancing">{this.getTeamName(match.awayTeam)}</span>
