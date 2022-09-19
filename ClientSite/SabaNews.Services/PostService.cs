@@ -296,7 +296,7 @@
         private static IList<string> HandleTags(string tags)
         {
             var result = new List<string>();
-            string[] tagsList = tags.Split(new []{ "," }, StringSplitOptions.None);
+            string[] tagsList = tags.Split(new []{ ", " }, StringSplitOptions.None);
             tagsList.ToList().ForEach(x => result.Add(x));
             return result;
         }
