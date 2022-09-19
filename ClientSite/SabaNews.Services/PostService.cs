@@ -293,11 +293,11 @@
             return false;
         }
 
-        private static IList<Tags> HandleTags(string tags)
+        private static IList<string> HandleTags(string tags)
         {
-            var result = new List<Tags>();
+            var result = new List<string>();
             string[] tagsList = tags.Split(new []{ "," }, StringSplitOptions.None);
-            tagsList.ToList().ForEach(x => result.Add(new Tags { Tag = x }));
+            tagsList.ToList().ForEach(x => result.Add(x));
             return result;
         }
 

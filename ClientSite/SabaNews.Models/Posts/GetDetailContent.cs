@@ -11,7 +11,7 @@
         public IList<Subjects> Subjects { get; set; }
         public int EditorId { get; set; }
         public string Content { get; set; }
-        public IList<Tags> Tags { get; set; }
+        public IList<string> Tags { get; set; }
         public int Category { get; set; }
         public int LikeCount { get; set; }
         public string UrlSlug { get; set; }
