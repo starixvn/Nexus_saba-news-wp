@@ -172,31 +172,6 @@
         });
     }
 
-    function HandleModal() {
-        $('.confirm-action').on('click', function () {
-            if (url == "") {
-                return false;
-            }
-            $.ajax({
-                type: 'POST',
-                url: url,
-                success: function (response) {
-                    $('#ConfirmModal').modal('hide');
-                    if (response.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Remove league successfully!');
-                        setTimeout(function () {
-                            $('#NoticeModal').modal('hide');
-                            GetDataLeagueExtraGrid();
-                        }, 1000);
-                    } else {
-                        GetErrorPopup('#NoticeModal', 'An error occurred while remove league, please try again');
-                    }
-                }
-            })
-            url = "";
-        });
-    }
-
     function init() {
         $('.league-select').select2();
         GetSeason(leagueId);
