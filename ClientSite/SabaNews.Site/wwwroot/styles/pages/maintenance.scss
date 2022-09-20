@@ -1,90 +1,59 @@
 ﻿@import '../abstracts/variables';
 @import '../abstracts/mixins';
-
 @import '../base/base';
-
-@import '../layout/footer';
-@import '../layout/header';
-
 @import '../components/fonts';
-@import '../components/block';
-@import '../components/buttons';
 @import '../components/container';
-@import '../components/img';
-@import '../components/card-horizontal';
-@import '../components/card-vertical';
-@import '../components/pagination';
-@import '../components/ads';
-@import '../components/_popup-event';
 
 body {
     display: flex;
     height: 100vh;
     flex-direction: column;
 }
-.main {
-    padding-top : 0;
-    .container {
-        display: inherit;
+
+
+.primary-heading {
+    color: #F12F19;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    margin-bottom : 1.2rem;
+}
+
+.content-page {
+    color: #4F4F4F;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+
+    a {
+        color: #2560EA;
     }
 }
 
-.wapper{
-    position : absolute;
-    top: 45%;
-    right : 50%;
-    transform : translate(50%,-50%);
-    text-align :center;
-    width : 100%;
-}
+.grid-maintain {
+    padding-top: 15rem;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2.4rem;
+    justify-content: center;
+    align-items: center;
 
-.main {
     @include tableMobile {
-        position: relative;
-        overflow-x: hidden;
+        display: flex;
+        flex-wrap: wrap;
     }
-}
 
+    .items {
+        &-left {
+            @include tableMobile {
+                order: 2;
+            }
+        }
 
-.block {
-    font-family: $font-title;
-    margin-bottom: 0;
-
-    .img-res {
-        @include tableMobile {
-            width: 250px;
+        &-right {
+            @include tableMobile {
+                order: 1;
+            }
         }
     }
-
-    &__heading {
-        font-weight: bold;
-        font-size: 3.2rem;
-        line-height: 3.9rem;
-        letter-spacing: 2px;
-        color: $color-pagination;
-        text-transform: uppercase;
-        margin-top: 10rem;
-
-        @include tableMobile {
-            font-size: 2.2rem;
-            margin-top: 5rem;
-        }
-    }
-
-    &__desc {
-        padding-top: 1.7rem;
-        color: $color-input;
-        font-size: 2rem;
-        line-height: 3.2rem;
-        max-width: 45rem;
-        margin: 0 auto;
-
-        @include tableMobile {
-            font-size: 1.6rem;
-        }
-    }
-}
-.footer{
-    margin-top : auto;
-    width : 100%;
 }
