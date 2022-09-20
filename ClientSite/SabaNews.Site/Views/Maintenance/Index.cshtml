@@ -7,18 +7,30 @@
 <html lang="vi">
 <head>
     <title>Hệ thống đang bảo trì</title>
+    <link rel="stylesheet" href="~/minify/styles/maintenance.min.css" asp-append-version="true">
 </head>
-<body>
-  <h2>
-      Xin lỗi quý độc giả, SABA.vn đang tiến hành nâng cấp, bảo trì hệ thống.
-  </h2>
-   <h2>
-      Xin vui lòng quay lại sau!
-    </h2>
-    @if (!string.IsNullOrWhiteSpace(settings.From) && !string.IsNullOrWhiteSpace(settings.To))
+<body class="main">
+    @if (settings.IsUrgent)
     {
-        <h4>Thời gian bảo trì từ @settings.From đến @settings.To</h4>
+        <h2>
+            Nhằm mang lại trải nghiệm tốt hơn cho Quý độc giả, chúng tôi đang tiến hành nâng cấp, bảo trì hệ thống và sẽ sớm hoạt động trở lại.
+        </h2>
+    }
+    else
+    {
+        <h2>
+            Nhằm mang lại trải nghiệm tốt hơn cho Quý độc giả, chúng tôi đang tiến hành nâng cấp, bảo trì định kỳ hệ thống trong khoảng thời gian từ @settings.From đến @settings.To.
+        </h2>
     }
 
+    <p>
+        Trong thời gian thực hiện, trang Saba.vn có thể bị gián đoạn. Quý độc giả vui lòng theo dõi chúng tôi trên
+        <a href="https://www.facebook.com/sabasportsvietnam">Facebook</a>,
+        <a href="https://www.youtube.com/SABASportsVietnam">Youtube</a> hoặc <a href="https://www.tiktok.com/@@sabasportsvietnam">Tiktok</a>
+        để liên tục cập nhật những tin tức mới nhất.
+    </p>
+    <p>
+        Chúng tôi rất mong nhận được sự thông cảm từ Quý độc giả vì sự bất tiện này.
+    </p>
 </body>
 </html>
