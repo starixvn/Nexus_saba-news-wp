@@ -40,7 +40,6 @@
                     $('#btn-save').on('click', function () {
                         $(this).prop('disabled', true);
                         var stageId = $(this).data('stageid');
-                        console.log(stageId);
                         var teamId = $('#editTeamId').val();
                         var teamNameVN = $('#editTeamNameVN').val();
                         var icon = $('#editIconVN')[0].files[0];
@@ -48,6 +47,12 @@
                         var currentIcon = $('#editIconVN').parent().find('.review_photo').attr('src');
                         var isDeletedIcon = currentIcon === '';
                         var formData = new FormData();
+                        if (position === '') {
+                            $('#editPosition').parent().find('.help-block').html('Position can not be empty');
+                            $(this).prop('disabled', false);
+                            return false;
+                        }
+                        
                         formData.append('seasonId', seasonId);
                         formData.append('stageId', stageId);
                         formData.append('teamId', teamId);
@@ -99,6 +104,10 @@
                         var form = $(this).parent().parent();
                         CancelUploadHandler(form);
                         $(this).hide();
+                    });
+
+                    $('#editPosition').on('keyup', function () {
+                        $(this).parent().find('.help-block').html('');
                     });
                 }
             })
