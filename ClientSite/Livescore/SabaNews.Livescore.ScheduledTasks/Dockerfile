@@ -22,6 +22,13 @@ RUN dotnet publish -r linux-x64 --self-contained false -o /app
 FROM hub.nexdev.net/base/dotnet/core/aspnet:5.0-buster-slim AS base
 
 WORKDIR /app
+
+RUN set -x \
+ 	&& apt-get update \
+     && apt-get -y install nano \
+     && apt-get -y install curl \
+     && apt-get -y install telnet
+
 COPY --from=builder /app .
 
 ENTRYPOINT ["dotnet", "SabaNews.Livescore.ScheduledTasks.dll"]

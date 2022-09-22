@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text.Encodings.Web;
     using System.Text.Unicode;
+    using System.Threading;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
@@ -126,6 +127,10 @@
             services.RegisterServices();
             services.AddHttpClient();
             services.AddControllersWithViews();
+
+            const short WorkerThreads = 50;
+            const short CompletionPortThreads = 50;
+            _ = ThreadPool.SetMinThreads(WorkerThreads, CompletionPortThreads);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
