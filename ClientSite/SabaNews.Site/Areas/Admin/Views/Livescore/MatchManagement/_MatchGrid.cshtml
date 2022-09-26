@@ -25,7 +25,7 @@
                 {
                     count++;
                         <tr>
-                            <td class="text-center">@count</td>
+                            <td class="text-center">@match.MatchId @count</td>
                             <td class="text-center">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
                             <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon)" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamNameEN(match.HomeTeam)</td>

@@ -41,6 +41,10 @@
                 <input class="custom-input" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
             </div>
             <div class="form-input">
+                <p class="label-admin">@ViewResources.To</p>
+                <input class="custom-input" type="datetime-local" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <div class="form-input">
                 <p class="label-admin">@ViewResources.Status</p>
                 <select class="custom-input list-input" name="status" id="status">
                     <option value="-1">@ViewResources.All</option>

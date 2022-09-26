@@ -317,9 +317,9 @@
             return seasons.ToList();
         }
 
-        public async Task<SeasonStandings> GetLeagueSeasonStandingDetailAsync(GetLeagueSeasonStandingDetailCriteria criteria)
+        public async Task<SeasonStandingUpdate> GetLeagueSeasonStandingDetailAsync(GetLeagueSeasonStandingDetailCriteria criteria)
         {
-            return await baseService.GetDataEntityAsync<SeasonStandings>(criteria);
+            return await baseService.GetDataEntityAsync<SeasonStandingUpdate>(criteria);
         }
 
         public async Task<CommandResult> UpdateStandingAsync(StandingUpdateModel model)
@@ -330,17 +330,27 @@
                 StageId = model.StageId,
                 TeamId = model.TeamId,
                 TeamNameVN = model.TeamNameVN,
-                IconVN = model.TeamIconVN
+                IconVN = model.TeamIconVN,
+                GroupName = model.GroupName,
+                Total = model.Total,
+                Won = model.Won, 
+                Draw = model.Draw,
+                Loss = model.Loss,
+                Goals = model.Goals,
+                GoalsAgainst = model.GoalsAgainst,
+                GoalDiff = model.GoalDiff,
+                Points = model.Points
             };
             var cmdUpdatePosition = new UpdateStandingPositionCommand
             {
                 SeasonId = model.SeasonId,
                 StageId = model.StageId,
                 TeamId = model.TeamId,
-                Position = model.Position
+                Position = model.Position,
+                OldGroupName = model.OldGroupName
             };
             var result =  await baseService.ExecuteNonQueryAsync(cmdUpdate);
-            if (result.IsSuccessful && model.IsUpdatePosition)
+            if (result.IsSuccessful && (model.IsUpdatePosition || model.GroupName != null))
             {
                 result = await baseService.ExecuteNonQueryAsync(cmdUpdatePosition);
             }

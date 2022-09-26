@@ -104,6 +104,28 @@
             }
         }
 
+        public async Task<MatchUpdate> GetMatchByIdUpdateAsync(ICriteria criteria)
+        {
+            using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                var matches = await db.QueryEntityAsync<MatchUpdate, League, Season, SeasonStage, Team, Team, MatchUpdate>(
+                        (match, league, season, stage, home, away) =>
+                        {
+                            league.Season = season;
+                            match.League = league;
+
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
+                            match.Stage = stage;
+
+                            return match;
+                        },
+                        splitOn: "LeagueId, SeasonId, StageId, HomeTeamId, AwayTeamId",
+                        parameterSet: criteria);
+                return matches;
+            }
+        }
+
         public async Task<IList<Match>> GetMatchByIdsAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))

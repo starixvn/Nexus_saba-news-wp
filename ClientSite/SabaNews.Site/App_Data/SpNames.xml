@@ -233,5 +233,6 @@
         <Setting Key="Livescore_League_GetSeasonStanding_Detail" SpName="Livescore_League_GetSeasonStanding_Detail" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Standing_Update" SpName="Livescore_Standing_Update" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Standing_UpdatePosition" SpName="Livescore_Standing_UpdatePosition" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="Livescore_Match_GetByIdUpdate" SpName="Livescore_Match_GetByIdUpdate" DbName="sabasports" Plain="0"></Setting>
     </Function>
 </Functions>

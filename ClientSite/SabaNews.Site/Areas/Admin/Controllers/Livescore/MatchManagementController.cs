@@ -14,6 +14,8 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Models.Livescore.MatchManagement;
     using System.Globalization;
+    using SabaNews.Core.Extensions;
+    using SabaNews.Core.Helper;
 
     public class MatchManagementController : AdminController
     {
@@ -89,7 +91,7 @@
         [HttpPost]
         public async Task<ActionResult> EditMatch(MatchUpdateModel model)
         {
-            var match = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = model.MatchId });
+            var match = await matchService.GetMatchByIdUpdateAsync(new GetMatchByIdUpdateCriteria { MatchId = model.MatchId });
             var homeIconVN = model.IsDeletedHomeIcon ? "" : match.HomeTeam.IconVN;
             var awayIconVN = model.IsDeletedAwayIcon ? "" : match.AwayTeam.IconVN;
             if (model.HomeIcon != null)
@@ -102,14 +104,33 @@
                 var uploadResult = await fileService.UploadFileAsync(model.AwayIcon, UploadDir.MatchTeamUploadFolder);
                 awayIconVN = uploadResult.IsSuccessful ? uploadResult.Message : awayIconVN;
             }
+            DateTime? startTime = model.StartTime.ConvertToGMT();
+            if (Helper.CheckOriginValue(match.StartTime, startTime) == DateTime.MinValue)
+            {
+                startTime = null;
+            }
             var cmd = new UpdateMatchCommand
             {
+                MatchId = model.MatchId,
+                StageId = match.Stage.StageId,
                 HomeTeamId = model.HomeTeamId,
                 HomeTeamNameVN = model.HomeTeamNameVN,
                 HomeTeamIconVN = homeIconVN,
                 AwayTeamId = model.AwayTeamId,
                 AwayTeamNameVN = model.AwayTeamNameVN,
-                AwayTeamIconVN = awayIconVN
+                AwayTeamIconVN = awayIconVN,
+                StageNameVN = model.StageNameVN,
+                Status = Helper.CheckOriginValue(match.Status, model.Status),
+                StartTime = Helper.CheckOriginValue(match.StartTime, startTime),
+                Round = Helper.CheckOriginValue(match.Round, model.Round),
+                HomeTeamHalfScore = Helper.CheckOriginValue(match.HomeTeamHalfScore, model.HomeTeamHalfScore),
+                AwayTeamHalfScore = Helper.CheckOriginValue(match.AwayTeamHalfScore, model.AwayTeamHalfScore),
+                HomeTeamExtraScore = Helper.CheckOriginValue(match.HomeTeamExtraScore, model.HomeTeamExtraScore),
+                AwayTeamExtraScore = Helper.CheckOriginValue(match.AwayTeamExtraScore, model.AwayTeamExtraScore),
+                HomeTeamAggregateScore = Helper.CheckOriginValue(match.HomeTeamAggregateScore, model.HomeTeamAggregateScore),
+                AwayTeamAggregateScore = Helper.CheckOriginValue(match.AwayTeamAggregateScore, model.AwayTeamAggregateScore),
+                HomeTeamPenaltyScore = Helper.CheckOriginValue(match.HomeTeamPenaltyScore, model.HomeTeamPenaltyScore),
+                AwayTeamPenaltyScore = Helper.CheckOriginValue(match.AwayTeamPenaltyScore, model.AwayTeamPenaltyScore)
             };
             var result = await matchService.UpdateMatchAsync(cmd);
             
@@ -136,5 +157,6 @@
             }
             return matches;
         }
+
     }
 }

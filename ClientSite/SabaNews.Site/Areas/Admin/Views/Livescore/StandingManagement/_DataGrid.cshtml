@@ -51,7 +51,7 @@
                                     <td class="text-center">@standing.Points</td>
                                     <td class="text-center">
                                         <i class="icon icon-edit-admin btn-Edit" title="Edit"
-                                           data-url="@Url.Action("EditStanding", "StandingManagement", new { seasonId = Model.SeasonId, stageId = standing.StageId, teamId = standing.TeamId})">
+                                           data-url="@Url.Action("EditStanding", "StandingManagement", new { seasonId = Model.SeasonId, stageId = standing.StageId, teamId = standing.TeamId, leagueId = Model.LeagueId})">
                                         </i>
                                     </td>
                                 </tr>

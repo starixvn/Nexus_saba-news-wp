@@ -14,5 +14,15 @@
         public bool IsDeletedIcon { get; set; }
         public bool IsUpdatePosition { get; set; }
         public IFormFile Icon { get; set; }
+        public string GroupName { get; set; }
+        public string OldGroupName { get; set; }
+        public short? Total { get; set; }
+        public short? Won { get; set; }
+        public short? Loss { get; set; }
+        public short? Draw { get; set; }
+        public short? Points { get; set; }
+        public short? Goals { get; set; }
+        public short? GoalsAgainst { get; set; }
+        public short? GoalDiff { get; set; }
     }
 }

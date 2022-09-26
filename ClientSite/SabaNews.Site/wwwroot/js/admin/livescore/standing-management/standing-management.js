@@ -60,6 +60,15 @@
                         formData.append('position', position);
                         formData.append('teamNameVN', teamNameVN);
                         formData.append('isDeletedIcon', isDeletedIcon);
+                        formData.append('groupName', $('#groupName').val());
+                        formData.append('total', $('#total').val());
+                        formData.append('won', $('#won').val());
+                        formData.append('draw', $('#draw').val());
+                        formData.append('loss', $('#loss').val());
+                        formData.append('goals', $('#goals').val());
+                        formData.append('goalsAgainst', $('#goalsAgainst').val());
+                        formData.append('goalDiff', $('#goalDiff').val());
+                        formData.append('points', $('#points').val());
                         $.ajax({
                             type: 'POST',
                             url: "/Admin/StandingManagement/EditStanding",

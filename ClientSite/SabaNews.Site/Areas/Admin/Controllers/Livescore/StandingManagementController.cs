@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -50,17 +51,27 @@
             var viewModel = new StandingManageGridViewModel
             {
                 Groups = groupStanding,
-                SeasonId = model.SeasonId
+                SeasonId = model.SeasonId,
+                LeagueId = model.LeagueId
             };
             return PartialView("~/Areas/Admin/Views/Livescore/StandingManagement/_DataGrid.cshtml", viewModel);
         }
 
         [HttpGet]
-        public async Task<ActionResult> EditStanding(long seasonId, long stageId, long teamId)
+        public async Task<ActionResult> EditStanding(long seasonId, long stageId, long teamId, long leagueId)
         {
             var criteria = new GetLeagueSeasonStandingDetailCriteria { SeasonId = seasonId, StageId = stageId, TeamId = teamId };
-            var standings = await leagueService.GetLeagueSeasonStandingDetailAsync(criteria);
-            return PartialView("~/Areas/Admin/Views/Livescore/StandingManagement/_Edit.cshtml", standings);
+            var standing = await leagueService.GetLeagueSeasonStandingDetailAsync(criteria);
+            var criteriaGroup = new GetLeagueSeasonStandingCriteria { SeasonId = seasonId, LeagueId = leagueId };
+            var standings = await leagueService.GetLeagueSeasonStanding(criteriaGroup);
+            var groupStanding = LivescoreHelper.GroupStandingsByGroupName(standings);
+            var model = new StandingUpdateViewModel
+            {
+                Standing = standing,
+                Groups = groupStanding
+            };
+
+            return PartialView("~/Areas/Admin/Views/Livescore/StandingManagement/_Edit.cshtml", model);
         }
 
         [HttpPost]
@@ -74,9 +85,20 @@
                 var uploadResult = await fileService.UploadFileAsync(model.Icon, UploadDir.MatchTeamUploadFolder);
                 iconVN = uploadResult.IsSuccessful ? uploadResult.Message : iconVN;
             }
+           
             model.TeamIconVN = iconVN;
             model.IsUpdatePosition = standings.Position != model.Position;
-            
+            model.GroupName = Helper.CheckOriginValue(standings.GroupName, model.GroupName);
+            model.Total = Helper.CheckOriginValue(standings.Total, model.Total);
+            model.Won = Helper.CheckOriginValue(standings.Won, model.Won);
+            model.Draw = Helper.CheckOriginValue(standings.Draw, model.Draw);
+            model.Loss = Helper.CheckOriginValue(standings.Loss, model.Loss);
+            model.Goals = Helper.CheckOriginValue(standings.Goals, model.Goals);
+            model.GoalsAgainst = Helper.CheckOriginValue(standings.GoalsAgainst, model.GoalsAgainst);
+            model.GoalDiff = Helper.CheckOriginValue(standings.GoalDiff, model.GoalDiff);
+            model.Points = Helper.CheckOriginValue(standings.Points, model.Points);
+            model.OldGroupName = !string.IsNullOrEmpty(standings.GroupNameCustom) ? standings.GroupNameCustom : standings.GroupName;
+
             var result = await leagueService.UpdateStandingAsync(model);
 
             return Json(result);

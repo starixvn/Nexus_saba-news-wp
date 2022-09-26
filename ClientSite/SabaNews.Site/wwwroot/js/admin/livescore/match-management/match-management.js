@@ -62,6 +62,19 @@
                         formData.append('awayTeamNameVN', awayTeamNameVN);
                         formData.append('isDeletedHomeIcon', isDeletedHomeIcon);
                         formData.append('isDeletedAwayIcon', isDeletedAwayIcon);
+                        formData.append('homeTeamHalfScore', $('#homeTeamHalfScore').val());
+                        formData.append('awayTeamHalfScore', $('#awayTeamHalfScore').val());
+                        formData.append('homeTeamExtraScore', $('#homeTeamExtraScore').val());
+                        formData.append('awayTeamExtraScore', $('#awayTeamExtraScore').val());
+                        formData.append('homeTeamAggregateScore', $('#homeTeamAggregateScore').val());
+                        formData.append('awayTeamAggregateScore', $('#awayTeamAggregateScore').val());
+                        formData.append('homeTeamPenaltyScore', $('#homeTeamPenaltyScore').val());
+                        formData.append('awayTeamPenaltyScore', $('#awayTeamPenaltyScore').val());
+                        formData.append('status', $('#status').val());
+                        formData.append('startTime', $('#startTime').val());
+                        formData.append('round', $('#round').val());
+                        formData.append('stageNameVN', $('#stageNameVN').val());
+
                         $.ajax({
                             type: 'POST',
                             url: "/Admin/MatchManagement/EditMatch",

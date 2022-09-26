@@ -121,6 +121,11 @@
             return await matchRepository.GetMatchByIdAsync(criteria);
         }
 
+        public async Task<MatchUpdate> GetMatchByIdUpdateAsync(GetMatchByIdUpdateCriteria criteria)
+        {
+            return await matchRepository.GetMatchByIdUpdateAsync(criteria);
+        }
+
         public async Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria)
         {
             return await baseService.GetDataAsync<MatchIncident>(criteria);
