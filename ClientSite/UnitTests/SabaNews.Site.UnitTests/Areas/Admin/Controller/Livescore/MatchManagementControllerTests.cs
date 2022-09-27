@@ -190,15 +190,35 @@
         {
             // Arrange
             var controller = GetController();
-            var model = new MatchUpdateModel { };
-            model.IsDeletedAwayIcon = true;
-            model.IsDeletedHomeIcon = true;
+            var model = new MatchUpdateModel
+            { 
+                IsDeletedAwayIcon = true,
+                IsDeletedHomeIcon = true,
+                StartTime = DateTime.Now,
+                MatchId = 1,
+                HomeTeamId = 1,
+                HomeTeamNameVN = "home name",
+                AwayTeamId = 2,
+                AwayTeamNameVN = "away name",
+                StageNameVN = "stage name",
+                Status = 1,
+                Round = 1,
+                HomeTeamHalfScore = 2,
+                AwayTeamHalfScore = 2,
+                HomeTeamExtraScore = 1,
+                AwayTeamExtraScore = 1,
+                HomeTeamAggregateScore = 3,
+                AwayTeamAggregateScore = 3,
+                HomeTeamPenaltyScore = 4,
+                AwayTeamPenaltyScore = 4
+            };
+           
             var cmd = fixture.Create<UpdateMatchCommand>();
-            var criteria = fixture.Create<GetMatchByIdCriteria>();
-            var expectedMatch = fixture.Create<Match>();
+            var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
+            var expectedMatch = fixture.Create<MatchUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
 
-            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
             matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
             //Act
             var result = await controller.EditMatch(model);
@@ -213,9 +233,28 @@
         {
             //Arrange
             var controller = GetController();
-            var model = new MatchUpdateModel();
-            model.IsDeletedAwayIcon = false;
-            model.IsDeletedHomeIcon = false;
+            var model = new MatchUpdateModel
+            {
+                IsDeletedAwayIcon = false,
+                IsDeletedHomeIcon = false,
+                StartTime = DateTime.Now,
+                MatchId = 1,
+                HomeTeamId = 1,
+                HomeTeamNameVN = "home name",
+                AwayTeamId = 2,
+                AwayTeamNameVN = "away name",
+                StageNameVN = "stage name",
+                Status = 1,
+                Round = 1,
+                HomeTeamHalfScore = 2,
+                AwayTeamHalfScore = 2,
+                HomeTeamExtraScore = 1,
+                AwayTeamExtraScore = 1,
+                HomeTeamAggregateScore = 3,
+                AwayTeamAggregateScore = 3,
+                HomeTeamPenaltyScore = 4,
+                AwayTeamPenaltyScore = 4
+            };
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });
@@ -230,12 +269,12 @@
                 ContentType = "application/pdf"
             };
             var cmd = fixture.Create<UpdateMatchCommand>();
-            var criteria = fixture.Create<GetMatchByIdCriteria>();
-            var expectedMatch = fixture.Create<Match>();
+            var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
+            var expectedMatch = fixture.Create<MatchUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
             var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
 
-            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
             matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
             fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.AwayIcon), Arg.Do<string>(x => x = UploadDir.MatchTeamUploadFolder)).Returns(expectedUploadResult);
             //Act
@@ -251,9 +290,29 @@
         {
             //Arrange
             var controller = GetController();
-            var model = new MatchUpdateModel();
-            model.IsDeletedAwayIcon = false;
-            model.IsDeletedHomeIcon = false;
+            var model = new MatchUpdateModel
+            {
+                IsDeletedAwayIcon = false,
+                IsDeletedHomeIcon = false,
+                StartTime = DateTime.Now,
+                MatchId = 1,
+                HomeTeamId = 1,
+                HomeTeamNameVN = "home name",
+                AwayTeamId = 2,
+                AwayTeamNameVN = "away name",
+                StageNameVN = "stage name",
+                Status = 1,
+                Round = 1,
+                HomeTeamHalfScore = 2,
+                AwayTeamHalfScore = 2,
+                HomeTeamExtraScore = 1,
+                AwayTeamExtraScore = 1,
+                HomeTeamAggregateScore = 3,
+                AwayTeamAggregateScore = 3,
+                HomeTeamPenaltyScore = 4,
+                AwayTeamPenaltyScore = 4
+            };
+            
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });
@@ -268,12 +327,12 @@
                 ContentType = "application/pdf"
             };
             var cmd = fixture.Create<UpdateMatchCommand>();
-            var criteria = fixture.Create<GetMatchByIdCriteria>();
-            var expectedMatch = fixture.Create<Match>();
+            var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
+            var expectedMatch = fixture.Create<MatchUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
             var expectedUploadResult = new CommandResult {  Message = "error code" };
 
-            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
             matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
             fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.AwayIcon), Arg.Do<string>(x => x = UploadDir.MatchTeamUploadFolder)).Returns(expectedUploadResult);
             //Act

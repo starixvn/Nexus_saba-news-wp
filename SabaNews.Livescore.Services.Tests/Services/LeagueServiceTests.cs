@@ -371,8 +371,8 @@
             var service = GetService();
             var fixture = new Fixture();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
-            var expectedData = fixture.Create<SeasonStandings>();
-            baseService.GetDataEntityAsync<SeasonStandings>(Arg.Any<GetLeagueSeasonStandingDetailCriteria>()).Returns(expectedData);
+            var expectedData = fixture.Create<SeasonStandingUpdate>();
+            baseService.GetDataEntityAsync<SeasonStandingUpdate>(Arg.Any<GetLeagueSeasonStandingDetailCriteria>()).Returns(expectedData);
             //Act
             var actual = await service.GetLeagueSeasonStandingDetailAsync(criteria);
             //Assert

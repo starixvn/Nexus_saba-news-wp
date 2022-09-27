@@ -1019,4 +1019,16 @@
   <data name="GroupName" xml:space="preserve">
     <value>Group Name</value>
   </data>
+  <data name="1HScore" xml:space="preserve">
+    <value>1H Score</value>
+  </data>
+  <data name="2HScore" xml:space="preserve">
+    <value>2H Score</value>
+  </data>
+  <data name="AGG" xml:space="preserve">
+    <value>AGG</value>
+  </data>
+  <data name="PEN" xml:space="preserve">
+    <value>PEN</value>
+  </data>
 </root>

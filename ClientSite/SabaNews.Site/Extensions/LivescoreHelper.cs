@@ -3,7 +3,6 @@
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
-    using SabaNews.Models.ViewModel.Event.WorldCup;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -81,6 +80,15 @@
                 }
             }
             return groupNames;
+        }
+
+        public static short GetMatchTotalScore(Match match, bool isHome)
+        {
+            if (isHome)
+            {
+                return match.HomeTeamExtraScore > 0 ? match.HomeTeamExtraScore : match.HomeTeamTotalScore;
+            }
+            return match.AwayTeamExtraScore > 0 ? match.AwayTeamExtraScore : match.AwayTeamTotalScore;
         }
  
 

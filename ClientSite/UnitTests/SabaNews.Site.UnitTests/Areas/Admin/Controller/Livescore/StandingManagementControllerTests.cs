@@ -79,16 +79,16 @@
             var stageId = fixture.Create<int>();
             var teamId = fixture.Create<int>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
-            var expectedStanding = fixture.Create<SeasonStandings>();
+            var expectedStanding = fixture.Create<SeasonStandingUpdate>();
 
             leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
             //Act
-            var result = await controller.EditStanding(seasonId, stageId, teamId);
+            var result = await controller.EditStanding(seasonId, stageId, teamId, teamId);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
-            var viewModel = Assert.IsAssignableFrom<SeasonStandings>(viewResult.Model);
-            Assert.Equal(expectedStanding, viewModel);
+            var viewModel = Assert.IsAssignableFrom<StandingUpdateViewModel>(viewResult.Model);
+            Assert.Equal(expectedStanding, viewModel.Standing);
         }
 
         [Fact]
@@ -100,7 +100,7 @@
             model.IsDeletedIcon = true;
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
-            var expectedStanding = fixture.Create<SeasonStandings>();
+            var expectedStanding = fixture.Create<SeasonStandingUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
 
             leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
@@ -130,7 +130,7 @@
             };
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
-            var expectedStanding = fixture.Create<SeasonStandings>();
+            var expectedStanding = fixture.Create<SeasonStandingUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
             var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
 
@@ -162,7 +162,7 @@
             };
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
-            var expectedStanding = fixture.Create<SeasonStandings>();
+            var expectedStanding = fixture.Create<SeasonStandingUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
             var expectedUploadResult = new CommandResult { Message = "error" };
 

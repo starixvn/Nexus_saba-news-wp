@@ -61,6 +61,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1H Score.
+        /// </summary>
+        public static string _1HScore {
+            get {
+                return ResourceManager.GetString("1HScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2H Score.
+        /// </summary>
+        public static string _2HScore {
+            get {
+                return ResourceManager.GetString("2HScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         public static string Action {
@@ -102,6 +120,15 @@ namespace SabaNews.Resources {
         public static string Administration {
             get {
                 return ResourceManager.GetString("Administration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AGG.
+        /// </summary>
+        public static string AGG {
+            get {
+                return ResourceManager.GetString("AGG", resourceCulture);
             }
         }
         
@@ -1686,6 +1713,15 @@ namespace SabaNews.Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PEN.
+        /// </summary>
+        public static string PEN {
+            get {
+                return ResourceManager.GetString("PEN", resourceCulture);
             }
         }
         

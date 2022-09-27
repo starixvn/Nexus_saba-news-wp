@@ -12,10 +12,10 @@
                 <th width="10%">@ViewResources.HomeName</th>
                 <th width="10%">@ViewResources.AwayLogo</th>
                 <th width="10%">@ViewResources.AwayName</th>
-                <th width="10%">@ViewResources.HomeIconVN</th>
-                <th width="10%">@ViewResources.HomeNameVN</th>
-                <th width="10%">@ViewResources.AwayIconVN</th>
-                <th width="10%">@ViewResources.AwayNameVN</th>
+                <th width="10%">@ViewResources._1HScore</th>
+                <th width="10%">@ViewResources._2HScore</th>
+                <th width="10%">@ViewResources.PEN</th>
+                <th width="10%">@ViewResources.AGG</th>
                 <th width="5%">@ViewResources.Action</th>
             </tr>
         </thead>
@@ -27,24 +27,15 @@
                         <tr>
                             <td class="text-center">@match.MatchId @count</td>
                             <td class="text-center">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
-                            <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon)" width="100"></td>
-                            <td class="text-center">@LivescoreHelper.GetTeamNameEN(match.HomeTeam)</td>
-                            <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon)" width="100"></td>
-                            <td class="text-center">@LivescoreHelper.GetTeamNameEN(match.AwayTeam)</td>
-                            <td class="text-center">
-                                @if (!string.IsNullOrEmpty(match.HomeTeam.IconVN))
-                                {
-                                    <img src="@match.HomeTeam.IconVN" width="100">
-                                }
-                            </td>
-                            <td class="text-center">@match.HomeTeam.TeamNameVN</td>
-                            <td class="text-center">
-                                @if (!string.IsNullOrEmpty(match.AwayTeam.IconVN))
-                                {
-                                    <img src="@match.AwayTeam.IconVN" width="100">
-                                }
-                            </td>
-                            <td class="text-center">@match.AwayTeam.TeamNameVN</td>
+                            <td class="text-center"><img src="@(match.HomeTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon))" width="100"></td>
+                            <td class="text-center">@LivescoreHelper.GetTeamName(match.HomeTeam)</td>
+                            <td class="text-center"><img src="@(match.AwayTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon))" width="100"></td>
+                            <td class="text-center">@LivescoreHelper.GetTeamName(match.AwayTeam)</td>
+                            <td class="text-center">@match.HomeTeamHalfScore - @match.AwayTeamHalfScore</td>
+                            <td class="text-center">@LivescoreHelper.GetMatchTotalScore(match, true) - @LivescoreHelper.GetMatchTotalScore(match, false)</td>
+                            <td class="text-center">@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</td>
+                            <td class="text-center">@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</td>
+
                             <td class="text-center">
                                 <i class="icon icon-edit-admin btn-Edit" title="Edit"
                                    data-url="@Url.Action("EditMatch", "MatchManagement", new { matchId = match.MatchId})"></i>
