@@ -8,7 +8,6 @@
         public long MatchId { get; set; }
         public long HomeTeamId { get; set; }
         public string HomeTeamNameVN { get; set; }
-        public string HomeTeamIconVN { get; set; }
         public bool IsDeletedHomeIcon { get; set; }
         public IFormFile HomeIcon { get; set; }
         public long AwayTeamId { get; set; }

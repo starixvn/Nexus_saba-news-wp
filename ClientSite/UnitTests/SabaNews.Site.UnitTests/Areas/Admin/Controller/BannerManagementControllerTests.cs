@@ -20,8 +20,7 @@
     public class BannerManagementControllerTests : AdminController
     {
         private IBannerService bannerService;
-        private IPathService pathService;
-        private IConfiguration configuration;
+        private IFileService fileService;
         private ISessionService sessionService;
         private readonly IFixture fixture = new Fixture();
 
@@ -82,6 +81,7 @@
             // Arrange
             var controller = GetController();
             var expected = fixture.Create<BannerModel>();
+            var expectedCommand = fixture.Create<CommandResult>();
             bannerService.GetBannerInfoAsync().Returns(expected);
             //Act
             var actual = await controller.Index();
@@ -92,50 +92,78 @@
             Assert.Equal(expected, viewModel);
         }
 
-        [Fact]
-        public async Task UploadBanner_WhenCalled_ReturnExpectedViewResult()
+        [Theory]
+        [InlineData(BannerType.DesktopTop)]
+        [InlineData(BannerType.DesktopCenter)]
+        [InlineData(BannerType.DesktopLeft)]
+        [InlineData(BannerType.DesktopRight)]
+        [InlineData(BannerType.MobileTop)]
+        [InlineData(BannerType.MobileCenter)]
+        [InlineData(BannerType.MobileBottom)]
+        public async Task UploadBanner_WhenCalled_ReturnExpectedViewResult(string type)
         {
             // Arrange
             var controller = GetController();
-            //var expected = fixture.Create<IFormFile>();
-            var content = "Hello World from a Fake File";
-            var fileName = "test.pdf";
+            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
             var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            using var headerValue = new MultipartFormDataContent();
-            headerValue.Headers.Add("Content-Disposition", "form-data; name=\"json\"");
-            writer.Write(content);
-            writer.Flush();
-            stream.Position = 0;
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });
-            IFormFile file = new FormFile(stream, 0, stream.Length, "id_from_form", fileName)
+            var file = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
             {
                 Headers = header,
                 ContentType = "application/pdf"
             };
-            var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("Content-Type", "multipart/form-data");
-            var enviroment = System.Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
-            var UnitTestDirectory = projectDirectory.Replace("\\bin", "");
-            var directorty = "FilesTest";
-            var filePath = Path.Combine(UnitTestDirectory, directorty);
-            pathService.MapAbsoluteRootPath(Arg.Do<string>(x => x = directorty)).Returns(filePath);
-            ////Act
-            var actual = await controller.UploadBanner(file, "test");
+            var user = fixture.Create<UserSession>();
+            var expectedBanner = fixture.Create<BannerModel>();
+            var expectedCommand = fixture.Create<CommandResult>();
+            sessionService.User.Returns(user);
 
-           
+            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = file), Arg.Do<string>(x => x = UploadDir.BannerUploadFolder)).Returns(expectedUploadResult);
+            bannerService.UpdateBannerInfoAsync(Arg.Do<BannerModel>(x => x = expectedBanner), user.Id).Returns(expectedCommand);
+            //Act
+            var actual = await controller.UploadBanner(file, type);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(actual);
+            var result = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(expectedCommand, result);
+        }
+
+        [Fact]
+        public void UploadBanner_WhenCalled_ThrowException()
+        {
+            // Arrange
+            var controller = GetController();
+            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+            var stream = new MemoryStream();
+            var header = new HeaderDictionary();
+            header.Add("Name", new string[1] { "Value" });
+            var file = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+            var user = fixture.Create<UserSession>();
+            var expectedBanner = fixture.Create<BannerModel>();
+            sessionService.User.Returns(user);
+            var type = fixture.Create<string>();
+
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = file), Arg.Do<string>(x => x = UploadDir.BannerUploadFolder)).Returns(expectedUploadResult);
+
+
+            // Act&Assert
+            Assert.ThrowsAsync<InvalidOperationException>(() => controller.UploadBanner(file, type));
+
         }
 
         #region Helpers
         private BannerManagementController GetController()
         {
             bannerService = Substitute.For<IBannerService>();
-            pathService = Substitute.For<IPathService>();
-            configuration = Substitute.For<IConfiguration>();
+            fileService = Substitute.For<IFileService>();
             sessionService = Substitute.For<ISessionService>();
-            var controller = new BannerManagementController(bannerService, pathService, configuration, sessionService);
+            var controller = new BannerManagementController(bannerService, sessionService, fileService);
 
             return controller;
         }

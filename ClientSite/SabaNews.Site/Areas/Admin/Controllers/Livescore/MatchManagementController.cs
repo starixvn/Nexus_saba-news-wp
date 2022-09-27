@@ -104,10 +104,14 @@
                 var uploadResult = await fileService.UploadFileAsync(model.AwayIcon, UploadDir.MatchTeamUploadFolder);
                 awayIconVN = uploadResult.IsSuccessful ? uploadResult.Message : awayIconVN;
             }
-            DateTime? startTime = model.StartTime.ConvertToGMT();
-            if (Helper.CheckOriginValue(match.StartTime, startTime) == DateTime.MinValue)
+            DateTime? startTime;
+            if (model.StartTime == DateTime.MinValue)
             {
                 startTime = null;
+            }
+            else
+            {
+                startTime = model.StartTime.ConvertToGMT();
             }
             var cmd = new UpdateMatchCommand
             {
@@ -140,8 +144,8 @@
         private static IList<Match> SearchMatch(IList<Match> matches, string search)
         {
             search ??= "";
-            matches = matches.Where(x => (LivescoreHelper.GetTeamNameEN(x.HomeTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))
-                || (LivescoreHelper.GetTeamNameEN(x.AwayTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))).ToList();
+            matches = matches.Where(x => (LivescoreHelper.GetTeamName(x.HomeTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))
+                || (LivescoreHelper.GetTeamName(x.AwayTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))).ToList();
             return matches;
         }
 

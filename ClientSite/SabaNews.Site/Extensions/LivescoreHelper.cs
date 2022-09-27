@@ -15,11 +15,6 @@
             return teamName;
         }
 
-        public static string GetTeamNameEN(Team team)
-        {
-            string teamName = !string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
-            return teamName;
-        }
 
         public static string GetStandingTeamName(SeasonStandings standing)
         {

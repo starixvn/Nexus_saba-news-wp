@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Core.Helper
 {
-    public class Helper
+    public static class Helper
     {
         public static  T CheckOriginValue<T>(T origin, T current)
         {

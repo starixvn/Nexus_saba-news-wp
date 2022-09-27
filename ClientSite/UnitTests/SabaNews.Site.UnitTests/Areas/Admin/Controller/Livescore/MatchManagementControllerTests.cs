@@ -80,14 +80,14 @@
                 LeagueId = 1,
                 Page = 1,
                 PageSize = 2,
-                Search = "",
+                Search = "team",
             };
             var expectedMatch = new List<Match>();
             expectedMatch.Add(new Match 
             { 
                 MatchId = 1,
                 StartTime = DateTime.Parse("2022-10-10"),
-                HomeTeam =  new Team { TeamNameEN = "home team 1" }, 
+                HomeTeam =  new Team { TeamNameEN = "home team 1", TeamNameVN = "home team vn 1" }, 
                 AwayTeam = new Team { TeamNameEN = "away team 1" } 
             });
             expectedMatch.Add(new Match
@@ -216,6 +216,7 @@
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
             var expectedMatch = fixture.Create<MatchUpdate>();
+            expectedMatch.HomeTeamHalfScore = 2;
             var expectedUpdateResult = fixture.Create<CommandResult>();
 
             matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
@@ -237,7 +238,7 @@
             {
                 IsDeletedAwayIcon = false,
                 IsDeletedHomeIcon = false,
-                StartTime = DateTime.Now,
+                StartTime = DateTime.MinValue,
                 MatchId = 1,
                 HomeTeamId = 1,
                 HomeTeamNameVN = "home name",

@@ -2,34 +2,28 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
     using System;
-    using System.IO;
-    using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
     public class BannerManagementController : AdminController
     {
         private readonly IBannerService bannerService;
-        private readonly IPathService pathService;
         private readonly ISessionService sessionService;
-        private readonly string baseUrl;
+        private readonly IFileService fileService;
+
 
         public BannerManagementController(
             IBannerService bannerService,
-            IPathService pathService,
-            IConfiguration configuration,
-            ISessionService sessionService)
+            ISessionService sessionService,
+            IFileService fileService)
         {
             this.bannerService = bannerService;
-            this.pathService = pathService;
             this.sessionService = sessionService;
-            baseUrl = configuration.GetValue<string>("BaseUrl");
+            this.fileService = fileService;
         }
         public async Task<IActionResult> Index()
         {
@@ -51,60 +45,41 @@
         [HttpPost]
         public async Task<IActionResult> UploadBanner(IFormFile file, string type)
         {
-            CommandResult result;
-            try
+            var banner = await bannerService.GetBannerInfoAsync();
+            var result = await fileService.UploadFileAsync(file, UploadDir.BannerUploadFolder);
+            if (!result.IsSuccessful)
             {
-                var bannerDir = pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder);
-                if (!Directory.Exists(bannerDir))
-                {
-                    Directory.CreateDirectory(bannerDir);
-                }
-                var banner = await bannerService.GetBannerInfoAsync();
-                string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                filename = pathService.EnsureCorrectFilename(filename);
-                filename = DateTime.Now.Millisecond + filename;
-                var filePath = pathService.MapAbsoluteRootPath("/" + Constants.BannerUploadFolder + filename);
-                if (System.IO.File.Exists(filePath))
-                {
-                    System.IO.File.Delete(filePath);
-                }
-                using (FileStream output = System.IO.File.Create(filePath))
-                    await file.CopyToAsync(output);
-
-                string linkPhoto = Constants.BannerUploadFolder + filename;
-                string url = string.Concat(baseUrl, linkPhoto);
-                switch (type)
-                {
-                    case BannerType.DesktopTop:
-                        banner.DesktopTopUrl = url;
-                        break;
-                    case BannerType.MobileTop:
-                        banner.MobileTopUrl = url;
-                        break;
-                    case BannerType.DesktopCenter:
-                        banner.DesktopCenterUrl = url;
-                        break;
-                    case BannerType.DesktopLeft:
-                        banner.DesktopLeftUrl = url;
-                        break;
-                    case BannerType.DesktopRight:
-                        banner.DesktopRightUrl = url;
-                        break;
-                    case BannerType.MobileCenter:
-                        banner.MobileCenterUrl = url;
-                        break;
-                    case BannerType.MobileBottom:
-                        banner.MobileBottomUrl = url;
-                        break;
-                    default:
-                        throw new InvalidOperationException();
-                }
-                result = await bannerService.UpdateBannerInfoAsync(banner, sessionService.User.Id);
+                return Json(result);
             }
-            catch (Exception e)
+            var url = result.Message;
+            switch (type)
             {
-                result = new CommandResult { Message = e.Message }; 
+                case BannerType.DesktopTop:
+                    banner.DesktopTopUrl = url;
+                    break;
+                case BannerType.MobileTop:
+                    banner.MobileTopUrl = url;
+                    break;
+                case BannerType.DesktopCenter:
+                    banner.DesktopCenterUrl = url;
+                    break;
+                case BannerType.DesktopLeft:
+                    banner.DesktopLeftUrl = url;
+                    break;
+                case BannerType.DesktopRight:
+                    banner.DesktopRightUrl = url;
+                    break;
+                case BannerType.MobileCenter:
+                    banner.MobileCenterUrl = url;
+                    break;
+                case BannerType.MobileBottom:
+                    banner.MobileBottomUrl = url;
+                    break;
+                default:
+                    throw new InvalidOperationException();
             }
+            result = await bannerService.UpdateBannerInfoAsync(banner, sessionService.User.Id);
+           
             return Json(result);
         }
 

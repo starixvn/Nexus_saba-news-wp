@@ -86,6 +86,15 @@
         }
 
         [Fact]
+        public async Task GetMatchByIdUpdateAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var match = fixture.Create<MatchUpdate>();
+            matchRepository.GetMatchByIdUpdateAsync(Arg.Any<ICriteria>()).Returns(match);
+            var actual = await matchService.GetMatchByIdUpdateAsync(new GetMatchByIdUpdateCriteria());
+            Assert.Equal(match, actual);
+        }
+
+        [Fact]
         public async Task GetMatchIncidentAsync_WhenCalled_ReturnExpectedResult()
         {
             var match = fixture.Create<IEnumerable<MatchIncident>>();

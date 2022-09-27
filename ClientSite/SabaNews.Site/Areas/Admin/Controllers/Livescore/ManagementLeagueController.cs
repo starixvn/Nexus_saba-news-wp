@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Site.Areas.Admin.Controllers
+﻿namespace SabaNews.Site.Areas.Admin.Controllers.Livescore
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Models;
@@ -23,7 +23,7 @@
         }
         public IActionResult Index()
         {
-            return View();
+            return View("~/Areas/Admin/Views/Livescore/ManagementLeague/Index.cshtml");
         }
 
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
@@ -46,7 +46,7 @@
                     TotalPages = (int)Math.Ceiling(totalLeague / (double)model.PageSize),
                 }
             };
-            return PartialView("_ManagementLeagueDataGrid", viewModel);
+            return PartialView("~/Areas/Admin/Views/Livescore/ManagementLeague/_ManagementLeagueDataGrid.cshtml", viewModel);
         }
 
         [HttpGet]
@@ -55,7 +55,7 @@
             IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("["+leagueId.ToString()+"]")});
             var leaguesExtra = await leagueService.GetLeaguesAsync();
             ViewBag.priority = LeagueService.GetLeaguePriority(leaguesExtra);
-            return PartialView("_Edit", league);
+            return PartialView("~/Areas/Admin/Views/Livescore/ManagementLeague/_Edit.cshtml", league);
         }
 
         [HttpPost]
@@ -81,7 +81,7 @@
             var leagues = await leagueService.GetAllLeaguesAsync();
             var leaguesExtra = await leagueService.GetLeaguesAsync();
             ViewBag.priority = LeagueService.GetLeaguePriority(leaguesExtra);
-            return PartialView("_AddLeagueDataGrid", leagues);
+            return PartialView("~/Areas/Admin/Views/Livescore/ManagementLeague/_AddLeagueDataGrid.cshtml", leagues);
         }
 
         public async Task<ActionResult> GetLeagueById(long leagueId)

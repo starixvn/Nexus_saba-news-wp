@@ -70,6 +70,26 @@
         }
 
         [Fact]
+        public async Task GetMatchBySeasonFilterAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var criteria = FakeCriteria();
+            var repository = new MatchRepository();
+
+            var matches = fixture.Create<IList<Match>>();
+
+            objectDb.QueryAsync(Arg.Any<Func<Match, Team, Team, SeasonStage, Match>>(),
+                splitOn: Arg.Is("HomeTeamId, AwayTeamId, StageId"),
+                Arg.Is(criteria)
+                ).Returns(matches);
+            //Actual
+            var actual = await repository.GetMatchBySeasonFilterAsync(criteria);
+
+            //Assert
+
+            Assert.Equal(matches, actual);
+        }
+
+        [Fact]
         public async Task GetMatchByIdAsync_WhenCalled_ReturnExpectedResult()
         {
             var criteria = FakeCriteria();
@@ -84,6 +104,27 @@
 
             //Actual
             var actual = await repository.GetMatchByIdAsync(criteria);
+
+            //Assert
+
+            Assert.Equal(match, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchByIdUpdateAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var criteria = FakeCriteria();
+            var repository = new MatchRepository();
+
+            var match = fixture.Create<MatchUpdate>();
+
+            objectDb.QueryEntityAsync(Arg.Any<Func<MatchUpdate, League, Season, SeasonStage, Team, Team, MatchUpdate>>(),
+                splitOn: Arg.Is("LeagueId, SeasonId, StageId, HomeTeamId, AwayTeamId"),
+                Arg.Is(criteria)
+                ).Returns(match);
+
+            //Actual
+            var actual = await repository.GetMatchByIdUpdateAsync(criteria);
 
             //Assert
 

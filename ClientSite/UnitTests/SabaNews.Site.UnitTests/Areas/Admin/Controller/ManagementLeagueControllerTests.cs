@@ -10,6 +10,7 @@
     using SabaNews.Models.ManagementLeague;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Site.Areas.Admin.Controllers;
+    using SabaNews.Site.Areas.Admin.Controllers.Livescore;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
-            Assert.Equal("_ManagementLeagueDataGrid", viewResult.ViewName);
+            Assert.Equal("~/Areas/Admin/Views/Livescore/ManagementLeague/_ManagementLeagueDataGrid.cshtml", viewResult.ViewName);
         }
 
         [Fact]
@@ -63,7 +64,7 @@
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
-            Assert.Equal("_AddLeagueDataGrid", viewResult.ViewName);
+            Assert.Equal("~/Areas/Admin/Views/Livescore/ManagementLeague/_AddLeagueDataGrid.cshtml", viewResult.ViewName);
         }
 
         [Fact]
@@ -131,7 +132,7 @@
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
-            Assert.Equal("_Edit", viewResult.ViewName);
+            Assert.Equal("~/Areas/Admin/Views/Livescore/ManagementLeague/_Edit.cshtml", viewResult.ViewName);
         }
 
         [Fact]
