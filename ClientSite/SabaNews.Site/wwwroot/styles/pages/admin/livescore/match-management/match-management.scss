@@ -1,226 +1,11 @@
 ﻿@import '../../../../abstracts/variables';
 @import '../../../../abstracts/mixins';
 @import '../../custom-modal';
-
-
-
-.select2-dropdown {
-    width: 397px !important;
-}
-
-.modal-content {
-    .select2-container {
-        margin-left: -375px;
-    }
-
-    .modal-body {
-        padding: 1rem 1.6rem !important;
-    }
-
-    .row {
-        display: inline;
-        flex-wrap: wrap;
-        flex: 1 0 100%;
-        margin: 0;
-    }
-
-    td {
-        padding: 7px;
-    }
-
-    label {
-        font-weight: bold;
-        font-size: 14px;
-        color: #333333;
-    }
-
-    .lable-major {
-        margin-left: 40px;
-    }
-
-    .checkbox-major {
-        margin-left: 5px;
-    }
-
-    .form-control {
-        display: block;
-        height: 31px;
-        padding: 5px 8px;
-        line-height: 1.5;
-        border: 1px solid #CCC;
-        font-size: 14px;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border-radius: 0.25rem;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-
-    .label-LeagueID {
-        width: 70px;
-    }
-
-    .txt-countryVn, .txt-leagueNameVn, .txt-leagueFullNameVn {
-        width: 397px !important;
-        margin-left: -375px;
-    }
-
-    .txt-leagueId {
-        width: 60px !important;
-        margin-left: 77px;
-        margin-right: 40px;
-    }
-
-    .txt-countryVn {
-        text-transform: uppercase;
-    }
-
-    .txt-priority {
-        width: 65px !important;
-        margin-left: 10px;
-    }
-
-    .form-btn {
-        padding-top: 15px;
-        padding-right: 5px;
-        text-align: right;
-    }
-
-    .form-btn .btn {
-        margin-left: 12px;
-        width: 80px;
-        font-size: 15px;
-    }
-}
-
-#EditLeagueContent .modal-content {
-    .select2-container {
-        margin-left: -297px;
-    }
-
-    .modal-body {
-        padding: 1rem 1.6rem !important;
-    }
-
-    .row {
-        display: inline;
-        flex-wrap: wrap;
-        flex: 1 0 100%;
-        margin: 0;
-    }
-
-    td {
-        padding: 5px;
-    }
-
-    label {
-        font-weight: bold;
-        font-size: 14px;
-        color: #333333;
-    }
-
-    .lable-major {
-        margin-left: 120px;
-    }
-
-    .checkbox-major {
-        margin-left: 20px;
-    }
-
-    .form-control {
-        display: block;
-        height: 31px;
-        padding: 5px 8px;
-        line-height: 1.5;
-        border: 1px solid #CCC;
-        font-size: 14px;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border-radius: 0.25rem;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-
-    .txt-countryVn, .txt-leagueNameVn, .txt-leagueFullNameVn {
-        width: 397px !important;
-        margin-left: -297px;
-    }
-
-    .txt-countryVn {
-        text-transform: uppercase;
-    }
-
-    .txt-priority {
-        width: 65px !important;
-        margin-left: 100px;
-    }
-
-    .form-btn {
-        padding-top: 15px;
-        padding-right: 5px;
-        text-align: right;
-    }
-
-    .form-btn .btn {
-        margin-left: 12px;
-        width: 80px;
-        font-size: 15px;
-    }
-}
-
-.add-league {
-    border-top: 1px solid #e3e3e3;
-    border-right: 1px solid #e3e3e3;
-    border-left: 1px solid #e3e3e3;
-    height: 4.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background: #ededed;
-    padding: 0 1rem;
-    max-width: 100%;
-}
+@import '../../custom-input';
 
 .filter {
     margin-bottom: 20px;
 }
-
-.filter-majorLeague {
-    width: 70px;
-}
-
-.btn_league {
-    background-color: #6699FF;
-    border: none;
-    color: white;
-    padding: 1px 10px;
-    margin-right: -5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 6px;
-}
-
-.btn_league:hover {
-    cursor: pointer;
-    background-color: #3333FF;
-    border: none;
-    color: white;
-    padding: 1px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 6px;
-}
-
-.icon-add-league {
-    width: 20px;
-    height: 20px;
-    margin: -2px 5px 0 0;
-}
-
 .table-admin {
     margin-top: 0;
     max-width: 100%;
@@ -234,7 +19,7 @@
     }
 
     .icon-delete-admin, .icon-edit-admin {
-        font-size: 20px;
+        font-size: 2rem;
     }
 
     .icon-edit-admin:hover {
@@ -243,7 +28,7 @@
 
     .main-pagination {
         .items-pagination {
-            margin-top: 10px;
+            margin-top: 1rem;
         }
     }
 
@@ -263,9 +48,12 @@
     text-align: center;
     padding: .5rem;
     background: #f7f7f7;
+    height: 5rem;
+    overflow: hidden;
 
-    img{
-        width : 100%;
+    img {
+        max-width: 4rem;
+        height: 4rem;
     }
 
     .icon-close {
@@ -274,10 +62,11 @@
         top: 10px;
         font-size: 1.8rem;
         background: transparent;
-        cursor : pointer;
-        color : #fff;
-        &:focus{
-            outline :none;
+        cursor: pointer;
+        color: #1F2252;
+
+        &:focus {
+            outline: none;
         }
     }
 
@@ -378,3 +167,79 @@
     font-size: 1.4rem;
     margin-top: .5rem;
 }
+
+
+.modal {
+    .modal-content {
+        max-width: 95rem;
+    }
+}
+
+.admin-match-management {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 0px;
+    justify-content: center;
+
+    .item {
+        &-home {
+            border-right: 1px solid #ddd;
+            padding-right: 2rem;
+        }
+
+        &-away {
+            padding-left: 2rem;
+        }
+    }
+
+    .flex-form-input {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .label-admin {
+            width: 30%;
+            margin: 0;
+        }
+
+        .admin-text-logo {
+            width: 70%;
+        }
+
+        .custom-input {
+            width: 100%;
+            cursor: inherit;
+        }
+    }
+    
+}
+
+.form-btn {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .btn-custom-admin {
+        &:hover {
+            box-shadow : none;
+        }
+    }
+
+    .btn-btn-save {
+        background: #1F2252;
+        border: 1px solid #1F2252;
+        margin-right: 1rem;
+    }
+
+    .btn-btn-cancel {
+        border: 1px solid #1F2252;
+        background: #fff;
+        color: #1F2252;
+    }
+}
+

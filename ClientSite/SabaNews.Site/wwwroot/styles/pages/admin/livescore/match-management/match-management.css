@@ -81,183 +81,36 @@
 #TestSendEmail .button-confirm {
   padding: 0; }
 
-.select2-dropdown {
-  width: 397px !important; }
+.label-admin {
+  margin: .6rem 0;
+  font-size: 1.4rem;
+  color: #444444; }
 
-.modal-content .select2-container {
-  margin-left: -375px; }
-
-.modal-content .modal-body {
-  padding: 1rem 1.6rem !important; }
-
-.modal-content .row {
-  display: inline;
-  flex-wrap: wrap;
-  flex: 1 0 100%;
-  margin: 0; }
-
-.modal-content td {
-  padding: 7px; }
-
-.modal-content label {
+.custom-input {
+  height: 4rem;
+  width: 22rem;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: none;
+  padding: .8rem;
+  font-size: 1.4rem;
+  color: #444444;
   font-weight: bold;
-  font-size: 14px;
-  color: #333333; }
-
-.modal-content .lable-major {
-  margin-left: 40px; }
-
-.modal-content .checkbox-major {
-  margin-left: 5px; }
-
-.modal-content .form-control {
-  display: block;
-  height: 31px;
-  padding: 5px 8px;
-  line-height: 1.5;
-  border: 1px solid #CCC;
-  font-size: 14px;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border-radius: 0.25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
-
-.modal-content .label-LeagueID {
-  width: 70px; }
-
-.modal-content .txt-countryVn, .modal-content .txt-leagueNameVn, .modal-content .txt-leagueFullNameVn {
-  width: 397px !important;
-  margin-left: -375px; }
-
-.modal-content .txt-leagueId {
-  width: 60px !important;
-  margin-left: 77px;
-  margin-right: 40px; }
-
-.modal-content .txt-countryVn {
-  text-transform: uppercase; }
-
-.modal-content .txt-priority {
-  width: 65px !important;
-  margin-left: 10px; }
-
-.modal-content .form-btn {
-  padding-top: 15px;
-  padding-right: 5px;
-  text-align: right; }
-
-.modal-content .form-btn .btn {
-  margin-left: 12px;
-  width: 80px;
-  font-size: 15px; }
-
-#EditLeagueContent .modal-content .select2-container {
-  margin-left: -297px; }
-
-#EditLeagueContent .modal-content .modal-body {
-  padding: 1rem 1.6rem !important; }
-
-#EditLeagueContent .modal-content .row {
-  display: inline;
-  flex-wrap: wrap;
-  flex: 1 0 100%;
-  margin: 0; }
-
-#EditLeagueContent .modal-content td {
-  padding: 5px; }
-
-#EditLeagueContent .modal-content label {
-  font-weight: bold;
-  font-size: 14px;
-  color: #333333; }
-
-#EditLeagueContent .modal-content .lable-major {
-  margin-left: 120px; }
-
-#EditLeagueContent .modal-content .checkbox-major {
-  margin-left: 20px; }
-
-#EditLeagueContent .modal-content .form-control {
-  display: block;
-  height: 31px;
-  padding: 5px 8px;
-  line-height: 1.5;
-  border: 1px solid #CCC;
-  font-size: 14px;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border-radius: 0.25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
-
-#EditLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-leagueNameVn, #EditLeagueContent .modal-content .txt-leagueFullNameVn {
-  width: 397px !important;
-  margin-left: -297px; }
-
-#EditLeagueContent .modal-content .txt-countryVn {
-  text-transform: uppercase; }
-
-#EditLeagueContent .modal-content .txt-priority {
-  width: 65px !important;
-  margin-left: 100px; }
-
-#EditLeagueContent .modal-content .form-btn {
-  padding-top: 15px;
-  padding-right: 5px;
-  text-align: right; }
-
-#EditLeagueContent .modal-content .form-btn .btn {
-  margin-left: 12px;
-  width: 80px;
-  font-size: 15px; }
-
-.add-league {
-  border-top: 1px solid #e3e3e3;
-  border-right: 1px solid #e3e3e3;
-  border-left: 1px solid #e3e3e3;
-  height: 4.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background: #ededed;
-  padding: 0 1rem;
-  max-width: 100%; }
+  cursor: pointer; }
+  .custom-input:focus {
+    outline: none; }
+  .custom-input.list-input {
+    cursor: unset;
+    font-weight: normal; }
+    .custom-input.list-input::placeholder {
+      color: #979797;
+      font-style: italic;
+      font-size: 1.4rem;
+      font-weight: normal; }
 
 .filter {
   margin-bottom: 20px; }
-
-.filter-majorLeague {
-  width: 70px; }
-
-.btn_league {
-  background-color: #6699FF;
-  border: none;
-  color: white;
-  padding: 1px 10px;
-  margin-right: -5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 6px; }
-
-.btn_league:hover {
-  cursor: pointer;
-  background-color: #3333FF;
-  border: none;
-  color: white;
-  padding: 1px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 6px; }
-
-.icon-add-league {
-  width: 20px;
-  height: 20px;
-  margin: -2px 5px 0 0; }
 
 .table-admin {
   margin-top: 0;
@@ -267,11 +120,11 @@
   .table-admin .icon-sort-admin:hover {
     cursor: pointer; }
   .table-admin .icon-delete-admin, .table-admin .icon-edit-admin {
-    font-size: 20px; }
+    font-size: 2rem; }
   .table-admin .icon-edit-admin:hover {
     cursor: pointer; }
   .table-admin .main-pagination .items-pagination {
-    margin-top: 10px; }
+    margin-top: 1rem; }
   .table-admin td img {
     width: 3rem;
     height: 3rem;
@@ -283,9 +136,12 @@
   width: 100%;
   text-align: center;
   padding: .5rem;
-  background: #f7f7f7; }
+  background: #f7f7f7;
+  height: 5rem;
+  overflow: hidden; }
   .input-upload img {
-    width: 100%; }
+    max-width: 4rem;
+    height: 4rem; }
   .input-upload .icon-close {
     position: absolute;
     right: 10px;
@@ -293,7 +149,7 @@
     font-size: 1.8rem;
     background: transparent;
     cursor: pointer;
-    color: #fff; }
+    color: #1F2252; }
     .input-upload .icon-close:focus {
       outline: none; }
   .input-upload .txt-img {
@@ -374,3 +230,47 @@
   color: #ED3F2B;
   font-size: 1.4rem;
   margin-top: .5rem; }
+
+.modal .modal-content {
+  max-width: 95rem; }
+
+.admin-match-management {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 0px;
+  justify-content: center; }
+  .admin-match-management .item-home {
+    border-right: 1px solid #ddd;
+    padding-right: 2rem; }
+  .admin-match-management .item-away {
+    padding-left: 2rem; }
+  .admin-match-management .flex-form-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem; }
+    .admin-match-management .flex-form-input:last-child {
+      margin-bottom: 0; }
+    .admin-match-management .flex-form-input .label-admin {
+      width: 30%;
+      margin: 0; }
+    .admin-match-management .flex-form-input .admin-text-logo {
+      width: 70%; }
+    .admin-match-management .flex-form-input .custom-input {
+      width: 100%;
+      cursor: inherit; }
+
+.form-btn {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; }
+  .form-btn .btn-custom-admin:hover {
+    box-shadow: none; }
+  .form-btn .btn-btn-save {
+    background: #1F2252;
+    border: 1px solid #1F2252;
+    margin-right: 1rem; }
+  .form-btn .btn-btn-cancel {
+    border: 1px solid #1F2252;
+    background: #fff;
+    color: #1F2252; }
