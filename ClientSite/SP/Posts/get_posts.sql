@@ -5,6 +5,11 @@ DELIMITER //
 
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts`(
+	/*
+		Creator: Brian@20220913
+        Revisions:
+			- 20220913@Brian: init
+    */
 	_toDate DATETIME,
     _category INT,
     _subject INT

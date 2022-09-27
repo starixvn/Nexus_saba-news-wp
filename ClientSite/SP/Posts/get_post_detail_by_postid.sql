@@ -3,7 +3,14 @@
 DROP PROCEDURE IF EXISTS get_post_detail_by_postid;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_postid`(_postId varchar(200))
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_postid`(
+	/*
+		Creator: Brian@20220913
+        Revisions:
+			- 20220913@Brian: init
+    */
+	_postId varchar(200)
+)
 BEGIN
 	DECLARE PostId varchar(100);
 	DECLARE tags varchar(600);
