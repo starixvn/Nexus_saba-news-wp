@@ -11,7 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetSeasonStandings`(
 			- 20220418@Tim: init
 			- 202200512@Tim: check 2nd leg
             - 202200615@Hank: check combine & delete match
-            - 20220915@Hank: add team name & icon vn
+            - 20220915@Hank: add team name & icon vn & update standing info
     */
 )
 BEGIN
@@ -31,14 +31,17 @@ BEGIN
     
     SELECT t.TeamId, t.TeamNameVN, t.TeamNameEN, t.TeamFullNameEN, t.TeamNameVN, t.Icon, t.IconVN, s.GroupName
 		,s.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.OrderIndex
-        ,(IFNULL(se.Position, s.Position)) as Position, s.Total, s.Won, s.Loss, s.Draw, s.Points, s.Goals, s.GoalsAgainst, s.GoalDiff, s.Promotion
+        ,COALESCE(se.GroupName, s.GroupName) as GroupName, COALESCE(se.Total, s.Total) as Total, COALESCE(se.Won, s.Won) as Won
+        ,COALESCE(se.Loss, s.Loss) as Loss, COALESCE(se.Draw, s.Draw) as Draw, COALESCE(se.Points, s.Points) as Points
+        ,COALESCE(se.Goals, s.Goals) as Goals, COALESCE(se.GoalsAgainst, s.GoalsAgainst) as GoalsAgainst, COALESCE(se.GoalDiff, s.GoalDiff) as GoalDiff
+        ,(IFNULL(se.Position, s.Position)) as Position,  s.Promotion
     FROM livescore_season_standings s
 		INNER JOIN livescore_team t ON s.TeamId = t.TeamId
         INNER JOIN livescore_season_stage ss ON s.StageId = ss.StageId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
          LEFT JOIN livescore_season_standings_extra se ON se.SeasonId = s.SeasonId AND se.StageId = s.StageId AND se.TeamId = s.TeamId
     WHERE s.SeasonId = seasonId AND s.StageId > 0
-    ORDER BY ss.OrderIndex ASC, s.GroupName ASC, Position ASC;
+    ORDER BY ss.OrderIndex ASC, GroupName ASC, Position ASC;
     
     
     lbltmpStandings: LOOP

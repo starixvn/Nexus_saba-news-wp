@@ -136,67 +136,67 @@
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Home Team Half Score</label>
+                                    <label>Home 1H Score</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@Model.HomeTeamHalfScore" class="form-control txt-homeVN" id="homeTeamHalfScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@Model.HomeTeamHalfScore" class="form-control txt-homeVN" id="homeTeamHalfScore" name="HomeVN" />
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Away Team Half Score</label>
+                                    <label>Away 1H Score</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@Model.AwayTeamHalfScore" class="form-control txt-homeVN" id="awayTeamHalfScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@Model.AwayTeamHalfScore" class="form-control txt-homeVN" id="awayTeamHalfScore" name="HomeVN" />
                                 </td>
                             </tr>
 
                             <tr>
                                 <td width="30%">
-                                    <label>Home Team Total Score</label>
+                                    <label>Home 2H Score</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@(Model.HomeTeamExtraScore != null ? Model.HomeTeamExtraScore : Model.HomeTeamTotalScore)" class="form-control txt-homeVN" id="homeTeamExtraScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@(Model.HomeTeamExtraScore != null ? Model.HomeTeamExtraScore : Model.HomeTeamTotalScore)" class="form-control txt-homeVN" id="homeTeamExtraScore" name="HomeVN" />
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Away Team Total Score</label>
+                                    <label>Away 2H Score</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@(Model.AwayTeamExtraScore != null ? Model.AwayTeamExtraScore : Model.AwayTeamTotalScore)" class="form-control txt-homeVN" id="awayTeamExtraScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@(Model.AwayTeamExtraScore != null ? Model.AwayTeamExtraScore : Model.AwayTeamTotalScore)" class="form-control txt-homeVN" id="awayTeamExtraScore" name="HomeVN" />
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Home Team AGG Score</label>
+                                    <label>Home AGG</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@Model.HomeTeamAggregateScore" class="form-control txt-homeVN" id="homeTeamAggregateScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@Model.HomeTeamAggregateScore" class="form-control txt-homeVN" id="homeTeamAggregateScore" name="HomeVN" />
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Away Team AGG Score</label>
+                                    <label>Away AGG</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@Model.AwayTeamAggregateScore" class="form-control txt-homeVN" id="awayTeamAggregateScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@Model.AwayTeamAggregateScore" class="form-control txt-homeVN" id="awayTeamAggregateScore" name="HomeVN" />
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Home Team PEN Score</label>
+                                    <label>Home PEN</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@Model.HomeTeamPenaltyScore" class="form-control txt-homeVN" id="homeTeamPenaltyScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@Model.HomeTeamPenaltyScore" class="form-control txt-homeVN" id="homeTeamPenaltyScore" name="HomeVN" />
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">
-                                    <label>Away Team PEN Score</label>
+                                    <label>Away PEN</label>
                                 </td>
                                 <td width="70%">
-                                    <input type="number" min="0" value="@Model.AwayTeamPenaltyScore" class="form-control txt-homeVN" id="awayTeamPenaltyScore" name="HomeVN" />
+                                    <input type="number" min="0" max="100" value="@Model.AwayTeamPenaltyScore" class="form-control txt-homeVN" id="awayTeamPenaltyScore" name="HomeVN" />
                                 </td>
                             </tr>
 

@@ -14,9 +14,12 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetSeasonStanding_De
 )
 BEGIN
 	
-    SELECT t.TeamId, t.TeamNameVN, t.TeamNameEN, t.TeamFullNameEN, t.Icon, t.IconVN, s.GroupName
+    SELECT t.TeamId, t.TeamNameVN, t.TeamNameEN, t.TeamFullNameEN, t.Icon, t.IconVN 
+		,s.GroupName, se.GroupName as GroupNameCustom, s.Total, se.Total as TotalCustom, se.Won as WonCustom, s.Won
+        ,s.Loss, se.Loss as LossCustom, s.Draw, se.Draw as DrawCustom, s.Points, se.Points as PointsCustom, s.Goals, se.Goals as GoalsCustom
+        , s.GoalsAgainst, se.GoalsAgainst as GoalsAgainstCustom,  s.GoalDiff, se.GoalDiff as GoalDiffCustom
+        ,(IFNULL(se.Position, s.Position)) as Position, s.Promotion
 		,s.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.OrderIndex
-        ,(IFNULL(se.Position, s.Position)) as Position, s.Total, s.Won, s.Loss, s.Draw, s.Points, s.Goals, s.GoalsAgainst, s.GoalDiff, s.Promotion
     FROM livescore_season_standings s
 		INNER JOIN livescore_team t ON s.TeamId = t.TeamId
         INNER JOIN livescore_season_stage ss ON s.StageId = ss.StageId
