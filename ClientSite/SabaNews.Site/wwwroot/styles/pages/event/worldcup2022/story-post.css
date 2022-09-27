@@ -369,10 +369,6 @@ body {
   @media screen and (max-width: 1024px) {
     .title-section {
       margin-bottom: 2rem; } }
-  .title-section .title-section {
-    display: flex;
-    align-items: center;
-    justify-content: center; }
   .title-section h2 {
     color: #EF4300;
     font-weight: 700;

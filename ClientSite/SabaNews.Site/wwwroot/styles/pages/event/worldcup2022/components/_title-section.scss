@@ -7,13 +7,6 @@
     @include tableMobile {
         margin-bottom: 2rem;
     }
-
-    .title-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     h2 {
         color: $title-color;
         font-weight: 700;

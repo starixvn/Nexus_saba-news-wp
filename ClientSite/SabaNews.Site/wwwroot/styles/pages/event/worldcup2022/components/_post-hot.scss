@@ -3,6 +3,7 @@
         position: relative;
         height: 100%;
         max-height: 50rem;
+
         @include Mobile {
             max-height: 30rem !important;
             height: 30rem;
@@ -12,7 +13,7 @@
             position: absolute;
             bottom: 0;
             padding: 4rem 2rem 2rem 2rem;
-            background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
+            background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, $primary-bg 100%);
             width: 100%;
 
             @include tableMobile {

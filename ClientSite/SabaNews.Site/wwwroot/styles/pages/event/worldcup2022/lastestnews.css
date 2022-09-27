@@ -369,10 +369,6 @@ body {
   @media screen and (max-width: 1024px) {
     .title-section {
       margin-bottom: 2rem; } }
-  .title-section .title-section {
-    display: flex;
-    align-items: center;
-    justify-content: center; }
   .title-section h2 {
     color: #EF4300;
     font-weight: 700;
@@ -941,7 +937,7 @@ body {
         position: absolute;
         bottom: 0;
         padding: 1.2rem;
-        background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041a 100%);
+        background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
         width: 100%;
         left: 0; }
         .card-horizontal__content .title {
@@ -1050,7 +1046,7 @@ body {
   border-left-color: #000; }
 
 .tooltip-inner {
-  max-width: 200px;
+  max-width: 20rem;
   padding: 0.25rem 0.5rem;
   color: #fff;
   text-align: center;

@@ -369,10 +369,6 @@ body {
   @media screen and (max-width: 1024px) {
     .title-section {
       margin-bottom: 2rem; } }
-  .title-section .title-section {
-    display: flex;
-    align-items: center;
-    justify-content: center; }
   .title-section h2 {
     color: #EF4300;
     font-weight: 700;
@@ -412,11 +408,9 @@ body {
 
 .wc-block {
   padding: 5rem 0;
-  /*    margin-top: 5rem;*/
   position: relative; }
   @media screen and (max-width: 1024px) {
     .wc-block {
-      /*margin-top: 2.5rem;*/
       padding: 3rem 0; } }
 
 .view-more {

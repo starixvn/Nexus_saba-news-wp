@@ -369,10 +369,6 @@ body {
   @media screen and (max-width: 1024px) {
     .title-section {
       margin-bottom: 2rem; } }
-  .title-section .title-section {
-    display: flex;
-    align-items: center;
-    justify-content: center; }
   .title-section h2 {
     color: #EF4300;
     font-weight: 700;
@@ -1015,7 +1011,7 @@ body {
   border-left-color: #000; }
 
 .tooltip-inner {
-  max-width: 200px;
+  max-width: 20rem;
   padding: 0.25rem 0.5rem;
   color: #fff;
   text-align: center;
