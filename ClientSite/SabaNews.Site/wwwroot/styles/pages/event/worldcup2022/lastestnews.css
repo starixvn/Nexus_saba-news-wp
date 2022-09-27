@@ -1176,7 +1176,6 @@ body {
 
 .page-grid {
   width: 100%;
-  margin: 0 1rem;
   margin-right: auto;
   margin-left: auto;
   padding-top: 2rem !important;
@@ -1186,8 +1185,7 @@ body {
       max-width: 115rem !important; } }
   @media screen and (max-width: 1024px) {
     .page-grid .card-horizontal {
-      margin-left: 1.2rem;
-      margin-right: 1.2rem; } }
+      margin: 0 1.2rem 2rem 1.2rem; } }
   @media screen and (max-width: 1024px) {
     .page-grid #topScorersWC {
       padding: 0 1.2rem;

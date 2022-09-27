@@ -799,7 +799,6 @@ body {
 .live-score-nav {
   border-bottom: 1px solid #DADADA;
   padding-bottom: 0.4rem;
-  margin-bottom: 4rem;
   max-width: 102rem;
   margin: 4rem auto; }
   @media screen and (max-width: 1024px) {
