@@ -41,6 +41,7 @@
             return leagueName;
         }
 
+
         public static List<StandingGroupModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = GetGroupNames(seasonStandings);

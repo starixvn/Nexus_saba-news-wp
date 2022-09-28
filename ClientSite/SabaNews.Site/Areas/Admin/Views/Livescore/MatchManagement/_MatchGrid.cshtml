@@ -1,5 +1,6 @@
-﻿@using SabaNews.Resources
-@using SabaNews.Core.Helper
+﻿@using SabaNews.Resources;
+@using SabaNews.Core.Helper;
+@using SabaNews.Core.Constants.Livescore;
 @using SabaNews.Site.Extensions;
 @{ var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 <div class="table-admin">
@@ -7,15 +8,18 @@
         <thead>
             <tr>
                 <th width="2%">#</th>
-                <th width="13%">@ViewResources.StartTime <i class="icon-sort-admin" id="date-sort" sort-type="@Model.DateSort"></i></th>
-                <th width="10%">@ViewResources.HomeLogo</th>
+                <th width="12%">@ViewResources.StartTime <i class="icon-sort-admin" id="date-sort" sort-type="@Model.DateSort"></i></th>
+                <th width="8%">@ViewResources.MatchStatus</th>
+                <th width="6%">@ViewResources.Round</th>
+                <th width="8%">@ViewResources.Stage</th>
+                <th width="6%">@ViewResources.HomeLogo</th>
                 <th width="10%">@ViewResources.HomeName</th>
-                <th width="10%">@ViewResources.AwayLogo</th>
+                <th width="6%">@ViewResources.AwayLogo</th>
                 <th width="10%">@ViewResources.AwayName</th>
-                <th width="10%">@ViewResources._1HScore</th>
-                <th width="10%">@ViewResources._2HScore</th>
-                <th width="10%">@ViewResources.PEN</th>
-                <th width="10%">@ViewResources.AGG</th>
+                <th width="6%">@ViewResources._1HScore</th>
+                <th width="6%">@ViewResources._2HScore</th>
+                <th width="6%">@ViewResources.PEN</th>
+                <th width="6%">@ViewResources.AGG</th>
                 <th width="5%">@ViewResources.Action</th>
             </tr>
         </thead>
@@ -23,18 +27,43 @@
             @{
                 foreach (var match in Model.Matches)
                 {
+                    var status = Match.ListMatchStatus.First(item => item.Id == match.Status);
                     count++;
                         <tr>
-                            <td class="text-center">@match.MatchId @count</td>
+                            <td class="text-center">@count</td>
                             <td class="text-center">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
+                            <td class="text-center">@status.Name</td>
+                            <td class="text-center">@match.Round</td>
+                            <td class="text-center">@(match.Stage.StageNameVN ?? match.Stage.StageNameEN)</td>
                             <td class="text-center"><img src="@(match.HomeTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon))" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamName(match.HomeTeam)</td>
                             <td class="text-center"><img src="@(match.AwayTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon))" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamName(match.AwayTeam)</td>
-                            <td class="text-center">@match.HomeTeamHalfScore - @match.AwayTeamHalfScore</td>
-                            <td class="text-center">@LivescoreHelper.GetMatchTotalScore(match, true) - @LivescoreHelper.GetMatchTotalScore(match, false)</td>
-                            <td class="text-center">@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</td>
-                            <td class="text-center">@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</td>
+                            <td class="text-center">
+                                @if (match.Status == Match.Finished)
+                                {
+                                    <span>@match.HomeTeamHalfScore - @match.AwayTeamHalfScore</span>
+                                }
+
+                            </td>
+                            <td class="text-center">
+                                @if (match.Status == Match.Finished)
+                                {
+                                    <span>@LivescoreHelper.GetMatchTotalScore(match, true) - @LivescoreHelper.GetMatchTotalScore(match, false)</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                @if (match.Status == Match.Finished && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
+                                {
+                                    <span>@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                @if (match.Status == Match.Finished && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
+                                {
+                                    <span>@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</span>
+                                }
+                            </td>
 
                             <td class="text-center">
                                 <i class="icon icon-edit-admin btn-Edit" title="Edit"

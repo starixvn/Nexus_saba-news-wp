@@ -1031,4 +1031,13 @@
   <data name="PEN" xml:space="preserve">
     <value>PEN</value>
   </data>
+  <data name="MatchStatus" xml:space="preserve">
+    <value>Match Status</value>
+  </data>
+  <data name="Round" xml:space="preserve">
+    <value>Round</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Stage</value>
+  </data>
 </root>

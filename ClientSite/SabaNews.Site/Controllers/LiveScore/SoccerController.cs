@@ -121,11 +121,11 @@
             criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC(criteria.Timezone);
             criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC(criteria.Timezone);
             criteria.SportId = (short)SportType.Soccer;
-            IList<Match> matches;
+            IList<SabaNews.Livescore.Models.Match.Match> matches;
             if (cacheConfigs.Enabled)
             {
                 var cacheKey = string.Format("{0}{1}", CacheKey.LivescoreMainPage, criteria.EventDate.ToString("ddMMyyyy"));
-                matches = await cacheService.GetAsync<IList<Match>>(cacheKey);
+                matches = await cacheService.GetAsync<IList<SabaNews.Livescore.Models.Match.Match>>(cacheKey);
                 if (matches is null)
                 {
                     matches = await matchService.GetMatchByDateAsync(criteria);
@@ -156,10 +156,10 @@
         [HttpPost]
         public async Task<IActionResult> GetLiveMatches()
         {
-            IList<Match> matches;
+            IList<SabaNews.Livescore.Models.Match.Match> matches;
             if (cacheConfigs.Enabled)
             {
-                matches = await cacheService.GetAsync<IList<Match>>(CacheKey.LivescoreLiveMatch);
+                matches = await cacheService.GetAsync<IList<SabaNews.Livescore.Models.Match.Match>>(CacheKey.LivescoreLiveMatch);
                 if (matches is null)
                 {
                     matches = await matchService.GetLiveMatchAsync();
@@ -193,7 +193,7 @@
                 criteria.ToTime = model.Date.AddMonths(TotalMonths).ToEndOfDay().ConvertToUTC(model.Timezone);
             }
 
-            (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
+            (League league, IList<SabaNews.Livescore.Models.Match.Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
             return Json(new { league, matches });
         }
 

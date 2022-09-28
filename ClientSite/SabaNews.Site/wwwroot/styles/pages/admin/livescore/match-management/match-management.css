@@ -234,11 +234,27 @@
 .modal .modal-content {
   max-width: 95rem; }
 
+.flex-form-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem; }
+  .flex-form-input:last-child {
+    margin-bottom: 0; }
+  .flex-form-input .label-admin {
+    width: 15%;
+    margin: 0; }
+  .flex-form-input .admin-text-logo {
+    width: 85%; }
+  .flex-form-input .custom-input {
+    width: 100%;
+    cursor: inherit; }
+
 .admin-match-management {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-gap: 0px;
-  justify-content: center; }
+  justify-content: center;
+  margin-top: 3rem; }
   .admin-match-management .item-home {
     border-right: 1px solid #ddd;
     padding-right: 2rem; }
@@ -274,3 +290,9 @@
     border: 1px solid #1F2252;
     background: #fff;
     color: #1F2252; }
+
+.admin-edit-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 25px; }

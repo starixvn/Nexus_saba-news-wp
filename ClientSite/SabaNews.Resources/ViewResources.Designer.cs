@@ -1420,6 +1420,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match Status.
+        /// </summary>
+        public static string MatchStatus {
+            get {
+                return ResourceManager.GetString("MatchStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Membership Event.
         /// </summary>
         public static string MembershipEvent {
@@ -2005,6 +2014,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Round.
+        /// </summary>
+        public static string Round {
+            get {
+                return ResourceManager.GetString("Round", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SABA Sports cam kết bảo mật thông tin này.
         /// </summary>
         public static string SabasportsCommitmentSecureInfo {
@@ -2244,6 +2262,15 @@ namespace SabaNews.Resources {
         public static string Stadium {
             get {
                 return ResourceManager.GetString("Stadium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stage.
+        /// </summary>
+        public static string Stage {
+            get {
+                return ResourceManager.GetString("Stage", resourceCulture);
             }
         }
         

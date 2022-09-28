@@ -175,11 +175,36 @@
     }
 }
 
+.flex-form-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .label-admin {
+        width: 15%;
+        margin: 0;
+    }
+
+    .admin-text-logo {
+        width: 85%;
+    }
+
+    .custom-input {
+        width: 100%;
+        cursor: inherit;
+    }
+}
+
 .admin-match-management {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-gap: 0px;
     justify-content: center;
+    margin-top:3rem;
 
     .item {
         &-home {
@@ -241,5 +266,12 @@
         background: #fff;
         color: #1F2252;
     }
+}
+
+.admin-edit-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 25px;
 }
 

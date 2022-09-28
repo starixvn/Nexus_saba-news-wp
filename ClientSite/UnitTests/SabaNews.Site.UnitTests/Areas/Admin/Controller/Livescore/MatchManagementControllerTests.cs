@@ -82,22 +82,22 @@
                 PageSize = 2,
                 Search = "team",
             };
-            var expectedMatch = new List<Match>();
-            expectedMatch.Add(new Match 
+            var expectedMatch = new List<SabaNews.Livescore.Models.Match.Match>();
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match 
             { 
                 MatchId = 1,
                 StartTime = DateTime.Parse("2022-10-10"),
                 HomeTeam =  new Team { TeamNameEN = "home team 1", TeamNameVN = "home team vn 1" }, 
                 AwayTeam = new Team { TeamNameEN = "away team 1" } 
             });
-            expectedMatch.Add(new Match
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
             {
                 MatchId = 2,
                 StartTime = DateTime.Parse("2022-10-11"),
                 HomeTeam = new Team { TeamNameEN = "home team 2" },
                 AwayTeam = new Team { TeamNameEN = "away team 2" }
             });
-            expectedMatch.Add(new Match
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
             {
                 MatchId = 3,
                 StartTime = DateTime.Parse("2022-10-12"),
@@ -130,29 +130,29 @@
                 Page = 1,
                 PageSize = 2
             };
-            var expectedMatch = new List<Match>();
-            expectedMatch.Add(new Match
+            var expectedMatch = new List<SabaNews.Livescore.Models.Match.Match>();
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
             {
                 MatchId = 1,
                 StartTime = DateTime.Parse("2022-10-10"),
                 HomeTeam = new Team { TeamNameEN = "home team 1" },
                 AwayTeam = new Team { TeamNameEN = "away team 1" }
             });
-            expectedMatch.Add(new Match
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
             {
                 MatchId = 2,
                 StartTime = DateTime.Parse("2022-10-11"),
                 HomeTeam = new Team { TeamNameEN = "home team 2" },
                 AwayTeam = new Team { TeamNameEN = "away team 2" }
             });
-            expectedMatch.Add(new Match
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
             {
                 MatchId = 3,
                 StartTime = DateTime.Parse("2022-10-12"),
                 HomeTeam = new Team { TeamNameEN = "home team 3" },
                 AwayTeam = new Team { TeamNameEN = "away team 3" }
             });
-            var resultMatch = new List<Match>();
+            var resultMatch = new List<SabaNews.Livescore.Models.Match.Match>();
             resultMatch.Add(expectedMatch[2]);
             resultMatch.Add(expectedMatch[1]);
 
@@ -173,7 +173,7 @@
             var controller = GetController();
             var matchId = fixture.Create<int>();
             var criteria = fixture.Create<GetMatchByIdCriteria>();
-            var expectedMatch = fixture.Create<Match>();
+            var expectedMatch = fixture.Create<SabaNews.Livescore.Models.Match.Match>();
 
             matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
             //Act
@@ -181,7 +181,7 @@
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
-            var viewModel = Assert.IsAssignableFrom<Match>(viewResult.Model);
+            var viewModel = Assert.IsAssignableFrom<SabaNews.Livescore.Models.Match.Match>(viewResult.Model);
             Assert.Equal(expectedMatch, viewModel);
         }
 

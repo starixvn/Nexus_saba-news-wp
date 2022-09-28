@@ -144,6 +144,7 @@
         private static IList<Match> SearchMatch(IList<Match> matches, string search)
         {
             search ??= "";
+            search = search.ToLower(CultureInfo.InvariantCulture);
             matches = matches.Where(x => (LivescoreHelper.GetTeamName(x.HomeTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))
                 || (LivescoreHelper.GetTeamName(x.AwayTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))).ToList();
             return matches;
