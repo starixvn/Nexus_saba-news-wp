@@ -32,8 +32,9 @@ $(window).bind('unload', function (e) {
 });
 
 $(document).ready(function () {
+    $('.skeleton').hide();
     $('.skeleton').hide().promise().done(function () { console.log(3); $('.post').show(); });
-
+    $('.skeleton').hide();
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
     });
