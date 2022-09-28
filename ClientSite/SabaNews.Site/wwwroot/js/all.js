@@ -24,13 +24,15 @@ $(window).bind('beforeunload', function (e) {
     $('.skeleton').show();
 });
 $(window).bind('unload', function (e) {
-    $('.post').show();
     $('.skeleton').hide();
+    $('.post').show();
+    
 });
 
 $(document).ready(function () {
     $('.skeleton').hide();
     $('.post').show();
+    $('.skeleton').hide();
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
     });
