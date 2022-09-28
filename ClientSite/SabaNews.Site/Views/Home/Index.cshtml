@@ -74,13 +74,14 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="skeleton skeleton-vertical">
+                            <a class="skeleton-vertical__image"></a>
+                            <a class="skeleton-vertical__title"></a>
+                            <p class="skeleton-vertical__description text-description"></p>
+                        </div>
                     }
 
-                    <div class="skeleton skeleton-vertical">
-                        <a class="skeleton-vertical__image"></a>
-                        <a class="skeleton-vertical__title"></a>
-                        <p class="skeleton-vertical__description text-description"></p>
-                    </div>
+
 
                     <div class="card-horizontal-section">
                         @{
@@ -89,7 +90,8 @@
                             {
                                 {
                                     newPostIndex++;
-                                    if (newPostIndex <= 1) {
+                                    if (newPostIndex <= 1)
+                                    {
                                         continue;
                                     }
                                 }
@@ -325,7 +327,7 @@
                                         continue;
                                     }
                                 }
-                                
+
                                 <div class="post card-vertical card-vertical-highlight card-item-@backstagePostIndex ">
                                     <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__image">
                                         @{// backstageSize = ImageWidth.Width500;
