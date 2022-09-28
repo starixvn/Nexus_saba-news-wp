@@ -218,5 +218,7 @@
         <Setting Key="Livescore_Match_GetByIds" SpName="Livescore_Match_GetByIds" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_League_GetByIds" SpName="Livescore_League_GetByIds" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_League_Get" SpName="Livescore_League_Get" DbName="sabasports" Plain="0" />
+		<Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />
+		<Setting Key="get_posts" SpName="get_posts" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>
