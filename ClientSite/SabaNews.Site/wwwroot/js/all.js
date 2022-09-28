@@ -22,12 +22,10 @@ $("#search").submit(function () {
 $(window).bind('beforeunload', function (e) {
     $('.post').hide();
     $('.skeleton').show();
-    console.log(1);
 });
 $(window).bind('unload', function (e) {
     $('.skeleton').hide();
     $('.post').show();
-    console.log(2);
     
 });
 
