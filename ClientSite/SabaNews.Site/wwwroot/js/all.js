@@ -32,10 +32,8 @@ $(window).bind('unload', function (e) {
 });
 
 $(document).ready(function () {
-    $('.skeleton').hide();
-    $('.post').show();
-    console.log(3);
-    $('.skeleton').hide();
+    $('.skeleton').hide().promise().done(function () { console.log(3); $('.post').show(); });
+
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
     });
