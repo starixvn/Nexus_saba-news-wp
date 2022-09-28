@@ -22,16 +22,19 @@ $("#search").submit(function () {
 $(window).bind('beforeunload', function (e) {
     $('.post').hide();
     $('.skeleton').show();
+    console.log(1);
 });
 $(window).bind('unload', function (e) {
     $('.skeleton').hide();
     $('.post').show();
+    console.log(2);
     
 });
 
 $(document).ready(function () {
     $('.skeleton').hide();
     $('.post').show();
+    console.log(3);
     $('.skeleton').hide();
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
