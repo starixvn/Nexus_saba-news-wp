@@ -2043,10 +2043,12 @@ button {
       display: unset; } }
   .main .block-hot-news .block__content .card-vertical, .main .block-hot-news .block__content .skeleton-vertical {
     background-color: #E8EAEF;
-    width: 53rem; }
+    width: 53rem;
+    height: 41rem; }
     @media screen and (max-width: 1024px) {
       .main .block-hot-news .block__content .card-vertical, .main .block-hot-news .block__content .skeleton-vertical {
-        width: 30rem; } }
+        width: 30rem;
+        height: 30rem; } }
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .main .block-hot-news .block__content .card-vertical, .main .block-hot-news .block__content .skeleton-vertical {
         width: 44rem; } }

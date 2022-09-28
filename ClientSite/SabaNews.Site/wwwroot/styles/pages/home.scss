@@ -41,10 +41,13 @@
             .card-vertical, .skeleton-vertical {
                 background-color: $block-highlight-bgcolor;
                 width: 53rem;
+                height: 41rem;
 
                 @include tableMobile {
                     width: 30rem;
+                    height: 30rem;
                 }
+
 
                 @include landscapeTablet {
                     width: 44rem;
