@@ -2033,7 +2033,7 @@ button {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg); }
 
-.main .block .post {
+.main .block-hot-news .post {
   display: none; }
 
 .main .block-hot-news .block__content {
