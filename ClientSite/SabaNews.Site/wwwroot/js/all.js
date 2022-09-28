@@ -29,8 +29,8 @@ $(window).bind('unload', function (e) {
 });
 
 $(document).ready(function () {
-    $('.post').show();
     $('.skeleton').hide();
+    $('.post').show();
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
     });

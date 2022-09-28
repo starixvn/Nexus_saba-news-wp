@@ -2033,6 +2033,9 @@ button {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg); }
 
+.main .block .post {
+  display: none; }
+
 .main .block-hot-news .block__content {
   display: flex; }
   @media (max-width: 767px) {

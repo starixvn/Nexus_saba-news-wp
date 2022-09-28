@@ -25,6 +25,10 @@
 
 .main {
     // block-hot-news
+
+    .block .post {
+        display: none;
+    }
     .block-hot-news {
 
         .block__content {
