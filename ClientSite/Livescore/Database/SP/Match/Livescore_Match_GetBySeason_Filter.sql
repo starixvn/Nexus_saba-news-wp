@@ -51,7 +51,8 @@ BEGIN
 		LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId
     WHERE EXISTS (SELECT tmp_m.MatchId FROM tmp_MatchIds tmp_m WHERE m.MatchId = tmp_m.MatchId)
     ORDER BY StartTime ASC
-		,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
+		,CASE WHEN h.TeamNameVN IS NOT NULL THEN h.TeamNameVN
+			WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
             
 	

@@ -41,17 +41,21 @@ BEGIN
     
     SELECT s.SeasonId, s.StartTime, s.EndTime, Year FROM livescore_season s WHERE s.SeasonId = seasonId;
     
-    SELECT m.MatchId, m.StartTime, m.EndTime, m.Status, m.Round, m.GroupNum, m.RelatedId
+    SELECT m.MatchId, m.EndTime, m.GroupNum, m.RelatedId
 		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
-		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
-        ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
-        ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
+		,COALESCE(mc.Round, m.Round) as Round
+        ,COALESCE(mc.StartTime, m.StartTime) as StartTime
+        ,COALESCE(mc.Status, m.Status) as Status
+		,COALESCE(mc.HomeTeamHalfScore, m.HomeTeamHalfScore) as HomeTeamHalfScore, COALESCE(mc.AwayTeamHalfScore, m.AwayTeamHalfScore) as AwayTeamHalfScore
+        ,COALESCE(mc.HomeTeamAggregateScore, m.HomeTeamAggregateScore) as HomeTeamAggregateScore, COALESCE(mc.AwayTeamAggregateScore, m.AwayTeamAggregateScore) as AwayTeamAggregateScore
+        ,COALESCE(mc.HomeTeamPenaltyScore, sh.PenaltyScore) as HomeTeamPenaltyScore, COALESCE(mc.AwayTeamPenaltyScore, sa.PenaltyScore) as AwayTeamPenaltyScore
+		,COALESCE(mc.HomeTeamExtraScore, sh.ExtraScore) as HomeTeamExtraScore, COALESCE(mc.AwayTeamExtraScore, sa.ExtraScore) as AwayTeamExtraScore
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
         ,m.HomeTeamId, h.TeamNameVN as HomeTeamNameVN, h.TeamNameEN AS HomeTeamNameEN, h.TeamFullNameEN AS HomeTeamFullNameEN, h.Icon AS HomeTeamIcon, h.IconVN AS HomeTeamIconVN
         ,m.AwayTeamId, a.TeamNameVN as AwayTeamNameVN, a.TeamNameEN AS AwayTeamNameEN, a.TeamFullNameEN AS AwayTeamFullNameEN, a.Icon AS AwayTeamIcon, a.IconVN AS AwayTeamIconVN
-        ,m.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode AS StageMode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
+        ,m.StageId, ss.StageNameEN, COALESCE(ss.StageNameVN, rr.NameVN) AS StageNameVN, ss.Mode AS StageMode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
     FROM livescore_match m
         INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
         INNER JOIN livescore_team a ON m.AwayTeamId = a.TeamId
@@ -61,9 +65,11 @@ BEGIN
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId
+        LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId
 	WHERE EXISTS (SELECT tmp_m.MatchId FROM tmp_MatchIds tmp_m WHERE m.MatchId = tmp_m.MatchId)
-    ORDER BY m.StartTime ASC
-		,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
+    ORDER BY StartTime ASC
+		,CASE WHEN h.TeamNameVN IS NOT NULL THEN h.TeamNameVN
+			WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
             
 	

@@ -31,11 +31,16 @@ BEGIN
             )
         ) AS t;        
         
-	SELECT m.MatchId, m.StartTime, m.EndTime, m.Status
+	SELECT m.MatchId, m.EndTime
 		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
-		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
-		,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
-        ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
+        ,m.HomeTeamTotalScore, m.AwayTeamTotalScore
+        ,COALESCE(mc.Round, m.Round) as Round
+        ,COALESCE(mc.StartTime, m.StartTime) as StartTime
+        ,COALESCE(mc.Status, m.Status) as Status
+		,COALESCE(mc.HomeTeamHalfScore, m.HomeTeamHalfScore) as HomeTeamHalfScore, COALESCE(mc.AwayTeamHalfScore, m.AwayTeamHalfScore) as AwayTeamHalfScore
+        ,COALESCE(mc.HomeTeamAggregateScore, m.HomeTeamAggregateScore) as HomeTeamAggregateScore, COALESCE(mc.AwayTeamAggregateScore, m.AwayTeamAggregateScore) as AwayTeamAggregateScore
+        ,COALESCE(mc.HomeTeamPenaltyScore, sh.PenaltyScore) as HomeTeamPenaltyScore, COALESCE(mc.AwayTeamPenaltyScore, sa.PenaltyScore) as AwayTeamPenaltyScore
+		,COALESCE(mc.HomeTeamExtraScore, sh.ExtraScore) as HomeTeamExtraScore, COALESCE(mc.AwayTeamExtraScore, sa.ExtraScore) as AwayTeamExtraScore
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
@@ -53,6 +58,7 @@ BEGIN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId
         LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
+        LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId
     WHERE m.CombinedId IS NULL
 			AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId)
             AND EXISTS (SELECT tmp.MatchId FROM tmp_ids tmp WHERE m.MatchId = tmp.MatchId)
@@ -60,7 +66,7 @@ BEGIN
         ,CASE WHEN l.LeagueNameVN IS NOT NULL THEN l.LeagueNameVN
 			WHEN l.LeagueNameEN IS NOT NULL THEN l.LeagueNameEN
             ELSE l.LeagueFullNameEN END ASC
-		,m.StartTime ASC;
+		,StartTime ASC;
 END
 
 //
