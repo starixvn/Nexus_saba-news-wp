@@ -79,14 +79,7 @@
         {
             var criteria = new GetLeagueSeasonStandingDetailCriteria { SeasonId = model.SeasonId, StageId = model.StageId, TeamId = model.TeamId };
             var standings = await leagueService.GetLeagueSeasonStandingDetailAsync(criteria);
-            var iconVN = model.IsDeletedIcon ? "" : standings.IconVN;
-            if (model.Icon != null)
-            {
-                var uploadResult = await fileService.UploadFileAsync(model.Icon, UploadDir.MatchTeamUploadFolder);
-                iconVN = uploadResult.IsSuccessful ? uploadResult.Message : iconVN;
-            }
-           
-            model.TeamIconVN = iconVN;
+            
             model.IsUpdatePosition = standings.Position != model.Position;
             model.GroupName = Helper.CheckOriginValue(standings.GroupName, model.GroupName);
             model.Total = Helper.CheckOriginValue(standings.Total, model.Total);

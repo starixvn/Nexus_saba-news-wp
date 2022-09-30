@@ -7,8 +7,6 @@
         public long SeasonId { get; set; }
         public long StageId { get; set; }
         public long TeamId { get; set; }
-        public string TeamNameVN { get; set; }
-        public string IconVN { get; set; }
         public string GroupName { get; set; }
         public short? Total { get; set; }
         public short? Won { get; set; }

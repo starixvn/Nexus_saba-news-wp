@@ -329,8 +329,6 @@
                 SeasonId = model.SeasonId,
                 StageId = model.StageId,
                 TeamId = model.TeamId,
-                TeamNameVN = model.TeamNameVN,
-                IconVN = model.TeamIconVN,
                 GroupName = model.GroupName,
                 Total = model.Total,
                 Won = model.Won, 

@@ -1,5 +1,7 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Constants.Livescore;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
@@ -86,7 +88,65 @@
             }
             return match.AwayTeamExtraScore > 0 ? match.AwayTeamExtraScore : match.AwayTeamTotalScore;
         }
- 
+
+        public static short CheckMatchResult(short? homeScore, short? awayScore)
+        {
+            short result;
+            if (homeScore > awayScore)
+            {
+                result = MatchConstants.Win;
+            }
+            else if (homeScore < awayScore)
+            {
+                result = MatchConstants.Lose;
+            }
+            else
+            {
+                result = MatchConstants.Draw;
+            }
+            return result;
+        }
+
+        public static short GetMatchResult(Match match, long teamId)
+        {
+            var homePEN = match.HomeTeamPenaltyScore;
+            var awayPEN = match.AwayTeamPenaltyScore;
+            var homeAGG = match.HomeTeamAggregateScore;
+            var awayAGG = match.AwayTeamAggregateScore;
+            var homeExtra = match.HomeTeamExtraScore;
+            var awayExtra = match.AwayTeamExtraScore;
+            var homeTotal = match.HomeTeamTotalScore;
+            var awayTotal = match.AwayTeamTotalScore;
+            if (match.AwayTeam.TeamId == teamId)
+            {
+                awayPEN = match.HomeTeamPenaltyScore;
+                homePEN = match.AwayTeamPenaltyScore;
+                awayAGG = match.HomeTeamAggregateScore;
+                homeAGG = match.AwayTeamAggregateScore;
+                awayExtra = match.HomeTeamExtraScore;
+                homeExtra = match.AwayTeamExtraScore;
+                awayTotal = match.HomeTeamTotalScore;
+                homeTotal = match.AwayTeamTotalScore;
+            }
+            short result;
+            if (homePEN > 0 || awayPEN > 0)
+            {
+                result = CheckMatchResult(homePEN, awayPEN);
+            }
+            else if (match.IsSecondLeg && (homeAGG > 0 || awayAGG > 0))
+            {
+                result = CheckMatchResult(homeAGG, awayAGG);
+            }
+            else if (homeExtra > 0 || awayExtra > 0)
+            {
+                result = CheckMatchResult(homeExtra, awayExtra);
+            }
+            else
+            {
+                result = CheckMatchResult(homeTotal, awayTotal);
+            }
+            return result;
+        }
 
     }
 }

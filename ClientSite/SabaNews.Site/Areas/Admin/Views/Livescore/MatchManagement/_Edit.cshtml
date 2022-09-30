@@ -20,7 +20,7 @@
         </label>
         <div class="admin-text-logo">
             <select class="form-control custom-input" id="status">
-                @foreach (var status in Match.ListMatchStatus)
+                @foreach (var status in MatchConstants.ListMatchStatus)
                 {
                     var selected = status.Id == Model.Status ? "selected" : "";
                     <option value="@status.Id" @selected>@status.Name</option>

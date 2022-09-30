@@ -92,8 +92,8 @@
         public async Task<ActionResult> EditMatch(MatchUpdateModel model)
         {
             var match = await matchService.GetMatchByIdUpdateAsync(new GetMatchByIdUpdateCriteria { MatchId = model.MatchId });
-            var homeIconVN = model.IsDeletedHomeIcon ? "" : match.HomeTeam.IconVN;
-            var awayIconVN = model.IsDeletedAwayIcon ? "" : match.AwayTeam.IconVN;
+            var homeIconVN = model.IsDeletedHomeIcon ? null : match.HomeTeam.IconVN;
+            var awayIconVN = model.IsDeletedAwayIcon ? null : match.AwayTeam.IconVN;
             if (model.HomeIcon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(model.HomeIcon, UploadDir.MatchTeamUploadFolder);
@@ -105,7 +105,7 @@
                 awayIconVN = uploadResult.IsSuccessful ? uploadResult.Message : awayIconVN;
             }
             DateTime? startTime;
-            if (model.StartTime == DateTime.MinValue)
+            if (model.StartTime == DateTime.MinValue)   
             {
                 startTime = null;
             }

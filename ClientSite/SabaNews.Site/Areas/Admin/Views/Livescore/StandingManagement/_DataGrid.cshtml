@@ -10,18 +10,16 @@
             <thead>
                 <tr>
                     <th width="2%">#</th>
-                    <th width="8%">Team Icon</th>
-                    <th width="8%">Team Name</th>
-                    <th width="8%">Team Icon VN</th>
-                    <th width="8%">Team Name VN</th>
-                    <th width="7%">Total</th>
-                    <th width="7%">Won</th>
-                    <th width="7%">Draw</th>
-                    <th width="7%">Loss</th>
-                    <th width="7%">Goal</th>
-                    <th width="7%">GoalsAgainst</th>
-                    <th width="7%">GoalDiff</th>
-                    <th width="7%">Points</th>
+                    <th width="8%">@ViewResources.TeamIcon</th>
+                    <th width="8%">@ViewResources.TeamName</th>
+                    <th width="7%">@ViewResources.Played</th>
+                    <th width="7%">@ViewResources.Won</th>
+                    <th width="7%">@ViewResources.Drawn</th>
+                    <th width="7%">@ViewResources.Lost</th>
+                    <th width="7%">@ViewResources.GoalsFor</th>
+                    <th width="7%">@ViewResources.GoalsAgainst</th>
+                    <th width="7%">@ViewResources.GoalsDiff</th>
+                    <th width="7%">@ViewResources.Point</th>
                     <th>@ViewResources.Action</th>
                 </tr>
             </thead>
@@ -32,15 +30,8 @@
                         count++;
                                 <tr>
                                     <td class="text-center">@standing.Position</td>
-                                    <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(standing.Icon)" width="100"></td>
-                                    <td class="text-center">@(!string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN)</td>
-                                    <td class="text-center">
-                                        @if (!string.IsNullOrEmpty(standing.IconVN))
-                                        {
-                                            <img src="@LivescoreHelper.GetTeamIcon(standing.IconVN)" width="100">
-                                        }
-                                    </td>
-                                    <td class="text-center">@standing.TeamNameVN</td>
+                                    <td class="text-center"><img src="@(standing.IconVN ?? LivescoreHelper.GetTeamIcon(standing.Icon))" width="100"></td>
+                                    <td class="text-center">@LivescoreHelper.GetStandingTeamName(standing)</td>
                                     <td class="text-center">@standing.Total</td>
                                     <td class="text-center">@standing.Won</td>
                                     <td class="text-center">@standing.Draw</td>

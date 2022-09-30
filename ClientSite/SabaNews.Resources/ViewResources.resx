@@ -1040,4 +1040,31 @@
   <data name="Stage" xml:space="preserve">
     <value>Stage</value>
   </data>
+  <data name="Drawn" xml:space="preserve">
+    <value>Drawn</value>
+  </data>
+  <data name="GoalsAgainst" xml:space="preserve">
+    <value>Goals Against</value>
+  </data>
+  <data name="GoalsDiff" xml:space="preserve">
+    <value>Goals Diff</value>
+  </data>
+  <data name="GoalsFor" xml:space="preserve">
+    <value>Goals For</value>
+  </data>
+  <data name="Lost" xml:space="preserve">
+    <value>Lost</value>
+  </data>
+  <data name="Played" xml:space="preserve">
+    <value>Played</value>
+  </data>
+  <data name="Points" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="TeamIcon" xml:space="preserve">
+    <value>Team Icon</value>
+  </data>
+  <data name="Won" xml:space="preserve">
+    <value>Won</value>
+  </data>
 </root>

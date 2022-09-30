@@ -3,8 +3,11 @@
     using SabaNews.Core.Models;
     using System.Collections.Generic;
 
-    public static class Match
+    public static class MatchConstants
     {
+        public const short Draw = 0;
+        public const short Win = 1;
+        public const short Lose = 2;
         public const int Finished = 50; 
         public static readonly IReadOnlyList<MatchStatus> ListMatchStatus = new List<MatchStatus>
         {

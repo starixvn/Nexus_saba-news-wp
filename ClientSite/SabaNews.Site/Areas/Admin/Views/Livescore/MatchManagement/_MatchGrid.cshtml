@@ -27,7 +27,7 @@
             @{
                 foreach (var match in Model.Matches)
                 {
-                    var status = Match.ListMatchStatus.First(item => item.Id == match.Status);
+                    var status = MatchConstants.ListMatchStatus.First(item => item.Id == match.Status);
                     count++;
                         <tr>
                             <td class="text-center">@count</td>
@@ -40,26 +40,26 @@
                             <td class="text-center"><img src="@(match.AwayTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon))" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamName(match.AwayTeam)</td>
                             <td class="text-center">
-                                @if (match.Status == Match.Finished)
+                                @if (match.Status == MatchConstants.Finished)
                                 {
                                     <span>@match.HomeTeamHalfScore - @match.AwayTeamHalfScore</span>
                                 }
 
                             </td>
                             <td class="text-center">
-                                @if (match.Status == Match.Finished)
+                                @if (match.Status == MatchConstants.Finished)
                                 {
                                     <span>@LivescoreHelper.GetMatchTotalScore(match, true) - @LivescoreHelper.GetMatchTotalScore(match, false)</span>
                                 }
                             </td>
                             <td class="text-center">
-                                @if (match.Status == Match.Finished && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
+                                @if (match.Status == MatchConstants.Finished && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
                                 {
                                     <span>@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</span>
                                 }
                             </td>
                             <td class="text-center">
-                                @if (match.Status == Match.Finished && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
+                                @if (match.Status == MatchConstants.Finished && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
                                 {
                                     <span>@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</span>
                                 }

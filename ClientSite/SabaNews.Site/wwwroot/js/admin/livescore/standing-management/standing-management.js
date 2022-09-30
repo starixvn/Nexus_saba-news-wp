@@ -41,11 +41,8 @@
                         $(this).prop('disabled', true);
                         var stageId = $(this).data('stageid');
                         var teamId = $('#editTeamId').val();
-                        var teamNameVN = $('#editTeamNameVN').val();
-                        var icon = $('#editIconVN')[0].files[0];
                         var position = $('#editPosition').val();
                         var currentIcon = $('#editIconVN').parent().find('.review_photo').attr('src');
-                        var isDeletedIcon = currentIcon === '';
                         var formData = new FormData();
                         if (position === '') {
                             $('#editPosition').parent().find('.help-block').html('Position can not be empty');
@@ -56,10 +53,7 @@
                         formData.append('seasonId', seasonId);
                         formData.append('stageId', stageId);
                         formData.append('teamId', teamId);
-                        formData.append('icon', icon);
                         formData.append('position', position);
-                        formData.append('teamNameVN', teamNameVN);
-                        formData.append('isDeletedIcon', isDeletedIcon);
                         formData.append('groupName', $('#groupName').val());
                         formData.append('total', $('#total').val());
                         formData.append('won', $('#won').val());

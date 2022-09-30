@@ -754,6 +754,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drawn.
+        /// </summary>
+        public static string Drawn {
+            get {
+                return ResourceManager.GetString("Drawn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -1002,6 +1011,33 @@ namespace SabaNews.Resources {
         public static string FromDate {
             get {
                 return ResourceManager.GetString("FromDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals Against.
+        /// </summary>
+        public static string GoalsAgainst {
+            get {
+                return ResourceManager.GetString("GoalsAgainst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals Diff.
+        /// </summary>
+        public static string GoalsDiff {
+            get {
+                return ResourceManager.GetString("GoalsDiff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals For.
+        /// </summary>
+        public static string GoalsFor {
+            get {
+                return ResourceManager.GetString("GoalsFor", resourceCulture);
             }
         }
         
@@ -1344,6 +1380,15 @@ namespace SabaNews.Resources {
         public static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lost.
+        /// </summary>
+        public static string Lost {
+            get {
+                return ResourceManager.GetString("Lost", resourceCulture);
             }
         }
         
@@ -1753,6 +1798,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Played.
+        /// </summary>
+        public static string Played {
+            get {
+                return ResourceManager.GetString("Played", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Player Full Name EN.
         /// </summary>
         public static string PlayerFullNameEN {
@@ -1776,6 +1830,15 @@ namespace SabaNews.Resources {
         public static string Point {
             get {
                 return ResourceManager.GetString("Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Points.
+        /// </summary>
+        public static string Points {
+            get {
+                return ResourceManager.GetString("Points", resourceCulture);
             }
         }
         
@@ -2401,6 +2464,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team Icon.
+        /// </summary>
+        public static string TeamIcon {
+            get {
+                return ResourceManager.GetString("TeamIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team Name.
         /// </summary>
         public static string TeamName {
@@ -2829,6 +2901,15 @@ namespace SabaNews.Resources {
         public static string Win {
             get {
                 return ResourceManager.GetString("Win", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Won.
+        /// </summary>
+        public static string Won {
+            get {
+                return ResourceManager.GetString("Won", resourceCulture);
             }
         }
         
