@@ -390,8 +390,6 @@
                 SeasonId = 1,
                 StageId = 1,
                 TeamId = 1,
-                TeamNameVN = "name",
-                TeamIconVN = "icon",
                 Position = 1,
                 IsUpdatePosition = false
             };
@@ -417,8 +415,6 @@
                 SeasonId = 1,
                 StageId = 1,
                 TeamId = 1,
-                TeamNameVN = "name",
-                TeamIconVN = "icon",
                 Position = 1,
                 IsUpdatePosition = true
             };
