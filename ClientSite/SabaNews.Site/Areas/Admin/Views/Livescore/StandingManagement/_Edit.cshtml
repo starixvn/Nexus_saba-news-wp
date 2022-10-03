@@ -22,23 +22,27 @@
             <h4>@(!string.IsNullOrEmpty(Model.Standing.TeamNameEN) ? Model.Standing.TeamNameEN : Model.Standing.TeamFullNameEN)</h4>
         </div>
     </div>
-    <div class="form-input flex-form-input">
-        <label class="label-admin">
-            <label>@ViewResources.GroupName</label>
-        </label>
-        <div class="admin-text-logo">
-            <select class="form-control custom-input" id="groupName">
-                @foreach (var group in Model.Groups)
-                {
+    @if (Model.Groups.Count > 1)
+    {
+        <div class="form-input flex-form-input">
+            <label class="label-admin">
+                <label>@ViewResources.GroupName</label>
+            </label>
+            <div class="admin-text-logo">
+                <select class="form-control custom-input" id="groupName">
+                    @foreach (var group in Model.Groups)
+                    {
 
-                    var groupName = $"{@ViewResources.Board} {group.GroupName.Substring(0, 1)}";
-                    var selected = currentGroupName == group.GroupName ? "selected" : "";
-                    <option value="@group.GroupName" @selected>@groupName</option>
-                }
+                        var groupName = $"{@ViewResources.Board} {group.GroupName.Substring(0, 1)}";
+                        var selected = currentGroupName == group.GroupName ? "selected" : "";
+                        <option value="@group.GroupName" @selected>@groupName</option>
+                    }
 
-            </select>
+                </select>
+            </div>
         </div>
-    </div>
+    }
+    
     <div class="form-input flex-form-input">
         <label class="label-admin">
             @ViewResources.Position
@@ -57,7 +61,7 @@
                     @ViewResources.Played
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="total" name="total" value="@(Model.Standing.TotalCustom ?? Model.Standing.Total)" />
+                    <input class="form-control custom-input input-number" min="0" type="number" id="total" name="total" value="@(Model.Standing.TotalCustom ?? Model.Standing.Total)" />
                 </div>
             </div>
             <div class="form-input flex-form-input">
@@ -65,7 +69,7 @@
                     @ViewResources.Won
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="won" name="won"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="won" name="won"
                            value="@(Model.Standing.WonCustom ?? Model.Standing.Won)" />
                 </div>
             </div>
@@ -74,7 +78,7 @@
                     @ViewResources.Drawn
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="draw" name="Draw"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="draw" name="Draw"
                            value="@(Model.Standing.DrawCustom ?? Model.Standing.Draw)" />
                 </div>
             </div>
@@ -83,7 +87,7 @@
                     @ViewResources.Lost
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="loss" name="Loss"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="loss" name="Loss"
                            value="@(Model.Standing.LossCustom ?? Model.Standing.Loss)" />
                 </div>
             </div>
@@ -94,7 +98,7 @@
                     @ViewResources.GoalsFor
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="goals" name="Goals"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="goals" name="Goals"
                            value="@(Model.Standing.GoalsCustom ?? Model.Standing.Goals)" />
                 </div>
             </div>
@@ -103,7 +107,7 @@
                     @ViewResources.GoalsAgainst
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="goalsAgainst" name="GoalsAgainst"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="goalsAgainst" name="GoalsAgainst"
                            value="@(Model.Standing.GoalsAgainstCustom ?? Model.Standing.GoalsAgainst)" />
                 </div>
             </div>
@@ -112,7 +116,7 @@
                     @ViewResources.GoalsDiff
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="goalDiff" name="GoalDiff"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="goalDiff" name="GoalDiff"
                            value="@(Model.Standing.GoalDiffCustom ?? Model.Standing.GoalDiff)" />
                 </div>
             </div>
@@ -121,7 +125,7 @@
                     @ViewResources.Points
                 </label>
                 <div class="admin-text-logo">
-                    <input class="form-control custom-input" min="0" type="number" id="points" name="Points"
+                    <input class="form-control custom-input input-number" min="0" type="number" id="points" name="Points"
                            value="@(Model.Standing.PointsCustom ?? Model.Standing.Points)" />
                 </div>
             </div>

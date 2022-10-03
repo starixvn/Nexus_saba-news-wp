@@ -31,6 +31,10 @@
     function initAction() {
         $('.btn-Edit').on('click', function () {
             var url = $(this).data('url');
+            //var team = $(this).data('team');
+            leagueName = $('.league-select').find(':selected').data('name');
+            seasonName = $('.season-select').find(':selected').data('name');
+            //var title = `Match Editing (${group}${divide}${team} / ${leagueName} ${seasonName})`;
             $.ajax({
                 type: 'GET',
                 url: url,
@@ -119,6 +123,12 @@
                         var form = $(this).parent().parent();
                         CancelUploadHandler(form);
                         $(this).hide();
+                    });
+                    $('.input-number').on('keypress', function (e) {
+                        $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+                        if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+                            e.preventDefault();
+                        }
                     });
                 }
             })

@@ -5,7 +5,14 @@
     @foreach (var group in Model.Groups)
     {
         var count = 0;
-        <div class="name-bxh title-items">@ViewResources.Board @group.GroupName.Substring(0, 1)</div>
+        var groupName = "";
+        @if (Model.Groups.Count > 1)
+        {
+            
+            groupName = $"{ViewResources.Board} {group.GroupName.Substring(0, 1)}";
+            <div class="name-bxh title-items">@groupName</div>
+        }
+        
         <table class="data-grid">
             <thead>
                 <tr>
@@ -41,7 +48,7 @@
                                     <td class="text-center">@standing.GoalDiff</td>
                                     <td class="text-center">@standing.Points</td>
                                     <td class="text-center">
-                                        <i class="icon icon-edit-admin btn-Edit" title="Edit"
+                                        <i class="icon icon-edit-admin btn-Edit" title="Edit" data-team="@LivescoreHelper.GetStandingTeamName(standing)" data-group="@groupName"
                                            data-url="@Url.Action("EditStanding", "StandingManagement", new { seasonId = Model.SeasonId, stageId = standing.StageId, teamId = standing.TeamId, leagueId = Model.LeagueId})">
                                         </i>
                                     </td>

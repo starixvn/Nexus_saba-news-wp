@@ -28,7 +28,7 @@
                 @foreach (var league in Model.Leagues)
                 {
                     var selected = league.LeagueId == Model.LeagueId ? "selected" : "";
-                    <option @selected value="@league.LeagueId">@GetLeagueName(league)</option>
+                    <option @selected value="@league.LeagueId" data-name="@GetLeagueName(league)">@GetLeagueName(league)</option>
                 }
             </select>
         </div>

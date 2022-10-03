@@ -5,7 +5,7 @@
     {
         foreach (var season in Model)
         {
-            <option value="@season.SeasonId">@season.Year</option>
+            <option value="@season.SeasonId" data-name="@season.Year">@season.Year</option>
         }
 
     }

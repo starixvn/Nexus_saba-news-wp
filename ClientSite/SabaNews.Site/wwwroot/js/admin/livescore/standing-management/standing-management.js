@@ -2,6 +2,8 @@
     var leagueId = window.leagueId;
     var seasonId = window.seasonId;
     var search = '';
+    var leagueName = '';
+    var seasonName = '';
     function GetSeason(leagueId) {
         $.ajax({
             url: "/Admin/MatchManagement/GetSeason",
@@ -29,11 +31,17 @@
     function initAction() {
         $('.btn-Edit').on('click', function () {
             var url = $(this).data('url');
+            var team = $(this).data('team');
+            var group = $(this).data('group');
+            var divide = group !== '' ? ' -  ' : '';
+            leagueName = $('.league-select').find(':selected').data('name');
+            seasonName = $('.season-select').find(':selected').data('name');
+            var title = `Standing Editing (${group}${divide}${team} / ${leagueName} ${seasonName})`;
             $.ajax({
                 type: 'GET',
                 url: url,
                 success: function (html) {
-                    $('#EditStandingModal .title').html('Edit Staning');
+                    $('#EditStandingModal .title').html(title);
                     $('#EditStandingModal .modal-body').html(html);
                     $('#EditStandingModal').modal('show');
 
@@ -41,11 +49,12 @@
                         $(this).prop('disabled', true);
                         var stageId = $(this).data('stageid');
                         var teamId = $('#editTeamId').val();
+                        var groupName = $('#groupName').val();
                         var position = $('#editPosition').val();
                         var currentIcon = $('#editIconVN').parent().find('.review_photo').attr('src');
                         var formData = new FormData();
-                        if (position === '') {
-                            $('#editPosition').parent().find('.help-block').html('Position can not be empty');
+                        if (position === '' || position <= 0) {
+                            $('#editPosition').parent().find('.help-block').html('Position value is more than 1');
                             $(this).prop('disabled', false);
                             return false;
                         }
@@ -54,7 +63,9 @@
                         formData.append('stageId', stageId);
                         formData.append('teamId', teamId);
                         formData.append('position', position);
-                        formData.append('groupName', $('#groupName').val());
+                        if (typeof groupName !== 'undefined') {
+                            formData.append('groupName', groupName);
+                        }
                         formData.append('total', $('#total').val());
                         formData.append('won', $('#won').val());
                         formData.append('draw', $('#draw').val());
@@ -112,6 +123,13 @@
                     $('#editPosition').on('keyup', function () {
                         $(this).parent().find('.help-block').html('');
                     });
+
+                    $('.input-number').on('keypress', function (e) {
+                        $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+                        if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+                            e.preventDefault();
+                        }
+                    });
                 }
             })
         });
@@ -168,6 +186,7 @@
         });
         $('.league-select').on('change', function () {
             var currentLeagueId = $(this).val();
+            
             GetSeason(currentLeagueId);
         });
         $('.btn_league').click(function () {
