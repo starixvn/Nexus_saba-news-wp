@@ -121,7 +121,7 @@
                     });
 
                     $('.cancel-upload').on('click', function () {
-                        var form = $(this).parent().parent();
+                        var form = $(this).parent();
                         CancelUploadHandler(form);
                         $(this).hide();
                     });
@@ -137,18 +137,19 @@
     }
 
     function ChangePhotoHanlder(form) {
-        //$(form).find('.review_photo').show();
+        var review = $(form).parent().parent().parent();
+        review.find('.cancel-upload').show();
+        review.find('.review_photo').show();
         $(form).find('.photo-error').hide();
-        //$(form).find('.txt-img').css('display', 'none');
-        //$(form).find('.cancel-upload').show();
+        
     }
 
     function CancelUploadHandler(form) {
-        $(form).find('.review_photo').attr('src', '');
-        $(form).find('.review_photo').hide();
-        $(form).find('.txt-img').css('display', 'flex');
-        $(form).find('.cancel-upload').hide();
-        $(form).find('.photo').val('');
+        var input = $(form).parent().parent();
+        form.find('.review_photo').attr('src', '');
+        form.find('.review_photo').hide();
+        form.find('.cancel-upload').hide();
+        input.find('.photo').val('');
     }
 
     function ValidatePhoto(files, self) {
