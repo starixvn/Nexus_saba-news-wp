@@ -45,13 +45,13 @@
 
                 @include tableMobile {
                     width: 30rem;
-                    height: auto;
+                    height: 30rem;
                 }
 
 
                 @include landscapeTablet {
                     width: 44rem;
-                    height: auto;
+                    height: 40rem;
                 }
 
                 @include Mobile {
@@ -70,7 +70,6 @@
                     margin-bottom: 0;
 
                     @include Mobile {
-                        height: 22.78rem;
                         display: block;
                     }
                 }
@@ -105,10 +104,6 @@
                     bottom: 0;
                     padding: 1.2rem 0;
                     width: 100%;
-
-                    @include Mobile {
-                        position: unset;
-                    }
                 }
             }
 
