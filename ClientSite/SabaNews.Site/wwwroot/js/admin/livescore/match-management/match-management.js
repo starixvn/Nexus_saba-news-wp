@@ -52,9 +52,9 @@
                         var awayTeamId = $('#editAwayId').val();
                         var awayTeamNameVN = $('#editAwayVN').val();
                         var awayIcon = $('#editAwayIcon')[0].files[0];
-                        var currentHomeIcon = $('#editHomeIcon').parent().find('.review_photo').attr('src');
+                        var currentHomeIcon = $('#editHomeIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
                         var isDeletedHomeIcon = currentHomeIcon === '';
-                        var currentAwayIcon = $('#editAwayIcon').parent().find('.review_photo').attr('src');
+                        var currentAwayIcon = $('#editAwayIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
                         var isDeletedAwayIcon = currentAwayIcon === '';
                         var formData = new FormData();
                         formData.append('matchId', matchId);
@@ -78,6 +78,7 @@
                         formData.append('startTime', $('#startTime').val());
                         formData.append('round', $('#round').val());
                         formData.append('stageNameVN', $('#stageNameVN').val());
+                        console.log(homeIcon, currentHomeIcon);
 
                         $.ajax({
                             type: 'POST',
@@ -109,7 +110,7 @@
                             CancelUploadHandler($(this).parent());
                             return false;
                         }
-                        var review = $(this).parent().find('.review_photo');
+                        var review = $(this).parent().parent().parent().parent().find('.review_photo');
 
                         var reader = new FileReader();
                         reader.readAsDataURL(files);
@@ -136,10 +137,10 @@
     }
 
     function ChangePhotoHanlder(form) {
-        $(form).find('.review_photo').show();
+        //$(form).find('.review_photo').show();
         $(form).find('.photo-error').hide();
-        $(form).find('.txt-img').css('display', 'none');
-        $(form).find('.cancel-upload').show();
+        //$(form).find('.txt-img').css('display', 'none');
+        //$(form).find('.cancel-upload').show();
     }
 
     function CancelUploadHandler(form) {

@@ -38,7 +38,7 @@
                 Round
             </label>
             <div class="admin-text-logo admin-text-logo-round">
-                <input type="number" min="0" value="@Model.Round" class="form-control custom-input" id="round" name="round" />
+                <input type="number" min="0" value="@Model.Round" class="form-control custom-input  input-number" id="round" name="round" />
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
                 Stage name origin
             </label>
             <div class="admin-text-logo">
-                <input type="text" name="table-around" class="form-control custom-input bg-custom-input" value="@(Model.Stage.StageNameResource ?? Model.Stage.StageNameEN)" />
+                <input type="text" name="table-around" readonly  class="form-control custom-input bg-custom-input" value="@(Model.Stage.StageNameResource ?? Model.Stage.StageNameEN)" />
             </div>
         </div>
         <div class="form-group-input form-group-input-right">
@@ -76,7 +76,7 @@
                         Name Origin
                     </label>
                     <div class="admin-text-logo">
-                        <input type="text" name="home-name-origin" class="form-control custom-input bg-custom-input" value=" @(!string.IsNullOrEmpty(Model.HomeTeam.TeamNameEN) ? Model.HomeTeam.TeamNameEN : Model.HomeTeam.TeamFullNameEN)" />
+                        <input type="text" name="home-name-origin" readonly class="form-control custom-input bg-custom-input" value=" @(!string.IsNullOrEmpty(Model.HomeTeam.TeamNameEN) ? Model.HomeTeam.TeamNameEN : Model.HomeTeam.TeamFullNameEN)" />
                     </div>
                 </div>
                 <div class="form-group-input form-group-input-right w-25">
@@ -92,23 +92,24 @@
            
 
             <div class="flex-form-input">
+                 @{
+                    var display = !string.IsNullOrEmpty(Model.HomeTeam.IconVN);
+                    var hide = display ? "none" : "flex";
+                    var show = display ? "flex" : "none";
+                }
                 <div class="form-group-input form-group-input-left w-75">
                     <label class="label-admin">
-                        Logo VN
+                        Icon VN
                     </label>
                     <div class="admin-text-logo">
-                        @{
-                            var display = !string.IsNullOrEmpty(Model.HomeTeam.IconVN);
-                            var hide = display ? "none" : "flex";
-                            var show = display ? "flex" : "none";
-                        }
+                       
                         <div class="input-upload">
                             <input type="file" class="input-file photo" id="editHomeIcon">
-                            <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                            <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                             <div class="img-upload">
-                                <img class="review_photo" src="@Model.HomeTeam.IconVN" alt="review photo" style="display:@show" />
+                                @*<img class="review_photo" src="@Model.HomeTeam.IconVN" alt="review photo" style="display:@show" />*@
                                 <p class="error photo-error" style="display:none"></p>
-                                <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
+                                @*<button type="button" class="cancel-upload icon-close" style="display:@show"></button>*@
                             </div>
                         </div>
                     </div>
@@ -118,7 +119,7 @@
                         Logo Origin
                     </label>
                     <div class="admin-text-logo admin-text-logo-data-img">
-                        <img src="@ViewResources.UploadNewImage" alt="Alternate Text" />
+                        <img src="@Model.HomeTeam.IconVN" alt="Alternate Text" class="review_photo" />
                     </div>
                 </div>
             </div>
@@ -143,7 +144,7 @@
                         1H Score
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.HomeTeamHalfScore" class="form-control w-100 custom-input txt-homeVN" id="homeTeamHalfScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.HomeTeamHalfScore" class="form-control w-100 custom-input input-number" id="homeTeamHalfScore" name="HomeVN" />
                     </div>
                 </div>
                 <div class="items-status">
@@ -151,7 +152,8 @@
                         2H Score
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@(Model.HomeTeamExtraScore != null ? Model.HomeTeamExtraScore : Model.HomeTeamTotalScore)" class="form-control w-100 custom-input txt-homeVN" id="homeTeamExtraScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@(Model.HomeTeamExtraScore != null ? Model.HomeTeamExtraScore : Model.HomeTeamTotalScore)"
+                               class="form-control w-100 custom-input input-number" id="homeTeamExtraScore" name="HomeVN" />
                     </div>
                 </div>
                 <div class="items-status">
@@ -159,7 +161,7 @@
                         PEN
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.HomeTeamPenaltyScore" class="form-control w-100 custom-input txt-homeVN" id="homeTeamPenaltyScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.HomeTeamPenaltyScore" class="form-control w-100 custom-input  input-number" id="homeTeamPenaltyScore" name="HomeVN" />
                     </div>
                 </div>
                 <div class="items-status">
@@ -167,7 +169,8 @@
                         AGG
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.HomeTeamAggregateScore" class="form-control w-100 custom-input txt-homeVN" id="homeTeamAggregateScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.HomeTeamAggregateScore" class="form-control w-100 custom-input input-number" 
+                            id="homeTeamAggregateScore" name="HomeVN" />
                     </div>
                 </div>
             </div>
@@ -184,7 +187,8 @@
                         Name Origin
                     </label>
                     <div class="admin-text-logo">
-                        <input type="text" name="home-name-origin" class="form-control custom-input bg-custom-input" value=" @(!string.IsNullOrEmpty(Model.AwayTeam.TeamNameEN) ? Model.AwayTeam.TeamNameEN : Model.AwayTeam.TeamFullNameEN)" />
+                        <input type="text" readonly name="home-name-origin" class="form-control custom-input bg-custom-input " 
+                            value=" @(!string.IsNullOrEmpty(Model.AwayTeam.TeamNameEN) ? Model.AwayTeam.TeamNameEN : Model.AwayTeam.TeamFullNameEN)" />
                     </div>
                 </div>
                 <div class="form-group-input form-group-input-right w-25">
@@ -199,23 +203,24 @@
 
 
             <div class="flex-form-input">
+                @{
+                    display = !string.IsNullOrEmpty(Model.AwayTeam.IconVN);
+                    hide = display ? "none" : "flex";
+                    show = display ? "flex" : "none";
+                }
                 <div class="form-group-input form-group-input-left w-75">
                     <label class="label-admin">
-                        Logo VN
+                        Icon VN
                     </label>
                     <div class="admin-text-logo">
-                        @{
-                            display = !string.IsNullOrEmpty(Model.AwayTeam.IconVN);
-                            hide = display ? "none" : "flex";
-                            show = display ? "flex" : "none";
-                        }
+                        
                         <div class="input-upload">
                             <input type="file" class="input-file photo" id="editAwayIcon">
-                            <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                            <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                             <div class="img-upload">
-                                <img class="review_photo" src="@Model.AwayTeam.IconVN" alt="review photo" style="display:@show" />
+                                @*<img class="review_photo" src="@Model.HomeTeam.IconVN" alt="review photo" style="display:@show" />*@
                                 <p class="error photo-error" style="display:none"></p>
-                                <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
+                                @*<button type="button" class="cancel-upload icon-close" style="display:@show"></button>*@
                             </div>
                         </div>
                     </div>
@@ -225,7 +230,7 @@
                         Logo Origin
                     </label>
                     <div class="admin-text-logo admin-text-logo-data-img">
-                        <img src="@ViewResources.UploadNewImage" alt="Alternate Text" />
+                        <img src="@Model.AwayTeam.IconVN" alt="Alternate Text" class="review_photo" />
                     </div>
                 </div>
             </div>
@@ -239,7 +244,7 @@
                     </label>
                     <div class="admin-text-logo">
                         <input type="hidden" id="editAwayId" value="@Model.AwayTeam.TeamId" />
-                        <input type="text" value="@Model.AwayTeam.TeamNameVN" class="form-control custom-input txt-awayVN" id="editAwayVN" name="AwayVN" />
+                        <input type="text" value="@Model.AwayTeam.TeamNameVN" class="form-control custom-input" id="editAwayVN" name="AwayVN" />
                     </div>
                 </div>
             </div>
@@ -250,7 +255,7 @@
                         1H Score
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.AwayTeamHalfScore" class="form-control w-100 custom-input txt-homeVN" id="awayTeamHalfScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.AwayTeamHalfScore" class="form-control w-100 custom-input input-number" id="awayTeamHalfScore" name="HomeVN" />
                     </div>
                 </div>
                 <div class="items-status">
@@ -258,7 +263,8 @@
                         2H Score
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@(Model.AwayTeamExtraScore != null ? Model.AwayTeamExtraScore : Model.AwayTeamTotalScore)" class="form-control w-100 custom-input txt-homeVN" id="awayTeamExtraScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@(Model.AwayTeamExtraScore != null ? Model.AwayTeamExtraScore : Model.AwayTeamTotalScore)"
+                               class="form-control w-100 custom-input input-number" id="awayTeamExtraScore" name="HomeVN" />
                     </div>
                 </div>
                 <div class="items-status">
@@ -266,7 +272,7 @@
                         PEN
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.AwayTeamPenaltyScore" class="form-control w-100 custom-input txt-homeVN" id="awayTeamPenaltyScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.AwayTeamPenaltyScore" class="form-control w-100 custom-input input-number" id="awayTeamPenaltyScore" name="HomeVN" />
                     </div>
                 </div>
                 <div class="items-status">
@@ -274,7 +280,7 @@
                         AGG
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.AwayTeamAggregateScore" class="form-control w-100 custom-input txt-homeVN" id="awayTeamAggregateScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.AwayTeamAggregateScore" class="form-control w-100 custom-input input-number" id="awayTeamAggregateScore" name="HomeVN" />
                     </div>
                 </div>
             </div>
