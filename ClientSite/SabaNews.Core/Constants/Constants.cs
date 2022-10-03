@@ -149,6 +149,10 @@
         public const string Euro2020RecordSlug = "nhung-ky-luc-dac-biet-trong-lich-su-euro";
         public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
 
+        public const string VideoWorldCup2022Slug = "video-world-cup-2022";
+        public const string VideoGuessWorldCup2022Slug = "video-du-doan-world-cup-2022";
+        public const string VideoHighlightWorldCup2022Slug = "video-highlights-world-cup-2022";
+
         public const string AdministratorRole = "administrator";
         public const string NormalRole = "normal";
         public const string EventLink = "ngoai-hang-anh-2021-22";

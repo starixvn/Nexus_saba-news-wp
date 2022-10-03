@@ -19,7 +19,7 @@ namespace SabaNews.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ViewResources {
@@ -386,6 +386,15 @@ namespace SabaNews.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Basketball.
+        /// </summary>
+        public static string BasketballEN {
+            get {
+                return ResourceManager.GetString("BasketballEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trận.
         /// </summary>
         public static string Battle {
             get {
@@ -2518,7 +2527,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tennis.
+        ///   Looks up a localized string similar to TennisEN.
         /// </summary>
         public static string TennisEN {
             get {

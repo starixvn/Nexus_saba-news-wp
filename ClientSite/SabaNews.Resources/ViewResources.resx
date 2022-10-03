@@ -917,6 +917,7 @@
   </data>
   <data name="BasketballEN" xml:space="preserve">
     <value>Basketball</value>
+  </data>
   <data name="Assist" xml:space="preserve">
     <value>Kiến Tạo</value>
   </data>
@@ -1066,5 +1067,11 @@
   </data>
   <data name="Won" xml:space="preserve">
     <value>Won</value>
+  </data>
+  <data name="TennisEN" xml:space="preserve">
+    <value>TennisEN</value>
+  </data>
+  <data name="Battle" xml:space="preserve">
+    <value>Trận</value>
   </data>
 </root>

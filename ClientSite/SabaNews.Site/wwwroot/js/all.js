@@ -33,7 +33,6 @@ $(document).ready(function () {
     $('.skeleton').hide();
     $('.skeleton').hide().promise().done(function () { console.log(3); $('.post').show(); });
     $('.skeleton').hide();
-    $('.post').show();
     
     
     $('.language-select').click(function () {
