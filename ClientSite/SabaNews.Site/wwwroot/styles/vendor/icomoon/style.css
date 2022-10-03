@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?rgugg8');
-  src:  url('fonts/Fraud-Sensor.eot?rgugg8#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?rgugg8') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?rgugg8') format('woff'),
-    url('fonts/Fraud-Sensor.svg?rgugg8#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?s1bwap');
+  src:  url('fonts/Fraud-Sensor.eot?s1bwap#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?s1bwap') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?s1bwap') format('woff'),
+    url('fonts/Fraud-Sensor.svg?s1bwap#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-admin-goal:before {
+  content: "\e935";
+  color: #fff;
+}
 .icon-link-post:before {
   content: "\e933";
   color: #ef4300;

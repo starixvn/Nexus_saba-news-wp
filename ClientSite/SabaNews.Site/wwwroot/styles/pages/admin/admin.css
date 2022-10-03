@@ -300,10 +300,10 @@ button {
   top: 0;
   width: 27rem; }
   .slide-nav .logo-admin {
-    padding: 2.4rem 0 4rem 3.5rem; }
+    padding: 2.4rem 0 4rem 2.4rem; }
   .slide-nav .menu-slide {
     list-style: none;
-    padding-left: 3.5rem; }
+    padding-left: 2.7rem; }
     .slide-nav .menu-slide .menu-item {
       padding: 2rem 0; }
       .slide-nav .menu-slide .menu-item a {
@@ -318,7 +318,7 @@ button {
           .slide-nav .menu-slide .menu-item a:hover .icon-page:before {
             color: #fff; }
         .slide-nav .menu-slide .menu-item a .icon-page {
-          margin-right: 2.4rem; }
+          margin-right: 1.5rem; }
     .slide-nav .menu-slide .active a {
       color: #fff; }
       .slide-nav .menu-slide .active a .icon-page:before {
