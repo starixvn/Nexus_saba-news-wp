@@ -131,35 +131,27 @@
     object-fit: cover; }
 
 .input-upload {
-  border: 1px dashed #BDBDBD;
+  background: #F1F1F1;
+  border: 1px dashed #BFBFBF;
+  border-radius: 5px;
   position: relative;
   width: 100%;
   text-align: center;
   padding: .5rem;
-  background: #f7f7f7;
   height: 5rem;
   overflow: hidden; }
   .input-upload img {
     max-width: 4rem;
     height: 4rem; }
-  .input-upload .icon-close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 1.8rem;
-    background: transparent;
-    cursor: pointer;
-    color: #1F2252; }
-    .input-upload .icon-close:focus {
-      outline: none; }
   .input-upload .txt-img {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: center;
-    flex-direction: row; }
+    flex-direction: row;
+    margin-top: 8px; }
     .input-upload .txt-img .icon-upload {
-      font-size: 3rem;
+      font-size: 2.4rem;
       margin-right: 1rem; }
   .input-upload .photo-error {
     margin: 0; }
@@ -278,12 +270,27 @@
     border: 1px solid #DDDDDD;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    text-align: center; }
+    text-align: center;
+    position: relative;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
     .admin-match-management .admin-text-logo-data-img img {
       width: 4rem;
       height: 4rem;
       object-fit: cover;
       margin: 0 auto; }
+    .admin-match-management .admin-text-logo-data-img .icon-close {
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      font-size: 1.2rem;
+      background: transparent;
+      cursor: pointer;
+      color: #4F4F4F; }
+      .admin-match-management .admin-text-logo-data-img .icon-close:focus {
+        outline: none; }
 
 .form-btn {
   margin-top: 2.4rem;
