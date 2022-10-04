@@ -268,32 +268,33 @@
     padding-right: 1.6rem; }
   .admin-match-management .item-away {
     padding-left: 1.6rem; }
-  .admin-match-management .admin-text-logo-data-img {
-    background: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .admin-match-management .admin-text-logo-data-img img {
-      width: 4rem;
-      height: 4rem;
-      object-fit: cover;
-      margin: 0 auto; }
-    .admin-match-management .admin-text-logo-data-img .icon-close {
-      position: absolute;
-      right: 3px;
-      top: 3px;
-      font-size: 1.2rem;
-      background: transparent;
-      cursor: pointer;
-      color: #4F4F4F; }
-      .admin-match-management .admin-text-logo-data-img .icon-close:focus {
-        outline: none; }
+
+.admin-text-logo-data-img {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .admin-text-logo-data-img img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    margin: 0 auto; }
+  .admin-text-logo-data-img .icon-close {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    font-size: 1.2rem;
+    background: transparent;
+    cursor: pointer;
+    color: #4F4F4F; }
+    .admin-text-logo-data-img .icon-close:focus {
+      outline: none; }
 
 .form-btn {
   margin-top: 2.4rem;

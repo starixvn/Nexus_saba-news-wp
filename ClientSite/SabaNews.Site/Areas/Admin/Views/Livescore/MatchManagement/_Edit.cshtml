@@ -48,7 +48,7 @@
                 Stage name origin
             </label>
             <div class="admin-text-logo">
-                <input type="text" name="table-around" readonly  class="form-control custom-input bg-custom-input" value="@(Model.Stage.StageNameResource ?? Model.Stage.StageNameEN)" />
+                <input type="text" name="table-around" readonly class="form-control custom-input bg-custom-input" value="@(Model.Stage.StageNameResource ?? Model.Stage.StageNameEN)" />
             </div>
         </div>
         <div class="form-group-input form-group-input-right">
@@ -61,9 +61,9 @@
         </div>
     </div>
 
-    
-   
-  
+
+
+
 
 
     <div class="admin-match-management">
@@ -76,7 +76,7 @@
                         Name Origin
                     </label>
                     <div class="admin-text-logo">
-                        <input type="text" name="home-name-origin" readonly class="form-control custom-input bg-custom-input" value=" @(!string.IsNullOrEmpty(Model.HomeTeam.TeamNameEN) ? Model.HomeTeam.TeamNameEN : Model.HomeTeam.TeamFullNameEN)" />
+                        <input type="text" name="home-name-origin" readonly class="form-control custom-input bg-custom-input" value=" @(!string.IsNullOrEmpty(Model.HomeTeam.TeamNameEN) ? Model.HomeTeam.TeamNameEN : Model.HomeTeam.TeamFullNameEN)" style="height:5rem" / />
                     </div>
                 </div>
                 <div class="form-group-input form-group-input-right w-25">
@@ -89,10 +89,10 @@
                 </div>
             </div>
 
-           
+
 
             <div class="flex-form-input">
-                 @{
+                @{
                     var display = !string.IsNullOrEmpty(Model.HomeTeam.IconVN);
                     var hide = display ? "none" : "flex";
                     var show = display ? "flex" : "none";
@@ -102,13 +102,13 @@
                         Icon VN
                     </label>
                     <div class="admin-text-logo">
-                       
+
                         <div class="input-upload">
                             <input type="file" class="input-file photo" id="editHomeIcon">
                             <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                             <div class="img-upload">
                                 <p class="error photo-error" style="display:none"></p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -169,8 +169,8 @@
                         AGG
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@Model.HomeTeamAggregateScore" class="form-control w-100 custom-input input-number" 
-                            id="homeTeamAggregateScore" name="HomeVN" />
+                        <input type="number" min="0" max="100" value="@Model.HomeTeamAggregateScore" class="form-control w-100 custom-input input-number"
+                               id="homeTeamAggregateScore" name="HomeVN" />
                     </div>
                 </div>
             </div>
@@ -187,8 +187,8 @@
                         Name Origin
                     </label>
                     <div class="admin-text-logo">
-                        <input type="text" readonly name="home-name-origin" class="form-control custom-input bg-custom-input " 
-                            value=" @(!string.IsNullOrEmpty(Model.AwayTeam.TeamNameEN) ? Model.AwayTeam.TeamNameEN : Model.AwayTeam.TeamFullNameEN)" />
+                        <input type="text" readonly name="home-name-origin" class="form-control custom-input bg-custom-input "
+                               value=" @(!string.IsNullOrEmpty(Model.AwayTeam.TeamNameEN) ? Model.AwayTeam.TeamNameEN : Model.AwayTeam.TeamFullNameEN)" style="height:5rem" />
                     </div>
                 </div>
                 <div class="form-group-input form-group-input-right w-25">
@@ -213,7 +213,7 @@
                         Icon VN
                     </label>
                     <div class="admin-text-logo">
-                        
+
                         <div class="input-upload">
                             <input type="file" class="input-file photo" id="editAwayIcon">
                             <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
