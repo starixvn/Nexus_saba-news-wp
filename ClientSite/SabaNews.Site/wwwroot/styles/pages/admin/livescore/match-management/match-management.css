@@ -138,8 +138,7 @@
   width: 100%;
   text-align: center;
   padding: .5rem;
-  height: 5rem;
-  overflow: hidden; }
+  height: 5rem; }
   .input-upload img {
     max-width: 4rem;
     height: 4rem; }
@@ -180,6 +179,10 @@
     cursor: pointer;
     display: none;
     margin: 1rem auto; }
+  .input-upload .img-upload .error {
+    text-align: left;
+    padding: 0;
+    border: none; }
 
 .crop {
   display: inline-block;
