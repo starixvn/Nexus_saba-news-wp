@@ -172,7 +172,7 @@
 
 .flex-form-input {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 1.1rem;
 
     &:last-child {
@@ -194,17 +194,6 @@
             padding-left: .8rem;
         }
     }
-
-    .admin-text-logo {
-        &-round {
-            width: 10rem;
-        }
-
-        &-stage-vn {
-            width: 32rem;
-        }
-    }
-
     .form-input {
         width: 100%;
     }

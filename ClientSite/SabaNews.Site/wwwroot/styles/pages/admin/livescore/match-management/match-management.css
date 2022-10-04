@@ -231,7 +231,7 @@
 
 .flex-form-input {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 1.1rem; }
   .flex-form-input:last-child {
     margin-bottom: 0; }
@@ -243,10 +243,6 @@
       padding-right: .8rem; }
     .flex-form-input .form-group-input-right {
       padding-left: .8rem; }
-  .flex-form-input .admin-text-logo-round {
-    width: 10rem; }
-  .flex-form-input .admin-text-logo-stage-vn {
-    width: 32rem; }
   .flex-form-input .form-input {
     width: 100%; }
   .flex-form-input .custom-input {
