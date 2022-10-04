@@ -16,26 +16,28 @@
         </div>
     </div>
     <div class="flex-form-input">
-        <div class="form-group-input form-group-input-left">
-            <label class="label-admin">
-                @ViewResources.GroupName
-            </label>
-            @if (Model.Groups.Count > 1)
-            {
-                <div class="admin-text-logo">
-                    <select class="form-control custom-input" id="groupName">
-                        @foreach (var group in Model.Groups)
-                        {
+        @if (Model.Groups.Count > 1)
+        {
+            <div class="form-group-input form-group-input-left">
+                <label class="label-admin">
+                    @ViewResources.GroupName
+                </label>
+            
+                    <div class="admin-text-logo">
+                        <select class="form-control custom-input" id="groupName">
+                            @foreach (var group in Model.Groups)
+                            {
 
-                            var groupName = $"{@ViewResources.Board} {group.GroupName.Substring(0, 1)}";
-                            var selected = currentGroupName == group.GroupName ? "selected" : "";
-                            <option value="@group.GroupName" @selected>@groupName</option>
-                        }
+                                var groupName = $"{@ViewResources.Board} {group.GroupName.Substring(0, 1)}";
+                                var selected = currentGroupName == group.GroupName ? "selected" : "";
+                                <option value="@group.GroupName" @selected>@groupName</option>
+                            }
 
-                    </select>
-                </div>
-            }
-        </div>
+                        </select>
+                    </div>
+            
+            </div>
+        }
         <div class="form-group-input form-group-input-right">
             <label class="label-admin">
                 @ViewResources.TeamName

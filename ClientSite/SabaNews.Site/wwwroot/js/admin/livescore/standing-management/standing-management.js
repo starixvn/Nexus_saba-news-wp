@@ -36,7 +36,7 @@
             var divide = group !== '' ? ' -  ' : '';
             leagueName = $('.league-select').find(':selected').data('name');
             seasonName = $('.season-select').find(':selected').data('name');
-            var title = `Standing Editing (${group}${divide}${team} / ${leagueName} ${seasonName})`;
+            var title = `Standing Editing (${group}${divide}${team}) / ${leagueName} ${seasonName}`;
             $.ajax({
                 type: 'GET',
                 url: url,
