@@ -40,29 +40,29 @@
                             <td class="text-center"><img src="@(match.AwayTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon))" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamName(match.AwayTeam)</td>
                             <td class="text-center">
-                                @if (match.Status == MatchConstants.Finished)
-                                {
-                                    <span>@match.HomeTeamHalfScore - @match.AwayTeamHalfScore</span>
-                                }
+                            @if (match.Status == MatchConstants.Finished || LivescoreHelper.IsLiveMatch(match.Status))
+                            {
+                                <span>@match.HomeTeamHalfScore - @match.AwayTeamHalfScore</span>
+                            }
 
                             </td>
                             <td class="text-center">
-                                @if (match.Status == MatchConstants.Finished)
-                                {
-                                    <span>@LivescoreHelper.GetMatchTotalScore(match, true) - @LivescoreHelper.GetMatchTotalScore(match, false)</span>
-                                }
+                            @if (match.Status == MatchConstants.Finished || LivescoreHelper.IsLiveMatch(match.Status))
+                            {
+                                <span>@LivescoreHelper.GetMatchTotalScore(match, true) - @LivescoreHelper.GetMatchTotalScore(match, false)</span>
+                            }
                             </td>
                             <td class="text-center">
-                                @if (match.Status == MatchConstants.Finished && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
-                                {
-                                    <span>@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</span>
-                                }
+                            @if ((match.Status == MatchConstants.Finished || LivescoreHelper.IsLiveMatch(match.Status)) && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
+                            {
+                                <span>@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</span>
+                            }
                             </td>
                             <td class="text-center">
-                                @if (match.Status == MatchConstants.Finished && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
-                                {
-                                    <span>@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</span>
-                                }
+                            @if ((match.Status == MatchConstants.Finished || LivescoreHelper.IsLiveMatch(match.Status)) && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
+                            {
+                                <span>@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</span>
+                            }
                             </td>
 
                             <td class="text-center">

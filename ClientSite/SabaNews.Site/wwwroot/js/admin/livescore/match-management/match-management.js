@@ -113,8 +113,13 @@
                         var htmlHome = '';
                         var htmlAway = '';
                         var isValid = true;
+                        $('.round-error').html('');
+                        if ($('#round').val() < 1 || $('#round').val() > 50) {
+                            var isValid = false;
+                            $('.round-error').html('round value must from 1 to 50');
+                        }
                         if ($('#homeTeamHalfScore').val() < 0 || $('#homeTeamHalfScore').val() > 100) {
-                            htmlHome += '1H Score';
+                            htmlHome += ', 1H Score';
                             isValid = false;
                         }
                         if ($('#homeTeamExtraScore').val() < 0 || $('#homeTeamExtraScore').val() > 100) {
@@ -132,7 +137,7 @@
                             isValid = false;
                         }
                         if ($('#awayTeamHalfScore').val() < 0 || $('#awayTeamHalfScore').val() > 100) {
-                            htmlAway += '1H Score';
+                            htmlAway += ', 1H Score';
                             isValid = false;
                         }
                         if ($('#awayTeamExtraScore').val() < 0 || $('#awayTeamExtraScore').val() > 100) {
@@ -150,11 +155,18 @@
                             isValid = false;
                         }
                         if (!isValid) {
-                            htmlHome += ' value must from 0 to 100';
-                            htmlAway+= ' value must from 0 to 100';
+                            if (htmlHome !== '') {
+                                htmlHome = htmlHome.substr(1);
+                                htmlHome += ' value must from 0 to 100';
+                            }
+                            if (htmlAway !== '') {
+                                htmlAway = htmlAway.substr(1);
+                                htmlAway += ' value must from 0 to 100';
+                            }
+                           
                         }
-                        $('.error-home').html(htmlHome);
-                        $('.error-away').html(htmlAway);
+                        $('.home-error').html(htmlHome);
+                        $('.away-error').html(htmlAway);
                         return isValid;
                     }
 

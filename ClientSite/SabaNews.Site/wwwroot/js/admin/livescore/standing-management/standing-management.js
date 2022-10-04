@@ -58,6 +58,7 @@
                             $(this).prop('disabled', false);
                             return false;
                         }
+                       
                         
                         formData.append('seasonId', seasonId);
                         formData.append('stageId', stageId);

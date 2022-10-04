@@ -38,7 +38,8 @@
                 Round
             </label>
             <div class="admin-text-logo admin-text-logo-round">
-                <input type="number" min="0" value="@Model.Round" class="form-control custom-input  input-number" id="round" name="round" />
+                <input type="number" min="1" max="50" value="@Model.Round" class="form-control custom-input  input-number" id="round" name="round" />
+                <p class="round-error"></p>
             </div>
         </div>
     </div>
@@ -174,6 +175,7 @@
                     </div>
                 </div>
             </div>
+            <div class="flex-form-input home-error"></div>
         </div>
 
 
@@ -283,6 +285,7 @@
                     </div>
                 </div>
             </div>
+            <div class="flex-form-input away-error"></div>
         </div>
     </div>
     <div class="form-btn">
