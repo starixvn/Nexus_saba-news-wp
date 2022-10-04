@@ -54,6 +54,30 @@
                     $('#EditLeagueContent .modal-body').html(html);
                     $('#EditLeagueContent').modal('show');
 
+                    $('.photo').on('change', function (e) {
+                        var form = $(this).parent();
+                        var files = $(this)[0].files[0];
+                        var isValid = ValidatePhoto(files, $(this));
+                        if (!isValid) {
+                            CancelUploadHandler($(this).parent());
+                            return false;
+                        }
+                        var review = $(this).parent().parent().parent().parent().find('.review_photo');
+
+                        var reader = new FileReader();
+                        reader.readAsDataURL(files);
+                        reader.onload = function (e) {
+                            review.attr('src', e.target.result);
+                            ChangePhotoHanlder(form);
+                        };
+                    });
+
+                    $('.cancel-upload').on('click', function () {
+                        var form = $(this).parent();
+                        CancelUploadHandler(form);
+                        $(this).hide();
+                    });
+
                     $('#btn-save').on('click', function () {
                         document.getElementById("btn-save").style.display = "none";
                         var LeagueId = $(this).data('id');
@@ -61,10 +85,25 @@
                         var Priority = document.getElementById("editPriority").value;
                         var LeagueNameVN = document.getElementById("editLeagueNameVN").value;
                         var CountryVN = document.getElementById("editCountryVN").value;
+                        var Icon = $('#editLeagueIcon')[0].files[0];
+                        var currentIcon = $('#editLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                        var isDeletedIcon = currentIcon === '';
+
+                        var formData = new FormData();
+                        formData.append('leagueId', LeagueId);
+                        formData.append('isMajor', IsMajor);
+                        formData.append('priority', Priority);
+                        formData.append('leagueNameVN', LeagueNameVN);
+                        formData.append('countryVN', CountryVN);
+                        formData.append('isDeletedIcon', isDeletedIcon);
+                        formData.append('icon', Icon);
+
                         $.ajax({
                             type: 'POST',
                             url: "/Admin/ManagementLeague/EditLeague",
-                            data: { LeagueId, IsMajor, Priority, LeagueNameVN, CountryVN },
+                            data: formData,
+                            processData: false,
+                            contentType: false,
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $('#EditLeagueContent').modal('hide');
@@ -83,6 +122,48 @@
                 }
             })
         });
+    }
+
+    function ChangePhotoHanlder(form) {
+        var review = $(form).parent().parent().parent();
+        review.find('.cancel-upload').show();
+        review.find('.review_photo').show();
+        $(form).find('.photo-error').hide();
+
+    }
+
+    function CancelUploadHandler(form) {
+        var input = $(form).parent().parent();
+        form.find('.review_photo').attr('src', '');
+        form.find('.review_photo').hide();
+        form.find('.cancel-upload').hide();
+        input.find('.photo').val('');
+    }
+
+    function ValidatePhoto(files, self) {
+        var isValid = true;
+        var errorSection = self.parent().find('.photo-error');
+        if (typeof files === "undefined") {
+            errorSection.html("Please choose file first!");
+            errorSection.show();
+            return false;
+        }
+        var type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
+        var fsize = files.size,
+            ftype = files.type,
+            fname = files.name,
+            fextension = fname.substring(fname.lastIndexOf('.') + 1);
+
+        if (!type_reg.test(ftype)) {
+            errorSection.html("Just support for jpg, png, jpeg, gif file type!");
+            errorSection.show();
+            return false;
+        } else if (fsize > 3145728) {
+            errorSection.html("Exceeds the maximum upload size for this site.");
+            errorSection.show();
+            return false;
+        }
+        return isValid;
     }
 
     function initPaging() {

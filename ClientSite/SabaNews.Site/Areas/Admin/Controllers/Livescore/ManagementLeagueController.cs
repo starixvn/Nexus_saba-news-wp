@@ -1,12 +1,16 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers.Livescore
 {
+    using DeviceDetectorNET.Class.Device;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.ManagementLeague;
     using SabaNews.Models.ViewModel.User;
+    using SabaNews.Services;
+    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -15,11 +19,13 @@
 
     public class ManagementLeagueController : AdminController
     {
+        private readonly IFileService fileService;
         private readonly ILeagueService leagueService;
         public ManagementLeagueController(
-            ILeagueService leagueService)
+            ILeagueService leagueService, IFileService fileService)
         {
             this.leagueService = leagueService;
+            this.fileService = fileService;
         }
         public IActionResult Index()
         {
@@ -61,11 +67,19 @@
         [HttpPost]
         public async Task<ActionResult> EditLeague(LeagueUpdateViewModel leagueUpdate)
         {
+            IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueUpdate.LeagueId.ToString() + "]") });
+            var icon = leagueUpdate.IsDeletedIcon ? null : league[0].Icon;
+            if (leagueUpdate.Icon != null)
+            {
+                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
+                icon = uploadResult.IsSuccessful ? uploadResult.Message : icon;
+            }
             var resultUpdateLeague = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
             {
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
-                CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture)
+                CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture),
+                Icon = icon
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League
             {

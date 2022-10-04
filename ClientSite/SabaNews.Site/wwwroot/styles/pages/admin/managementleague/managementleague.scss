@@ -1,4 +1,5 @@
 ﻿@import '../custom-modal';
+@import '../custom-input';
 
 .modal-edit-center {
     position: absolute;
@@ -173,10 +174,112 @@
         text-align: right;
     }
 
+    .flex-form-input {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .label-admin {
+            width: 30%;
+            margin: 0;
+        }
+
+        .admin-text-logo {
+            margin-left: 92px;
+            width: 100%;
+        }
+
+        .custom-input {
+            width: 100%;
+            cursor: inherit;
+        }
+    }
+
     .form-btn .btn {
         margin-left: 12px;
         width: 80px;
         font-size: 15px;
+    }
+}
+
+.page-content .error {
+    margin-bottom: 0 !important;
+    margin-top: 1rem !important;
+}
+
+.input-upload {
+    border: 1px dashed $border-heading;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: .5rem;
+    background: #f7f7f7;
+    height: 5rem;
+    overflow: hidden;
+
+    img {
+        max-width: 4rem;
+        height: 4rem;
+    }
+
+    .icon-close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 1.8rem;
+        background: transparent;
+        cursor: pointer;
+        color: #1F2252;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .txt-img {
+        .icon-upload {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+    }
+
+    .photo-error {
+        margin: 0;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .input-file {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .save-img {
+        color: $color-fff;
+        padding: 1rem 2rem;
+        background: #9f224e;
+        border: none;
+        margin-top: 2rem;
+        font-weight: bold;
+        border-radius: 3px;
+        position: relative;
+        z-index: 100;
+        cursor: pointer;
+        display: none;
+        margin: 1rem auto;
     }
 }
 

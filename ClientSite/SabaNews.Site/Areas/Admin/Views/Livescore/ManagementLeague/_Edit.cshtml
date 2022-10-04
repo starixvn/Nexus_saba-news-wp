@@ -37,6 +37,32 @@
                                 <input type="text" value="@Model[0].LeagueNameVN" class="form-control txt-leagueNameVn" id="editLeagueNameVN" name="LeagueNameVN" />
                             </td>
                         </tr>
+
+                        <tr class="form-input flex-form-input">
+                            <td>
+                                <label>
+                                    Logo VN
+                                </label>
+                            </td>
+                            <td>
+                                <div class="admin-text-logo">
+                                    @{
+                                        var display = !string.IsNullOrEmpty(Model[0].Icon);
+                                        var hide = display ? "none" : "flex";
+                                        var show = display ? "flex" : "none";
+                                    }
+                                    <div class="input-upload">
+                                        <input type="file" class="input-file photo" id="editLeagueIcon">
+                                        <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                                        <div class="img-upload">
+                                            <img class="review_photo" src="@Model[0].Icon" alt="review photo" style="display:@show" width="100" />
+                                            <p class="error photo-error" style="display:none"></p>
+                                            <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="form-btn">
