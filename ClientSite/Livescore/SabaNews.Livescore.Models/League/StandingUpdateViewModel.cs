@@ -8,5 +8,7 @@
         public SeasonStandingUpdate Standing { get; set; }
 
         public List<StandingGroupModel> Groups { get; set; }
+
+        public StandingGroupModel Group { get; set; }
     }
 }

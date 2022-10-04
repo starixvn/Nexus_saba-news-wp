@@ -10,6 +10,7 @@
     using SabaNews.Models.Livescore.StandingManagement;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class StandingManagementController : AdminController
@@ -65,11 +66,14 @@
             var criteriaGroup = new GetLeagueSeasonStandingCriteria { SeasonId = seasonId, LeagueId = leagueId };
             var standings = await leagueService.GetLeagueSeasonStanding(criteriaGroup);
             var groupStanding = LivescoreHelper.GroupStandingsByGroupName(standings);
+            var group = groupStanding.FirstOrDefault(item => item.GroupName == standing.GroupName);
             var model = new StandingUpdateViewModel
             {
                 Standing = standing,
-                Groups = groupStanding
+                Groups = groupStanding,
+                Group = group
             };
+            
 
             return PartialView("~/Areas/Admin/Views/Livescore/StandingManagement/_Edit.cshtml", model);
         }

@@ -165,7 +165,7 @@
             fextension = fname.substring(fname.lastIndexOf('.') + 1);
 
         if (!type_reg.test(ftype)) {
-            errorSection.html("Sorry, this file type is not permitted for security reasons!");
+            errorSection.html("Just support for jpg, png, jpeg, gif file type");
             errorSection.show();
             return false;
         } else if (fsize > 3145728) {

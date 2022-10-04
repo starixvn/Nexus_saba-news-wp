@@ -4,6 +4,8 @@
     var seasonId = window.seasonId;
     var search = '';
     var dateSort = 'asc';
+    var leagueName = '';
+    var seasonName = '';
     function GetSeason(leagueId) {
         $.ajax({
             url: "/Admin/MatchManagement/GetSeason",
@@ -31,15 +33,15 @@
     function initAction() {
         $('.btn-Edit').on('click', function () {
             var url = $(this).data('url');
-            //var team = $(this).data('team');
+            var team = $(this).data('team');
             leagueName = $('.league-select').find(':selected').data('name');
             seasonName = $('.season-select').find(':selected').data('name');
-            //var title = `Match Editing (${group}${divide}${team} / ${leagueName} ${seasonName})`;
+            var title = `Match Editing (${team}) / ${leagueName} ${seasonName}`;
             $.ajax({
                 type: 'GET',
                 url: url,
                 success: function (html) {
-                    $('#EditMatchModal .title').html('Edit Match');
+                    $('#EditMatchModal .title').html(title);
                     $('#EditMatchModal .modal-body').html(html);
                     $('#EditMatchModal').modal('show');
 
@@ -167,7 +169,7 @@
             fextension = fname.substring(fname.lastIndexOf('.') + 1);
 
         if (!type_reg.test(ftype)) {
-            errorSection.html("Sorry, this file type is not permitted for security reasons!");
+            errorSection.html("Just support for jpg, png, jpeg, gif file type!");
             errorSection.show();
             return false;
         } else if (fsize > 3145728) {
