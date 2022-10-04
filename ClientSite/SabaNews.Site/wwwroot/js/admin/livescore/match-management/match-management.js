@@ -47,6 +47,10 @@
 
                     $('#btn-save').on('click', function () {
                         $(this).prop('disabled', true);
+                        if (!validateForm()) {
+                            $(this).prop('disabled', false);
+                            return false;
+                        }
                         var matchId = $(this).data('id');
                         var homeTeamId = $('#editHomeId').val();
                         var homeTeamNameVN = $('#editHomeVN').val();
@@ -104,6 +108,56 @@
                         })
                     });
 
+
+                    function validateForm() {
+                        var htmlHome = '';
+                        var htmlAway = '';
+                        var isValid = true;
+                        if ($('#homeTeamHalfScore').val() < 0 || $('#homeTeamHalfScore').val() > 100) {
+                            htmlHome += '1H Score';
+                            isValid = false;
+                        }
+                        if ($('#homeTeamExtraScore').val() < 0 || $('#homeTeamExtraScore').val() > 100) {
+                            htmlHome += ', 2H Score';
+                            isValid = false;
+                        }
+
+                        if ($('#homeTeamAggregateScore').val() < 0 || $('#homeTeamAggregateScore').val() > 100) {
+                            htmlHome += ', AGG';
+                            isValid = false;
+                        }
+
+                        if ($('#homeTeamPenaltyScore').val() < 0 || $('#homeTeamPenaltyScore').val() > 100) {
+                            htmlHome += ', PEN';
+                            isValid = false;
+                        }
+                        if ($('#awayTeamHalfScore').val() < 0 || $('#awayTeamHalfScore').val() > 100) {
+                            htmlAway += '1H Score';
+                            isValid = false;
+                        }
+                        if ($('#awayTeamExtraScore').val() < 0 || $('#awayTeamExtraScore').val() > 100) {
+                            htmlAway += ', 2H Score';
+                            isValid = false;
+                        }
+
+                        if ($('#awayTeamAggregateScore').val() < 0 || $('#awayTeamAggregateScore').val() > 100) {
+                            htmlAway += ', AGG';
+                            isValid = false;
+                        }
+
+                        if ($('#awayTeamPenaltyScore').val() < 0 || $('#awayTeamPenaltyScore').val() > 100) {
+                            htmlAway += ', PEN';
+                            isValid = false;
+                        }
+                        if (!isValid) {
+                            htmlHome += ' value must from 0 to 100';
+                            htmlAway+= ' value must from 0 to 100';
+                        }
+                        $('.error-home').html(htmlHome);
+                        $('.error-away').html(htmlAway);
+                        return isValid;
+                    }
+
                     $('.photo').on('change', function (e) {
                         var form = $(this).parent();
                         var files = $(this)[0].files[0];
@@ -128,6 +182,7 @@
                         $(this).hide();
                     });
                     $('.input-number').on('keypress', function (e) {
+                        
                         $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
                         if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
                             e.preventDefault();
