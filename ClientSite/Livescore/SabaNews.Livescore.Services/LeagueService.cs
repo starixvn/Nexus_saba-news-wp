@@ -348,7 +348,7 @@
                 OldGroupName = model.OldGroupName
             };
             var result =  await baseService.ExecuteNonQueryAsync(cmdUpdate);
-            if (result.IsSuccessful && (model.IsUpdatePosition || model.GroupName != null))
+            if (result.IsSuccessful && (model.IsUpdatePosition || model.IsUpdateGroupName))
             {
                 result = await baseService.ExecuteNonQueryAsync(cmdUpdatePosition);
             }
