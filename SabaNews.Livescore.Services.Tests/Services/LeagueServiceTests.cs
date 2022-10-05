@@ -433,6 +433,35 @@
         }
 
         [Fact]
+        public async Task UpdateStandingAsync_WhenUpdateGroup_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = new StandingUpdateModel
+            {
+                SeasonId = 1,
+                StageId = 1,
+                TeamId = 1,
+                Position = 1,
+                IsUpdatePosition = false,
+                IsUpdateGroupName = true
+            };
+            var updateCmd = fixture.Create<UpdateStandingCommand>();
+            var updatePositionCmd = fixture.Create<UpdateStandingPositionCommand>();
+            var league = fixture.Create<League>();
+            var leagues = fixture.Create<IList<League>>();
+            var expected = new CommandResult { Message = "msg", Code = Constants.SuccessCode };
+            var expectedUpdatePosition = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingCommand>(x => updateCmd = x)).Returns(expected);
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingPositionCommand>(x => updatePositionCmd = x)).Returns(expectedUpdatePosition);
+            //Act
+            var actual = await service.UpdateStandingAsync(model);
+            //Assert
+            Assert.Equal(expectedUpdatePosition, actual);
+        }
+
+        [Fact]
         public void SearchLeague_WhenCalledMajorTrue_ReturnExpectedResult()
         {
             //Arrange

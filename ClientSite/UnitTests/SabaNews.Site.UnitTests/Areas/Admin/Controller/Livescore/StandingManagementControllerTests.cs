@@ -3,6 +3,7 @@
     using AutoFixture;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using NLog.LayoutRenderers;
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -71,7 +72,7 @@
         }
 
         [Fact]
-        public async Task EditMatch_WhenCalled_ReturnExpectedData()
+        public async Task EditStanding_WhenStandingAlreadyEdit_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
@@ -80,8 +81,11 @@
             var teamId = fixture.Create<int>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
             var expectedStanding = fixture.Create<SeasonStandingUpdate>();
+            var criteriaGroup = fixture.Create<GetLeagueSeasonStandingCriteria>();
+            var expectedGroup = fixture.Create<IList<SeasonStandings>>();
 
             leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
+            leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => x = criteriaGroup)).Returns(expectedGroup);
             //Act
             var result = await controller.EditStanding(seasonId, stageId, teamId, teamId);
 
@@ -92,15 +96,41 @@
         }
 
         [Fact]
-        public async Task EditStanding_WhenNotUploadIcon_ReturnExpectedData()
+        public async Task EditStanding_WhenFirstEdit_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var model = new StandingUpdateModel { };
-            model.IsDeletedIcon = true;
+            var seasonId = fixture.Create<int>();
+            var stageId = fixture.Create<int>();
+            var teamId = fixture.Create<int>();
+            var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
+            var expectedStanding = fixture.Create<SeasonStandingUpdate>();
+            var criteriaGroup = fixture.Create<GetLeagueSeasonStandingCriteria>();
+            var expectedGroup = fixture.Create<IList<SeasonStandings>>();
+            expectedStanding.GroupNameCustom = null;
+
+            leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
+            leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => x = criteriaGroup)).Returns(expectedGroup);
+            //Act
+            var result = await controller.EditStanding(seasonId, stageId, teamId, teamId);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<StandingUpdateViewModel>(viewResult.Model);
+            Assert.Equal(expectedStanding, viewModel.Standing);
+        }
+
+        [Fact]
+        public async Task EditStanding_WhenNotUpdateGroupName_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var model = fixture.Create<StandingUpdateModel>();
+            model.GroupName = null;
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
             var expectedStanding = fixture.Create<SeasonStandingUpdate>();
+            expectedStanding.GroupNameCustom = null;
             var expectedUpdateResult = fixture.Create<CommandResult>();
 
             leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
@@ -114,29 +144,21 @@
         }
 
         [Fact]
-        public async Task EditStanding_WhenUploadIconSuccessful_ReturnExpectedData()
+        public async Task EditStanding_WhenUpdateGroupNameOrigin_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var model = new StandingUpdateModel { };
-            model.IsDeletedIcon = true;
-            var stream = new MemoryStream();
-            var header = new HeaderDictionary();
-            header.Add("Name", new string[1] { "Value" });
-            model.Icon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
-            {
-                Headers = header,
-                ContentType = "application/pdf"
-            };
+            var model = fixture.Create<StandingUpdateModel>();
+            model.GroupName = "group A";
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
             var expectedStanding = fixture.Create<SeasonStandingUpdate>();
+            expectedStanding.GroupNameCustom = null;
+            expectedStanding.GroupName = "group";
             var expectedUpdateResult = fixture.Create<CommandResult>();
-            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
 
             leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
             leagueService.UpdateStandingAsync(Arg.Do<StandingUpdateModel>(x => x = model)).Returns(expectedUpdateResult);
-            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.Icon), Arg.Do<string>(x => x = UploadDir.MatchTeamUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.EditStanding(model);
 
@@ -146,29 +168,21 @@
         }
 
         [Fact]
-        public async Task EditStanding_WhenUploadIconFailed_ReturnExpectedData()
+        public async Task EditStanding_WhenUpdateGroupNameCutom_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var model = new StandingUpdateModel { };
-            model.IsDeletedIcon = true;
-            var stream = new MemoryStream();
-            var header = new HeaderDictionary();
-            header.Add("Name", new string[1] { "Value" });
-            model.Icon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
-            {
-                Headers = header,
-                ContentType = "application/pdf"
-            };
+            var model = fixture.Create<StandingUpdateModel>();
+            model.GroupName = "group A";
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
             var expectedStanding = fixture.Create<SeasonStandingUpdate>();
+            expectedStanding.GroupNameCustom = "group 1";
+            expectedStanding.GroupName = "group";
             var expectedUpdateResult = fixture.Create<CommandResult>();
-            var expectedUploadResult = new CommandResult { Message = "error" };
 
             leagueService.GetLeagueSeasonStandingDetailAsync(Arg.Do<GetLeagueSeasonStandingDetailCriteria>(x => x = criteria)).Returns(expectedStanding);
             leagueService.UpdateStandingAsync(Arg.Do<StandingUpdateModel>(x => x = model)).Returns(expectedUpdateResult);
-            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.Icon), Arg.Do<string>(x => x = UploadDir.MatchTeamUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.EditStanding(model);
 
@@ -176,7 +190,6 @@
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expectedUpdateResult, jsonResult.Value);
         }
-
 
         #region Helpers
         private StandingManagementController GetController()

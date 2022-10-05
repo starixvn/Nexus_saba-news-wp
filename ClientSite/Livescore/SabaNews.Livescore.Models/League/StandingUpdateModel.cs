@@ -9,10 +9,8 @@
         public long StageId { get; set; }
         public long TeamId { get; set; }
         public int Position { get; set; }
-        public bool IsDeletedIcon { get; set; }
         public bool IsUpdatePosition { get; set; }
         public bool IsUpdateGroupName { get; set; }
-        public IFormFile Icon { get; set; }
         public string GroupName { get; set; }
         public string OldGroupName { get; set; }
         public short? Total { get; set; }
