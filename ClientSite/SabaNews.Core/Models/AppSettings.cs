@@ -13,5 +13,6 @@
         public int SyncHeadToHeadRowLimit { get; set; }
         public int NumOfDayPastToSyncMatch { get; set; }
         public int NumOfDayFutureToSyncMatch { get; set; }
+        public int SyncIncidentMinutes { get; set; }
     }
 }

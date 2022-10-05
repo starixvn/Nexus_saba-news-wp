@@ -142,7 +142,8 @@
 
         public async Task SyncIncidentByUpdatedTimeAsync()
         {
-            var now = DateTime.UtcNow.AddMinutes(-30);
+            int SyncMinutes = appSettings.SyncIncidentMinutes;
+            var now = DateTime.UtcNow.AddMinutes(-SyncMinutes);
             var lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetIncidentLastUpdatedTimeCriteria());
             if (lastUpdatedTime == null)
             {
@@ -150,7 +151,7 @@
             }
             else
             {
-                lastUpdatedTime = ((DateTime)lastUpdatedTime).AddHours(30);
+                lastUpdatedTime = ((DateTime)lastUpdatedTime).AddMinutes(SyncMinutes);
                 if (lastUpdatedTime > now)
                 {
                     lastUpdatedTime = now;
