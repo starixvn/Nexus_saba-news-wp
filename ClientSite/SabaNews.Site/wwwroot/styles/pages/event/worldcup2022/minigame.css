@@ -385,28 +385,85 @@ body {
     transform-origin: top left; }
   .wrapper-header .header-control {
     left: auto;
-    right: 17%;
+    right: 20%;
     top: 60%; }
-    .wrapper-header .header-control ul li {
+    .wrapper-header .header-control ul li:first-child {
       margin-right: 5rem; }
-      .wrapper-header .header-control ul li a {
-        clip-path: polygon(92% 0, 100% 50%, 94% 100%, 8% 100%, 0 50%, 8% 0);
-        border: none;
+    .wrapper-header .header-control ul li a {
+      clip-path: polygon(92% 0, 100% 50%, 94% 100%, 8% 100%, 0 50%, 8% 0);
+      border: none;
+      background: #FF004B;
+      border-radius: 0;
+      color: #fff;
+      line-height: 3.3rem;
+      padding: 0.3vw 2vw;
+      text-transform: inherit; }
+      .wrapper-header .header-control ul li a:hover {
         background: #FF004B;
-        border-radius: 0;
-        color: #fff;
-        line-height: 3.3rem;
-        padding: 0.3vw 2vw;
-        text-transform: inherit; }
-        .wrapper-header .header-control ul li a:hover {
-          background: #FF004B;
-          border: none;
-          color: #fff; }
+        border: none;
+        color: #fff; }
   .wrapper-header-column {
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
     grid-gap: 1rem; }
+
+.minigame-title {
+  margin-top: 5rem;
+  margin-bottom: 3.2rem; }
+  .minigame-title .text {
+    color: #570F28;
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    text-align: center; }
+  .minigame-title .dots-parent {
+    height: 2px;
+    display: block;
+    background: #570F28;
+    width: 33.5rem;
+    margin: 0 auto;
+    position: relative; }
+    .minigame-title .dots-parent:after, .minigame-title .dots-parent:before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: #570F28;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      position: absolute; }
+    .minigame-title .dots-parent:after {
+      left: -5px;
+      top: -2px; }
+    .minigame-title .dots-parent:before {
+      right: -5px;
+      top: -2px; }
+    .minigame-title .dots-parent ul {
+      position: absolute;
+      background: #eeeee4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      padding: 0 1rem; }
+      .minigame-title .dots-parent ul li {
+        background: #570F28;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        margin-right: 5px; }
+        .minigame-title .dots-parent ul li:last-child {
+          margin-right: 0; }
+        .minigame-title .dots-parent ul li.dots-small {
+          width: 6px;
+          height: 6px; }
+        .minigame-title .dots-parent ul li.dots-regular {
+          width: 7px;
+          height: 7px; }
+        .minigame-title .dots-parent ul li.dots-parent-center {
+          width: 10px;
+          height: 10px; }
 
 .footer {
   background-color: #081224; }

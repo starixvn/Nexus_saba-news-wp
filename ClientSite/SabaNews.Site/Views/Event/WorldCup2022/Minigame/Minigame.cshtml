@@ -73,21 +73,9 @@
         <div class="wave-game"></div>
     </div>
 
-
-
-
-
-
-
-
     <div class="wc-page-main">
         <div class="block-men-event">
-            <div class="img-event img-left"><img src="~/images/event/img6.png" class="img-res" /></div>
-            <div class="img-event img-right"><img src="~/images/event/img1.png" class="img-res" /></div>
-            <div class="main-event-img">
-                <img src="~/images/event/gif.png" class="img-res img-event-desktop" />
-                <img src="~/images/event/gif-mobile.png" class="img-res img-event-mobile" />
-            </div>
+            ssadsdasda
         </div>
         @if (Model.IsLogin)
         {
@@ -135,9 +123,17 @@
                     var luckyNumber = Model.MinigameDetail[0].LuckyNumber.Trim();
                     var arrNumber = new StringBuilder(luckyNumber);
                     string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
-                    <div class="title-event">
-                        <img src="~/images/event/line.png" class="img-res" />
-                        <span>Số may mắn của bạn</span>
+                    <div class="minigame-title">
+                        <p class="text">Số người có cùng dự đoán với bạn</p>
+                        <div class="dots-parent">
+                            <ul>
+                                <li class="dots-small"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-parent-center"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-small"></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="field-number field-number-result @arrNumberAsWord[0]">
                         <div class="form-event">
@@ -163,9 +159,17 @@
                 }
                 else if (Model.IsLogin && Model.MinigameDetail.Count == 0)
                 {
-                    <div class="title-event">
-                        <img src="~/images/event/line.png" class="img-res" />
-                        <span>Số may mắn của bạn</span>
+                    <div class="minigame-title">
+                        <p class="text">Số người có cùng dự đoán với bạn</p>
+                        <div class="dots-parent">
+                            <ul>
+                                <li class="dots-small"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-parent-center"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-small"></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="field-number">
                         <form class="form-event" id="membership-event-form">
