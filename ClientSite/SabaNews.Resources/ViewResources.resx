@@ -1074,4 +1074,7 @@
   <data name="Battle" xml:space="preserve">
     <value>Trận</value>
   </data>
+  <data name="FTScore" xml:space="preserve">
+    <value>FT Score</value>
+  </data>
 </root>

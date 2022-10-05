@@ -84,7 +84,6 @@
                         formData.append('startTime', $('#startTime').val());
                         formData.append('round', $('#round').val());
                         formData.append('stageNameVN', $('#stageNameVN').val());
-                        console.log(homeIcon, currentHomeIcon);
 
                         $.ajax({
                             type: 'POST',
@@ -114,7 +113,7 @@
                         var htmlAway = '';
                         var isValid = true;
                         $('.round-error').html('');
-                        if ($('#round').val() < 1 || $('#round').val() > 50) {
+                        if (($('#round').val() < 1 || $('#round').val() > 50) && $('#round').val() !== '') {
                             var isValid = false;
                             $('.round-error').html('round value must from 1 to 50');
                         }
@@ -123,7 +122,7 @@
                             isValid = false;
                         }
                         if ($('#homeTeamExtraScore').val() < 0 || $('#homeTeamExtraScore').val() > 100) {
-                            htmlHome += ', 2H Score';
+                            htmlHome += ', FT Score';
                             isValid = false;
                         }
 
@@ -141,7 +140,7 @@
                             isValid = false;
                         }
                         if ($('#awayTeamExtraScore').val() < 0 || $('#awayTeamExtraScore').val() > 100) {
-                            htmlAway += ', 2H Score';
+                            htmlAway += ', FT Score';
                             isValid = false;
                         }
 

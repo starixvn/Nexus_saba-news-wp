@@ -30,7 +30,7 @@
 
                                 var groupName = $"{@ViewResources.Board} {group.GroupName.Substring(0, 1)}";
                                 var selected = currentGroupName == group.GroupName ? "selected" : "";
-                                <option value="@group.GroupName" @selected>@groupName</option>
+                                <option value="@group.GroupName" data-count="@group.Standings.Count" @selected>@groupName</option>
                             }
 
                         </select>
@@ -44,7 +44,8 @@
             </label>
             <div class="admin-text-logo admin-text-logo-round">
                 <input type="hidden" id="editTeamId" value="@Model.Standing.TeamId" />
-                <input type="text" name="table-around" readonly="" class="form-control custom-input bg-custom-input" value="@(!string.IsNullOrEmpty(Model.Standing.TeamNameEN) ? Model.Standing.TeamNameEN : Model.Standing.TeamFullNameEN)">
+                <input type="text" name="table-around" readonly="" class="form-control custom-input bg-custom-input"
+                       value="@(!string.IsNullOrEmpty(Model.Standing.TeamNameEN) ? Model.Standing.TeamNameEN : Model.Standing.TeamFullNameEN)">
             </div>
         </div>
     </div>
@@ -54,7 +55,15 @@
                 @ViewResources.Position
             </label>
             <div class="admin-text-logo">
-                <input type="number" min="1" value="@Model.Standing.Position" class="form-control custom-input" id="editPosition" name="Position" />
+                <input type="hidden" value="@Model.Standing.Position" id="current-position" />
+                <select class="form-control custom-input" id="editPosition">
+                    @for (var i = 1; i <= Model.Group.Standings.Count; i++)
+                    {
+                        var selected = Model.Standing.Position == i ? "selected" : "";
+                        <option value="@i" @selected>@i</option>
+                    }
+
+                </select>
                 <p class="help-block"></p>
             </div>
         </div>

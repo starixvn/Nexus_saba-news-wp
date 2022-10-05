@@ -17,7 +17,7 @@
                 <th width="6%">@ViewResources.AwayLogo</th>
                 <th width="10%">@ViewResources.AwayName</th>
                 <th width="6%">@ViewResources._1HScore</th>
-                <th width="6%">@ViewResources._2HScore</th>
+                <th width="6%">@ViewResources.FTScore</th>
                 <th width="6%">@ViewResources.PEN</th>
                 <th width="6%">@ViewResources.AGG</th>
                 <th width="5%">@ViewResources.Action</th>
@@ -53,13 +53,13 @@
                             }
                             </td>
                             <td class="text-center">
-                            @if ((match.Status == MatchConstants.Finished || LivescoreHelper.IsLiveMatch(match.Status)) && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
+                            @if (match.Status == MatchConstants.Finished && (match.HomeTeamPenaltyScore > 0 || match.AwayTeamPenaltyScore > 0))
                             {
                                 <span>@match.HomeTeamPenaltyScore - @match.AwayTeamPenaltyScore</span>
                             }
                             </td>
                             <td class="text-center">
-                            @if ((match.Status == MatchConstants.Finished || LivescoreHelper.IsLiveMatch(match.Status)) && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
+                            @if (match.Status == MatchConstants.Finished && (match.HomeTeamAggregateScore > 0 || match.AwayTeamAggregateScore > 0))
                             {
                                 <span>@match.HomeTeamAggregateScore - @match.AwayTeamAggregateScore</span>
                             }

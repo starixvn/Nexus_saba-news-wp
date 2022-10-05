@@ -131,6 +131,18 @@
                             e.preventDefault();
                         }
                     });
+
+                    $('#groupName').on('change', function () {
+                        var count = $(this).find(':selected').data('count');
+                        var position = $('#current-position').val();
+                        console.log(count, position);
+                        var html = '';
+                        for (var i = 1; i <= count; i++) {
+                            var selected = i == position ? 'selected' : '';
+                            html += '<option value="' + i + '" ' + selected + ' >' + i + '</option>'
+                        }
+                        $('#editPosition').html(html);
+                    });
                 }
             })
         });

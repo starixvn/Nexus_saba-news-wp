@@ -1024,6 +1024,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FT Score.
+        /// </summary>
+        public static string FTScore {
+            get {
+                return ResourceManager.GetString("FTScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Goals Against.
         /// </summary>
         public static string GoalsAgainst {

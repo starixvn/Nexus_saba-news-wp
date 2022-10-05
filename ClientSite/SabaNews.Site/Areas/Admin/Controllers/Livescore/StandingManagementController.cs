@@ -66,7 +66,7 @@
             var criteriaGroup = new GetLeagueSeasonStandingCriteria { SeasonId = seasonId, LeagueId = leagueId };
             var standings = await leagueService.GetLeagueSeasonStanding(criteriaGroup);
             var groupStanding = LivescoreHelper.GroupStandingsByGroupName(standings);
-            var group = groupStanding.FirstOrDefault(item => item.GroupName == standing.GroupName);
+            var group = groupStanding.FirstOrDefault(item => item.GroupName == (standing.GroupNameCustom ?? standing.GroupName));
             var model = new StandingUpdateViewModel
             {
                 Standing = standing,
@@ -84,7 +84,7 @@
             var criteria = new GetLeagueSeasonStandingDetailCriteria { SeasonId = model.SeasonId, StageId = model.StageId, TeamId = model.TeamId };
             var standings = await leagueService.GetLeagueSeasonStandingDetailAsync(criteria);
 
-            model.IsUpdateGroupName = model.GroupName != null;
+            model.IsUpdateGroupName = (standings.GroupName != model.GroupName) || (standings.GroupNameCustom != null && standings.GroupNameCustom != model.GroupName);
             model.IsUpdatePosition = standings.Position != model.Position;
             model.GroupName = Helper.CheckOriginValue(standings.GroupName, model.GroupName);
             model.Total = Helper.CheckOriginValue(standings.Total, model.Total);
