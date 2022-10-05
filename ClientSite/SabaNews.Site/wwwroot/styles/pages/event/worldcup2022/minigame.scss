@@ -9,15 +9,15 @@ body{
 }
 
 .wrapper-header {
-    background : none;
-    height: 40vw;
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
+    background: none;
+    height: 36vw;
     position: relative;
 
     .wave-game {
         background: url('../../../../images/worldcup/minigame/top_bg.png') $primary-bg;
+        background-size: 100%;
+        background-position: top center;
+        background-repeat: no-repeat;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -31,13 +31,40 @@ body{
     }
 
     .header-control {
-        position : unset;
+        left : auto;
+        right : 17%;
+        top : 60%;
+        ul {
+            li {
+                margin-right: 5rem;
+
+                a {
+                    clip-path: polygon(92% 0,100% 50%,94% 100%,8% 100%,0 50%,8% 0);
+                    border: none;
+                    background: #FF004B;
+                    border-radius: 0;
+                    color: $white-color;
+                    line-height: 3.3rem;
+                    padding: 0.3vw 2vw;
+                    text-transform: inherit;
+
+                    &:hover {
+                        background: #FF004B;
+                        border: none;
+                        color: $white-color;
+                    }
+                }
+            }
+        }
     }
-    &-column{
-        display : grid;
-        grid-template-columns : 50% 50%;
-        align-items : center;
-        grid-gap : 1rem;
+
+    &-column {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: center;
+        grid-gap: 1rem;
     }
 }
-
+.footer {
+    background-color: #081224;
+}
