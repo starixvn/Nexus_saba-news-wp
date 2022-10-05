@@ -2,7 +2,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Match_GetByDate;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate`(
 	IN fromTime DATETIME
     ,IN toTime DATETIME
     ,IN sportId SMALLINT UNSIGNED
