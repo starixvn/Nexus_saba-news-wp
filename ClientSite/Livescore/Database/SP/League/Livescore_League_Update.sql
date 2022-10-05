@@ -10,7 +10,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Update`(
     IN CountryVN VARCHAR(255),
     IN LeagueNameVN VARCHAR(255), 
     IN LeagueId LONG,
-    IN Icon VARCHAR(255), 
+    IN CountryIconVN VARCHAR(255), 
     OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)    
 )
@@ -19,7 +19,7 @@ BEGIN
 	SET
 	`CountryVN` = CountryVN,
     `LeagueNameVN` = LeagueNameVN,
-	`CountryIconVN` = Icon
+	`CountryIconVN` = CountryIconVN
 	WHERE le.LeagueId = LeagueId;
 END
 

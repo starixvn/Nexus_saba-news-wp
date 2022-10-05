@@ -9,6 +9,7 @@ namespace SabaNews.Livescore.Models.League
         public string LeagueNameEN { get; set; }
         public string CountryIconVN { get; set; }
         public string LeagueFullNameEN { get; set; }
+        public string CountryLogo { get; set; }
         public string LeagueNameVN { get; set; }
 
         public string Icon { get; set; }
