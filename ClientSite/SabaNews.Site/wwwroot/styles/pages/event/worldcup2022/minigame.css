@@ -556,18 +556,7 @@ body {
         border-radius: 3px;
         display: block; }
       .minigame-table-body .minigame-team .group-team.active {
-        filter: url(#child);
-        position: relative; }
-        .minigame-table-body .minigame-team .group-team.active:before {
-          content: "";
-          display: block;
-          background: #EEEEE4;
-          clip-path: polygon(50% 0, 100% 4%, 100% 96%, 50% 100%, 0 96%, 0 4%);
-          position: absolute;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1; }
+        background: #EEEEE4; }
         .minigame-table-body .minigame-team .group-team.active li {
           color: #88162F; }
         .minigame-table-body .minigame-team .group-team.active .team-logo img {

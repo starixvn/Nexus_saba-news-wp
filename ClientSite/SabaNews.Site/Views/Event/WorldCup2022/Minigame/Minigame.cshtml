@@ -110,15 +110,6 @@
                                         <ul class="group-team">
                                             <li class="team-logo"><img src=@icon alt="@teamName" /></li>
                                             <li class="team-name">@teamName</li>
-                                            <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                                <defs>
-                                                    <filter id="child">
-                                                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-                                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                                                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                                                    </filter>
-                                                </defs>
-                                            </svg>
                                         </ul>
                                     }
                                 </div>
@@ -174,8 +165,6 @@
         }
 
         <div class="block-group" id="field-number-event">
-            <div class="flower flower-left"><img src="~/images/event/img5.png" class="img-res" /></div>
-            <div class="flower flower-right"><img src="~/images/event/img4.png" class="img-res" /></div>
             <div class="block-field-number">
                 @if (Model.IsLogin && Model.MinigameDetail.Count != 0)
                 {
@@ -194,7 +183,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="field-number field-number-result @arrNumberAsWord[0]">
+                    <div class="minigame-number minigame-number-result  @arrNumberAsWord[0]">
                         <div class="form-event">
                             <div class="form-input">
                                 @for (var i = 0; i < arrNumber.Length; i++)
@@ -213,7 +202,6 @@
                                 }
                             </div>
                         </div>
-                        <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
                 }
                 else if (Model.IsLogin && Model.MinigameDetail.Count == 0)
@@ -230,21 +218,28 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="field-number">
+                    <div class="minigame-number">
                         <form class="form-event" id="membership-event-form">
                             <div class="form-input">
                                 <input type="text" min="0" max="999999" id="luckyNumber" class="input-field-event input-event-number" />
                             </div>
-                            <button type="button" class="btn btn-event btn-submit-number active">Gửi</button>
+                            <button type="button" class="btn btn-submit-number">Gửi</button>
                         </form>
-                        <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
                 }
             </div>
             <div class="block-list-connect" id="list-rigister-event">
-                <div class="title-event">
-                    <img src="~/images/event/line.png" class="img-res" />
-                    <span>DANH SÁCH THAM GIA</span>
+                <div class="minigame-title">
+                    <p class="text">Danh sách tham gia</p>
+                    <div class="dots-parent">
+                        <ul>
+                            <li class="dots-small"></li>
+                            <li class="dots-regular"></li>
+                            <li class="dots-parent-center"></li>
+                            <li class="dots-regular"></li>
+                            <li class="dots-small"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="data-grid">
                 </div>
