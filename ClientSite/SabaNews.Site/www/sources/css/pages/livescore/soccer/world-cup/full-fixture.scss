@@ -233,9 +233,7 @@
           width: 4.2rem;
           height: 2.8rem;
           overflow: hidden;
-          img{
-            object-fit: cover;
-          }
+          object-fit: cover;
         }
         .soccer-team-status{
           @include tableMobile{
