@@ -41,13 +41,13 @@
                         <tr class="form-input flex-form-input">
                             <td>
                                 <label>
-                                    Logo VN
+                                    Country Icon
                                 </label>
                             </td>
                             <td>
                                 <div class="admin-text-logo">
                                     @{
-                                        var display = !string.IsNullOrEmpty(Model[0].Icon);
+                                        var display = !string.IsNullOrEmpty(Model[0].CountryIconVN);
                                         var hide = display ? "none" : "flex";
                                         var show = display ? "flex" : "none";
                                     }
@@ -55,7 +55,7 @@
                                         <input type="file" class="input-file photo" id="editLeagueIcon">
                                         <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                                         <div class="img-upload">
-                                            <img class="review_photo" src="@Model[0].Icon" alt="review photo" style="display:@show" width="100" />
+                                            <img class="review_photo" src="@Model[0].CountryIconVN" alt="review photo" style="display:@show" width="100" />
                                             <p class="error photo-error" style="display:none"></p>
                                             <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
                                         </div>

@@ -14,7 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Get`(
     */
 )
 BEGIN
-	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, e.IsMajor, e.Priority, e.CreatedDate
+	SELECT l.LeagueId, l.CountryIconVN, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, e.IsMajor, e.Priority, e.CreatedDate
 	FROM livescore_league l
 		INNER JOIN livescore_league_extra e ON l.LeagueId = e.LeagueId
 	ORDER BY e.Priority is null, e.Priority;

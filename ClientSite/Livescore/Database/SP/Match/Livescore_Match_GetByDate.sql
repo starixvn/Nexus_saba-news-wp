@@ -2,7 +2,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Match_GetByDate;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate_xtest`(
 	IN fromTime DATETIME
     ,IN toTime DATETIME
     ,IN sportId SMALLINT UNSIGNED
@@ -47,7 +47,7 @@ BEGIN
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
-		,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, le.IsMajor, le.Priority, l.CountryVN
+		,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, le.IsMajor, le.Priority, l.CountryVN, l.CountryIconVN
         ,c.CountryId, c.CountryLogo, c.CountryLogoCustom
         ,s.SeasonId, s.Year
         ,ss.StageId, ss.StageNameEN, COALESCE(ss.StageNameVN, rr.NameVN) AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex

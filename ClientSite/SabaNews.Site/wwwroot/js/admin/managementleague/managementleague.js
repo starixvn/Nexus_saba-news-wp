@@ -68,6 +68,7 @@
                         reader.readAsDataURL(files);
                         reader.onload = function (e) {
                             review.attr('src', e.target.result);
+                            document.getElementsByClassName("txt-img")[0].style.display = "none";
                             ChangePhotoHanlder(form);
                         };
                     });
@@ -75,6 +76,7 @@
                     $('.cancel-upload').on('click', function () {
                         var form = $(this).parent();
                         CancelUploadHandler(form);
+                        document.getElementsByClassName("txt-img")[0].style.display = "flex";
                         $(this).hide();
                     });
 

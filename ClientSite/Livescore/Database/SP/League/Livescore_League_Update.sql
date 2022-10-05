@@ -19,7 +19,7 @@ BEGIN
 	SET
 	`CountryVN` = CountryVN,
     `LeagueNameVN` = LeagueNameVN,
-	`Icon` = Icon
+	`CountryIconVN` = Icon
 	WHERE le.LeagueId = LeagueId;
 END
 

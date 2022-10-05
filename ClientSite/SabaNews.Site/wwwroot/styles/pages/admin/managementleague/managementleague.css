@@ -286,8 +286,8 @@
   margin: 0;
 }
 #EditLeagueContent .modal-content .flex-form-input .admin-text-logo {
-  margin-left: 92px;
-  width: 100%;
+  margin-left: 63px;
+  width: 75%;
 }
 #EditLeagueContent .modal-content .flex-form-input .custom-input {
   width: 100%;
@@ -329,6 +329,9 @@
 }
 .input-upload .icon-close:focus {
   outline: none;
+}
+.input-upload .txt-img {
+  margin-top: 5px;
 }
 .input-upload .txt-img .icon-upload {
   font-size: 3rem;
