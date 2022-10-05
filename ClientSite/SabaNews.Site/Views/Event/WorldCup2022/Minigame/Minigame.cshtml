@@ -79,7 +79,53 @@
         </div>
         @if (Model.IsLogin)
         {
-            <div class="wc-block wc-block-bxh" id="home-standing">
+            <div class="minigame-title">
+                <p class="text">Số người có cùng dự đoán với bạn</p>
+                <div class="dots-parent">
+                    <ul>
+                        <li class="dots-small"></li>
+                        <li class="dots-regular"></li>
+                        <li class="dots-parent-center"></li>
+                        <li class="dots-regular"></li>
+                        <li class="dots-small"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="minigame-bxh">
+                <div class="wrapper-container">
+                    <div class="minigame-table">
+                        <div class="minigame-table-header">
+                            Bảng A
+                        </div>
+                        <div class="minigame-table-body">
+                            <div class="minigame-team">
+                                <ul>
+                                    <li><img src="#" alt="Alternate Text" /></li>
+                                    <li>Canada</li>
+                                </ul>
+                                <ul>
+                                    <li><img src="#" alt="Alternate Text" /></li>
+                                    <li>Canada</li>
+                                </ul>
+                                <ul>
+                                    <li><img src="#" alt="Alternate Text" /></li>
+                                    <li>Canada</li>
+                                </ul>
+                                <ul>
+                                    <li><img src="#" alt="Alternate Text" /></li>
+                                    <li>Canada</li>
+                                </ul>
+                                <ul>
+                                    <li><img src="#" alt="Alternate Text" /></li>
+                                    <li>Canada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="wc-block wc-block-bxh" id="home-standing">
                 <div class="grid-bxh scroll-snap">
 
                     @foreach (var group in Model.StandingsViewModel)
@@ -111,7 +157,7 @@
                         </a>
                     }
                 </div>
-            </div>
+            </div>*@
         }
 
         <div class="block-group" id="field-number-event">

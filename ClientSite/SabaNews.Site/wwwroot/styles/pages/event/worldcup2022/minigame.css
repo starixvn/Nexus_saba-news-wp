@@ -307,13 +307,10 @@ body {
       position: absolute;
       top: 10px;
       right: -5px;
-      content: ''; }
-      @media screen and (max-width: 1024px) {
-        .auth-provider .auth-displayname:after {
-          display: none; } }
-    @media screen and (max-width: 1024px) {
-      .auth-provider .auth-displayname .display-user {
-        display: none; } }
+      content: '';
+      display: none; }
+    .auth-provider .auth-displayname .display-user {
+      display: none; }
 
 .box-auth {
   display: none;
@@ -464,6 +461,33 @@ body {
         .minigame-title .dots-parent ul li.dots-parent-center {
           width: 10px;
           height: 10px; }
+
+.wrapper-container {
+  max-width: 115rem;
+  padding: 0 1rem;
+  margin: 0 auto; }
+
+.minigame-table-header {
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #AE5369; }
+
+.minigame-table-body {
+  margin-top: 1.6rem; }
+  .minigame-table-body .minigame-team ul {
+    display: flex;
+    align-items: center; }
+    .minigame-table-body .minigame-team ul li {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 2.8rem; }
+      .minigame-table-body .minigame-team ul li:first-child {
+        margin-right: 1.8rem; }
 
 .footer {
   background-color: #081224; }

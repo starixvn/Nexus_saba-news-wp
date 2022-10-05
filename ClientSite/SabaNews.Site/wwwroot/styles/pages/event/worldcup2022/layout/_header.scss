@@ -395,7 +395,8 @@
     display: flex;
     align-items: center;
     padding: .5rem 0;
-    cursor : pointer;
+    cursor: pointer;
+
     @include tableMobile {
         padding: 0;
     }
@@ -424,8 +425,9 @@
     .auth-displayname {
         position: relative;
         padding-right: .8rem;
-        color : $nav-header-color;
-        font-weight : 700;
+        color: $nav-header-color;
+        font-weight: 700;
+
         &:after {
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
@@ -434,15 +436,18 @@
             top: 10px;
             right: -5px;
             content: '';
+            display: none;
 
-            @include tableMobile {
-                display: none;
+            @mixin creen1391px {
+                display: block;
             }
         }
 
         .display-user {
-            @include tableMobile {
-                display: none;
+            display: none;
+
+            @mixin creen1391px {
+                display: block;
             }
         }
     }

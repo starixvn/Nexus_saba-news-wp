@@ -149,6 +149,46 @@ body{
         }
     }
 }
+.wrapper-container{
+    max-width : 115rem;
+    padding : 0 1rem;
+    margin : 0 auto;
+}
+
+.minigame-table {
+    &-header {
+        text-align: center;
+        color: $white-color;
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 2.8rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #AE5369;
+    }
+
+    &-body {
+        margin-top: 1.6rem;
+
+        .minigame-team {
+            ul {
+                display: flex;
+                align-items: center;
+
+                li {
+                    color: $white-color;
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    line-height: 2.8rem;
+
+                    &:first-child {
+                        margin-right: 1.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 .footer {
     background-color: #081224;
