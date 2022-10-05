@@ -59,18 +59,35 @@
 <section class="worldcup-lastest-news">
     <div id="worldcup-fixture"></div>
     <div class="wrapper-header">
-        <div class="header-control">
-            <ul>
-                <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
-                @{
-                    if (!Model.IsLogin)
-                    {
-                        <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
-                    }
-                }
-            </ul>
+        <div class="wrapper-header-column">
+            <div class="column column-left">
+                <img src="~/images/worldcup/minigame/top_left_banner.png" alt="Alternate Text" />
+            </div>
+            <div class="column column-right">
+                <img src="~/images/worldcup/minigame/top_right_banner.png" alt="Alternate Text" />
+                <div class="header-control">
+                    <ul>
+                        <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
+                        @{
+                            if (!Model.IsLogin)
+                            {
+                                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
         </div>
+        <div class="wave-game"></div>
     </div>
+
+
+
+
+
+
+
+
     <div class="wc-page-main">
         <div class="block-men-event">
             <div class="img-event img-left"><img src="~/images/event/img6.png" class="img-res" /></div>

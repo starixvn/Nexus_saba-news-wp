@@ -363,3 +363,30 @@ body {
 
 body {
   overflow: unset; }
+
+.wrapper-header {
+  background: none;
+  height: 40vw;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative; }
+  .wrapper-header .wave-game {
+    background: url("../../../../images/worldcup/minigame/top_bg.png") #48041A;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: skewY(-2deg);
+    transform-origin: top left; }
+  .wrapper-header .header-control {
+    position: unset; }
+  .wrapper-header-column {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    grid-gap: 1rem; }
