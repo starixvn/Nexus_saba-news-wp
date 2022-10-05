@@ -158,10 +158,9 @@
                 }
             }
             
-            
             var updatedMatches = await fetchMatchService.FetchMatchIncidentUpdateTimeAsync((int)SportType.Soccer, lastUpdatedTime);
             await SyncIncidents(updatedMatches.ToArray());
-            await baseService.ExecuteNonQueryAsync(new InsertIncidentUpdatedTimeCommand { UpdatedTime = (DateTime)lastUpdatedTime });
+            await baseService.ExecuteNonQueryAsync(new InsertIncidentUpdatedTimeCommand { UpdatedTime = now });
 
         }
 
