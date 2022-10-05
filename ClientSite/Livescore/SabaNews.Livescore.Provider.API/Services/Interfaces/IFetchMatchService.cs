@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using SabaNews.Livescore.Models.Synchronous;
@@ -20,5 +21,7 @@
         Task<List<MatchIncident>> FetchMatchIncidentAsync(short sportId, long matchId);
 
         Task<List<DeletedMatch>> FetchDeletedMatchAsync();
+
+        Task<List<long>> FetchMatchIncidentUpdateTimeAsync(short sportId, DateTime? lastUpdatedTime);
     }
 }

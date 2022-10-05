@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -97,6 +98,22 @@
             }
 
             return new List<MatchIncident>();
+        }
+
+        public async Task<List<long>> FetchMatchIncidentUpdateTimeAsync(short sportId, DateTime? lastUpdatedTime)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { ApiParams.SportId, sportId },
+                { ApiParams.TimeGte, lastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) },
+            };
+            var incidents = await httpClient.ExecutePostAsync<MatchIncidentUpdateTimeResponse>(ApiPath.GetMatchIncidentApiPath, param);
+            if (incidents is not null && incidents.UpdatedMatches is not null)
+            {
+                return incidents.UpdatedMatches;
+            }
+
+            return new List<long>();
         }
 
         public async Task<List<MatchDetailResponse>> FetchLiveMatchListAsync(SyncMatchParams paramModel)

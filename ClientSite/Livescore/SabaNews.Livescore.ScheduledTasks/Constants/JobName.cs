@@ -20,5 +20,6 @@
         public const string SyncAllMatchByMaxId = "SyncAllMatchByMaxId";
         public const string SyncDeletedMatchesInTwoWeek = "SyncDeletedMatchesInTwoWeek";
         public const string SyncCountryList = "SyncCountryList";
+        public const string SyncIncidentByUpdatedTime = "SyncIncidentByUpdatedTime";
     }
 }

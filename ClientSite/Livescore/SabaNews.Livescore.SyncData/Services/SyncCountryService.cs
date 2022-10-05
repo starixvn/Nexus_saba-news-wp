@@ -29,7 +29,7 @@
 
         public async Task SyncCountryListAsync()
         {
-         List<CountryListResponse> countries = await fetchCountryService.FetchCountryListAsync();
+            List<CountryListResponse> countries = await fetchCountryService.FetchCountryListAsync();
             if (countries.Any())
             {
                 var json = JsonConvert.SerializeObject(countries);

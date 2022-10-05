@@ -165,6 +165,7 @@
             services.AddHostedService<SyncMatchByUpdatedTimeInPastWorker>();
             services.AddHostedService<SyncMatchByUpdatedTimeFromCurrentToFutureWorker>();
             services.AddHostedService<SyncCountryListWorker>();
+            services.AddHostedService<SyncIncidentByUpdatedTimeWorker>();
         }
     }
 }

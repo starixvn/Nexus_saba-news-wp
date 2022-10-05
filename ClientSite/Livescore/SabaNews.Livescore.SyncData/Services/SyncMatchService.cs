@@ -12,6 +12,7 @@
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
+    using SabaNews.Livescore.SyncData.Criteria.Season;
     using SabaNews.Livescore.SyncData.Helpers;
 
     public class SyncMatchService : ISyncMatchService
@@ -20,7 +21,9 @@
         private readonly IFetchMatchService fetchMatchService;
         private readonly AppSettings appSettings;
 
-        public SyncMatchService(IBaseService baseService, IFetchMatchService fetchMatchService, AppSettings appSettings)
+        public SyncMatchService(IBaseService baseService, 
+            IFetchMatchService fetchMatchService,
+            AppSettings appSettings)
         {
             this.baseService = baseService;
             this.fetchMatchService = fetchMatchService;
@@ -137,6 +140,30 @@
             }
         }
 
+        public async Task SyncIncidentByUpdatedTimeAsync()
+        {
+            var now = DateTime.UtcNow.AddMinutes(-30);
+            var lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetIncidentLastUpdatedTimeCriteria());
+            if (lastUpdatedTime == null)
+            {
+                lastUpdatedTime = now;
+            }
+            else
+            {
+                lastUpdatedTime = ((DateTime)lastUpdatedTime).AddHours(30);
+                if (lastUpdatedTime > now)
+                {
+                    lastUpdatedTime = now;
+                }
+            }
+            
+            
+            var updatedMatches = await fetchMatchService.FetchMatchIncidentUpdateTimeAsync((int)SportType.Soccer, lastUpdatedTime);
+            await SyncIncidents(updatedMatches.ToArray());
+            await baseService.ExecuteNonQueryAsync(new InsertIncidentUpdatedTimeCommand { UpdatedTime = (DateTime)lastUpdatedTime });
+
+        }
+
         public async Task<DateTime> GetMatchLastUpdatedTimeInDateRangeAsync(DateTime? startTime, DateTime? endTime, bool isExcludeLiveMatch = false)
         {
             var criteria = new GetLastUpdatedTimeInDateRangeCriteria
@@ -187,6 +214,7 @@
         {
             foreach (var matchId in matchIds)
             {
+                
                 var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
                 await SyncMatchIncidentAsync(matchId, incidents);
             }
