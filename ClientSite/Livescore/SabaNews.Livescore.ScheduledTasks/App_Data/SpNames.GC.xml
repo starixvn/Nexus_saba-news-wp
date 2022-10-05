@@ -13,8 +13,8 @@
         <Setting Key="Livesocre_Match_GetMaxMatchId" SpName="Livesocre_Match_GetMaxMatchId" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_SyncMatch_SyncDeteledMatch" SpName="Livescore_SyncMatch_SyncDeteledMatch" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_SyncMatch_GetLastUpdatedTimeByDateRange" SpName="Livescore_SyncMatch_GetLastUpdatedTimeByDateRange" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Incident_GetLastUpdatedTime" SpName="Livescore_Incident_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Incident_InsertUpdatedTime" SpName="Livescore_Incident_InsertUpdatedTime" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Incident_GetLastUpdatedTime" SpName="Livescore_Match_Incident_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Incident_InsertUpdatedTime" SpName="Livescore_Match_Incident_InsertUpdatedTime" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="League">
         <Setting Key="Livescore_Sync_League_GetMaxId" SpName="Livescore_Sync_League_GetMaxId" DbName="sabasports" Plain="0" />

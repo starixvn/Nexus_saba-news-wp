@@ -7,7 +7,7 @@
     {
         public DateTime UpdatedTime { get; set; }
 
-        public override string GetSettingKey() => "Livescore_Incident_InsertUpdatedTime";
+        public override string GetSettingKey() => "Livescore_Match_Incident_InsertUpdatedTime";
 
         public override bool IsValid() => true;
     }
