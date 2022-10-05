@@ -309,8 +309,14 @@ body {
       right: -5px;
       content: '';
       display: none; }
+      @media screen and (min-width: 1391px) {
+        .auth-provider .auth-displayname:after {
+          display: block; } }
     .auth-provider .auth-displayname .display-user {
       display: none; }
+      @media screen and (min-width: 1391px) {
+        .auth-provider .auth-displayname .display-user {
+          display: block; } }
 
 .box-auth {
   display: none;

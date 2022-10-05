@@ -438,7 +438,7 @@
             content: '';
             display: none;
 
-            @mixin creen1391px {
+            @include creen1391px {
                 display: block;
             }
         }
@@ -446,7 +446,7 @@
         .display-user {
             display: none;
 
-            @mixin creen1391px {
+            @include creen1391px {
                 display: block;
             }
         }
