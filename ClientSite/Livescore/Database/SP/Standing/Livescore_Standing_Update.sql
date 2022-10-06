@@ -6,8 +6,6 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Standing_Update`(
 	IN seasonId BIGINT,
     IN stageId BIGINT,
     IN teamId BIGINT,
-	IN teamNameVN VARCHAR(255),
-    IN iconVN VARCHAR(255),
     IN groupName VARCHAR(255),
     IN total SMALLINT,
     IN won SMALLINT,
@@ -26,12 +24,6 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Standing_Update`(
     */
 )
 BEGIN
-	UPDATE `livescore_team` as t
-	SET
-	`TeamNameVN` = teamNameVN,
-    `IconVN` = iconVN
-	WHERE t.TeamId = teamId;
-    
     INSERT INTO `sabasports`.`livescore_season_standings_extra`
 	(`SeasonId`,
 	`StageId`,
