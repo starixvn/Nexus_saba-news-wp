@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using AutoFixture;
@@ -75,6 +76,26 @@
                 .Returns(new MatchIncidentResponse { Incidents = incidents });
             var result = await fetchMatchService.FetchMatchIncidentAsync(1, 12345);
             Assert.Equal(incidents, result);
+        }
+
+        [Fact]
+        public async Task FetchMatchIncidentUpdateTimeAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var incidents = fixture.Create<List<long>>();
+            httpClientService.ExecutePostAsync<MatchIncidentUpdateTimeResponse>(Arg.Is("/match/textlive"), Arg.Any<Dictionary<string, object>>())
+                .Returns(new MatchIncidentUpdateTimeResponse { UpdatedMatches = incidents });
+            var result = await fetchMatchService.FetchMatchIncidentUpdateTimeAsync(1, DateTime.Now);
+            Assert.Equal(incidents, result);
+        }
+
+        [Fact]
+        public async Task FetchMatchIncidentUpdateTimeAsync_WhenCalled_ReturnEmpty()
+        {
+            List<long> incidents = null;
+            httpClientService.ExecutePostAsync<MatchIncidentUpdateTimeResponse>(Arg.Is("/match/textlive"), Arg.Any<Dictionary<string, object>>())
+                .Returns(new MatchIncidentUpdateTimeResponse { UpdatedMatches = incidents });
+            var result = await fetchMatchService.FetchMatchIncidentUpdateTimeAsync(1, DateTime.Now);
+            Assert.Equal(result, new List<long>());
         }
 
         [Fact]

@@ -183,5 +183,29 @@
             await fetch.Received(isLineUpMatches.Count).FetchMatchLineupAsync(Arg.Any<long[]>());
             await fetch.Received(matches.Count).FetchMatchIncidentAsync(1, Arg.Any<long>());
         }
+
+        [Fact]
+        public async Task SyncIncidentByUpdatedTimeAsync_WhenLastUpdatedTimeIsNull_ReturnExpectedResult()
+        {
+            DateTime? expected = null;
+            var expectedMatches = fixture.Create<List<long>>();
+            baseService.GetDataEntityAsync<DateTime?>(Arg.Any<GetLastUpdatedTimeInDateRangeCriteria>()).Returns(expected);
+            fetch.FetchMatchIncidentUpdateTimeAsync(Arg.Any<short>(), Arg.Any<DateTime?>()).Returns(expectedMatches);
+
+            await sync.SyncIncidentByUpdatedTimeAsync();
+            await baseService.Received().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
+        }
+
+        [Fact]
+        public async Task SyncIncidentByUpdatedTimeAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var expected = fixture.Create<DateTime>();
+            var expectedMatches = fixture.Create<List<long>>();
+            baseService.GetDataEntityAsync<DateTime>(Arg.Any<GetLastUpdatedTimeInDateRangeCriteria>()).Returns(expected);
+            fetch.FetchMatchIncidentUpdateTimeAsync(Arg.Any<short>(), Arg.Any<DateTime?>()).Returns(expectedMatches);
+
+            await sync.SyncIncidentByUpdatedTimeAsync();
+            await baseService.Received().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
+        }
     }
 }

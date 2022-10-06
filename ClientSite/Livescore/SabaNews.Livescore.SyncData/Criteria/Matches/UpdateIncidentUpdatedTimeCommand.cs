@@ -3,7 +3,7 @@
     using SabaNews.Core.Models;
     using System;
 
-    public class InsertIncidentUpdatedTimeCommand : BaseNonQueryCommand
+    public class UpdateIncidentUpdatedTimeCommand : BaseNonQueryCommand
     {
         public DateTime UpdatedTime { get; set; }
 
