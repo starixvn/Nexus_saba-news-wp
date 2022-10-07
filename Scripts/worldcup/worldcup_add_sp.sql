@@ -355,7 +355,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Standing_Update`(
     */
 )
 BEGIN
-    INSERT INTO `sabasports`.`livescore_season_standings_extra`
+    INSERT INTO `livescore_season_standings_extra`
 	(`SeasonId`,
 	`StageId`,
 	`TeamId`,
@@ -461,7 +461,7 @@ BEGIN
 			SET currentPosition = currentPosition + 1;
 		END IF;
         
-        INSERT INTO `sabasports`.`livescore_season_standings_extra`
+        INSERT INTO `livescore_season_standings_extra`
 		(`SeasonId`,
 		`StageId`,
 		`TeamId`,
@@ -478,7 +478,7 @@ BEGIN
         DELETE FROM tmp_standingExtra as tp WHERE tp.SeasonId = tmpSeasonId AND tp.StageId = tmpStageId AND tp.TeamId = tmpTeamId;
     END WHILE;
     
-    INSERT INTO `sabasports`.`livescore_season_standings_extra`
+    INSERT INTO `livescore_season_standings_extra`
 		(`SeasonId`,
 		`StageId`,
 		`TeamId`,
@@ -512,7 +512,7 @@ BEGIN
 			
 			SET currentPosition = currentPosition + 1;
 			
-			INSERT INTO `sabasports`.`livescore_season_standings_extra`
+			INSERT INTO `livescore_season_standings_extra`
 			(`SeasonId`,
 			`StageId`,
 			`TeamId`,

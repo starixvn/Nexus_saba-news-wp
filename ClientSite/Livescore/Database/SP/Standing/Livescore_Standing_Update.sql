@@ -24,7 +24,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Standing_Update`(
     */
 )
 BEGIN
-    INSERT INTO `sabasports`.`livescore_season_standings_extra`
+    INSERT INTO `livescore_season_standings_extra`
 	(`SeasonId`,
 	`StageId`,
 	`TeamId`,
