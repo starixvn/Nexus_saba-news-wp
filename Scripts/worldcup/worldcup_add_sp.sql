@@ -536,3 +536,344 @@ END
 
 //
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS Livescorer_Minigame_Create;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescorer_Minigame_Create`(
+	/*
+		Creator: Brian@20220909
+        Revisions:
+			- 20220909@Brian: init
+    */
+	UserId INT,
+    LuckyNumber VARCHAR(50),
+    JoinDate DATETIME,
+	TeamId INT,
+    OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100)
+)
+Livescorer_Minigame_Create:BEGIN	   
+    INSERT INTO `livescore_minigame`
+	(`UserId`,
+	`LuckyNumber`,
+	`JoinDate`,
+    `TeamId`)
+	VALUES
+	(UserId,
+	LuckyNumber,
+	JoinDate,
+    TeamId);    
+END
+
+//
+DELIMITER ;	
+
+
+DROP PROCEDURE IF EXISTS Livescorer_Minigame_Get_Data;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescorer_Minigame_Get_Data`(
+	/*
+		Creator: Brian@20220909
+        Revisions:
+			- 20220909@Brian: init
+    */
+    ToDate DATETIME,
+	start INT,
+    end INT,
+    OUT TotalItems INT
+)
+BEGIN
+	SELECT count(*)
+    INTO TotalItems
+    FROM wp_users as u
+    INNER JOIN livescore_minigame as mi ON u.ID = mi.UserId;
+	
+	SELECT u.ID, u.display_name as Name, mi.LuckyNumber, mi.JoinDate, u.user_email as Email, t.TeamFullNameEN, t.TeamNameEN, t.TeamNameVN, t.Icon AS TeamLogo
+    FROM wp_users as u
+    INNER JOIN livescore_minigame as mi ON u.ID = mi.UserId
+    INNER JOIN livescore_team as t ON mi.TeamId = t.TeamId
+    WHERE mi.JoinDate < ToDate
+    ORDER BY JoinDate DESC
+    LIMIT start, end;
+END
+
+//
+DELIMITER ;	
+
+
+DROP PROCEDURE IF EXISTS Livescorer_Minigame_Get_Detail;
+
+DELIMITER //
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescorer_Minigame_Get_Detail`(
+	/*
+		Creator: Brian@20220909
+        Revisions:
+			- 20220909@Brian: init
+    */
+	userId INT
+)
+BEGIN
+	SELECT u.ID, mi.LuckyNumber, mi.JoinDate, mi.TeamId
+    FROM wp_users as u
+    INNER JOIN livescore_minigame as mi ON u.ID = mi.UserId
+    WHERE u.ID = userId;
+END
+
+//
+DELIMITER ;	
+
+
+DROP PROCEDURE IF EXISTS Livescore_Player_GetByTeamId;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Player_GetByTeamId`(
+	IN TeamId LONG
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	SELECT p.TeamId, p.PlayerId, p.NameEN, p.FullNameEN, p.Icon
+	FROM livescore_player AS p
+    WHERE p.TeamId = TeamId;
+END
+
+
+
+
+//
+DELIMITER ;	
+
+
+DROP PROCEDURE IF EXISTS Livescore_Team_GetAll;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Team_GetAll`(
+	IN LeagueId LONG
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	SELECT t.TeamId, t.TeamNameEN, TeamFullNameEN, t.LeagueId
+	FROM livescore_team AS t
+    WHERE t.LeagueId = LeagueId;
+END
+
+
+
+
+//
+DELIMITER ;	
+
+
+
+DROP PROCEDURE IF EXISTS Livescore_Top_Scorers_Get;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_Get`(
+	IN LeagueId LONG,
+    IN SeasonId LONG
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	SELECT t.LeagueId, t.SeasonId, t.PlayerId, t.TeamId, t.Goals, t.Assists, t.RowNum, t.Top ,m.TeamNameEN, m.TeamFullNameEN, m.Icon AS TeamLogo, p.NameEN AS PlayerNameEN, p.FullNameEN AS PlayerFullNameEN
+	FROM livescore_top_scorers AS t INNER JOIN livescore_team AS m ON t.TeamId = m.TeamId
+			INNER JOIN livescore_player AS p ON t.PlayerId = p.PlayerId AND p.TeamId = t.TeamId
+    WHERE t.LeagueId = LeagueId AND t.SeasonId = SeasonId
+    ORDER BY t.Top;
+END
+
+
+
+//
+DELIMITER ;	
+
+
+
+DROP PROCEDURE IF EXISTS Livescore_Top_Scorers_GetByRow;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_GetByRow`(
+	IN LeagueId LONG,
+    IN SeasonId LONG,
+    In RowNum INT
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	SELECT t.LeagueId, t.SeasonId, t.PlayerId, t.TeamId, t.Goals, t.Assists, t.RowNum, t.Top ,m.TeamNameEN, m.TeamFullNameEN, m.Icon AS TeamLogo, p.NameEN AS PlayerNameEN, p.FullNameEN AS PlayerFullNameEN
+	FROM livescore_top_scorers AS t INNER JOIN livescore_team AS m ON t.TeamId = m.TeamId
+			INNER JOIN livescore_player AS p ON t.PlayerId = p.PlayerId
+    WHERE t.LeagueId = LeagueId AND t.SeasonId = SeasonId AND t.RowNum = RowNum
+    ORDER BY t.Top;
+END
+//
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS Livescore_Top_Scorers_GetTop10;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_GetTop10`(
+	IN LeagueId LONG,
+    IN SeasonId LONG
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	SELECT t.LeagueId, t.SeasonId, t.PlayerId, t.TeamId, t.Goals, t.Assists, t.RowNum, t.Top , m.Icon AS TeamLogo, p.NameEN AS PlayerNameEN, p.FullNameEN AS PlayerFullNameEN
+	FROM livescore_top_scorers AS t INNER JOIN livescore_team AS m ON t.TeamId = m.TeamId
+			INNER JOIN livescore_player AS p ON t.PlayerId = p.PlayerId AND p.TeamId = t.TeamId
+    WHERE t.LeagueId = LeagueId AND t.SeasonId = SeasonId
+    ORDER BY t.Top LIMIT 10;
+END
+
+
+
+
+//
+DELIMITER ;	
+
+
+DROP PROCEDURE IF EXISTS Livescore_Top_Scorers_Insert;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_Insert`(
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+	IN PlayerId LONG,
+    IN SeasonId LONG, 
+    IN LeagueId LONG,
+    IN TeamId LONG,
+    IN Goals INT,
+    IN Assists INT,
+	IN Top INT,
+    OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100)
+)
+BEGIN
+	INSERT INTO `livescore_top_scorers`
+		(`PlayerId`, `SeasonId`, `LeagueId`, `TeamId`, `Goals`, `Assists`, `Top`)
+		VALUES
+		(PlayerId, SeasonId, LeagueId, TeamId, Goals, Assists, Top);
+END
+
+//
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS Livescore_Top_Scorers_Update;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_Update`(
+	IN PlayerId LONG,
+    IN SeasonId LONG, 
+    IN LeagueId LONG,
+    IN TeamId LONG,
+    IN Goals INT,
+    IN Assists INT,
+    IN RowNum INT,
+    IN Top INT,
+    OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100)
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	UPDATE `livescore_top_scorers` as scr
+	SET
+	`PlayerId` = PlayerId,
+	`TeamId` = TeamId,
+	`Goals` = Goals,
+	`Assists` = Assists,
+    `Top` = Top
+	WHERE scr.RowNum = RowNum AND scr.LeagueId = LeagueId AND scr.SeasonId = SeasonId;
+END
+//
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS Livescore_Top_Scorers_UpdateTop;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_UpdateTop`(
+    IN Top INT,
+    IN RowNum INT,
+    IN TopUpdate INT,
+    IN IsCheck BOOL,
+    OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100) 
+	/*
+		Creator: Brian@20220809
+        Revisions:
+			- 20220809@Brian: init
+    */
+)
+BEGIN
+	DECLARE _RowNum BIGINT;
+	DROP TEMPORARY TABLE IF EXISTS tmp_topScorers;
+    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_topScorers(RowNum INT PRIMARY KEY NOT NULL AUTO_INCREMENT, Top INT);
+    
+    INSERT INTO tmp_topScorers(RowNum, Top)
+		SELECT t.RowNum, t.Top
+		FROM `livescore_top_scorers` AS t WHERE t.Top >= Top AND t.RowNum != RowNum;	
+    WHILE (EXISTS (SELECT 1 FROM tmp_topScorers)) DO
+		SET _RowNum = (SELECT tmp.RowNum
+        FROM tmp_topScorers AS tmp ORDER BY tmp.Top LIMIT 1);
+        IF(IsCheck) THEN			
+			UPDATE `livescore_top_scorers` AS le
+			SET le.Top = Top
+			WHERE le.RowNum = _RowNum;
+        END IF;
+        IF(!IsCheck) THEN			
+			UPDATE `livescore_top_scorers` AS le
+			SET le.Top = Top + 1
+			WHERE le.RowNum = _RowNum;
+        END IF;
+        SET Top = Top + 1;
+		IF(IsCheck AND Top = TopUpdate) THEN			
+			SET Top = Top + 1;
+        END IF;        
+        DELETE FROM tmp_topScorers AS tp WHERE tp.RowNum = _RowNum;
+    END WHILE;
+END
+//
+DELIMITER ;
+
+
+
+
+
