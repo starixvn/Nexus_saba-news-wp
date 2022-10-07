@@ -576,3 +576,109 @@ BEGIN
 END
 //
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS Livescore_League_Get_xtest;
+
+DELIMITER //
+
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Get_xtest`(
+	/*
+		Creator: Hank@20220524
+        Revisions:
+			- 20220524@Hank: init
+            - 20220712@Hank: get only major league
+            - 20220808@Brian: get a few columns
+    */
+)
+BEGIN
+	SELECT l.LeagueId, l.CountryIconVN, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, e.IsMajor, e.Priority, e.CreatedDate, c.CountryLogo
+	FROM livescore_league l
+		INNER JOIN livescore_league_extra e ON l.LeagueId = e.LeagueId
+        LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
+	ORDER BY e.Priority is null, e.Priority;
+END
+
+
+//
+DELIMITER ;	
+
+
+
+
+DROP PROCEDURE IF EXISTS Livescore_League_GetByIds_xtest;
+
+DELIMITER //
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetByIds_xtest`(
+	IN leagueIds JSON
+    /*
+		Creator: Hank@20220520
+        Revisions:
+			- 20220520@Hank: init
+            - 20220712@Hank: get only major league
+			- 20220808@Brian: get a few columns
+    */
+)
+BEGIN
+	DROP TEMPORARY TABLE IF EXISTS tmp_ids;
+    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_ids(LeagueId BIGINT NOT NULL);
+	
+	INSERT INTO tmp_ids(LeagueId)
+    SELECT LeagueId
+    FROM 
+		JSON_TABLE
+        (
+			leagueIds,
+            "$[*]"
+            COLUMNS
+            (
+				LeagueId BIGINT  PATH "$"
+            )
+        ) AS t; 
+	
+        
+	SELECT l.LeagueId, l.CountryIconVN, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, e.IsMajor, e.Priority, c.CountryLogo
+	FROM livescore_league l
+	INNER JOIN livescore_league_extra e ON l.LeagueId = e.LeagueId
+    LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
+	WHERE EXISTS (SELECT tmp.LeagueId FROM tmp_ids tmp WHERE l.LeagueId = tmp.LeagueId);
+END
+
+
+//
+DELIMITER ;	
+
+
+
+DROP PROCEDURE IF EXISTS Livescore_League_Update_xtest;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Update_xtest`(
+	/*
+		Creator: Brian@20220808
+        Revisions:
+			- 20220808@Brian: init
+    */
+    IN CountryVN VARCHAR(255),
+    IN LeagueNameVN VARCHAR(255), 
+    IN LeagueId LONG,
+    IN CountryIconVN VARCHAR(255), 
+    OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100)    
+)
+BEGIN
+	UPDATE `livescore_league` as le
+	SET
+	`CountryVN` = CountryVN,
+    `LeagueNameVN` = LeagueNameVN,
+	`CountryIconVN` = CountryIconVN
+	WHERE le.LeagueId = LeagueId;
+END
+
+//
+DELIMITER ;
+
+
+
