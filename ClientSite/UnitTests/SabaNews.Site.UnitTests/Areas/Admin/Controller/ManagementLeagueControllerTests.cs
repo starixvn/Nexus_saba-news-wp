@@ -1,23 +1,29 @@
 ﻿namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
 {
     using AutoFixture;
+    using DeviceDetectorNET.Class.Device;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using NSubstitute;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.ManagementLeague;
     using SabaNews.Models.ViewModel.User;
+    using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
     using SabaNews.Site.Areas.Admin.Controllers.Livescore;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.IO;
     using System.Threading.Tasks;
     using Xunit;
     public class ManagementLeagueControllerTests : AdminController
     {
         private ILeagueService leagueService;
+        private IFileService fileService;
 
         [Fact]
         public void ManagementLeague_WhenCalled_ReturnExpectedView()
@@ -104,7 +110,15 @@
         {
             // Arrange
             var controller = GetController();
-            var league = new Fixture().Create<LeagueUpdateViewModel>();
+            var league = new LeagueUpdateViewModel
+            {
+                LeagueId = 1,
+                CountryVN = "icon",
+                IsDeletedIcon = true,
+                IsMajor = true,
+                LeagueNameVN = "league name",
+                Priority = 1
+            }; 
 
             var expected = new Fixture().Create<CommandResult>();
             leagueService.InsertLeaguesExtraAsync(league.LeagueId).Returns(expected);
@@ -136,12 +150,29 @@
         }
 
         [Fact]
-        public async Task PostEditLeague_WhenCalled_ReturnExpectedData()
+            public async Task PostEditLeague_WhenCalled_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var league = new Fixture().Create<LeagueUpdateViewModel>();
+            var league = new LeagueUpdateViewModel
+            {
+                LeagueId = 1,
+                CountryVN = "icon",
+                IsDeletedIcon = true,
+                IsMajor = true,
+                LeagueNameVN = "league name",
+                Priority = 1
+            };
             var expected = new Fixture().Create<CommandResult>();
+            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+            var stream = new MemoryStream();
+            var header = new HeaderDictionary();
+            header.Add("Name", new string[1] { "Value" });
+            league.Icon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
 
             leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
             {
@@ -155,6 +186,7 @@
                 IsMajor = league.IsMajor,
                 Priority = league.Priority
             }).Returns(expected);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = league.Icon), Arg.Do<string>(x => x = UploadDir.LeagueUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.EditLeague(league);
             // Assert
@@ -182,7 +214,8 @@
         private ManagementLeagueController GetController()
         {
             leagueService = Substitute.For<ILeagueService>();
-            var controller = new ManagementLeagueController(leagueService);
+            fileService = Substitute.For<IFileService>();
+            var controller = new ManagementLeagueController(leagueService, fileService);
 
             return controller;
         }
