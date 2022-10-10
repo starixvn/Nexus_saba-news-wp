@@ -800,6 +800,9 @@ body {
     color: #2f2f2f; }
   .video-items .title p {
     color: #2f2f2f; }
+    @media screen and (max-width: 1024px) {
+      .video-items .title p {
+        margin-top: .5rem; } }
 
 .video-items .hover-image {
   max-height: 15rem;

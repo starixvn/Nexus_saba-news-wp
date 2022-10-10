@@ -23,6 +23,9 @@
         }
         p{
             color : #2f2f2f;
+            @include tableMobile{
+                margin-top : .5rem;
+            }
         }
     }
     .hover-image{
