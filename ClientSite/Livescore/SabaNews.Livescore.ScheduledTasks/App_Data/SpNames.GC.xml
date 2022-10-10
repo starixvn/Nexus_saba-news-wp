@@ -57,13 +57,13 @@
     </Function>
     <Function Name="Detail match">
         <Setting Key="Livescore_Match_GetLineup" SpName="Livescore_Match_GetLineup" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_GetHeadToHead" SpName="Livescore_Match_GetHeadToHead_xtest" DbName="sabasports" Plain="0">
+        <Setting Key="Livescore_Match_GetHeadToHead" SpName="Livescore_Match_GetHeadToHead" DbName="sabasports" Plain="0">
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
         <Setting Key="Livescore_Match_GetStatistic" SpName="Livescore_Match_GetStatistic" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetIncident" SpName="Livescore_Match_GetIncident" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_GetById" SpName="Livescore_Match_GetById_xtest" DbName="sabasports" Plain="0">
+        <Setting Key="Livescore_Match_GetById" SpName="Livescore_Match_GetById" DbName="sabasports" Plain="0">
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>

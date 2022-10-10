@@ -118,11 +118,11 @@
                     <li class="menu-item hiden-icon-mobile">
                         <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
                     </li>
-                    <li class="menu-item hiden-icon-mobile">
+                    @*<li class="menu-item hiden-icon-mobile">
                         <a href=@($"/{WorldCup2022.HomepageSlug}") class="item">
                             <img class="logo-scroll-header" src="/images/worldcup/wc-logo-scroll.svg" alt="saba-sports" asp-append-version="true">
                         </a>
-                    </li>
+                    </li>*@
                     @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
                     {
                         var slug = menu.CateSlug;
@@ -179,11 +179,11 @@
         <li class="menu-item">
             <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
-        <li class="menu-item">
+        @*<li class="menu-item">
             <a href=@($"/{WorldCup2022.HomepageSlug}") class="item">
                 <img class="logo-scroll-header" src="/images/worldcup/wc-logo-scroll.svg" alt="saba-sports" asp-append-version="true">
             </a>
-        </li>
+        </li>*@
         @foreach (var slug in arraySlugs)
         {
             if (slug == null) break;
