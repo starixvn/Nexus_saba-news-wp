@@ -10,6 +10,21 @@ ALTER TABLE sabasports.livescore_season_stage
 ADD StageNameVN varchar(255) NULL
 AFTER StageNameEN;
 
+ALTER TABLE sabasports.livescore_league
+ADD COLUMN CountryIconVN  VARCHAR(255);
+
+CREATE TABLE sabasports.`livescore_top_scorers` (
+    `PlayerId` BIGINT NOT NULL,
+    `SeasonId` BIGINT NOT NULL,
+    `LeagueId` BIGINT NOT NULL,
+    `TeamId` BIGINT NOT NULL,
+    `Goals` INT NOT NULL,
+    `Assists` INT NOT NULL,
+    `RowNum` INT NOT NULL AUTO_INCREMENT,
+    `Top` INT NOT NULL,
+    PRIMARY KEY (`RowNum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE sabasports.`livescore_season_standings_extra` (
   `SeasonId` bigint NOT NULL,
   `StageId` bigint NOT NULL,
