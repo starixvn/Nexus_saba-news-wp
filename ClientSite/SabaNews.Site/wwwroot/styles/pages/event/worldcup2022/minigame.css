@@ -364,28 +364,6 @@ body {
 .active-box-auth {
   display: block; }
 
-@media screen and (max-width: 1024px) {
-  .scroll-snap {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-scroll-snap-type: x mandatory;
-    -ms-scroll-snap-type: x mandatory;
-    scroll-snap-type: x mandatory;
-    scroll-snap-stop: always;
-    grid-template-columns: unset;
-    grid-auto-flow: column;
-    grid-gap: 0 !important; }
-    .scroll-snap::-webkit-scrollbar {
-      display: none; }
-    .scroll-snap .scroll-snap-items {
-      scroll-snap-align: center; }
-    .scroll-snap .post-items, .scroll-snap .wc-table {
-      margin-left: 1.2rem; }
-      .scroll-snap .post-items:first-child, .scroll-snap .wc-table:first-child {
-        margin-left: 1.2rem; }
-      .scroll-snap .post-items:last-child, .scroll-snap .wc-table:last-child {
-        margin-right: 0; } }
-
 body {
   overflow: unset; }
 
@@ -495,6 +473,28 @@ body {
   padding: 0 1rem;
   margin: 0 auto; }
 
+@media screen and (max-width: 1024px) {
+  .scroll-snap-game {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    grid-template-columns: unset;
+    grid-auto-flow: column;
+    grid-gap: 0 !important; }
+    .scroll-snap-game::-webkit-scrollbar {
+      display: none; }
+    .scroll-snap-game .scroll-snap-items {
+      scroll-snap-align: center; }
+    .scroll-snap-game .post-items, .scroll-snap-game .wc-table {
+      margin-left: 1.2rem; }
+      .scroll-snap-game .post-items:first-child, .scroll-snap-game .wc-table:first-child {
+        margin-left: 1.2rem; }
+      .scroll-snap-game .post-items:last-child, .scroll-snap-game .wc-table:last-child {
+        margin-right: 0; } }
+
 .grid-bxh {
   margin-top: 3rem;
   display: grid;
@@ -504,25 +504,23 @@ body {
   z-index: 9; }
   @media screen and (max-width: 1024px) {
     .grid-bxh {
-      grid-template-columns: repeat(8, 33.2rem);
       padding-top: 2rem;
       margin-top: 2rem; } }
 
 .minigame-table {
   width: 25rem;
-  display: inline-block;
-  filter: url(#round);
   position: relative; }
-  .minigame-table:before {
-    content: "";
-    display: block;
-    background: linear-gradient(180deg, #8F1830 3.56%, #5A0F22 92.88%);
-    clip-path: polygon(50% 0, 100% 4%, 100% 96%, 50% 100%, 0 96%, 0 4%);
+  @media screen and (max-width: 1024px) {
+    .minigame-table {
+      margin-left: 2rem; }
+      .minigame-table:last-child {
+        margin-right: 2rem; } }
+  .minigame-table .bg-items {
     position: absolute;
     top: 0;
-    width: 100%;
+    z-index: -1;
     height: 100%;
-    z-index: -1; }
+    width: 100%; }
   .minigame-table-header {
     text-align: center;
     color: #fff;
@@ -530,7 +528,7 @@ body {
     font-size: 2rem;
     line-height: 2.8rem;
     border-bottom: 1px solid #AE5369;
-    padding: 1.5rem 0 1rem 0;
+    padding: 3rem 0 1rem 0;
     margin: 0 2rem; }
   .minigame-table-body {
     margin: 1.6rem 1rem 0 1rem;
@@ -555,11 +553,12 @@ body {
         height: 3.4rem;
         border-radius: 3px;
         display: block; }
-      .minigame-table-body .minigame-team .group-team.active {
-        background: #EEEEE4; }
-        .minigame-table-body .minigame-team .group-team.active li {
+      .minigame-table-body .minigame-team .group-team.active, .minigame-table-body .minigame-team .group-team:hover {
+        background: #EEEEE4;
+        clip-path: polygon(98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%, 2% 0); }
+        .minigame-table-body .minigame-team .group-team.active li, .minigame-table-body .minigame-team .group-team:hover li {
           color: #88162F; }
-        .minigame-table-body .minigame-team .group-team.active .team-logo img {
+        .minigame-table-body .minigame-team .group-team.active .team-logo img, .minigame-table-body .minigame-team .group-team:hover .team-logo img {
           border: 1px solid #88162F; }
 
 .footer {

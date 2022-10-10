@@ -92,38 +92,30 @@
                 </div>
             </div>
             <div class="minigame-bxh">
-                <div class="wrapper-container">
-                    <div class="grid-bxh scroll-snap">
+                <div class="wrapper-container mb-container">
+                    <div class="grid-bxh scroll-snap-game">
                         @foreach (var group in Model.StandingsViewModel)
                         {
                             var groupName = $"Bảng {group.GroupName[0]}";
-                        <div class="minigame-table scroll-snap-items">
-                            <div class="minigame-table-header">
-                                @groupName
-                            </div>
-                            <div class="minigame-table-body">
-                                <div class="minigame-team">
-                                    @foreach (var standing in group.Standings)
-                                    {
-                                        var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
-                                        var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                                        <ul class="group-team">
-                                            <li class="team-logo"><img src=@icon alt="@teamName" /></li>
-                                            <li class="team-name">@teamName</li>
-                                        </ul>
-                                    }
+                            <div class="minigame-table scroll-snap-items">
+                                <div class="minigame-table-header">
+                                    @groupName
+                                </div>
+                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
+                                <div class="minigame-table-body">
+                                    <div class="minigame-team">
+                                        @foreach (var standing in group.Standings)
+                                        {
+                                            var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                                            var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                                            <ul class="group-team active">
+                                                <li class="team-logo"><img src=@icon alt="@teamName" /></li>
+                                                <li class="team-name">@teamName</li>
+                                            </ul>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                            <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                <defs>
-                                    <filter id="round">
-                                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                                    </filter>
-                                </defs>
-                            </svg>
-                        </div>
                         }
                     </div>
                 </div>

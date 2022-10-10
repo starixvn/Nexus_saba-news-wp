@@ -9,6 +9,7 @@
         grid-template-columns: unset;
         grid-auto-flow: column;
         grid-gap: 0 !important;
+
         &::-webkit-scrollbar {
             display: none;
         }
@@ -26,6 +27,12 @@
 
             &:last-child {
                 margin-right: 0;
+            }
+        }
+
+        .post-items {
+            &:last-child {
+                margin-right: 1.2rem !important;
             }
         }
     }

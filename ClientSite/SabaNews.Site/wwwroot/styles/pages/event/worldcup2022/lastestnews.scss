@@ -113,6 +113,16 @@
     }
 }
 
+#standingWC {
+    .wc-table {
+        @include tableMobile {
+            &:last-child {
+                margin-right: 1.2rem !important;
+            }
+        }
+    }
+}
+
 
 .page-grid {
     width: 100%;
