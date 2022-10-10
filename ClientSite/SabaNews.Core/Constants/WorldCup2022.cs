@@ -72,8 +72,7 @@
             new CateInfo { Name = Fixture, Slug = UrlFixtureSlug },
             new CateInfo { Name = Standing, Slug = UrlStandingSlug },
             new CateInfo { Name = Commentary, Slug = UrlCommentarySlug },
-            new CateInfo { Name = Video, Slug = UrlVideoSlug },
-            new CateInfo { Name = Minigame, Slug = UrlMinigameSlug }
+            new CateInfo { Name = Video, Slug = UrlVideoSlug }
         };
 
         public static readonly IReadOnlyList<CateInfo> Cates = new List<CateInfo>

@@ -403,22 +403,10 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMinigameData(string luckyNumber, long teamId)
+        public IActionResult CreateMinigameData(string luckyNumber, long teamId)
         {
             var result = new CommandResult();
-            if (sessionService.User == null)
-            {
-                result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
-                return Json(result);
-            }
-            var command = new MiniGame
-            {
-                LuckyNumber = luckyNumber,
-                ID = sessionService.User.Id,
-                JoinDate = DateTime.UtcNow,
-                TeamId = teamId
-            };
-            result = await leagueService.InsertMinigameAsync(command);
+            result.Message = "Thời gian tham gia event chưa bắt đầu!";
             return Json(result);
         }
 
