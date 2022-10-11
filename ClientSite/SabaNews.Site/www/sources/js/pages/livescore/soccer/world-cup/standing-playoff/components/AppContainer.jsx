@@ -39,12 +39,9 @@ export class AppContainer extends Component {
 
     getPlayoffStages = () => {
         const { stages } = this.props;
-        const pointsStage = stages.filter(item => item.stageId >= WorldCup.EightTeamStage);
-        const maxOrder = Math.max(...pointsStage.map(item => item.orderIndex));
         const playoffStages = stages.filter(item =>
-            item.mode === StageMode.Knockout
+            item.stageId >= WorldCup.EightTeamStage
             && !item.stageNameEN.toLowerCase().includes('place')
-            && item.orderIndex > maxOrder
         );
         return playoffStages;
     };
@@ -52,7 +49,6 @@ export class AppContainer extends Component {
     groupMatchByStage = () => {
         const { matches, league } = this.props;
         const playoffStages = this.getPlayoffStages();
-        console.log(playoffStages);
         let tempMatches = [];
         matches.map(value => {
             const match = { ...value, league };
@@ -79,7 +75,6 @@ export class AppContainer extends Component {
                 }
             }
         });
-        console.log(tempMatches);
         tempMatches = tempMatches.sort((item1, item2) => item2.stage.orderIndex - item1.stage.orderIndex);
         return tempMatches;
     };
@@ -205,7 +200,6 @@ export class AppContainer extends Component {
         if (!matches || matches.length === 0) {
             return null;
         }
-        console.log(this.props);
         let groupMatches = this.groupMatches(matches);
         groupMatches = groupMatches.reverse();
         const prevMatchStages = this.separateMatches(groupMatches, true);
