@@ -203,7 +203,9 @@ export class AppContainer extends Component {
         if (!matches || matches.length === 0) {
             return null;
         }
+        console.log(matches);
         let groupMatches = this.groupMatches(matches);
+        console.log(groupMatches);
         groupMatches = groupMatches.reverse();
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
