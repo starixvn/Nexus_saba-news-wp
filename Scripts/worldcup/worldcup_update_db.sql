@@ -13,6 +13,14 @@ AFTER StageNameEN;
 ALTER TABLE sabasports.livescore_league
 ADD COLUMN CountryIconVN  VARCHAR(255);
 
+CREATE TABLE `livescore_minigame` (
+  `UserId` bigint NOT NULL,
+  `LuckyNumber` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `JoinDate` datetime NOT NULL,
+  `TeamId` bigint NOT NULL,
+  PRIMARY KEY (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE sabasports.`livescore_top_scorers` (
     `PlayerId` BIGINT NOT NULL,
     `SeasonId` BIGINT NOT NULL,
