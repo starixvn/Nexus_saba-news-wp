@@ -1,8 +1,8 @@
-DROP PROCEDURE IF EXISTS get_posts_by_cate_slug_xtest;
+DROP PROCEDURE IF EXISTS get_posts_by_cate_slug;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug`(
 	_categorySlug VARCHAR(200),
     postType VARCHAR(200),
     _start INT,
@@ -78,11 +78,11 @@ END
 DELIMITER ;	
 
 
-DROP PROCEDURE IF EXISTS get_posts_by_slug_xtest;
+DROP PROCEDURE IF EXISTS get_posts_by_slug;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_slug_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_slug`(
 	categorySlug VARCHAR(200),
     postType VARCHAR(200),
     start INT,
@@ -142,10 +142,10 @@ END
 DELIMITER ;	
 
 
-DROP PROCEDURE IF EXISTS Livescore_Match_GetByDate_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetByDate;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate`(
 	IN fromTime DATETIME
     ,IN toTime DATETIME
     ,IN sportId SMALLINT UNSIGNED
@@ -225,10 +225,10 @@ END
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS Livescore_Match_GetById_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetById;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetById_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetById`(
 	matchId BIGINT, 
     IN sportId SMALLINT UNSIGNED
     /*
@@ -280,10 +280,10 @@ END
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS Livescore_Match_GetByIds_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetByIds;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByIds_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByIds`(
 	IN matchIds JSON
     /*
 		Creator: Hank@20220419
@@ -354,10 +354,10 @@ END
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 	IN leagueId BIGINT
     ,IN seasonId BIGINT
     ,IN fromTime DATETIME
@@ -434,9 +434,9 @@ END
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS Livescore_Match_GetSeasonStandings_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetSeasonStandings;
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetSeasonStandings_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetSeasonStandings`(
 	IN leagueId BIGINT
     ,IN seasonId BIGINT
     /*
@@ -527,10 +527,10 @@ END
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS Livescore_Match_GetHeadToHead_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetHeadToHead;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetHeadToHead_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetHeadToHead`(
 	matchId BIGINT
     /*
 		Creator: Hank@20220419
@@ -579,12 +579,12 @@ DELIMITER ;
 
 
 
-DROP PROCEDURE IF EXISTS Livescore_League_Get_xtest;
+DROP PROCEDURE IF EXISTS Livescore_League_Get;
 
 DELIMITER //
 
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Get_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Get`(
 	/*
 		Creator: Hank@20220524
         Revisions:
@@ -608,11 +608,11 @@ DELIMITER ;
 
 
 
-DROP PROCEDURE IF EXISTS Livescore_League_GetByIds_xtest;
+DROP PROCEDURE IF EXISTS Livescore_League_GetByIds;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetByIds_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetByIds`(
 	IN leagueIds JSON
     /*
 		Creator: Hank@20220520
@@ -653,9 +653,9 @@ DELIMITER ;
 
 
 
-DROP PROCEDURE IF EXISTS Livescore_League_Update_xtest;
+DROP PROCEDURE IF EXISTS Livescore_League_Update;
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Update_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Update`(
 	/*
 		Creator: Brian@20220808
         Revisions:
