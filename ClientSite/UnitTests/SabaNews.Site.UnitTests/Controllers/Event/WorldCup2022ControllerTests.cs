@@ -539,23 +539,6 @@
         }
 
         [Fact]
-        public async Task CreateMinigameData_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var minigame = fixture.Create<MiniGame>();
-            var expected = fixture.Create<CommandResult>();
-            leagueService.InsertMinigameAsync(minigame).Returns(expected);
-            //Act
-            var result = await controller.CreateMinigameData(minigame.LuckyNumber, minigame.TeamId);
-
-            // Assert
-            var viewResult = Assert.IsType<JsonResult>(result);
-            var viewModel = Assert.IsType<CommandResult>(viewResult.Value);
-            Assert.Equal("Vui lòng đăng nhập để tham gia sự kiện", viewModel.Message);
-        }
-
-        [Fact]
         public async Task GetMinigame_WhenCalled_ReturnExpectedData()
         {
             // Arrange
