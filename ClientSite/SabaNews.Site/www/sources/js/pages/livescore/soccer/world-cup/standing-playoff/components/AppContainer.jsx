@@ -52,6 +52,7 @@ export class AppContainer extends Component {
     groupMatchByStage = () => {
         const { matches, league } = this.props;
         const playoffStages = this.getPlayoffStages();
+        console.log(playoffStages);
         let tempMatches = [];
         matches.map(value => {
             const match = { ...value, league };
@@ -78,6 +79,7 @@ export class AppContainer extends Component {
                 }
             }
         });
+        console.log(tempMatches);
         tempMatches = tempMatches.sort((item1, item2) => item2.stage.orderIndex - item1.stage.orderIndex);
         return tempMatches;
     };
@@ -203,9 +205,8 @@ export class AppContainer extends Component {
         if (!matches || matches.length === 0) {
             return null;
         }
-        console.log(matches);
+        console.log(this.props);
         let groupMatches = this.groupMatches(matches);
-        console.log(groupMatches);
         groupMatches = groupMatches.reverse();
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
