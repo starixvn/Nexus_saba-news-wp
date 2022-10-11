@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { StageMode, Width1024 } from '@jsroot/common/constants';
+import { StageMode, Width1024, WorldCup } from '@jsroot/common/constants';
 import Grid from './Grid';
 import Item from './Item';
 import Site from '@jsroot/common/site';
@@ -39,7 +39,7 @@ export class AppContainer extends Component {
 
     getPlayoffStages = () => {
         const { stages } = this.props;
-        const pointsStage = stages.filter(item => item.mode === StageMode.Points);
+        const pointsStage = stages.filter(item => item.stageId >= WorldCup.EightTeamStage);
         const maxOrder = Math.max(...pointsStage.map(item => item.orderIndex));
         const playoffStages = stages.filter(item =>
             item.mode === StageMode.Knockout
