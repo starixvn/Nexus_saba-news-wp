@@ -13,7 +13,7 @@ AFTER StageNameEN;
 ALTER TABLE sabasports.livescore_league
 ADD COLUMN CountryIconVN  VARCHAR(255);
 
-CREATE TABLE `livescore_minigame` (
+CREATE TABLE sabasports.`livescore_minigame` (
   `UserId` bigint NOT NULL,
   `LuckyNumber` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `JoinDate` datetime NOT NULL,
