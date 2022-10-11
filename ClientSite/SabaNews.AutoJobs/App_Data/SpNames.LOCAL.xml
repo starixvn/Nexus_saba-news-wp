@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
     <Function Name="Post">
-        <Setting Key="get_posts_by_slug" SpName="get_posts_by_slug_xtest" DbName="sabasports" Plain="0"></Setting>
-        <Setting Key="get_posts_by_cate_slug" SpName="get_posts_by_cate_slug_xtest" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="get_posts_by_slug" SpName="get_posts_by_slug" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="get_posts_by_cate_slug" SpName="get_posts_by_cate_slug" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="get_posts_by_cate_slug_not_contain_children" SpName="get_posts_by_cate_slug_not_contain_children" DbName="sabasports" Plain="0">
             <Mapping DataField="id" ObjectProperty="ID" class="Post" />
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
