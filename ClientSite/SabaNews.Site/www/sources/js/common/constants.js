@@ -93,6 +93,7 @@ export const IncidentIconType = {
 export const WorldCup = {
     leagueId: 14638, //[14638, 12062, 12036, 11998, 11997]
     seasonId: 10810, //[10810, 10617, 10375, 10230, 10889]
+    EightTeamStage: 30538,
     QuarterfinalsStage: 30539,
     GroupsStage: 30537,
     ThirdPlace: 30541,
