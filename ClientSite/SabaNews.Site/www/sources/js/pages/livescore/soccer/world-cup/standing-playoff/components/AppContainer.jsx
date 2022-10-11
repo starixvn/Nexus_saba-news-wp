@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { StageMode, Width1024, WorldCup } from '@jsroot/common/constants';
+import { Width1024, WorldCup } from '@jsroot/common/constants';
 import Grid from './Grid';
 import Item from './Item';
 import Site from '@jsroot/common/site';

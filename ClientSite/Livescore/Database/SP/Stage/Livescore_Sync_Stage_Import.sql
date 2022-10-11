@@ -6,19 +6,23 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Sync_Stage_Import`(
     ,OUT errMsg VARCHAR(100)
     /*
 		Creator: Tim@20220328
-        Revisions: - 20220328@Tim: init
+        Revisions: 
+			- 20220328@Tim: init
+            - 20220609@Hank: insert seasonID = 0 when null
+            - 20221001@Hank: sync mode field
     */
 )
 BEGIN
     SET errCode=0, errMsg='';
     
     DROP TEMPORARY TABLE IF EXISTS tmp_Stage;
-    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Stage(SeasonId BIGINT NOT NULL
+    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Stage(
+		SeasonId BIGINT NOT NULL
 		,StageId BIGINT NOT NULL
         ,SportId SMALLINT
 		,StageNameCH VARCHAR(100)
         ,StageNameEN VARCHAR(100)
-        ,StageFashion TINYINT
+        ,Mode TINYINT
 		,GroupCount SMALLINT
         ,RoundCount SMALLINT
 		,OrderIndex INT
@@ -31,18 +35,18 @@ BEGIN
         ,SportId
 		,StageNameCH
         ,StageNameEN
-        ,StageFashion
+        ,Mode
 		,GroupCount
         ,RoundCount
 		,OrderIndex
 		,IsDeleted
 		,UpdatedAt)
-    SELECT SeasonId
+    SELECT IFNULL(SeasonId, 0)
 		,StageId
         ,SportId
 		,NULLIF(StageNameCH, 'NULL')
         ,NULLIF(StageNameEN, 'NULL')
-        ,StageFashion
+        ,Mode
 		,GroupCount
         ,RoundCount
 		,OrderIndex
@@ -60,7 +64,7 @@ BEGIN
 				,SportId SMALLINT PATH "$.SportId"
 				,StageNameCH VARCHAR(100) PATH "$.StageName"
 				,StageNameEN VARCHAR(100) PATH "$.StageNameEN"
-				,StageFashion TINYINT PATH "$.StageFashion"
+				,Mode TINYINT PATH "$.Mode"
 				,GroupCount SMALLINT PATH "$.GroupCount"
 				,RoundCount SMALLINT PATH "$.RoundCount"
 				,OrderIndex INT PATH "$.OrderIndex"
@@ -74,7 +78,7 @@ BEGIN
         ,SportId
 		,StageNameCH
         ,StageNameEN
-        ,StageFashion
+        ,Mode
 		,GroupCount
         ,RoundCount
 		,OrderIndex
@@ -86,7 +90,7 @@ BEGIN
         ,SportId
 		,StageNameCH
         ,StageNameEN
-        ,StageFashion
+        ,Mode
 		,GroupCount
         ,RoundCount
 		,OrderIndex
@@ -98,14 +102,14 @@ BEGIN
         SportId = s.SportId
 		,StageNameCH = s.StageNameCH
         ,StageNameEN = s.StageNameEN
-        ,StageFashion = s.StageFashion
+        ,Mode = s.Mode
 		,GroupCount = s.GroupCount
         ,RoundCount = s.RoundCount
 		,OrderIndex = s.OrderIndex
 		,IsDeleted = s.IsDeleted
 		,UpdatedAt = s.UpdatedAt
 		,SyncedDate = NOW();
-END;
+END
 
 //
 DELIMITER ;

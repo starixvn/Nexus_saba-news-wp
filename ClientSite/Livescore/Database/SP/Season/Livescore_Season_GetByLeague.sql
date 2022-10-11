@@ -13,7 +13,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Season_GetByLeague`(
 BEGIN
 	SELECT s.LeagueId, s.SeasonId, s.StartTime, s.EndTime, s.Year
     FROM livescore_season s
-    WHERE s.LeagueId = leagueId AND s.IsDeleted = 0
+    WHERE s.LeagueId = leagueId
     ORDER BY s.SeasonId desc;
 END
 
