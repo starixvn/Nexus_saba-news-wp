@@ -20,7 +20,7 @@
 
         public static string GetStandingTeamName(SeasonStandings standing)
         {
-            string teamName = string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
+            string teamName = !string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
             teamName = !string.IsNullOrEmpty(standing.TeamNameVN) ? standing.TeamNameVN : teamName;
             return teamName;
         }
