@@ -20,18 +20,12 @@
 }
     
 <section class="page-content">
+    <button href="javascript:;" class="label label-blue btn-link btn_major_leagur">Major League</button>
+    <button href="javascript:;" class="label label-blue btn-link btn_hot_league">Hot League</button>
     <div class="form-horizontal filter">
         <div class="form-input">
             <p class="label-admin">@ViewResources.SearchLabel</p>
             <input type="text" class="custom-input list-input" id="search" name="searchLeague" placeholder="Enter League Name..." />
-        </div>
-        <div class="form-input">
-            <p class="label-admin">@ViewResources.IsHot</p>
-            <select class="custom-input list-input filter-majorLeague" name="status" id="major">
-                <option value="-1">@ViewResources.All</option>
-                <option value="1">@ViewResources.Yes</option>
-                <option value="0">@ViewResources.No</option>
-            </select>
         </div>
         <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
     </div>

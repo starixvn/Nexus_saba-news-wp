@@ -13,7 +13,7 @@
                                 <input type="number" value="@Model[0].Priority" min="0" max="@ViewBag.priority" class="form-control txt-priority" id="editPriority" name="Priority" />
                             </td>
                             <td class="col-sm">
-                                <label class="lable-major">@ViewResources.Major</label>
+                                <label class="lable-major">@ViewResources.Hot</label>
                             </td>
                             <td class="col-sm">
                                 <input type="checkbox" @(Model[0].IsMajor == true ? "checked" : "") class="checkbox-major" id="editMajor" name="Major" />
@@ -22,10 +22,10 @@
 
                         <tr>
                             <td>
-                                <label>@ViewResources.CountryVN</label>
+                                <label>@ViewResources.LeagueFullNameEN</label>
                             </td>
                             <td>
-                                <input type="text" value="@Model[0].CountryVN" class="form-control txt-countryVn" id="editCountryVN" name="CountryVN" />
+                                <label class="txt-countryVn" id="editLeagueFullNameEN" name="LeagueFullNameEN">@Model[0].LeagueFullNameEN</label>
                             </td>
                         </tr>
 
@@ -62,6 +62,25 @@
                                         </div>
                                     </div>
                                 </div>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <label>@ViewResources.Country</label>
+                            </td>
+                            <td>
+                                <label class="txt-countryVn" id="editCountryEN" name="CountryEN">@Model[0].CountryEN</label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>@ViewResources.CountryVN</label>
+                            </td>
+                            <td>
+                                <input type="text" value="@Model[0].CountryVN" class="form-control txt-countryVn" id="editCountryVN" name="CountryVN" />
                             </td>
                         </tr>
                     </tbody>

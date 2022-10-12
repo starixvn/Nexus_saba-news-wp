@@ -1,8 +1,8 @@
 ﻿var adminManagementLeague = (function ($) {
     var page = 1, pageSize = 10, url = "", typeSort = 1;
+    var isMajor = -1;
     function GetDataLeagueExtraGrid(dateSort) {
         var search = document.getElementById("search").value;
-        var isMajor = document.getElementById("major").value;
         $.ajax({
             url: "/Admin/ManagementLeague/GetManagementLeagueData",
             type: 'POST',
@@ -202,6 +202,7 @@
                         url: "/Admin/ManagementLeague/GetLeagueById",
                         data: { LeagueId },
                         success: function (response) {
+                            document.getElementById("addCountryEN").value = response.countryEN;
                             document.getElementById("addCountryVN").value = response.countryVN;
                             document.getElementById("addLeagueNameVN").value = response.leagueNameVN;
                             document.getElementById("addLeagueId").value = response.leagueId;
@@ -267,8 +268,19 @@
             typeSort = 1;
             GetDataLeagueExtraGrid(null);
         });
+
         $('.btn_league').click(function () {
             initAddLeague();
+        });
+
+        $('.btn_major_leagur').click(function () {
+            isMajor = -1;
+            GetDataLeagueExtraGrid(null);
+        });
+
+        $('.btn_hot_league').click(function () {
+            isMajor = 1;
+            GetDataLeagueExtraGrid(null);
         });
     }
 
