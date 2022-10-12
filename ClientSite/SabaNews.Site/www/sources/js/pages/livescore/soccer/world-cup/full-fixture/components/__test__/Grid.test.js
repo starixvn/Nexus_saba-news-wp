@@ -34,7 +34,7 @@ describe('Grid', () => {
             const instance = shallow(<Grid {...defaultProps} />).instance();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('inital correctly state when innerWidth = 768', () => {
@@ -45,7 +45,7 @@ describe('Grid', () => {
             const instance = shallow(<Grid {...defaultProps} />).instance();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('inital correctly state when innerWidth > 768', () => {
@@ -56,7 +56,7 @@ describe('Grid', () => {
             const instance = shallow(<Grid {...defaultProps} />).instance();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: false });
+            expect(instance.state.isMobile).toEqual(false);
         });
     });
 
@@ -106,7 +106,7 @@ describe('Grid', () => {
             instance.handleResize();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('updates correctly state when isMobile = false and window.innerWidth = 768', () => {
@@ -120,7 +120,7 @@ describe('Grid', () => {
             instance.handleResize();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('do nothing when isMobile = true and window.innerWidth < 768', () => {
@@ -136,7 +136,7 @@ describe('Grid', () => {
 
             // Assert
             expect(instance.setState).toHaveBeenCalledTimes(0);
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('do nothing when isMobile = true and window.innerWidth = 768', () => {
@@ -152,7 +152,7 @@ describe('Grid', () => {
 
             // Assert
             expect(instance.setState).toHaveBeenCalledTimes(0);
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('updates correctly state when isMobile = true and window.innerWidth > 768', () => {
@@ -166,7 +166,7 @@ describe('Grid', () => {
             instance.handleResize();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: false });
+            expect(instance.state.isMobile).toEqual(false);
         });
     });
 

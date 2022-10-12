@@ -176,7 +176,7 @@ describe('AppContainer', () => {
                 ...defaultProps,
                 stages: [
                     { stageId: 1, stageNameEN: 'stage1', mode: 1, orderIndex: 0 }, { stageId: 2, stageNameEN: 'stage2', mode: 1, orderIndex: 1 },
-                    { stageId: 1, stageNameEN: 'third place', mode: 2, orderIndex: 2 }, { stageId: 4, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }
+                    { stageId: 3, stageNameEN: 'third place', mode: 2, orderIndex: 2 }, { stageId: 30539, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }
                 ]
             }
             const container = shallow(<AppContainer {...props} />);
@@ -186,7 +186,7 @@ describe('AppContainer', () => {
             const result = instance.getPlayoffStages();
 
             // Assert
-            expect(result).toEqual([{ stageId: 4, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }]);
+            expect(result).toEqual([{ stageId: 30539, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }]);
         });
     });
 

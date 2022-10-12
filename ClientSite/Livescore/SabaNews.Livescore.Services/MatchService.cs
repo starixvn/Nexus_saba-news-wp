@@ -38,7 +38,11 @@
         {
             (var leagues, var season, var floatMatches) = await baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(criteria);
             var league = leagues.FirstOrDefault();
-            league.Season = season.FirstOrDefault();
+            if (league != null)
+            {
+                league.Season = season.FirstOrDefault();
+            }
+            
             var matches = new List<Match>();
             foreach (FloatMatchModel match in floatMatches)
             {

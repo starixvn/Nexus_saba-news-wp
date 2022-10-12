@@ -193,7 +193,7 @@
                 criteria.ToTime = model.Date.AddMonths(TotalMonths).ToEndOfDay().ConvertToUTC(model.Timezone);
             }
 
-            (League league, IList<SabaNews.Livescore.Models.Match.Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
+            (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
             return Json(new { league, matches });
         }
 
