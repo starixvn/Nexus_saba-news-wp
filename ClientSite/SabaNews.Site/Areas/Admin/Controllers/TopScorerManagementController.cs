@@ -81,15 +81,15 @@
             var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
             IList<SeasonStandings> teams = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var players = await leagueService.GetPlayerByIdTeamAsync(teamId);
-             var playUpdate = await leagueService.GetTopScorersByRowNumAsync(rowNum);
-             
-             var model = new PlayerViewModel
-             {
-                 TopScorers = playUpdate[0],
-                 Teams = teams,
-                 Players = players
-             };
-             return PartialView("_EditPlayer", model);
+            var playUpdate = await leagueService.GetTopScorersByRowNumAsync(rowNum);
+            
+            var model = new PlayerViewModel
+            {
+                TopScorers = playUpdate[0],
+                Teams = teams,
+                Players = players
+            };
+            return PartialView("_EditPlayer", model);
         }
 
         [HttpPost]

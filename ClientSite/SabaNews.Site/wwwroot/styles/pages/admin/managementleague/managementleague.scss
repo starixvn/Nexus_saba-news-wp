@@ -8,6 +8,8 @@
     transform: translate(-50%, -50%);
 }
 
+
+
 .select2-dropdown {
     background-color: white;
     border: 1px solid #aaa;
@@ -167,7 +169,7 @@
         }
 
         .txt-countryVn, .txt-leagueNameVn, .txt-leagueFullNameVn {
-            width: 397px !important;
+            width: 270px !important;
             margin-left: -284px;
         }
 
@@ -191,6 +193,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
+            width: 348px;
 
             &:last-child {
                 margin-bottom: 0;
@@ -201,9 +204,49 @@
                 margin: 0;
             }
 
+            label{
+                    width: 148px;
+            }
+
             .admin-text-logo {
-                margin-left: 63px;
-                width: 75%;
+                &-data-img {
+                    background: #FFFFFF;
+                    border: 1px solid #DDDDDD;
+                    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                    text-align: center;
+                    position: relative;
+                    height: 5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        width: 4rem;
+                        height: 4rem;
+                        object-fit: cover;
+                        margin: 0 auto;
+                    }
+
+                    .icon-close {
+                        position: absolute;
+                        right: 3px;
+                        top: 3px;
+                        font-size: 1.2rem;
+                        background: transparent;
+                        cursor: pointer;
+                        color: #4F4F4F;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+
+            .w-75 {
+                width: 256px !important;
+                margin-right: 10px;
             }
 
             .custom-input {
@@ -256,10 +299,16 @@
 
     .txt-img {
         margin-top: 5px;
+        display: flex;
+        margin-left: 16px;
 
         .icon-upload {
             font-size: 3rem;
-            margin-right: 1rem;
+            margin-right: 1.5rem;
+        }
+
+        span {
+            margin-top: 7px;
         }
     }
 

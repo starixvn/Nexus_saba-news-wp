@@ -68,16 +68,13 @@
                         reader.readAsDataURL(files);
                         reader.onload = function (e) {
                             review.attr('src', e.target.result);
-                            document.getElementsByClassName("txt-img")[0].style.display = "none";
                             ChangePhotoHanlder(form);
                         };
                     });
 
                     $('.cancel-upload').on('click', function () {
                         var form = $(this).parent();
-                        CancelUploadHandler(form);
-                        document.getElementsByClassName("txt-img")[0].style.display = "flex";
-                        $(this).hide();
+                        form.find('.review_photo').attr('src', "/css/images/logo-dummy.png");
                     });
 
                     $('#btn-save').on('click', function () {
@@ -132,14 +129,6 @@
         review.find('.review_photo').show();
         $(form).find('.photo-error').hide();
 
-    }
-
-    function CancelUploadHandler(form) {
-        var input = $(form).parent().parent();
-        form.find('.review_photo').attr('src', '');
-        form.find('.review_photo').hide();
-        form.find('.cancel-upload').hide();
-        input.find('.photo').val('');
     }
 
     function ValidatePhoto(files, self) {
@@ -262,24 +251,26 @@
     }
 
     function initFilterBtn() {
-        $("#submit-btn").on("click", function () {
-            page = 1;
-            pageSize = 10;
-            typeSort = 1;
-            GetDataLeagueExtraGrid(null);
-        });
-
         $('.btn_league').click(function () {
             initAddLeague();
         });
 
         $('.btn_major_leagur').click(function () {
             isMajor = -1;
+            document.getElementById('filter').style.display = 'flex';
             GetDataLeagueExtraGrid(null);
         });
 
         $('.btn_hot_league').click(function () {
             isMajor = 1;
+            document.getElementById('filter').style.display = 'none';
+            GetDataLeagueExtraGrid(null);
+        });
+
+        $(".js-example-basic-multiple").on("change", function () {
+            page = 1;
+            pageSize = 10;
+            typeSort = 1;
             GetDataLeagueExtraGrid(null);
         });
     }
@@ -322,5 +313,6 @@
 
 
 $(document).ready(function () {
+    $('.js-example-basic-multiple').select2();
     adminManagementLeague.init();
 });

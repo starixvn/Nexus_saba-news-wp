@@ -25,9 +25,10 @@
             this.leagueService = leagueService;
             this.fileService = fileService;
         }
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View("~/Areas/Admin/Views/Livescore/ManagementLeague/Index.cshtml");
+            IList<League> leagues = await leagueService.GetLeaguesAsync();
+            return View("~/Areas/Admin/Views/Livescore/ManagementLeague/Index.cshtml", leagues);
         }
 
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
