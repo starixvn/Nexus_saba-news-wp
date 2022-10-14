@@ -32,7 +32,7 @@ BEGIN
 		,COALESCE(mc.HomeTeamExtraScore, sh.ExtraScore) as HomeTeamExtraScore, COALESCE(mc.AwayTeamExtraScore, sa.ExtraScore) as AwayTeamExtraScore
         ,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon
 		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
-        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
+        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.TeamNameVN, a.Icon, a.IconVN
     FROM livescore_match m
 		INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
 		INNER JOIN livescore_team h ON h.TeamId = m.HomeTeamId

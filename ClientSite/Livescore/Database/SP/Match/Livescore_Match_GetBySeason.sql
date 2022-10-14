@@ -14,7 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
             - 202200610@Hank: check deleted match
-            - 2022008100@Hank: add TeamNameVN & IconVN,  select season 
+            - 2022008100@Hank: add TeamNameVN & IconVN,  select season, data custom
     */
 )
 BEGIN    
@@ -43,6 +43,7 @@ BEGIN
     
     SELECT m.MatchId, m.EndTime, m.GroupNum, m.RelatedId
 		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
+        ,m.HomeTeamTotalScore, m.AwayTeamTotalScore
 		,COALESCE(mc.Round, m.Round) as Round
         ,COALESCE(mc.StartTime, m.StartTime) as StartTime
         ,COALESCE(mc.Status, m.Status) as Status
