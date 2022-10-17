@@ -47,7 +47,7 @@
                             <td>
                                 <div class="flex-form-input">
                                     @{
-                                        var iconCountry = Model[0].CountryIconVN ?? Model[0].CountryLogo;
+                                        var iconCountry = Model[0].CountryIconVN ?? Model[0].CountryLogo ?? "/css/images/logo-dummy.png";
                                         var display = !string.IsNullOrEmpty(iconCountry);
                                         var hide = display ? "none" : "flex";
                                         var show = display ? "flex" : "none";                                        
@@ -79,7 +79,7 @@
                                 <label>@ViewResources.Country</label>
                             </td>
                             <td>
-                                <label class="txt-countryVn" id="editCountryEN" name="CountryEN">@Model[0].CountryEN</label>
+                                <label class="txt-countryVn" id="editCountryEN" name="CountryEN">@Model[0].CountryEN <img src="/css/images/logo-dummy.png" alt="Alternate Text" class="review_photo" style="display:@(Model[0].CountryEN != null ? "none" : "flex")" /></label>
                             </td>
                         </tr>
 

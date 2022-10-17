@@ -18,22 +18,35 @@
 @section Styles{
     <link rel="stylesheet" href="~/styles/pages/admin/managementleague/managementleague.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css" />
 }
+
+    
+
+    <style type="text/css">
+        table th, table td
+        {
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        .selected
+        {
+            background-color: #666;
+            color: #fff;
+        }
+    </style>
     
 <section class="page-content">
-    <button href="javascript:;" class="label label-blue btn-link btn_major_leagur">Major League</button>
-    <button href="javascript:;" class="label label-blue btn-link btn_hot_league">Hot League</button>
+    <div class="form-horizontal show-league">
+            <p href="javascript:;" id="btn_major_league" class="label label-blue btn_major_league btn_show_league">Major Leagues</p>
+            <p href="javascript:;" id="btn_hot_league" class="label label-blue btn_hot_league">Hot Leagues</p>
+    </div>
+    
     <div class="form-horizontal filter" id="filter">
         <div class="form-input">
             <p class="label-admin">@ViewResources.SearchLabel</p>
-            <select class="js-example-basic-multiple" id="search" placeholder="Enter League Name..." name="states">
-            @{
-                <option value="">ALL</option>
-                foreach (var index in Model){
-                        <option value="@GetLeagueName(index)">@GetLeagueName(index)</option>
-                }
-            }
-            </select>
+            <input type="text" class="custom-input list-input" id="search" name="searchLeague" placeholder="Enter League Name..." />
         </div>
     </div>
     <div class="content">
@@ -41,6 +54,61 @@
             <button href="javascript:;" class="label label-blue btn-link btn_league"><img src="~/images/icon/icon-plus.png" class="icon-add-league" />@ViewResources.AddLeague</button>
         </div>
         <div class="data-grid" id="data-grid"></div>
+
+
+            <table id="tblLocations" cellpadding="0" cellspacing="0" border="1">
+                <tr>
+                    <th>ID </th>
+                    <th>Location</th>
+                    <th>Preference</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td> Goa</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Mahabaleshwar</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Kerala</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Kashmir</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Ooty</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Simla</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Manali</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Darjeeling</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Nanital</td>
+                    <td>9</td>
+                </tr>
+            </table>
+
     </div>
 
     <div class="modal modal-edit-center" id="AddLeagueContent" style="display:none">
@@ -116,4 +184,29 @@
 @section Scripts {
     <script src="~/js/admin/managementleague/managementleague.js" asp-append-version="true"></script>
     <script src="~/js/select2.min.js" asp-append-version="true"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" asp-append-version="true">
+        $(function () {
+            $("#tblLocations").sortable({
+                items: 'tr:not(tr:first-child)',
+                cursor: 'pointer',
+                axis: 'y',
+                dropOnEmpty: false,
+                start: function (e, ui) {
+                    ui.item.addClass("selected");
+                },
+                stop: function (e, ui) {
+                    ui.item.removeClass("selected");
+                    $(this).find("tr").each(function (index) {
+                        if (index > 0) {
+                            $(this).find("td").eq(2).html(index);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 }

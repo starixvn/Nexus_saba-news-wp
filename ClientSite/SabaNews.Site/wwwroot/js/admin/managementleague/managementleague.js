@@ -46,11 +46,12 @@
 
         $('.btn-Edit').on('click', function () {
             var url = $(this).data('url');
+            var name = $(this).data('name');
             $.ajax({
                 type: 'GET',
                 url: url,
                 success: function (html) {
-                    $('#EditLeagueContent .title').html('Edit League');
+                    $('#EditLeagueContent .title').html('League Editing / ' + name);
                     $('#EditLeagueContent .modal-body').html(html);
                     $('#EditLeagueContent').modal('show');
 
@@ -255,13 +256,17 @@
             initAddLeague();
         });
 
-        $('.btn_major_leagur').click(function () {
+        $('.btn_major_league').click(function () {
+            $('#btn_major_league').addClass("btn_show_league");
+            $('#btn_hot_league').removeClass("btn_show_league");
             isMajor = -1;
             document.getElementById('filter').style.display = 'flex';
             GetDataLeagueExtraGrid(null);
         });
 
         $('.btn_hot_league').click(function () {
+            $('#btn_major_league').removeClass("btn_show_league");
+            $('#btn_hot_league').addClass("btn_show_league");
             isMajor = 1;
             document.getElementById('filter').style.display = 'none';
             GetDataLeagueExtraGrid(null);
@@ -271,6 +276,11 @@
             page = 1;
             pageSize = 10;
             typeSort = 1;
+            GetDataLeagueExtraGrid(null);
+        });
+
+        $("#search").keyup(function () {
+            isMajor = -1;
             GetDataLeagueExtraGrid(null);
         });
     }
@@ -301,6 +311,15 @@
     }
 
     function init() {
+        $('.js-example-basic-multiple').select2(); 
+        $('#myInput').on('keyup', function (event) {
+            event.preventDefault();
+            /* Act on the event */
+            var tukhoa = $(this).val().toLowerCase();
+            $('#myTable tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa) > -1);
+            });
+        });
         GetDataLeagueExtraGrid();
         initFilterBtn();
         HandleModal();
@@ -311,8 +330,6 @@
     }
 })(jQuery);
 
-
-$(document).ready(function () {
-    $('.js-example-basic-multiple').select2();
+$(document).ready(function () {   
     adminManagementLeague.init();
 });

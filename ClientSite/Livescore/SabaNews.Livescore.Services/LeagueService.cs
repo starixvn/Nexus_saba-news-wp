@@ -154,10 +154,11 @@
 
         public IList<League> SearchLeague(IList<League> leagues, string search, int isMajor)
         {
+            var a = search != null ? search.ToLower() : search;
             if (search != null)
             {
-                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.Contains(search))
-                || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))).ToList();
+                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.ToLower().Contains(search.ToLower()))
+                || (x.LeagueNameVN != null && x.LeagueNameVN.ToLower().Contains(search.ToLower()))).ToList();
             }
             if (isMajor == 1)
             {

@@ -8,7 +8,34 @@
     transform: translate(-50%, -50%);
 }
 
+.show-league {
+    border-bottom: 1px solid Silver;
+    width: 249px;
+    height: 28px;
 
+    .btn_major_league {
+        width: 113px;
+        color: navy;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        height: 28px;
+        margin-right: 30px;
+    }
+
+    .btn_hot_league {
+        width: 106px;
+        color: navy;
+        font-size: 16px;
+        font-weight: bold;
+        height: 28px;
+        text-align: center;
+    }
+
+    .btn_show_league {
+        border-bottom: 3px solid navy;
+    }
+}
 
 .select2-dropdown {
     background-color: white;
@@ -24,6 +51,27 @@
 }
 
 #AddLeagueContent .modal-content {
+    .title {
+        color: #fff;
+        font-size: 1.6rem;
+        margin-bottom: 0;
+        text-transform: unset;
+        line-height: 1;
+    }
+
+    .select2-dropdown {
+        background-color: white;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        left: -100000px;
+        width: 100%;
+        z-index: 1051;
+        width: 397px !important;
+    }
+
     .select2-container {
         margin-left: -375px;
     }
@@ -121,6 +169,14 @@
 
 #EditLeagueContent {
     .modal-content {
+        .title {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 0;
+            text-transform: unset;
+            line-height: 1;
+        }
+
         .select2-container {
             margin-left: -297px;
         }
@@ -204,8 +260,8 @@
                 margin: 0;
             }
 
-            label{
-                    width: 148px;
+            label {
+                width: 148px;
             }
 
             .admin-text-logo {
@@ -349,20 +405,25 @@
 }
 
 .add-league {
-    border-top: 1px solid #e3e3e3;
-    border-right: 1px solid #e3e3e3;
-    border-left: 1px solid #e3e3e3;
     height: 4.2rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background: #ededed;
     padding: 0 1rem;
     max-width: 100%;
+    margin-top: 10px;
 }
 
 .filter {
-    margin-bottom: 20px;
+    margin-top: 5px;
+
+    .select2-container {
+        width: 260px !important;
+    }
+
+    input{
+        width: 300px !important;
+    }
 }
 
 .filter-majorLeague {
@@ -370,9 +431,9 @@
 }
 
 .btn_league {
-    background-color: #6699FF;
+    background-color: silver;
     border: none;
-    color: white;
+    color: black;
     padding: 1px 10px;
     margin-right: -5px;
     text-align: center;
