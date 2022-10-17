@@ -7,11 +7,14 @@
 body {
     overflow : unset;
     background: url('../../../../images/worldcup/minigame/bg_before_event.png') $primary-bg !important;
+    background-attachment : fixed !important;
 }
 
 .disable-background {
     background: unset !important;
 }
+
+
 
 
 //before event
