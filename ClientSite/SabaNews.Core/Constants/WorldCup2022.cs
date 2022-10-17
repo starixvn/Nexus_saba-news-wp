@@ -81,7 +81,8 @@
             new CateInfo { Name = Homepage, Slug = HomepageSlug, Url = $"/{HomepageSlug}" },
             new CateInfo { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{UrlLastestNewsSlug}" },
             new CateInfo { Name = Commentary, Slug = CommentarySlug, Url = $"/{HomepageSlug}/{UrlCommentarySlug}" },
-            new CateInfo { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{UrlVideoSlug}" },
+            new CateInfo { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{UrlVideoSlug}" }
+            
         };
     }
 }
