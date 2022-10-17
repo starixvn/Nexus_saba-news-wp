@@ -22,6 +22,13 @@ body {
     margin-top: auto;
 }
 .before-event {
+    @include creen1391px {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%
+    }
+
     .ready {
         font-size: 2.4rem;
         text-transform: uppercase;
@@ -29,6 +36,11 @@ body {
         letter-spacing: 1rem;
         color: $white-color;
         margin: 6rem 0 4rem;
+
+        @include creen1391px {
+            margin: 0;
+            margin-bottom: 3rem;
+        }
     }
 
     .count-day {
@@ -40,15 +52,17 @@ body {
         align-items: center;
         justify-content: center;
         position: relative;
-        @include tableMobile{
-            height : 5rem;
+
+        @include tableMobile {
+            height: 5rem;
         }
+
         &:after {
             content: '';
             display: block;
             width: 100%;
             height: 100%;
-            clip-path: polygon(97% 0, 100% 50%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+            clip-path: polygon(98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%, 2% 0);
             background: rgba(255, 255, 255, 0.1);
             position: absolute;
             top: 0;
@@ -83,8 +97,9 @@ body {
                         height: 100%;
                         display: flex;
                         align-items: center;
-                        @include tableMobile{
-                            font-size : 3rem;
+
+                        @include tableMobile {
+                            font-size: 3rem;
                         }
 
                         &:after {
@@ -110,17 +125,18 @@ body {
                         text-transform: uppercase;
                         font-weight: 600;
                         font-size: 1.8rem;
-                        @include tableMobile{
-                            font-size : 1.2rem;
+
+                        @include tableMobile {
+                            font-size: 1.2rem;
                         }
                     }
                 }
 
                 &:last-child {
                     .clock {
-                        .clock-time{
-                            &:after{
-                                display : none;
+                        .clock-time {
+                            &:after {
+                                display: none;
                             }
                         }
                     }
@@ -132,8 +148,9 @@ body {
     .img-man {
         text-align: center;
         margin-top: -10rem;
-        @include tableMobile{
-            margin-top : 2rem;
+
+        @include tableMobile {
+            margin-top: 2rem;
         }
     }
 }
