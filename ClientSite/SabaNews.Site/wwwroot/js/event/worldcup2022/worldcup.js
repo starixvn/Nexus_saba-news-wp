@@ -49,10 +49,28 @@
         })
     }
 
+
+    function countDownTime() {
+        const second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24;
+        let countDown = new Date('November 1, 2022 00:00:00').getTime(),
+            x = setInterval(function () {
+                let now = new Date().getTime(),
+                    distance = countDown - now;
+                document.getElementById('days').innerHTML = `<div class="clock-time">${Math.floor(distance / (day))}</div> <div class="clock-text">ngày</div>`;
+                document.getElementById('hours').innerHTML = `<div class="clock-time">${Math.floor((distance % (day)) / (hour))}</div> <div class="clock-text">giờ</div>`,
+                    document.getElementById('minutes').innerHTML = `<div class="clock-time">${Math.floor((distance % (hour)) / (minute))}</div> <div class="clock-text">phút</div>`,
+                    document.getElementById('seconds').innerHTML = `<div class="clock-time">${Math.floor((distance % (minute)) / second)}</div> <div class="clock-text">giây</div>`;
+            }, second);
+    }
+
     function init() {
         getTopScorers();
         scrollEffectHeader();
         handleActions();
+        countDownTime();
     }
    
 
