@@ -557,6 +557,9 @@ body {
       .before-event .img-man-mobile {
         display: block; } }
 
+.footer {
+  margin-top: auto; }
+
 .wrapper-header {
   background: none;
   height: 35vw;
