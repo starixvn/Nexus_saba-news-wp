@@ -68,7 +68,7 @@
         public async Task<ActionResult> EditLeague(LeagueUpdateViewModel leagueUpdate)
         {
             IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueUpdate.LeagueId.ToString() + "]") });
-            var icon = leagueUpdate.IsDeletedIcon ? null : league[0].Icon;
+            var icon = leagueUpdate.IsDeletedIcon ? null : league[0].CountryIconVN;
             if (leagueUpdate.Icon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
