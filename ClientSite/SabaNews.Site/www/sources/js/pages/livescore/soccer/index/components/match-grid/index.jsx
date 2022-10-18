@@ -72,13 +72,17 @@ export class MatchGrid extends PureComponent {
         return tmpLeagues;
     };
 
+    checkPreMatch = status => {
+        return status === MatchStatus.Postpone
+                || status === MatchStatus.Cancel
+                || status === MatchStatus.TBD;
+    }
+
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
         if (moment(selectedDate).isBefore(today) && !window.isLivePage) {
             matches = matches.filter(match => match.status === MatchStatus.Finished
-                || match.status === MatchStatus.Postpone
-                || match.status === MatchStatus.Cancel
-                || match.status === MatchStatus.TBD
+                || this.checkPreMatch(match.status)
                 || CommonFunctions.isLiveMatch(match.status));
         }
 
