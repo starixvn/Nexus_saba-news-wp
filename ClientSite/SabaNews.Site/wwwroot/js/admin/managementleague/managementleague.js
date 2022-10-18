@@ -1,4 +1,5 @@
-﻿var adminManagementLeague = (function ($) {
+﻿var originIndex = 0, nextIndex = 0;
+var adminManagementLeague = (function ($) {
     var page = 1, pageSize = 10, url = "", typeSort = 1;
     var isMajor = -1;
     function GetDataLeagueExtraGrid(dateSort) {
@@ -108,14 +109,23 @@
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $('#EditLeagueContent').modal('hide');
-                                    GetSuccessPopup('#NoticeModal', 'Update the league successfully!');
+
+                                    $('#NoticeModal' + ' .modal-title').removeClass('title-error').addClass('title-success');
+                                    $('#NoticeModal' + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+                                    $('#NoticeModal' + ' .modal-body').html('Update the league successfully!');
+                                    $('#NoticeModal').modal('show');
+
                                     setTimeout(function () {
                                         $('#NoticeModal').modal('hide');
                                         GetDataLeagueExtraGrid();
                                     }, 1000);
                                 } else {
                                     document.getElementById("btn-save").style.display = "inline-block";
-                                    GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
+
+                                    $('#NoticeModal' + ' .modal-title').removeClass('title-success').addClass('title-error');
+                                    $('#NoticeModal' + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+                                    $('#NoticeModal' + ' .modal-body').html('An error occurred while add league, please try again');
+                                    $('#NoticeModal').modal('show');
                                 }
                             }
                         })
@@ -221,7 +231,12 @@
                         success: function (response) {
                             if (response.isSuccessful) {
                                 $('#AddLeagueContent').modal('hide');
-                                GetSuccessPopup('#NoticeModal', 'League was successfully added!');
+
+                                $('#NoticeModal' + ' .modal-title').removeClass('title-error').addClass('title-success');
+                                $('#NoticeModal' + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+                                $('#NoticeModal' + ' .modal-body').html('League was successfully added!');
+                                $('#NoticeModal').modal('show');
+
                                 setTimeout(function () {
                                     $('#NoticeModal').modal('hide');
                                     typeSort = 1;
@@ -229,7 +244,11 @@
                                 }, 1000);
                             } else {
                                 document.getElementById("btn-save-add").style.display = "inline-block";
-                                GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
+
+                                $('#NoticeModal' + ' .modal-title').removeClass('title-success').addClass('title-error');
+                                $('#NoticeModal' + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+                                $('#NoticeModal' + ' .modal-body').html('An error occurred while add league, please try again');
+                                $('#NoticeModal').modal('show');
                             }
                         }
                     });
@@ -300,13 +319,20 @@
                 success: function (response) {
                     $('#ConfirmModal').modal('hide');
                     if (response.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Remove league successfully!');
+                        $('#NoticeModal' + ' .modal-title').removeClass('title-error').addClass('title-success');
+                        $('#NoticeModal' + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+                        $('#NoticeModal' + ' .modal-body').html('Remove league successfully!');
+                        $('#NoticeModal').modal('show');
+
                         setTimeout(function () {
                             $('#NoticeModal').modal('hide');
                             GetDataLeagueExtraGrid();
                         }, 1000);
                     } else {
-                        GetErrorPopup('#NoticeModal', 'An error occurred while remove league, please try again');
+                        $('#NoticeModal' + ' .modal-title').removeClass('title-success').addClass('title-error');
+                        $('#NoticeModal' + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+                        $('#NoticeModal' + ' .modal-body').html('An error occurred while remove league, please try again');
+                        $('#NoticeModal').modal('show');
                     }
                 }
             })
@@ -317,6 +343,8 @@
     function init() {
         $('.js-example-basic-multiple').select2(); 
         document.getElementById('leagueshot').style.display = 'none';
+
+       
 
         GetDataLeagueExtraGrid();
         initFilterBtn();
@@ -329,6 +357,29 @@
 })(jQuery);
 
 $(document).ready(function () {   
-    adminManagementLeague.init();
-
+    adminManagementLeague.init();    
+    $(function () {
+        $("#tblLocations").sortable({
+            items: 'tr:not(tr:first-child)',
+            cursor: 'pointer',
+            axis: 'y',
+            dropOnEmpty: false,
+            start: function (e, ui) {
+                originIndex = ui.item[0].children[0].innerText;
+                ui.item.addClass("selected");
+            },
+            stop: function (e, ui) {
+                var hotleagues = $(this).find("tr").each(function (index) {
+                    if (index > 0) {
+                        $(this).find("td").eq(0).html(index);
+                    }
+                });
+                nextIndex = ui.item[0].children[0].innerText;
+                ui.item.removeClass("selected");
+            },
+            receive: function (e, ui) {
+                $(this).find("tbody").append(ui.item);
+            }
+        });
+    });
 });

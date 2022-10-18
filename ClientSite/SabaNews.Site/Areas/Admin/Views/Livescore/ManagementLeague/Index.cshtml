@@ -20,7 +20,7 @@
 @section Styles{
     <link rel="stylesheet" href="~/styles/pages/admin/managementleague/managementleague.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="~/styles/pages/jquery-ui.css" asp-append-version="true">
 }
 
 <section class="page-content">
@@ -67,6 +67,9 @@
                             <td class="text-left" width="12%">@league.CountryVN</td>
                             <td class="text-center" width="12%">@DateTimeUtilize.ChangeTimeZoneToClient(league.CreatedDate)</td>
                             <td class="text-center" width="4%">
+                                <i class="icon icon-edit-admin btn-Edit" title="Edit" data-name="@league.LeagueFullNameEN"
+                               data-url="@Url.Action("EditLeague", "ManagementLeague", new { leagueId = league.LeagueId})"></i>
+
                                 <i class="icon icon-delete-admin btn-Delete" title="Delete"
                                data-url="@Url.Action("RemoveLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId})"></i>
                             </td>
@@ -151,8 +154,6 @@
 @section Scripts {
     <script src="~/js/admin/managementleague/managementleague.js" asp-append-version="true"></script>
     <script src="~/js/select2.min.js" asp-append-version="true"></script>
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery-183.min.js"></script>
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery-ui.min.js"></script>
 }
