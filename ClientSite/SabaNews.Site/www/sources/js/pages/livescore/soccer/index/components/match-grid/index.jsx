@@ -78,7 +78,8 @@ export class MatchGrid extends PureComponent {
             matches = matches.filter(match => match.status === MatchStatus.Finished
                 || match.status === MatchStatus.Postpone
                 || match.status === MatchStatus.Cancel
-                || match.status === MatchStatus.TBD);
+                || match.status === MatchStatus.TBD
+                || CommonFunctions.isLiveMatch(match.status));
         }
 
         let totalMatches = matches.length;
