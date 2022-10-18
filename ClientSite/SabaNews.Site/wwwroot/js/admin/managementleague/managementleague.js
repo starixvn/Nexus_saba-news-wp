@@ -7,8 +7,8 @@
             url: "/Admin/ManagementLeague/GetManagementLeagueData",
             type: 'POST',
             data: { page, pageSize, search, dateSort, isMajor, typeSort },
-            success: function (res) {
-                $('.data-grid').html(res);
+            success: function (res) {               
+                $('.data-grid').html(res);               
                 initLeague();
                 initPaging();
                 initSortLeague();
@@ -87,7 +87,8 @@
                         var CountryVN = document.getElementById("editCountryVN").value;
                         var Icon = $('#editLeagueIcon')[0].files[0];
                         var currentIcon = $('#editLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
-                        var isDeletedIcon = currentIcon === '';
+
+                        var IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
 
                         var formData = new FormData();
                         formData.append('leagueId', LeagueId);
@@ -95,8 +96,8 @@
                         formData.append('priority', Priority);
                         formData.append('leagueNameVN', LeagueNameVN);
                         formData.append('countryVN', CountryVN);
-                        formData.append('isDeletedIcon', isDeletedIcon);
                         formData.append('icon', Icon);
+                        formData.append('isDeletedIcon', IsDeletedIcon);
 
                         $.ajax({
                             type: 'POST',
@@ -259,17 +260,19 @@
         $('.btn_major_league').click(function () {
             $('#btn_major_league').addClass("btn_show_league");
             $('#btn_hot_league').removeClass("btn_show_league");
-            isMajor = -1;
+
             document.getElementById('filter').style.display = 'flex';
-            GetDataLeagueExtraGrid(null);
+            document.getElementById('leagueshot').style.display = 'none';
+            document.getElementById('data-grid').style.display = 'block';
         });
 
         $('.btn_hot_league').click(function () {
             $('#btn_major_league').removeClass("btn_show_league");
             $('#btn_hot_league').addClass("btn_show_league");
-            isMajor = 1;
+
             document.getElementById('filter').style.display = 'none';
-            GetDataLeagueExtraGrid(null);
+            document.getElementById('leagueshot').style.display = 'flex';
+            document.getElementById('data-grid').style.display = 'none';
         });
 
         $(".js-example-basic-multiple").on("change", function () {
@@ -283,6 +286,7 @@
             isMajor = -1;
             GetDataLeagueExtraGrid(null);
         });
+
     }
 
     function HandleModal() {
@@ -312,14 +316,8 @@
 
     function init() {
         $('.js-example-basic-multiple').select2(); 
-        $('#myInput').on('keyup', function (event) {
-            event.preventDefault();
-            /* Act on the event */
-            var tukhoa = $(this).val().toLowerCase();
-            $('#myTable tr').filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa) > -1);
-            });
-        });
+        document.getElementById('leagueshot').style.display = 'none';
+
         GetDataLeagueExtraGrid();
         initFilterBtn();
         HandleModal();
@@ -332,4 +330,21 @@
 
 $(document).ready(function () {   
     adminManagementLeague.init();
+    $(function () {
+        $("#tblLocations").sortable({
+            items: 'tr:not(tr:first-child)',
+            cursor: 'pointer',
+            axis: 'y',
+            dropOnEmpty: false,
+            start: function (e, ui) {
+                ui.item.addClass("selected");
+            },
+            stop: function (e, ui) {
+                ui.item.removeClass("selected");
+            },
+            receive: function (e, ui) {
+                $(this).find("tbody").append(ui.item);
+            }
+        });
+    });
 });

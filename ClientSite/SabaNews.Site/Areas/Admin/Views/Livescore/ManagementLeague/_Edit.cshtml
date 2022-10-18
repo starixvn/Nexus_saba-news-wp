@@ -50,16 +50,15 @@
                                         var iconCountry = Model[0].CountryIconVN ?? Model[0].CountryLogo ?? "/css/images/logo-dummy.png";
                                         var display = !string.IsNullOrEmpty(iconCountry);
                                         var hide = display ? "none" : "flex";
-                                        var show = display ? "flex" : "none";                                        
+                                        var show = display ? "flex" : "none";
                                     }
                                     <div class="form-group-input form-group-input-left w-75">                                        
                                         <div class="admin-text-logo">
                                             <div class="input-upload">
-                                                <input type="file" class="input-file photo" id="editHomeIcon">
+                                                <input type="file" class="input-file photo" id="editLeagueIcon">
                                                 <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                                                 <div class="img-upload">
                                                     <p class="error photo-error" style="display:none"></p>
-
                                                 </div>
                                             </div>
                                         </div>

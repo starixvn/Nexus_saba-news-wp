@@ -1,7 +1,9 @@
 ﻿@using static SabaNews.Site.Extensions.LivescoreHelper
 @using SabaNews.Resources
+@using SabaNews.Core.Helper;
 @{
     Layout = "_AdminLayout";
+    var count = 0;
 }
 
 @section TopHeader{
@@ -21,22 +23,6 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css" />
 }
 
-    
-
-    <style type="text/css">
-        table th, table td
-        {
-            width: 100px;
-            padding: 5px;
-            border: 1px solid #ccc;
-        }
-        .selected
-        {
-            background-color: #666;
-            color: #fff;
-        }
-    </style>
-    
 <section class="page-content">
     <div class="form-horizontal show-league">
             <p href="javascript:;" id="btn_major_league" class="label label-blue btn_major_league btn_show_league">Major Leagues</p>
@@ -54,60 +40,41 @@
             <button href="javascript:;" class="label label-blue btn-link btn_league"><img src="~/images/icon/icon-plus.png" class="icon-add-league" />@ViewResources.AddLeague</button>
         </div>
         <div class="data-grid" id="data-grid"></div>
-
-
-            <table id="tblLocations" cellpadding="0" cellspacing="0" border="1">
+        
+        <div class="table-admin league-hot" id="leagueshot">
+            <table id="tblLocations" class="data-grid-hot">
                 <tr>
-                    <th>ID </th>
-                    <th>Location</th>
-                    <th>Preference</th>
+                    <th>#</th>
+                    <th>@ViewResources.LeagueFullNameEN</th>
+                    <th>@ViewResources.LeagueNameVN</th>
+                    <th>Country Icon</th>
+                    <th>@ViewResources.Country</th>
+                    <th>@ViewResources.CountryVN</th>
+                    <th>@ViewResources.CreatedDate<i class="icon-sort-admin" id="btn-sort-createdDate"></i></th>
+                    <th>@ViewResources.Action</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td> Goa</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Mahabaleshwar</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Kerala</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Kashmir</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Ooty</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Simla</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Manali</td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Darjeeling</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Nanital</td>
-                    <td>9</td>
-                </tr>
+                @{
+                    foreach (var league in Model)
+                    {
+                        var iconCountry = league.CountryIconVN ?? league.CountryLogo;
+                        count++;
+                        <tr>
+                            <td class="text-center" width="4%">@count</td>
+                            <td class="text-left" width="24%">@league.LeagueFullNameEN</td>
+                            <td class="text-left" width="24%">@league.LeagueNameVN</td>
+                            <td class="text-center" width="8%"><img src="@(iconCountry ?? GetTeamIcon(iconCountry))" width="30"></td>
+                            <td class="text-left" width="12%">@league.CountryEN</td>
+                            <td class="text-left" width="12%">@league.CountryVN</td>
+                            <td class="text-center" width="12%">@DateTimeUtilize.ChangeTimeZoneToClient(league.CreatedDate)</td>
+                            <td class="text-center" width="4%">
+                                <i class="icon icon-delete-admin btn-Delete" title="Delete"
+                               data-url="@Url.Action("RemoveLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId})"></i>
+                            </td>
+                        </tr>
+                    }
+                }
             </table>
+        </div>
 
     </div>
 
@@ -186,27 +153,6 @@
     <script src="~/js/select2.min.js" asp-append-version="true"></script>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
-
-    <script type="text/javascript" asp-append-version="true">
-        $(function () {
-            $("#tblLocations").sortable({
-                items: 'tr:not(tr:first-child)',
-                cursor: 'pointer',
-                axis: 'y',
-                dropOnEmpty: false,
-                start: function (e, ui) {
-                    ui.item.addClass("selected");
-                },
-                stop: function (e, ui) {
-                    ui.item.removeClass("selected");
-                    $(this).find("tr").each(function (index) {
-                        if (index > 0) {
-                            $(this).find("td").eq(2).html(index);
-                        }
-                    });
-                }
-            });
-        });
-    </script>
 }

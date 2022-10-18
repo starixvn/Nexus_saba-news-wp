@@ -28,6 +28,7 @@
         public async Task<ActionResult> Index()
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
+            leagues = leagueService.SearchLeague(leagues, null, 1);
             return View("~/Areas/Admin/Views/Livescore/ManagementLeague/Index.cshtml", leagues);
         }
 
@@ -50,12 +51,7 @@
                     PageSize = model.PageSize,
                     TotalPages = (int)Math.Ceiling(totalLeague / (double)model.PageSize),
                 }
-            };
-            if(model.IsMajor == 1)
-            {
-                return PartialView("~/Areas/Admin/Views/Livescore/ManagementLeague/_ManagementHotLeagueDataGrid.cshtml", viewModel);
-
-            }
+            };            
             return PartialView("~/Areas/Admin/Views/Livescore/ManagementLeague/_ManagementLeagueDataGrid.cshtml", viewModel);
         }
 

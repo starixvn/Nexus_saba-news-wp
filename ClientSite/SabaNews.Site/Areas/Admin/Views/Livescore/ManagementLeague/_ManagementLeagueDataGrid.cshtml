@@ -3,7 +3,7 @@
 @using SabaNews.Core.Helper;
 @{ var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 <div class="table-admin">
-    <table class="data-grid">
+    <table class="data-grid" id="tblLocations">
         <thead>
             <tr>
                 <th>#</th>
@@ -27,7 +27,7 @@
                             <td class="text-center" width="5%">@count</td>
                             <td class="text-left" width="20%">@league.LeagueFullNameEN</td>
                             <td class="text-left" width="20%">@league.LeagueNameVN</td>
-                        <td class="text-center" width="8%"><img src="@(iconCountry ?? LivescoreHelper.GetTeamIcon(iconCountry))" width="30"></td>
+                            <td class="text-center" width="8%"><img src="@(iconCountry ?? LivescoreHelper.GetTeamIcon(iconCountry))" width="30"></td>
                             <td class="text-left" width="12%">@league.CountryEN</td>
                             <td class="text-left" width="12%">@league.CountryVN</td>
                             <td class="text-center" width="12%">@DateTimeUtilize.ChangeTimeZoneToClient(league.CreatedDate)</td>
