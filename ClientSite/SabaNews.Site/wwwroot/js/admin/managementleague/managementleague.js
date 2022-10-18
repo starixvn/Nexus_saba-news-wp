@@ -108,7 +108,7 @@
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $('#EditLeagueContent').modal('hide');
-                                    GetSuccessPopup('#NoticeModal', 'Update league successfully!');
+                                    GetSuccessPopup('#NoticeModal', 'Update the league successfully!');
                                     setTimeout(function () {
                                         $('#NoticeModal').modal('hide');
                                         GetDataLeagueExtraGrid();
@@ -221,7 +221,7 @@
                         success: function (response) {
                             if (response.isSuccessful) {
                                 $('#AddLeagueContent').modal('hide');
-                                GetSuccessPopup('#NoticeModal', 'Add league successfully!');
+                                GetSuccessPopup('#NoticeModal', 'League was successfully added!');
                                 setTimeout(function () {
                                     $('#NoticeModal').modal('hide');
                                     typeSort = 1;
@@ -330,21 +330,5 @@
 
 $(document).ready(function () {   
     adminManagementLeague.init();
-    $(function () {
-        $("#tblLocations").sortable({
-            items: 'tr:not(tr:first-child)',
-            cursor: 'pointer',
-            axis: 'y',
-            dropOnEmpty: false,
-            start: function (e, ui) {
-                ui.item.addClass("selected");
-            },
-            stop: function (e, ui) {
-                ui.item.removeClass("selected");
-            },
-            receive: function (e, ui) {
-                $(this).find("tbody").append(ui.item);
-            }
-        });
-    });
+
 });
