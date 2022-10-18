@@ -156,6 +156,7 @@
                                     <div class="wc-table-body">
                                         @foreach (var item in standing.Standings)
                                         {
+                                            var teamIcon = @GetTeamIcon(item.Icon);
                                             count++;
                                             <div class="wc-table-row">
                                                 <div class="wc-table-cell cell-rank first-width">
@@ -165,7 +166,7 @@
                                                 </div>
                                                 <div class="wc-table-cell cell-participant">
                                                     <ul class="team">
-                                                        <li class="team-logo"><img src="@GetTeamIcon(item.Icon)" /></li>
+                                                        <li class="team-logo"><img src="@(string.IsNullOrEmpty(item.IconVN) ? teamIcon : item.IconVN)" /></li>
                                                         <li class="team-name"> @GetStandingTeamName(item)</li>
                                                     </ul>
                                                 </div>
