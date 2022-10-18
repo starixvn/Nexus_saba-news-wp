@@ -76,7 +76,7 @@ export class MatchGrid extends PureComponent {
         return status === MatchStatus.Postpone
                 || status === MatchStatus.Cancel
                 || status === MatchStatus.TBD;
-    }
+    };
 
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
