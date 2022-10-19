@@ -6,9 +6,8 @@
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Criteria.Posts;
-    using SabaNews.Criteria.User;
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -34,6 +33,7 @@
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
         private readonly IUserService userService;
+        private readonly IWorldCupService worldcupService;
         private const long LeagueIdWC = WorldCup2022.LeagueIdWorldCup2022;
         private const long SeasonIdWC = WorldCup2022.SeasonIdWorldCup2022;
         private const string CategorySlugWC = WorldCup2022.HomepageSlug;
@@ -45,7 +45,8 @@
             ILeagueService leagueService,
             IConfiguration configuration,
             ISessionService sessionService,
-            IUserService userService)
+            IUserService userService,
+            IWorldCupService worldcupService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
@@ -54,6 +55,7 @@
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.userService = userService;
+            this.worldcupService = worldcupService;
         }
 
         [Route("world-cup-2022")]
@@ -366,6 +368,37 @@
                 Header = header
             };
             return View("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", model);
+        }
+
+        [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/{stage}")]
+        public IActionResult MinigameStage(byte stage)
+        {
+            if (sessionService.User == null)
+            {
+                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+            }
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.TitleMinigame,
+                Slug = WorldCup2022.UrlMinigameSlug
+            };
+            var model = new MinigameStageViewModel
+            {
+                Header = header,
+                Stage = stage
+            };
+            return View("~/Views/Event/WorldCup2022/Minigame/Stage.cshtml", model);
+        }
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameByUser([FromBody] GetMinigameByUserCriteria criteria)
+        {
+            if (sessionService.User == null)
+            {
+                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+            }
+            criteria.UserId = sessionService.User.Id;
+            var votes = await worldcupService.GetMinigameByUser(criteria);
+            return Json(votes);
         }
 
         public async Task<ActionResult> GetMinigameData(UserFilterMembershipEventModel model)

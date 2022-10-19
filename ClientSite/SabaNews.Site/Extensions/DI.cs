@@ -44,6 +44,7 @@
             services.AddTransient<IExportExcelService, ExportExcelService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IFileService, FileService>();
+            services.AddTransient<IWorldCupService, WorldCupService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
