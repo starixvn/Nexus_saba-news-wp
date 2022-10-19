@@ -13,7 +13,8 @@ const cssPaths = {
     livescore_soccer_worldcup_fixture: ['./www/sources/css/pages/livescore/soccer/world-cup/fixture.scss'],
     livescore_soccer_worldcup_full_fixture: ['./www/sources/css/pages/livescore/soccer/world-cup/full-fixture.scss'],
     livescore_soccer_worldcup_standing_playoff: ['./www/sources/css/pages/livescore/soccer/world-cup/standing-playoff.scss'],
-    livescore_soccer_worldcup_minigame_stage: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-stage.scss']
+    livescore_soccer_worldcup_minigame_stage: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-stage.scss'],
+    livescore_soccer_worldcup_minigame: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame.scss'],
 };
 
 const scriptPaths = {
@@ -28,7 +29,8 @@ const scriptPaths = {
     livescore_soccer_worldcup_fixture: ['./www/sources/js/pages/livescore/soccer/world-cup/fixture/index.jsx'],
     livescore_soccer_worldcup_full_fixture: ['./www/sources/js/pages/livescore/soccer/world-cup/full-fixture/index.jsx'],
     livescore_soccer_worldcup_standing_playoff: ['./www/sources/js/pages/livescore/soccer/world-cup/standing-playoff/index.jsx'],
-    livescore_soccer_worldcup_minigame_stage: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-stage/index.jsx']
+    livescore_soccer_worldcup_minigame_stage: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-stage/index.jsx'],
+    livescore_soccer_worldcup_minigame: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame/index.jsx']
 };
 
 module.exports = {

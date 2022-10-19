@@ -367,7 +367,7 @@
             {
                 Header = header
             };
-            return View("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", model);
+            return View("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", model);
         }
 
         [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/{stage}")]

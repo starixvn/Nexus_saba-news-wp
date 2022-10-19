@@ -26,9 +26,11 @@
     <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
 
     <environment include="Development">
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/minigame.chunk.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/minigame.chunk.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
 }
@@ -39,13 +41,16 @@
         <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/pages/livescore/soccer/world-cup/minigame.chunk.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame.chunk.js" asp-append-version="true"></script>
     </environment>
+
     <script>
         var checkLogin = '@Model.IsLogin';
     </script>
@@ -71,168 +76,9 @@
         <div class="wave-game"></div>
     </div>
 
-    <div class="wc-page-main">
-        @if (Model.IsLogin)
-        {
-            <div class="minigame-title">
-                <p class="text">Số người có cùng dự đoán với bạn</p>
-                <div class="dots-parent">
-                    <ul>
-                        <li class="dots-small"></li>
-                        <li class="dots-regular"></li>
-                        <li class="dots-parent-center"></li>
-                        <li class="dots-regular"></li>
-                        <li class="dots-small"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="minigame-bxh">
-                <div class="wrapper-container mb-container">
-                    <div class="grid-bxh scroll-snap-game">
-                        @foreach (var group in Model.StandingsViewModel)
-                        {
-                            var groupName = $"Bảng {group.GroupName[0]}";
-                            <div class="minigame-table scroll-snap-items">
-                                <div class="minigame-table-header">
-                                    @groupName
-                                </div>
-                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
-                                <div class="minigame-table-body">
-                                    <div class="minigame-team">
-                                        @foreach (var standing in group.Standings)
-                                        {
-                                            var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
-                                            var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                                            <ul class="group-team active">
-                                                <li class="team-logo"><img src=@icon alt="@teamName" /></li>
-                                                <li class="team-name">@teamName</li>
-                                            </ul>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-
-            @*<div class="wc-block wc-block-bxh" id="home-standing">
-                <div class="grid-bxh scroll-snap">
-
-                    @foreach (var group in Model.StandingsViewModel)
-                    {
-                        var groupName = $"Bảng {group.GroupName[0]}";
-                        <a class="scroll-snap-items">
-                            <div class="wc-table">
-                                <div class="name-bxh title-items">@groupName</div>
-                                <div class="wc-table-header">
-                                    <div class="wc-table-cell cell-participant"></div>
-                                </div>
-
-                                <div class="wc-table-body">
-                                    @foreach (var standing in group.Standings)
-                                    {
-                                        var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
-                                        var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                                        <div class="wc-table-row @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamid="@standing.TeamId" data-teamname="@teamName">
-                                            <div class="wc-table-cell cell-participant @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamid="@standing.TeamId" data-teamname="@teamName">
-                                                <ul class="team @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamid="@standing.TeamId" data-teamname="@teamName">
-                                                    <li class="team-logo @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamname="@teamName" data-teamid="@standing.TeamId"><img src=@icon alt="Alternate Text" /></li>
-                                                    <li class="team-name @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamname="@teamName" data-teamid="@standing.TeamId" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </a>
-                    }
-                </div>
-            </div>*@
-        }
-
-        <div class="block-group" id="field-number-event">
-            <div class="block-field-number">
-                @if (Model.IsLogin && Model.MinigameDetail.Count != 0)
-                {
-                    var luckyNumber = Model.MinigameDetail[0].LuckyNumber.Trim();
-                    var arrNumber = new StringBuilder(luckyNumber);
-                    string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
-                    <div class="minigame-title">
-                        <p class="text">Số người có cùng dự đoán với bạn</p>
-                        <div class="dots-parent">
-                            <ul>
-                                <li class="dots-small"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-parent-center"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-small"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="minigame-number minigame-number-result  @arrNumberAsWord[0]">
-                        <div class="form-event">
-                            <div class="form-input">
-                                @for (var i = 0; i < arrNumber.Length; i++)
-                                {
-                                    var number = !string.IsNullOrEmpty(arrNumber[i].ToString()) ? Convert.ToInt32(arrNumber[i].ToString()) : 0;
-                                    <div class="dots">
-                                        <input type="number" readonly value="@number" class="input-field-event" />
-                                    </div>
-                                }
-                            </div>
-                            <div class="form-input">
-                                @for (var i = 0; i < arrNumber.Length; i++)
-                                {
-                                    var number = !string.IsNullOrEmpty(arrNumber[i].ToString()) ? Convert.ToInt32(arrNumber[i].ToString()) : 0;
-                                    <div class="result">@arrNumberAsWord[number]</div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                }
-                else if (Model.IsLogin && Model.MinigameDetail.Count == 0)
-                {
-                    <div class="minigame-title">
-                        <p class="text">Số người có cùng dự đoán với bạn</p>
-                        <div class="dots-parent">
-                            <ul>
-                                <li class="dots-small"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-parent-center"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-small"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="minigame-number">
-                        <form class="form-event" id="membership-event-form">
-                            <div class="form-input">
-                                <input type="text" min="0" max="999999" id="luckyNumber" class="input-field-event input-event-number" />
-                            </div>
-                            <button type="button" class="btn btn-submit-number">Gửi</button>
-                        </form>
-                    </div>
-                }
-            </div>
-            <div class="block-list-connect" id="list-rigister-event">
-                <div class="minigame-title">
-                    <p class="text">Danh sách tham gia</p>
-                    <div class="dots-parent">
-                        <ul>
-                            <li class="dots-small"></li>
-                            <li class="dots-regular"></li>
-                            <li class="dots-parent-center"></li>
-                            <li class="dots-regular"></li>
-                            <li class="dots-small"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="data-grid">
-                </div>
-            </div>
-        </div>
-    </div>
+    <div>
+        <div id="minigame"></div>
+    </div>    
 </section>
 
 

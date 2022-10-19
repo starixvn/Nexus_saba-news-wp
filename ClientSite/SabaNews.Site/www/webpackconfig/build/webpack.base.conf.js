@@ -24,6 +24,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/world-cup/full-fixture`]: pathConfig.scriptPaths.livescore_soccer_worldcup_full_fixture,
             [`${jsPath}/pages/livescore/soccer/world-cup/standing-playoff`]: pathConfig.scriptPaths.livescore_soccer_worldcup_standing_playoff,
             [`${jsPath}/pages/livescore/soccer/world-cup/minigame-stage`]: pathConfig.scriptPaths.livescore_soccer_worldcup_minigame_stage,
+            [`${jsPath}/pages/livescore/soccer/world-cup/minigame`]: pathConfig.scriptPaths.livescore_soccer_worldcup_minigame,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
@@ -34,7 +35,9 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/world-cup/fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_fixture,
             [`${cssPath}/pages/livescore/soccer/world-cup/full-fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_full_fixture,
             [`${cssPath}/pages/livescore/soccer/world-cup/standing-playoff`]: pathConfig.cssPaths.livescore_soccer_worldcup_standing_playoff,
-            [`${cssPath}/pages/livescore/soccer/world-cup/minigame-stage`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame_stage
+            [`${cssPath}/pages/livescore/soccer/world-cup/minigame-stage`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame_stage,
+            [`${cssPath}/pages/livescore/soccer/world-cup/minigame`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame
+
         },
         output: {
             path: pathConfig.projectRoot,
