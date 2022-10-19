@@ -234,5 +234,7 @@
         <Setting Key="Livescore_Standing_Update" SpName="Livescore_Standing_Update" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Standing_UpdatePosition" SpName="Livescore_Standing_UpdatePosition" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Match_GetByIdUpdate" SpName="Livescore_Match_GetByIdUpdate" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="worldcup_minigame_getByUser" SpName="worldcup_minigame_getByUser" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="worldcup_minigame_updateVote" SpName="worldcup_minigame_updateVote" DbName="sabasports" Plain="0"></Setting>
     </Function>
 </Functions>

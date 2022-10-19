@@ -4,11 +4,11 @@ import DataService from '@jsroot/common/dataService';
 import {
     setMatches,
     setLeague,
-    setVotes
+    setVotes,
+    setUpdateVote
 } from './minigameStageSlice';
 
 const getMatches = () => async dispatch => {
-    console.log(1);
     const url = Site.resolveClientUrl('soccer/getMatchesBySeason');
     var param = {
         leagueId: WorldCup.leagueId,
@@ -27,7 +27,14 @@ const getVotes = () => async dispatch => {
         stage: window.stage
     };
     await DataService.postDataAsync(url, param).then(response => {
-        dispatch(setMinigame(response.data));
+        dispatch(setVotes(response.data));
+    }).catch(Site.handleAxiosError);
+};
+
+const updateVote = params => async dispatch => {
+    const url = Site.resolveClientUrl('worldcup2022/UpdateMinigameVote');
+    await DataService.postDataAsync(url, params).then(response => {
+        dispatch(setUpdateVote(response.data));
     }).catch(Site.handleAxiosError);
 };
 
@@ -36,6 +43,8 @@ export const ActionCreators = {
     setMatches,
     setVotes,
     setLeague,
+    setUpdateVote,
     getMatches,
-    getVotes
+    getVotes,
+    updateVote
 };

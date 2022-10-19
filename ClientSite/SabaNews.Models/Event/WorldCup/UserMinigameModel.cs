@@ -8,6 +8,8 @@
 
         public long MatchId { get; set; }
 
+        public long TeamId { get; set; }
+
         public byte Stage { get; set; }
 
         public DateTime UpdatedDate { get; set; }

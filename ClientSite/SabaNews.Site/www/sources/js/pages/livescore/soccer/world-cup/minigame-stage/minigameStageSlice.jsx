@@ -6,7 +6,8 @@ const minigameStageSlice = createSlice({
         matches: null,
         stages: null,
         league: null,
-        votes: null
+        votes: null,
+        updateVoteResult: null
     },
     reducers: {
         setMatches: (state, action) => {
@@ -28,7 +29,10 @@ const minigameStageSlice = createSlice({
         },
         setVotes: (state, action) => {
             state.votes = action.payload
-        }
+        },
+        setUpdateVote: (state, action) => {
+            state.updateVoteResult = action.payload;
+        },
     }
 });
 
@@ -37,7 +41,8 @@ const { actions, reducer } = minigameStageSlice;
 export const {
     setMatches,
     setLeague,
-    setVotes
+    setVotes,
+    setUpdateVote
 } = actions;
 
 export default reducer;

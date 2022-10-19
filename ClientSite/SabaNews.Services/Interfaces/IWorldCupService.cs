@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
+    using SabaNews.Core.Models;
     using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;
@@ -7,6 +8,8 @@
 
     public interface IWorldCupService
     {
-        Task<IList<UserMinigameModel>> GetMinigameByUser(GetMinigameByUserCriteria criteria);
+        Task<IList<UserMinigameModel>> GetMinigameByUserAsync(GetMinigameByUserCriteria criteria);
+
+        Task<CommandResult> UpdateMinigameVoteAsync(UpdateMinigameVoteCommand cmd);
     }
 }

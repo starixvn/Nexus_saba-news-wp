@@ -7,8 +7,8 @@
         public long UserId { get; set; }
         public byte Stage { get; set; }
 
-        public override string GetSettingKey() => "get_category_detail";
+        public override string GetSettingKey() => "worldcup_minigame_getByUser";
 
-        public override bool IsValid() => UserId > 0 && Stage >= 1 && Stage <= 4 ;
+        public override bool IsValid() => UserId > 0 && Stage > 0 && Stage <= 4 ;
     }
 }
