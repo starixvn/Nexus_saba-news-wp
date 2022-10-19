@@ -46,7 +46,16 @@
             var stories = new List<StoryPostModel>();
             HtmlDocument document = new HtmlDocument();
             document.LoadHtml(postContent);
-            var nodes = document.DocumentNode.SelectNodes("figure");
+            var nodes = document.DocumentNode.SelectNodes("//div[contains(@class, 'wp-block-image')]/figure");
+            if (nodes == null)
+            { 
+                nodes = document.DocumentNode.SelectNodes("figure");
+                if (nodes == null)
+                {
+                    return stories;
+                }
+                
+            }
             foreach (var item in nodes)
             {
                 var figcaption = item.SelectSingleNode("figcaption");
