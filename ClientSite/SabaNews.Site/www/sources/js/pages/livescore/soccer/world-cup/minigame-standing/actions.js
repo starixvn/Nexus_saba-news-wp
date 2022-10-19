@@ -5,7 +5,7 @@ import { WorldCup } from '@jsroot/common/constants';
 import {
     setMatches,
     setPlayers,
-} from './minigameSlice';
+} from './minigameStandingSlice';
 
 const getMatches = () => async dispatch => {
     const url = Site.resolveClientUrl('soccer/getMatchesBySeason');

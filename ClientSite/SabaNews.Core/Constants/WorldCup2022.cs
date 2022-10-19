@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Core.Constants
 {
     using SabaNews.Core.Models;
+    using System;
     using System.Collections.Generic;
 
     public static class WorldCup2022
@@ -64,6 +65,11 @@
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
         public const long GroupStageId = 30537;
+
+        public const long TimestampMinigameStage01Start = 1668956400;
+        public const long TimestampMinigameStage02Start = 1669366800;
+        public const long TimestampMinigameStage03Start = 1669730400;
+        public const long TimestampMinigameStage04Start = 1670076000;
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {

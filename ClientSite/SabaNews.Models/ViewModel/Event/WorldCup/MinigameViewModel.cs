@@ -2,6 +2,7 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;
 
     public class MinigameViewModel
@@ -9,6 +10,7 @@
         public HeaderViewModel Header { get; set; }
 
         public IList<StandingViewModel> StandingsViewModel { get; set; }
+        public IList<UserMinigameModel> Votes { get; set; }
 
         public UserSession User { get; set; }
 

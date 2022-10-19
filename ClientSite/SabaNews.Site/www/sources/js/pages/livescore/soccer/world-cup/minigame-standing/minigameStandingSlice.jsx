@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const minigameSlice = createSlice({
-    name: 'minigameSlice',
+const minigameStandingSlice = createSlice({
+    name: 'minigameStandingSlice',
     initialState: {
         players: null,
         matches: null
@@ -27,7 +27,7 @@ const minigameSlice = createSlice({
     }
 });
 
-const { actions, reducer } = minigameSlice;
+const { actions, reducer } = minigameStandingSlice;
 
 export const {
     setMatches,

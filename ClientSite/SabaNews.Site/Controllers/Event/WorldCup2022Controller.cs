@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Controllers.Event
 {
+    using Fanex.Data.Repository;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -8,9 +9,12 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -150,7 +154,7 @@
         [Route("world-cup-2022/tin-moi-nhat")]
         public async Task<IActionResult> LastestNews()
         {
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems};
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems };
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
 
             var header = new HeaderViewModel
@@ -161,10 +165,11 @@
 
             var viewModel = new LastestNewsViewModel
             {
-                Header =header,
+                Header = header,
                 Posts = news,
                 CategorySlug = CategorySlugWC,
-                Paging = new PagingModel{
+                Paging = new PagingModel
+                {
                     PageSize = Constants.GetTenItems,
                     CurrentPage = Constants.FirstPage,
                     TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)Constants.GetTenItems)
@@ -280,10 +285,10 @@
                 Title = WorldCup2022.TitleStoryPost,
                 Slug = WorldCup2022.UrlStoryPostSlug
             };
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria 
-            { 
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria
+            {
                 _CategorySlug = WorldCup2022.StoryPostSlug,
-                _Start = 0, 
+                _Start = 0,
                 _End = pageSize,
                 PostType = Constants.storyPostType
             };
@@ -299,7 +304,7 @@
                     TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)pageSize)
                 }
             };
-            
+
             return View("~/Views/Event/WorldCup2022/StoryPost.cshtml", model);
         }
 
@@ -363,10 +368,18 @@
                 Title = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
+
             var model = new MinigameViewModel
             {
                 Header = header
-            };
+            };                       
+
+
+                GetMinigameByUserCriteria criteria = new GetMinigameByUserCriteria
+                {
+                    UserId = sessionService.User.Id
+                };
+                model.Votes = await worldcupService.GetMinigameByUser(criteria);
             return View("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", model);
         }
 
@@ -480,7 +493,8 @@
                 var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize + 1 };
                 IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
                 videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
-                if(videos.Count() > pageSize) {
+                if (videos.Count() > pageSize)
+                {
                     var idlast = videos.Last().ID;
                     videos = videos.Where(x => x.ID != idlast).ToList();
                 }
@@ -490,7 +504,7 @@
 
         public async Task<IActionResult> GetStandings()
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             ViewBag.Total = GroupStandingsByGroupName(standings).Count;
             return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", GroupStandingsByGroupName(standings));
@@ -499,7 +513,7 @@
         [HttpPost]
         public async Task<IActionResult> GetTopScorers(bool more)
         {
-            var topScorersCriteria = new GetTop10ScorersCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var topScorersCriteria = new GetTop10ScorersCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
             ViewBag.More = more;
             return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);

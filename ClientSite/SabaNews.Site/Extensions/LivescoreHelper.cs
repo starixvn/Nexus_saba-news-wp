@@ -5,6 +5,7 @@
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
+    using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -153,6 +154,19 @@
                 result = CheckMatchResult(homeTotal, awayTotal);
             }
             return result;
+        }
+
+        public static int GetCountVotesStage(IList<UserMinigameModel> votes ,int numStage) 
+        {
+            int dem = 0;
+            foreach (UserMinigameModel vote in votes)
+            {
+                if(vote.Stage == numStage)
+                {
+                    dem++;
+                }
+            }
+            return dem;
         }
 
     }

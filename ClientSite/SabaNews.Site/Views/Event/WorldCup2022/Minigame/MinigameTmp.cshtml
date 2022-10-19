@@ -1,4 +1,6 @@
 ﻿@using System.Text;
+@using SabaNews.Core.Constants;
+@using static SabaNews.Site.Extensions.LivescoreHelper
 @using SabaNews.Site.Extensions;
 @using DeviceDetectorNET;
 @section Title {
@@ -26,11 +28,11 @@
     <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/minigame.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/minigame-standing.chunk.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/minigame.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/minigame-standing.chunk.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
 }
@@ -41,14 +43,14 @@
         <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/pages/livescore/soccer/world-cup/minigame.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/pages/livescore/soccer/world-cup/minigame-standing.chunk.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame-standing.chunk.js" asp-append-version="true"></script>
     </environment>
 
     <script>
@@ -65,19 +67,78 @@
         <div class="header-control">
             <ul>
                 <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
-                @{
-                    if (!Model.IsLogin)
-                    {
-                        <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
-                    }
-                }
+                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
             </ul>
         </div>
         <div class="wave-game"></div>
     </div>
 
+    <ul class="header-nav-event">
+        <li>
+            <a href="javascript:;" class="active btn-home">
+                <i class="icon icon-event-home"></i>
+                <span>Sự Kiện</span>
+            </a>
+        </li>
+        <li>
+            <a href="#the-le" class="click-number-rule">
+                <i class="icon icon-field-number"></i>
+                <span>Thể Lệ</span>
+            </a>
+        </li>
+        <li>
+            <a href="#danh-sach-tham-gia" class="click-list-rigister">
+                <i class="icon icon-list-event"></i>
+                <span>Tham Gia Dự Đoán</span>
+            </a>
+        </li>
+        <li>
+            <a href="#du-doan-cua-toi" class="click-my-prediction">
+                <i class="icon icon-list-event"></i>
+                <span>Dự Đoán Của Tôi</span>
+            </a>
+        </li>
+        <li>
+            <a href="#bang-xep-hang" class="click-list-standing">
+                <i class="icon icon-list-event"></i>
+                <span>Bảng Xếp Hạng</span>
+            </a>
+        </li>
+        <li>
+            <a href="#danh-sach-trung-thuong" class="click-list-result">
+                <i class="icon icon-list-event"></i>
+                <span>Danh Sách Trúng Thưởng</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="container-stage">
+        <h1 style = "text-align:center;">Dự đoán đội chiến thắng trong mỗi trận đấu để nhận điểm và có cơ hội giành</h1>
+        <h1 style = "text-align:center;">được những giải thưởng hấp dẫn!</h1>
+
+        <div class="stage-row-1" style="display:flex; margin-top: 30px;">
+            @{
+                for(int i=0; i < 4; i++){
+                    <div class="stage1" style="background:silver;height: 200px;width: 250px;margin-left: 124px;">
+                        <i style="margin-left: 83%;" class="icon icon-list-event"></i>
+                        <h1 style="text-align:center; margin-top: 18%;">Giai Đoạn @(i+1)</h1>
+                        <div style="align-items: flex-end;margin-top: 46px;margin-left: 5px;">
+                            @if (Model.IsLogin && i < 3)
+                            {
+                                <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i)/16</h4>
+                            }
+                            else if (Model.IsLogin)
+                            {
+                                <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i)/18</h4>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
     <div>
-        <div id="minigame"></div>
+        <div id="minigame-standing"></div>
     </div>    
 </section>
 
