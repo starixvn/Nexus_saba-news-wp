@@ -6,6 +6,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Models.Event.WorldCup;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -167,6 +168,62 @@
                 }
             }
             return dem;
+        }
+
+        public static string GetIconStage(string status)
+        {
+            string iconStage;
+            if(status == WorldCup2022.LockStage)
+            {
+                iconStage = WorldCup2022.IconLock;
+            }
+            else if(status == WorldCup2022.OnEndStage)
+            {
+                iconStage = WorldCup2022.IconSearch;
+            }
+            else
+            {
+                iconStage = string.Empty;
+            }
+            return iconStage;
+        }
+
+        public static string GetStatusStage(IList<Match> matches, int numStage)
+        {
+            List<int> indexMatches = new List<int>() { 15, 31, 47, 63 };
+            List<long> longs = new List<long>() { 
+                WorldCup2022.TimestampMinigameStage01Start, 
+                WorldCup2022.TimestampMinigameStage02Start,
+                WorldCup2022.TimestampMinigameStage03Start, 
+                WorldCup2022.TimestampMinigameStage04Start };
+
+            var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            var checkNow = longs[numStage] - timeSpanNow.TotalSeconds;
+            string statusStage;
+            if (checkNow > 0)
+            {
+                if (checkNow > 3600)
+                {
+                    statusStage = WorldCup2022.LockStage;
+                }
+                else { statusStage = WorldCup2022.BeforeStartedStage; }
+            }
+            else
+            {
+                var timeSpanEnd = (matches[indexMatches[numStage]].StartTime - new DateTime(1970, 1, 1, 0, 0, 0));
+                var checkNowEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
+                if (checkNowEnd > 5400)
+                {
+                    statusStage = WorldCup2022.OnStartedStage;
+                }
+                else if (checkNowEnd <= 5400 && checkNowEnd > 1800)
+                {
+                    statusStage = WorldCup2022.BeforeEndStage;
+                }
+                else { statusStage = WorldCup2022.OnEndStage; }
+            }
+
+            return statusStage;
         }
 
     }

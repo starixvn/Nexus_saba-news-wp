@@ -119,8 +119,10 @@
         <div class="stage-row-1" style="display:flex; margin-top: 30px;">
             @{
                 for(int i=0; i < 4; i++){
+                    var status = GetStatusStage(Model.Matches, i);
+                    var icon = GetIconStage(status);
                     <div class="stage1" style="background:silver;height: 200px;width: 250px;margin-left: 124px;">
-                        <i style="margin-left: 83%;" class="icon icon-list-event"></i>
+                        <i style="margin-left: 83%;" class="icon @icon"></i>
                         <h1 style="text-align:center; margin-top: 18%;">Giai Đoạn @(i+1)</h1>
                         <div style="align-items: flex-end;margin-top: 46px;margin-left: 5px;">
                             @if (Model.IsLogin && i < 3)
@@ -130,6 +132,18 @@
                             else if (Model.IsLogin)
                             {
                                 <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i)/18</h4>
+                            }
+                            @if(status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
+                            {
+                                <h4>@GetStatusStage(Model.Matches, i)</h4>
+                                if (status != WorldCup2022.OnStartedStage)
+                                {
+                                    <div style="display:flex;">
+                                        <div class="clock" id="hours@(i+1)"></div>
+                                        <div class="clock" id="minutes@(i+1)"></div>
+                                        <div class="clock" id="seconds@(i+1)"></div>
+                                    </div>
+                                }
                             }
                         </div>
                     </div>

@@ -62,11 +62,20 @@
         public const string OverviewPageSlug = "danh-sach-san-thi-dau-vong-chung-ket-euro-2020";
         public const string OverviewRoute = "tong-quan";
 
+        public const string LockStage = "Chưa diễn ra";
+        public const string BeforeStartedStage = "Sắp diễn ra";
+        public const string OnStartedStage = "Đang diễn ra";
+        public const string BeforeEndStage = "Sắp kết thúc";
+        public const string OnEndStage = "Đã kết thúc";
+
+        public const string IconLock = "icon-list-event";
+        public const string IconSearch = "icon-search";
+
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
         public const long GroupStageId = 30537;
 
-        public const long TimestampMinigameStage01Start = 1668956400;
+        public const long TimestampMinigameStage01Start = 1666260000;
         public const long TimestampMinigameStage02Start = 1669366800;
         public const long TimestampMinigameStage03Start = 1669730400;
         public const long TimestampMinigameStage04Start = 1670076000;
@@ -88,7 +97,6 @@
             new CateInfo { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{UrlLastestNewsSlug}" },
             new CateInfo { Name = Commentary, Slug = CommentarySlug, Url = $"/{HomepageSlug}/{UrlCommentarySlug}" },
             new CateInfo { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{UrlVideoSlug}" }
-            
         };
     }
 }

@@ -363,6 +363,12 @@
         [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung")]
         public async Task<ActionResult> Minigame()
         {
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteriaMatch);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
@@ -372,14 +378,15 @@
             var model = new MinigameViewModel
             {
                 Header = header
-            };                       
+                Matches = matches,
+            };
 
 
                 GetMinigameByUserCriteria criteria = new GetMinigameByUserCriteria
                 {
                     UserId = sessionService.User.Id
                 };
-                model.Votes = await worldcupService.GetMinigameByUser(criteria);
+                model.Votes = await worldcupService.GetMinigameByUserAsync(criteria);
             return View("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", model);
         }
 
