@@ -27,14 +27,24 @@ const getVotes = () => async dispatch => {
         stage: window.stage
     };
     await DataService.postDataAsync(url, param).then(response => {
-        dispatch(setVotes(response.data));
+        if(!response.data) {
+            const page = Site.resolveClientUrl(WorldCup.MinigameUrl);
+            window.location = page;
+        } else {
+            dispatch(setVotes(response.data));
+        }
     }).catch(Site.handleAxiosError);
 };
 
 const updateVote = params => async dispatch => {
     const url = Site.resolveClientUrl('worldcup2022/UpdateMinigameVote');
     await DataService.postDataAsync(url, params).then(response => {
-        dispatch(setUpdateVote(response.data));
+        if(!response.data) {
+            const page = Site.resolveClientUrl(WorldCup.MinigameUrl);
+            window.location = page;
+        } else {
+            dispatch(setUpdateVote(response.data));
+        }
     }).catch(Site.handleAxiosError);
 };
 
@@ -46,5 +56,5 @@ export const ActionCreators = {
     setUpdateVote,
     getMatches,
     getVotes,
-    updateVote
+    updateVote,
 };

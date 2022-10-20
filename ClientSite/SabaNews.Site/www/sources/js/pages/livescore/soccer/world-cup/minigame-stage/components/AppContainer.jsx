@@ -18,27 +18,35 @@ export class AppContainer extends Component {
         let tmpMatches = [];
         const stage = parseInt(window.stage);
         const groupStage = matches.filter(item => item.stage.stageId === WorldCup.GroupsStage);
-        if(stage === 1) {
+        if(stage === WorldCup.MinigameStage.Stage1) {
             tmpMatches = groupStage.slice(0, 16);
-        } else if (stage === 2) {
+        } else if (stage === WorldCup.MinigameStage.Stage2) {
             tmpMatches = groupStage.slice(16, 32);
-        } else if(stage === 3) {
+        } else if(stage === WorldCup.MinigameStage.Stage3) {
             tmpMatches = groupStage.slice(32);
-        } else if(stage === 4) {
+        } else if(stage === WorldCup.MinigameStage.Stage4) {
             tmpMatches = matches.filter(item => item.stage.stageId > WorldCup.GroupsStage);
         }
         return tmpMatches;
     };
 
+    getNumberVoted = () => {
+        const { votes } = this.props;
+        const voted = votes.filter(item => item.stage == window.stage);
+        return voted.length;
+    }
+
     render() {
-        const {matches, league} = this.props;
+        const { matches, stages, league } = this.props;
         if(matches === null) {
             return null;
         }
         const showMatches = this.getMatchByStage(matches);
         return (
             <div className="livescore-soccer">
-                <Stages matches={showMatches} league={league}/>
+                <div className="Title">{`Giai đoạn ${window.stage}`}</div>
+                <div className="Title">{`Số trận dự đoán ${this.getNumberVoted()}/${showMatches.length}`}</div>
+                <Stages matches={showMatches} league={league} stages={stages}/>
             </div>
         )
     }

@@ -1,13 +1,15 @@
 import React, { PureComponent, Fragment } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchStatus, WorldCup, MatchResult } from '@jsroot/common/constants';
+import { MatchStatus } from '@jsroot/common/constants';
 import TeamScore from '../../../index/components/match-grid/TeamScore';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
+import Site from '@jsroot/common/site';
+import DataService from '@jsroot/common/dataService';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -50,29 +52,44 @@ export class Item extends PureComponent {
         return vote;
     };
 
-    handleVote = teamId => {
+    checkKnockoutMatch = () => {
+        const { match, teams } = this.props;
+        var result = window.stage != 4 || (window.stage == 4
+            && teams.includes(match.homeTeam.teamId)
+            && teams.includes(match.awayTeam.teamId));
+        return !result;
+    };
+
+    handleVote = async teamId => {
         const { match, votes } = this.props;
-        var matchVote = votes.find(item => item.matchId === match.matchId && item.stage == window.stage);
-        var startTime = DateTimeService.convertFromUTC(match.startTime);
-        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-        let minutes = startTime.diff(currentTime, 'minutes');
-        if(match.status === MatchStatus.Finished
-            || minutes <= 60
-            || (matchVote && matchVote.teamId === teamId)) {
+        var vote = votes.find(item => item.matchId === match.matchId && item.stage == window.stage);
+        if(vote && vote.teamId === teamId) {
             return;
         }
-        var params = {
-            stage: window.stage,
-            teamId: teamId,
-            matchId: match.matchId
-        };
-        this.props.updateVote(params).then(() => {
-            this.props.getVotes();
-        });
+        const url = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');
+        await DataService.postDataAsync(url, {matchId: match.matchId}).then(response => {
+            const voteMatch = response.data;
+            var startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
+            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+            let minutes = startTime.diff(currentTime, 'minutes');
+            if(voteMatch.status === MatchStatus.Finished
+                || minutes <= 30
+                || this.checkKnockoutMatch()) {
+                return;
+            }
+            var params = {
+                stage: window.stage,
+                teamId: teamId,
+                matchId: match.matchId
+            };
+            this.props.updateVote(params).then(() => {
+                this.props.getVotes();
+            });
+        })
     }
 
     render() {
-        const { match, votes } = this.props;
+        const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
             <div>
@@ -80,6 +97,7 @@ export class Item extends PureComponent {
                     <div className={`soccer-match-item`}
                     >
                         <div className="soccer-match-date-result">
+                            { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
                         </div>
                         <div className="soccer-match-team">
                             <div className="group-team">
@@ -115,8 +133,8 @@ export class Item extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { votes } = state;
-    return { votes };
+    const { votes, teams } = state;
+    return { votes, teams };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

@@ -11,5 +11,7 @@
         Task<IList<UserMinigameModel>> GetMinigameByUserAsync(GetMinigameByUserCriteria criteria);
 
         Task<CommandResult> UpdateMinigameVoteAsync(UpdateMinigameVoteCommand cmd);
+
+        Task<MinigameMatchVote> GetMinigameVoteMatchAsync(GetMinigameVoteMatchCriteria criteria);
     }
 }

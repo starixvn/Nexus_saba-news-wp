@@ -14,7 +14,7 @@ export default class Grid extends PureComponent {
             <div className="soccer-match-grid-item">
                 <div className="soccer-match-grid-item-body">
                 {
-                    matches.map(item => <Item key={item.matchId} match={item} />)
+                    matches.map((item, index) => <Item key={index} number={index} match={item} />)
                 }
                 </div>
             </div>

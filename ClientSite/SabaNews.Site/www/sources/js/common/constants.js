@@ -104,6 +104,13 @@ export const WorldCup = {
     EightTeamMatches: [55225418, 55225419, 55225422, 55225423, 55225420, 55225421, 55225424, 55225426],
     QuaterFinalMatches: [55225428, 55225427, 55225430, 55225429],
     SemiFinalMatches: [55225431, 55225432]
+    MinigameUrl: 'world-cup-2022/su-kien-du-doan-hay-qua-lien-tay',
+    MinigameStage: {
+        Stage1: 1,
+        Stage2: 2,
+        Stage3: 3,
+        Stage4: 4
+    }
 };
 
 

@@ -9,6 +9,7 @@
     using System.Linq;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
+    using Fanex.Data.Repository;
 
     public class WorldCupService : IWorldCupService
     {
@@ -28,6 +29,12 @@
         public async Task<CommandResult> UpdateMinigameVoteAsync(UpdateMinigameVoteCommand cmd)
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
+        }
+
+        public async Task<MinigameMatchVote> GetMinigameVoteMatchAsync(GetMinigameVoteMatchCriteria criteria)
+        {
+            var result = await baseService.GetDataEntityAsync<MinigameMatchVote>(criteria);
+            return result;
         }
     }
 }

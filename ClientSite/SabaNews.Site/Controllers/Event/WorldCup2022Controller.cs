@@ -407,7 +407,7 @@
         {
             if (sessionService.User == null)
             {
-                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+                return Json(null);
             }
             criteria.UserId = sessionService.User.Id;
             var votes = await worldcupService.GetMinigameByUserAsync(criteria);
@@ -417,13 +417,21 @@
         [HttpPost]
         public async Task<ActionResult> UpdateMinigameVote([FromBody] UpdateMinigameVoteCommand cmd)
         {
+
             if (sessionService.User == null)
             {
-                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+                return Json(null);
             }
             cmd.UserId = sessionService.User.Id;
             var result = await worldcupService.UpdateMinigameVoteAsync(cmd);
             return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameVoteMatch([FromBody] GetMinigameVoteMatchCriteria criteria)
+        {
+            var match = await worldcupService.GetMinigameVoteMatchAsync(criteria);
+            return Json(match);
         }
 
         public async Task<ActionResult> GetMinigameData(UserFilterMembershipEventModel model)

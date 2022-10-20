@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
-import moment from 'moment';
-import DateTimeService from '@jsroot/common/dateTimeService';
 import Grid from './Grid';
+import { WorldCup } from '@jsroot/common/constants';
 
 export default class Stages extends PureComponent {
     constructor(props) {
@@ -15,11 +14,10 @@ export default class Stages extends PureComponent {
 
     initStageId = () => {
         const { league, stages } = this.props;
+        const knockoutStages = stages.filter(item => item.stageId !== WorldCup.GroupsStage);
         let stageId = league.currentStageId;
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
-        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        if(stageId === 0 || moment(today).isSameOrAfter(endTime)) {
-            stageId = stages[stages.length - 1].key;
+        if(stageId === 0 || stageId === WorldCup.GroupsStage) {
+            stageId = knockoutStages[0].stageId;
         }
         return stageId;
     };
@@ -58,9 +56,8 @@ export default class Stages extends PureComponent {
 
 
     render() {
-        const { matches, league } = this.props;
+        const { matches } = this.props;
         const { selectedStageId } = this.state;
-        console.log(selectedStageId);
         const stages = this.groupMatchesByStage(matches);
         return (
             <div>
