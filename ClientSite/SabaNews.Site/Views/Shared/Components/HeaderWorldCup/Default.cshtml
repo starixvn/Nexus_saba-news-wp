@@ -136,6 +136,10 @@
                         }
 
                     }
+                    @if(isMobile) {
+                        <li class="menu-item"><a href="/" class="item">Quay về Saba.vn</a></li>
+                    }
+                    
                     <li class="right-header-section search-input hidden-pc">
                         <form action="/Search" method="post">
                             <input class="keyword-input search-box"  type="text" placeholder="Tìm kiếm...">
@@ -232,6 +236,9 @@
     <ul class="main-child-menu">
         @foreach (var menu in menus)
         {
+            if(menu.Slug == "") {
+                continue;
+            }
             var active = menu.Slug == Model.CateSlug ? "active" : "";
             <li class="menu-item">
                 <a href=@($"/{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item @active">
