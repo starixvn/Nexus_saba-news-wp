@@ -110,6 +110,11 @@ export const WorldCup = {
         Stage2: 2,
         Stage3: 3,
         Stage4: 4
+    },
+    MinigameScore: {
+        Final: 20,
+        Semifinal: 15,
+        Others: 10
     }
 };
 

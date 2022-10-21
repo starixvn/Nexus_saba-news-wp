@@ -22,11 +22,12 @@ const getMatches = () => async dispatch => {
 };
 
 const getVotes = () => async dispatch => {
-    const url = Site.resolveClientUrl('worldcup2022/GetMinigameByUser');
+    const url = Site.resolveClientUrl('worldcup2022/GetMinigameByUserStage');
     var param = {
         stage: window.stage
     };
     await DataService.postDataAsync(url, param).then(response => {
+        console.log(response.data);
         if(!response.data) {
             const page = Site.resolveClientUrl(WorldCup.MinigameUrl);
             window.location = page;
