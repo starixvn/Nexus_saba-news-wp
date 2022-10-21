@@ -27,7 +27,6 @@ const getVotes = () => async dispatch => {
         stage: window.stage
     };
     await DataService.postDataAsync(url, param).then(response => {
-        console.log(response.data);
         if(!response.data) {
             const page = Site.resolveClientUrl(WorldCup.MinigameUrl);
             window.location = page;

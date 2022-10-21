@@ -60,7 +60,8 @@ export class Item extends PureComponent {
 
     handleVote = async teamId => {
         const { match, vote } = this.props;
-        if(vote && vote.teamId === teamId) {
+        if((window.stage == 4 && teamId === 0)
+        || (vote && vote.teamId === teamId)) {
             return;
         }
         const url = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');

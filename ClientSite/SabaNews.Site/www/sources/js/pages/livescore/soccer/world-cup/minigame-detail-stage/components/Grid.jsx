@@ -1,50 +1,17 @@
 import React, { PureComponent } from 'react';
 import Item from './Item';
-import CommonFunctions from '@jsroot/common/common-functions';
-import {  MatchResult, MatchStatus, WorldCup } from '@jsroot/common/constants';
-
+import {  WorldCup } from '@jsroot/common/constants';
+import { getVoteResult } from '../../common.functions';
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
         this.totalScore = 0;
     }
 
-    getWinScore = stageId => {
-        switch(stageId) {
-            case WorldCup.FinalStage:
-                return WorldCup.MinigameScore.Final;
-            case WorldCup.SemifinalsStage:
-                return WorldCup.MinigameScore.Semifinal;
-            default:
-                return WorldCup.MinigameScore.Others;
-        }
-    }
-
     checkMatchResult = (match, vote) => {
-        if(match.status !== MatchStatus.Finished) {
-            return null;
-        }
-        let status = false;
-        let score = 0;
-        const voteTeam = vote.teamId === 0 ? match.homeTeam.teamId : vote.teamId;
-        const matchResult = CommonFunctions.getMatchResult(voteTeam, match);
-        if(matchResult === MatchResult.Win) {
-            if(vote.teamId !== 0) {
-                score = this.getWinScore(match.stage.stageId);
-                status = true;
-            } else {
-                status = false;
-            }
-        } else if(matchResult === MatchResult.Draw) {
-            if(vote.teamId === 0) {
-                score = this.getWinScore(match.stage.stageId);
-                status = true;
-            } else {
-                status = false;
-            }
-        }
-        this.totalScore += score;
-        return {status, score};
+        const result = getVoteResult(match, vote);
+        this.totalScore += result !== null ? result.score : 0;
+        return result;
     }
 
     render() {

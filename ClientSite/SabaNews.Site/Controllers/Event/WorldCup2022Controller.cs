@@ -12,6 +12,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
@@ -424,7 +425,7 @@
             {
                 Header = header,
             };
-            return View("~/Views/Event/WorldCup2022/Minigame/ProfileStage.cshtml", model);
+            return View("~/Views/Event/WorldCup2022/Minigame/Profile.cshtml", model);
         }
 
         [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet/giai-doan/{stage}")]
@@ -455,6 +456,17 @@
             }
             criteria.UserId = sessionService.User.Id;
             var votes = await worldcupService.GetMinigameByUserStageAsync(criteria);
+            return Json(votes);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameByUser()
+        {
+            if (sessionService.User == null)
+            {
+                return Json(null);
+            }
+            var votes = await worldcupService.GetMinigameByUserAsync(sessionService.User.Id);
             return Json(votes);
         }
 

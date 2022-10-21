@@ -23,7 +23,7 @@ export class AppContainer extends Component {
 
     render() {
         const { matches, stages, league } = this.props;
-        if(matches === null) {
+        if(matches === null ) {
             return null;
         }
         const showMatches = getMatchByEventStage(matches);

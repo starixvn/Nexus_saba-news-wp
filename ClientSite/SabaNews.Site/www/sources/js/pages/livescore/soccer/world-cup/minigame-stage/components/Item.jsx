@@ -63,15 +63,16 @@ export class Item extends PureComponent {
     handleVote = async teamId => {
         const { match, votes } = this.props;
         var vote = votes.find(item => item.matchId === match.matchId && item.stage == window.stage);
-        if(vote && vote.teamId === teamId) {
+        if((window.stage == 4 && teamId === 0)
+        || (vote && vote.teamId === teamId)) {
             return;
         }
         const url = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');
         await DataService.postDataAsync(url, {matchId: match.matchId}).then(response => {
             const voteMatch = response.data;
-            var startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
+            const startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
             const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-            let minutes = startTime.diff(currentTime, 'minutes');
+            const minutes = startTime.diff(currentTime, 'minutes');
             if(voteMatch.status === MatchStatus.Finished
                 || minutes <= 30
                 || this.checkKnockoutMatch()) {

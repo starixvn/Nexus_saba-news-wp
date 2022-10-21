@@ -6,6 +6,7 @@
     Delay: 'Tạm hoãn',
     ExtraTimeEnd: 'Kết thúc hiệp phụ',
     EmptyFavLeague: 'Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.',
+    Ending: 'sắp kết thúc',
     Finish: 'Kết thúc',
     FullTimeEnd: 'Kết thúc hiệp 2',
     FinalStage:'Chung kết',
@@ -18,6 +19,7 @@
     HotLeague: 'Giải nổi bật',
     Intermission: 'Nghỉ giữa hiệp',
     Interrupt: 'Gián đoạn',
+    Inprogress: 'Đang diễn ra',
     LineupPlayer: 'Đội hình ra sân',
     LineupSubtitude: 'Thay người',
     LineupSubtitudePlayer: 'Dự bị',
@@ -27,6 +29,7 @@
     MyLeagues: 'Giải đấu của tôi',
     Midfielder: 'Trung vệ',
     NotFoundLeague: 'Không tìm thấy giải đấu phù hợp',
+    NotStarted: 'Chưa diễn ra',
     Penalty: 'Penalty',
     Postponed: 'Dời lịch',
     RemoveFavouriteMatchTooltip: 'Xóa khỏi "Trận Đấu Quan Tâm"',
@@ -48,4 +51,5 @@
     Turn: 'Lượt',
     ThirdPlace: 'Tranh hạng 3',
     Unknown: 'Không xác định',
+    Upcomming: 'Sắp diễn ra'
 };

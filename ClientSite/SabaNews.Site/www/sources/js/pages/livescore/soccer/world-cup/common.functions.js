@@ -1,5 +1,6 @@
 import React from 'react';
-import { WorldCup } from '@jsroot/common/constants';
+import { WorldCup, MatchStatus, MatchResult } from '@jsroot/common/constants';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export  const getMatchByEventStage = matches => {
     let tmpMatches = [];
@@ -45,8 +46,46 @@ export const groupMatchesByStage = matches => {
     return tempMatches;
 }
 
+const getWinScore = stageId => {
+    switch(stageId) {
+        case WorldCup.FinalStage:
+            return WorldCup.MinigameScore.Final;
+        case WorldCup.SemifinalsStage:
+            return WorldCup.MinigameScore.Semifinal;
+        default:
+            return WorldCup.MinigameScore.Others;
+    }
+}
+
+export const getVoteResult = (match, vote) => {
+    if(match.status !== MatchStatus.Finished) {
+        return null;
+    }
+    let status = false;
+    let score = 0;
+    const voteTeam = vote.teamId === 0 ? match.homeTeam.teamId : vote.teamId;
+    const matchResult = CommonFunctions.getMatchResult(voteTeam, match);
+    if(matchResult === MatchResult.Win) {
+        if(vote.teamId !== 0) {
+            score = getWinScore(match.stage.stageId);
+            status = true;
+        } else {
+            status = false;
+        }
+    } else if(matchResult === MatchResult.Draw) {
+        if(vote.teamId === 0) {
+            score = getWinScore(match.stage.stageId);
+            status = true;
+        } else {
+            status = false;
+        }
+    }
+    return {status, score};
+}
+
 const functions = {
     getMatchByEventStage,
-    groupMatchesByStage
+    groupMatchesByStage,
+    getVoteResult
 };
 export default functions;

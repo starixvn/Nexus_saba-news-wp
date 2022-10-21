@@ -26,6 +26,12 @@
             return result.ToList();
         }
 
+        public async Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId)
+        {
+            var result = await baseService.GetDataAsync<UserMinigameModel>(new GetMinigameByUserStageCriteria { UserId = userId });
+            return result.ToList();
+        }
+
         public async Task<CommandResult> UpdateMinigameVoteAsync(UpdateMinigameVoteCommand cmd)
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
