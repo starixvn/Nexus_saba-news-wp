@@ -4,6 +4,7 @@ import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
 import LangHelper from '@jsroot/common/langHelper';
+import { getMinigameStageStartTime } from '../../common.functions';
 
 export default class Iteam extends PureComponent {
     constructor(props) {
@@ -24,10 +25,9 @@ export default class Iteam extends PureComponent {
     };
 
     getStageStatus = () => {
-        const { matches } = this.props;
-        const firstMatch = matches[0];
+        const { matches, stage } = this.props;
         const lastMatch = matches[matches.length - 1];
-        const startTime = DateTimeService.convertFromUTC(firstMatch.startTime);
+        const startTime = getMinigameStageStartTime(stage);
         const lastTime = DateTimeService.convertFromUTC(lastMatch.startTime);
         const currentTime = moment(DateTimeService.getCurrentClientDateTime());
         const startMinutes = startTime.diff(currentTime, 'minutes');

@@ -13,7 +13,6 @@
 
     @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
 
     <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
@@ -48,6 +47,21 @@
 
     @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-lastest-news">
+    <ul class="auth-provider">
+        @if (Model.User.Photo == null)
+        {
+            <li class="avatar-user">@Model.User.Name.Substring(0, 1)</li>
+        }
+        else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
+        {
+            <li class="avatar-user"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+        }
+        else
+        {
+            <li class="avatar-user"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+        }
+        <li class="auth-displayname"><a class="item">@Model.User.Name</a></li>
+    </ul>
     <div id="app-container"></div>
 
 </section>

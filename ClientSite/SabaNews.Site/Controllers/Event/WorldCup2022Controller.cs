@@ -392,7 +392,7 @@
         [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/{stage}")]
         public IActionResult MinigameStage(byte stage)
         {
-            if (sessionService.User == null)
+            if (sessionService.User == null || stage < WorldCup2022.MinigameStage1 || stage > WorldCup2022.MinigameStage4)
             {
                 return Redirect(Url.Action("Minigame", "WorldCup2022"));
             }
@@ -424,6 +424,7 @@
             var model = new MinigameStageViewModel
             {
                 Header = header,
+                User = sessionService.User
             };
             return View("~/Views/Event/WorldCup2022/Minigame/Profile.cshtml", model);
         }
@@ -435,6 +436,10 @@
             {
                 return Redirect(Url.Action("Minigame", "WorldCup2022"));
             }
+            if (stage < WorldCup2022.MinigameStage1 || stage > WorldCup2022.MinigameStage4)
+            {
+                return Redirect(Url.Action("MinigameProfile", "WorldCup2022"));
+            }
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
@@ -443,7 +448,8 @@
             var model = new MinigameStageViewModel
             {
                 Header = header,
-                Stage = stage
+                Stage = stage,
+                User = sessionService.User
             };
             return View("~/Views/Event/WorldCup2022/Minigame/ProfileStage.cshtml", model);
         }

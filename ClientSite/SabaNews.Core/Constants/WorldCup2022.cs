@@ -80,6 +80,12 @@
         public const long TimestampMinigameStage03Start = 1669730400;
         public const long TimestampMinigameStage04Start = 1670076000;
 
+        public const byte MinigameStage1 = 1;
+        public const byte MinigameStage2 = 2;
+        public const byte MinigameStage3 = 3;
+        public const byte MinigameStage4 = 4;
+
+
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {
             new CateInfo { Name = Homepage, Slug = "" },

@@ -6,6 +6,7 @@ import { WorldCup } from '@jsroot/common/constants';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import Site from '@jsroot/common/site';
 
 export class Stages extends PureComponent {
     constructor(props) {
@@ -29,6 +30,15 @@ export class Stages extends PureComponent {
         this.setState({ selectedStageId: key });
     };
 
+    handleClick = event => {
+        const url = Site.resolveClientUrl(WorldCup.MinigameDetailUrl);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    }
+
 
     render() {
         const { votes, groupStages } = this.props;
@@ -36,6 +46,7 @@ export class Stages extends PureComponent {
         const stages = groupStages;
         return (
             <div>
+                <div className="statistic">chi tiết giai đoạn { window.stage } |<span onClick={this.handleClick}>Quay lại</span></div>
                 {
                     stages.length === 1 &&
                     <Grid matches={stages[0].matches} votes={votes} />

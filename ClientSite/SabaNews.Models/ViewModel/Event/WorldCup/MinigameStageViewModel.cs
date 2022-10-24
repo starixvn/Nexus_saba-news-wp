@@ -12,5 +12,6 @@ namespace SabaNews.Models.ViewModel.Event.WorldCup
     {
         public HeaderViewModel Header { get; set; }
         public byte Stage { get; set; }
+        public UserSession User { get; set; }
     }
 }

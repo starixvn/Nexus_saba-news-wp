@@ -105,6 +105,7 @@ export const WorldCup = {
     QuaterFinalMatches: [55225428, 55225427, 55225430, 55225429],
     SemiFinalMatches: [55225431, 55225432]
     MinigameUrl: 'world-cup-2022/su-kien-du-doan-hay-qua-lien-tay',
+    MinigameDetailUrl: 'world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet',
     MinigameStage: {
         Stage1: 1,
         Stage2: 2,
