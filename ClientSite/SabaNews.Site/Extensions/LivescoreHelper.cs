@@ -188,10 +188,30 @@
             return iconStage;
         }
 
+        public static string GetCountDownStage(string status, IList<Match> matches, int numStage)
+        {
+            List<int> indexMatches = new() { 15, 31, 47, 63 };
+            List<string> longs = new() {
+                "11/24/2022, 6:30:00 PM",
+                "11/25/2022, 4:00:00 PM",
+                "11/29/2022, 9:00:00 PM",
+                "12/3/2022, 9:00:00 PM" };
+            string statusStage;
+            if (status.Contains(WorldCup2022.BeforeStartedStage))
+            {
+                statusStage = longs[numStage];
+            }
+            else
+            {
+                statusStage = matches[indexMatches[numStage]].StartTime.AddMinutes(-30).ToString();
+            }
+            return statusStage;            
+        }
+
         public static string GetStatusStage(IList<Match> matches, int numStage)
         {
-            List<int> indexMatches = new List<int>() { 15, 31, 47, 63 };
-            List<long> longs = new List<long>() { 
+            List<int> indexMatches = new() { 15, 31, 47, 63 };
+            List<long> longs = new() { 
                 WorldCup2022.TimestampMinigameStage01Start, 
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start, 

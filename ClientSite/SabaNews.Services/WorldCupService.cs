@@ -107,5 +107,11 @@
 
             return (league, matches);
         }
+
+        public async Task<IList<UserMinigameModel>> GetMinigameUsersAsync(GetMinigameUsersByStageCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<UserMinigameModel>(criteria);
+            return result.ToList();
+        }
     }
 }

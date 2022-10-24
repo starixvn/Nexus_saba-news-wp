@@ -75,10 +75,13 @@
         public const long SeasonIdWorldCup2022 = 10810;
         public const long GroupStageId = 30537;
 
-        public const long TimestampMinigameStage01Start = 1666260000;
+        public const long TimestampMinigameStage01Start = 1669289400;
         public const long TimestampMinigameStage02Start = 1669366800;
         public const long TimestampMinigameStage03Start = 1669730400;
         public const long TimestampMinigameStage04Start = 1670076000;
+
+        public const long ThirdPlace = 30541;
+        public const long FinalStage = 30542;
 
         public const byte MinigameStage1 = 1;
         public const byte MinigameStage2 = 2;

@@ -496,26 +496,19 @@
             return Json(match);
         }
 
-        public async Task<ActionResult> GetMinigameData(UserFilterMembershipEventModel model)
+        [HttpGet]
+        public async Task<ActionResult> GetMinigameData(byte stage, string search)
         {
-            var criteria = new GetDataMinigameCriteria
+            var criteria = new GetMinigameUsersByStageCriteria
             {
-                Start = (model.Page - 1) * model.PageSize,
-                End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 12, 18))
+                stage = stage
             };
-            var miniGames = await leagueService.GetDataMinigameAsync(criteria);
-            var viewModel = new MinigameGridViewModel
+            var miniGames = await worldcupService.GetMinigameUsersAsync(criteria);
+            if(search != null)
             {
-                MiniGames = miniGames,
-                Paging = new PagingModel
-                {
-                    CurrentPage = model.Page,
-                    PageSize = model.PageSize,
-                    TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)model.PageSize),
-                }
-            };
-            return PartialView("~/Views/Event/WorldCup2022/Minigame/_MinigameGridView.cshtml", viewModel);
+                miniGames = miniGames.Where(x => x.UserName.Contains(search)).ToList();
+            }
+            return Json(miniGames);
         }
 
         [HttpPost]
