@@ -12,7 +12,7 @@ export default class Grid extends PureComponent {
         const result = getVoteResult(match, vote);
         this.totalScore += result !== null ? result.score : 0;
         return result;
-    }
+    };
 
     render() {
         const { matches, votes } = this.props;

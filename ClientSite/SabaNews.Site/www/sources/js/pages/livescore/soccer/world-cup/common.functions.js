@@ -70,15 +70,11 @@ export const getVoteResult = (match, vote) => {
         if(vote.teamId !== 0) {
             score = getWinScore(match.stage.stageId);
             status = true;
-        } else {
-            status = false;
         }
     } else if(matchResult === MatchResult.Draw) {
         if(vote.teamId === 0) {
             score = getWinScore(match.stage.stageId);
             status = true;
-        } else {
-            status = false;
         }
     }
     return {status, score};

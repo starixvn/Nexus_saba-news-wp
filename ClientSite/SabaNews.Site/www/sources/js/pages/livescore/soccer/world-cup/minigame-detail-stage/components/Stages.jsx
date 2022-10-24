@@ -37,7 +37,7 @@ export class Stages extends PureComponent {
         } else {
             window.location = url;
         }
-    }
+    };
 
 
     render() {
