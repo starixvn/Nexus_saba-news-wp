@@ -117,8 +117,6 @@
         countDownTime();
     }
 
-
-
     return {
         init
     }

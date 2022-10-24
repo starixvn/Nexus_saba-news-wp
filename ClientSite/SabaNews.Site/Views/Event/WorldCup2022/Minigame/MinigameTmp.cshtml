@@ -29,12 +29,12 @@
     <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
 
     <environment include="Development">
-        @*<link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/minigame-standing.chunk.css" asp-append-version="true" />*@
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/minigame-standing.chunk.css" asp-append-version="true" />
+        @*<link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />*@
     </environment>
     <environment exclude="Development">
-        @*<link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/minigame-standing.chunk.css" asp-append-version="true" />*@
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/minigame-standing.chunk.css" asp-append-version="true" />
+        @*<link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />*@
     </environment>
 }
 
@@ -43,14 +43,14 @@
         <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+        @*<script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>*@
         <script src="~/js/dev/pages/livescore/soccer/world-cup/minigame-standing.chunk.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+        @*<script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>*@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame-standing.chunk.js" asp-append-version="true"></script>
     </environment>
 
@@ -139,13 +139,9 @@
                         <i style="margin-left: 83%;" class="icon @icon"></i>
                         <h1 style="text-align:center; margin-top: 18%;">Giai Đoạn @(i+1)</h1>
                         <div style="align-items: flex-end;margin-top: 46px;margin-left: 5px;">
-                            @if (Model.IsLogin && i < 3)
+                            @if (Model.IsLogin)
                             {
-                                <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i)/16</h4>
-                            }
-                            else if (Model.IsLogin)
-                            {
-                                <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i)/18</h4>
+                                <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i + 1)/16</h4>
                             }
                             @if(status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
                             {
@@ -165,7 +161,9 @@
             }
         </div>
     </div>
-    <div id="minigame-standing"></div>
+    <div>
+        <div id="minigame-standing"></div>
+    </div>
 </section>
 
 

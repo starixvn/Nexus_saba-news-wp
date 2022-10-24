@@ -51,5 +51,6 @@
     Turn: 'Lượt',
     ThirdPlace: 'Tranh hạng 3',
     Unknown: 'Không xác định',
-    Upcomming: 'Sắp diễn ra'
+    Upcomming: 'Sắp diễn ra',
+    StandingMinigame:'BẢNG XẾP HẠNG'
 };

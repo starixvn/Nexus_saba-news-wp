@@ -3,12 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 const minigameStandingSlice = createSlice({
     name: 'minigameStandingSlice',
     initialState: {
-        players: null,
-        matches: null
+        matches: null,
+        stages: null,
+        league: null,
+        votes: null,
+        teams: null
     },
     reducers: {
         setMatches: (state, action) => {
-            const matches = action.payload,
+           const matches = action.payload,
                 totalItems = matches.length,
                 stages = [];
             for (let i = 0; i < totalItems; i++) {
@@ -20,9 +23,12 @@ const minigameStandingSlice = createSlice({
             state.stages = stages;
             state.matches = matches;
         },
-        setPlayers: (state, action) => {
-            const players = action.payload;
-            state.players = players;
+        setLeague: (state, action) => {
+            const league = action.payload;
+            state.league = league;
+        },
+        setVotes: (state, action) => {
+            state.votes = action.payload
         }
     }
 });
@@ -31,7 +37,8 @@ const { actions, reducer } = minigameStandingSlice;
 
 export const {
     setMatches,
-    setPlayers
+    setLeague,
+    setVotes
 } = actions;
 
 export default reducer;

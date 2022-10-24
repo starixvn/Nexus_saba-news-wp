@@ -496,18 +496,10 @@
             return Json(match);
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetMinigameData(byte stage, string search)
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameData([FromBody] GetMinigameUsersByStageCriteria criteria)
         {
-            var criteria = new GetMinigameUsersByStageCriteria
-            {
-                stage = stage
-            };
             var miniGames = await worldcupService.GetMinigameUsersAsync(criteria);
-            if(search != null)
-            {
-                miniGames = miniGames.Where(x => x.UserName.Contains(search)).ToList();
-            }
             return Json(miniGames);
         }
 
