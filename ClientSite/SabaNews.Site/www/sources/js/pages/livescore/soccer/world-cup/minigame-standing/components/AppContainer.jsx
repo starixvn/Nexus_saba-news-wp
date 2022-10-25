@@ -30,7 +30,6 @@ export class AppContainer extends Component {
             selectedStage: event.target.value
         });
         this.props.getVotes(parseInt(event.target.value));
-        window.stage = event.target.value;
     };
 
     render() {
@@ -50,7 +49,7 @@ export class AppContainer extends Component {
                             <option key={index.value} value={index.value}>{index.name}</option> )
                         }
                     </select>
-                    <input onChange={e => this.setState({search: e.target.value})}></input>
+                    <input placeholder="Tìm kiếm theo tên..." onChange={e => this.setState({search: e.target.value})}></input>
                 </div>
                <div>
                     <Standing matches={showMatches} votes={votes} search={this.state.search} />

@@ -27,7 +27,8 @@ const getVotes = stage => async dispatch => {
         stage: stage
     };
     await DataService.postDataAsync(url, param).then(response => {
-        dispatch(setVotes(response.data));
+        window.stage = stage;
+        dispatch(setVotes(response.data));        
     }).catch(Site.handleAxiosError);
 };
 
