@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Stages from './Stages';
-import { getMatchByEventStage } from '../../common.functions';
+import { groupMatchesByStage } from '../../common.functions';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -14,24 +14,15 @@ export class AppContainer extends Component {
         this.props.getVotes();
     }
 
-
-    getNumberVoted = () => {
-        const { votes } = this.props;
-        const voted = votes.filter(item => item.stage == window.stage);
-        return voted.length;
-    }
-
     render() {
-        const { matches, stages, league } = this.props;
+        const { matches } = this.props;
         if(matches === null ) {
             return null;
         }
-        const showMatches = getMatchByEventStage(matches);
+        const stages = groupMatchesByStage(matches);
         return (
             <div className="livescore-soccer">
-                <div className="statistic">{`Giai đoạn ${window.stage}`}</div>
-                <div className="statistic">{`Số trận dự đoán ${this.getNumberVoted()}/${showMatches.length}`}</div>
-                <Stages matches={showMatches} league={league} stages={stages}/>
+                <Stages groupStages={stages}/>
             </div>
         )
     }
@@ -40,8 +31,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { matches, stages, league, votes } = state;
-    return { matches, stages, league, votes };
+    const { matches } = state;
+    return { matches};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

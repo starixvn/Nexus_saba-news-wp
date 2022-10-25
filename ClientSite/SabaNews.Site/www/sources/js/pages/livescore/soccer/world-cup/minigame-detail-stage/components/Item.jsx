@@ -15,24 +15,6 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    getTeamStatus = (match, isHomeTeam) => {
-        const homeField = isHomeTeam ? 'homeTeam' : 'awayTeam';
-        const awayField = isHomeTeam ? 'awayTeam' : 'homeTeam';
-
-        if (match.status === MatchStatus.Finished) {
-            if (match[`${homeField}PenaltyScore`]
-                && match[`${homeField}PenaltyScore`] > match[`${awayField}PenaltyScore`]) {
-                return <li>PEN</li>;
-            } else if (match.isSecondLeg && match[`${homeField}AggregateScore`]
-                && match[`${homeField}AggregateScore`] > match[`${awayField}AggregateScore`]) {
-                return <li>AGG</li>;
-            } else {
-                return <Fragment />;
-            }
-        }
-
-        return <Fragment />;
-    };
 
     checkVoteOption = () => {
         const { match, vote } = this.props;
@@ -101,12 +83,12 @@ export class Item extends PureComponent {
 
     getVoteResult = result => {
         if(result === null) {
-            return 'empty';
+            return <li>empty</li>;
         }
         if(result.status) {
-            return 'win';
+            return <li>win</li>;
         }
-        return 'lose';
+        return <li>lose</li>;
     };
 
     getVoteScore = result => {
@@ -114,13 +96,13 @@ export class Item extends PureComponent {
             return '';
         }
         if(result.status) {
-            return `+${result.score}`;
+            return <li>{`+${result.score}`}</li>;
         }
-        return 0;
+        return <li>0</li>;
     };
 
     render() {
-        const { match, vote, result } = this.props;
+        const { match, result } = this.props;
         const voteStatus = this.checkVoteOption();
         return (
             <div>
@@ -130,9 +112,6 @@ export class Item extends PureComponent {
                         <div className="soccer-match-team">
                             <div className="group-team">
                                 <div className="soccer-team home-team">
-                                    <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, true)}
-                                    </ul>
                                     <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>
                                         {voteStatus === 1 ? "(v)" : ''} {CommonFunctions.getTeamName(match.homeTeam)}
                                     </div>
@@ -150,8 +129,8 @@ export class Item extends PureComponent {
                                     </div>
                                     <ul className="soccer-team-status">
                                         <li>{this.getTeamVote()}</li>
-                                        <li>{this.getVoteResult(result)}</li>
-                                        <li>{this.getVoteScore(result)}</li>
+                                        {this.getVoteResult(result)}
+                                        {this.getVoteScore(result)}
                                     </ul>
                                 </div>
                             </div>

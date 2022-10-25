@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import Item from './Item';
-import {  WorldCup } from '@jsroot/common/constants';
 import { getVoteResult } from '../../common.functions';
 export default class Grid extends PureComponent {
     constructor(props) {

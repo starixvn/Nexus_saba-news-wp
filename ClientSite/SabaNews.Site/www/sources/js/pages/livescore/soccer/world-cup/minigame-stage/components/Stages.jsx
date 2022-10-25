@@ -3,16 +3,19 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
 import Grid from './Grid';
 import { WorldCup } from '@jsroot/common/constants';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
 
-export default class Stages extends PureComponent {
+export class Stages extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            selectedStageId: this.initStageId()
+            selectedStageId: this.initDefaultStage()
         }
     }
 
-    initStageId = () => {
+    initDefaultStage = () => {
         const { league, stages } = this.props;
         const knockoutStages = stages.filter(item => item.stageId !== WorldCup.GroupsStage);
         let stageId = league.currentStageId;
@@ -27,40 +30,25 @@ export default class Stages extends PureComponent {
     };
 
 
-    groupMatchesByStage = matches => {
-        let totalItems = matches.length;
-        const tempMatches = [];
-        for (let i = 0; i < totalItems; i++) {
-            const match = matches[i];
-            const stage = match.stage;
-            const key = stage ? stage.stageId : 0;
-            const item = {
-                key,
-                stage,
-                matches: [match]
-            };
-
-            if (tempMatches.length === 0) {
-                tempMatches.push(item);
-            } else {
-                const index = tempMatches.findIndex(x => x.key === key);
-                if (index === -1) {
-                    tempMatches.push(item);
-                } else {
-                    tempMatches[index].matches.push(match);
-                }
-            }
-        }
-        return tempMatches;
-    }
+    getNumberVoted = () => {
+        const { votes, groupStages } = this.props;
+        let count = 0;
+        const voted = votes.filter(item => item.stage == window.stage);
+        groupStages.map(group => {
+            count += group.matches.length;
+        });
+        return `${voted.length}/${count}`;
+    };
 
 
     render() {
-        const { matches } = this.props;
+        const { groupStages } = this.props;
         const { selectedStageId } = this.state;
-        const stages = this.groupMatchesByStage(matches);
+        const stages = groupStages;
         return (
             <div>
+                <div className="statistic">{`Giai đoạn ${window.stage}`}</div>
+                <div className="statistic">{`Số trận dự đoán ${this.getNumberVoted()}`}</div>
                 {
                     stages.length === 1 &&
                     <Grid matches={stages[0].matches} />
@@ -83,3 +71,12 @@ export default class Stages extends PureComponent {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+
+const mapStateToProps = state => {
+    const { stages, league, votes } = state;
+    return { stages, league, votes };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stages);

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
@@ -15,25 +15,6 @@ export class Item extends PureComponent {
     constructor(props) {
         super(props);
     }
-
-    getTeamStatus = (match, isHomeTeam) => {
-        const homeField = isHomeTeam ? 'homeTeam' : 'awayTeam';
-        const awayField = isHomeTeam ? 'awayTeam' : 'homeTeam';
-
-        if (match.status === MatchStatus.Finished) {
-            if (match[`${homeField}PenaltyScore`]
-                && match[`${homeField}PenaltyScore`] > match[`${awayField}PenaltyScore`]) {
-                return <li>PEN</li>;
-            } else if (match.isSecondLeg && match[`${homeField}AggregateScore`]
-                && match[`${homeField}AggregateScore`] > match[`${awayField}AggregateScore`]) {
-                return <li>AGG</li>;
-            } else {
-                return <Fragment />;
-            }
-        }
-
-        return <Fragment />;
-    };
 
     checkVoteOption = () => {
         const { match, votes } = this.props;
@@ -103,9 +84,6 @@ export class Item extends PureComponent {
                         <div className="soccer-match-team">
                             <div className="group-team">
                                 <div className="soccer-team home-team">
-                                    <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, true)}
-                                    </ul>
                                     <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>{vote === 1 ? "(v)" : ''} {CommonFunctions.getTeamName(match.homeTeam)}</div>
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                 </div>
@@ -117,9 +95,6 @@ export class Item extends PureComponent {
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                     <div className={`soccer-team-name `}  onClick={() => this.handleVote(match.awayTeam.teamId)}>{CommonFunctions.getTeamName(match.awayTeam)} {vote === 2 ? "(v)" : ''}</div>
-                                    <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, false)}
-                                    </ul>
                                     <TeamScore match={match} />
                                 </div>
                             </div>
