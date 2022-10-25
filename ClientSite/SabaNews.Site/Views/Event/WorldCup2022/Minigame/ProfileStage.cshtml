@@ -45,7 +45,7 @@
     <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
 }
 
-    @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
+@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-lastest-news">
     <ul class="auth-provider">
         @if (Model.User.Photo == null)

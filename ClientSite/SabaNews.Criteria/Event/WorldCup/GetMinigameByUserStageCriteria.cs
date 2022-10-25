@@ -6,8 +6,10 @@
     {
         public long UserId { get; set; }
 
-        public override string GetSettingKey() => "worldcup_minigame_getByUser";
+        public byte Stage { get; set; }
 
-        public override bool IsValid() => UserId > 0 ;
+        public override string GetSettingKey() => "worldcup_minigame_getByUserStage";
+
+        public override bool IsValid() => UserId > 0 && Stage <= 4 && Stage > 0;
     }
 }

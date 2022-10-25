@@ -28,7 +28,7 @@
 
         public async Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId)
         {
-            var result = await baseService.GetDataAsync<UserMinigameModel>(new GetMinigameByUserStageCriteria { UserId = userId });
+            var result = await baseService.GetDataAsync<UserMinigameModel>(new GetMinigameByUserCriteria { UserId = userId });
             return result.ToList();
         }
 
