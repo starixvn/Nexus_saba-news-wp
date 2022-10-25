@@ -29,8 +29,6 @@ export class AppContainer extends Component {
     }
 }
 
-
-
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {

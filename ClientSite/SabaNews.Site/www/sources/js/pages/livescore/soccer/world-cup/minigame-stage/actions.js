@@ -27,12 +27,7 @@ const getVotes = () => async dispatch => {
         stage: window.stage
     };
     await DataService.postDataAsync(url, param).then(response => {
-        if(!response.data) {
-            const page = Site.resolveClientUrl(WorldCup.MinigameUrl);
-            window.location = page;
-        } else {
-            dispatch(setVotes(response.data));
-        }
+        dispatch(setVotes(response.data));
     }).catch(Site.handleAxiosError);
 };
 
