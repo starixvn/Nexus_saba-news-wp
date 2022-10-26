@@ -136,20 +136,26 @@ export default class Standing extends PureComponent {
         const { matches, votes, search } = this.props;
         const standings = this.calculatorPointer(matches, votes);
         return (
-            <div className="soccer-match-grid-item">
-                <div className="soccer-match-grid-item-body">
-                    <div style={{display:'flex', justifyContent:'space-between'}}>
-                        <div>#</div>
-                        <div>Tên</div>
-                        <div>Điểm</div>
-                        <div>Thời gian</div>
-                        <div></div>
-                    </div>
-                {
-                    standings.map((item, index) => <Item key={index} number={index} standing={item} />)
-                }
+            <>
+                <div className="minigame-table">
+                    dsadasads
                 </div>
-            </div>
+                <div className="soccer-match-grid-item">
+                    <div className="soccer-match-grid-item-body">
+                        <div style={{display:'flex', justifyContent:'space-between'}}>
+                            <div>#</div>
+                            <div>Tên</div>
+                            <div>Điểm</div>
+                            <div>Thời gian</div>
+                            <div></div>
+                        </div>
+                    {
+                        standings.map((item, index) => <Item key={index} number={index} standing={item} />)
+                    }
+                    </div>
+                </div>
+            </>
+            
         );
     }
 }

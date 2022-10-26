@@ -39,9 +39,22 @@ export class AppContainer extends Component {
         }
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div className="livescore-soccer">
-                <div>
-                    <p>{LangHelper.getResource('StandingMinigame')}</p>
+            <div className="minigame-section minigame-standing">
+                <div class="minigame-title">
+                    <h1 class="text">
+                        {LangHelper.getResource('StandingMinigame')}
+                    </h1>
+                    <div class="dots-parent">
+                        <ul>
+                            <li class="dots-small"></li>
+                            <li class="dots-regular"></li>
+                            <li class="dots-parent-center"></li>
+                            <li class="dots-regular"></li>
+                            <li class="dots-small"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="minigame-standing-control">
                     <select value={this.state.selectValue} 
                         onChange={this.handleChange}>
                         {
@@ -51,9 +64,7 @@ export class AppContainer extends Component {
                     </select>
                     <input placeholder="Tìm kiếm theo tên..." onChange={e => this.setState({search: e.target.value})}></input>
                 </div>
-               <div>
-                    <Standing matches={showMatches} votes={votes} search={this.state.search} />
-               </div>
+                <Standing matches={showMatches} votes={votes} search={this.state.search} />
             </div>
         )
     }
