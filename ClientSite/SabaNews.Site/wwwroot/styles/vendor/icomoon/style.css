@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?52qt9l');
-  src:  url('fonts/Fraud-Sensor.eot?52qt9l#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?52qt9l') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?52qt9l') format('woff'),
-    url('fonts/Fraud-Sensor.svg?52qt9l#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?ex20b5');
+  src:  url('fonts/Fraud-Sensor.eot?ex20b5#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?ex20b5') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?ex20b5') format('woff'),
+    url('fonts/Fraud-Sensor.svg?ex20b5#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-icon_search:before {
+  content: "\e938";
+  color: #eeeee4;
+}
+.icon-icon_lock:before {
+  content: "\e939";
+  color: #eeeee4;
+}
 .icon-warning:before {
   content: "\e936";
   color: #833d55;
@@ -32,26 +40,6 @@
 .icon-bxh_view:before {
   content: "\e937";
   color: #833d55;
-}
-.icon-icon_lock .path1:before {
-  content: "\e938";
-  color: rgb(238, 238, 228);
-  opacity: 0.2;
-}
-.icon-icon_lock .path2:before {
-  content: "\e939";
-  margin-left: -1em;
-  color: rgb(238, 238, 228);
-}
-.icon-icon_search .path1:before {
-  content: "\e93a";
-  color: rgb(238, 238, 228);
-  opacity: 0.2;
-}
-.icon-icon_search .path2:before {
-  content: "\e93b";
-  margin-left: -1em;
-  color: rgb(238, 238, 228);
 }
 .icon-admin-goal:before {
   content: "\e935";
