@@ -50,12 +50,12 @@
             }
     
             &:after {
-                left: -5px;
+                left: 0;
                 bottom: -4px;
             }
     
             &:before {
-                right: -5px;
+                right: 0;
                 bottom: -4px;
             }
             .table-row{
@@ -113,8 +113,23 @@
             font-size: 1.4rem;
         }
     }
-    .user-name{
+}
 
+.standing-dropdown{
+    background: #D2D2BC;
+    margin-top: 1.2rem;
+    &-row{
+        display: flex;
+        padding: .8rem 1.2rem;
+    }
+    &-column{
+        color: #833D55;
+        font-weight: 700;
+        font-size: 1.4rem;
+        width: 48%;
+        &.score{
+            width: 15%;
+        }
     }
 }
 

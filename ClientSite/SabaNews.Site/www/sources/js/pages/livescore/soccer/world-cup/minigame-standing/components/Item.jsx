@@ -45,32 +45,38 @@ export class Item extends PureComponent {
                 </div>
                 {
                     window.stage === 4 && 
-                    <div className="detail" style={{display:'none', justifyContent:'space-between'}}>
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>Vòng</div>
-                            <div>Diểm</div>
-                        </div>
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>Vòng 1/8</div>
-                            <div>{standing.detail.pointEightTeamStage}</div>
-                        </div>
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>Tứ Kết</div>
-                            <div>{standing.detail.pointQuarterfinalsStage}</div>
-                        </div>
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>Bán Kết</div>
-                            <div>{standing.detail.pointSemifinalsStage}</div>
-                        </div>
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>Tranh Hạng 3</div>
-                            <div>{standing.detail.pointThirdPlace}</div>
-                        </div>
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>Chung Kết</div>
-                            <div>{standing.detail.pointFinalStage}</div>
+                    <div className="standing-dropdown">
+                        <div className="standing-dropdown-row">
+                            <div className="standing-dropdown-column round">Vòng</div>
+                            <div className="standing-dropdown-column score">Điểm</div>
                         </div>
                     </div>
+                    // <div className="detail" style={{display:'none', justifyContent:'space-between'}}>
+                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
+                    //         <div>Vòng</div>
+                    //         <div>Diểm</div>
+                    //     </div>
+                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
+                    //         <div>Vòng 1/8</div>
+                    //         <div>{standing.detail.pointEightTeamStage}</div>
+                    //     </div>
+                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
+                    //         <div>Tứ Kết</div>
+                    //         <div>{standing.detail.pointQuarterfinalsStage}</div>
+                    //     </div>
+                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
+                    //         <div>Bán Kết</div>
+                    //         <div>{standing.detail.pointSemifinalsStage}</div>
+                    //     </div>
+                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
+                    //         <div>Tranh Hạng 3</div>
+                    //         <div>{standing.detail.pointThirdPlace}</div>
+                    //     </div>
+                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
+                    //         <div>Chung Kết</div>
+                    //         <div>{standing.detail.pointFinalStage}</div>
+                    //     </div>
+                    // </div>
                 }
             </>
         );
