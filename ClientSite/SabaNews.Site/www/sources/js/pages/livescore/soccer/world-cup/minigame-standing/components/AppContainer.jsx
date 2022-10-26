@@ -47,7 +47,7 @@ export class AppContainer extends Component {
                                 {LangHelper.getResource('StandingMinigame')}
                             </h1>
                             <div class="dots-parent">
-                                <ul>
+                                <ul className="dots-standing">
                                     <li class="dots-small"></li>
                                     <li class="dots-regular"></li>
                                     <li class="dots-parent-center"></li>
@@ -58,13 +58,22 @@ export class AppContainer extends Component {
                         </div>
                         <div className="minigame-standing-control">
                             <select value={this.state.selectValue} 
-                                onChange={this.handleChange}>
+                                onChange={this.handleChange} className="custom-select">
                                 {
                                     this.state.stages.map( index => 
                                     <option key={index.value} value={index.value}>{index.name}</option> )
                                 }
                             </select>
-                            <input placeholder="Tìm kiếm theo tên..." onChange={e => this.setState({search: e.target.value})}></input>
+                            <div className="custom-search">
+                                <input 
+                                    placeholder="Tìm kiếm theo tên..." 
+                                    className="custom-search-input" 
+                                    onChange={e => this.setState({search: e.target.value})} 
+                                    autoComplete="false"
+                                />
+                                <i className="icon-icon_search custom-search-icon"/>
+                            </div>
+                            
                         </div>
                         <Standing matches={showMatches} votes={votes} search={this.state.search} />
                     </div>

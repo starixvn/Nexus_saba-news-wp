@@ -1,8 +1,15 @@
+@import './../../../../abstracts/mixins';
 @import './components/minigame_table';
+@import './components/minigame_control';
+@import './components/input-custom';
+
 .minigame-section{
     margin-top: 15rem;
     position: relative;
-    padding: 5 rem 0 12rem 0;
+    padding: 5rem 1rem 12rem 1rem;
+    @include Mobile{
+        padding: 5rem 1rem 5rem 1rem;
+    }
 }
 
 .minigame-title{
@@ -15,7 +22,7 @@
         &::before,&::after{
             background: #833D55;
         }
-        ul{
+        .dots-standing{
             background: #E8E8D6;
            li{
                 background: #833D55;

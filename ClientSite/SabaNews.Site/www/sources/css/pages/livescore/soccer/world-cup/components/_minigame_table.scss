@@ -2,5 +2,6 @@
     max-width: 90rem;
     margin: 0 auto;
     background: #E8E8D6;
-    padding: 4rem 0;
+    padding: 4rem 1.2rem;
+    clip-path: polygon(50% 0, 100% 10%, 100% 90%, 50% 100%, 0 90%, 0 10%);
 }

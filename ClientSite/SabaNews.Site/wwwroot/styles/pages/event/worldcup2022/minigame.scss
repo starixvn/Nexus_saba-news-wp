@@ -436,9 +436,9 @@ body {
         width: 33.5rem;
         margin: 0 auto;
         position: relative;
-
-        @include Mobile {
-            width: 20rem;
+        @include Mobile{
+            width : 20rem;
+        }
         }
 
         &:after, &:before {
@@ -632,7 +632,7 @@ body {
 
 .wave-standing-main {
     background-image: url('../../../../images/worldcup/minigame/mask_bxh.png'), linear-gradient(119.36deg, #901831 0%, #310818 100%);
-    background-size: 100%;
+    background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
     position: absolute;
