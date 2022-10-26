@@ -1,5 +1,25 @@
 @import './components/minigame_table';
 .minigame-section{
-    margin-top: 10rem;
+    margin-top: 15rem;
+    position: relative;
+    padding: 1rem 0 12rem 0;
+}
+
+.minigame-title{
+    .text{
+        color: #833D55;
+    }
+    .dots-parent{
+        background: #833D55;
+        &::before,&::after{
+            background: #833D55;
+        }
+        ul{
+            background: #E8E8D6;
+           li{
+                background: #833D55;
+           } 
+        }
+    }
 }
 

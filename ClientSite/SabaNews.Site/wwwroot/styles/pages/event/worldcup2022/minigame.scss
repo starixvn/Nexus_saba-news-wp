@@ -630,9 +630,29 @@ body {
 }
 
 
-/*.minigame-standing {
-    background: linear-gradient(119.36deg, #901831 0%, #310818 100%);
-}*/
+.wave-standing-main {
+    background-image: url('../../../../images/worldcup/minigame/mask_bxh.png'), linear-gradient(119.36deg, #901831 0%, #310818 100%);
+    background-size: 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: skewY(-2deg);
+    transform-origin: top left;
+}
+
+
+
+
+
+
+
 
 .wave-standing-main {
     background: linear-gradient(119.36deg, #901831 0%, #310818 100%);

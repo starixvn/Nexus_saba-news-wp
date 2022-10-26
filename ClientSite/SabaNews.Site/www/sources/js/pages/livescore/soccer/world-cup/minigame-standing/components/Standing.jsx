@@ -138,20 +138,17 @@ export default class Standing extends PureComponent {
         return (
             <>
                 <div className="minigame-table">
-                    dsadasads
-                </div>
-                <div className="soccer-match-grid-item">
                     <div className="soccer-match-grid-item-body">
-                        <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div>#</div>
-                            <div>Tên</div>
-                            <div>Điểm</div>
-                            <div>Thời gian</div>
-                            <div></div>
-                        </div>
-                    {
-                        standings.map((item, index) => <Item key={index} number={index} standing={item} />)
-                    }
+                            <div style={{display:'flex', justifyContent:'space-between'}}>
+                                <div>#</div>
+                                <div>Tên</div>
+                                <div>Điểm</div>
+                                <div>Thời gian</div>
+                                <div></div>
+                            </div>
+                        {
+                            standings.map((item, index) => <Item key={index} number={index} standing={item} />)
+                        }
                     </div>
                 </div>
             </>
