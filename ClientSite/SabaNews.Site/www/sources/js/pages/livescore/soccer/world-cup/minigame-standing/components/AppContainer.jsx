@@ -10,10 +10,10 @@ export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            stages:[{name:"Giai Đoạn 1", value:1},
-            {name:"Giai Đoạn 2", value:2},
-            {name:"Giai Đoạn 3", value:3},
-            {name:"Giai Đoạn 4", value:4}],
+            stages:[{name:"Giai đoạn 1", value:1},
+            {name:"Giai đoạn 2", value:2},
+            {name:"Giai đoạn 3", value:3},
+            {name:"Giai đoạn 4", value:4}],
             selectedStage: 1,
             search: ""
         }

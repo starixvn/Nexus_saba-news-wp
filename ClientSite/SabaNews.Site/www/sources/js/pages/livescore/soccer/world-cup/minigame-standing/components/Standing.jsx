@@ -209,10 +209,43 @@ export default class Standing extends PureComponent {
         return (
             <>
             	<div className="minigame-table">
-                {
-                    rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
-                }
-                    <div className="soccer-match-grid-item-body">
+                    {
+                        rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
+                    }
+
+                    <div className="minigame-table-flex minigame-table-header">
+                        <div className="table-row table-row-index">#</div>
+                        <div className="table-row table-row-name">Tên</div>
+                        <div className="table-row table-row-score">Điểm</div>
+                        <div className="table-row table-row-time">Thời gian <i className="icon-warning"/> </div>
+                    </div>
+                    <div className="minigame-table-body">
+                        <div className="minigame-table-items">
+                            <div className="minigame-table-flex ">
+                                <div className="table-row table-row-index">1</div>
+                                <div className="table-row table-row-name">Tokuda</div>
+                                <div className="table-row table-row-score">20</div>
+                                <div className="table-row table-row-time">
+                                    20/11/2022, 00:00:00
+                                    <i className="icon-bxh_view"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="minigame-table-items">
+                            <div className="minigame-table-flex ">
+                                <div className="table-row table-row-index">1</div>
+                                <div className="table-row table-row-name">Tokuda</div>
+                                <div className="table-row table-row-score">20</div>
+                                <div className="table-row table-row-time">
+                                    20/11/2022, 00:00:00
+                                    <i className="icon-bxh_view"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+
+                    {/* <div className="soccer-match-grid-item-body">
                             <div style={{display:'flex', justifyContent:'space-between'}}>
                                 <div>#</div>
                                 <div>Tên</div>
@@ -223,7 +256,7 @@ export default class Standing extends PureComponent {
                         {
                             standings.map((item, index) => <Item key={index} number={index} standing={item} />)
                         }
-                    </div>
+                    </div> */}
                 </div>
             </>
             

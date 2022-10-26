@@ -647,6 +647,15 @@ body {
     transform-origin: top left;
 }
 
+.custom-select {
+    appearance: none;
+    background: url('../../../../images/worldcup/minigame/chevron-down.png') 100% no-repeat #E8E8D6;
+    background-position: center right .5rem;
+
+    @include Mobile {
+        background: url('../../../../images/worldcup/minigame/chevron-down.png') 96% / 14% no-repeat #E8E8D6;
+    }
+}
 
 
 

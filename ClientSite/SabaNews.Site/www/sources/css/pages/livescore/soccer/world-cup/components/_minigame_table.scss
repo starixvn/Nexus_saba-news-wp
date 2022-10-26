@@ -3,5 +3,70 @@
     margin: 0 auto;
     background: #E8E8D6;
     padding: 4rem 1.2rem;
-    clip-path: polygon(50% 0, 100% 10%, 100% 90%, 50% 100%, 0 90%, 0 10%);
+    clip-path: polygon(50% 0, 100% 4%, 100% 96%, 50% 100%, 0 96%, 0 4%);
 }
+
+.table-row{
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+    color: #833D55;
+    text-align: center;
+    &-index{
+        width: 10%;
+    }
+    &-name{
+        width: 33%;
+        text-align: left;
+    }
+    &-score{
+        width: 15%;
+    }
+    &-time{
+        width: 42%;
+    }
+}
+
+
+.minigame-table{
+    max-width: 65rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+    .minigame-table-flex{
+        display: flex;
+        align-items: center;
+        &.minigame-table-header{
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #833D55;
+            .table-row{
+                font-size: 1.6rem;
+                &.table-row-time{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    i{
+                        margin-left: .7rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.minigame-table-body{
+    .minigame-table-items{
+        padding-top: 1.6rem;
+        .table-row-time{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            i{
+                font-size: 2.4rem;
+                cursor: pointer;
+            }
+        }
+        
+    }
+}
+
+
