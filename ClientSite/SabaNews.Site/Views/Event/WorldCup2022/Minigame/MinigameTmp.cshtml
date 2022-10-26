@@ -140,29 +140,31 @@
                             var status = GetStatusStage(Model.Matches, i);
                             var icon = GetIconStage(status);
 
-                            <div id="boxStage@(i+1)" class="stage-items stage-items-1" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
-                                <a href="#" class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
-                                <div class="stage-round active">
-                                    <h2>Giai Đoạn @(i + 1)</h2>
-                                </div>
-                                <ul class="count-and-time">
-                                    @if (Model.IsLogin)
-                                    {
-                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes,i + 1)/16</li>
-                                    }
-                                    @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
-                                    {
-                                        <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">@GetStatusStage(Model.Matches, i)</li>
-                                        if (status != WorldCup2022.OnStartedStage)
-                                        {
-                                            <li id="hours@(i+1)"></li>
-                                            <li id="minutes@(i+1)"></li>
-                                            <li id="seconds@(i+1)"></li>
-                                        }
-                                    }
-                                </ul>
-                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
-                            </div>
+                                        <div id="boxStage@(i+1)" class="stage-items stage-items-1" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
+                                            <a href="#" class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
+                                            <div class="stage-round active">
+                                                <h2>Giai Đoạn @(i + 1)</h2>
+                                            </div>
+                                            <ul class="count-and-time">
+                                                @if (Model.IsLogin)
+                                                {
+                                                    <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
+                                                }
+                                                @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
+                                                {
+                                                    <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
+                                                        @GetStatusStage(Model.Matches, i) : 
+                                                        @if (status != WorldCup2022.OnStartedStage)
+                                                        {
+                                                            <span id="hours@(i+1)" style="margin-left : 5px"></span>
+                                                            <span id="minutes@(i+1)"></span>
+                                                            <span id="seconds@(i+1)"></span>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                            <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
+                                        </div>
                         }
                     }                    
                 </div>
