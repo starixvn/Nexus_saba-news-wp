@@ -58,7 +58,7 @@ export default class Standing extends PureComponent {
                 detail: detail[indexUser]
             });
         }) ;
-
+        standing = this.sortStandingPoint(standing);
         return standing;
     };
 
@@ -103,7 +103,7 @@ export default class Standing extends PureComponent {
         return detail;                      
     };
 
-    calculatorPointer = (matches, votes) => { 
+    calculatorPointer = (matches, votes, search) => { 
         let points = [];      
         let users = [];
         let detail = [];
@@ -119,7 +119,50 @@ export default class Standing extends PureComponent {
             users = this.getUsersVote(users, vote);
         }); 
         detail = this.getDetail(matches, users, points, votes);    
-        const standing = this.handleStandings(users, votes, points, detail);
+        let standing = this.handleStandings(users, votes, points, detail);
+        if(search != ""){
+           standing = this.handleSearch(standing, search);
+        }       
+        return standing;
+    };
+    
+    sortStandingPoint = (standing) =>{
+        standing = this.sortStandingDate(standing);
+        standing.map((item, index) =>{
+            let max = item.createdDate;
+            let indexMax = index;
+            standing.map((standing, indexSort) => {
+                if(indexSort > index){
+                    if(max < standing.point){
+                        max = standing.point;
+                        indexMax = indexSort;
+                    }
+                }
+            });
+            let swap = standing[index];
+            standing[index] = standing[indexMax];
+            standing[indexMax] = swap;
+        });
+        return standing;
+    };
+
+    sortStandingDate = (standing) =>{
+        standing.map((item, index) =>{
+            let max = item.updatedDate != null ? item.updatedDate : item.createdDate;
+            let indexMax = index;
+            standing.map((standing, indexSort) => {
+                if(indexSort > index){
+                    let maxSort = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
+                    if(max > maxSort){
+                        max = maxSort;
+                        indexMax = indexSort;
+                    }
+                }
+            });
+            let swap = standing[index];
+            standing[index] = standing[indexMax];
+            standing[indexMax] = swap;
+        });
         return standing;
     };
 
@@ -132,12 +175,43 @@ export default class Standing extends PureComponent {
         return false;
     } ;
 
+    checkRank = (standings, userId ) =>{
+        let rank = 0;
+        if(userId === undefined){
+            rank = 0;
+        }
+        else{
+            standings.map((item, index) => {
+                if(item.userId === userId){
+                    rank = index + 1;
+                }
+            });
+        }
+        return rank
+    };
+
+    handleSearch = (standings, search) =>{
+        let searches = [];
+        standings.map(item => {
+            var name = JSON.stringify(item.userName);
+            if(name.toLowerCase().includes(search.toLowerCase())){
+                searches.push(item);
+            }
+        });
+        return searches;
+    };
+
     render() {
         const { matches, votes, search } = this.props;
-        const standings = this.calculatorPointer(matches, votes);
+        const standings = this.calculatorPointer(matches, votes, search);
+        const userId = window.User;
+        const rank = this.checkRank(standings, userId);
         return (
             <>
-                <div className="minigame-table">
+            	<div className="minigame-table">
+                {
+                    rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
+                }
                     <div className="soccer-match-grid-item-body">
                             <div style={{display:'flex', justifyContent:'space-between'}}>
                                 <div>#</div>

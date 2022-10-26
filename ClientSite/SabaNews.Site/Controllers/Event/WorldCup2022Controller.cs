@@ -378,9 +378,10 @@
             {
                 Header = header
                 Matches = matches,
+                UserId = string.Empty,
             };
 
-
+                model.UserId = sessionService.User.Id.ToString();
                 var criteria = new GetMinigameByUserStageCriteria
                 {
                     UserId = sessionService.User.Id

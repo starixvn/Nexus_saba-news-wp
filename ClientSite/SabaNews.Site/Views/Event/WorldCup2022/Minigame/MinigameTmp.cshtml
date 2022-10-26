@@ -56,6 +56,7 @@
 
     <script>
         var checkLogin = '@Model.IsLogin';
+        window.User = @Model.UserId;
     </script>
     <script src="~/js/event/worldcup2022/minigame.js" asp-append-version="true"></script>
     <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
@@ -192,28 +193,28 @@
                 for(int i=0; i < 4; i++){
                     var status = GetStatusStage(Model.Matches, i);
                     var icon = GetIconStage(status);
-                    <div id="boxStage@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime" style="background:silver;height: 200px;width: 250px;margin-left: 124px;">
-                        <i style="margin-left: 83%;" class="icon @icon"></i>
-                        <h1 style="text-align:center; margin-top: 18%;">Giai Đoạn @(i+1)</h1>
-                        <div style="align-items: flex-end;margin-top: 46px;margin-left: 5px;">
-                            @if (Model.IsLogin)
+                                        <div id="boxStage@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime" style="background:silver;height: 200px;width: 250px;margin-left: 124px;">
+                                            <i style="margin-left: 83%;" class="icon @icon"></i>
+                                            <h1 style="text-align:center; margin-top: 18%;">Giai Đoạn @(i+1)</h1>
+                                            <div style="align-items: flex-end;margin-top: 46px;margin-left: 5px;">
+                                                @if (Model.IsLogin)
                             {
-                                <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i + 1)/16</h4>
+                                                    <h4>Số trận đã dự đoán: @GetCountVotesStage(Model.Votes,i + 1)/16</h4>
                             }
-                            @if(status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
+                                                @if(status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
                             {
-                                <h4 id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">@GetStatusStage(Model.Matches, i)</h4>
+                                                    <h4 id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">@GetStatusStage(Model.Matches, i)</h4>
                                 if (status != WorldCup2022.OnStartedStage)
                                 {
-                                    <div style="display:flex;">
-                                        <div class="clock" id="hours@(i+1)"></div>
-                                        <div class="clock" id="minutes@(i+1)"></div>
-                                        <div class="clock" id="seconds@(i+1)"></div>
-                                    </div>
+                                                        <div style="display:flex;">
+                                                            <div class="clock" id="hours@(i+1)"></div>
+                                                            <div class="clock" id="minutes@(i+1)"></div>
+                                                            <div class="clock" id="seconds@(i+1)"></div>
+                                                        </div>
                                 }
                             }
-                        </div>
-                    </div>
+                                            </div>
+                                        </div>
                 }
             }
         </div>*@
