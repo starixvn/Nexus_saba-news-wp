@@ -21,16 +21,27 @@ export class Item extends PureComponent {
     render() {
         const { standing, number } = this.props;
         return (
-            <div>
-                <div style={{display:'flex', justifyContent:'space-between'}}>
-                    <div>{number + 1}</div>
-                    <div style={{display:'flex', justifyContent:'space-between'}}>
-                        <img src={standing.icon}></img>
-                        <p>{standing.userName}</p>
+            <>
+                <div className="minigame-table-items">
+                    <div className="minigame-table-flex ">
+                        <div className="table-row table-row-index">{number + 1}</div>
+                        <div className="table-row table-row-name table-user">
+                            <div className="user-avatar">
+                                { standing.icon ? <img src={standing.icon} alt={standing.userName} />  : <span className="non-image">A</span> }
+                            </div>
+                            <div className="user-name">
+                                {standing.userName}
+                            </div>
+                        </div>
+                        <div className="table-row table-row-score">{standing.point}</div>
+                        <div className="table-row table-row-time">
+                            {standing.updatedDate != null ? standing.updatedDate : standing.createdDate}
+                            {
+                               window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(number)}/> : null
+                            }
+                            
+                        </div>
                     </div>
-                    <div>{standing.point}</div>
-                    <div>{standing.updatedDate != null ? standing.updatedDate : standing.createdDate}</div>
-                    <div>{window.stage === 4 ? <img id={"iconDetail" + (number + 1)} src={standing.icon} onClick={e => this.handleClick(number)}></img> : null}</div>
                 </div>
                 {
                     window.stage === 4 && 
@@ -61,7 +72,7 @@ export class Item extends PureComponent {
                         </div>
                     </div>
                 }
-            </div>
+            </>
         );
     }
 }

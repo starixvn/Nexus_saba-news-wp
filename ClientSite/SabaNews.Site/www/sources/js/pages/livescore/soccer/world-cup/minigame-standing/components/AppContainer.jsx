@@ -39,47 +39,48 @@ export class AppContainer extends Component {
         }
         const showMatches = getMatchByEventStage(matches);
         return (
-            <>
-                <div className="minigame-section minigame-standing">
-                    <div className="wraper-minigame-table">
-                        <div class="minigame-title">
-                            <h1 class="text">
-                                {LangHelper.getResource('StandingMinigame')}
-                            </h1>
-                            <div class="dots-parent">
-                                <ul className="dots-standing">
-                                    <li class="dots-small"></li>
-                                    <li class="dots-regular"></li>
-                                    <li class="dots-parent-center"></li>
-                                    <li class="dots-regular"></li>
-                                    <li class="dots-small"></li>
-                                </ul>
-                            </div>
+            <div className="minigame-section minigame-standing">
+                <div className="wraper-minigame-table">
+                    <div class="minigame-title standing-title">
+                        <h1 class="text">
+                            {LangHelper.getResource('StandingMinigame')}
+                        </h1>
+                        <div class="dots-parent">
+                            <ul className="dots-standing">
+                                <li class="dots-small"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-parent-center"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-small"></li>
+                            </ul>
                         </div>
-                        <div className="minigame-standing-control">
-                            <select value={this.state.selectValue} 
-                                onChange={this.handleChange} className="custom-select">
-                                {
-                                    this.state.stages.map( index => 
-                                    <option key={index.value} value={index.value}>{index.name}</option> )
-                                }
-                            </select>
-                            <div className="custom-search">
-                                <input 
-                                    placeholder="Tìm kiếm theo tên..." 
-                                    className="custom-search-input" 
-                                    onChange={e => this.setState({search: e.target.value})} 
-                                    autoComplete="false"
-                                />
-                                <i className="icon-icon_search custom-search-icon"/>
-                            </div>
-                            
-                        </div>
-                        <Standing matches={showMatches} votes={votes} search={this.state.search} />
                     </div>
-                    <div className="wave-standing-main"></div>
+                    <div className="minigame-standing-control">
+                        <select value={this.state.selectValue} 
+                            onChange={this.handleChange} className="custom-select">
+                            {
+                                this.state.stages.map( index => 
+                                <option key={index.value} value={index.value}>{index.name}</option> )
+                            }
+                        </select>
+                        <div className="custom-search">
+                            <input 
+                                placeholder="Tìm kiếm theo tên..." 
+                                className="custom-search-input" 
+                                onChange={e => this.setState({search: e.target.value})} 
+                                autoComplete="false"
+                            />
+                            <i className="icon-icon_search custom-search-icon"/>
+                        </div>
+                        
+                    </div>
+                    <Standing matches={showMatches} votes={votes} search={this.state.search} />
                 </div>
-            </>
+                <div className="wave-standing-main"></div>
+                <div className="section-icon">
+                    <img src="../../../../css/images/icon_2.png" alt="" />
+                </div>
+            </div>
         )
     }
 }

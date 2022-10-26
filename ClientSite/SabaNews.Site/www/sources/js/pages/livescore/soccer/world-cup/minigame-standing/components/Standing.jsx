@@ -220,40 +220,10 @@ export default class Standing extends PureComponent {
                         <div className="table-row table-row-time">Thời gian <i className="icon-warning"/> </div>
                     </div>
                     <div className="minigame-table-body">
-                        <div className="minigame-table-items">
-                            <div className="minigame-table-flex ">
-                                <div className="table-row table-row-index">1</div>
-                                <div className="table-row table-row-name table-user">
-                                    <div className="user-avatar">
-                                        <img src="https://static.lag.vn/upload/news/20/08/19/one-piece-sanji-8_WNCH.jpg?w=800&encoder=wic&subsampling=444" alt="" />
-                                        {/* <span className="non-image">A</span> */}
-                                    </div>
-                                    <div className="user-name">
-                                        Nguyen Van ABC
-                                    </div>
-                                </div>
-                                <div className="table-row table-row-score">20</div>
-                                <div className="table-row table-row-time">
-                                    20/11/2022, 00:00:00
-                                    <i className="icon-bxh_view"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-
-                    {/* <div className="soccer-match-grid-item-body">
-                            <div style={{display:'flex', justifyContent:'space-between'}}>
-                                <div>#</div>
-                                <div>Tên</div>
-                                <div>Điểm</div>
-                                <div>Thời gian</div>
-                                <div></div>
-                            </div>
                         {
                             standings.map((item, index) => <Item key={index} number={index} standing={item} />)
                         }
-                    </div> */}
+                    </div>
                 </div>
             </>
             

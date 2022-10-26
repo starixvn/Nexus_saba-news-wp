@@ -12,7 +12,17 @@
     }
 }
 
-.minigame-title{
+.section-icon{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: -1;
+    @include tableMobile{
+        display: none;
+    }
+}
+
+.standing-title{
     margin-top: 0;
     .text{
         color: #833D55;
