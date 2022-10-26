@@ -192,10 +192,10 @@
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
             List<string> longs = new() {
-                "11/24/2022, 6:30:00 PM",
-                "11/25/2022, 4:00:00 PM",
-                "11/29/2022, 9:00:00 PM",
-                "12/3/2022, 9:00:00 PM" };
+                "10/26/2022, 5:00:00 PM",
+                "11/22/2022, 8:00:00 AM",
+                "11/26/2022, 8:00:00 AM",
+                "11/30/2022, 8:00:00 AM" };
             string statusStage;
             if (status.Contains(WorldCup2022.BeforeStartedStage))
             {

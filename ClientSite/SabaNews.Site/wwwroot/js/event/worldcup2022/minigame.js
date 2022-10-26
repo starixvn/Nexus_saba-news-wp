@@ -3,10 +3,10 @@
     var teamId = 0;
     var teamName = "";
     const longs = [
-        1669289400,
-        1669366800,
-        1669730400,
-        1670076000
+        1666778400,
+        1669078800,
+        1669424400,
+        1669770000
     ];   
     const second = 1000,
         minute = second * 60,
@@ -66,8 +66,8 @@
                     x = setInterval(function () {
                         let now = new Date().getTime(),
                             distance = countDown - now;
-                        let dayShow = Math.floor(distance / (day)),
-                            hourShow = Math.floor((distance % (day)) / (hour)),
+
+                        let hourShow = Math.floor((distance % (day)) / (hour)),
                             minuteShow = Math.floor((distance % (hour)) / (minute)),
                             secondShow = Math.floor((distance % (minute)) / second)
 

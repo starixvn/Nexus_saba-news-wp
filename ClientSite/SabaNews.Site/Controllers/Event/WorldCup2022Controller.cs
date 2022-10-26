@@ -382,11 +382,7 @@
             };
 
                 model.UserId = sessionService.User.Id.ToString();
-                var criteria = new GetMinigameByUserStageCriteria
-                {
-                    UserId = sessionService.User.Id
-                };
-                model.Votes = await worldcupService.GetMinigameByUserStageAsync(criteria);
+                model.Votes = await worldcupService.GetMinigameByUserAsync(sessionService.User.Id);
             return View("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", model);
         }
 

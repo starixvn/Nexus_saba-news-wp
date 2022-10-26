@@ -68,17 +68,17 @@
         public const string BeforeEndStage = "Sắp kết thúc";
         public const string OnEndStage = "Đã kết thúc";
 
-        public const string IconLock = "icon-list-event";
-        public const string IconSearch = "icon-search";
+        public const string IconLock = "icon-icon_lock";
+        public const string IconSearch = "icon-icon_search";
 
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
         public const long GroupStageId = 30537;
 
-        public const long TimestampMinigameStage01Start = 1669289400;
-        public const long TimestampMinigameStage02Start = 1669366800;
-        public const long TimestampMinigameStage03Start = 1669730400;
-        public const long TimestampMinigameStage04Start = 1670076000;
+        public const long TimestampMinigameStage01Start = 1666778400;
+        public const long TimestampMinigameStage02Start = 1669078800;
+        public const long TimestampMinigameStage03Start = 1669424400;
+        public const long TimestampMinigameStage04Start = 1669770000;
 
         public const long ThirdPlace = 30541;
         public const long FinalStage = 30542;
