@@ -38,6 +38,26 @@
         &.minigame-table-header{
             padding-bottom: 1rem;
             border-bottom: 2px solid #833D55;
+            position: relative;
+            &:after, &:before {
+                content: '';
+                display: block;
+                width: 6px;
+                height: 6px;
+                background: #570F28;
+                clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+                position: absolute;
+            }
+    
+            &:after {
+                left: -5px;
+                bottom: -4px;
+            }
+    
+            &:before {
+                right: -5px;
+                bottom: -4px;
+            }
             .table-row{
                 font-size: 1.6rem;
                 &.table-row-time{
@@ -69,4 +89,32 @@
     }
 }
 
+.table-user{
+    display: flex;
+    align-items:center;
+    .user-avatar{
+        margin-right: 1rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 5px;
+        overflow: hidden;
+        border: 1px solid #833D55;
+        background: #8A2745;
+        color: #C598A7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            object-fit: cover;
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+        .non-image{
+            font-size: 1.4rem;
+        }
+    }
+    .user-name{
+
+    }
+}
 

@@ -223,18 +223,15 @@ export default class Standing extends PureComponent {
                         <div className="minigame-table-items">
                             <div className="minigame-table-flex ">
                                 <div className="table-row table-row-index">1</div>
-                                <div className="table-row table-row-name">Tokuda</div>
-                                <div className="table-row table-row-score">20</div>
-                                <div className="table-row table-row-time">
-                                    20/11/2022, 00:00:00
-                                    <i className="icon-bxh_view"/>
+                                <div className="table-row table-row-name table-user">
+                                    <div className="user-avatar">
+                                        <img src="https://static.lag.vn/upload/news/20/08/19/one-piece-sanji-8_WNCH.jpg?w=800&encoder=wic&subsampling=444" alt="" />
+                                        {/* <span className="non-image">A</span> */}
+                                    </div>
+                                    <div className="user-name">
+                                        Nguyen Van ABC
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="minigame-table-items">
-                            <div className="minigame-table-flex ">
-                                <div className="table-row table-row-index">1</div>
-                                <div className="table-row table-row-name">Tokuda</div>
                                 <div className="table-row table-row-score">20</div>
                                 <div className="table-row table-row-time">
                                     20/11/2022, 00:00:00
