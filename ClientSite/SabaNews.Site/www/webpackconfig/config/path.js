@@ -17,6 +17,7 @@ const cssPaths = {
     livescore_soccer_worldcup_minigame: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-standing.scss'],
     livescore_soccer_worldcup_minigame_detail_stage: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-detail-stage.scss'],
     livescore_soccer_worldcup_minigame_detail: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-detail.scss'],
+    livescore_soccer_worldcup_minigame_winner: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-winners.scss'],
 };
 
 const scriptPaths = {
@@ -34,7 +35,8 @@ const scriptPaths = {
     livescore_soccer_worldcup_minigame_stage: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-stage/index.jsx'],
     livescore_soccer_worldcup_minigame: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-standing/index.jsx'],
     livescore_soccer_worldcup_minigame_detail_stage: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-detail-stage/index.jsx'],
-    livescore_soccer_worldcup_minigame_detail: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-detail/index.jsx']
+    livescore_soccer_worldcup_minigame_detail: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-detail/index.jsx'],
+    livescore_soccer_worldcup_minigame_winner: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-winners/index.jsx']
 };
 
 module.exports = {

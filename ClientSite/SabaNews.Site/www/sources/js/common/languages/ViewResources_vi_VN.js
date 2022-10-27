@@ -52,5 +52,6 @@
     ThirdPlace: 'Tranh hạng 3',
     Unknown: 'Không xác định',
     Upcomming: 'Sắp diễn ra',
-    StandingMinigame:'BẢNG XẾP HẠNG'
+    StandingMinigame:'BẢNG XẾP HẠNG',
+    WinnersMinigame:'DANH SÁCH TRÚNG THƯỞNG'
 };

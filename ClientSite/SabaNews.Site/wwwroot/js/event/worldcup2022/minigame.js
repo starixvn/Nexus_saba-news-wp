@@ -3,7 +3,7 @@
     var teamId = 0;
     var teamName = "";
     const longs = [
-        1666778400,
+        1666843200,
         1669078800,
         1669424400,
         1669770000
@@ -71,7 +71,7 @@
                             minuteShow = Math.floor((distance % (hour)) / (minute)),
                             secondShow = Math.floor((distance % (minute)) / second)
 
-                        document.getElementById('hours' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}:</div>`,
+                        document.getElementById('hours' + (i + 1).toString()).innerHTML = `<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`,
                 document.getElementById('hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
                     document.getElementById('minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
                     document.getElementById('seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
