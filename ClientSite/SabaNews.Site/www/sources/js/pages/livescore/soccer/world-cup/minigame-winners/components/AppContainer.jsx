@@ -61,9 +61,9 @@ export class AppContainer extends Component {
                     </div>
                     <div className="minigame-winner-control">
                         {
-                                this.state.stages.map( index => 
-                                    <button onClick={e => this.handleChange(index.value)}>{index.name}</button>
-                                )
+                            this.state.stages.map( item => 
+                                <button className= {this.state.selectedStage === item.value ? 'buttonStage active' : 'buttonStage'} onClick={e => this.handleChange(item.value)}>{item.name}</button>
+                            )
                         }
                     </div>
                     <Winner matches={showMatches} votes={votes} search={this.state.search} />

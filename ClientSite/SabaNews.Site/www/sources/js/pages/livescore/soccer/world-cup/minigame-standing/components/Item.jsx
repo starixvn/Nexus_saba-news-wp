@@ -8,7 +8,12 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (number) =>{
+    handleClick = (standingLength, number) =>{
+        for(let num = 0; num < standingLength ; num ++){
+            if(num != number){
+                document.getElementsByClassName('standing-dropdown')[num].style.display = 'none';
+            }
+        }
         const display = document.getElementsByClassName('standing-dropdown')[number].style.display;
         if(display === 'block'){
             document.getElementsByClassName('standing-dropdown')[number].style.display = 'none';
@@ -19,7 +24,7 @@ export class Item extends PureComponent {
     };
 
     render() {
-        const { standing, number } = this.props;
+        const { standing, number, standingLength } = this.props;
         return (
             <>
                 <div className="minigame-table-items">
@@ -37,7 +42,7 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-time">
                             {standing.updatedDate != null ? standing.updatedDate : standing.createdDate}
                             {
-                               window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(number)}/> : null
+                               window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(standingLength, number)}/> : null
                             }
                             
                         </div>

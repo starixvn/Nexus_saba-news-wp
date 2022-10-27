@@ -8,7 +8,12 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (number) =>{
+    handleClick = (winnnerLength, number) =>{
+        for(let num = 0; num < winnnerLength ; num ++){
+            if(num != number){
+                document.getElementsByClassName('Winner-dropdown')[num].style.display = 'none';
+            }
+        }
         const display = document.getElementsByClassName('Winner-dropdown')[number].style.display;
         if(display === 'block'){
             document.getElementsByClassName('Winner-dropdown')[number].style.display = 'none';
@@ -19,7 +24,7 @@ export class Item extends PureComponent {
     };
 
     render() {
-        const { Winner, number } = this.props;
+        const { Winner, number, winnnerLength } = this.props;
         return (
             <>
                 {
@@ -39,7 +44,7 @@ export class Item extends PureComponent {
                                 <div className="table-row table-row-time">
                                     {Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate}
                                     {
-                                    window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(number)}/> : null
+                                    window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(winnnerLength, number)}/> : null
                                     }
                                     
                                 </div>
