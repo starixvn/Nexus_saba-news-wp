@@ -9,12 +9,12 @@ export class Item extends PureComponent {
     }
 
     handleClick = (number) =>{
-        const display = document.getElementsByClassName('detail')[number].style.display;
+        const display = document.getElementsByClassName('standing-dropdown')[number].style.display;
         if(display === 'block'){
-            document.getElementsByClassName('detail')[number].style.display = 'none';
+            document.getElementsByClassName('standing-dropdown')[number].style.display = 'none';
         }
         else{
-            document.getElementsByClassName('detail')[number].style.display = 'block';
+            document.getElementsByClassName('standing-dropdown')[number].style.display = 'block';
         }
     };
 
@@ -45,38 +45,33 @@ export class Item extends PureComponent {
                 </div>
                 {
                     window.stage === 4 && 
-                    <div className="standing-dropdown">
+                    <div className="standing-dropdown" style={{display:'none'}}>
                         <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round">Vòng</div>
-                            <div className="standing-dropdown-column score">Điểm</div>
+                            <div className="standing-dropdown-column round header-column">Vòng</div>
+                            <div className="standing-dropdown-column score header-column">Điểm</div>
+                        </div>
+                        <div className="standing-dropdown-row">
+                            <div className="standing-dropdown-column round">Vòng 1/8</div>
+                            <div className="standing-dropdown-column score">{standing.detail.pointEightTeamStage}</div>
+                        </div>
+                        <div className="standing-dropdown-row">
+                            <div className="standing-dropdown-column round">Tứ Kết</div>
+                            <div className="standing-dropdown-column score">{standing.detail.pointQuarterfinalsStage}</div>
+                        </div>
+
+                        <div className="standing-dropdown-row">
+                            <div className="standing-dropdown-column round">Bán Kết</div>
+                            <div className="standing-dropdown-column score">{standing.detail.pointSemifinalsStage}</div>
+                        </div>
+                        <div className="standing-dropdown-row">
+                            <div className="standing-dropdown-column round">Tranh Hạng 3</div>
+                            <div className="standing-dropdown-column score">{standing.detail.pointThirdPlace}</div>
+                        </div>
+                        <div className="standing-dropdown-row">
+                            <div className="standing-dropdown-column round">Chung Kết</div>
+                            <div className="standing-dropdown-column score">{standing.detail.pointFinalStage}</div>
                         </div>
                     </div>
-                    // <div className="detail" style={{display:'none', justifyContent:'space-between'}}>
-                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
-                    //         <div>Vòng</div>
-                    //         <div>Diểm</div>
-                    //     </div>
-                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
-                    //         <div>Vòng 1/8</div>
-                    //         <div>{standing.detail.pointEightTeamStage}</div>
-                    //     </div>
-                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
-                    //         <div>Tứ Kết</div>
-                    //         <div>{standing.detail.pointQuarterfinalsStage}</div>
-                    //     </div>
-                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
-                    //         <div>Bán Kết</div>
-                    //         <div>{standing.detail.pointSemifinalsStage}</div>
-                    //     </div>
-                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
-                    //         <div>Tranh Hạng 3</div>
-                    //         <div>{standing.detail.pointThirdPlace}</div>
-                    //     </div>
-                    //     <div style={{display:'flex', justifyContent:'space-between'}}>
-                    //         <div>Chung Kết</div>
-                    //         <div>{standing.detail.pointFinalStage}</div>
-                    //     </div>
-                    // </div>
                 }
             </>
         );

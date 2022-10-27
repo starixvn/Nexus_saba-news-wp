@@ -12,6 +12,10 @@
     line-height: 2.8rem;
     color: #833D55;
     text-align: center;
+    @include Mobile{
+        font-size: 1.2rem;
+        line-height: 2.4rem;
+    }
     &-index{
         width: 10%;
     }
@@ -39,6 +43,9 @@
             padding-bottom: 1rem;
             border-bottom: 2px solid #833D55;
             position: relative;
+            @include Mobile{
+                padding-bottom: .5rem;
+            }
             &:after, &:before {
                 content: '';
                 display: block;
@@ -60,6 +67,10 @@
             }
             .table-row{
                 font-size: 1.6rem;
+                @include Mobile{
+                    font-size: 1.2rem;
+                    line-height: 2.4rem;
+                }
                 &.table-row-time{
                     display: flex;
                     align-items: center;
@@ -93,7 +104,6 @@
     display: flex;
     align-items:center;
     .user-avatar{
-        margin-right: 1rem;
         width: 3.2rem;
         height: 3.2rem;
         border-radius: 5px;
@@ -104,6 +114,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0;
         img{
             object-fit: cover;
             width: 3.2rem;
@@ -113,6 +124,13 @@
             font-size: 1.4rem;
         }
     }
+    .user-name {
+        width: 17rem;
+        margin-left: .5rem;
+        @include Mobile{
+            width: 7rem;
+        }
+    }
 }
 
 .standing-dropdown{
@@ -120,15 +138,31 @@
     margin-top: 1.2rem;
     &-row{
         display: flex;
-        padding: .8rem 1.2rem;
+        padding: .8rem 0;
+        margin: 0 1.2rem;
+        border-top: 1px solid #B1B1A0;
+        &:first-child{
+            border-top: none;
+        }
     }
     &-column{
         color: #833D55;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 1.4rem;
         width: 48%;
+        &.header-column{
+            font-weight: 700;
+        }
+        @include Mobile{
+            width: 46%;
+            font-size: 1.2rem;
+        }
         &.score{
-            width: 15%;
+            width: 5%;
+            text-align: center;
+            @include Mobile{
+                width: 10%;
+            }
         }
     }
 }
