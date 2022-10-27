@@ -42,6 +42,22 @@
         }
     }
 }
+.table-winner{
+    background: #8A172F;
+    border: 1px solid #E8E8D6;
+    .minigame-table-header{
+        border-bottom: 1px solid #E8E8D6;
+    }
+    .table-row{
+        color: #E8E8D6;
+        i{
+            &::before{
+                color: #E8E8D6;
+            }
+        }
+    }
+}
+
 .minigame-title{
     margin-top: 0;
 }
