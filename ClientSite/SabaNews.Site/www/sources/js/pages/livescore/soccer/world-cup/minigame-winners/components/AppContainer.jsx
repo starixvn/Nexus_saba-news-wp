@@ -39,7 +39,7 @@ export class AppContainer extends Component {
         }
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div className="minigame-section minigame-standing">
+            <div className="minigame-winners">
                 <div className="wraper-minigame-table">
                     <div class="minigame-title standing-title">
                         <h1 class="text">
@@ -53,6 +53,8 @@ export class AppContainer extends Component {
                                 <li class="dots-regular"></li>
                                 <li class="dots-small"></li>
                             </ul>
+                            <span className="line line-left"></span>
+                            <span className="line line-right"></span>
                         </div>
                     </div>
                     <div className="minigame-standing-control">
@@ -63,10 +65,6 @@ export class AppContainer extends Component {
                         }
                     </div>
                     <Winner matches={showMatches} votes={votes} search={this.state.search} />
-                </div>
-                <div className="wave-standing-main"></div>
-                <div className="section-icon">
-                    <img src="../../../../css/images/icon_2.png" alt="" />
                 </div>
             </div>
         )

@@ -646,6 +646,14 @@ body {
     transform-origin: top left;
 }
 
+.minigame-winners {
+    background: url('../../../../images/worldcup/minigame/bg_winner.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 10rem 0 10rem 0;
+}
+
 .custom-select {
     appearance: none;
     background: url('../../../../images/worldcup/minigame/chevron-down.png') 100% no-repeat #E8E8D6;

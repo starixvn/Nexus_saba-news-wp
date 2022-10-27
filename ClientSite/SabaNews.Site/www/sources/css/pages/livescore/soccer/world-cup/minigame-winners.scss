@@ -1,0 +1,28 @@
+@import './../../../../abstracts/mixins';
+@import './components/minigame_table';
+@import './components/minigame_control';
+@import './components/input-custom';
+
+.minigame-winners{
+    @include Mobile{
+        padding: 5rem 1rem 5rem 1rem;
+    }
+    .wraper-minigame-table{
+        background: linear-gradient(180deg, #8F1830 3.56%, #5A0F22 92.88%);
+        .text{
+            color: #E8E8D6;
+        }
+        .dots-parent{
+            height: 0;
+            &::before,&::after{
+                background: #E8E8D6;
+            }
+            .dots-standing{
+                background: transparent;
+                li{
+                    background: #E8E8D6;
+                }
+            }
+        }
+    }
+}

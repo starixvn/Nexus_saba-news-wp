@@ -39,6 +39,22 @@
                 background: #833D55;
            } 
         }
+        .line{
+            display: block;
+            width: 37%;
+            background: #E8E8D6;
+            height: 2px;
+            position: absolute;
+            @include Mobile{
+                width: 30%;
+            }
+            &-left{
+                left: 0;
+            }
+            &-right{
+                right: 0;
+            }
+        }
     }
 }
 
