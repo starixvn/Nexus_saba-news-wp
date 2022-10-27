@@ -31,9 +31,17 @@ export default class Winner extends PureComponent {
         let Winner = [];
         users.map((user,indexUser) =>{
             let pointNumber = 0;
+            let createdDate = user.createdDate, 
+            updatedDate = user.updatedDate;
             votes.map( (vote, index) => {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
+                    if(user.createdDate < vote.createdDate){
+                        createdDate = vote.createdDate
+                    }
+                    if(user.updatedDate < vote.updatedDate){
+                        updatedDate = vote.updatedDate
+                    }
                 }
             });
             Winner.push({
@@ -121,7 +129,7 @@ export default class Winner extends PureComponent {
     sortWinnerPoint = (Winner) =>{
         Winner = this.sortWinnerDate(Winner);
         Winner.map((item, index) =>{
-            let max = item.createdDate;
+            let max = item.point;
             let indexMax = index;
             Winner.map((Winner, indexSort) => {
                 if(indexSort > index){

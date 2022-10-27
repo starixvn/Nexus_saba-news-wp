@@ -31,9 +31,17 @@ export default class Standing extends PureComponent {
         let standing = [];
         users.map((user,indexUser) =>{
             let pointNumber = 0;
+            let createdDate = user.createdDate, 
+                updatedDate = user.updatedDate;
             votes.map( (vote, index) => {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
+                    if(user.createdDate < vote.createdDate){
+                        createdDate = vote.createdDate
+                    }
+                    if(user.updatedDate < vote.updatedDate){
+                        updatedDate = vote.updatedDate
+                    }
                 }
             });
             standing.push({
@@ -41,8 +49,8 @@ export default class Standing extends PureComponent {
                 matchId : user.matchId,
                 teamId : user.teamId,
                 stage : user.stage,
-                createdDate : format(new Date(user.createdDate), 'dd/MM/yyyy, HH:mm:ss'),
-                updatedDate : format(new Date(user.updatedDate), 'dd/MM/yyyy, HH:mm:ss'), 
+                createdDate : format(new Date(createdDate), 'dd/MM/yyyy, HH:mm:ss'),
+                updatedDate : format(new Date(updatedDate), 'dd/MM/yyyy, HH:mm:ss'), 
                 userName : user.userName,
                 icon : user.icon,
                 point : pointNumber,
@@ -121,7 +129,7 @@ export default class Standing extends PureComponent {
     sortStandingPoint = (standing) =>{
         standing = this.sortStandingDate(standing);
         standing.map((item, index) =>{
-            let max = item.createdDate;
+            let max = item.point;
             let indexMax = index;
             standing.map((standing, indexSort) => {
                 if(indexSort > index){
