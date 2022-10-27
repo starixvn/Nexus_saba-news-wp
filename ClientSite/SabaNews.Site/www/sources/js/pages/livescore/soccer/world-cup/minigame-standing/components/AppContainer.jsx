@@ -41,17 +41,17 @@ export class AppContainer extends Component {
         return (
             <div className="minigame-section minigame-standing">
                 <div className="wraper-minigame-table">
-                    <div class="minigame-title standing-title">
-                        <h1 class="text">
+                    <div className="minigame-title standing-title">
+                        <h1 className="text">
                             {LangHelper.getResource('StandingMinigame')}
                         </h1>
-                        <div class="dots-parent">
-                            <ul className="dots-standing">
-                                <li class="dots-small"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-parent-center"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-small"></li>
+                        <div className="dots-parent">
+                            <ul className="dots">
+                                <li className="dots-small"></li>
+                                <li className="dots-regular"></li>
+                                <li className="dots-parent-center"></li>
+                                <li className="dots-regular"></li>
+                                <li className="dots-small"></li>
                             </ul>
                         </div>
                     </div>

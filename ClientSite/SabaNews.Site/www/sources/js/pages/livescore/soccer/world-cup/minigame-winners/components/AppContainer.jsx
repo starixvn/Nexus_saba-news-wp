@@ -41,25 +41,25 @@ export class AppContainer extends Component {
         }
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div className="minigame-section minigame-Winner">
+            <div className="minigame-winner">
                 <div className="wraper-minigame-table">
-                    <div class="minigame-title Winner-title">
-                        <h1 class="text">
+                    <div className="minigame-title winner-title">
+                        <h1 className="text">
                             {LangHelper.getResource('WinnersMinigame')}
                         </h1>
-                        <div class="dots-parent">
-                            <ul className="dots-Winner">
-                                <li class="dots-small"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-parent-center"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-small"></li>
+                        <div className="dots-parent">
+                            <ul className="dots-winner">
+                                <li className="dots-small"></li>
+                                <li className="dots-regular"></li>
+                                <li className="dots-parent-center"></li>
+                                <li className="dots-regular"></li>
+                                <li className="dots-small"></li>
                             </ul>
                             <span className="line line-left"></span>
                             <span className="line line-right"></span>
                         </div>
                     </div>
-                    <div className="minigame-Winner-control">
+                    <div className="minigame-winner-control">
                         {
                                 this.state.stages.map( index => 
                                     <button onClick={e => this.handleChange(index.value)}>{index.name}</button>
