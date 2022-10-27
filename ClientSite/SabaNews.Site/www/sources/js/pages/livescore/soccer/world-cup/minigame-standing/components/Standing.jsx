@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { getVoteResult } from '../../common.functions';
 import Item from './Item';
 import { WorldCup } from '@jsroot/common/constants';
+import { format } from 'date-fns';
 
 export default class Standing extends PureComponent {
     constructor(props) {
@@ -9,13 +10,8 @@ export default class Standing extends PureComponent {
     }
 
     getMatch = (vote, matches) =>{
-        let matchVote = null;
-        matches.map(match => {
-            if(match.matchId === vote.matchId){
-                matchVote = match;
-            }
-        });
-        return matchVote;
+        const matchVote = matches.filter(match => match.matchId === vote.matchId)[0];
+        return !matchVote ? null : matchVote;
     };
 
     getUsersVote = (users, vote) =>{
@@ -23,13 +19,8 @@ export default class Standing extends PureComponent {
             users.push(vote);
         }
         else{
-            let dem = 0;
-            users.map(user => {
-                if(user.userId === vote.userId){
-                    dem++;
-                }
-            });
-            if(dem === 0){
+            const count = users.filter(x=>x.userId === vote.userId).length;
+            if(count === 0){
                 users.push(vote);
             }
         }
@@ -50,8 +41,8 @@ export default class Standing extends PureComponent {
                 matchId : user.matchId,
                 teamId : user.teamId,
                 stage : user.stage,
-                createdDate : user.createdDate,
-                updatedDate : user.updatedDate,
+                createdDate : format(new Date(user.createdDate), 'dd/MM/yyyy, HH:mm:ss'),
+                updatedDate : format(new Date(user.updatedDate), 'dd/MM/yyyy, HH:mm:ss'), 
                 userName : user.userName,
                 icon : user.icon,
                 point : pointNumber,
@@ -81,6 +72,7 @@ export default class Standing extends PureComponent {
                 }
             });
         });
+        
         return point;
     };
 

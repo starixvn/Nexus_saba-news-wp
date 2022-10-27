@@ -170,6 +170,16 @@
             return dem;
         }
 
+        public static bool CheckActive(string status)
+        {
+            bool result = true;
+            if(status == WorldCup2022.LockStage || status == WorldCup2022.OnEndStage)
+            {
+                result = false;
+            }
+            return result;
+        }
+
         public static string GetIconStage(string status)
         {
             string iconStage;

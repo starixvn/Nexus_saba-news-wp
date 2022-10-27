@@ -139,10 +139,11 @@
                         {
                             var status = GetStatusStage(Model.Matches, i);
                             var icon = GetIconStage(status);
+                            var isActive = CheckActive(status);
 
                                         <div id="boxStage@(i+1)" class="stage-items stage-items-1" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
                                             <a href="#" class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
-                                            <div class="stage-round active">
+                                <div class="stage-round @(isActive ? "active" : "")">
                                                 <h2>Giai Đoạn @(i + 1)</h2>
                                             </div>
                                             <ul class="count-and-time">
