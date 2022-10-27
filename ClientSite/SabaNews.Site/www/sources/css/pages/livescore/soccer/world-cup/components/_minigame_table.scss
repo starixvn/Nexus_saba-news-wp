@@ -33,29 +33,15 @@
 
 
 .minigame-table{
-    max-width: 65rem;
-    margin: 0 auto;
-    padding-top: 2rem;
+    max-width: 67rem;
+    margin: 1.2rem auto;
+    border: 1px solid #833D55;
     .minigame-table-flex{
         display: flex;
         align-items: center;
         &.minigame-table-header{
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #833D55;
-            position: relative;
-            @include Mobile{
-                padding-bottom: .5rem;
-            }
-            &:after, &:before {
-                content: '';
-                display: block;
-                width: 6px;
-                height: 6px;
-                background: #570F28;
-                clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%);
-                position: absolute;
-            }
-    
+            position: relative; 
+            padding: .5rem 0;   
             &:after {
                 left: 0;
                 bottom: -4px;
@@ -86,7 +72,8 @@
 
 .minigame-table-body{
     .minigame-table-items{
-        padding-top: 1.6rem;
+        padding: 1rem 0;
+        border-top: 1px solid #833D55;
         .table-row-time{
             display: flex;
             align-items: center;
@@ -135,11 +122,8 @@
 
 .standing-dropdown{
     background: #D2D2BC;
-    margin-top: 1.2rem;
     &-row{
         display: flex;
-        padding: .8rem 0;
-        margin: 0 1.2rem;
         border-top: 1px solid #B1B1A0;
         &:first-child{
             border-top: none;
@@ -157,12 +141,28 @@
             width: 46%;
             font-size: 1.2rem;
         }
+        &.round{
+            padding : .8rem 2.3rem;
+        }
         &.score{
             width: 5%;
             text-align: center;
+            padding : .8rem 0;
             @include Mobile{
                 width: 10%;
             }
+        }
+    }
+    &-header{
+        border-bottom: 1px solid #B1B1A0;
+        .standing-dropdown-row{
+            border-top: none;
+        }
+    }
+    &-body{
+        margin: 0 2.3rem;
+        .round{
+            padding: .8rem 0;
         }
     }
 }

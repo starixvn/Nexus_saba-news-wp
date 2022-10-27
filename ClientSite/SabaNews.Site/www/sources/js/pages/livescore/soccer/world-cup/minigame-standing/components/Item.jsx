@@ -46,30 +46,34 @@ export class Item extends PureComponent {
                 {
                     window.stage === 4 && 
                     <div className="standing-dropdown" style={{display:'none'}}>
-                        <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round header-column">Vòng</div>
-                            <div className="standing-dropdown-column score header-column">Điểm</div>
+                        <div className="standing-dropdown-header">
+                            <div className="standing-dropdown-row">
+                                <div className="standing-dropdown-column round header-column">Vòng</div>
+                                <div className="standing-dropdown-column score header-column">Điểm</div>
+                            </div>
                         </div>
-                        <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round">Vòng 1/8</div>
-                            <div className="standing-dropdown-column score">{standing.detail.pointEightTeamStage}</div>
-                        </div>
-                        <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round">Tứ Kết</div>
-                            <div className="standing-dropdown-column score">{standing.detail.pointQuarterfinalsStage}</div>
-                        </div>
+                        <div className="standing-dropdown-body">
+                            <div className="standing-dropdown-row">
+                                <div className="standing-dropdown-column round">Vòng 1/8</div>
+                                <div className="standing-dropdown-column score">{standing.detail.pointEightTeamStage}</div>
+                            </div>
+                            <div className="standing-dropdown-row">
+                                <div className="standing-dropdown-column round">Tứ Kết</div>
+                                <div className="standing-dropdown-column score">{standing.detail.pointQuarterfinalsStage}</div>
+                            </div>
 
-                        <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round">Bán Kết</div>
-                            <div className="standing-dropdown-column score">{standing.detail.pointSemifinalsStage}</div>
-                        </div>
-                        <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round">Tranh Hạng 3</div>
-                            <div className="standing-dropdown-column score">{standing.detail.pointThirdPlace}</div>
-                        </div>
-                        <div className="standing-dropdown-row">
-                            <div className="standing-dropdown-column round">Chung Kết</div>
-                            <div className="standing-dropdown-column score">{standing.detail.pointFinalStage}</div>
+                            <div className="standing-dropdown-row">
+                                <div className="standing-dropdown-column round">Bán Kết</div>
+                                <div className="standing-dropdown-column score">{standing.detail.pointSemifinalsStage}</div>
+                            </div>
+                            <div className="standing-dropdown-row">
+                                <div className="standing-dropdown-column round">Tranh Hạng 3</div>
+                                <div className="standing-dropdown-column score">{standing.detail.pointThirdPlace}</div>
+                            </div>
+                            <div className="standing-dropdown-row">
+                                <div className="standing-dropdown-column round">Chung Kết</div>
+                                <div className="standing-dropdown-column score">{standing.detail.pointFinalStage}</div>
+                            </div>
                         </div>
                     </div>
                 }
