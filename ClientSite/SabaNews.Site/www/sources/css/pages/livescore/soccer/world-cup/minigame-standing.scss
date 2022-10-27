@@ -15,8 +15,8 @@
 
 .section-icon{
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 10%;
+    right: 15%;
     z-index: -1;
     @include tableMobile{
         display: none;

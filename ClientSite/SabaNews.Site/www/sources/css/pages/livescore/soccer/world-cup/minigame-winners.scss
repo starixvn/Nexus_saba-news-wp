@@ -4,6 +4,7 @@
 @import './components/input-custom';
 
 .minigame-winner{
+    position: relative;
     @include Mobile{
         padding: 5rem 1rem 5rem 1rem;
     }
@@ -82,4 +83,14 @@
 
 .minigame-title{
     margin-top: 0;
+}
+
+.winner-icon{
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translate(50%, -50%);
+    @include tableMobile{
+        display: none;
+    }
 }

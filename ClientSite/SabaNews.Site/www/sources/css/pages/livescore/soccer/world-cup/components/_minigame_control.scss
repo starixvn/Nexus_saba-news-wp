@@ -5,3 +5,35 @@
     max-width: 53rem;
     margin: 0 auto;
 }
+
+.minigame-winner-control{
+    max-width: 64.8rem;
+    margin: 0 auto;
+    border-bottom: 2px solid #E8E8D6;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+        display: block;
+        width: 11.3rem;
+        cursor: pointer;
+        text-align: center;
+        margin-right: 1rem;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 2.8rem;
+        padding: .6rem 1.2rem;
+        background: #8A172F;
+        border: 1px solid #E8E8D6;
+        border-bottom: none;
+        border-radius: 5px 5px 0px 0px;
+        color: #E8E8D6;
+        &.active{
+            background: #E8E8D6;
+            color: #88172E;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
