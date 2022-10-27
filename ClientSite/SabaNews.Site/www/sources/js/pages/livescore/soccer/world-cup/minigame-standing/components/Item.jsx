@@ -11,15 +11,15 @@ export class Item extends PureComponent {
     handleClick = (standingLength, number) =>{
         for(let num = 0; num < standingLength ; num ++){
             if(num != number){
-                document.getElementsByClassName('standing-dropdown')[num].style.display = 'none';
+                document.getElementsByClassName('table-dropdown')[num].style.display = 'none';
             }
         }
-        const display = document.getElementsByClassName('standing-dropdown')[number].style.display;
+        const display = document.getElementsByClassName('table-dropdown')[number].style.display;
         if(display === 'block'){
-            document.getElementsByClassName('standing-dropdown')[number].style.display = 'none';
+            document.getElementsByClassName('table-dropdown')[number].style.display = 'none';
         }
         else{
-            document.getElementsByClassName('standing-dropdown')[number].style.display = 'block';
+            document.getElementsByClassName('table-dropdown')[number].style.display = 'block';
         }
     };
 
@@ -50,34 +50,34 @@ export class Item extends PureComponent {
                 </div>
                 {
                     window.stage === 4 && 
-                    <div className="standing-dropdown" style={{display:'none'}}>
-                        <div className="standing-dropdown-header">
-                            <div className="standing-dropdown-row">
-                                <div className="standing-dropdown-column round header-column">Vòng</div>
-                                <div className="standing-dropdown-column score header-column">Điểm</div>
+                    <div className="table-dropdown" style={{display:'none'}}>
+                        <div className="table-dropdown-header">
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round header-column">Vòng</div>
+                                <div className="table-dropdown-column score header-column">Điểm</div>
                             </div>
                         </div>
-                        <div className="standing-dropdown-body">
-                            <div className="standing-dropdown-row">
-                                <div className="standing-dropdown-column round">Vòng 1/8</div>
-                                <div className="standing-dropdown-column score">{standing.detail.pointEightTeamStage}</div>
+                        <div className="table-dropdown-body">
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Vòng 1/8</div>
+                                <div className="table-dropdown-column score">{standing.detail.pointEightTeamStage}</div>
                             </div>
-                            <div className="standing-dropdown-row">
-                                <div className="standing-dropdown-column round">Tứ Kết</div>
-                                <div className="standing-dropdown-column score">{standing.detail.pointQuarterfinalsStage}</div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Tứ Kết</div>
+                                <div className="table-dropdown-column score">{standing.detail.pointQuarterfinalsStage}</div>
                             </div>
 
-                            <div className="standing-dropdown-row">
-                                <div className="standing-dropdown-column round">Bán Kết</div>
-                                <div className="standing-dropdown-column score">{standing.detail.pointSemifinalsStage}</div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Bán Kết</div>
+                                <div className="table-dropdown-column score">{standing.detail.pointSemifinalsStage}</div>
                             </div>
-                            <div className="standing-dropdown-row">
-                                <div className="standing-dropdown-column round">Tranh Hạng 3</div>
-                                <div className="standing-dropdown-column score">{standing.detail.pointThirdPlace}</div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Tranh Hạng 3</div>
+                                <div className="table-dropdown-column score">{standing.detail.pointThirdPlace}</div>
                             </div>
-                            <div className="standing-dropdown-row">
-                                <div className="standing-dropdown-column round">Chung Kết</div>
-                                <div className="standing-dropdown-column score">{standing.detail.pointFinalStage}</div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Chung Kết</div>
+                                <div className="table-dropdown-column score">{standing.detail.pointFinalStage}</div>
                             </div>
                         </div>
                     </div>

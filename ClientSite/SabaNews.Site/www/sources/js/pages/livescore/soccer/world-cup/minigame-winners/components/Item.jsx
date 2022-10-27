@@ -11,15 +11,15 @@ export class Item extends PureComponent {
     handleClick = (winnnerLength, number) =>{
         for(let num = 0; num < winnnerLength ; num ++){
             if(num != number){
-                document.getElementsByClassName('Winner-dropdown')[num].style.display = 'none';
+                document.getElementsByClassName('table-dropdown')[num].style.display = 'none';
             }
         }
-        const display = document.getElementsByClassName('Winner-dropdown')[number].style.display;
+        const display = document.getElementsByClassName('table-dropdown')[number].style.display;
         if(display === 'block'){
-            document.getElementsByClassName('Winner-dropdown')[number].style.display = 'none';
+            document.getElementsByClassName('table-dropdown')[number].style.display = 'none';
         }
         else{
-            document.getElementsByClassName('Winner-dropdown')[number].style.display = 'block';
+            document.getElementsByClassName('table-dropdown')[number].style.display = 'block';
         }
     };
 
@@ -53,31 +53,35 @@ export class Item extends PureComponent {
                 }
                 {
                     number < 10 && window.stage === 4 && 
-                    <div className="Winner-dropdown" style={{display:'none'}}>
-                        <div className="Winner-dropdown-row">
-                            <div className="Winner-dropdown-column round header-column">Vòng</div>
-                            <div className="Winner-dropdown-column score header-column">Điểm</div>
+                    <div className="table-dropdown" style={{display:'none'}}>
+                        <div className="table-dropdown-header">
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round header-column">Vòng</div>
+                                <div className="table-dropdown-column score header-column">Điểm</div>
+                            </div>
                         </div>
-                        <div className="Winner-dropdown-row">
-                            <div className="Winner-dropdown-column round">Vòng 1/8</div>
-                            <div className="Winner-dropdown-column score">{Winner.detail.pointEightTeamStage}</div>
-                        </div>
-                        <div className="Winner-dropdown-row">
-                            <div className="Winner-dropdown-column round">Tứ Kết</div>
-                            <div className="Winner-dropdown-column score">{Winner.detail.pointQuarterfinalsStage}</div>
-                        </div>
+                        <div className="table-dropdown-body">
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Vòng 1/8</div>
+                                <div className="table-dropdown-column score">{Winner.detail.pointEightTeamStage}</div>
+                            </div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Tứ Kết</div>
+                                <div className="table-dropdown-column score">{Winner.detail.pointQuarterfinalsStage}</div>
+                            </div>
 
-                        <div className="Winner-dropdown-row">
-                            <div className="Winner-dropdown-column round">Bán Kết</div>
-                            <div className="Winner-dropdown-column score">{Winner.detail.pointSemifinalsStage}</div>
-                        </div>
-                        <div className="Winner-dropdown-row">
-                            <div className="Winner-dropdown-column round">Tranh Hạng 3</div>
-                            <div className="Winner-dropdown-column score">{Winner.detail.pointThirdPlace}</div>
-                        </div>
-                        <div className="Winner-dropdown-row">
-                            <div className="Winner-dropdown-column round">Chung Kết</div>
-                            <div className="Winner-dropdown-column score">{Winner.detail.pointFinalStage}</div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Bán Kết</div>
+                                <div className="table-dropdown-column score">{Winner.detail.pointSemifinalsStage}</div>
+                            </div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Tranh Hạng 3</div>
+                                <div className="table-dropdown-column score">{Winner.detail.pointThirdPlace}</div>
+                            </div>
+                            <div className="table-dropdown-row">
+                                <div className="table-dropdown-column round">Chung Kết</div>
+                                <div className="table-dropdown-column score">{Winner.detail.pointFinalStage}</div>
+                            </div>
                         </div>
                     </div>
                 }

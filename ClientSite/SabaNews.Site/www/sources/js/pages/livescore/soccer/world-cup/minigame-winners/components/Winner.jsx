@@ -208,7 +208,7 @@ export default class Winner extends PureComponent {
         const rank = this.checkRank(Winners, userId);
         return (
             <>
-            	<div className="minigame-table">
+            	<div className="minigame-table table-winner">
                     {
                         rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
                     }
