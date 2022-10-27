@@ -4,7 +4,7 @@ import Item from './Item';
 import { WorldCup } from '@jsroot/common/constants';
 import { format } from 'date-fns';
 
-export default class Standing extends PureComponent {
+export default class Winner extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -27,8 +27,8 @@ export default class Standing extends PureComponent {
         return users;
     };
 
-    handleStandings = (users, votes, points, detail) =>{
-        let standing = [];
+    handleWinners = (users, votes, points, detail) =>{
+        let Winner = [];
         users.map((user,indexUser) =>{
             let pointNumber = 0;
             votes.map( (vote, index) => {
@@ -36,7 +36,7 @@ export default class Standing extends PureComponent {
                     pointNumber += points[index];
                 }
             });
-            standing.push({
+            Winner.push({
                 userId: user.userId,
                 matchId : user.matchId,
                 teamId : user.teamId,
@@ -49,8 +49,8 @@ export default class Standing extends PureComponent {
                 detail: detail[indexUser]
             });
         }) ;
-        standing = this.sortStandingPoint(standing);
-        return standing;
+        Winner = this.sortWinnerPoint(Winner);
+        return Winner;
     };
 
     getMatchesByStageId = (matches, stageId) => {
@@ -111,55 +111,55 @@ export default class Standing extends PureComponent {
             users = this.getUsersVote(users, vote);
         }); 
         detail = this.getDetail(matches, users, points, votes);    
-        let standing = this.handleStandings(users, votes, points, detail);
+        let Winner = this.handleWinners(users, votes, points, detail);
         if(search != ""){
-           standing = this.handleSearch(standing, search);
+           Winner = this.handleSearch(Winner, search);
         }       
-        return standing;
+        return Winner;
     };
     
-    sortStandingPoint = (standing) =>{
-        standing = this.sortStandingDate(standing);
-        standing.map((item, index) =>{
+    sortWinnerPoint = (Winner) =>{
+        Winner = this.sortWinnerDate(Winner);
+        Winner.map((item, index) =>{
             let max = item.createdDate;
             let indexMax = index;
-            standing.map((standing, indexSort) => {
+            Winner.map((Winner, indexSort) => {
                 if(indexSort > index){
-                    if(max < standing.point){
-                        max = standing.point;
+                    if(max < Winner.point){
+                        max = Winner.point;
                         indexMax = indexSort;
                     }
                 }
             });
-            let swap = standing[index];
-            standing[index] = standing[indexMax];
-            standing[indexMax] = swap;
+            let swap = Winner[index];
+            Winner[index] = Winner[indexMax];
+            Winner[indexMax] = swap;
         });
-        return standing;
+        return Winner;
     };
 
-    sortStandingDate = (standing) =>{
-        standing.map((item, index) =>{
+    sortWinnerDate = (Winner) =>{
+        Winner.map((item, index) =>{
             let max = item.updatedDate != null ? item.updatedDate : item.createdDate;
             let indexMax = index;
-            standing.map((standing, indexSort) => {
+            Winner.map((Winner, indexSort) => {
                 if(indexSort > index){
-                    let maxSort = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
+                    let maxSort = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
                     if(max > maxSort){
                         max = maxSort;
                         indexMax = indexSort;
                     }
                 }
             });
-            let swap = standing[index];
-            standing[index] = standing[indexMax];
-            standing[indexMax] = swap;
+            let swap = Winner[index];
+            Winner[index] = Winner[indexMax];
+            Winner[indexMax] = swap;
         });
-        return standing;
+        return Winner;
     };
 
-    checkUser = (standings, userId) => {
-        standings.map(index => {
+    checkUser = (Winners, userId) => {
+        Winners.map(index => {
             if(index.userId === userId){
                 return true;
             }
@@ -167,13 +167,13 @@ export default class Standing extends PureComponent {
         return false;
     } ;
 
-    checkRank = (standings, userId ) =>{
+    checkRank = (Winners, userId ) =>{
         let rank = 0;
         if(userId === undefined){
             rank = 0;
         }
         else{
-            standings.map((item, index) => {
+            Winners.map((item, index) => {
                 if(item.userId === userId){
                     rank = index + 1;
                 }
@@ -182,9 +182,9 @@ export default class Standing extends PureComponent {
         return rank
     };
 
-    handleSearch = (standings, search) =>{
+    handleSearch = (Winners, search) =>{
         let searches = [];
-        standings.map(item => {
+        Winners.map(item => {
             var name = JSON.stringify(item.userName);
             if(name.toLowerCase().includes(search.toLowerCase())){
                 searches.push(item);
@@ -195,9 +195,9 @@ export default class Standing extends PureComponent {
 
     render() {
         const { matches, votes, search } = this.props;
-        const standings = this.calculatorPointer(matches, votes, search);
+        const Winners = this.calculatorPointer(matches, votes, search);
         const userId = window.User;
-        const rank = this.checkRank(standings, userId);
+        const rank = this.checkRank(Winners, userId);
         return (
             <>
             	<div className="minigame-table">
@@ -213,7 +213,7 @@ export default class Standing extends PureComponent {
                     </div>
                     <div className="minigame-table-body">
                         {
-                            standings.map((item, index) => <Item key={index} number={index} standing={item} />)
+                            Winners.map((item, index) => <Item key={index} number={index} Winner={item} />)
                         }
                     </div>
                 </div>

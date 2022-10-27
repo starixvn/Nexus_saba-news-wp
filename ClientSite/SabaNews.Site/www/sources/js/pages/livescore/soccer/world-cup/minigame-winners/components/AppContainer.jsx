@@ -26,10 +26,12 @@ export class AppContainer extends Component {
     }
 
     handleChange = stage => {
-        this.setState({
-            selectedStage: stage
-        });
-        this.props.getVotes(parseInt(stage));
+        if(stage != this.state.selectedStage){
+            this.setState({
+                selectedStage: stage
+            });
+            this.props.getVotes(parseInt(stage));
+        }
     };
 
     render() {
@@ -39,14 +41,14 @@ export class AppContainer extends Component {
         }
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div className="minigame-winners">
+            <div className="minigame-section minigame-Winner">
                 <div className="wraper-minigame-table">
-                    <div class="minigame-title standing-title">
+                    <div class="minigame-title Winner-title">
                         <h1 class="text">
                             {LangHelper.getResource('WinnersMinigame')}
                         </h1>
                         <div class="dots-parent">
-                            <ul className="dots-standing">
+                            <ul className="dots-Winner">
                                 <li class="dots-small"></li>
                                 <li class="dots-regular"></li>
                                 <li class="dots-parent-center"></li>
@@ -57,7 +59,7 @@ export class AppContainer extends Component {
                             <span className="line line-right"></span>
                         </div>
                     </div>
-                    <div className="minigame-standing-control">
+                    <div className="minigame-Winner-control">
                         {
                                 this.state.stages.map( index => 
                                     <button onClick={e => this.handleChange(index.value)}>{index.name}</button>
@@ -65,6 +67,10 @@ export class AppContainer extends Component {
                         }
                     </div>
                     <Winner matches={showMatches} votes={votes} search={this.state.search} />
+                </div>
+                <div className="wave-Winner-main"></div>
+                <div className="section-icon">
+                    <img src="../../../../css/images/icon_2.png" alt="" />
                 </div>
             </div>
         )
