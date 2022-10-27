@@ -48,7 +48,7 @@ export class AppContainer extends Component {
                             {LangHelper.getResource('WinnersMinigame')}
                         </h1>
                         <div className="dots-parent">
-                            <ul className="dots-winner">
+                            <ul className="dots">
                                 <li className="dots-small"></li>
                                 <li className="dots-regular"></li>
                                 <li className="dots-parent-center"></li>
@@ -67,10 +67,6 @@ export class AppContainer extends Component {
                         }
                     </div>
                     <Winner matches={showMatches} votes={votes} search={this.state.search} />
-                </div>
-                <div className="wave-Winner-main"></div>
-                <div className="section-icon">
-                    <img src="../../../../css/images/icon_2.png" alt="" />
                 </div>
             </div>
         )

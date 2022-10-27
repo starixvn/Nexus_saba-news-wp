@@ -23,6 +23,22 @@
                     background: #E8E8D6;
                 }
             }
+            .line{
+                background: #E8E8D6;
+                height: 2px;
+                display: block;
+                width: 37%;
+                position: absolute;
+                @include Mobile{
+                    width: 30%;
+                }
+                &-left{
+                    left: 0;
+                }
+                &-right{
+                    right: 0;
+                }
+            }
         }
     }
 }
