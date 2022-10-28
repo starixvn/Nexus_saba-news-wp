@@ -112,27 +112,26 @@
             </a>
         </li>
     </ul>
-
-    <div class="container-stage">
-        <div class="minigame-title">
-            <h1 class="text">
-                Dự đoán đội chiến thắng trong mỗi trận đấu để nhận điểm và có cơ 
-                hội giành được những giải thưởng hấp dẫn!
-            </h1>
-            <div class="dots-parent">
-                <ul>
-                    <li class="dots-small"></li>
-                    <li class="dots-regular"></li>
-                    <li class="dots-parent-center"></li>
-                    <li class="dots-regular"></li>
-                    <li class="dots-small"></li>
-                </ul>
+    <div class="section-stage">
+        <div class="container-stage">
+            <div class="minigame-title">
+                <h1 class="text">
+                    Dự đoán đội chiến thắng trong mỗi trận đấu để nhận điểm và có cơ
+                    hội giành được những giải thưởng hấp dẫn!
+                </h1>
+                <div class="dots-parent">
+                    <ul>
+                        <li class="dots-small"></li>
+                        <li class="dots-regular"></li>
+                        <li class="dots-parent-center"></li>
+                        <li class="dots-regular"></li>
+                        <li class="dots-small"></li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
 
-        <div class="main-stage">
-            <div class="container-stage">
+            <div class="main-stage">
                 <div class="row-stage">
                     @{
                         for (int i = 0; i < 4; i++)
@@ -141,40 +140,41 @@
                             var icon = GetIconStage(status);
                             var isActive = CheckActive(status);
 
-                                        <div id="boxStage@(i+1)" class="stage-items stage-items-1" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
-                                            <a href="#" class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
+                            <div id="boxStage@(i+1)" class="stage-items stage-items-1" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
+                                <a href="#" class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
                                 <div class="stage-round @(isActive ? "active" : "")">
-                                                <h2>Giai Đoạn @(i + 1)</h2>
-                                            </div>
-                                            <ul class="count-and-time">
-                                                @if (Model.IsLogin)
-                                                {
-                                                    <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
-                                                }
-                                                @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
-                                                {
-                                                    <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
-                                                        @GetStatusStage(Model.Matches, i)
-                                                        @if (status != WorldCup2022.OnStartedStage)
-                                                        {
-                                                            <span id="hours@(i+1)" style="margin-left : 5px"></span>
-                                                            <span id="minutes@(i+1)"></span>
-                                                            <span id="seconds@(i+1)"></span>
-                                                        }
-                                                    </li>
-                                                }
-                                            </ul>
-                                            <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
-                                        </div>
+                                    <h2>Giai Đoạn @(i + 1)</h2>
+                                </div>
+                                <ul class="count-and-time">
+                                    @if (Model.IsLogin)
+                                    {
+                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
+                                    }
+                                    @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
+                                    {
+                                        <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
+                                            @GetStatusStage(Model.Matches, i)
+                                            @if (status != WorldCup2022.OnStartedStage)
+                                            {
+                                                <span id="hours@(i+1)" style="margin-left : 5px"></span>
+                                                <span id="minutes@(i+1)"></span>
+                                                <span id="seconds@(i+1)"></span>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
+                            </div>
                         }
-                    }                    
+                    }
                 </div>
                 <div class="sticky_icon">
-                    <img src="~/images/worldcup/minigame/bxh_stick_1.png" alt="Alternate Text"  class="right-top"/>
-                    <img src="~/images/worldcup/minigame/icon_1.png" alt="Alternate Text" class="left-bottom"/>
+                    <img src="~/images/worldcup/minigame/bxh_stick_1.png" alt="Alternate Text" class="right-top" />
+                    <img src="~/images/worldcup/minigame/icon_1.png" alt="Alternate Text" class="left-bottom" />
                 </div>
             </div>
         </div>
+        <div class="bg-stage"></div>
     </div>
     <div id="minigame-standing"></div>
     <div id="minigame-winners"></div>

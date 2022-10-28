@@ -4,11 +4,9 @@
 @import './components/input-custom';
 
 .minigame-section{
-    margin-top: 15rem;
     position: relative;
     padding: 7rem 1rem 5rem 1rem;
     @include Mobile{
-        margin-top: 10rem;
         padding: 5rem 1rem 5rem 1rem;
     }
 }
@@ -17,14 +15,13 @@
     position: absolute;
     top: 10%;
     right: 15%;
-    z-index: -1;
+    z-index: 0;
     @include tableMobile{
         display: none;
     }
 }
 
 .standing-title{
-    margin-top: 0;
     .text{
         color: #833D55;
     }
