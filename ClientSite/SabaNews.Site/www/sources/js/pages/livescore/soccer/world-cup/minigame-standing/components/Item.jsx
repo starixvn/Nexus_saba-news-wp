@@ -11,15 +11,15 @@ export class Item extends PureComponent {
     handleClick = (standingLength, number) =>{
         for(let num = 0; num < standingLength ; num ++){
             if(num != number){
-                document.getElementsByClassName('table-dropdown')[num].style.display = 'none';
+                document.getElementsByClassName('detailStandings')[num].style.display = 'none';
             }
         }
-        const display = document.getElementsByClassName('table-dropdown')[number].style.display;
+        const display = document.getElementsByClassName('detailStandings')[number].style.display;
         if(display === 'block'){
-            document.getElementsByClassName('table-dropdown')[number].style.display = 'none';
+            document.getElementsByClassName('detailStandings')[number].style.display = 'none';
         }
         else{
-            document.getElementsByClassName('table-dropdown')[number].style.display = 'block';
+            document.getElementsByClassName('detailStandings')[number].style.display = 'block';
         }
     };
 
@@ -50,7 +50,7 @@ export class Item extends PureComponent {
                 </div>
                 {
                     window.stage === 4 && 
-                    <div className="table-dropdown" style={{display:'none'}}>
+                    <div className="table-dropdown detailStandings" style={{display:'none'}}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-row">
                                 <div className="table-dropdown-column round header-column">Vòng</div>

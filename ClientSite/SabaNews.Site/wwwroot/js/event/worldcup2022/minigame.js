@@ -29,7 +29,19 @@
 
 
         $('.click-number-event').click(function () {
-            $('#joining').modal('show');            
+            var user = window.User;
+            if (user == "") {
+                $('#joining').modal('show');
+            }
+            else {
+                const windowHeight = window.innerHeight;
+                const blockNumber = $('.field-number');
+                const blockNumberHeight = blockNumber.innerHeight();
+                const heightElement = windowHeight / 2 - blockNumberHeight / 3;
+                $('html, body').animate({
+                    scrollTop: blockNumber.offset().top - heightElement
+                }, 500)
+            }
         })
 
         $('.click-list-rigister').click(function () {
