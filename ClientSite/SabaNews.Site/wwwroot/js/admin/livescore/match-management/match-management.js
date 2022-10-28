@@ -113,9 +113,9 @@
                         var htmlAway = '';
                         var isValid = true;
                         $('.round-error').html('');
-                        if (($('#round').val() < 1 || $('#round').val() > 50) && $('#round').val() !== '') {
+                        if (($('#round').val() < 0 || $('#round').val() > 50) && $('#round').val() !== '') {
                             var isValid = false;
-                            $('.round-error').html('round value must from 1 to 50');
+                            $('.round-error').html('round value must from 0 to 50');
                         }
                         if ($('#homeTeamHalfScore').val() < 0 || $('#homeTeamHalfScore').val() > 100) {
                             htmlHome += ', 1H Score';
