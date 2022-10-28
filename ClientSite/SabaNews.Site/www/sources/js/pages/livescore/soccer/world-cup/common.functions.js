@@ -59,6 +59,9 @@ const getWinScore = stageId => {
 }
 
 export const getVoteResult = (match, vote) => {
+    if(match === null){
+        return null;
+    }
     if(match.status !== MatchStatus.Finished) {
         return null;
     }
