@@ -629,11 +629,12 @@ body {
 }
 
 
+.minigame-standing {
+    background: linear-gradient(119.36deg, #901831 0%, #310818 100%);
+}
+
 .wave-standing-main {
-    background-image: url('../../../../images/worldcup/minigame/mask_bxh.png'), linear-gradient(119.36deg, #901831 0%, #310818 100%);
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
+    background: linear-gradient(119.36deg, #901831 0%, #310818 100%);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -646,6 +647,21 @@ body {
     transform-origin: top left;
 }
 
+.wave-standing-bg {
+    background-image: url('../../../../images/worldcup/minigame/mask_bxh.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    transform-origin: top left;
+}
 .minigame-winner {
     background: url('../../../../images/worldcup/minigame/bg_winner.png');
     background-size: cover;

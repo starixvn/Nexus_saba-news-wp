@@ -77,6 +77,7 @@ export class AppContainer extends Component {
                     <Standing matches={showMatches} votes={votes} search={this.state.search} />
                 </div>
                 <div className="wave-standing-main"></div>
+                <div className="wave-standing-bg"></div>
                 <div className="section-icon">
                     <img src="../../../../css/images/icon_2.png" alt="" />
                 </div>
