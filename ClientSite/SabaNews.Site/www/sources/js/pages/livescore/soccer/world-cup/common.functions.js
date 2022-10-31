@@ -53,6 +53,8 @@ const getWinScore = stageId => {
             return WorldCup.MinigameScore.Final;
         case WorldCup.SemifinalsStage:
             return WorldCup.MinigameScore.Semifinal;
+        case WorldCup.QuarterfinalsStage:
+            return WorldCup.MinigameScore.Quarterfinal;
         default:
             return WorldCup.MinigameScore.Others;
     }
@@ -86,7 +88,7 @@ export const getVoteResult = (match, vote) => {
 export const getMinigameStageStartTime = stage => {
     switch(stage) {
         case WorldCup.MinigameStage.Stage1:
-            return moment(new Date(2022, 10, 16, 8, 0, 0));
+            return moment(new Date(2022, 9, 31, 15, 0, 0));
         case WorldCup.MinigameStage.Stage2:
             return moment(new Date(2022, 10, 22, 8, 0, 0));
         case WorldCup.MinigameStage.Stage3:

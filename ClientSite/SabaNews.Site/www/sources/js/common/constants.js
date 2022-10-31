@@ -115,6 +115,7 @@ export const WorldCup = {
     MinigameScore: {
         Final: 20,
         Semifinal: 15,
+        Quarterfinal: 12,
         Others: 10
     }
 };
