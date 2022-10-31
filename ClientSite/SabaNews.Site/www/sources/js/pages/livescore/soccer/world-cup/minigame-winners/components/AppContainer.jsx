@@ -69,7 +69,7 @@ export class AppContainer extends Component {
                     <Winner matches={showMatches} votes={votes} search={this.state.search} />
                 </div>
                 <div className="winner-icon">
-                    <img src="../../../../css/images/winner_sticker_3.png" alt="" />
+                    <img src="../../../../css/images/winner_sticker_4.png" alt="" />
                 </div>
             </div>
         )
