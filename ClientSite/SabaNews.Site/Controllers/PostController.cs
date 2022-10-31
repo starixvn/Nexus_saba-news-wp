@@ -112,7 +112,7 @@
         {
             var slug = cateSlug;
             var name = cateName;
-            if (cateSlug.Contains(Constants.CollectionSlug) || (cateSlug.Contains(Constants.BasketballSlug) 
+            if (cateSlug == Constants.CollectionSlug || (cateSlug.Contains(Constants.BasketballSlug) 
                 && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
             {
                 return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts }; 
