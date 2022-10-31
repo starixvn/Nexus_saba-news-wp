@@ -39,6 +39,7 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
+        let countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageActive);
         const showMatches = getMatchByEventStage(matches);
         return (
             <div className="minigame-winner">
@@ -61,7 +62,7 @@ export class AppContainer extends Component {
                     </div>
                     <div className="minigame-winner-control">
                         {
-                            this.state.stages.map( item => 
+                            countStageWinners.map( item => 
                                 <button className= {this.state.selectedStage === item.value ? 'buttonStage active' : 'buttonStage'} onClick={e => this.handleChange(item.value)}>{item.name}</button>
                             )
                         }

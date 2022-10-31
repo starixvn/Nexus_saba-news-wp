@@ -3,7 +3,7 @@
     var teamId = 0;
     var teamName = "";
     const longs = [
-        1666843200,
+        1667203500,
         1669078800,
         1669424400,
         1669770000
@@ -21,26 +21,36 @@
             $('#guide').modal('show');
         })
 
+        $('.btn-nav-guide').on('click', function () {
+            $('#guide').modal('show');
+        })
+
         $(".btn-accept ").click(function () {
             $('html, body').animate({
                 scrollTop: $("#field-number-event").offset().top
             }, 500);
         });
 
+        $('.btn-home').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 1000);
+        });
 
-        $('.click-number-event').click(function () {
-            var user = window.User;
-            if (user == "") {
+        $('.stage-votes').click(function () {
+            if (!isLogin) {
                 $('#joining').modal('show');
             }
             else {
-                const windowHeight = window.innerHeight;
-                const blockNumber = $('.field-number');
-                const blockNumberHeight = blockNumber.innerHeight();
-                const heightElement = windowHeight / 2 - blockNumberHeight / 3;
-                $('html, body').animate({
-                    scrollTop: blockNumber.offset().top - heightElement
-                }, 500)
+                var stage = $(this).data("stage");
+                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/" + stage;
+            }
+        });
+
+        $('.click-number-event').click(function () {
+            if (!isLogin) {
+                $('#joining').modal('show');
+            }
+            else {
+                document.getElementById("stage-minigame").scrollIntoView();
             }
         })
 
@@ -87,6 +97,8 @@
                 document.getElementById('hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
                     document.getElementById('minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
                     document.getElementById('seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
+                            location.reload();
+                        }
             }
         }
     }

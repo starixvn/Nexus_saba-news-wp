@@ -198,11 +198,26 @@
             return iconStage;
         }
 
+        public static int GetCountStageActiveMinigame(IList<Match> matches)
+        {
+            int result = 0;
+            int maxCountStage = 4;
+            for(int i = 0; i < maxCountStage; i++)
+            {
+                var statusStage = GetStatusStage(matches, i);
+                if(statusStage != WorldCup2022.LockStage)
+                {
+                    result = i;
+                }
+            }
+            return result + 1;
+        }
+
         public static string GetCountDownStage(string status, IList<Match> matches, int numStage)
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
             List<string> longs = new() {
-                "10/26/2022, 5:00:00 PM",
+                "10/31/2022, 3:05:00 PM",
                 "11/22/2022, 8:00:00 AM",
                 "11/26/2022, 8:00:00 AM",
                 "11/30/2022, 8:00:00 AM" };

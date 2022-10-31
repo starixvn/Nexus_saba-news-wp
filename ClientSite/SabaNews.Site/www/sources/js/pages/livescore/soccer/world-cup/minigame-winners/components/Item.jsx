@@ -34,7 +34,7 @@ export class Item extends PureComponent {
                                 <div className="table-row table-row-index">{number + 1}</div>
                                 <div className="table-row table-row-name table-user">
                                     <div className="user-avatar">
-                                        { Winner.icon ? <img src={Winner.icon} alt={Winner.userName} />  : <span className="non-image">{Winner.userName.slice(0,1)}</span> }
+                                        { Winner.icon ? <img src={Winner.icon} alt={Winner.userName.slice(0,1)} />  : <span className="non-image">{Winner.userName.slice(0,1)}</span> }
                                     </div>
                                     <div className="user-name">
                                         {Winner.userName}

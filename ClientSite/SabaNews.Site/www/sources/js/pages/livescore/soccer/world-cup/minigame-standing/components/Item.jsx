@@ -32,7 +32,7 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
                             <div className="user-avatar">
-                                { standing.icon ? <img src={standing.icon} alt={standing.userName} />  : <span className="non-image">{standing.userName.slice(0,1)}</span> }
+                                { standing.icon ? <img src={standing.icon} alt={standing.userName.slice(0,1)} />  : <span className="non-image">{standing.userName.slice(0,1)}</span> }
                             </div>
                             <div className="user-name">
                                 {standing.userName}
