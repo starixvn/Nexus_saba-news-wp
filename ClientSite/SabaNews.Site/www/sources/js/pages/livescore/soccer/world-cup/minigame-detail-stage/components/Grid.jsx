@@ -1,33 +1,38 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import Item from './Item';
 import { getVoteResult } from '../../common.functions';
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
-        this.totalScore = 0;
     }
 
     checkMatchResult = (match, vote) => {
         const result = getVoteResult(match, vote);
-        this.totalScore += result !== null ? result.score : 0;
         return result;
     };
 
     render() {
         const { matches, votes } = this.props;
+        let totalScore = 0;
         return (
             <div className="soccer-match-grid-item">
                 <div className="soccer-match-grid-item-body">
                 {
                     matches.map((item, index) => {
                         const vote = votes.find(value => value.matchId === item.matchId);
+                        let component = <Fragment />
+                        if(vote) {
+                            const result = this.checkMatchResult(item, vote);
+                            totalScore +=  result !== null ? result.score : 0;
+                            component = <Item key={index} match={item} vote={vote} result={result} />
+                        }
                         return (
-                            vote && <Item key={index} match={item} vote={vote} result={this.checkMatchResult(item, vote)} />
+                            component
                         )
                     })
                 }
                 </div>
-                <div className="statistic">Total: {this.totalScore}</div>
+                <div className="statistic">Total: {totalScore}</div>
             </div>
         );
     }

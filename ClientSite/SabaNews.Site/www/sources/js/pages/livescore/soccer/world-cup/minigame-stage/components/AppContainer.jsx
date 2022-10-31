@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import { groupMatchesByStage, getMinigameStageStartTime } from '../../common.functions';
+import DateTimeService from '@jsroot/common/dateTimeService';
+import moment from 'moment';
+import Site from '@jsroot/common/site';
+import { WorldCup } from '@jsroot/common/constants';
 import Stages from './Stages';
-import { groupMatchesByStage } from '../../common.functions';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-        this.props.getMatches();
-        this.props.getVotes();
+        // const startTime = getMinigameStageStartTime(parseInt(window.stage));
+        // const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        // if(startTime.isAfter(currentTime)) {
+        //     window.location = Site.resolveClientUrl(WorldCup.MinigameUrl);
+        // } else {
+            this.props.getMatches();
+            this.props.getVotes();
+        // }
     }
 
     render() {
