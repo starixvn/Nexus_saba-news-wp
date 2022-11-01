@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?ex20b5');
-  src:  url('fonts/Fraud-Sensor.eot?ex20b5#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?ex20b5') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?ex20b5') format('woff'),
-    url('fonts/Fraud-Sensor.svg?ex20b5#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?g1wv30');
+  src:  url('fonts/Fraud-Sensor.eot?g1wv30#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?g1wv30') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?g1wv30') format('woff'),
+    url('fonts/Fraud-Sensor.svg?g1wv30#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-minigame_connect:before {
+  content: "\e93a";
+  color: #833d55;
+}
+.icon-minigame_guide:before {
+  content: "\e93b";
+  color: #958288;
+}
+.icon-minigame_home:before {
+  content: "\e93c";
+  color: #958288;
+}
+.icon-minigame_list_user:before {
+  content: "\e93d";
+  color: #958288;
+}
+.icon-minigame_my_fav:before {
+  content: "\e93e";
+  color: #958288;
+}
+.icon-minigame_standing:before {
+  content: "\e93f";
+  color: #958288;
+}
 .icon-icon_search:before {
   content: "\e938";
   color: #eeeee4;
