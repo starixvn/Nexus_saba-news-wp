@@ -537,6 +537,7 @@
     border: 1px solid #E8E8D6;
     border-radius: 5px;
     width: 4.8rem;
+    left: 2rem;
 
     li {
         a {
@@ -547,18 +548,19 @@
             }
 
             span {
-                left: 40px;
+                left: 45px;
                 margin-left: 0;
-                top: 19px;
+                top: 21px;
                 font-weight: 700;
-                font-size: 1.4rem;
+                font-size: 1.6rem;
                 line-height: 1.9rem;
                 color: #958288;
+                width: 22rem;
             }
 
             .icon {
                 &:before {
-                    font-size: 2rem;
+                    font-size: 2.4rem;
                     color: #958288;
                 }
             }
@@ -580,6 +582,10 @@
     }
 
     &:hover {
-        width: 23.3rem;
+        width: 26.6rem;
+
+        span {
+            transition: all ease-in-out .6s !important;
+        }
     }
 }
