@@ -31,7 +31,7 @@ export class AppContainer extends Component {
         }
         const stages = groupMatchesByStage(matches);
         return (
-            <div className="livescore-soccer">
+            <div className="minigame-stage minigame-stage-container">
                 <Stages groupStages={stages}/>
             </div>
         )

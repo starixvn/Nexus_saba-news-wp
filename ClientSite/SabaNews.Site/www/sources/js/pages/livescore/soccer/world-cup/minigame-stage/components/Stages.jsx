@@ -46,9 +46,11 @@ export class Stages extends PureComponent {
         const { selectedStageId } = this.state;
         const stages = groupStages;
         return (
-            <div>
-                <div className="statistic">{`Giai đoạn ${window.stage}`}</div>
-                <div className="statistic">{`Số trận dự đoán ${this.getNumberVoted()}`}</div>
+            <>
+                <div className="statistic">
+                    <div className="statistic_stage">{`Giai đoạn ${window.stage}`}</div>
+                    <div className="statistic_round">{`Số trận dự đoán ${this.getNumberVoted()}`}</div>
+                </div>
                 {
                     stages.length === 1 &&
                     <Grid matches={stages[0].matches} />
@@ -66,8 +68,8 @@ export class Stages extends PureComponent {
                             })
                         }
                     </Tabs>
-                }
-            </div>
+                }  
+            </>
         );
     }
 }

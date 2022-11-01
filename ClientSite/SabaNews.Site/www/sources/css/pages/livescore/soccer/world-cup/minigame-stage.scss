@@ -1,14 +1,22 @@
 @import "../../../../abstracts/variables";
 @import "../../../../abstracts/mixins";
 @import "../../../../base/base";
-@import "../../../../components/block-extension";
-@import "../../../../components/container";
+
+
 @import "../../../../components/soccer-item";
 @import "../../../../components/nav-tab";
 @import "../../../../components/tooltip";
 ;
 @import "../../../../components/recent-post";
 @import './components/wc-nav-tabs';
+
+
+
+.minigame-stage-container{
+    padding: 0 1.2rem;
+}
+
+
 
 .livescore-soccer {
     display: unset;
