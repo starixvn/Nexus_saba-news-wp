@@ -1,6 +1,5 @@
 ﻿@import './abstracts/wc-variables';
 @import '../../../abstracts/mixins';
-@import './components/container';
 @import './abstracts/wc-base';
 @import './layout/header';
 
@@ -13,10 +12,9 @@ body {
 }
 
 
-
 //before event
-.footer {
-    margin-top: auto;
+.footer{
+    margin-top : auto;
 }
 .before-event {
     @include creen1391px {
@@ -181,170 +179,6 @@ body {
     }
 }
 
-.before-event {
-    @include creen1391px {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%
-    }
-
-    .ready {
-        font-size: 2.4rem;
-        text-transform: uppercase;
-        text-align: center;
-        letter-spacing: 1rem;
-        color: $white-color;
-        margin: 6rem 0 4rem;
-
-        @include creen1391px {
-            margin: 0;
-            margin-bottom: 3rem;
-        }
-
-        @include tableMobile {
-            margin: 3rem 0 2.4rem 0;
-            font-size: 1.6rem;
-        }
-    }
-
-    .count-day {
-        width: 100%;
-        max-width: 94rem;
-        margin: 0 auto;
-        height: 11.7rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-
-        @include tableMobile {
-            max-width: 35rem;
-            height: 5rem;
-        }
-
-        &:after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%, 2% 0);
-            background: rgba(255, 255, 255, 0.1);
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .counter-day {
-            list-style: none;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            height: 100%;
-            align-items: center;
-
-            .counter {
-                height: 100%;
-                display: flex;
-                align-items: center;
-
-                .clock {
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    position: relative;
-
-                    .clock-time {
-                        font-size: 10rem;
-                        color: #FABB0A;
-                        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                        font-weight: 800;
-                        position: relative;
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 14rem;
-
-                        @include tableMobile {
-                            font-size: 4rem;
-                            width: 5rem;
-                        }
-
-                        &:after {
-                            content: '';
-                            display: block;
-                            width: 1rem;
-                            height: 1rem;
-                            background: #43BEAC;
-                            clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%);
-                            position: absolute;
-                            right: -35%;
-                            top: 50%;
-                            transform: translate(50%, -50%);
-
-                            @include Mobile {
-                                width: .8rem;
-                                height: .8rem;
-                            }
-                        }
-                    }
-
-                    .clock-text {
-                        color: $white-color;
-                        position: absolute;
-                        right: 50%;
-                        bottom: -40px;
-                        transform: translate(50%, -50%);
-                        text-transform: uppercase;
-                        font-weight: 600;
-                        font-size: 1.8rem;
-
-                        @include tableMobile {
-                            font-size: 1.2rem;
-                        }
-                    }
-                }
-
-                &:last-child {
-                    .clock {
-                        .clock-time {
-                            &:after {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .img-man {
-        text-align: center;
-        margin-top: -10rem;
-
-        @include tableMobile {
-            margin-top: 2rem;
-        }
-
-        &-pc {
-            display: block;
-
-            @include tableMobile {
-                display: none;
-            }
-        }
-
-        &-mobile {
-            display: none;
-
-            @include tableMobile {
-                display: block;
-            }
-        }
-    }
-}
-
 
 
 
@@ -422,9 +256,8 @@ body {
         text-align: center;
         max-width: 70rem;
         margin: 0 auto;
-
-        @include tableMobile {
-            font-size: 1.8rem;
+        @include tableMobile{
+            font-size : 1.8rem;
         }
     }
 
@@ -438,8 +271,6 @@ body {
         @include Mobile{
             width : 20rem;
         }
-        }
-
         &:after, &:before {
             content: '';
             display: block;
@@ -509,9 +340,8 @@ body {
     max-width: 70rem;
     padding: 0 1rem;
     margin: 0 auto;
-    position: relative;
+    position : relative;
 }
-
 .row-stage {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -703,86 +533,6 @@ body {
     }
 }
 
-
-
-
-
-
-
-.wave-standing-main {
-    background: linear-gradient(119.36deg, #901831 0%, #310818 100%);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transform: skewY(-2deg);
-    transform-origin: top left;
-}
-
-.wave-standing-bg {
-    background: url('../../../../images/worldcup/minigame/mask_bxh.png'), linear-gradient(119.36deg, #901831 0%, #310818 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top 3rem center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    transform-origin: top left;
-    transform: skewY(-2deg);
-}
-
-.minigame-winner {
-    background: url('../../../../images/worldcup/minigame/bg_winner.png') no-repeat top center;
-    background-size: cover;
-    padding: 10rem 0 10rem 0;
-}
-
-.section-stage {
-    padding: 5rem 0 15rem 0;
-    position: relative;
-
-    @include tableMobile {
-        padding: 5rem 0 10rem 0;
-    }
-
-    .bg-stage {
-        background: url('../../../../images/worldcup/minigame/bg_stage.png') no-repeat top center;
-        background-size: contain;
-        opacity: 0.2;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-
-        @include tableMobile {
-            display: none;
-        }
-    }
-}
-
-.custom-select {
-    appearance: none;
-    background: url('../../../../images/worldcup/minigame/chevron-down.png') 100% no-repeat #E8E8D6;
-    background-position: center right .5rem;
-
-    @include Mobile {
-        background: url('../../../../images/worldcup/minigame/chevron-down.png') 96% / 14% no-repeat #E8E8D6;
-    }
-}
-
 .statistic-grid {
     &::before {
         display: block;
@@ -797,10 +547,6 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top 21rem center;
-
-        @include tableMobile {
-            background-position: top 34.5rem center;
-        }
     }
 
     &::after {
