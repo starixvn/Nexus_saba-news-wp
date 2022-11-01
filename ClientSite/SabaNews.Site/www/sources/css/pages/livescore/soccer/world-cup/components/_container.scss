@@ -5,6 +5,11 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 5rem;
+    @include tableMobile{
+        display: inherit;
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
 }
 
 

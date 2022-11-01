@@ -547,6 +547,10 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top 21rem center;
+
+        @include tableMobile {
+            background-position: top 30.5rem center;
+        }
     }
 
     &::after {

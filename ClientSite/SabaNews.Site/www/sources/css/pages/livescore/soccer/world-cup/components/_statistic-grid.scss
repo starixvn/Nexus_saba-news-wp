@@ -1,5 +1,9 @@
 .statistic-grid{
     width: 70rem;
+    @include tableMobile{
+        width: 100%;
+        margin-top: 2.4rem;
+    }
     &-item{
         background: rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(136, 60, 86, 0.5);
@@ -71,5 +75,19 @@
         .icon-minigame_draw {
             font-size: 5rem;
         }
+    }
+}
+
+.show-pc{
+    display: block;
+    @include tableMobile{
+        display: none;
+    }
+}
+
+.show-mb{
+    display: none;
+    @include tableMobile{
+        display: block;
     }
 }
