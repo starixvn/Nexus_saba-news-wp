@@ -14,6 +14,9 @@
         }
         &-body{
             padding: 1.8rem 1rem;
+            display: flex;
+            grid-gap: 3rem;
+            justify-content: center;
         }
         &-round{
             color: #5B0E21;
@@ -26,6 +29,47 @@
             font-weight: 400;
             font-size: 1.4rem;
             line-height: 2.8rem;
+        }
+    }
+
+    .statistic-team{
+        background: rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba($color: #E8E8D6, $alpha: .2);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 8.5rem;
+        align-items: center;
+        padding: .5rem;
+        cursor: pointer;
+        &.active{
+            background: #E8E8D6;
+            .statistic-team-name{
+                color: #833D55;
+            }
+            i{
+                &::before{
+                    color: #833D55;
+                }
+            }
+        }
+        &-logo{
+            width: 7.5rem;
+            height: 5rem;
+            object-fit: contain;
+            display: block;
+        }
+        &-name{
+            color: #E8E8D6;
+            margin-top: 1.5rem;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 2.8rem;
+            text-align: center;
+        }
+        .icon-minigame_draw {
+            font-size: 5rem;
         }
     }
 }
