@@ -73,7 +73,8 @@ body {
     background: #48041A; } }
 
 .wc-logo {
-  margin-right: -2rem; }
+  margin-right: -2rem;
+  filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.25)); }
   @media screen and (max-width: 1024px) {
     .wc-logo {
       display: none !important; } }
@@ -85,8 +86,7 @@ body {
     width: 19rem;
     justify-content: center;
     clip-path: polygon(0 0, 100% 0, 77% 100%, 23% 100%);
-    transition: height .5s, polygon .5s !important;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); }
+    transition: height .5s, polygon .5s !important; }
     @media screen and (min-width: 1391px) {
       .wc-logo a {
         width: 23rem; } }
