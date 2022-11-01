@@ -48,15 +48,17 @@ export class Stages extends PureComponent {
         return (
             <>
                 <div className="statistic">
-                    <div className="statistic_stage">{`Giai đoạn ${window.stage}`}</div>
-                    <div class="dots-parent">
-                        <ul>
-                            <li class="dots-parent-center"></li>
-                            <li class="dots-regular"></li>
-                            <li class="dots-small"></li>
-                        </ul>
+                    <div className="statistic-sticky">
+                        <div className="statistic_stage">{`Giai đoạn ${window.stage}`}</div>
+                        <div class="dots-parent">
+                            <ul>
+                                <li class="dots-parent-center"></li>
+                                <li class="dots-regular"></li>
+                                <li class="dots-small"></li>
+                            </ul>
+                        </div>
+                        <div className="statistic_round">{`Số trận đã dự đoán:`} <span className="number-big">{ this.getNumberVoted() }</span></div>
                     </div>
-                    <div className="statistic_round">{`Số trận đã dự đoán:`} <span className="number-big">{ this.getNumberVoted() }</span></div>
                 </div>
                 {
                     stages.length === 1 &&

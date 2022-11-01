@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?g1wv30');
-  src:  url('fonts/Fraud-Sensor.eot?g1wv30#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?g1wv30') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?g1wv30') format('woff'),
-    url('fonts/Fraud-Sensor.svg?g1wv30#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?m3rxrn');
+  src:  url('fonts/Fraud-Sensor.eot?m3rxrn#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?m3rxrn') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?m3rxrn') format('woff'),
+    url('fonts/Fraud-Sensor.svg?m3rxrn#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-minigame_draw:before {
+  content: "\e940";
+  color: #e8e8d6;
+}
 .icon-minigame_connect:before {
   content: "\e93a";
   color: #833d55;

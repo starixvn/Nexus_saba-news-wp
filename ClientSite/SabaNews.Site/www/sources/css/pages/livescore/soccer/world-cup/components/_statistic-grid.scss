@@ -8,9 +8,24 @@
         &-header{
             background: #E8E8D6;
             border-radius: 5px;
+            padding: .7rem 2rem;
+            display: flex;
+            justify-content: space-between;
         }
         &-body{
             padding: 1.8rem 1rem;
+        }
+        &-round{
+            color: #5B0E21;
+            font-weight: 700;
+            font-size: 1.6rem;
+            line-height: 2.8rem;
+        }
+        &-fav{
+            color: #5B0E21;
+            font-weight: 400;
+            font-size: 1.4rem;
+            line-height: 2.8rem;
         }
     }
 }
