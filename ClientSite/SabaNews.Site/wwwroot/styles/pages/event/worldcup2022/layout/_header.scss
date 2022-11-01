@@ -530,3 +530,56 @@
 .active-box-auth {
     display: block;
 }
+
+
+.header-nav-event {
+    background: #E8E8D6;
+    border: 1px solid #E8E8D6;
+    border-radius: 5px;
+    width: 4.8rem;
+
+    li {
+        a {
+            padding: 1.8rem 1.2rem;
+
+            &:after {
+                display: none;
+            }
+
+            span {
+                left: 40px;
+                margin-left: 0;
+                top: 19px;
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+                color: #958288;
+            }
+
+            .icon {
+                &:before {
+                    font-size: 2rem;
+                    color: #958288;
+                }
+            }
+
+            &.active, &:hover {
+                color: #833D55 !important;
+
+                .icon {
+                    &:before {
+                        color: #833D55 !important;
+                    }
+                }
+
+                span {
+                    color: #833D55 !important;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        width: 23.3rem;
+    }
+}

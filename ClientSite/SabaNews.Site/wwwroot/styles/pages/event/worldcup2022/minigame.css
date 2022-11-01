@@ -423,6 +423,35 @@ body {
 .active-box-auth {
   display: block; }
 
+.header-nav-event {
+  background: #E8E8D6;
+  border: 1px solid #E8E8D6;
+  border-radius: 5px;
+  width: 4.8rem; }
+  .header-nav-event li a {
+    padding: 1.8rem 1.2rem; }
+    .header-nav-event li a:after {
+      display: none; }
+    .header-nav-event li a span {
+      left: 40px;
+      margin-left: 0;
+      top: 19px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      color: #958288; }
+    .header-nav-event li a .icon:before {
+      font-size: 2rem;
+      color: #958288; }
+    .header-nav-event li a.active, .header-nav-event li a:hover {
+      color: #833D55 !important; }
+      .header-nav-event li a.active .icon:before, .header-nav-event li a:hover .icon:before {
+        color: #833D55 !important; }
+      .header-nav-event li a.active span, .header-nav-event li a:hover span {
+        color: #833D55 !important; }
+  .header-nav-event:hover {
+    width: 23.3rem; }
+
 body {
   overflow: unset;
   background: url("../../../../images/worldcup/minigame/bg_before_event.png") #48041A !important;
