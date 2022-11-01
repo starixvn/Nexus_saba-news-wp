@@ -11,12 +11,10 @@ export default class Grid extends PureComponent {
     render() {
         const { matches } = this.props;
         return (
-            <div className="soccer-match-grid-item">
-                <div className="soccer-match-grid-item-body">
+            <div className="statistic-grid">
                 {
                     matches.map((item, index) => <Item key={index} number={index} match={item} />)
                 }
-                </div>
             </div>
         );
     }

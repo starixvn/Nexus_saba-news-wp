@@ -74,34 +74,42 @@ export class Item extends PureComponent {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
-            <div>
-                <div className="group-match-item" onClick={this.onClick}>
-                    <div className={`soccer-match-item`}
-                    >
-                        <div className="soccer-match-date-result">
-                            { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
-                        </div>
-                        <div className="soccer-match-team">
-                            <div className="group-team">
-                                <div className="soccer-team home-team">
-                                    <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>{vote === 1 ? "(v)" : ''} {CommonFunctions.getTeamName(match.homeTeam)}</div>
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                                </div>
 
-                                <ul className="wc-round-score">
-                                    <li className="total-score" onClick={() => this.handleVote(0)} > Hòa {vote === 0 ? "(v)" : ''}</li>
-                                </ul>
-
-                                <div className="soccer-team away-team">
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                                    <div className={`soccer-team-name `}  onClick={() => this.handleVote(match.awayTeam.teamId)}>{CommonFunctions.getTeamName(match.awayTeam)} {vote === 2 ? "(v)" : ''}</div>
-                                    <TeamScore match={match} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div className="statistic-grid-item">
+                <div className="statistic-grid-item-header">
+                    dasdasdadassda
+                </div>
+                <div className="statistic-grid-item-body">
+                    dasdasdadassda
                 </div>
             </div>
+
+            // <div className="group-match-item" onClick={this.onClick}>
+            //     <div className={`soccer-match-item`}
+            //     >
+            //         <div className="soccer-match-date-result">
+            //             { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
+            //         </div>
+            //         <div className="soccer-match-team">
+            //             <div className="group-team">
+            //                 <div className="soccer-team home-team">
+            //                     <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>{vote === 1 ? "(v)" : ''} {CommonFunctions.getTeamName(match.homeTeam)}</div>
+            //                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+            //                 </div>
+
+            //                 <ul className="wc-round-score">
+            //                     <li className="total-score" onClick={() => this.handleVote(0)} > Hòa {vote === 0 ? "(v)" : ''}</li>
+            //                 </ul>
+
+            //                 <div className="soccer-team away-team">
+            //                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+            //                     <div className={`soccer-team-name `}  onClick={() => this.handleVote(match.awayTeam.teamId)}>{CommonFunctions.getTeamName(match.awayTeam)} {vote === 2 ? "(v)" : ''}</div>
+            //                     <TeamScore match={match} />
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
         );
     }
 }
