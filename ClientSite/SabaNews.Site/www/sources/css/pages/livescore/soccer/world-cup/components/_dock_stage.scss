@@ -1,0 +1,22 @@
+.statistic{
+    width: 27.6rem;
+    position: sticky;
+    top: 0;
+    &_stage{
+        font-weight: 700;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        color: #E8E8D6;
+        text-transform: uppercase;
+    }
+    &_round{
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 2.8rem;
+        color: #E8E8D6;
+        margin-top: 1rem;
+        .number-big{
+            font-size: 2.4rem;
+        }
+    }
+}

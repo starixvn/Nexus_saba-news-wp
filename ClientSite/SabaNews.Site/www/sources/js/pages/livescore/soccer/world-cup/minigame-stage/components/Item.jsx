@@ -77,7 +77,8 @@ export class Item extends PureComponent {
 
             <div className="statistic-grid-item">
                 <div className="statistic-grid-item-header">
-                    dasdasdadassda
+                    <div className="statistic-grid-item-round">Trận 01: Qatar vs Ecuador</div>
+                    <div className="statistic-grid-item-fav">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
                 </div>
                 <div className="statistic-grid-item-body">
                     dasdasdadassda
