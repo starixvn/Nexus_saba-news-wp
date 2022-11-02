@@ -38,3 +38,13 @@
         }
     }
 }
+
+.dock-stage-icon {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    transform: translate(50%,-50%);
+    @include tableMobile{
+        display: none;
+    }
+}

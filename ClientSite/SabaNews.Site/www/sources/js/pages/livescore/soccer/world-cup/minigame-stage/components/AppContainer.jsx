@@ -33,6 +33,9 @@ export class AppContainer extends Component {
         return (
             <div className="minigame-stage minigame-stage-container">
                 <Stages groupStages={stages}/>
+                <div className="dock-stage-icon">
+                    <img src="../../../../css/images/winner_sticker_4.png" alt="" />
+                </div>
             </div>
         )
     }
