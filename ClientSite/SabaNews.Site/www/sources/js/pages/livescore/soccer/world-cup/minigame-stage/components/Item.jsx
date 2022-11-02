@@ -94,8 +94,8 @@ export class Item extends PureComponent {
         return (
 
             <>
-            <div className="statistic-grid-item" onClick={this.onClick}>
-                <div className={`statistic-grid-item-header ${vote ? "active" : ""}`}>
+            <div className={`statistic-grid-item ${vote ? "active" : ""}`} onClick={this.onClick}>
+                <div className="statistic-grid-item-header">
                     <div className="statistic-grid-item-round">
                         { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
                     </div>
