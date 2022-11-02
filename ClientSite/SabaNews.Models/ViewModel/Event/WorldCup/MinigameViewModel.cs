@@ -12,7 +12,6 @@
 
         public IList<Match> Matches { get; set; }
 
-        public IList<StandingViewModel> StandingsViewModel { get; set; }
         public IList<UserMinigameModel> Votes { get; set; }
 
         public UserSession User { get; set; }
@@ -24,6 +23,5 @@
         public string BaseUrl { get; set; }
         public string UserId { get; set; }
 
-        public IList<MiniGame> MinigameDetail { get; set; }
     }
 }
