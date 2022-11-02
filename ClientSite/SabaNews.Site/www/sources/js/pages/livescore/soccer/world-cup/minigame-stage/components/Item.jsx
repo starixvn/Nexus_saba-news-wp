@@ -92,9 +92,8 @@ export class Item extends PureComponent {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
-
             <>
-            <div className={`statistic-grid-item ${vote ? "active" : ""}`} onClick={this.onClick}>
+            <div className={`statistic-grid-item ${vote != null ? "active" : ""}`} onClick={this.onClick}>
                 <div className="statistic-grid-item-header">
                     <div className="statistic-grid-item-round">
                         { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
@@ -114,7 +113,7 @@ export class Item extends PureComponent {
                         <div className={`statistic-team statistic-team-away ${vote === 2 ? "active" : ""}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
                             <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                             <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>
-                    </div> 
+                    </div>
                     </div>
                     <div className="statistic-grid-item-fav show-mb">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
                 </div>

@@ -389,7 +389,11 @@
         [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/{stage}")]
         public IActionResult MinigameStage(byte stage)
         {
-            if (sessionService.User == null || stage < WorldCup2022.MinigameStage1 || stage > WorldCup2022.MinigameStage4)
+            if (sessionService.User == null 
+                || stage < WorldCup2022.MinigameStage1 
+                || stage > WorldCup2022.MinigameStage4 
+                //|| !LivescoreHelper.CheckStartStage(stage)
+            )
             {
                 return Redirect(Url.Action("Minigame", "WorldCup2022"));
             }

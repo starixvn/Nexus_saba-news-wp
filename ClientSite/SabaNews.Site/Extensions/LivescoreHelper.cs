@@ -286,5 +286,23 @@
             return statusStage;
         }
 
+        public static bool CheckStartStage(int numStage)
+        {
+            List<long> longs = new() {
+                WorldCup2022.TimestampMinigameStage01Start,
+                WorldCup2022.TimestampMinigameStage02Start,
+                WorldCup2022.TimestampMinigameStage03Start,
+                WorldCup2022.TimestampMinigameStage04Start };
+
+            var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            var checkNow = longs[numStage - 1] - timeSpanNow.TotalSeconds;
+            if (checkNow > 0)
+            {
+                return false;
+            }
+            return true;
+            
+        }
+
     }
 }
