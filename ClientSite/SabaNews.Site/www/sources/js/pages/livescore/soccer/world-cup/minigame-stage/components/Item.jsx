@@ -77,25 +77,28 @@ export class Item extends PureComponent {
 
             <>
             <div className="statistic-grid-item" onClick={this.onClick}>
-                <div className="statistic-grid-item-header">
+                <div className={`statistic-grid-item-header ${vote ? "active" : ""}`}>
                     <div className="statistic-grid-item-round">
                         { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
                     </div>
                     <div className="statistic-grid-item-fav show-pc">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
                 </div>
                 <div className="statistic-grid-item-body">
-                    <div className={`statistic-team statistic-team-home ${vote === 1 ? "active" : ""}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
-                        <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                        <div className="statistic-team-name">{CommonFunctions.getTeamName(match.homeTeam)}</div>
-                    </div> 
-                    <div className={`statistic-team statistic-draw ${vote === 0 ? "active" : ""}`} onClick={() => this.handleVote(0)}>
-                        <i className="icon-minigame_draw" />
-                        <div className="statistic-team-name">Hòa</div>
+                    <div className="team-main">
+                        <div className={`statistic-team statistic-team-home ${vote === 1 ? "active" : ""}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
+                            <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                            <div className="statistic-team-name">{CommonFunctions.getTeamName(match.homeTeam)}</div>
+                        </div> 
+                        <div className={`statistic-team statistic-draw ${vote === 0 ? "active" : ""}`} onClick={() => this.handleVote(0)}>
+                            <i className="icon-minigame_draw" />
+                            <div className="statistic-team-name">Hòa</div>
+                        </div>
+                        <div className={`statistic-team statistic-team-away ${vote === 2 ? "active" : ""}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
+                            <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                            <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>
+                        </div> 
                     </div>
-                    <div className={`statistic-team statistic-team-away ${vote === 2 ? "active" : ""}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
-                        <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                        <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>
-                    </div> 
+                    <div className="statistic-grid-item-fav show-mb">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
                 </div>
             </div>
 

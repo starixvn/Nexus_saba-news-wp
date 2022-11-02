@@ -17,6 +17,9 @@
         line-height: 2.8rem;
         color: #E8E8D6;
         text-transform: uppercase;
+        @include tableMobile{
+            font-size: 2rem;
+        }
     }
     &_round{
         font-weight: 700;
@@ -24,8 +27,14 @@
         line-height: 2.8rem;
         color: #E8E8D6;
         margin-top: 1rem;
+        @include tableMobile{
+            font-size: 1.6rem;
+        }
         .number-big{
             font-size: 2.4rem;
+            @include tableMobile{
+                font-size: 1.8rem;
+            }
         }
     }
 }

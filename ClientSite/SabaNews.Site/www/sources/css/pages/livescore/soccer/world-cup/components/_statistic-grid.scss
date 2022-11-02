@@ -9,30 +9,54 @@
         border: 1px solid rgba(136, 60, 86, 0.5);
         border-radius: 5px;
         margin-bottom: 1rem;
+        @include tableMobile{
+            margin-bottom: 1.6rem;
+        }
         &-header{
-            background: #E8E8D6;
+            background: rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(136, 60, 86, 0.5);
             border-radius: 5px;
-            padding: .7rem 2rem;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
+            height: 3.6rem;
+            align-items: center;
+            color: #E8E8D6;
+            @include tableMobile{
+                padding: 0 1rem;
+            }
+            &.active{
+                background: #E8E8D6;
+                .statistic-grid-item-fav, .statistic-grid-item-round{
+                    color: #5B0E21;
+                }
+            }
         }
         &-body{
             padding: 1.8rem 1rem;
-            display: flex;
-            grid-gap: 3rem;
-            justify-content: center;
+            @include tableMobile{
+                padding: 1.2rem 1rem;
+            }
+            .team-main{
+                display: flex;
+                grid-gap: 3rem;
+                justify-content: center;
+            }
+           
         }
         &-round{
-            color: #5B0E21;
             font-weight: 700;
             font-size: 1.6rem;
             line-height: 2.8rem;
         }
         &-fav{
-            color: #5B0E21;
             font-weight: 400;
             font-size: 1.4rem;
             line-height: 2.8rem;
+            @include tableMobile{
+                margin-top: 1.2rem;
+                color: #E8E8D6;
+            }
         }
     }
 
