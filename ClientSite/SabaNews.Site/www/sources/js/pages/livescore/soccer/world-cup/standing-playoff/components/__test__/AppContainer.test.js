@@ -1,10 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { AppContainer } from '../Appcontainer';
-import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
+
 
 
 describe('AppContainer', () => {

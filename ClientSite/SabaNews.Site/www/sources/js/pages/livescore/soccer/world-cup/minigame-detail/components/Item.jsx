@@ -6,7 +6,7 @@ import moment from 'moment';
 import LangHelper from '@jsroot/common/langHelper';
 import { getMinigameStageStartTime } from '../../common.functions';
 
-export default class Iteam extends PureComponent {
+export default class Item extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -66,7 +66,7 @@ export default class Iteam extends PureComponent {
                     <td>{this.getStageStatus()}</td>
                     <td>
                         <span>{this.getTotalScore()}</span>
-                        <span onClick={this.handleViewDetail}>-Xem</span>
+                        <span className="view" onClick={this.handleViewDetail}>-Xem</span>
                     </td>
                 </tr>
         );
