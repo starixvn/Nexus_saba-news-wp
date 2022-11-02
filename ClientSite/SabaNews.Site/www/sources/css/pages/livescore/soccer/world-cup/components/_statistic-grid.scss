@@ -2,7 +2,6 @@
     width: 70rem;
     @include tableMobile{
         width: 100%;
-        margin-top: 2.4rem;
     }
     &-item{
         background: rgba(0, 0, 0, 0.1);

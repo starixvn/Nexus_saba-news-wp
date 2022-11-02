@@ -47,37 +47,41 @@ export class Stages extends PureComponent {
         const stages = groupStages;
         return (
             <>
-                <div className="statistic">
-                    <div className="statistic-sticky">
-                        <div className="statistic_stage">{`Giai đoạn ${window.stage}`}</div>
-                        <div class="dots-parent">
-                            <ul>
-                                <li class="dots-parent-center"></li>
-                                <li class="dots-regular"></li>
-                                <li class="dots-small"></li>
-                            </ul>
+                <div className="minigame-stage-container">
+                    <div className="statistic">
+                        <div className="statistic-sticky">
+                            <div className="statistic_stage">{`Giai đoạn ${window.stage}`}</div>
+                            <div class="dots-parent">
+                                <ul>
+                                    <li class="dots-parent-center"></li>
+                                    <li class="dots-regular"></li>
+                                    <li class="dots-small"></li>
+                                </ul>
+                            </div>
+                            <div className="statistic_round">{`Số trận đã dự đoán:`} <span className="number-big">{ this.getNumberVoted() }</span></div>
                         </div>
-                        <div className="statistic_round">{`Số trận đã dự đoán:`} <span className="number-big">{ this.getNumberVoted() }</span></div>
+                    </div>
+                    <div className="statistic-main">
+                        {
+                            stages.length === 1 &&
+                            <Grid matches={stages[0].matches} />
+                        }
+                        {
+                            stages.length > 1 &&
+                            <Tabs className="minigame-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
+                                {
+                                    stages.map(group => {
+                                        return (
+                                            <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
+                                                <Grid matches={group.matches}/>
+                                            </Tab>
+                                        );
+                                    })
+                                }
+                            </Tabs>
+                        }
                     </div>
                 </div>
-                {
-                    stages.length === 1 &&
-                    <Grid matches={stages[0].matches} />
-                }
-                {
-                    stages.length > 1 &&
-                    <Tabs className="live-score-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
-                        {
-                            stages.map(group => {
-                                return (
-                                    <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                        <Grid matches={group.matches}/>
-                                    </Tab>
-                                );
-                            })
-                        }
-                    </Tabs>
-                }
             </>
         );
     }
