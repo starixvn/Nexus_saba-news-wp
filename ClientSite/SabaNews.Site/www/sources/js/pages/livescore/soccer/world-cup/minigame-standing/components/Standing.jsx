@@ -209,7 +209,7 @@ export default class Standing extends PureComponent {
         return (
             <>
                 {
-                    rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
+                    rank > 0 && <p className="standing-me">Thứ hạng của bạn: {rank}</p>
                 }
             	<div className="minigame-table">
                     <div className="minigame-table-flex minigame-table-header">
