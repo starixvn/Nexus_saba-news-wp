@@ -80,7 +80,7 @@
 
     <ul class="header-nav-event">
         <li>
-            <a href="javascript:;" class="active btn-home">
+            <a href="javascript:;" class="btn-home">
                 <i class="icon icon-minigame_home"></i>
                 <span>Sự Kiện</span>
             </a>
@@ -97,24 +97,34 @@
                 <span>Tham Gia Dự Đoán</span>
             </a>
         </li>
-        <li>
-            <a href=@Url.Action("MinigameProfile", "WorldCup2022") class="click-my-prediction">
-                <i class="icon icon-minigame_my_fav"></i>
-                <span>Dự Đoán Của Tôi</span>
-            </a>
-        </li>
-        <li>
-            <a href="#minigame-standing" class="click-list-standing">
-                <i class="icon icon-minigame_standing"></i>
-                <span>Bảng Xếp Hạng</span>
-            </a>
-        </li>
-        <li>
-            <a href="#minigame-winners" class="click-list-result">
-                <i class="icon icon-minigame_list_user"></i>
-                <span>Danh Sách Trúng Thưởng</span>
-            </a>
-        </li>
+        @{
+            if (Model.IsLogin){
+                <li>
+                    <a href=@Url.Action("MinigameProfile", "WorldCup2022") class="click-my-prediction">
+                        <i class="icon icon-minigame_my_fav"></i>
+                        <span>Dự Đoán Của Tôi</span>
+                    </a>
+                </li>
+            }
+            if (countStageActive > 0 || Model.Votes.Count > 0)
+            {
+                 <li>
+                    <a href="#minigame-standing" class="click-list-standing">
+                        <i class="icon icon-minigame_standing"></i>
+                        <span>Bảng Xếp Hạng</span>
+                    </a>
+                </li>
+            }
+            if (countStageEnd > 0)
+            {
+                <li>
+                    <a href="#minigame-winners" class="click-list-result">
+                        <i class="icon icon-minigame_list_user"></i>
+                        <span>Danh Sách Trúng Thưởng</span>
+                    </a>
+                </li>
+            }
+        }
     </ul>
     <div id="stage-minigame" class="section-stage">
         <div class="container-stage">
@@ -151,11 +161,11 @@
                                     </div>
                                     <ul class="count-and-time">
                                         @if (Model.IsLogin)
-                                    {
+                                        {
                                             <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
-                                    }
+                                        }
                                         @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
-                                    {
+                                        {
                                             <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
                                             @status
                                                 @if (status != WorldCup2022.OnStartedStage)
@@ -165,7 +175,7 @@
                                                     <span id="seconds@(i+1)"></span>
                                             }
                                             </li>
-                                    }
+                                        }
                                     </ul>
                                     <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
                                 </div>

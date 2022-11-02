@@ -42,7 +42,7 @@ export class AppContainer extends Component {
         let countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageEnd);
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div>
+            <>
                 {
                     countStageWinners.length > 0 && <div className="minigame-winner">
                         <div className="wraper-minigame-table">
@@ -76,7 +76,7 @@ export class AppContainer extends Component {
                         </div>
                     </div>
                 }
-            </div>            
+            </>            
         )
     }
 }

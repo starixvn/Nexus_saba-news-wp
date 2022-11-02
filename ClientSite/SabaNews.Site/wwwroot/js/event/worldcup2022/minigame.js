@@ -3,10 +3,10 @@
     var teamId = 0;
     var teamName = "";
     const longs = [
-        1667203500,
-        1669078800,
-        1669424400,
-        1669770000
+        "10/31/2022, 3:05:00 PM",
+        "11/22/2022, 8:00:00 AM",
+        "11/26/2022, 8:00:00 AM",
+        "11/30/2022, 8:00:00 AM"
     ];   
     const second = 1000,
         minute = second * 60,
@@ -35,13 +35,12 @@
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });
 
-        $('.stage-votes').click(function () {
+        $('.btn-nav-prediction').click(function () {
             if (!isLogin) {
                 $('#joining').modal('show');
             }
             else {
-                var stage = $(this).data("stage");
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/" + stage;
+                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet";
             }
         });
 
@@ -105,7 +104,7 @@
 
     function getStatusStage(i) {
         var timeSpanNow = new Date() / 1000;
-        var checkNow = longs[i] - timeSpanNow;
+        var checkNow = new Date(longs[i]).getTime() - timeSpanNow;
         var statusStage;
         if (checkNow > 0) {
             if (checkNow > 3600) {

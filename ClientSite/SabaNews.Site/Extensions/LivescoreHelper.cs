@@ -232,10 +232,10 @@
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
             List<string> longs = new() {
-                "10/31/2022, 3:05:00 PM",
-                "11/22/2022, 8:00:00 AM",
-                "11/26/2022, 8:00:00 AM",
-                "11/30/2022, 8:00:00 AM" };
+                WorldCup2022.TimestampMinigameStage01Start,
+                WorldCup2022.TimestampMinigameStage02Start,
+                WorldCup2022.TimestampMinigameStage03Start,
+                WorldCup2022.TimestampMinigameStage04Start };
             string statusStage;
             if (status.Contains(WorldCup2022.BeforeStartedStage))
             {
@@ -251,14 +251,15 @@
         public static string GetStatusStage(IList<Match> matches, int numStage)
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
-            List<long> longs = new() { 
+            List<string> longs = new() { 
                 WorldCup2022.TimestampMinigameStage01Start, 
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start, 
                 WorldCup2022.TimestampMinigameStage04Start };
 
             var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            var checkNow = longs[numStage - 1] - timeSpanNow.TotalSeconds;
+            var timeStartStage = DateTime.Parse(longs[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
+            var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;
             if (checkNow > 0)
             {

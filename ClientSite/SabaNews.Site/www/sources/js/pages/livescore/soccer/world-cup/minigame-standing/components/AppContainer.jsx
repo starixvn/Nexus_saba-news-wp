@@ -40,7 +40,7 @@ export class AppContainer extends Component {
         let countStageStanding =this.state.stages.filter( x => x.value <= window.CountStageActive);
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div>
+            <>
                 {
                     (votes.length > 0 || countStageStanding.length > 0) &&
                     <div className="minigame-section minigame-standing">
@@ -87,7 +87,7 @@ export class AppContainer extends Component {
                         </div>
                     </div>
                 }
-            </div>
+            </>
         )
     }
 }
