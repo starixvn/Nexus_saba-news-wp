@@ -70,6 +70,24 @@ export class Item extends PureComponent {
         })
     }
 
+    getVoteTeam = vote => {
+        const { match } = this.props;
+        if(vote === 1) {
+            return (
+                <span>Bạn dự đoán <b>{CommonFunctions.getTeamName(match.homeTeam)}</b> sẽ giành chiến thắng!</span>
+            )
+        } else if(vote === 2) {
+            return (
+                <span>Bạn dự đoán <b>{CommonFunctions.getTeamName(match.awayTeam)}</b> sẽ giành chiến thắng!</span>
+            )
+        } else if(vote === 0) {
+            return (
+                <span>Bạn dự đoán {CommonFunctions.getTeamName(match.homeTeam)} và {CommonFunctions.getTeamName(match.awayTeam)} sẽ <b>Hòa</b> nhau!</span>
+            )
+        }
+        return <span></span>
+    }
+
     render() {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
@@ -81,14 +99,14 @@ export class Item extends PureComponent {
                     <div className="statistic-grid-item-round">
                         { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
                     </div>
-                    <div className="statistic-grid-item-fav show-pc">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
+                    <div className="statistic-grid-item-fav show-pc">{this.getVoteTeam(vote)}</div>
                 </div>
                 <div className="statistic-grid-item-body">
                     <div className="team-main">
                         <div className={`statistic-team statistic-team-home ${vote === 1 ? "active" : ""}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
                             <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                             <div className="statistic-team-name">{CommonFunctions.getTeamName(match.homeTeam)}</div>
-                        </div> 
+                    </div>
                         <div className={`statistic-team statistic-draw ${vote === 0 ? "active" : ""}`} onClick={() => this.handleVote(0)}>
                             <i className="icon-minigame_draw" />
                             <div className="statistic-team-name">Hòa</div>
@@ -96,7 +114,7 @@ export class Item extends PureComponent {
                         <div className={`statistic-team statistic-team-away ${vote === 2 ? "active" : ""}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
                             <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                             <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>
-                        </div> 
+                    </div> 
                     </div>
                     <div className="statistic-grid-item-fav show-mb">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
                 </div>

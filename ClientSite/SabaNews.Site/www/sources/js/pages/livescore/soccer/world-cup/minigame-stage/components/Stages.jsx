@@ -77,7 +77,7 @@ export class Stages extends PureComponent {
                             })
                         }
                     </Tabs>
-                }  
+                }
             </>
         );
     }
