@@ -20,6 +20,7 @@
     bool isDesktop = detector.IsDesktop();
     List<int> indexMatches = new() { 15, 31, 47, 63 };
     var countStageActive = GetCountStageActiveMinigame(Model.Matches);
+    var countStageEnd = GetCountStageEndMinigame(Model.Matches);
 }
 
 @section Styles{
@@ -59,7 +60,8 @@
         var checkLogin = '@Model.IsLogin';
         window.User = '@Model.UserId';
         window.CountStageActive = '@countStageActive';
-    </script>
+        window.CountStageEnd = '@countStageEnd';
+   </script>
     <script src="~/js/event/worldcup2022/minigame.js" asp-append-version="true"></script>
     <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
 }
@@ -138,35 +140,35 @@
                     @{
                         for (int i = 0; i < 4; i++)
                         {
-                            var status = GetStatusStage(Model.Matches, i);
+                            var status = GetStatusStage(Model.Matches, i + 1);
                             var icon = GetIconStage(status);
                             var isActive = CheckActive(status);
 
-                            <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status != WorldCup2022.LockStage ? "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
-                                <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
-                                <div class="stage-round @(isActive ? "active" : "")">
-                                    <h2>Giai Đoạn @(i + 1)</h2>
-                                </div>
-                                <ul class="count-and-time">
-                                    @if (Model.IsLogin)
+                                <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status != WorldCup2022.LockStage ? "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
+                                    <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
+                                    <div class="stage-round @(isActive ? "active" : "")">
+                                        <h2>Giai Đoạn @(i + 1)</h2>
+                                    </div>
+                                    <ul class="count-and-time">
+                                        @if (Model.IsLogin)
                                     {
-                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
+                                            <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
                                     }
-                                    @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
+                                        @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
                                     {
-                                        <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
-                                            @GetStatusStage(Model.Matches, i)
-                                            @if (status != WorldCup2022.OnStartedStage)
+                                            <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
+                                            @status
+                                                @if (status != WorldCup2022.OnStartedStage)
                                             {
-                                                <span id="hours@(i+1)" style="margin-left : 5px"></span>
-                                                <span id="minutes@(i+1)"></span>
-                                                <span id="seconds@(i+1)"></span>
+                                                    <span id="hours@(i+1)" style="margin-left : 5px"></span>
+                                                    <span id="minutes@(i+1)"></span>
+                                                    <span id="seconds@(i+1)"></span>
                                             }
-                                        </li>
+                                            </li>
                                     }
-                                </ul>
-                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
-                            </div>
+                                    </ul>
+                                    <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
+                                </div>
                         }
                     }
                 </div>

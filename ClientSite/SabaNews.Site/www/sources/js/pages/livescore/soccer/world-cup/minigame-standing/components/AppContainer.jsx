@@ -40,48 +40,53 @@ export class AppContainer extends Component {
         let countStageStanding =this.state.stages.filter( x => x.value <= window.CountStageActive);
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div className="minigame-section minigame-standing">
-                <div className="wraper-minigame-table">
-                    <div className="minigame-title standing-title">
-                        <h1 className="text">
-                            {LangHelper.getResource('StandingMinigame')}
-                        </h1>
-                        <div className="dots-parent">
-                            <ul className="dots">
-                                <li className="dots-small"></li>
-                                <li className="dots-regular"></li>
-                                <li className="dots-parent-center"></li>
-                                <li className="dots-regular"></li>
-                                <li className="dots-small"></li>
-                            </ul>
+            <div>
+                {
+                    (votes.length > 0 || countStageStanding.length > 0) &&
+                    <div className="minigame-section minigame-standing">
+                        <div className="wraper-minigame-table">
+                            <div className="minigame-title standing-title">
+                                <h1 className="text">
+                                    {LangHelper.getResource('StandingMinigame')}
+                                </h1>
+                                <div className="dots-parent">
+                                    <ul className="dots">
+                                        <li className="dots-small"></li>
+                                        <li className="dots-regular"></li>
+                                        <li className="dots-parent-center"></li>
+                                        <li className="dots-regular"></li>
+                                        <li className="dots-small"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="minigame-standing-control">
+                                <select value={this.state.selectValue} 
+                                    onChange={this.handleChange} className="custom-select">
+                                    {
+                                        countStageStanding.map( index => 
+                                        <option key={index.value} value={index.value}>{index.name}</option> )
+                                    }
+                                </select>
+                                <div className="custom-search">
+                                    <input 
+                                        placeholder="Tìm kiếm theo tên..." 
+                                        className="custom-search-input" 
+                                        onChange={e => this.setState({search: e.target.value})} 
+                                        autoComplete="false"
+                                    />
+                                    <i className="icon-icon_search custom-search-icon"/>
+                                </div>
+                                
+                            </div>
+                            <Standing matches={showMatches} votes={votes} search={this.state.search} />
+                        </div>
+                        <div className="wave-standing-main"></div>
+                        <div className="wave-standing-bg"></div>
+                        <div className="section-icon">
+                            <img src="../../../../css/images/icon_2.png" alt="" />
                         </div>
                     </div>
-                    <div className="minigame-standing-control">
-                        <select value={this.state.selectValue} 
-                            onChange={this.handleChange} className="custom-select">
-                            {
-                                countStageStanding.map( index => 
-                                <option key={index.value} value={index.value}>{index.name}</option> )
-                            }
-                        </select>
-                        <div className="custom-search">
-                            <input 
-                                placeholder="Tìm kiếm theo tên..." 
-                                className="custom-search-input" 
-                                onChange={e => this.setState({search: e.target.value})} 
-                                autoComplete="false"
-                            />
-                            <i className="icon-icon_search custom-search-icon"/>
-                        </div>
-                        
-                    </div>
-                    <Standing matches={showMatches} votes={votes} search={this.state.search} />
-                </div>
-                <div className="wave-standing-main"></div>
-                <div className="wave-standing-bg"></div>
-                <div className="section-icon">
-                    <img src="../../../../css/images/icon_2.png" alt="" />
-                </div>
+                }
             </div>
         )
     }

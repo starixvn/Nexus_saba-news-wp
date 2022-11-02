@@ -204,13 +204,28 @@
             int maxCountStage = 4;
             for(int i = 0; i < maxCountStage; i++)
             {
-                var statusStage = GetStatusStage(matches, i);
+                var statusStage = GetStatusStage(matches, i + 1);
                 if(statusStage != WorldCup2022.LockStage)
                 {
-                    result = i;
+                    result = i + 1;
                 }
             }
-            return result + 1;
+            return result;
+        }
+
+        public static int GetCountStageEndMinigame(IList<Match> matches)
+        {
+            int result = 0;
+            int maxCountStage = 4;
+            for (int i = 0; i < maxCountStage; i++)
+            {
+                var statusStage = GetStatusStage(matches, i + 1);
+                if (statusStage == WorldCup2022.OnEndStage)
+                {
+                    result = i + 1;
+                }
+            }
+            return result;
         }
 
         public static string GetCountDownStage(string status, IList<Match> matches, int numStage)
@@ -243,7 +258,7 @@
                 WorldCup2022.TimestampMinigameStage04Start };
 
             var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            var checkNow = longs[numStage] - timeSpanNow.TotalSeconds;
+            var checkNow = longs[numStage - 1] - timeSpanNow.TotalSeconds;
             string statusStage;
             if (checkNow > 0)
             {

@@ -39,40 +39,44 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        let countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageActive);
+        let countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageEnd);
         const showMatches = getMatchByEventStage(matches);
         return (
-            <div className="minigame-winner">
-                <div className="wraper-minigame-table">
-                    <div className="minigame-title winner-title">
-                        <h1 className="text">
-                            {LangHelper.getResource('WinnersMinigame')}
-                        </h1>
-                        <div className="dots-parent">
-                            <ul className="dots">
-                                <li className="dots-small"></li>
-                                <li className="dots-regular"></li>
-                                <li className="dots-parent-center"></li>
-                                <li className="dots-regular"></li>
-                                <li className="dots-small"></li>
-                            </ul>
-                            <span className="line line-left"></span>
-                            <span className="line line-right"></span>
+            <div>
+                {
+                    countStageWinners.length > 0 && <div className="minigame-winner">
+                        <div className="wraper-minigame-table">
+                            <div className="minigame-title winner-title">
+                                <h1 className="text">
+                                    {LangHelper.getResource('WinnersMinigame')}
+                                </h1>
+                                <div className="dots-parent">
+                                    <ul className="dots">
+                                        <li className="dots-small"></li>
+                                        <li className="dots-regular"></li>
+                                        <li className="dots-parent-center"></li>
+                                        <li className="dots-regular"></li>
+                                        <li className="dots-small"></li>
+                                    </ul>
+                                    <span className="line line-left"></span>
+                                    <span className="line line-right"></span>
+                                </div>
+                            </div>
+                            <div className="minigame-winner-control">
+                                {
+                                    countStageWinners.map( item => 
+                                        <button className= {this.state.selectedStage === item.value ? 'buttonStage active' : 'buttonStage'} onClick={e => this.handleChange(item.value)}>{item.name}</button>
+                                    )
+                                }
+                            </div>
+                            <Winner matches={showMatches} votes={votes} search={this.state.search} />
+                        </div>
+                        <div className="winner-icon">
+                            <img src="../../../../css/images/winner_sticker_4.png" alt="" />
                         </div>
                     </div>
-                    <div className="minigame-control">
-                        {
-                            countStageWinners.map( item => 
-                                <button className= {this.state.selectedStage === item.value ? 'buttonStage active' : 'buttonStage'} onClick={e => this.handleChange(item.value)}>{item.name}</button>
-                            )
-                        }
-                    </div>
-                    <Winner matches={showMatches} votes={votes} search={this.state.search} />
-                </div>
-                <div className="winner-icon">
-                    <img src="../../../../css/images/winner_sticker_4.png" alt="" />
-                </div>
-            </div>
+                }
+            </div>            
         )
     }
 }
