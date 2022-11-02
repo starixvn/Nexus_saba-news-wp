@@ -14,14 +14,14 @@ export class AppContainer extends Component {
         super(props);
     }
     componentDidMount() {
-        const startTime = getMinigameStageStartTime(parseInt(window.stage));
-        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-        if(startTime.isAfter(currentTime)) {
-            window.location = Site.resolveClientUrl(WorldCup.MinigameUrl);
-        } else {
+        // const startTime = getMinigameStageStartTime(parseInt(window.stage));
+        // const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        // if(startTime.isAfter(currentTime)) {
+        //     window.location = Site.resolveClientUrl(WorldCup.MinigameUrl);
+        // } else {
             this.props.getMatches();
             this.props.getVotes();
-        }
+        // }
     }
 
     render() {
