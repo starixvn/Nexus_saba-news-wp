@@ -289,14 +289,15 @@
 
         public static bool CheckStartStage(int numStage)
         {
-            List<long> longs = new() {
+            List<string> longs = new() {
                 WorldCup2022.TimestampMinigameStage01Start,
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
             var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            var checkNow = longs[numStage - 1] - timeSpanNow.TotalSeconds;
+            var timeStartStage = DateTime.Parse(longs[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
+            var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             if (checkNow > 0)
             {
                 return false;

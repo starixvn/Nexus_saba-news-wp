@@ -44,6 +44,16 @@
             }
         });
 
+        $('.stage-votes').click(function () {
+            if (!isLogin) {
+                $('#joining').modal('show');
+            }
+            else {
+                var stage = $(this).data("stage");
+                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/" + stage;
+            }
+        });
+
         $('.click-number-event').click(function () {
             if (!isLogin) {
                 $('#joining').modal('show');

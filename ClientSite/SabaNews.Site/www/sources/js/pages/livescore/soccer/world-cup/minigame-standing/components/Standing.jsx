@@ -182,7 +182,7 @@ export default class Standing extends PureComponent {
         }
         else{
             standings.map((item, index) => {
-                if(item.userId === userId){
+                if(item.userId === parseInt(userId)){
                     rank = index + 1;
                 }
             });
@@ -208,11 +208,10 @@ export default class Standing extends PureComponent {
         const rank = this.checkRank(standings, userId);
         return (
             <>
+                {
+                    rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
+                }
             	<div className="minigame-table">
-                    {
-                        rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
-                    }
-
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index">#</div>
                         <div className="table-row table-row-name">Tên</div>
