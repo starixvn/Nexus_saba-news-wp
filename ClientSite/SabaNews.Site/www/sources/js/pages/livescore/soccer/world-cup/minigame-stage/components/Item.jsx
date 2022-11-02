@@ -92,7 +92,6 @@ export class Item extends PureComponent {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
-            <>
             <div className={`statistic-grid-item ${vote != null ? "active" : ""}`} onClick={this.onClick}>
                 <div className="statistic-grid-item-header">
                     <div className="statistic-grid-item-round">
@@ -118,33 +117,6 @@ export class Item extends PureComponent {
                     <div className="statistic-grid-item-fav show-mb">Bạn dự đoán <b>Qatar</b> sẽ giành chiến thắng!</div>
                 </div>
             </div>
-
-             {/* <div className="group-match-item" onClick={this.onClick}>
-                 <div className={`soccer-match-item`}>
-                    <div className="soccer-match-date-result">
-                        { `Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}` }
-                    </div>
-                    <div className="soccer-match-team">
-                        <div className="group-team">
-                            <div className="soccer-team home-team">
-                                <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>{vote === 1 ? "(v)" : ''} {CommonFunctions.getTeamName(match.homeTeam)}</div>
-                                <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                            </div>
- 
-                            <ul className="wc-round-score">
-                                <li className="total-score" onClick={() => this.handleVote(0)} > Hòa {vote === 0 ? "(v)" : ''}</li>
-                            </ul>
-
-                            <div className="soccer-team away-team">
-                                <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                                <div className={`soccer-team-name `}  onClick={() => this.handleVote(match.awayTeam.teamId)}>{CommonFunctions.getTeamName(match.awayTeam)} {vote === 2 ? "(v)" : ''}</div>
-                                <TeamScore match={match} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-            </>
         );
     }
 }
