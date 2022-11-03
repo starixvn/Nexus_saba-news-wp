@@ -518,8 +518,8 @@ body {
   .post-hot .hover-image .title-hot {
     position: absolute;
     bottom: 0;
-    padding: 4rem 2rem 2rem 2rem;
-    background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
+    padding: 6rem 2rem 2rem 2rem;
+    background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 55.21%, #48041A 100%);
     width: 100%; }
     @media screen and (max-width: 1024px) {
       .post-hot .hover-image .title-hot {

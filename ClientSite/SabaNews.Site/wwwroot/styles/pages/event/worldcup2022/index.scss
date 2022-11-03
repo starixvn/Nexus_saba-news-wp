@@ -95,6 +95,15 @@
     }
 }
 
+.wc-block-hotnews {
+    .view-more {
+        a {
+            color: $title-color;
+        }
+    }
+}
+
+
 .wc-block-bxh {
     background: url('../../../../images/worldcup/section-2.png') no-repeat;
     background-size: cover;
