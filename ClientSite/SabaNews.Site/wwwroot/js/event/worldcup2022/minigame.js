@@ -183,10 +183,39 @@
         });
     }
 
+    function countDownTime() {
+        const second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24;
+        let countDown = new Date('November 16, 2022 08:00:00').getTime(),
+            x = setInterval(function () {
+                let now = new Date().getTime(),
+                    distance = countDown - now;
+                let dayShow = Math.floor(distance / (day)),
+                    hourShow = Math.floor((distance % (day)) / (hour)),
+                    minuteShow = Math.floor((distance % (hour)) / (minute)),
+                    secondShow = Math.floor((distance % (minute)) / second)
+
+                document.getElementById('days').innerHTML = `<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`;
+                document.getElementById('hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
+                    document.getElementById('minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
+                    document.getElementById('seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
+            }, second);
+    }
+
+    function showTimeCountDown(time) {
+        if (time.toString().length <= 1) {
+            return "0" + time;
+        }
+        return time;
+    }
+
     function init() {
         HandleUI();
         HandleSubmitNumber();
         GetDataMinigame();
+        countDownTime();
     }
 
     return {

@@ -356,27 +356,15 @@
         [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay")]
         public async Task<ActionResult> Minigame()
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
-            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
-            var isLogin = sessionService.User != null;
             var model = new MinigameViewModel
             {
-                Header = header,
-                IsLogin = isLogin,
-                StandingsViewModel = GroupStandingsByGroupName(standings),
-                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator),
-                BaseUrl = configuration.GetValue<string>(Constants.BaseUrl)
+                Header = header
             };
-            if (sessionService.User != null)
-            {
-                model.User = sessionService.User;
-                model.MinigameDetail = await leagueService.GetDetailMinigameAsync(sessionService.User.Id);
-            }
             return View("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", model);
         }
 

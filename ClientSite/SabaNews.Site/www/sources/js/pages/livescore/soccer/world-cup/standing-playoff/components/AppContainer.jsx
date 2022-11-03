@@ -194,14 +194,48 @@ export class AppContainer extends Component {
         return {placeMatch, finalMatch};
     };
 
+    sortMatches = groups => {
+        groups.map(stage => {
+            if(stage.key === WorldCup.EightTeamStage) {
+                const matches = stage.matches;
+                let tmpMatches = [];
+                WorldCup.EightTeamMatches.map(item => {
+                    const match = matches.find(m => m.matchId === item);
+                    tmpMatches.push(match);
+                })
+                stage.matches = tmpMatches;
+            }
+            if(stage.key === WorldCup.QuarterfinalsStage) {
+                const matches = stage.matches;
+                let tmpMatches = [];
+                WorldCup.QuaterFinalMatches.map(item => {
+                    const match = matches.find(m => m.matchId === item);
+                    tmpMatches.push(match);
+                })
+                stage.matches = tmpMatches;
+            }
+            if(stage.key === WorldCup.SemifinalsStage) {
+                const matches = stage.matches;
+                let tmpMatches = [];
+                WorldCup.SemiFinalMatches.map(item => {
+                    const match = matches.find(m => m.matchId === item);
+                    tmpMatches.push(match);
+                })
+                stage.matches = tmpMatches;
+            }
+        });
+        return groups;
+    };
+
     render() {
         const { matches, league } = this.props;
         const { isMobile } = this.state;
         if (!matches || matches.length === 0) {
             return null;
         }
-        let groupMatches = this.groupMatches(matches);
+        let groupMatches = this.groupMatchByStage();
         groupMatches = groupMatches.reverse();
+        groupMatches = this.sortMatches(groupMatches);
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
         const {placeMatch, finalMatch} = this.getFinalAndPlaceMatch(groupMatches, matches);

@@ -39,12 +39,16 @@ export default class Item extends PureComponent {
     getTeamName = team =>  team ? CommonFunctions.getTeamName(team) : '';
 
     getResultClass = (matchResult, isHome) => {
+        const { match } = this.props;
         let className = '';
         if(isHome && matchResult === MatchResult.Win) {
             className = 'win';
         }
         if(!isHome && matchResult === MatchResult.Lose) {
             className = 'win';
+        }
+        if(match.status !== MatchStatus.Finished) {
+            className = '';
         }
         return className;
     };
