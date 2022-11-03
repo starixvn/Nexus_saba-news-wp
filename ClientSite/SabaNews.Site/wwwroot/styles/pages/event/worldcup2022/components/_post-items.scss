@@ -1,7 +1,9 @@
 ﻿.post-items {
     .title {
         margin-top: .8rem;
-
+        @include tableMobile{
+            margin-top : .6rem;
+        }
         h2 {
             a {
                 color: #2F2F2F;
