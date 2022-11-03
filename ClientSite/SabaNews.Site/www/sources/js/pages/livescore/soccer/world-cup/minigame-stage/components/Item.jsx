@@ -114,7 +114,9 @@ export class Item extends PureComponent {
                             <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>
                         </div>
                     </div>
-                    <div className="statistic-grid-item-fav show-mb">{this.getVoteTeam(vote)}</div>
+                    {
+                        vote !== null && <div className="statistic-grid-item-fav show-mb">{this.getVoteTeam(vote)}</div>
+                    }
                 </div>
             </div>
         );
