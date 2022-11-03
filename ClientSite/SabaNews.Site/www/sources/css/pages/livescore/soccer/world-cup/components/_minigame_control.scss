@@ -70,3 +70,22 @@
         }
     }
 }
+
+.nav-select-mb{
+    width: 14rem;
+    margin: 0 auto;
+    .minigame-nav-mobile{
+        width: 100%;
+        height: 4rem;
+        margin-top: 1rem;
+        color: #5A1123;
+        padding: 1rem 1.2rem;
+        border: none;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 1.3rem;
+        &:focus{
+            outline: none;
+        }
+    }
+}

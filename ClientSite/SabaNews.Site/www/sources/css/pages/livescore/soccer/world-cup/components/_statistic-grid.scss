@@ -44,7 +44,7 @@
         &-body{
             padding: 1.8rem 1rem;
             @include tableMobile{
-                padding: 1.2rem 1rem;
+                padding: 1rem;
             }
             .team-main{
                 display: flex;
@@ -69,7 +69,7 @@
             font-size: 1.4rem;
             line-height: 2.8rem;
             @include tableMobile{
-                margin-top: 1.3rem;
+                margin-top: 1rem;
                 color: #E8E8D6;
             }
         }

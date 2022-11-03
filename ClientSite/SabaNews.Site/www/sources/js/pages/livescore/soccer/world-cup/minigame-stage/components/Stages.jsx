@@ -110,8 +110,7 @@ export class Stages extends PureComponent {
                             (stages.length > 1 && isMobile) &&
                             <>
                                 <div className="nav-select-mb">
-                                    <div className="name-round">{CommonFunctions.getStageName(currentStage.stage)}</div>
-                                    <select onChange={this.onChange} value={selectedStageId}>
+                                    <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
                                         {
                                             stages.map(group =>
                                                 <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
