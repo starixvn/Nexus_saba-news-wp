@@ -263,16 +263,20 @@
                             <i class="icon-tick-post"></i>
                             <h1>@Html.Raw(item.Title)</h1>
                             <amp-story-page-outlink>
-                            <a href="@(item.Link != "" ? item.Link : "javascripts:;")" title="Link Description" class="detail-stories">
+                            @if (item.Link != "")
+                            {
+                                <a href=@item.Link title="Link Description" class="detail-stories">
                                     Xem chi tiết
                                 </a>
-                                @if (count >= totalItems)
-                                {
-                                    <div class="view-more-stories">
-                                        <i class="icon-chevron-up"></i>
-                                        <a href=@Model.BackUrl><i class="icon-link-post"></i> Xem thêm stories</a>
-                                    </div>
-                                }
+                            }
+                            
+                            @if (count >= totalItems)
+                            {
+                                <div class="view-more-stories">
+                                    <i class="icon-chevron-up"></i>
+                                    <a href=@Model.BackUrl><i class="icon-link-post"></i> Xem thêm stories</a>
+                                </div>
+                            }
                             </amp-story-page-outlink>
                         </div>
                     </amp-story-grid-layer>
