@@ -47,7 +47,7 @@ export class Stages extends PureComponent {
     };
 
     handleSelectTab = key => {
-        this.setState({ selectedStageId: key });
+        this.setState({ selectedStageId: parseInt(key) });
     };
 
     onChange = event => {
@@ -68,7 +68,7 @@ export class Stages extends PureComponent {
     getMatchWithStage = () => {
         const { groupStages } = this.props;
         const { selectedStageId } = this.state;
-        const stage = groupStages.find(item => item.key === parseInt(selectedStageId, 10));
+        const stage = groupStages.find(item => item.key === parseInt(selectedStageId));
         return stage;
     };
 
@@ -99,7 +99,7 @@ export class Stages extends PureComponent {
                                     stages.map(group => {
                                         return (
                                             <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                                <Grid matches={group.matches}/>
+                                                {selectedStageId === group.key && <Grid matches={group.matches}/>}
                                             </Tab>
                                         );
                                     })
@@ -117,11 +117,9 @@ export class Stages extends PureComponent {
                                         }
                                     </select>
                                 </div>
-                                <>
-                                    {
-                                        <Grid matches={currentStage.matches} />
-                                    }
-                                </>
+                                {
+                                    <Grid matches={currentStage.matches} />
+                                }
                             </>
                         }
                     </div>

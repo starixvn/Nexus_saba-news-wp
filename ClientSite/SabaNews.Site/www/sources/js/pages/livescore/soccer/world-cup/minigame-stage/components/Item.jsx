@@ -91,7 +91,6 @@ export class Item extends PureComponent {
     render() {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
-        console.log(123);
         return (
             <div className={`statistic-grid-item ${vote != null ? "active" : ""}`} onClick={this.onClick}>
                 <div className="statistic-grid-item-header">
