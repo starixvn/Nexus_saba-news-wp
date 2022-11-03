@@ -254,7 +254,7 @@
 
             .title-hot {
                 text-align: center;
-                padding: 4rem 3.2rem 2rem 3.2rem;
+                padding: 6rem 3.2rem 2rem 3.2rem;
 
                 p {
                     color: $white-color;
@@ -318,7 +318,7 @@
         }
 
         .title-hot {
-            padding: 4rem 2rem 4rem 2rem;
+            padding: 6rem 2rem 4rem 2rem;
 
             @include tableMobile {
                 padding: 4rem 2rem 1.2rem 2rem;

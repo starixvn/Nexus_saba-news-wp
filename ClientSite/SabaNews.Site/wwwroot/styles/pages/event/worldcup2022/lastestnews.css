@@ -436,12 +436,17 @@ body {
   max-width: 100%;
   height: auto; }
 
-.post-items .title h2 a {
-  color: #2F2F2F;
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 1.9rem;
-  text-decoration: none; }
+.post-items .title {
+  margin-top: .8rem; }
+  .post-items .title h2 a {
+    color: #2F2F2F;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    text-decoration: none; }
+    @media screen and (max-width: 1024px) {
+      .post-items .title h2 a {
+        font-size: 1.4rem; } }
 
 .video-items .title {
   margin-top: 1.2rem; }
@@ -451,9 +456,12 @@ body {
   .video-items .title h2 a {
     color: #fff;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 1.9rem;
     text-decoration: none; }
+    @media screen and (max-width: 1024px) {
+      .video-items .title h2 a {
+        font-size: 1.4rem; } }
   .video-items .title p {
     color: #fff;
     font-weight: 600;
@@ -523,7 +531,7 @@ body {
     width: 100%; }
     @media screen and (max-width: 1024px) {
       .post-hot .hover-image .title-hot {
-        padding: 1.2rem; } }
+        padding: 6rem 1.2rem 1.2rem; } }
     .post-hot .hover-image .title-hot h1 a {
       font-size: 2.4rem;
       line-height: 3.3rem;
