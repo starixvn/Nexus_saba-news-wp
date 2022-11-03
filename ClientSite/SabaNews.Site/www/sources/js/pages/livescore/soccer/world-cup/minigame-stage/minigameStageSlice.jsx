@@ -24,7 +24,6 @@ const minigameStageSlice = createSlice({
                     stages.push(match.stage);
                 }
             }
-            console.log(teams);
             state.stages = stages;
             state.matches = matches;
             state.teams = teams;
