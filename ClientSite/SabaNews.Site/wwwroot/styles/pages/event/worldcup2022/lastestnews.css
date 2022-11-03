@@ -521,8 +521,8 @@ body {
   max-height: 50rem; }
   @media (max-width: 767px) {
     .post-hot .hover-image {
-      max-height: 30rem !important;
-      height: 30rem; } }
+      max-height: 25rem !important;
+      height: 25rem; } }
   .post-hot .hover-image .title-hot {
     position: absolute;
     bottom: 0;
@@ -540,7 +540,7 @@ body {
       text-decoration: none; }
       @media screen and (max-width: 1024px) {
         .post-hot .hover-image .title-hot h1 a {
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           line-height: 1.4rem; } }
     .post-hot .hover-image .title-hot p {
       color: #fff;
@@ -551,7 +551,8 @@ body {
       @media screen and (max-width: 1024px) {
         .post-hot .hover-image .title-hot p {
           font-weight: 400;
-          font-size: 1.4rem; } }
+          font-size: 1.4rem;
+          display: none; } }
       .post-hot .hover-image .title-hot p a {
         color: #fff;
         text-decoration: none; }

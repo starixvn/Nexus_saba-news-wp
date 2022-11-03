@@ -5,8 +5,8 @@
         max-height: 50rem;
 
         @include Mobile {
-            max-height: 30rem !important;
-            height: 30rem;
+            max-height: 25rem !important;
+            height: 25rem;
         }
 
         .title-hot {
@@ -29,7 +29,7 @@
                     text-decoration: none;
 
                     @include tableMobile {
-                        font-size: 1.4rem;
+                        font-size: 1.6rem;
                         line-height: 1.4rem;
                     }
                 }
@@ -45,6 +45,7 @@
                 @include tableMobile {
                     font-weight: 400;
                     font-size: 1.4rem;
+                    display : none;
                 }
 
                 a {
