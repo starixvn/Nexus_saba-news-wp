@@ -18,37 +18,23 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int postID, string slugWC = "")
+        public async Task<IViewComponentResult> InvokeAsync(int postID)
         {
-            IEnumerable<Post> postsWC ;
-            if (slugWC == "")
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria
             {
-                var recentWCParam = new GetRecentPostsParam
-                {
-                    Start = Constants.FromFirstItem,
-                    End = Constants.GetElevenItems,
-                    PostID = postID
-                };
-                postsWC = await postService.GetRecentPostsAsync(recentWCParam);
-            }
-            else 
+                _CategorySlug = WorldCup2022.HomepageSlug,
+                _Start = Constants.FromFirstItem,
+                _End = Constants.GetElevenItems,
+            };
+            var relatedWCParam = new PostParam
             {
-                var cateSlugCriteria = new GetPostsByCateSlugCriteria
-                {
-                    _CategorySlug = slugWC,
-                    _Start = Constants.FromFirstItem,
-                    _End = Constants.GetElevenItems,
-                };
-                var relatedWCParam = new PostParam
-                {
-                    Slug = slugWC,
-                    Start = Constants.FromFirstItem,
-                    End = Constants.GetElevenItems,
-                    PostID = postID
-                };
+                Slug = WorldCup2022.HomepageSlug,
+                Start = Constants.FromFirstItem,
+                End = Constants.GetElevenItems,
+                PostID = postID
+            };
                 var allPosts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-                postsWC = GetPostsExcerptPostID(allPosts, relatedWCParam);
-            }
+                var postsWC = GetPostsExcerptPostID(allPosts, relatedWCParam);
             
             return View("~/Views/Event/WorldCup2022/RelatedPosts/Default.cshtml", postsWC);
         }

@@ -17,35 +17,21 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string cateSlugWC = "", int postID = 0)
+        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0)
         {
-            IEnumerable<Post> postsWC;
-            if (string.IsNullOrWhiteSpace(cateSlugWC))
+           
+            var endItemsWC = Constants.GetFourItems;
+            var postWCParam = new PostParam
             {
-                var endItemsWC = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                var postWCParam = new GetRecentPostsParam
-                {
-                    Start = Constants.FromFirstItem,
-                    End = endItemsWC,
-                    PostID = postID
-                };
-                postsWC = await postService.GetRecentPostsAsync(postWCParam);
-                ViewData[Constants.ViewDataHeadTitle] = Constants.RecentPostsTitle;
-            }
-            else
-            {
-                var endItemsWC = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                var postWCParam = new PostParam
-                {
-                    Slug = cateSlugWC,
-                    Start = Constants.FromFirstItem,
-                    End = endItemsWC,
-                    PostID = postID
-                };
-                postsWC = await postService.GetTopPostsByCateSlugAsync(postWCParam);
+                Slug = cateSlug,
+                Start = Constants.FromFirstItem,
+                End = endItemsWC,
+                PostID = postID
+            };
+            var postsWC = await postService.GetTopPostsByCateSlugAsync(postWCParam);
                 
-                ViewData[Constants.ViewDataHeadTitle] = Constants.MostViewPostTitle;
-            }
+            ViewData[Constants.ViewDataHeadTitle] = Constants.MostViewPostTitle;
+            
            
             var viewModel = new SideBarViewModel
             {
