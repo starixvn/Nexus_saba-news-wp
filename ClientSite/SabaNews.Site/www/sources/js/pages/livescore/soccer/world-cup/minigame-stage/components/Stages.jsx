@@ -51,7 +51,7 @@ export class Stages extends PureComponent {
     };
 
     onChange = event => {
-        this.setState({ selectedStageId: event.target.value });
+        this.setState({ selectedStageId: parseInt(event.target.value) });
     };
 
 
