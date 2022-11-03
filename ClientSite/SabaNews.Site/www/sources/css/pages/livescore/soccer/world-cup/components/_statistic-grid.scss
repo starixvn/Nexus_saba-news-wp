@@ -29,6 +29,7 @@
         }
         &-header{
             background: rgba(0, 0, 0, 0.1);
+            transition: background .2s ease;
             border-bottom: 1px solid rgba(136, 60, 86, 0.5);
             border-radius: 5px 5px 0 0;
             padding: 0 2rem;
@@ -85,7 +86,7 @@
         align-items: center;
         padding: .3rem;
         cursor: pointer;
-        transition: box-shadow .2s ease-in ;
+        transition: box-shadow , background .2s ease-in ;
         &.active{
             background: #E8E8D6;
             .statistic-team-name{
