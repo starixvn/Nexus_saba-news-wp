@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
 import Grid from './Grid';
-import { WorldCup } from '@jsroot/common/constants';
+import { WorldCup, MobileMaxWidth } from '@jsroot/common/constants';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -11,6 +11,7 @@ export class Stages extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
             selectedStageId: this.initDefaultStage()
         }
     }
@@ -25,8 +26,32 @@ export class Stages extends PureComponent {
         return stageId;
     };
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
+    };
+
     handleSelectTab = key => {
         this.setState({ selectedStageId: key });
+    };
+
+    onChange = event => {
+        this.setState({ selectedStageId: event.target.value });
     };
 
 
@@ -40,11 +65,19 @@ export class Stages extends PureComponent {
         return `${voted.length}/${count}`;
     };
 
+    getMatchWithStage = () => {
+        const { groupStages } = this.props;
+        const { selectedStageId } = this.state;
+        const stage = groupStages.find(item => item.key === parseInt(selectedStageId, 10));
+        return stage;
+    };
+
 
     render() {
         const { groupStages } = this.props;
-        const { selectedStageId } = this.state;
+        const { selectedStageId, isMobile } = this.state;
         const stages = groupStages;
+        const currentStage = this.getMatchWithStage();
         return (
             <>
                 <div className="minigame-stage-container">
@@ -56,11 +89,11 @@ export class Stages extends PureComponent {
                     </div>
                     <div className="statistic-main">
                         {
-                            stages.length === 1 &&
+                            (stages.length === 1) &&
                             <Grid matches={stages[0].matches} />
                         }
                         {
-                            stages.length > 1 &&
+                            (stages.length > 1 && !isMobile) &&
                             <Tabs className="minigame-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
                                 {
                                     stages.map(group => {
@@ -72,6 +105,25 @@ export class Stages extends PureComponent {
                                     })
                                 }
                             </Tabs>
+                        }
+                        {
+                            (stages.length > 1 && isMobile) &&
+                            <>
+                                <div className="nav-select-mb">
+                                    <div className="name-round">{CommonFunctions.getStageName(currentStage.stage)}</div>
+                                    <select onChange={this.onChange} value={selectedStageId}>
+                                        {
+                                            stages.map(group =>
+                                                <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
+                                        }
+                                    </select>
+                                </div>
+                                <>
+                                    {
+                                        <Grid matches={currentStage.matches} />
+                                    }
+                                </>
+                            </>
                         }
                     </div>
                 </div>
