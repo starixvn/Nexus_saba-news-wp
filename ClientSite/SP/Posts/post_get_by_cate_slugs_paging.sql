@@ -14,6 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_cate_slugs_paging`(
 		Creator: Hank@20220805
         Revisions:
 			- 20220805@Hank: init
+			- 202200805@Hank: remove get by tag
     */
 )
 GetSlug:BEGIN
@@ -56,14 +57,6 @@ GetSlug:BEGIN
 	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
 					INNER JOIN tmp_Cate as c ON c.term_taxonomy_id = tr.term_taxonomy_id);
 	
-    INSERT INTO tmp_PostIds (PostId)
-    SELECT tr.object_id
-	FROM wp_terms t
-	INNER JOIN wp_term_taxonomy tt ON tt.term_id = t.term_id AND taxonomy = 'post_tag'
-	INNER JOIN wp_term_relationships tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
-	WHERE t.slug IN (SELECT c.slug from tmp_Cate c);
-	
-                    
     SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent, p.post_excerpt as PostExcerpt
     , p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_name as Slug
     , pp.guid as FeatureImage, m1.meta_value as Metadata, p.comment_count as CommentCount
