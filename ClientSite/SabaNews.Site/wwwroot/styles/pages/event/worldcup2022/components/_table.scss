@@ -22,7 +22,7 @@
     .cell-participant {
         align-self: center;
         display: flex;
-        flex: 1 0 22rem;
+        flex: 1 0 15rem;
         text-align: left;
         align-items: center;
 
@@ -54,7 +54,7 @@
         }
 
         &-name {
-            width: 14rem;
+            width: 11rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
