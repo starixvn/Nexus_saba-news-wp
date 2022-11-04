@@ -27,7 +27,8 @@
             {
                 count++;
                 var hideClass = "";
-                if(more && isMobile && count > 3) {
+                if (more && isMobile && count > 3)
+                {
                     hideClass = "more hide";
                 }
                 var oriLogo = GetTeamIcon(item.TeamLogo);
@@ -45,11 +46,10 @@
                     <div class="wc-table-cell cell-rank">@item.Assists</div>
                 </div>
             }
-            @if (isMobile && more)
-            {
-                <button class="top-scorer-hide-button">Xem thêm</button>
-            }
-           
         </div>
+        @if (isMobile && more)
+        {
+            <button class="top-scorer-hide-button">Xem thêm <i class="icon-chevron-down"></i> </button>
+        }
     </div>
 </div>

@@ -595,7 +595,8 @@ body {
           line-height: 1.9rem; } }
 
 .date-time {
-  color: #fff; }
+  color: #fff;
+  display: none; }
   @media screen and (max-width: 1024px) {
     .date-time {
       font-weight: 400;

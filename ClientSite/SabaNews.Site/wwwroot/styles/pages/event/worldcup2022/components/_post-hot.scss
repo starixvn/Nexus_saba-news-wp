@@ -93,6 +93,7 @@
 
 .date-time {
     color: $white-color;
+    display : none;
     @include tableMobile {
         font-weight: 400;
         font-size: 1.4rem;
