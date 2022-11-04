@@ -13,6 +13,7 @@
                 $('[data-toggle="tooltip"]').tooltip();
                 $('.top-scorer-hide-button').on('click', function () {
                     $('.top-scorer-table .wc-table-row.more').toggleClass('hide');
+                    $('.top-scorer-table .wc-table-row.ori').toggleClass('show');
                     if (isHide) {
                         $(this).html('thu gọn <i class="icon-chevron-up"></i>');
                     } else {

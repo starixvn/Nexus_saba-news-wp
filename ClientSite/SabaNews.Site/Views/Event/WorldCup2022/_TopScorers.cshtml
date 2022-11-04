@@ -26,14 +26,19 @@
             @foreach (var item in Model)
             {
                 count++;
-                var hideClass = "";
+                var moreClass = "";
+                var showClass = "";
                 if (more && isMobile && count > 3)
                 {
-                    hideClass = "more hide";
+                    moreClass = "more hide";
+                }
+                if (more && isMobile && count <= 3)
+                {
+                    showClass = "ori show";
                 }
                 var oriLogo = GetTeamIcon(item.TeamLogo);
                 var playerName = GetTopScorersPlayerName(item);
-                <div class="wc-table-row @hideClass">
+                <div class="wc-table-row @moreClass @showClass">
                     <div class="wc-table-cell cell-participant">
                         <ul class="team">
                             <li class="number">@item.Top </li>
