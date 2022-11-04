@@ -89,6 +89,10 @@
                                 </div>
                                 <div class="title">
                                     <h2><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a></h2>
+                                    @if (lastestPostIndex == 2)
+                                    {
+                                        <p>@post.PostExcerpt</p>
+                                    }
                                 </div>
                             </div>
                         }
