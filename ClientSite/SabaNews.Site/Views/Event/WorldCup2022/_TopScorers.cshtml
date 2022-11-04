@@ -5,6 +5,7 @@
     detector.Parse();
     bool isMobile = detector.IsMobile();
     bool isDesktop = detector.IsDesktop();
+    var more = ViewBag.More;
 }
 <div class="king-soccer">
     <div class="title-section">
@@ -20,12 +21,18 @@
             <div class="wc-table-cell cell-rank">Kiến tạo</div>
         </div>
 
-        <div class="wc-table-body">
+        <div class="wc-table-body top-scorer-table">
+            @{var count = 0;}
             @foreach (var item in Model)
             {
+                count++;
+                var hideClass = "";
+                if(more && isMobile && count > 3) {
+                    hideClass = "more hide";
+                }
                 var oriLogo = GetTeamIcon(item.TeamLogo);
                 var playerName = GetTopScorersPlayerName(item);
-                <div class="wc-table-row">
+                <div class="wc-table-row @hideClass">
                     <div class="wc-table-cell cell-participant">
                         <ul class="team">
                             <li class="number">@item.Top </li>
@@ -38,6 +45,11 @@
                     <div class="wc-table-cell cell-rank">@item.Assists</div>
                 </div>
             }
+            @if (isMobile && more)
+            {
+                <button class="top-scorer-hide-button">Xem thêm</button>
+            }
+           
         </div>
     </div>
 </div>

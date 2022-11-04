@@ -2,12 +2,24 @@
 
     function getTopScorers() {
         if ($('#topScorersWC')) {
+            var isHide = true;
+            var more = $('#topScorersWC').data('more');
             $.ajax({
                 url: '/WorldCup2022/GetTopScorers',
-                type: 'GET',
+                type: 'POST',
+                data: { more },
             }).done(function (data) {
                 $('#topScorersWC').html(data);
                 $('[data-toggle="tooltip"]').tooltip();
+                $('.top-scorer-hide-button').on('click', function () {
+                    $('.top-scorer-table .wc-table-row.more').toggleClass('hide');
+                    if (isHide) {
+                        $(this).html('ẩn bớt');
+                    } else {
+                        $(this).html('xem thêm');
+                    }
+                    isHide = !isHide;
+                });
             })
         }
     }

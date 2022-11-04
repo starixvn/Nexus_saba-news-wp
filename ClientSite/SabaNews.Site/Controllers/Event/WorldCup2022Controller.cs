@@ -451,10 +451,12 @@
             return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", GroupStandingsByGroupName(standings));
         }
 
-        public async Task<IActionResult> GetTopScorers()
+        [HttpPost]
+        public async Task<IActionResult> GetTopScorers(bool more)
         {
             var topScorersCriteria = new GetTop10ScorersCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
+            ViewBag.More = more;
             return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);
         }
 

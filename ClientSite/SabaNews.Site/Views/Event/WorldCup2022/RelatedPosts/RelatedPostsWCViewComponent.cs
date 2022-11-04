@@ -20,6 +20,7 @@
 
         public async Task<IViewComponentResult> InvokeAsync(int postID)
         {
+           
             var cateSlugCriteria = new GetPostsByCateSlugCriteria
             {
                 _CategorySlug = WorldCup2022.HomepageSlug,
