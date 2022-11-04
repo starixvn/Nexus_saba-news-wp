@@ -15,9 +15,9 @@
                     $('.top-scorer-table .wc-table-row.more').toggleClass('hide');
                     $('.top-scorer-table .wc-table-row.ori').toggleClass('show');
                     if (isHide) {
-                        $(this).html('thu gọn <i class="icon-chevron-up"></i>');
+                        $(this).html('Thu gọn <i class="icon-chevron-up"></i>');
                     } else {
-                        $(this).html('xem thêm <i class="icon-chevron-down"></i>');
+                        $(this).html('Xem thêm <i class="icon-chevron-down"></i>');
                     }
                     isHide = !isHide;
                 });

@@ -269,7 +269,7 @@
             return View("~/Views/Event/WorldCup2022/MatchDetail.cshtml", model);
         }
 
-        [Route("world-cup-2022/stories")]
+        [Route("world-cup-2022/khoanh-khac")]
         public async Task<IActionResult> StoryPost()
         {
             const int pageSize = Constants.GetEightItems;
@@ -301,7 +301,7 @@
             return View("~/Views/Event/WorldCup2022/StoryPost.cshtml", model);
         }
 
-        [Route("world-cup-2022/stories/{slug}")]
+        [Route("world-cup-2022/khoanh-khac/{slug}")]
         public async Task<IActionResult> StoryPostDetail(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.storyPostType);
