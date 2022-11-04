@@ -1,5 +1,6 @@
 ﻿var standing = (function ($) {
     var isKnockout = window.isKnockout.toLowerCase();
+
     function handleBtn() {
         if (isKnockout === 'true') {
             $('#btn-detail-standing').removeClass("active");
