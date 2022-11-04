@@ -207,7 +207,11 @@
 
     li {
         a {
-            color: $white-color !important;
+            color: $nav-header-color !important;
+
+            &.active {
+                color: $white-color !important;
+            }
         }
     }
 }

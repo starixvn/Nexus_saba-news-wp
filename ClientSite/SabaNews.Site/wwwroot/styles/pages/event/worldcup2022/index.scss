@@ -258,7 +258,7 @@
 
                 p {
                     color: $white-color;
-                    font-size: 1.3rem;
+                    font-size: 1.5rem;
                     font-weight: 700;
                     line-height: 1.8rem;
 
@@ -321,7 +321,7 @@
             padding: 6rem 2rem 4rem 2rem;
 
             @include tableMobile {
-                padding: 4rem 2rem 1.2rem 2rem;
+                padding: 4rem 1rem 1.2rem 1rem;
             }
         }
 
