@@ -14,9 +14,9 @@
                 $('.top-scorer-hide-button').on('click', function () {
                     $('.top-scorer-table .wc-table-row.more').toggleClass('hide');
                     if (isHide) {
-                        $(this).html('ẩn bớt');
+                        $(this).html('thu gọn <i class="icon-chevron-up"></i>');
                     } else {
-                        $(this).html('xem thêm');
+                        $(this).html('xem thêm <i class="icon-chevron-down"></i>');
                     }
                     isHide = !isHide;
                 });
