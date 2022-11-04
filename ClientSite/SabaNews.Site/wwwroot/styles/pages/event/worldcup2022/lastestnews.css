@@ -712,6 +712,8 @@ body {
     border-bottom: 1px solid #C49F5D; }
     .wc-table .wc-table-row:last-child {
       border-bottom: none !important; }
+    .wc-table .wc-table-row.show:nth-child(3) {
+      border-bottom: none !important; }
   .wc-table .btn-next-standing, .wc-table .btn-back-standing {
     cursor: pointer;
     font-size: 2.4rem; }
