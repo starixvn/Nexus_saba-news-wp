@@ -459,6 +459,14 @@ body {
     @media screen and (max-width: 1024px) {
       .post-items .title h2 a {
         font-size: 1.4rem; } }
+  .post-items .title p {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin-top: .8rem; }
+    @media screen and (max-width: 1024px) {
+      .post-items .title p {
+        display: none; } }
 
 .video-items .title {
   margin-top: 1.2rem; }

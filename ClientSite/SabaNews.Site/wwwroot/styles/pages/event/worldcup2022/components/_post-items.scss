@@ -1,9 +1,11 @@
 ﻿.post-items {
     .title {
         margin-top: .8rem;
-        @include tableMobile{
-            margin-top : .6rem;
+
+        @include tableMobile {
+            margin-top: .6rem;
         }
+
         h2 {
             a {
                 color: #2F2F2F;
@@ -15,6 +17,16 @@
                 @include tableMobile {
                     font-size: 1.4rem;
                 }
+            }
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
+            margin-top : .8rem;
+            @include tableMobile{
+                display : none;
             }
         }
     }

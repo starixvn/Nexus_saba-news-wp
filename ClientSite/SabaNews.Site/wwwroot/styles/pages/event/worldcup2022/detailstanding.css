@@ -485,7 +485,7 @@ body {
     margin: 0 1.2rem;
     border-bottom: 1px solid #C49F5D; }
     .wc-table .wc-table-row:last-child {
-      border-bottom: none; }
+      border-bottom: none !important; }
   .wc-table .btn-next-standing, .wc-table .btn-back-standing {
     cursor: pointer;
     font-size: 2.4rem; }
@@ -530,8 +530,6 @@ body {
     @media screen and (max-width: 1024px) {
       .king-soccer .wc-table .wc-table-row {
         margin: 0 1.2rem; } }
-    .king-soccer .wc-table .wc-table-row::last-child {
-      border-bottom: none; }
     .king-soccer .wc-table .wc-table-row.hide {
       display: none; }
   .king-soccer .wc-table .cell-rank {

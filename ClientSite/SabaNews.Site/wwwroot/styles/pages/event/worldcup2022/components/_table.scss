@@ -87,7 +87,7 @@
         border-bottom: 1px solid #C49F5D;
 
         &:last-child {
-            border-bottom: none;
+            border-bottom: none !important;
         }
     }
 
@@ -156,15 +156,9 @@
             margin: 0 2rem;
             border-bottom: 1px solid #58263F;
             padding: 1.3rem 0;
-
             @include tableMobile {
                 margin: 0 1.2rem;
             }
-
-            &::last-child {
-                border-bottom: none;
-            }
-
             &.hide {
                 display: none;
             }
