@@ -85,7 +85,7 @@
                             }
                             <div class="post-items post-items-@lastestPostIndex">
                                 <div class="hover-image">
-                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })"><img src=@post.FeatureImage alt=@post.PostTitle class="img-res" /></a>
+                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })"><img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" /></a>
                                 </div>
                                 <div class="title">
                                     <h2><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a></h2>
@@ -127,7 +127,7 @@
                                     <div class="post-items swiper-slide scroll-snap-items post-hot">
                                         <div class="hover-image">
                                             <a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>
-                                                <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" />
+                                                <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                             </a>
                                             <div class="title-hot">
                                                 <h3><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostTitle</a></h3>
@@ -163,7 +163,7 @@
                             {
                                 <div class="post-items swiper-slide scroll-snap-items video-items post-items-2">
                                     <div class="hover-image">
-                                        <a href="#"><img src=@video.FeatureImage alt=@video.PostTitle class="img-res" /></a>
+                                        <a href="#"><img src=@video.FeatureImage alt=@video.PostTitle class="img-res" loading="lazy" /></a>
                                         <div class="icon-play-video">
                                             <i class="icon-play"></i>
                                             <input type="hidden" value="@video.PostContent" name="content" />
@@ -185,7 +185,7 @@
                 </div>
 
                 <div class="img-section">
-                    <img src="~/images/worldcup/section-3-items.png" alt="Alternate Text" />
+                    <img src="~/images/worldcup/section-3-items.png" alt="Alternate Text" loading="lazy" />
                 </div>
 
                 <div class="view-more">
@@ -208,7 +208,7 @@
                         <div class="post-items scroll-snap-items post-hot">
                             <div class="hover-image">
                                 <a href=@Url.Action("StoryPostDetail", "WorldCup2022", new { slug = story.Slug })>
-                                    <img src=@story.FeatureImage alt=@story.PostTitle class="img-res" />
+                                    <img src=@story.FeatureImage alt=@story.PostTitle class="img-res" loading="lazy" />
                                 </a>
                                 <div class="title-hot">
                                     <p>@story.PostTitle</p>
@@ -235,7 +235,7 @@
                     <div class="post-items post-hot">
                         <div class="hover-image">
                             <a href="https://www.sabavn.com/world-cup-2022/thong-tin-nuoc-chu-nha-world-cup-2022-qatar">
-                                <img src="~/images/worldcup/section-4-items-1.png" alt="Alternate Text" class="img-res" />
+                                <img src="~/images/worldcup/section-4-items-1.png" alt="Alternate Text" class="img-res" loading="lazy" />
                             </a>
                             <div class="title-hot">
                                 <h2>Nước chủ nhà</h2>
@@ -248,7 +248,7 @@
                     <div class="post-items post-hot">
                         <div class="hover-image">
                             <a href="https://www.sabavn.com/world-cup-2022/cac-svd-world-cup-2022">
-                                <img src="~/images/worldcup/section-4-items-2.png" alt="Alternate Text" class="img-res" />
+                                <img src="~/images/worldcup/section-4-items-2.png" alt="Alternate Text" class="img-res" loading="lazy" />
                             </a>
                             <div class="title-hot">
                                 <h2>Sân vận động</h2>
@@ -261,7 +261,7 @@
                     <div class="post-items post-hot">
                         <div class="hover-image">
                             <a href="https://www.sabavn.com/world-cup-2022/bong-thi-dau-world-cup-2022">
-                                <img src="~/images/worldcup/section-4-items-3.png" alt="Alternate Text" class="img-res" />
+                                <img src="~/images/worldcup/section-4-items-3.png" alt="Alternate Text" class="img-res" loading="lazy"/>
                             </a>
                             <div class="title-hot">
                                 <h2>Bóng thi đấu</h2>
@@ -274,7 +274,7 @@
                     <div class="post-items post-hot">
                         <div class="hover-image">
                             <a href="https://www.sabavn.com/world-cup-2022/linh-vat-world-cup-2022">
-                                <img src="~/images/worldcup/section-4-items-4.png" alt="Alternate Text" class="img-res" />
+                                <img src="~/images/worldcup/section-4-items-4.png" alt="Alternate Text" class="img-res" loading="lazy" />
                             </a>
                             <div class="title-hot">
                                 <h2>Linh Vật</h2>
@@ -287,7 +287,7 @@
                     <div class="post-items post-hot">
                         <div class="hover-image">
                             <a href="https://www.sabavn.com/world-cup-2022/nhung-doi-vo-dich-world-cup">
-                                <img src="~/images/worldcup/section-4-items-5.png" alt="Alternate Text" class="img-res" />
+                                <img src="~/images/worldcup/section-4-items-5.png" alt="Alternate Text" class="img-res" loading="lazy"/>
                             </a>
                             <div class="title-hot">
                                 <h2>Nhà vô địch</h2>
@@ -300,7 +300,7 @@
                     <div class="post-items post-hot">
                         <div class="hover-image">
                             <a href="https://www.sabavn.com/world-cup-2022/vua-pha-luoi-world-cup-trong-lich-su">
-                                <img src="~/images/worldcup/section-4-items-6.png" alt="Alternate Text" class="img-res" />
+                                <img src="~/images/worldcup/section-4-items-6.png" alt="Alternate Text" class="img-res" loading="lazy"/>
                             </a>
                             <div class="title-hot">
                                 <h2>Vua Phá Lưới</h2>
