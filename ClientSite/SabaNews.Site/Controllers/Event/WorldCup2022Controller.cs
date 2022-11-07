@@ -353,7 +353,7 @@
             return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
 
-        [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay")]
+        [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung")]
         public async Task<ActionResult> Minigame()
         {
             var header = new HeaderViewModel
