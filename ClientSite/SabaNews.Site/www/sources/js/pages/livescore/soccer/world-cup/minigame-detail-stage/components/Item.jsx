@@ -19,9 +19,6 @@ export class Item extends PureComponent {
     checkVoteOption = () => {
         const { match, vote } = this.props;
         let voteStatus = null;
-        if(!vote) {
-            return voteStatus;
-        }
         if(vote.teamId === 0) {
             voteStatus = 0;
         } else if(match.homeTeam.teamId ===  vote.teamId) {
