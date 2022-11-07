@@ -7,7 +7,7 @@
         "11/22/2022, 8:00:00 AM",
         "11/26/2022, 8:00:00 AM",
         "11/30/2022, 8:00:00 AM"
-    ];   
+    ];
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
@@ -93,7 +93,7 @@
             var statusStage = getStatusStage(i);
             if (statusStage == "Sắp diễn ra" || statusStage == "Sắp kết thúc") {
                 let timeCountDown = $("#stage" + (i + 1).toString()).data('timecountdown');
-        let countDown = new Date('November 16, 2022 08:00:00').getTime(),
+                let countDown = new Date(timeCountDown).getTime(),
                     x = setInterval(function () {
                         let now = new Date().getTime(),
                             distance = countDown - now;
@@ -103,11 +103,12 @@
                             secondShow = Math.floor((distance % (minute)) / second)
 
                         document.getElementById('hours' + (i + 1).toString()).innerHTML = `<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`,
-                document.getElementById('hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
-                    document.getElementById('minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
-                    document.getElementById('seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
+                            document.getElementById('minutes' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}:`,
+                            document.getElementById('seconds' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)})`;
+                        if (minuteShow == 0 && secondShow == 0) {
                             location.reload();
                         }
+                    }, second);
             }
         }
     }

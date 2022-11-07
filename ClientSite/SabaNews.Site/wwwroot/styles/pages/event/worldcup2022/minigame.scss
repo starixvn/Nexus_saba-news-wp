@@ -5,18 +5,19 @@
 @import './layout/header';
 
 body {
-    overflow : unset;
+    overflow: unset;
 }
 
-.disable-background{
+.disable-background {
     background: unset !important;
 }
 
 
 //before event
-.footer{
-    margin-top : auto;
+.footer {
+    margin-top: auto;
 }
+
 .before-event {
     @include creen1391px {
         display: flex;
@@ -118,9 +119,10 @@ body {
                             right: -35%;
                             top: 50%;
                             transform: translate(50%, -50%);
-                            @include Mobile{
-                                width : .8rem;
-                                height : .8rem;
+
+                            @include Mobile {
+                                width: .8rem;
+                                height: .8rem;
                             }
                         }
                     }
@@ -257,8 +259,9 @@ body {
         text-align: center;
         max-width: 70rem;
         margin: 0 auto;
-        @include tableMobile{
-            font-size : 1.8rem;
+
+        @include tableMobile {
+            font-size: 1.8rem;
         }
     }
 
@@ -269,9 +272,11 @@ body {
         width: 33.5rem;
         margin: 0 auto;
         position: relative;
-        @include Mobile{
-            width : 20rem;
+
+        @include Mobile {
+            width: 20rem;
         }
+
         &:after, &:before {
             content: '';
             display: block;
@@ -341,8 +346,9 @@ body {
     max-width: 70rem;
     padding: 0 1rem;
     margin: 0 auto;
-    position : relative;
+    position: relative;
 }
+
 .row-stage {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -361,6 +367,7 @@ body {
         &.right-top {
             top: 0;
             right: -85px;
+
             @include tableMobile {
                 right: 0;
             }
@@ -369,6 +376,7 @@ body {
         &.left-bottom {
             bottom: 0;
             left: -75px;
+
             @include tableMobile {
                 left: 0;
             }
@@ -378,7 +386,8 @@ body {
 
 .main-stage {
     margin-top: 4rem;
-    position : relative;
+    position: relative;
+
     .stage-items {
         position: relative;
         z-index: 9;
@@ -491,6 +500,7 @@ body {
     transform-origin: top left;
     transform: skewY(-2deg);
 }
+
 .minigame-winner {
     background: url('../../../../images/worldcup/minigame/bg_winner.png') no-repeat top center;
     background-size: cover;
@@ -519,7 +529,7 @@ body {
         z-index: -1;
 
         @include tableMobile {
-           display : none;
+            display: none;
         }
     }
 }

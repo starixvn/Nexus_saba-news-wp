@@ -374,15 +374,23 @@
                 Slug = WorldCup2022.UrlMinigameSlug
             };
 
+            var isLogin = sessionService.User != null;
             var model = new MinigameViewModel
             {
                 Header = header,
                 Matches = matches,
                 UserId = string.Empty,
+                IsLogin = isLogin,
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator),
+                BaseUrl = configuration.GetValue<string>(Constants.BaseUrl)
             };
 
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
                 model.UserId = sessionService.User.Id.ToString();
                 model.Votes = await worldcupService.GetMinigameByUserAsync(sessionService.User.Id);
+            }
             return View("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", model);
         }
 

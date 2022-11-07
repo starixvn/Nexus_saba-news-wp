@@ -24,6 +24,7 @@ body {
 
 .wc-logo {
   margin-right: -2rem;
+  filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.25));
 }
 @media screen and (max-width: 1024px) {
   .wc-logo {
@@ -39,7 +40,6 @@ body {
   justify-content: center;
   clip-path: polygon(0 0, 100% 0, 77% 100%, 23% 100%);
   transition: height 0.5s, polygon 0.5s !important;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
 }
 @media screen and (min-width: 1391px) {
   .wc-logo a {
@@ -480,33 +480,43 @@ body {
   border: 1px solid #E8E8D6;
   border-radius: 5px;
   width: 4.8rem;
-  left: 2rem; }
-  .header-nav-event li a {
-    padding: 1.8rem 1.2rem; }
-    .header-nav-event li a:after {
-      display: none; }
-    .header-nav-event li a span {
-      left: 45px;
-      margin-left: 0;
-      top: 21px;
-      font-weight: 700;
-      font-size: 1.6rem;
-      line-height: 1.9rem;
-      color: #958288;
-      width: 22rem; }
-    .header-nav-event li a .icon:before {
-      font-size: 2.4rem;
-      color: #958288; }
-    .header-nav-event li a.active, .header-nav-event li a:hover {
-      color: #833D55 !important; }
-      .header-nav-event li a.active .icon:before, .header-nav-event li a:hover .icon:before {
-        color: #833D55 !important; }
-      .header-nav-event li a.active span, .header-nav-event li a:hover span {
-        color: #833D55 !important; }
-  .header-nav-event:hover {
-    width: 26.6rem; }
-    .header-nav-event:hover span {
-      transition: all ease-in-out .6s !important; }
+  left: 2rem;
+}
+.header-nav-event li a {
+  padding: 1.8rem 1.2rem;
+}
+.header-nav-event li a:after {
+  display: none;
+}
+.header-nav-event li a span {
+  left: 45px;
+  margin-left: 0;
+  top: 21px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: #958288;
+  width: 22rem;
+}
+.header-nav-event li a .icon:before {
+  font-size: 2.4rem;
+  color: #958288;
+}
+.header-nav-event li a.active, .header-nav-event li a:hover {
+  color: #833D55 !important;
+}
+.header-nav-event li a.active .icon:before, .header-nav-event li a:hover .icon:before {
+  color: #833D55 !important;
+}
+.header-nav-event li a.active span, .header-nav-event li a:hover span {
+  color: #833D55 !important;
+}
+.header-nav-event:hover {
+  width: 26.6rem;
+}
+.header-nav-event:hover span {
+  transition: all ease-in-out 0.6s !important;
+}
 
 .title-section {
   display: flex;
