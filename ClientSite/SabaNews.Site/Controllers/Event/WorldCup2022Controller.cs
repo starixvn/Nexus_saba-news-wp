@@ -392,7 +392,7 @@
             if (sessionService.User == null 
                 || stage < WorldCup2022.MinigameStage1 
                 || stage > WorldCup2022.MinigameStage4 
-                //|| !LivescoreHelper.CheckStartStage(stage)
+                || !LivescoreHelper.CheckStartStage(stage)
             )
             {
                 return Redirect(Url.Action("Minigame", "WorldCup2022"));
@@ -502,14 +502,6 @@
         {
             var miniGames = await worldcupService.GetMinigameUsersAsync(criteria);
             return Json(miniGames);
-        }
-
-        [HttpPost]
-        public IActionResult CreateMinigameData(string luckyNumber, long teamId)
-        {
-            var result = new CommandResult();
-            result.Message = "Thời gian tham gia event chưa bắt đầu!";
-            return Json(result);
         }
 
         [HttpPost]

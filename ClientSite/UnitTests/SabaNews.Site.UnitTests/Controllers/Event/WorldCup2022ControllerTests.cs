@@ -9,12 +9,14 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Criteria.Posts;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Categories;
+    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -37,6 +39,7 @@
         private IConfiguration configuration;
         private ISessionService sessionService;
         private IUserService userService;
+        private IWorldCupService worldcupService;
         private readonly IFixture fixture = new Fixture();
 
 
@@ -521,24 +524,6 @@
         }
 
         [Fact]
-        public async Task GetDataMinigameWorldCup2022_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var param = fixture.Create<UserFilterMembershipEventModel>();
-            var criteria = fixture.Create<GetDataMinigameCriteria>();
-            var expected = fixture.Create<IEnumerable<MiniGame>>();
-            leagueService.GetDataMinigameAsync(Arg.Do<GetDataMinigameCriteria>(x => criteria = x)).Returns(expected);
-            //Act
-            var result = await controller.GetMinigameData(param);
-
-            // Assert
-            var viewResult = Assert.IsType<PartialViewResult>(result);
-            var viewModel = Assert.IsType<MinigameGridViewModel>(viewResult.Model);
-            Assert.Equal(expected, viewModel.MiniGames);
-        }
-
-        [Fact]
         public async Task GetMinigame_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -552,7 +537,24 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", viewResult.ViewName);
+            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetMinigameData_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var usersByStageCriteria = fixture.Create<GetMinigameUsersByStageCriteria>();
+            var minigameModels = fixture.Create<IList<UserMinigameModel>>();
+
+            worldcupService.GetMinigameUsersAsync(usersByStageCriteria).Returns(minigameModels);
+            //Act
+            var result = await controller.GetMinigameData(usersByStageCriteria);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(viewResult.Value, minigameModels);
         }
 
         [Fact]
@@ -771,7 +773,8 @@
             configuration = Substitute.For<IConfiguration>();
             sessionService = Substitute.For<ISessionService>();
             userService = Substitute.For<IUserService>();
-            var controller = new WorldCup2022Controller(postService, dataControlService, matchService, leagueService, configuration, sessionService, userService);
+            worldcupService = Substitute.For<IWorldCupService>();
+            var controller = new WorldCup2022Controller(postService, dataControlService, matchService, leagueService, configuration, sessionService, userService, worldcupService);
             return controller;
         }
         #endregion Helpers
