@@ -161,7 +161,11 @@ describe('Item', () => {
         it('return correctly class when isHome = true, and homeTeam win', () => {
             // Arrange
             const matchResult = 1;
-            const container = shallow(<Item {...defaultProps} />);
+            const props = {
+                ...defaultProps,
+                match: {status: 50}
+            };
+            const container = shallow(<Item {...props} />);
             const instance = container.instance();
 
             // Act
@@ -173,7 +177,11 @@ describe('Item', () => {
         it('return correctly class when isHome = false, and homeTeam lose', () => {
             // Arrange
             const matchResult = 2;
-            const container = shallow(<Item {...defaultProps} />);
+            const props = {
+                ...defaultProps,
+                match: {status: 50}
+            };
+            const container = shallow(<Item {...props} />);
             const instance = container.instance();
 
             // Act

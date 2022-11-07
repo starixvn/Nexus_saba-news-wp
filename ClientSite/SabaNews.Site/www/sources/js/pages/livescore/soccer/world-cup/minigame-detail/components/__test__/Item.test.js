@@ -166,7 +166,7 @@ describe('Item', () => {
            container.find('.view').simulate('click', event);
 
            // Assert
-           expect(window.open).toHaveBeenCalledWith('/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet/giai-doan/1', '_blank');
+           expect(window.open).toHaveBeenCalledWith('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/1', '_blank');
        });
 
        it('calls correctly when ctrlKey = false', () => {
@@ -187,7 +187,7 @@ describe('Item', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet/giai-doan/1');
+            expect(window.location).toEqual('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/1');
       });
     });
 
