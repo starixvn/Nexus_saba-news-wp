@@ -603,10 +603,6 @@ body {
   background: unset !important;
 }
 
-.footer {
-  margin-top: auto;
-}
-
 @media screen and (min-width: 1391px) {
   .before-event {
     display: flex;

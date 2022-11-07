@@ -3,7 +3,6 @@
 @import './components/container';
 @import './abstracts/wc-base';
 @import './layout/header';
-
 body {
     overflow: unset;
 }
@@ -14,10 +13,6 @@ body {
 
 
 //before event
-.footer {
-    margin-top: auto;
-}
-
 .before-event {
     @include creen1391px {
         display: flex;
