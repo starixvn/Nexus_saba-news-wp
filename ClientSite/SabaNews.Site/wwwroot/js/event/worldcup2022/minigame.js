@@ -40,7 +40,7 @@
                 $('#joining').modal('show');
             }
             else {
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet";
+                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet";
             }
         });
 
@@ -50,7 +50,7 @@
             }
             else {
                 var stage = $(this).data("stage");
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/" + stage;
+                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/giai-doan/" + stage;
             }
         });
 

@@ -49,7 +49,7 @@ export default class Item extends PureComponent {
     };
 
     handleViewDetail = event => {
-        const url = Site.resolveClientUrl(`world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet/giai-doan/${this.props.stage}`);
+        const url = Site.resolveClientUrl(`world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/${this.props.stage}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

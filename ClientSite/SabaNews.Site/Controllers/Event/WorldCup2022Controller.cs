@@ -394,7 +394,7 @@
             return View("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", model);
         }
 
-        [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/giai-doan/{stage}")]
+        [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/giai-doan/{stage}")]
         public IActionResult MinigameStage(byte stage)
         {
             if (sessionService.User == null 
@@ -418,7 +418,7 @@
             return View("~/Views/Event/WorldCup2022/Minigame/Stage.cshtml", model);
         }
 
-        [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet")]
+        [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet")]
         public IActionResult MinigameProfile()
         {
             if (sessionService.User == null)
@@ -438,7 +438,7 @@
             return View("~/Views/Event/WorldCup2022/Minigame/Profile.cshtml", model);
         }
 
-        [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay/chi-tiet/giai-doan/{stage}")]
+        [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/{stage}")]
         public IActionResult MinigameProfileStage(byte stage)
         {
             if (sessionService.User == null)
