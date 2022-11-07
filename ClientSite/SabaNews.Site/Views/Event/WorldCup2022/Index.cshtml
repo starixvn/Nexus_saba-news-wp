@@ -132,7 +132,6 @@
                                             <div class="title-hot">
                                                 <h3><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostTitle</a></h3>
                                                 <p><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostExcerpt</a></p>
-                                                <p class="date-time">@post.PostTime</p>
                                             </div>
                                         </div>
                                     </div>
@@ -212,8 +211,8 @@
                                     <img src=@story.FeatureImage alt=@story.PostTitle class="img-res" />
                                 </a>
                                 <div class="title-hot">
-                                    <p style="display:block">@story.PostTitle</p>
-                                    <p class="date-time" style="display:block">@story.PostTime</p>
+                                    <p>@story.PostTitle</p>
+                                    <p class="date-time">@story.PostTime</p>
                                 </div>
                             </div>
                         </div>
