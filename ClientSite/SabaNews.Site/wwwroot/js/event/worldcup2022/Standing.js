@@ -1,5 +1,11 @@
 ﻿var standing = (function ($) {
     var isKnockout = window.isKnockout.toLowerCase();
+    if (window.location.hash === '#knock-out') {
+        isKnockout = 'true';
+    } else if (window.location.hash === '#vong-bang') {
+        isKnockout = 'false';
+    }
+    console.log(window.location.hash, isKnockout);
 
     function handleBtn() {
         if (isKnockout === 'true') {
