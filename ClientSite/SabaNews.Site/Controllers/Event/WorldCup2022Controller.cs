@@ -376,7 +376,7 @@
 
             var model = new MinigameViewModel
             {
-                Header = header
+                Header = header,
                 Matches = matches,
                 UserId = string.Empty,
             };
