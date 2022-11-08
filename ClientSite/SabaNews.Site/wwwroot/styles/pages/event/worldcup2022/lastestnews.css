@@ -747,10 +747,12 @@ body {
     padding: 1rem 2rem;
     font-weight: 700;
     font-size: 1.4rem; }
+  .king-soccer .wc-table .wc-table-body {
+    margin: .4rem 0; }
   .king-soccer .wc-table .wc-table-row {
     margin: 0 2rem;
     border-bottom: 1px solid #58263F;
-    padding: 1.3rem 0; }
+    padding: .8rem 0; }
     @media screen and (max-width: 1024px) {
       .king-soccer .wc-table .wc-table-row {
         margin: 0 1.2rem; } }
@@ -984,7 +986,8 @@ body {
         padding: 6rem 1.2rem 1.2rem 1.2rem;
         background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 55.21%, #48041A 100%);
         width: 100%;
-        left: 0; }
+        left: 0;
+        border-radius: 0 0 5px 5px; }
         .card-horizontal__content .title {
           margin-bottom: .6rem; }
         .card-horizontal__content .title, .card-horizontal__content .datetime {

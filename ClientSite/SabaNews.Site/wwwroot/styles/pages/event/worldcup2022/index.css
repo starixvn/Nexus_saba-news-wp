@@ -754,10 +754,12 @@ body {
     padding: 1rem 2rem;
     font-weight: 700;
     font-size: 1.4rem; }
+  .king-soccer .wc-table .wc-table-body {
+    margin: .4rem 0; }
   .king-soccer .wc-table .wc-table-row {
     margin: 0 2rem;
     border-bottom: 1px solid #58263F;
-    padding: 1.3rem 0; }
+    padding: .8rem 0; }
     @media screen and (max-width: 1024px) {
       .king-soccer .wc-table .wc-table-row {
         margin: 0 1.2rem; } }
@@ -1400,7 +1402,7 @@ body {
   max-height: none; }
 
 .guess .swiper {
-  max-height: 56rem; }
+  max-height: 46.7rem; }
   @media screen and (max-width: 1024px) {
     .guess .swiper {
       height: 25rem; } }
