@@ -374,6 +374,13 @@
         @include tableMobile {
             padding: 0 1.2rem;
         }
+
+        .wc-table{
+            &-body{
+                font-size : 1.4rem;
+                font-weight : 500;
+            }
+        }
     }
 }
 
@@ -399,7 +406,7 @@
         max-height: 56rem;
 
         @include tableMobile {
-            height: 30rem;
+            height: 25rem;
         }
     }
 }

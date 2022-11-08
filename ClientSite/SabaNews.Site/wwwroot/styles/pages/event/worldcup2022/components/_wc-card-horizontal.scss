@@ -8,6 +8,7 @@
     &__image {
         border-radius: 5px;
         height: 12rem;
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
     }
 
     @include tableMobile {
@@ -42,8 +43,9 @@
                 font-size: 1.4rem;
                 line-height: 1.9rem;
             }
-            .datetime{
-                display : none;
+
+            .datetime {
+                display: none;
             }
 
             .title {

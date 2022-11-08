@@ -79,7 +79,7 @@
                 height: 1.8rem;
               }
               .soccer-team-name{
-                font-size: 1.1rem;
+                font-size: 1.4rem;
               }
             }
           }
@@ -220,10 +220,14 @@
           }
         }
         .soccer-team-name{
-          font-size: 1.4rem;
+          font-size: 1.5rem;
           padding-right: 0;
+          font-weight: 500;
+          &.win{
+            font-weight: 700;
+          }
           @include tableMobile{
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             order: 2;
           }
         }
