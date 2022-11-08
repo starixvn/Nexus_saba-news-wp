@@ -96,7 +96,6 @@
     function dataInit() {
         page = 1;
         isLoadData = true;
-        $('.lds-ellipsis').show();
         currentscrollHeight = 0;
         GetVideo();
     }
