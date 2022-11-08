@@ -61,7 +61,7 @@ export class AppContainer extends Component {
                                     <span className="line line-right"></span>
                                 </div>
                             </div>
-                            <div className="minigame-winner-control">
+                            <div className="minigame-control">
                                 {
                                     countStageWinners.map( item =>
                                         <button className= {this.state.selectedStage === item.value ? 'buttonStage active'
