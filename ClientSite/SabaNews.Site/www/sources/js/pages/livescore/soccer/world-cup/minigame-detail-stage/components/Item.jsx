@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
@@ -13,6 +13,7 @@ import DataService from '@jsroot/common/dataService';
 export class Item extends PureComponent {
     constructor(props) {
         super(props);
+        this.stage = parseInt(window.stage);
     }
 
 
@@ -31,7 +32,7 @@ export class Item extends PureComponent {
 
     checkKnockoutMatch = () => {
         const { match, teams } = this.props;
-        var result = window.stage != 4 || (window.stage == 4
+        const result = this.stage !== 4 || (this.stage === 4
             && teams.includes(match.homeTeam.teamId)
             && teams.includes(match.awayTeam.teamId));
         return !result;
@@ -39,22 +40,22 @@ export class Item extends PureComponent {
 
     handleVote = async teamId => {
         const { match, vote } = this.props;
-        if((window.stage == 4 && teamId === 0)
+        if((this.stage === 4 && teamId === 0)
         || (vote && vote.teamId === teamId)) {
             return;
         }
         const url = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');
         await DataService.postDataAsync(url, {matchId: match.matchId}).then(response => {
             const voteMatch = response.data;
-            var startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
+            const startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
             const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-            let minutes = startTime.diff(currentTime, 'minutes');
+            const minutes = startTime.diff(currentTime, 'minutes');
             if(voteMatch.status === MatchStatus.Finished
                 || minutes <= 30
                 || this.checkKnockoutMatch()) {
                 return;
             }
-            var params = {
+            const params = {
                 stage: window.stage,
                 teamId: teamId,
                 matchId: match.matchId
@@ -62,7 +63,7 @@ export class Item extends PureComponent {
             this.props.updateVote(params).then(() => {
                 this.props.getVotes();
             });
-        })
+        });
     };
 
     getTeamVote = () => {
@@ -90,7 +91,7 @@ export class Item extends PureComponent {
 
     getVoteScore = result => {
         if(result === null) {
-            return '';
+            return <></>;
         }
         if(result.status) {
             return <li>{`+${result.score}`}</li>;
@@ -110,19 +111,19 @@ export class Item extends PureComponent {
                             <div className="group-team">
                                 <div className="soccer-team home-team">
                                     <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>
-                                        {voteStatus === 1 ? "(v)" : ''} {CommonFunctions.getTeamName(match.homeTeam)}
+                                        {voteStatus === 1 ? '(v)' : ''} {CommonFunctions.getTeamName(match.homeTeam)}
                                     </div>
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                 </div>
 
                                 <ul className="wc-round-score">
-                                    <li className="total-score" onClick={() => this.handleVote(0)} > Hòa {voteStatus === 0 ? "(v)" : ''}</li>
+                                    <li className="total-score" onClick={() => this.handleVote(0)} > Hòa {voteStatus === 0 ? '(v)' : ''}</li>
                                 </ul>
 
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                     <div className={`soccer-team-name `} onClick={() => this.handleVote(match.awayTeam.teamId)}>
-                                        {CommonFunctions.getTeamName(match.awayTeam)} {voteStatus === 2 ? "(v)" : ''}
+                                        {CommonFunctions.getTeamName(match.awayTeam)} {voteStatus === 2 ? '(v)' : ''}
                                     </div>
                                     <ul className="soccer-team-status">
                                         <li>{this.getTeamVote()}</li>

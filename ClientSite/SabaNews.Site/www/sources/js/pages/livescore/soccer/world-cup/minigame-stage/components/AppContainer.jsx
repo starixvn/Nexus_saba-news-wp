@@ -27,7 +27,7 @@ export class AppContainer extends Component {
                     <img src="../../../../css/images/winner_sticker_4.png" alt="" />
                 </div>
             </div>
-        )
+        );
     }
 }
 

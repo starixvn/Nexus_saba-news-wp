@@ -20,7 +20,7 @@ export class AppContainer extends Component {
         }
         return(
             <Grid matches={matches} votes={votes} />
-        )
+        );
     }
 }
 

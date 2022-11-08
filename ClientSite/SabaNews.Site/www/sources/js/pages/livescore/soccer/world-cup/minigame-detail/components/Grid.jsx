@@ -42,10 +42,18 @@ export default class Grid extends PureComponent {
                     </tr>
                 </thead>
                 <tbody>
-                    <Item stage={WorldCup.MinigameStage.Stage4} votes={this.getVotesByStage(WorldCup.MinigameStage.Stage4)} matches={this.getMatchByStage(WorldCup.MinigameStage.Stage4)} />
-                    <Item stage={WorldCup.MinigameStage.Stage3} votes={this.getVotesByStage(WorldCup.MinigameStage.Stage3)} matches={this.getMatchByStage(WorldCup.MinigameStage.Stage3)} />
-                    <Item stage={WorldCup.MinigameStage.Stage2} votes={this.getVotesByStage(WorldCup.MinigameStage.Stage2)} matches={this.getMatchByStage(WorldCup.MinigameStage.Stage2)} />
-                    <Item stage={WorldCup.MinigameStage.Stage1} votes={this.getVotesByStage(WorldCup.MinigameStage.Stage1)} matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
+                    <Item stage={WorldCup.MinigameStage.Stage4}
+                        votes={this.getVotesByStage(WorldCup.MinigameStage.Stage4)}
+                        matches={this.getMatchByStage(WorldCup.MinigameStage.Stage4)} />
+                    <Item stage={WorldCup.MinigameStage.Stage3}
+                        votes={this.getVotesByStage(WorldCup.MinigameStage.Stage3)}
+                        matches={this.getMatchByStage(WorldCup.MinigameStage.Stage3)} />
+                    <Item stage={WorldCup.MinigameStage.Stage2}
+                        votes={this.getVotesByStage(WorldCup.MinigameStage.Stage2)}
+                        matches={this.getMatchByStage(WorldCup.MinigameStage.Stage2)} />
+                    <Item stage={WorldCup.MinigameStage.Stage1}
+                        votes={this.getVotesByStage(WorldCup.MinigameStage.Stage1)}
+                        matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
                 </tbody>
             </table>
         );

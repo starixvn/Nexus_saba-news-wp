@@ -430,6 +430,4 @@ describe('Item', () => {
            expect(result).toMatchSnapshot();
         });
     });
-
-    
 });

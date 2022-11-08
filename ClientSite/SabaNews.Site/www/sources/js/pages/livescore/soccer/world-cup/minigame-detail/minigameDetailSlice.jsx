@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { WorldCup } from '@jsroot/common/constants';
 const minigameDetailSlice = createSlice({
     name: 'minigameDetailSlice',
     initialState: {
@@ -27,7 +26,7 @@ const minigameDetailSlice = createSlice({
             state.league = league;
         },
         setVotes: (state, action) => {
-            state.votes = action.payload
+            state.votes = action.payload;
         }
     }
 });
@@ -37,7 +36,7 @@ const { actions, reducer } = minigameDetailSlice;
 export const {
     setMatches,
     setLeague,
-    setVotes,
+    setVotes
 } = actions;
 
 export default reducer;

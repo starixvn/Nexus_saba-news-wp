@@ -25,7 +25,7 @@ export class AppContainer extends Component {
             <div className="livescore-soccer">
                 <Stages groupStages={stages} />
             </div>
-        )
+        );
     }
 }
 

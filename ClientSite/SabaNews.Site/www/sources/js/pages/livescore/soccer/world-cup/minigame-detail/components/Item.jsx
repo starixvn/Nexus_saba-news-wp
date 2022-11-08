@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
-import { getVoteResult } from '../../common.functions';
+import { getVoteResult, getMinigameStageStartTime } from '../../common.functions';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
 import LangHelper from '@jsroot/common/langHelper';
-import { getMinigameStageStartTime } from '../../common.functions';
 
 export default class Item extends PureComponent {
     constructor(props) {

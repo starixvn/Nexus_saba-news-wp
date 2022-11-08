@@ -14,12 +14,13 @@ import { EqualHeight, EqualHeightElement } from 'react-equal-height';
 export class Item extends PureComponent {
     constructor(props) {
         super(props);
+        this.stage = parseInt(window.stage);
     }
 
     checkVoteOption = () => {
         const { match, votes } = this.props;
         let vote = null;
-        var matchVote = votes.find(item => item.matchId === match.matchId && item.stage == window.stage);
+        const matchVote = votes.find(item => item.matchId === match.matchId && item.stage === this.stage);
         if (!matchVote) {
             return vote;
         }
@@ -35,7 +36,7 @@ export class Item extends PureComponent {
 
     checkKnockoutMatch = () => {
         const { match, teams } = this.props;
-        var result = window.stage != 4 || (window.stage == 4
+        const result = this.stage !== 4 || (this.stage === 4
             && teams.includes(match.homeTeam.teamId)
             && teams.includes(match.awayTeam.teamId));
         return !result;
@@ -43,8 +44,8 @@ export class Item extends PureComponent {
 
     handleVote = async teamId => {
         const { match, votes } = this.props;
-        var vote = votes.find(item => item.matchId === match.matchId && item.stage == window.stage);
-        if ((window.stage == 4 && teamId === 0)
+        const vote = votes.find(item => item.matchId === match.matchId && item.stage === this.stage);
+        if ((this.stage === 4 && teamId === 0)
             || (vote && vote.teamId === teamId)) {
             return;
         }
@@ -59,7 +60,7 @@ export class Item extends PureComponent {
                 || this.checkKnockoutMatch()) {
                 return;
             }
-            var params = {
+            const params = {
                 stage: window.stage,
                 teamId: teamId,
                 matchId: match.matchId
@@ -67,32 +68,32 @@ export class Item extends PureComponent {
             this.props.updateVote(params).then(() => {
                 this.props.getVotes();
             });
-        })
-    }
+        });
+    };
 
     getVoteTeam = vote => {
         const { match } = this.props;
         if (vote === 1) {
             return (
                 <span>Bạn dự đoán <b>{CommonFunctions.getTeamName(match.homeTeam)}</b> sẽ giành chiến thắng!</span>
-            )
+            );
         } else if (vote === 2) {
             return (
                 <span>Bạn dự đoán <b>{CommonFunctions.getTeamName(match.awayTeam)}</b> sẽ giành chiến thắng!</span>
-            )
+            );
         } else if (vote === 0) {
             return (
                 <span>Bạn dự đoán {CommonFunctions.getTeamName(match.homeTeam)} và {CommonFunctions.getTeamName(match.awayTeam)} sẽ <b>Hòa</b> nhau!</span>
-            )
+            );
         }
-        return <span></span>
-    }
+        return <span></span>;
+    };
 
     render() {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
-            <div className={`statistic-grid-item ${vote != null ? "active" : ""}`} onClick={this.onClick}>
+            <div className={`statistic-grid-item ${vote != null ? 'active' : ''}`} onClick={this.onClick}>
                 <div className="statistic-grid-item-header">
                     <div className="statistic-grid-item-round">
                         {`Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
@@ -103,20 +104,20 @@ export class Item extends PureComponent {
                 <div className="statistic-grid-item-body">
                     <div className="team-main">
                         <EqualHeight>
-                            <div className={`statistic-team statistic-team-home ${vote === 1 ? "active" : ""}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
+                            <div className={`statistic-team statistic-team-home ${vote === 1 ? 'active' : ''}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
                                 <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                 <EqualHeightElement name="Name">
                                     <div className="statistic-team-name">{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                 </EqualHeightElement>
                             </div>
 
-                            <div className={`statistic-team statistic-draw ${vote === 0 ? "active" : ""}`} onClick={() => this.handleVote(0)}>
+                            <div className={`statistic-team statistic-draw ${vote === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)}>
                                 <i className="icon-minigame_draw" />
                                 <EqualHeightElement name="Name">
                                     <div className="statistic-team-name">Hòa</div>
                                 </EqualHeightElement>
                             </div>
-                            <div className={`statistic-team statistic-team-away ${vote === 2 ? "active" : ""}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
+                            <div className={`statistic-team statistic-team-away ${vote === 2 ? 'active' : ''}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
                                 <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                 <EqualHeightElement name="Name">
                                     <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>

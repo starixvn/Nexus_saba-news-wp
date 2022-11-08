@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Criteria.Event.WorldCup
 {
     using Fanex.Data.Repository;
+    using SabaNews.Core.Constants;
 
     public class GetMinigameByUserStageCriteria : CriteriaBase
     {
@@ -10,6 +11,6 @@
 
         public override string GetSettingKey() => "worldcup_minigame_getByUserStage";
 
-        public override bool IsValid() => UserId > 0 && Stage <= 4 && Stage > 0;
+        public override bool IsValid() => UserId > 0 && Stage <= WorldCup2022.MinigameStage4 && Stage >= WorldCup2022.MinigameStage1;
     }
 }

@@ -33,7 +33,7 @@ const minigameStageSlice = createSlice({
             state.league = league;
         },
         setVotes: (state, action) => {
-            state.votes = action.payload
+            state.votes = action.payload;
         },
         setUpdateVote: (state, action) => {
             state.updateVoteResult = action.payload;

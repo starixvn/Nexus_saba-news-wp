@@ -13,7 +13,7 @@ export class Stages extends PureComponent {
         this.state = {
             isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
             selectedStageId: this.initDefaultStage()
-        }
+        };
     }
 
     initDefaultStage = () => {
@@ -58,7 +58,7 @@ export class Stages extends PureComponent {
     getNumberVoted = () => {
         const { votes, groupStages } = this.props;
         let count = 0;
-        const voted = votes.filter(item => item.stage == window.stage);
+        const voted = votes.filter(item => item.stage === parseInt(window.stage));
         groupStages.map(group => {
             count += group.matches.length;
         });

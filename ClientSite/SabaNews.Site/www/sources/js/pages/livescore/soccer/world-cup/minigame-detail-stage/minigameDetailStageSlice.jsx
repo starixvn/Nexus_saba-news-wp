@@ -11,6 +11,13 @@ const minigameStageSlice = createSlice({
         teams: null
     },
     reducers: {
+        setLeague: (state, action) => {
+            const league = action.payload;
+            state.league = league;
+        },
+        setVotes: (state, action) => {
+            state.votes = action.payload;
+        },
         setMatches: (state, action) => {
             const matches = action.payload,
                 totalItems = matches.length,
@@ -27,13 +34,6 @@ const minigameStageSlice = createSlice({
             state.stages = stages;
             state.matches = matches;
             state.teams = teams;
-        },
-        setLeague: (state, action) => {
-            const league = action.payload;
-            state.league = league;
-        },
-        setVotes: (state, action) => {
-            state.votes = action.payload
         },
         setUpdateVote: (state, action) => {
             state.updateVoteResult = action.payload;

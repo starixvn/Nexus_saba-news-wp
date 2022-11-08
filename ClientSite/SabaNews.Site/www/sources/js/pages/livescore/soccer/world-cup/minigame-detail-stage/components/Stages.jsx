@@ -13,7 +13,7 @@ export class Stages extends PureComponent {
         super(props);
         this.state = {
             selectedStageId: this.initStageId()
-        }
+        };
     }
 
     initStageId = () => {
