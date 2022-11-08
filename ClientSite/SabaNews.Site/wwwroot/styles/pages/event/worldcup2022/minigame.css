@@ -461,9 +461,15 @@ body {
   border: none;
   border-radius: 0;
   max-width: 70rem; }
+  @media (max-width: 767px) {
+    .modal-game .show {
+      max-width: 37rem; } }
 
 .modal-game .is-login.show {
   max-width: 50rem; }
+  @media (max-width: 767px) {
+    .modal-game .is-login.show {
+      max-width: 37rem; } }
 
 .modal-game .minigame-title {
   padding-top: 2rem;
@@ -514,12 +520,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  @media (max-width: 767px) {
+    .modal-is-login {
+      padding: 5rem 0 3rem 0; } }
   .modal-is-login .warning-event {
     margin-bottom: 2rem;
     font-weight: 600;
     font-size: 1.6rem;
     line-height: 2.8rem;
     color: #000; }
+    @media screen and (max-width: 1024px) {
+      .modal-is-login .warning-event {
+        font-size: 1.5rem; } }
   .modal-is-login ul {
     list-style: none;
     display: flex;

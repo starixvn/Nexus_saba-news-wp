@@ -4,11 +4,19 @@
         border: none;
         border-radius: 0;
         max-width: 70rem;
+
+        @include Mobile {
+            max-width: 37rem;
+        }
     }
 
     .is-login {
         &.show {
             max-width: 50rem;
+
+            @include Mobile {
+                max-width: 37rem;
+            }
         }
     }
 
@@ -86,12 +94,20 @@
     flex-direction: column;
     align-items: center;
 
+    @include Mobile {
+        padding: 5rem 0 3rem 0;
+    }
+
     .warning-event {
         margin-bottom: 2rem;
         font-weight: 600;
         font-size: 1.6rem;
         line-height: 2.8rem;
         color: #000;
+
+        @include tableMobile {
+            font-size: 1.5rem;
+        }
     }
 
     ul {
