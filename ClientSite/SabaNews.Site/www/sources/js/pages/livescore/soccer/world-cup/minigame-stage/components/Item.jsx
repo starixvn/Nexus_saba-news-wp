@@ -42,7 +42,7 @@ export class Item extends PureComponent {
         return !result;
     };
 
-    handleVote = async teamId => {
+    handleVoteTeam = async teamId => {
         const { match, votes } = this.props;
         const vote = votes.find(item => item.matchId === match.matchId && item.stage === this.stage);
         if ((this.stage === 4 && teamId === 0)
@@ -104,20 +104,20 @@ export class Item extends PureComponent {
                 <div className="statistic-grid-item-body">
                     <div className="team-main">
                         <EqualHeight>
-                            <div className={`statistic-team statistic-team-home ${vote === 1 ? 'active' : ''}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
+                            <div className={`statistic-team statistic-team-home ${vote === 1 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(match.homeTeam.teamId)}>
                                 <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                 <EqualHeightElement name="Name">
                                     <div className="statistic-team-name">{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                 </EqualHeightElement>
                             </div>
 
-                            <div className={`statistic-team statistic-draw ${vote === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)}>
+                            <div className={`statistic-team statistic-draw ${vote === 0 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(0)}>
                                 <i className="icon-minigame_draw" />
                                 <EqualHeightElement name="Name">
                                     <div className="statistic-team-name">Hòa</div>
                                 </EqualHeightElement>
                             </div>
-                            <div className={`statistic-team statistic-team-away ${vote === 2 ? 'active' : ''}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
+                            <div className={`statistic-team statistic-team-away ${vote === 2 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(match.awayTeam.teamId)}>
                                 <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                 <EqualHeightElement name="Name">
                                     <div className="statistic-team-name">{CommonFunctions.getTeamName(match.awayTeam)}</div>

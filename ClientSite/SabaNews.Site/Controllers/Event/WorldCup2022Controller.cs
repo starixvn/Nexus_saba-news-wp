@@ -40,6 +40,7 @@
         private const long LeagueIdWC = WorldCup2022.LeagueIdWorldCup2022;
         private const long SeasonIdWC = WorldCup2022.SeasonIdWorldCup2022;
         private const string CategorySlugWC = WorldCup2022.HomepageSlug;
+        private const string WorldCupController = "WorldCup2022";
 
         public WorldCup2022Controller(
             IPostService postService,
@@ -321,7 +322,7 @@
                 Post = post,
                 Stories = stories,
                 BaseUrl = configuration.GetValue<string>(Constants.BaseUrl),
-                BackUrl = Url.Action("StoryPost", "WorldCup2022")
+                BackUrl = Url.Action("StoryPost", WorldCupController)
             };
             return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
         }
@@ -403,7 +404,7 @@
                 || !LivescoreHelper.CheckStartStage(stage)
             )
             {
-                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+                return Redirect(Url.Action("Minigame", WorldCupController));
             }
             var header = new HeaderViewModel
             {
@@ -423,7 +424,7 @@
         {
             if (sessionService.User == null)
             {
-                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+                return Redirect(Url.Action("Minigame", WorldCupController));
             }
             var header = new HeaderViewModel
             {
@@ -443,11 +444,11 @@
         {
             if (sessionService.User == null)
             {
-                return Redirect(Url.Action("Minigame", "WorldCup2022"));
+                return Redirect(Url.Action("Minigame", WorldCupController));
             }
             if (stage < WorldCup2022.MinigameStage1 || stage > WorldCup2022.MinigameStage4)
             {
-                return Redirect(Url.Action("MinigameProfile", "WorldCup2022"));
+                return Redirect(Url.Action("MinigameProfile", WorldCupController));
             }
             var header = new HeaderViewModel
             {

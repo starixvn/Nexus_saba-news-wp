@@ -198,29 +198,29 @@ export class AppContainer extends Component {
         groups.map(stage => {
             if(stage.key === WorldCup.EightTeamStage) {
                 const matches = stage.matches;
-                let tmpMatches = [];
+                const tmpMatches = [];
                 WorldCup.EightTeamMatches.map(item => {
                     const match = matches.find(m => m.matchId === item);
                     tmpMatches.push(match);
-                })
+                });
                 stage.matches = tmpMatches;
             }
             if(stage.key === WorldCup.QuarterfinalsStage) {
                 const matches = stage.matches;
-                let tmpMatches = [];
+                const tmpMatches = [];
                 WorldCup.QuaterFinalMatches.map(item => {
                     const match = matches.find(m => m.matchId === item);
                     tmpMatches.push(match);
-                })
+                });
                 stage.matches = tmpMatches;
             }
             if(stage.key === WorldCup.SemifinalsStage) {
                 const matches = stage.matches;
-                let tmpMatches = [];
+                const tmpMatches = [];
                 WorldCup.SemiFinalMatches.map(item => {
                     const match = matches.find(m => m.matchId === item);
                     tmpMatches.push(match);
-                })
+                });
                 stage.matches = tmpMatches;
             }
         });
