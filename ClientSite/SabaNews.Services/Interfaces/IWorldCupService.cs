@@ -15,8 +15,6 @@
 
         Task<MinigameMatchVote> GetMinigameVoteMatchAsync(GetMinigameVoteMatchCriteria criteria);
 
-        Task<(League, IList<VoteMatch>)> GetMinigameVotedMatchByUserStageAsync(GetMinigameVotedMatchByUserStageCriteria criteria);
-
         Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId);
         Task<IList<UserMinigameModel>> GetMinigameUsersAsync(GetMinigameUsersByStageCriteria criteria);
     }
