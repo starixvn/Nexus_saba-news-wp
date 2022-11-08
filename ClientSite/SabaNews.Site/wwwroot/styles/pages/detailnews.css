@@ -2532,7 +2532,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .event-modal-home .modal {
   background: none; }
   .event-modal-home .modal.show {
-    max-width: 63rem; }
+    max-width: 55rem;
+    top: 12rem;
+    transform: translate(50%, 0); }
+    @media screen and (max-width: 1024px) {
+      .event-modal-home .modal.show {
+        max-width: 35rem; } }
   .event-modal-home .modal .modal-body {
     padding: 0 !important;
     position: relative; }
@@ -2570,36 +2575,41 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         position: relative;
         cursor: pointer; }
   .event-modal-home .modal .close-login {
-    top: 0 !important;
-    right: 0 !important;
-    background: none !important; }
+    top: -30px !important;
+    right: -30px !important;
+    background: none !important;
+    width: 3rem;
+    height: 3rem;
+    background: rgba(255, 255, 255, 0.2) !important; }
     @media (max-width: 767px) {
       .event-modal-home .modal .close-login {
-        right: 1rem !important; } }
+        top: -35px !important;
+        right: 0 !important; } }
     .event-modal-home .modal .close-login span {
       color: #FDE9B2;
-      font-size: 3.8rem; }
+      font-size: 2.4rem;
+      color: #fff; }
 
 .modal-body .custom-checkbox-container {
   display: block;
   position: relative;
-  padding-left: 30px;
+  padding-left: 3rem;
   cursor: pointer;
-  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-size: 1.6rem;
-  color: #FDE9B2;
-  line-height: 2.8rem;
+  font-size: 1.4rem;
+  color: #2F2F2F;
+  line-height: 2.2rem;
   position: absolute;
-  bottom: 0;
-  left: 5%;
-  transform: translate(50%, -50%); }
+  bottom: 50px;
+  right: 50%;
+  transform: translate(50%, -50%);
+  font-weight: 700; }
   @media (max-width: 767px) {
     .modal-body .custom-checkbox-container {
-      bottom: 37%;
+      bottom: 25px;
       right: 50%;
       left: auto; } }
 
@@ -2613,11 +2623,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .modal-body .checkmark {
   position: absolute;
   left: 5px;
-  top: 5px;
-  height: 17px;
-  width: 17px;
+  top: 2px;
+  height: 1.8rem;
+  width: 1.8rem;
   background-color: transparent;
-  border: 1px solid #FDE9B2;
+  border: 2px solid #2F2F2F;
   border-radius: 3px; }
 
 .modal-body .custom-checkbox-container input:checked ~ .checkmark {
@@ -2633,11 +2643,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .modal-body .custom-checkbox-container .checkmark:after {
   left: 5px;
-  top: 2px;
+  top: 1px;
   width: 5px;
   height: 10px;
-  border: solid #FDE9B2;
-  border-width: 0 3px 3px 0;
+  border: solid #2F2F2F;
+  border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg); }
