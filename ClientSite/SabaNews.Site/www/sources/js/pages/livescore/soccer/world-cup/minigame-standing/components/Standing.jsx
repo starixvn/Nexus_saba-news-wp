@@ -42,13 +42,17 @@ export default class Standing extends PureComponent {
                     };
                 }
             });
+            let convertCreatedDate = new Date(createdDate),
+            convertUpdatedDate = new Date(updatedDate); 
+            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),0,0);
+            convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),0,0);
             standing.push({
                 userId: user.userId,
                 matchId : user.matchId,
                 teamId : user.teamId,
                 stage : user.stage,
-                createdDate : format(new Date(createdDate), 'dd/MM/yyyy, HH:mm:ss'),
-                updatedDate : format(new Date(updatedDate), 'dd/MM/yyyy, HH:mm:ss'), 
+                createdDate : format(convertCreatedDate, 'dd/MM/yyyy, HH:mm:ss'),
+                updatedDate : format(convertUpdatedDate, 'dd/MM/yyyy, HH:mm:ss'), 
                 userName : user.userName,
                 icon : user.icon,
                 point : pointNumber,
