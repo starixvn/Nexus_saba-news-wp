@@ -34,9 +34,9 @@ export default class Item extends PureComponent {
         let status = '';
         if(startMinutes > 60) {
             status = LangHelper.getResource('NotStarted');
-        } else if(startMinutes <= 60 && startMinutes > 30) {
+        } else if(startMinutes <= 60 && startMinutes > 0) {
             status = LangHelper.getResource('Upcomming');
-        } else if( startMinutes <= 30) {
+        } else if( startMinutes <= 0) {
             status = LangHelper.getResource('Inprogress');
         }
         if(lastMinutes <= 30) {

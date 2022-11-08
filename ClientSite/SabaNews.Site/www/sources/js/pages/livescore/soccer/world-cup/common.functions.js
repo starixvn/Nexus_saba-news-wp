@@ -88,7 +88,7 @@ export const getVoteResult = (match, vote) => {
 export const getMinigameStageStartTime = stage => {
     switch(stage) {
         case WorldCup.MinigameStage.Stage1:
-            return moment(new Date(2022, 9, 31, 15, 0, 0));
+            return moment(new Date(2022, 10, 1, 0, 0, 0));
         case WorldCup.MinigameStage.Stage2:
             return moment(new Date(2022, 10, 22, 8, 0, 0));
         case WorldCup.MinigameStage.Stage3:
