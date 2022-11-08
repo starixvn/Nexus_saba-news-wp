@@ -855,7 +855,10 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 1.7rem;
-    height: 20rem; }
+    height: 20rem;
+    cursor: no-drop; }
+    .main-stage .stage-items.stage-votes {
+      cursor: pointer; }
     .main-stage .stage-items .icon-stage {
       display: flex;
       align-items: center;

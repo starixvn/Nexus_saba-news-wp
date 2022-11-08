@@ -392,6 +392,10 @@ body {
         justify-content: flex-start;
         padding-top: 1.7rem;
         height: 20rem;
+        cursor : no-drop;
+        &.stage-votes{
+            cursor : pointer;
+        }
 
         .icon-stage {
             display: flex;
