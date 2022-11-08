@@ -29,38 +29,50 @@ export default class Standing extends PureComponent {
     handleStandings = (users, votes, points, detail) =>{
         let standing = [];
         users.map((user,indexUser) =>{
-            let pointNumber = 0;
             let {createdDate, updatedDate} = user;
+            let pointNumber = 0;
             votes.map( (vote, index) => {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
-                    if(createdDate < vote.createdDate){
-                        createdDate = vote.createdDate
-                    };
                     if(updatedDate < vote.updatedDate){
-                        updatedDate = vote.updatedDate
-                    };
+                        updatedDate = vote.updatedDate;
+                    }
+                    if(createdDate < vote.createdDate){
+                        createdDate = vote.createdDate;
+                    }
                 }
             });
-            let convertCreatedDate = new Date(createdDate),
-            convertUpdatedDate = new Date(updatedDate); 
-            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),0,0);
+            const  convertUpdatedDate = new Date(updatedDate),
+                convertCreatedDate = new Date(createdDate);
             convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),0,0);
+            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),0,0);
             standing.push({
                 userId: user.userId,
                 matchId : user.matchId,
                 teamId : user.teamId,
                 stage : user.stage,
-                createdDate : format(convertCreatedDate, 'dd/MM/yyyy, HH:mm:ss'),
-                updatedDate : format(convertUpdatedDate, 'dd/MM/yyyy, HH:mm:ss'), 
                 userName : user.userName,
                 icon : user.icon,
                 point : pointNumber,
-                detail: detail[indexUser]
+                detail: detail[indexUser],
+                createdDate : format(convertCreatedDate, 'dd/MM/yyyy, HH:mm:ss'),
+                updatedDate : format(convertUpdatedDate, 'dd/MM/yyyy, HH:mm:ss')
             });
         }) ;
         standing = this.sortStandingPoint(standing);
         return standing;
+    };
+
+    calculatorPointerDetail = (points, votes, matches, userId) => {
+        let pointWinner = 0;
+        votes.map((vote, index) => {
+            matches.map(match => {
+                if(userId === vote.userId && match.matchId === vote.matchId){
+                    pointWinner += points[index];
+                }
+            });
+        });
+        return pointWinner;
     };
 
     getMatchesByStageId = (matches, stageId) => {
@@ -73,31 +85,19 @@ export default class Standing extends PureComponent {
         return matchesByStageId;
     };
 
-    calculatorPointerDetail = (points, votes, matches, userId) => {
-        let point = 0;
-        votes.map((vote, index) => {
-            matches.map(match => {
-                if(userId === vote.userId && match.matchId === vote.matchId){
-                    point += points[index];
-                }
-            });
-        });
-        return point;
-    };
-
     getDetail = (matches, users, points, votes) => {
         const matchesEightTeamStage = this.getMatchesByStageId(matches,WorldCup.EightTeamStage),
-        matchesQuarterfinalsStage = this.getMatchesByStageId(matches,WorldCup.QuarterfinalsStage),
-        matchesSemifinalsStage = this.getMatchesByStageId(matches,WorldCup.SemifinalsStage),
         matchesThirdPlace = this.getMatchesByStageId(matches,WorldCup.ThirdPlace),
+        matchesQuarterfinalsStage = this.getMatchesByStageId(matches,WorldCup.QuarterfinalsStage),
         matchesFinalStage = this.getMatchesByStageId(matches,WorldCup.FinalStage),
+        matchesSemifinalsStage = this.getMatchesByStageId(matches,WorldCup.SemifinalsStage),
         detail = [];
         users.map(user => {
             detail.push({
-                pointEightTeamStage: this.calculatorPointerDetail(points, votes, matchesEightTeamStage, user.userId),
-                pointQuarterfinalsStage: this.calculatorPointerDetail(points, votes, matchesQuarterfinalsStage, user.userId),
-                pointSemifinalsStage: this.calculatorPointerDetail(points, votes, matchesSemifinalsStage, user.userId),
                 pointThirdPlace: this.calculatorPointerDetail(points, votes, matchesThirdPlace, user.userId),
+                pointEightTeamStage: this.calculatorPointerDetail(points, votes, matchesEightTeamStage, user.userId),
+                pointSemifinalsStage: this.calculatorPointerDetail(points, votes, matchesSemifinalsStage, user.userId),
+                pointQuarterfinalsStage: this.calculatorPointerDetail(points, votes, matchesQuarterfinalsStage, user.userId),
                 pointFinalStage: this.calculatorPointerDetail(points, votes, matchesFinalStage, user.userId)
             });
         });
@@ -105,12 +105,12 @@ export default class Standing extends PureComponent {
     };
 
     calculatorPointer = (matches, votes, search) => {
+        let detail = [];
         const points = [];
         let users = [];
-        let detail = [];
         votes.map(vote => {
-            const matchVote = this.getMatch(vote, matches);
             const result = getVoteResult(matchVote, vote);
+            const matchVote = this.getMatch(vote, matches);
             if(result != null && result.status){
                 points.push(result.score);
             }else{
@@ -165,12 +165,13 @@ export default class Standing extends PureComponent {
     };
 
     checkUser = (standings, userId) => {
+        let isUser = false;
         standings.map(index => {
             if(index.userId === userId){
-                return true;
+                isUser = true;
             }
         });
-        return false;
+        return isUser;
     } ;
 
     checkRank = (standings, userId ) =>{

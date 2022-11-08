@@ -14,8 +14,8 @@ export class AppContainer extends Component {
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}],
-            selectedStage: 1,
-        }
+            selectedStage: 1
+        };
     }
 
     componentDidMount() {
@@ -25,7 +25,7 @@ export class AppContainer extends Component {
     }
 
     handleChange = stage => {
-        if(stage != this.state.selectedStage){
+        if(stage !== this.state.selectedStage){
             this.setState({
                 selectedStage: stage
             });
@@ -64,7 +64,7 @@ export class AppContainer extends Component {
                             <div className="minigame-winner-control">
                                 {
                                     countStageWinners.map( item =>
-                                        <button className= {this.state.selectedStage === item.value ? 'buttonStage active' 
+                                        <button className= {this.state.selectedStage === item.value ? 'buttonStage active'
                                         : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
                                     )
                                 }
@@ -77,8 +77,8 @@ export class AppContainer extends Component {
                     </div>
                 }
             </>
-        )
-    };
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);

@@ -31,7 +31,7 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
                             <div className="user-avatar">
-                                { standing.icon ? <img src={standing.icon} alt={standing.userName.slice(0,1)} />  
+                                { standing.icon ? <img src={standing.icon} alt={standing.userName.slice(0,1)} />
                                     : <span className="non-image">{standing.userName.slice(0,1)}</span> }
                             </div>
                             <div className="user-name">
@@ -42,7 +42,7 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-time">
                             {standing.updatedDate != null ? standing.updatedDate : standing.createdDate}
                             {
-                               window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`} 
+                               window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`}
                                 onClick={() => this.handleClick(standingLength, number)}/> : null
                             }
                         </div>

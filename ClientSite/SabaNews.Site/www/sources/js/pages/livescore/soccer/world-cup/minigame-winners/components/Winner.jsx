@@ -45,15 +45,15 @@ export default class Winner extends PureComponent {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
                     if(createdDate < vote.createdDate){
-                        createdDate = vote.createdDate
-                    };
+                        createdDate = vote.createdDate;
+                    }
                     if(updatedDate < vote.updatedDate){
-                        updatedDate = vote.updatedDate
-                    };
+                        updatedDate = vote.updatedDate;
+                    }
                 }
             });
-            let convertCreatedDate = new Date(createdDate),
-                convertUpdatedDate = new Date(updatedDate); 
+            const convertCreatedDate = new Date(createdDate),
+                convertUpdatedDate = new Date(updatedDate);
             convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),0,0);
             convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),0,0);
             Winner.push({
@@ -104,7 +104,7 @@ export default class Winner extends PureComponent {
         return detail;
     };
 
-    calculatorPointer = (matches, votes) => { 
+    calculatorPointer = (matches, votes) => {
         const points = [];
         let users = [];
         let detail = [];
@@ -119,8 +119,8 @@ export default class Winner extends PureComponent {
             users = this.getUsersVote(users, vote);
         });
         detail = this.getDetail(matches, users, points, votes);
-        let Winner = this.handleWinners(users, votes, points, detail);
-        return Winner;
+        const winner = this.handleWinners(users, votes, points, detail);
+        return winner;
     };
 
     sortWinnerPoint = Winner =>{
@@ -162,18 +162,18 @@ export default class Winner extends PureComponent {
     };
 
     checkUser = (Winners, userId) => {
+        let isUser = false;
         Winners.map(index => {
             if(index.userId === userId){
-                return true;
+                isUser = true;
             }
         });
-        return false;
+        return isUser;
     } ;
 
     render() {
         const { matches, votes} = this.props;
         const Winners = this.calculatorPointer(matches, votes);
-        const userId = window.User;
         return (
             <>
             	<div className="minigame-table table-winner">
