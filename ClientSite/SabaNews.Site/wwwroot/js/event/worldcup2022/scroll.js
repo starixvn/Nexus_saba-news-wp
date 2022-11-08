@@ -86,6 +86,13 @@
             data: { slug, page, pageSize, isVideo }
         }).done(function (data) {
             $('#news-grid').html(data);
+            var numNews = parseInt(window.loading);
+            console.log(numNews);
+            if (numNews > 11) {
+                $('.lds-ellipsis').show();
+            } else {
+                $('.lds-ellipsis').hide();
+            }
 
         })
             .fail(function (jqXHR, ajaxOptions, thrownError) {
