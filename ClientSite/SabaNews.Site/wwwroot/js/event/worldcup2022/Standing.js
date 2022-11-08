@@ -5,7 +5,6 @@
     } else if (window.location.hash === '#vong-bang') {
         isKnockout = 'false';
     }
-    console.log(window.location.hash, isKnockout);
 
     function handleBtn() {
         if (isKnockout === 'true') {

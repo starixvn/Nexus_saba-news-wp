@@ -429,7 +429,7 @@
     {
         "outputFileName": "wwwroot/minify/js/standingworldcup2022.min.js",
         "inputFiles": [
-            "wwwroot/js/event/worldcup2022/standing.js",
+            "wwwroot/js/event/worldcup2022/Standing.js",
             "wwwroot/js/event/worldcup2022/worldcup.js"
         ],
         "minify": {
