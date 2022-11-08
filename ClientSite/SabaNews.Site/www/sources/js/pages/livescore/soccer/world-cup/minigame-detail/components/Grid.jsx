@@ -32,7 +32,8 @@ export default class Grid extends PureComponent {
 
     render() {
         return (
-            <table className='minigame-detail'>
+            <div className="wraper-minigame-table">
+                <table>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -56,6 +57,8 @@ export default class Grid extends PureComponent {
                         matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
                 </tbody>
             </table>
+            </div>
+            
         );
     }
 }

@@ -1,5 +1,11 @@
-.minigame-detail {
-    width: 100%;
-    background: white;
-    padding: 1rem
+@import './../../../../abstracts/mixins';
+@import './components/minigame_table';
+.statistic-grid{
+    &::before{
+        background-position: top 9rem center;
+    }
+}
+
+.wraper-minigame-table{
+    
 }
