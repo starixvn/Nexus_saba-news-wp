@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
 import Grid from './Grid';
-import { WorldCup } from '@jsroot/common/constants';
+import { WorldCup, MobileMaxWidth } from '@jsroot/common/constants';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -12,6 +12,7 @@ export class Stages extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
             selectedStageId: this.initStageId()
         };
     }
@@ -26,8 +27,32 @@ export class Stages extends PureComponent {
         return stageId;
     };
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
+    };
+
     handleSelectTab = key => {
         this.setState({ selectedStageId: key });
+    };
+
+    onChange = event => {
+        this.setState({ selectedStageId: parseInt(event.target.value, 10) });
     };
 
     handleClick = event => {
@@ -39,11 +64,19 @@ export class Stages extends PureComponent {
         }
     };
 
+    getMatchWithStage = () => {
+        const { groupStages } = this.props;
+        const { selectedStageId } = this.state;
+        const stage = groupStages.find(item => item.key === parseInt(selectedStageId, 10));
+        return stage;
+    };
+
 
     render() {
         const { votes, groupStages } = this.props;
-        const { selectedStageId } = this.state;
+        const { selectedStageId, isMobile } = this.state;
         const stages = groupStages;
+        const currentStage = this.getMatchWithStage();
         return (
             <div>
                 <div className="statistic">chi tiết giai đoạn { window.stage } |<span onClick={this.handleClick}>Quay lại</span></div>
@@ -52,7 +85,7 @@ export class Stages extends PureComponent {
                     <Grid matches={stages[0].matches} votes={votes} />
                 }
                 {
-                    stages.length > 1 &&
+                    (stages.length > 1 && !isMobile) &&
                     <Tabs className="live-score-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
                         {
                             stages.map(group => {
@@ -64,6 +97,22 @@ export class Stages extends PureComponent {
                             })
                         }
                     </Tabs>
+                }
+                {
+                    (stages.length > 1 && isMobile) &&
+                    <>
+                        <div className="nav-select-mb">
+                            <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
+                                {
+                                    stages.map(group =>
+                                        <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
+                                }
+                            </select>
+                        </div>
+                        {
+                            <Grid matches={currentStage.matches}  votes={votes}/>
+                        }
+                    </>
                 }
             </div>
         );
