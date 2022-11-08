@@ -43,7 +43,7 @@ export class AppContainer extends Component {
         return (
             <>
                 {
-                    (votes.length > 0 || countStageStanding.length > 0) &&
+                    (countStageStanding.length > 0) &&
                     <div className="minigame-section minigame-standing">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title standing-title">
@@ -64,7 +64,7 @@ export class AppContainer extends Component {
                                 <select value={this.state.selectValue}
                                     onChange={this.handleChange} className="custom-select">
                                     {
-                                        countStageStanding.map( index =>
+                                        this.state.stages.map( index =>
                                         <option key={index.value} value={index.value}>{index.name}</option> )
                                     }
                                 </select>

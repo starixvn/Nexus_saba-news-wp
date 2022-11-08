@@ -166,32 +166,13 @@ export default class Winner extends PureComponent {
         return false;
     } ;
 
-    checkRank = (Winners, userId ) =>{
-        let rank = 0;
-        if(userId === undefined){
-            rank = 0;
-        }else{
-            Winners.map((item, index) => {
-                if(item.userId === userId){
-                    rank = index + 1;
-                }
-            });
-        }
-        return rank;
-    };
-
     render() {
         const { matches, votes} = this.props;
         const Winners = this.calculatorPointer(matches, votes);
         const userId = window.User;
-        const rank = this.checkRank(Winners, userId);
         return (
             <>
             	<div className="minigame-table table-winner">
-                    {
-                        rank > 0 && <p>Thứ hạng của bạn: {rank}</p>
-                    }
-
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index">#</div>
                         <div className="table-row table-row-name">Tên</div>
