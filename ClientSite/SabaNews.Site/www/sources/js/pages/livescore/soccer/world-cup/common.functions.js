@@ -5,7 +5,7 @@ import moment from 'moment';
 
 export  const getMatchByEventStage = matches => {
     let tmpMatches = [];
-    const stage = parseInt(window.stage);
+    const stage = parseInt(window.stage, 10);
     const groupStage = matches.filter(item => item.stage.stageId === WorldCup.GroupsStage);
     if(stage === WorldCup.MinigameStage.Stage1) {
         tmpMatches = groupStage.slice(0, 16);

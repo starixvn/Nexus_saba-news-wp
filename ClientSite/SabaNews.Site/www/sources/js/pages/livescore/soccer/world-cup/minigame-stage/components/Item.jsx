@@ -14,7 +14,7 @@ import { EqualHeight, EqualHeightElement } from 'react-equal-height';
 export class Item extends PureComponent {
     constructor(props) {
         super(props);
-        this.stage = parseInt(window.stage);
+        this.stage = parseInt(window.stage, 10);
     }
 
     checkVoteOption = () => {

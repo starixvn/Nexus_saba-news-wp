@@ -47,18 +47,18 @@ export class Stages extends PureComponent {
     };
 
     handleSelectTab = key => {
-        this.setState({ selectedStageId: parseInt(key) });
+        this.setState({ selectedStageId: parseInt(key, 10) });
     };
 
     onChange = event => {
-        this.setState({ selectedStageId: parseInt(event.target.value) });
+        this.setState({ selectedStageId: parseInt(event.target.value, 10) });
     };
 
 
     getNumberVoted = () => {
         const { votes, groupStages } = this.props;
         let count = 0;
-        const voted = votes.filter(item => item.stage === parseInt(window.stage));
+        const voted = votes.filter(item => item.stage === parseInt(window.stage, 10));
         groupStages.map(group => {
             count += group.matches.length;
         });
@@ -68,7 +68,7 @@ export class Stages extends PureComponent {
     getMatchWithStage = () => {
         const { groupStages } = this.props;
         const { selectedStageId } = this.state;
-        const stage = groupStages.find(item => item.key === parseInt(selectedStageId));
+        const stage = groupStages.find(item => item.key === parseInt(selectedStageId, 10));
         return stage;
     };
 

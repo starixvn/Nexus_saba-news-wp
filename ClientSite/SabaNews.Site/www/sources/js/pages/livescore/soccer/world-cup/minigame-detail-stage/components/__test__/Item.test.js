@@ -173,7 +173,7 @@ describe('Item', () => {
             expect(result).toEqual(Promise.resolve({}));
         });
 
-        it('return correctly when voted old team', () => {
+        it('return correctly when match is finished', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -182,9 +182,42 @@ describe('Item', () => {
                 teams: [1, 2, 3, 4]
             }
             const response = {
-                matchId: 1,
-                status: 0,
-                startTime: '2022-10-10 8:00:00'
+                data: {
+                    matchId: 1,
+                    status: 50,
+                    startTime: '2022-10-10 8:00:00'
+                }
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-10-11 2:00:00');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+            const promise = Promise.resolve(response);
+            DataService.postDataAsync = jest.fn(() => promise);
+            instance.checkKnockoutMatch = jest.fn().mockReturnValue(true);
+
+
+            // Act
+            const result = instance.handleVote(2);
+
+            // Assert
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('/worldcup2022/GetMinigameVoteMatch', {matchId: 1});
+            expect(result).toEqual(Promise.resolve({}));
+        });
+
+        it('return correctly when match is not started', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
+                vote: {matchId: 1, teamId: 1},
+                teams: [1, 2, 3, 4]
+            }
+            const response = {
+                data: {
+                    matchId: 1,
+                    status: 0,
+                    startTime: '2022-10-10 8:00:00'
+                }
             }
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-10-09 2:00:00');
             const container = shallow(<Item {...props} />);
@@ -199,8 +232,6 @@ describe('Item', () => {
 
             // Assert
             expect(DataService.postDataAsync).toHaveBeenCalledWith('/worldcup2022/GetMinigameVoteMatch', {matchId: 1});
-            expect(result).toEqual(Promise.resolve({}));
-            expect(props.updateVote).toHaveBeenCalled();
         });
 
     });
@@ -336,7 +367,7 @@ describe('Item', () => {
             const result = instance.getVoteScore(null);
 
             // Assert
-            expect(result).toEqual('');
+            expect(result).toEqual(<></>);
         });
 
         it('return correctly when vote correctly', () => {
@@ -428,6 +459,24 @@ describe('Item', () => {
 
            // Assert
            expect(result).toMatchSnapshot();
+        });
+
+        it('call correctly functions ', () => {
+            // Arrange
+            const props = {
+               ...defaultProps,
+               match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+               vote: {matchId: 1, teamId: 0},
+               teams: [1, 2, 3, 4]
+           }
+
+           // Act
+           const container = shallow(<Item {...props} />);
+
+           // Assert
+           container.find('.home-team .soccer-team-name').simulate('click', 1);
+           container.find('.total-score').simulate('click', 0);
+           container.find('.away-team .soccer-team-name').simulate('click', 6);
         });
     });
 });

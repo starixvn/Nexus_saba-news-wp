@@ -13,7 +13,7 @@ import DataService from '@jsroot/common/dataService';
 export class Item extends PureComponent {
     constructor(props) {
         super(props);
-        this.stage = parseInt(window.stage);
+        this.stage = parseInt(window.stage, 10);
     }
 
 
