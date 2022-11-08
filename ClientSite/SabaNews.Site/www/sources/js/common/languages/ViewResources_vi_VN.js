@@ -53,5 +53,9 @@
     Unknown: 'Không xác định',
     Upcomming: 'Sắp diễn ra',
     StandingMinigame:'BẢNG XẾP HẠNG',
-    WinnersMinigame:'DANH SÁCH TRÚNG THƯỞNG'
+    WinnersMinigame:'DANH SÁCH TRÚNG THƯỞNG',
+    Stage1: "Giai đoạn 1",
+    Stage2: "Giai đoạn 2",
+    Stage3: "Giai đoạn 3",
+    Stage4: "Giai đoạn 4"
 };

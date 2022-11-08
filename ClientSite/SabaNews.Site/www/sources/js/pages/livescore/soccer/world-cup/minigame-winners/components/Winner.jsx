@@ -9,16 +9,10 @@ export default class Winner extends PureComponent {
         super(props);
     }
 
-    getMatch = (vote, matches) =>{
-        const matchVote = matches.filter(match => match.matchId === vote.matchId)[0];
-        return !matchVote ? null : matchVote;
-    };
-
     getUsersVote = (users, vote) =>{
         if(users.length === 0){
             users.push(vote);
-        }
-        else{
+        }else{
             const count = users.filter(x=>x.userId === vote.userId).length;
             if(count === 0){
                 users.push(vote);
@@ -27,21 +21,35 @@ export default class Winner extends PureComponent {
         return users;
     };
 
+    getMatchesByStageId = (matches, stageId) => {
+        const matchesByStageId = [];
+        matches.map(match => {
+            if(match.stage.stageId === stageId){
+                matchesByStageId.push(match);
+            }
+        });
+        return matchesByStageId;
+    };
+
+    getMatch = (vote, matches) =>{
+        const matchVote = matches.filter(match => match.matchId === vote.matchId)[0];
+        return !matchVote ? null : matchVote;
+    };
+
     handleWinners = (users, votes, points, detail) =>{
         let Winner = [];
         users.map((user,indexUser) =>{
             let pointNumber = 0;
-            let createdDate = user.createdDate, 
-            updatedDate = user.updatedDate;
+            let {createdDate, updatedDate} = user;
             votes.map( (vote, index) => {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
                     if(createdDate < vote.createdDate){
                         createdDate = vote.createdDate
-                    }
+                    };
                     if(updatedDate < vote.updatedDate){
                         updatedDate = vote.updatedDate
-                    }
+                    };
                 }
             });
             Winner.push({
@@ -50,7 +58,7 @@ export default class Winner extends PureComponent {
                 teamId : user.teamId,
                 stage : user.stage,
                 createdDate : format(new Date(createdDate), 'dd/MM/yyyy, HH:mm:ss'),
-                updatedDate : format(new Date(updatedDate), 'dd/MM/yyyy, HH:mm:ss'), 
+                updatedDate : format(new Date(updatedDate), 'dd/MM/yyyy, HH:mm:ss'),
                 userName : user.userName,
                 icon : user.icon,
                 point : pointNumber,
@@ -59,16 +67,6 @@ export default class Winner extends PureComponent {
         }) ;
         Winner = this.sortWinnerPoint(Winner);
         return Winner;
-    };
-
-    getMatchesByStageId = (matches, stageId) => {
-        let matchesByStageId = [];
-        matches.map(match => {
-            if(match.stage.stageId === stageId){
-                matchesByStageId.push(match);
-            }
-        });
-        return matchesByStageId;
     };
 
     calculatorPointerDetail = (points, votes, matches, userId) => {
@@ -80,12 +78,11 @@ export default class Winner extends PureComponent {
                 }
             });
         });
-        
         return point;
     };
 
     getDetail = (matches, users, points, votes) => {
-        let matchesEightTeamStage = this.getMatchesByStageId(matches,WorldCup.EightTeamStage),
+        const matchesEightTeamStage = this.getMatchesByStageId(matches,WorldCup.EightTeamStage),
         matchesQuarterfinalsStage = this.getMatchesByStageId(matches,WorldCup.QuarterfinalsStage),
         matchesSemifinalsStage = this.getMatchesByStageId(matches,WorldCup.SemifinalsStage),
         matchesThirdPlace = this.getMatchesByStageId(matches,WorldCup.ThirdPlace),
@@ -99,67 +96,61 @@ export default class Winner extends PureComponent {
                 pointThirdPlace: this.calculatorPointerDetail(points, votes, matchesThirdPlace, user.userId),
                 pointFinalStage: this.calculatorPointerDetail(points, votes, matchesFinalStage, user.userId)
             });
-        });  
-        return detail;                      
+        });
+        return detail;
     };
 
-    calculatorPointer = (matches, votes, search) => { 
-        let points = [];      
+    calculatorPointer = (matches, votes) => { 
+        const points = [];
         let users = [];
         let detail = [];
         votes.map(vote => {
-            let matchVote = this.getMatch(vote, matches);
-            let result = getVoteResult(matchVote, vote);
+            const matchVote = this.getMatch(vote, matches);
+            const result = getVoteResult(matchVote, vote);
             if(result != null && result.status){
                 points.push(result.score);
-            }
-            else{
+            }else{
                 points.push(0);
             }
             users = this.getUsersVote(users, vote);
-        }); 
-        detail = this.getDetail(matches, users, points, votes);    
+        });
+        detail = this.getDetail(matches, users, points, votes);
         let Winner = this.handleWinners(users, votes, points, detail);
-        if(search != ""){
-           Winner = this.handleSearch(Winner, search);
-        }       
         return Winner;
     };
-    
-    sortWinnerPoint = (Winner) =>{
+
+    sortWinnerPoint = Winner =>{
         Winner = this.sortWinnerDate(Winner);
         Winner.map((item, index) =>{
             let max = item.point;
             let indexMax = index;
             Winner.map((Winner, indexSort) => {
-                if(indexSort > index){
-                    if(max < Winner.point){
-                        max = Winner.point;
-                        indexMax = indexSort;
-                    }
+                if(indexSort > index && max < Winner.point){
+                    max = Winner.point;
+                    indexMax = indexSort;
                 }
             });
-            let swap = Winner[index];
+            const swap = Winner[index];
             Winner[index] = Winner[indexMax];
             Winner[indexMax] = swap;
         });
         return Winner;
     };
 
-    sortWinnerDate = (Winner) =>{
+    sortWinnerDate = Winner =>{
         Winner.map((item, index) =>{
             let max = item.updatedDate != null ? item.updatedDate : item.createdDate;
             let indexMax = index;
             Winner.map((Winner, indexSort) => {
                 if(indexSort > index){
-                    let maxSort = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
+                    const maxSort = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
                     if(max > maxSort){
                         max = maxSort;
                         indexMax = indexSort;
                     }
                 }
             });
-            let swap = Winner[index];
+            const swap = Winner[index];
             Winner[index] = Winner[indexMax];
             Winner[indexMax] = swap;
         });
@@ -179,31 +170,19 @@ export default class Winner extends PureComponent {
         let rank = 0;
         if(userId === undefined){
             rank = 0;
-        }
-        else{
+        }else{
             Winners.map((item, index) => {
                 if(item.userId === userId){
                     rank = index + 1;
                 }
             });
         }
-        return rank
-    };
-
-    handleSearch = (Winners, search) =>{
-        let searches = [];
-        Winners.map(item => {
-            var name = JSON.stringify(item.userName);
-            if(name.toLowerCase().includes(search.toLowerCase())){
-                searches.push(item);
-            }
-        });
-        return searches;
+        return rank;
     };
 
     render() {
-        const { matches, votes, search } = this.props;
-        const Winners = this.calculatorPointer(matches, votes, search);
+        const { matches, votes} = this.props;
+        const Winners = this.calculatorPointer(matches, votes);
         const userId = window.User;
         const rank = this.checkRank(Winners, userId);
         return (

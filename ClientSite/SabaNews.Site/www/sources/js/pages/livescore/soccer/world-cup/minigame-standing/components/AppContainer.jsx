@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Standing from '../components/Standing';
+import React, { Component } from 'react';
 import { ActionCreators } from '../actions';
+import { connect } from 'react-redux';
 import { getMatchByEventStage } from '../../common.functions';
 import LangHelper from '@jsroot/common/langHelper';
-import Standing from '../components/Standing';
+import { string } from 'prop-types';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            stages:[{name:"Giai đoạn 1", value:1},
-            {name:"Giai đoạn 2", value:2},
-            {name:"Giai đoạn 3", value:3},
-            {name:"Giai đoạn 4", value:4}],
+            stages:[{name:LangHelper.getResource('Stage1'), value:1},
+            {name:LangHelper.getResource('Stage2'), value:2},
+            {name:LangHelper.getResource('Stage3'), value:3},
+            {name:LangHelper.getResource('Stage4'), value:4}],
             selectedStage: 1,
-            search: ""
-        }
+            search: ''
+        };
     }
 
     componentDidMount() {
@@ -29,7 +30,7 @@ export class AppContainer extends Component {
         this.setState({
             selectedStage: event.target.value
         });
-        this.props.getVotes(parseInt(event.target.value));
+        this.props.getVotes(parseInt(event.target.value, 10));
     };
 
     render() {
@@ -37,7 +38,7 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        let countStageStanding =this.state.stages.filter( x => x.value <= window.CountStageActive);
+        const countStageStanding =this.state.stages.filter( x => x.value <= window.CountStageActive);
         const showMatches = getMatchByEventStage(matches);
         return (
             <>
@@ -60,23 +61,22 @@ export class AppContainer extends Component {
                                 </div>
                             </div>
                             <div className="minigame-standing-control">
-                                <select value={this.state.selectValue} 
+                                <select value={this.state.selectValue}
                                     onChange={this.handleChange} className="custom-select">
                                     {
-                                        countStageStanding.map( index => 
+                                        countStageStanding.map( index =>
                                         <option key={index.value} value={index.value}>{index.name}</option> )
                                     }
                                 </select>
                                 <div className="custom-search">
-                                    <input 
-                                        placeholder="Tìm kiếm theo tên..." 
-                                        className="custom-search-input" 
-                                        onChange={e => this.setState({search: e.target.value})} 
+                                    <input
+                                        placeholder="Tìm kiếm theo tên..."
+                                        className="custom-search-input"
+                                        onChange={e => this.setState({search: e.target.value})}
                                         autoComplete="false"
                                     />
                                     <i className="icon-icon_search custom-search-icon"/>
                                 </div>
-                                
                             </div>
                             <Standing matches={showMatches} votes={votes} search={this.state.search} />
                         </div>
@@ -89,7 +89,7 @@ export class AppContainer extends Component {
                 }
             </>
         )
-    }
+    };
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);

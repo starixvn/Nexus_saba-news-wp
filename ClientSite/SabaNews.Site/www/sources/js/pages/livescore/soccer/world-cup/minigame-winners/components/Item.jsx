@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -10,15 +10,14 @@ export class Item extends PureComponent {
 
     handleClick = (winnnerLength, number) =>{
         for(let num = 0; num < winnnerLength ; num ++){
-            if(num != number){
+            if(num !== number){
                 document.getElementsByClassName('detailWinners')[num].style.display = 'none';
             }
         }
         const display = document.getElementsByClassName('detailWinners')[number].style.display;
         if(display === 'block'){
             document.getElementsByClassName('detailWinners')[number].style.display = 'none';
-        }
-        else{
+        }else{
             document.getElementsByClassName('detailWinners')[number].style.display = 'block';
         }
     };
@@ -28,13 +27,14 @@ export class Item extends PureComponent {
         return (
             <>
                 {
-                    number < 10 && 
+                    number < 10 &&
                         <div className="minigame-table-items">
                             <div className="minigame-table-flex ">
                                 <div className="table-row table-row-index">{number + 1}</div>
                                 <div className="table-row table-row-name table-user">
                                     <div className="user-avatar">
-                                        { Winner.icon ? <img src={Winner.icon} alt={Winner.userName.slice(0,1)} />  : <span className="non-image">{Winner.userName.slice(0,1)}</span> }
+                                        { Winner.icon ? <img src={Winner.icon} alt={Winner.userName.slice(0,1)} />  
+                                        : <span className="non-image">{Winner.userName.slice(0,1)}</span> }
                                     </div>
                                     <div className="user-name">
                                         {Winner.userName}
@@ -44,15 +44,15 @@ export class Item extends PureComponent {
                                 <div className="table-row table-row-time">
                                     {Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate}
                                     {
-                                    window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(winnnerLength, number)}/> : null
+                                    window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`} 
+                                    onClick={() => this.handleClick(winnnerLength, number)}/> : null
                                     }
-                                    
                                 </div>
                             </div>
                         </div>
                 }
                 {
-                    number < 10 && window.stage === 4 && 
+                    number < 10 && window.stage === 4 &&
                     <div className="table-dropdown detailWinners" style={{display:'none'}}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-row">

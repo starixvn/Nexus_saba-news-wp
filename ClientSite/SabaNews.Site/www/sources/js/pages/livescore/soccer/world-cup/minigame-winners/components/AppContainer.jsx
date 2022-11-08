@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { getMatchByEventStage } from '../../common.functions';
 import LangHelper from '@jsroot/common/langHelper';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { getMatchByEventStage } from '../../common.functions';
 import Winner from '../components/Winner';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            stages:[{name:"Giai đoạn 1", value:1},
-            {name:"Giai đoạn 2", value:2},
-            {name:"Giai đoạn 3", value:3},
-            {name:"Giai đoạn 4", value:4}],
+            stages:[{name:LangHelper.getResource('Stage1'), value:1},
+            {name:LangHelper.getResource('Stage2'), value:2},
+            {name:LangHelper.getResource('Stage3'), value:3},
+            {name:LangHelper.getResource('Stage4'), value:4}],
             selectedStage: 1,
-            search: ""
         }
     }
 
@@ -30,7 +29,7 @@ export class AppContainer extends Component {
             this.setState({
                 selectedStage: stage
             });
-            this.props.getVotes(parseInt(stage));
+            this.props.getVotes(parseInt(stage, 10));
         }
     };
 
@@ -39,7 +38,7 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        let countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageEnd);
+        const countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageEnd);
         const showMatches = getMatchByEventStage(matches);
         return (
             <>
@@ -64,21 +63,22 @@ export class AppContainer extends Component {
                             </div>
                             <div className="minigame-winner-control">
                                 {
-                                    countStageWinners.map( item => 
-                                        <button className= {this.state.selectedStage === item.value ? 'buttonStage active' : 'buttonStage'} onClick={e => this.handleChange(item.value)}>{item.name}</button>
+                                    countStageWinners.map( item =>
+                                        <button className= {this.state.selectedStage === item.value ? 'buttonStage active' 
+                                        : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
                                     )
                                 }
                             </div>
-                            <Winner matches={showMatches} votes={votes} search={this.state.search} />
+                            <Winner matches={showMatches} votes={votes} />
                         </div>
                         <div className="winner-icon">
                             <img src="../../../../css/images/winner_sticker_4.png" alt="" />
                         </div>
                     </div>
                 }
-            </>            
+            </>
         )
-    }
+    };
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);

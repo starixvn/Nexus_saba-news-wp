@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import { getVoteResult } from '../../common.functions';
 import Item from './Item';
-import { WorldCup } from '@jsroot/common/constants';
 import { format } from 'date-fns';
+import { getVoteResult } from '../../common.functions';
+import { WorldCup } from '@jsroot/common/constants';
+import React, { PureComponent } from 'react';
 
 export default class Standing extends PureComponent {
     constructor(props) {
@@ -17,8 +17,7 @@ export default class Standing extends PureComponent {
     getUsersVote = (users, vote) =>{
         if(users.length === 0){
             users.push(vote);
-        }
-        else{
+        }else{
             const count = users.filter(x=>x.userId === vote.userId).length;
             if(count === 0){
                 users.push(vote);
@@ -31,17 +30,16 @@ export default class Standing extends PureComponent {
         let standing = [];
         users.map((user,indexUser) =>{
             let pointNumber = 0;
-            let createdDate = user.createdDate, 
-                updatedDate = user.updatedDate;
+            let {createdDate, updatedDate} = user;
             votes.map( (vote, index) => {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
                     if(createdDate < vote.createdDate){
                         createdDate = vote.createdDate
-                    }
+                    };
                     if(updatedDate < vote.updatedDate){
                         updatedDate = vote.updatedDate
-                    }
+                    };
                 }
             });
             standing.push({
@@ -62,7 +60,7 @@ export default class Standing extends PureComponent {
     };
 
     getMatchesByStageId = (matches, stageId) => {
-        let matchesByStageId = [];
+        const matchesByStageId = [];
         matches.map(match => {
             if(match.stage.stageId === stageId){
                 matchesByStageId.push(match);
@@ -80,12 +78,11 @@ export default class Standing extends PureComponent {
                 }
             });
         });
-        
         return point;
     };
 
     getDetail = (matches, users, points, votes) => {
-        let matchesEightTeamStage = this.getMatchesByStageId(matches,WorldCup.EightTeamStage),
+        const matchesEightTeamStage = this.getMatchesByStageId(matches,WorldCup.EightTeamStage),
         matchesQuarterfinalsStage = this.getMatchesByStageId(matches,WorldCup.QuarterfinalsStage),
         matchesSemifinalsStage = this.getMatchesByStageId(matches,WorldCup.SemifinalsStage),
         matchesThirdPlace = this.getMatchesByStageId(matches,WorldCup.ThirdPlace),
@@ -99,67 +96,64 @@ export default class Standing extends PureComponent {
                 pointThirdPlace: this.calculatorPointerDetail(points, votes, matchesThirdPlace, user.userId),
                 pointFinalStage: this.calculatorPointerDetail(points, votes, matchesFinalStage, user.userId)
             });
-        });  
-        return detail;                      
+        });
+        return detail;
     };
 
-    calculatorPointer = (matches, votes, search) => { 
-        let points = [];      
+    calculatorPointer = (matches, votes, search) => {
+        const points = [];
         let users = [];
         let detail = [];
         votes.map(vote => {
-            let matchVote = this.getMatch(vote, matches);
-            let result = getVoteResult(matchVote, vote);
+            const matchVote = this.getMatch(vote, matches);
+            const result = getVoteResult(matchVote, vote);
             if(result != null && result.status){
                 points.push(result.score);
-            }
-            else{
+            }else{
                 points.push(0);
             }
             users = this.getUsersVote(users, vote);
-        }); 
-        detail = this.getDetail(matches, users, points, votes);    
+        });
+        detail = this.getDetail(matches, users, points, votes);
         let standing = this.handleStandings(users, votes, points, detail);
-        if(search != ""){
+        if(search !== ''){
            standing = this.handleSearch(standing, search);
-        }       
+        }
         return standing;
     };
-    
-    sortStandingPoint = (standing) =>{
+
+    sortStandingPoint = standing =>{
         standing = this.sortStandingDate(standing);
         standing.map((item, index) =>{
             let max = item.point;
             let indexMax = index;
             standing.map((standing, indexSort) => {
-                if(indexSort > index){
-                    if(max < standing.point){
+                if(indexSort > index && max < standing.point){
                         max = standing.point;
                         indexMax = indexSort;
-                    }
                 }
             });
-            let swap = standing[index];
+            const swap = standing[index];
             standing[index] = standing[indexMax];
             standing[indexMax] = swap;
         });
         return standing;
     };
 
-    sortStandingDate = (standing) =>{
+    sortStandingDate = standing =>{
         standing.map((item, index) =>{
             let max = item.updatedDate != null ? item.updatedDate : item.createdDate;
             let indexMax = index;
             standing.map((standing, indexSort) => {
                 if(indexSort > index){
-                    let maxSort = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
+                    const maxSort = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
                     if(max > maxSort){
                         max = maxSort;
                         indexMax = indexSort;
                     }
                 }
             });
-            let swap = standing[index];
+            const swap = standing[index];
             standing[index] = standing[indexMax];
             standing[indexMax] = swap;
         });
@@ -179,21 +173,20 @@ export default class Standing extends PureComponent {
         let rank = 0;
         if(userId === undefined){
             rank = 0;
-        }
-        else{
+        }else{
             standings.map((item, index) => {
-                if(item.userId === parseInt(userId)){
+                if(item.userId === parseInt(userId, 10)){
                     rank = index + 1;
                 }
             });
         }
-        return rank
+        return rank;
     };
 
     handleSearch = (standings, search) =>{
-        let searches = [];
+        const searches = [];
         standings.map(item => {
-            var name = JSON.stringify(item.userName);
+            const name = JSON.stringify(item.userName);
             if(name.toLowerCase().includes(search.toLowerCase())){
                 searches.push(item);
             }
@@ -225,7 +218,6 @@ export default class Standing extends PureComponent {
                     </div>
                 </div>
             </>
-            
         );
     }
 }

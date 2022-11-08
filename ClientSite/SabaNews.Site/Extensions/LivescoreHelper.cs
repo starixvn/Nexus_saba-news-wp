@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Constants.Livescore;
     using SabaNews.Livescore.Models.League;
@@ -8,6 +9,7 @@
     using SabaNews.Models.Event.WorldCup;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
 
     public static class LivescoreHelper
@@ -201,7 +203,7 @@
         public static int GetCountStageActiveMinigame(IList<Match> matches)
         {
             int result = 0;
-            int maxCountStage = 4;
+            const int maxCountStage = 4;
             for(int i = 0; i < maxCountStage; i++)
             {
                 var statusStage = GetStatusStage(matches, i + 1);
@@ -216,7 +218,7 @@
         public static int GetCountStageEndMinigame(IList<Match> matches)
         {
             int result = 0;
-            int maxCountStage = 4;
+            const int maxCountStage = 4;
             for (int i = 0; i < maxCountStage; i++)
             {
                 var statusStage = GetStatusStage(matches, i + 1);
@@ -231,26 +233,24 @@
         public static string GetCountDownStage(string status, IList<Match> matches, int numStage)
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
+            const int SubtractMinutes = -30;
             List<string> longs = new() {
                 WorldCup2022.TimestampMinigameStage01Start,
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
-            string statusStage;
-            if (status.Contains(WorldCup2022.BeforeStartedStage))
-            {
-                statusStage = longs[numStage];
-            }
-            else
-            {
-                statusStage = matches[indexMatches[numStage]].StartTime.AddMinutes(-30).ToString();
-            }
+            string statusStage = status.Contains(WorldCup2022.BeforeStartedStage) ? 
+                longs[numStage] : 
+                matches[indexMatches[numStage]].StartTime.AddMinutes(SubtractMinutes).ToString().ToLower(CultureInfo.InvariantCulture);
             return statusStage;            
         }
 
         public static string GetStatusStage(IList<Match> matches, int numStage)
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
+            const int ThirtyMinsToSecond = 1800;
+            const int SixtyMinsToSecond = 3600;
+            const int NinetyMinsToSecond = 5400;
             List<string> longs = new() { 
                 WorldCup2022.TimestampMinigameStage01Start, 
                 WorldCup2022.TimestampMinigameStage02Start,
@@ -263,21 +263,17 @@
             string statusStage;
             if (checkNow > 0)
             {
-                if (checkNow > 3600)
-                {
-                    statusStage = WorldCup2022.LockStage;
-                }
-                else { statusStage = WorldCup2022.BeforeStartedStage; }
+                statusStage = checkNow > SixtyMinsToSecond ? WorldCup2022.LockStage : WorldCup2022.BeforeStartedStage;
             }
             else
             {
                 var timeSpanEnd = (matches[indexMatches[numStage]].StartTime - new DateTime(1970, 1, 1, 0, 0, 0));
                 var checkNowEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
-                if (checkNowEnd > 5400)
+                if (checkNowEnd > NinetyMinsToSecond)
                 {
                     statusStage = WorldCup2022.OnStartedStage;
                 }
-                else if (checkNowEnd <= 5400 && checkNowEnd > 1800)
+                else if (checkNowEnd <= NinetyMinsToSecond && checkNowEnd > ThirtyMinsToSecond)
                 {
                     statusStage = WorldCup2022.BeforeEndStage;
                 }

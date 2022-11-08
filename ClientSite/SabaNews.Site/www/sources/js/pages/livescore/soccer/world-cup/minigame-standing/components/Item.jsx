@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -10,15 +10,14 @@ export class Item extends PureComponent {
 
     handleClick = (standingLength, number) =>{
         for(let num = 0; num < standingLength ; num ++){
-            if(num != number){
+            if(num !== number){
                 document.getElementsByClassName('detailStandings')[num].style.display = 'none';
             }
         }
         const display = document.getElementsByClassName('detailStandings')[number].style.display;
         if(display === 'block'){
             document.getElementsByClassName('detailStandings')[number].style.display = 'none';
-        }
-        else{
+        }else{
             document.getElementsByClassName('detailStandings')[number].style.display = 'block';
         }
     };
@@ -32,7 +31,8 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
                             <div className="user-avatar">
-                                { standing.icon ? <img src={standing.icon} alt={standing.userName.slice(0,1)} />  : <span className="non-image">{standing.userName.slice(0,1)}</span> }
+                                { standing.icon ? <img src={standing.icon} alt={standing.userName.slice(0,1)} />  
+                                    : <span className="non-image">{standing.userName.slice(0,1)}</span> }
                             </div>
                             <div className="user-name">
                                 {standing.userName}
@@ -42,14 +42,14 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-time">
                             {standing.updatedDate != null ? standing.updatedDate : standing.createdDate}
                             {
-                               window.stage === 4 ?  <i className="icon-bxh_view" id={"iconDetail" + (number + 1)} onClick={e => this.handleClick(standingLength, number)}/> : null
+                               window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`} 
+                                onClick={() => this.handleClick(standingLength, number)}/> : null
                             }
-                            
                         </div>
                     </div>
                 </div>
                 {
-                    window.stage === 4 && 
+                    window.stage === 4 &&
                     <div className="table-dropdown detailStandings" style={{display:'none'}}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-row">
