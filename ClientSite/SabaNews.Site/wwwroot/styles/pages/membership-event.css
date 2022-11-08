@@ -1726,11 +1726,7 @@ body {
 
 .footer {
   border-top: 4px solid #6D0202;
-  background-color: #9F0303;
-  margin-top: 12rem; }
-  @media (max-width: 767px) {
-    .footer {
-      margin-top: 4rem; } }
+  background-color: #9F0303; }
   @media (max-width: 767px) {
     .footer .copy-right {
       border-top: 1px solid #6D0202; } }

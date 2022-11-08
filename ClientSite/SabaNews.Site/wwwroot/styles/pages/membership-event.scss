@@ -40,12 +40,6 @@ body {
 .footer {
     border-top: 4px solid #6D0202;
     background-color: #9F0303;
-    margin-top: 12rem;
-
-    @include Mobile {
-        margin-top: 4rem;
-    }
-
     .copy-right {
         @include Mobile {
             border-top: 1px solid #6D0202;
