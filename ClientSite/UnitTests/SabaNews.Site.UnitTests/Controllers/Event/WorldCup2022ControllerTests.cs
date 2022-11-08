@@ -418,7 +418,7 @@
             leagueService.GetTop10ScorersAsync(Arg.Do<GetTop10ScorersCriteria>(x => topCriteria = x)).Returns(topScorers);
 
             //Act
-            var result = await controller.GetTopScorers();
+            var result = await controller.GetTopScorers(true);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);

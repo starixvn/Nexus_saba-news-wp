@@ -16,25 +16,6 @@
         private IPostService postService;
         private readonly IFixture fixture = new Fixture();
 
-        [Fact]
-        public async Task InvokeAsync_SlugIsEmpty_ReturnExpectedViewResult()
-        {
-            //Arrange
-            var component = GetViewComponent();
-            var postId = fixture.Create<int>();
-            var slug = "";
-            var model = fixture.Create<GetRecentPostsParam>();
-
-            var expected = fixture.Create<IEnumerable<Post>>();
-            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => model = x)).Returns(expected);
-
-            //Act
-            var actual = await component.InvokeAsync(postId, slug);
-
-            //Assert
-            var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
-            Assert.Equal(expected, viewResult.ViewData.Model);
-        }
 
         [Fact]
         public async Task InvokeAsync_WhenNotHavePostInList_ReturnExpectedViewResult()
@@ -61,7 +42,7 @@
             postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeAsync(postId, slug);
+            var actual = await component.InvokeAsync(postId);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
@@ -94,7 +75,7 @@
             postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeAsync(postId, slug);
+            var actual = await component.InvokeAsync(postId);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
