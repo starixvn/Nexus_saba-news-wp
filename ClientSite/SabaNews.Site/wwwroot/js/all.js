@@ -285,10 +285,31 @@ $(document).ready(function () {
         }
     });
 
-    $('#EventModal').modal('hide');
-
     getFavouriteMatchCount();
+    toggleChangeDomainPopup();
+    
+
 });
+
+function toggleChangeDomainPopup() {
+    var hidePopupEvent = localStorage.getItem('sabasports-hide-popup-change-domain');
+    if (hidePopupEvent !== "1") {
+        setTimeout(function () {
+            $('#ChangeDomainModal').modal('show');
+        }, 3000);
+    }
+
+
+    $('#isHidePopupChangeDomain').on('change', function () {
+        if ($(this).is(':checked')) {
+            localStorage.setItem("sabasports-hide-popup-change-domain", "1");
+            $('#ChangeDomainModal').modal('hide');
+        } else {
+            localStorage.setItem("sabasports-hide-popup-change-domain", "0");
+
+        }
+    });
+}
 
 function getFavouriteMatchCount() {
     let matchIds = localStorage.getItem('favourite-matches');
