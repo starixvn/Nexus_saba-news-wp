@@ -20,7 +20,7 @@
         public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0)
         {
            
-            const string endItemsWC = Constants.GetFourItems;
+            const int endItemsWC = Constants.GetFourItems;
             var postWCParam = new PostParam
             {
                 Slug = cateSlug,
