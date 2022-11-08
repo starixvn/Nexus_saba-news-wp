@@ -204,4 +204,232 @@ describe('Item', () => {
         });
 
     });
+
+    describe('getTeamVote', () => {
+        it('return correctly when vote homeTeam', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 1},
+                teams: [1, 2, 3, 4]
+            }
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('homeTeam');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamVote();
+
+            // Assert
+            expect(result).toEqual('homeTeam');
+        });
+
+        it('return correctly when vote homeTeam', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 6},
+                teams: [1, 2, 3, 4]
+            }
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('awayTeam');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamVote();
+
+            // Assert
+            expect(result).toEqual('awayTeam');
+        });
+
+        it('return correctly when vote homeTeam', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('awayTeam');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamVote();
+
+            // Assert
+            expect(result).toEqual('Hòa');
+        });
+    });
+
+    describe('getVoteResult', () => {
+        it('return correcly when vote match not finish', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteResult(null);
+
+            // Assert
+            expect(result).toEqual(<li>empty</li>);
+        });
+
+        it('return correcly when vote correctly', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteResult({ status: true});
+
+            // Assert
+            expect(result).toEqual(<li>win</li>);
+        });
+
+        it('return correcly when vote incorrectly', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteResult({ status: false});
+
+            // Assert
+            expect(result).toEqual(<li>lose</li>);
+        });
+    });
+
+    describe('getVoteScore', () => {
+        it('return correctly when match not finished', () => {
+             // Arrange
+             const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteScore(null);
+
+            // Assert
+            expect(result).toEqual('');
+        });
+
+        it('return correctly when vote correctly', () => {
+            // Arrange
+            const props = {
+               ...defaultProps,
+               match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+               vote: {matchId: 1, teamId: 0},
+               teams: [1, 2, 3, 4]
+           }
+           const container = shallow(<Item {...props} />);
+           const instance = container.instance();
+
+           // Act
+           const result = instance.getVoteScore({status: true, score: 10});
+
+           // Assert
+           expect(result).toEqual(<li>+10</li>);
+       });
+
+        it('return correctly when vote incorrectly', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteScore({status: false, score: 0});
+
+            // Assert
+            expect(result).toEqual(<li>0</li>);
+        });
+    });
+    describe('renders', () => {
+        it('render correctly when vote homeTeam', () => {
+             // Arrange
+             const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: {matchId: 1, teamId: 1},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when vote awayTeam', () => {
+            // Arrange
+            const props = {
+               ...defaultProps,
+               match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+               vote: {matchId: 1, teamId: 6},
+               teams: [1, 2, 3, 4]
+           }
+           const container = shallow(<Item {...props} />);
+           const instance = container.instance();
+
+           // Act
+           const result = instance.render();
+
+           // Assert
+           expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when vote draw ', () => {
+            // Arrange
+            const props = {
+               ...defaultProps,
+               match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+               vote: {matchId: 1, teamId: 0},
+               teams: [1, 2, 3, 4]
+           }
+           const container = shallow(<Item {...props} />);
+           const instance = container.instance();
+
+           // Act
+           const result = instance.render();
+
+           // Assert
+           expect(result).toMatchSnapshot();
+        });
+    });
+
+    
 });
