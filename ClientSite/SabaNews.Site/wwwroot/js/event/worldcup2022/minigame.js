@@ -1,7 +1,7 @@
 ﻿var minigame = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
     const longs = [
-        "10/31/2022, 3:05:00 PM",
+        "11/08/2022, 3:00:00 PM",
         "11/22/2022, 8:00:00 AM",
         "11/26/2022, 8:00:00 AM",
         "11/30/2022, 8:00:00 AM"
@@ -112,8 +112,8 @@
     }
 
     function getStatusStage(i) {
-        var timeSpanNow = new Date() / 1000;
-        var checkNow = new Date(longs[i]).getTime() - timeSpanNow;
+        var timeSpanNow = new Date();
+        var checkNow = (new Date(longs[i]) - timeSpanNow) / 1000;
         var statusStage;
         if (checkNow > 0) {
             if (checkNow > 3600) {

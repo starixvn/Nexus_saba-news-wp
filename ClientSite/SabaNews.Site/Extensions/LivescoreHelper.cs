@@ -257,7 +257,7 @@
                 WorldCup2022.TimestampMinigameStage03Start, 
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            var timeSpanNow = (DateTime.UtcNow.AddHours(7) - new DateTime(1970, 1, 1, 0, 0, 0));
             var timeStartStage = DateTime.Parse(longs[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;
@@ -291,7 +291,7 @@
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            var timeSpanNow = (DateTime.UtcNow.AddHours(7) - new DateTime(1970, 1, 1, 0, 0, 0));
             var timeStartStage = DateTime.Parse(longs[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             if (checkNow > 0)

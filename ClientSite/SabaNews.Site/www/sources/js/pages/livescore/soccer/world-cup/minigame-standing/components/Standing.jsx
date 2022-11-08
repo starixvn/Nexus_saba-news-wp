@@ -109,8 +109,8 @@ export default class Standing extends PureComponent {
         const points = [];
         let users = [];
         votes.map(vote => {
-            const result = getVoteResult(matchVote, vote);
             const matchVote = this.getMatch(vote, matches);
+            const result = getVoteResult(matchVote, vote);
             if(result != null && result.status){
                 points.push(result.score);
             }else{

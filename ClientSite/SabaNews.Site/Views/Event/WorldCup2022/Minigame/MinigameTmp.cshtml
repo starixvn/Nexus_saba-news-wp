@@ -154,7 +154,9 @@
                             var icon = GetIconStage(status);
                             var isActive = CheckActive(status);
 
-                                <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status != WorldCup2022.LockStage ? "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
+                                <div id="boxStage@(i+1)" class="stage-items stage-items-1 
+                                        @(status != WorldCup2022.LockStage && status != WorldCup2022.BeforeStartedStage ? 
+                                        "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
                                     <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
                                     <div class="stage-round @(isActive ? "active" : "")">
                                         <h2>Giai Đoạn @(i + 1)</h2>
