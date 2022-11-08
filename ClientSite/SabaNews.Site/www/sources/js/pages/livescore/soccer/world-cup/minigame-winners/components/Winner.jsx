@@ -36,10 +36,10 @@ export default class Winner extends PureComponent {
             votes.map( (vote, index) => {
                 if(user.userId === vote.userId){
                     pointNumber += points[index];
-                    if(user.createdDate < vote.createdDate){
+                    if(createdDate < vote.createdDate){
                         createdDate = vote.createdDate
                     }
-                    if(user.updatedDate < vote.updatedDate){
+                    if(updatedDate < vote.updatedDate){
                         updatedDate = vote.updatedDate
                     }
                 }
