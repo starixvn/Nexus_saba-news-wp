@@ -12,9 +12,9 @@ const minigameWinnersSlice = createSlice({
     reducers: {
         setMatches: (state, action) => {
            const matches = action.payload,
-                totalItems = matches.length,
+                totalMatches = matches.length,
                 stages = [];
-            for (let i = 0; i < totalItems; i++) {
+            for (let i = 0; i < totalMatches; i++) {
                 const match = matches[i];
                 if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
                     stages.push(match.stage);
