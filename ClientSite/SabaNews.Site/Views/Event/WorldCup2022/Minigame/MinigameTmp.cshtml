@@ -13,7 +13,7 @@
     <meta property="og:title" content='@Model.Header.Title' />
 }
 
-    @{
+@{
     var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
     detector.Parse();
     bool isMobile = detector.IsMobile();
@@ -61,7 +61,7 @@
         window.User = '@Model.UserId';
         window.CountStageActive = '@countStageActive';
         window.CountStageEnd = '@countStageEnd';
-   </script>
+    </script>
     <script src="~/js/event/worldcup2022/minigame.js" asp-append-version="true"></script>
     <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
 }
@@ -98,7 +98,8 @@
             </a>
         </li>
         @{
-            if (Model.IsLogin){
+            if (Model.IsLogin)
+            {
                 <li>
                     <a href=@Url.Action("MinigameProfile", "WorldCup2022") class="click-my-prediction">
                         <i class="icon icon-minigame_my_fav"></i>
@@ -108,7 +109,7 @@
             }
             if (countStageActive > 0)
             {
-                 <li>
+                <li>
                     <a href="#minigame-standing" class="click-list-standing">
                         <i class="icon icon-minigame_standing"></i>
                         <span>Bảng Xếp Hạng</span>
@@ -154,33 +155,33 @@
                             var icon = GetIconStage(status);
                             var isActive = CheckActive(status);
 
-                                <div id="boxStage@(i+1)" class="stage-items stage-items-1 
-                                        @(status != WorldCup2022.LockStage && status != WorldCup2022.BeforeStartedStage ? 
+                            <div id="boxStage@(i+1)" class="stage-items stage-items-1
+                                        @(status != WorldCup2022.LockStage && status != WorldCup2022.BeforeStartedStage ?
                                         "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[indexMatches[i]].StartTime">
-                                    <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
-                                    <div class="stage-round @(isActive ? "active" : "")">
-                                        <h2>Giai Đoạn @(i + 1)</h2>
-                                    </div>
-                                    <ul class="count-and-time">
-                                        @if (Model.IsLogin)
-                                        {
-                                            <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
-                                        }
-                                        @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
-                                        {
-                                            <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
-                                            @status
-                                                @if (status != WorldCup2022.OnStartedStage)
-                                            {
-                                                    <span id="hours@(i+1)" style="margin-left : 5px"></span>
-                                                    <span id="minutes@(i+1)"></span>
-                                                    <span id="seconds@(i+1)"></span>
-                                            }
-                                            </li>
-                                        }
-                                    </ul>
-                                    <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
+                                <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
+                                <div class="stage-round @(isActive ? "active" : "")">
+                                    <h2>Giai Đoạn @(i + 1)</h2>
                                 </div>
+                                <ul class="count-and-time">
+                                    @if (Model.IsLogin)
+                                    {
+                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
+                                    }
+                                    @if (status != WorldCup2022.LockStage && status != WorldCup2022.OnEndStage)
+                                    {
+                                        <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
+                                            @status
+                                            @if (status != WorldCup2022.OnStartedStage)
+                                            {
+                                                <span id="hours@(i+1)" style="margin-left : 5px"></span>
+                                                <span id="minutes@(i+1)"></span>
+                                                <span id="seconds@(i+1)"></span>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
+                            </div>
                         }
                     }
                 </div>
@@ -197,85 +198,44 @@
 </section>
 
 
-<div class="auth-form">
-    <div class="modal" id="register" style="display:none">
-        <div class="modal-content modal-auth">
-            <div class="modal-warning">
-                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
-                    <i class="icon icon-close-event"></i>
-                </button>
-                <div class="modal-body register">
-                    <div class="heading-modal-event">BẠN ĐÃ DỰ ĐOÁN</div>
+<div class="auth-form  modal-game">
 
-                    <ul class="review-number">
-                    </ul>
+    @*<div class="modal modal-game" id="success" style="display:none">
+            <div class="modal-content modal-auth">
+                <div class="modal-warning">
+                    <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                        <i class="icon icon-close-event"></i>
+                    </button>
+                    <div class="modal-body register">
+                        <div class="heading-modal-event">Chọn đội vô địch thành công</div>
+                        <p class="text-event-modal">Cảm ơn bạn đã tham gia chương trình.</p>
+                        <ul>
+                            <li><a href="javascript:;" data-dismiss="modal" aria-label="Close" class="btn btn-event btn-btn-skip action">đóng</a></li>
+                        </ul>
+                    </div>
 
-                    <p class="text-event-modal">Bạn đã chắc chắn chứ?</p>
-                    <ul>
-                        <li><a href="#nhap-so-may-man" class="btn btn-event btn-accept active">ĐỒNG Ý</a></li>
-                        <li><a href="javascript:;" data-dismiss="modal" class="btn btn-event btn-btn-skip btn-reset-number">CHỌN LẠI</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="modal" id="notice" style="display:none">
-        <div class="modal-content modal-auth">
-            <div class="modal-warning">
-                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
-                    <i class="icon icon-close-event"></i>
-                </button>
-                <div class="modal-body register">
-                    <div class="heading-modal-event">nhập số may mắn</div>
-                    <p class="text-event-modal"></p>
-                    <ul>
-                        <li><a href="javascript:;" data-dismiss="modal" aria-label="Close" class="btn btn-event btn-btn-skip action">đóng</a></li>
-                    </ul>
                 </div>
 
             </div>
-
-        </div>
-    </div>
-
-    <div class="modal" id="success" style="display:none">
-        <div class="modal-content modal-auth">
-            <div class="modal-warning">
-                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
-                    <i class="icon icon-close-event"></i>
-                </button>
-                <div class="modal-body register">
-                    <div class="heading-modal-event">chọn đội vô địch thành công</div>
-                    <p class="text-event-modal">Cảm ơn bạn đã tham gia chương trình.</p>
-                    <ul>
-                        <li><a href="javascript:;" data-dismiss="modal" aria-label="Close" class="btn btn-event btn-btn-skip action">đóng</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    
+        </div>*@
 
 
 
-    <div class="modal" id="joining" style="display:none">
+
+    <div class="modal is-login" id="joining" style="display:none">
         <div class="modal-content modal-auth">
             <div class="modal-warning">
                 <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
                     <i class="icon icon-close-event"></i>
                 </button>
                 <div class="modal-body field-number field-number-validate">
-                    <div class="validate-vent-input">
+                    <div class="modal-is-login">
                         <div class="warning-event">
                             Vui lòng đăng nhập hoặc đăng ký để tham gia
                         </div>
                         <ul class="flex-btn auth-input">
                             <li><a href="javascript:;" class="btn btn-modal-minigame auth-login">Đăng nhập</a></li>
-                            <li><a href="javascript:;" class="btn btn-modal-minigame auth-login active" data-form="register">Đăng ký</a></li>
+                            <li><a href="javascript:;" class="btn btn-modal-minigame auth-login" data-form="register">Đăng ký</a></li>
                         </ul>
                     </div>
                 </div>
@@ -285,18 +245,79 @@
     </div>
 </div>
 
-<div class="auth-form event-guide">
+<div class="auth-form modal-game event-guide">
     <div class="modal" id="guide" style="display:none">
         <div class="modal-content modal-auth">
             <div class="modal-warning">
                 <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
                     <i class="icon icon-close-event"></i>
                 </button>
+                <div class="minigame-title">
+                    <h1 class="text">
+                        Thể lệ tham gia
+                    </h1>
+                    <div class="dots-parent">
+                        <ul>
+                            <li class="dots-small"></li>
+                            <li class="dots-regular"></li>
+                            <li class="dots-parent-center"></li>
+                            <li class="dots-regular"></li>
+                            <li class="dots-small"></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="modal-body guide">
                     <div class="main-guide scooped-corners">
                         <div class="txt-guide">
                             <div class="event-txt">
-                                asdadsasda
+                                <div class="text-event-section">
+                                    <p class="event-text-header">Đối tượng và Thể lệ tham gia</p>
+                                    <p>1. Đối tượng: Chỉ áp dụng cho những độc giả có tài khoản thành viên trên Saba.vn. Nếu chưa có, xin vui lòng bấm vào ĐÂY để đăng ký.</p>
+                                    <p>2. Thể lệ tham gia: Người chơi sẽ tham gia dự đoán kết quả chung cuộc của 64 trận đấu (Thắng/Hòa/Thua) - được chia ra làm 4 giai đoạn:</p>
+                                    <p>Giai đoạn 1 (Lượt 1 - Vòng bảng): Từ 08:00 ngày 16/11/2022 đến 01:30 ngày 25/11/2022</p>
+                                    <p>Giai đoạn 2 (Lượt 2 - Vòng bảng): Từ 08:00 ngày 22/11/2022 đến 01:30 ngày 29/11/2022</p>
+                                    <p>Giai đoạn 3 (Lượt 3 - Vòng bảng): Từ 08:00 ngày 26/11/2022 đến 01:30 ngày 03/12/2022</p>
+                                    <p>Giai đoạn 4 (Vòng Knock-out): Từ 08:00 ngày 30/11/2022 đến 21:30 ngày 18/12/2022</p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p>
+                                        Điểm số khi dự đoán đúng kết quả của mỗi trận đấu là 10 điểm, riêng Tứ kết, Bán kết và Chung kết lần lượt là 12, 15 và 20 điểm.
+                                        Top 10 người chơi có điểm số cao nhất ở mỗi giai đoạn sẽ chiến thắng và giành được các phần thưởng tương ứng.
+                                        Lưu ý:
+                                    </p>
+                                    <p>+ Hạn chót tham gia dự đoán kết quả của mỗi trận đấu là 30 phút trước khi trận đấu đó diễn ra. Ví dụ: Trận khai mạc diễn ra lúc 23:00 ngày 20/11, người chơi phải dự đoán kết quả trước 22:30 cùng ngày.</p>
+                                    <p>+ Sau mỗi giai đoạn, điểm số của tất cả người chơi sẽ được reset về 0.</p>
+                                </div>
+                                <div class="text-event-section">
+                                    <p class="event-text-header">Cơ cấu giải thưởng</p>
+                                    <p>Giai đoạn 1:</p>
+                                    <p>+ 10 thẻ điện thoại 50k</p>
+                                    <p> Giai đoạn 2:</p>
+                                    <p>+ 10 thẻ điện thoại 100k</p>
+                                    <p> Giai đoạn 3:</p>
+                                    <p>+ Hạng 1-5: bình giữ nhiệt Lock&Lock + Hạng 6-10: nón bảo hiểm GRS</p>
+                                    <p> Giai đoạn 4:</p>
+                                    <p>+ Hạng 1: quả bóng Al Rihla World Cup 2022 chính hãng</p>
+                                    <p>+ Hạng 2: sạc dự phòng Energizer</p>
+                                    <p>+ Hạng 3-6: bình giữ nhiệt Lock&Lock</p>
+                                    <p> + Hạng 7-10: nón bảo hiểm GRS</p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p class="event-text-header">Tiêu chí xác định người chiến thắng</p>
+                                    <p>Tiêu chí xác định người chiến thắng</p>
+                                    <p>Kết quả dự đoán và điểm số của người chơi sẽ được cập nhật sau khi trận đấu đó kết thúc.</p>
+                                    <p>Thứ tự bảng xếp hạng sẽ được tính theo điểm số (từ cao xuống thấp).</p>
+                                    <p>Trong trường hợp cùng điểm số, người chơi có thời gian dự đoán cuối cùng sớm hơn, sẽ được xếp trên.</p>
+                                    <p>Lưu ý</p>
+                                    <p>- Người chơi có quyền thay đổi dự đoán của mình ở bất cứ thời điểm nào, miễn là trước khi trận đấu diễn ra 30 phút. Hệ thống sẽ tự ghi nhận/cập nhật thời gian dự đoán sẽ bằng với thời gian chỉnh sửa cuối cùng.</p>
+                                    <p>- SABA Sports không chịu trách nhiệm về các dự đoán bị trễ hoặc mất trong quá trình truyền tải do lưu lượng truy cập trực tuyến cao. Do đó, người chơi được khuyến khích tham gia dự đoán sớm trước thời hạn. - Nếu có bất kỳ sự nghi ngờ nào, SABA Sports cũng có thể tiến hành chứng thực, và từ chối trao giải cho các tài khoản có dấu hiệu gian lận.</p>
+                                    <p>- SABA Sports có toàn quyền tạm dừng hay điều chỉnh thể lệ cho phù hợp với tình hình thực tế vào bất kỳ thời điểm nào trước khi chương trình kết thúc mà không cần thông báo trước.</p>
+                                    <p>- Trong trường hợp phát sinh tranh chấp, khiếu nại liên quan đến chương trình, SABA Sports sẽ đứng ra trực tiếp giải quyết và quyết định của SABA Sports là quyết định cuối cùng.</p>
+                                    <p>- SABA Sports cam kết bảo mật thông tin cá nhân cho độc giả tham gia, không chia sẻ cho bên thứ ba và chỉ sử dụng cho mục đích công bố kết quả trúng thưởng (nếu có).</p>
+                                    <p>- Các nhân viên của SABA Sports không được tham dự chương trình này.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
