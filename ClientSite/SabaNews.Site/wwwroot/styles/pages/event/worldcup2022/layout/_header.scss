@@ -538,6 +538,9 @@
     border-radius: 5px;
     width: 4.8rem;
     left: 2rem;
+    @include tableMobile{
+        display : none;
+    }
 
     li {
         a {

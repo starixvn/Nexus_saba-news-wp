@@ -149,6 +149,11 @@
         justify-content: center;
         margin: 0;
 
+        @include Mobile {
+            width: 2rem;
+            height: 2rem;
+        }
+
         img {
             object-fit: cover;
             width: 3.2rem;
@@ -166,6 +171,8 @@
 
         @include Mobile {
             width: 7rem;
+            font-weight: 700;
+            font-size: 1.3rem;
         }
     }
 }

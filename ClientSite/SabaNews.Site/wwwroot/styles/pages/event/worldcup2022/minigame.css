@@ -429,6 +429,9 @@ body {
   border-radius: 5px;
   width: 4.8rem;
   left: 2rem; }
+  @media screen and (max-width: 1024px) {
+    .header-nav-event {
+      display: none; } }
   .header-nav-event li a {
     padding: 1.8rem 1.2rem; }
     .header-nav-event li a:after {
@@ -678,6 +681,10 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0; }
+    @media (max-width: 767px) {
+      .table-user .user-avatar {
+        width: 2rem;
+        height: 2rem; } }
     .table-user .user-avatar img {
       object-fit: cover;
       width: 3.2rem;
@@ -689,7 +696,9 @@ body {
     margin-left: .5rem; }
     @media (max-width: 767px) {
       .table-user .user-name {
-        width: 7rem; } }
+        width: 7rem;
+        font-weight: 700;
+        font-size: 1.3rem; } }
 
 .table-dropdown {
   background: #D2D2BC; }
