@@ -181,7 +181,7 @@ export default class Winner extends PureComponent {
                         <div className="table-row table-row-index">#</div>
                         <div className="table-row table-row-name">Tên</div>
                         <div className="table-row table-row-score">Điểm</div>
-                        <div className="table-row table-row-time">Thời gian<i className="icon-warning"/> </div>
+                        <div className="table-row table-row-time">Thời gian</div>
                     </div>
                     <div className="minigame-table-body">
                         {
