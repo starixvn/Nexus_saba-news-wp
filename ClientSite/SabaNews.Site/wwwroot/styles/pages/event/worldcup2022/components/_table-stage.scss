@@ -38,10 +38,32 @@
     }
 }
 
+.wrapper-scroll {
+    max-width: 68rem;
+    margin: 0 auto;
+    max-height: 53rem;
+    overflow: auto;
+    padding: 0 .5rem;
+
+    &::-webkit-scrollbar {
+        width: .8rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+    }
+}
+
+
 
 .minigame-table {
     max-width: 67rem;
-    margin: 1.2rem auto;
+    margin: 0 auto;
     border: 1px solid #833D55;
 
     .minigame-table-flex {

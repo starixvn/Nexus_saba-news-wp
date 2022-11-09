@@ -602,9 +602,23 @@ body {
   .table-row-time {
     width: 42%; }
 
+.wrapper-scroll {
+  max-width: 68rem;
+  margin: 0 auto;
+  max-height: 53rem;
+  overflow: auto;
+  padding: 0 .5rem; }
+  .wrapper-scroll::-webkit-scrollbar {
+    width: .8rem; }
+  .wrapper-scroll::-webkit-scrollbar-track {
+    background: transparent; }
+  .wrapper-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px; }
+
 .minigame-table {
   max-width: 67rem;
-  margin: 1.2rem auto;
+  margin: 0 auto;
   border: 1px solid #833D55; }
   .minigame-table .minigame-table-flex {
     display: flex;
