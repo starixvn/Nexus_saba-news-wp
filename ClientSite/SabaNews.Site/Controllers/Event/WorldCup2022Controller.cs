@@ -95,30 +95,6 @@
             return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
 
-        private async Task<SingleViewModel> GetViewModelPostDetail(Post postWC, CateInfo cateInfoWC, string slug)
-        {
-            SavePost savePostWC = null;
-            var isUserLogin = sessionService.User != null;
-            if (isUserLogin)
-            {
-                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
-                savePostWC = user.HandleSavePosts.Find(val => val.PostID == postWC.ID);
-            }
-            var cateParentsWC = await postService.GetCateParentsAsync(cateInfoWC.Slug);
-            cateInfoWC.Url ??= PostHelper.GetCategoryLink(cateParentsWC);
-            var domain = configuration.GetValue<string>(Constants.BaseUrl);
-            var viewModel = new SingleViewModel
-            {
-                SinglePost = postWC,
-                IsLogin = isUserLogin,
-                SavePost = savePostWC,
-                AbsoluteUrl = $"{domain}{slug}",
-                IsVideo = PostHelper.CheckIsVideo(cateParentsWC),
-                CateInfo = cateInfoWC
-            };
-            return viewModel;
-        }
-
         [Route("world-cup-2022/nhan-dinh/{slug}")]
         public async Task<IActionResult> CommentaryDetail(string slug)
         {
@@ -640,6 +616,30 @@
             slugWC = subCateSlugWC.Count > 0 ? subCateSlugWC[0] : listCateSlugWC[0];
             cateNameWC = subCateNameWC.Count > 0 ? subCateNameWC[0] : listCateNameWC[0];
             return new CateInfo { Slug = slugWC.Trim(), Name = cateNameWC.Trim() };
+        }
+
+        private async Task<SingleViewModel> GetViewModelPostDetail(Post postWC, CateInfo cateInfoWC, string slug)
+        {
+            SavePost savePostWC = null;
+            var isUserLogin = sessionService.User != null;
+            if (isUserLogin)
+            {
+                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
+                savePostWC = user.HandleSavePosts.Find(val => val.PostID == postWC.ID);
+            }
+            var cateParentsWC = await postService.GetCateParentsAsync(cateInfoWC.Slug);
+            cateInfoWC.Url ??= PostHelper.GetCategoryLink(cateParentsWC);
+            var domain = configuration.GetValue<string>(Constants.BaseUrl);
+            var viewModel = new SingleViewModel
+            {
+                SinglePost = postWC,
+                IsLogin = isUserLogin,
+                SavePost = savePostWC,
+                AbsoluteUrl = $"{domain}{slug}",
+                IsVideo = PostHelper.CheckIsVideo(cateParentsWC),
+                CateInfo = cateInfoWC
+            };
+            return viewModel;
         }
 
         private static CateInfo GetEventWCInfo(string cateSlugWC)

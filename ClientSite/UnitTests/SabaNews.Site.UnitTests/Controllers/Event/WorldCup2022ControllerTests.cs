@@ -34,14 +34,12 @@
     {
         private IDataControlService dataControlService;
         private IPostService postService;
-        private IMatchService matchService;
         private ILeagueService leagueService;
         private IConfiguration configuration;
         private ISessionService sessionService;
         private IUserService userService;
         private IWorldCupService worldcupService;
         private readonly IFixture fixture = new Fixture();
-
 
         [Fact]
         public async Task Index_WhenCalled_ReturnExpectedData()
@@ -523,6 +521,175 @@
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }
 
+
+        [Fact]
+        public async Task CommentaryDetail_WhenPostIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            Post expected = null;
+
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+
+            //Act
+            var result = await controller.CommentaryDetail(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task CommentaryDetail_WhenPostIsNotNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            Post expected = fixture.Create<Post>();
+
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+
+            //Act
+            var result = await controller.CommentaryDetail(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetMinigameByUserStage_WhenUserIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetMinigameByUserStageCriteria>();
+            var votes = fixture.Create<IList<UserMinigameModel>>();
+
+            worldcupService.GetMinigameByUserStageAsync(criteria).Returns(votes);
+
+            //Act
+            var result = await controller.GetMinigameByUserStage(criteria);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
+
+        [Fact]
+        public async Task GetMinigameByUserStage_WhenUserIsNotNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetMinigameByUserStageCriteria>();
+            var votes = fixture.Create<IList<UserMinigameModel>>(); 
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = null;
+            worldcupService.GetMinigameByUserStageAsync(criteria).Returns(votes);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.GetMinigameByUserStage(criteria);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(votes, viewResult.Value);
+        }
+
+        [Fact]
+        public async Task GetMinigameByUser_WhenUserIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = await controller.GetMinigameByUser();
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
+
+        [Fact]
+        public async Task GetMinigameByUser_WhenUserIsNotNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var votes = fixture.Create<IList<UserMinigameModel>>();
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = null;
+
+            worldcupService.GetMinigameByUserAsync(sessionService.User.Id).Returns(votes);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.GetMinigameByUser();
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(votes, viewResult.Value);
+        }
+
+        [Fact]
+        public async Task UpdateMinigameVote_WhenUserIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<UpdateMinigameVoteCommand>();
+
+            //Act
+            var result = await controller.UpdateMinigameVote(criteria);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
+
+        [Fact]
+        public async Task UpdateMinigameVote_WhenUserIsNotNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<UpdateMinigameVoteCommand>();
+            var commandResult = fixture.Create<CommandResult>();
+
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = null;
+
+            worldcupService.UpdateMinigameVoteAsync(criteria).Returns(commandResult);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.UpdateMinigameVote(criteria);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(commandResult, viewResult.Value);
+        }
+
+        [Fact]
+        public async Task GetMinigameVoteMatch_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetMinigameVoteMatchCriteria>();
+            var expected = fixture.Create<MinigameMatchVote>();
+
+            worldcupService.GetMinigameVoteMatchAsync(criteria).Returns(expected);
+
+            //Act
+            var result = await controller.GetMinigameVoteMatch(criteria);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expected, viewResult.Value);
+        }
+
         [Fact]
         public async Task GetMinigame_WhenCalled_ReturnExpectedData()
         {
@@ -530,8 +697,12 @@
             var controller = GetController();
             var standingsCriteria = fixture.Create<GetLeagueSeasonStandingCriteria>();
             var standings = fixture.Create<IList<SeasonStandings>>();
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = null;
 
             leagueService.GetLeagueSeasonStanding(standingsCriteria).Returns(standings);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
             //Act
             var result = await controller.Minigame();
 
@@ -768,13 +939,12 @@
         {
             dataControlService = Substitute.For<IDataControlService>();
             postService = Substitute.For<IPostService>();
-            matchService = Substitute.For<IMatchService>();
             leagueService = Substitute.For<ILeagueService>();
             configuration = Substitute.For<IConfiguration>();
             sessionService = Substitute.For<ISessionService>();
             userService = Substitute.For<IUserService>();
             worldcupService = Substitute.For<IWorldCupService>();
-            var controller = new WorldCup2022Controller(postService, dataControlService, matchService, leagueService, configuration, sessionService, userService, worldcupService);
+            var controller = new WorldCup2022Controller(postService, dataControlService, leagueService, configuration, sessionService, userService, worldcupService);
             return controller;
         }
         #endregion Helpers
