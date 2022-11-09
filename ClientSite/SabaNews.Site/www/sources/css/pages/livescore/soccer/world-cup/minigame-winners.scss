@@ -53,6 +53,13 @@
 .table-winner{
     background: #8A172F;
     border: 1px solid #E8E8D6;
+    border-top: none;
+    .minigame-table-flex {
+        &.minigame-table-header {
+            border-top: 1px solid #E8E8D6;
+            border-bottom: 1px solid #E8E8D6;
+        }
+    }
     .table-row{
         color: #E8E8D6;
         i{
@@ -69,7 +76,7 @@
         }
     }
     .minigame-table-items{
-        border-top: 1px solid #E8E8D6;
+        border-bottom: 1px solid #E8E8D6;
     }
     .table-dropdown{
         background: #530C1C;

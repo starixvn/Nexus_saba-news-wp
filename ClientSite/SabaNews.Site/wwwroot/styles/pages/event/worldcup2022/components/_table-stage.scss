@@ -65,14 +65,19 @@
     max-width: 67rem;
     margin: 0 auto;
     border: 1px solid #833D55;
+    border-top: none;
 
     .minigame-table-flex {
         display: flex;
         align-items: center;
 
         &.minigame-table-header {
-            position: relative;
+            position: sticky;
             padding: .5rem 0;
+            top: 0;
+            background: red;
+            border-top: 1px solid #833D55;
+            border-bottom: 1px solid #833D55;
 
             &:after {
                 left: 0;
@@ -109,7 +114,10 @@
 .minigame-table-body {
     .minigame-table-items {
         padding: 1rem 0;
-        border-top: 1px solid #833D55;
+        border-bottom: 1px solid #833D55;
+        &:last-child{
+            border-bottom : none;
+        }
 
         .table-row-time {
             display: flex;
