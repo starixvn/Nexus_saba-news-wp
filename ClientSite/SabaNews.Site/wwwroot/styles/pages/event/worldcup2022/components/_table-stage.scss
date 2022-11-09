@@ -49,6 +49,10 @@
     overflow: auto;
     padding: 0 .5rem;
 
+    @include tableMobile {
+        padding: 0 .5rem 0 0;
+    }
+
     &::-webkit-scrollbar {
         width: .8rem;
     }
