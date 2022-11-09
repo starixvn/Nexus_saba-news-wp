@@ -861,6 +861,23 @@ body {
   background: none;
   height: 35vw;
   position: relative; }
+  @media screen and (max-width: 1024px) {
+    .wrapper-header {
+      background: url("../../../../images/worldcup/minigame/top-banner-mobile.png");
+      background-size: 100%;
+      background-repeat: no-repeat; } }
+  @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
+    .wrapper-header {
+      padding-bottom: 53rem !important; } }
+  @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+    .wrapper-header {
+      padding-bottom: 56rem; } }
+  @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+    .wrapper-header {
+      padding-bottom: 56rem; } }
+  @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .wrapper-header {
+      padding-bottom: 54rem !important; } }
   .wrapper-header .wave-game {
     background: url("../../../../images/worldcup/minigame/top_bg.png") #48041A;
     background-size: 100%;
@@ -876,12 +893,23 @@ body {
     z-index: -1;
     transform: skewY(-2deg);
     transform-origin: top left; }
+    @media screen and (max-width: 1024px) {
+      .wrapper-header .wave-game {
+        background: url("../../../../images/worldcup/minigame/top_bg.png") #48041A; } }
   .wrapper-header .header-control {
     left: auto;
     right: 20%;
     top: 60%; }
+    @media screen and (max-width: 1024px) {
+      .wrapper-header .header-control {
+        top: auto;
+        right: auto;
+        bottom: 5rem; } }
     .wrapper-header .header-control ul li:first-child {
       margin-right: 5rem; }
+      @media screen and (max-width: 1024px) {
+        .wrapper-header .header-control ul li:first-child {
+          margin-right: 2rem; } }
     .wrapper-header .header-control ul li a {
       clip-path: polygon(92% 0, 100% 50%, 94% 100%, 8% 100%, 0 50%, 8% 0);
       border: none;
@@ -895,6 +923,10 @@ body {
         background: #FF1B5E;
         border: none;
         color: #fff; }
+      @media screen and (max-width: 1024px) {
+        .wrapper-header .header-control ul li a {
+          font-size: 2rem;
+          padding: .2rem 3rem; } }
   .wrapper-header-column {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -903,6 +935,9 @@ body {
 
 .minigame-title {
   margin-bottom: 3.2rem; }
+  @media screen and (max-width: 1024px) {
+    .minigame-title {
+      margin-bottom: 1.6rem; } }
   .minigame-title .text {
     color: #424242;
     padding-bottom: 1.8rem;
@@ -914,7 +949,7 @@ body {
     margin: 0 auto; }
     @media screen and (max-width: 1024px) {
       .minigame-title .text {
-        font-size: 1.8rem; } }
+        font-size: 1.6rem; } }
   .minigame-title .dots-parent {
     height: 2px;
     display: block;
@@ -924,7 +959,7 @@ body {
     position: relative; }
     @media (max-width: 767px) {
       .minigame-title .dots-parent {
-        width: 20rem; } }
+        width: 25rem; } }
     .minigame-title .dots-parent:after, .minigame-title .dots-parent:before {
       content: '';
       display: block;
@@ -982,7 +1017,8 @@ body {
   grid-gap: 3rem 5rem; }
   @media (max-width: 767px) {
     .row-stage {
-      grid-template-columns: repeat(1, 1fr); } }
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 2rem 5rem; } }
 
 .sticky_icon img {
   position: absolute; }
@@ -991,17 +1027,23 @@ body {
     right: -85px; }
     @media screen and (max-width: 1024px) {
       .sticky_icon img.right-top {
-        right: 0; } }
+        display: none; } }
   .sticky_icon img.left-bottom {
     bottom: 0;
     left: -75px; }
     @media screen and (max-width: 1024px) {
       .sticky_icon img.left-bottom {
-        left: 0; } }
+        display: none; } }
 
 .main-stage {
   margin-top: 4rem;
   position: relative; }
+  @media screen and (max-width: 1024px) {
+    .main-stage {
+      margin-top: 2.6rem; } }
+  @media (max-width: 767px) {
+    .main-stage {
+      padding: 0 3.5rem; } }
   .main-stage .stage-items {
     position: relative;
     z-index: 9;
@@ -1091,6 +1133,9 @@ body {
   z-index: 0;
   transform-origin: top left;
   transform: skewY(-2deg); }
+  @media screen and (max-width: 1024px) {
+    .wave-standing-bg {
+      background-position: top 1rem center; } }
 
 .minigame-winner {
   background: url("../../../../images/worldcup/minigame/bg_winner.png") no-repeat top center;
@@ -1102,7 +1147,7 @@ body {
   position: relative; }
   @media screen and (max-width: 1024px) {
     .section-stage {
-      padding: 5rem 0 10rem 0; } }
+      padding: 5rem 0 5rem 0; } }
   .section-stage .bg-stage {
     background: url("../../../../images/worldcup/minigame/bg_stage.png") no-repeat top center;
     background-size: contain;
@@ -1117,7 +1162,9 @@ body {
     z-index: -1; }
     @media screen and (max-width: 1024px) {
       .section-stage .bg-stage {
-        display: none; } }
+        background-size: cover;
+        height: 50%;
+        top: 10%; } }
 
 .custom-select {
   appearance: none;
@@ -1125,7 +1172,7 @@ body {
   background-position: center right .5rem; }
   @media (max-width: 767px) {
     .custom-select {
-      background: url("../../../../images/worldcup/minigame/chevron-down.png") 96%/14% no-repeat #E8E8D6; } }
+      background: url("../../../../images/worldcup/minigame/chevron-down.png") 96%/8% no-repeat #E8E8D6; } }
 
 .statistic-grid::before {
   display: block;

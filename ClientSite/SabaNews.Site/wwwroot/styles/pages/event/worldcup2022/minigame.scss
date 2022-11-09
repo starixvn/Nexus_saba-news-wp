@@ -187,6 +187,29 @@ body {
     height: 35vw;
     position: relative;
 
+    @include tableMobile {
+        background: url('../../../../images/worldcup/minigame/top-banner-mobile.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    @include iphoneX {
+        padding-bottom: 53rem !important;
+    }
+
+    @include iphone6 {
+        padding-bottom: 56rem;
+    }
+
+
+    @include iphoneXR {
+        padding-bottom: 56rem;
+    }
+
+    @include iphone1213 {
+        padding-bottom: 54rem !important;
+    }
+
     .wave-game {
         background: url('../../../../images/worldcup/minigame/top_bg.png') $primary-bg;
         background-size: 100%;
@@ -202,6 +225,10 @@ body {
         z-index: -1;
         transform: skewY(-2deg);
         transform-origin: top left;
+
+        @include tableMobile {
+            background: url('../../../../images/worldcup/minigame/top_bg.png') $primary-bg;
+        }
     }
 
     .header-control {
@@ -209,11 +236,21 @@ body {
         right: 20%;
         top: 60%;
 
+        @include tableMobile {
+            top: auto;
+            right: auto;
+            bottom: 5rem;
+        }
+
         ul {
             li {
 
                 &:first-child {
                     margin-right: 5rem;
+
+                    @include tableMobile {
+                        margin-right: 2rem;
+                    }
                 }
 
                 a {
@@ -231,6 +268,11 @@ body {
                         border: none;
                         color: $white-color;
                     }
+
+                    @include tableMobile {
+                        font-size: 2rem;
+                        padding: .2rem 3rem;
+                    }
                 }
             }
         }
@@ -246,7 +288,9 @@ body {
 
 .minigame-title {
     margin-bottom: 3.2rem;
-
+    @include tableMobile{
+        margin-bottom : 1.6rem;
+    }
     .text {
         color: #424242;
         padding-bottom: 1.8rem;
@@ -258,7 +302,7 @@ body {
         margin: 0 auto;
 
         @include tableMobile {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
     }
 
@@ -271,7 +315,7 @@ body {
         position: relative;
 
         @include Mobile {
-            width: 20rem;
+            width: 25rem;
         }
 
         &:after, &:before {
@@ -344,6 +388,7 @@ body {
     padding: 0 1rem;
     margin: 0 auto;
     position: relative;
+    
 }
 
 .row-stage {
@@ -353,6 +398,7 @@ body {
 
     @include Mobile {
         grid-template-columns: repeat(1, 1fr);
+        grid-gap: 2rem 5rem;
     }
 }
 
@@ -366,7 +412,7 @@ body {
             right: -85px;
 
             @include tableMobile {
-                right: 0;
+                display: none;
             }
         }
 
@@ -375,7 +421,7 @@ body {
             left: -75px;
 
             @include tableMobile {
-                left: 0;
+                display: none;
             }
         }
     }
@@ -384,6 +430,14 @@ body {
 .main-stage {
     margin-top: 4rem;
     position: relative;
+
+    @include tableMobile {
+        margin-top: 2.6rem;
+    }
+
+    @include Mobile {
+        padding: 0 3.5rem;
+    }
 
     .stage-items {
         position: relative;
@@ -426,6 +480,7 @@ body {
         &:hover {
             .stage-round {
                 filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.35));
+
                 h2 {
                     background: #F8F8F1;
                 }
@@ -502,6 +557,10 @@ body {
     z-index: 0;
     transform-origin: top left;
     transform: skewY(-2deg);
+
+    @include tableMobile {
+        background-position: top 1rem center;
+    }
 }
 
 .minigame-winner {
@@ -515,7 +574,7 @@ body {
     position: relative;
 
     @include tableMobile {
-        padding: 5rem 0 10rem 0;
+        padding: 5rem 0 5rem 0;
     }
 
     .bg-stage {
@@ -532,7 +591,9 @@ body {
         z-index: -1;
 
         @include tableMobile {
-            display: none;
+            background-size: cover;
+            height: 50%;
+            top: 10%;
         }
     }
 }
@@ -543,7 +604,7 @@ body {
     background-position: center right .5rem;
 
     @include Mobile {
-        background: url('../../../../images/worldcup/minigame/chevron-down.png') 96% / 14% no-repeat #E8E8D6;
+        background: url('../../../../images/worldcup/minigame/chevron-down.png') 96% / 8% no-repeat #E8E8D6;
     }
 }
 

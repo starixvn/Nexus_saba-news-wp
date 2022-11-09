@@ -1,5 +1,8 @@
 .custom-search{
     position: relative;
+    @include Mobile{
+        display: none;
+    }
     &-input{
         outline: none;
         background: transparent;

@@ -17,6 +17,10 @@
 .standing-title{
     .text{
         color: #833D55;
+        @include tableMobile{
+            font-size: 2rem;
+            padding-bottom: 1.2rem;
+        }
     }
     .dots-parent{
         background: #833D55;
@@ -59,6 +63,23 @@
     @include tableMobile{
         font-size: 1.4rem;
         line-height: 1.9rem;
+        text-align: center;;
     }
+}
+
+.minigame-standing-control{
+    @include Mobile{
+        justify-content: center !important;
+    }
+}
+
+.custom-select{
+   @include Mobile{
+    width: 25rem !important;
+    height: 3.2rem !important;
+    font-weight: 700 !important;
+    font-size: 1.4rem !important;
+    line-height: 2.8rem !important;
+   }
 }
 
