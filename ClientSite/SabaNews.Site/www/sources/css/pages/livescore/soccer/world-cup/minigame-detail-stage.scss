@@ -1,5 +1,11 @@
+
+@import './../../../../abstracts/mixins';
+@import './components/dock_stage';
+@import './components/auth-user';
+@import './components/minigame-section';
+
+
 @import "../../../../abstracts/variables";
-@import "../../../../abstracts/mixins";
 @import "../../../../base/base";
 @import "../../../../components/block-extension";
 @import "../../../../components/container";
@@ -9,6 +15,55 @@
 ;
 @import "../../../../components/recent-post";
 @import './components/wc-nav-tabs';
+
+.minigame-title{
+    margin-bottom: 3rem;
+    .text{
+        padding-bottom: 1.1rem;
+        text-transform: uppercase;
+        color: #833D55;
+    }
+    .dots-parent{
+        background: #833D55;
+        ul{
+            background: #E8E8D6;
+        }
+    }
+}
+.minigame-table{
+    border-radius: 5px;
+    .minigame-table-flex{
+        &.minigame-table-header{
+            background: transparent;
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .livescore-soccer {
     display: unset;

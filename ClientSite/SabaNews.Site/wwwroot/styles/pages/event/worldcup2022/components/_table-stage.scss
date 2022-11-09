@@ -47,11 +47,7 @@
     margin: 0 auto;
     max-height: 53rem;
     overflow: auto;
-    padding: 0 .5rem;
-
-    @include tableMobile {
-        padding: 0 .5rem 0 0;
-    }
+    padding: 0 .5rem 0 0 !important;
 
     &::-webkit-scrollbar {
         width: .8rem;
@@ -70,8 +66,6 @@
 
 
 .minigame-table {
-    max-width: 67rem;
-    margin: 0 auto;
     border: 1px solid #833D55;
     border-top: none;
 
