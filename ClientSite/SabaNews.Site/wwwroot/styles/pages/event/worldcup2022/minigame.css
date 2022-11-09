@@ -602,6 +602,9 @@ body {
   .table-row-time {
     width: 42%; }
 
+.spacing-top {
+  margin-top: 1.2rem; }
+
 .wrapper-scroll {
   max-width: 68rem;
   margin: 0 auto;
@@ -628,7 +631,7 @@ body {
       position: sticky;
       padding: .5rem 0;
       top: 0;
-      background: red;
+      background: #D3D3B5;
       border-top: 1px solid #833D55;
       border-bottom: 1px solid #833D55; }
       .minigame-table .minigame-table-flex.minigame-table-header:after {
