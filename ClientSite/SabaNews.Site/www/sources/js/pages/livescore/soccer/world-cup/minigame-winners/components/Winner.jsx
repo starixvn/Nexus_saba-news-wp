@@ -175,7 +175,7 @@ export default class Winner extends PureComponent {
         const { matches, votes} = this.props;
         const Winners = this.calculatorPointer(matches, votes);
         return (
-            <div className="wrapper-scroll">
+            <div className="wrapper-scroll wrapper-scroll-winner">
             	<div className="minigame-table table-winner">
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index">#</div>

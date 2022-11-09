@@ -2,6 +2,14 @@
 @import './components/minigame_control';
 @import './components/input-custom';
 
+.wrapper-scroll {
+    &-winner{
+        &::-webkit-scrollbar-thumb {
+            background: rgba($color: #E8E8D6, $alpha: .5);
+        }
+    }
+}
+
 .minigame-winner{
     position: relative;
     @include Mobile{
