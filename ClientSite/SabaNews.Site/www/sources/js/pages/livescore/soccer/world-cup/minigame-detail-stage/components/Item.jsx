@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
-import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
-import { connect } from 'react-redux';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Site from '@jsroot/common/site';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
-import Site from '@jsroot/common/site';
-import DataService from '@jsroot/common/dataService';
 import { EqualHeight, EqualHeightElement } from 'react-equal-height';
+import moment from 'moment';
+import DataService from '@jsroot/common/dataService';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -17,6 +17,13 @@ export class Item extends PureComponent {
         this.stage = parseInt(window.stage, 10);
     }
 
+    checkKnockoutMatch = () => {
+        const { match, teams } = this.props;
+        const result = this.stage !== 4 || (this.stage === 4
+            && teams.includes(match.homeTeam.teamId)
+            && teams.includes(match.awayTeam.teamId));
+        return !result;
+    };
 
     checkVoteOption = () => {
         const { match, vote } = this.props;
@@ -29,14 +36,6 @@ export class Item extends PureComponent {
             voteStatus = 2;
         }
         return voteStatus;
-    };
-
-    checkKnockoutMatch = () => {
-        const { match, teams } = this.props;
-        const result = this.stage !== 4 || (this.stage === 4
-            && teams.includes(match.homeTeam.teamId)
-            && teams.includes(match.awayTeam.teamId));
-        return !result;
     };
 
     handleVote = async teamId => {
@@ -132,8 +131,7 @@ export class Item extends PureComponent {
                                     </EqualHeightElement>
                                 </div>
                             </EqualHeight>
-                            
-                        </div> 
+                        </div>
                     </div>
                     <div className="table-row">{this.getTeamVote()}</div>
                     <div className="table-row">{this.getVoteResult(result)}</div>

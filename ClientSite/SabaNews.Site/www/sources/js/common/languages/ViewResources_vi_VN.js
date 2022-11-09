@@ -57,5 +57,6 @@
     Stage1: "Giai đoạn 1",
     Stage2: "Giai đoạn 2",
     Stage3: "Giai đoạn 3",
-    Stage4: "Giai đoạn 4"
+    Stage4: "Giai đoạn 4",
+    pointer: "pointer"
 };
