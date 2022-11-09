@@ -43,7 +43,7 @@ export class AppContainer extends Component {
         return (
             <>
                 {
-                    countStageWinners.length > 0 && <div className="minigame-winner">
+                     <div className="minigame-winner">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title winner-title">
                                 <h1 className="text">
@@ -63,7 +63,7 @@ export class AppContainer extends Component {
                             </div>
                             <div className="minigame-control">
                                 {
-                                    countStageWinners.map( item =>
+                                    this.state.stages.map( item =>
                                         <button className= {this.state.selectedStage === item.value ? 'buttonStage active'
                                         : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
                                     )

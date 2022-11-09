@@ -185,7 +185,7 @@ export default class Winner extends PureComponent {
                     </div>
                     <div className="minigame-table-body">
                         {
-                            Winners.map((item, index) => <Item key={index} number={index} Winner={item} winnnerLength={Winners.length} />)
+                            votes.map((item, index) => <Item key={index} number={index} Winner={item} winnnerLength={votes.length} />)
                         }
                     </div>
                 </div>
