@@ -53,7 +53,6 @@ export default class Grid extends PureComponent {
                         <Item stage={WorldCup.MinigameStage.Stage1}
                             votes={this.getVotesByStage(WorldCup.MinigameStage.Stage1)}
                             matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
-                        
                     </div>
                 </div>
             </div>

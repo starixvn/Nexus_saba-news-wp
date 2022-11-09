@@ -56,8 +56,6 @@ export default class Item extends PureComponent {
         }
     };
 
-    
-
     render() {
         const { stage } = this.props;
         return (
