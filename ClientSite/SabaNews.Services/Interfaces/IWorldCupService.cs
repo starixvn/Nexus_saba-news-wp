@@ -3,6 +3,8 @@
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -17,5 +19,7 @@
 
         Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId);
         Task<IList<UserMinigameModel>> GetMinigameUsersAsync(GetMinigameUsersByStageCriteria criteria);
+        Task<IList<Match>> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria);
+
     }
 }

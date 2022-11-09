@@ -14,6 +14,7 @@
 
     public static class LivescoreHelper
     {
+        const int MGTPlus = 7;
         public static string GetTeamName(Team team)
         {
             string teamName = !string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
@@ -234,14 +235,14 @@
         {
             List<int> indexMatches = new() { 15, 31, 47, 63 };
             const int SubtractMinutes = -30;
-            List<string> longs = new() {
+            List<string> startStages = new() {
                 WorldCup2022.TimestampMinigameStage01Start,
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
             string statusStage = status.Contains(WorldCup2022.BeforeStartedStage) ?
-                longs[numStage] :
-                matches[indexMatches[numStage]].StartTime.AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
+                startStages[numStage] :
+                matches[indexMatches[numStage]].StartTime.AddHours(MGTPlus).AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
             return statusStage;            
         }
 
@@ -251,14 +252,15 @@
             const int ThirtyMinsToSecond = 1800;
             const int SixtyMinsToSecond = 3600;
             const int NinetyMinsToSecond = 5400;
-            List<string> longs = new() { 
+            const int SubtractMinutes = -30;
+            List<string> startStages = new() {
                 WorldCup2022.TimestampMinigameStage01Start, 
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start, 
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTime.UtcNow.AddHours(7) - new DateTime(1970, 1, 1, 0, 0, 0));
-            var timeStartStage = DateTime.Parse(longs[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
+            var timeSpanNow = (DateTime.UtcNow.AddHours(MGTPlus) - new DateTime(1970, 1, 1, 0, 0, 0));
+            var timeStartStage = DateTime.Parse(startStages[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;
             if (checkNow > 0)
@@ -267,7 +269,7 @@
             }
             else
             {
-                var timeSpanEnd = (matches[indexMatches[numStage]].StartTime - new DateTime(1970, 1, 1, 0, 0, 0));
+                var timeSpanEnd = (matches[indexMatches[numStage]].StartTime.AddHours(MGTPlus).AddMinutes(SubtractMinutes) - new DateTime(1970, 1, 1, 0, 0, 0));
                 var checkNowEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
                 if (checkNowEnd > NinetyMinsToSecond)
                 {
@@ -285,14 +287,14 @@
 
         public static bool CheckStartStage(int numStage)
         {
-            List<string> longs = new() {
+            List<string> startStages = new() {
                 WorldCup2022.TimestampMinigameStage01Start,
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTime.UtcNow.AddHours(7) - new DateTime(1970, 1, 1, 0, 0, 0));
-            var timeStartStage = DateTime.Parse(longs[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
+            var timeSpanNow = (DateTime.UtcNow.AddHours(MGTPlus) - new DateTime(1970, 1, 1, 0, 0, 0));
+            var timeStartStage = DateTime.Parse(startStages[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             if (checkNow > 0)
             {

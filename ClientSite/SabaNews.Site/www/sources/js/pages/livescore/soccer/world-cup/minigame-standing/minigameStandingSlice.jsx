@@ -13,10 +13,10 @@ const minigameStandingSlice = createSlice({
         setMatches: (state, action) => {
            const matches = action.payload,
                 stages = [],
-                totalItems = matches.length;                
+                totalItems = matches.length;
             for (let i = 0; i < totalItems; i++) {
                 const match = matches[i];
-                if (match.stage 
+                if (match.stage
                     && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
                     stages.push(match.stage);
                 }

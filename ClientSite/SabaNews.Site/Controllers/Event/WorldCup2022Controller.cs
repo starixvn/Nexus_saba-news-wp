@@ -31,7 +31,6 @@
     {
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
-        private readonly IMatchService matchService;
         private readonly ILeagueService leagueService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
@@ -45,7 +44,6 @@
         public WorldCup2022Controller(
             IPostService postService,
             IDataControlService dataControlService,
-            IMatchService matchService,
             ILeagueService leagueService,
             IConfiguration configuration,
             ISessionService sessionService,
@@ -54,7 +52,6 @@
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
-            this.matchService = matchService;
             this.leagueService = leagueService;
             this.configuration = configuration;
             this.sessionService = sessionService;
@@ -368,7 +365,7 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
