@@ -1,6 +1,22 @@
 @import './../../../../abstracts/mixins';
 @import './components/dock_stage';
+@import './components/auth-user';
 
 .statistic-grid{
     margin-top: 6rem;
+}
+
+.minigame-title{
+    margin-bottom: 3rem;
+    .text{
+        padding-bottom: 1.1rem;
+        text-transform: uppercase;
+        color: #833D55;
+    }
+    .dots-parent{
+        background: #833D55;
+        ul{
+            background: #E8E8D6;
+        }
+    }
 }

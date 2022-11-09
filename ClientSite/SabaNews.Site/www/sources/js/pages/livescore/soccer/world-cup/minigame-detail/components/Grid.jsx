@@ -32,7 +32,9 @@ export default class Grid extends PureComponent {
 
     render() {
         return (
-            <table>
+            <div className="wrapper-scroll">
+                sdaadsasdsad
+                {/* <table>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -55,7 +57,9 @@ export default class Grid extends PureComponent {
                         votes={this.getVotesByStage(WorldCup.MinigameStage.Stage1)}
                         matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
                 </tbody>
-            </table>
+            </table> */}
+            </div>
+            
         );
     }
 }
