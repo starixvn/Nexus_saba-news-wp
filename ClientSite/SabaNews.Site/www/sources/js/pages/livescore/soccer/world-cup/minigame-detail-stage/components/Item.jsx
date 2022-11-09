@@ -80,12 +80,12 @@ export class Item extends PureComponent {
 
     getVoteResult = result => {
         if(result === null) {
-            return <li>empty</li>;
+            return <span className="choose choose-empty">empty</span>;
         }
         if(result.status) {
-            return <li>win</li>;
+            return <span className="choose choose-win"><i className="icon-win" /></span>;
         }
-        return <li>lose</li>;
+        return <span className="choose choose-lose"><i className="icon-lose" /></span>;
     };
 
     getVoteScore = result => {
@@ -93,9 +93,9 @@ export class Item extends PureComponent {
             return <></>;
         }
         if(result.status) {
-            return <li>{`+${result.score}`}</li>;
+            return <span>{`+${result.score}`}</span>;
         }
-        return <li>0</li>;
+        return <span>0</span>;
     };
 
     render() {
@@ -104,10 +104,30 @@ export class Item extends PureComponent {
         return (
             <>
                 <div className="group-cell-table">
-                    <div className="table-row table-row-index"></div>
-                    <div className="table-row">Dự đoán</div>
-                    <div className="table-row">Kết quả</div>
-                    <div className="table-row">Điểm</div>
+                    <div className="table-row table-row-index">
+                        <div className="team-choose">
+                            <div className="minigame-team home-team" onClick={() => this.handleVote(match.homeTeam.teamId)}>
+                                <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                <div className="team-name">
+                                    {CommonFunctions.getTeamName(match.homeTeam)}
+                                </div>
+                            </div>
+                            <div className="minigame-team" onClick={() => this.handleVote(0)} >
+                                <i className="icon-minigame_draw" />
+                                <div className="team-name"> Hòa </div>
+                            </div>
+
+                            <div className="minigame-team away-team" onClick={() => this.handleVote(match.awayTeam.teamId)}>
+                                <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                                <div className="team-name">
+                                    {CommonFunctions.getTeamName(match.awayTeam)}
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div className="table-row">{this.getTeamVote()}</div>
+                    <div className="table-row">{this.getVoteResult(result)}</div>
+                    <div className="table-row">{this.getVoteScore(result)}</div>
                 </div>
 
 

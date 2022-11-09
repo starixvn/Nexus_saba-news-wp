@@ -41,6 +41,10 @@
             display: flex;
             align-items: center;
             padding: .8rem 0;
+            border-bottom: 1px solid #833D55;
+            &:last-child{
+                border-bottom: none;
+            }
         }
     }
     .table-row{
@@ -48,6 +52,38 @@
         &-index {
             flex: 1 0 15rem;
             width: auto;
+        }
+        .team-choose{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .minigame-team{
+                width: 9.4rem;
+                height: 6rem;
+                display: flex;
+                flex-direction: column;
+                img{
+                    width: 3.9rem;
+                    height: 2.6rem;
+                    object-fit: cover;
+                }
+                i{
+                    font-size: 3rem;
+                }
+            }
+        }
+        .choose{
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+            &-win{
+                background: #549C2A;
+            }
+            &-lose{
+                background: #D03451;
+            }
         }
     }
     
@@ -65,6 +101,7 @@
     padding: 0 1.3rem 0 2rem;
     color: #fff;
     margin-bottom: 1rem;
+    border-radius: 5px;
     li{
         display: flex;
         align-items: center;
