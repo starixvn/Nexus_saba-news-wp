@@ -77,43 +77,49 @@ export class Stages extends PureComponent {
         const stages = groupStages;
         const currentStage = this.getMatchWithStage();
         return (
-            <div>
-                <div className="statistic">chi tiết giai đoạn { window.stage } |<span onClick={this.handleClick}>Quay lại</span></div>
-                {
-                    stages.length === 1 &&
-                    <Grid matches={stages[0].matches} votes={votes} />
-                }
-                {
-                    (stages.length > 1 && !isMobile) &&
-                    <Tabs className="live-score-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
-                        {
-                            stages.map(group => {
-                                return (
-                                    <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                        <Grid matches={group.matches} votes={votes}/>
-                                    </Tab>
-                                );
-                            })
-                        }
-                    </Tabs>
-                }
-                {
-                    (stages.length > 1 && isMobile) &&
-                    <>
-                        <div className="nav-select-mb">
-                            <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
-                                {
-                                    stages.map(group =>
-                                        <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
-                                }
-                            </select>
-                        </div>
-                        {
-                            <Grid matches={currentStage.matches}  votes={votes}/>
-                        }
-                    </>
-                }
-            </div>
+            <>
+                <ul className="stage-number">
+                    <li>chi tiết giai đoạn { window.stage }</li>
+                    <li onClick={this.handleClick}><i className="icon-go_back" />Quay lại</li>
+                </ul>
+                <div className="wrapper-scroll">
+                    {
+                        stages.length === 1 &&
+                        <Grid matches={stages[0].matches} votes={votes} />
+                    }
+                    {
+                        (stages.length > 1 && !isMobile) &&
+                        <Tabs className="live-score-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
+                            {
+                                stages.map(group => {
+                                    return (
+                                        <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
+                                            <Grid matches={group.matches} votes={votes}/>
+                                        </Tab>
+                                    );
+                                })
+                            }
+                        </Tabs>
+                    }
+                    {
+                        (stages.length > 1 && isMobile) &&
+                        <>
+                            <div className="nav-select-mb">
+                                <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
+                                    {
+                                        stages.map(group =>
+                                            <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
+                                    }
+                                </select>
+                            </div>
+                            {
+                                <Grid matches={currentStage.matches}  votes={votes}/>
+                            }
+                        </>
+                    }
+                </div>
+                
+            </>
         );
     }
 }

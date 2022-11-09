@@ -15,7 +15,6 @@
 ;
 @import "../../../../components/recent-post";
 @import './components/wc-nav-tabs';
-
 .minigame-title{
     margin-bottom: 3rem;
     .text{
@@ -41,6 +40,15 @@
         
     }
 }
+
+.stage-number{
+    max-width: 67rem;
+    margin: 0 auto;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
 
 
 

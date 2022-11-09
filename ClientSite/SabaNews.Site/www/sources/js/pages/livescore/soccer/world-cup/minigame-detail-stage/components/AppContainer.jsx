@@ -22,9 +22,7 @@ export class AppContainer extends Component {
         }
         const stages = groupMatchesByStage(matches);
         return (
-            <div className="wrapper-scroll">
-                <Stages groupStages={stages} />
-            </div>
+            <Stages groupStages={stages} />
         );
     }
 }
