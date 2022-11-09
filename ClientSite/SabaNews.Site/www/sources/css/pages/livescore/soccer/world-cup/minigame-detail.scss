@@ -19,12 +19,10 @@
     }
 }
 .minigame-table{
-    border-radius: 5px;
     .minigame-table-flex{
         &.minigame-table-header{
             background: transparent;
             width: 100%;
-            border-radius: 5px 5px 0 0;
         }
         .table-row{
             position: relative;

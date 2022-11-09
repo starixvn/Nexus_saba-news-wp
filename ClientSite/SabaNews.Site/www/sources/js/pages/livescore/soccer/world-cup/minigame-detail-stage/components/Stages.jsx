@@ -79,8 +79,8 @@ export class Stages extends PureComponent {
         return (
             <>
                 <ul className="stage-number">
-                    <li>chi tiết giai đoạn { window.stage }</li>
-                    <li onClick={this.handleClick}><i className="icon-go_back" />Quay lại</li>
+                    <li>chi tiết dự đoán - giai đoạn { window.stage }</li>
+                    <li onClick={this.handleClick} style={{ cursor : "pointer" }}>Quay lại <i className="icon-go_back" /></li>
                 </ul>
                 <div className="wrapper-scroll">
                     {

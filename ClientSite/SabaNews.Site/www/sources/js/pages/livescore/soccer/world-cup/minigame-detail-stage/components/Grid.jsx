@@ -15,25 +15,54 @@ export default class Grid extends PureComponent {
         const { matches, votes } = this.props;
         let totalScore = 0;
         return (
-            <div className="soccer-match-grid-item">
-                <div className="soccer-match-grid-item-body">
-                {
-                    matches.map((item, index) => {
-                        const vote = votes.find(value => value.matchId === item.matchId);
-                        let component = <Fragment />;
-                        if(vote) {
-                            const result = this.checkMatchResult(item, vote);
-                            totalScore +=  result !== null ? result.score : 0;
-                            component = <Item key={index} match={item} vote={vote} result={result} />;
+            <>
+                <div className="minigame-table">
+                    <div className="minigame-table-flex minigame-table-header">
+                        <div className="table-row table-row-index"></div>
+                        <div className="table-row">Dự đoán</div>
+                        <div className="table-row">Kết quả</div>
+                        <div className="table-row">Điểm</div>
+                    </div>
+                    <div className="minigame-table-body">
+                        {
+                            matches.map((item, index) => {
+                                const vote = votes.find(value => value.matchId === item.matchId);
+                                let component = <Fragment />;
+                                if(vote) {
+                                    const result = this.checkMatchResult(item, vote);
+                                    totalScore +=  result !== null ? result.score : 0;
+                                    component = <Item key={index} match={item} vote={vote} result={result} />;
+                                }
+                                return (
+                                    component
+                                );
+                            })
                         }
-                        return (
-                            component
-                        );
-                    })
-                }
+                    </div>
                 </div>
                 <div className="statistic">Total: {totalScore}</div>
-            </div>
+
+
+                <div className="soccer-match-grid-item">
+                    <div className="soccer-match-grid-item-body">
+                    {
+                        matches.map((item, index) => {
+                            const vote = votes.find(value => value.matchId === item.matchId);
+                            let component = <Fragment />;
+                            if(vote) {
+                                const result = this.checkMatchResult(item, vote);
+                                totalScore +=  result !== null ? result.score : 0;
+                                component = <Item key={index} match={item} vote={vote} result={result} />;
+                            }
+                            return (
+                                component
+                            );
+                        })
+                    }
+                    </div>
+                    
+                </div>
+            </>
         );
     }
 }

@@ -102,8 +102,18 @@ export class Item extends PureComponent {
         const { match, result } = this.props;
         const voteStatus = this.checkVoteOption();
         return (
-            <div>
-                <div className="group-match-item" onClick={this.onClick}>
+            <>
+                <div className="group-cell-table">
+                    <div className="table-row table-row-index"></div>
+                    <div className="table-row">Dự đoán</div>
+                    <div className="table-row">Kết quả</div>
+                    <div className="table-row">Điểm</div>
+                </div>
+
+
+
+
+                {/* <div className="group-match-item" onClick={this.onClick}>
                     <div className={`soccer-match-item`}
                     >
                         <div className="soccer-match-team">
@@ -133,8 +143,8 @@ export class Item extends PureComponent {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> */}
+            </>
         );
     }
 }
