@@ -41,18 +41,18 @@ export default class Grid extends PureComponent {
                         <div className="table-row table-row-time">Điểm</div>
                     </div>
                     <div className="minigame-table-body">
-                        <Item stage={WorldCup.MinigameStage.Stage1}
-                            votes={this.getVotesByStage(WorldCup.MinigameStage.Stage1)}
-                            matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
-                        <Item stage={WorldCup.MinigameStage.Stage2}
-                            votes={this.getVotesByStage(WorldCup.MinigameStage.Stage2)}
-                            matches={this.getMatchByStage(WorldCup.MinigameStage.Stage2)} />
-                        <Item stage={WorldCup.MinigameStage.Stage3}
-                            votes={this.getVotesByStage(WorldCup.MinigameStage.Stage3)}
-                            matches={this.getMatchByStage(WorldCup.MinigameStage.Stage3)} />
                         <Item stage={WorldCup.MinigameStage.Stage4}
                             votes={this.getVotesByStage(WorldCup.MinigameStage.Stage4)}
                             matches={this.getMatchByStage(WorldCup.MinigameStage.Stage4)} />
+                        <Item stage={WorldCup.MinigameStage.Stage3}
+                            votes={this.getVotesByStage(WorldCup.MinigameStage.Stage3)}
+                            matches={this.getMatchByStage(WorldCup.MinigameStage.Stage3)} />
+                        <Item stage={WorldCup.MinigameStage.Stage2}
+                            votes={this.getVotesByStage(WorldCup.MinigameStage.Stage2)}
+                            matches={this.getMatchByStage(WorldCup.MinigameStage.Stage2)} />
+                        <Item stage={WorldCup.MinigameStage.Stage1}
+                            votes={this.getVotesByStage(WorldCup.MinigameStage.Stage1)}
+                            matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
                         
                     </div>
                 </div>
