@@ -37,12 +37,10 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        const countStageStanding =this.state.stages.filter( x => x.value <= window.CountStageActive);
         const showMatches = getMatchByEventStage(matches);
         return (
             <>
                 {
-                    (countStageStanding.length > 0) &&
                     <div className="minigame-section minigame-standing">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title standing-title">
@@ -63,7 +61,7 @@ export class AppContainer extends Component {
                                 <select value={this.state.selectValue}
                                     onChange={this.handleChange} className="custom-select">
                                     {
-                                        countStageStanding.map( index =>
+                                        this.state.stages.map( index =>
                                         <option key={index.value} value={index.value}>{index.name}</option> )
                                     }
                                 </select>
