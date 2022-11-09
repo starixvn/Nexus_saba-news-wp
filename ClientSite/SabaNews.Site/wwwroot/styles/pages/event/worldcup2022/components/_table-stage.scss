@@ -1,4 +1,4 @@
-.wraper-minigame-table{
+﻿.wraper-minigame-table {
     max-width: 90rem;
     margin: 0 auto;
     background: #E8E8D6;
@@ -8,62 +8,74 @@
     z-index: 3;
 }
 
-.table-row{
+.table-row {
     font-weight: 700;
     font-size: 1.4rem;
     line-height: 2.8rem;
     color: #833D55;
     text-align: center;
-    @include Mobile{
+
+    @include Mobile {
         font-size: 1.2rem;
         line-height: 2.4rem;
     }
-    &-index{
+
+    &-index {
         width: 10%;
     }
-    &-name{
+
+    &-name {
         width: 33%;
         text-align: left;
     }
-    &-score{
+
+    &-score {
         width: 15%;
     }
-    &-time{
+
+    &-time {
         width: 42%;
     }
 }
 
 
-.minigame-table{
+.minigame-table {
     max-width: 67rem;
     margin: 1.2rem auto;
     border: 1px solid #833D55;
-    .minigame-table-flex{
+
+    .minigame-table-flex {
         display: flex;
         align-items: center;
-        &.minigame-table-header{
-            position: relative; 
-            padding: .5rem 0;   
+
+        &.minigame-table-header {
+            position: relative;
+            padding: .5rem 0;
+
             &:after {
                 left: 0;
                 bottom: -4px;
             }
-    
+
             &:before {
                 right: 0;
                 bottom: -4px;
             }
-            .table-row{
+
+            .table-row {
                 font-size: 1.6rem;
-                @include Mobile{
+
+                @include Mobile {
                     font-size: 1.2rem;
                     line-height: 2.4rem;
                 }
-                &.table-row-time{
+
+                &.table-row-time {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    i{
+
+                    i {
                         margin-left: .7rem;
                     }
                 }
@@ -72,27 +84,29 @@
     }
 }
 
-.minigame-table-body{
-    .minigame-table-items{
+.minigame-table-body {
+    .minigame-table-items {
         padding: 1rem 0;
         border-top: 1px solid #833D55;
-        .table-row-time{
+
+        .table-row-time {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            i{
+
+            i {
                 font-size: 2.4rem;
                 cursor: pointer;
             }
         }
-        
     }
 }
 
-.table-user{
+.table-user {
     display: flex;
-    align-items:center;
-    .user-avatar{
+    align-items: center;
+
+    .user-avatar {
         width: 3.2rem;
         height: 3.2rem;
         border-radius: 5px;
@@ -104,68 +118,83 @@
         align-items: center;
         justify-content: center;
         margin: 0;
-        img{
+
+        img {
             object-fit: cover;
             width: 3.2rem;
             height: 3.2rem;
         }
-        .non-image{
+
+        .non-image {
             font-size: 1.4rem;
         }
     }
+
     .user-name {
         width: 17rem;
         margin-left: .5rem;
-        @include Mobile{
+
+        @include Mobile {
             width: 7rem;
         }
     }
 }
 
-.table-dropdown{
+.table-dropdown {
     background: #D2D2BC;
-    &-row{
+
+    &-row {
         display: flex;
         border-top: 1px solid #B1B1A0;
-        &:first-child{
+
+        &:first-child {
             border-top: none;
         }
     }
-    &-column{
+
+    &-column {
         color: #833D55;
         font-weight: 600;
         font-size: 1.4rem;
         width: 48%;
-        &.header-column{
+
+        &.header-column {
             font-weight: 700;
         }
-        @include Mobile{
+
+        @include Mobile {
             width: 46%;
             font-size: 1.2rem;
         }
-        &.round{
-            padding : .8rem 2.3rem;
+
+        &.round {
+            padding: .8rem 2.3rem;
         }
-        &.score{
+
+        &.score {
             width: 5%;
             text-align: center;
-            padding : .8rem 0;
-            @include Mobile{
+            padding: .8rem 0;
+
+            @include Mobile {
                 width: 10%;
             }
         }
     }
-    &-header{
+
+    &-header {
         border-bottom: 1px solid #B1B1A0;
-        .standing-dropdown-row{
+
+        .standing-dropdown-row {
             border-top: none;
         }
     }
-    &-body{
+
+    &-body {
         margin: 0 2.3rem;
-        .round{
+
+        .round {
             padding: .8rem 0;
         }
     }
 }
-

@@ -44,9 +44,8 @@
 
     @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-lastest-news">
-    <div className="wraper-minigame-table">
-        <div class="statistic-grid">
-            Chi tiết
+    <div class="statistic-grid">
+        <div class="wraper-minigame-table">
             <ul class="auth-provider">
                 @if (Model.User.Photo == null)
                 {
@@ -65,10 +64,6 @@
             <div id="app-container"></div>
         </div>
     </div>
-
-    
-   
-
 </section>
 
 
