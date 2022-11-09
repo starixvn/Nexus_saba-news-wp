@@ -8,8 +8,8 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (winnnerLength, number) =>{
-        for(let num = 0; num < winnnerLength ; num ++){
+    handleClick = (winnerLength, number) =>{
+        for(let num = 0; num < winnerLength ; num ++){
             if(num !== number){
                 document.getElementsByClassName('detailWinners')[num].style.display = 'none';
             }
