@@ -1,11 +1,3 @@
 @import './../../../../abstracts/mixins';
 @import './components/minigame_table';
-.statistic-grid{
-    &::before{
-        background-position: top 9rem center;
-    }
-}
-
-.wraper-minigame-table{
-    
-}
+@import './components/dock_stage';

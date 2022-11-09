@@ -19,7 +19,12 @@ export class AppContainer extends Component {
             return null;
         }
         return(
-            <Grid matches={matches} votes={votes} />
+            <>
+                <Grid matches={matches} votes={votes} />
+                <div className="dock-stage-icon">
+                    <img src="../../../../css/images/winner_sticker_4.png" alt="" />
+                </div>
+            </>
         );
     }
 }
