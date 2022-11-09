@@ -40,7 +40,10 @@ export default class Grid extends PureComponent {
                         }
                     </div>
                 </div>
-                <div className="statistic">Total: {totalScore}</div>
+                <div className="total-score">
+                    <span>Tổng điểm: </span>
+                    <span>{totalScore}</span>
+                </div>
             </>
         );
     }

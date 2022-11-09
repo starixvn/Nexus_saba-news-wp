@@ -9,6 +9,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
+import { EqualHeight, EqualHeightElement } from 'react-equal-height';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -80,7 +81,7 @@ export class Item extends PureComponent {
 
     getVoteResult = result => {
         if(result === null) {
-            return <span className="choose choose-empty">empty</span>;
+            return <span className="choose choose-empty"><i className="icon-emtry" /></span>;
         }
         if(result.status) {
             return <span className="choose choose-win"><i className="icon-win" /></span>;
@@ -106,64 +107,38 @@ export class Item extends PureComponent {
                 <div className="group-cell-table">
                     <div className="table-row table-row-index">
                         <div className="team-choose">
-                            <div className="minigame-team home-team" onClick={() => this.handleVote(match.homeTeam.teamId)}>
-                                <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                                <div className="team-name">
-                                    {CommonFunctions.getTeamName(match.homeTeam)}
+                            <EqualHeight>
+                                <div className={`minigame-team home-team ${voteStatus === 1 ? 'active' : ''}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
+                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                    <EqualHeightElement name="Name">
+                                        <div className="team-name">
+                                            {CommonFunctions.getTeamName(match.homeTeam)}
+                                        </div>
+                                    </EqualHeightElement>
                                 </div>
-                            </div>
-                            <div className="minigame-team" onClick={() => this.handleVote(0)} >
-                                <i className="icon-minigame_draw" />
-                                <div className="team-name"> Hòa </div>
-                            </div>
+                                <div className={`minigame-team ${voteStatus === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)} >
+                                    <i className="icon-minigame_draw" />
+                                    <EqualHeightElement name="Name">
+                                        <div className="team-name"> Hòa </div>
+                                    </EqualHeightElement>
+                                </div>
 
-                            <div className="minigame-team away-team" onClick={() => this.handleVote(match.awayTeam.teamId)}>
-                                <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                                <div className="team-name">
-                                    {CommonFunctions.getTeamName(match.awayTeam)}
+                                <div className={`minigame-team away-team ${voteStatus === 2 ? 'active' : ''}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
+                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                                    <EqualHeightElement name="Name">
+                                        <div className="team-name">
+                                            {CommonFunctions.getTeamName(match.awayTeam)}
+                                        </div>
+                                    </EqualHeightElement>
                                 </div>
-                            </div>
+                            </EqualHeight>
+                            
                         </div> 
                     </div>
                     <div className="table-row">{this.getTeamVote()}</div>
                     <div className="table-row">{this.getVoteResult(result)}</div>
                     <div className="table-row">{this.getVoteScore(result)}</div>
                 </div>
-
-
-
-
-                {/* <div className="group-match-item" onClick={this.onClick}>
-                    <div className={`soccer-match-item`}
-                    >
-                        <div className="soccer-match-team">
-                            <div className="group-team">
-                                <div className="soccer-team home-team">
-                                    <div className={`soccer-team-name `} onClick={() => this.handleVote(match.homeTeam.teamId)}>
-                                        {voteStatus === 1 ? '(v)' : ''} {CommonFunctions.getTeamName(match.homeTeam)}
-                                    </div>
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                                </div>
-
-                                <ul className="wc-round-score">
-                                    <li className="total-score" onClick={() => this.handleVote(0)} > Hòa {voteStatus === 0 ? '(v)' : ''}</li>
-                                </ul>
-
-                                <div className="soccer-team away-team">
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                                    <div className={`soccer-team-name `} onClick={() => this.handleVote(match.awayTeam.teamId)}>
-                                        {CommonFunctions.getTeamName(match.awayTeam)} {voteStatus === 2 ? '(v)' : ''}
-                                    </div>
-                                    <ul className="soccer-team-status">
-                                        <li>{this.getTeamVote()}</li>
-                                        {this.getVoteResult(result)}
-                                        {this.getVoteScore(result)}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </>
         );
     }
