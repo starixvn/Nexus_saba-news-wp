@@ -173,10 +173,10 @@ export default class Winner extends PureComponent {
 
     render() {
         const { matches, votes} = this.props;
-        const Winners = this.calculatorPointer(matches, votes);
+        const winners = this.calculatorPointer(matches, votes);
         return (
             <div className="wrapper-scroll wrapper-scroll-winner">
-            	<div className="minigame-table table-winner">
+                <div className="minigame-table table-winner">
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index">#</div>
                         <div className="table-row table-row-name">Tên</div>
@@ -185,7 +185,7 @@ export default class Winner extends PureComponent {
                     </div>
                     <div className="minigame-table-body">
                         {
-                            votes.map((item, index) => <Item key={index} number={index} Winner={item} winnnerLength={votes.length} />)
+                            winners.map((item, index) => <Item key={index} number={index} Winner={item} winnnerLength={winners.length} />)
                         }
                     </div>
                 </div>
