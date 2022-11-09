@@ -175,21 +175,19 @@ export default class Winner extends PureComponent {
         const { matches, votes} = this.props;
         const Winners = this.calculatorPointer(matches, votes);
         return (
-            <>
-            	<div className="minigame-table table-winner">
-                    <div className="minigame-table-flex minigame-table-header">
-                        <div className="table-row table-row-index">#</div>
-                        <div className="table-row table-row-name">Tên</div>
-                        <div className="table-row table-row-score">Điểm</div>
-                        <div className="table-row table-row-time">Thời gian</div>
-                    </div>
-                    <div className="minigame-table-body">
-                        {
-                            votes.map((item, index) => <Item key={index} number={index} Winner={item} winnnerLength={votes.length} />)
-                        }
-                    </div>
+            <div className="minigame-table table-winner">
+                <div className="minigame-table-flex minigame-table-header">
+                    <div className="table-row table-row-index">#</div>
+                    <div className="table-row table-row-name">Tên</div>
+                    <div className="table-row table-row-score">Điểm</div>
+                    <div className="table-row table-row-time">Thời gian</div>
                 </div>
-            </>
+                <div className="minigame-table-body">
+                    {
+                        Winners.map((item, index) => <Item key={index} number={index} Winner={item} winnnerLength={Winners.length} />)
+                    }
+                </div>
+            </div>
         );
     }
 }

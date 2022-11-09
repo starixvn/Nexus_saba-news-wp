@@ -56,7 +56,6 @@ export default class Grid extends PureComponent {
                         matches={this.getMatchByStage(WorldCup.MinigameStage.Stage1)} />
                 </tbody>
             </table>
-            
         );
     }
 }

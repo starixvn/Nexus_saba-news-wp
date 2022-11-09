@@ -209,7 +209,7 @@ export default class Standing extends PureComponent {
                 {
                     rank > 0 && <p className="standing-me">Thứ hạng của bạn: {rank}</p>
                 }
-            	<div className="minigame-table">
+                <div className="minigame-table">
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index">#</div>
                         <div className="table-row table-row-name">Tên</div>
@@ -218,7 +218,7 @@ export default class Standing extends PureComponent {
                     </div>
                     <div className="minigame-table-body">
                         {
-                            votes.map((item, index) => <Item key={index} number={index} standing={item} standingLength={votes.length} />)
+                            standings.map((item, index) => <Item key={index} number={index} standing={item} standingLength={standings.length} />)
                         }
                     </div>
                 </div>

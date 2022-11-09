@@ -100,21 +100,17 @@ export class Stages extends PureComponent {
                                         return (
                                             <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
                                                 {selectedStageId === group.key && <Grid matches={group.matches}/>}
-                                            </Tab>
-                                        );
-                                    })
+                                            </Tab>);})
                                 }
                             </Tabs>
                         }
                         {
-                            (stages.length > 1 && isMobile) &&
-                            <>
+                            (stages.length > 1 && isMobile) &&<>
                                 <div className="nav-select-mb">
                                     <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
                                         {
                                             stages.map(group =>
-                                                <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
-                                        }
+                                                <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)}
                                     </select>
                                 </div>
                                 {

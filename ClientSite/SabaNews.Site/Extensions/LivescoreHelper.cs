@@ -241,7 +241,7 @@
                 WorldCup2022.TimestampMinigameStage04Start };
             string statusStage = status.Contains(WorldCup2022.BeforeStartedStage) ?
                 longs[numStage] :
-                matches[indexMatches[numStage]].StartTime.AddMinutes(SubtractMinutes).ToString();
+                matches[indexMatches[numStage]].StartTime.AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
             return statusStage;            
         }
 

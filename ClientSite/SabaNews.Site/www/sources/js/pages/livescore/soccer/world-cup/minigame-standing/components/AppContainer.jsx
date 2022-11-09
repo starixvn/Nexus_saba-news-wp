@@ -5,7 +5,6 @@ import { ActionCreators } from '../actions';
 import { connect } from 'react-redux';
 import { getMatchByEventStage } from '../../common.functions';
 import LangHelper from '@jsroot/common/langHelper';
-import { string } from 'prop-types';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -88,8 +87,8 @@ export class AppContainer extends Component {
                     </div>
                 }
             </>
-        )
-    };
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);

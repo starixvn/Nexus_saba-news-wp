@@ -28,7 +28,7 @@ const minigameWinnersSlice = createSlice({
             state.league = league;
         },
         setVotes: (state, action) => {
-            state.votes = action.payload
+            state.votes = action.payload;
         }
     }
 });

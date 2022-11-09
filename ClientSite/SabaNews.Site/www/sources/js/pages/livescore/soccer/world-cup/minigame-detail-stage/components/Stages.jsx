@@ -17,6 +17,14 @@ export class Stages extends PureComponent {
         };
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
     initStageId = () => {
         const { league, stages } = this.props;
         const knockoutStages = stages.filter(item => item.stageId !== WorldCup.GroupsStage);
@@ -27,21 +35,15 @@ export class Stages extends PureComponent {
         return stageId;
     };
 
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
     handleResize = () => {
         const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) 
+        {
             this.setState({ isMobile: true });
-        } else {
-            if (isMobile && window.innerWidth > MobileMaxWidth) {
+        } else 
+        {
+            if (isMobile && window.innerWidth > MobileMaxWidth) 
+            {
                 this.setState({ isMobile: false });
             }
         }

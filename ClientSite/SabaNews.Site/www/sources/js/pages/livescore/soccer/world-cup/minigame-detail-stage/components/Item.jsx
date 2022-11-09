@@ -44,21 +44,20 @@ export class Item extends PureComponent {
         || (vote && vote.teamId === teamId)) {
             return;
         }
-        const url = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');
-        await DataService.postDataAsync(url, {matchId: match.matchId}).then(response => {
+        const urlVoteMatch = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');
+        await DataService.postDataAsync(urlVoteMatch, {matchId: match.matchId}).then(response => {
             const voteMatch = response.data;
-            const startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
+            const startTimeVote = DateTimeService.convertFromUTC(voteMatch.startTime);
             const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-            const minutes = startTime.diff(currentTime, 'minutes');
+            const minutes = startTimeVote.diff(currentTime, 'minutes');
             if(voteMatch.status === MatchStatus.Finished
-                || minutes <= 30
-                || this.checkKnockoutMatch()) {
+                || minutes <= 30 || this.checkKnockoutMatch()) {
                 return;
             }
             const params = {
-                stage: window.stage,
                 teamId: teamId,
-                matchId: match.matchId
+                matchId: match.matchId,
+                stage: window.stage
             };
             this.props.updateVote(params).then(() => {
                 this.props.getVotes();
