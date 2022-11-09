@@ -2,6 +2,7 @@
 @import './components/dock_stage';
 @import './components/auth-user';
 @import './components/minigame-section';
+@import './components/minigame_control';
 
 .minigame-title{
     margin-bottom: 3rem;
@@ -148,6 +149,41 @@
     display: flex !important;
     align-items: center;
 }
+
+
+.live-score-nav{
+    border-bottom: 1px solid #C8C8B0;
+    margin-bottom: 1.2rem;
+    padding-bottom: .8rem;
+    a{
+        text-decoration: none;
+        color: #838372;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        margin-right: 2rem;
+        position: relative;
+        padding-bottom: .8rem;
+        &:last-child{
+            margin-right: 0;
+        }
+        &.active{
+            color: #833D55;
+            &::after{
+                display: block;
+                content: "";
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                background: #833D55;
+            }
+        }
+    }
+}
+
 
 
 
