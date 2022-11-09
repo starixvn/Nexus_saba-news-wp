@@ -59,15 +59,22 @@ export default class Item extends PureComponent {
     render() {
         const { stage } = this.props;
         return (
-                <tr>
-                    <td>{ stage }</td>
-                    <td>Giai đoạn { stage }</td>
-                    <td>{this.getStageStatus()}</td>
-                    <td>
-                        <span>{this.getTotalScore()}</span>
-                        <span className="view" onClick={this.handleViewDetail}>-Xem</span>
-                    </td>
-                </tr>
+
+            <div className="minigame-table-items">
+                <div className="minigame-table-flex ">
+                    <div className="table-row table-row-index">{ stage }</div>
+                    <div className="table-row table-row-name table-user">
+                        Giai đoạn { stage }
+                    </div>
+                    <div className="table-row table-row-score">
+                        {this.getStageStatus()}
+                    </div>
+                    <div className="table-row table-row-time">
+                        {this.getTotalScore()}
+                        <i className="icon-bxh_view view-minigame-detail" onClick={this.handleViewDetail} />
+                    </div>
+                </div>
+            </div>
         );
     }
 }
