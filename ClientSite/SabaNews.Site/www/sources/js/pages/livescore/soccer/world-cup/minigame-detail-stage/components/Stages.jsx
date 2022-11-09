@@ -37,13 +37,10 @@ export class Stages extends PureComponent {
 
     handleResize = () => {
         const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) 
-        {
+        if (!isMobile && window.innerWidth <= MobileMaxWidth){
             this.setState({ isMobile: true });
-        } else 
-        {
-            if (isMobile && window.innerWidth > MobileMaxWidth) 
-            {
+        } else{
+            if (isMobile && window.innerWidth > MobileMaxWidth){
                 this.setState({ isMobile: false });
             }
         }

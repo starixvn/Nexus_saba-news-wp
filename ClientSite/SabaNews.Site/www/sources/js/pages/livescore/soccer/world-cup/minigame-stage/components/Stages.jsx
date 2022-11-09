@@ -99,8 +99,9 @@ export class Stages extends PureComponent {
                                     stages.map(group => {
                                         return (
                                             <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                                {selectedStageId === group.key && <Grid matches={group.matches}/>}
-                                            </Tab>);})
+                                                {selectedStageId === group.key && <Grid matches={group.matches}/>}</Tab>);
+                                        }
+                                    )
                                 }
                             </Tabs>
                         }
