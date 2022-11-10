@@ -387,8 +387,9 @@
             var model = new MinigameStageViewModel
             {
                 Header = header,
-                Stage = stage
-            };
+                Stage = stage,
+                IsLogin = sessionService.User != null
+        };
             return View("~/Views/Event/WorldCup2022/Minigame/Stage.cshtml", model);
         }
 
@@ -407,7 +408,8 @@
             var model = new MinigameStageViewModel
             {
                 Header = header,
-                User = sessionService.User
+                User = sessionService.User,
+                IsLogin = sessionService.User != null
             };
             return View("~/Views/Event/WorldCup2022/Minigame/Profile.cshtml", model);
         }
@@ -432,7 +434,8 @@
             {
                 Header = header,
                 Stage = stage,
-                User = sessionService.User
+                User = sessionService.User,
+                IsLogin = sessionService.User != null
             };
             return View("~/Views/Event/WorldCup2022/Minigame/ProfileStage.cshtml", model);
         }

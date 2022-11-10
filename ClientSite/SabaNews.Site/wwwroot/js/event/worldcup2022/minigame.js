@@ -1,5 +1,6 @@
 ﻿var minigame = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
+    var tab = window.location.hash;
     const longs = [
         "11/08/2022, 3:00:00 PM",
         "11/22/2022, 8:00:00 AM",
@@ -53,7 +54,19 @@
             else {
                 document.getElementById("stage-minigame").scrollIntoView();
             }
-        })
+        });
+
+        if (tab == '#stage-minigame') {
+            $('html, body').animate({ scrollTop: 550 }, 1000);
+        }
+
+        if (tab == '#minigame-standing') {
+            $('html, body').animate({ scrollTop: 1400 }, 1000);
+        }
+
+        if (tab == '#minigame-winners') {
+            $('html, body').animate({ scrollTop: 1800 }, 1000);
+        }
 
         $('.click-list-rigister').click(function () {
             $('html, body').animate({ scrollTop: 550 }, 1000);
