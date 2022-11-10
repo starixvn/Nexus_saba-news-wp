@@ -27,8 +27,9 @@ export class Item extends PureComponent {
         return (
             <>
                 {
+                    //cursor-items
                     number < 10 &&
-                        <div className="minigame-table-items">
+                        <div className="minigame-table-items" onClick={() => this.handleClick(winnnerLength, number)}>
                             <div className="minigame-table-flex ">
                                 <div className="table-row table-row-index">{number + 1}</div>
                                 <div className="table-row table-row-name table-user">
@@ -43,10 +44,10 @@ export class Item extends PureComponent {
                                 <div className="table-row table-row-score">{Winner.point}</div>
                                 <div className="table-row table-row-time">
                                     {Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate}
-                                    {
+                                    {/* {
                                     window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`}
                                     onClick={() => this.handleClick(winnnerLength, number)}/> : null
-                                    }
+                                    } */}
                                 </div>
                             </div>
                         </div>

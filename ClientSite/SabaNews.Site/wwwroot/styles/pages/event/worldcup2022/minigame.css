@@ -602,14 +602,16 @@ body {
     text-align: left; }
     @media (max-width: 767px) {
       .table-row-name {
-        width: 35%; } }
+        /*width: 35%;*/
+        width: 50%; } }
   .table-row-score {
     width: 15%; }
   .table-row-time {
     width: 42%; }
     @media (max-width: 767px) {
       .table-row-time {
-        width: 30%; } }
+        /*width: 30%;*/
+        width: 25%; } }
 
 .spacing-top {
   margin-top: 1.2rem; }
@@ -637,7 +639,7 @@ body {
       position: sticky;
       padding: .5rem 0;
       top: 0;
-      background: #D3D3B5;
+      background: linear-gradient(180deg, #67182B 0%, #470817 100%);
       border-top: 1px solid #833D55;
       border-bottom: 1px solid #833D55;
       z-index: 9; }
@@ -648,7 +650,8 @@ body {
         right: 0;
         bottom: -4px; }
       .minigame-table .minigame-table-flex.minigame-table-header .table-row {
-        font-size: 1.6rem; }
+        font-size: 1.6rem;
+        color: #E8E8D6; }
         @media (max-width: 767px) {
           .minigame-table .minigame-table-flex.minigame-table-header .table-row {
             font-size: 1.2rem;
@@ -666,6 +669,8 @@ body {
   @media (max-width: 767px) {
     .minigame-table-body .minigame-table-items {
       padding: .8rem 0; } }
+  .minigame-table-body .minigame-table-items.cursor-items {
+    cursor: pointer; }
   .minigame-table-body .minigame-table-items:first-child {
     border-top: none; }
   .minigame-table-body .minigame-table-items .table-row-time {
@@ -699,7 +704,8 @@ body {
     @media (max-width: 767px) {
       .table-user .user-avatar {
         width: 2rem;
-        height: 2rem; } }
+        height: 2rem;
+        display: none; } }
     .table-user .user-avatar img {
       object-fit: cover;
       width: 3.2rem;
@@ -711,9 +717,10 @@ body {
     margin-left: .5rem; }
     @media (max-width: 767px) {
       .table-user .user-name {
-        width: 7rem;
+        width: 15rem;
         font-weight: 700;
-        font-size: 1.1rem; } }
+        font-size: 1.1rem;
+        margin-left: 0; } }
 
 .table-dropdown {
   background: #D2D2BC;
@@ -728,6 +735,9 @@ body {
     font-weight: 600;
     font-size: 1.4rem;
     width: 48%; }
+    @media (max-width: 767px) {
+      .table-dropdown-column {
+        width: 63%; } }
     .table-dropdown-column.header-column {
       font-weight: 700; }
     @media (max-width: 767px) {

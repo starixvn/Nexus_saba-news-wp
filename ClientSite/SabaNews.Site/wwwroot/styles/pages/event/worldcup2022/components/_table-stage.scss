@@ -29,7 +29,8 @@
         text-align: left;
 
         @include Mobile {
-            width: 35%;
+            /*width: 35%;*/
+            width: 50%;
         }
     }
 
@@ -41,7 +42,8 @@
         width: 42%;
 
         @include Mobile {
-            width: 30%;
+            /*width: 30%;*/
+            width: 25%;
         }
     }
 }
@@ -78,14 +80,16 @@
     .minigame-table-flex {
         display: flex;
         align-items: center;
+
         &.minigame-table-header {
             position: sticky;
             padding: .5rem 0;
             top: 0;
-            background: #D3D3B5;
+            background: linear-gradient(180deg, #67182B 0%, #470817 100%);
             border-top: 1px solid #833D55;
             border-bottom: 1px solid #833D55;
-            z-index : 9;
+            z-index: 9;
+
             &:after {
                 left: 0;
                 bottom: -4px;
@@ -98,7 +102,7 @@
 
             .table-row {
                 font-size: 1.6rem;
-
+                color : #E8E8D6;
                 @include Mobile {
                     font-size: 1.2rem;
                     line-height: 2.4rem;
@@ -122,9 +126,15 @@
     .minigame-table-items {
         padding: 1rem 0;
         border-top: 1px solid #833D55;
-        @include Mobile{
-            padding : .8rem 0;
+
+        @include Mobile {
+            padding: .8rem 0;
         }
+
+        &.cursor-items {
+            cursor: pointer;
+        }
+
         &:first-child {
             border-top: none;
         }
@@ -133,7 +143,8 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            position : relative;
+            position: relative;
+
             i {
                 font-size: 2.4rem;
                 cursor: pointer;
@@ -167,6 +178,7 @@
         @include Mobile {
             width: 2rem;
             height: 2rem;
+            display : none;
         }
 
         img {
@@ -185,9 +197,10 @@
         margin-left: .5rem;
 
         @include Mobile {
-            width: 7rem;
+            width: 15rem;
             font-weight: 700;
             font-size: 1.1rem;
+            margin-left : 0;
         }
     }
 }
@@ -210,6 +223,10 @@
         font-weight: 600;
         font-size: 1.4rem;
         width: 48%;
+
+        @include Mobile {
+            width: 63%;
+        }
 
         &.header-column {
             font-weight: 700;
