@@ -94,7 +94,8 @@ export class Stages extends PureComponent {
                         stages.length === 1 &&
                         <Grid matches={stages[0].matches} votes={votes} startNum={this.getNumberMatch(stages[0].matches)} />
                     }
-                    {
+                </div>
+                {
                         (stages.length > 1 && !isMobile) &&
                         <Tabs className="live-score-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
                             {
@@ -124,7 +125,6 @@ export class Stages extends PureComponent {
                             }
                         </>
                     }
-                </div>
             </>
         );
     }
