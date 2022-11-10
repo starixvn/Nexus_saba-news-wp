@@ -10,18 +10,12 @@ export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            selectedStage: 1,
             stages:[{name:LangHelper.getResource('Stage1'), value:1},
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
-            {name:LangHelper.getResource('Stage4'), value:4}],
-            selectedStage: 1
+            {name:LangHelper.getResource('Stage4'), value:4}]
         };
-    }
-
-    componentDidMount() {
-        this.props.getMatches();
-        this.props.getVotes(this.state.selectedStage);
-        window.stage = this.state.selectedStage;
     }
 
     handleChange = event => {
@@ -30,6 +24,12 @@ export class AppContainer extends Component {
         });
         this.props.getVotes(parseInt(event.target.value, 10));
     };
+
+    componentDidMount() {
+        this.props.getMatches();
+        this.props.getVotes(this.state.selectedStage);
+        window.stage = this.state.selectedStage;
+    }
 
     render() {
         const { matches, votes } = this.props;
