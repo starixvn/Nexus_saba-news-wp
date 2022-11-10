@@ -451,6 +451,23 @@ body {
 
         &.stage-votes {
             cursor: pointer;
+
+            .stage-round {
+                h2 {
+                    background: #E8E8D6;
+                    color: #82152C;
+                }
+            }
+
+            &:hover {
+                .stage-round {
+                    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.35));
+
+                    h2 {
+                        background: #F8F8F1;
+                    }
+                }
+            }
         }
 
         .icon-stage {
@@ -477,20 +494,12 @@ body {
             width: 100%;
         }
 
-        &:hover {
-            .stage-round {
-                filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.35));
 
-                h2 {
-                    background: #F8F8F1;
-                }
-            }
-        }
 
         .stage-round {
             h2 {
-                background: #E8E8D6;
-                color: #82152C;
+                background: #97394D;
+                color: #F2A6B6;
                 font-weight: 700;
                 font-size: 2rem;
                 line-height: 2.8rem;
