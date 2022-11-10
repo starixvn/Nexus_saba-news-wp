@@ -51,11 +51,11 @@
             grid-gap: 2rem;
             .minigame-team{
                 width: 9.4rem;
-                padding: .5rem;
+                padding: .2rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                border: 2px solid #BDBDAB;
+                border: 2px solid #E8E8D6;
                 border-radius: 5px;
                 cursor: pointer;
                 img{
@@ -80,6 +80,15 @@
                     background: #8D172F;
                     .team-name{
                         color: #E8E8D6;
+                    }
+                    .group-bg-logo{
+                        width: 100%;
+                        background: #E8E8D6;
+                        border-radius: 5px 5px 0 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: .3rem 0;
                     }
                 }
             }
@@ -206,6 +215,8 @@
 .nav-select-mb{
     margin: 0;
 }
+
+
 
 .custom-select{
     border: 1px solid #833D55 !important;

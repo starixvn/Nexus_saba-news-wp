@@ -108,7 +108,9 @@ export class Item extends PureComponent {
                         <div className="team-choose">
                             <EqualHeight>
                                 <div className={`minigame-team home-team ${voteStatus === 1 ? 'active' : ''}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                    <div className="group-bg-logo">
+                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                    </div>
                                     <EqualHeightElement name="Name">
                                         <div className="team-name">
                                             {CommonFunctions.getTeamName(match.homeTeam)}
@@ -116,14 +118,18 @@ export class Item extends PureComponent {
                                     </EqualHeightElement>
                                 </div>
                                 <div className={`minigame-team ${voteStatus === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)} >
-                                    <i className="icon-minigame_draw" />
+                                    <div className="group-bg-logo">
+                                        <i className="icon-minigame_draw" />
+                                    </div>
                                     <EqualHeightElement name="Name">
                                         <div className="team-name"> Hòa </div>
                                     </EqualHeightElement>
                                 </div>
 
                                 <div className={`minigame-team away-team ${voteStatus === 2 ? 'active' : ''}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                                    <div className="group-bg-logo">
+                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                                    </div>
                                     <EqualHeightElement name="Name">
                                         <div className="team-name">
                                             {CommonFunctions.getTeamName(match.awayTeam)}
