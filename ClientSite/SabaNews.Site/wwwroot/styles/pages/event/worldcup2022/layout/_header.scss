@@ -539,6 +539,7 @@
     width: 5.6rem;
     left: 2rem;
     top: 13.7rem;
+    z-index: 99999;
 
     @include tableMobile {
         transform: inherit;
@@ -550,14 +551,19 @@
         justify-content: space-between;
         border-radius: 0;
         padding: 13px 25px 27px 25px;
+
+        &:hover {
+            width: 100% !important;
+        }
     }
 
     li {
         a {
             padding: 1.8rem 1.2rem;
             margin-left: .3rem;
-            @include tableMobile{
-                padding : 0;
+
+            @include tableMobile {
+                padding: 0;
             }
 
 

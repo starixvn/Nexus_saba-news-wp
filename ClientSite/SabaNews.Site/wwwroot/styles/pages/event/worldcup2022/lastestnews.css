@@ -372,7 +372,8 @@ body {
   border-radius: 5px;
   width: 5.6rem;
   left: 2rem;
-  top: 13.7rem; }
+  top: 13.7rem;
+  z-index: 99999; }
   @media screen and (max-width: 1024px) {
     .header-nav-event {
       transform: inherit;
@@ -383,7 +384,9 @@ body {
       width: 100%;
       justify-content: space-between;
       border-radius: 0;
-      padding: 13px 25px 27px 25px; } }
+      padding: 13px 25px 27px 25px; }
+      .header-nav-event:hover {
+        width: 100% !important; } }
   .header-nav-event li a {
     padding: 1.8rem 1.2rem;
     margin-left: .3rem; }
