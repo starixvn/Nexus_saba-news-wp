@@ -13,6 +13,9 @@
         padding-bottom: 1.1rem;
         text-transform: uppercase;
         color: #833D55;
+        @include tableMobile{
+            font-size: 2rem;
+        }
     }
     .dots-parent{
         background: #833D55;
@@ -41,9 +44,20 @@
     }
     .table-row{
         width: 9rem;
+        @include Mobile{
+            width: 4rem;
+            line-height: 1.8rem !important;
+            font-size: 1.2rem !important;
+            &-name_team {
+                width: 9rem !important;
+            }
+        }
         &-index {
             flex: 1 0 15rem;
             width: auto;
+            @include Mobile{
+                flex: 1 0 17rem;
+            }
         }
         .team-choose{
             display: flex;
@@ -51,6 +65,7 @@
             grid-gap: 2rem;
             @include Mobile{
                 grid-gap: 0;
+                padding-left: .4rem;
             }
             .minigame-team{
                 width: 9.4rem;
@@ -62,15 +77,25 @@
                 border-radius: 5px;
                 cursor: pointer;
                 @include Mobile{
-                    width: 5.8rem;
+                    width: 4.8rem;
+                    height: 3.6rem;
+                    border-radius: 3px;
+                    justify-content: center;
                 }
                 img{
                     width: 3.9rem;
                     height: 2.6rem;
                     object-fit: cover;
+                    @include Mobile{
+                        width: 3.6rem;
+                        height: 2.4rem;
+                    }
                 }
                 i{
                     font-size: 3rem;
+                    @include Mobile{
+                        font-size: 2rem;
+                    }
                     &::before{
                         color: #8A1538;
                     }
@@ -80,21 +105,21 @@
                     font-size: 1.3rem;
                     line-height: 2.8rem;
                     margin-top: .4rem;
+                    @include Mobile{
+                        display: none;
+                    }
                 }
                 &.active{
                     border: 2px solid #8D172F;
                     background: #8D172F;
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
                     .team-name{
                         color: #E8E8D6;
                     }
-                    .group-bg-logo{
-                        width: 100%;
-                        background: #E8E8D6;
-                        border-radius: 5px 5px 0 0;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: .3rem 0;
+                    i{
+                        &::before{
+                            color: #fff;
+                        }
                     }
                 }
             }
@@ -107,6 +132,15 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto;
+            @include Mobile{
+                width: 1.8rem;
+                height: 1.8rem;
+                i{
+                    &::before{
+                        font-size: 1rem;
+                    }
+                }
+            }
             &-win{
                 background: #549C2A;
             }
@@ -181,6 +215,9 @@
         font-weight: 700;
         font-size: 1.6rem;
         line-height: 2.8rem;
+        @include Mobile{
+            font-size: 1.3rem;
+        }
        
     }
 }

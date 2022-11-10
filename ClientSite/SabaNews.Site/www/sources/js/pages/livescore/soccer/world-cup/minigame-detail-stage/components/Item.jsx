@@ -119,9 +119,7 @@ export class Item extends PureComponent {
                         <div className="team-choose">
                             <EqualHeight>
                                 <div className={`minigame-team home-team ${voteStatus === 1 ? 'active' : ''}`} onClick={() => this.handleVote(match.homeTeam.teamId)}>
-                                    <div className="group-bg-logo">
-                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                                    </div>
+                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                     <EqualHeightElement name="Name">
                                         <div className="team-name">
                                             {CommonFunctions.getTeamName(match.homeTeam)}
@@ -129,18 +127,14 @@ export class Item extends PureComponent {
                                     </EqualHeightElement>
                                 </div>
                                 <div className={`minigame-team ${voteStatus === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)} >
-                                    <div className="group-bg-logo">
-                                        <i className="icon-minigame_draw" />
-                                    </div>
+                                    <i className="icon-minigame_draw" />
                                     <EqualHeightElement name="Name">
                                         <div className="team-name"> Hòa </div>
                                     </EqualHeightElement>
                                 </div>
 
                                 <div className={`minigame-team away-team ${voteStatus === 2 ? 'active' : ''}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
-                                    <div className="group-bg-logo">
-                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                                    </div>
+                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                     <EqualHeightElement name="Name">
                                         <div className="team-name">
                                             {CommonFunctions.getTeamName(match.awayTeam)}
@@ -150,8 +144,8 @@ export class Item extends PureComponent {
                             </EqualHeight>
                         </div>
                     </div>
-                    <div className="table-row">{this.getTeamVote()}</div>
-                    <div className="table-row">{this.getVoteResult(match, result)}</div>
+                    <div className="table-row table-row-name_team">{this.getTeamVote()}</div>
+                    <div className="table-row ">{this.getVoteResult(match, result)}</div>
                     <div className="table-row">{this.getVoteScore(match, result)}</div>
                 </div>
             </>

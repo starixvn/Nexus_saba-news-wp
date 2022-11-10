@@ -13,6 +13,9 @@
         padding-bottom: 1.1rem;
         text-transform: uppercase;
         color: #833D55;
+        @include tableMobile{
+            font-size: 2rem;
+        }
     }
     .dots-parent{
         background: #833D55;

@@ -22,7 +22,7 @@ export default class Grid extends PureComponent {
                 <div className="minigame-table">
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index"></div>
-                        <div className="table-row">Dự đoán</div>
+                        <div className="table-row table-row-name_team">Dự đoán</div>
                         <div className="table-row">Kết quả</div>
                         <div className="table-row">Điểm</div>
                     </div>
