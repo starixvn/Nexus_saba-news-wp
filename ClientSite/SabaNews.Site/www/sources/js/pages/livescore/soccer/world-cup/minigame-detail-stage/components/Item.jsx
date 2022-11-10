@@ -115,7 +115,7 @@ export class Item extends PureComponent {
         return (
             <>
                 <div className="name-play-mobile">
-                    #0{number + 1}: {CommonFunctions.getTeamName(match.homeTeam)} vs {CommonFunctions.getTeamName(match.awayTeam)}
+                    #{number < 10 ? "0" + number : number}: {CommonFunctions.getTeamName(match.homeTeam)} vs {CommonFunctions.getTeamName(match.awayTeam)}
                 </div>
                 <div className="group-cell-table">
                     <div className="table-row table-row-index">

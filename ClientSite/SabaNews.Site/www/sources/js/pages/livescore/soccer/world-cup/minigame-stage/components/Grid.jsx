@@ -14,7 +14,10 @@ export default class Grid extends PureComponent {
         return (
             <div className="statistic-grid">
                 {
-                    matches.map((item, index) => <Item key={index} number={num++} match={item} />)
+                    matches.map((item, index) => {
+                        num++;
+                        return <Item key={index} number={num} match={item} />
+                    })
                 }
             </div>
         );

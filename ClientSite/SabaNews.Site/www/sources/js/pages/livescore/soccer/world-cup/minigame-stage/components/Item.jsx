@@ -92,10 +92,10 @@ export class Item extends PureComponent {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
-            <div className={`statistic-grid-item ${vote != null ? 'active' : ''}`} onClick={this.onClick}>
+            <div className={`statistic-grid-item ${vote != null ? 'active' : ''} ${match.status === MatchStatus.Finished ? 'finish' : ''}`} onClick={this.onClick}>
                 <div className="statistic-grid-item-header">
                     <div className="statistic-grid-item-round">
-                        {`Trận 0${number + 1}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
+                        {`Trận ${number < 10 ? "0" + number : number}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
                     </div>
                     <div className="statistic-grid-item-fav show-pc">{this.getVoteTeam(vote)}</div>
                 </div>

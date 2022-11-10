@@ -123,7 +123,7 @@ export class Stages extends PureComponent {
                                     </select>
                                 </div>
                                 {
-                                    <Grid matches={currentStage.matches}  startNum={this.getNumberMatch(group.matches)}/>
+                                    <Grid matches={currentStage.matches}  startNum={this.getNumberMatch(currentStage.matches)}/>
                                 }
                             </>
                         }
