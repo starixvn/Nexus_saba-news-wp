@@ -66,7 +66,7 @@
                                 </a>
                                 <div class="title-hot">
                                     <h1><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = firstPost.Slug })">@firstPost.PostTitle</a></h1>
-                                    <p><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = firstPost.Slug })">@firstPost.PostExcerpt</a></p>
+                                    <p class="home-excerpt"><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = firstPost.Slug })">@firstPost.PostExcerpt</a></p>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +131,6 @@
                                             </a>
                                             <div class="title-hot">
                                                 <h3><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostTitle</a></h3>
-                                                <p><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostExcerpt</a></p>
                                             </div>
                                         </div>
                                     </div>
