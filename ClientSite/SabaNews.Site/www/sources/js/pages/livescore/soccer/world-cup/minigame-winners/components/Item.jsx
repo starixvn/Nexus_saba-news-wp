@@ -8,28 +8,29 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (winnerLength, number) =>{
-        for(let num = 0; num < winnerLength ; num ++){
-            if(num !== number){
-                document.getElementsByClassName('detailWinners')[num].style.display = 'none';
+    handleClick = (winnerLength, number, selectedStage) =>{
+        if(selectedStage === 4){
+            for(let num = 0; num < winnerLength ; num ++){
+                if(num !== number){
+                    document.getElementsByClassName('detailWinners')[num].style.display = 'none';
+                }
             }
-        }
-        const display = document.getElementsByClassName('detailWinners')[number].style.display;
-        if(display === 'block'){
-            document.getElementsByClassName('detailWinners')[number].style.display = 'none';
-        }else{
-            document.getElementsByClassName('detailWinners')[number].style.display = 'block';
+            const display = document.getElementsByClassName('detailWinners')[number].style.display;
+            if(display === 'block'){
+                document.getElementsByClassName('detailWinners')[number].style.display = 'none';
+            }else{
+                document.getElementsByClassName('detailWinners')[number].style.display = 'block';
+            }
         }
     };
 
     render() {
-        const { Winner, number, winnnerLength } = this.props;
+        const { Winner, number, winnnerLength, selectedStage } = this.props;
         return (
             <>
                 {
-                    //cursor-items
                     number < 10 &&
-                        <div className="minigame-table-items" onClick={() => this.handleClick(winnnerLength, number)}>
+                        <div className= {`minigame-table-items ${selectedStage === 4 ? 'cursor-items' : ''}`} onClick={() => this.handleClick(winnnerLength, number, selectedStage)}>
                             <div className="minigame-table-flex ">
                                 <div className="table-row table-row-index">{number + 1}</div>
                                 <div className="table-row table-row-name table-user">
@@ -44,16 +45,12 @@ export class Item extends PureComponent {
                                 <div className="table-row table-row-score">{Winner.point}</div>
                                 <div className="table-row table-row-time">
                                     {Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate}
-                                    {/* {
-                                    window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`}
-                                    onClick={() => this.handleClick(winnnerLength, number)}/> : null
-                                    } */}
                                 </div>
                             </div>
                         </div>
                 }
                 {
-                    number < 10 && window.stage === 4 &&
+                    (number < 10 && selectedStage === 4) &&
                     <div className="table-dropdown detailWinners" style={{display:'none'}}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-row">

@@ -9,16 +9,18 @@ export class Item extends PureComponent {
     }
 
     handleClick = (standingLength, number) =>{
-        for(let num = 0; num < standingLength ; num ++){
-            if(num !== number){
-                document.getElementsByClassName('detailStandings')[num].style.display = 'none';
+        if(window.stage === 4){
+            for(let num = 0; num < standingLength ; num ++){
+                if(num !== number){
+                    document.getElementsByClassName('detailStandings')[num].style.display = 'none';
+                }
             }
-        }
-        const display = document.getElementsByClassName('detailStandings')[number].style.display;
-        if(display === 'block'){
-            document.getElementsByClassName('detailStandings')[number].style.display = 'none';
-        }else{
-            document.getElementsByClassName('detailStandings')[number].style.display = 'block';
+            const display = document.getElementsByClassName('detailStandings')[number].style.display;
+            if(display === 'block'){
+                document.getElementsByClassName('detailStandings')[number].style.display = 'none';
+            }else{
+                document.getElementsByClassName('detailStandings')[number].style.display = 'block';
+            }
         }
     };
 
@@ -26,9 +28,7 @@ export class Item extends PureComponent {
         const { standing, number, standingLength } = this.props;
         return (
             <>
-
-                {/* cursor-items   */}
-                <div className="minigame-table-items" onClick={() => this.handleClick(standingLength, number)}>
+                <div className={`minigame-table-items ${window.stage === 4 ? 'cursor-items' : ''}`} onClick={() => this.handleClick(standingLength, number)}>
                     <div className="minigame-table-flex ">
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
@@ -43,10 +43,6 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-score">{standing.point}</div>
                         <div className="table-row table-row-time">
                             {standing.updatedDate != null ? standing.updatedDate : standing.createdDate}
-                            {/* {
-                               window.stage === 4 ?  <i className="icon-bxh_view" id={`iconDetail ${number + 1}`}
-                                onClick={() => this.handleClick(standingLength, number)}/> : null
-                            } */}
                         </div>
                     </div>
                 </div>

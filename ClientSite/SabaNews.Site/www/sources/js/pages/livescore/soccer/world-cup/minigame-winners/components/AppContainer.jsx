@@ -4,12 +4,14 @@ import LangHelper from '@jsroot/common/langHelper';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { getMatchByEventStage } from '../../common.functions';
+import { MobileMaxWidth } from '@jsroot/common/constants';
 import Winner from '../components/Winner';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
             stages:[{name:LangHelper.getResource('Stage1'), value:1},
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
@@ -33,8 +35,16 @@ export class AppContainer extends Component {
         }
     };
 
+    handleChangeSelect = event => {
+        this.setState({
+            selectedStage: event.target.value
+        });
+        this.props.getVotes(parseInt(event.target.value, 10));
+    };
+
     render() {
         const { matches, votes } = this.props;
+        const { isMobile } = this.state;
         if(matches === null ) {
             return null;
         }
@@ -62,13 +72,23 @@ export class AppContainer extends Component {
                             </div>
                             <div className="minigame-control">
                                 {
-                                    this.state.stages.map( item =>
+                                    !isMobile && this.state.stages.map( item =>
                                         <button className= {this.state.selectedStage === item.value ? 'buttonStage active'
                                         : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
                                     )
                                 }
+                                {
+                                    isMobile && 
+                                    <select value={this.state.selectedStage}
+                                        onChange={this.handleChangeSelect} className="custom-select">
+                                        {
+                                            this.state.stages.map( index =>
+                                            <option key={index.value} value={index.value}>{index.name}</option> )
+                                        }
+                                    </select>
+                                }
                             </div>
-                            <Winner matches={showMatches} votes={votes} />
+                            <Winner matches={showMatches} votes={votes} selectedStage={this.state.selectedStage} />
                         </div>
                         <div className="winner-icon">
                             <img src="../../../../css/images/winner_sticker_4.png" alt="" />

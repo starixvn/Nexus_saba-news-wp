@@ -15,7 +15,6 @@ export class AppContainer extends Component {
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}],
             selectedStage: 1,
-            search: ''
         };
     }
 
@@ -64,18 +63,9 @@ export class AppContainer extends Component {
                                         this.state.stages.map( index =>
                                         <option key={index.value} value={index.value}>{index.name}</option> )
                                     }
-                                </select>
-                                <div className="custom-search">
-                                    <input
-                                        placeholder="Tìm kiếm theo tên..."
-                                        className="custom-search-input"
-                                        onChange={e => this.setState({search: e.target.value})}
-                                        autoComplete="false"
-                                    />
-                                    <i className="icon-icon_search custom-search-icon"/>
-                                </div>
+                                </select>                               
                             </div>
-                            <Standing matches={showMatches} votes={votes} search={this.state.search} />
+                            <Standing matches={showMatches} votes={votes} />
                         </div>
                         <div className="wave-standing-main"></div>
                         <div className="wave-standing-bg"></div>

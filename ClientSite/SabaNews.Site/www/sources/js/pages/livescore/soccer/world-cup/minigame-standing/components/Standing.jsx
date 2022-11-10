@@ -112,7 +112,7 @@ export default class Standing extends PureComponent {
         return detail;
     };
 
-    calculatorPointer = (matches, votes, search) => {
+    calculatorPointer = (matches, votes) => {
         let detail = [];
         const points = [];
         let users = [];
@@ -128,9 +128,6 @@ export default class Standing extends PureComponent {
         });
         detail = this.getDetail(matches, users, points, votes);
         let standing = this.handleStandings(users, votes, points, detail);
-        if(search !== ''){
-           standing = this.handleSearch(standing, search);
-        }
         return standing;
     };
 
@@ -196,20 +193,9 @@ export default class Standing extends PureComponent {
         return rank;
     };
 
-    handleSearch = (standings, search) =>{
-        const searches = [];
-        standings.map(item => {
-            const name = JSON.stringify(item.userName);
-            if(name.toLowerCase().includes(search.toLowerCase())){
-                searches.push(item);
-            }
-        });
-        return searches;
-    };
-
     render() {
-        const { matches, votes, search } = this.props;
-        const standings = this.calculatorPointer(matches, votes, search);
+        const { matches, votes } = this.props;
+        const standings = this.calculatorPointer(matches, votes);
         const userId = window.User;
         const rank = this.checkRank(standings, userId);
         window.rank = rank;
