@@ -16,7 +16,7 @@ export default class Grid extends PureComponent {
                 {
                     matches.map((item, index) => {
                         num++;
-                        return <Item key={index} number={num} match={item} />
+                        return <Item key={index} number={num} match={item} />;
                     })
                 }
             </div>

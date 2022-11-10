@@ -88,14 +88,28 @@ export class Item extends PureComponent {
         return <span></span>;
     };
 
+    checkDisabledVote = () => {
+        const { match } = this.props;
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
+        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        const minutes = startTime.diff(currentTime, 'minutes');
+        let status = false;
+        if (match.status === MatchStatus.Finished
+            || minutes <= 30
+            || this.checkKnockoutMatch()) {
+            status = true ;
+        }
+        return status;
+    };
+
     render() {
         const { match, number } = this.props;
         const vote = this.checkVoteOption();
         return (
-            <div className={`statistic-grid-item ${vote != null ? 'active' : ''} ${match.status === MatchStatus.Finished ? 'finish' : ''}`} onClick={this.onClick}>
+            <div className={`statistic-grid-item ${vote != null ? 'active' : ''} ${this.checkDisabledVote() ? 'finish' : ''}`} onClick={this.onClick}>
                 <div className="statistic-grid-item-header">
                     <div className="statistic-grid-item-round">
-                        {`Trận ${number < 10 ? "0" + number : number}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
+                        {`Trận ${number < 10 ? '0' + number : number}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
                     </div>
                     <div className="statistic-grid-item-fav show-pc">{this.getVoteTeam(vote)}</div>
                 </div>
