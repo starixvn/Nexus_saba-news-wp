@@ -20,10 +20,7 @@
             $('#guide').modal('show');
         })
 
-        $('.btn-nav-guide').on('click', function () {
-            $('#guide').modal('show');
-        })
-
+       
         $('.btn-home').click(function () {
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });

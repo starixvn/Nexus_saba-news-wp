@@ -39,7 +39,9 @@
     }
 
     function handleActions() {
-
+        $('.btn-nav-guide').on('click', function () {
+            $('#guide').modal('show');
+        });
         $(document).on('shown.bs.modal', '.modal', function (e) {
             $('html').addClass('overflow-page');
         })
