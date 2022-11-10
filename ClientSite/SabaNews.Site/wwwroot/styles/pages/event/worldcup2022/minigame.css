@@ -695,6 +695,8 @@ body {
 .minigame-table-body .minigame-table-items {
   padding: 1rem 0;
   border-top: 1px solid #833D55; }
+  .minigame-table-body .minigame-table-items.active {
+    background: #F1F186; }
   @media (max-width: 767px) {
     .minigame-table-body .minigame-table-items {
       padding: .8rem 0; } }

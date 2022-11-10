@@ -137,6 +137,10 @@
         padding: 1rem 0;
         border-top: 1px solid #833D55;
 
+        &.active {
+            background: #F1F186;
+        }
+
         @include Mobile {
             padding: .8rem 0;
         }

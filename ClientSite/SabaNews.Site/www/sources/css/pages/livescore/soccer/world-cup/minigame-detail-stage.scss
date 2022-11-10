@@ -173,6 +173,9 @@
     padding: 0 2.7rem 0 1rem;
     margin-left: 1.5rem;
     margin-right: .5rem;
+    @include tableMobile{
+        margin: 0;
+    }
     span{
         color: #833D55;
         font-weight: 700;
@@ -192,6 +195,8 @@
     border-bottom: 1px solid #C8C8B0;
     margin-bottom: 1.2rem;
     padding-bottom: .8rem;
+    margin-left: 1.5rem;
+    margin-right: .5rem;
     a{
         text-decoration: none;
         color: #838372;
