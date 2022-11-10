@@ -57,12 +57,12 @@ export default class Item extends PureComponent {
     };
 
     render() {
-        const { stage } = this.props;
+        const { stage, count } = this.props;
         return (
 
             <div className="minigame-table-items">
                 <div className="minigame-table-flex ">
-                    <div className="table-row table-row-index">{ stage }</div>
+                    <div className="table-row table-row-index">{ count }</div>
                     <div className="table-row table-row-name table-user">
                         Giai đoạn { stage }
                     </div>
