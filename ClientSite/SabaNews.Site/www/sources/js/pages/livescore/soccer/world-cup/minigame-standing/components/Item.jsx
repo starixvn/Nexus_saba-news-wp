@@ -28,7 +28,7 @@ export class Item extends PureComponent {
         const { standing, number, standingLength, rank } = this.props;
         return (
             <>
-                <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${window.stage === 4 ? 'cursor-items' : ''}`} 
+                <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${window.stage === 4 ? 'cursor-items' : ''}`}
                 onClick={() => this.handleClick(standingLength, number)}>
                     <div className="minigame-table-flex ">
                         <div className="table-row table-row-index">{number + 1}</div>
