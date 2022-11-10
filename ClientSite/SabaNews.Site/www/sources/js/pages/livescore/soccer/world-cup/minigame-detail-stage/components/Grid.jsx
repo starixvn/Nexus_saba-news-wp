@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, {PureComponent } from 'react';
 import Item from './Item';
 import { getVoteResult } from '../../common.functions';
 export default class Grid extends PureComponent {

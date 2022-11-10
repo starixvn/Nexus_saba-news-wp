@@ -70,7 +70,9 @@ export class Item extends PureComponent {
 
     getTeamVote = () => {
         const { match, vote } = this.props;
-        if(!vote) return '';
+        if(!vote) {
+            return '';
+        }
         let voteTeamName = '';
         if(match.homeTeam.teamId === vote.teamId) {
             voteTeamName = CommonFunctions.getTeamName(match.homeTeam);
