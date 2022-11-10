@@ -9,4 +9,7 @@
 .wrapper-scroll{
     padding: 0;
     max-width: 70rem;
+    @include tableMobile{
+        max-width: 67rem;
+    }
 }

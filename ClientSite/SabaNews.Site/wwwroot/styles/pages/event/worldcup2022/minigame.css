@@ -435,10 +435,18 @@ body {
       transform: inherit;
       bottom: 0;
       top: auto;
-      left: 0; } }
+      left: 0;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      border-radius: 0;
+      padding: 13px 25px 27px 25px; } }
   .header-nav-event li a {
     padding: 1.8rem 1.2rem;
     margin-left: .3rem; }
+    @media screen and (max-width: 1024px) {
+      .header-nav-event li a {
+        padding: 0; } }
     .header-nav-event li a:after {
       display: none; }
     .header-nav-event li a span {
