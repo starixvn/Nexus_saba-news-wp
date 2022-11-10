@@ -536,15 +536,17 @@
     background: #E8E8D6;
     border: 1px solid #E8E8D6;
     border-radius: 5px;
-    width: 4.8rem;
+    width: 5.6rem;
     left: 2rem;
-    @include tableMobile{
-        display : none;
+
+    @include tableMobile {
+        display: none;
     }
 
     li {
         a {
             padding: 1.8rem 1.2rem;
+            margin-left: .3rem;
 
             &:after {
                 display: none;

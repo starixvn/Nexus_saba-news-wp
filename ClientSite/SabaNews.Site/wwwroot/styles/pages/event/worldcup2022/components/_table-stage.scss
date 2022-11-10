@@ -59,6 +59,9 @@
     overflow: auto;
     &::-webkit-scrollbar {
         width: .8rem;
+        @include tableMobile{
+            display : none;
+        }
     }
 
     &::-webkit-scrollbar-track {
@@ -76,6 +79,12 @@
 .minigame-table {
     border: 1px solid #833D55;
     border-top: none;
+    margin-left: 1.5rem;
+    margin-right: .5rem;
+
+    @include tableMobile {
+        margin : 0;
+    }
 
     .minigame-table-flex {
         display: flex;
@@ -102,7 +111,8 @@
 
             .table-row {
                 font-size: 1.6rem;
-                color : #E8E8D6;
+                color: #E8E8D6;
+
                 @include Mobile {
                     font-size: 1.2rem;
                     line-height: 2.4rem;
