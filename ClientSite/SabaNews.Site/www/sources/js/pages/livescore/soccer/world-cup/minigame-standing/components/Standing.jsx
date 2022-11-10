@@ -127,7 +127,7 @@ export default class Standing extends PureComponent {
             users = this.getUsersVote(users, vote);
         });
         detail = this.getDetail(matches, users, points, votes);
-        let standing = this.handleStandings(users, votes, points, detail);
+        const standing = this.handleStandings(users, votes, points, detail);
         return standing;
     };
 

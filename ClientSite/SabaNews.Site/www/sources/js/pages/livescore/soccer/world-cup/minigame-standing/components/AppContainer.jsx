@@ -14,7 +14,7 @@ export class AppContainer extends Component {
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}],
-            selectedStage: 1,
+            selectedStage: 1
         };
     }
 
@@ -63,7 +63,7 @@ export class AppContainer extends Component {
                                         this.state.stages.map( index =>
                                         <option key={index.value} value={index.value}>{index.name}</option> )
                                     }
-                                </select>                               
+                                </select>
                             </div>
                             <Standing matches={showMatches} votes={votes} />
                         </div>

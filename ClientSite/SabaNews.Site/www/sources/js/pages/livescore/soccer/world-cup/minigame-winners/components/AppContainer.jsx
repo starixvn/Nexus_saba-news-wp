@@ -78,7 +78,7 @@ export class AppContainer extends Component {
                                     )
                                 }
                                 {
-                                    isMobile && 
+                                    isMobile &&
                                     <select value={this.state.selectedStage}
                                         onChange={this.handleChangeSelect} className="custom-select">
                                         {

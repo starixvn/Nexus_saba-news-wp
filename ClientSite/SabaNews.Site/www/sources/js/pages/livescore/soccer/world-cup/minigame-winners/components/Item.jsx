@@ -30,7 +30,8 @@ export class Item extends PureComponent {
             <>
                 {
                     number < 10 &&
-                        <div className= {`minigame-table-items ${selectedStage === 4 ? 'cursor-items' : ''}`} onClick={() => this.handleClick(winnnerLength, number, selectedStage)}>
+                        <div className= {`minigame-table-items ${selectedStage === 4 ? 'cursor-items' : ''}`} 
+                        onClick={() => this.handleClick(winnnerLength, number, selectedStage)}>
                             <div className="minigame-table-flex ">
                                 <div className="table-row table-row-index">{number + 1}</div>
                                 <div className="table-row table-row-name table-user">
