@@ -386,7 +386,9 @@ body {
       border-radius: 0;
       padding: 13px 25px 27px 25px; }
       .header-nav-event:hover {
-        width: 100% !important; } }
+        width: 100% !important; }
+      .header-nav-event.active {
+        transform: translateY(100%); } }
   .header-nav-event li a {
     padding: 1.8rem 1.2rem;
     margin-left: .3rem; }

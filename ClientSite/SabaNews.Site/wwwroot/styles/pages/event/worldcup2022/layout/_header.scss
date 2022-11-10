@@ -555,6 +555,10 @@
         &:hover {
             width: 100% !important;
         }
+
+        &.active {
+            transform: translateY(100%);
+        }
     }
 
     li {
