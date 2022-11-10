@@ -761,7 +761,7 @@ body {
         .table-dropdown-body .round {
           padding: .4rem 0; } }
 
-body {
+body, .overflow-modal {
   overflow: unset; }
 
 .disable-background {

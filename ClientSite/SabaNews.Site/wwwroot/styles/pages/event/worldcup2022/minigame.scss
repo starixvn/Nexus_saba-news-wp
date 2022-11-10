@@ -5,7 +5,7 @@
 @import './layout/header';
 @import './components/modal-event';
 @import './components/table-stage';
-body {
+body, .overflow-modal {
     overflow: unset;
 }
 
