@@ -1207,9 +1207,10 @@ body {
   appearance: none;
   background: url("../../../../images/worldcup/minigame/chevron-down.png") 100% no-repeat #E8E8D6;
   background-position: center right .5rem; }
-  @media (max-width: 767px) {
-    .custom-select {
-      background: url("../../../../images/worldcup/minigame/chevron-down.png") 96%/8% no-repeat #E8E8D6; } }
+
+@media (max-width: 767px) {
+  #minigame-standing .custom-select {
+    background: url("../../../../images/worldcup/minigame/chevron-down.png") 96%/8% no-repeat #E8E8D6; } }
 
 .statistic-grid::before {
   display: block;

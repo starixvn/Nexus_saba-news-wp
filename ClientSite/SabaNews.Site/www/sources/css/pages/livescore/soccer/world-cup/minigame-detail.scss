@@ -6,6 +6,9 @@
 
 .minigame-title{
     margin-bottom: 3rem;
+    @include Mobile{
+        margin-bottom: 2.5rem;
+    }
     .text{
         padding-bottom: 1.1rem;
         text-transform: uppercase;
@@ -60,7 +63,8 @@
     right: 0;
     top: 3px;
     @include Mobile{
-        top: 0;
+        top: -3px;
+        right: 0 !important;
     }
 }
 

@@ -1,7 +1,10 @@
 .auth-minigame{
     max-width: 67rem;
     margin: 0 auto;
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
+    @include Mobile{
+        padding: 0 0 .6rem 0;
+    }
     .avatar-user{
         width: 5rem;
         height: 5rem;
@@ -13,6 +16,11 @@
         font-size: 3.2rem;
         line-height: 2.8rem;
         margin-right: 1rem;
+        @include Mobile{
+            width: 4rem;
+            height: 4rem;
+            font-size: 2.6;
+        }
     }
     .auth-displayname{
         font-weight: 700;
