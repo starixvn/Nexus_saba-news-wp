@@ -1249,6 +1249,10 @@ body, .overflow-modal {
   #minigame-standing .custom-select {
     background: url("../../../../images/worldcup/minigame/chevron-down.png") 96%/8% no-repeat #E8E8D6; } }
 
+@media (max-width: 767px) {
+  #minigame-winners .custom-select {
+    background: url("../../../../images/worldcup/minigame/chevron-down_winner.png") 96%/8% no-repeat #8A172F; } }
+
 .statistic-grid::before {
   display: block;
   content: "";

@@ -620,6 +620,13 @@ body, .overflow-modal {
         }
     }
 }
+#minigame-winners {
+    .custom-select {
+        @include Mobile {
+            background: url('../../../../images/worldcup/minigame/chevron-down_winner.png') 96% / 8% no-repeat #8A172F;
+        }
+    }
+}
 
 
 .statistic-grid {
