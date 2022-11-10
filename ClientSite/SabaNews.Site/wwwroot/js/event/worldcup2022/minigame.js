@@ -54,26 +54,38 @@
         });
 
         if (tab == '#stage-minigame') {
+            $('.header-nav-event li a').removeClass('active');
+            $('.click-list-rigister').addClass('active');
             $('html, body').animate({ scrollTop: 550 }, 1000);
         }
 
         if (tab == '#minigame-standing') {
+            $('.header-nav-event li a').removeClass('active');
+            $('.click-list-standing').addClass('active');
             $('html, body').animate({ scrollTop: 1400 }, 1000);
         }
 
         if (tab == '#minigame-winners') {
+            $('.header-nav-event li a').removeClass('active');
+            $('.click-list-result').addClass('active');
             $('html, body').animate({ scrollTop: 1800 }, 1000);
         }
 
         $('.click-list-rigister').click(function () {
+            $('.header-nav-event li a').removeClass('active');
+            $(this).addClass('active');
             $('html, body').animate({ scrollTop: 550 }, 1000);
         })
 
         $('.click-list-standing').click(function () {
+            $('.header-nav-event li a').removeClass('active');
+            $(this).addClass('active');
             $('html, body').animate({ scrollTop: 1400 }, 1000);
         })
 
         $('.click-list-result').click(function () {
+            $('.header-nav-event li a').removeClass('active');
+            $(this).addClass('active');
             $('html, body').animate({ scrollTop: 1800 }, 1000);
         })
 
