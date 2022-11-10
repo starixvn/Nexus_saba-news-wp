@@ -32,11 +32,13 @@ export default class Item extends PureComponent {
         const startMinutes = startTime.diff(currentTime, 'minutes');
         const lastMinutes = lastTime.diff(currentTime, 'minutes');
         let status = '';
+        let isLock = true;
         if(startMinutes > 60) {
             status = LangHelper.getResource('NotStarted');
         } else if(startMinutes <= 60 && startMinutes > 0) {
             status = LangHelper.getResource('Upcomming');
         } else if( startMinutes <= 0) {
+            isLock = false;
             status = LangHelper.getResource('Inprogress');
         }
         if(lastMinutes <= 30) {
@@ -44,7 +46,7 @@ export default class Item extends PureComponent {
         } else if(lastMinutes <= 60) {
             status = LangHelper.getResource('Ending');
         }
-        return status;
+        return {status, isLock};
     };
 
     handleViewDetail = event => {
@@ -58,6 +60,7 @@ export default class Item extends PureComponent {
 
     render() {
         const { stage, count } = this.props;
+        const stageStatus = this.getStageStatus();
         return (
 
             <div className="minigame-table-items">
@@ -67,11 +70,16 @@ export default class Item extends PureComponent {
                         Giai đoạn { stage }
                     </div>
                     <div className="table-row table-row-score">
-                        {this.getStageStatus()}
+                        {stageStatus.status}
                     </div>
                     <div className="table-row table-row-time">
                         {this.getTotalScore()}
-                        <i className="icon-bxh_view view-minigame-detail" onClick={this.handleViewDetail} />
+                        {
+                            stageStatus.isLock && <i className="icon-bxh_view view-minigame-detail lock" />
+                        }
+                        {
+                            !stageStatus.isLock && <i className="icon-bxh_view view-minigame-detail" onClick={this.handleViewDetail} />
+                        }
                     </div>
                 </div>
             </div>

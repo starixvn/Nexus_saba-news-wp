@@ -110,12 +110,12 @@ export class Item extends PureComponent {
     };
 
     render() {
-        const { match, result } = this.props;
+        const { match, result, number } = this.props;
         const voteStatus = this.checkVoteOption();
         return (
             <>
                 <div className="name-play-mobile">
-                    #01: Tây Ban Nha vs Ả Rập Xê Út
+                    #0{number + 1}: {CommonFunctions.getTeamName(match.homeTeam)} vs {CommonFunctions.getTeamName(match.awayTeam)}
                 </div>
                 <div className="group-cell-table">
                     <div className="table-row table-row-index">
@@ -159,8 +159,8 @@ export class Item extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { votes, teams } = state;
-    return { votes, teams };
+    const { teams } = state;
+    return { teams };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

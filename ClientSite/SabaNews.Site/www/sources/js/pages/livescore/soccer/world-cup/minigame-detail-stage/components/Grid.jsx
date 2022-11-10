@@ -15,7 +15,8 @@ export default class Grid extends PureComponent {
     };
 
     render() {
-        const { matches, votes } = this.props;
+        const { matches, votes, startNum } = this.props;
+        let number = startNum;
         let totalScore = 0;
         return (
             <>
@@ -32,7 +33,7 @@ export default class Grid extends PureComponent {
                                 const vote = votes.find(value => value.matchId === item.matchId);
                                 const result = this.checkMatchResult(item, vote);
                                 totalScore +=  result !== null ? result.score : 0;
-                                const component = <Item key={index} match={item} vote={vote} result={result} />;
+                                const component = <Item key={index} match={item} vote={vote} result={result} number={number++} />;
                                 return (
                                     component
                                 );

@@ -421,7 +421,10 @@
             {
                 return Redirect(Url.Action("Minigame", WorldCupController));
             }
-            if (stage < WorldCup2022.MinigameStage1 || stage > WorldCup2022.MinigameStage4)
+            if (stage < WorldCup2022.MinigameStage1 
+                || stage > WorldCup2022.MinigameStage4 
+                || !LivescoreHelper.CheckStartStage(stage)
+            )
             {
                 return Redirect(Url.Action("MinigameProfile", WorldCupController));
             }

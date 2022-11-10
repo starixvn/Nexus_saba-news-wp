@@ -72,6 +72,13 @@ export class Stages extends PureComponent {
         return stage;
     };
 
+    getNumberMatch = matchStage => {
+        const { matches } = this.props;
+        const firstMatch = matchStage[0];
+        const index = matches.findIndex(item => item.matchId === firstMatch.matchId);
+        return index;
+    };
+
 
     render() {
         const { groupStages } = this.props;
@@ -90,7 +97,7 @@ export class Stages extends PureComponent {
                     <div className="statistic-main">
                         {
                             (stages.length === 1) &&
-                            <Grid matches={stages[0].matches} />
+                            <Grid matches={stages[0].matches} startNum={this.getNumberMatch(stages[0].matches)} />
                         }
                         {
                             (stages.length > 1 && !isMobile) &&
@@ -99,7 +106,8 @@ export class Stages extends PureComponent {
                                     stages.map(group => {
                                         return (
                                             <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                                {selectedStageId === group.key && <Grid matches={group.matches}/>}</Tab>);
+                                                {selectedStageId === group.key && <Grid matches={group.matches} startNum={this.getNumberMatch(group.matches)}/>}
+                                            </Tab>);
                                         }
                                     )
                                 }
@@ -115,7 +123,7 @@ export class Stages extends PureComponent {
                                     </select>
                                 </div>
                                 {
-                                    <Grid matches={currentStage.matches} />
+                                    <Grid matches={currentStage.matches}  startNum={this.getNumberMatch(group.matches)}/>
                                 }
                             </>
                         }
@@ -129,8 +137,8 @@ export class Stages extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { stages, league, votes } = state;
-    return { stages, league, votes };
+    const { stages, league, votes, matches } = state;
+    return { stages, league, votes, matches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stages);

@@ -9,11 +9,12 @@ export default class Grid extends PureComponent {
 
 
     render() {
-        const { matches } = this.props;
+        const { matches, startNum } = this.props;
+        let num = startNum;
         return (
             <div className="statistic-grid">
                 {
-                    matches.map((item, index) => <Item key={index} number={index} match={item} />)
+                    matches.map((item, index) => <Item key={index} number={num++} match={item} />)
                 }
             </div>
         );
