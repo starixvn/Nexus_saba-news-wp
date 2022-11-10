@@ -428,10 +428,14 @@ body {
   border: 1px solid #E8E8D6;
   border-radius: 5px;
   width: 5.6rem;
-  left: 2rem; }
+  left: 2rem;
+  top: 13.7rem; }
   @media screen and (max-width: 1024px) {
     .header-nav-event {
-      display: none; } }
+      transform: inherit;
+      bottom: 0;
+      top: auto;
+      left: 0; } }
   .header-nav-event li a {
     padding: 1.8rem 1.2rem;
     margin-left: .3rem; }
@@ -446,6 +450,9 @@ body {
       line-height: 1.9rem;
       color: #958288;
       width: 22rem; }
+      @media screen and (max-width: 1024px) {
+        .header-nav-event li a span {
+          display: none; } }
     .header-nav-event li a .icon:before {
       font-size: 2.4rem;
       color: #958288; }

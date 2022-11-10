@@ -77,6 +77,10 @@
                 }
                 &.active{
                     border: 2px solid #8D172F;
+                    background: #8D172F;
+                    .team-name{
+                        color: #E8E8D6;
+                    }
                 }
             }
         }

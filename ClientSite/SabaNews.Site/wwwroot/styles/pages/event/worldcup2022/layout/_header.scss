@@ -538,9 +538,13 @@
     border-radius: 5px;
     width: 5.6rem;
     left: 2rem;
+    top : 13.7rem;
 
     @include tableMobile {
-        display: none;
+        transform: inherit;
+        bottom: 0;
+        top: auto;
+        left: 0;
     }
 
     li {
@@ -561,6 +565,9 @@
                 line-height: 1.9rem;
                 color: #958288;
                 width: 22rem;
+                @include tableMobile {
+                    display : none;
+                }
             }
 
             .icon {
