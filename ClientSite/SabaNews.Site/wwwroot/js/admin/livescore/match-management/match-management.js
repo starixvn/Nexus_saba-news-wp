@@ -105,6 +105,7 @@
                                 }
                             }
                         })
+                        event.preventDefault();
                     });
 
 

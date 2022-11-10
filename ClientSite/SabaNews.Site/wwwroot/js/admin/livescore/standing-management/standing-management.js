@@ -94,7 +94,8 @@
                                     GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
                                 }
                             }
-                        })
+                        });
+                        event.preventDefault();
                     });
 
                     $('.photo').on('change', function (e) {
