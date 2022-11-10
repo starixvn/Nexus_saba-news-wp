@@ -7,6 +7,9 @@ export default class Grid extends PureComponent {
     }
 
     checkMatchResult = (match, vote) => {
+        if(!vote) {
+            return null;
+        }
         const result = getVoteResult(match, vote);
         return result;
     };
@@ -27,12 +30,9 @@ export default class Grid extends PureComponent {
                         {
                             matches.map((item, index) => {
                                 const vote = votes.find(value => value.matchId === item.matchId);
-                                let component = <Fragment />;
-                                if(vote) {
-                                    const result = this.checkMatchResult(item, vote);
-                                    totalScore +=  result !== null ? result.score : 0;
-                                    component = <Item key={index} match={item} vote={vote} result={result} />;
-                                }
+                                const result = this.checkMatchResult(item, vote);
+                                totalScore +=  result !== null ? result.score : 0;
+                                const component = <Item key={index} match={item} vote={vote} result={result} />;
                                 return (
                                     component
                                 );

@@ -27,6 +27,9 @@ export class Item extends PureComponent {
 
     checkVoteOption = () => {
         const { match, vote } = this.props;
+        if(!vote) {
+            return null;
+        }
         let voteStatus = null;
         if(vote.teamId === 0) {
             voteStatus = 0;
@@ -67,6 +70,7 @@ export class Item extends PureComponent {
 
     getTeamVote = () => {
         const { match, vote } = this.props;
+        if(!vote) return '';
         let voteTeamName = '';
         if(match.homeTeam.teamId === vote.teamId) {
             voteTeamName = CommonFunctions.getTeamName(match.homeTeam);
@@ -78,18 +82,23 @@ export class Item extends PureComponent {
         return voteTeamName;
     };
 
-    getVoteResult = result => {
-        if(result === null) {
+    getVoteResult = (match, result) => {
+        if(result === null && match.status === MatchStatus.Finished) {
             return <span className="choose choose-empty"><i className="icon-emtry" /></span>;
+        } else if(result === null) {
+            return <span></span>;
         }
         if(result.status) {
             return <span className="choose choose-win"><i className="icon-win" /></span>;
+        } else {
+            return <span className="choose choose-lose"><i className="icon-lose" /></span>;
         }
-        return <span className="choose choose-lose"><i className="icon-lose" /></span>;
     };
 
-    getVoteScore = result => {
-        if(result === null) {
+    getVoteScore = (match, result) => {
+        if(result === null && match.status === MatchStatus.Finished) {
+            return <span>0</span>;
+        } else if(result === null) {
             return <></>;
         }
         if(result.status) {
@@ -140,8 +149,8 @@ export class Item extends PureComponent {
                         </div>
                     </div>
                     <div className="table-row">{this.getTeamVote()}</div>
-                    <div className="table-row">{this.getVoteResult(result)}</div>
-                    <div className="table-row">{this.getVoteScore(result)}</div>
+                    <div className="table-row">{this.getVoteResult(match, result)}</div>
+                    <div className="table-row">{this.getVoteScore(match, result)}</div>
                 </div>
             </>
         );
