@@ -9,6 +9,14 @@ export default class Standing extends PureComponent {
         super(props);
     }
 
+    componentDidMount(){
+        const numberStroll =parseInt(window.rank / 10, 10) *520;
+        this.elementRef.scrollTo({
+            top: numberStroll,
+            behavior: 'smooth',
+        });
+    }
+
     getMatch = (vote, matches) =>{
         const matchVote = matches.filter(match => match.matchId === vote.matchId)[0];
         return !matchVote ? null : matchVote;
@@ -204,12 +212,13 @@ export default class Standing extends PureComponent {
         const standings = this.calculatorPointer(matches, votes, search);
         const userId = window.User;
         const rank = this.checkRank(standings, userId);
+        window.rank = rank;
         return (
             <>
                 {
                     rank > 0 && <p className="standing-me">Thứ hạng của bạn: {rank}</p>
                 }
-                <div className="wrapper-scroll">
+                <div ref={el => this.elementRef = el} className="wrapper-scroll">
                     <div className="minigame-table">
                         <div className="minigame-table-flex minigame-table-header">
                             <div className="table-row table-row-index">#</div>
