@@ -114,6 +114,9 @@ export class Item extends PureComponent {
         const voteStatus = this.checkVoteOption();
         return (
             <>
+                <div className="name-play-mobile">
+                    #01: Tây Ban Nha vs Ả Rập Xê Út
+                </div>
                 <div className="group-cell-table">
                     <div className="table-row table-row-index">
                         <div className="team-choose">
