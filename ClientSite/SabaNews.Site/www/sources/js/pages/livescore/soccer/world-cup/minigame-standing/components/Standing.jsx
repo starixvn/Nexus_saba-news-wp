@@ -13,7 +13,7 @@ export default class Standing extends PureComponent {
         const numberStroll =parseInt(window.rank / 10, 10) *520;
         this.elementRef.scrollTo({
             top: numberStroll,
-            behavior: 'smooth',
+            behavior: 'smooth'
         });
     }
 
@@ -214,7 +214,7 @@ export default class Standing extends PureComponent {
                         </div>
                         <div className="minigame-table-body">
                             {
-                                standings.map((item, index) => <Item key={index} number={index} standing={item} standingLength={standings.length} />)
+                                standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item} standingLength={standings.length} />)
                             }
                         </div>
                     </div>
