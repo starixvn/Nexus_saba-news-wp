@@ -69,7 +69,6 @@
             }
             .minigame-team{
                 width: 9.4rem;
-                padding: .2rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -119,6 +118,29 @@
                     i{
                         &::before{
                             color: #fff;
+                        }
+                    }
+                    .group-bg-logo {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #E8E8D6;
+                        border: 2px solid #8D172F;
+                        border-radius: 3px 3px 0 0;
+                        margin: 0;
+                        height: 4.2rem;
+                        @include Mobile{
+                            background: none;
+                            height: auto;
+                        }
+                        i{
+                            &::before{
+                                color: #8A1538;
+                                @include Mobile{
+                                    color: #fff;
+                                }
+                            }
                         }
                     }
                 }
