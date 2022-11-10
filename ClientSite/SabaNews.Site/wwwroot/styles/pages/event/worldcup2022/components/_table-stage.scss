@@ -16,8 +16,8 @@
     text-align: center;
 
     @include Mobile {
-        font-size: 1.2rem;
-        line-height: 2.4rem;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
     }
 
     &-index {
@@ -27,6 +27,10 @@
     &-name {
         width: 33%;
         text-align: left;
+
+        @include Mobile {
+            width: 35%;
+        }
     }
 
     &-score {
@@ -35,6 +39,10 @@
 
     &-time {
         width: 42%;
+
+        @include Mobile {
+            width: 30%;
+        }
     }
 }
 
@@ -70,7 +78,6 @@
     .minigame-table-flex {
         display: flex;
         align-items: center;
-
         &.minigame-table-header {
             position: sticky;
             padding: .5rem 0;
@@ -78,7 +85,7 @@
             background: #D3D3B5;
             border-top: 1px solid #833D55;
             border-bottom: 1px solid #833D55;
-
+            z-index : 9;
             &:after {
                 left: 0;
                 bottom: -4px;
@@ -114,19 +121,27 @@
 .minigame-table-body {
     .minigame-table-items {
         padding: 1rem 0;
-        border-bottom: 1px solid #833D55;
-        &:last-child{
-            border-bottom : none;
+        border-top: 1px solid #833D55;
+        @include Mobile{
+            padding : .8rem 0;
+        }
+        &:first-child {
+            border-top: none;
         }
 
         .table-row-time {
             display: flex;
             align-items: center;
             justify-content: space-around;
-
+            position : relative;
             i {
                 font-size: 2.4rem;
                 cursor: pointer;
+
+                @include Mobile {
+                    position: absolute;
+                    right: -20px;
+                }
             }
         }
     }
@@ -172,13 +187,14 @@
         @include Mobile {
             width: 7rem;
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
     }
 }
 
 .table-dropdown {
     background: #D2D2BC;
+    border-top: 1px solid #833D55;
 
     &-row {
         display: flex;
@@ -200,12 +216,15 @@
         }
 
         @include Mobile {
-            width: 46%;
             font-size: 1.2rem;
         }
 
         &.round {
             padding: .8rem 2.3rem;
+
+            @include Mobile {
+                padding: .4rem 1rem;
+            }
         }
 
         &.score {
@@ -215,6 +234,7 @@
 
             @include Mobile {
                 width: 10%;
+                padding: .4rem 0;
             }
         }
     }
@@ -230,8 +250,16 @@
     &-body {
         margin: 0 2.3rem;
 
+        @include Mobile {
+            padding: 0 1rem;
+        }
+
         .round {
             padding: .8rem 0;
+
+            @include Mobile {
+                padding: .4rem 0;
+            }
         }
     }
 }
