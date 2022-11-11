@@ -322,30 +322,31 @@ body {
 
 .box-auth {
   display: none;
-  background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-  border: 1px solid #9A576C;
-  border-radius: 5px;
-  list-style: none;
-  padding: 1.6rem 1.6rem 0;
-  position: absolute;
-  width: 24rem;
-  top: 6.2rem;
-  z-index: 99999;
-  right: 10px; }
+  background: linear-gradient(180deg, #67182B 0%, #470817 100%) !important;
+  border: 1px solid #9A576C !important;
+  border-radius: 5px !important;
+  list-style: none !important;
+  padding: 1.6rem 1.6rem 0 !important;
+  position: absolute !important;
+  width: 24rem !important;
+  top: 6.2rem !important;
+  z-index: 99999 !important;
+  right: 10px !important; }
   .box-auth:before {
     display: none; }
   @media screen and (max-width: 1024px) {
     .box-auth {
-      right: 0; } }
-  .box-auth .auth-displayname {
-    color: #fff; }
+      top: 4.2rem !important;
+      right: 0 !important; } }
+  .box-auth .auth-displayname a {
+    color: #fff !important; }
   .box-auth .info-user {
-    border-bottom: 1px solid #9A576C; }
+    border-bottom: 1px solid #9A576C !important; }
     .box-auth .info-user .item {
       padding: 1rem 0;
       display: block;
       font-weight: normal;
-      color: #fff;
+      color: #fff !important;
       text-decoration: none; }
       .box-auth .info-user .item .icon-logout {
         font-weight: bold;
@@ -353,7 +354,7 @@ body {
       .box-auth .info-user .item:hover {
         color: #9A576C; }
     .box-auth .info-user:last-child {
-      border-bottom: none; }
+      border-bottom: none !important; }
   .box-auth .auth-provider .auth-displayname:after {
     display: none; }
   @media screen and (max-width: 1024px) {
