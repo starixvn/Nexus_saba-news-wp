@@ -17,25 +17,26 @@
                     color: #5B0E21;
                 }
             }
-        }
-        &.finish{
-                
-            &:hover{
-                box-shadow: none;
-                cursor: no-drop;
+            .finish{
                 .statistic-team{
-                    cursor: no-drop;
-                    box-shadow: none;
-                    background: rgba(0, 0, 0, 0.1);
-                    .statistic-team-name{
-                        color: #E8E8D6;
-                    }
-                    i{
-                        &::before{
-                            color: #E8E8D6;
+                    &.active{
+                        &:hover{
+                            cursor: no-drop;
+                            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+                            background: #E8E8D6;
+                            .statistic-team-name{
+                                color: #833D55;
+                            }
+                            i{
+                                &::before{
+                                    color: #833D55;
+                                }
+                            }
                         }
                     }
+                    
                 }
+                
             }
         }
         &:hover{
@@ -67,6 +68,27 @@
                 justify-content: center;
                 @include tableMobile{
                     grid-gap: 3rem;
+                }
+            }
+            &.finish{
+                &:hover{
+                    box-shadow: none;
+                    cursor: no-drop;
+                }
+                .statistic-team{
+                    &:hover{
+                        cursor: no-drop;
+                        box-shadow: none;
+                        background: rgba(0, 0, 0, 0.1);
+                        .statistic-team-name{
+                            color: #E8E8D6;
+                        }
+                        i{
+                            &::before{
+                                color: #E8E8D6;
+                            }
+                        }
+                    }
                 }
             }
            
