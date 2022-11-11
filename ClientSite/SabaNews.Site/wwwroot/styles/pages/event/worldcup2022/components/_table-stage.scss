@@ -111,13 +111,23 @@
 .minigame-table-body {
     max-height: 53rem;
     overflow: auto;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #833D55;
 
     &::-webkit-scrollbar {
         width: .8rem;
 
         @include tableMobile {
             display: none;
+        }
+    }
+
+    &.no-data {
+        border: 1px solid #833D55;
+
+        .text-no-data {
+            font-size: 1.4rem;
+            padding: .5rem 0;
+            text-align :center;
         }
     }
 

@@ -678,12 +678,18 @@ body {
 .minigame-table-body {
   max-height: 53rem;
   overflow: auto;
-  border-bottom: 1px solid; }
+  border-bottom: 1px solid #833D55; }
   .minigame-table-body::-webkit-scrollbar {
     width: .8rem; }
     @media screen and (max-width: 1024px) {
       .minigame-table-body::-webkit-scrollbar {
         display: none; } }
+  .minigame-table-body.no-data {
+    border: 1px solid #833D55; }
+    .minigame-table-body.no-data .text-no-data {
+      font-size: 1.4rem;
+      padding: .5rem 0;
+      text-align: center; }
   .minigame-table-body::-webkit-scrollbar-track {
     background: transparent;
     border: 1px solid #833D55;

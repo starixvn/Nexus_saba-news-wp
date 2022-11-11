@@ -225,7 +225,7 @@ export default class Standing extends PureComponent {
                                 standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item} standingLength={standings.length} />)
                             }
                             {
-                                standings.length === 0 && <p>Dữ Liệu Đang Được Cập Nhật</p>
+                                standings.length === 0 && <p className="text-no-data">Dữ Liệu Đang Được Cập Nhật</p>
                             }
                         </div>
                     </div>
