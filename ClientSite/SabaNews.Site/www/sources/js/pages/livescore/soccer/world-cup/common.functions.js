@@ -19,6 +19,21 @@ export  const getMatchByEventStage = matches => {
     return tmpMatches;
 };
 
+export  const getMatchesByStage = (matches, stage) => {
+    let tmpMatches = [];
+    const groupStage = matches.filter(item => item.stage.stageId === WorldCup.GroupsStage);
+    if(stage === WorldCup.MinigameStage.Stage1) {
+        tmpMatches = groupStage.slice(0, 16);
+    } else if (stage === WorldCup.MinigameStage.Stage2) {
+        tmpMatches = groupStage.slice(16, 32);
+    } else if(stage === WorldCup.MinigameStage.Stage3) {
+        tmpMatches = groupStage.slice(32);
+    } else if(stage === WorldCup.MinigameStage.Stage4) {
+        tmpMatches = matches.filter(item => item.stage.stageId > WorldCup.GroupsStage);
+    }
+    return tmpMatches;
+};
+
 export const groupMatchesByStage = matches => {
     const showMatches = getMatchByEventStage(matches);
     let totalItems = showMatches.length;

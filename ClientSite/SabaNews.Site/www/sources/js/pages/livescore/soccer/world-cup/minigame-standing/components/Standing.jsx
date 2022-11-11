@@ -2,6 +2,7 @@ import Item from './Item';
 import { format } from 'date-fns';
 import { getVoteResult } from '../../common.functions';
 import { WorldCup } from '@jsroot/common/constants';
+import moment from 'moment';
 import React, { PureComponent } from 'react';
 
 export default class Standing extends PureComponent {
@@ -163,7 +164,7 @@ export default class Standing extends PureComponent {
             standing.map((standing, indexSort) => {
                 if(indexSort > index){
                     const maxSort = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
-                    if(max > maxSort){
+                    if(moment(new Date(max)) > moment(new Date(maxSort))){
                         max = maxSort;
                         indexMax = indexSort;
                     }
@@ -219,9 +220,12 @@ export default class Standing extends PureComponent {
                             <div className="table-row table-row-score">Điểm</div>
                             <div className="table-row table-row-time">Thời gian </div>
                         </div>
-                        <div className="minigame-table-body">
+                        <div className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
                             {
                                 standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item} standingLength={standings.length} />)
+                            }
+                            {
+                                standings.length === 0 && <p>Dữ Liệu Đang Được Cập Nhật</p>
                             }
                         </div>
                     </div>

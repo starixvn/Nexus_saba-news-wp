@@ -3,9 +3,11 @@ import { ActionCreators } from '../actions';
 import LangHelper from '@jsroot/common/langHelper';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { getMatchByEventStage } from '../../common.functions';
+import { getMatchesByStage } from '../../common.functions';
 import { MobileMaxWidth } from '@jsroot/common/constants';
 import Winner from '../components/Winner';
+import DateTimeService from '@jsroot/common/dateTimeService';
+import moment from 'moment';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -16,9 +18,30 @@ export class AppContainer extends Component {
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}],
-            selectedStage: 1
+            selectedStage: this.handleSelectedStageWinner()
         };
     }
+
+    handleSelectedStageWinner (){
+        let result = 0;
+        const maxCountStage = 4;
+        const timeStart = [
+            moment(new Date(2022, 10, 8, 15, 0, 0)),
+            moment(new Date(2022, 10, 11, 13, 30, 0)),
+            moment(new Date(2022, 11, 11, 15, 0, 0)),
+            moment(new Date(2022, 11, 30, 8, 0, 0))
+        ];
+        for(let i = 0; i < maxCountStage; i++)
+        {
+            const startTime = timeStart[i];
+            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+            const lastMinutes = startTime.diff(currentTime, 'minutes');
+            if( lastMinutes <= 30) {
+                result = i + 1;
+            }
+        }
+        return result;
+    };
 
     componentDidMount() {
         this.props.getMatches();
@@ -49,7 +72,7 @@ export class AppContainer extends Component {
             return null;
         }
         const countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageEnd);
-        const showMatches = getMatchByEventStage(matches);
+        const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage));
         return (
             <>
                 {
@@ -74,13 +97,13 @@ export class AppContainer extends Component {
                             <div className="minigame-control">
                                 {
                                     !isMobile && countStageWinners.map( item =>
-                                        <button className= {this.state.selectedStage === item.value ? 'buttonStage active'
+                                        <button className= {parseInt(this.state.selectedStage) === item.value ? 'buttonStage active'
                                         : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
                                     )
                                 }
                                 {
                                     isMobile &&
-                                    <select value={this.state.selectedStage}
+                                    <select value={parseInt(this.state.selectedStage)}
                                         onChange={this.handleChangeSelect} className="custom-select">
                                         {
                                             countStageWinners.map( index =>

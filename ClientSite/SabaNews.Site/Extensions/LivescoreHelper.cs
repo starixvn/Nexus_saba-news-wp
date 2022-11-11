@@ -242,8 +242,8 @@
                 WorldCup2022.TimestampMinigameStage04Start };
             List<string> timeCountDown = new(){
                 "11/11/2022 1:15:00 PM",
-                "11/29/2022 1:30:00 AM",
-                "12/3/2022 1:30:00 AM",
+                "11/11/2022 2:00:00 PM",
+                "11/11/2022 2:00:00 AM",
                 "12/18/2022 9:30:00 PM"
             };
             string statusStage = status.Contains(WorldCup2022.BeforeStartedStage) ?
@@ -262,7 +262,7 @@
             const int SubtractMinutes = -30;
             List<string> timeEnd = new(){
                 "11/11/2022 1:45:00 PM",
-                "11/29/2022 1:30:00 AM",
+                "11/11/2022 2:30:00 PM",
                 "12/3/2022 1:30:00 AM",
                 "12/18/2022 9:30:00 PM"
             };

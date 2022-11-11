@@ -22,6 +22,7 @@ const getMatches = () => async dispatch => {
 };
 
 const getVotes = stage => async dispatch => {
+    window.stage = stage;
     const url = Site.resolveClientUrl('worldcup2022/GetMinigameData');
     var param = {
         stage: stage

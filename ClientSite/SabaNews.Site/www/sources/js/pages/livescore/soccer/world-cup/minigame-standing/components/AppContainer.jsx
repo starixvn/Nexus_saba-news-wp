@@ -3,20 +3,43 @@ import Standing from '../components/Standing';
 import React, { Component } from 'react';
 import { ActionCreators } from '../actions';
 import { connect } from 'react-redux';
-import { getMatchByEventStage } from '../../common.functions';
+import { getMatchesByStage } from '../../common.functions';
 import LangHelper from '@jsroot/common/langHelper';
+import DateTimeService from '@jsroot/common/dateTimeService';
+import moment from 'moment';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedStage: 1,
+            selectedStage: this.handleSelectedStage(),
             stages:[{name:LangHelper.getResource('Stage1'), value:1},
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}]
         };
     }
+
+    handleSelectedStage (){
+        let result = 0;
+        const maxCountStage = 4;
+        const timeStart = [
+            moment(new Date(2022, 10, 8, 15, 0, 0)),
+            moment(new Date(2022, 10, 11, 13, 30, 0)),
+            moment(new Date(2022, 10, 11, 15, 0, 0)),
+            moment(new Date(2022, 11, 30, 8, 0, 0))
+        ];
+        for(let i = 0; i < maxCountStage; i++)
+        {
+            const startTime = timeStart[i];
+            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+            const startMinutes = startTime.diff(currentTime, 'minutes');
+            if( startMinutes <= 0) {
+                result = i + 1;
+            }
+        }
+        return result;
+    };
 
     handleChange = event => {
         this.setState({
@@ -28,7 +51,6 @@ export class AppContainer extends Component {
     componentDidMount() {
         this.props.getMatches();
         this.props.getVotes(this.state.selectedStage);
-        window.stage = this.state.selectedStage;
     }
 
     render() {
@@ -36,8 +58,8 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        const showMatches = getMatchByEventStage(matches);
-        const countStageStanding =this.state.stages.filter( x => x.value <= window.CountStageActive);
+        const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage));
+        const countStageStanding = this.state.stages.filter( x => x.value <= window.CountStageActive);
         return (
             <>
                 {
@@ -59,11 +81,11 @@ export class AppContainer extends Component {
                                 </div>
                             </div>
                             <div className="minigame-standing-control">
-                                <select value={this.state.selectValue}
+                                <select value={parseInt(this.state.selectedStage)}
                                     onChange={this.handleChange} className="custom-select">
                                     {
-                                        countStageStanding.map( index =>
-                                        <option key={index.value} value={index.value}>{index.name}</option> )
+                                        countStageStanding.map( (item, index) =>
+                                        <option key={item.value} value={item.value}>{item.name}</option> )
                                     }
                                 </select>
                             </div>
