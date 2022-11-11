@@ -25,11 +25,10 @@
     }
 
     &-name {
-        width: 33%;
+        width: 50%;
         text-align: left;
 
         @include Mobile {
-            /*width: 35%;*/
             width: 50%;
         }
     }
@@ -42,7 +41,6 @@
         width: 42%;
 
         @include Mobile {
-            /*width: 30%;*/
             width: 25%;
         }
     }
@@ -244,7 +242,7 @@
         color: #833D55;
         font-weight: 600;
         font-size: 1.4rem;
-        width: 48%;
+        width: 55%;
 
         @include Mobile {
             width: 63%;

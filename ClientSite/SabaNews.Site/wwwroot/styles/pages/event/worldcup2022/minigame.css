@@ -620,11 +620,10 @@ body {
   .table-row-index {
     width: 10%; }
   .table-row-name {
-    width: 33%;
+    width: 50%;
     text-align: left; }
     @media (max-width: 767px) {
       .table-row-name {
-        /*width: 35%;*/
         width: 50%; } }
   .table-row-score {
     width: 15%; }
@@ -632,7 +631,6 @@ body {
     width: 42%; }
     @media (max-width: 767px) {
       .table-row-time {
-        /*width: 30%;*/
         width: 25%; } }
 
 .spacing-top {
@@ -770,7 +768,7 @@ body {
     color: #833D55;
     font-weight: 600;
     font-size: 1.4rem;
-    width: 48%; }
+    width: 55%; }
     @media (max-width: 767px) {
       .table-dropdown-column {
         width: 63%; } }
