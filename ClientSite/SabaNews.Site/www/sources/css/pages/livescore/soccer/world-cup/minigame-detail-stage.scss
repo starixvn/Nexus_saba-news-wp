@@ -32,12 +32,14 @@
         }
     }
     .minigame-table-body{
+        .group-items-table-detial{
+            border: 1px solid #833D55;
+            border-bottom: none;
+        }
         .group-cell-table{
             display: flex;
             align-items: center;
             padding: .7rem 0;
-            border: 1px solid #833D55;
-            border-bottom: none;
             &:last-child{
                 border-bottom: none;
             }
@@ -107,6 +109,19 @@
                     margin-top: .4rem;
                     @include Mobile{
                         display: none;
+                    }
+                }
+
+                .group-bg-logo {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0;
+                    height: 4.2rem;
+                    @include Mobile{
+                        background: none;
+                        height: auto;
                     }
                 }
                 &.active{
@@ -227,7 +242,10 @@
     align-items: center;
     border-top: none;
     justify-content: space-between;
-    padding: 0 2.7rem 0 1rem;
+    padding: 0 4rem 0 2rem;
+    @include Mobile{
+        padding: 0 1rem 0 1rem;
+    }
     span{
         color: #833D55;
         font-weight: 700;
@@ -243,6 +261,9 @@
 .equal-height-JlocK{
     display: flex !important;
     align-items: center;
+    @include Mobile{
+        display:  none !important;
+    }
 }
 
 
@@ -250,8 +271,6 @@
     border-bottom: 1px solid #C8C8B0;
     margin-bottom: 1.2rem;
     padding-bottom: .8rem;
-    margin-left: 1.5rem;
-    margin-right: .5rem;
     a{
         text-decoration: none;
         color: #838372;
@@ -307,6 +326,7 @@
 }
 
 .minigame-table-body {
+    max-height: 46.3rem;
     &::-webkit-scrollbar {
         width: .8rem;
 
