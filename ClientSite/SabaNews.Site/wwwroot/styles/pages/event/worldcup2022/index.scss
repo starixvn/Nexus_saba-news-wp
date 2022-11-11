@@ -373,6 +373,7 @@
 }
 
 .wc-block-group {
+    padding: 5rem 0 7rem 0;
     .king-soccer {
         @include tableMobile {
             padding: 0 1.2rem;
@@ -410,6 +411,18 @@
 
         @include tableMobile {
             height: 25rem;
+        }
+    }
+
+    .view-more {
+        margin-top: 1.8rem;
+
+        @include tableMobile {
+            margin-top: 3.2rem;
+        }
+
+        a {
+            color: $title-color;
         }
     }
 }
