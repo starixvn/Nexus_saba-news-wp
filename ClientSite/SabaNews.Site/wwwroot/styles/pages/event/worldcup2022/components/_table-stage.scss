@@ -1,11 +1,11 @@
 ﻿.wraper-minigame-table {
-    max-width: 90rem;
+    max-width: 73.2rem;
     margin: 0 auto;
     background: #E8E8D6;
-    padding: 3rem 1.2rem 5rem 1.2rem;
-    clip-path: polygon(50% 0, 100% 3%, 100% 97%, 50% 100%, 0 97%, 0 3%);
+    padding: 3rem 1.2rem;
     position: relative;
     z-index: 3;
+    border-radius: 5px;
 }
 
 .table-row {
@@ -228,7 +228,8 @@
 
 .table-dropdown {
     background: #D2D2BC;
-    border-top: 1px solid #833D55;
+    border: 1px solid #833D55;
+    border-bottom: none;
 
     &-row {
         display: flex;
