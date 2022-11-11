@@ -15,7 +15,7 @@
                 var attrClass = typeof attrs[5] != "undefined" ? attrs[5] : "";
                 $.ajax({
                     type: "POST",
-                    url: "Post/GetPollData",
+                    url: "/Post/GetPollData",
                     data: { questID: attrs[1], themeID: attrs[3] },
                     success: function (res) {
                         var content = $('.content').html();
@@ -42,7 +42,7 @@
             var themeId = $('.question-' + questionId).data('theme');
             $.ajax({
                 type: "POST",
-                url: "Post/VotePoll",
+                url: "/Post/VotePoll",
                 data: { questId: questionId, answerId, themeId },
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
