@@ -47,6 +47,12 @@
         
             &-time {
                 width: 20%;
+                .icon-icon_lock{
+                    cursor: no-drop;
+                    &::before{
+                        color: #833D55;
+                    }
+                }
                 @include Mobile{
                     width: 25%;
                     i{

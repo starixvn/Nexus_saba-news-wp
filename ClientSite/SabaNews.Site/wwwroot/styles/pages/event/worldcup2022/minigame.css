@@ -656,8 +656,8 @@ body {
 .minigame-table {
   border: 1px solid #833D55;
   border-top: none;
-  margin-left: 1.5rem;
-  margin-right: .5rem; }
+  /* margin-left: 1.5rem;
+    margin-right: .5rem;*/ }
   @media screen and (max-width: 1024px) {
     .minigame-table {
       margin: 0; } }
