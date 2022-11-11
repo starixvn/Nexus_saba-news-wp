@@ -1,4 +1,5 @@
 ﻿using SabaNews.Core.Models;
+using SabaNews.Livescore.Models.Match;
 using SabaNews.Models.Posts;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace SabaNews.Models.ViewModel.Event.WorldCup
         public HeaderViewModel Header { get; set; }
         public byte Stage { get; set; }
         public UserSession User { get; set; }
+        public IList<Match> Matches { get; set; }
         public bool IsLogin { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿var minigame = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
     var tab = window.location.hash;
-    const longs = [
+    const timeStartStage = [
         "11/08/2022, 3:00:00 PM",
-        "11/22/2022, 8:00:00 AM",
+        "11/11/2022, 1:45:00 PM",
         "11/26/2022, 8:00:00 AM",
         "11/30/2022, 8:00:00 AM"
     ];
@@ -166,7 +166,7 @@
 
     function getStatusStage(i) {
         var timeSpanNow = new Date();
-        var checkNow = (new Date(longs[i]) - timeSpanNow) / 1000;
+        var checkNow = (new Date(timeStartStage[i]) - timeSpanNow) / 1000;
         var statusStage;
         if (checkNow > 0) {
             if (checkNow > 3600) {
@@ -177,7 +177,8 @@
         else {
             var timeEnd = $("#boxStage" + (i + 1).toString()).data('timeendstage');
             var timeSpanEnd = (new Date(timeEnd).getTime() / 1000);
-            var checkNowEnd = timeSpanEnd - timeSpanNow;
+            var timeSpanNowSecond = timeSpanNow.getTime() / 1000;
+            var checkNowEnd = timeSpanEnd - timeSpanNowSecond;
             if (checkNowEnd > 5400) {
                 statusStage = "Đang diễn ra";
             }

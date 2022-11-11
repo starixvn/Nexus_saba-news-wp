@@ -377,7 +377,7 @@
         }
 
         [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/giai-doan/{stage}")]
-        public IActionResult MinigameStage(byte stage)
+        public async Task<IActionResult> MinigameStage(byte stage)
         {
             if (sessionService.User == null 
                 || stage < WorldCup2022.MinigameStage1 
@@ -387,6 +387,12 @@
             {
                 return Redirect(Url.Action("Minigame", WorldCupController));
             }
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
@@ -396,6 +402,7 @@
             var model = new MinigameStageViewModel
             {
                 Header = header,
+                Matches = matches,
                 Stage = stage,
                 IsLogin = sessionService.User != null
         };
@@ -403,7 +410,7 @@
         }
 
         [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet")]
-        public IActionResult MinigameProfile()
+        public async Task<IActionResult> MinigameProfile()
         {
             if (sessionService.User == null)
             {
@@ -415,9 +422,16 @@
                 Description = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
             var model = new MinigameStageViewModel
             {
                 Header = header,
+                Matches = matches,
                 User = sessionService.User,
                 IsLogin = sessionService.User != null
             };
@@ -425,7 +439,7 @@
         }
 
         [Route("world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/{stage}")]
-        public IActionResult MinigameProfileStage(byte stage)
+        public async Task<IActionResult> MinigameProfileStage(byte stage)
         {
             if (sessionService.User == null)
             {
@@ -444,10 +458,17 @@
                 Description = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
             var model = new MinigameStageViewModel
             {
                 Header = header,
                 Stage = stage,
+                Matches = matches,
                 User = sessionService.User,
                 IsLogin = sessionService.User != null
             };

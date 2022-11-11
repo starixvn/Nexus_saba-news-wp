@@ -1,4 +1,5 @@
 ﻿@using System.Text;
+@using static SabaNews.Site.Extensions.LivescoreHelper;
 @using SabaNews.Site.Extensions;
 @section Title {
     @Model.Header.Title
@@ -9,7 +10,10 @@
     <meta property="og:description" content='@Model.Header.Description' />
     <meta property="og:title" content='@Model.Header.Title' />
 }
-
+    @{
+    var countStageActive = GetCountStageActiveMinigame(Model.Matches);
+    var countStageEnd = GetCountStageEndMinigame(Model.Matches);
+}
 
     @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
@@ -76,20 +80,24 @@
                     </a>
                 </li>
             }
-
-            <li>
-                <a href="@Url.Action("Minigame", "WorldCup2022")#minigame-standing" class="click-list-standing">
-                    <i class="icon icon-minigame_standing"></i>
-                    <span>Bảng Xếp Hạng</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="@Url.Action("Minigame", "WorldCup2022")#minigame-winners" class="click-list-result">
-                    <i class="icon icon-minigame_list_user"></i>
-                    <span>Danh Sách Trúng Thưởng</span>
-                </a>
-            </li>
+            if (countStageActive > 0)
+            {
+                <li>
+                    <a href="@Url.Action("Minigame", "WorldCup2022")#minigame-standing" class="click-list-standing">
+                        <i class="icon icon-minigame_standing"></i>
+                        <span>Bảng Xếp Hạng</span>
+                    </a>
+                </li>
+            }
+            if (countStageEnd > 0)
+            {
+                <li>
+                    <a href="@Url.Action("Minigame", "WorldCup2022")#minigame-winners" class="click-list-result">
+                        <i class="icon icon-minigame_list_user"></i>
+                        <span>Danh Sách Trúng Thưởng</span>
+                    </a>
+                </li>
+            }
         }
     </ul>
     <div class="statistic-grid">
