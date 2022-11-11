@@ -52,13 +52,11 @@
 }
 .table-winner{
     background: #8A172F;
-    border: 1px solid #E8E8D6;
     border-top: none;
     .minigame-table-flex {
         &.minigame-table-header {
             background: #631122;
-            border-top: 1px solid #E8E8D6;
-            border-bottom: 1px solid #E8E8D6;
+            border: 1px solid #E8E8D6;
         }
     }
     .table-row{
@@ -77,7 +75,8 @@
         }
     }
     .minigame-table-items{
-        border-top: 1px solid #E8E8D6;
+        border: 1px solid #E8E8D6;
+        border-bottom: none;
     }
     .table-dropdown{
         border-top: 1px solid #E8E8D6;
@@ -93,6 +92,21 @@
         }
         &-column{
             color: #E8E8D6;
+        }
+    }
+    .minigame-table-body{
+        border-bottom: 1px solid #E8E8D6;    
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            border: 1px solid #E8E8D6;
+            border-left: none;
+            border-top: none;
+            border-bottom: none;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background: rgba($color: #9B3F52, $alpha: .4);
+            border-radius: 0;
         }
     }
 }

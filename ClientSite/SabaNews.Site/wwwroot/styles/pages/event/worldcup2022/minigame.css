@@ -639,30 +639,10 @@ body {
 
 .wrapper-scroll {
   max-width: 68rem;
-  margin: 0 auto;
-  /*max-height: 53rem;
-    overflow: auto;
-    &::-webkit-scrollbar {
-        width: .8rem;
-        @include tableMobile{
-            display : none;
-        }
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-    }*/ }
+  margin: 0 auto; }
 
 .minigame-table {
-  /*border: 1px solid #833D55;*/
-  border-top: none;
-  /* margin-left: 1.5rem;
-    margin-right: .5rem;*/ }
+  border-top: none; }
   @media screen and (max-width: 1024px) {
     .minigame-table {
       margin: 0; } }
@@ -675,7 +655,6 @@ body {
       top: 0;
       background: linear-gradient(180deg, #67182B 0%, #470817 100%);
       border-top: 1px solid #833D55;
-      border-bottom: 1px solid #833D55;
       z-index: 9; }
       .minigame-table .minigame-table-flex.minigame-table-header:after {
         left: 0;
@@ -699,17 +678,22 @@ body {
 
 .minigame-table-body {
   max-height: 53rem;
-  overflow: auto; }
+  overflow: auto;
+  border-bottom: 1px solid; }
   .minigame-table-body::-webkit-scrollbar {
     width: .8rem; }
     @media screen and (max-width: 1024px) {
       .minigame-table-body::-webkit-scrollbar {
         display: none; } }
   .minigame-table-body::-webkit-scrollbar-track {
-    background: transparent; }
+    background: transparent;
+    border: 1px solid #833D55;
+    border-left: none;
+    border-top: none;
+    border-bottom: none; }
   .minigame-table-body::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.1);
-    border-radius: 12px; }
+    border-radius: 0; }
   .minigame-table-body .minigame-table-items {
     padding: 1rem 0;
     border: 1px solid #833D55;
@@ -723,8 +707,6 @@ body {
       cursor: pointer; }
     .minigame-table-body .minigame-table-items:first-child {
       border-top: none; }
-    .minigame-table-body .minigame-table-items:last-child {
-      border-bottom: 1px solid #833D55; }
     .minigame-table-body .minigame-table-items .table-row-time {
       display: flex;
       align-items: center;
