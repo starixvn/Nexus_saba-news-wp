@@ -94,7 +94,7 @@ export class AppContainer extends Component {
                         <div className="wave-standing-main"></div>
                         <div className="wave-standing-bg"></div>
                         <div className="section-icon">
-                            <img src="../../../../css/images/icon_2.png" alt="" />
+                            <img src="../../../../css/images/icon_2.gif" alt="" />
                         </div>
                     </div>
                 }
