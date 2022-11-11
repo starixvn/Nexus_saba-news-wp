@@ -240,16 +240,9 @@
                 WorldCup2022.TimestampMinigameStage02Start,
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
-            List<string> timeCountDown = new(){
-                "11/11/2022 1:15:00 PM",
-                "11/11/2022 2:00:00 PM",
-                "11/11/2022 2:00:00 AM",
-                "12/18/2022 9:30:00 PM"
-            };
             string statusStage = status.Contains(WorldCup2022.BeforeStartedStage) ?
                 startStages[numStage] :
-                timeCountDown[numStage];
-                //matches[indexMatches[numStage]].StartTime.AddHours(MGTPlus).AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
+                matches[indexMatches[numStage]].StartTime.AddHours(MGTPlus).AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
             return statusStage;            
         }
 
@@ -259,13 +252,6 @@
             const int ThirtyMinsToSecond = 1800;
             const int SixtyMinsToSecond = 3600;
             const int NinetyMinsToSecond = 5400;
-            const int SubtractMinutes = -30;
-            List<string> timeEnd = new(){
-                "11/11/2022 1:45:00 PM",
-                "11/11/2022 2:30:00 PM",
-                "12/3/2022 1:30:00 AM",
-                "12/18/2022 9:30:00 PM"
-            };
             List<string> startStages = new() {
                 WorldCup2022.TimestampMinigameStage01Start, 
                 WorldCup2022.TimestampMinigameStage02Start,
@@ -282,8 +268,7 @@
             }
             else
             {
-                //var timeSpanEnd = (matches[indexMatches[numStage]].StartTime.AddHours(MGTPlus).AddMinutes(SubtractMinutes) - new DateTime(1970, 1, 1, 0, 0, 0));
-                var timeSpanEnd = (DateTime.Parse(timeEnd[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0));
+                var timeSpanEnd = (matches[indexMatches[numStage]].StartTime.AddHours(MGTPlus) - new DateTime(1970, 1, 1, 0, 0, 0));
                 var checkNowEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
                 if (checkNowEnd > NinetyMinsToSecond)
                 {

@@ -3,7 +3,7 @@ import Standing from '../components/Standing';
 import React, { Component } from 'react';
 import { ActionCreators } from '../actions';
 import { connect } from 'react-redux';
-import { getMatchesByStage } from '../../common.functions';
+import { getMatchesByStage, getMinigameStageStartTime } from '../../common.functions';
 import LangHelper from '@jsroot/common/langHelper';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
@@ -24,10 +24,10 @@ export class AppContainer extends Component {
         let result = 0;
         const maxCountStage = 4;
         const timeStart = [
-            moment(new Date(2022, 10, 8, 15, 0, 0)),
-            moment(new Date(2022, 10, 11, 13, 30, 0)),
-            moment(new Date(2022, 10, 11, 15, 0, 0)),
-            moment(new Date(2022, 11, 30, 8, 0, 0))
+            getMinigameStageStartTime(1),
+            getMinigameStageStartTime(2),
+            getMinigameStageStartTime(3),
+            getMinigameStageStartTime(4)
         ];
         for(let i = 0; i < maxCountStage; i++)
         {
@@ -63,7 +63,7 @@ export class AppContainer extends Component {
         return (
             <>
                 {
-                    (countStageStanding.length > 0) &&
+                    (countStageStanding.length > 1 || parseInt(this.state.selectedStage) === 1 && votes.length > 0) &&
                     <div className="minigame-section minigame-standing">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title standing-title">

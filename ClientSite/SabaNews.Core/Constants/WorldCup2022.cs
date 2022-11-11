@@ -75,9 +75,9 @@
         public const long SeasonIdWorldCup2022 = 10810;
         public const long GroupStageId = 30537;
 
-        public const string TimestampMinigameStage01Start = "11/08/2022, 3:00:00 PM";
-        public const string TimestampMinigameStage02Start = "11/11/2022, 1:45:00 PM";
-        public const string TimestampMinigameStage03Start = "11/11/2022, 3:00:00 PM";
+        public const string TimestampMinigameStage01Start = "11/16/2022, 8:00:00 AM";
+        public const string TimestampMinigameStage02Start = "11/22/2022, 8:00:00 AM";
+        public const string TimestampMinigameStage03Start = "11/26/2022, 8:00:00 AM";
         public const string TimestampMinigameStage04Start = "11/30/2022, 8:00:00 AM";
 
         public const long ThirdPlace = 30541;
