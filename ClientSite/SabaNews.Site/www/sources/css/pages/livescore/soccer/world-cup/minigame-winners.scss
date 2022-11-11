@@ -79,7 +79,8 @@
         border-bottom: none;
     }
     .table-dropdown{
-        border-top: 1px solid #E8E8D6;
+        border: 1px solid #E8E8D6;
+        border-top: none;
         background: #530C1C;
         &-header{
             border-bottom: 1px solid #8A172F;

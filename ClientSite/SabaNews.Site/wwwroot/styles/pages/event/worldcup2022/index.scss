@@ -373,16 +373,21 @@
 }
 
 .wc-block-group {
-    padding: 5rem 0 7rem 0;
+    padding: 5rem 0 3.2rem 0;
+
+    @include tableMobile {
+        padding: 3rem 0 0 0;
+    }
+
     .king-soccer {
         @include tableMobile {
             padding: 0 1.2rem;
         }
 
-        .wc-table{
-            &-body{
-                font-size : 1.4rem;
-                font-weight : 500;
+        .wc-table {
+            &-body {
+                font-size: 1.4rem;
+                font-weight: 500;
             }
         }
     }

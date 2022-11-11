@@ -5,6 +5,7 @@
 @import './layout/header';
 @import './components/modal-event';
 @import './components/table-stage';
+
 body, .overflow-modal {
     overflow: unset;
 }
@@ -288,9 +289,11 @@ body, .overflow-modal {
 
 .minigame-title {
     margin-bottom: 3.2rem;
-    @include tableMobile{
-        margin-bottom : 1.6rem;
+
+    @include tableMobile {
+        margin-bottom: 1.6rem;
     }
+
     .text {
         color: #424242;
         padding-bottom: 1.8rem;
@@ -388,7 +391,6 @@ body, .overflow-modal {
     padding: 0 1rem;
     margin: 0 auto;
     position: relative;
-    
 }
 
 .row-stage {
@@ -620,6 +622,7 @@ body, .overflow-modal {
         }
     }
 }
+
 #minigame-winners {
     .custom-select {
         @include Mobile {
