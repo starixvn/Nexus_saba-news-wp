@@ -31,7 +31,8 @@
         border-bottom: none;
         border-radius: 5px 5px 0px 0px;
         color: #E8E8D6;
-        &.active{
+        transition: background , color .3s ease-in-out ;
+        &.active,&:hover{
             background: #E8E8D6;
             color: #88172E;
         }

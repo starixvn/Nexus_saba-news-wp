@@ -455,9 +455,12 @@ body, .overflow-modal {
             cursor: pointer;
 
             .stage-round {
+                transition: filter .3s ease-in-out;
+
                 h2 {
                     background: #E8E8D6;
                     color: #82152C;
+                    transition: background .3s ease-in-out;
                 }
             }
 
