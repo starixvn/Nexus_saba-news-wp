@@ -191,6 +191,13 @@
         return statusStage;
     }
 
+    function addClassBody() {
+        var statusStageOne = getStatusStage(0);
+        if (statusStageOne == "Chưa diễn ra" || statusStageOne == "Sắp diễn ra") {
+            document.body.classList.add('before-start-minigame')
+        }
+    }
+
     function showTimeCountDown(time) {
         if (time.toString().length <= 1) {
             return "0" + time;
@@ -202,6 +209,7 @@
         HandleUI();
         countDownTime();
         countDownEvent();
+        addClassBody();
     }
 
     return {
