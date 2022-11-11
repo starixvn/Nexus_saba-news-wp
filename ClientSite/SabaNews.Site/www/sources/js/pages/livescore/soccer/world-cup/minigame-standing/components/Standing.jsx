@@ -15,6 +15,13 @@ export default class Standing extends PureComponent {
             top: numberStroll,
             behavior: 'smooth'
         });
+        const tab = window.location.hash;
+        if (tab == '#minigame-standing') {
+            window.scrollTo({
+                top: $("#minigame-standing").offset().top,
+                behavior: 'smooth'
+            });
+        }
     }
 
     getMatch = (vote, matches) =>{

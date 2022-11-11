@@ -20,8 +20,15 @@
             $('#guide').modal('show');
         })
 
+        $('.btn-nav-guide').click(function () {
+            $('.header-nav-event li a').removeClass('active');
+            $(this).addClass('active');
+            $('#guide').modal('show');
+        });
        
         $('.btn-home').click(function () {
+            $('.header-nav-event li a').removeClass('active');
+            $(this).addClass('active');
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });
 

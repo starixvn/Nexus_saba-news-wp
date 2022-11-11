@@ -133,6 +133,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleLastestNews,
+                Description = WorldCup2022.TitleLastestNews,
                 Slug = WorldCup2022.UrlLastestNewsSlug
             };
 
@@ -160,6 +161,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleCommentary,
+                Description = WorldCup2022.TitleCommentary,
                 Slug = WorldCup2022.UrlCommentarySlug
             };
 
@@ -184,6 +186,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleFixture,
+                Description = WorldCup2022.TitleFixture,
                 Slug = WorldCup2022.UrlFixtureSlug
             };
             return View("~/Views/Event/WorldCup2022/Fixture.cshtml", header);
@@ -199,6 +202,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleStanding,
+                Description = WorldCup2022.TitleStanding,
                 Slug = WorldCup2022.UrlStandingSlug
             };
             var viewModel = new StandingDetailViewModel
@@ -216,6 +220,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleVideo,
+                Description = WorldCup2022.TitleVideo,
                 Slug = WorldCup2022.UrlVideoSlug
             };
             var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
@@ -242,6 +247,7 @@
                 Header = new HeaderViewModel
                 {
                     Title = WorldCup2022.TitleFixture,
+                    Description = WorldCup2022.TitleFixture,
                     Slug = WorldCup2022.FixtureSlug
                 },
                 MatchId = matchId
@@ -256,6 +262,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleStoryPost,
+                Description = WorldCup2022.TitleStoryPost,
                 Slug = WorldCup2022.UrlStoryPostSlug
             };
             var cateSlugCriteria = new GetPostsByCateSlugCriteria
@@ -345,6 +352,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
+                Description = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
 
@@ -382,6 +390,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
+                Description = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
             var model = new MinigameStageViewModel
@@ -403,6 +412,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
+                Description = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
             var model = new MinigameStageViewModel
@@ -431,6 +441,7 @@
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
+                Description = WorldCup2022.TitleMinigame,
                 Slug = WorldCup2022.UrlMinigameSlug
             };
             var model = new MinigameStageViewModel

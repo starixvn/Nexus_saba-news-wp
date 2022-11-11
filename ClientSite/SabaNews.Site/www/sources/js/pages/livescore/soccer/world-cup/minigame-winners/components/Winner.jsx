@@ -9,6 +9,16 @@ export default class Winner extends PureComponent {
         super(props);
     }
 
+    componentDidMount() {
+        const tab = window.location.hash;
+        if (tab == '#minigame-winners') {
+            window.scrollTo({
+                top: $("#minigame-winners").offset().top,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     getUsersVote = (users, vote) =>{
         if(users.length === 0){
             users.push(vote);
