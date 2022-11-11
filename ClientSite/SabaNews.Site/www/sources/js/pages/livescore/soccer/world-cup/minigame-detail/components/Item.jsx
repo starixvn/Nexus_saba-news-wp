@@ -61,7 +61,6 @@ export default class Item extends PureComponent {
     render() {
         const { stage, count } = this.props;
         const stageStatus = this.getStageStatus();
-        const iconClass = stageStatus.isLock ? 'icon-icon_lock' : 'icon-bxh_view';
         return (
 
             <div className="minigame-table-items">
@@ -75,7 +74,12 @@ export default class Item extends PureComponent {
                     </div>
                     <div className="table-row table-row-time">
                         {this.getTotalScore()}
-                        <i className={`${iconClass} view-minigame-detail`} />
+                        {
+                            stageStatus.isLock && <i className="icon-icon_lock view-minigame-detail" />
+                        }
+                        {
+                            !stageStatus.isLock && <i className="icon-bxh_view view-minigame-detail" onClick={this.handleViewDetail} />
+                        }
                     </div>
                 </div>
             </div>
