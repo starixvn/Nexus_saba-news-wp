@@ -90,7 +90,7 @@ export const getMinigameStageStartTime = stage => {
         case WorldCup.MinigameStage.Stage1:
             return moment(new Date(2022, 10, 1, 0, 0, 0));
         case WorldCup.MinigameStage.Stage2:
-            return moment(new Date(2022, 10, 22, 8, 0, 0));
+            return moment(new Date(2022, 10, 11, 13, 45, 0));
         case WorldCup.MinigameStage.Stage3:
             return moment(new Date(2022, 10, 26, 8, 0, 0));
         case WorldCup.MinigameStage.Stage4:
