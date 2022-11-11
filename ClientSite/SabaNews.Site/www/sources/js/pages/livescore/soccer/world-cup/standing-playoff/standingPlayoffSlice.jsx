@@ -9,9 +9,9 @@ const standingPlayoffSlice = createSlice({
     },
     reducers: {
         setMatches: (state, action) => {
+            const matches = action.payload;
             const totalItems = matches.length;
             const stages = [];
-            const matches = action.payload;
             for (let i = 0; i < totalItems; i++) {
                 const match = matches[i];
                 if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
