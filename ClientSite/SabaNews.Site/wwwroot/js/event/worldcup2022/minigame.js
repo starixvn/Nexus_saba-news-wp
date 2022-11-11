@@ -201,7 +201,7 @@
     function init() {
         HandleUI();
         countDownTime();
-        //countDownEvent();
+        countDownEvent();
     }
 
     return {
