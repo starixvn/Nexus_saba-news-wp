@@ -33,11 +33,11 @@
         .table-row{
             position: relative;
             &-index {
-                width: 20%;
+                width: 10%;
             }
         
             &-name {
-                width: 25%;
+                width: 36%;
                 text-align: center;
             }
         
@@ -63,7 +63,7 @@
 
 .view-minigame-detail{
     position: absolute;
-    right: 0;
+    right: -20px;
     top: 3px;
     @include Mobile{
         top: -3px;
