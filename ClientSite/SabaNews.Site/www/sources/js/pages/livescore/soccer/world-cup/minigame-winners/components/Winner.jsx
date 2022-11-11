@@ -11,7 +11,7 @@ export default class Winner extends PureComponent {
 
     componentDidMount() {
         const tab = window.location.hash;
-        if (tab == '#minigame-winners') {
+        if (tab === '#minigame-winners') {
             window.scrollTo({
                 top: $("#minigame-winners").offset().top,
                 behavior: 'smooth'

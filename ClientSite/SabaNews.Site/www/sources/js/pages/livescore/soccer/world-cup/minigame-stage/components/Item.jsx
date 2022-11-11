@@ -114,7 +114,7 @@ export class Item extends PureComponent {
                     <div className="statistic-grid-item-fav show-pc">{this.getVoteTeam(vote)}</div>
                 </div>
 
-                <div className={`statistic-grid-item-body ${this.checkDisabledVote() ? 'finish' : ''}`}> 
+                <div className={`statistic-grid-item-body ${this.checkDisabledVote() ? 'finish' : ''}`}>
                     <div className="team-main">
                         <EqualHeight>
                             <div className={`statistic-team statistic-team-home ${vote === 1 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(match.homeTeam.teamId)}>

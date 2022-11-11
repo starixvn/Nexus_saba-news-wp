@@ -63,26 +63,16 @@
         if (tab == '#stage-minigame') {
             $('.header-nav-event li a').removeClass('active');
             $('.click-list-rigister').addClass('active');
-            $('html, body').animate({
-                scrollTop: $("#stage-minigame").offset().top
-            }, 500);
-
         }
 
         if (tab == '#minigame-standing') {
             $('.header-nav-event li a').removeClass('active');
             $('.click-list-standing').addClass('active');
-            $('html, body').animate({
-                scrollTop: $("#minigame-standing").offset().top
-            }, 500);
         }
 
         if (tab == '#minigame-winners') {
             $('.header-nav-event li a').removeClass('active');
             $('.click-list-result').addClass('active');
-            $('html, body').animate({
-                scrollTop: $("#minigame-winners").offset().top
-            }, 500);
         }
 
         $('.click-list-rigister').click(function () {
