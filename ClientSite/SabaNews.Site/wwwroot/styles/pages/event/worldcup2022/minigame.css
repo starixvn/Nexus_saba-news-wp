@@ -813,6 +813,9 @@ body {
 
 body, .overflow-modal {
   overflow: unset; }
+  body.before-start-minigame, .overflow-modal.before-start-minigame {
+    background: url("../../../../images/worldcup/minigame/bg_before_event.png") #48041A !important;
+    background-attachment: fixed !important; }
 
 .disable-background {
   background: unset !important; }
