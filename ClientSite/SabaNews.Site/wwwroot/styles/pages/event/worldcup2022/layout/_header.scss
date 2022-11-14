@@ -137,7 +137,8 @@
     .back-home-page {
         display: block;
         padding-left: 2rem;
-        width: 20rem;
+        /*width: 20rem;*/
+        flex: 1 0 15%;
 
         @include tableMobile {
             display: none;
@@ -283,7 +284,8 @@
 
 .header-auth-provider {
     list-style: none;
-    width: 42rem;
+    /*width : 42rem;*/
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: flex-end;

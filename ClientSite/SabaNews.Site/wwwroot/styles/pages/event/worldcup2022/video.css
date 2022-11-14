@@ -100,7 +100,8 @@ body {
   .top-header .back-home-page {
     display: block;
     padding-left: 2rem;
-    width: 20rem; }
+    /*width: 20rem;*/
+    flex: 1 0 15%; }
     @media screen and (max-width: 1024px) {
       .top-header .back-home-page {
         display: none; } }
@@ -202,7 +203,8 @@ body {
 
 .header-auth-provider {
   list-style: none;
-  width: 42rem;
+  /*width : 42rem;*/
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: flex-end; }
