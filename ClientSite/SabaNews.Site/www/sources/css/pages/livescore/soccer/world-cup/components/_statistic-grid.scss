@@ -67,7 +67,7 @@
                 grid-gap: 4.4rem;
                 justify-content: center;
                 @include tableMobile{
-                    grid-gap: 3rem;
+                    grid-gap: 2rem;
                 }
             }
             &.finish{
@@ -118,7 +118,7 @@
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 8.5rem;
+        width: 10rem;
         align-items: center;
         padding: .3rem;
         cursor: pointer;
