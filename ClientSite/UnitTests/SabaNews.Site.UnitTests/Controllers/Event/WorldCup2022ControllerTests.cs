@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.UnitTests.Controllers.Event
 {
     using AutoFixture;
+    using DeviceDetectorNET.Class.Device;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Routing;
@@ -702,16 +703,23 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            var matches = fixture.Create<IList<Match>>();
+            var match = fixture.Create<Match>();
+            var matches = new List<Match>();
+            for(int i = 0; i < 64; i++) { matches.Add(match); }
+            var statusStageOne = LivescoreHelper.GetStatusStage(matches, 1);
 
             worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
-             LivescoreHelper.GetStatusStage(matches, 1).Returns(WorldCup2022.BeforeStartedStage);
             //Act
             var result = await controller.Minigame();
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", viewResult.ViewName);
+            if (statusStageOne == WorldCup2022.BeforeStartedStage || statusStageOne == WorldCup2022.LockStage){
+                Assert.Equal("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", viewResult.ViewName);
+            }
+            else{
+                Assert.Equal("~/Views/Event/WorldCup2022/Minigame/MinigameTmp.cshtml", viewResult.ViewName);
+            }
         }
 
         [Fact]
