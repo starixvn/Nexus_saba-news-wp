@@ -30,7 +30,7 @@ export default class Grid extends PureComponent {
                     <div className="minigame-table-body">
                         {
                             matches.map((item, index) => {
-                                const vote = votes.find(value => value.matchId === item.matchId);
+                                const vote = votes.find(value => value.matchId === item.matchId && value.stage === parseInt(window.stage, 10));
                                 const result = this.checkMatchResult(item, vote);
                                 totalScore +=  result !== null ? result.score : 0;
                                 number++;
