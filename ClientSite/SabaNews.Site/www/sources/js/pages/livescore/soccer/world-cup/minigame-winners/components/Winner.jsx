@@ -13,7 +13,7 @@ export default class Winner extends PureComponent {
         const tab = window.location.hash;
         if (tab === '#minigame-winners') {
             window.scrollTo({
-                top: $("#minigame-winners").offset().top,
+                top: $(tab).offset().top,
                 behavior: 'smooth'
             });
         }

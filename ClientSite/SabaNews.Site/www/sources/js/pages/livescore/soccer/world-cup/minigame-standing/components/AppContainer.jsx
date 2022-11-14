@@ -29,8 +29,7 @@ export class AppContainer extends Component {
             getMinigameStageStartTime(3),
             getMinigameStageStartTime(4)
         ];
-        for(let i = 0; i < maxCountStage; i++)
-        {
+        for(let i = 0; i < maxCountStage; i++){
             const startTime = timeStart[i];
             const currentTime = moment(DateTimeService.getCurrentClientDateTime());
             const startMinutes = startTime.diff(currentTime, 'minutes');
@@ -39,7 +38,7 @@ export class AppContainer extends Component {
             }
         }
         return result;
-    };
+    }
 
     handleChange = event => {
         this.setState({
@@ -84,7 +83,7 @@ export class AppContainer extends Component {
                                 <select value={parseInt(this.state.selectedStage)}
                                     onChange={this.handleChange} className="custom-select">
                                     {
-                                        countStageStanding.map( (item, index) =>
+                                        countStageStanding.map( item =>
                                         <option key={item.value} value={item.value}>{item.name}</option> )
                                     }
                                 </select>

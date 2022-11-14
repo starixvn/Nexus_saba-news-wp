@@ -25,15 +25,14 @@ export class AppContainer extends Component {
     handleSelectedStageWinner (){
         let result = 0;
         const maxCountStage = 4;
-        const timeStart = [
+        const timeEnd = [
             moment(new Date(2022, 10, 8, 15, 0, 0)),
             moment(new Date(2022, 10, 11, 13, 30, 0)),
             moment(new Date(2022, 11, 11, 15, 0, 0)),
             moment(new Date(2022, 11, 30, 8, 0, 0))
         ];
-        for(let i = 0; i < maxCountStage; i++)
-        {
-            const startTime = timeStart[i];
+        for(let i = 0; i < maxCountStage; i++){
+            const startTime = timeEnd[i];
             const currentTime = moment(DateTimeService.getCurrentClientDateTime());
             const lastMinutes = startTime.diff(currentTime, 'minutes');
             if( lastMinutes <= 30) {
@@ -41,7 +40,7 @@ export class AppContainer extends Component {
             }
         }
         return result;
-    };
+    }
 
     componentDidMount() {
         this.props.getMatches();
