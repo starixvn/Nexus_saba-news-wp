@@ -152,6 +152,9 @@
             x = setInterval(function () {
                 let now = new Date().getTime(),
                     distance = countDown - now;
+                if (distance < 0) {
+                    return false;
+                }
                 let dayShow = Math.floor(distance / (day)),
                     hourShow = Math.floor((distance % (day)) / (hour)),
                     minuteShow = Math.floor((distance % (hour)) / (minute)),
