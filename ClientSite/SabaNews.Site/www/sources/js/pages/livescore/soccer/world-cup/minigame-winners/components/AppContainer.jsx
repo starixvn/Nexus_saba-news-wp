@@ -92,7 +92,7 @@ export class AppContainer extends Component {
                             <Winner matches={showMatches} votes={votes} selectedStage={this.state.selectedStage} />
                         </div>
                         <div className="winner-icon">
-                            <img src="../../../../css/images/winner_sticker_4.gif" alt="" />
+                            <img src="../../../../css/images/winner_sticker_4.svg" alt="" />
                         </div>
                     </div>
                 }
