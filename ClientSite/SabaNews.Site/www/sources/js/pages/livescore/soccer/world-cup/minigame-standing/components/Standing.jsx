@@ -222,7 +222,7 @@ export default class Standing extends PureComponent {
                         </div>
                         <div className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
                             {
-                                standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item} 
+                                standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item}
                                                                     standingLength={standings.length} stagesSelected={stagesSelected} />)
                             }
                             {
