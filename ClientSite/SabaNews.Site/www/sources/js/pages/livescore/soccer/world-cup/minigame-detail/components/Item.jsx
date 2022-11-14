@@ -28,7 +28,7 @@ export default class Item extends PureComponent {
         const lastMatch = matches[matches.length - 1];
         const startTime = getMinigameStageStartTime(stage);
         const lastTime = DateTimeService.convertFromUTC(lastMatch.startTime);
-        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        const currentTime = moment(new Date('2022-12-1 00:00:00'));
         const startMinutes = startTime.diff(currentTime, 'minutes');
         const lastMinutes = lastTime.diff(currentTime, 'minutes');
         let status = '';

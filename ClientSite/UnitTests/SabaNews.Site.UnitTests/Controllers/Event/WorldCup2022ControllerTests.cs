@@ -15,6 +15,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.Posts;
@@ -25,6 +26,7 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers.Event;
+    using SabaNews.Site.Extensions;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -695,14 +697,15 @@
         {
             // Arrange
             var controller = GetController();
-            var standingsCriteria = fixture.Create<GetLeagueSeasonStandingCriteria>();
-            var standings = fixture.Create<IList<SeasonStandings>>();
-            var expectedUser = fixture.Create<UserSession>();
-            sessionService.User = fixture.Create<UserSession>();
-            expectedUser.SavedPosts = null;
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            var matches = fixture.Create<IList<Match>>();
 
-            leagueService.GetLeagueSeasonStanding(standingsCriteria).Returns(standings);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
+             LivescoreHelper.GetStatusStage(matches, 1).Returns(WorldCup2022.BeforeStartedStage);
             //Act
             var result = await controller.Minigame();
 

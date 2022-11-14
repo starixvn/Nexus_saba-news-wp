@@ -148,7 +148,7 @@
             minute = second * 60,
             hour = minute * 60,
             day = hour * 24;
-        let countDown = new Date('December 1, 2022 08:00:00').getTime(),
+        let countDown = new Date('November 16, 2022 08:00:00').getTime(),
             x = setInterval(function () {
                 let now = new Date().getTime(),
                     distance = countDown - now;
@@ -169,7 +169,7 @@
 
     function getStatusStage(i) {
         //var timeSpanNow = new Date();
-        var timeSpanNow = new Date('November 25, 2022 00:00:00');
+        var timeSpanNow = new Date('December 1, 2022 08:00:00');
         var checkNow = (new Date(timeStartStage[i]) - timeSpanNow) / 1000;
         var statusStage;
         if (checkNow > 0) {
