@@ -286,8 +286,6 @@ $(document).ready(function () {
     });
 
     getFavouriteMatchCount();
-    toggleChangeDomainPopup();
-    
 
 });
 

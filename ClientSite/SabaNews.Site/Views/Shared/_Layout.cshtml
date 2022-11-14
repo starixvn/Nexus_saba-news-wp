@@ -120,27 +120,6 @@
         </section>
     </div>
 
-    <div class="auth-form event-modal-home">
-        <div class="modal" id="ChangeDomainModal" style="display:none">
-            <div class="modal-content modal-auth event-modal-home">
-                <div class="modal-warning">
-                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <div class="modal-body">
-                        <img src="~/images/worldcup/minigame/popup_wc_event.png" alt="Alternate Text" class="img-res" />
-                        <label class="custom-checkbox-container">
-                            <input type="checkbox" id="isHidePopupChangeDomain" />
-                            <span class="checkmark"></span>
-                            Không hiển thị nữa
-                        </label>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <div id="auth-form"></div>
     <input type="hidden" id="RootUrl" value="@Url.Content("~/")" />
     @Html.AntiForgeryToken()
