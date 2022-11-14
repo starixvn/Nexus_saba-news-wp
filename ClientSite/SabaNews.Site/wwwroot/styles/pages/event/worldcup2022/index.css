@@ -316,6 +316,9 @@ body {
           display: block; } }
     .auth-provider .auth-displayname .display-user {
       display: none; }
+      @media screen and (min-width: 1025px) and (max-width: 1280px) {
+        .auth-provider .auth-displayname .display-user {
+          display: none; } }
       @media screen and (min-width: 1391px) {
         .auth-provider .auth-displayname .display-user {
           display: block; } }

@@ -450,6 +450,10 @@
         .display-user {
             display: none;
 
+            @media screen and (min-width: 1025px) and (max-width: 1280px) {
+                display: none;
+            }
+
             @include creen1391px {
                 display: block;
             }
