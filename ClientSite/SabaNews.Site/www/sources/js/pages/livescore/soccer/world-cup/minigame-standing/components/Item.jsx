@@ -8,8 +8,8 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (standingLength, number) =>{
-        if(window.stage === 4){
+    handleClick = (standingLength, number, stagesSelected) =>{
+        if(stagesSelected === 4){
             for(let num = 0; num < standingLength ; num ++){
                 if(num !== number){
                     document.getElementsByClassName('detailStandings')[num].style.display = 'none';
@@ -25,11 +25,11 @@ export class Item extends PureComponent {
     };
 
     render() {
-        const { standing, number, standingLength, rank } = this.props;
+        const { standing, number, standingLength, rank, stagesSelected } = this.props;
         return (
             <>
-                <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${window.stage === 4 ? 'cursor-items' : ''}`}
-                onClick={() => this.handleClick(standingLength, number)}>
+                <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${stagesSelected === 4 ? 'cursor-items' : ''}`}
+                onClick={() => this.handleClick(standingLength, number, stagesSelected)}>
                     <div className="minigame-table-flex ">
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
@@ -48,7 +48,7 @@ export class Item extends PureComponent {
                     </div>
                 </div>
                 {
-                    window.stage === 4 &&
+                    stagesSelected === 4 &&
                     <div className="table-dropdown detailStandings" style={{display:'none'}}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-row">

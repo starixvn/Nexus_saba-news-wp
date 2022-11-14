@@ -202,7 +202,7 @@ export default class Standing extends PureComponent {
     };
 
     render() {
-        const { matches, votes } = this.props;
+        const { matches, votes, stagesSelected } = this.props;
         const standings = this.calculatorPointer(matches, votes);
         const userId = window.User;
         const rank = this.checkRank(standings, userId);
@@ -222,7 +222,7 @@ export default class Standing extends PureComponent {
                         </div>
                         <div className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
                             {
-                                standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item} standingLength={standings.length} />)
+                                standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item} standingLength={standings.length} stagesSelected={stagesSelected} />)
                             }
                             {
                                 standings.length === 0 && <p className="text-no-data">Dữ Liệu Đang Được Cập Nhật</p>

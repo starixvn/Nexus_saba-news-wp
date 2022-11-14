@@ -66,7 +66,7 @@ export class AppContainer extends Component {
                                     }
                                 </select>
                             </div>
-                            <Standing matches={showMatches} votes={votes} />
+                            <Standing matches={showMatches} votes={votes} stagesSelected={parseInt(this.state.selectedStage, 10)}/>
                         </div>
                         <div className="wave-standing-main"></div>
                         <div className="wave-standing-bg"></div>
