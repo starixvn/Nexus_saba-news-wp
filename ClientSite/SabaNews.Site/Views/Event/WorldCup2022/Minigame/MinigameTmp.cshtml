@@ -42,6 +42,12 @@
 }
 
 @section Scripts{
+    <script>
+        var checkLogin = '@Model.IsLogin';
+        window.User = '@Model.UserId';
+        window.CountStageActive = '@countStageActive';
+        window.CountStageEnd = '@countStageEnd';
+    </script>
     <environment include="Development">
         <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
@@ -57,12 +63,7 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame-winner.chunk.js" asp-append-version="true"></script>
     </environment>
 
-    <script>
-        var checkLogin = '@Model.IsLogin';
-        window.User = '@Model.UserId';
-        window.CountStageActive = '@countStageActive';
-        window.CountStageEnd = '@countStageEnd';
-    </script>
+    
     <script src="~/js/event/worldcup2022/minigame.js" asp-append-version="true"></script>
     <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
 }

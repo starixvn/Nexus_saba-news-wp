@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux';
 import { getMatchesByStage } from '../../common.functions';
 import { MobileMaxWidth } from '@jsroot/common/constants';
 import Winner from '../components/Winner';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -18,28 +16,8 @@ export class AppContainer extends Component {
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}],
-            selectedStage: this.handleSelectedStageWinner()
+            selectedStage: parseInt(window.CountStageEnd)
         };
-    }
-
-    handleSelectedStageWinner (){
-        let result = 0;
-        const maxCountStage = 4;
-        const timeEnd = [
-            moment(new Date(2022, 10, 8, 15, 0, 0)),
-            moment(new Date(2022, 10, 11, 13, 30, 0)),
-            moment(new Date(2022, 11, 11, 15, 0, 0)),
-            moment(new Date(2022, 11, 30, 8, 0, 0))
-        ];
-        for(let i = 0; i < maxCountStage; i++){
-            const startTime = timeEnd[i];
-            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-            const lastMinutes = startTime.diff(currentTime, 'minutes');
-            if( lastMinutes <= 30) {
-                result = i + 1;
-            }
-        }
-        return result;
     }
 
     componentDidMount() {
@@ -70,7 +48,7 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        const countStageWinners =this.state.stages.filter( x => x.value <= window.CountStageEnd);
+        const countStageWinners =this.state.stages.filter( x => x.value <= parseInt(window.CountStageEnd));
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage));
         return (
             <>

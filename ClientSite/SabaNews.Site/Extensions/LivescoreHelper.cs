@@ -219,11 +219,12 @@
         public static int GetCountStageEndMinigame(IList<Match> matches)
         {
             int result = 0;
-            const int maxCountStage = 4;
-            for (int i = 0; i < maxCountStage; i++)
+            const int MaxCountStage = 4;
+            const int FinishStatus = 50;
+            List<int> indexMatches = new() { 15, 31, 47, 63 };
+            for (int i = 0; i < MaxCountStage; i++)
             {
-                var statusStage = GetStatusStage(matches, i + 1);
-                if (statusStage == WorldCup2022.OnEndStage)
+                if (matches[indexMatches[i]].Status == FinishStatus)
                 {
                     result = i + 1;
                 }

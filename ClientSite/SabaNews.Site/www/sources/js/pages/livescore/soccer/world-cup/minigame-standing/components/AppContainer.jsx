@@ -3,41 +3,19 @@ import Standing from '../components/Standing';
 import React, { Component } from 'react';
 import { ActionCreators } from '../actions';
 import { connect } from 'react-redux';
-import { getMatchesByStage, getMinigameStageStartTime } from '../../common.functions';
+import { getMatchesByStage } from '../../common.functions';
 import LangHelper from '@jsroot/common/langHelper';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedStage: this.handleSelectedStage(),
+            selectedStage: parseInt(window.CountStageActive),
             stages:[{name:LangHelper.getResource('Stage1'), value:1},
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
             {name:LangHelper.getResource('Stage4'), value:4}]
         };
-    }
-
-    handleSelectedStage (){
-        let result = 0;
-        const maxCountStage = 4;
-        const timeStart = [
-            getMinigameStageStartTime(1),
-            getMinigameStageStartTime(2),
-            getMinigameStageStartTime(3),
-            getMinigameStageStartTime(4)
-        ];
-        for(let i = 0; i < maxCountStage; i++){
-            const startTime = timeStart[i];
-            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
-            const startMinutes = startTime.diff(currentTime, 'minutes');
-            if( startMinutes <= 0) {
-                result = i + 1;
-            }
-        }
-        return result;
     }
 
     handleChange = event => {
@@ -58,11 +36,11 @@ export class AppContainer extends Component {
             return null;
         }
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage));
-        const countStageStanding = this.state.stages.filter( x => x.value <= window.CountStageActive);
+        const countStageStanding = this.state.stages.filter( x => x.value <= parseInt(window.CountStageActive));
         return (
             <>
                 {
-                    (countStageStanding.length > 1 || parseInt(this.state.selectedStage) === 1 && votes.length > 0) &&
+                    (countStageStanding.length > 1 || countStageStanding.length === 1 && votes.length > 0) &&
                     <div className="minigame-section minigame-standing">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title standing-title">
