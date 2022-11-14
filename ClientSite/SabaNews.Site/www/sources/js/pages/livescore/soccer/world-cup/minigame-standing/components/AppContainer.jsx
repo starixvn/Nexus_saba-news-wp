@@ -10,7 +10,7 @@ export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedStage: parseInt(window.CountStageActive),
+            selectedStage: parseInt(window.CountStageActive, 10),
             stages:[{name:LangHelper.getResource('Stage1'), value:1},
             {name:LangHelper.getResource('Stage2'), value:2},
             {name:LangHelper.getResource('Stage3'), value:3},
@@ -35,8 +35,8 @@ export class AppContainer extends Component {
         if(matches === null ) {
             return null;
         }
-        const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage));
-        const countStageStanding = this.state.stages.filter( x => x.value <= parseInt(window.CountStageActive));
+        const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
+        const countStageStanding = this.state.stages.filter( x => x.value <= parseInt(window.CountStageActive, 10));
         return (
             <>
                 {
@@ -58,7 +58,7 @@ export class AppContainer extends Component {
                                 </div>
                             </div>
                             <div className="minigame-standing-control">
-                                <select value={parseInt(this.state.selectedStage)}
+                                <select value={parseInt(this.state.selectedStage, 10)}
                                     onChange={this.handleChange} className="custom-select">
                                     {
                                         countStageStanding.map( item =>

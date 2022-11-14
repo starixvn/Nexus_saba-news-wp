@@ -259,7 +259,7 @@
                 WorldCup2022.TimestampMinigameStage03Start, 
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTime.UtcNow.AddHours(MGTPlus) - new DateTime(1970, 1, 1, 0, 0, 0));
+            var timeSpanNow = (new DateTime(2022, 11, 25, 0, 0, 0) - new DateTime(1970, 1, 1, 0, 0, 0));
             var timeStartStage = DateTime.Parse(startStages[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;

@@ -168,7 +168,8 @@
     }
 
     function getStatusStage(i) {
-        var timeSpanNow = new Date();
+        //var timeSpanNow = new Date();
+        var timeSpanNow = new Date('November 25, 2022 00:00:00');
         var checkNow = (new Date(timeStartStage[i]) - timeSpanNow) / 1000;
         var statusStage;
         if (checkNow > 0) {
