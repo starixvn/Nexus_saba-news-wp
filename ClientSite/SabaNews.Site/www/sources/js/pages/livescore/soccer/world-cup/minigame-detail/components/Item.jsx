@@ -27,10 +27,7 @@ export default class Item extends PureComponent {
         const { matches, stage } = this.props;
         const lastMatch = matches[matches.length - 1];
         const startTime = getMinigameStageStartTime(stage);
-        let lastTime = DateTimeService.convertFromUTC(lastMatch.startTime);
-        if(stage === 1) {
-            lastTime = moment(new Date('2022-11-11 13:45:00'));
-        }
+        const lastTime = DateTimeService.convertFromUTC(lastMatch.startTime);
         const currentTime = moment(DateTimeService.getCurrentClientDateTime());
         const startMinutes = startTime.diff(currentTime, 'minutes');
         const lastMinutes = lastTime.diff(currentTime, 'minutes');
@@ -45,8 +42,10 @@ export default class Item extends PureComponent {
             status = LangHelper.getResource('Inprogress');
         }
         if(lastMinutes <= 30) {
+            isLock = false;
             status = LangHelper.getResource('Finish');
         } else if(lastMinutes <= 60) {
+            isLock = false;
             status = LangHelper.getResource('Ending');
         }
         return {status, isLock};
