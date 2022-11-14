@@ -812,11 +812,10 @@ body {
           padding: .4rem 0; } }
 
 body, .overflow-modal {
-  overflow: unset;
-  /*&.before-start-minigame {
-        background: url('../../../../images/worldcup/minigame/bg_before_event.png') $primary-bg !important;
-        background-attachment: fixed !important;
-    }*/ }
+  overflow: unset; }
+  body.before-start-minigame, .overflow-modal.before-start-minigame {
+    background: url("../../../../images/worldcup/minigame/bg_before_event.png") #48041A !important;
+    background-attachment: fixed !important; }
 
 .disable-background {
   background: unset !important; }

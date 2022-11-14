@@ -9,10 +9,10 @@
 body, .overflow-modal {
     overflow: unset;
 
-    /*&.before-start-minigame {
+    &.before-start-minigame {
         background: url('../../../../images/worldcup/minigame/bg_before_event.png') $primary-bg !important;
         background-attachment: fixed !important;
-    }*/
+    }
 }
 
 .disable-background {
