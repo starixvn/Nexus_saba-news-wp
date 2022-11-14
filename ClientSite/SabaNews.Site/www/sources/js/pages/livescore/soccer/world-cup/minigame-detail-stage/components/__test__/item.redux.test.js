@@ -24,11 +24,9 @@ describe('connect ', () => {
     it('props should be mapped correctly', () => {
         // Arrange
         const expected = {
-            votes:null,
             teams: null
         };
         const state = {
-            votes:null,
             teams: null
         };
 

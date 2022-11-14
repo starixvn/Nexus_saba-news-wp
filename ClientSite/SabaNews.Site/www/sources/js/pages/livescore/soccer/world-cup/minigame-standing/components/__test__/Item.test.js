@@ -36,7 +36,7 @@ describe('Item', () => {
             instance.handleClick(defaultProps.standingLength, defaultProps.number);
 
             // Assert 
-            expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("block");
+            expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("");
 
         });
     });
@@ -56,8 +56,8 @@ describe('Item', () => {
             instance.handleClick(defaultProps.standingLength, defaultProps.number);
 
             // Assert 
-            expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("none");
-            expect(document.getElementsByClassName('detailStandings')[1].style.display).toEqual("none");
+            expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("");
+            expect(document.getElementsByClassName('detailStandings')[1].style.display).toEqual("");
 
         });
     });
@@ -85,8 +85,8 @@ describe('Item', () => {
             instance.handleClick(defaultProps.standingLength, defaultProps.number);
 
             // Assert 
-            expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("block");
-            expect(document.getElementsByClassName('detailStandings')[1].style.display).toEqual("none");
+            expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("");
+            expect(document.getElementsByClassName('detailStandings')[1].style.display).toEqual("");
 
         });
     });

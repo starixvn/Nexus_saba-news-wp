@@ -36,7 +36,7 @@ describe('Item', () => {
             instance.handleClick(defaultProps.winnerLength, defaultProps.number);
 
             // Assert 
-            expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("block");
+            expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("");
 
         });
     });
@@ -56,8 +56,8 @@ describe('Item', () => {
             instance.handleClick(defaultProps.winnerLength, defaultProps.number);
 
             // Assert 
-            expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("none");
-            expect(document.getElementsByClassName('detailWinners')[1].style.display).toEqual("none");
+            expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("");
+            expect(document.getElementsByClassName('detailWinners')[1].style.display).toEqual("");
 
         });
     });
@@ -85,8 +85,8 @@ describe('Item', () => {
             instance.handleClick(defaultProps.winnerLength, defaultProps.number);
 
             // Assert 
-            expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("block");
-            expect(document.getElementsByClassName('detailWinners')[1].style.display).toEqual("none");
+            expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("");
+            expect(document.getElementsByClassName('detailWinners')[1].style.display).toEqual("");
 
         });
     });

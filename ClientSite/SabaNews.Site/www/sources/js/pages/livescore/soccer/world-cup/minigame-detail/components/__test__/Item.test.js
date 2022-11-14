@@ -56,7 +56,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource('NotStarted'));
+            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
         });
 
         it('return correctly status when stage Upcomming', () => {
@@ -75,7 +75,7 @@ describe('Item', () => {
            const result = instance.getStageStatus();
 
            // Assert
-           expect(result).toEqual(LangHelper.getResource('Upcomming'));
+           expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
        });
 
        it('return correctly status when stage Inprogress', () => {
@@ -94,7 +94,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource('Inprogress'));
+            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
         });
 
         it('return correctly status when stage Finish', () => {
@@ -113,7 +113,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource('Finish'));
+            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
         });
 
         it('return correctly status when stage Ending', () => {
@@ -132,7 +132,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource('Ending'));
+            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
         });
     });
 
