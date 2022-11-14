@@ -9,10 +9,10 @@
 body, .overflow-modal {
     overflow: unset;
 
-    &.before-start-minigame {
+    /*&.before-start-minigame {
         background: url('../../../../images/worldcup/minigame/bg_before_event.png') $primary-bg !important;
         background-attachment: fixed !important;
-    }
+    }*/
 }
 
 .disable-background {
@@ -250,6 +250,8 @@ body, .overflow-modal {
 
         ul {
             li {
+                clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+                background: #FF004B;
 
                 &:first-child {
                     margin-right: 5rem;
@@ -260,14 +262,15 @@ body, .overflow-modal {
                 }
 
                 a {
-                    clip-path: polygon(92% 0,100% 50%,94% 100%,8% 100%,0 50%,8% 0);
                     border: none;
-                    background: #FF004B;
                     border-radius: 0;
                     color: $white-color;
                     line-height: 3.3rem;
-                    padding: 0.1vw 2vw;
                     text-transform: inherit;
+                    box-shadow: none;
+                    padding: 0.2vw 2vw;
+                    background: none;
+                    display: block;
 
                     &:hover {
                         background: #FF1B5E;

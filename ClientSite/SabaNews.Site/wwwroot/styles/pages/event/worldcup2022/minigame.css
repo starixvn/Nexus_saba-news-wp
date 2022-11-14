@@ -812,10 +812,11 @@ body {
           padding: .4rem 0; } }
 
 body, .overflow-modal {
-  overflow: unset; }
-  body.before-start-minigame, .overflow-modal.before-start-minigame {
-    background: url("../../../../images/worldcup/minigame/bg_before_event.png") #48041A !important;
-    background-attachment: fixed !important; }
+  overflow: unset;
+  /*&.before-start-minigame {
+        background: url('../../../../images/worldcup/minigame/bg_before_event.png') $primary-bg !important;
+        background-attachment: fixed !important;
+    }*/ }
 
 .disable-background {
   background: unset !important; }
@@ -992,28 +993,32 @@ body, .overflow-modal {
         top: auto;
         right: auto;
         bottom: 5rem; } }
-    .wrapper-header .header-control ul li:first-child {
-      margin-right: 5rem; }
-      @media screen and (max-width: 1024px) {
-        .wrapper-header .header-control ul li:first-child {
-          margin-right: 2rem; } }
-    .wrapper-header .header-control ul li a {
-      clip-path: polygon(92% 0, 100% 50%, 94% 100%, 8% 100%, 0 50%, 8% 0);
-      border: none;
-      background: #FF004B;
-      border-radius: 0;
-      color: #fff;
-      line-height: 3.3rem;
-      padding: 0.1vw 2vw;
-      text-transform: inherit; }
-      .wrapper-header .header-control ul li a:hover {
-        background: #FF1B5E;
+    .wrapper-header .header-control ul li {
+      clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+      background: #FF004B; }
+      .wrapper-header .header-control ul li:first-child {
+        margin-right: 5rem; }
+        @media screen and (max-width: 1024px) {
+          .wrapper-header .header-control ul li:first-child {
+            margin-right: 2rem; } }
+      .wrapper-header .header-control ul li a {
         border: none;
-        color: #fff; }
-      @media screen and (max-width: 1024px) {
-        .wrapper-header .header-control ul li a {
-          font-size: 2rem;
-          padding: .2rem 3rem; } }
+        border-radius: 0;
+        color: #fff;
+        line-height: 3.3rem;
+        text-transform: inherit;
+        box-shadow: none;
+        padding: 0.2vw 2vw;
+        background: none;
+        display: block; }
+        .wrapper-header .header-control ul li a:hover {
+          background: #FF1B5E;
+          border: none;
+          color: #fff; }
+        @media screen and (max-width: 1024px) {
+          .wrapper-header .header-control ul li a {
+            font-size: 2rem;
+            padding: .2rem 3rem; } }
   .wrapper-header-column {
     display: grid;
     grid-template-columns: 50% 50%;

@@ -1990,7 +1990,7 @@ button {
   max-height: 60rem; }
 
 .event-modal-home .modal {
-  background: none; }
+  background: none !important; }
   .event-modal-home .modal.show {
     max-width: 55rem;
     top: 12rem;
