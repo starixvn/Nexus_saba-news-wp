@@ -491,13 +491,15 @@ body {
   background: #E8E8D6;
   border: none;
   border-radius: 0;
-  max-width: 70rem; }
+  max-width: 70rem;
+  border-radius: 5px; }
   @media (max-width: 767px) {
     .modal-game .show {
       max-width: 37rem; } }
 
 .modal-game .is-login.show {
-  max-width: 50rem; }
+  max-width: 50rem;
+  border-radius: 5px; }
   @media (max-width: 767px) {
     .modal-game .is-login.show {
       max-width: 37rem; } }
@@ -518,7 +520,8 @@ body {
 
 .modal-game .modal-body {
   padding: 0 !important;
-  background: #E8E8D6; }
+  background: #E8E8D6;
+  border-radius: 5px; }
   .modal-game .modal-body .main-guide {
     padding: 0 1rem 2rem 2rem; }
     .modal-game .modal-body .main-guide .txt-guide {
@@ -594,7 +597,8 @@ body {
   line-height: 2.8rem;
   font-size: 1.4rem; }
   .event-txt .event-text-header {
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+    color: #833D55; }
     @media screen and (max-width: 1024px) {
       .event-txt .event-text-header {
         margin-bottom: .5rem; } }
