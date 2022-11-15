@@ -45,18 +45,20 @@ export class AppContainer extends Component {
     getMatches = () => {
         const { league, matches } = this.props;
         if (!matches || matches.length === 0) {
-            return null;
+            return {matches: null};
         }
         let tmpMatches = matches;
+        let isFinished = false
         const finalMatches = tmpMatches[tmpMatches.length - 1];
         if (this.checkIsFinished(league) || finalMatches.status !== MatchStatus.NotStarted) {
             tmpMatches = [...matches].reverse();
+            isFinished = true;
         } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
         } else if (league.currentStageId >= WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
         }
-        return tmpMatches;
+        return {matches: tmpMatches, isFinished: isFinished};
     };
 
     render() {
@@ -71,8 +73,8 @@ export class AppContainer extends Component {
                     <SkeletonGrid isMobile={isMobile} />
                 }
                 {
-                    matchGrid && matchGrid.length > 0 &&
-                    <Grid isMobile={isMobile} matches={matchGrid} league={league} isFinished={this.checkIsFinished(league)} />
+                    matchGrid.matches && matchGrid.matches.length > 0 &&
+                    <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
                 }
             </div>
         );
