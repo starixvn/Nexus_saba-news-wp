@@ -421,9 +421,9 @@
 
     .view-more {
         margin-top: 1.8rem;
-
         @include tableMobile {
             margin-top: 3.2rem;
+            margin-right : 1.4rem;
         }
 
         a {

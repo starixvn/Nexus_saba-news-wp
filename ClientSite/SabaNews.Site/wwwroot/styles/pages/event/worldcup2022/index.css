@@ -1481,7 +1481,8 @@ body {
   margin-top: 1.8rem; }
   @media screen and (max-width: 1024px) {
     .guess .view-more {
-      margin-top: 3.2rem; } }
+      margin-top: 3.2rem;
+      margin-right: 1.4rem; } }
   .guess .view-more a {
     color: #EF4300; }
 
