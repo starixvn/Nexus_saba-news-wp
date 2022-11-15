@@ -79,7 +79,7 @@
             $('.header-nav-event li a').removeClass('active');
             $(this).addClass('active');
             $('html, body').animate({
-                scrollTop: $("#stage-minigame").offset().top
+                scrollTop: 600
             }, 500);
         })
 
@@ -87,7 +87,7 @@
             $('.header-nav-event li a').removeClass('active');
             $(this).addClass('active');
             $('html, body').animate({
-                scrollTop: $("#minigame-standing").offset().top
+                scrollTop: 1400
             }, 500);
         })
 
@@ -168,7 +168,8 @@
     }
 
     function getStatusStage(i) {
-        var timeSpanNow = new Date();
+        //var timeSpanNow = new Date();
+        var timeSpanNow = new Date('December 1, 2022 08:00:00');
         var checkNow = (new Date(timeStartStage[i]) - timeSpanNow) / 1000;
         var statusStage;
         if (checkNow > 0) {

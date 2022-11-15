@@ -19,7 +19,7 @@ export default class Standing extends PureComponent {
         const tab = window.location.hash;
         if (tab === '#minigame-standing') {
             window.scrollTo({
-                top: $(tab).offset().top,
+                top: 1400,
                 behavior: 'smooth'
             });
         }
