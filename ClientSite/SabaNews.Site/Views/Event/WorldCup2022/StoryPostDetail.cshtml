@@ -286,16 +286,17 @@
                     <amp-story-grid-layer template="vertical" class="align-end">
                         <div class="amp-inner">
                             <i class="icon-tick-post"></i>
-                            <h1>@Html.Raw(item.Title)</h1>
+                            @if (item.Link != "")
+                            {
+                                <a href=@item.Link><h1>@Html.Raw(item.Title)</h1></a>
+                            } 
+                            else {
+                                <h1>@Html.Raw(item.Title)</h1>
+                            }
+                            
                             <amp-story-page-outlink>
-                                @if (item.Link != "")
-                                {
-                                    <a href=@item.Link title="Link Description" class="detail-stories">
-                                        Xem chi tiết
-                                    </a>
-                                }
 
-                                @if (count >= totalItems)
+                                @if (count > totalItems)
                                 {
                                     <div class="view-more-stories">
                                         <i class="icon-chevron-up"></i>
