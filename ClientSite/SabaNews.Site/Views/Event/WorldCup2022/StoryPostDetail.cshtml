@@ -31,7 +31,6 @@
     <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-    <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
     <style amp-boilerplate>
         body {
             -webkit-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
@@ -117,18 +116,44 @@
         .back-top-home {
             position: absolute;
             top: 20px;
-            right: 20px;
+            right: 15px;
             z-index: 999999999999;
         }
 
-        .back-top-home a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .back-top-home a i{
-            font-size : 24px;
-        }
+            .back-top-home a::after, .back-top-home a::before {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 24px;
+                transform: rotate(45deg);
+                position: absolute;
+                background: #fff;
+            }
+
+            .back-top-home a::after {
+                top: 10px;
+                left: 0px;
+                transform: rotate(135deg);
+            }
+
+            .back-top-home a::before {
+                top: 10px;
+                right: 0px;
+            }
+
+            .back-top-home a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 16px;
+                position: relative;
+                display: block;
+                width: 24px;
+                height: 24px;
+            }
+
+                .back-top-home a i {
+                    font-size: 24px;
+                }
 
         .detail-stories {
             text-decoration: none;
@@ -144,6 +169,7 @@
             display: block;
             clip-path: polygon(93% 0,100% 50%,93% 100%,7% 100%,0 50%,7% 0);
         }
+
         .view-more-stories {
             position: fixed;
             bottom: 30px;
@@ -152,41 +178,43 @@
             transform: translate(-50%,0);
         }
 
-        .view-more-stories a {
-            text-decoration: none;
-            font-size: 16px;
-            line-height: 1;
-            font-weight: bold;
-            display : block;
-            color: #EF4300;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background: #FFFFFF;
-            padding: 5px;
-            border-radius: 20px;
-        }
+            .view-more-stories a {
+                text-decoration: none;
+                font-size: 16px;
+                line-height: 1;
+                font-weight: bold;
+                display: block;
+                color: #EF4300;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                background: #FFFFFF;
+                padding: 5px;
+                border-radius: 20px;
+            }
 
-        .view-more-stories .icon-link-post{
-            margin-right: 5px;
-            background : #E9E9E9;
-            padding : 5px;
-            border-radius : 50%;
-        }
+            .view-more-stories .icon-link-post {
+                margin-right: 5px;
+                background: #E9E9E9;
+                padding: 5px;
+                border-radius: 50%;
+            }
 
-        
 
-        .view-more-stories .icon-chevron-up:before{
-            color : #fff;
-        }
+
+            .view-more-stories .icon-chevron-up:before {
+                color: #fff;
+            }
 
 
         .align-end {
             align-content: end;
         }
+
         .amp-inner {
             margin-bottom: 126px;
         }
+
         h1 {
             margin: 10px 0 16px 0;
             font-weight: 600;
@@ -194,14 +222,15 @@
             line-height: 33px;
         }
 
-        .icon-tick-post{
-            font-size : 38px;
+        .icon-tick-post {
+            font-size: 38px;
         }
 
         p {
             font-size: 18px;
             margin-bottom: 10px;
         }
+
         .amp-image__overlay:after {
             content: '';
             display: block;
@@ -217,7 +246,7 @@
 
         @@media (max-width: 1024px) {
             .back-top-home {
-                top: 50px;
+                top: 60px;
                 right: 20px;
             }
         }
@@ -226,18 +255,8 @@
 </head>
 <body>
 
-
-
-
-    <amp-story standalone
-               title="Stories in AMP - Hello World"
-               publisher="AMP Project"
-               publisher-logo-src="https://amp.dev/favicons/coast-228x228.png"
-               poster-portrait-src="https://amp.dev/static/samples/img/story_dog2_portrait.jpg"
-               poster-square-src="https://amp.dev/static/samples/img/story_dog2_square.jpg"
-               poster-landscape-src="https://amp.dev/static/samples/img/story_dog2_landscape.jpg">
-
-        <amp-story-page id="page-1" auto-advance-after="10s" class="amp-story-page__full page-cover">
+    <amp-story standalone title="@Model.Post.PostTitle" publisher="sabavn.com" publisher-logo-src="https://www.sabavn.com/images/sabasports.svg" poster-portrait-src="https://www.sabavn.com/images/sabasports.svg">
+        <amp-story-page id="page-cover" auto-advance-after="10s" class="amp-story-page__full page-cover">
             <amp-story-grid-layer template="fill">
                 <amp-img src=@Model.Post.FeatureImage
                          width="1151" height="1535"
@@ -269,20 +288,20 @@
                             <i class="icon-tick-post"></i>
                             <h1>@Html.Raw(item.Title)</h1>
                             <amp-story-page-outlink>
-                            @if (item.Link != "")
-                            {
-                                <a href=@item.Link title="Link Description" class="detail-stories">
-                                    Xem chi tiết
-                                </a>
-                            }
-                            
-                            @if (count >= totalItems)
-                            {
-                                <div class="view-more-stories">
-                                    <i class="icon-chevron-up"></i>
-                                    <a href=@Model.BackUrl><i class="icon-link-post"></i> Xem thêm stories</a>
-                                </div>
-                            }
+                                @if (item.Link != "")
+                                {
+                                    <a href=@item.Link title="Link Description" class="detail-stories">
+                                        Xem chi tiết
+                                    </a>
+                                }
+
+                                @if (count >= totalItems)
+                                {
+                                    <div class="view-more-stories">
+                                        <i class="icon-chevron-up"></i>
+                                        <a href=@Model.BackUrl><i class="icon-link-post"></i> Xem thêm stories</a>
+                                    </div>
+                                }
                             </amp-story-page-outlink>
                         </div>
                     </amp-story-grid-layer>
@@ -290,7 +309,6 @@
                 </amp-story-page>
             }
         }
-
     </amp-story>
     <div class="back-top-home">
         <a href="#" onclick="history.back()"><i class="icon-close"></i></a>
