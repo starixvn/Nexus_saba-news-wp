@@ -489,5 +489,17 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/minigame-worldcuop-2022.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/worldcup2022/worldcup.js",
+            "wwwroot/js/event/worldcup2022/minigame.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 ]
