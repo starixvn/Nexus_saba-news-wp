@@ -1040,7 +1040,7 @@ body, .overflow-modal {
     .minigame-title {
       margin-bottom: 1.6rem; } }
   .minigame-title .text {
-    color: #424242;
+    color: #833D55;
     padding-bottom: 1.8rem;
     font-weight: 700;
     font-size: 2rem;
@@ -1054,7 +1054,7 @@ body, .overflow-modal {
   .minigame-title .dots-parent {
     height: 2px;
     display: block;
-    background: #570F28;
+    background: #833D55;
     width: 33.5rem;
     margin: 0 auto;
     position: relative; }
