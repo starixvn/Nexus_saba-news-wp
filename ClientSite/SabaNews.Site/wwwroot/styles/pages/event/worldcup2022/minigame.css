@@ -474,7 +474,8 @@ body {
           display: none; } }
     .header-nav-event li a .icon:before {
       font-size: 2.4rem;
-      color: #958288; }
+      color: #958288;
+      transition: all ease-in-out .6s !important; }
     .header-nav-event li a.active, .header-nav-event li a:hover {
       color: #833D55 !important; }
       .header-nav-event li a.active .icon:before, .header-nav-event li a:hover .icon:before {
