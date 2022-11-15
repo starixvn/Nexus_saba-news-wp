@@ -17,6 +17,12 @@ export default class Winner extends PureComponent {
                 behavior: 'smooth'
             });
         }
+        if (tab === '#stage-minigame') {
+            window.scrollTo({
+                top: 600,
+                behavior: 'smooth'
+            });
+        }
     }
 
     getUsersVote = (users, vote) =>{

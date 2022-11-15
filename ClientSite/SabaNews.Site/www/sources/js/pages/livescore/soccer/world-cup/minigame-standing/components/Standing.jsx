@@ -23,6 +23,12 @@ export default class Standing extends PureComponent {
                 behavior: 'smooth'
             });
         }
+        if (tab === '#stage-minigame') {
+            window.scrollTo({
+                top: 600,
+                behavior: 'smooth'
+            });
+        }
     }
 
     getMatch = (vote, matches) =>{
