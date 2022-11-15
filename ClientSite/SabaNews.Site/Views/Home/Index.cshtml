@@ -150,7 +150,7 @@
                                     <div class="post swiper-slide" id="slide-@post.ID">
                                         <input type="hidden" name="iframe_value" value="@post.PostContent" />
                                         <div class="img-item">
-                                            @{ string videoImg = post.GetImageBySize(isDesktop ? ImageWidth.Width768 : ImageWidth.Width500);
+                                            @{ string videoImg = post.FeatureImage;
                                                 <picture>
                                                     <source srcset="@Url.Content(videoImg)" type="image/webp">
                                                     <source srcset="@Url.Content(videoImg)" type="image/jpeg">
@@ -178,7 +178,7 @@
                         {
                             <div class="post card-horizontal card-item">
                                 <a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
-                                    @{ string videoDesktopImg = post.GetImageBySize(ImageWidth.Width500);
+                                    @{ string videoDesktopImg = post.FeatureImage;
 
                                         <picture>
                                             <source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">

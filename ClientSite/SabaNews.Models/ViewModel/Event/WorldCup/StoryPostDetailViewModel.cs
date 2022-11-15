@@ -14,5 +14,7 @@
 
         public string BackUrl { get; set; }
 
+        public string Slug { get; set; }
+
     }
 }

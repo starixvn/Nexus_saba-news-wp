@@ -293,12 +293,14 @@
                 return View(Constants.EmptyBlogView);
             }
             var stories = PostHelper.GetListImageFromPostContent(post.PostContent);
+            var baseUrl = configuration.GetValue<string>(Constants.BaseUrl);
             var model = new StoryPostDetailViewModel
             {
                 Post = post,
                 Stories = stories,
-                BaseUrl = configuration.GetValue<string>(Constants.BaseUrl),
-                BackUrl = Url.Action("StoryPost", WorldCupController)
+                Slug = slug,
+                BaseUrl = baseUrl,
+                BackUrl = Url.Action("StoryPost", WorldCupController, null, Request.Scheme)
             };
             return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
         }
