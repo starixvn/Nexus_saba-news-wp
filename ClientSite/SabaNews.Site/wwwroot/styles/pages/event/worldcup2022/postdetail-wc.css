@@ -1237,3 +1237,6 @@ img {
   border: 1px solid #6D2D42; }
   .euro-detail-title .euro-number {
     background: #6D2D42; }
+
+.content a {
+  color: #0066CC; }
