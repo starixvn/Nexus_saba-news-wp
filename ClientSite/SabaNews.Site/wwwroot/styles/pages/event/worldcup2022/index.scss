@@ -412,7 +412,7 @@
     }
 
     .swiper {
-        max-height: 46.7rem;
+        height: 46.7rem;
 
         @include tableMobile {
             height: 25rem;
