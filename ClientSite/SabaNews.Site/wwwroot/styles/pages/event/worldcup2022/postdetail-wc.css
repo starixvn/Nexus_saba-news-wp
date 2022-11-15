@@ -1231,3 +1231,8 @@ img {
 
 .icon-reply:before {
   color: #838383; }
+
+.euro-detail-title {
+  border: 1px solid #6D2D42; }
+  .euro-detail-title .euro-number {
+    background: #6D2D42; }
