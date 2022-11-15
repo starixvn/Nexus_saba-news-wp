@@ -48,7 +48,7 @@ export class AppContainer extends Component {
             return {matches: null};
         }
         let tmpMatches = matches;
-        let isFinished = false
+        let isFinished = false;
         const finalMatches = tmpMatches[tmpMatches.length - 1];
         if (this.checkIsFinished(league) || finalMatches.status !== MatchStatus.NotStarted) {
             tmpMatches = [...matches].reverse();
