@@ -62,8 +62,9 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame-standing.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/minigame-winner.chunk.js" asp-append-version="true"></script>
     </environment>
-    
-    <script src="~/minify/js/minigame-worldcuop-2022.min.js" asp-append-version="true"></script>
+
+    <script src="~/js/event/worldcup2022/minigame.js" asp-append-version="true"></script>
+    <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
