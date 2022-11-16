@@ -56,7 +56,9 @@
                 $('#joining').modal('show');
             }
             else {
-                document.getElementById("stage-minigame").scrollIntoView();
+                $('html, body').animate({
+                    scrollTop: $('#stage-minigame').offset().top
+                }, 1000);
             }
         });
 
