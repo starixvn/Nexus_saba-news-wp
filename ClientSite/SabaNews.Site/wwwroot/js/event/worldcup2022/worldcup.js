@@ -1,7 +1,7 @@
 ﻿var worldcup = (function ($) {
 
     function getTopScorers() {
-        if ($('#topScorersWC')) {
+        if ($('#topScorersWC').length > 0) {
             var isHide = true;
             var more = $('#topScorersWC').data('more');
             $.ajax({
