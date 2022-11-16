@@ -984,22 +984,24 @@ body {
       display: none !important; } }
 
 .swipper-guess .swiper-button-next {
-  right: -30px !important;
-  width: 60px;
-  height: 60px;
+  right: -40px !important;
+  width: 80px;
+  height: 80px;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   justify-content: flex-start; }
   .swipper-guess .swiper-button-next i {
-    margin-left: 1rem; }
+    margin-left: 1rem;
+    font-size: 3rem; }
 
 .swipper-guess .swiper-button-prev {
-  width: 60px;
-  height: 60px;
-  left: -30px !important;
+  width: 80px;
+  height: 80px;
+  left: -40px !important;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   justify-content: flex-end; }
   .swipper-guess .swiper-button-prev i {
-    margin-right: 1rem; }
+    margin-right: 1rem;
+    font-size: 3rem; }
 
 @media screen and (max-width: 1024px) {
   .swiper-slide {

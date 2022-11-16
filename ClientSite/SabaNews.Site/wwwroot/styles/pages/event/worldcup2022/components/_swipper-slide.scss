@@ -31,26 +31,28 @@
     }
 
     .swiper-button-next {
-        right: -30px !important;
-        width: 60px;
-        height: 60px;
+        right: -40px !important;
+        width: 80px;
+        height: 80px;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         justify-content: flex-start;
 
         i {
-            margin-left: 1rem
+            margin-left: 1rem;
+            font-size: 3rem;
         }
     }
 
     .swiper-button-prev {
-        width: 60px;
-        height: 60px;
-        left: -30px !important;
+        width: 80px;
+        height: 80px;
+        left: -40px !important;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         justify-content: flex-end;
 
         i {
-            margin-right: 1rem
+            margin-right: 1rem;
+            font-size: 3rem;
         }
     }
 }
