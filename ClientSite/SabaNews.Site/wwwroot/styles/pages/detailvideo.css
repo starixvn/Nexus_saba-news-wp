@@ -2147,6 +2147,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       font-size: 2.4rem;
       color: #fff; }
 
+.event-txt a {
+  color: #0066CC !important; }
+
 .modal-body .custom-checkbox-container {
   display: block;
   position: relative;

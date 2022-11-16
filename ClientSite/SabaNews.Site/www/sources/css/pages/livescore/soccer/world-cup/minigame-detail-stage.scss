@@ -226,6 +226,9 @@
         i{
             font-size: 2.4rem;
             margin-left: .4rem;
+            &::before{
+                color: #e8e8d6;
+            }
             @include Mobile{
                 font-size: 1.5rem;
             }
