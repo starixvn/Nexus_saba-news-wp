@@ -119,44 +119,22 @@
             right: 15px;
             z-index: 999999999999;
         }
-
-            .back-top-home button::after, .back-top-home button::before {
-                content: "";
-                display: block;
-                height: 2px;
-                width: 24px;
-                transform: rotate(45deg);
-                position: absolute;
-                background: #fff;
-            }
-
-            .back-top-home button::after {
-                top: 10px;
-                left: 0px;
-                transform: rotate(135deg);
-            }
-
-            .back-top-home button::before {
-                top: 10px;
-                right: 0px;
-            }
-
             .back-top-home button {
                 color: #fff;
                 text-decoration: none;
                 font-size: 16px;
                 position: relative;
                 display: block;
-                width: 24px;
-                height: 24px;
-                background : none;
-                outline : none;
-                border : none;
-                cursor : pointer;
+                width: 40px;
+                height: 40px;
+                background: none;
+                outline: none;
+                border: none;
+                cursor: pointer;
             }
 
                 .back-top-home button i {
-                    font-size: 24px;
+                    font-size: 30px;
                 }
 
         .detail-stories {
@@ -255,7 +233,7 @@
         @@media (max-width: 1024px) {
             .back-top-home {
                 top: 60px;
-                right: 20px;
+                right: 5px;
             }
         }
     </style>
@@ -320,7 +298,7 @@
         }
     </amp-story>
     <div class="back-top-home">
-        <button onclick="history.back()"></button>
+        <button onclick="history.back()"><i class="icon-close"></i></button>
 
     </div>
 </body>
