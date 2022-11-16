@@ -32,7 +32,7 @@ export class AppContainer extends Component {
 
     render() {
         const { matches, votes } = this.props;
-        if(matches === null ) {
+        if(matches === null || votes === null) {
             return null;
         }
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));

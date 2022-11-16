@@ -45,7 +45,7 @@ export class AppContainer extends Component {
     render() {
         const { matches, votes } = this.props;
         const { isMobile } = this.state;
-        if(matches === null ) {
+        if(matches === null || votes === null) {
             return null;
         }
         const countStageWinners =this.state.stages.filter( x => x.value <= parseInt(window.CountStageEnd, 10));
