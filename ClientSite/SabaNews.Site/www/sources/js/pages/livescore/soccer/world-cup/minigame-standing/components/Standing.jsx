@@ -66,8 +66,8 @@ export default class Standing extends PureComponent {
             });
             const  convertUpdatedDate = new Date(updatedDate),
                 convertCreatedDate = new Date(createdDate);
-            convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),0,0);
-            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),0,0);
+            convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),convertUpdatedDate.getSeconds(),convertUpdatedDate.getMilliseconds());
+            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),convertCreatedDate.getSeconds(),convertCreatedDate.getMilliseconds());
             standing.push({
                 userId: user.userId,
                 matchId : user.matchId,

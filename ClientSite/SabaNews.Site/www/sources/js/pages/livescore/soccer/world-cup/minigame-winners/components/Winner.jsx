@@ -70,8 +70,8 @@ export default class Winner extends PureComponent {
             });
             const convertCreatedDate = new Date(createdDate),
                 convertUpdatedDate = new Date(updatedDate);
-            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),0,0);
-            convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),0,0);
+            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),convertCreatedDate.getSeconds(),convertCreatedDate.getMilliseconds());
+            convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),convertUpdatedDate.getSeconds(),convertUpdatedDate.getMilliseconds());
             if(pointNumber > 0){
                 Winner.push({
                     userId: user.userId,
