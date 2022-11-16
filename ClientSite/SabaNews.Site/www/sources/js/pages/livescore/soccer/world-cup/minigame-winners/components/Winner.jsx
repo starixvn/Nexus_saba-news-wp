@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { getVoteResult } from '../../common.functions';
 import Item from './Item';
 import { WorldCup } from '@jsroot/common/constants';
-import { format } from 'date-fns';
+import DateTimeService from '@jsroot/common/dateTimeService';
+import moment from 'moment';
 
 export default class Winner extends PureComponent {
     constructor(props) {
@@ -78,8 +79,8 @@ export default class Winner extends PureComponent {
                     matchId : user.matchId,
                     teamId : user.teamId,
                     stage : user.stage,
-                    createdDate : format(convertCreatedDate, 'dd/MM/yyyy, HH:mm:ss'),
-                    updatedDate : format(convertUpdatedDate, 'dd/MM/yyyy, HH:mm:ss'),
+                    createdDate : createdDate,
+                    updatedDate : DateTimeService.convertFromUTC(updatedDate),
                     userName : user.userName,
                     icon : user.icon,
                     point : pointNumber,
@@ -160,23 +161,7 @@ export default class Winner extends PureComponent {
     };
 
     sortWinnerDate = Winner =>{
-        Winner.map((item, index) =>{
-            let max = item.updatedDate != null ? item.updatedDate : item.createdDate;
-            let indexMax = index;
-            Winner.map((Winner, indexSort) => {
-                if(indexSort > index){
-                    const maxSort = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
-                    if(max > maxSort){
-                        max = maxSort;
-                        indexMax = indexSort;
-                    }
-                }
-            });
-            const swap = Winner[index];
-            Winner[index] = Winner[indexMax];
-            Winner[indexMax] = swap;
-        });
-        return Winner;
+        return Winner.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
     };
 
     checkUser = (Winners, userId) => {

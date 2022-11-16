@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-
+import DateTimeService from '@jsroot/common/dateTimeService';
 export class Item extends PureComponent {
     constructor(props) {
         super(props);
@@ -26,6 +26,8 @@ export class Item extends PureComponent {
 
     render() {
         const { Winner, number, winnnerLength, selectedStage } = this.props;
+        const updatedDate = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
+        const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/yyyy, HH:mm:ss');
         return (
             <>
                 {
@@ -45,7 +47,7 @@ export class Item extends PureComponent {
                                 </div>
                                 <div className="table-row table-row-score">{Winner.point}</div>
                                 <div className="table-row table-row-time">
-                                    {Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate}
+                                    {dateShow}
                                 </div>
                             </div>
                         </div>

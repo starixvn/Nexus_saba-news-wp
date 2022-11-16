@@ -1,5 +1,4 @@
 import Item from './Item';
-import { format } from 'date-fns';
 import { getVoteResult } from '../../common.functions';
 import { WorldCup } from '@jsroot/common/constants';
 import moment from 'moment';
