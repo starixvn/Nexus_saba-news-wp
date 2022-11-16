@@ -120,7 +120,7 @@
             z-index: 999999999999;
         }
 
-            .back-top-home a::after, .back-top-home a::before {
+            .back-top-home button::after, .back-top-home button::before {
                 content: "";
                 display: block;
                 height: 2px;
@@ -130,18 +130,18 @@
                 background: #fff;
             }
 
-            .back-top-home a::after {
+            .back-top-home button::after {
                 top: 10px;
                 left: 0px;
                 transform: rotate(135deg);
             }
 
-            .back-top-home a::before {
+            .back-top-home button::before {
                 top: 10px;
                 right: 0px;
             }
 
-            .back-top-home a {
+            .back-top-home button {
                 color: #fff;
                 text-decoration: none;
                 font-size: 16px;
@@ -149,9 +149,13 @@
                 display: block;
                 width: 24px;
                 height: 24px;
+                background : none;
+                outline : none;
+                border : none;
+                cursor : pointer;
             }
 
-                .back-top-home a i {
+                .back-top-home button i {
                     font-size: 24px;
                 }
 
@@ -316,7 +320,8 @@
         }
     </amp-story>
     <div class="back-top-home">
-        <a href="#" onclick="history.back()"></a>
+        <button onclick="history.back()"></button>
+
     </div>
 </body>
 </html>
