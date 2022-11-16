@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { getVoteResult } from '../../common.functions';
 import { WorldCup } from '@jsroot/common/constants';
 import moment from 'moment';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import React, { PureComponent } from 'react';
 
 export default class Standing extends PureComponent {
@@ -77,8 +78,8 @@ export default class Standing extends PureComponent {
                 icon : user.icon,
                 point : pointNumber,
                 detail: detail[indexUser],
-                createdDate : format(convertCreatedDate, 'dd/MM/yyyy, HH:mm:ss'),
-                updatedDate : format(convertUpdatedDate, 'dd/MM/yyyy, HH:mm:ss')
+                createdDate : createdDate,
+                updatedDate : DateTimeService.convertFromUTC(updatedDate)
             });
         }) ;
         standing = this.sortStandingPoint(standing);
@@ -164,23 +165,7 @@ export default class Standing extends PureComponent {
     };
 
     sortStandingDate = standing =>{
-        standing.map((item, index) =>{
-            let max = item.updatedDate != null ? item.updatedDate : item.createdDate;
-            let indexMax = index;
-            standing.map((standing, indexSort) => {
-                if(indexSort > index){
-                    const maxSort = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
-                    if(moment(new Date(max)) > moment(new Date(maxSort))){
-                        max = maxSort;
-                        indexMax = indexSort;
-                    }
-                }
-            });
-            const swap = standing[index];
-            standing[index] = standing[indexMax];
-            standing[indexMax] = swap;
-        });
-        return standing;
+        return standing.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
     };
 
     checkUser = (standings, userId) => {

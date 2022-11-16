@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import { ActionCreators } from '../actions';
 
 export class Item extends PureComponent {
@@ -26,6 +27,8 @@ export class Item extends PureComponent {
 
     render() {
         const { standing, number, standingLength, rank, stagesSelected } = this.props;
+        const updatedDate = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
+        const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/yyyy, HH:mm:ss');
         return (
             <>
                 <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${stagesSelected === 4 ? 'cursor-items' : ''}`}
@@ -43,7 +46,7 @@ export class Item extends PureComponent {
                         </div>
                         <div className="table-row table-row-score">{standing.point}</div>
                         <div className="table-row table-row-time">
-                            {standing.updatedDate != null ? standing.updatedDate : standing.createdDate}
+                            {dateShow}
                         </div>
                     </div>
                 </div>
