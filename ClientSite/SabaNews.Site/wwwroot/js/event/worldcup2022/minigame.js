@@ -57,8 +57,8 @@
             }
             else {
                 $('html, body').animate({
-                    scrollTop: $('#stage-minigame').offset().top
-                }, 1000);
+                    scrollTop: 600
+                }, 500);
             }
         });
 

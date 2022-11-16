@@ -31,6 +31,14 @@ export default class Standing extends PureComponent {
         }
     }
 
+    componentDidUpdate(){
+        const numberStroll =parseInt(window.rank / 10, 10) *520;
+        this.elementRef.scrollTo({
+            top: numberStroll,
+            behavior: 'smooth'
+        });
+    }
+
     getMatch = (vote, matches) =>{
         const matchVote = matches.filter(match => match.matchId === vote.matchId)[0];
         return !matchVote ? null : matchVote;
@@ -64,10 +72,6 @@ export default class Standing extends PureComponent {
                     }
                 }
             });
-            const  convertUpdatedDate = new Date(updatedDate),
-                convertCreatedDate = new Date(createdDate);
-            convertUpdatedDate.setHours(convertUpdatedDate.getHours()+7,convertUpdatedDate.getMinutes(),convertUpdatedDate.getSeconds(),convertUpdatedDate.getMilliseconds());
-            convertCreatedDate.setHours(convertCreatedDate.getHours()+7,convertCreatedDate.getMinutes(),convertCreatedDate.getSeconds(),convertCreatedDate.getMilliseconds());
             standing.push({
                 userId: user.userId,
                 matchId : user.matchId,
@@ -77,7 +81,7 @@ export default class Standing extends PureComponent {
                 icon : user.icon,
                 point : pointNumber,
                 detail: detail[indexUser],
-                createdDate : createdDate,
+                createdDate : DateTimeService.convertFromUTC(createdDate),
                 updatedDate : DateTimeService.convertFromUTC(updatedDate)
             });
         }) ;
@@ -202,7 +206,7 @@ export default class Standing extends PureComponent {
                 {
                     rank > 0 && <p className="standing-me">Thứ hạng của bạn: {rank}</p>
                 }
-                <div ref={el => this.elementRef = el} className="wrapper-scroll">
+                <div className="wrapper-scroll">
                     <div className="minigame-table">
                         <div className="minigame-table-flex minigame-table-header">
                             <div className="table-row table-row-index">#</div>
@@ -210,7 +214,7 @@ export default class Standing extends PureComponent {
                             <div className="table-row table-row-score">Điểm</div>
                             <div className="table-row table-row-time">Thời gian </div>
                         </div>
-                        <div className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
+                        <div ref={el => this.elementRef = el} className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
                             {
                                 standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item}
                                                                     standingLength={standings.length} stagesSelected={stagesSelected} />)
