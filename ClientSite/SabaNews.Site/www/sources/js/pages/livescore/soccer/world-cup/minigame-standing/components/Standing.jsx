@@ -167,9 +167,7 @@ export default class Standing extends PureComponent {
         return standing;
     };
 
-    sortStandingDate = standing =>{
-        return standing.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
-    };
+    sortStandingDate = standing => standing.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
 
     checkUser = (standings, userId) => {
         let isUser = false;

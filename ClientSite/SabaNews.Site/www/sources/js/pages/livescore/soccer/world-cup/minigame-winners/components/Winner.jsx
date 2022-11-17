@@ -156,9 +156,7 @@ export default class Winner extends PureComponent {
         return Winner;
     };
 
-    sortWinnerDate = Winner =>{
-        return Winner.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
-    };
+    sortWinnerDate = Winner => Winner.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
 
     checkUser = (Winners, userId) => {
         let isUser = false;

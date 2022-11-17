@@ -25,6 +25,26 @@ export class Item extends PureComponent {
         }
     };
 
+    checkUploadImg(standing){
+        let result = false;
+        const http = "http://";
+        const https = "https://";
+        if(standing.icon != null && !standing.icon.toLowerCase().includes(https) && !standing.icon.toLowerCase().includes(http)){
+            result = true;
+        }
+        return result;
+    }
+
+    checkUploadLink(standing){
+        const https = "https://";
+        const http = "http://";
+        let result = false;
+        if(standing.icon != null && (standing.icon.toLowerCase().includes(https) || standing.icon.toLowerCase().includes(http))){
+            result = true;
+        }
+        return result;
+    }
+
     render() {
         const { standing, number, standingLength, rank, stagesSelected } = this.props;
         const updatedDate = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
@@ -37,15 +57,15 @@ export class Item extends PureComponent {
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
                             <div className="user-avatar">
-                                { 
+                                {
                                     standing.icon === null && <span className="non-image">{standing.userName.slice(0,1)}</span>
                                 }
                                 {
-                                    (standing.icon != null && (standing.icon.toLowerCase().includes("https://") || standing.icon.toLowerCase().includes("http://"))) &&
+                                    (this.checkUploadLink(standing)) &&
                                     <img src={standing.icon} alt={standing.userName.slice(0,1)} />
                                 }
                                 {
-                                    (standing.icon != null && !standing.icon.toLowerCase().includes("https://") && !standing.icon.toLowerCase().includes("http://")) &&
+                                    this.checkUploadImg(standing) &&
                                     <img src={'/uploads/' + standing.icon} alt={standing.userName.slice(0,1)} />
                                 }
                             </div>
