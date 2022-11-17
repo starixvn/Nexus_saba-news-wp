@@ -84,7 +84,7 @@ export default class Standing extends PureComponent {
                 createdDate : DateTimeService.convertFromUTC(createdDate),
                 updatedDate : DateTimeService.convertFromUTC(updatedDate)
             });
-        }) ;
+        });
         standing = this.sortStandingPoint(standing);
         return standing;
     };
@@ -151,6 +151,8 @@ export default class Standing extends PureComponent {
 
     sortStandingPoint = standing =>{
         standing = this.sortStandingDate(standing);
+        let sortPoint = [];
+        let sortPointZero = [];
         standing.map((item, index) =>{
             let max = item.point;
             let indexMax = index;
@@ -164,7 +166,16 @@ export default class Standing extends PureComponent {
             standing[index] = standing[indexMax];
             standing[indexMax] = swap;
         });
-        return standing;
+        standing.map( item => {
+            if(item.point > 0){
+                sortPoint.push(item);
+            }else{
+                sortPointZero.push(item);
+            }
+        });
+        sortPointZero.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
+        sortPoint.push(...sortPointZero);
+        return sortPoint;
     };
 
     sortStandingDate = standing => standing.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
