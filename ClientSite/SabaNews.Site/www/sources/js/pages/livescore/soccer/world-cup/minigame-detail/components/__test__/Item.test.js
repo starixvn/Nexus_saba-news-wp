@@ -56,7 +56,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
+            expect(result.status).toEqual(LangHelper.getResource("NotStarted"));
         });
 
         it('return correctly status when stage Upcomming', () => {
@@ -75,7 +75,7 @@ describe('Item', () => {
            const result = instance.getStageStatus();
 
            // Assert
-           expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
+           expect(result.status).toEqual(LangHelper.getResource("Upcomming"));
        });
 
        it('return correctly status when stage Inprogress', () => {
@@ -94,7 +94,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
+            expect(result.status).toEqual(LangHelper.getResource("Inprogress"));
         });
 
         it('return correctly status when stage Finish', () => {
@@ -113,7 +113,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
+            expect(result.status).toEqual(LangHelper.getResource("Finish"));
         });
 
         it('return correctly status when stage Ending', () => {
@@ -132,7 +132,7 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result).toEqual(LangHelper.getResource({isLock: false, status: "Finish"}));
+            expect(result.status).toEqual(LangHelper.getResource("Ending"));
         });
     });
 
@@ -163,7 +163,7 @@ describe('Item', () => {
 
 
            // Act
-           container.find('.view').simulate('click', event);
+           container.find('.view-minigame-detail').simulate('click', event);
 
            // Assert
            expect(window.open).toHaveBeenCalledWith('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/1', '_blank');
@@ -183,7 +183,7 @@ describe('Item', () => {
             const container = shallow(<Item {...props} />);
 
             // Act
-            container.find('.view').simulate('click', event);
+            container.find('.view-minigame-detail').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);

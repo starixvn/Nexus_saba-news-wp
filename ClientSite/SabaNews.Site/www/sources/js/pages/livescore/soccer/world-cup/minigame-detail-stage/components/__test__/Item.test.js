@@ -74,6 +74,23 @@ describe('Item', () => {
             // Assert
             expect(result).toEqual(2);
         });
+
+        it('return correctly when vote awayTeam', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
+                vote: null
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkVoteOption();
+
+            // Assert
+            expect(result).toEqual(null);
+        });
     });
 
     describe('checkKnockoutMatch', () => {
@@ -280,6 +297,25 @@ describe('Item', () => {
             const props = {
                 ...defaultProps,
                 match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                vote: null,
+                teams: [1, 2, 3, 4]
+            }
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('awayTeam');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamVote();
+
+            // Assert
+            expect(result).toEqual('');
+        });
+
+        it('return correctly when vote homeTeam', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
                 vote: {matchId: 1, teamId: 0},
                 teams: [1, 2, 3, 4]
             }
@@ -298,9 +334,10 @@ describe('Item', () => {
     describe('getVoteResult', () => {
         it('return correcly when vote match not finish', () => {
             // Arrange
+            const match = {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                match: match,
                 vote: {matchId: 1, teamId: 0},
                 teams: [1, 2, 3, 4]
             }
@@ -308,17 +345,18 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getVoteResult(null);
+            const result = instance.getVoteResult(match, null);
 
             // Assert
-            expect(result).toEqual(<li>empty</li>);
+            expect(result).toMatchSnapshot();
         });
 
         it('return correcly when vote correctly', () => {
             // Arrange
+            const match = {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                match: match,
                 vote: {matchId: 1, teamId: 0},
                 teams: [1, 2, 3, 4]
             }
@@ -326,17 +364,18 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getVoteResult({ status: true});
+            const result = instance.getVoteResult(match, { status: true});
 
             // Assert
-            expect(result).toEqual(<li>win</li>);
+            expect(result).toMatchSnapshot();
         });
 
         it('return correcly when vote incorrectly', () => {
             // Arrange
+            const match = {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                match: match,
                 vote: {matchId: 1, teamId: 0},
                 teams: [1, 2, 3, 4]
             }
@@ -344,19 +383,39 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getVoteResult({ status: false});
+            const result = instance.getVoteResult(match, { status: false});
 
             // Assert
-            expect(result).toEqual(<li>lose</li>);
+            expect(result).toMatchSnapshot();
+        });
+
+        it('return correcly when match is finished & result is null', () => {
+            // Arrange
+            const match = {matchId: 1, status: 50, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
+            const props = {
+                ...defaultProps,
+                match: match,
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteResult(match, null);
+
+            // Assert
+            expect(result).toMatchSnapshot();
         });
     });
 
     describe('getVoteScore', () => {
         it('return correctly when match not finished', () => {
              // Arrange
+             const match = {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
              const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                match: match,
                 vote: {matchId: 1, teamId: 0},
                 teams: [1, 2, 3, 4]
             }
@@ -364,7 +423,7 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getVoteScore(null);
+            const result = instance.getVoteScore(match, null);
 
             // Assert
             expect(result).toEqual(<></>);
@@ -372,9 +431,10 @@ describe('Item', () => {
 
         it('return correctly when vote correctly', () => {
             // Arrange
+            const match = {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
             const props = {
                ...defaultProps,
-               match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+               match: match,
                vote: {matchId: 1, teamId: 0},
                teams: [1, 2, 3, 4]
            }
@@ -382,17 +442,18 @@ describe('Item', () => {
            const instance = container.instance();
 
            // Act
-           const result = instance.getVoteScore({status: true, score: 10});
+           const result = instance.getVoteScore(match, {status: true, score: 10});
 
            // Assert
-           expect(result).toEqual(<li>+10</li>);
+           expect(result).toEqual(<span>+10</span>);
        });
 
         it('return correctly when vote incorrectly', () => {
             // Arrange
+            const match = {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                match: match,
                 vote: {matchId: 1, teamId: 0},
                 teams: [1, 2, 3, 4]
             }
@@ -400,10 +461,28 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getVoteScore({status: false, score: 0});
+            const result = instance.getVoteScore(match, {status: false, score: 0});
 
             // Assert
-            expect(result).toEqual(<li>0</li>);
+            expect(result).toEqual(<span>0</span>);
+        });
+        it('return correctly when match is finished & result is null', () => {
+            // Arrange
+            const match = {matchId: 1, status: 50, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}};
+            const props = {
+                ...defaultProps,
+                match: match,
+                vote: {matchId: 1, teamId: 0},
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getVoteScore(match, null);
+
+            // Assert
+            expect(result).toEqual(<span>0</span>);
         });
     });
     describe('renders', () => {
@@ -474,9 +553,9 @@ describe('Item', () => {
            const container = shallow(<Item {...props} />);
 
            // Assert
-           container.find('.home-team .soccer-team-name').simulate('click', 1);
-           container.find('.total-score').simulate('click', 0);
-           container.find('.away-team .soccer-team-name').simulate('click', 6);
+           container.find('.minigame-team.home-team').simulate('click', 1);
+           container.find('.minigame-team').at(1).simulate('click', 0);
+           container.find('.minigame-team.away-team').simulate('click', 6);
         });
     });
 });

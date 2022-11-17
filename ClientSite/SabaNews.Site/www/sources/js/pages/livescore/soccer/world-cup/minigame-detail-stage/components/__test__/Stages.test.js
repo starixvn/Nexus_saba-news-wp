@@ -10,7 +10,7 @@ describe('Stages', () => {
         stages: [
             {stageId: 1}, {stageId: 2}
         ],
-        league: {teamId: 1, matchId: 1},
+        league: {teamId: 1, matchId: 1, season: { endTime: '2022-09-18 02:00:00' }, currentStageId: 1 },
         votes: [],
         groupStages: [{key: 1, stage: 1, matches: [{matchId: 1}]}, {key: 2, stage: 2, matches: [{matchId: 2}]}],
         matches: [{matchId: 1}, {matchId:2}]
@@ -113,7 +113,8 @@ describe('Stages', () => {
             window.innerWidth = 768;
             const container = shallow(<Stages {...defaultProps} />);
             const instance = container.instance();
-            instance.setState({ isMobile: false, selectedStageId:1 });
+            instance.initStageId = jest.fn().mockReturnValue(1);
+            instance.setState({ isMobile: false });
 
             // Act
             instance.handleResize();
@@ -143,14 +144,13 @@ describe('Stages', () => {
             window.innerWidth = 768;
             const container = shallow(<Stages {...defaultProps} />);
             const instance = container.instance();
-            instance.state.isMobile = true;
-            instance.state.selectedStageId = 2;
+            instance.initStageId = jest.fn().mockReturnValue(1);
+            instance.setState({ isMobile: true, selectedStageId: 1 });
 
             // Act
             instance.handleResize();
 
             // Assert
-            expect(instance.setState).toHaveBeenCalledTimes(0);
             expect(instance.state.isMobile).toEqual(true);
         });
 
@@ -218,6 +218,20 @@ describe('Stages', () => {
 
             // Act
             const result = instance.handleSelectTab(2);
+
+            // Assert
+            expect(instance.state.selectedStageId).toEqual(2)
+        });
+    });
+
+    describe('onChange', () => {
+        it('setState correctly when call function', () => {
+            // Arrange
+            const container = shallow(<Stages {...defaultProps} />);
+            const instance = container.instance();
+            const event = {target: {value: 2}}
+            // Act
+            const result = instance.onChange(event);
 
             // Assert
             expect(instance.state.selectedStageId).toEqual(2)

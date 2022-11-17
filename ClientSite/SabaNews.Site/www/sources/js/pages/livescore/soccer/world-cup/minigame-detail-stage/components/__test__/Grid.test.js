@@ -44,7 +44,8 @@ describe('Grid', () => {
     describe('renders', () => {
         it('render correctly when call function', () => {
             // Arrange
-            const match = {
+            window.stage = 1;
+            const matches = [{
                 matchId: 1,
                 stage: {stageId: 30537},
                 homeTeamTotalScore: 2,
@@ -52,18 +53,36 @@ describe('Grid', () => {
                 status: 50,
                 homeTeam: {teamId: 1},
                 awayTeam: {teamId: 2}
-            };
-            const vote = {matchId: 1, teamId: 1}
+            },
+            {
+                matchId: 2,
+                stage: {stageId: 30537},
+                homeTeamTotalScore: 0,
+                awayTeamTotalScore: 2,
+                status: 50,
+                homeTeam: {teamId: 3},
+                awayTeam: {teamId: 4}
+            },
+            {
+                matchId: 3,
+                stage: {stageId: 30537},
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 1,
+                status: 50,
+                homeTeam: {teamId: 5},
+                awayTeam: {teamId: 6}
+            }
+            ];
             const props = {
                 ...defaultProps,
-                matches: [{matchId: 1}, {matchId: 2}, {matchId: 4}],
-                votes: [{matchId: 1}, {matchId: 3}, {matchId: 2}]
+                matches: matches,
+                votes: [{matchId: 1, team: 1, stage: 1}, {matchId: 2, team: 3, stage: 1}]
             }
             const container = shallow(<Grid {...props} />);
             const instance = container.instance();
-            instance.checkMatchResult = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce({score: 10, status: true});
+            //instance.checkMatchResult = jest.fn().mockReturnValueOnce({score: 10, status: true}).mockReturnValueOnce({score: 10, status: true});
             // Act
-            const result = instance.render(match, vote);
+            const result = instance.render();
 
             // Assert
             expect(result).toMatchSnapshot()
