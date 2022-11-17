@@ -62,6 +62,19 @@
             }
         });
 
+        $('.btn-auth-login').click(function () {
+            if (!isLogin) {
+                $('#guide').modal('hide');
+                $('#joining').modal('show');
+            }
+            else {
+                $('#guide').modal('hide');
+                $('html, body').animate({
+                    scrollTop: 600
+                }, 500);
+            }
+        });
+
         if (tab == '#stage-minigame') {
             $('.header-nav-event li a').removeClass('active');
             $('.click-list-rigister').addClass('active');
