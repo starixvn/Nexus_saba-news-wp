@@ -27,8 +27,8 @@ export class Item extends PureComponent {
 
     checkUploadImg(standing){
         let result = false;
-        const http = "http://";
-        const https = "https://";
+        const http = 'http://';
+        const https = 'https://';
         if(standing.icon != null && !standing.icon.toLowerCase().includes(https) && !standing.icon.toLowerCase().includes(http)){
             result = true;
         }
@@ -36,8 +36,8 @@ export class Item extends PureComponent {
     }
 
     checkUploadLink(standing){
-        const https = "https://";
-        const http = "http://";
+        const https = 'https://';
+        const http = 'http://';
         let result = false;
         if(standing.icon != null && (standing.icon.toLowerCase().includes(https) || standing.icon.toLowerCase().includes(http))){
             result = true;
