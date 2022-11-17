@@ -762,8 +762,11 @@ body {
     .table-user .user-avatar .non-image {
       font-size: 1.4rem; }
   .table-user .user-name {
-    width: 17rem;
-    margin-left: .5rem; }
+    width: 24rem;
+    margin-left: .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
     @media (max-width: 767px) {
       .table-user .user-name {
         width: 15rem;

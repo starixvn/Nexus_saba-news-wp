@@ -207,7 +207,7 @@
         @include Mobile {
             width: 2rem;
             height: 2rem;
-            display : none;
+            display: none;
         }
 
         img {
@@ -222,14 +222,17 @@
     }
 
     .user-name {
-        width: 17rem;
+        width: 24rem;
         margin-left: .5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         @include Mobile {
             width: 15rem;
             font-weight: 700;
             font-size: 1.1rem;
-            margin-left : 0;
+            margin-left: 0;
         }
     }
 }
