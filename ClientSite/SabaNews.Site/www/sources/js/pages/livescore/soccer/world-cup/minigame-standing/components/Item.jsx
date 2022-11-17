@@ -18,10 +18,6 @@ export class Item extends PureComponent {
         this.handleAvatarShow();
     }
 
-    componentDidUpdate(){
-        this.handleAvatarShow();
-    }
-
     handleAvatarShow(){
         const { standing} = this.props;
         if (this.state.erroredLink){
@@ -94,6 +90,8 @@ export class Item extends PureComponent {
                                             this.setState({
                                                 erroredLink: true
                                             });
+                                            document.getElementsByClassName('linkImg' + standing.userId)[0].style.display = 'none';
+                                            document.getElementsByClassName(standing.userId)[0].style.display = 'block'
                                             }
                                         }} alt={standing.userName.slice(0,1)} />
                                 }
@@ -106,6 +104,8 @@ export class Item extends PureComponent {
                                             this.setState({
                                                 erroredUp: true
                                             });
+                                            document.getElementsByClassName('uploadImg' + standing.userId)[0].style.display = 'none';
+                                            document.getElementsByClassName(standing.userId)[0].style.display = 'block';
                                             }
                                         }} alt={standing.userName.slice(0,1)} />
                                 }
