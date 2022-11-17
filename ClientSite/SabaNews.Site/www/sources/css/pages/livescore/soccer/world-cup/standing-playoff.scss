@@ -188,6 +188,7 @@
                       grid-gap: 10rem 0;
                     }
                     &__bracket {
+                      z-index: 99 !important;
                         .bracket {
                             background: #631628;
                             border: none;
