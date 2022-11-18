@@ -151,8 +151,8 @@ export default class Standing extends PureComponent {
 
     sortStandingPoint = standing =>{
         standing = this.sortStandingDate(standing);
-        let sortPoint = [];
-        let sortPointZero = [];
+        const sortPoint = [];
+        const sortPointZero = [];
         standing.map((item, index) =>{
             let max = item.point;
             let indexMax = index;

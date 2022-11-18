@@ -46,21 +46,21 @@ export class Item extends PureComponent {
         }
     };
 
-    checkUploadImg(standing){
+    checkUploadLink(Winner){
         let result = false;
         const http = 'http://';
         const https = 'https://';
-        if(standing.icon != null && !standing.icon.toLowerCase().includes(https) && !standing.icon.toLowerCase().includes(http)){
+        if(Winner.icon != null && (Winner.icon.toLowerCase().includes(https) || Winner.icon.toLowerCase().includes(http))){
             result = true;
         }
         return result;
     }
 
-    checkUploadLink(standing){
-        const https = 'https://';
-        const http = 'http://';
+    checkUploadImg(Winner){
         let result = false;
-        if(standing.icon != null && (standing.icon.toLowerCase().includes(https) || standing.icon.toLowerCase().includes(http))){
+        const http = 'http://';
+        const https = 'https://';
+        if(Winner.icon != null && !Winner.icon.toLowerCase().includes(https) && !Winner.icon.toLowerCase().includes(http)){
             result = true;
         }
         return result;
@@ -93,7 +93,7 @@ export class Item extends PureComponent {
                                                         erroredLink: true
                                                     });
                                                     document.getElementsByClassName('linkImgWinner' + Winner.userId)[0].style.display = 'none';
-                                                    document.getElementsByClassName('Winner' + Winner.userId)[0].style.display = 'block'
+                                                    document.getElementsByClassName('Winner' + Winner.userId)[0].style.display = 'block';
                                                     }
                                                 }} alt={Winner.userName.slice(0,1)} />
                                         }
