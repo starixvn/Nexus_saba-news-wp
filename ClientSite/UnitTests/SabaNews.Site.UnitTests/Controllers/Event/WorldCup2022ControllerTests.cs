@@ -26,6 +26,7 @@
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Areas.Admin.Controllers;
     using SabaNews.Site.Controllers.Event;
     using SabaNews.Site.Extensions;
     using System.Collections.Generic;
@@ -740,6 +741,172 @@
         }
 
         [Fact]
+        public async Task MinigameStage_WhenUserIsNotLogin_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = null;
+            //Act
+            var result = await controller.MinigameStage(1);
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task MinigameStage_WhenStageLowerOne_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = fixture.Create<UserSession>();
+            //Act
+            var result = await controller.MinigameStage(0);
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task MinigameStage_WhenStageHigherFour_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = fixture.Create<UserSession>();
+            //Act
+            var result = await controller.MinigameStage(5);
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task MinigameStage_WhenStageStarted_ReturnExpectedViewData()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = fixture.Create<UserSession>();
+            var usersByStageCriteria = fixture.Create<GetMatchBySeasonCriteria>();
+            var matches = fixture.Create<IList<Match>>();
+
+            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
+            //Act
+            var result = await controller.MinigameStage(1);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<MinigameStageViewModel>(viewResult.Model);
+            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/Stage.cshtml", viewResult.ViewName);
+            Assert.Equal(matches, viewModel.Matches);
+        }
+
+        [Fact]
+        public async Task MinigameProfile_WhenUserIsNotlogin_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = null;
+            //Act
+            var result = await controller.MinigameProfile();
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task MinigameProfile_WhenUserLogined_ReturnExpectedViewData()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = fixture.Create<UserSession>();
+            var usersByStageCriteria = fixture.Create<GetMatchBySeasonCriteria>();
+            var matches = fixture.Create<IList<Match>>();
+
+            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
+            //Act
+            var result = await controller.MinigameProfile();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<MinigameStageViewModel>(viewResult.Model);
+            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/Profile.cshtml", viewResult.ViewName);
+            Assert.Equal(matches, viewModel.Matches);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenUserIsNotlogin_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = null;
+            //Act
+            var result = await controller.MinigameProfileStage(1);
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenStageLowerOne_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = fixture.Create<UserSession>();
+            //Act
+            var result = await controller.MinigameProfileStage(0);
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenStageStarted_ReturnExpectedViewData()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = fixture.Create<UserSession>();
+            var usersByStageCriteria = fixture.Create<GetMatchBySeasonCriteria>();
+            var matches = fixture.Create<IList<Match>>();
+
+            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
+            //Act
+            var result = await controller.MinigameProfileStage(1);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<MinigameStageViewModel>(viewResult.Model);
+            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/ProfileStage.cshtml", viewResult.ViewName);
+            Assert.Equal(matches, viewModel.Matches);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenStageHigherFour_RedirectCorrectlyPage()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = fixture.Create<UserSession>();
+            //Act
+            var result = await controller.MinigameProfileStage(5);
+
+            // Assert
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+
+        [Fact]
         public async Task Single_WhenAuthencated_ReturnExpectedViewResult()
         {
             // Arrange
@@ -946,6 +1113,18 @@
         }
 
         #region Helpers
+
+        private void GetDefaultContent(WorldCup2022Controller controller)
+        {
+            var urlHelperMock = Substitute.For<IUrlHelper>();
+            controller.Url = urlHelperMock;
+            urlHelperMock.Action(Arg.Any<UrlActionContext>()).Returns("url");
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+        }
         private WorldCup2022Controller GetController()
         {
             dataControlService = Substitute.For<IDataControlService>();
