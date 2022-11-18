@@ -91,7 +91,7 @@ export class Item extends PureComponent {
                                                 erroredLink: true
                                             });
                                             document.getElementsByClassName('linkImg' + standing.userId)[0].style.display = 'none';
-                                            document.getElementsByClassName(standing.userId)[0].style.display = 'block'
+                                            document.getElementsByClassName(standing.userId)[0].style.display = 'block';
                                             }
                                         }} alt={standing.userName.slice(0,1)} />
                                 }
