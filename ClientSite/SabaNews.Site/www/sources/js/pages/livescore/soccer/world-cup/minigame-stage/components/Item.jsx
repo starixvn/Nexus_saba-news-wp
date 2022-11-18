@@ -97,7 +97,7 @@ export class Item extends PureComponent {
         if (match.status === MatchStatus.Finished
             || minutes <= 30
             || this.checkKnockoutMatch()) {
-            status = true ;
+            status = true;
         }
         return status;
     };

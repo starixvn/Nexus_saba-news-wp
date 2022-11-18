@@ -215,7 +215,7 @@ describe('AppContainer', () => {
             const result = instance.getMatches(league);
 
             // Assert
-            expect(result).toEqual(matches.reverse());
+            expect(result.matches).toEqual(matches.reverse());
         });
 
         it('return correctly when stage < QuarterfinalsStage', () => {
@@ -237,7 +237,7 @@ describe('AppContainer', () => {
             const result = instance.getMatches(league);
 
             // Assert
-            expect(result).toEqual(matches);
+            expect(result.matches).toEqual(matches);
         });
 
         it('return correctly when stage >= 30539', () => {
@@ -259,7 +259,7 @@ describe('AppContainer', () => {
             const result = instance.getMatches(league);
 
             // Assert
-            expect(result).toEqual([{ matchId: 2, status: 0, stage: { stageId: 0 } }]);
+            expect(result.matches).toEqual([{ matchId: 2, status: 0, stage: { stageId: 0 } }]);
         });
     });
 
