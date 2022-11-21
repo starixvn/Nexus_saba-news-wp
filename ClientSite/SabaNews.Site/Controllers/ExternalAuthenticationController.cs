@@ -55,6 +55,18 @@
                 sessionService.User = user;
                 return Redirect(returnUrl);
             }
+            var userInfo = GetExternalUserInfo(provider, claims);
+
+            await SetSessionUserAsync(userInfo);
+
+            await DoLoginAsync(userInfo.DisplayName, userInfo.Identifier);
+            
+
+            return Redirect(returnUrl);
+        }
+
+        private ExternalUser GetExternalUserInfo(string provider, IEnumerable<Claim> claims)
+        {
             var userInfo = new ExternalUser
             {
                 Identifier = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
@@ -65,13 +77,7 @@
                 Avatar = claims.FirstOrDefault(c => c.Type == ClaimTypes.Thumbprint).Value,
                 LoginType = provider
             };
-
-            await SetSessionUserAsync(userInfo);
-
-            await DoLoginAsync(userInfo.DisplayName, userInfo.Identifier);
-            
-
-            return Redirect(returnUrl);
+            return userInfo;
         }
 
         private async Task SetSessionUserAsync(ExternalUser userInfo)
