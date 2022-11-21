@@ -42,6 +42,10 @@
         {
             returnUrl ??= Constants.HomepageUrl;
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if (result == null)
+            {
+                return Redirect(returnUrl);
+            }
             var claims = result.Principal.Identities.FirstOrDefault().Claims;
             var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
             if (sessionService.User != null && sessionService.User.Email != email)
