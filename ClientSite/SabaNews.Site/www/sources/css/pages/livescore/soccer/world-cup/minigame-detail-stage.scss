@@ -35,6 +35,12 @@
         .group-items-table-detial{
             border: 1px solid #833D55;
             border-bottom: none;
+            &.finish{
+                cursor: no-drop;
+                .minigame-team{
+                    cursor: no-drop;
+                }
+            }
         }
         .group-cell-table{
             display: flex;
