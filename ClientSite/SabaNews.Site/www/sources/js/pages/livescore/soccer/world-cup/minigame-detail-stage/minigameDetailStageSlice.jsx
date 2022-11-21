@@ -23,7 +23,7 @@ const minigameStageSlice = createSlice({
                 totalItems = matches.length,
                 stages = [];
             const groups = matches.filter(item => item.stage?.stageId === WorldCup.GroupsStage);
-            let teams = groups.map(item => item.homeTeam.teamId || item.awayTeam.teamId);
+            let teams = groups.map(item => item.homeTeam.teamId);
             teams = [...new Set(teams)];
             for (let i = 0; i < totalItems; i++) {
                 const match = matches[i];

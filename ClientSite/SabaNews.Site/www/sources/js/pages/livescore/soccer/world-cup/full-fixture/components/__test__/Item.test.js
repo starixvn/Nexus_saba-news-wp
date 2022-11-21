@@ -306,9 +306,11 @@ describe('Item', () => {
                 ...defaultProps,
                 match: {startTime: '2022-10-10', status: 20, homeTeam: {teamId: 1, icon: 'icon'}, awayTeam: {teamId: 1, icon: 'icon'}}
             }
+            CommonFunctions.getMatchResult = jest.fn().mockReturnValue(1);
             CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(true);
             const container = shallow(<Item {...props} />);
             const instance = container.instance();
+            
 
             // Act
             const result = instance.render();
@@ -323,6 +325,7 @@ describe('Item', () => {
                 ...defaultProps,
                 match: {startTime: '2022-10-10', status: 20, homeTeam: {teamId: 1, icon: 'icon'}, awayTeam: {teamId: 1, icon: 'icon'}}
             }
+            CommonFunctions.getMatchResult = jest.fn().mockReturnValue(2);
             CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(false);
             const container = shallow(<Item {...props} />);
             const instance = container.instance();
