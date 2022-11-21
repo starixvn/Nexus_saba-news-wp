@@ -127,7 +127,7 @@
         .text-no-data {
             font-size: 1.4rem;
             padding: .5rem 0;
-            text-align :center;
+            text-align: center;
         }
     }
 
@@ -151,7 +151,7 @@
         border-bottom: none;
 
         &.active {
-            background: #F1F186;
+            background: #FFDD71;
         }
 
         @include Mobile {
