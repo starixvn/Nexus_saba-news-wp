@@ -8,7 +8,13 @@
   justify-content: flex-end;
   background: #ededed;
   padding: 0 1rem;
-  max-width: 105.8rem; }
+  max-width: 105.8rem;
+}
 
 .table-admin {
-  margin-top: 0; }
+  margin-top: 0;
+}
+
+.stage-select {
+  width: 130px;
+}

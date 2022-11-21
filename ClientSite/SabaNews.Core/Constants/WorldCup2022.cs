@@ -82,6 +82,13 @@
 
         public const long ThirdPlace = 30541;
         public const long FinalStage = 30542;
+        public const long SemifinalsStage = 30540;
+        public const long QuarterfinalsStage = 30539;
+
+        public const int MinigameScoreOthers = 10;
+        public const int MinigameScoreQuarterfinal = 12;
+        public const int MinigameScoreSemifinal = 15;
+        public const int MinigameScoreFinal = 15;
 
         public const byte MinigameStage1 = 1;
         public const byte MinigameStage2 = 2;

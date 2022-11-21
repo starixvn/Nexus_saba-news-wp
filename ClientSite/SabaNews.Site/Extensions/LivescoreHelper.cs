@@ -1,6 +1,8 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using Microsoft.AspNetCore.Mvc;
     using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Constants.Livescore;
     using SabaNews.Livescore.Models.League;
@@ -158,6 +160,148 @@
                 result = CheckMatchResult(homeTotal, awayTotal);
             }
             return result;
+        }
+
+        public static Match GetMatch(IList<Match> matches, UserMinigameModel vote)
+        {
+            Match match = null;
+            foreach(var item in matches)
+            {
+                if(item.MatchId == vote.MatchId)
+                {
+                    match = item; break;
+                }
+            }
+            return match;
+        }
+
+        public static int GetWinScore(long stageId)
+        {
+            return stageId switch
+            {
+                WorldCup2022.FinalStage => WorldCup2022.MinigameScoreFinal,
+                WorldCup2022.SemifinalsStage => WorldCup2022.MinigameScoreSemifinal,
+                WorldCup2022.QuarterfinalsStage => WorldCup2022.MinigameScoreQuarterfinal,
+                _ => WorldCup2022.MinigameScoreOthers,
+            };
+        }
+
+        public static (bool, int) GetVoteResult(Match match, UserMinigameModel vote)
+        {
+            const int MatchStatusFinished = 50;
+            const int MatchResultWin = 1;
+            const int MatchResultDraw = 0;
+            if (match == null)
+            {
+                return (false, 0);
+            }
+            if (match.Status != MatchStatusFinished)
+            {
+                return (false, 0);
+            }
+            var status = false;
+            var score = 0;
+            var voteTeam = vote.TeamId == 0 ? match.HomeTeam.TeamId : vote.TeamId;
+            var matchResult = GetMatchResult(match, voteTeam);
+            if (matchResult == MatchResultWin)
+            {
+                if (vote.TeamId != 0)
+                {
+                    score = GetWinScore(match.Stage.StageId);
+                    status = true;
+                }
+            }
+            else if (matchResult == MatchResultDraw)
+            {
+                if (vote.TeamId == 0)
+                {
+                    score = GetWinScore(match.Stage.StageId);
+                    status = true;
+                }
+            }
+            return ( status, score);
+        }
+
+        public static List<UserMinigameModel> GetUsersVote(List<UserMinigameModel> users, UserMinigameModel vote)
+        {
+            if (users.Count == 0)
+            {
+                users.Add(vote);
+            }
+            else
+            {
+                var count = users.Where(x => x.UserId == vote.UserId).ToList().Count;
+                if (count == 0)
+                {
+                    users.Add(vote);
+                }
+            }
+            return users;
+        }
+
+        public static List<UserMinigameModel> HandleStandings(IList<UserMinigameModel> users,
+                    IList<UserMinigameModel> votes, List<int> points)
+        {
+            var standing = new List<UserMinigameModel>();
+            for (int i = 0; i < users.Count; i++)
+            {
+                var createdDate = users[i].CreatedDate;
+                var updatedDate = users[i].UpdatedDate;
+                var pointNumber = 0;
+                for (int j = 0; j < votes.Count; j++)
+                {
+                    if (users[i].UserId == votes[j].UserId)
+                    {
+                        pointNumber += points[j];
+                        if (updatedDate < votes[j].UpdatedDate)
+                        {
+                            updatedDate = votes[j].UpdatedDate;
+                        }
+                        if (createdDate < votes[j].CreatedDate)
+                        {
+                            createdDate = votes[j].CreatedDate;
+                        }
+                    }
+                }
+                standing.Add(new UserMinigameModel()
+                {
+                    UserId = users[i].UserId,
+                    MatchId = users[i].MatchId,
+                    TeamId = users[i].TeamId,
+                    Stage = users[i].Stage,
+                    UserName = users[i].UserName,
+                    Icon = users[i].Icon,
+                    Point = pointNumber,
+                    CreatedDate = createdDate,
+                    UpdatedDate = updatedDate,
+                    Email = users[i].Email
+                });
+            }
+            standing = standing.OrderBy(x => x.UpdatedDate).ToList();
+            standing = standing.OrderByDescending(x => x.Point).ToList();
+            return standing;
+        }
+
+        public static List<UserMinigameModel> CalculatorPointer(IList<Match> matches, IList<UserMinigameModel> votes)
+        {
+            var points = new List<int>();
+            var users = new List<UserMinigameModel>();
+            foreach(var vote in votes)
+            {
+                var matchVote = GetMatch(matches, vote);
+                var (status, score) = GetVoteResult(matchVote, vote);
+                if (status)
+                {
+                    points.Add(score);
+                }
+                else
+                {
+                    points.Add(0);
+                }
+                users = GetUsersVote(users, vote);
+            }
+            var standing = HandleStandings(users, votes, points);
+            return standing;
         }
 
         public static int GetCountVotesStage(IList<UserMinigameModel> votes ,int numStage) 

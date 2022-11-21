@@ -2,11 +2,11 @@
     var page = 1;
     var pageSize = 10;
     function GetDataCommentGrid(dateSort) {
-        var search = $('#search').val();
+        var stage = $('.stage-select').find(':selected').data('stage');
         $.ajax({
             url: "/Admin/MinigameWorldCup2022/GetDataMinigameWorldCup2022",
             type: 'POST',
-            data: { page, pageSize, search, dateSort },
+            data: { stage, page, pageSize, dateSort },
             success: function (res) {
                 $('.data-grid').html(res);
                 initPaging();
@@ -47,8 +47,8 @@
     }
 
     function initFilterBtn() {
-        $("#filter").on("submit", function (e) {
-            e.preventDefault();
+        $('.stage-select').on('change', function () {
+            page = 1;
             GetDataCommentGrid(null);
         });
     }
