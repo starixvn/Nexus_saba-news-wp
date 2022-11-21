@@ -52,24 +52,6 @@
         }
 
         [Fact]
-        public async Task MinigameWorldCup2022Result_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var resultNumber = fixture.Create<int>();
-            var criteria = fixture.Create<GetDataMinigameCriteria>();
-            var expected = fixture.Create<IEnumerable<MiniGame>>();
-            leagueService.GetDataMinigameAsync(Arg.Do<GetDataMinigameCriteria>(x => criteria = x)).Returns(expected);
-            //Act
-            var result = await controller.MinigameWorldCup2022Result(resultNumber);
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsAssignableFrom<IEnumerable<MiniGame>>(viewResult.Model);
-            Assert.Equal(expected, viewModel);
-        }
-
-        [Fact]
         public async Task ExportExcel_WhenCalled_ReturnExpectedData()
         {
             // Arrange

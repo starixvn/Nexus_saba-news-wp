@@ -51,7 +51,7 @@
         });
         $('.btn-exportexcel').on('click', function () {
             var stage = $('.stage-select').find(':selected').data('stage');
-            window.location = window.location.origin + "/Admin/MinigameWorldCup2022/ExportExcel?stage=" + stage;
+            window.location.href = window.location.origin + "/Admin/MinigameWorldCup2022/ExportExcel?stage=" + stage;
         });
     }
 
