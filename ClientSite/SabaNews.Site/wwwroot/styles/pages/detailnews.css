@@ -524,7 +524,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding-right: 3rem; }
     .child-mobile-menu .main-child-menu li img {
       width: 9rem;
-      display: block; }
+      display: block;
+      max-width: inherit; }
     .child-mobile-menu .main-child-menu li a {
       display: block;
       text-decoration: none;
