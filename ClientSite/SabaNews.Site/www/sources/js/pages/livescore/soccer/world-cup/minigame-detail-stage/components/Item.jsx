@@ -109,11 +109,25 @@ export class Item extends PureComponent {
         return <span>0</span>;
     };
 
+    checkDisabledVote = () => {
+        const { match } = this.props;
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
+        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        const minutes = startTime.diff(currentTime, 'minutes');
+        let status = false;
+        if (match.status === MatchStatus.Finished
+            || minutes <= 30
+            || this.checkKnockoutMatch()) {
+            status = true;
+        }
+        return status;
+    };
+
     render() {
         const { match, result, number } = this.props;
         const voteStatus = this.checkVoteOption();
         return (
-            <div className="group-items-table-detial">
+            <div className={`group-items-table-detial ${this.checkDisabledVote() ? 'finish' : ''}`}>
                 <div className="name-play-mobile">
                     #{number < 10 ? '0' + number : number}: {CommonFunctions.getTeamName(match.homeTeam)} vs {CommonFunctions.getTeamName(match.awayTeam)}
                 </div>
