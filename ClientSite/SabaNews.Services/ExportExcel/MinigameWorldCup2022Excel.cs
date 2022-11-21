@@ -4,25 +4,28 @@
     using OfficeOpenXml.Style;
     using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;
 
     public class MinigameWorldCup2022Excel : ExcelBase
     {
         private const byte RowStartHeader = 2;
         private const byte TotalColumnsHeader = 6;
-        private const byte ColIndexLuckynumber = 5;
+        private const byte ColIndexPoint = 4;
         private const byte ColIndexCount = 1;
         private const byte ColEmail = 3;
         private const byte ColNumber = 1;
-        private const byte ColTeam = 4;
-        private const byte ColJoinDate = 6;
-        private const byte DefaultColWidth = 25;
-        private const byte SmallColWidth = 10;
+        private const byte ColUsername = 2;
+        private const byte ColJoinDate = 5;
+        private const byte DefaultColWidth = 10;
+        private const byte SmallColWidth = 5;
         private const byte EmailColWidth = 35;
+        private const byte UserNameColWidth = 45;
+        private const byte JoinDateColWidth = 25;
 
-        private readonly IEnumerable<MiniGame> miniGames;
+        private readonly IEnumerable<UserMinigameModel> miniGames;
 
-        public MinigameWorldCup2022Excel(string templatePath, IEnumerable<MiniGame> miniGames)
+        public MinigameWorldCup2022Excel(string templatePath, IEnumerable<UserMinigameModel> miniGames)
             : base(templatePath, 0, "MiniGame WorldCup 2022")
         {
             this.miniGames = miniGames;
@@ -46,20 +49,18 @@
             }
         }
 
-        protected internal virtual void RenderRow(ExcelWorksheet worksheet, MiniGame user, int index, int rowIndex)
+        protected internal virtual void RenderRow(ExcelWorksheet worksheet, UserMinigameModel user, int index, int rowIndex)
         {
             var colIndex = 1;
-            string teamName = !string.IsNullOrEmpty(user.TeamNameEN) ? user.TeamNameEN : user.TeamFullNameEN;
-            teamName = !string.IsNullOrEmpty(user.TeamNameVN) ? user.TeamNameVN : teamName;
             worksheet.Cells[rowIndex, colIndex++].Value = index;
-            worksheet.Cells[rowIndex, colIndex++].Value = user.Name;
+            worksheet.Cells[rowIndex, colIndex++].Value = user.UserName;
             worksheet.Cells[rowIndex, colIndex++].Value = user.Email;
-            worksheet.Cells[rowIndex, colIndex++].Value = teamName;
-            worksheet.Cells[rowIndex, colIndex++].Value = user.LuckyNumber;
-            worksheet.Cells[rowIndex, colIndex].Value = DateTimeUtilize.FormatDateTime(user.JoinDate, "dd/MM/yyyy HH:mm:ssss");
+            worksheet.Cells[rowIndex, colIndex++].Value = user.Point;
+            worksheet.Cells[rowIndex, colIndex++].Value = DateTimeUtilize.FormatDateTime(user.UpdatedDate, "dd/MM/yyyy HH:mm:ssss");
             worksheet.Cells[rowIndex, ColIndexCount].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            worksheet.Cells[rowIndex, ColIndexLuckynumber].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            worksheet.Cells[rowIndex, ColTeam].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            worksheet.Cells[rowIndex, ColUsername].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            worksheet.Cells[rowIndex, ColEmail].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            worksheet.Cells[rowIndex, ColIndexPoint].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             worksheet.Cells[rowIndex, ColJoinDate].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
         }
 
@@ -68,6 +69,8 @@
             worksheet.DefaultColWidth = DefaultColWidth;
             worksheet.Column(ColNumber).Width = SmallColWidth;
             worksheet.Column(ColEmail).Width = EmailColWidth;
+            worksheet.Column(ColUsername).Width = UserNameColWidth;
+            worksheet.Column(ColJoinDate).Width = JoinDateColWidth;
         }
     }
 }

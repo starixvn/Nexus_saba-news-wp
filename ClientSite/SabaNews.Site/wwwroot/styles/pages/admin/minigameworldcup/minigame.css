@@ -18,3 +18,8 @@
 .stage-select {
   width: 130px;
 }
+
+.btn-exportexcel {
+  cursor: pointer;
+  color: blue !important;
+}

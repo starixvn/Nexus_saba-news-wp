@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services.ExportExcel
 {
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
@@ -20,7 +21,7 @@
             return excel.Export();
         }
 
-        public byte[] ExportMinigameWorldCup2022(IEnumerable<MiniGame> miniGames)
+        public byte[] ExportMinigameWorldCup2022(IEnumerable<UserMinigameModel> miniGames)
         {
             const string ExcelTemplatePath = "ExcelTemplates/MiniGameWorldCup2022.xlsx";
             var templatePath = pathService.MapPathContentRoot(ExcelTemplatePath);

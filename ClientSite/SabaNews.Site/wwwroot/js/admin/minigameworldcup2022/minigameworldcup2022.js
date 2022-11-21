@@ -11,7 +11,6 @@
                 $('.data-grid').html(res);
                 initPaging();
                 initSortEvent();
-
             }
         });
     }
@@ -21,7 +20,6 @@
             page = $(this).data('page');
             var dateSort = $("#date-sort").attr("sort-type");
             GetDataCommentGrid(dateSort);
-
         });
 
         $('#page-size').on('change', function () {
@@ -50,6 +48,10 @@
         $('.stage-select').on('change', function () {
             page = 1;
             GetDataCommentGrid(null);
+        });
+        $('.btn-exportexcel').on('click', function () {
+            var stage = $('.stage-select').find(':selected').data('stage');
+            window.location = window.location.origin + "/Admin/MinigameWorldCup2022/ExportExcel?stage=" + stage;
         });
     }
 

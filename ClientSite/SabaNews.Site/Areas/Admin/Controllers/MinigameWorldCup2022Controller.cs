@@ -67,15 +67,22 @@
             return PartialView("_MinigameWorldCup2022DataGrid", viewModel);
         }
 
-        public async Task<ActionResult> ExportExcel()
+
+
+        public async Task<ActionResult> ExportExcel(byte stage)
         {
-            var criteria = new GetDataMinigameCriteria
+            var criteria = new GetMinigameUsersByStageCriteria
             {
-                Start = Constants.FromFirstItem,
-                End = Constants.Total,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 12, 18))
+                stage = stage
             };
-            var miniGames = await leagueService.GetDataMinigameAsync(criteria);
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            var miniGames = await worldcupService.GetMinigameUsersAsync(criteria);
+            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            miniGames = LivescoreHelper.CalculatorPointer(matches, miniGames);
             var bytes = excelService.ExportMinigameWorldCup2022(miniGames);
             return File(bytes, "application/xlsx", "MiniGameWorldCup2022.xlsx");
         }
