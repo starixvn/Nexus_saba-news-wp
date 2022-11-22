@@ -67,13 +67,11 @@
             return PartialView("_MinigameWorldCup2022DataGrid", viewModel);
         }
 
-
-
-        public async Task<ActionResult> ExportExcel()
+        public async Task<ActionResult> ExportExcel(byte stage)
         {
             var criteria = new GetMinigameUsersByStageCriteria
             {
-                stage = 1
+                stage = stage
             };
             var criteriaMatch = new GetMatchBySeasonCriteria
             {
