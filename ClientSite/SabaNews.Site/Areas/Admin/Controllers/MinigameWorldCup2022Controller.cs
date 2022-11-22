@@ -69,11 +69,11 @@
 
 
 
-        public async Task<ActionResult> ExportExcel(byte stage)
+        public async Task<ActionResult> ExportExcel()
         {
             var criteria = new GetMinigameUsersByStageCriteria
             {
-                stage = stage
+                stage = 1
             };
             var criteriaMatch = new GetMatchBySeasonCriteria
             {
