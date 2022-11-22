@@ -21,16 +21,23 @@ BEGIN
 	DROP TEMPORARY TABLE IF EXISTS tmp_MatchIds;
     CREATE TEMPORARY TABLE tmp_MatchIds (MatchId BIGINT PRIMARY KEY);
     
-    INSERT INTO tmp_MatchIds (MatchId)
-    SELECT m.MatchId
+	INSERT INTO tmp_MatchIds (MatchId)
+	SELECT m.MatchId
     FROM livescore_match m
-        INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
-        INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
-        INNER JOIN livescore_team a ON m.AwayTeamId = a.TeamId
-        LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId
+        LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId and mc.StartTime is null
     WHERE m.SportId = sportId
 		AND m.Status IS NOT NULL
-		AND COALESCE(mc.StartTime, m.StartTime) BETWEEN fromTime AND toTime
+		 and m.StartTime BETWEEN fromTime AND toTime
+        AND m.CombinedId IS NULL
+        AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
+   
+	INSERT INTO tmp_MatchIds (MatchId)
+	SELECT m.MatchId
+    FROM livescore_match m
+        LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId and mc.StartTime is not null
+    WHERE m.SportId = sportId
+		AND m.Status IS NOT NULL
+         AND mc.StartTime BETWEEN fromTime AND toTime 
         AND m.CombinedId IS NULL
         AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
     
@@ -77,6 +84,10 @@ BEGIN
 			WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
 END
+
+
+//
+DELIMITER ;	
 
 //
 DELIMITER ;	
