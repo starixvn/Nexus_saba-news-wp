@@ -475,7 +475,7 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/postdetail-worldcuop-2022.min.js",
+        "outputFileName": "wwwroot/minify/js/postdetail-worldcup-2022.min.js",
         "inputFiles": [
             "wwwroot/js/event/worldcup2022/worldcup.js",
             "wwwroot/js/event/worldcup2022/lastestnews.js",
