@@ -150,9 +150,8 @@ export default class Standing extends PureComponent {
     };
 
     sortStandingPoint = standing =>{
-        standing = this.sortStandingDate(standing);
         const sortPoint = [];
-        const sortPointZero = [];
+        let sortPointZero = [];
         standing.map((item, index) =>{
             let max = item.point;
             let indexMax = index;
@@ -166,19 +165,24 @@ export default class Standing extends PureComponent {
             standing[index] = standing[indexMax];
             standing[indexMax] = swap;
         });
-        standing.map( item => {
-            if(item.point > 0){
-                sortPoint.push(item);
+
+        standing.map( (item, index) => {
+            if(sortPointZero.length ===0){
+                 sortPointZero.push(item);
             }else{
-                sortPointZero.push(item);
+                 const count = sortPointZero.filter(x=>x.point === item.point).length;
+                 if(count > 0){
+                    sortPointZero.push(item);
+                 }
+                 if(count === 0 || index === standing.length - 1){
+                    sortPointZero.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
+                    sortPoint.push(...sortPointZero);
+                    sortPointZero = [item];
+                 }
             }
         });
-        sortPointZero.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
-        sortPoint.push(...sortPointZero);
         return sortPoint;
     };
-
-    sortStandingDate = standing => standing.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
 
     checkUser = (standings, userId) => {
         let isUser = false;
