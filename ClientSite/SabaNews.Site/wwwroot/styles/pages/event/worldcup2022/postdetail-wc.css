@@ -1243,3 +1243,6 @@ img {
 
 .content a {
   color: #0066CC; }
+
+.hidden-detail .main-menu {
+  padding-top: 0 !important; }
