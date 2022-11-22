@@ -168,11 +168,31 @@ img{
     color: #0066CC;
 }
 
-.hidden-detail {
-    .main-social {
-    }
 
-    .main-menu{
-        padding-top : 0 !important;
+
+
+
+.hidden-detail {
+    .main-menu {
+        padding-top: 0 !important;
+    }
+}
+
+.main-social {
+    @include tableMobile {
+        background: #48041a !important;
+        box-shadow: none !important;
+
+        .icon-social {
+            &:before {
+                color: #fff !important;
+            }
+        }
+
+        .button-detail-page {
+            .line-mb {
+                background: #fff !important;
+            }
+        }
     }
 }
