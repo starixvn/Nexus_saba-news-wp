@@ -8,26 +8,41 @@ SwiperCore.use([Navigation]);
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
+        this.slide = null;
     }
 
     initSlide = () => {
-        const { matches, isFinished } = this.props;
+        const { matches, isFinished, isMobile } = this.props;
         let start = 0;
         const showItems = Math.ceil(window.innerWidth / 200) - 1;
         if (!isFinished) {
+            const postIndex = isMobile ? 0 : 3;
             const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
             const startLastPage = matches.length - this.showItems + 1;
             if (postMatchIndex >= 0) {
                 const lastIndex = matches.length - postMatchIndex;
-                if (lastIndex - 3 > startLastPage) {
+                if (lastIndex - postIndex > startLastPage) {
                     start = startLastPage;
                 } else {
-                    start = lastIndex - 3 > 0 ? lastIndex - 3 : 0;
+                    start = lastIndex - postIndex > 0 ? lastIndex - postIndex : 0;
                 }
             }
         }
-        return { start, showItems };
+        const slide = { start, showItems }
+        this.slide = slide;
+        return slide;
     };
+
+    componentDidMount() {
+        const { isMobile } = this.props;
+        if(isMobile) {
+            const scrollWidth = this.slide.start * 240;
+            this.elementRef.scrollTo({
+                left: scrollWidth,
+                behavior: 'smooth'
+            });
+        }
+    }
 
 
     render() {
@@ -35,7 +50,7 @@ export default class Grid extends PureComponent {
         const slide = this.initSlide();
         return (
             <div className="wc-bg-overflow">
-                <div className="wc-date-bar">
+                <div className="wc-date-bar" ref={el => this.elementRef = el}>
                     {
                         !isMobile &&
                         <Swiper
@@ -51,7 +66,7 @@ export default class Grid extends PureComponent {
                             {
                                 matches.map((item, index) =>
                                     <SwiperSlide key={index} className="scroll-snap-items">
-                                        <Match match={{ ...item, league }} />
+                                        <Match key={index} match={{ ...item, league }} />
                                     </SwiperSlide>
                                 )
                             }
