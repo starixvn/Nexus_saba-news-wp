@@ -139,24 +139,39 @@ export default class Winner extends PureComponent {
     };
 
     sortWinnerPoint = Winner =>{
-        Winner = this.sortWinnerDate(Winner);
+        const sortPoint = [];
+        let sortPointZero = [];
         Winner.map((item, index) =>{
             let max = item.point;
             let indexMax = index;
             Winner.map((Winner, indexSort) => {
                 if(indexSort > index && max < Winner.point){
-                    max = Winner.point;
-                    indexMax = indexSort;
+                        max = Winner.point;
+                        indexMax = indexSort;
                 }
             });
             const swap = Winner[index];
             Winner[index] = Winner[indexMax];
             Winner[indexMax] = swap;
         });
-        return Winner;
-    };
 
-    sortWinnerDate = Winner => Winner.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
+        Winner.map( (item, index) => {
+            if(sortPointZero.length ===0){
+                 sortPointZero.push(item);
+            }else{
+                 const count = sortPointZero.filter(x=>x.point === item.point).length;
+                 if(count > 0){
+                    sortPointZero.push(item);
+                 }
+                 if(count === 0 || index === Winner.length - 1){
+                    sortPointZero.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
+                    sortPoint.push(...sortPointZero);
+                    sortPointZero = [item];
+                 }
+            }
+        });
+        return sortPoint;
+    };
 
     checkUser = (Winners, userId) => {
         let isUser = false;
