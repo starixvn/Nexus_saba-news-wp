@@ -277,9 +277,33 @@
                     Email = users[i].Email
                 });
             }
-            standing = standing.OrderBy(x => x.UpdatedDate).ToList();
             standing = standing.OrderByDescending(x => x.Point).ToList();
-            return standing;
+
+            var sortPoint = new List<UserMinigameModel>();
+            var sortPointZero = new List<UserMinigameModel>();
+            foreach (var item in standing)
+            {
+                if (sortPointZero.Count == 0)
+                {
+                    sortPointZero.Add(item);
+                }
+                else
+                {
+                    var count = sortPointZero.Where(x => x.Point == item.Point).ToList().Count;
+                    if (count > 0)
+                    {
+                        sortPointZero.Add(item);
+                    }
+                    if (count == 0 || item == standing[standing.Count - 1])
+                    {
+                        sortPointZero = sortPointZero.OrderBy(x => x.UpdatedDate).ToList();
+                        sortPoint.AddRange(sortPointZero);
+                        sortPointZero = new List<UserMinigameModel>() { item };
+                    }
+                }
+            }
+
+            return sortPoint;
         }
 
         public static List<UserMinigameModel> CalculatorPointer(IList<Match> matches, IList<UserMinigameModel> votes)
