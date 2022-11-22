@@ -23,8 +23,8 @@ const minigameStageSlice = createSlice({
                 totalItems = matches.length,
                 stages = [];
             const groups = matches.filter(item => item.stage?.stageId === WorldCup.GroupsStage);
-            let teams = groups.map(item => item.homeTeam.teamId);
-            teams = [...new Set(teams)];
+            let groupTeams = groups.map(item => item.homeTeam.teamId);
+            groupTeams = [...new Set(groupTeams)];
             for (let i = 0; i < totalItems; i++) {
                 const match = matches[i];
                 if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
@@ -33,7 +33,7 @@ const minigameStageSlice = createSlice({
             }
             state.stages = stages;
             state.matches = matches;
-            state.teams = teams;
+            state.teams = groupTeams;
         },
         setUpdateVote: (state, action) => {
             state.updateVoteResult = action.payload;

@@ -28,7 +28,7 @@ export default class Grid extends PureComponent {
                 }
             }
         }
-        const slide = { start, showItems }
+        const slide = { start, showItems };
         this.slide = slide;
         return slide;
     };
