@@ -7,13 +7,25 @@ import SkeletonGrid from './SkeletonGrid';
 import SignalR from './SignalR';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import Site from '@jsroot/common/site';
 import { WorldCup, Width1024, MatchStatus } from '@jsroot/common/constants';
+import CommonFunctions from '@jsroot/common/common-functions';
+
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isMobile: window.innerWidth <= Width1024 ? true : false
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+        this.props.getMatches();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
     }
 
     handleResize = () => {
@@ -27,20 +39,23 @@ export class AppContainer extends Component {
         }
     };
 
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-        this.props.getMatches();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
     checkIsFinished = league => {
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
         const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
         return moment(today).isSameOrAfter(endTime);
     };
+
+    handleClickLeague = (event, league) => {
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.season ? league.season.seasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    }
 
     getMatches = () => {
         const { league, matches } = this.props;
@@ -69,10 +84,10 @@ export class AppContainer extends Component {
             <>
                 <div className="fixture-homepage-title">
                     <div className="logo-wc-homepage">
-                        <img src="../../../view-wc.svg" alt="view-wc"/>
+                        <img src="../../../../css/images/view-wc.svg" alt="view-wc"/>
                         <p className="text">World Cup Qatar 2022</p>
                     </div>
-                    <div className="view-more">
+                    <div className="view-more" onClick={event => this.handleClickLeague(event, league)}>
                         xem tất cả
                     </div>
                 </div>
@@ -85,7 +100,7 @@ export class AppContainer extends Component {
                     matchGrid.matches && matchGrid.matches.length > 0 &&
                     <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
                 }
-            </> 
+            </>
         );
     }
 
