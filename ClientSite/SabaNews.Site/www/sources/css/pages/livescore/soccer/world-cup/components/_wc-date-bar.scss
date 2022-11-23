@@ -153,22 +153,23 @@
             }
         }
     }
+    .swiper-container {
+        .swiper-slide{
+            background: transparent;
+            @include tableMobile{
+                width: 23rem !important;
+            }
+        }
+        .wc-date-control{
+            &.swiper-button-disabled{
+                opacity: .5;
+                cursor: not-allowed;
+            }
+        }
+    }
 }
 
-.swiper-container {
-    .swiper-slide{
-        background: transparent;
-        @include tableMobile{
-            width: 23rem !important;
-        }
-    }
-    .wc-date-control{
-        &.swiper-button-disabled{
-            opacity: .5;
-            cursor: not-allowed;
-        }
-    }
-}
+
 
 
 .scroll-snap {
