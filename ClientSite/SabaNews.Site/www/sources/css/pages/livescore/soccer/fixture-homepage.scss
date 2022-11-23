@@ -105,6 +105,9 @@
 
     .wc-date-bar{
         .group-match-item{
+            @include tableMobile{
+                border-bottom: 1px solid #e8e6e3;
+            }
             .soccer-match-item  {
                 background: #FFFDF9;
                 border: 1px solid #E8E6E3;
