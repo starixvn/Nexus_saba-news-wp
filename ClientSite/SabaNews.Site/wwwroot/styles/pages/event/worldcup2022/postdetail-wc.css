@@ -1248,10 +1248,10 @@ img {
   padding-top: 0 !important; }
 
 @media screen and (max-width: 1024px) {
-  .main-social {
+  .fixed-social {
     background: #48041a !important;
     box-shadow: none !important; }
-    .main-social .icon-social:before {
+    .fixed-social .icon-social:before {
       color: #fff !important; }
-    .main-social .button-detail-page .line-mb {
+    .fixed-social .button-detail-page .line-mb {
       background: #fff !important; } }
