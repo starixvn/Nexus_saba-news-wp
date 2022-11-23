@@ -1248,6 +1248,10 @@ img {
   padding-top: 0 !important; }
 
 @media screen and (max-width: 1024px) {
+  #standingWC .king-soccer {
+    padding: 0 1.2rem; } }
+
+@media screen and (max-width: 1024px) {
   .fixed-social {
     background: #48041a !important;
     box-shadow: none !important; }

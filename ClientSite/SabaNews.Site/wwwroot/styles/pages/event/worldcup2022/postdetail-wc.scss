@@ -178,6 +178,14 @@ img{
     }
 }
 
+#standingWC {
+    .king-soccer{
+        @include  tableMobile{
+            padding : 0 1.2rem;
+        }
+    }
+}
+
 .fixed-social {
     @include tableMobile {
         background: #48041a !important;
