@@ -124,6 +124,10 @@
         box-shadow: none;
         &-next,&-prev{
             clip-path: none;
+            &.swiper-button-disabled{
+                cursor: no-drop;
+                opacity: .5;
+            }
             &:hover{
                 background: rgba(59, 58, 60, 0.8);
                 i{
