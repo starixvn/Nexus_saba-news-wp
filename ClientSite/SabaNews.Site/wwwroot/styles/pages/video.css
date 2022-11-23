@@ -1964,7 +1964,7 @@ button {
 
 .banner-change-domain, .skeleton-banner-align {
   position: absolute;
-  top: 17.4rem;
+  top: 17rem;
   z-index: 9; }
   .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
     top: 7.5rem;
