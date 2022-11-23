@@ -28,6 +28,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/world-cup/minigame-detail-stage`]: pathConfig.scriptPaths.livescore_soccer_worldcup_minigame_detail_stage,
             [`${jsPath}/pages/livescore/soccer/world-cup/minigame-detail`]: pathConfig.scriptPaths.livescore_soccer_worldcup_minigame_detail,
             [`${jsPath}/pages/livescore/soccer/world-cup/minigame-winner`]: pathConfig.scriptPaths.livescore_soccer_worldcup_minigame_winner,
+            [`${jsPath}/pages/livescore/soccer/fixture-homepage`]: pathConfig.scriptPaths.livescore_soccer_fixture_homepage,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
@@ -42,7 +43,8 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/world-cup/minigame-standing`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame,
             [`${cssPath}/pages/livescore/soccer/world-cup/minigame-detail-stage`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame_detail_stage,
             [`${cssPath}/pages/livescore/soccer/world-cup/minigame-detail`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame_detail,
-            [`${cssPath}/pages/livescore/soccer/world-cup/minigame-winner`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame_winner
+            [`${cssPath}/pages/livescore/soccer/world-cup/minigame-winner`]: pathConfig.cssPaths.livescore_soccer_worldcup_minigame_winner,
+            [`${cssPath}/pages/livescore/soccer/fixture-homepage`]: pathConfig.cssPaths.livescore_soccer_fixture_homepage
 
         },
         output: {
