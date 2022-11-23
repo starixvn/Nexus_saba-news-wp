@@ -57,6 +57,15 @@ export class AppContainer extends Component {
         }
     };
 
+    handleClickFixture = event => {
+        const url = 'lich-thi-dau/bong-da';
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     getMatches = () => {
         const { league, matches } = this.props;
         if (!matches || matches.length === 0) {
@@ -87,7 +96,7 @@ export class AppContainer extends Component {
                         <img src="../../../../css/images/view-wc.png" alt="view-wc"/>
                         <p className="text" onClick={event => this.handleClickLeague(event, league)}>World Cup Qatar 2022</p>
                     </div>
-                    <div className="view-more" onClick={event => this.handleClickLeague(event, league)}>
+                    <div className="view-more" onClick={this.handleClickFixture}>
                         Xem tất cả
                     </div>
                 </div>
@@ -100,7 +109,7 @@ export class AppContainer extends Component {
                     matchGrid.matches && matchGrid.matches.length > 0 &&
                     <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
                 }
-                { isMobile && <div  className="view-more-mb" onClick={event => this.handleClickLeague(event, league)}>Xem tất cả</div> }
+                { isMobile && <div  className="view-more-mb" onClick={this.handleClickFixture}>Xem tất cả</div> }
             </>
         );
     }
