@@ -2158,6 +2158,10 @@ button {
         line-height: 1.9rem;
         margin-bottom: .3rem; }
 
+.main .block-hot-news .card-item-4 {
+  border-bottom: none !important;
+  padding-bottom: 0 !important; }
+
 @media (min-width: 1024px) {
   .main .banner {
     max-width: 1120px;

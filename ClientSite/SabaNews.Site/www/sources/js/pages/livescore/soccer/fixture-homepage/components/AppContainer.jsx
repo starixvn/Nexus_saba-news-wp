@@ -84,11 +84,11 @@ export class AppContainer extends Component {
             <>
                 <div className="fixture-homepage-title">
                     <div className="logo-wc-homepage">
-                        <img src="../../../../css/images/view-wc.svg" alt="view-wc"/>
+                        <img src="../../../../css/images/view-wc.png" alt="view-wc"/>
                         <p className="text">World Cup Qatar 2022</p>
                     </div>
                     <div className="view-more" onClick={event => this.handleClickLeague(event, league)}>
-                        xem tất cả
+                        Xem tất cả
                     </div>
                 </div>
                 <SignalR />
@@ -100,6 +100,7 @@ export class AppContainer extends Component {
                     matchGrid.matches && matchGrid.matches.length > 0 &&
                     <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
                 }
+                { isMobile && <div className="view-more-mb">Xem tất cả</div> }
             </>
         );
     }

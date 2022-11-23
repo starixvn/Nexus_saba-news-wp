@@ -20,8 +20,8 @@
     border: 1px solid #E8E6E3;
     margin-bottom: 2.4rem;
     @include tableMobile{
-        border-left: none;
-        border-right: none; 
+        border: none;
+        border-top: 1px solid #E8E6E3;
     }
     .wc-bg-overflow{
         background: #FCFAF6;
@@ -86,6 +86,7 @@
         .logo-wc-homepage{
             display: flex;
             align-items: center;
+            cursor: pointer;
             img{
                 width: 3rem;
                 height: 3rem;
@@ -123,6 +124,14 @@
         box-shadow: none;
         &-next,&-prev{
             clip-path: none;
+            &:hover{
+                background: rgba(59, 58, 60, 0.8);
+                i{
+                    &::before{
+                        color: #fff;
+                    }
+                }
+            }
         }
         i{
             &::before{
@@ -131,7 +140,17 @@
             }
         }
     }
-    
+    .view-more-mb{
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #0066CC;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        background: #E8E6E3;
+    }
 }
 .overflow-modal{
     overflow: unset !important;
