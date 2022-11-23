@@ -8,7 +8,7 @@ const SkeletonGrid = ({ isMobile }) => {
 
     const loadSkeleton = () => {
         return (
-            <div className="group-match-item">
+            <div className="group-match-item home-skeleton">
                 <div className="soccer-match-item"
                 >
                     <div className="soccer-match-date-result">
@@ -18,7 +18,7 @@ const SkeletonGrid = ({ isMobile }) => {
                         </div>
                         <span className="wc-date"><Skeleton width={20} /></span>
                     </div>
-                    <div className="soccer-match-team">
+                    <div className="soccer-match-team home-skeleton">
                         <div className="group-team">
                             <div className="soccer-team home-team">
                                 <Skeleton circle className="soccer-team-logo" />
@@ -28,7 +28,7 @@ const SkeletonGrid = ({ isMobile }) => {
                                     <span className="half-score"><Skeleton /></span>
                                 </div>
                             </div>
-                            <div className="soccer-team away-team">
+                            <div className="soccer-team away-team home-skeleton">
                                 <Skeleton circle className="soccer-team-logo" />
                                 <Skeleton className="soccer-team-name" width={100} />
                                 <div className="soccer-team-result">
