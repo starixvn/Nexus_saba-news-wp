@@ -527,7 +527,7 @@ export class Lineups extends Component {
     };
 
     processPlayers = players => {
-        let tmpPlayers = [];
+        const tmpPlayers = [];
         players.map(player => {
             if(tmpPlayers.length === 0) {
                 tmpPlayers.push(player);
@@ -537,7 +537,7 @@ export class Lineups extends Component {
                     tmpPlayers.push(player);
                 }
             }
-        })
+        });
         return tmpPlayers;
     };
 

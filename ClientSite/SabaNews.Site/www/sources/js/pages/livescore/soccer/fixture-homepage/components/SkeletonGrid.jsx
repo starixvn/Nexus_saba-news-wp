@@ -6,7 +6,7 @@ const SkeletonGrid = ({ isMobile }) => {
     const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
     const showItems = Math.ceil(blockWidth / 200) - 1;
 
-    const renderSkeleton = () => {
+    const loadSkeleton = () => {
         return (
             <div className="group-match-item">
                 <div className="soccer-match-item"
@@ -54,7 +54,7 @@ const SkeletonGrid = ({ isMobile }) => {
                         {
                             [...Array(showItems)].map((_, index) =>
                                 <SwiperSlide key={index}>
-                                    {renderSkeleton()}
+                                    {loadSkeleton()}
                                 </SwiperSlide>
                             )
                         }
@@ -62,7 +62,7 @@ const SkeletonGrid = ({ isMobile }) => {
                 }
                 {
                     isMobile &&
-                    [1, 2, 3].map(() => renderSkeleton())
+                    [1, 2, 3].map(() => loadSkeleton())
                 }
             </div>
         </div>

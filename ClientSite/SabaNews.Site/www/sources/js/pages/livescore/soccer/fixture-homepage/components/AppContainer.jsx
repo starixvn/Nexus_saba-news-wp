@@ -55,25 +55,25 @@ export class AppContainer extends Component {
         } else {
             window.location = url;
         }
-    }
+    };
 
     getMatches = () => {
         const { league, matches } = this.props;
         if (!matches || matches.length === 0) {
             return {matches: null};
         }
-        let tmpMatches = matches;
+        let tempMatches = matches;
         let isFinished = false;
-        const finalMatches = tmpMatches[tmpMatches.length - 1];
+        const finalMatches = tempMatches[tempMatches.length - 1];
         if (this.checkIsFinished(league) || finalMatches.status !== MatchStatus.NotStarted) {
-            tmpMatches = [...matches].reverse();
+            tempMatches = [...matches].reverse();
             isFinished = true;
         } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
-            tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
+            tempMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
         } else if (league.currentStageId >= WorldCup.QuarterfinalsStage) {
-            tmpMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
+            tempMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
         }
-        return {matches: tmpMatches, isFinished: isFinished};
+        return {matches: tempMatches, isFinished: isFinished};
     };
 
     render() {
@@ -85,7 +85,7 @@ export class AppContainer extends Component {
                 <div className="fixture-homepage-title">
                     <div className="logo-wc-homepage">
                         <img src="../../../../css/images/view-wc.png" alt="view-wc"/>
-                        <p className="text">World Cup Qatar 2022</p>
+                        <p className="text" onClick={event => this.handleClickLeague(event, league)}>World Cup Qatar 2022</p>
                     </div>
                     <div className="view-more" onClick={event => this.handleClickLeague(event, league)}>
                         Xem tất cả
@@ -100,7 +100,7 @@ export class AppContainer extends Component {
                     matchGrid.matches && matchGrid.matches.length > 0 &&
                     <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
                 }
-                { isMobile && <div className="view-more-mb">Xem tất cả</div> }
+                { isMobile && <div  className="view-more-mb" onClick={event => this.handleClickLeague(event, league)}>Xem tất cả</div> }
             </>
         );
     }

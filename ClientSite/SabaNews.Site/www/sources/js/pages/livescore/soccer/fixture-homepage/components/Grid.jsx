@@ -11,29 +11,6 @@ export default class Grid extends PureComponent {
         this.slide = null;
     }
 
-    initSlide = () => {
-        const { matches, isFinished, isMobile } = this.props;
-        let start = 0;
-        const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
-        const showItems = Math.ceil(blockWidth / 200) - 1;
-        if (!isFinished) {
-            const postIndex = isMobile ? 0 : 3;
-            const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
-            const startLastPage = matches.length - this.showItems + 1;
-            if (postMatchIndex >= 0) {
-                const lastIndex = matches.length - postMatchIndex;
-                if (lastIndex - postIndex > startLastPage) {
-                    start = startLastPage;
-                } else {
-                    start = lastIndex - postIndex > 0 ? lastIndex - postIndex : 0;
-                }
-            }
-        }
-        const slide = { start, showItems };
-        this.slide = slide;
-        return slide;
-    };
-
     componentDidMount() {
         const { isMobile } = this.props;
         if(isMobile) {
@@ -44,6 +21,29 @@ export default class Grid extends PureComponent {
             });
         }
     }
+
+    initSlide = () => {
+        const { matches, isFinished, isMobile } = this.props;
+        let start = 0;
+        const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
+        const showItems = Math.ceil(blockWidth / 200) - 1;
+        if (!isFinished) {
+            const numberPostIndex = isMobile ? 0 : 3;
+            const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
+            const startLastPage = matches.length - this.showItems + 1;
+            if (postMatchIndex >= 0) {
+                const lastIndex = matches.length - postMatchIndex;
+                if (lastIndex - numberPostIndex > startLastPage) {
+                    start = startLastPage;
+                } else {
+                    start = lastIndex - numberPostIndex > 0 ? lastIndex - numberPostIndex : 0;
+                }
+            }
+        }
+        const slide = { start, showItems };
+        this.slide = slide;
+        return slide;
+    };
 
 
     render() {

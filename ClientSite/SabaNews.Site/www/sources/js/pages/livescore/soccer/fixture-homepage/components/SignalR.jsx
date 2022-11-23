@@ -2,8 +2,8 @@ import { bindActionCreators } from 'redux';
 import React, { Component } from 'react';
 import { LogLevel, JsonHubProtocol, HubConnectionBuilder, HttpTransportType } from '@microsoft/signalr';
 import { connect } from 'react-redux';
-import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
+import { ActionCreators } from '../actions';
 
 export class SignalR extends Component {
     constructor(props) {

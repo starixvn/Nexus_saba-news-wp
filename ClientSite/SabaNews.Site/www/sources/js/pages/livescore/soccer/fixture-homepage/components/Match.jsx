@@ -21,7 +21,9 @@ export default class Match extends PureComponent {
         }
     };
 
-    getTeamStatus = (match, isHomeTeam) => {
+    renderTeamName = name =>  name.length > 11 ? name.substring(0, 11) + '....' : name;
+
+    renderTeamStatus = (match, isHomeTeam) => {
         const hField = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const aField = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
@@ -40,7 +42,6 @@ export default class Match extends PureComponent {
         return <Fragment />;
     };
 
-    getTeamName = name =>  name.length > 11 ? name.substring(0, 11) + '....' : name;
 
     render() {
         const { match } = this.props;
@@ -65,20 +66,20 @@ export default class Match extends PureComponent {
                                 <div className="soccer-team home-team">
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                     <div className={`soccer-team-name ${teamResult === MatchResult.Win ? 'win': ''}`}>
-                                        {this.getTeamName(CommonFunctions.getTeamName(match.homeTeam))}
+                                        {this.renderTeamName(CommonFunctions.getTeamName(match.homeTeam))}
                                     </div>
                                     <TeamScore match={match}  isHomeTeam   />
                                     <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, true)}
+                                        {this.renderTeamStatus(match, true)}
                                     </ul>
                                 </div>
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                     <div className={`soccer-team-name ${teamResult === MatchResult.Lose ? 'win': ''}`}>
-                                        {this.getTeamName(CommonFunctions.getTeamName(match.awayTeam))}
+                                        {this.renderTeamName(CommonFunctions.getTeamName(match.awayTeam))}
                                     </div>
                                     <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, false)}
+                                        {this.renderTeamStatus(match, false)}
                                     </ul>
                                     <TeamScore match={match} />
                                 </div>
