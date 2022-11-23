@@ -4,7 +4,7 @@ import { SwiperSlide, Swiper } from 'swiper/react';
 
 const SkeletonGrid = ({ isMobile }) => {
     const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
-    const showItems = Math.ceil(blockWidth / 200) - 1;
+    const items = Math.ceil(blockWidth / 200) - 1;
 
     const loadSkeleton = () => {
         return (
@@ -18,7 +18,7 @@ const SkeletonGrid = ({ isMobile }) => {
                         </div>
                         <span className="wc-date"><Skeleton width={20} /></span>
                     </div>
-                    <div className="soccer-match-team home-skeleton">
+                    <div className="soccer-match-team team-skeleton">
                         <div className="group-team">
                             <div className="soccer-team home-team">
                                 <Skeleton circle className="soccer-team-logo" />
@@ -28,7 +28,7 @@ const SkeletonGrid = ({ isMobile }) => {
                                     <span className="half-score"><Skeleton /></span>
                                 </div>
                             </div>
-                            <div className="soccer-team away-team home-skeleton">
+                            <div className="soccer-team away-team away-skeleton">
                                 <Skeleton circle className="soccer-team-logo" />
                                 <Skeleton className="soccer-team-name" width={100} />
                                 <div className="soccer-team-result">
@@ -43,16 +43,16 @@ const SkeletonGrid = ({ isMobile }) => {
         );
     };
     return (
-        <div className="wc-bg-overflow">
+        <div className="wc-bg-overflow fixture-skeleton">
             <div className="wc-date-bar">
                 {
                     !isMobile &&
                     <Swiper
                         spaceBetween={10}
-                        slidesPerView={showItems}
+                        slidesPerView={items}
                     >
                         {
-                            [...Array(showItems)].map((_, index) =>
+                            [...Array(items)].map((_, index) =>
                                 <SwiperSlide key={index}>
                                     {loadSkeleton()}
                                 </SwiperSlide>
