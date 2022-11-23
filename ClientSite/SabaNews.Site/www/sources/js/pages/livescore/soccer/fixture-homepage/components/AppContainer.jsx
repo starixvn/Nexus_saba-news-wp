@@ -66,7 +66,16 @@ export class AppContainer extends Component {
         const { isMobile } = this.state;
         const matchGrid = this.getMatches();
         return (
-            <div>
+            <>
+                <div className="fixture-homepage-title">
+                    <div className="logo-wc-homepage">
+                        <img src="../../../view-wc.svg" alt="view-wc"/>
+                        <p className="text">World Cup Qatar 2022</p>
+                    </div>
+                    <div className="view-more">
+                        xem tất cả
+                    </div>
+                </div>
                 <SignalR />
                 {
                     matches === null &&
@@ -76,7 +85,7 @@ export class AppContainer extends Component {
                     matchGrid.matches && matchGrid.matches.length > 0 &&
                     <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
                 }
-            </div>
+            </> 
         );
     }
 

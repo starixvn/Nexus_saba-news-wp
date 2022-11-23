@@ -54,26 +54,28 @@ export default class Grid extends PureComponent {
                 <div className="wc-date-bar" ref={el => this.elementRef = el}>
                     {
                         !isMobile &&
-                        <Swiper
-                            initialSlide={slide.start}
-                            spaceBetween={10}
-                            slidesPerView={slide.showItems}
-                            watchOverflow={true}
-                            navigation={{
-                                prevEl: '.wc-date-control-prev',
-                                nextEl: '.wc-date-control-next'
-                            }}
-                        >
-                            {
-                                matches.map((item, index) =>
-                                    <SwiperSlide key={index} className="scroll-snap-items">
-                                        <Match key={index} match={{ ...item, league }} />
-                                    </SwiperSlide>
-                                )
-                            }
+                        <>
+                            <Swiper
+                                initialSlide={slide.start}
+                                spaceBetween={10}
+                                slidesPerView={slide.showItems}
+                                watchOverflow={true}
+                                navigation={{
+                                    prevEl: '.wc-date-control-prev',
+                                    nextEl: '.wc-date-control-next'
+                                }}
+                            >
+                                {
+                                    matches.map((item, index) =>
+                                        <SwiperSlide key={index} className="scroll-snap-items">
+                                            <Match key={index} match={{ ...item, league }} />
+                                        </SwiperSlide>
+                                    )
+                                }
+                            </Swiper>
                             <div className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
                             <div className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
-                        </Swiper>
+                        </>
                     }
                     {
                         isMobile &&

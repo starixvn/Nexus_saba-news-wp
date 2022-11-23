@@ -9,6 +9,11 @@
 
 
 #fixture-homepage {
+    border: 1px solid #E8E6E3;
+    .wc-bg-overflow{
+        background: #FCFAF6;
+        padding: 1.1rem .9rem.9rem .9rem;   
+    }
     .group-live-icon{
         display: flex;
         align-items: center;
@@ -42,6 +47,37 @@
     .swiper-container{
         .swiper-slide{
             background: transparent;
+        }
+    }
+    .fixture-homepage-title{
+        height: 4rem;
+        background: #F5F3EF;
+        border-bottom: 1px solid #E8E6E3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem 1rem;
+        .view-more{
+            cursor: pointer;
+            color: #0066CC;
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 1.8rem;
+        }
+        .logo-wc-homepage{
+            display: flex;
+            align-items: center;
+            img{
+                width: 3rem;
+                height: 3rem;
+            }
+            p{
+                margin-left: 1rem;
+                color: #F12F19;
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+            }
         }
     }
     
