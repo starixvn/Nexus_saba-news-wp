@@ -1,9 +1,9 @@
+import { bindActionCreators } from 'redux';
 import React, { Component } from 'react';
-import { JsonHubProtocol, HubConnectionBuilder, HttpTransportType, LogLevel } from '@microsoft/signalr';
+import { LogLevel, JsonHubProtocol, HubConnectionBuilder, HttpTransportType } from '@microsoft/signalr';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
-import { bindActionCreators } from 'redux';
 
 export class SignalR extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ export class SignalR extends Component {
             .build();
 
         this.connection.onclose(async () => {
-            await this.startFixture();
+            await this.startFixtureHomepage();
         });
 
         this.connection.on('UpdateLiveMatches', matches => {
@@ -34,10 +34,10 @@ export class SignalR extends Component {
 
         Site.lockNavigator();
 
-        this.startFixture();
+        this.startFixtureHomepage();
     }
 
-    startFixture = async () => {
+    startFixtureHomepage = async () => {
         try {
             await this.connection.start().then(() => {
                 console.log('SignalR connected!!!'); //NOSONAR
@@ -45,7 +45,7 @@ export class SignalR extends Component {
         } catch (err) {
             setTimeout(() => {
                 this.props.getMatches();
-                this.startFixture();
+                this.startFixtureHomepage();
             }, 60 * 1000);
 
             console.log(err); //NOSONAR

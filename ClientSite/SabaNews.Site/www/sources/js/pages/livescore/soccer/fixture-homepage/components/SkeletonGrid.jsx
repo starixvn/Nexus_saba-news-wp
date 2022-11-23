@@ -3,7 +3,7 @@ import Skeleton from 'react-loading-skeleton';
 import { SwiperSlide, Swiper } from 'swiper/react';
 
 const SkeletonGrid = ({ isMobile }) => {
-    const blockWidth = document.getElementById('fixture-homepage').offsetWidth
+    const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
     const showItems = Math.ceil(blockWidth / 200) - 1;
 
     const renderSkeleton = () => {

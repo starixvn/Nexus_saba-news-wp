@@ -14,7 +14,7 @@ export default class Grid extends PureComponent {
     initSlide = () => {
         const { matches, isFinished, isMobile } = this.props;
         let start = 0;
-        const blockWidth = document.getElementById('fixture-homepage').offsetWidth
+        const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
         const showItems = Math.ceil(blockWidth / 200) - 1;
         if (!isFinished) {
             const postIndex = isMobile ? 0 : 3;

@@ -1,15 +1,25 @@
 import React, { PureComponent, Fragment } from 'react';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import MatchStage from '@jsroot/components/MatchStage';
+import { MatchStatus, MatchResult, WorldCup } from '@jsroot/common/constants';
 import TeamScore from '../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchStatus, MatchResult, WorldCup } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
+
 
 export default class Match extends PureComponent {
     constructor(props) {
         super(props);
     }
+
+    onClick = event => {
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
 
     getTeamStatus = (match, isHomeTeam) => {
         const hField = isHomeTeam ? 'homeTeam' : 'awayTeam';
@@ -28,15 +38,6 @@ export default class Match extends PureComponent {
         }
 
         return <Fragment />;
-    };
-
-    onClick = event => {
-        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
     };
 
     getTeamName = name =>  name.length > 11 ? name.substring(0, 11) + '....' : name;
