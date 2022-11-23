@@ -154,6 +154,7 @@ export class Lineups extends Component {
         if (players.length === 0) {
             return null;
         }
+        players = this.processPlayers(players);
         const formationArray = formation.split('-');
         const goalKeeperIncident = this.getPlayerIncident(players[0].playerId);
         const playersInfo = [[
@@ -351,6 +352,8 @@ export class Lineups extends Component {
     };
 
     renderListPlayer = (title, home, away) => {
+        const homePlayers = this.processPlayers(home);
+        const awayPlayers = this.processPlayers(away);
         return (
             <div className="line-up-change-men block-line-up">
                 <div className="block-line-up-main">
@@ -360,7 +363,7 @@ export class Lineups extends Component {
                             <div className="line-up-table">
                                 <div className="table-paticipant home-team">
                                     {
-                                        home.map((homePlayer, hIndex) => {
+                                        homePlayers.map((homePlayer, hIndex) => {
                                             return (
                                                 <ul key={hIndex} className="list-paticipant">
                                                     <li className="number-player">{homePlayer.playerNumber}</li>
@@ -373,7 +376,7 @@ export class Lineups extends Component {
                                 </div>
                                 <div className="table-paticipant away-team">
                                     {
-                                        away.map((awayPlayer, aIndex) => {
+                                        awayPlayers.map((awayPlayer, aIndex) => {
                                             return (
                                                 <ul key={aIndex} className="list-paticipant away-paticipant">
                                                     <li className="number-player">{awayPlayer.playerNumber}</li>
@@ -521,6 +524,21 @@ export class Lineups extends Component {
                 </div>
             </div>
         );
+    };
+
+    processPlayers = players => {
+        let tmpPlayers = [];
+        players.map(player => {
+            if(tmpPlayers.length === 0) {
+                tmpPlayers.push(player);
+            } else {
+                const index = tmpPlayers.findIndex(item => item.playerId === player.playerId);
+                if(index < 0) {
+                    tmpPlayers.push(player);
+                }
+            }
+        })
+        return tmpPlayers;
     };
 
 
