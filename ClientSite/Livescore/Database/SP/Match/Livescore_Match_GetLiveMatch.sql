@@ -11,23 +11,29 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetLiveMatch`(
 			- 202200517@Tim: get start time for live match
             - 20220711@Hank: get country data
             - 20220712@Hank: get only major league
+            - 20221124@Hank: get data from table match custom
     */
 )
 BEGIN
-    SELECT m.MatchId, m.StartTime, m.EndTime, m.Status, m.Round, m.GroupNum
+    SELECT m.MatchId, m.EndTime, m.GroupNum
 		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
-		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
-        ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
-        ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
+		,m.HomeTeamTotalScore, m.AwayTeamTotalScore
+        ,COALESCE(mc.Round, m.Round) as Round
+        ,COALESCE(mc.StartTime, m.StartTime) as StartTime
+        ,COALESCE(mc.Status, m.Status) as Status
+		,COALESCE(mc.HomeTeamHalfScore, m.HomeTeamHalfScore) as HomeTeamHalfScore, COALESCE(mc.AwayTeamHalfScore, m.AwayTeamHalfScore) as AwayTeamHalfScore
+        ,COALESCE(mc.HomeTeamAggregateScore, m.HomeTeamAggregateScore) as HomeTeamAggregateScore, COALESCE(mc.AwayTeamAggregateScore, m.AwayTeamAggregateScore) as AwayTeamAggregateScore
+        ,COALESCE(mc.HomeTeamPenaltyScore, sh.PenaltyScore) as HomeTeamPenaltyScore, COALESCE(mc.AwayTeamPenaltyScore, sa.PenaltyScore) as AwayTeamPenaltyScore
+		,COALESCE(mc.HomeTeamExtraScore, sh.ExtraScore) as HomeTeamExtraScore, COALESCE(mc.AwayTeamExtraScore, sa.ExtraScore) as AwayTeamExtraScore
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
 		,m.LeagueId, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueNameVN, l.CurrentRound, l.LeagueType, l.Icon, le.IsMajor, le.Priority, l.CountryVN
         ,c.CountryId, c.CountryLogo, c.CountryLogoCustom
         ,s.SeasonId, s.Year
-		,ss.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
-		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.Icon
-        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.Icon
+		,ss.StageId, ss.StageNameEN, COALESCE(ss.StageNameVN, rr.NameVN) AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
+		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
+        ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.TeamNameVN, a.Icon, a.IconVN
     FROM livescore_match m
         INNER JOIN livescore_match_live live ON m.MatchId = live.MatchId
         INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
@@ -41,15 +47,17 @@ BEGIN
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
+        LEFT JOIN livescore_match_custom mc ON mc.MatchId = m.matchId
 	WHERE m.Status IS NOT NULL
     ORDER BY CASE WHEN le.LeagueId IS NOT NULL THEN le.Priority ELSE 999999 END ASC
         ,CASE WHEN l.LeagueNameVN IS NOT NULL THEN l.LeagueNameVN
 			WHEN l.LeagueNameEN IS NOT NULL THEN l.LeagueNameEN
             ELSE l.LeagueFullNameEN END ASC
-		,m.StartTime ASC
-        ,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
+		,StartTime ASC
+        ,CASE WHEN h.TeamNameVN IS NOT NULL THEN h.TeamNameVN 
+			WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
-END;
+END
 
 //
 DELIMITER ;	
