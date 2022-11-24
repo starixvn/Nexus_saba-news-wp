@@ -170,6 +170,7 @@
                 if(item.MatchId == vote.MatchId)
                 {
                     match = item; 
+                    break;
                 }
             }
             return match;
