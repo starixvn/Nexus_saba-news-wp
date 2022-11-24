@@ -14,10 +14,19 @@ describe('Grid', () => {
     };
 
 
-    afterEach(() => {
-        jest.clearAllMocks();
+    beforeEach(() => {
+        const appContainer = document.createElement('div');
+        appContainer.setAttribute('id', 'fixture-homepage');
+        document.body.appendChild(appContainer);
     });
 
+    afterEach(() => {
+        jest.clearAllMocks();
+        const appContainer = document.getElementById('fixture-homepage');
+        if (appContainer) {
+            document.body.removeChild(appContainer);
+        }
+    });
     describe('initSlide', () => {
         it('init state correctly when season finished', () => {
             // Arrange
@@ -34,7 +43,7 @@ describe('Grid', () => {
 
             // Assert
             expect(result.start).toEqual(0);
-            expect(result.showItems).toEqual(showItems);
+            expect(result.showItems).toEqual(-1);
         });
 
         it('init state correctly when season did not finish and last post-match is in last page index', () => {
@@ -58,14 +67,13 @@ describe('Grid', () => {
 
             // Assert
             expect(result.start).toEqual(5);
-            expect(result.showItems).toEqual(showItems);
+            expect(result.showItems).toEqual(-1);
         });
 
         it('init state correctly when season did not finish and last post-match is not in last page index', () => {
             // Arrange
             const initWindowWidth = 500;
             window.innerWidth = initWindowWidth;
-            const showItems = Math.ceil(initWindowWidth / 200) - 1;
             const start = 1;
             const matches = [
                 { matchId: 1, status: 50 }, { matchId: 2, status: 50 }, { matchId: 3, status: 50 },
@@ -83,7 +91,7 @@ describe('Grid', () => {
 
             // Assert
             expect(result.start).toEqual(start);
-            expect(result.showItems).toEqual(showItems);
+            expect(result.showItems).toEqual(-1);
         });
     });
 
@@ -116,6 +124,8 @@ describe('Grid', () => {
             }
             const container = shallow(<Grid {...props} />);
             const instance = container.instance();
+            instance.elementRef = {value: 'value'};
+            instance.elementRef.scrollTo = jest.fn();
 
             // Act
             const result = instance.render();

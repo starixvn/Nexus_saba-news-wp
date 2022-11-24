@@ -13,7 +13,7 @@ describe('Match', () => {
         jest.clearAllMocks();
     });
 
-    describe('getTeamStatus', () => {
+    describe('renderTeamStatus', () => {
         it('return as expected when match status != Finished', () => {
             // Arrange
             CommonFunctions.getTeamName = jest.fn().mockReturnValue('name');
@@ -21,7 +21,7 @@ describe('Match', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getTeamStatus(defaultProps.match, true);
+            const result = instance.renderTeamStatus(defaultProps.match, true);
 
             // Assert
             expect(result).toEqual(<Fragment />);
@@ -43,7 +43,7 @@ describe('Match', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getTeamStatus(props.match, true);
+            const result = instance.renderTeamStatus(props.match, true);
 
             // Assert
             expect(result).toEqual(<li>PEN</li>);
@@ -66,7 +66,7 @@ describe('Match', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getTeamStatus(props.match, true);
+            const result = instance.renderTeamStatus(props.match, true);
 
             // Assert
             expect(result).toEqual(<li>AGG</li>);
@@ -87,7 +87,7 @@ describe('Match', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getTeamStatus(props.match, true);
+            const result = instance.renderTeamStatus(props.match, true);
 
             // Assert
             expect(result).toEqual(<Fragment />);
