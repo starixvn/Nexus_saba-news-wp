@@ -170,7 +170,6 @@
                 if(item.MatchId == vote.MatchId)
                 {
                     match = item; 
-                    break;
                 }
             }
             return match;
@@ -204,13 +203,10 @@
             var score = 0;
             var voteTeam = vote.TeamId == 0 ? match.HomeTeam.TeamId : vote.TeamId;
             var matchResult = GetMatchResult(match, voteTeam);
-            if (matchResult == MatchResultWin)
+            if (matchResult == MatchResultWin && vote.TeamId != 0)
             {
-                if (vote.TeamId != 0)
-                {
-                    score = GetWinScore(match.Stage.StageId);
-                    status = true;
-                }
+                score = GetWinScore(match.Stage.StageId);
+                status = true;
             }
             if (matchResult == MatchResultDraw && vote.TeamId == 0)
             {
@@ -316,14 +312,7 @@
             {
                 var matchVote = GetMatch(matches, vote);
                 var (status, score) = GetVoteResult(matchVote, vote);
-                if (status)
-                {
-                    points.Add(score);
-                }
-                else
-                {
-                    points.Add(0);
-                }
+                points.Add(status ? score : 0);
                 users = GetUsersVote(users, vote);
             }
             var standing = HandleStandings(users, votes, points);
