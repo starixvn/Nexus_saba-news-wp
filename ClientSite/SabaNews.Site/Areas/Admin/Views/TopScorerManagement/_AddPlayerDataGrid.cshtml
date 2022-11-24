@@ -32,13 +32,11 @@
                                 <label>@ViewResources.Team</label>
                             </td>
                             <td>
-                                
                                 <select class="form-control txt-teamFullNameEn" id="TeamFullNameENAdd">
                                     @foreach (var team in Model.Teams)
                                     {
                                         <option value="@team.TeamId">@(!string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : team.TeamNameEN)</option>
                                     }
-                                    
                                 </select>
                             </td>
                         </tr>

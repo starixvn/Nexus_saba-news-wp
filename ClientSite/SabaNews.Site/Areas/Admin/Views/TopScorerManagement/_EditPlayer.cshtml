@@ -31,10 +31,12 @@
                             <td>
                                 <label>@ViewResources.Team</label>
                             </td>
-                            <td>
-                                @Html.DropDownList("TeamId", new SelectList(Model.Teams, "TeamId", "TeamFullNameEN", Model.TopScorers.TeamId), new { @class = "form-control txt-teamFullNameEn", id = "TeamFullNameEN", value = "TeamId" })
-
-                            </td>
+                            <select class="form-control txt-teamFullNameEn" id="TeamFullNameEN">
+                                @foreach (var team in Model.Teams)
+                                {
+                                    <option @(Model.TopScorers.TeamId == team.TeamId ? "selected" : "") value="@team.TeamId">@(!string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : team.TeamNameEN)</option>
+                                }
+                            </select>
                         </tr>
 
                         <tr>
