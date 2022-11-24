@@ -1,26 +1,26 @@
-import { WorldCup } from '@jsroot/common/constants';
 import { createSlice } from '@reduxjs/toolkit';
+import { WorldCup } from '@jsroot/common/constants';
 const minigameStageSlice = createSlice({
     name: 'minigameDetailStageSlice',
     initialState: {
         matches: null,
-        updateVoteResult: null,
-        votes: null,
-        league: null,
         stages: null,
+        league: null,
+        votes: null,
+        updateVoteResult: null,
         teams: null
     },
     reducers: {
-        setVotes: (state, action) => {
-            state.votes = action.payload;
-        },
         setLeague: (state, action) => {
             const league = action.payload;
             state.league = league;
         },
+        setVotes: (state, action) => {
+            state.votes = action.payload;
+        },
         setMatches: (state, action) => {
-            const totalItems = matches.length,
-                matches = action.payload,
+            const matches = action.payload,
+                totalItems = matches.length,
                 stages = [];
             const groups = matches.filter(item => item.stage?.stageId === WorldCup.GroupsStage);
             let groupTeams = groups.map(item => item.homeTeam.teamId);
@@ -31,9 +31,9 @@ const minigameStageSlice = createSlice({
                     stages.push(match.stage);
                 }
             }
+            state.stages = stages;
             state.matches = matches;
             state.teams = groupTeams;
-            state.stages = stages;
         },
         setUpdateVote: (state, action) => {
             state.updateVoteResult = action.payload;
@@ -44,9 +44,9 @@ const minigameStageSlice = createSlice({
 const { actions, reducer } = minigameStageSlice;
 
 export const {
-    setVotes,
-    setLeague,
     setMatches,
+    setLeague,
+    setVotes,
     setUpdateVote
 } = actions;
 
