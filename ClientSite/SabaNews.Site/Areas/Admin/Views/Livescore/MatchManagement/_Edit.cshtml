@@ -153,7 +153,7 @@
                         FT Score
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@(Model.HomeTeamExtraScore != null ? Model.HomeTeamExtraScore : Model.HomeTeamTotalScore)"
+                        <input type="number" min="0" max="100" value="@LivescoreHelper.GetMatchTotalScore(Model, true)"
                                class="form-control w-100 custom-input input-number" id="homeTeamExtraScore" name="HomeVN" />
                     </div>
                 </div>
@@ -264,7 +264,7 @@
                         FT Score
                     </label>
                     <div class="admin-text-logo">
-                        <input type="number" min="0" max="100" value="@(Model.AwayTeamExtraScore != null ? Model.AwayTeamExtraScore : Model.AwayTeamTotalScore)"
+                        <input type="number" min="0" max="100" value="@LivescoreHelper.GetMatchTotalScore(Model, false)"
                                class="form-control w-100 custom-input input-number" id="awayTeamExtraScore" name="HomeVN" />
                     </div>
                 </div>
