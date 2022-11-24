@@ -169,7 +169,8 @@
             {
                 if(item.MatchId == vote.MatchId)
                 {
-                    match = item; break;
+                    match = item; 
+                    break;
                 }
             }
             return match;
@@ -211,13 +212,10 @@
                     status = true;
                 }
             }
-            else if (matchResult == MatchResultDraw)
+            if (matchResult == MatchResultDraw && vote.TeamId == 0)
             {
-                if (vote.TeamId == 0)
-                {
-                    score = GetWinScore(match.Stage.StageId);
-                    status = true;
-                }
+                score = GetWinScore(match.Stage.StageId);
+                status = true;
             }
             return ( status, score);
         }
@@ -253,17 +251,17 @@
                     if (users[i].UserId == votes[j].UserId)
                     {
                         pointNumber += points[j];
-                        if (updatedDate < votes[j].UpdatedDate)
-                        {
-                            updatedDate = votes[j].UpdatedDate;
-                        }
-                        if (createdDate < votes[j].CreatedDate)
-                        {
-                            createdDate = votes[j].CreatedDate;
-                        }
+                    }
+                    if (updatedDate < votes[j].UpdatedDate && users[i].UserId == votes[j].UserId)
+                    {
+                        updatedDate = votes[j].UpdatedDate;
+                    }
+                    if (createdDate < votes[j].CreatedDate && users[i].UserId == votes[j].UserId)
+                    {
+                        createdDate = votes[j].CreatedDate;
                     }
                 }
-                standing.Add(new UserMinigameModel()
+                standing.Add(new UserMinigameModel
                 {
                     UserId = users[i].UserId,
                     MatchId = users[i].MatchId,
@@ -278,7 +276,12 @@
                 });
             }
             standing = standing.OrderByDescending(x => x.Point).ToList();
+            standing = SortPlayersTime(standing);
+            return standing;
+        }
 
+        public static List<UserMinigameModel> SortPlayersTime(List<UserMinigameModel> standing)
+        {
             var sortPoint = new List<UserMinigameModel>();
             var sortPointZero = new List<UserMinigameModel>();
             foreach (var item in standing)
@@ -298,11 +301,10 @@
                     {
                         sortPointZero = sortPointZero.OrderBy(x => x.UpdatedDate).ToList();
                         sortPoint.AddRange(sortPointZero);
-                        sortPointZero = new List<UserMinigameModel>() { item };
+                        sortPointZero = new List<UserMinigameModel> { item };
                     }
                 }
             }
-
             return sortPoint;
         }
 
