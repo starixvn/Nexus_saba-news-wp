@@ -3,31 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { ActionCreators } from '../actions';
-import Site from '@jsroot/common/site';
 
 export class Item extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            erroredUp: false,
-            erroredLink: false
-        };
-    }
-
-    componentDidMount(){
-        this.handleAvatarShow();
-    }
-
-    handleAvatarShow(){
-        const { standing} = this.props;
-        if (this.state.erroredLink){
-            document.getElementsByClassName('linkImg' + standing.userId)[0].style.display = 'none';
-            document.getElementsByClassName(standing.userId)[0].style.display = 'block';
-        }
-        if (this.state.erroredUp){
-            document.getElementsByClassName('uploadImg' + standing.userId)[0].style.display = 'none';
-            document.getElementsByClassName(standing.userId)[0].style.display = 'block';
-        }
     }
 
     handleClick = (standingLength, number, stagesSelected) =>{
@@ -83,33 +62,12 @@ export class Item extends PureComponent {
                                 }
                                 {
                                     (this.checkUploadLink(standing)) &&
-                                    <img className={`${'linkImg' + standing.userId}`} src={standing.icon} onError={({ currentTarget }) => {
-                                        if (!this.state.erroredLink) {
-                                            currentTarget.onerror = null;
-                                            currentTarget.src = Site.resolveClientUrl('css/images/logo-dummy.png');
-                                            this.setState({
-                                                erroredLink: true
-                                            });
-                                            document.getElementsByClassName('linkImg' + standing.userId)[0].style.display = 'none';
-                                            document.getElementsByClassName(standing.userId)[0].style.display = 'block';
-                                            }
-                                        }} alt={standing.userName.slice(0,1)} />
+                                    <img src={standing.icon} alt={standing.userName.slice(0,1)} />
                                 }
                                 {
                                     this.checkUploadImg(standing) &&
-                                    <img className={`${'uploadImg' + standing.userId}`} src={'/uploads/' + standing.icon} onError={({ currentTarget }) => {
-                                        if (!this.state.erroredUp) {
-                                            currentTarget.onerror = null;
-                                            currentTarget.src = Site.resolveClientUrl('css/images/logo-dummy.png');
-                                            this.setState({
-                                                erroredUp: true
-                                            });
-                                            document.getElementsByClassName('uploadImg' + standing.userId)[0].style.display = 'none';
-                                            document.getElementsByClassName(standing.userId)[0].style.display = 'block';
-                                            }
-                                        }} alt={standing.userName.slice(0,1)} />
+                                    <img src={'/uploads/' + standing.icon} alt={standing.userName.slice(0,1)} />
                                 }
-                                <span className={`non-image ${standing.userId}`} style={{display:'none'}}>{standing.userName.slice(0,1)}</span>
                             </div>
                             <div className="user-name">
                                 {standing.userName}

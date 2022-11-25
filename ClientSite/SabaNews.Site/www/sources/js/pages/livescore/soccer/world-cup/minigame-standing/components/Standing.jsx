@@ -1,6 +1,6 @@
 import Item from './Item';
 import { getVoteResult } from '../../common.functions';
-import { WorldCup } from '@jsroot/common/constants';
+import { WorldCup, MobileMaxWidth } from '@jsroot/common/constants';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import React, { PureComponent } from 'react';
@@ -8,12 +8,22 @@ import React, { PureComponent } from 'react';
 export default class Standing extends PureComponent {
     constructor(props) {
         super(props);
+        this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+        };
     }
 
-    componentDidMount(){
-        const numberStroll =parseInt(window.rank / 10, 10) *530;
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+        const { isMobile } = this.state;
+        const numberStroll = parseInt((window.rank - 1) / 10, 10) * (isMobile? 470 : 530);
+        
         this.elementRef.scrollTo({
-            top: numberStroll,
+            top: numberStroll > 0 ? numberStroll : 0,
             behavior: 'smooth'
         });
         const tab = window.location.hash;
@@ -31,10 +41,22 @@ export default class Standing extends PureComponent {
         }
     }
 
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
+    };
+
     componentDidUpdate(){
-        const numberStroll =parseInt(window.rank / 10, 10) *530;
+        const { isMobile } = this.state;
+        const numberStroll = parseInt((window.rank - 1) / 10, 10) * (isMobile? 470 : 530);
         this.elementRef.scrollTo({
-            top: numberStroll,
+            top: numberStroll > 0 ? numberStroll : 0,
             behavior: 'smooth'
         });
     }
