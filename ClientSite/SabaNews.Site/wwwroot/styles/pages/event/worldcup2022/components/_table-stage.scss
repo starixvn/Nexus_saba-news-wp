@@ -113,6 +113,10 @@
     overflow: auto;
     border-bottom: 1px solid #833D55;
 
+    @include Mobile {
+        max-height: 47rem;
+    }
+
     &::-webkit-scrollbar {
         width: .8rem;
 
