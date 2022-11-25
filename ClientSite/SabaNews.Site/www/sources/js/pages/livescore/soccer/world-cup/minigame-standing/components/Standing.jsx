@@ -11,7 +11,7 @@ export default class Standing extends PureComponent {
     }
 
     componentDidMount(){
-        const numberStroll =parseInt(window.rank / 10, 10) *520;
+        const numberStroll =parseInt(window.rank / 10, 10) *530;
         this.elementRef.scrollTo({
             top: numberStroll,
             behavior: 'smooth'
