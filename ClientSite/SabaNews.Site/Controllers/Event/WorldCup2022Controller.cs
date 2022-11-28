@@ -254,12 +254,12 @@
         [Route("world-cup-2022/khoanh-khac")]
         public async Task<IActionResult> StoryPost()
         {
-            const int pageSize = Constants.GetEightItems;
+            const int pageSize = Constants.GetTwelveItems;
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleStoryPost,
                 Description = WorldCup2022.TitleStoryPost,
-                Slug = WorldCup2022.UrlStoryPostSlug
+                Slug = WorldCup2022.StoryPostSlug
             };
             var cateSlugCriteria = new GetPostsByCateSlugCriteria
             {
