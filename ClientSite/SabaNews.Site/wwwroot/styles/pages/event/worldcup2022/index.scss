@@ -358,6 +358,7 @@
         }
 
         .hover-image {
+            height: 45rem;
             @include tableMobile {
                 min-height: 22rem;
                 height: 22rem;

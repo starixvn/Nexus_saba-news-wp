@@ -1445,10 +1445,12 @@ body {
       @media screen and (max-width: 1024px) {
         .wc-block-all .grid-all .title-hot {
           padding: 4rem 1rem 1.2rem 1rem; } }
-    @media screen and (max-width: 1024px) {
-      .wc-block-all .grid-all .hover-image {
-        min-height: 22rem;
-        height: 22rem; } }
+    .wc-block-all .grid-all .hover-image {
+      height: 45rem; }
+      @media screen and (max-width: 1024px) {
+        .wc-block-all .grid-all .hover-image {
+          min-height: 22rem;
+          height: 22rem; } }
     .wc-block-all .grid-all .dots span {
       background: #fff; }
 
