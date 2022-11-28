@@ -39,7 +39,13 @@
             }
         }
     }
-    
+    .react-loading-skeleton{
+        --base-color: #8e5063 !important;
+
+        &::after {
+            background: #9f6074 !important;
+        }
+    }
 }
 .overflow-modal{
     overflow: unset !important;
