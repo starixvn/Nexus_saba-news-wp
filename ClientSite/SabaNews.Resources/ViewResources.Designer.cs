@@ -1537,7 +1537,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minigame WorldCup.
+        ///   Looks up a localized string similar to Minigame World Cup.
         /// </summary>
         public static string MinigameWorldCup2022 {
             get {
