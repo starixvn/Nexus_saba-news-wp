@@ -75,4 +75,7 @@
     <Function Name="Banner">
         <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="Livescore">
+        <Setting Key="Livescore_Match_GetBySeason" SpName="Livescore_Match_GetBySeason" DbName="sabasports" Plain="0" />
+    </Function>
 </Functions>

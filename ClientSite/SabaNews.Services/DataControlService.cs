@@ -1,12 +1,13 @@
 ﻿namespace SabaNews.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
@@ -14,6 +15,9 @@
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class DataControlService : IDataControlService
     {
@@ -22,6 +26,7 @@
         private readonly IPostService postService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly IBannerService bannerService;
+        private readonly IMatchService matchService;
         private readonly bool IsUsingCache;
 
         public DataControlService(IFetchDataService fetchDataService,
@@ -29,13 +34,15 @@
             ICacheWrapperService cacheWrapperService,
             IPostService postService,
             ILogServiceProvider logServiceProvider,
-            IBannerService bannerService)
+            IBannerService bannerService,
+            IMatchService matchService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheWrapperService = cacheWrapperService;
             this.postService = postService;
             this.logServiceProvider = logServiceProvider;
             this.bannerService = bannerService;
+            this.matchService = matchService;
             IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
         }
 
@@ -239,6 +246,31 @@
             }
 
             return await fetchDataService.GetWorldCupViewModel();
+        }
+
+        public async Task<(League, IList<Match>)> GetHomepageFixtureData()
+        {
+            var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            if (IsUsingCache)
+            {
+                (League league, IList<Match> matches) = await cacheWrapperService.GetAsync<(League, IList<Match>)>(CacheKey.FixtureHomePage);
+
+                if (league == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
+                    
+                    (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
+                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, (league, matches),
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
+                        });
+                }
+
+                return (league, matches);
+            }
+
+            return await matchService.GetMatchBySeasonAsync(criteria);
         }
     }
 }

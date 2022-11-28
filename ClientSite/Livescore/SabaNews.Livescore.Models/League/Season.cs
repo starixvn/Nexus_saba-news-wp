@@ -6,8 +6,8 @@
     {
         public long LeagueId { get; set; }
         public long SeasonId { get; set; }
-        public DateTime? StartTime { get; }
-        public DateTime? EndTime { get; }
-        public string Year { get; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+        public string Year { get; set; }
     }
 }

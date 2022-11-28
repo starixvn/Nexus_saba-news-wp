@@ -3,10 +3,12 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Extensions;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -597,6 +599,13 @@
 
             var groups = GroupStandingsByGroupName(standings);
             return PartialView("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", groups);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetWorldCupMatch()
+        {
+            (League league, IList<Match> matches) = await dataControlService.GetHomepageFixtureData();
+            return Json(new { league, matches });
         }
 
         public List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)

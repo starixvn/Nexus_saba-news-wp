@@ -19,5 +19,7 @@
         Task UpdateBannerCaching();
 
         Task UpdateWorldCupCaching();
+
+        Task UpdateHomepageFixtureCaching();
     }
 }

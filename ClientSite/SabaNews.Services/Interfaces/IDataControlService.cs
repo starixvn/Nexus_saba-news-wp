@@ -1,5 +1,7 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
@@ -28,5 +30,7 @@
         Task<BannerModel> GetBannerData();
 
         Task<WorldCupViewModel> GetWorldCupPageViewModel();
+
+        Task<(League, IList<Match>)> GetHomepageFixtureData();
     }
 }

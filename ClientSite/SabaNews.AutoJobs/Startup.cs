@@ -19,6 +19,8 @@
     using SabaNews.AutoJobs.Workers;
     using SabaNews.Core.Extensions;
     using SabaNews.Core.Middlewares;
+    using SabaNews.Livescore.Repositories;
+    using SabaNews.Livescore.Services;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using Sentry;
@@ -109,8 +111,9 @@
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IMatchService, MatchService>();
+            services.AddTransient<IMatchRepository, MatchRepository>();
             services.AddTransient<IBannerService, BannerService>();
-
             services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
         }
@@ -125,6 +128,7 @@
             services.AddHostedService<RefreshSitemapXmlFileWorker>();
             services.AddHostedService<RefreshBannerWorker>();
             services.AddHostedService<RefreshWorldCupCachingWorker>();
+            services.AddHostedService<RefreshFixtureHomepageWorker>();
         }
     }
 }
