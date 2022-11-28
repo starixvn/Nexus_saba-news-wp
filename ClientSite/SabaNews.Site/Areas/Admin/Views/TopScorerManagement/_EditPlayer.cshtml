@@ -31,12 +31,14 @@
                             <td>
                                 <label>@ViewResources.Team</label>
                             </td>
-                            <select class="form-control txt-teamFullNameEn" id="TeamFullNameEN">
-                                @foreach (var team in Model.Teams)
-                                {
-                                    <option @(Model.TopScorers.TeamId == team.TeamId ? "selected" : "") value="@team.TeamId">@(!string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : team.TeamNameEN)</option>
-                                }
-                            </select>
+                            <td>
+                                <select class="form-control txt-teamFullNameEn" id="TeamFullNameEN">
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        <option @(Model.TopScorers.TeamId == team.TeamId ? "selected" : "") value="@team.TeamId">@(!string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : team.TeamNameEN)</option>
+                                    }
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
