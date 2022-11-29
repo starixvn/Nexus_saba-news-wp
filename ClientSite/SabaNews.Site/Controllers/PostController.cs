@@ -79,8 +79,12 @@
             
             return View(model);
         }
-        
-        
+
+        [Route("ActiveAccount")]
+        public IActionResult ActiveAccount()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
