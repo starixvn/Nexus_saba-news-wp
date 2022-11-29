@@ -3,11 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
     using Fanex.Caching;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Options;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -81,9 +83,15 @@
         }
 
         [Route("ActiveAccount")]
-        public IActionResult ActiveAccount()
+        public async Task<IActionResult> ActiveAccount()
         {
-            return View();
+            var domain = configuration.GetValue<string>("BaseUrl");
+            string slug = "ActiveAccount";
+            var model = new SingleViewModel
+            {
+                AbsoluteUrl = $"{domain}{slug}",
+            };
+            return View(model);
         }
 
         [HttpPost]
