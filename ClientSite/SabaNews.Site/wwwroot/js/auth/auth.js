@@ -110,7 +110,7 @@
                         if (res.isSuccessful) {
                             const email = $(form).find('input[name="email"]').val();
                             const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
-                            const bodyModal = formatString(html, email);
+                            const bodyModal = formatString(html, email, window.location.origin);
                             $('#authModal').css("max-width", "63rem");
                             $('#authModal .modal-body').html(bodyModal);
                             HandleCloseModal();
@@ -174,7 +174,7 @@
                         if (res.isSuccessful) {
                             const email = $(form).find('input[name="email"]').val();
                             const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
-                            const bodyModal = formatString(html, email);
+                            const bodyModal = formatString(html, email, window.location.origin);
                             $('#authModal .modal-body').html(bodyModal);
                         } else {
                             $(form).find('.summary-eror').text(res.message);
