@@ -1,4 +1,6 @@
-﻿.export-excel {
+﻿@import '../custom-modal';
+
+.export-excel {
     border-top: 1px solid #e3e3e3;
     border-right: 1px solid #e3e3e3;
     border-left: 1px solid #e3e3e3;
@@ -10,6 +12,10 @@
     padding: 0 1rem;
 }
 
+.modal .modal-content {
+    max-width: 80rem !important;
+}
+
 .table-admin {
     margin-top: 0;
     max-width: unset !important;
@@ -19,7 +25,39 @@
     width: 130px;
 }
 
+.modal-detail-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .btn-exportexcel {
+    background-color: #63B8FF;
+    border: none;
+    color: white;
+    padding: 1px 10px;
+    margin-right: -5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 6px;
+}
+
+.btn-exportexcel:hover {
     cursor: pointer;
-    color: blue !important;
+    background-color: #4F94CD;
+    border: none;
+    color: white;
+    padding: 1px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 6px;
+}
+
+.btn-detail:hover{
+    cursor: pointer;
 }

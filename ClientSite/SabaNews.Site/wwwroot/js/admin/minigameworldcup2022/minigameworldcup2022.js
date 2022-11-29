@@ -11,6 +11,11 @@
                 $('.data-grid').html(res);
                 initPaging();
                 initSortEvent();
+                $('.btn-detail').on('click', function () {
+                    $('#DetailPlayerContent .title').html('Detail Player');
+                    $('#DetailPlayerContent .modal-body').html('oke');
+                    $('#DetailPlayerContent').modal('show');
+                });
             }
         });
     }
