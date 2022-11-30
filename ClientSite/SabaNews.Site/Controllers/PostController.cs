@@ -82,8 +82,8 @@
             return View(model);
         }
 
-        [Route("ActiveAccount")]
-        public async Task<IActionResult> ActiveAccount()
+        [Route("kich-hoat-tai-khoan-saba-sports")]
+        public IActionResult ActiveAccount()
         {
             return View();
         }

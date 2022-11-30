@@ -1,5 +1,5 @@
 ﻿@section Title{
-    ActiveAccount
+    Kích hoạt tài khoản SABA Sports Vietnam
 }
 
     @section Styles{
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = "bong-da" })
     </div>
     @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>
