@@ -81,7 +81,10 @@ export class Stages extends PureComponent {
 
 
     render() {
-        const { groupStages } = this.props;
+        const { groupStages, votes } = this.props;
+        if(votes === null) {
+            return null;
+        }
         const { selectedStageId, isMobile } = this.state;
         const stages = groupStages;
         const currentStage = this.getMatchWithStage();

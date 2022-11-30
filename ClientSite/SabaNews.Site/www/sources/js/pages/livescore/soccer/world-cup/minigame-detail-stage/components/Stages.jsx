@@ -80,7 +80,7 @@ export class Stages extends PureComponent {
 
     render() {
         const { votes, groupStages } = this.props;
-        if(votes == null) {
+        if(votes === null) {
             return null;
         }
         const { selectedStageId, isMobile } = this.state;
