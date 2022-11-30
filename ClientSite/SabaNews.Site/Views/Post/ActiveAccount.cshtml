@@ -1,81 +1,17 @@
-﻿@section Scripts{
-    <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
-    
-}
-@section Styles{
-    <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
-
+﻿@section Title{
+    ActiveAccount
 }
 
-@(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
+    @section Styles{
+    <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
+}
+
+    @(await Component.InvokeAsync("Menu"))
 <section class="main">
-    <div class="container detail-container">
-        <div class="main-social fixed-social">
-            <div class="button-detail-page">
-                <span class="line-mb"></span>
-                <span class="line-mb"></span>
-                <span class="line-mb"></span>
-            </div>
-            <ul class="social">
-                <li class="item-social icon-mobile">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
-                       data-count="facebook" target="_blank"
-                       rel="nofollow"
-                       class="item intent facebook"
-                       title="@ViewResources.ShareFacebook">
-                        <i class="icon-social icon-detail_facebook"></i>
-                    </a>
-                </li>
-                <li class="item-social icon-mobile">
-                    <a href="javascript:;"
-                       rel="nofollow"
-                       class="item intent copy-clipboard"
-                       title="@ViewResources.CopyLink">
-                        <i class="icon-social icon-link"></i>
-                    </a>
-                    <span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
-                </li>
-            </ul>
-        </div>       
+    <div class="container">
+        <div class="block block-main">
+        </div>
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
     </div>
     @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>
-<div class="auth-form">
-    <div class="modal" id="announcement">
-        <div class="modal-content modal-auth">
-            <div class="modal-warning">
-                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="tab-content" id="nav-tabContent">
-                    <h3 class="heading-warning">@ViewResources.Message</h3>
-                    <hr />
-                    <h3 class="content">@ViewResources.MessageRequestLogin</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    var checkScroll = function () {
-        var el = document.querySelector('#comment');
-        var main = document.querySelector('.fixed-social');
-        var hambuger = document.querySelector('.button-mobile');
-        if (el !== null) {
-            var top_of_obj = el.offsetTop - 600;
-            var top_of_window = window.scrollY;
-            if (top_of_window > top_of_obj) {
-                main.classList.add('active-nav-socical');
-                hambuger.classList.add('active-nav-socical');
-            } else {
-                main.classList.remove('active-nav-socical');
-                hambuger.classList.remove('active-nav-socical');
-            }
-        }
-    }
-    if (window.innerWidth > 1024) {
-        window.addEventListener('scroll', function () { checkScroll() })
-    }
-</script>

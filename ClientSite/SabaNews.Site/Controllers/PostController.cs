@@ -85,13 +85,7 @@
         [Route("ActiveAccount")]
         public async Task<IActionResult> ActiveAccount()
         {
-            var domain = configuration.GetValue<string>("BaseUrl");
-            string slug = "ActiveAccount";
-            var model = new SingleViewModel
-            {
-                AbsoluteUrl = $"{domain}{slug}",
-            };
-            return View(model);
+            return View();
         }
 
         [HttpPost]
