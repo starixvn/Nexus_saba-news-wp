@@ -436,7 +436,6 @@ body, .overflow-modal {
         }
     }
 }
-
 .main-stage {
     margin-top: 4rem;
     position: relative;
@@ -465,18 +464,16 @@ body, .overflow-modal {
             .stage-round {
                 transition: filter .3s ease-in-out;
 
+                &:hover {
+                    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.35));
+                }
+
                 h2 {
                     background: #E8E8D6;
                     color: #82152C;
                     transition: background .3s ease-in-out;
-                }
-            }
 
-            &:hover {
-                .stage-round {
-                    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.35));
-
-                    h2 {
+                    &:hover {
                         background: #F8F8F1;
                     }
                 }
@@ -490,12 +487,16 @@ body, .overflow-modal {
             text-decoration: none;
             background: rgba($color: #EEEEE4, $alpha: .2);
             border-radius: 5px;
-            width: 2.4rem;
-            height: 2.4rem;
+            width: 3.2rem;
+            height: 3.2rem;
             margin: 0 auto;
 
             i {
-                font-size: 1.5rem;
+                font-size: 2rem;
+
+                &:before {
+                    color: #EEEEE4;
+                }
             }
         }
 
@@ -519,7 +520,7 @@ body, .overflow-modal {
                 text-align: center;
                 padding: .7rem 0;
                 max-width: 23rem;
-                margin: 2rem auto;
+                margin: 1.6rem auto;
                 clip-path: polygon(96% 0, 100% 49%, 96% 100%, 4% 100%, 0 49%, 4% 0);
                 text-transform: uppercase;
             }
@@ -533,9 +534,10 @@ body, .overflow-modal {
 
             li {
                 color: #E8E8D6;
-                font-size: 1.4rem;
-                line-height: 2.8rem;
+                font-size: 1.6rem;
+                line-height: 2.2rem;
                 display: flex;
+                justify-content: center;
 
                 &.font-weight-bold {
                     font-weight: 700;
@@ -545,10 +547,6 @@ body, .overflow-modal {
     }
 }
 
-
-/*.minigame-standing {
-    background: linear-gradient(119.36deg, #901831 0%, #310818 100%);
-}*/
 
 .wave-standing-main {
     background: linear-gradient(119.36deg, #901831 0%, #310818 100%);
