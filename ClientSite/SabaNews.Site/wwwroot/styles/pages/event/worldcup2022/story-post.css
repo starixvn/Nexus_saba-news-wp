@@ -379,7 +379,7 @@ body {
   width: 5.6rem;
   left: 2rem;
   top: 13.7rem;
-  z-index: 99999; }
+  z-index: 9999; }
   @media screen and (max-width: 1024px) {
     .header-nav-event {
       transform: inherit;
