@@ -69,7 +69,8 @@
         public const string OnEndStage = "Đã kết thúc";
 
         public const string IconLock = "icon-icon_lock";
-        public const string IconSearch = "icon-icon_search";
+        public const string IconWinner = "icon-minigame_list_user";
+        public const string IconStanding = "icon-minigame_standing";
 
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;

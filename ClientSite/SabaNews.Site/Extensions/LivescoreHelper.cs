@@ -351,7 +351,11 @@
             }
             else if(status == WorldCup2022.OnEndStage)
             {
-                iconStage = WorldCup2022.IconSearch;
+                iconStage = WorldCup2022.IconWinner;
+            }
+            else if (status == WorldCup2022.OnStartedStage)
+            {
+                iconStage = WorldCup2022.IconStanding;
             }
             else
             {

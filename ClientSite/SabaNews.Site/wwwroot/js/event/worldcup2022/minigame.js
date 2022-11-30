@@ -51,6 +51,18 @@
             }
         });
 
+        $('.icon-minigame_list_user').click(function () {
+            $('html, body').animate({
+                scrollTop: $("#minigame-winners").offset().top
+            }, 500);
+        });
+
+        $('.icon-minigame_standing').click(function () {
+            $('html, body').animate({
+                scrollTop: 1400
+            }, 500);
+        });
+
         $('.click-number-event').click(function () {
             if (!isLogin) {
                 $('#joining').modal('show');
