@@ -145,12 +145,15 @@ export class Item extends PureComponent {
                                         </div>
                                     </EqualHeightElement>
                                 </div>
-                                <div className={`minigame-team ${voteStatus === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)} >
-                                    <div className="group-bg-logo"><i className="icon-minigame_draw" /></div>
-                                    <EqualHeightElement name="Name">
-                                        <div className="team-name"> Hòa </div>
-                                    </EqualHeightElement>
-                                </div>
+                                {
+                                    this.stage !== 4 &&
+                                    <div className={`minigame-team ${voteStatus === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)} >
+                                        <div className="group-bg-logo"><i className="icon-minigame_draw" /></div>
+                                        <EqualHeightElement name="Name">
+                                            <div className="team-name"> Hòa </div>
+                                        </EqualHeightElement>
+                                    </div>
+                                }
 
                                 <div className={`minigame-team away-team ${voteStatus === 2 ? 'active' : ''}`} onClick={() => this.handleVote(match.awayTeam.teamId)}>
                                     <div className="group-bg-logo">

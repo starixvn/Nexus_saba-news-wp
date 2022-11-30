@@ -123,13 +123,15 @@ export class Item extends PureComponent {
                                     <div className="statistic-team-name">{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                 </EqualHeightElement>
                             </div>
-
-                            <div className={`statistic-team statistic-draw ${vote === 0 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(0)}>
-                                <i className="icon-minigame_draw" />
-                                <EqualHeightElement name="Name">
-                                    <div className="statistic-team-name">Hòa</div>
-                                </EqualHeightElement>
-                            </div>
+                            {
+                                this.stage !== 4 &&
+                                <div className={`statistic-team statistic-draw ${vote === 0 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(0)}>
+                                    <i className="icon-minigame_draw" />
+                                    <EqualHeightElement name="Name">
+                                        <div className="statistic-team-name">Hòa</div>
+                                    </EqualHeightElement>
+                                </div>
+                            }
                             <div className={`statistic-team statistic-team-away ${vote === 2 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(match.awayTeam.teamId)}>
                                 <TeamIcon className="statistic-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                 <EqualHeightElement name="Name">
