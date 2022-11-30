@@ -1172,6 +1172,8 @@ body, .overflow-modal {
           transition: background .3s ease-in-out; }
           .main-stage .stage-items.stage-votes .stage-round h2:hover {
             background: #F8F8F1; }
+    .main-stage .stage-items.end-stage .icon-stage {
+      cursor: pointer; }
     .main-stage .stage-items .icon-stage {
       display: flex;
       align-items: center;

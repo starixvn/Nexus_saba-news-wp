@@ -480,6 +480,12 @@ body, .overflow-modal {
             }
         }
 
+        &.end-stage{
+            .icon-stage {
+                cursor : pointer;
+            }
+        }
+
         .icon-stage {
             display: flex;
             align-items: center;
