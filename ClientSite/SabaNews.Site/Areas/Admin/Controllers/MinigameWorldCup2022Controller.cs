@@ -101,6 +101,11 @@
             return PartialView("_CountUserGrid", tmpUsers);
         }
 
+        public IActionResult GetDetailUser(byte stageDetail, long userId)
+        {
+            return Ok();
+        }
+
         public async Task<ActionResult> ExportExcel(byte stage)
         {
             var criteria = new GetMinigameUsersByStageCriteria

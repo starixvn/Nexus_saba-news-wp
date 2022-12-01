@@ -12,9 +12,20 @@
                 initPaging();
                 initSortEvent();
                 $('.btn-detail').on('click', function () {
-                    $('#DetailPlayerContent .title').html('Detail Player');
-                    $('#DetailPlayerContent .modal-body').html('oke');
-                    $('#DetailPlayerContent').modal('show');
+                    var stageDetail = $('.stage-select').find(':selected').data('stage');
+                    var userID = $(this).data('userid');
+
+                    $.ajax({
+                        url: "/Admin/MinigameWorldCup2022/GetDetailUser",
+                        type: 'POST',
+                        data: { stageDetail, userID },
+                        success: function (res) {
+                        }
+                    });
+
+                    //$('#DetailPlayerContent .title').html('Detail Player');
+                    //$('#DetailPlayerContent .modal-body').html('oke');
+                    //$('#DetailPlayerContent').modal('show');
                 });
             }
         });
