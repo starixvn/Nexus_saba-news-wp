@@ -21,7 +21,11 @@
     List<int> indexMatches = new() { 15, 31, 47, 63 };
     var countStageActive = GetCountStageActiveMinigame(Model.Matches);
     var countStageEnd = GetCountStageEndMinigame(Model.Matches);
-
+    List<string> startStages = new() {
+                WorldCup2022.TimestampMinigameStage01Start,
+                WorldCup2022.TimestampMinigameStage02Start,
+                WorldCup2022.TimestampMinigameStage03Start,
+                WorldCup2022.TimestampMinigameStage04Start };
 }
 
 @section Styles{
@@ -177,9 +181,14 @@
                                             }
                                         </li>
                                     }
-                                    @if (Model.IsLogin)
+                                    @if (Model.IsLogin && status != WorldCup2022.LockStage)
                                     {
                                         <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
+                                    }
+                                    @if (status == WorldCup2022.LockStage)
+                                    {
+                                        <li class="font-weight-bold">Thời gian bắt đầu</li>
+                                        <li class="font-weight-bold">@startStages[i]</li>
                                     }
                                 </ul>
                                 <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
