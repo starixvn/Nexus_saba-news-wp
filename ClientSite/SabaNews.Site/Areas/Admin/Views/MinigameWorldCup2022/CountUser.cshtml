@@ -1,6 +1,7 @@
 ﻿@using SabaNews.Resources
 @{
     Layout = "_AdminLayout";
+    var current = DateTime.UtcNow.AddHours(7);
 }
 
 @section TopHeader{
@@ -22,27 +23,17 @@
     <section class="page-content">
         <div class="form-filter" style="margin-bottom: 2rem">
             <form class="form-horizontal">
-                <div class="form-input">
-                    <p class="label-admin">@ViewResources.Stage</p>
-                    <select class="custom-input list-input stage-select">
-                    @for (int i = 1; i <= 4; i++)
-                    {
-                        <option value="@i" data-stage="@i">Giai Đoạn @i</option>
-                    }
-                </select>
-            </div>
 
             <div class="form-input">
                 <p class="label-admin">@ViewResources.To</p>
-                <input class="custom-input" type="date" id="dateSearch" name="dateSearch" />
+                <input class="custom-input" type="date" id="dateSearch" name="dateSearch" value="@current.ToString("yyyy-MM-dd")" />
             </div>
 
             <button type="button" class="btn-custom-admin search_user">Submit</button>
         </form>
     </div>
 
-    <div class="content">
-        <div class="export-excel"><a class="label label-blue btn-exportexcel">Export excel</a></div>
+     <div class="content">
         <div class="data-grid" id="data-grid"></div>
     </div>
 

@@ -1,12 +1,12 @@
 ﻿var countUser = (function ($) {
     var page = 1;
     var pageSize = 10;
-    function GetDataGrid(dateSearch) {
-        var stage = $('.stage-select').find(':selected').data('stage');
+    function GetDataGrid() {
+        var dateSearch = $('#dateSearch').val();
         $.ajax({
             url: "/Admin/MinigameWorldCup2022/GetCountUserGrid",
             type: 'POST',
-            data: { stage, page, pageSize, dateSearch },
+            data: { page, pageSize, dateSearch },
             success: function (res) {
                 $('.data-grid').html(res);
             }
@@ -44,13 +44,9 @@
 
     function initFilterBtn() {
         $('.search_user').on('click', function () {
-            var date = $('#dateSearch').val();
-            GetDataGrid(date);
+            GetDataGrid();
         });
-        $('.btn-exportexcel').on('click', function () {
-            var stage = $('.stage-select').find(':selected').data('stage');
-            window.location.href = window.location.origin + "/Admin/MinigameWorldCup2022/ExportExcel?stage=" + stage;
-        });
+       
     }
 
     function init() {

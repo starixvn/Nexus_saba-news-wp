@@ -83,10 +83,22 @@
                 WorldCup2022.TimestampMinigameStage04Start };
             var search = DateTime.Parse(dateSearch);
             var miniGames = await worldcupService.GetMinigameAllUsersAsync();
+            var users = new List<UserMinigameModel>();
+            
+                users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date
+                                            || item.UpdatedDate.AddHours(7).Date == search.Date).ToList();
+            
+            var tmpUsers = new List<UserMinigameModel>();
+            foreach (var user in users)
+            {
+                var isExists = tmpUsers.Find(value => value.UserId == user.UserId);
+                if (isExists == null)
+                {
+                    tmpUsers.Add(user);
+                }
+            }
 
-            var users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date).ToList();
-
-            return PartialView("_CountUserGrid", users);
+            return PartialView("_CountUserGrid", tmpUsers);
         }
 
         public async Task<ActionResult> ExportExcel(byte stage)
