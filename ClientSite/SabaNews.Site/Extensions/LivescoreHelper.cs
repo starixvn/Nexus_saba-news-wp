@@ -345,7 +345,7 @@
         public static string GetIconStage(string status)
         {
             string iconStage;
-            if(status == WorldCup2022.LockStage)
+            if(status == WorldCup2022.LockStage || status == WorldCup2022.BeforeStartedStage)
             {
                 iconStage = WorldCup2022.IconLock;
             }
