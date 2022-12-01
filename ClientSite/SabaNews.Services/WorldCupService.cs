@@ -51,6 +51,12 @@
             return result.ToList();
         }
 
+        public async Task<IList<UserMinigameModel>> GetMinigameAllUsersAsync()
+        {
+            var result = await baseService.GetDataAsync<UserMinigameModel>(new GetMinigameListUserCriteria());
+            return result.ToList();
+        }
+
         public async Task<IList<Match>> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria)
         {
             (var leagues, var season, var floatMatches) = await baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(criteria);

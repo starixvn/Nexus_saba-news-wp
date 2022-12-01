@@ -10,6 +10,7 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
@@ -17,6 +18,7 @@
     using System;
     using System.Collections.Generic;
     using System.Drawing.Printing;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -35,6 +37,11 @@
             this.worldcupService = worldcupService;
         }
         public IActionResult MinigameWorldCup2022()
+        {
+            return View();
+        }
+
+        public IActionResult CountUser()
         {
             return View();
         }
@@ -65,6 +72,21 @@
                 }
             };
             return PartialView("_MinigameWorldCup2022DataGrid", viewModel);
+        }
+
+        public async Task<ActionResult> GetCountUserGrid(string dateSearch)
+        {
+            List<string> startStages = new() {
+                WorldCup2022.TimestampMinigameStage01Start,
+                WorldCup2022.TimestampMinigameStage02Start,
+                WorldCup2022.TimestampMinigameStage03Start,
+                WorldCup2022.TimestampMinigameStage04Start };
+            var search = DateTime.Parse(dateSearch);
+            var miniGames = await worldcupService.GetMinigameAllUsersAsync();
+
+            var users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date).ToList();
+
+            return PartialView("_CountUserGrid", users);
         }
 
         public async Task<ActionResult> ExportExcel(byte stage)

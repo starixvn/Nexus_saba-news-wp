@@ -21,5 +21,7 @@
         Task<IList<UserMinigameModel>> GetMinigameUsersAsync(GetMinigameUsersByStageCriteria criteria);
         Task<IList<Match>> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria);
 
+        Task<IList<UserMinigameModel>> GetMinigameAllUsersAsync();
+
     }
 }
