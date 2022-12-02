@@ -5,7 +5,7 @@
 }
 
 @section TopHeader{
-    @ViewResources.MinigameWorldCup2022
+    @ViewResources.CountUserInteractions
 }
 
     @section Title{
@@ -25,11 +25,14 @@
             <form class="form-horizontal">
 
             <div class="form-input">
-                <p class="label-admin">@ViewResources.To</p>
-                <input class="custom-input" type="date" id="dateSearch" name="dateSearch" value="@current.ToString("yyyy-MM-dd")" />
+                <p class="back-parent-page">
+                        <a href="/Admin/MinigameWorldCup2022/MinigameWorldCup2022">
+                        <i class="icon-arrow-left"></i>
+                        <span>Back Minigame WorldCup</span>
+                    </a>
+                </p>
+                <input class="custom-input" type="date" min='2022-11-20' max='2022-12-18' id="dateSearch" name="dateSearch" value="@current.ToString("yyyy-MM-dd")" />
             </div>
-
-            <button type="button" class="btn-custom-admin search_user">Submit</button>
         </form>
     </div>
 

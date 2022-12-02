@@ -637,6 +637,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Count User Interactions.
+        /// </summary>
+        public static string CountUserInteractions {
+            get {
+                return ResourceManager.GetString("CountUserInteractions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created By.
         /// </summary>
         public static string CreatedBy {

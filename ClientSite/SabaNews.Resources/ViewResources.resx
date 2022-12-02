@@ -1077,4 +1077,7 @@
   <data name="FTScore" xml:space="preserve">
     <value>FT Score</value>
   </data>
+  <data name="CountUserInteractions" xml:space="preserve">
+    <value>Count User Interactions</value>
+  </data>
 </root>

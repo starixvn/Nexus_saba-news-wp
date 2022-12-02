@@ -4,6 +4,7 @@
     using Fanex.Caching;
     using NSubstitute;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Services;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
@@ -22,6 +23,7 @@
         private IPostService postService;
         private ILogServiceProvider logService;
         private IBannerService bannerService;
+        private IMatchService matchService;
         private IFixture fixture = new Fixture();
 
         [Fact]
@@ -359,7 +361,8 @@
             postService = Substitute.For<IPostService>();
             logService = Substitute.For<ILogServiceProvider>();
             bannerService = Substitute.For<IBannerService>();
-            var service = new RefreshCachingService(fetchDataService, cacheWrapperService, postService, logService, bannerService);
+            matchService = Substitute.For<IMatchService>();
+            var service = new RefreshCachingService(fetchDataService, cacheWrapperService, postService, logService, bannerService, matchService);
 
             return service;
         }

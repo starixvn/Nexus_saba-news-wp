@@ -53,6 +53,9 @@
             var stage = $('.stage-select').find(':selected').data('stage');
             window.location.href = window.location.origin + "/Admin/MinigameWorldCup2022/ExportExcel?stage=" + stage;
         });
+        $('.search_user').on('click', function () {
+            window.location.href = window.location.origin + "/Admin/MinigameWorldCup2022/CountUser";
+        });
     }
 
     function init() {

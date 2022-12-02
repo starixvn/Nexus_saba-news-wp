@@ -43,7 +43,7 @@
     }
 
     function initFilterBtn() {
-        $('.search_user').on('click', function () {
+        $('#dateSearch').on('change', function () {
             GetDataGrid();
         });
        

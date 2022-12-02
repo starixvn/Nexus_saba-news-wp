@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using SabaNews.Core.Constants;
 using SabaNews.Core.Services;
+using SabaNews.Livescore.Services;
 using SabaNews.Models;
 using SabaNews.Models.Banner;
 using SabaNews.Models.Posts;
@@ -29,6 +30,7 @@ namespace SabaNews.Services.UnitTests
         private ILogServiceProvider logServiceProvider;
         private IConfiguration configuration;
         private IBannerService bannerService;
+        private IMatchService matchService;
         private readonly IFixture fixture = new Fixture();
 
 
@@ -497,8 +499,9 @@ namespace SabaNews.Services.UnitTests
             postService = Substitute.For<IPostService>();
             logServiceProvider = Substitute.For<ILogServiceProvider>();
             bannerService = Substitute.For<IBannerService>();
+            matchService = Substitute.For<IMatchService>();
 
-            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService);
+            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService, matchService);
 
             return service;
         }

@@ -11,7 +11,6 @@
                 <th>#</th>
                 <th>@ViewResources.Username</th>
                 <th>@ViewResources.Email</th>
-                <th>@ViewResources.JoinedDate</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +22,6 @@
                         <td class="text-center" width="5%">@count</td>
                         <td class="text-left" width="33%">@user.UserName</td>
                         <td class="text-left" width="33%">@user.Email</td>
-                        <td class="text-center" width="19%">@DateTimeUtilize.ChangeTimeZoneToClient(user.CreatedDate)</td>
                     </tr>
                 }
             }
