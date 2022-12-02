@@ -84,9 +84,7 @@
                 WorldCup2022.TimestampMinigameStage04Start };
             var search = DateTime.Parse(dateSearch);
             var miniGames = await worldcupService.GetMinigameAllUsersAsync();
-            var users = new List<UserMinigameModel>();
-            
-                users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date
+            var users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date
                                             || item.UpdatedDate.AddHours(7).Date == search.Date).ToList();
             
             var tmpUsers = new List<UserMinigameModel>();
@@ -113,12 +111,32 @@
             {
                 stage = param.StageDetail
             };
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
             var votes = await worldcupService.GetMinigameByUserStageAsync(criteriaVotesUser);
+            foreach (var vote in votes)
+            {
+                var matchVote = LivescoreHelper.GetMatch(matches, vote);
+                var (status, score) = LivescoreHelper.GetVoteResult(matchVote, vote);
+                vote.Point = score;
+            }
             var miniGames = await worldcupService.GetMinigameUsersAsync(criteriaVoteMinigame);
             miniGames = miniGames.Where(x => x.UserId == param.UserId).ToList();
-            ViewBag.UserName = miniGames[0].UserName;
-            ViewBag.Email = miniGames[0].Email;
-            return Ok();
+            var viewModel = new ManagementDetailMinigameViewModel
+            {
+                Email = miniGames[0].Email,
+                Username = miniGames[0].UserName,
+                Rank = param.Rank,
+                Totalpoint = param.Totalpoint,
+                Votes = votes,
+                StageDetail = param.StageDetail,
+                Matches = matches
+            };
+            return PartialView("_DetailPlayerVotes", viewModel);
         }
 
         public async Task<ActionResult> ExportExcel(byte stage)

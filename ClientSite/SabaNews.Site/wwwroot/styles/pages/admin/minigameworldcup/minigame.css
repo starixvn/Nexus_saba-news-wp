@@ -106,15 +106,19 @@
   justify-content: flex-end;
   background: #ededed;
   padding: 0 1rem;
+  width: 105.8rem;
 }
 
 .modal .modal-content {
-  max-width: 80rem !important;
+  max-width: 96rem !important;
+}
+
+.modal-open .modal {
+  overflow: unset;
 }
 
 .table-admin {
   margin-top: 0;
-  max-width: unset !important;
 }
 
 .stage-select {
@@ -123,7 +127,7 @@
 
 .modal-detail-center {
   position: absolute;
-  top: 50%;
+  top: 32%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

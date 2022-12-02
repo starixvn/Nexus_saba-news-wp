@@ -1,8 +1,9 @@
-﻿using SabaNews.Models.Event.WorldCup;
-using System.Collections.Generic;
-
-namespace SabaNews.Models.ViewModel.User
+﻿namespace SabaNews.Models.ViewModel.User
 {
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Models.Event.WorldCup;
+    using System.Collections.Generic;
+
     public class ManagementDetailMinigameViewModel
     {
         public byte StageDetail { get; set; }
@@ -12,5 +13,6 @@ namespace SabaNews.Models.ViewModel.User
         public string Username { get; set; }
         public string Email { get; set; }
         public IList<UserMinigameModel> Votes { get; set; }
+        public IList<Match> Matches { get; set; }
     }
 }

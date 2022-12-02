@@ -22,12 +22,11 @@
                         type: 'POST',
                         data: { stageDetail, userID, totalpoint, rank },
                         success: function (res) {
+                            $('#DetailPlayerContent .title').html('Detail Player');
+                            $('#DetailPlayerContent .modal-body').html(res);
+                            $('#DetailPlayerContent').modal('show');
                         }
                     });
-
-                    //$('#DetailPlayerContent .title').html('Detail Player');
-                    //$('#DetailPlayerContent .modal-body').html('oke');
-                    //$('#DetailPlayerContent').modal('show');
                 });
             }
         });
