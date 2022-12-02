@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
+    using DeviceDetectorNET.Class.Device;
     using LiteDB;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
@@ -101,8 +102,22 @@
             return PartialView("_CountUserGrid", tmpUsers);
         }
 
-        public IActionResult GetDetailUser(byte stageDetail, long userId)
+        public async Task<ActionResult> GetDetailUser(ManagementDetailMinigameViewModel param)
         {
+            var criteriaVotesUser = new GetMinigameByUserStageCriteria
+            {
+                Stage = param.StageDetail,
+                UserId = param.UserId
+            };
+            var criteriaVoteMinigame = new GetMinigameUsersByStageCriteria
+            {
+                stage = param.StageDetail
+            };
+            var votes = await worldcupService.GetMinigameByUserStageAsync(criteriaVotesUser);
+            var miniGames = await worldcupService.GetMinigameUsersAsync(criteriaVoteMinigame);
+            miniGames = miniGames.Where(x => x.UserId == param.UserId).ToList();
+            ViewBag.UserName = miniGames[0].UserName;
+            ViewBag.Email = miniGames[0].Email;
             return Ok();
         }
 

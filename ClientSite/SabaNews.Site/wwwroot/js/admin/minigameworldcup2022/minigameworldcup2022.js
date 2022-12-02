@@ -14,11 +14,13 @@
                 $('.btn-detail').on('click', function () {
                     var stageDetail = $('.stage-select').find(':selected').data('stage');
                     var userID = $(this).data('userid');
+                    var totalpoint = $(this).data('totalpoint');
+                    var rank = $(this).data('rank');
 
                     $.ajax({
                         url: "/Admin/MinigameWorldCup2022/GetDetailUser",
                         type: 'POST',
-                        data: { stageDetail, userID },
+                        data: { stageDetail, userID, totalpoint, rank },
                         success: function (res) {
                         }
                     });
