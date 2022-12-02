@@ -6,6 +6,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetIncident`(
     /*
 		Creator: Hank@20220419
         Revisions: - 20220419@Hank: init
+					- 20221202@Hank: remove sort by time
     */
 )
 BEGIN
@@ -13,8 +14,7 @@ BEGIN
 	, mi.AssistId, mi.AssistName, mi.InPlayerId,  mi.InPlayerName AS InPlayerName, mi.OutPlayerId ,mi.OutPlayerName AS OutPlayerName
 	, mi.VarReason, mi.VarResult, mi.ReasonType
     FROM livescore_match_incident mi
-    WHERE mi.MatchId =  matchId
-    ORDER BY mi.second;
+    WHERE mi.MatchId =  matchId;
 END
 //
 DELIMITER ;	

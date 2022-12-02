@@ -32,6 +32,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_Incident_Sync`(
                         }]
         Revisions: - 20220328@Oliver: init
 		Revisions: - 20220915@Hank: fix duplicate player name
+					- 20221202@Hank: remove sort by time
     */
 )
 BEGIN
@@ -177,8 +178,7 @@ BEGIN
             ti.VarReason,
             ti.VarResult,
             ti.ReasonType
-    FROM tmp_incident ti
-    ORDER BY ti.Time;
+    FROM tmp_incident ti;
         
 END
 
