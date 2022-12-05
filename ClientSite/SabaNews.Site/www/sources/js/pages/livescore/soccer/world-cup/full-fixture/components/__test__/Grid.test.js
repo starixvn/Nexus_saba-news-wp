@@ -206,7 +206,7 @@ describe('Grid', () => {
             const result = instance.initStageId();
 
             // Assert
-            expect(result).toEqual(2)
+            expect(result).toEqual(1)
         });
 
         it('init state correctly when league have current stage', () => {

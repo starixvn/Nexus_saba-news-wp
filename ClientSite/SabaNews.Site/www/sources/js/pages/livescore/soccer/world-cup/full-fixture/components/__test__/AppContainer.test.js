@@ -69,10 +69,10 @@ describe('AppContainer', () => {
         it('return as expected', () => {
             // Arrange
             const matches = [
-                { matchId: 1, stage: { stageId: 1 } },
-                { matchId: 2, stage: { stageId: 1 } },
-                { matchId: 3, stage: { stageId: 2 } },
-                { matchId: 4, stage: { stageId: 2 } },
+                { matchId: 1, status: 0, stage: { stageId: 1 } },
+                { matchId: 2, status: 0, stage: { stageId: 1 } },
+                { matchId: 3, status: 0, stage: { stageId: 2 } },
+                { matchId: 4, status: 50, stage: { stageId: 2 } },
             ];
             const groupDate = [
                 {
@@ -88,10 +88,10 @@ describe('AppContainer', () => {
 
             // Assert
             expect(result).toEqual([
-                {"key": 1, "stage": {"stageId": 1}, "childs": [
+                {"key": 1, "isFinished": false, "stage": {"stageId": 1}, "childs": [
                     {"key": "2022-05-25", "text": "Thứ tư, 25/05/2022"}
                 ]},
-                {"key": 2, "stage": {"stageId": 2}, "childs": [{"key": "2022-05-25", "text": "Thứ tư, 25/05/2022"}
+                {"key": 2, "isFinished": true, "stage": {"stageId": 2}, "childs": [{"key": "2022-05-25", "text": "Thứ tư, 25/05/2022"}
                 ]}
             ]);
         });

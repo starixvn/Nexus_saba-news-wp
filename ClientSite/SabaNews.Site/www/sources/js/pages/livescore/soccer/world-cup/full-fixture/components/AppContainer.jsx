@@ -86,7 +86,12 @@ export class AppContainer extends Component {
         const result = [];
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
-            result.push({...item, childs: this.groupMatchesByDate(item.matches)});
+            result.push({
+                key: item.key,
+                stage: item.stage,
+                isFinished: item.isFinished,
+                childs: this.groupMatchesByDate(item.matches)
+            });
         }
         return result;
     };

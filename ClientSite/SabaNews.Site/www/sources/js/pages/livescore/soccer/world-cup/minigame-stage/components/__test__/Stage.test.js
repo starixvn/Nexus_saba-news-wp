@@ -12,7 +12,7 @@ describe('Stages', () => {
         ],
         league: {teamId: 1, matchId: 1, season: { endTime: '2022-09-18 02:00:00' }, currentStageId: 1 },
         votes: [],
-        groupStages: [{key: 1, stage: 1, matches: [{matchId: 1}]}, {key: 2, stage: 2, matches: [{matchId: 2}]}],
+        groupStages: [{key: 1, stage: 1, matches: [{matchId: 1, status: 0}]}, {key: 2, stage: 2, matches: [{matchId: 2, status:50}]}],
         matches: [{matchId: 1}, {matchId:2}]
     };
 
@@ -239,6 +239,22 @@ describe('Stages', () => {
     });
 
     describe('renders', () => {
+        it('return null when votes = null', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                groupStages: [{stage: 1, matches: [{matchId: 1}]}],
+                votes: null
+            }
+            const container = shallow(<Stages {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toEqual(null);
+        });
         it('render correctly when there is only one group stage', () => {
             // Arrange
             const props = {
