@@ -134,7 +134,12 @@
                 Totalpoint = param.Totalpoint,
                 Votes = votes,
                 StageDetail = param.StageDetail,
-                Matches = matches
+                Matches = matches,
+                MatchesRoundEightTeam = matches.Where(x => x.Stage.StageId == 30538).ToList(),
+                MatchesRoundQuarterfinals = matches.Where(x => x.Stage.StageId == 30539).ToList(),
+                MatchesRoundSemifinal = matches.Where(x => x.Stage.StageId == 30540).ToList(),
+                MatchesRoundThirdPlace = matches.Where(x => x.Stage.StageId == 30541).ToList(),
+                MatchesRoundFinal = matches.Where(x => x.Stage.StageId == 30542).ToList()
             };
             return PartialView("_DetailPlayerVotes", viewModel);
         }

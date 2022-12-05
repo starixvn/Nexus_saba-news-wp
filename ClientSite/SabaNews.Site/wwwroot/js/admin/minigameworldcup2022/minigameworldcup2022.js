@@ -25,6 +25,77 @@
                             $('#DetailPlayerContent .title').html('Detail Player');
                             $('#DetailPlayerContent .modal-body').html(res);
                             $('#DetailPlayerContent').modal('show');
+
+                            $("#btn-round-eight-team").on("click", function () {
+                                document.getElementById('table-round-eight-team').style.display = "block";
+                                document.getElementById('table-round-quarterfinals').style.display = "none";
+                                document.getElementById('table-round-semifinal').style.display = "none";
+                                document.getElementById('table-round-third-place').style.display = "none";
+                                document.getElementById('table-round-final').style.display = "none";
+
+                                $('#btn-round-eight-team').addClass("active");
+                                $('#btn-round-quarterfinals').removeClass("active");
+                                $('#btn-round-semifinal').removeClass("active");
+                                $('#btn-round-third-place').removeClass("active");
+                                $('#btn-round-final').removeClass("active");
+
+                            });
+
+                            $("#btn-round-quarterfinals").on("click", function () {
+                                document.getElementById('table-round-eight-team').style.display = "none";
+                                document.getElementById('table-round-quarterfinals').style.display = "block";
+                                document.getElementById('table-round-semifinal').style.display = "none";
+                                document.getElementById('table-round-third-place').style.display = "none";
+                                document.getElementById('table-round-final').style.display = "none";
+
+                                $('#btn-round-eight-team').removeClass("active");
+                                $('#btn-round-quarterfinals').addClass("active");
+                                $('#btn-round-semifinal').removeClass("active");
+                                $('#btn-round-third-place').removeClass("active");
+                                $('#btn-round-final').removeClass("active");
+                            });
+
+                            $("#btn-round-semifinal").on("click", function () {
+                                document.getElementById('table-round-eight-team').style.display = "none";
+                                document.getElementById('table-round-quarterfinals').style.display = "none";
+                                document.getElementById('table-round-semifinal').style.display = "block";
+                                document.getElementById('table-round-third-place').style.display = "none";
+                                document.getElementById('table-round-final').style.display = "none";
+
+                                $('#btn-round-eight-team').removeClass("active");
+                                $('#btn-round-quarterfinals').removeClass("active");
+                                $('#btn-round-semifinal').addClass("active");
+                                $('#btn-round-third-place').removeClass("active");
+                                $('#btn-round-final').removeClass("active");
+                            });
+
+                            $("#btn-round-third-place").on("click", function () {
+                                document.getElementById('table-round-eight-team').style.display = "none";
+                                document.getElementById('table-round-quarterfinals').style.display = "none";
+                                document.getElementById('table-round-semifinal').style.display = "none";
+                                document.getElementById('table-round-third-place').style.display = "block";
+                                document.getElementById('table-round-final').style.display = "none";
+
+                                $('#btn-round-eight-team').removeClass("active");
+                                $('#btn-round-quarterfinals').removeClass("active");
+                                $('#btn-round-semifinal').removeClass("active");
+                                $('#btn-round-third-place').addClass("active");
+                                $('#btn-round-final').removeClass("active");
+                            });
+
+                            $("#btn-round-final").on("click", function () {
+                                document.getElementById('table-round-eight-team').style.display = "none";
+                                document.getElementById('table-round-quarterfinals').style.display = "none";
+                                document.getElementById('table-round-semifinal').style.display = "none";
+                                document.getElementById('table-round-third-place').style.display = "none";
+                                document.getElementById('table-round-final').style.display = "block";
+
+                                $('#btn-round-eight-team').removeClass("active");
+                                $('#btn-round-quarterfinals').removeClass("active");
+                                $('#btn-round-semifinal').removeClass("active");
+                                $('#btn-round-third-place').removeClass("active");
+                                $('#btn-round-final').addClass("active");
+                            });
                         }
                     });
                 });

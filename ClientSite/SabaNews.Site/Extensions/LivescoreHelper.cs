@@ -161,6 +161,50 @@
             }
             return result;
         }
+        public static string GetMatchNamePredict(Match match, IList<UserMinigameModel> votes)
+        {
+            var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
+            string teamName = "";
+            if (vote.Count == 0)
+            {
+                return string.Empty;
+            }
+            else if (vote[0].TeamId == 0)
+            {
+                teamName = "Hòa";
+            }
+            else
+            {
+                teamName = match.HomeTeam.TeamId == vote[0].TeamId ? GetTeamName(match.HomeTeam) : GetTeamName(match.AwayTeam);
+            }
+            return teamName;
+        }
+
+        public static UserMinigameModel GetVotePredict(Match match, IList<UserMinigameModel> votes)
+        {
+            var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
+            if(vote.Count == 0)
+            {
+                return null;
+            }
+            return vote[0];
+        }
+
+        public static string GetResultPredict(Match match, IList<UserMinigameModel> votes)
+        {
+            var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
+            string iconResult = "";
+            if (vote.Count == 0)
+            {
+                iconResult = "emtry";
+            }
+            else
+            {
+                var (status, score) = GetVoteResult(match, vote[0]);
+                iconResult = status ? "win" : "lose";
+            }
+            return iconResult;
+        }
 
         public static Match GetMatch(IList<Match> matches, UserMinigameModel vote)
         {
