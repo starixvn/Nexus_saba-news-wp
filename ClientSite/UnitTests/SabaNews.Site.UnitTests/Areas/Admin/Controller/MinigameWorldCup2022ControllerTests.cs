@@ -40,6 +40,19 @@
         }
 
         [Fact]
+        public void CountUser_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.CountUser();
+
+            // Assert
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
         public async Task GetDataMinigameWorldCup2022_WhenCalled_ReturnExpectedData()
         {
             // Arrange

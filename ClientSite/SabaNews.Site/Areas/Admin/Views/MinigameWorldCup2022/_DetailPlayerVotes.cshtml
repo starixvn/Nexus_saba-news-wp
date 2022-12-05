@@ -34,7 +34,7 @@
             </thead>
             <tbody>
                 @{
-                    count = 0;
+                    count = 16 * (Model.StageDetail - 1);
                     totalPoint = 0;
                     for (int i = 16 * (Model.StageDetail - 1); i < 16 * Model.StageDetail; i++)
                     {
@@ -87,7 +87,7 @@
                 </thead>
                 <tbody>
                     @{
-                        count = 0;
+                        count = 48;
                         totalPoint = 0;
                         for (int i = 0; i < Model.MatchesRoundEightTeam.Count; i++)
                         {
@@ -132,7 +132,6 @@
                 </thead>
                 <tbody>
                     @{
-                        count = 0;
                         totalPoint = 0;
                         for (int i = 0; i < Model.MatchesRoundQuarterfinals.Count; i++)
                         {
@@ -177,7 +176,6 @@
                 </thead>
                 <tbody>
                     @{
-                        count = 0;
                         totalPoint = 0;
                         for (int i = 0; i < Model.MatchesRoundSemifinal.Count; i++)
                         {
@@ -222,7 +220,6 @@
                 </thead>
                 <tbody>
                     @{
-                        count = 0;
                         totalPoint = 0;
                         for (int i = 0; i < Model.MatchesRoundThirdPlace.Count; i++)
                         {
@@ -267,7 +264,6 @@
                 </thead>
                 <tbody>
                     @{
-                        count = 0;
                         totalPoint = 0;
                         for (int i = 0; i < Model.MatchesRoundFinal.Count; i++)
                         {
