@@ -5,7 +5,7 @@
     public class StageListResponse
     {
         public short SportId { get; set; }
-        public long SeasonId { get; set; }
+        public long? SeasonId { get; set; }
         public long StageId { get; set; }
         public string StageName { get; set; }
         public string StageNameEN { get; set; }
