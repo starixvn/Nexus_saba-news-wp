@@ -6,6 +6,7 @@ import Grid from './Grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import SignalR from './SignalR';
 import moment from 'moment';
+import { MatchStatus } from '@jsroot/common/constants';
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
@@ -71,16 +72,21 @@ export class AppContainer extends Component {
             }
         }
 
+        tempMatches.map((item, index) => {
+            let isFinished = false;
+            const stageMatches = item.matches;
+            const lastMatch = stageMatches[stageMatches.length - 1];
+            if(lastMatch.status === MatchStatus.Finished) {
+                isFinished = true;
+            }
+            tempMatches[index] = {...item, isFinished};
+        });
+
         totalItems = tempMatches.length;
         const result = [];
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
-
-            result.push({
-                key: item.key,
-                stage: item.stage,
-                childs: this.groupMatchesByDate(item.matches)
-            });
+            result.push({...item, childs: this.groupMatchesByDate(item.matches)});
         }
         return result;
     };

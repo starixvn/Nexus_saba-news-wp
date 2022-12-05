@@ -38,11 +38,14 @@ export class Grid extends Component {
 
     initStageId = () => {
         const { league, stages } = this.props;
+        const notStartStage = stages.find(item => !item.isFinished);
         let stageId = league.currentStageId;
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
         const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        if(stageId === 0 || moment(today).isSameOrAfter(endTime)) {
+        if(!notStartStage || moment(today).isSameOrAfter(endTime)) {
             stageId = stages[stages.length - 1].key;
+        } else {
+            stageId = notStartStage.key;
         }
         return stageId;
     };

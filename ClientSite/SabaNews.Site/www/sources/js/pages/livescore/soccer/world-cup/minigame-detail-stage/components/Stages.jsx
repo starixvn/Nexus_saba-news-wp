@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
 import Grid from './Grid';
-import { WorldCup, MobileMaxWidth } from '@jsroot/common/constants';
+import { WorldCup, MobileMaxWidth, MatchStatus } from '@jsroot/common/constants';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -26,13 +26,17 @@ export class Stages extends PureComponent {
     }
 
     initStageId = () => {
-        const { league, stages } = this.props;
-        const knockoutStages = stages.filter(item => item.stageId !== WorldCup.GroupsStage);
-        let stageId = league.currentStageId;
-        if(stageId === 0 || stageId === WorldCup.GroupsStage) {
-            stageId = knockoutStages[0].stageId;
+        const { groupStages } = this.props;
+        let currentStage = groupStages[groupStages.length - 1].key;
+        for(let i = 0; i < groupStages.length; i++) {
+            const stageMatches = groupStages[i].matches;
+            const lastMatch = stageMatches[stageMatches.length - 1];
+            if(lastMatch.status === MatchStatus.NotStarted) {
+                currentStage = groupStages[i].key;
+                break;
+            }
         }
-        return stageId;
+        return currentStage;
     };
 
     handleResize = () => {
