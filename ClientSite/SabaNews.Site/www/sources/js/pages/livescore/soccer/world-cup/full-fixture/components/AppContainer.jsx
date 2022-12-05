@@ -72,7 +72,7 @@ export class AppContainer extends Component {
             }
         }
 
-        tempMatches.map((item, index) => {
+        tempMatches.forEach((item, index) => {
             let isFinished = false;
             const stageMatches = item.matches;
             const lastMatch = stageMatches[stageMatches.length - 1];
