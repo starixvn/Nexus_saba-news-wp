@@ -18,8 +18,8 @@
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<ICacheService, CacheService>();
             services.AddSingleton<ICacheWrapperService, CacheWrapperService>();
-            services.AddTransient<ILogger, Logger>();
-            services.AddTransient<ILogServiceProvider, LogServiceProvider>();
+            services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
             services.AddScoped<IBaseMailService, BaseMailService>();
             services.AddScoped<ISessionService, SessionService>();
         }
