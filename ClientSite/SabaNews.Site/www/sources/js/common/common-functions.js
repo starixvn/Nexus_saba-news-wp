@@ -40,12 +40,15 @@ export default class CommonFunctions {
         let isInjurytime = false;
         let homeScore = 0;
         let awayScore = 0;
+        const endExtraTimeIndex = incidents.findIndex(item => item.type === IncidentStatus.ExtraTimeEnd);
+        const endH2Index = incidents.findIndex(item => item.type === IncidentStatus.End);
+        const checkShootoutIndex = endExtraTimeIndex >= 0 ? endExtraTimeIndex : endH2Index;
         incidents.map((item, index) => {
             let incident = {...item};
             incident.isPenaltyShootout = false;
             if(index > 0 ) {
                 const lastIncident = incidents[index - 1];
-                if(lastIncident.time === incident.time && lastIncident.second === incident.second 
+                if(lastIncident.time === incident.time && lastIncident.second === incident.second
                     && incident.playerId > 0
                     && lastIncident.playerId === incident.playerId) {
                     return false;
@@ -69,7 +72,8 @@ export default class CommonFunctions {
                 }
             }
             if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
-                && incident.homeScore === 0 && incident.awayScore === 0) {
+                && incident.homeScore === 0 && incident.awayScore === 0
+                && index > checkShootoutIndex) {
                 incident.isPenaltyShootout = true;
             }
             if(this.checkIncidentTypeToUpdateScore(item.type)) {
