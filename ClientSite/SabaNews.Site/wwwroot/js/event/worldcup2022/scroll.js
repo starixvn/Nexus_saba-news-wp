@@ -46,7 +46,7 @@
 
                 if (page === 5 && page < paging.totalPages) {
                     const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
-                    $('#news-grid').append(loadMoreHtml);
+                    $('#loading-page').append(loadMoreHtml);
                     isLoadData = false;
                     $('.lds-ellipsis').hide();
                 }
