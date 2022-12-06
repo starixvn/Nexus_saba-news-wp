@@ -21,7 +21,6 @@ export default class Standing extends PureComponent {
         window.addEventListener('resize', this.handleResize);
         const { isMobile } = this.state;
         const numberStroll = parseInt((window.rank - 1) / 10, 10) * (isMobile? 470 : 530);
-        
         this.elementRef.scrollTo({
             top: numberStroll > 0 ? numberStroll : 0,
             behavior: 'smooth'

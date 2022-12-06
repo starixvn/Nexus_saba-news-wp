@@ -77,11 +77,6 @@
 
         public async Task<ActionResult> GetCountUserGrid(string dateSearch)
         {
-            List<string> startStages = new() {
-                WorldCup2022.TimestampMinigameStage01Start,
-                WorldCup2022.TimestampMinigameStage02Start,
-                WorldCup2022.TimestampMinigameStage03Start,
-                WorldCup2022.TimestampMinigameStage04Start };
             var search = DateTime.Parse(dateSearch);
             var miniGames = await worldcupService.GetMinigameAllUsersAsync();
             var users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date
