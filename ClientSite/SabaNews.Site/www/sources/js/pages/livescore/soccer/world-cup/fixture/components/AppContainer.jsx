@@ -50,12 +50,14 @@ export class AppContainer extends Component {
         let tmpMatches = matches;
         let isFinished = false;
         const finalMatches = tmpMatches[tmpMatches.length - 1];
+        const EightTeamMatches = matches.filter(item => item.stage.stageId === WorldCup.EightTeamStage);
+        const lastEightTeamMatch = EightTeamMatches[EightTeamMatches.length - 1];
         if (this.checkIsFinished(league) || finalMatches.status !== MatchStatus.NotStarted) {
             tmpMatches = [...matches].reverse();
             isFinished = true;
-        } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
+        } else if (league.currentStageId < WorldCup.QuarterfinalsStage && lastEightTeamMatch.status !== MatchStatus.Finished) {
             tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
-        } else if (league.currentStageId >= WorldCup.QuarterfinalsStage) {
+        } else if (lastEightTeamMatch.status === MatchStatus.Finished || league.currentStageId >= WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
         }
         return {matches: tmpMatches, isFinished: isFinished};
