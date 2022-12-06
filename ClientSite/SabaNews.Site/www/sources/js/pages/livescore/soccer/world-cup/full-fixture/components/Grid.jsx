@@ -39,7 +39,7 @@ export class Grid extends Component {
     initStageId = () => {
         const { league, stages } = this.props;
         const notStartStage = stages.find(item => !item.isFinished);
-        let stageId = league.currentStageId;
+        let stageId;
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
         const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
         if(!notStartStage || moment(today).isSameOrAfter(endTime)) {
