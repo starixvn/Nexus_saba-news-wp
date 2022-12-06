@@ -123,8 +123,6 @@
             miniGames = miniGames.Where(x => x.UserId == param.UserId).ToList();
             var viewModel = new ManagementDetailMinigameViewModel
             {
-                Email = miniGames[0].Email,
-                Username = miniGames[0].UserName,
                 Rank = param.Rank,
                 Totalpoint = param.Totalpoint,
                 Votes = votes,
@@ -136,6 +134,10 @@
                 MatchesRoundThirdPlace = matches.Where(x => x.Stage.StageId == 30541).ToList(),
                 MatchesRoundFinal = matches.Where(x => x.Stage.StageId == 30542).ToList()
             };
+            if(miniGames.Count != 0) {
+                viewModel.Email = miniGames[0].Email;
+                viewModel.Username = miniGames[0].UserName;
+            }
             return PartialView("_DetailPlayerVotes", viewModel);
         }
 

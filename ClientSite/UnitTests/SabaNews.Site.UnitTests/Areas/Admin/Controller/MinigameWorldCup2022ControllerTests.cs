@@ -3,10 +3,12 @@
     using AutoFixture;
     using Microsoft.AspNetCore.Mvc;
     using NSubstitute;
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
     using SabaNews.Core.Constants;
     using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -80,6 +82,58 @@
             var viewResult = Assert.IsType<PartialViewResult>(result);
             var viewModel = Assert.IsType<MinigameGridViewModel>(viewResult.Model);
             Assert.Equal(miniGamesPaging, viewModel.MiniGames);
+        }
+
+        [Fact]
+        public async Task GetCountUserGrid_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var minigames = fixture.Create<IList<UserMinigameModel>>();
+            var dateSearch = "2022-12-04 15:24:28";
+            worldcupService.GetMinigameAllUsersAsync().Returns(minigames);
+
+            //Act
+            var result = await controller.GetCountUserGrid(dateSearch);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("_CountUserGrid", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetDetailUser_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<ManagementDetailMinigameViewModel>();
+            var matches = fixture.Create<IList<Match>>();
+            var minigames = fixture.Create<IList<UserMinigameModel>>();
+            var criteriaVotesUser = new GetMinigameByUserStageCriteria
+            {
+                Stage = param.StageDetail,
+                UserId = param.UserId
+            };
+            var criteriaVoteMinigame = new GetMinigameUsersByStageCriteria
+            {
+                stage = param.StageDetail
+            };
+            var criteriaMatch = new GetMatchBySeasonCriteria
+            {
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022
+            };
+
+            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
+            worldcupService.GetMinigameByUserStageAsync(Arg.Do<GetMinigameByUserStageCriteria>(x => criteriaVotesUser = x)).Returns(minigames);
+            worldcupService.GetMinigameUsersAsync(Arg.Do<GetMinigameUsersByStageCriteria>(x => criteriaVoteMinigame = x)).Returns(minigames);
+
+            //Act
+            var result = await controller.GetDetailUser(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("_DetailPlayerVotes", viewResult.ViewName);
         }
 
         [Fact]
