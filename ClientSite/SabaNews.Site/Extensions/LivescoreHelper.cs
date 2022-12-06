@@ -194,11 +194,13 @@
         {
             var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
             string iconResult = "";
-            if (vote.Count == 0)
+            const int FinishStatus = 50;
+
+            if (vote.Count == 0 && match.Status == FinishStatus)
             {
                 iconResult = "emtry";
             }
-            else
+            if(vote.Count != 0 && match.Status == FinishStatus)
             {
                 var (status, score) = GetVoteResult(match, vote[0]);
                 iconResult = status ? "win" : "lose";
