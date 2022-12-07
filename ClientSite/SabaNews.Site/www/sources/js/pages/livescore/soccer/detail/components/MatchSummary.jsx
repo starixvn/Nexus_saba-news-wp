@@ -100,6 +100,13 @@ export class MatchSummary extends Component {
         const awayPen = Pen.filter(item => item.position === IncidentPosition.Away);
         let homeScore = 0;
         let awayScore = 0;
+        let lastHome = null;
+        let lastAway = null;
+        if(homePen.length > awayPen.length) {
+            lastHome = homePen[homePen.length - 1];
+        } else if(homePen.length < awayPen.length) {
+            lastAway =  awayPen[awayPen.length - 1];
+        }
         return (
             <>
                 {
@@ -124,6 +131,16 @@ export class MatchSummary extends Component {
                         }
                         return component;
                     })
+                }
+
+                {
+                    (lastHome !== null) &&
+                    <GeneralIncident key={key} incident={lastHome} />
+                }
+
+                {
+                    (lastAway !== null) &&
+                    <GeneralIncident key={key} incident={lastAway} />
                 }
             </>
         );
