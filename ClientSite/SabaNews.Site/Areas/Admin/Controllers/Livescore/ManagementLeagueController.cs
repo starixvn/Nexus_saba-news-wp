@@ -51,8 +51,28 @@
                     PageSize = model.PageSize,
                     TotalPages = (int)Math.Ceiling(totalLeague / (double)model.PageSize),
                 }
-            };            
+            };
             return PartialView("~/Areas/Admin/Views/Livescore/ManagementLeague/_ManagementLeagueDataGrid.cshtml", viewModel);
+        }
+
+        public async Task<ActionResult> GetManagementLeagueHotData()
+        {
+            IList<League> leagues = await leagueService.GetLeaguesAsync();
+            leagues = leagueService.SearchLeague(leagues, null, 1);
+            return View("~/Areas/Admin/Views/Livescore/ManagementLeague/ManagementHotLeagueDataGrid.cshtml", leagues);
+        }
+
+        public async Task<ActionResult> UpdatePriority(string originIndex, string nextIndex)
+        {
+            IList<League> leagues = await leagueService.GetLeaguesAsync();
+            leagues = leagueService.SearchLeague(leagues, null, 1);
+            var resultUpdateLeague = await leagueService.UpdateLeaguesExtraAsync(new League
+            {
+                LeagueId = leagues[Int32.Parse(originIndex) - 1].LeagueId,
+                IsMajor = leagues[Int32.Parse(originIndex) - 1].IsMajor,
+                Priority = leagues[Int32.Parse(nextIndex) - 1].Priority
+            });
+            return Json(resultUpdateLeague);
         }
 
         [HttpGet]

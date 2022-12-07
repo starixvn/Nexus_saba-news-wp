@@ -167,6 +167,16 @@
     overflow-y: unset;
 }
 
+#leagueshot {
+    .selected {
+        display: flex;
+        align-items: center;
+        td{
+            height: 42px;
+        }
+    }
+}
+
 #EditLeagueContent {
     .modal-content {
         .title {

@@ -286,12 +286,7 @@ var adminManagementLeague = (function ($) {
         });
 
         $('.btn_hot_league').click(function () {
-            $('#btn_major_league').removeClass("btn_show_league");
-            $('#btn_hot_league').addClass("btn_show_league");
-
-            document.getElementById('filter').style.display = 'none';
-            document.getElementById('leagueshot').style.display = 'flex';
-            document.getElementById('data-grid').style.display = 'none';
+            window.location.href = window.location.origin + "/Admin/ManagementLeague/GetManagementLeagueHotData";
         });
 
         $(".js-example-basic-multiple").on("change", function () {
@@ -343,8 +338,6 @@ var adminManagementLeague = (function ($) {
     function init() {
         $('.js-example-basic-multiple').select2(); 
         document.getElementById('leagueshot').style.display = 'none';
-
-       
 
         GetDataLeagueExtraGrid();
         initFilterBtn();

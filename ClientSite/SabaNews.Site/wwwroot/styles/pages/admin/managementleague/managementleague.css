@@ -273,6 +273,14 @@
   overflow-y: unset;
 }
 
+#leagueshot .selected {
+  display: flex;
+  align-items: center;
+}
+#leagueshot .selected td {
+  height: 42px;
+}
+
 #EditLeagueContent .modal-content .title {
   color: #fff;
   font-size: 1.6rem;
