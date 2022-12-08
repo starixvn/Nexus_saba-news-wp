@@ -566,4 +566,12 @@
             margin-left: 37rem;
         }
     }
+    @include Mobile{
+        .swiper{
+            overflow-x: hidden !important;
+            .swiper-slide{
+                width: 100%;
+            }
+        }
+    }
 }
