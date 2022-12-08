@@ -799,6 +799,49 @@ body {
   bottom: 30px;
   width: 100%; }
 
+.banner-change-domain, .skeleton-banner-align {
+  position: absolute;
+  top: 29.2rem;
+  z-index: 9; }
+  .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
+    top: 7.5rem;
+    position: fixed; }
+  @media screen and (max-width: 1024px) {
+    .banner-change-domain, .skeleton-banner-align {
+      display: none; } }
+  @media screen and (max-width: 1280px) {
+    .banner-change-domain, .skeleton-banner-align {
+      display: none; } }
+  @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+    .banner-change-domain, .skeleton-banner-align {
+      display: none; } }
+  .banner-change-domain.banner-left, .banner-change-domain.skeleton-banner-align-left, .skeleton-banner-align.banner-left, .skeleton-banner-align.skeleton-banner-align-left {
+    right: 50%;
+    margin-right: 60rem; }
+  .banner-change-domain.banner-right, .banner-change-domain.skeleton-banner-align-right, .skeleton-banner-align.banner-right, .skeleton-banner-align.skeleton-banner-align-right {
+    left: 50%;
+    margin-left: 60rem; }
+
+.skeleton-banner-align {
+  width: 100%;
+  max-width: 20rem;
+  max-height: 60rem; }
+
+.banner-euro-mobile, .banner-mobile {
+  text-align: center;
+  position: relative;
+  display: none; }
+  @media (max-width: 767px) {
+    .banner-euro-mobile, .banner-mobile {
+      display: block; } }
+  .banner-euro-mobile img, .banner-mobile img {
+    display: block;
+    margin-bottom: 0; }
+
+@media (max-width: 767px) {
+  .banner-mobile {
+    margin-top: 2.5rem; } }
+
 #detail-standing {
   padding: 0 1.2rem; }
   @media screen and (max-width: 1024px) {

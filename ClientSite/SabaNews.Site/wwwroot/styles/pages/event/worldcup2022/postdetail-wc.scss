@@ -14,7 +14,7 @@
 @import './components/dots-post';
 @import './components/wc-modal';
 @import './components/tooltip';
-
+@import './components/ads';
 
 body{
     overflow : unset;
@@ -202,5 +202,14 @@ img{
                 background: #fff !important;
             }
         }
+    }
+}
+
+.banner-change-domain, .skeleton-banner-align {
+    top: 24.2rem !important;
+
+    &.active-ads {
+        top: 7.5rem !important;
+        position: fixed;
     }
 }

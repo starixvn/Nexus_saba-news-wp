@@ -410,3 +410,14 @@
   margin: auto;
   padding-top: 4rem;
 }
+
+.banner-change-domain, .skeleton-banner-align {
+  top: 16.2rem;
+  &.banner-left, &.skeleton-banner-align-left {
+    margin-right: 42rem;
+  }
+
+  &.banner-right, &.skeleton-banner-align-right {
+      margin-left: 42rem;
+  }
+}
