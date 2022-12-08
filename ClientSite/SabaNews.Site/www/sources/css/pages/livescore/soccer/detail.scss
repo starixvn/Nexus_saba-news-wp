@@ -555,3 +555,15 @@
     }
 }
 
+.worldcup-match-detail{
+    .banner-change-domain, .skeleton-banner-align {
+        top: 25.2rem;
+        &.banner-left, &.skeleton-banner-align-left {
+            margin-right: 37rem;
+        }
+        
+        &.banner-right, &.skeleton-banner-align-right {
+            margin-left: 37rem;
+        }
+    }
+}

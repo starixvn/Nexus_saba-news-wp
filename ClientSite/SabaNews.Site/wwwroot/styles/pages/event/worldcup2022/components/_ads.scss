@@ -6,7 +6,7 @@
     z-index: 9;
 
     &.active-ads {
-        top: 7.5rem;
+        top: 7.5rem !important;
         position: fixed;
     }
 

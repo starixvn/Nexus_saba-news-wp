@@ -55,9 +55,9 @@
 }
 @(await Component.InvokeAsync("HeaderWorldCup"))
 <section class="worldcup-match-detail">
+    @await Html.PartialAsync(ViewResources.SidebarBannerView)
     <div id="worldcup-fixture"></div>
     <div class="wc-page-main">
         <div id="app-container" class="container-match-detail"></div>
     </div>
 </section>
-@await Html.PartialAsync(ViewResources.SidebarBannerView)

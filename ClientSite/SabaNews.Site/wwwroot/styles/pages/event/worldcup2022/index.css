@@ -1012,18 +1012,41 @@ body {
   cursor: no-drop; }
 
 .wc-block-video .wrapper-arrow {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
-    top: 30%; }
+    top: 25%; }
     @media screen and (max-width: 1024px) {
       .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
         display: none !important; } }
     .wc-block-video .wrapper-arrow .swiper-button-next i, .wc-block-video .wrapper-arrow .swiper-button-prev i {
       font-size: 3rem; }
+  .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
+    background: rgba(53, 6, 21, 0.75);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+    .wc-block-video .wrapper-arrow .swiper-button-next:hover, .wc-block-video .wrapper-arrow .swiper-button-prev:hover {
+      background: #350615; }
+    @media screen and (max-width: 1024px) {
+      .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
+        display: none !important; } }
   .wc-block-video .wrapper-arrow .swiper-button-next {
-    right: -40px !important; }
+    right: -40px !important;
+    width: 80px;
+    height: 80px;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    justify-content: flex-start; }
+    .wc-block-video .wrapper-arrow .swiper-button-next i {
+      margin-left: 1rem;
+      font-size: 3rem; }
   .wc-block-video .wrapper-arrow .swiper-button-prev {
-    left: -40px !important; }
+    width: 80px;
+    height: 80px;
+    left: -40px !important;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    justify-content: flex-end; }
+    .wc-block-video .wrapper-arrow .swiper-button-prev i {
+      margin-right: 1rem;
+      font-size: 3rem; }
   .wc-block-video .wrapper-arrow .swiper-button-disabled {
     opacity: .5;
     cursor: not-allowed;
@@ -1234,7 +1257,7 @@ body {
   top: 29.2rem;
   z-index: 9; }
   .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
-    top: 7.5rem;
+    top: 7.5rem !important;
     position: fixed; }
   @media screen and (max-width: 1024px) {
     .banner-change-domain, .skeleton-banner-align {
