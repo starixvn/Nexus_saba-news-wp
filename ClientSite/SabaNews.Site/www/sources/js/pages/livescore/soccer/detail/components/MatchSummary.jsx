@@ -92,14 +92,14 @@ export class MatchSummary extends Component {
     };
 
     renderPenaltyShootout = incidents => {
-        const Pen = incidents.filter(item => item.isPenaltyShootout === true);
-        if(Pen.length === 0) {
+        const Pens = incidents.filter(item => item.isPenaltyShootout === true);
+        if(Pens.length === 0) {
             return null;
         }
-        const homePen = Pen.filter(item => item.position === IncidentPosition.Home);
-        const awayPen = Pen.filter(item => item.position === IncidentPosition.Away);
         let homeScore = 0;
         let awayScore = 0;
+        const homePen = Pens.filter(item => item.position === IncidentPosition.Home);
+        const awayPen = Pens.filter(item => item.position === IncidentPosition.Away);
         let lastHome = null;
         let lastAway = null;
         if(homePen.length > awayPen.length) {
@@ -134,16 +134,38 @@ export class MatchSummary extends Component {
                 }
 
                 {
-                    (lastHome !== null) &&
-                    <GeneralIncident key={key} incident={lastHome} />
-                }
-
-                {
-                    (lastAway !== null) &&
-                    <GeneralIncident key={key} incident={lastAway} />
+                    this.renderLastShootout(lastHome, lastAway, homeScore, awayScore)
                 }
             </>
         );
+    };
+
+    renderLastShootout = (lastHome, lastAway, homeScore, awayScore) => {
+        let lastShootoutData = null;
+        if(lastHome !== null) {
+            homeScore = lastHome.type === IncidentStatus.Penalty ? homeScore + 1 : homeScore;
+            lastShootoutData = {
+                homeType: lastHome.type,
+                homePlayerName: lastHome.playerName,
+                awayType: null,
+                awayPlayerName: null,
+                score: `${homeScore} -  ${awayScore}`
+            };
+        } else if(lastAway !== null) {
+            awayScore = lastHome.type === IncidentStatus.Penalty ? awayScore + 1 : awayScore;
+            lastShootoutData = {
+                homeType: null,
+                homePlayerName: null,
+                awayType: lastAway.type,
+                awayPlayerName: lastAway.playerName,
+                score: `${homeScore} -  ${awayScore}`
+            };
+        }
+        if(lastShootoutData === null) {
+            return <Fragment />;
+        } else {
+            return <PenaltyShootOut  penaltyShootOutData={lastShootoutData} />;
+        }
     };
 
 

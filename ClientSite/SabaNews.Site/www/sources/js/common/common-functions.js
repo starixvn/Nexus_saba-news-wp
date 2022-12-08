@@ -43,6 +43,7 @@ export default class CommonFunctions {
         const endExtraTimeIndex = incidents.findIndex(item => item.type === IncidentStatus.ExtraTimeEnd);
         const endH2Index = incidents.findIndex(item => item.type === IncidentStatus.End);
         const checkShootout = endExtraTimeIndex >= 0 ? endExtraTimeIndex : endH2Index;
+        const timeShootout = endExtraTimeIndex >= 0 ? 120 : 90;
         incidents.map((item, index) => {
             let incident = {...item};
             incident.isPenaltyShootout = false;
@@ -72,7 +73,7 @@ export default class CommonFunctions {
                 }
             }
             if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
-                && index >= checkShootout) {
+                && (index >= checkShootout || (incident.time >= timeShootout && incident.homeScore === 0 && incident.awayScore === 0))) {
                 incident.isPenaltyShootout = true;
             }
             if(this.checkIncidentTypeToUpdateScore(item.type)) {

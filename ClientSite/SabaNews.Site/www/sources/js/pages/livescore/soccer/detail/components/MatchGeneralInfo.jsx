@@ -80,7 +80,7 @@ export default class MatchGeneralInfo extends PureComponent {
         const { statistic } = this.props.match;
         const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
         const goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
-        const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString()) && item.position === position && (item.homeScore !== 0 || item.awayScore !== 0));
+        const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString()) && item.position === position && !item.isPenaltyShootout);
         let numberRedCard = 0;
         let numberYellowCard = 0;
         if (position === IncidentPosition.Home && statistic.homeStatistic) {
