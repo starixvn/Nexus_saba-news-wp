@@ -727,3 +727,10 @@ body {
 @media (max-width: 767px) {
   .banner-mobile {
     margin-top: 2.5rem; } }
+
+.swiper-ads-wc .swiper-pagination-bullet {
+  background: #FFFFFF !important; }
+
+.swiper-ads-wc .swiper-pagination-bullet-active {
+  width: 1.6rem !important;
+  border-radius: 4px !important; }
