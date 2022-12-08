@@ -160,7 +160,7 @@ export class MatchSummary extends Component {
                 score: `${homeScore} -  ${awayScore}`
             };
         } else if(lastAway !== null) {
-            awayScore = lastHome.type === IncidentStatus.Penalty ? awayScore + 1 : awayScore;
+            awayScore = lastAway.type === IncidentStatus.Penalty ? awayScore + 1 : awayScore;
             lastShootoutData = {
                 homeType: null,
                 homePlayerName: null,
