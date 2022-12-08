@@ -113,7 +113,9 @@ export class MatchSummary extends Component {
         return (
             <>
                 <div className="head-top-team">
-                    <div className="flexbox time-event">{`${CommonFunctions.getTeamName(firstShootoutTeam)} đá luân lưu trước`}</div>
+                    <div className="flexbox time-event">
+                        <p className="time-event-title"><b>{CommonFunctions.getTeamName(firstShootoutTeam)}</b> đá luân lưu trước</p>
+                    </div>
                 </div>
                 {
                     homePen.map((hPen, index) => {
