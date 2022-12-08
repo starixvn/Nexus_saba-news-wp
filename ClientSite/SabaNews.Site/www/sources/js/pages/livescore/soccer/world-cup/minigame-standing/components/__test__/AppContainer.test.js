@@ -54,6 +54,7 @@ describe('AppContainer', () => {
                 matches: [{matchId: 1, stage:{ stageId: 1}}, {matchId: 2, stage:{ stageId: 2}}],
                 votes: [{matchId: 1, stage:{ stageId: 1} }, {matchId:2, stage:{ stageId: 2}}]
             }
+            window.CountStageActive = 1;
             //Act
             shallow(<AppContainer {...props} />);
 
@@ -75,6 +76,7 @@ describe('AppContainer', () => {
                     value: 2
                 }
             };
+            window.CountStageActive = 2;
             //Act
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();

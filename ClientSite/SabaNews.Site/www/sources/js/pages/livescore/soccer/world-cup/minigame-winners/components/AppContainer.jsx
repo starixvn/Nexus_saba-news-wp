@@ -83,8 +83,8 @@ export class AppContainer extends Component {
                                     <select value={parseInt(this.state.selectedStage, 10)}
                                         onChange={this.handleChangeSelect} className="custom-select">
                                         {
-                                            countStageWinners.map( index =>
-                                            <option key={index.value} value={index.value}>{index.name}</option> )
+                                            countStageWinners.map(index =>
+                                            <option key={index.value} value={index.value}>{index.name}</option>)
                                         }
                                     </select>
                                 }

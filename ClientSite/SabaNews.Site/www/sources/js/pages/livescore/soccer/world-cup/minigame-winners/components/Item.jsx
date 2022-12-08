@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -12,22 +11,6 @@ export class Item extends PureComponent {
             erroredUp: false,
             erroredLink: false
         };
-    }
-
-    componentDidMount(){
-        this.handleAvatarShow();
-    }
-
-    handleAvatarShow(){
-        const { Winner} = this.props;
-        if (this.state.erroredLink){
-            document.getElementsByClassName('linkImgWinner' + Winner.userId)[0].style.display = 'none';
-            document.getElementsByClassName('Winner' + Winner.userId)[0].style.display = 'block';
-        }
-        if (this.state.erroredUp){
-            document.getElementsByClassName('uploadImgWinner' + Winner.userId)[0].style.display = 'none';
-            document.getElementsByClassName('Winner' + Winner.userId)[0].style.display = 'block';
-        }
     }
 
     handleClick = (winnerLength, number, selectedStage) =>{
@@ -85,33 +68,12 @@ export class Item extends PureComponent {
                                         }
                                         {
                                             (this.checkUploadLink(Winner)) &&
-                                            <img className={`${'linkImgWinner' + Winner.userId}`} src={Winner.icon} onError={({ currentTarget }) => {
-                                                if (!this.state.erroredLink) {
-                                                    currentTarget.onerror = null;
-                                                    currentTarget.src = Site.resolveClientUrl('css/images/logo-dummy.png');
-                                                    this.setState({
-                                                        erroredLink: true
-                                                    });
-                                                    document.getElementsByClassName('linkImgWinner' + Winner.userId)[0].style.display = 'none';
-                                                    document.getElementsByClassName('Winner' + Winner.userId)[0].style.display = 'block';
-                                                    }
-                                                }} alt={Winner.userName.slice(0,1)} />
+                                            <img src={Winner.icon} alt={Winner.userName.slice(0,1)} />
                                         }
                                         {
                                             this.checkUploadImg(Winner) &&
-                                            <img className={`${'uploadImgWinner' + Winner.userId}`} src={'/uploads/' + Winner.icon} onError={({ currentTarget }) => {
-                                                if (!this.state.erroredUp) {
-                                                    currentTarget.onerror = null;
-                                                    currentTarget.src = Site.resolveClientUrl('css/images/logo-dummy.png');
-                                                    this.setState({
-                                                        erroredUp: true
-                                                    });
-                                                    document.getElementsByClassName('uploadImgWinner' + Winner.userId)[0].style.display = 'none';
-                                                    document.getElementsByClassName('Winner' + Winner.userId)[0].style.display = 'block';
-                                                    }
-                                                }} alt={Winner.userName.slice(0,1)} />
+                                            <img src={'/uploads/' + Winner.icon}  alt={Winner.userName.slice(0,1)} />
                                         }
-                                        <span className={`non-image ${'Winner' + Winner.userId}`} style={{display:'none'}}>{Winner.userName.slice(0,1)}</span>
                                     </div>
                                     <div className="user-name">
                                         {Winner.userName}

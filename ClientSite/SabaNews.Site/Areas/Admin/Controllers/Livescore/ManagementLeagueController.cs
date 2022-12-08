@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers.Livescore
 {
-    using DeviceDetectorNET.Class.Device;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -9,7 +8,6 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.ManagementLeague;
     using SabaNews.Models.ViewModel.User;
-    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;

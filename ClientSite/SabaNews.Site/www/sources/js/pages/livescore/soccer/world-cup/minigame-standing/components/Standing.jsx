@@ -5,7 +5,7 @@ import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import React, { PureComponent } from 'react';
 
-export default class Standing extends PureComponent {
+export class Standing extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

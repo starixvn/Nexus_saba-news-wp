@@ -5,7 +5,7 @@ import { WorldCup } from '@jsroot/common/constants';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
 
-export default class Winner extends PureComponent {
+export class Winner extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -172,16 +172,6 @@ export default class Winner extends PureComponent {
         });
         return sortPoint;
     };
-
-    checkUser = (Winners, userId) => {
-        let isUser = false;
-        Winners.map(index => {
-            if(index.userId === userId){
-                isUser = true;
-            }
-        });
-        return isUser;
-    } ;
 
     render() {
         const { matches, votes, selectedStage} = this.props;
