@@ -43,9 +43,13 @@
 
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-main">
+   
+    <div class="banner-euro-mobile banner-mobile-top"></div>
+    
     <div id="worldcup-fixture">
 
     </div>
+
 
     <div class="wc-main">
         <div class="wc-block-hotnews">
@@ -103,7 +107,8 @@
                 </div>
             </div>
         </div>
-
+        <div class="banner-mobile banner-mobile-center"></div>
+        
         <div class="wc-block wc-block-bxh" id="home-standing"></div>
 
 
@@ -319,6 +324,7 @@
 
     </div>
 </section>
+@await Html.PartialAsync(ViewResources.SidebarBannerView)
 
 <div class="auth-form wc-modal">
     <div class="modal" id="PlayIframeVideo" style="display: none">

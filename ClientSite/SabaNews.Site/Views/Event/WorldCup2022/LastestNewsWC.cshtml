@@ -59,6 +59,7 @@
 
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-lastest-news">
+    <div class="banner-euro-mobile banner-mobile-top"></div>
     <div id="worldcup-fixture"></div>
     <div class="wc-page-main">
         <div class="container">
@@ -105,6 +106,7 @@
                                     }
                                     if (postIndexhot == 4 && isMobile)
                                     {
+                                        <div class="banner-mobile banner-mobile-center"></div>
                                         <div id="standingWC" data-isMobile="@isMobile"></div>
                                         <div id="topScorersWC" data-more="true"></div>
                                     }
@@ -193,3 +195,4 @@
         </div>
     </div>
 </section>
+@await Html.PartialAsync(ViewResources.SidebarBannerView)

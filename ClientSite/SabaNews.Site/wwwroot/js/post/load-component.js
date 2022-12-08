@@ -76,7 +76,7 @@
     }
 
     function LoadBanner() {
-        if ($('.banner-left').length > 0 && $('.banner-right').length > 0) {
+        if (($('.banner-left').length > 0 && $('.banner-right').length > 0) || $('.banner-mobile-top').length > 0 ) {
             $("body").addClass("overflow-section");
             $.ajax({
                 url: "/api/banner",

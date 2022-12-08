@@ -55,6 +55,7 @@
 
 @(await Component.InvokeAsync("HeaderWorldCup"))
 <section class="worldcup-detail-pages">
+    <div class="banner-euro-mobile banner-mobile-top"></div>
     <div id="worldcup-fixture"></div>
     <div class="wc-page-main">
         <div class="container detail-container">
@@ -233,6 +234,7 @@
                         }
                     }
                 </ul>
+                <div class="banner-mobile banner-mobile-center"></div>
                 <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
                 <input name="isVideo" id="isVideo" type="hidden" value="@Model.IsVideo.ToString()" />
                 <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
@@ -263,6 +265,7 @@
         </div>
     </div>
 </section>
+@await Html.PartialAsync(ViewResources.SidebarBannerView)
 <div class="auth-form">
     <div class="modal" id="announcement">
         <div class="modal-content modal-auth">
