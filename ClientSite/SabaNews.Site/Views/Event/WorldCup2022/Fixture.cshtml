@@ -37,6 +37,17 @@
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Slug }))
 
 <section class="worldcup-fixture">
+    <div class="swiper swipper-mobile-banner">
+        <div class="swiper-wrapper scroll-snap">
+            <div class="post-items swiper-slide scroll-snap-items post-hot">
+                <div class="banner-euro-mobile banner-mobile-top"></div>
+            </div>
+            <div class="post-items swiper-slide scroll-snap-items post-hot">
+                <div class="banner-euro-mobile banner-mobile-center"></div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
     <div class="wc-page-main">
         <div class="title-section">
             <div class="dots"><span></span><span></span><span class="dots-items"></span></div>

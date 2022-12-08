@@ -65,13 +65,27 @@
         }
     }
 
-
+    function HandleSlide() {
+        if ($(window).innerWidth() <= 768 && $('.swipper-mobile-banner').length > 0) {
+            console.log($('.swipper-mobile-banner').length, 123)
+            var swipers = new Swiper('.swipper-mobile-banner', {
+                loop: false,
+                spaceBetween: 20,
+                watchOverflow: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+    }
     
 
     function init() {
         getTopScorers();
         scrollEffectHeader();
         handleActions();
+        HandleSlide();
     }
    
 

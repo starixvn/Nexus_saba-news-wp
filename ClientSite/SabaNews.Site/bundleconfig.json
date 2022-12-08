@@ -160,6 +160,7 @@
     {
         "outputFileName": "wwwroot/minify/styles/worldcup2022-fixture.min.css",
         "inputFiles": [
+            "wwwroot/lib/swipper/css/swiper-bundle.min.css",
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/event/worldcup2022/fixture.css"
         ]
@@ -418,6 +419,7 @@
     {
         "outputFileName": "wwwroot/minify/js/worldcup2022-fixture.min.js",
         "inputFiles": [
+            "wwwroot/lib/swipper/js/swiper-bundle.min.js",
             "wwwroot/js/event/worldcup2022/worldcup.js"
         ],
         "minify": {
@@ -441,6 +443,7 @@
     {
         "outputFileName": "wwwroot/minify/js/videoworldcup2022.min.js",
         "inputFiles": [
+            "wwwroot/lib/swipper/js/swiper-bundle.min.js",
             "wwwroot/js/event/worldcup2022/video.js",
             "wwwroot/js/event/worldcup2022/scroll.js",
             "wwwroot/js/event/worldcup2022/worldcup.js"
