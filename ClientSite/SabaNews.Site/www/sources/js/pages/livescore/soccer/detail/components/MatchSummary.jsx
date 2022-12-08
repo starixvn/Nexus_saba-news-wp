@@ -92,14 +92,17 @@ export class MatchSummary extends Component {
     };
 
     renderPenaltyShootout = incidents => {
-        const Pens = incidents.filter(item => item.isPenaltyShootout === true);
-        if(Pens.length === 0) {
+        const { generalInfo } = this.props.match;
+        const pens = incidents.filter(item => item.isPenaltyShootout === true);
+        if(pens.length === 0) {
             return null;
         }
         let homeScore = 0;
         let awayScore = 0;
-        const homePen = Pens.filter(item => item.position === IncidentPosition.Home);
-        const awayPen = Pens.filter(item => item.position === IncidentPosition.Away);
+        let firstShootoutTeam = pens[0].position === IncidentPosition.Away
+                            ? generalInfo.awayTeam : generalInfo.homeTeam;
+        const homePen = pens.filter(item => item.position === IncidentPosition.Home);
+        const awayPen = pens.filter(item => item.position === IncidentPosition.Away);
         let lastHome = null;
         let lastAway = null;
         if(homePen.length > awayPen.length) {
@@ -109,6 +112,9 @@ export class MatchSummary extends Component {
         }
         return (
             <>
+                <div className="head-top-team">
+                    <div className="flexbox time-event">{`${CommonFunctions.getTeamName(firstShootoutTeam)} đá luân lưu trước`}</div>
+                </div>
                 {
                     homePen.map((hPen, index) => {
                         let component = <Fragment key={index} />;
