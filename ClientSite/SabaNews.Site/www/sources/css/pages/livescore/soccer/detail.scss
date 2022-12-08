@@ -569,9 +569,6 @@
     @include Mobile{
         .swiper{
             overflow-x: hidden !important;
-            .swiper-slide{
-                width: 100%;
-            }
         }
     }
 }
