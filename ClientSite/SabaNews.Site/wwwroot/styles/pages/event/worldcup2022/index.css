@@ -1565,7 +1565,7 @@ body {
   .guess .scroll-snap .post-items, .guess .scroll-snap .wc-table {
     margin-left: 1.2rem; }
     .guess .scroll-snap .post-items:first-child, .guess .scroll-snap .wc-table:first-child {
-      padding-left: 1.2rem !important; } }
+      padding-left: 0 !important; } }
 
 .wc-block-video {
   background: #48041A;
@@ -1593,4 +1593,4 @@ body {
     .wc-block-video .scroll-snap .post-items, .wc-block-video .scroll-snap .wc-table {
       margin-left: 1.2rem; }
       .wc-block-video .scroll-snap .post-items:first-child, .wc-block-video .scroll-snap .wc-table:first-child {
-        padding-left: 1.2rem !important; } }
+        padding-left: 0 !important; } }
