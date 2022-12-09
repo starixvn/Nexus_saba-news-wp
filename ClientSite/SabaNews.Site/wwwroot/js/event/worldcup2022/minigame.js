@@ -15,10 +15,17 @@
     function HandleUI() {
         $('#btn-register').on('click', function () {
             $('#register').modal('show');
-        })
+        });
+
         $('#btn-guide').on('click', function () {
             $('#guide').modal('show');
-        })
+        });
+
+        $('.btn-standing').on('click', function () {
+            $('html, body').animate({
+                scrollTop: 1400
+            }, 500);
+        });
 
         $('.btn-nav-guide').click(function () {
             $('.header-nav-event li a').removeClass('active');
