@@ -1053,7 +1053,7 @@ body, .overflow-modal {
         color: #3F081B; }
         @media screen and (max-width: 1024px) {
           .wrapper-header .header-control .btn-standing a {
-            font-size: 1.8rem; } }
+            font-size: 2rem; } }
   .wrapper-header-column {
     display: grid;
     grid-template-columns: 50% 50%;
