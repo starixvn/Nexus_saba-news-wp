@@ -572,3 +572,22 @@
         }
     }
 }
+
+.first-pen{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    margin: 1.2rem 0;
+    color: #324A75;
+    @include Mobile{
+        font-size: 1.2rem;
+    }
+}
+
+.worldcup-match-detail{
+    .first-pen{
+        color: #720E2D;
+    }
+}
+
