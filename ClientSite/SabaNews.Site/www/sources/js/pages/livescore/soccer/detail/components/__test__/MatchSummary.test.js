@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { MatchSummary } from '../MatchSummary';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
@@ -492,7 +491,7 @@ describe('MatchSummary', () => {
     });
 
     describe('renderPenaltyShootout', () => {
-        it('render correctly when incident have penalty shootout data', () => {
+        it('render correctly when when home shootout > away shootout', () => {
             // Arrange
             const incidents = [
                 { matchId: 1, position: 1, type: 8, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
@@ -501,6 +500,7 @@ describe('MatchSummary', () => {
                 { matchId: 1, position: 2, type: 8, playerName: "name 4", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
                 { matchId: 1, position: 1, type: 8, playerName: "name 5", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
             ];
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
             const container = shallow(<MatchSummary {...defaultProps}/>);
             const instance = container.instance();
 
@@ -509,6 +509,115 @@ describe('MatchSummary', () => {
             // Assert
             expect(result).toMatchSnapshot();
         });
+
+        it('render correctly when away shootout > home shootout', () => {
+            // Arrange
+            const incidents = [
+                { matchId: 1, position: 2, type: 8, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 1, type: 16, playerName: "name 2", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 1, type: 16, playerName: "name 3", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 2, type: 8, playerName: "name 4", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 2, type: 8, playerName: "name 5", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+            ];
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+            const container = shallow(<MatchSummary {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.renderPenaltyShootout(incidents);
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when away shootout = home shootout', () => {
+            // Arrange
+            const incidents = [
+                { matchId: 1, position: 1, type: 8, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 2, type: 16, playerName: "name 2", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 1, type: 16, playerName: "name 3", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+                { matchId: 1, position: 2, type: 8, playerName: "name 4", homeScore: 0, awayScore: 0, isPenaltyShootout: true},
+            ];
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+            const container = shallow(<MatchSummary {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.renderPenaltyShootout(incidents);
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+    });
+
+    describe('renderLastShootout', () => {
+        it('return expected component when lastHome is not null and type = penalty success', () => {
+             // Arrange
+            const lasthome = { matchId: 1, position: 1, type: 8, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true};
+            const lastAway = null;
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+            const container = shallow(<MatchSummary {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.renderLastShootout(lasthome, lastAway, 0, 0);
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('return expected component when lastHome is not null and type = penalty success', () => {
+            // Arrange
+           const lasthome = { matchId: 1, position: 1, type: 16, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true};
+           const lastAway = null;
+           CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+           const container = shallow(<MatchSummary {...defaultProps}/>);
+           const instance = container.instance();
+
+           // Act
+           const result = instance.renderLastShootout(lasthome, lastAway, 0, 0);
+           // Assert
+           expect(result).toMatchSnapshot();
+       });
+
+        it('return expected component when lastAway is not null and type = penalty success', () => {
+            // Arrange
+           const lasthome = null;
+           const lastAway = { matchId: 1, position: 1, type: 8, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true};
+           CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+           const container = shallow(<MatchSummary {...defaultProps}/>);
+           const instance = container.instance();
+
+           // Act
+           const result = instance.renderLastShootout(lasthome, lastAway, 0, 0);
+           // Assert
+           expect(result).toMatchSnapshot();
+       });
+
+       it('return expected component when lastAway is not null and type = penalty failed', () => {
+        // Arrange
+       const lasthome = null;
+       const lastAway = { matchId: 1, position: 1, type: 16, playerName: "name 1", homeScore: 0, awayScore: 0, isPenaltyShootout: true};
+       CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+       const container = shallow(<MatchSummary {...defaultProps}/>);
+       const instance = container.instance();
+
+       // Act
+       const result = instance.renderLastShootout(lasthome, lastAway, 0, 0);
+       // Assert
+       expect(result).toMatchSnapshot();
+   });
+
+       it('return expected component when lastAway is null and lastHome is null', () => {
+            // Arrange
+           const lasthome = null;
+           const lastAway = null;
+           CommonFunctions.getTeamName = jest.fn().mockReturnValue("name");
+           const container = shallow(<MatchSummary {...defaultProps}/>);
+           const instance = container.instance();
+
+           // Act
+           const result = instance.renderLastShootout(lasthome, lastAway, 0, 0);
+           // Assert
+           expect(result).toEqual(<Fragment />);
+       });
     });
 
     describe('render', () => {
