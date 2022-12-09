@@ -515,6 +515,16 @@ body, .overflow-modal {
                 }
             }
 
+            ul {
+                li {
+                    font-size: 1.8rem;
+
+                    @include tableMobile {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+
             .status-stage-time {
                 color: #FFCA36;
                 font-weight: 700;
@@ -593,6 +603,10 @@ body, .overflow-modal {
                 line-height: 2.2rem;
                 display: flex;
                 justify-content: center;
+
+                @include tableMobile {
+                    font-size: 1.4rem;
+                }
 
                 &.font-weight-bold {
                     font-weight: 700;

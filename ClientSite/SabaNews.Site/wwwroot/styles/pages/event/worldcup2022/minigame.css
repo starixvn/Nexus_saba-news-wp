@@ -1197,6 +1197,11 @@ body, .overflow-modal {
         background: #FFCA36; }
         .main-stage .stage-items.stage-votes .icon-stage i:before {
           color: #47000E; }
+      .main-stage .stage-items.stage-votes ul li {
+        font-size: 1.8rem; }
+        @media screen and (max-width: 1024px) {
+          .main-stage .stage-items.stage-votes ul li {
+            font-size: 1.6rem; } }
       .main-stage .stage-items.stage-votes .status-stage-time {
         color: #FFCA36;
         font-weight: 700; }
@@ -1249,6 +1254,9 @@ body, .overflow-modal {
         line-height: 2.2rem;
         display: flex;
         justify-content: center; }
+        @media screen and (max-width: 1024px) {
+          .main-stage .stage-items .count-and-time li {
+            font-size: 1.4rem; } }
         .main-stage .stage-items .count-and-time li.font-weight-bold {
           font-weight: 700; }
 
