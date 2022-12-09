@@ -1384,3 +1384,8 @@ body {
     line-height: 1.8rem;
     border-radius: 3px;
     cursor: pointer; }
+
+@media (max-width: 767px) {
+  .banner-mobile {
+    margin-left: -1.2rem;
+    margin-right: -1.2rem; } }

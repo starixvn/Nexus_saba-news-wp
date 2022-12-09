@@ -213,3 +213,10 @@ img{
         position: fixed;
     }
 }
+.banner-mobile {
+    @include Mobile {
+        margin-left: -1.2rem;
+        margin-right: -1.2rem;
+    }
+}
+

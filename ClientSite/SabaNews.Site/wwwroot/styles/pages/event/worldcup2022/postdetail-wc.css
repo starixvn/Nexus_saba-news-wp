@@ -1316,3 +1316,8 @@ img {
   .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
     top: 7.5rem !important;
     position: fixed; }
+
+@media (max-width: 767px) {
+  .banner-mobile {
+    margin-left: -1.2rem;
+    margin-right: -1.2rem; } }
