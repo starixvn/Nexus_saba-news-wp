@@ -5,9 +5,10 @@ import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import React, { PureComponent } from 'react';
 
-export class Standing extends PureComponent {
+export default class Standing extends PureComponent {
     constructor(props) {
         super(props);
+        this.elementRef = React.createRef();
         this.state = {
             isMobile: window.innerWidth <= MobileMaxWidth ? true : false
         };
@@ -21,7 +22,7 @@ export class Standing extends PureComponent {
         window.addEventListener('resize', this.handleResize);
         const { isMobile } = this.state;
         const numberStroll = parseInt((window.rank - 1) / 10, 10) * (isMobile? 470 : 530);
-        this.elementRef.scrollTo({
+        this.elementRef.current && this.elementRef.current.scrollTo({
             top: numberStroll > 0 ? numberStroll : 0,
             behavior: 'smooth'
         });
@@ -54,7 +55,7 @@ export class Standing extends PureComponent {
     componentDidUpdate(){
         const { isMobile } = this.state;
         const numberStroll = parseInt((window.rank - 1) / 10, 10) * (isMobile? 470 : 530);
-        this.elementRef.scrollTo({
+        this.elementRef.current && this.elementRef.current.scrollTo({
             top: numberStroll > 0 ? numberStroll : 0,
             behavior: 'smooth'
         });
@@ -205,16 +206,6 @@ export class Standing extends PureComponent {
         return sortPoint;
     };
 
-    checkUser = (standings, userId) => {
-        let isUser = false;
-        standings.map(index => {
-            if(index.userId === userId){
-                isUser = true;
-            }
-        });
-        return isUser;
-    } ;
-
     checkRank = (standings, userId ) =>{
         let rank = 0;
         if(userId === undefined){
@@ -248,7 +239,7 @@ export class Standing extends PureComponent {
                             <div className="table-row table-row-score">Điểm</div>
                             <div className="table-row table-row-time">Thời gian </div>
                         </div>
-                        <div ref={el => this.elementRef = el} className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
+                        <div ref={this.elementRef} className= {`minigame-table-body ${standings.length === 0 ? 'no-data' : ''}`}>
                             {
                                 standings.map((item, index) => <Item rank={rank} key={index} number={index} standing={item}
                                                                     standingLength={standings.length} stagesSelected={stagesSelected} />)

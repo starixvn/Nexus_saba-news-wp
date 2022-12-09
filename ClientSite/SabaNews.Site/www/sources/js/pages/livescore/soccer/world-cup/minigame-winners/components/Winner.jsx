@@ -5,7 +5,7 @@ import { WorldCup } from '@jsroot/common/constants';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import moment from 'moment';
 
-export class Winner extends PureComponent {
+export default class Winner extends PureComponent {
     constructor(props) {
         super(props);
     }

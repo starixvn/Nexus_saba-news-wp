@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {Winner} from '../Winner';
+import Winner from '../Winner';
 
 describe('Winner', () => {
     beforeAll(() => {
