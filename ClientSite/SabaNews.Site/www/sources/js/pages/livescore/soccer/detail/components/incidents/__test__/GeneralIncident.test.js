@@ -119,7 +119,28 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 1,
-                    timeshow: 12,
+                    timeShow: 12,
+                    inPlayer: "inPlayer",
+                    outPlayer: "outPlayer",
+                }
+            }
+            const container = shallow(<GeneralIncident {...props}/>);
+            const instance = container.instance();
+            instance.getBorder = jest.fn();
+
+            // Act
+            const result = instance.renderSubsitution();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when incident is home team and time show is empty', () => {
+            // Arrange
+            const props = {
+                incident: {
+                    position: 1,
+                    timeShow: '',
                     inPlayer: "inPlayer",
                     outPlayer: "outPlayer",
                 }
@@ -140,7 +161,28 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 2,
-                    timeshow: 12,
+                    timeShow: 12,
+                    inPlayer: "inPlayer",
+                    outPlayer: "outPlayer",
+                }
+            }
+            const container = shallow(<GeneralIncident {...props}/>);
+            const instance = container.instance();
+            instance.getBorder = jest.fn();
+
+            // Act
+            const result = instance.renderSubsitution();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when incident is away team and timeshow is empty', () => {
+            // Arrange
+            const props = {
+                incident: {
+                    position: 2,
+                    timeShow: '',
                     inPlayer: "inPlayer",
                     outPlayer: "outPlayer",
                 }
@@ -162,7 +204,7 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 1,
-                    timeshow: 12,
+                    timeShow: 12,
                     playerName: "playerName",
                     type: 1,
                     varResult: 0
@@ -173,7 +215,7 @@ describe('Incident GeneralIncident', () => {
             instance.getBorder = jest.fn();
 
             // Act
-            const result = instance.renderSubsitution();
+            const result = instance.renderGeneral();
 
             // Assert
             expect(result).toMatchSnapshot();
@@ -184,7 +226,7 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 1,
-                    timeshow: 12,
+                    timeShow: '',
                     playerName: "playerName",
                     varResult: 1,
                     type: 28
@@ -195,7 +237,7 @@ describe('Incident GeneralIncident', () => {
             instance.getBorder = jest.fn();
 
             // Act
-            const result = instance.renderSubsitution();
+            const result = instance.renderGeneral();
 
             // Assert
             expect(result).toMatchSnapshot();
@@ -206,7 +248,7 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 1,
-                    timeshow: 12,
+                    timeShow: 12,
                     playerName: 'playerName',
                     assistName: 'assistName',
                     type: 1
@@ -218,7 +260,7 @@ describe('Incident GeneralIncident', () => {
             instance.getBorder = jest.fn();
 
             // Act
-            const result = instance.renderSubsitution();
+            const result = instance.renderGeneral();
 
             // Assert
             expect(result).toMatchSnapshot();
@@ -229,7 +271,7 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 2,
-                    timeshow: 12,
+                    timeShow: '',
                     playerName: "playerName",
                     varResult: 0
                 }
@@ -239,7 +281,7 @@ describe('Incident GeneralIncident', () => {
             instance.getBorder = jest.fn();
 
             // Act
-            const result = instance.renderSubsitution();
+            const result = instance.renderGeneral();
 
             // Assert
             expect(result).toMatchSnapshot();
@@ -250,7 +292,7 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 2,
-                    timeshow: 12,
+                    timeShow: 12,
                     playerName: "playerName",
                     varResult: 1
                 }
@@ -260,7 +302,7 @@ describe('Incident GeneralIncident', () => {
             instance.getBorder = jest.fn();
 
             // Act
-            const result = instance.renderSubsitution();
+            const result = instance.renderGeneral();
 
             // Assert
             expect(result).toMatchSnapshot();
@@ -271,7 +313,7 @@ describe('Incident GeneralIncident', () => {
             const props = {
                 incident: {
                     position: 2,
-                    timeshow: 12,
+                    timeShow: 12,
                     playerName: 'playerName',
                     assistName: 'assistName',
                     type: 1
@@ -283,7 +325,7 @@ describe('Incident GeneralIncident', () => {
             instance.getBorder = jest.fn();
 
             // Act
-            const result = instance.renderSubsitution();
+            const result = instance.renderGeneral();
 
             // Assert
             expect(result).toMatchSnapshot();
