@@ -79,6 +79,9 @@
                 <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
                 <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
             </ul>
+            <p class="btn-standing">
+                <a href="#">Bảng xếp hạng</a>
+            </p>
         </div>
         <div class="wave-game"></div>
     </div>
@@ -171,7 +174,7 @@
                                 <ul class="count-and-time">
                                     @if (status != WorldCup2022.LockStage)
                                     {
-                                        <li id="stage@(i+1)" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
+                                        <li id="stage@(i+1)" class="status-stage-time" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
                                             @status
                                             @if (status != WorldCup2022.OnStartedStage && status != WorldCup2022.OnEndStage)
                                             {

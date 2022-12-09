@@ -200,20 +200,20 @@ body, .overflow-modal {
     }
 
     @include iphoneX {
-        padding-bottom: 53rem !important;
+        padding-bottom: 57rem !important;
     }
 
     @include iphone6 {
-        padding-bottom: 56rem;
+        padding-bottom: 57rem !important;
     }
 
 
     @include iphoneXR {
-        padding-bottom: 56rem;
+        padding-bottom: 57rem;
     }
 
     @include iphone1213 {
-        padding-bottom: 54rem !important;
+        padding-bottom: 58rem !important;
     }
 
     .wave-game {
@@ -245,10 +245,12 @@ body, .overflow-modal {
         @include tableMobile {
             top: auto;
             right: auto;
-            bottom: 5rem;
+            bottom: 4rem;
         }
 
         ul {
+            margin-bottom: 2.4rem;
+
             li {
                 clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
                 background: #FF004B;
@@ -282,6 +284,29 @@ body, .overflow-modal {
                         font-size: 2rem;
                         padding: .2rem 3rem;
                     }
+                }
+            }
+        }
+
+        .btn-standing {
+            clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+            background: #FFCB3A;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            width: 23rem;
+            text-align: center;
+            margin: 0 auto;
+
+            a {
+                padding: 0.2vw 0;
+                font-weight: 700;
+                font-size: 2.4rem;
+                line-height: 3.3rem;
+                display: block;
+                text-decoration: none;
+                color: #3F081B;
+
+                @include tableMobile {
+                    font-size: 1.8rem;
                 }
             }
         }
@@ -478,11 +503,34 @@ body, .overflow-modal {
                     }
                 }
             }
+
+            .icon-stage {
+                cursor: pointer;
+                background: #FFCA36;
+
+                i {
+                    &:before {
+                        color: #47000E;
+                    }
+                }
+            }
+
+            .status-stage-time {
+                color: #FFCA36;
+                font-weight: 700;
+            }
         }
 
-        &.end-stage{
+        &.end-stage {
             .icon-stage {
-                cursor : pointer;
+                cursor: pointer;
+                background: #FFCA36;
+
+                i {
+                    &:before {
+                        color: #47000E;
+                    }
+                }
             }
         }
 
@@ -493,12 +541,13 @@ body, .overflow-modal {
             text-decoration: none;
             background: rgba($color: #EEEEE4, $alpha: .2);
             border-radius: 5px;
-            width: 3.2rem;
-            height: 3.2rem;
+            width: 4.8rem;
+            height: 4.2rem;
             margin: 0 auto;
+            clip-path: polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0 80%, 0 20%);
 
             i {
-                font-size: 2rem;
+                font-size: 2.3rem;
 
                 &:before {
                     color: #EEEEE4;
