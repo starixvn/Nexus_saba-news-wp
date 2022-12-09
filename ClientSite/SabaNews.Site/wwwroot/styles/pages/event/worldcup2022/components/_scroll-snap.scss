@@ -20,15 +20,6 @@
 
         .post-items, .wc-table {
             margin-left: 1.2rem;
-
-            &:first-child {
-                padding-left: 1.2rem;
-                margin-left: 0 !important;
-            }
-
-            &:last-child {
-                margin-right: 0;
-            }
         }
 
         .post-items {

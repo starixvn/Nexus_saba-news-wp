@@ -699,11 +699,6 @@ body {
       scroll-snap-align: center; }
     .scroll-snap .post-items, .scroll-snap .wc-table {
       margin-left: 1.2rem; }
-      .scroll-snap .post-items:first-child, .scroll-snap .wc-table:first-child {
-        padding-left: 1.2rem;
-        margin-left: 0 !important; }
-      .scroll-snap .post-items:last-child, .scroll-snap .wc-table:last-child {
-        margin-right: 0; }
     .scroll-snap .post-items:last-child {
       padding-right: 1.2rem !important; } }
 
@@ -1301,6 +1296,10 @@ img {
 @media screen and (max-width: 1024px) {
   #standingWC .king-soccer {
     padding: 0 1.2rem; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .scroll-snap .wc-table:first-child {
+    margin-left: 0 !important; } }
 
 @media screen and (max-width: 1024px) {
   .fixed-social {

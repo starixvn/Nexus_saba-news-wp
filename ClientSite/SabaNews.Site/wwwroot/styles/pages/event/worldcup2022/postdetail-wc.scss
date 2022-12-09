@@ -179,9 +179,19 @@ img{
 }
 
 #standingWC {
-    .king-soccer{
-        @include  tableMobile{
-            padding : 0 1.2rem;
+    .king-soccer {
+        @include tableMobile {
+            padding: 0 1.2rem;
+        }
+    }
+
+    .scroll-snap {
+        @include tableMobile {
+            .wc-table {
+                &:first-child {
+                    margin-left: 0 !important;
+                }
+            }
         }
     }
 }
@@ -219,4 +229,4 @@ img{
         margin-right: -1.2rem;
     }
 }
-
+  

@@ -423,13 +423,26 @@
 
     .view-more {
         margin-top: 1.8rem;
+
         @include tableMobile {
             margin-top: 3.2rem;
-            margin-right : 1.4rem;
+            margin-right: 1.4rem;
         }
 
         a {
             color: $title-color;
+        }
+    }
+
+    .scroll-snap {
+        @include tableMobile {
+            .post-items, .wc-table {
+                margin-left: 1.2rem;
+
+                &:first-child {
+                    padding-left: 1.2rem !important;
+                }
+            }
         }
     }
 }
@@ -470,5 +483,17 @@
 
     .hover-image {
         height: 20rem;
+    }
+
+    .scroll-snap {
+        @include tableMobile {
+            .post-items, .wc-table {
+                margin-left: 1.2rem;
+
+                &:first-child {
+                    padding-left: 1.2rem !important;
+                }
+            }
+        }
     }
 }
