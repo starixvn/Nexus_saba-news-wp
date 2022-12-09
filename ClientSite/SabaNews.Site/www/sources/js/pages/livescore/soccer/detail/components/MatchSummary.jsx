@@ -99,7 +99,7 @@ export class MatchSummary extends Component {
         }
         let homeScore = 0;
         let awayScore = 0;
-        let firstShootoutTeam = pens[0].position === IncidentPosition.Away
+        const firstShootoutTeam = pens[0].position === IncidentPosition.Away
                             ? generalInfo.awayTeam : generalInfo.homeTeam;
         const homePen = pens.filter(item => item.position === IncidentPosition.Home);
         const awayPen = pens.filter(item => item.position === IncidentPosition.Away);
