@@ -103,7 +103,7 @@ export const WorldCup = {
     Title: 'World Cup 2022:',
     EightTeamMatches: [55225418, 55225419, 55225422, 55225423, 55225420, 55225421, 55225424, 55225426],
     QuaterFinalMatches: [55225428, 55225427, 55225430, 55225429],
-    SemiFinalMatches: [55225431, 55225432],
+    SemiFinalMatches: [55225431, 56772779],
     MinigameUrl: 'world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung',
     MinigameDetailUrl: 'world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet',
     MinigameStage: {
