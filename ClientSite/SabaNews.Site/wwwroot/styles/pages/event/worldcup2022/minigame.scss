@@ -193,14 +193,21 @@ body, .overflow-modal {
     height: 35vw;
     position: relative;
 
+
     @include tableMobile {
         background: url('../../../../images/worldcup/minigame/top-banner-mobile.png');
         background-size: 100%;
         background-repeat: no-repeat;
+        height: 100vh;
+    }
+
+    @include Mobile {
+        padding-bottom: 61rem;
+        height: 35vw;
     }
 
     @include iphoneX {
-        padding-bottom: 57rem !important;
+        padding-bottom: 61rem !important;
     }
 
     @include iphone6 {
@@ -209,11 +216,11 @@ body, .overflow-modal {
 
 
     @include iphoneXR {
-        padding-bottom: 57rem;
+        padding-bottom: 61rem;
     }
 
     @include iphone1213 {
-        padding-bottom: 58rem !important;
+        padding-bottom: 59rem !important;
     }
 
     .wave-game {
@@ -242,7 +249,15 @@ body, .overflow-modal {
         right: 20%;
         top: 60%;
 
+
         @include tableMobile {
+            top: auto;
+            right: 30%;
+            bottom: 6rem;
+            left: auto;
+        }
+
+        @include Mobile {
             top: auto;
             right: auto;
             bottom: 4rem;
@@ -254,6 +269,10 @@ body, .overflow-modal {
             li {
                 clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
                 background: #FF004B;
+
+                @include tableMobile {
+                    clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+                }
 
                 &:first-child {
                     margin-right: 5rem;
@@ -296,6 +315,10 @@ body, .overflow-modal {
             text-align: center;
             margin: 0 auto;
 
+            @include tableMobile {
+                width: 21rem;
+            }
+
             a {
                 padding: 0.2vw 0;
                 font-weight: 700;
@@ -307,6 +330,7 @@ body, .overflow-modal {
 
                 @include tableMobile {
                     font-size: 2rem;
+                    padding: 0.2rem 3rem;
                 }
             }
         }
@@ -551,7 +575,7 @@ body, .overflow-modal {
             text-decoration: none;
             background: rgba($color: #EEEEE4, $alpha: .2);
             border-radius: 5px;
-            width: 4.8rem;
+            width: 3.8rem;
             height: 4.2rem;
             margin: 0 auto;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);

@@ -154,28 +154,8 @@ input[type=number] {
         background-repeat: no-repeat;
         background-repeat: no-repeat;
         background-position: top center;
-        padding-bottom: 56rem;
     }
 
-    @include iphone6 {
-        padding-bottom: 52rem !important;
-    }
-
-    @include iphone5 {
-        padding-bottom: 44rem !important;
-    }
-
-    @include iphoneX {
-        padding-bottom: 52rem;
-    }
-
-    @include iphoneXR {
-        padding-bottom: 56rem;
-    }
-
-    @include iphone1213 {
-        padding-bottom: 53rem !important;
-    }
 
     &.wrapper-result {
         background: url('../../images/event/wrapper-result.png');

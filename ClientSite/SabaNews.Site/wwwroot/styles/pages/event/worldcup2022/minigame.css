@@ -968,19 +968,24 @@ body, .overflow-modal {
     .wrapper-header {
       background: url("../../../../images/worldcup/minigame/top-banner-mobile.png");
       background-size: 100%;
-      background-repeat: no-repeat; } }
+      background-repeat: no-repeat;
+      height: 100vh; } }
+  @media (max-width: 767px) {
+    .wrapper-header {
+      padding-bottom: 61rem;
+      height: 35vw; } }
   @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
-      padding-bottom: 57rem !important; } }
+      padding-bottom: 61rem !important; } }
   @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
     .wrapper-header {
       padding-bottom: 57rem !important; } }
   @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
     .wrapper-header {
-      padding-bottom: 57rem; } }
+      padding-bottom: 61rem; } }
   @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
-      padding-bottom: 58rem !important; } }
+      padding-bottom: 59rem !important; } }
   .wrapper-header .wave-game {
     background: url("../../../../images/worldcup/minigame/top_bg.png") #48041A;
     background-size: 100%;
@@ -1006,6 +1011,12 @@ body, .overflow-modal {
     @media screen and (max-width: 1024px) {
       .wrapper-header .header-control {
         top: auto;
+        right: 30%;
+        bottom: 6rem;
+        left: auto; } }
+    @media (max-width: 767px) {
+      .wrapper-header .header-control {
+        top: auto;
         right: auto;
         bottom: 4rem; } }
     .wrapper-header .header-control ul {
@@ -1013,6 +1024,9 @@ body, .overflow-modal {
       .wrapper-header .header-control ul li {
         clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
         background: #FF004B; }
+        @media screen and (max-width: 1024px) {
+          .wrapper-header .header-control ul li {
+            clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0); } }
         .wrapper-header .header-control ul li:first-child {
           margin-right: 5rem; }
           @media screen and (max-width: 1024px) {
@@ -1043,6 +1057,9 @@ body, .overflow-modal {
       width: 23rem;
       text-align: center;
       margin: 0 auto; }
+      @media screen and (max-width: 1024px) {
+        .wrapper-header .header-control .btn-standing {
+          width: 21rem; } }
       .wrapper-header .header-control .btn-standing a {
         padding: 0.2vw 0;
         font-weight: 700;
@@ -1053,7 +1070,8 @@ body, .overflow-modal {
         color: #3F081B; }
         @media screen and (max-width: 1024px) {
           .wrapper-header .header-control .btn-standing a {
-            font-size: 2rem; } }
+            font-size: 2rem;
+            padding: 0.2rem 3rem; } }
   .wrapper-header-column {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -1217,7 +1235,7 @@ body, .overflow-modal {
       text-decoration: none;
       background: rgba(238, 238, 228, 0.2);
       border-radius: 5px;
-      width: 4.8rem;
+      width: 3.8rem;
       height: 4.2rem;
       margin: 0 auto;
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
