@@ -367,15 +367,15 @@
 
         public static int GetCountVotesStage(IList<UserMinigameModel> votes ,int numStage) 
         {
-            int dem = 0;
+            int num = 0;
             foreach (UserMinigameModel vote in votes)
             {
                 if(vote.Stage == numStage)
                 {
-                    dem++;
+                    num++;
                 }
             }
-            return dem;
+            return num;
         }
 
         public static bool CheckActive(string status)
