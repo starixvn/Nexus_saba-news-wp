@@ -54,7 +54,7 @@ describe('actionCreators', () => {
             await store.dispatch(ActionCreators.getMatches(expectedParams));
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getMatchesBySeason', expectedParams);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('WorldCup2022/GetWorldCupMatch');
             expect(store.getActions()).toEqual(expectedActions);
         });
     });

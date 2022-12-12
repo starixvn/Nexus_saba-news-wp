@@ -8,6 +8,7 @@ SwiperCore.use([Navigation]);
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
+        this.elementRef = React.createRef();
         this.slide = null;
     }
 
@@ -37,7 +38,7 @@ export default class Grid extends PureComponent {
         const { isMobile } = this.props;
         if(isMobile) {
             const scrollWidth = this.slide.start * 240;
-            this.elementRef.scrollTo({
+            this.elementRef.current && this.elementRef.current.scrollTo({
                 left: scrollWidth,
                 behavior: 'smooth'
             });
@@ -50,7 +51,7 @@ export default class Grid extends PureComponent {
         const slide = this.initSlide();
         return (
             <div className="wc-bg-overflow">
-                <div className="wc-date-bar" ref={el => this.elementRef = el}>
+                <div className="wc-date-bar" ref={this.elementRef}>
                     {
                         !isMobile &&
                         <Swiper

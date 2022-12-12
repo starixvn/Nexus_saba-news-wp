@@ -5,28 +5,14 @@ import SkeletonGrid from '../SkeletonGrid';
 
 
 describe('SkeletonGrid', () => {
-
     beforeEach(() => {
         const appContainer = document.createElement('div');
         appContainer.setAttribute('id', 'fixture-homepage');
         document.body.appendChild(appContainer);
-
-        const mWidth = { getBoundingClientRect: jest.fn().mockReturnValueOnce({ offsetWidth: 500 }) };
-        const spyFunc = jest.fn();
-        Object.defineProperty(global.document, 'getElementById', { value: spyFunc, configurable: true });
-        jest.spyOn(document, 'getElementById').mockImplementation((selector) => {
-            switch (selector) {
-                case 'fixture-homepage':
-                return mWidth;
-            }
-        });
-    })
+    });
 
     afterEach(() => {
-        const appContainer = document.getElementById('fixture-homepage');
-        if (appContainer) {
-            document.body.removeChild(appContainer);
-        }
+        jest.clearAllMocks();
     });
 
     it('renders correctly when isMobile = true', () => {
@@ -34,6 +20,7 @@ describe('SkeletonGrid', () => {
         const props = {
             isMobile: true
         }
+        Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 500 })
         const container = shallow(<SkeletonGrid {...props}/>);
 
         // Assert

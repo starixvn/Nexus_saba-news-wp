@@ -1,10 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { AppContainer } from '../AppContainer';
-import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 
 describe('AppContainer', () => {
     const defaultProps = {
@@ -195,6 +192,137 @@ describe('AppContainer', () => {
         });
     });
 
+    describe('handleClickLeague', () => {
+        const { location } = window;
+
+        beforeAll(() => {
+            delete window.location;
+            window.location = { href: '' };
+        });
+
+        afterAll(() => {
+            window.location = location;
+        });
+
+        it('redirect correctly when league has no season', () => {
+            // Arrange
+            const event = {
+                ctrlKey: false
+            };
+            const league = { leagueId: 12036, leagueNameVN: 'Euro'};
+            window.open = jest.fn();
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
+
+            // Act
+            instance.handleClickLeague(event, league);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/0/2022-06-01/12036');
+        });
+
+        it('redirect correctly when league has season', () => {
+            // Arrange
+            const event = {
+                target: { className: 'livescore' }
+            };
+            window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', currentSeasonId: 123, season:{seasonId: 123}};
+            DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            instance.handleClickLeague(event, league);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/123/2022-06-01/12036');
+        });
+
+        it('calls correctly when ctrlKey = true', () => {
+            // Arrange
+            const event = {
+                ctrlKey: true
+            };
+            window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: {seasonId: 123}};
+            DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            instance.handleClickLeague(event, league);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da/euro/123/2022-06-01/12036', '_blank');
+        });
+
+        it('calls correctly when ctrlKey = false', () => {
+            // Arrange
+            const event = {
+                ctrlKey: false
+            };
+            window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: {seasonId:123}};
+            DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            instance.handleClickLeague(event, league);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/123/2022-06-01/12036');
+        });
+    });
+
+    describe('handleClickLeague', () => {
+        const { location } = window;
+
+        beforeAll(() => {
+            delete window.location;
+            window.location = { href: '' };
+        });
+
+        afterAll(() => {
+            window.location = location;
+        });
+
+        it('calls correctly when ctrlKey = true', () => {
+            // Arrange
+            const event = {
+                ctrlKey: true
+            };
+            window.open = jest.fn();
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            instance.handleClickFixture(event);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da', '_blank');
+        });
+
+        it('calls correctly when ctrlKey = false', () => {
+            // Arrange
+            const event = {
+                ctrlKey: false
+            };
+            window.open = jest.fn();
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            instance.handleClickFixture(event);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+            expect(window.location).toEqual('lich-thi-dau/bong-da');
+        });
+    });
+
     describe('getMatches', () => {
         it('return correctly when season finished', () => {
             // Arrange
@@ -297,22 +425,20 @@ describe('AppContainer', () => {
             const matches = [{ matchId: 1, status: 0, stage: { stageId: 30537 } }, { matchId: 2, status: 0, stage: { stageId: 0 } }];
             const league = {
                 season: { endTime: '2022-08-19 05:00:00' },
-                currentStageId: 30540
+                currentStageId: 30540,
+                leagueNameEN: "name"
             }
             const props = {
                 ...defaultProps,
                 matches: matches,
                 league: league
             }
-            const container = shallow(<AppContainer {...props} />);
-            const instance = container.instance();
-            instance.getMatches = jest.fn().mockReturnValue(matches);
-            instance.checkIsFinished = jest.fn().mockReturnValue(false);
             // Act
-            const result = instance.render();
+            const container = shallow(<AppContainer {...props} />);
 
             // Assert
-            expect(result).toMatchSnapshot();
+            container.find('.logo-wc-homepage .text').simulate('click', {ctrlKey: false}, props.league);
+            expect(container).toMatchSnapshot();
         });
     });
 })
