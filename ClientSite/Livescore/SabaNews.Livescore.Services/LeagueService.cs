@@ -9,6 +9,7 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -154,11 +155,10 @@
 
         public IList<League> SearchLeague(IList<League> leagues, string search, int isMajor)
         {
-            var a = search != null ? search.ToLower() : search;
             if (search != null)
             {
-                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.ToLower().Contains(search.ToLower()))
-                || (x.LeagueNameVN != null && x.LeagueNameVN.ToLower().Contains(search.ToLower()))).ToList();
+                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.ToLower(CultureInfo.InvariantCulture).Contains(search.ToLower(CultureInfo.InvariantCulture)))
+                || (x.LeagueNameVN != null && x.LeagueNameVN.ToLower(CultureInfo.InvariantCulture).Contains(search.ToLower(CultureInfo.InvariantCulture)))).ToList();
             }
             if (isMajor == 1)
             {
