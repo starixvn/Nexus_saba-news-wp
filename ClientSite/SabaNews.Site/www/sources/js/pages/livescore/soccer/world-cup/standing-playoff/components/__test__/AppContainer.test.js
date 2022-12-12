@@ -226,6 +226,7 @@ describe('AppContainer', () => {
             expect(result).toEqual([
                 {
                     key: 1,
+                    isFinished: false,
                     stage: { stageId: 1, stageNameEN: 'stage' },
                     matches: [
                         {
@@ -242,6 +243,7 @@ describe('AppContainer', () => {
                 },
                 {
                     key: 2,
+                    isFinished: false,
                     stage: { stageId: 2, stageNameEN: 'stage' },
                     matches: [
                         {
@@ -624,12 +626,12 @@ describe('AppContainer', () => {
             const groups = [
                 {key: 30538, matches:[{matchId: 55225419}, {matchId: 55225418}, {matchId: 55225422}, {matchId: 55225423}, {matchId: 55225420}, {matchId: 55225421}, {matchId: 55225424}, {matchId: 55225426}]},
                 {key: 30539, matches: [{matchId: 55225428}, {matchId: 55225430}, {matchId: 55225427}, {matchId: 55225429}]},
-                {key: 30540, matches: [{matchId: 55225431}, {matchId: 55225432}]}
+                {key: 30540, matches: [{matchId: 55225431}, {matchId: 56772779}]}
             ];
             const expected = [
                 {key: 30538, matches:[{matchId: 55225418}, {matchId: 55225419}, {matchId: 55225422}, {matchId: 55225423}, {matchId: 55225420}, {matchId: 55225421}, {matchId: 55225424}, {matchId: 55225426}]},
                 {key: 30539, matches: [{matchId: 55225428}, {matchId: 55225427}, {matchId: 55225430}, {matchId: 55225429}]},
-                {key: 30540, matches: [{matchId: 55225431}, {matchId: 55225432}]}
+                {key: 30540, matches: [{matchId: 55225431}, {matchId: 56772779}]}
             ]
              const container = shallow(<AppContainer {...defaultProps} />);
              const instance = container.instance();
