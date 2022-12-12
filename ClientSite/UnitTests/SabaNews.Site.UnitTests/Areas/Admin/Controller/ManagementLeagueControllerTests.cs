@@ -35,7 +35,7 @@
             var result = controller.Index();
 
             // Assert
-            Assert.IsType<ViewResult>(result);
+            Assert.IsType<ViewResult>(result.Result);
         }
 
         [Fact]
