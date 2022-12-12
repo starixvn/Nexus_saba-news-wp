@@ -972,7 +972,7 @@ body, .overflow-modal {
       height: 100vh; } }
   @media (max-width: 767px) {
     .wrapper-header {
-      padding-bottom: 61rem;
+      padding-bottom: 63.5rem;
       height: 35vw; } }
   @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
@@ -985,7 +985,7 @@ body, .overflow-modal {
       padding-bottom: 61rem; } }
   @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
-      padding-bottom: 59rem !important; } }
+      padding-bottom: 63.5rem !important; } }
   .wrapper-header .wave-game {
     background: url("../../../../images/worldcup/minigame/top_bg.png") #48041A;
     background-size: 100%;
