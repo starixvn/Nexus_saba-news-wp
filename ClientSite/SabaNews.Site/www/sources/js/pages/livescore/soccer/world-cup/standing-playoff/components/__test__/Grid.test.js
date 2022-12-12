@@ -1,23 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Grid  from '../Grid';
-import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 
 describe('Grid', () => {
     const defaultProps = {
         matches: [
             {
-                key: 1, stage: {stageId:1},
+                key: 1, stage: {stageId:1, isFinished: true},
                 matches:[
                     {matchId: 1, stage: {stageNameVN: 'stageNameVN'}},
                     {matchId: 2, stage: {stageNameVN: 'stageNameVN'}}
                 ]
             },
             {
-                key: 2, stage: {stageId:2},
+                key: 2, stage: {stageId:2, isFinished: false},
                 matches:[
                     {matchId: 3, stage: {stageNameVN: 'stageNameVN'}},
                     {matchId: 4, stage: {stageNameVN: 'stageNameVN'}}
@@ -92,6 +88,39 @@ describe('Grid', () => {
             // Arrange
             const props = {
                 ...defaultProps,
+                isMobile: false
+            };
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+            instance.setState({ activeIndex: 1 });
+
+            // Act
+            const result = shallow(instance.render());
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        })
+
+        it('render correctly when league is finished', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                matches: [
+                    {
+                        key: 1, stage: {stageId:1, isFinished: true},
+                        matches:[
+                            {matchId: 1, stage: {stageNameVN: 'stageNameVN'}},
+                            {matchId: 2, stage: {stageNameVN: 'stageNameVN'}}
+                        ]
+                    },
+                    {
+                        key: 2, stage: {stageId:2, isFinished: true},
+                        matches:[
+                            {matchId: 3, stage: {stageNameVN: 'stageNameVN'}},
+                            {matchId: 4, stage: {stageNameVN: 'stageNameVN'}}
+                        ]
+                    }
+                ],
                 isMobile: false
             };
             const container = shallow(<Grid {...props} />);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { Width1024, WorldCup } from '@jsroot/common/constants';
+import { Width1024, WorldCup, MatchStatus } from '@jsroot/common/constants';
 import Grid from './Grid';
 import Item from './Item';
 import Site from '@jsroot/common/site';
@@ -76,6 +76,15 @@ export class AppContainer extends Component {
             }
         });
         tempMatches = tempMatches.sort((item1, item2) => item2.stage.orderIndex - item1.stage.orderIndex);
+        tempMatches.forEach((item, index) => {
+            let isFinished = false;
+            const stageMatches = item.matches;
+            const lastMatch = stageMatches[stageMatches.length - 1];
+            if(lastMatch.status === MatchStatus.Finished) {
+                isFinished = true;
+            }
+            tempMatches[index] = {...item, isFinished};
+        });
         return tempMatches;
     };
 

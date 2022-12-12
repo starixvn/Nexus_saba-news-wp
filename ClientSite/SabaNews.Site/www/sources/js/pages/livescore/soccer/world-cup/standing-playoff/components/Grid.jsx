@@ -8,9 +8,21 @@ export default class Grid extends PureComponent {
         super(props);
 
         this.state = {
-            activeIndex: 0
+            activeIndex: this.initActiveTab()
         };
     }
+
+    initActiveTab = () => {
+        const { matches } = this.props;
+        const notStartStageIndex = matches.findIndex(item => item.isFinished === false);
+        let stageId;
+        if(notStartStageIndex < 0) {
+            stageId = matches.length - 1;
+        } else {
+            stageId = notStartStageIndex;
+        }
+        return stageId;
+    };
 
     handleActiveTab = isNext => {
         const matches = this.props.matches;
