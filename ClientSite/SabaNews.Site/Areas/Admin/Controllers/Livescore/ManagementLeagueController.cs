@@ -136,14 +136,23 @@
             return Json(result);
         }
 
+        [HttpPost]
         public async Task<ActionResult> AddLeagueExtra(LeagueUpdateViewModel leagueUpdate)
         {
+            League league = await leagueService.GetLeagueByIdAsync(leagueUpdate.LeagueId);
+            var icon = leagueUpdate.IsDeletedIcon ? null : league.CountryIconVN;
+            if (leagueUpdate.Icon != null)
+            {
+                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
+                icon = uploadResult.IsSuccessful ? uploadResult.Message : icon;
+            }
             var result = await leagueService.InsertLeaguesExtraAsync(leagueUpdate.LeagueId);
             _ = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
             {
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
-                CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture)
+                CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture),
+                CountryIconVN = icon
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League
             {

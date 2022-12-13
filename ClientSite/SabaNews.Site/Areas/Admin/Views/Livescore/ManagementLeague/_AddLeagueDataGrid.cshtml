@@ -56,12 +56,47 @@
                             </td>
                         </tr>
 
+                        <tr class="form-input flex-form-input">
+                            <td>
+                                <label>
+                                    Country Icon
+                                </label>
+                            </td>
+                            <td>
+                                <div class="flex-form-input">
+                                    @{
+                                        var iconCountry = Model[0].CountryIconVN ?? Model[0].CountryLogo ?? "/css/images/logo-dummy.png";
+                                        var display = !string.IsNullOrEmpty(iconCountry);
+                                        var hide = display ? "none" : "flex";
+                                        var show = display ? "flex" : "none";
+                                    }
+                                    <div class="form-group-input form-group-input-left w-75">
+                                        <div class="admin-text-logo">
+                                            <div class="input-upload">
+                                                <input type="file" class="input-file photo" id="addLeagueIcon">
+                                                <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                                                <div class="img-upload">
+                                                    <p class="error photo-error" style="display:none"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-input form-group-input-right w-25">
+                                        <div class="admin-text-logo admin-text-logo-data-img">
+                                            <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
+                                            <img src="@iconCountry" id="iconContry" alt="Alternate Text" class="review_photo" style="display:@show" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
                         <tr>
                             <td>
                                 <label>@ViewResources.Country</label>
                             </td>
                             <td>
-                                <label class="txt-countryEn">@Model[0].CountryEN <img src="/css/images/logo-dummy.png" alt="Alternate Text" class="review_photo" style="display:@(Model[0].CountryEN != null ? "none" : "flex")" /></label>
+                                <input type="text" disabled value="@Model[0].CountryEN" class="form-control txt-countryEn" id="addCountryEN" name="CountryEN" />
                             </td>
                         </tr>
 

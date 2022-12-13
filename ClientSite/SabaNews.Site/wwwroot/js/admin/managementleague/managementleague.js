@@ -1,9 +1,9 @@
-﻿var originIndex = 0, nextIndex = 0;
-var adminManagementLeague = (function ($) {
-    var page = 1, pageSize = 10, url = "", typeSort = 1;
-    var isMajor = -1;
+﻿let originIndex = 0, nextIndex = 0;
+let adminManagementLeague = (function ($) {
+    let page = 1, pageSize = 10, url = "", typeSort = 1;
+    let isMajor = -1;
     function GetDataLeagueExtraGrid(dateSort) {
-        var search = document.getElementById("search").value;
+        let search = document.getElementById("search").value;
         $.ajax({
             url: "/Admin/ManagementLeague/GetManagementLeagueData",
             type: 'POST',
@@ -19,8 +19,8 @@ var adminManagementLeague = (function ($) {
 
     function initLeague() {
         $('.isMajorLeague').on('click', function () {
-            var url = $(this).data('url');
-            var isMajor = $(this).prop("checked");
+            let url = $(this).data('url');
+            let isMajor = $(this).prop("checked");
             $.ajax({
                 type: 'POST',
                 url: url,
@@ -46,8 +46,8 @@ var adminManagementLeague = (function ($) {
         });
 
         $('.btn-Edit').on('click', function () {
-            var url = $(this).data('url');
-            var name = $(this).data('name');
+            let url = $(this).data('url');
+            let name = $(this).data('name');
             $.ajax({
                 type: 'GET',
                 url: url,
@@ -57,16 +57,16 @@ var adminManagementLeague = (function ($) {
                     $('#EditLeagueContent').modal('show');
 
                     $('.photo').on('change', function (e) {
-                        var form = $(this).parent();
-                        var files = $(this)[0].files[0];
-                        var isValid = ValidatePhoto(files, $(this));
+                        let form = $(this).parent();
+                        let files = $(this)[0].files[0];
+                        let isValid = ValidatePhoto(files, $(this));
                         if (!isValid) {
                             CancelUploadHandler($(this).parent());
                             return false;
                         }
-                        var review = $(this).parent().parent().parent().parent().find('.review_photo');
+                        let review = $(this).parent().parent().parent().parent().find('.review_photo');
 
-                        var reader = new FileReader();
+                        let reader = new FileReader();
                         reader.readAsDataURL(files);
                         reader.onload = function (e) {
                             review.attr('src', e.target.result);
@@ -75,23 +75,23 @@ var adminManagementLeague = (function ($) {
                     });
 
                     $('.cancel-upload').on('click', function () {
-                        var form = $(this).parent();
+                        let form = $(this).parent();
                         form.find('.review_photo').attr('src', "/css/images/logo-dummy.png");
                     });
 
                     $('#btn-save').on('click', function () {
                         document.getElementById("btn-save").style.display = "none";
-                        var LeagueId = $(this).data('id');
-                        var IsMajor = document.getElementById("editMajor").checked;
-                        var Priority = document.getElementById("editPriority").value;
-                        var LeagueNameVN = document.getElementById("editLeagueNameVN").value;
-                        var CountryVN = document.getElementById("editCountryVN").value;
-                        var Icon = $('#editLeagueIcon')[0].files[0];
-                        var currentIcon = $('#editLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                        let LeagueId = $(this).data('id');
+                        let IsMajor = document.getElementById("editMajor").checked;
+                        let Priority = document.getElementById("editPriority").value;
+                        let LeagueNameVN = document.getElementById("editLeagueNameVN").value;
+                        let CountryVN = document.getElementById("editCountryVN").value;
+                        let Icon = $('#editLeagueIcon')[0].files[0];
+                        let currentIcon = $('#editLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
 
-                        var IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
+                        let IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
 
-                        var formData = new FormData();
+                        let formData = new FormData();
                         formData.append('leagueId', LeagueId);
                         formData.append('isMajor', IsMajor);
                         formData.append('priority', Priority);
@@ -136,7 +136,7 @@ var adminManagementLeague = (function ($) {
     }
 
     function ChangePhotoHanlder(form) {
-        var review = $(form).parent().parent().parent();
+        let review = $(form).parent().parent().parent();
         review.find('.cancel-upload').show();
         review.find('.review_photo').show();
         $(form).find('.photo-error').hide();
@@ -144,15 +144,15 @@ var adminManagementLeague = (function ($) {
     }
 
     function ValidatePhoto(files, self) {
-        var isValid = true;
-        var errorSection = self.parent().find('.photo-error');
+        let isValid = true;
+        let errorSection = self.parent().find('.photo-error');
         if (typeof files === "undefined") {
             errorSection.html("Please choose file first!");
             errorSection.show();
             return false;
         }
-        var type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
-        var fsize = files.size,
+        let type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
+        let fsize = files.size,
             ftype = files.type,
             fname = files.name,
             fextension = fname.substring(fname.lastIndexOf('.') + 1);
@@ -172,7 +172,7 @@ var adminManagementLeague = (function ($) {
     function initPaging() {
         $('.paging').on('click', function () {
             page = $(this).data('page');
-            var dateSort = $("#date-sort").attr("sort-type");
+            let dateSort = $("#date-sort").attr("sort-type");
             GetDataLeagueExtraGrid(dateSort);
 
         });
@@ -180,7 +180,7 @@ var adminManagementLeague = (function ($) {
         $('#page-size').on('change', function () {
             pageSize = $(this).val();
             page = 1;
-            var dateSort = $("#date-sort").attr("sort-type");
+            let dateSort = $("#date-sort").attr("sort-type");
             GetDataLeagueExtraGrid(dateSort);
         });
     }
@@ -194,15 +194,35 @@ var adminManagementLeague = (function ($) {
                 $('#AddLeagueContent .modal-body').html(html);
                 $('#AddLeagueContent').modal('show');
 
+                $('.photo').on('change', function (e) {
+                    let form = $(this).parent();
+                    let files = $(this)[0].files[0];
+                    let isValid = ValidatePhoto(files, $(this));
+                    if (!isValid) {
+                        CancelUploadHandler($(this).parent());
+                        return false;
+                    }
+                    let review = $(this).parent().parent().parent().parent().find('.review_photo');
+
+                    let reader = new FileReader();
+                    reader.readAsDataURL(files);
+                    reader.onload = function (e) {
+                        review.attr('src', e.target.result);
+                        ChangePhotoHanlder(form);
+                    };
+                });
+
                 $("#leagueFullNameEN").select2();
 
                 $("#leagueFullNameEN").on("change", function () {
-                    var LeagueId = document.getElementById("leagueFullNameEN").value;
+                    let LeagueId = document.getElementById("leagueFullNameEN").value;
                     $.ajax({
                         type: 'POST',
                         url: "/Admin/ManagementLeague/GetLeagueById",
                         data: { LeagueId },
                         success: function (response) {
+                            let iconCountry = response.countryIconVN ?? response.countryLogo ?? "/css/images/logo-dummy.png";
+                            $("#iconContry").attr("src", iconCountry);
                             document.getElementById("addCountryEN").value = response.countryEN;
                             document.getElementById("addCountryVN").value = response.countryVN;
                             document.getElementById("addLeagueNameVN").value = response.leagueNameVN;
@@ -219,15 +239,31 @@ var adminManagementLeague = (function ($) {
                 $('#btn-save-add').on('click', function () {
                     document.getElementById("btn-save-add").style.display = "none";
                     url = $(this).data('url');
-                    var LeagueId = document.getElementById("leagueFullNameEN").value;
-                    var IsMajor = document.getElementById("addMajor").checked;
-                    var Priority = document.getElementById("addPriority").value;
-                    var LeagueNameVN = document.getElementById("addLeagueNameVN").value;
-                    var CountryVN = document.getElementById("addCountryVN").value;
+                    let LeagueId = document.getElementById("leagueFullNameEN").value;
+                    let IsMajor = document.getElementById("addMajor").checked;
+                    let Priority = document.getElementById("addPriority").value;
+                    let LeagueNameVN = document.getElementById("addLeagueNameVN").value;
+                    let CountryVN = document.getElementById("addCountryVN").value;
+                    let Icon = $('#addLeagueIcon')[0].files[0];
+                    let currentIcon = $('#addLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+
+                    let IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
+
+                    let formData = new FormData();
+                    formData.append('leagueId', LeagueId);
+                    formData.append('isMajor', IsMajor);
+                    formData.append('priority', Priority);
+                    formData.append('leagueNameVN', LeagueNameVN);
+                    formData.append('countryVN', CountryVN);
+                    formData.append('icon', Icon);
+                    formData.append('isDeletedIcon', IsDeletedIcon);
+
                     $.ajax({
                         type: 'POST',
                         url: url,
-                        data: { LeagueId, IsMajor, Priority, LeagueNameVN, CountryVN },
+                        data: formData,
+                        processData: false,
+                        contentType: false,
                         success: function (response) {
                             if (response.isSuccessful) {
                                 $('#AddLeagueContent').modal('hide');
@@ -259,7 +295,7 @@ var adminManagementLeague = (function ($) {
 
     function initSortLeague() {
         $("#date-sort").on("click", function () {
-            var dateType = $(this).attr("sort-type");
+            let dateType = $(this).attr("sort-type");
             if (!dateType) {
                 dateType = "desc";
                 GetDataLeagueExtraGrid(dateType);

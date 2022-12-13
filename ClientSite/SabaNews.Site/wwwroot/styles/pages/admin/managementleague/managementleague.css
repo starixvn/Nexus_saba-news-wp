@@ -246,6 +246,9 @@
   width: 397px !important;
   margin-left: -375px;
 }
+#AddLeagueContent .modal-content .txt-countryEn {
+  border: unset;
+}
 #AddLeagueContent .modal-content .txt-countryVn {
   width: 250px !important;
   margin-left: -375px;
@@ -272,6 +275,60 @@
   margin-left: 12px;
   width: 80px;
   font-size: 15px;
+}
+#AddLeagueContent .modal-content .flex-form-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 348px;
+}
+#AddLeagueContent .modal-content .flex-form-input:last-child {
+  margin-bottom: 0;
+}
+#AddLeagueContent .modal-content .flex-form-input .label-admin {
+  width: 30%;
+  margin: 0;
+}
+#AddLeagueContent .modal-content .flex-form-input label {
+  width: 148px;
+}
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  margin: 0 auto;
+}
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  font-size: 1.2rem;
+  background: transparent;
+  cursor: pointer;
+  color: #4F4F4F;
+}
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus {
+  outline: none;
+}
+#AddLeagueContent .modal-content .flex-form-input .w-75 {
+  width: 256px !important;
+  margin-right: 10px;
+}
+#AddLeagueContent .modal-content .flex-form-input .custom-input {
+  width: 100%;
+  cursor: inherit;
 }
 
 .modal-open .modal {
@@ -336,6 +393,9 @@
 #EditLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-leagueNameVn, #EditLeagueContent .modal-content .txt-leagueFullNameVn {
   width: 270px !important;
   margin-left: -284px;
+}
+#EditLeagueContent .modal-content .txt-countryEn {
+  border: unset;
 }
 #EditLeagueContent .modal-content .txt-countryVn {
   font-weight: unset;

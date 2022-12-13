@@ -1,8 +1,40 @@
-﻿var originIndex = 0, nextIndex = 0;
-var adminManagementHotLeague = (function ($) {
-    var url = "";
+﻿let originIndex = 0, nextIndex = 0;
+let adminManagementHotLeague = (function ($) {
+    let url = "";
     function GetDataHotLeagueExtraGrid() {
         window.location.href = window.location.origin + "/Admin/ManagementLeague/GetManagementLeagueHotData";
+    }
+
+    function ChangePhotoHanlder(form) {
+        let review = $(form).parent().parent().parent();
+        review.find('.cancel-upload').show();
+        review.find('.review_photo').show();
+        $(form).find('.photo-error').hide();
+
+    }
+
+    function ValidatePhoto(files, self) {
+        let isValid = true;
+        let errorSection = self.parent().find('.photo-error');
+        if (typeof files === "undefined") {
+            errorSection.html("Please choose file first!");
+            errorSection.show();
+            return false;
+        }
+        let type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
+        let fsize = files.size,
+            ftype = files.type;
+
+        if (!type_reg.test(ftype)) {
+            errorSection.html("Just support for jpg, png, jpeg, gif file type!");
+            errorSection.show();
+            return false;
+        } else if (fsize > 3145728) {
+            errorSection.html("Exceeds the maximum upload size for this site.");
+            errorSection.show();
+            return false;
+        }
+        return isValid;
     }
 
     function initAddLeague(dateSort) {
@@ -14,15 +46,36 @@ var adminManagementHotLeague = (function ($) {
                 $('#AddLeagueContent .modal-body').html(html);
                 $('#AddLeagueContent').modal('show');
 
+                $('.photo').on('change', function (e) {
+                    let form = $(this).parent();
+                    let files = $(this)[0].files[0];
+                    let isValid = ValidatePhoto(files, $(this));
+                    if (!isValid) {
+                        CancelUploadHandler($(this).parent());
+                        return false;
+                    }
+                    let review = $(this).parent().parent().parent().parent().find('.review_photo');
+
+                    let reader = new FileReader();
+                    reader.readAsDataURL(files);
+                    reader.onload = function (e) {
+                        review.attr('src', e.target.result);
+                        ChangePhotoHanlder(form);
+                    };
+                });
+
+
                 $("#leagueFullNameEN").select2();
 
                 $("#leagueFullNameEN").on("change", function () {
-                    var LeagueId = document.getElementById("leagueFullNameEN").value;
+                    let LeagueId = document.getElementById("leagueFullNameEN").value;
                     $.ajax({
                         type: 'POST',
                         url: "/Admin/ManagementLeague/GetLeagueById",
                         data: { LeagueId },
                         success: function (response) {
+                            let iconCountry = response.countryIconVN ?? response.countryLogo ?? "/css/images/logo-dummy.png";
+                            $("#iconContry").attr("src", iconCountry);
                             document.getElementById("addCountryEN").value = response.countryEN;
                             document.getElementById("addCountryVN").value = response.countryVN;
                             document.getElementById("addLeagueNameVN").value = response.leagueNameVN;
@@ -34,15 +87,31 @@ var adminManagementHotLeague = (function ($) {
                 $('#btn-save-add').on('click', function () {
                     document.getElementById("btn-save-add").style.display = "none";
                     url = $(this).data('url');
-                    var LeagueId = document.getElementById("leagueFullNameEN").value;
-                    var IsMajor = document.getElementById("addMajor").checked;
-                    var Priority = document.getElementById("addPriority").value;
-                    var LeagueNameVN = document.getElementById("addLeagueNameVN").value;
-                    var CountryVN = document.getElementById("addCountryVN").value;
+                    let LeagueId = document.getElementById("leagueFullNameEN").value;
+                    let IsMajor = document.getElementById("addMajor").checked;
+                    let Priority = document.getElementById("addPriority").value;
+                    let LeagueNameVN = document.getElementById("addLeagueNameVN").value;
+                    let CountryVN = document.getElementById("addCountryVN").value;
+                    let Icon = $('#addLeagueIcon')[0].files[0];
+                    let currentIcon = $('#addLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+
+                    let IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
+
+                    let formData = new FormData();
+                    formData.append('leagueId', LeagueId);
+                    formData.append('isMajor', IsMajor);
+                    formData.append('priority', Priority);
+                    formData.append('leagueNameVN', LeagueNameVN);
+                    formData.append('countryVN', CountryVN);
+                    formData.append('icon', Icon);
+                    formData.append('isDeletedIcon', IsDeletedIcon);
+
                     $.ajax({
                         type: 'POST',
                         url: url,
-                        data: { LeagueId, IsMajor, Priority, LeagueNameVN, CountryVN },
+                        data: formData,
+                        processData: false,
+                        contentType: false,
                         success: function (response) {
                             if (response.isSuccessful) {
                                 $('#AddLeagueContent').modal('hide');

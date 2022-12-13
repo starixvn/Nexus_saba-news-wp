@@ -78,7 +78,7 @@
                                 <label>@ViewResources.Country</label>
                             </td>
                             <td>
-                                <label class="txt-countryVn" id="editCountryEN" name="CountryEN">@Model[0].CountryEN <img src="/css/images/logo-dummy.png" alt="Alternate Text" class="review_photo" style="display:@(Model[0].CountryEN != null ? "none" : "flex")" /></label>
+                                <input type="text" disabled value="@Model[0].CountryEN" class="form-control txt-countryVn txt-countryEn" id="editCountryEN" name="CountryEN" />
                             </td>
                         </tr>
 
