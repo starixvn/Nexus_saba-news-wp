@@ -150,6 +150,12 @@
   height: 28px;
   margin-right: 30px;
 }
+.show-league .btn_major_league:hover {
+  cursor: pointer;
+}
+.show-league .btn_hot_league:hover {
+  cursor: pointer;
+}
 .show-league .btn_hot_league {
   width: 106px;
   color: navy;
