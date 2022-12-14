@@ -15,6 +15,7 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
     using SabaNews.Site.Areas.Admin.Controllers.Livescore;
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
@@ -57,6 +58,22 @@
         }
 
         [Fact]
+        public async Task GetManagementLeagueHotData_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = new Fixture().Create<IList<League>>();
+            leagueService.GetLeaguesAsync().Returns(expected);
+
+            //Act
+            var result = await controller.GetManagementLeagueHotData();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Areas/Admin/Views/Livescore/ManagementLeague/ManagementHotLeagueDataGrid.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
         public async Task GetAllLeagues_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -87,6 +104,35 @@
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expected, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task UpdatePriority_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            string originIndex = "1";
+            string nextIndex = "2";
+            var expected = new Fixture().Create<CommandResult>();
+            var leagues = new Fixture().Create<IList<League>>();
+            while(leagues.Count < 5)
+            {
+                leagues.Add(new Fixture().Create<League>());
+            }
+
+            leagueService.GetLeaguesAsync().Returns(leagues);
+            leagueService.SearchLeague(leagues, null, 1).Returns(leagues);
+            leagueService.UpdateLeaguesExtraAsync(new League
+            {
+                LeagueId = leagues[Int32.Parse(originIndex) - 1].LeagueId,
+                IsMajor = leagues[Int32.Parse(originIndex) - 1].IsMajor,
+                Priority = leagues[Int32.Parse(nextIndex) - 1].Priority
+            }).Returns(expected);
+            //Act
+            var result = await controller.UpdatePriority(originIndex, nextIndex);
+
+            // Assert
+            
         }
 
         [Fact]
