@@ -88,7 +88,7 @@
         public async Task<ActionResult> EditLeague(LeagueUpdateViewModel leagueUpdate)
         {
             IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueUpdate.LeagueId.ToString() + "]") });
-            var icon = leagueUpdate.IsDeletedIcon ? null : league[0].CountryIconVN;
+            string icon = leagueUpdate.IsDeletedIcon ? null : league[0].CountryIconVN;
             if (leagueUpdate.Icon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
@@ -140,7 +140,7 @@
         public async Task<ActionResult> AddLeagueExtra(LeagueUpdateViewModel leagueUpdate)
         {
             League league = await leagueService.GetLeagueByIdAsync(leagueUpdate.LeagueId);
-            var icon = leagueUpdate.IsDeletedIcon ? null : league.CountryIconVN;
+            string icon = leagueUpdate.IsDeletedIcon ? null : league.CountryIconVN;
             if (leagueUpdate.Icon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
