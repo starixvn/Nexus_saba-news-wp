@@ -43,7 +43,21 @@
         return matchIds;
     }
 
+    function updateCurrentTime() {
+        let nIntervId;
+        
+        let currentTime = window.currentTime;
+        if (!nIntervId) {
+            nIntervId = setInterval(function () {
+                currentTime.setMinutes(currentTime.getMinutes() + 1);
+                window.currentTime = currentTime;
+                console.log("js", currentTime);
+            }, 60 * 1000);
+        }
+    }
+
     function init() {
+        updateCurrentTime();
         //RefreshFavMatch();
     }
 
