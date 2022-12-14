@@ -93,6 +93,82 @@ describe('common.functions', () => {
         });
     });
 
+    describe('getMatchByEventStage', () => {
+        it('return correctly when stage = 1', () => {
+             //Arrange
+            const matches = [{matchId: 1, stage:{stageId:30537}}, {matchId: 2, stage:{stageId:30537}}];
+
+            //Act
+            const result = functions.getMatchesByStage(matches, 1);
+
+            //Assert
+            expect(result).toEqual(matches);
+        });
+
+        it('return correctly when stage = 2', () => {
+            //Arrange
+           const matches = [{matchId: 1, stage:{stageId:30537}}, {matchId: 2, stage:{stageId:30537}}, , {matchId: 3, stage:{stageId:30537}}, , {matchId: 4, stage:{stageId:30537}}, {matchId: 5, stage:{stageId:30537}}, {matchId: 6, stage:{stageId:30537}},
+            {matchId: 7, stage:{stageId:30537}}, {matchId: 8, stage:{stageId:30537}}, {matchId: 9, stage:{stageId:30537}}, {matchId: 10, stage:{stageId:30537}},, {matchId: 11, stage:{stageId:30537}}, {matchId:12, stage:{stageId:30537}},
+            {matchId: 13, stage:{stageId:30537}}, {matchId: 14, stage:{stageId:30537}}, {matchId: 15, stage:{stageId:30537}}, {matchId: 16, stage:{stageId:30537}}, {matchId: 17, stage:{stageId:30537}}, {matchId: 18, stage:{stageId:30537}},
+            {matchId: 19, stage:{stageId:30537}}, {matchId: 20, stage:{stageId:30537}}, {matchId: 21, stage:{stageId:30537}}, {matchId: 22, stage:{stageId:30537}}, {matchId: 23, stage:{stageId:30537}}, {matchId: 24, stage:{stageId:30537}},
+            {matchId: 25, stage:{stageId:30537}}, {matchId: 26, stage:{stageId:30537}}, {matchId: 27, stage:{stageId:30537}}, {matchId: 28, stage:{stageId:30537}}, {matchId: 29, stage:{stageId:30537}}, {matchId: 30, stage:{stageId:30537}},
+            {matchId: 31, stage:{stageId:30537}}, {matchId: 32, stage:{stageId:30537}}];
+
+            const expected =  [ {matchId: 17, stage:{stageId:30537}}, {matchId: 18, stage:{stageId:30537}},
+            {matchId: 19, stage:{stageId:30537}}, {matchId: 20, stage:{stageId:30537}}, {matchId: 21, stage:{stageId:30537}}, {matchId: 22, stage:{stageId:30537}}, {matchId: 23, stage:{stageId:30537}}, {matchId: 24, stage:{stageId:30537}},
+            {matchId: 25, stage:{stageId:30537}}, {matchId: 26, stage:{stageId:30537}}, {matchId: 27, stage:{stageId:30537}}, {matchId: 28, stage:{stageId:30537}}, {matchId: 29, stage:{stageId:30537}}, {matchId: 30, stage:{stageId:30537}},
+            {matchId: 31, stage:{stageId:30537}}, {matchId: 32, stage:{stageId:30537}}];
+
+           //Act
+           const result = functions.getMatchesByStage(matches, 2);
+
+           //Assert
+           expect(result).toEqual(expected);
+       });
+
+       it('return correctly when stage = 3', () => {
+            //Arrange
+           const matches = [{matchId: 1, stage:{stageId:30537}}, {matchId: 2, stage:{stageId:30537}}, , {matchId: 3, stage:{stageId:30537}}, , {matchId: 4, stage:{stageId:30537}}, {matchId: 5, stage:{stageId:30537}}, {matchId: 6, stage:{stageId:30537}},
+                {matchId: 7, stage:{stageId:30537}}, {matchId: 8, stage:{stageId:30537}}, {matchId: 9, stage:{stageId:30537}}, , {matchId: 10, stage:{stageId:30537}},, {matchId: 11, stage:{stageId:30537}}, {matchId:12, stage:{stageId:30537}},
+                {matchId: 13, stage:{stageId:30537}}, {matchId: 14, stage:{stageId:30537}}, {matchId: 15, stage:{stageId:30537}}, {matchId: 16, stage:{stageId:30537}}, {matchId: 17, stage:{stageId:30537}}, {matchId: 18, stage:{stageId:30537}},
+                {matchId: 19, stage:{stageId:30537}}, {matchId: 20, stage:{stageId:30537}}, {matchId: 21, stage:{stageId:30537}}, {matchId: 22, stage:{stageId:30537}}, {matchId: 23, stage:{stageId:30537}}, {matchId: 24, stage:{stageId:30537}},
+                {matchId: 25, stage:{stageId:30537}}, {matchId: 26, stage:{stageId:30537}}, {matchId: 27, stage:{stageId:30537}},  {matchId: 28, stage:{stageId:30537}}, {matchId: 29, stage:{stageId:30537}}, {matchId: 30, stage:{stageId:30537}},
+                {matchId: 31, stage:{stageId:30537}}, {matchId: 32, stage:{stageId:30537}}, {matchId: 33, stage:{stageId:30537}}, {matchId: 34, stage:{stageId:30537}}, {matchId: 35, stage:{stageId:30537}}, {matchId: 36, stage:{stageId:30537}},
+                {matchId: 37, stage:{stageId:30537}}, {matchId: 38, stage:{stageId:30537}}, {matchId: 39, stage:{stageId:30537}}, {matchId: 40, stage:{stageId:30537}}, {matchId: 41, stage:{stageId:30537}}, {matchId: 42, stage:{stageId:30537}}];
+
+            const expected =  [ {matchId: 33, stage:{stageId:30537}}, {matchId: 34, stage:{stageId:30537}}, {matchId: 35, stage:{stageId:30537}}, {matchId: 36, stage:{stageId:30537}},
+                {matchId: 37, stage:{stageId:30537}}, {matchId: 38, stage:{stageId:30537}}, {matchId: 39, stage:{stageId:30537}}, {matchId: 40, stage:{stageId:30537}}, {matchId: 41, stage:{stageId:30537}}, {matchId: 42, stage:{stageId:30537}}];
+
+           //Act
+           const result = functions.getMatchesByStage(matches, 3);
+
+           //Assert
+           expect(result).toEqual(expected);
+       });
+
+        it('return correctly when stage = 4', () => {
+             //Arrange
+            const matches = [{matchId: 1, stage:{stageId:30538}}, {matchId: 2, stage:{stageId:30538}}];
+
+            //Act
+            const result = functions.getMatchesByStage(matches, 4);
+
+            //Assert
+            expect(result).toEqual(matches);
+        });
+
+        it('return correctly when stage = 5', () => {
+            //Arrange
+           const matches = [{matchId: 1, stage:{stageId:30538}}, {matchId: 2, stage:{stageId:30538}}];
+
+           //Act
+           const result = functions.getMatchesByStage(matches, 5);
+
+           //Assert
+           expect(result).toEqual([]);
+        });
+    });
+
     describe('groupMatchesByStage', () => {
         it('return as expected', () => {
             // Arrange

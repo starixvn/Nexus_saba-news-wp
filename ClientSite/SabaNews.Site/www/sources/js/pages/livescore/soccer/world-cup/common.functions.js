@@ -117,6 +117,7 @@ export const getMinigameStageStartTime = stage => {
 
 const functions = {
     getMatchByEventStage,
+    getMatchesByStage,
     groupMatchesByStage,
     getVoteResult,
     getMinigameStageStartTime
