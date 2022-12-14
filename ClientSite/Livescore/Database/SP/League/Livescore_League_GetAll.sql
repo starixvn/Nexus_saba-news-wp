@@ -9,8 +9,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetAll`(
     */
 )
 BEGIN
-	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN
-	FROM livescore_league l
+	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, c.CountryLogo
+	FROM livescore_league l LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
 	WHERE Not EXISTS
 	(SELECT e.LeagueId FROM livescore_league_extra e where l.LeagueId = e.LeagueId);
 END

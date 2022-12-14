@@ -11,8 +11,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetLeagueById`(
     */
 )
 BEGIN
-	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, l.CurrentStageId
-	FROM livescore_league l
+	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, l.CurrentStageId, c.CountryLogo
+	FROM livescore_league l LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
 	Where l.LeagueId = LeagueId;
 END
 //
