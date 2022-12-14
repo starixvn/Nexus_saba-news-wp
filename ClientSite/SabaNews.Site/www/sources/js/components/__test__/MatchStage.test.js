@@ -399,7 +399,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00', footballStartTime:'2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...props} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 19:20:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 19:20:00');
             // Act
             const result = instance.getFirstHalfTimeMinutes(match);
 
@@ -416,7 +416,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...props} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 19:50:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 19:50:00');
             // Act
             const result = instance.getFirstHalfTimeMinutes(match);
 
@@ -433,7 +433,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...props} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 18:50:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 18:50:00');
             // Act
             const result = instance.getFirstHalfTimeMinutes(match);
 
@@ -448,7 +448,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00', footballNextHalfStartTime:'2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 19:40:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 19:40:00');
             // Act
             const result = instance.getSecondHalfTimeMinutes(match);
 
@@ -461,7 +461,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00', footballNextHalfStartTime:'2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 20:45:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 20:45:00');
             // Act
             const result = instance.getSecondHalfTimeMinutes(match);
 
@@ -474,7 +474,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 18:45:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 18:45:00');
             // Act
             const result = instance.getSecondHalfTimeMinutes(match);
 
@@ -489,7 +489,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00', footballAddStartTime:'2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 19:20:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 19:20:00');
             // Act
             const result = instance.getExtraTimeMinutes(match);
 
@@ -502,7 +502,7 @@ describe('MatchStage', () => {
             const match = {startTime: '2022-06-02 12:00:00', footballAddStartTime:'2022-06-02 12:00:00'};
             const container = shallow(<MatchStage {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 19:40:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 19:40:00');
             // Act
             const result = instance.getExtraTimeMinutes(match);
 
@@ -516,7 +516,7 @@ describe('MatchStage', () => {
             const container = shallow(<MatchStage {...defaultProps} />);
             const instance = container.instance();
             instance.getMatchStageOfLiveMatch = jest.fn().mockReturnValue('PenaltyShootout');
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-06-02 20:45:00');
+            DateTimeService.convertFromUTC = jest.fn().mockReturnValueOnce('2022-06-02 19:00:00').mockReturnValueOnce('2022-06-02 20:45:00');
             // Act
             const result = instance.getExtraTimeMinutes(match);
 

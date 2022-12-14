@@ -73,7 +73,7 @@ export default class CommonFunctions {
                 }
             }
             if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
-                && (index >= checkShootout || (incident.time >= timeShootout && incident.homeScore === 0 && incident.awayScore === 0))) {
+                && checkShootout >= 0 && (index >= checkShootout || (incident.time >= timeShootout && incident.homeScore === 0 && incident.awayScore === 0))) {
                 incident.isPenaltyShootout = true;
             }
             if(this.checkIncidentTypeToUpdateScore(item.type)) {

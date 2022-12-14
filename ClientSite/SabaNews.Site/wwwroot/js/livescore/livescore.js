@@ -51,7 +51,6 @@
             nIntervId = setInterval(function () {
                 currentTime.setMinutes(currentTime.getMinutes() + 1);
                 window.currentTime = currentTime;
-                console.log("js", currentTime);
             }, 60 * 1000);
         }
     }
