@@ -61,7 +61,6 @@ $(document).ready(function () {
 
     $(window).on("load resize", function (e) {
         var widthContainer = $('.livescore-soccer-main').innerWidth();
-        $('.header-controls').addClass('width-100-saba');
         $('.detail-fixed').css("width", widthContainer);
     });
     //mobile
