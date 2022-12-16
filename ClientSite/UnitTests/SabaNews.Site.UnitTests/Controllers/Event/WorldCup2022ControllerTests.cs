@@ -707,7 +707,7 @@
             var match = fixture.Create<Match>();
             var matches = new List<Match>();
             for(int i = 0; i < 64; i++) { matches.Add(match); }
-            var statusStageOne = LivescoreHelper.GetStatusStage(matches, 1);
+            var statusStageOne = WorldCupHelper.GetStatusStage(matches, 1);
 
             worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
             //Act

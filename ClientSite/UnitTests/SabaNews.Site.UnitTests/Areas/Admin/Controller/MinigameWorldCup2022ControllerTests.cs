@@ -72,7 +72,7 @@
             worldcupService.GetMinigameUsersAsync(criteria).Returns(expected);
             worldcupService.GetMatchBySeasonAsync(criteriaMatch).Returns(matches);
 
-            expected = LivescoreHelper.CalculatorPointer(matches, expected);
+            expected = WorldCupHelper.CalculatorPointer(matches, expected);
             var miniGamesPaging = expected.Skip(param.PageSize * (param.Page - 1)).Take(param.PageSize).ToList();
 
             //Act
@@ -155,7 +155,7 @@
             worldcupService.GetMinigameUsersAsync(criteria).Returns(expected);
             worldcupService.GetMatchBySeasonAsync(criteriaMatch).Returns(matches);
 
-            expected = LivescoreHelper.CalculatorPointer(matches, expected);
+            expected = WorldCupHelper.CalculatorPointer(matches, expected);
             var excelModel = fixture.Create<IEnumerable<UserMinigameModel>>();
             var expectedExcelResult = fixture.Create<byte[]>();
             excelService.ExportMinigameWorldCup2022(Arg.Do<IEnumerable<UserMinigameModel>>(x => excelModel = x)).Returns(expectedExcelResult);

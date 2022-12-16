@@ -349,7 +349,7 @@
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
             IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
-            var statusStageOne = LivescoreHelper.GetStatusStage(matches, 1);
+            var statusStageOne = WorldCupHelper.GetStatusStage(matches, 1);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
@@ -387,7 +387,7 @@
             if (sessionService.User == null 
                 || stage < WorldCup2022.MinigameStage1 
                 || stage > WorldCup2022.MinigameStage4 
-                || !LivescoreHelper.CheckStartStage(stage)
+                || !WorldCupHelper.CheckStartStage(stage)
             )
             {
                 return Redirect(Url.Action("Minigame", WorldCupController));
@@ -452,7 +452,7 @@
             }
             if (stage < WorldCup2022.MinigameStage1 
                 || stage > WorldCup2022.MinigameStage4 
-                || !LivescoreHelper.CheckStartStage(stage)
+                || !WorldCupHelper.CheckStartStage(stage)
             )
             {
                 return Redirect(Url.Action("MinigameProfile", WorldCupController));

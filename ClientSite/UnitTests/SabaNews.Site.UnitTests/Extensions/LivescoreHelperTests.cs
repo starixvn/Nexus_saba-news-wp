@@ -272,7 +272,7 @@
             }
 
             //Act
-            var result = LivescoreHelper.GetMatchNamePredict(match, votes);
+            var result = WorldCupHelper.GetMatchNamePredict(match, votes);
 
             // Assert
             Assert.Equal(result, teamName);
@@ -287,7 +287,7 @@
 
             var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
             //Act
-            var result = LivescoreHelper.GetVotePredict(match, votes);
+            var result = WorldCupHelper.GetVotePredict(match, votes);
 
             // Assert
             Assert.Equal(result, vote.Count == 0 ? null : vote[0]);
@@ -310,11 +310,11 @@
             }
             if (vote.Count != 0 && match.Status == FinishStatus)
             {
-                var (status, score) = LivescoreHelper.GetVoteResult(match, vote[0]);
+                var (status, score) = WorldCupHelper.GetVoteResult(match, vote[0]);
                 iconResult = status ? "win" : "lose";
             }
             //Act
-            var result = LivescoreHelper.GetResultPredict(match, votes);
+            var result = WorldCupHelper.GetResultPredict(match, votes);
 
             // Assert
             Assert.Equal(result, iconResult);
@@ -336,7 +336,7 @@
                 }
             }
             //Act
-            var result = LivescoreHelper.GetMatch(matches, vote);
+            var result = WorldCupHelper.GetMatch(matches, vote);
 
             // Assert
             Assert.Equal(result, match);
@@ -357,7 +357,7 @@
             };
 
             //Act
-            var result = LivescoreHelper.GetWinScore(stageId);
+            var result = WorldCupHelper.GetWinScore(stageId);
 
             // Assert
             Assert.Equal(result, expected);
@@ -392,18 +392,18 @@
                 var matchResult = LivescoreHelper.GetMatchResult(match, voteTeam);
                 if (matchResult == MatchResultWin && vote.TeamId != 0)
                 {
-                    score = LivescoreHelper.GetWinScore(match.Stage.StageId);
+                    score = WorldCupHelper.GetWinScore(match.Stage.StageId);
                     status = true;
                 }
                 else if (matchResult == MatchResultDraw && vote.TeamId == 0)
                 {
-                    score = LivescoreHelper.GetWinScore(match.Stage.StageId);
+                    score = WorldCupHelper.GetWinScore(match.Stage.StageId);
                     status = true;
                 }
             }
 
             //Act
-            var result = LivescoreHelper.GetVoteResult(match, vote);
+            var result = WorldCupHelper.GetVoteResult(match, vote);
 
             // Assert
             Assert.Equal(result.Item1, status);
@@ -432,7 +432,7 @@
             }
 
             //Act
-            var result = LivescoreHelper.GetUsersVote(users, vote);
+            var result = WorldCupHelper.GetUsersVote(users, vote);
 
             // Assert
             Assert.Equal(result, expected);
@@ -447,7 +447,7 @@
             var points = fixture.Create<List<int>>();
 
             //Act
-            var result = LivescoreHelper.HandleStandings(users, votes, points);
+            var result = WorldCupHelper.HandleStandings(users, votes, points);
 
             // Assert
             Assert.Equal(result.Count, users.Count);
@@ -483,7 +483,7 @@
                 }
             }
             //Act
-            var result = LivescoreHelper.SortPlayersTime(standing);
+            var result = WorldCupHelper.SortPlayersTime(standing);
 
             // Assert
             Assert.Equal(result, sortPoint);
@@ -500,14 +500,14 @@
             var users = new List<UserMinigameModel>();
             foreach (var vote in votes)
             {
-                var matchVote = LivescoreHelper.GetMatch(matches, vote);
-                var (status, score) = LivescoreHelper.GetVoteResult(matchVote, vote);
+                var matchVote = WorldCupHelper.GetMatch(matches, vote);
+                var (status, score) = WorldCupHelper.GetVoteResult(matchVote, vote);
                 points.Add(status ? score : 0);
-                users = LivescoreHelper.GetUsersVote(users, vote);
+                users = WorldCupHelper.GetUsersVote(users, vote);
             }
-            var standing = LivescoreHelper.HandleStandings(users, votes, points);
+            var standing = WorldCupHelper.HandleStandings(users, votes, points);
             //Act
-            var result = LivescoreHelper.CalculatorPointer(matches, votes);
+            var result = WorldCupHelper.CalculatorPointer(matches, votes);
 
             // Assert
             Assert.Equal(result.Count, standing.Count);
@@ -529,7 +529,7 @@
                 }
             }
             //Act
-            var result = LivescoreHelper.GetCountVotesStage(votes, numStage);
+            var result = WorldCupHelper.GetCountVotesStage(votes, numStage);
 
             // Assert
             Assert.Equal(result, num);
@@ -546,7 +546,7 @@
                 expected = false;
             }
             //Act
-            var result = LivescoreHelper.CheckActive(status);
+            var result = WorldCupHelper.CheckActive(status);
 
             // Assert
             Assert.Equal(result, expected);
@@ -575,7 +575,7 @@
                 iconStage = string.Empty;
             }
             //Act
-            var result = LivescoreHelper.GetIconStage(status);
+            var result = WorldCupHelper.GetIconStage(status);
 
             // Assert
             Assert.Equal(result, iconStage);
@@ -594,14 +594,14 @@
             const int maxCountStage = 4;
             for (int i = 0; i < maxCountStage; i++)
             {
-                var statusStage = LivescoreHelper.GetStatusStage(matches, i + 1);
+                var statusStage = WorldCupHelper.GetStatusStage(matches, i + 1);
                 if (statusStage != WorldCup2022.LockStage && statusStage != WorldCup2022.BeforeStartedStage)
                 {
                     result = i + 1;
                 }
             }
             //Act
-            var actual = LivescoreHelper.GetCountStageActiveMinigame(matches);
+            var actual = WorldCupHelper.GetCountStageActiveMinigame(matches);
 
             // Assert
             Assert.Equal(result, actual);
@@ -628,7 +628,7 @@
                 }
             }
             //Act
-            var actual = LivescoreHelper.GetCountStageEndMinigame(matches);
+            var actual = WorldCupHelper.GetCountStageEndMinigame(matches);
 
             // Assert
             Assert.Equal(result, actual);
@@ -657,7 +657,7 @@
                 matches[indexMatches[numStage]].StartTime.AddHours(7).AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
             //Act
 
-            var result = LivescoreHelper.GetCountDownStage(status, matches, numStage);
+            var result = WorldCupHelper.GetCountDownStage(status, matches, numStage);
 
             // Assert
             Assert.Equal(result, statusStage);
@@ -708,7 +708,7 @@
             }
             //Act
 
-            var result = LivescoreHelper.GetStatusStage(matches, numStage);
+            var result = WorldCupHelper.GetStatusStage(matches, numStage);
 
             // Assert
             Assert.Equal(result, statusStage);
@@ -731,7 +731,7 @@
             bool expected = checkNow <= 0;
             //Act
 
-            var result = LivescoreHelper.CheckStartStage(numStage);
+            var result = WorldCupHelper.CheckStartStage(numStage);
 
             // Assert
             Assert.Equal(result, expected);
