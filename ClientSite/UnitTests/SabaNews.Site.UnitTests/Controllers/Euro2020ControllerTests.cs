@@ -17,6 +17,7 @@
     using SabaNews.Site.Controllers;
     using SabaNews.Services;
     using Xunit;
+    using SabaNews.Site.Controllers.Event;
 
     public class Euro2020ControllerTests : Controller
     {

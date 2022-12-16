@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Site.Controllers
+﻿namespace SabaNews.Site.Controllers.Event
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -42,7 +42,7 @@
                 model.MembershipEventDetail = await userService.GetDetailMembershipEventDataAsync(new GetDetailMembershipEventCriteria { UserId = sessionService.User.Id });
 
             }
-            return View(model);
+            return View("~/Views/Event/MemberEvent/MembershipEvent.cshtml", model);
         }
 
         [Route("/su-kien-ruoc-loc-tan-nien/ket-qua")]
@@ -59,7 +59,7 @@
                 model.User = sessionService.User;
 
             }
-            return View(model);
+            return View("~/Views/Event/MemberEvent/MembershipEventResult.cshtml", model);
         }
 
 
@@ -83,7 +83,7 @@
                 }
             };
 
-            return PartialView("_MembershipEventGridView", viewModel);
+            return PartialView("~/Views/Event/MemberEvent/_MembershipEventGridView.cshtml", viewModel);
         }
 
         [HttpPost]

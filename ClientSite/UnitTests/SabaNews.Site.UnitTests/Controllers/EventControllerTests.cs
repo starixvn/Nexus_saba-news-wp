@@ -11,6 +11,7 @@ namespace SabaNews.Site.UnitTests.Controllers
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers;
+    using SabaNews.Site.Controllers.Event;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;

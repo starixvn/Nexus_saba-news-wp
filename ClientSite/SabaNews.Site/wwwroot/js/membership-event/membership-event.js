@@ -13,7 +13,7 @@
             var luckyNumber = number1 + number2 + number3;
             $.ajax({
                 method: 'POST',
-                url: '/Event/CreateMembershipEventData',
+                url: '/MemberEvent/CreateMembershipEventData',
                 data: { luckyNumber },
                 success: function (res) {
                     if (res.isSuccessful) {
@@ -179,7 +179,7 @@
     function GetDataMembershipEvent() {
         $.ajax({
             type: "GET",
-            url: "/Event/GetMembershipEventData",
+            url: "/MemberEvent/GetMembershipEventData",
             data: { page, pageSize },
             success: function (res) {
                 $('.data-grid').html(res);

@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Site.Controllers
+﻿namespace SabaNews.Site.Controllers.Event
 {
     using System;
     using System.Globalization;
@@ -30,7 +30,7 @@
         public async Task<IActionResult> Index()
         {
             var Model = await dataControlService.GetEuro2020PageViewModel();
-            return View(Model);
+            return View("~/Views/Event/Euro2020/Index.cshtml", Model);
         }
 
         [Route("/euro-2020/doi-tuyen-euro-2020")]
@@ -58,7 +58,7 @@
                 Category = cate,
                 Header = header
             };
-            return View(Model);
+            return View("~/Views/Event/Euro2020/Team.cshtml", Model);
         }
 
         [Route("/euro-2020/{slug}/page/{page}")]
@@ -101,7 +101,7 @@
                 Paging = paging
 
             };
-            return View(Model);
+            return View("~/Views/Event/Euro2020/Category.cshtml", Model);
         }
 
         [Route("/euro-2020/video-euro-2020/page/{page}")]
@@ -145,7 +145,7 @@
                 Paging = paging
 
             };
-            return View(Model);
+            return View("~/Views/Event/Euro2020/Video.cshtml", Model);
         }
 
         [Route("/euro-2020/lich-thi-dau-euro-2020")]
@@ -178,7 +178,7 @@
                 Header = header
 
             };
-            return View(Model);
+            return View("~/Views/Event/Euro2020/Schedule.cshtml", Model);
         }
 
         [Route("/euro-2020/bang-xep-hang-euro-2020")]
@@ -209,7 +209,7 @@
                 ViewData = viewData
 
             };
-            return View(Model);
+            return View("~/Views/Event/Euro2020/Ranking.cshtml", Model);
         }
 
         [Route("/euro-2020/getTabData")]
