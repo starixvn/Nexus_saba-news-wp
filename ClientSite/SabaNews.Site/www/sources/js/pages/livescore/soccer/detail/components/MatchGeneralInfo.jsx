@@ -96,9 +96,10 @@ export default class MatchGeneralInfo extends PureComponent {
                 {
                     goals.map((goal, gkey) => {
                         const timeShow = goal.timeShow !== '' ? goal.timeShow + "'" : '';
-                        let goalShow = `(${timeShow}) - ${goal.playerName}`;
+                        const playerName = !goal.playerName ? '' : goal.playerName;
+                        let goalShow = `(${timeShow}) - ${playerName}`;
                         if(position === IncidentPosition.Home) {
-                            goalShow = `${goal.playerName} - (${timeShow})`;
+                            goalShow = `${playerName} - (${timeShow})`;
                         }
                         return (
                             <ul key={gkey} className="participant-detail-group name-player-goal">
