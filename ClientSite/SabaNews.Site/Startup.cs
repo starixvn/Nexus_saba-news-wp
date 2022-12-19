@@ -129,8 +129,8 @@
             services.AddHttpClient();
             services.AddControllersWithViews();
 
-            const short WorkerThreads = 50;
-            const short CompletionPortThreads = 50;
+            const short WorkerThreads = 300;
+            const short CompletionPortThreads = 300;
             _ = ThreadPool.SetMinThreads(WorkerThreads, CompletionPortThreads);
         }
 
