@@ -130,7 +130,7 @@ export default class MatchStage extends PureComponent {
         const startTime = match.footballStartTime
             ? moment(DateTimeService.convertFromUTC(match.footballStartTime))
             : moment(DateTimeService.convertFromUTC(match.startTime));
-        const currentTime = moment(DateTimeService.convertFromUTC(window.currentTime));
+        const currentTime = moment(window.currentTime);
         let minutes = currentTime.diff(startTime, 'minutes');
         minutes = minutes < 0 ? 0 : minutes;
         return minutes <= 45 ? `${minutes}'` : `45'+`;
@@ -140,7 +140,7 @@ export default class MatchStage extends PureComponent {
         const startTime = match.footballNextHalfStartTime
             ? moment(DateTimeService.convertFromUTC(match.footballNextHalfStartTime))
             : moment(DateTimeService.convertFromUTC(match.startTime)).add(1, 'hours');
-        const currentTime = moment(DateTimeService.convertFromUTC(window.currentTime));
+        const currentTime = moment(window.currentTime);
         let minutes = currentTime.diff(startTime, 'minutes');
         minutes = minutes < 0 ? 0 : minutes;
         return minutes <= 45 ? `${45 + minutes}'` : `90'+`;
@@ -150,7 +150,7 @@ export default class MatchStage extends PureComponent {
         const startTime = match.footballAddStartTime
             ? moment(DateTimeService.convertFromUTC(match.footballAddStartTime))
             : moment(DateTimeService.convertFromUTC(match.startTime)).add(2, 'hours');
-        const currentTime = moment(DateTimeService.convertFromUTC(window.currentTime));
+        const currentTime = moment(window.currentTime);
         const minutes = currentTime.diff(startTime, 'minutes') + 90;
         return minutes <= 120 ? `${minutes}'` : `120'+`;
     };

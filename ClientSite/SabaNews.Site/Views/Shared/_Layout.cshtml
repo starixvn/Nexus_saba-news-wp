@@ -126,7 +126,7 @@
     <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
     <script src="~/js/post/load-component.js" asp-append-version="true"></script>
     <script>
-        window.currentTime = new Date('@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")');
+        window.currentTime = new Date('@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(DateTime.UtcNow, "yyyy-MM-dd HH:mm:ss")');
     </script>
     @RenderSection("Scripts", false)
 
