@@ -15,6 +15,7 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
     using SabaNews.Site.Areas.Admin.Controllers.Livescore;
+    using StackExchange.Redis;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -25,7 +26,27 @@
     {
         private ILeagueService leagueService;
         private IFileService fileService;
-
+        private readonly List<League> leagueTest = new()
+        {
+                new League
+                {
+                    LeagueId = 1,
+                    LeagueFullNameEN = "Test1",
+                    LeagueNameVN = "Test1",
+                    IsMajor = true,
+                    Priority = 1,
+                    CreatedDate = DateTime.Parse("08/18/2018 07:22:16")
+                },
+                new League
+                {
+                    LeagueId = 1,
+                    LeagueFullNameEN = "Test1",
+                    LeagueNameVN = "Test1",
+                    IsMajor = false,
+                    Priority = 2,
+                    CreatedDate = DateTime.Parse("08/18/2018 08:22:16")
+                }
+            };
         [Fact]
         public void ManagementLeague_WhenCalled_ReturnExpectedView()
         {
@@ -47,8 +68,6 @@
             var param = new Fixture().Create<ManagementLeagueFilterModel>();
             var expected = new Fixture().Create<IList<League>>();
             leagueService.GetLeaguesAsync().Returns(expected);
-            leagueService.SearchLeague(expected, param.Search, param.IsMajor).Returns(expected);
-            leagueService.SortLeague(expected, param.TypeSort).Returns(expected);
             //Act
             var result = await controller.GetManagementLeagueData(param);
 
@@ -121,7 +140,6 @@
             }
 
             leagueService.GetLeaguesAsync().Returns(leagues);
-            leagueService.SearchLeague(leagues, null, 1).Returns(leagues);
             leagueService.UpdateLeaguesExtraAsync(new League
             {
                 LeagueId = leagues[Int32.Parse(originIndex) - 1].LeagueId,
@@ -254,6 +272,74 @@
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expected, jsonResult.Value);
 
+        }
+
+        [Fact]
+        public void SearchLeague_WhenCalledMajorTrue_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetController();
+           
+            //Act
+            var actual = service.SearchLeague(leagueTest, "Test1", 1);
+            //Assert
+            Assert.Equal(leagueTest[0], actual[0]);
+        }
+
+
+        [Fact]
+        public void SearchLeague_WhenCalledMajorFalse_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetController();
+            //Act
+            var actual = service.SearchLeague(leagueTest, "Test1", 0);
+            //Assert
+            Assert.Equal(leagueTest[1], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeaguePriorityAscending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetController();
+            //Act
+            var actual = service.SortLeague(leagueTest, 1);
+            //Assert
+            Assert.Equal(leagueTest[0], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeaguePriorityDescending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetController();
+            //Act
+            var actual = service.SortLeague(leagueTest, 2);
+            //Assert
+            Assert.Equal(leagueTest[1], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeagueCreatedDateDescending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetController();
+            //Act
+            var actual = service.SortLeague(leagueTest, 3);
+            //Assert
+            Assert.Equal(leagueTest[1], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeagueCreatedDateAscending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetController();
+            //Act
+            var actual = service.SortLeague(leagueTest, 4);
+            //Assert
+            Assert.Equal(leagueTest[0], actual[0]);
         }
 
         #region Helpers

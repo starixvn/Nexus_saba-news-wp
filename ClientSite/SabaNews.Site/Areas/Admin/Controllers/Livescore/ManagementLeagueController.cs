@@ -19,6 +19,10 @@
     {
         private readonly IFileService fileService;
         private readonly ILeagueService leagueService;
+        private const int priorityAscending = 1;
+        private const int priorityDescending = 2;
+        private const int createdDateDescending = 3;
+        private const int createdDateAscending = 4;
         public ManagementLeagueController(
             ILeagueService leagueService, IFileService fileService)
         {
@@ -28,15 +32,15 @@
         public async Task<ActionResult> Index()
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
-            leagues = leagueService.SearchLeague(leagues, null, 1);
+            leagues = SearchLeague(leagues, null, 1);
             return View("~/Areas/Admin/Views/Livescore/ManagementLeague/Index.cshtml", leagues);
         }
 
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
-            leagues = leagueService.SearchLeague(leagues, model.Search, model.IsMajor);
-            leagues = leagueService.SortLeague(leagues, model.TypeSort);
+            leagues = SearchLeague(leagues, model.Search, model.IsMajor);
+            leagues = SortLeague(leagues, model.TypeSort);
             var totalLeague = leagues.Count;
             if (leagues.Count > 0)
             {
@@ -58,14 +62,14 @@
         public async Task<ActionResult> GetManagementLeagueHotData()
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
-            leagues = leagueService.SearchLeague(leagues, null, 1);
+            leagues = SearchLeague(leagues, null, 1);
             return View("~/Areas/Admin/Views/Livescore/ManagementLeague/ManagementHotLeagueDataGrid.cshtml", leagues);
         }
 
         public async Task<ActionResult> UpdatePriority(string originIndex, string nextIndex)
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
-            leagues = leagueService.SearchLeague(leagues, null, 1);
+            leagues = SearchLeague(leagues, null, 1);
             var resultUpdateLeague = await leagueService.UpdateLeaguesExtraAsync(new League
             {
                 LeagueId = leagues[Int32.Parse(originIndex) - 1].LeagueId,
@@ -161,6 +165,45 @@
                 Priority = leagueUpdate.Priority
             });
             return Json(result);
+        }
+
+        public IList<League> SearchLeague(IList<League> leagues, string search, int isMajor)
+        {
+            if (search != null)
+            {
+                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.ToLower(CultureInfo.InvariantCulture).Contains(search.ToLower(CultureInfo.InvariantCulture)))
+                || (x.LeagueNameVN != null && x.LeagueNameVN.ToLower(CultureInfo.InvariantCulture).Contains(search.ToLower(CultureInfo.InvariantCulture)))).ToList();
+            }
+            if (isMajor == 1)
+            {
+                leagues = leagues.Where(x => x.IsMajor).ToList();
+            }
+            if (isMajor == 0)
+            {
+                leagues = leagues.Where(x => !x.IsMajor).ToList();
+            }
+            return leagues;
+        }
+
+        public IList<League> SortLeague(IList<League> leagues, int typeSort)
+        {
+            if (typeSort == priorityAscending)
+            {
+                leagues = leagues.OrderBy(x => x.Priority).ToList();
+            }
+            if (typeSort == priorityDescending)
+            {
+                leagues = leagues.OrderByDescending(x => x.Priority).ToList();
+            }
+            if (typeSort == createdDateDescending)
+            {
+                leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
+            }
+            if (typeSort == createdDateAscending)
+            {
+                leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
+            }
+            return leagues;
         }
     }
 }
