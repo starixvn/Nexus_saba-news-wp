@@ -67,21 +67,12 @@ export class AppContainer extends Component {
     };
 
     getMatches = () => {
-        const { league, matches } = this.props;
+        const { matches } = this.props;
         if (!matches || matches.length === 0) {
             return {matches: null};
         }
         let tempMatches = matches;
         let isFinished = false;
-        const finalMatches = tempMatches[tempMatches.length - 1];
-        if (this.checkIsFinished(league) || finalMatches.status !== MatchStatus.NotStarted) {
-            tempMatches = [...matches].reverse();
-            isFinished = true;
-        } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
-            tempMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
-        } else if (league.currentStageId >= WorldCup.QuarterfinalsStage) {
-            tempMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
-        }
         return {matches: tempMatches, isFinished: isFinished};
     };
 
