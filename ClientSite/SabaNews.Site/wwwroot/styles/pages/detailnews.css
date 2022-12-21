@@ -3127,3 +3127,22 @@ img {
     width: 100%;
     height: 100%;
     border: none; }
+
+.wrapper-fb-embed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 100%; }
+  @media (max-width: 767px) {
+    .wrapper-fb-embed {
+      padding-top: 0;
+      height: 61rem; } }
+  .wrapper-fb-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none; }
