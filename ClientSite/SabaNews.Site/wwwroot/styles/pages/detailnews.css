@@ -3136,7 +3136,7 @@ img {
   @media (max-width: 767px) {
     .wrapper-fb-embed {
       padding-top: 0;
-      height: 61rem; } }
+      height: 65rem; } }
   .wrapper-fb-embed iframe {
     position: absolute;
     top: 0;
