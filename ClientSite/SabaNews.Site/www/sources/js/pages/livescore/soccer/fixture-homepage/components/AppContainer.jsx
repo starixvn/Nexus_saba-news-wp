@@ -84,8 +84,8 @@ export class AppContainer extends Component {
             <>
                 <div className="fixture-homepage-title">
                     <div className="logo-wc-homepage">
-                        <img src="../../../../css/images/view-wc.png" alt="view-wc"/>
-                        <p className="text" onClick={event => this.handleClickLeague(event, league)}>World Cup Qatar 2022</p>
+                        <img src="../../../../css/images/Aff logo.svg" alt="view-wc"/>
+                        <p className="text" onClick={event => this.handleClickLeague(event, league)}>AFF Cup 2022</p>
                     </div>
                     <div className="view-more" onClick={this.handleClickFixture}>
                         Xem tất cả
