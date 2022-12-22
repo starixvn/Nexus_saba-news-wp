@@ -32,5 +32,6 @@
         Task<WorldCupViewModel> GetWorldCupPageViewModel();
 
         Task<(League, IList<Match>)> GetHomepageFixtureData();
+        Task<(League, IList<Match>)> GetHomepageWCFixtureData();
     }
 }

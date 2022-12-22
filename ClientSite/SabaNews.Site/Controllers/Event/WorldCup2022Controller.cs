@@ -604,6 +604,13 @@
         [HttpPost]
         public async Task<IActionResult> GetWorldCupMatch()
         {
+            (League league, IList<Match> matches) = await dataControlService.GetHomepageWCFixtureData();
+            return Json(new { league, matches });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetHomeMatch()
+        {
             (League league, IList<Match> matches) = await dataControlService.GetHomepageFixtureData();
             return Json(new { league, matches });
         }

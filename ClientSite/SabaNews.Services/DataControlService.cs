@@ -248,6 +248,31 @@
             return await fetchDataService.GetWorldCupViewModel();
         }
 
+        public async Task<(League, IList<Match>)> GetHomepageWCFixtureData()
+        {
+            var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            if (IsUsingCache)
+            {
+                (League league, IList<Match> matches) = await cacheWrapperService.GetAsync<(League, IList<Match>)>(CacheKey.FixtureHomePage);
+
+                if (league == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
+                    
+                    (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
+                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, (league, matches),
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
+                        });
+                }
+
+                return (league, matches);
+            }
+
+            return await matchService.GetMatchBySeasonAsync(criteria);
+        }
+
         public async Task<(League, IList<Match>)> GetHomepageFixtureData()
         {
             var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdAFFCup, SeasonId = WorldCup2022.SeasonIdAFFCup };
@@ -258,7 +283,7 @@
                 if (league == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
-                    
+
                     (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
                     await cacheWrapperService.SetAsync(CacheKey.FixtureHomePageAFFCup, (league, matches),
                         new CacheItemOptions
