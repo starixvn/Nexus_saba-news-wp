@@ -140,12 +140,16 @@
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseWhen(
+            var isUM = bool.Parse(Configuration.GetSection("UMSettings:Enabled").Value);
+            if (isUM)
+            {
+                app.UseWhen(
                 context => !context.Request.Path.StartsWithSegments("/maintenance", StringComparison.OrdinalIgnoreCase),
                 appBuilder =>
                 {
                     appBuilder.UseMiddleware<MaintenanceMiddleware>();
                 });
+            }
 
             if (env.IsDevelopment())
             {
