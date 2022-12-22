@@ -3153,3 +3153,10 @@ img {
       width: 100%;
       height: 100%;
       border: none; } }
+
+.iframe-mobile {
+  display: none; }
+  @media screen and (max-width: 1024px) {
+    .iframe-mobile {
+      display: block;
+      width: 100%; } }
