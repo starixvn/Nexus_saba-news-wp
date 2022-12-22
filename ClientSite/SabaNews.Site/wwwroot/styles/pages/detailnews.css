@@ -3132,27 +3132,29 @@ img {
   .iframe-pc {
     display: none; } }
 
-@media screen and (max-width: 1024px) {
-  .wrapper-fb-embed {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding-top: 100%; } }
-
-.wrapper-fb-embed .iframe-mobile {
+.wrapper-fb-embed {
   display: none; }
   @media screen and (max-width: 1024px) {
-    .wrapper-fb-embed .iframe-mobile {
-      display: block;
+    .wrapper-fb-embed {
+      position: relative;
       width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      border: none; } }
+      overflow: hidden;
+      padding-top: 100%;
+      display: block; } }
+  .wrapper-fb-embed .iframe-mobile {
+    display: none; }
+    @media screen and (max-width: 1024px) {
+      .wrapper-fb-embed .iframe-mobile {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none; } }
 
 .iframe-mobile {
   display: none; }

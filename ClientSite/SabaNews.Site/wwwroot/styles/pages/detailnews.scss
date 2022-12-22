@@ -679,11 +679,13 @@ img {
 
 
 .wrapper-fb-embed {
+    display : none;
     @include tableMobile {
         position: relative;
         width: 100%;
         overflow: hidden;
         padding-top: 100%;
+        display : block;
     }
 
     .iframe-mobile {
