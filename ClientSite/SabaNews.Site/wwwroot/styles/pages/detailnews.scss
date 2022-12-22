@@ -678,7 +678,6 @@ img {
 }
 
 
-.wrapper-fb-embed {
     display : none;
     @include tableMobile {
         position: relative;
@@ -713,5 +712,4 @@ img {
         width: 100%;
     }
 }
-
 
