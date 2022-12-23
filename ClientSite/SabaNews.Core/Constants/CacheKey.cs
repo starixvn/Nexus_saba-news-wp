@@ -25,6 +25,5 @@
         public const string GetPostList = "GetPostList";
         public const string GetPostDetailContent = "GetPostDetailContent";
         public const string FixtureHomePage = "FixtureHomePage";
-        public const string FixtureHomePageAFFCup = "FixtureHomePageAFFCup";
     }
 }

@@ -252,7 +252,7 @@
 
         public async Task UpdateHomepageFixtureCaching()
         {
-            var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            var criteria = new GetMatchBySeasonCriteria { LeagueId = HomeFixture.LeagueId, SeasonId = HomeFixture.SeasonId };
             var startTime = DateTime.Now;
             logService.WriteLogFileInfo("Start UpdateHomepageFixtureCaching");
 
