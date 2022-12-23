@@ -387,7 +387,7 @@ describe('AppContainer', () => {
             const result = instance.getMatches(league);
 
             // Assert
-            expect(result.matches).toEqual([{ matchId: 2, status: 0, stage: { stageId: 0 } }]);
+            expect(result.matches).toEqual([{ matchId: 1, status: 0, stage: { stageId: 30537 }}, { matchId: 2, status: 0, stage: { stageId: 0 }}]);
         });
     });
 
