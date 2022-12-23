@@ -9,7 +9,7 @@ import {
 } from './fixtureSlice';
 
 const getMatches = () => async dispatch => {
-    const url = Site.resolveClientUrl('WorldCup2022/GetHomeMatch');
+    const url = Site.resolveClientUrl('api/match/get-matches-aff-cup');
     await DataService.postDataAsync(url).then(response => {
         const { league, matches } = response.data;
         dispatch(setLeague(league));

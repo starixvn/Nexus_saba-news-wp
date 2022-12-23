@@ -10,6 +10,8 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
@@ -277,6 +279,14 @@
                 return Ok(false);
             }
             return PartialView("~/Views/Home/_CategoryGridView.cshtml", posts);
+        }
+
+        [HttpPost]
+        [Route("api/match/get-matches-aff-cup")]
+        public async Task<IActionResult> GetMatchesAFFCup()
+        {
+            (League league, IList<Match> matches) = await dataControlService.GetHomepageFixtureData();
+            return Json(new { league, matches });
         }
     }
 }

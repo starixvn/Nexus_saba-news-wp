@@ -608,12 +608,6 @@
             return Json(new { league, matches });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetHomeMatch()
-        {
-            (League league, IList<Match> matches) = await dataControlService.GetHomepageFixtureData();
-            return Json(new { league, matches });
-        }
 
         public List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
         {
