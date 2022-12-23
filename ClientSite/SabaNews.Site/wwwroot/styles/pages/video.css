@@ -2851,16 +2851,16 @@ button {
 .sub-category .sub-item:hover a:before, .sub-category .sub-item.active a:before {
   width: 100%;
 }
-.sub-category:last-child {
+.sub-category.last {
   border: none;
 }
-.sub-category:last-child .sub-item {
+.sub-category.last .sub-item {
   font-weight: 400;
 }
-.sub-category:last-child .sub-item:hover a:before, .sub-category:last-child .sub-item:hover a.active a {
+.sub-category.last .sub-item:hover a:before, .sub-category.last .sub-item:hover a.active a {
   display: none;
 }
-.sub-category:last-child .sub-item.active a:before {
+.sub-category.last .sub-item.active a:before {
   display: none;
 }
 
