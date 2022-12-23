@@ -93,7 +93,7 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            viewModel.Paging.Href = Url.Action("Video", "Home", new { page = (int?)null });
+            viewModel.Menus = await dataControlService.GetMenuData();
             var view = (viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }

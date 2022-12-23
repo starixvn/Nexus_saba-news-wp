@@ -1,4 +1,5 @@
-﻿@section Metadata {
+﻿@using DeviceDetectorNET;
+@section Metadata {
     <meta name="description" content='@Model.Header.Description' />
     <meta property="og:description" content='@Model.Category.OgDescription' />
     <meta property="og:title" content='@Model.Category.OgTitle' />
@@ -32,12 +33,75 @@
     <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 }
 
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+}
 
-@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug }))
+@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug, Slugs = Model.Slugs }))
 <section class="main">
     <div class="container">
         <div class="block block-main">
-            <h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories )</a></h2>
+            @if (!isMobile)
+            {
+                <h2 class="block__title title-new-page"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
+            }
+            @if (Model.Menus != null)
+            {
+                if (!isMobile)
+                {
+                    <ul class="sub-category">
+                        @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
+                        {
+                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = (string)null })">@menu.MenuTitle</a></li>
+                        }
+                    </ul>
+                    <ul class="sub-category">
+                        @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
+                        {
+                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = menu.CateSlug })">@menu.MenuTitle</a></li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    var subMenu = Model.GetSubMenu(Model.Header.Slug);
+                    if (Model.Slugs.Slug3 != null)
+                    {
+                        var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
+                        var coMenu = Model.GetCoMenu(Model.Slugs.Slug3);
+                        var menuLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = Model.Slugs.Slug3 });
+                        <div class="menu-select single-select-menu">
+                            <a href="@menuLink">@menu.MenuTitle</a>
+                            <select class="select_ad" onChange="window.location.href=this.value">
+                                @foreach (var item in coMenu)
+                                {
+
+                                    var selected = menu.PostId == item.PostId ? "selected" : "";
+                                    var subLink = $"/tin-the-thao/{Model.Slugs.Slug1}/{Model.Slugs.Slug2}/{item.CateSlug}";
+                                    <!option class="@selected" @selected value="@subLink">@item.MenuTitle</!option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    else if (subMenu.Count > 0)
+                    {
+                        <ul class="sub-category">
+                            @foreach (var menu in subMenu)
+                            {
+                                var link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = Model.Slugs.Slug3 });
+                                if (Model.Slugs.Slug2 != null)
+                                {
+                                    link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = menu.CateSlug });
+                                }
+                                <li class="sub-item @(Model.Header.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></li>
+                            }
+                        </ul>
+                    }
+                }
+            }
             <div class="block__swipper">
                 <div class="swiper-container">
                     <div class="skeleton skeleton-swiper-slide">
