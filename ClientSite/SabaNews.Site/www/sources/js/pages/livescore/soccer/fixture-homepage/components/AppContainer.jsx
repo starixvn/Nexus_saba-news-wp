@@ -8,7 +8,7 @@ import SignalR from './SignalR';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import Site from '@jsroot/common/site';
-import { WorldCup, Width1024, MatchStatus } from '@jsroot/common/constants';
+import {  Width1024 } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export class AppContainer extends Component {
@@ -71,8 +71,8 @@ export class AppContainer extends Component {
         if (!matches || matches.length === 0) {
             return {matches: null};
         }
-        let tempMatches = matches;
-        let isFinished = false;
+        const tempMatches = matches;
+        const isFinished = false;
         return {matches: tempMatches, isFinished: isFinished};
     };
 
