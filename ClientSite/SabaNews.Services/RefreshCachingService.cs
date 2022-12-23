@@ -208,7 +208,7 @@
             try
             {
                 var result = await bannerService.GetBannerInfoAsync();
-                logService.WriteLogFileInfo(string.Format("After UpdateBannerCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                logService.WriteLogFileInfo(string.Format("After GetBannerInfoAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
                 await cacheWrapperService.SetAsync(CacheKey.Banner,
                         result,
                         new CacheItemOptions
@@ -233,7 +233,7 @@
             try
             {
                 var result = await fetchDataService.GetWorldCupViewModel();
-                logService.WriteLogFileInfo(string.Format("After RefreshWorldCupCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                logService.WriteLogFileInfo(string.Format("After GetWorldCupViewModel - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
                 await cacheWrapperService.SetAsync(CacheKey.WorldCup,
                         result,
                         new CacheItemOptions
@@ -259,7 +259,7 @@
             try
             {
                 (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
-                logService.WriteLogFileInfo(string.Format("After UpdateHomepageFixtureCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                logService.WriteLogFileInfo(string.Format("After GetHomepageFixture - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
                 await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage,
                         (league, matches),
                         new CacheItemOptions
