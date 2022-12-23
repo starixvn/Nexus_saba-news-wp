@@ -658,6 +658,7 @@ img {
     width: 100%;
     overflow: hidden;
     padding-top: 56.25%;
+
     iframe {
         position: absolute;
         top: 0;
@@ -678,13 +679,15 @@ img {
 }
 
 
-    display : none;
+.wrapper-fb-embed {
+    display: none;
+
     @include tableMobile {
         position: relative;
         width: 100%;
         overflow: hidden;
         padding-top: 100%;
-        display : block;
+        display: block;
     }
 
     .iframe-mobile {
@@ -707,6 +710,7 @@ img {
 
 .iframe-mobile {
     display: none;
+
     @include tableMobile {
         display: block;
         width: 100%;
