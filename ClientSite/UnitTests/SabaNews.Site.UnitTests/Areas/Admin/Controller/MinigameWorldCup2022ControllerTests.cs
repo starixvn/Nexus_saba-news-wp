@@ -70,7 +70,7 @@
             var matches = fixture.Create<IList<Match>>();
 
             worldcupService.GetMinigameUsersAsync(criteria).Returns(expected);
-            worldcupService.GetMatchBySeasonAsync(criteriaMatch).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(criteriaMatch).Returns(matches);
 
             expected = WorldCupHelper.CalculatorPointer(matches, expected);
             var miniGamesPaging = expected.Skip(param.PageSize * (param.Page - 1)).Take(param.PageSize).ToList();
@@ -124,7 +124,7 @@
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
 
-            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
             worldcupService.GetMinigameByUserStageAsync(Arg.Do<GetMinigameByUserStageCriteria>(x => criteriaVotesUser = x)).Returns(minigames);
             worldcupService.GetMinigameUsersAsync(Arg.Do<GetMinigameUsersByStageCriteria>(x => criteriaVoteMinigame = x)).Returns(minigames);
 
@@ -153,7 +153,7 @@
             var matches = fixture.Create<IList<Match>>();
 
             worldcupService.GetMinigameUsersAsync(criteria).Returns(expected);
-            worldcupService.GetMatchBySeasonAsync(criteriaMatch).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(criteriaMatch).Returns(matches);
 
             expected = WorldCupHelper.CalculatorPointer(matches, expected);
             var excelModel = fixture.Create<IEnumerable<UserMinigameModel>>();

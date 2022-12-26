@@ -105,6 +105,16 @@
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task GetMatchWCBySeasonAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var service = GetWCService();
+            (var leagues, var season, var floatMatches) = fixture.Create<(IEnumerable<League>, IEnumerable<Season>, IEnumerable<FloatMatchModel>)>();
+            baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(Arg.Any<ICriteria>()).Returns((leagues, season, floatMatches));
+
+            var actual = await service.GetMatchWCBySeasonAsync(new GetMatchBySeasonCriteria());
+            Assert.Equal(floatMatches.Count(), actual.Count);
+        }
 
         #region Helpers
         private WorldCupService GetWCService()

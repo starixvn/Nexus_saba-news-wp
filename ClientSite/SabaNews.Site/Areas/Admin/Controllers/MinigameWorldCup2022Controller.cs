@@ -59,7 +59,7 @@
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
             var miniGames = await worldcupService.GetMinigameUsersAsync(criteria);
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             miniGames = WorldCupHelper.CalculatorPointer(matches, miniGames);
             var miniGamesPaging = miniGames.Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
             var viewModel = new MinigameGridViewModel
@@ -111,7 +111,7 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             var votes = await worldcupService.GetMinigameByUserStageAsync(criteriaVotesUser);
             foreach (var vote in votes)
             {
@@ -153,7 +153,7 @@
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
             var miniGames = await worldcupService.GetMinigameUsersAsync(criteria);
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             miniGames = WorldCupHelper.CalculatorPointer(matches, miniGames);
             var bytes = excelService.ExportMinigameWorldCup2022(miniGames);
             return File(bytes, "application/xlsx", "MiniGameWorldCup2022.xlsx");

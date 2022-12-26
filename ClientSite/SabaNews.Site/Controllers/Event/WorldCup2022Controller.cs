@@ -348,7 +348,7 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             var statusStageOne = WorldCupHelper.GetStatusStage(matches, 1);
             var header = new HeaderViewModel
             {
@@ -397,7 +397,7 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleMinigame,
@@ -432,7 +432,7 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             var model = new MinigameStageViewModel
             {
                 Header = header,
@@ -468,7 +468,7 @@
                 LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 SeasonId = WorldCup2022.SeasonIdWorldCup2022
             };
-            IList<Match> matches = await worldcupService.GetMatchBySeasonAsync(criteriaMatch);
+            IList<Match> matches = await worldcupService.GetMatchWCBySeasonAsync(criteriaMatch);
             var model = new MinigameStageViewModel
             {
                 Header = header,

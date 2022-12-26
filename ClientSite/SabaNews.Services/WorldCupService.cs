@@ -57,7 +57,7 @@
             return result.ToList();
         }
 
-        public async Task<IList<Match>> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria)
+        public async Task<IList<Match>> GetMatchWCBySeasonAsync(GetMatchBySeasonCriteria criteria)
         {
             (var leagues, var season, var floatMatches) = await baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(criteria);
             var league = leagues.FirstOrDefault();
@@ -67,61 +67,61 @@
             }
 
             var matches = new List<Match>();
-            foreach (FloatMatchModel match in floatMatches)
+            foreach (FloatMatchModel item in floatMatches)
             {
-                var stage = match.StageId.HasValue
+                var stage = item.StageId.HasValue
                     ? new SeasonStage
                     {
-                        StageId = match.StageId.Value,
-                        StageNameEN = match.StageNameEN,
-                        StageNameVN = match.StageNameVN,
-                        Mode = match.StageMode,
-                        GroupCount = match.GroupCount,
-                        RoundCount = match.RoundCount,
-                        OrderIndex = match.OrderIndex
+                        StageNameEN = item.StageNameEN,
+                        StageNameVN = item.StageNameVN,
+                        StageId = item.StageId.Value,
+                        RoundCount = item.RoundCount,
+                        GroupCount = item.GroupCount,
+                        Mode = item.StageMode,
+                        OrderIndex = item.OrderIndex
                     }
                     : null;
                 matches.Add(new Match
                 {
-                    MatchId = match.MatchId,
-                    FootballAddStartTime = match.FootballAddStartTime,
-                    FootballStartTime = match.FootballStartTime,
-                    FootballNextHalfStartTime = match.FootballNextHalfStartTime,
-                    StartTime = match.StartTime,
-                    EndTime = match.EndTime,
-                    Status = match.Status,
-                    GroupNum = match.GroupNum,
-                    Round = match.Round,
-                    HomeTeamHalfScore = match.HomeTeamHalfScore,
-                    AwayTeamHalfScore = match.AwayTeamHalfScore,
-                    HomeTeamTotalScore = match.HomeTeamTotalScore,
-                    AwayTeamTotalScore = match.AwayTeamTotalScore,
-                    HomeTeamAggregateScore = match.HomeTeamAggregateScore,
-                    AwayTeamAggregateScore = match.AwayTeamAggregateScore,
-                    HomeTeamExtraScore = match.HomeTeamExtraScore,
-                    AwayTeamExtraScore = match.AwayTeamExtraScore,
-                    HomeTeamPenaltyScore = match.HomeTeamPenaltyScore,
-                    AwayTeamPenaltyScore = match.AwayTeamPenaltyScore,
+                    MatchId = item.MatchId,
+                    FootballStartTime = item.FootballStartTime,
+                    FootballAddStartTime = item.FootballAddStartTime,
+                    StartTime = item.StartTime,
+                    FootballNextHalfStartTime = item.FootballNextHalfStartTime,
+                    EndTime = item.EndTime,
+                    GroupNum = item.GroupNum,
+                    Status = item.Status,
+                    HomeTeamHalfScore = item.HomeTeamHalfScore,
+                    AwayTeamHalfScore = item.AwayTeamHalfScore,
+                    Round = item.Round,
+                    HomeTeamTotalScore = item.HomeTeamTotalScore,
+                    AwayTeamTotalScore = item.AwayTeamTotalScore,
+                    HomeTeamAggregateScore = item.HomeTeamAggregateScore,
+                    AwayTeamExtraScore = item.AwayTeamExtraScore,
+                    AwayTeamAggregateScore = item.AwayTeamAggregateScore,
+                    HomeTeamPenaltyScore = item.HomeTeamPenaltyScore,
+                    HomeTeamExtraScore = item.HomeTeamExtraScore,
+                    AwayTeamPenaltyScore = item.AwayTeamPenaltyScore,
                     HomeTeam = new Team
                     {
-                        TeamId = match.HomeTeamId,
-                        TeamNameEN = match.HomeTeamNameEN,
-                        TeamFullNameEN = match.HomeTeamFullNameEN,
-                        TeamNameVN = match.HomeTeamNameVN,
-                        Icon = match.HomeTeamIcon,
-                        IconVN = match.HomeTeamIconVN
+                        TeamId = item.HomeTeamId,
+                        TeamFullNameEN = item.HomeTeamFullNameEN,
+                        TeamNameEN = item.HomeTeamNameEN,
+                        Icon = item.HomeTeamIcon,
+                        TeamNameVN = item.HomeTeamNameVN,
+                        IconVN = item.HomeTeamIconVN
                     },
                     AwayTeam = new Team
                     {
-                        TeamId = match.AwayTeamId,
-                        TeamNameEN = match.AwayTeamNameEN,
-                        TeamFullNameEN = match.AwayTeamFullNameEN,
-                        TeamNameVN = match.AwayTeamNameVN,
-                        Icon = match.AwayTeamIcon,
-                        IconVN = match.AwayTeamIconVN
+                        TeamId = item.AwayTeamId,
+                        TeamFullNameEN = item.AwayTeamFullNameEN,
+                        TeamNameEN = item.AwayTeamNameEN,
+                        Icon = item.AwayTeamIcon,
+                        TeamNameVN = item.AwayTeamNameVN,
+                        IconVN = item.AwayTeamIconVN
                     },
                     Stage = stage,
-                    IsSecondLeg = match.IsSecondLeg
+                    IsSecondLeg = item.IsSecondLeg
                 });
             }
 

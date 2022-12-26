@@ -709,7 +709,7 @@
             for(int i = 0; i < 64; i++) { matches.Add(match); }
             var statusStageOne = WorldCupHelper.GetStatusStage(matches, 1);
 
-            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteriaMatch = x)).Returns(matches);
             //Act
             var result = await controller.Minigame();
 
@@ -794,7 +794,7 @@
             var usersByStageCriteria = fixture.Create<GetMatchBySeasonCriteria>();
             var matches = fixture.Create<IList<Match>>();
 
-            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
             //Act
             var result = await controller.MinigameStage(1);
 
@@ -829,7 +829,7 @@
             var usersByStageCriteria = fixture.Create<GetMatchBySeasonCriteria>();
             var matches = fixture.Create<IList<Match>>();
 
-            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
             //Act
             var result = await controller.MinigameProfile();
 
@@ -879,7 +879,7 @@
             var usersByStageCriteria = fixture.Create<GetMatchBySeasonCriteria>();
             var matches = fixture.Create<IList<Match>>();
 
-            worldcupService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
+            worldcupService.GetMatchWCBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => usersByStageCriteria = x)).Returns(matches);
             //Act
             var result = await controller.MinigameProfileStage(1);
 
