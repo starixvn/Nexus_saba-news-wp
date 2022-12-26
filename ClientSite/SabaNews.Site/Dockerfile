@@ -14,10 +14,11 @@ COPY ["Livescore/SabaNews.Livescore.Services", "Livescore/SabaNews.Livescore.Ser
 COPY ["SabaNews.Site/SabaNews.Site.csproj", "SabaNews.Site/"]
 COPY ["nuget.config", ""]
 
-WORKDIR "/src/SabaNews.Site"
-RUN dotnet restore -v n
+RUN dotnet restore "SabaNews.Site/SabaNews.Site.csproj"
 
-COPY ./SabaNews.Site .
+COPY . .
+
+WORKDIR "/src/SabaNews.Site"
 
 RUN dotnet publish -r linux-x64 --self-contained false -o /app
 
@@ -25,12 +26,14 @@ FROM hub.nexdev.net/base/dotnet/core/aspnet:6.0-final AS base
 
 WORKDIR /app
 
+COPY --from=builder /app .
+
 RUN set -x \
  	&& apt-get update \
      && apt-get -y install nano \
      && apt-get -y install curl \
      && apt-get -y install telnet
 
-COPY --from=builder /app .
+
 
 ENTRYPOINT ["dotnet", "SabaNews.Site.dll"]

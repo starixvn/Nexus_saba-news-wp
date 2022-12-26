@@ -8,6 +8,7 @@ COPY ["SabaNews.Services/SabaNews.Services.csproj", "SabaNews.Services/"]
 COPY ["SabaNews.Models/SabaNews.Models.csproj", "SabaNews.Models/"]
 COPY ["SabaNews.Core/SabaNews.Core.csproj", "SabaNews.Core/"]
 COPY ["SabaNews.Criteria/SabaNews.Criteria.csproj", "SabaNews.Criteria/"]
+
 RUN dotnet restore "SabaNews.AutoJobs/SabaNews.AutoJobs.csproj"
 
 COPY . .
@@ -20,12 +21,13 @@ FROM hub.nexdev.net/base/dotnet/core/aspnet:6.0-final AS base
 
 WORKDIR /app
 
+COPY --from=builder /app .
+
 RUN set -x \
  	&& apt-get update \
      && apt-get -y install nano \
      && apt-get -y install curl \
      && apt-get -y install telnet
 
-COPY --from=builder /app .
 
 ENTRYPOINT ["dotnet", "SabaNews.AutoJobs.dll"]

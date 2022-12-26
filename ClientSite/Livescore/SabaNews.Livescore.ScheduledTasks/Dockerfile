@@ -11,6 +11,7 @@ COPY ["SabaNews.Core/SabaNews.Core.csproj", "SabaNews.Core/"]
 COPY ["Livescore/SabaNews.Livescore.Services/SabaNews.Livescore.Services.csproj", "Livescore/SabaNews.Livescore.Services/"]
 COPY ["Livescore/SabaNews.Livescore.Repositories/SabaNews.Livescore.Repositories.csproj", "Livescore/SabaNews.Livescore.Repositories/"]
 COPY ["Livescore/SabaNews.Livescore.SyncData/SabaNews.Livescore.SyncData.csproj", "Livescore/SabaNews.Livescore.SyncData/"]
+
 RUN dotnet restore "Livescore/SabaNews.Livescore.ScheduledTasks/SabaNews.Livescore.ScheduledTasks.csproj"
 
 COPY . .
@@ -23,12 +24,13 @@ FROM hub.nexdev.net/base/dotnet/core/aspnet:6.0-final AS base
 
 WORKDIR /app
 
+COPY --from=builder /app .
+
 RUN set -x \
  	&& apt-get update \
      && apt-get -y install nano \
      && apt-get -y install curl \
      && apt-get -y install telnet
 
-COPY --from=builder /app .
 
 ENTRYPOINT ["dotnet", "SabaNews.Livescore.ScheduledTasks.dll"]
