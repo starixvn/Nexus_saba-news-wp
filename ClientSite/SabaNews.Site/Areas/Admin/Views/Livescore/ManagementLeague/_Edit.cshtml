@@ -41,21 +41,21 @@
                         <tr class="form-input flex-form-input">
                             <td>
                                 <label>
-                                    Country Icon
+                                    League Icon
                                 </label>
                             </td>
                             <td>
                                 <div class="flex-form-input">
                                     @{
-                                        var iconCountry = Model[0].CountryIconVN ?? Model[0].CountryLogo ?? "/css/images/logo-dummy.png";
-                                        var display = !string.IsNullOrEmpty(iconCountry);
-                                        var hide = display ? "none" : "flex";
-                                        var show = display ? "flex" : "none";
+                                        var iconLeague = Model[0].IconVN ?? Model[0].Icon ?? "/css/images/logo-dummy.png";
+                                        var displayIconLeague = !string.IsNullOrEmpty(iconLeague);
+                                        var hideIconLeague = displayIconLeague ? "none" : "flex";
+                                        var showIconLeague = displayIconLeague ? "flex" : "none";
                                     }
-                                    <div class="form-group-input form-group-input-left w-75">                                        
+                                    <div class="form-group-input form-group-input-left w-75">
                                         <div class="admin-text-logo">
                                             <div class="input-upload">
-                                                <input type="file" class="input-file photo" id="editLeagueIcon">
+                                                <input type="file" class="input-file photo" id="editLeagueIconVN">
                                                 <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                                                 <div class="img-upload">
                                                     <p class="error photo-error" style="display:none"></p>
@@ -63,10 +63,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group-input form-group-input-right w-25">                                        
+                                    <div class="form-group-input form-group-input-right w-25">
                                         <div class="admin-text-logo admin-text-logo-data-img">
-                                            <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
-                                            <img src="@iconCountry" alt="Alternate Text" class="review_photo" style="display:@show" />
+                                            <button type="button" class="cancel-upload icon-close" style="display:@showIconLeague"></button>
+                                            <img src="@iconLeague" alt="Alternate Text" class="review_photo" style="display:@showIconLeague" />
                                         </div>
                                     </div>
                                 </div>
@@ -88,6 +88,41 @@
                             </td>
                             <td>
                                 <input type="text" value="@Model[0].CountryVN" class="form-control txt-countryVn" id="editCountryVN" name="CountryVN" />
+                            </td>
+                        </tr>
+
+                        <tr class="form-input flex-form-input">
+                            <td>
+                                <label>
+                                    Country Icon
+                                </label>
+                            </td>
+                            <td>
+                                <div class="flex-form-input">
+                                    @{
+                                        var iconCountry = Model[0].CountryIconVN ?? Model[0].CountryLogo ?? "/css/images/logo-dummy.png";
+                                        var display = !string.IsNullOrEmpty(iconCountry);
+                                        var hide = display ? "none" : "flex";
+                                        var show = display ? "flex" : "none";
+                                    }
+                                    <div class="form-group-input form-group-input-left w-75">                                        
+                                        <div class="admin-text-logo">
+                                            <div class="input-upload">
+                                                <input type="file" class="input-file photo" id="editCountryIcon">
+                                                <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                                                <div class="img-upload">
+                                                    <p class="error photo-error" style="display:none"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-input form-group-input-right w-25">                                        
+                                        <div class="admin-text-logo admin-text-logo-data-img">
+                                            <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
+                                            <img src="@iconCountry" alt="Alternate Text" class="review_photo" style="display:@show" />
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

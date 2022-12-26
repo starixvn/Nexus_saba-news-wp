@@ -76,6 +76,8 @@ let adminManagementHotLeague = (function ($) {
                         success: function (response) {
                             let iconCountry = response.countryIconVN ?? response.countryLogo ?? "/css/images/logo-dummy.png";
                             $("#iconContry").attr("src", iconCountry);
+                            let iconLeague = response.iconVN ?? response.icon ?? "/css/images/logo-dummy.png";
+                            $("#iconLeague").attr("src", iconLeague);
                             document.getElementById("addCountryEN").value = response.countryEN;
                             document.getElementById("addCountryVN").value = response.countryVN;
                             document.getElementById("addLeagueNameVN").value = response.leagueNameVN;
