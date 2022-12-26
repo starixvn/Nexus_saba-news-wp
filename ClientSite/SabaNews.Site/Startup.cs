@@ -31,7 +31,6 @@
     using SabaNews.Site.Middlewares;
     using Sentry;
     using StackExchange.Redis;
-    using Newtonsoft.Json.Serialization;
 
     public class Startup
     {
@@ -53,7 +52,7 @@
                          .Where(x => !string.IsNullOrWhiteSpace(x.GetValue<string>("Name")))
                          .ToDictionary(x => x.GetValue<string>("Name"),
                              y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
-            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+
             DbSettingProviderManager
                .StartNewSession()
                .Use(connections)
@@ -62,19 +61,22 @@
                .Run();
 
             LogManager
-                .SetDefaultLogCategory(Configuration.GetSection("LogCategory").Value)
-                .Use(new List<ILogEngine>
-                {
-                    new SentryLogging(new SentryEngineOptions
-                    {
-                        Dsn = new Dsn(Configuration.GetSection("SentryEngineOptions:Dsn").Value),
-                        FrontEndDsn = new Dsn(Configuration.GetSection("SentryEngineOptions:FrontEndDsn").Value)
-                    })
-                });
+               .SetDefaultLogCategory(Configuration.GetSection("LogCategory").Value)
+               .Use(new List<ILogEngine>
+               {
+                   new SentryLogging(new SentryEngineOptions
+                   {
+                       Dsn = new Dsn(Configuration.GetSection("SentryEngineOptions:Dsn").Value),
+                       FrontEndDsn = new Dsn(Configuration.GetSection("SentryEngineOptions:FrontEndDsn").Value)
+                   })
+               });
 
             ExceptionHandler
                 .UseConfig(new LoggingConfiguration())
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =

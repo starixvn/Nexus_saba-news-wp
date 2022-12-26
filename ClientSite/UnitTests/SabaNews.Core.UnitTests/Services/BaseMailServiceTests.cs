@@ -1,23 +1,19 @@
 ﻿namespace SabaNews.Core.UnitTests.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using MailKit.Net.Smtp;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
     using NSubstitute;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Xunit;
 
     public class BaseMailServiceTests
     {
-        private IOptionsSnapshot<MailConfigs> mailConfigs;
         private ILogger<BaseMailService> logger;
         private ILogServiceProvider logService;
-        private IConfiguration configuration;
-
 
         //[Fact]
         //public async Task SendMailAsync_EmailIsNull_ReturnFailedCommand()
@@ -32,7 +28,6 @@
         //    Assert.False(result.IsSuccessful);
         //}
 
-
         [Theory]
         [InlineData("123")]
         [InlineData("")]
@@ -40,16 +35,15 @@
         {
             //Arrange
             var service = GetBaseMailService();
-            
+
             var email = new MailModel { ReceiverEmail = emailAddress };
-            
+
             //Act
             var result = await service.SendMailAsync(email);
 
             //Assert
             Assert.False(result.IsSuccessful);
         }
-
 
         [Fact]
         public async Task SendMailAsync_ValidEmail_ReturnFailedCommand()
@@ -66,8 +60,8 @@
             Assert.False(result.IsSuccessful);
         }
 
-
         #region Helpers
+
         private BaseMailService GetBaseMailService()
         {
             //var mailConfig = Substitute.For<IOptionsSnapshot<MailConfigs>>();
@@ -107,7 +101,6 @@
                 {"MailConfigsForTransactional:Password", "Password"},
                 {"MailConfigsForTransactional:MailFrom", "MailFrom"},
                 {"MailConfigsForTransactional:IsAuthenticate", "false"},
-
             };
             IConfiguration configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(edmSettings)
@@ -119,7 +112,7 @@
 
             return service;
         }
-        #endregion Helpers
 
+        #endregion Helpers
     }
 }

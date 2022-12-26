@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <CodeAnalysisRuleSet>..\..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <ItemGroup>
       <AdditionalFiles Include="..\..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.15" />
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.12" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj" />

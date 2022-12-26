@@ -1,4 +1,6 @@
-﻿using AutoFixture;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoFixture;
 using Fanex.Caching;
 using Microsoft.Extensions.Configuration;
 using NSubstitute;
@@ -12,18 +14,12 @@ using SabaNews.Models.ViewModel;
 using SabaNews.Models.ViewModel.Event.WorldCup;
 using SabaNews.Models.ViewModel.Posts;
 using SabaNews.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace SabaNews.Services.UnitTests
 {
     public class DataControlServiceTests
     {
-
         private IFetchDataService fetchDataService;
         private ICacheWrapperService cacheWrapperService;
         private IPostService postService;
@@ -33,11 +29,9 @@ namespace SabaNews.Services.UnitTests
         private IMatchService matchService;
         private readonly IFixture fixture = new Fixture();
 
-
         [Fact]
         public async Task GetHomePageViewModel_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<PostViewModel>();
@@ -47,13 +41,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-            
         }
 
         [Fact]
         public async Task GetHomePageViewModel_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             PostViewModel expectedFromCache = null;
@@ -68,13 +60,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<PostViewModel>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GetHomePageViewModel_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var expected = fixture.Create<PostViewModel>();
@@ -85,7 +75,6 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
@@ -102,7 +91,6 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
@@ -124,7 +112,6 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<BlogViewModel>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
@@ -133,7 +120,6 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var slug = fixture.Create<string>();
-            var page = 2;
             var param = new GetPostsByCateSlugsParam { Page = 2, Slug1 = "slug1", Slug2 = "slug2" };
             var expected = fixture.Create<BlogViewModel>();
             fetchDataService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => x = param)).Returns(expected);
@@ -143,13 +129,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetMenuData_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Menu>>();
@@ -159,13 +143,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetMenuData_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             IEnumerable<Menu> expectedFromCache = null;
@@ -180,13 +162,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Menu>>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GetMenuData_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Menu>>();
@@ -197,13 +177,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GenerateSitmapXmlData_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<SitemapModel>>();
@@ -213,13 +191,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GenerateSitmapXmlData_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             IEnumerable<SitemapModel> expectedFromCache = null;
@@ -234,13 +210,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<SitemapModel>>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GenerateSitmapXmlData_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<SitemapModel>>();
@@ -251,14 +225,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
-
 
         [Fact]
         public async Task GenerateNewsSitmapXmlData_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<NewsSitemapModel>>();
@@ -268,13 +239,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GenerateNewsSitmapXmlData_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             IEnumerable<NewsSitemapModel> expectedFromCache = null;
@@ -289,13 +258,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<NewsSitemapModel>>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GenerateNewsSitmapXmlData_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<NewsSitemapModel>>();
@@ -306,13 +273,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GenerateRSSData_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Post>>();
@@ -322,13 +287,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GenerateRSSData_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             IEnumerable<Post> expectedFromCache = null;
@@ -343,13 +306,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Post>>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GenerateRSSData_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Post>>();
@@ -360,13 +321,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetEuro2020PageViewModel_WhenCalled_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var expected = fixture.Create<Euro2020ViewModel>();
             fetchDataService.GetEuro2020ViewModel().Returns(expected);
@@ -376,13 +335,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetBannerData_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<BannerModel>();
@@ -392,13 +349,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetBannerData_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             BannerModel expectedFromCache = null;
@@ -413,13 +368,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<BannerModel>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GetBannerData_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var expected = fixture.Create<BannerModel>();
             bannerService.GetBannerInfoAsync().Returns(expected);
@@ -429,13 +382,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetWorldCupPageViewModel_WhenCacheHaveData_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<WorldCupViewModel>();
@@ -445,13 +396,11 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public async Task GetWorldCupPageViewModel_WhenCacheReturnNull_ReturnExpectedData()
         {
-
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             WorldCupViewModel expectedFromCache = null;
@@ -466,13 +415,11 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
             await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<WorldCupViewModel>(), Arg.Any<CacheItemOptions>());
-
         }
 
         [Fact]
         public async Task GetWorldCupPageViewModel_WhenNotUsingCache_ReturnExpectedData()
         {
-
             var service = GetDataControlService(false);
             var expected = fixture.Create<WorldCupViewModel>();
             fetchDataService.GetWorldCupViewModel().Returns(expected);
@@ -482,10 +429,10 @@ namespace SabaNews.Services.UnitTests
 
             //Assert
             Assert.Equal(expected, actual);
-
         }
 
         #region Helpers
+
         private DataControlService GetDataControlService(bool isEnable)
         {
             var inMemorySettings = new Dictionary<string, string> {

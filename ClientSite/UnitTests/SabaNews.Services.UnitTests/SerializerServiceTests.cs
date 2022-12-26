@@ -1,13 +1,13 @@
 ﻿namespace SabaNews.Services.UnitTests
 {
-    using AutoFixture;
-    using Fanex.Logging;
-    using NSubstitute;
-    using SabaNews.Models.Posts;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Text;
+    using AutoFixture;
+    using Fanex.Logging;
+    using NSubstitute;
+    using SabaNews.Models.Posts;
     using Xunit;
 
     public class SerializerServiceTests
@@ -23,7 +23,7 @@
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
-        public void  GetListImageFromMetadata_WhenMetadataIsNull_ReturnExpectedData()
+        public void GetListImageFromMetadata_WhenMetadataIsNull_ReturnExpectedData()
         {
             // Arrange
             var service = GetSerializerService();
@@ -33,7 +33,7 @@
             var actual = service.GetListImageFromMetadata(featureImage, metadata);
 
             // Assert
-            
+
             Assert.Equal(new List<ImageInfo>(), actual);
         }
 
@@ -66,7 +66,6 @@
 
             Assert.Equal(28, actual.Count());
         }
-
 
         [Fact]
         public void GetListImageFromMetadata_WhenGoOnCatch_ReturnExpectedData()
@@ -113,8 +112,8 @@
             Assert.Equal(new List<ImageInfo>(), actual);
         }
 
-
         #region Helpers
+
         private SerializerService GetSerializerService()
         {
             logService = Substitute.For<ILogger>();
@@ -122,6 +121,7 @@
 
             return service;
         }
+
         #endregion Helpers
     }
 }

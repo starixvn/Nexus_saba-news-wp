@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..</DockerfileContext>
         <CodeAnalysisRuleSet>..\..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
-        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +18,7 @@
     <ItemGroup>
         <AdditionalFiles Include="..\..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
         <Content Include="App_Data\SpNames.GC.xml">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Include="App_Data\SpNames.LOCAL.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -36,10 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
         <PackageReference Include="MQTTnet" Version="3.1.2" />
-        <PackageReference Include="StackExchange.Redis" Version="2.5.43" />
     </ItemGroup>
 
     <ItemGroup>
@@ -50,10 +46,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="appsettings.GC.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </Content>
+        <Content Update="appsettings.GC.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
     </ItemGroup>
 </Project>

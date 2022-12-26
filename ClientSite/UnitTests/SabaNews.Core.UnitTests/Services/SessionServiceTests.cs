@@ -3,7 +3,6 @@
     using AutoFixture;
     using Microsoft.AspNetCore.Http;
     using NSubstitute;
-    using SabaNews.Core.Extensions;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using Xunit;
@@ -19,7 +18,6 @@
             // Arrange
             var service = GetServiceWithAccesstor();
             var user = fixture.Create<UserSession>();
-            var key = "key";
             user.SavedPosts = null;
             //Act
             service.User = user;
@@ -38,7 +36,7 @@
             var actual = service.User;
 
             // Assert
-            session.Received().TryGetValue(Arg.Any<string>(),out Arg.Any<byte[]>());
+            session.Received().TryGetValue(Arg.Any<string>(), out Arg.Any<byte[]>());
         }
 
         [Fact]
@@ -55,10 +53,11 @@
         }
 
         #region Helpers
+
         private SessionService GetServiceWithSession()
         {
             session = Substitute.For<ISession>();
-            
+
             var controller = new SessionService(session);
 
             return controller;
