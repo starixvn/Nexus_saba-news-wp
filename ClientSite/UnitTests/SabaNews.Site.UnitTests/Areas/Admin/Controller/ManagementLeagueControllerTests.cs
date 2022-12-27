@@ -178,7 +178,8 @@
             {
                 LeagueId = 1,
                 CountryVN = "icon",
-                IsDeletedIcon = true,
+                IsDeletedIconCountry = true,
+                IsDeletedIconLeague = true,
                 IsMajor = true,
                 LeagueNameVN = "league name",
                 Priority = 1
@@ -222,7 +223,8 @@
             {
                 LeagueId = 1,
                 CountryVN = "icon",
-                IsDeletedIcon = true,
+                IsDeletedIconLeague = true,
+                IsDeletedIconCountry = true,
                 IsMajor = true,
                 LeagueNameVN = "league name",
                 Priority = 1
@@ -232,7 +234,7 @@
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });
-            league.Icon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            league.IconCountry = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
             {
                 Headers = header,
                 ContentType = "application/pdf"
@@ -250,7 +252,7 @@
                 IsMajor = league.IsMajor,
                 Priority = league.Priority
             }).Returns(expected);
-            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = league.Icon), Arg.Do<string>(x => x = UploadDir.LeagueUploadFolder)).Returns(expectedUploadResult);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = league.IconCountry), Arg.Do<string>(x => x = UploadDir.LeagueUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.EditLeague(league);
             // Assert
