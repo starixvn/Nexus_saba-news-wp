@@ -51,12 +51,13 @@
                     foreach (var league in Model)
                     {
                         var iconCountry = league.CountryIconVN ?? league.CountryLogo;
+                        var iconLeague = league.IconVN ?? league.Icon;
                         count++;
                         <tr>
                             <td class="text-center" width="4%">@count</td>
                             <td class="text-left" width="22%">@league.LeagueFullNameEN</td>
                             <td class="text-left" width="22%">@league.LeagueNameVN</td>
-                            <td class="text-center" width="8%"><img src="@(GetTeamIcon(league.Icon))" width="30"></td>
+                            <td class="text-center" width="8%"><img src="@(GetTeamIcon(iconLeague))" width="30"></td>
                             <td class="text-left" width="10%">@league.CountryEN</td>
                             <td class="text-left" width="10%">@league.CountryVN</td>
                             <td class="text-center" width="8%"><img src="@(iconCountry ?? GetTeamIcon(iconCountry))" width="30"></td>

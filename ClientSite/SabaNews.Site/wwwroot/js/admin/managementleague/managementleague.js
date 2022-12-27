@@ -86,10 +86,14 @@ let adminManagementLeague = (function ($) {
                         let Priority = document.getElementById("editPriority").value;
                         let LeagueNameVN = document.getElementById("editLeagueNameVN").value;
                         let CountryVN = document.getElementById("editCountryVN").value;
-                        let Icon = $('#editLeagueIcon')[0].files[0];
-                        let currentIcon = $('#editLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
 
-                        let IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
+                        let IconLeague = $('#editLeagueIconVN')[0].files[0];
+                        let currentIconLeague = $('#editLeagueIconVN').parent().parent().parent().parent().find('.review_photo').attr('src');
+                        let IsDeletedIconLeague = currentIconLeague == "/css/images/logo-dummy.png" ? true : false;
+
+                        let IconCountry = $('#editCountryIcon')[0].files[0];
+                        let currentCountry = $('#editCountryIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                        let IsDeletedIconCountry = currentCountry == "/css/images/logo-dummy.png" ? true : false;
 
                         let formData = new FormData();
                         formData.append('leagueId', LeagueId);
@@ -97,8 +101,10 @@ let adminManagementLeague = (function ($) {
                         formData.append('priority', Priority);
                         formData.append('leagueNameVN', LeagueNameVN);
                         formData.append('countryVN', CountryVN);
-                        formData.append('icon', Icon);
-                        formData.append('isDeletedIcon', IsDeletedIcon);
+                        formData.append('iconLeague', IconLeague);
+                        formData.append('isDeletedIconLeague', IsDeletedIconLeague);
+                        formData.append('iconCountry', IconCountry);
+                        formData.append('isDeletedIconCountry', IsDeletedIconCountry);
 
                         $.ajax({
                             type: 'POST',
@@ -246,10 +252,15 @@ let adminManagementLeague = (function ($) {
                     let Priority = document.getElementById("addPriority").value;
                     let LeagueNameVN = document.getElementById("addLeagueNameVN").value;
                     let CountryVN = document.getElementById("addCountryVN").value;
-                    let Icon = $('#addLeagueIcon')[0].files[0];
-                    let currentIcon = $('#addLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
 
-                    let IsDeletedIcon = currentIcon == "/css/images/logo-dummy.png" ? true : false;
+                    let IconLeague = $('#addLeagueIcon')[0].files[0];
+                    let currentIconLeague = $('#addLeagueIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                    let IsDeletedIconLeague = currentIconLeague == "/css/images/logo-dummy.png" ? true : false;
+
+                    let IconCountry = $('#addCountryIcon')[0].files[0];
+                    let currentCountry = $('#addCountryIcon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                    let IsDeletedIconCountry = currentCountry == "/css/images/logo-dummy.png" ? true : false;
+
 
                     let formData = new FormData();
                     formData.append('leagueId', LeagueId);
@@ -257,8 +268,10 @@ let adminManagementLeague = (function ($) {
                     formData.append('priority', Priority);
                     formData.append('leagueNameVN', LeagueNameVN);
                     formData.append('countryVN', CountryVN);
-                    formData.append('icon', Icon);
-                    formData.append('isDeletedIcon', IsDeletedIcon);
+                    formData.append('iconLeague', IconLeague);
+                    formData.append('isDeletedIconLeague', IsDeletedIconLeague);
+                    formData.append('iconCountry', IconCountry);
+                    formData.append('isDeletedIconCountry', IsDeletedIconCountry);
 
                     $.ajax({
                         type: 'POST',

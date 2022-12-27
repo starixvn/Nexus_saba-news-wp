@@ -7,9 +7,11 @@ namespace SabaNews.Models.ManagementLeague
         public long LeagueId { get; set; }
         public bool IsMajor { get; set; }
         public int Priority { get; set; }
-        public bool IsDeletedIcon { get; set; }
+        public bool IsDeletedIconLeague { get; set; }
+        public bool IsDeletedIconCountry { get; set; }
         public string LeagueNameVN { get; set; }
-        public IFormFile Icon { get; set; }
+        public IFormFile IconCountry { get; set; }
+        public IFormFile IconLeague { get; set; }
         public string CountryVN { get; set; }
     }
 }

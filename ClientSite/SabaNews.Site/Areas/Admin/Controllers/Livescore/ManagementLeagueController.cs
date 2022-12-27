@@ -92,18 +92,26 @@
         public async Task<ActionResult> EditLeague(LeagueUpdateViewModel leagueUpdate)
         {
             IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueUpdate.LeagueId.ToString() + "]") });
-            string icon = leagueUpdate.IsDeletedIcon ? null : league[0].CountryIconVN;
-            if (leagueUpdate.Icon != null)
+            string iconCountry = leagueUpdate.IsDeletedIconCountry ? null : league[0].CountryIconVN;
+            if (leagueUpdate.IconCountry != null)
             {
-                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
-                icon = uploadResult.IsSuccessful ? uploadResult.Message : icon;
+                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconCountry, UploadDir.LeagueUploadFolder);
+                iconCountry = uploadResult.IsSuccessful ? uploadResult.Message : iconCountry;
+            }
+
+            string iconLeague = leagueUpdate.IsDeletedIconLeague ? null : league[0].IconVN;
+            if (leagueUpdate.IconLeague != null)
+            {
+                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconLeague, UploadDir.LeagueUploadFolder);
+                iconLeague = uploadResult.IsSuccessful ? uploadResult.Message : iconLeague;
             }
             var resultUpdateLeague = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
             {
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
                 CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture),
-                CountryIconVN = icon
+                CountryIconVN = iconCountry,
+                IconVN = iconLeague
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League
             {
@@ -144,19 +152,29 @@
         public async Task<ActionResult> AddLeagueExtra(LeagueUpdateViewModel leagueUpdate)
         {
             League league = await leagueService.GetLeagueByIdAsync(leagueUpdate.LeagueId);
-            string icon = leagueUpdate.IsDeletedIcon ? null : league.CountryIconVN;
-            if (leagueUpdate.Icon != null)
+
+            string iconCountry = leagueUpdate.IsDeletedIconCountry ? null : league.CountryIconVN;
+            if (leagueUpdate.IconCountry != null)
             {
-                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.Icon, UploadDir.LeagueUploadFolder);
-                icon = uploadResult.IsSuccessful ? uploadResult.Message : icon;
+                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconCountry, UploadDir.LeagueUploadFolder);
+                iconCountry = uploadResult.IsSuccessful ? uploadResult.Message : iconCountry;
             }
+
+            string iconLeague = leagueUpdate.IsDeletedIconLeague ? null : league.IconVN;
+            if (leagueUpdate.IconLeague != null)
+            {
+                var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconLeague, UploadDir.LeagueUploadFolder);
+                iconLeague = uploadResult.IsSuccessful ? uploadResult.Message : iconLeague;
+            }
+
             var result = await leagueService.InsertLeaguesExtraAsync(leagueUpdate.LeagueId);
             _ = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
             {
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
                 CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture),
-                CountryIconVN = icon
+                CountryIconVN = iconCountry,
+                IconVN = iconLeague
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League
             {
