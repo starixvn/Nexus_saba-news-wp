@@ -53,6 +53,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
                 leagueFullNameEN: league.leagueFullNameEN,
                 leagueNameVN: league.leagueNameVN,
                 icon: league.icon,
+                iconVN: league.iconVN,
                 currentSeasonId: league.season ? league.season.seasonId : league.currentSeasonId,
                 order: order ? order : currentOrder + 1
             };

@@ -53,7 +53,7 @@ export default class Item extends PureComponent {
                                 order={league.order}
                                 onUpdateFavLeague={() => this.onUpdateFavLeague(league)}
                                 className='my-league-item-action' />
-                            <TeamIcon className="my-league-item-img" src={league.icon} />
+                            <TeamIcon className="my-league-item-img" src={CommonFunctions.getLeagueIcon(league)} />
                             <div className="my-league-item-name"> <span dangerouslySetInnerHTML={{ __html: leagueName }}></span> </div>
                         </div>
                     );

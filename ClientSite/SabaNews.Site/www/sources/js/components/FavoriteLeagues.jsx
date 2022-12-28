@@ -96,7 +96,7 @@ export default class FavoriteLeagues extends PureComponent {
                             return (
                                 <div key={league.leagueId} className="leagues-item" onClick={event => this.handleClick(event, league)}>
                                     <div className="leagues-name">
-                                        <TeamIcon className="logo" src={league.icon} />
+                                        <TeamIcon className="logo" src={CommonFunctions.getLeagueIcon(league)} />
                                         <span className="text">{CommonFunctions.getLeagueName(league)}</span>
                                     </div>
                                     <div className="toggle-league">

@@ -103,6 +103,10 @@ export default class CommonFunctions {
         return team.iconVN ? team.iconVN : team.icon;
     }
 
+    static getLeagueIcon(league) {
+        return league.iconVN ? league.iconVN : league.icon;
+    }
+
     static isLiveMatch(statusId) {
         return statusId === MatchStatus.FirstHalf
             || statusId === MatchStatus.SecondHalf
@@ -263,6 +267,7 @@ export default class CommonFunctions {
                 leagueFullNameEN: league.leagueFullNameEN,
                 leagueNameVN: league.leagueNameVN,
                 icon: league.icon,
+                iconVN: league.iconVN,
                 currentSeasonId: league.season ? league.season.seasonId : league.currentSeasonId,
                 order: index + 1
             };

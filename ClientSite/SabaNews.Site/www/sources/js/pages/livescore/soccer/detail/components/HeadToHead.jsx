@@ -91,7 +91,7 @@ export class HeadToHead extends Component {
                         return (
                             <div className="f-row" key={key}>
                                 <div className="name-league" onClick={event => this.handleClickLeague(event, match.league)}>
-                                    <div className="name-league-img"><TeamIcon src={match.league.icon} /></div>
+                                    <div className="name-league-img"><TeamIcon src={CommonFunctions.getLeagueIcon(match.league)} /></div>
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>

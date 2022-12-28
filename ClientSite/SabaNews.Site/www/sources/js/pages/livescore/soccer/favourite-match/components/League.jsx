@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MobileMaxWidth } from '@jsroot/common/constants';
+import { Width1024 } from '@jsroot/common/constants';
 
 export default class League extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+            isMobile: window.innerWidth <= Width1024 ? true : false
         };
     }
 
@@ -22,10 +22,10 @@ export default class League extends PureComponent {
 
     handleResize = () => {
         const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+        if (!isMobile && window.innerWidth <= Width1024) {
             this.setState({ isMobile: true });
         } else {
-            if (isMobile && window.innerWidth > MobileMaxWidth) {
+            if (isMobile && window.innerWidth > Width1024) {
                 this.setState({ isMobile: false });
             }
         }
@@ -49,11 +49,12 @@ export default class League extends PureComponent {
         const separate = isMobile ? '' : ': ';
         const leagueName = CommonFunctions.getLeagueName(league);
         const countryName = league.countryVN ? league.countryVN + separate : '';
+        const iconCountry = league.countryIconVN ?? ( league.country ? league.country.countryLogo : null);
         return(
             <div className="group-match-item-slogan"
                 onClick={event => this.handleClickLeague(event, league)}>
                 <FavouriteLeagueIcon league={league} flagToggle={flagToggleIcon} onUpdateFavLeague={this.props.onUpdateFavLeague}/>
-                <TeamIcon src={null} />
+                <TeamIcon src={iconCountry} />
                 <div className="livescore-name-team">
                     <span className="country-name">{countryName}</span>
                     <span className="round-name">{leagueName}</span>

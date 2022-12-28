@@ -114,7 +114,7 @@ export default class SearchLeague extends PureComponent {
                         return (
                             <div key={index} className="leagues-item" onClick={event => this.handleClick(event, league)}>
                                 <div className="leagues-name">
-                                    <TeamIcon className="logo" src={league.icon} />
+                                    <TeamIcon className="logo" src={CommonFunctions.getLeagueIcon(league)} />
                                     <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }} />
                                 </div>
                                 <div className="toggle-league">

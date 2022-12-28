@@ -8,7 +8,7 @@ const League = ({ league, onUpdateFavLeague, flagToggleFavLeagueIcon }) => {
     return (
         <div className="livescore-league-header-detail">
             <div className="livescore-league-header-detail-group">
-                <div className="livescore-league-header-detail-logo"><TeamIcon src={league.icon} /></div>
+                <div className="livescore-league-header-detail-logo"><TeamIcon src={CommonFunctions.getLeagueIcon(league)} /></div>
                 <div className="livescore-league-header-detail-name">
                     {CommonFunctions.getLeagueName(league)}
                 </div>

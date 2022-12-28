@@ -60,9 +60,9 @@ export class League extends PureComponent {
         const { isShowCountrySeparate } = this.state;
         const separate = isShowCountrySeparate ? '' : ': ';
         const leagueName = CommonFunctions.getLeagueNameWithStage(league);
-        const countryName = league.countryVN ? league.countryVN + separate : '';
         const reg = new RegExp(`(${searchKey})`, 'gi');
         const displayValue = searchKey.length > 0 ? leagueName.replace(reg, "<span class='text-matched'>$1</span>") : leagueName;
+        const countryName = league.countryVN ? league.countryVN + separate : '';
         const iconCountry = league.countryIconVN ?? ( league.country ? league.country.countryLogo : null);
         return (
             <div className="soccer-match-grid-item">
