@@ -51,9 +51,6 @@ describe('Item', () => {
 
         it('setState correctly when props not change', () => {
             // Arrange
-            const prevProps = {
-                leagues: []
-            };
             const props = {
                 leagues: []
             };
@@ -61,10 +58,10 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            instance.componentDidUpdate(prevProps);
+            instance.componentDidUpdate(props);
 
             // Assert
-            expect(instance.state.leagues).toEqual(prevProps.leagues);
+            expect(instance.state.leagues).toEqual(props.leagues);
         });
     });
 
