@@ -11,7 +11,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByIds`(
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
             - 20220711@Hank: get country data
-            - 20220915@Hank: get team name & Icon VN
+            - 20220915@Hank: get team name & Icon VN & data custom
+            - 20221227@Hank: select league IconVN & countryIconVN
     */
 )
 BEGIN
@@ -44,7 +45,7 @@ BEGIN
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
-        ,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon, le.IsMajor, le.Priority, l.CountryVN
+        ,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon, l.IconVN, le.IsMajor, le.Priority, l.CountryVN, l.CountryIconVN
         ,c.CountryId, c.CountryLogo, c.CountryLogoCustom
 		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN
         ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.TeamNameVN, a.Icon, a.IconVN

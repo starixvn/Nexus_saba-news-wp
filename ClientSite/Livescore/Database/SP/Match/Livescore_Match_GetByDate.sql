@@ -15,6 +15,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate`(
             - 20220711@Hank: get country data
             - 20220712@Hank: get only major league
             - 20220915@Hank: get Team Name & Icon VN
+            - 20221227@Hank: select league IconVN
     */
 )
 BEGIN
@@ -54,7 +55,7 @@ BEGIN
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
-		,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, le.IsMajor, le.Priority, l.CountryVN, l.CountryIconVN
+		,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.IconVN, le.IsMajor, le.Priority, l.CountryVN, l.CountryIconVN
         ,c.CountryId, c.CountryLogo, c.CountryLogoCustom
         ,s.SeasonId, s.Year
         ,ss.StageId, ss.StageNameEN, COALESCE(ss.StageNameVN, rr.NameVN) AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
@@ -68,7 +69,7 @@ BEGIN
         LEFT JOIN livescore_match_statistic sh ON m.MatchId = sh.MatchId AND m.HomeTeamId = sh.TeamId
         LEFT JOIN livescore_match_statistic sa ON m.MatchId = sa.MatchId AND m.AwayTeamId = sa.TeamId
         LEFT JOIN livescore_season s ON m.SeasonId = s.SeasonId
-        LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId
+        LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId AND ss.SeasonId = s.SeasonId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId

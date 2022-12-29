@@ -15,6 +15,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 			- 202200517@Tim: get start time for live match
             - 202200610@Hank: check deleted match
             - 2022008100@Hank: add TeamNameVN & IconVN,  select season, data custom
+            - 20221227@Hank: select league IconVN
     */
 )
 BEGIN    
@@ -25,17 +26,30 @@ BEGIN
     
     SET _hasStandings = IF (EXISTS (SELECT 1 FROM livescore_season_standings ss WHERE ss.SeasonId = seasonId AND ss.StageId > 0), 1, 0);
     
-    INSERT INTO tmp_MatchIds (MatchId)
-    SELECT m.MatchId
-    FROM livescore_match m
-    WHERE m.LeagueId = leagueId
-        AND IFNULL(m.SeasonId, 0) = seasonId
-        AND m.CombinedId IS NULL
-        AND m.Status IS NOT NULL
-        AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
-        AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
+    IF(SeasonId = 0) THEN
+		INSERT INTO tmp_MatchIds (MatchId)
+		SELECT m.MatchId
+		FROM livescore_match m
+		WHERE m.LeagueId = leagueId
+			AND m.SeasonId IS NULL
+			AND m.CombinedId IS NULL
+			AND m.Status IS NOT NULL
+			AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
+			AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
+    ELSE 
+		INSERT INTO tmp_MatchIds (MatchId)
+		SELECT m.MatchId
+		FROM livescore_match m
+		WHERE m.LeagueId = leagueId
+			AND m.SeasonId = seasonId
+			AND m.CombinedId IS NULL
+			AND m.Status IS NOT NULL
+			AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
+			AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
+    END IF;
+    
 	
-    SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, _hasStandings AS HasSeasonStandings, l.Icon, l.CurrentStageId
+    SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, _hasStandings AS HasSeasonStandings, l.Icon, l.IconVN, l.CurrentStageId
     FROM livescore_league l
 	WHERE l.LeagueId = leagueId;
     

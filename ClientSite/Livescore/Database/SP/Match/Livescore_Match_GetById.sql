@@ -13,6 +13,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetById`(
 			- 202200517@Tim: get start time for live match
             - 20220822@Hank add select season, round, stage
             - 20220915@Hank add Team Name & Icon VN & data custom
+            - 20221227@Hank: select league IconVN
     */
 )
 BEGIN
@@ -29,7 +30,7 @@ BEGIN
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
-        ,m.LeagueId,  l.LeagueNameVN,  l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon
+        ,m.LeagueId,  l.LeagueNameVN,  l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon, l.IconVN
         ,m.SeasonId
         ,ss.StageId, ss.StageNameEN, COALESCE(ss.StageNameVN, rr.NameVN) AS StageNameVN, ss.StageNameVN as StageNameCustom
         ,rr.NameVN as StageNameResource, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex

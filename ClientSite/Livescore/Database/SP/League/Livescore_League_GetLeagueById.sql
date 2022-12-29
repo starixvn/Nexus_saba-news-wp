@@ -8,12 +8,12 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetLeagueById`(
         Revisions:
 			- 20220729@Brian: init
             - 20220831@Hank: add current stage field
+            - 20221227@Brian: add select IconVN
     */
 )
 BEGIN
-	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, l.CurrentStageId, c.CountryLogo
+	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.IconVN, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, l.CurrentStageId, c.CountryLogo
 	FROM livescore_league l LEFT JOIN livescore_country c ON c.CountryId = l.CountryId
 	Where l.LeagueId = LeagueId;
-END
-//
+END//
 DELIMITER ;
