@@ -10,6 +10,7 @@ import Breadscrum from '@jsroot/components/Breadscrum';
 import SignalR from './SignalR';
 import League from './League';
 import MatchGrid from './match-grid/index';
+import General from './general/Index';
 import SeasonStandings from './standings/index';
 import SkeletonLeague from './SkeletonLeague';
 import SkeletonGrid from './match-grid/SkeletonGrid';
@@ -99,6 +100,15 @@ export class AppContainer extends Component {
                 className="live-score-nav"
                 onSelect={this.handleSelectTab}
             >
+                <Tab eventKey="general" title="Tổng hợp">
+                    {
+                        preMatches === null && <SkeletonGrid />
+                    }
+                    {
+                        (preMatches !== null || postMatches !== null) &&
+                        <General  league={league} stages={stages} preMatches={preMatches} postMatches={postMatches}/>
+                    }
+                </Tab>
                 <Tab eventKey="fixtures" title="Lịch thi đấu">
                     {
                         preMatches === null && <SkeletonGrid />
