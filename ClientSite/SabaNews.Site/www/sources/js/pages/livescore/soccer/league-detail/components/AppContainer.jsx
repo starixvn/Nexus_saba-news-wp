@@ -28,15 +28,18 @@ export class AppContainer extends Component {
     constructor(props) {
         super(props);
 
-        const tabs = ['fixtures', 'results', 'standings'];
+        const tabs = ['general', 'fixtures', 'results', 'standings'];
         let selectedTab = window.getMatchByStageParams.selectedTab.toLowerCase(),
             selectedResultsTab = false,
-            selectedStandingsTab = false;
+            selectedStandingsTab = false,
+            selectedFixtureTab = false;
         if (selectedTab.length === 0 || tabs.findIndex(tab => tab === selectedTab) === -1) {
-            selectedTab = 'fixtures';
+            selectedTab = 'general';
         }
 
         switch (selectedTab) {
+            case 'fixtures':
+                selectedFixtureTab = true;
             case 'results':
                 selectedResultsTab = true;
                 break;
@@ -47,6 +50,7 @@ export class AppContainer extends Component {
 
         this.state = {
             selectedTab,
+            selectedFixtureTab,
             selectedResultsTab,
             selectedStandingsTab,
             flagToggleFavLeagueIcon: false
@@ -68,9 +72,14 @@ export class AppContainer extends Component {
     };
 
     handleSelectTab = key => {
-        let { selectedResultsTab, selectedStandingsTab } = this.state;
+        let { selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
 
         switch (key) {
+            case 'fixtures':
+                if (!selectedFixtureTab) {
+                    selectedFixtureTab = true;
+                }
+                break;
             case 'results':
                 if (!selectedResultsTab) {
                     selectedResultsTab = true;
@@ -83,7 +92,7 @@ export class AppContainer extends Component {
                 break;
         }
 
-        this.setState({ selectedTab: key, selectedResultsTab, selectedStandingsTab });
+        this.setState({ selectedTab: key, selectedFixtureTab, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
         const leagueName = Site.toSlug(CommonFunctions.getLeagueName(this.props.league));
@@ -92,9 +101,8 @@ export class AppContainer extends Component {
     };
 
     renderTabs = () => {
-        const { selectedTab, selectedResultsTab, selectedStandingsTab } = this.state;
+        const { selectedTab, selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { league, stages, preMatches, postMatches } = this.props;
-
         return (
             <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
                 className="live-score-nav"
@@ -106,15 +114,15 @@ export class AppContainer extends Component {
                     }
                     {
                         (preMatches !== null || postMatches !== null) &&
-                        <General  league={league} stages={stages} preMatches={preMatches} postMatches={postMatches}/>
+                        <General  league={league} stages={stages} preMatches={preMatches} postMatches={postMatches} handleSelectTab={this.handleSelectTab}/>
                     }
                 </Tab>
                 <Tab eventKey="fixtures" title="Lịch thi đấu">
                     {
-                        preMatches === null && <SkeletonGrid />
+                        selectedFixtureTab && preMatches === null && <SkeletonGrid />
                     }
                     {
-                        preMatches !== null && <MatchGrid sortAsc league={league} stages={stages} matches={preMatches} />
+                        selectedFixtureTab && preMatches !== null && <MatchGrid sortAsc league={league} stages={stages} matches={preMatches} />
                     }
                 </Tab>
                 <Tab eventKey="results" title="Kết quả">

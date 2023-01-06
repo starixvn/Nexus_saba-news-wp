@@ -50,7 +50,7 @@ export default class MatchGrid extends PureComponent {
         return tempMatches;
     };
 
-    groupMatchesByStageAndRound = matches => {
+    groupMatchesByStageAndRound = (matches, lastStage, lastRound) => {
         const totalItems = matches.length;
         const tempMatches = [];
         for (let i = 0; i < totalItems; i++) {

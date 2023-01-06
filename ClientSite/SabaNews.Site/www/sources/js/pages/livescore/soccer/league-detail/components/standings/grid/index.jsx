@@ -2,13 +2,13 @@
 import THead from './THead';
 import TBody from './TBody';
 
-const Index = ({ standings, isMobile }) => {
+const Index = ({ standings, isMobile, isCup }) => {
     const totalItems = standings.length;
     return (
         <>
             {
                 standings.map((group, index) => {
-                    const groupName = totalItems > 1 ? `Bảng ${group.key.charAt(0)}` : 'Đội';
+                    const groupName = totalItems > 1 || isCup ? `Bảng ${group.key.charAt(0)}` : 'Đội';
 
                     return (
                         <div key={index} className="table-custom">

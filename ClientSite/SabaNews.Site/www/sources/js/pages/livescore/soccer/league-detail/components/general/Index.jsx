@@ -5,6 +5,8 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
 import { LeagueType } from '@jsroot/common/constants';
+import Grid from '../match-grid/Grid';
+import Standing from './Standing';
 
 export default class General extends PureComponent {
     constructor(props) {
@@ -21,11 +23,14 @@ export default class General extends PureComponent {
             && league.leagueType === LeagueType.League;
     };
 
-    checkGroupMatches = (stages, matches, league) => {
+    isGroupByDate = (stages, matches, league) => {
         return this.checkGroupLeagueType(stages, matches, league)
         || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0)
         || league.leagueType === LeagueType.Friendly;
     };
+
+    getRoundName = (round, type) => type === LeagueType.Cup ? `${LangHelper.getResource('Turn')} ${round}`
+                                                            : `${LangHelper.getResource('Round')} ${round}`;
 
     groupMatchesByStageAndRound = matches => {
         const totalItems = matches.length;
@@ -55,8 +60,9 @@ export default class General extends PureComponent {
         return tempMatches;
     };
 
-    groupMatches = (stages, matches, league) => {
-        if (this.checkGroupMatches(stages, matches, league)) {
+    groupMatches = matches => {
+        const {stages, league} = this.props;
+        if (this.isGroupByDate(stages, matches, league)) {
             return CommonFunctions.groupMatchesByDate(matches);
         }
 
@@ -95,39 +101,152 @@ export default class General extends PureComponent {
         }
     };
 
-    filterMatches = (matches, searchKey) => {
+    searchMatches = (matches, searchKey) => {
         return matches.filter(match =>
             CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
             || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
     };
 
-    filterPreMatches = matches => {
-
-    };
-
-    filterTodayMatches = matches => {
-        const resultMatches = [];
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
-        matches.forEach(item => {
-            const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
-            if(moment(startTime).isSame(today)) {
-                resultMatches.push(item);
+    filterRoundAndStage = (matches, stage, round) => {
+        const tmpMatches = [];
+        matches.forEach(match => {
+            const matchStage = match.stage;
+            const matchStageId = matchStage ? matchStage.stageId : 0;
+            const matchRound = match.round ? match.round : 0;
+            if(matchStageId === stage && matchRound === round) {
+                tmpMatches.push(match);
             }
         });
-        return resultMatches;
+        return tmpMatches;
     };
 
+    filterPostMatches = matches => {
+        const {stages, league} = this.props
+        let postMatches = [];
+        matches = this.sortMatches([...matches], false);
+        if(this.isGroupByDate(stages, matches, league)) {
+            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).subtract(7, "days").format('YYYY-MM-DD');
+            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isAfter(lastWeek));
+        } else {
+            const match = matches[0];
+            const lastRound = match.round ? match.round : 0;
+            const lastStage = match.stage ? match.stage.stageId : 0;
+            postMatches = this.filterRoundAndStage(matches, lastStage, lastRound);
+        }
+        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        postMatches = postMatches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isBefore(today));
+        postMatches = this.groupMatches(postMatches);
+        return postMatches;
+    };
+
+    filterPreMatches = matches => {
+        const {stages, league} = this.props
+        let postMatches = [];
+        if(matches.length === 0) {
+            return postMatches;
+        }
+        matches = this.sortMatches([...matches], true);
+        if(this.isGroupByDate(stages, matches, league)) {
+            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).add(7, "days").format('YYYY-MM-DD');
+            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isBefore(lastWeek));
+        } else {
+            const match = matches[0];
+            const lastRound = match.round ? match.round : 0;
+            const lastStage = match.stage ? match.stage.stageId : 0;
+            postMatches = this.filterRoundAndStage(matches, lastStage, lastRound);
+        }
+        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        postMatches = postMatches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isAfter(today));
+        postMatches = this.groupMatches(postMatches);
+        return postMatches;
+    };
+
+
+    filterTodayMatches = (preMatches, postMatches) => {
+        let todayMatches = [];
+        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        preMatches.forEach(item => {
+            const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
+            if(moment(startTime).isSame(today)) {
+                todayMatches.push(item);
+            }
+        });
+        postMatches.forEach(item => {
+            const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
+            if(moment(startTime).isSame(today)) {
+                todayMatches.push(item);
+            }
+        });
+        todayMatches = this.sortMatches(todayMatches, true);
+        todayMatches = this.groupMatches(todayMatches);
+        return todayMatches;
+    };
+
+    handleChangeSearchKey = event => {
+        this.setState({ searchKey: event.target.value });
+    };
+
+    handleViewMore = key => {
+        window.scrollTo({top: 0});
+        this.props.handleSelectTab(key);
+    }
+
     render() {
-        let { league, stages, preMatches, postMatches } = this.props;
+        let { league, preMatches, postMatches } = this.props;
+        const { searchKey } = this.state;
         if (preMatches.length === 0 && postMatches.length === 0) {
             return <div className="none-livescore">Đang cập nhật dữ liệu...</div>;
         }
-        const todayMatches = this.filterTodayMatches(preMatches);
-        console.log(todayMatches);
+        if (searchKey.length > 0) {
+            preMatches = this.searchMatches(preMatches, searchKey);
+            postMatches = this.searchMatches(postMatches, searchKey);
+        }
+        const todayMatches = this.filterTodayMatches(preMatches, postMatches);
+        const listPostMatches = this.filterPostMatches(postMatches);
+        const listPreMatches = this.filterPreMatches(preMatches);
 
         return (
             <div className="league-story">
-                123
+                <div className="group-searchbar">
+                    <div className="livescore-soccer-search-bar">
+                        <Form.Control type="text" placeholder="Tìm kiếm đội bóng..."
+                            id="livescore-soccer-searchbox" className="livescore-soccer-searchbox"
+                            value={searchKey}
+                            onChange={this.handleChangeSearchKey}
+                        />
+                        <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
+                    </div>
+                </div>
+                {
+                    todayMatches.length > 0 &&
+                    <div>
+                        <p>{LangHelper.getResource('TodayMatches')}</p>
+                        <Grid league={league} matches={todayMatches} searchKey={searchKey} />
+                    </div>
+                }
+                {
+                    listPostMatches.length > 0 &&
+                    <div>
+                        <p>{LangHelper.getResource('LastestScore')}</p>
+                        <Grid league={league} matches={listPostMatches} searchKey={searchKey} />
+                        <p onClick={() => this.handleViewMore('results')}>Hiển thị thêm</p>
+                    </div>
+                }
+                {
+                    listPreMatches.length > 0 &&
+                    <div>
+                        <p>{LangHelper.getResource('Upcomming')}</p>
+                        <Grid league={league} matches={listPreMatches} searchKey={searchKey} />
+                        <p onClick={() => this.handleViewMore('fixtures')}>Hiển thị thêm</p>
+                    </div>
+                }
+                {
+                    league.hasSeasonStandings &&
+                    <div>
+                        <Standing />
+                        <p onClick={() => this.handleViewMore('standings')}>Hiển thị thêm</p>
+                    </div>
+                }
             </div>
         );
     }
