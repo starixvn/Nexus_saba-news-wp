@@ -1,0 +1,43 @@
+﻿@using SabaNews.Resources;
+@using SabaNews.Core.Helper;
+@using SabaNews.Core.Constants.Livescore;
+@using SabaNews.Site.Extensions;
+@{
+    var count = 0;
+}
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th width="2%">#</th>
+                <th width="12%">LeagueId</th>
+                <th width="8%">SeasonId</th>
+                <th width="6%">Order</th>
+                <th width="5%">@ViewResources.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var league in Model)
+                {
+                    count++;
+                    <tr>
+                        <td class="text-center">@count</td>
+                        <td class="text-center">@league.LeagueId</td>
+                        <td class="text-center">@league.SeasonId</td>
+                        <td class="text-center">@league.Order</td>
+                        <td class="text-center">
+                           
+                        </td>
+                    </tr>
+                }
+            }
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

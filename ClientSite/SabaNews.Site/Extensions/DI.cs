@@ -45,6 +45,7 @@
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IWorldCupService, WorldCupService>();
+            services.AddTransient<IOptionService, OptionService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
