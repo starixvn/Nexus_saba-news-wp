@@ -6,7 +6,7 @@ import Grid from '../standings/grid/index';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
 
-export class SeasonStandings extends PureComponent {
+export class Standing extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -100,7 +100,7 @@ export class SeasonStandings extends PureComponent {
             if(standing.childs[0].childs.length > 5) {
                 standing.childs[0].childs = standing.childs[0].childs.slice(0, 5);
             }
-        } else if(standing.childs.length > 1) {
+        } else {
             standing.childs = standing.childs.slice(0, 1);
         }
         return {standing, length: standings.length, lengthChild};
@@ -132,4 +132,4 @@ const mapStateToProps = state => {
     return { seasonStandings };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SeasonStandings);
+export default connect(mapStateToProps, mapDispatchToProps)(Standing);

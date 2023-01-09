@@ -123,6 +123,9 @@ export default class General extends PureComponent {
     filterPostMatches = matches => {
         const {stages, league} = this.props
         let postMatches = [];
+        if(matches.length === 0) {
+            return postMatches;
+        }
         matches = this.sortMatches([...matches], false);
         if(this.isGroupByDate(stages, matches, league)) {
             const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).subtract(7, "days").format('YYYY-MM-DD');
@@ -204,7 +207,7 @@ export default class General extends PureComponent {
         const todayMatches = this.filterTodayMatches(preMatches, postMatches);
         const listPostMatches = this.filterPostMatches(postMatches);
         const listPreMatches = this.filterPreMatches(preMatches);
-
+        
         return (
             <div className="league-story">
                 <div className="group-searchbar">
@@ -226,25 +229,25 @@ export default class General extends PureComponent {
                 }
                 {
                     listPostMatches.length > 0 &&
-                    <div>
+                    <div className="post-match-grid">
                         <p>{LangHelper.getResource('LastestScore')}</p>
                         <Grid league={league} matches={listPostMatches} searchKey={searchKey} />
-                        <p onClick={() => this.handleViewMore('results')}>Hiển thị thêm</p>
+                        <p className="view-more" onClick={() => this.handleViewMore('results')}>Hiển thị thêm</p>
                     </div>
                 }
                 {
                     listPreMatches.length > 0 &&
-                    <div>
+                    <div className="pre-match-grid">
                         <p>{LangHelper.getResource('Upcomming')}</p>
                         <Grid league={league} matches={listPreMatches} searchKey={searchKey} />
-                        <p onClick={() => this.handleViewMore('fixtures')}>Hiển thị thêm</p>
+                        <p className="view-more" onClick={() => this.handleViewMore('fixtures')}>Hiển thị thêm</p>
                     </div>
                 }
                 {
                     league.hasSeasonStandings &&
-                    <div>
+                    <div className="standing-grid">
                         <Standing />
-                        <p onClick={() => this.handleViewMore('standings')}>Hiển thị thêm</p>
+                        <p className="view-more" onClick={() => this.handleViewMore('standings')}>Hiển thị thêm</p>
                     </div>
                 }
             </div>

@@ -48,7 +48,8 @@ describe('AppContainer', () => {
                 flagToggleFavLeagueIcon: false,
                 selectedTab: 'fixtures',
                 selectedResultsTab: false,
-                selectedStandingsTab: false
+                selectedStandingsTab: false,
+                selectedFixtureTab: true
             });
         });
 
@@ -66,7 +67,8 @@ describe('AppContainer', () => {
                 flagToggleFavLeagueIcon: false,
                 selectedTab: 'results',
                 selectedResultsTab: true,
-                selectedStandingsTab: false
+                selectedStandingsTab: false,
+                selectedFixtureTab: false
             });
         });
 
@@ -84,7 +86,8 @@ describe('AppContainer', () => {
                 flagToggleFavLeagueIcon: false,
                 selectedTab: 'standings',
                 selectedResultsTab: false,
-                selectedStandingsTab: true
+                selectedStandingsTab: true,
+                selectedFixtureTab: false
             });
         });
 
@@ -100,9 +103,10 @@ describe('AppContainer', () => {
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'fixtures',
+                selectedTab: 'general',
                 selectedResultsTab: false,
-                selectedStandingsTab: false
+                selectedStandingsTab: false,
+                selectedFixtureTab: false
             });
         });
     });
@@ -181,7 +185,8 @@ describe('AppContainer', () => {
                 flagToggleFavLeagueIcon: false,
                 selectedTab: 'fixtures',
                 selectedResultsTab: false,
-                selectedStandingsTab: false
+                selectedStandingsTab: false,
+                selectedFixtureTab: true
             });
             expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/fixtures');
         });
@@ -199,7 +204,8 @@ describe('AppContainer', () => {
                 flagToggleFavLeagueIcon: false,
                 selectedTab: 'results',
                 selectedResultsTab: true,
-                selectedStandingsTab: false
+                selectedStandingsTab: false,
+                selectedFixtureTab: false
             });
             expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/results');
         });
@@ -217,7 +223,8 @@ describe('AppContainer', () => {
                 flagToggleFavLeagueIcon: false,
                 selectedTab: 'standings',
                 selectedResultsTab: false,
-                selectedStandingsTab: true
+                selectedStandingsTab: true,
+                selectedFixtureTab: false
             });
             expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/standings');
         });

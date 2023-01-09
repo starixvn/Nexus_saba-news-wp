@@ -40,6 +40,7 @@ export class AppContainer extends Component {
         switch (selectedTab) {
             case 'fixtures':
                 selectedFixtureTab = true;
+                break;
             case 'results':
                 selectedResultsTab = true;
                 break;
