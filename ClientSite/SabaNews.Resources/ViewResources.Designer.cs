@@ -1141,6 +1141,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Homepage Management.
+        /// </summary>
+        public static string HomepageManagement {
+            get {
+                return ResourceManager.GetString("HomepageManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hot.
         /// </summary>
         public static string Hot {

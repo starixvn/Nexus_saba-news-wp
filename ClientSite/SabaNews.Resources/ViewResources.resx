@@ -1080,4 +1080,7 @@
   <data name="CountUserInteractions" xml:space="preserve">
     <value>Count User Interactions</value>
   </data>
+  <data name="HomepageManagement" xml:space="preserve">
+    <value>Homepage Management</value>
+  </data>
 </root>
