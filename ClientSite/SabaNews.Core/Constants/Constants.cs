@@ -26,6 +26,10 @@
         public const string BasketballVideoSlug = "video-bong-ro";
         public const string TennisVideoSlug = "video-quan-vot";
 
+        public const string AFFSlug = "aff-cup";
+        public const string LaLigaSlug = "la-liga";
+        public const string EngLishPremierLeagueSlug = "ngoai-hang-anh";
+
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";
 

@@ -8,6 +8,7 @@
     {
         public IEnumerable<Post> NewPosts { get; set; }
         public IEnumerable<Post> FootballPosts { get; set; }
+        public List<IEnumerable<Post>> LeaguePosts { get; set; }
         public IEnumerable<Post> OtherPosts { get; set; }
         public IEnumerable<Post> TennisPosts { get; set; }
         public IEnumerable<Post> VideoPosts { get; set; }
@@ -18,7 +19,6 @@
         public string Url { get; set; }
         public string RSSUrl { get; set; }
         public HeaderViewModel Header { get; set; }
-
         public BannerModel Banner { get; set; }
 
     }

@@ -44,10 +44,18 @@
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
 
+            List<IEnumerable<Post>> leaguePosts = new()
+            {
+                await postService.GetPostsBySlugAsync(Constants.AFFSlug, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(Constants.EngLishPremierLeagueSlug, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(Constants.LaLigaSlug, Constants.FromFirstItem, Constants.GetFourItems)
+            };
+
             var viewModel = new PostViewModel
             {
                 NewPosts = (newPosts).ToArray(),
                 FootballPosts = (footballPosts).ToArray(),
+                LeaguePosts= leaguePosts,
                 OtherPosts = (otherPosts).ToArray(),
                 TennisPosts = (tennisPosts).ToArray(),
                 VideoPosts = (videoPosts).ToArray(),
