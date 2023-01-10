@@ -23,13 +23,13 @@
                 <div class="form-input" id="seasonFilter">
                     <select class="form-control custom-input season-select">
                         @if (Model.Seasons.Count == 0)
-                        { 
-                            <option value="0">0</option>
+                        {
+                            <option value="0" data-name="0">0</option>
                         }
                         @foreach (var season in Model.Seasons)
                         {
                             var selected = season.SeasonId == Model.Fixture.SeasonId ? "selected" : "";
-                            <option value="@season.SeasonId" @selected>@season.Year</option>
+                            <option value="@season.SeasonId" data-name="@season.Year" @selected>@season.Year</option>
                         }
                     </select>
                     <p class="error-input season-error"></p>

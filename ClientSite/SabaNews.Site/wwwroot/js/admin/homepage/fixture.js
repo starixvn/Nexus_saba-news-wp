@@ -76,10 +76,11 @@
                         }
                         var seasonId = $(form + ' .season-select').val();
                         var order = $(form + ' #order').val();
+                        var year = $('option:selected', form + ' .season-select').data('name');
                         $.ajax({
                             type: 'POST',
                             url: '/Admin/HomepageManagement/EditFixture',
-                            data: { id, seasonId, order },
+                            data: { id, seasonId, year, order },
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $(form).modal('hide');
