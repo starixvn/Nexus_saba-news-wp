@@ -1,16 +1,208 @@
 ﻿var fixtureHomepage = (function ($) {
+    var id = 0;
     function GetDataGrid() {
         $.ajax({
             url: "/Admin/HomepageManagement/GetFixtureGrid",
             type: 'POST',
             success: function (res) {
                 $('.data-grid').html(res);
+                Edit();
+                Delete();
             }
+        });
+    };
+
+    function GetSeason() {
+        $('.league-select').on('change', function () {
+            var leagueId = $(this).val();
+            $.ajax({
+                url: "/Admin/MatchManagement/GetSeason",
+                type: 'POST',
+                data: { leagueId },
+                success: function (res) {
+                    $('#seasonFilter').html(res);
+                }
+            });
+        });
+        
+    };
+    function validateNumber() {
+        $('.input-number').on('keypress', function (e) {
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+                e.preventDefault();
+            }
+        });
+    }
+
+    function validateForm(form) {
+        var isValid = true;
+        if (($(form + ' #leagueId').val() <= 0)) {
+            var isValid = false;
+            $(form + ' .league-error').html('league is required');
+        }
+        if (($(form + ' .season-select').val() == '')) {
+            var isValid = false;
+            $(form + ' .season-error').html('season is required');
+        }
+        if (($(form + ' #order').val() == '')) {
+            var isValid = false;
+            $(form + ' .order-error').html('order is required');
+        }
+        return isValid;
+    }
+
+
+    function Edit() {
+        $('.btn-Edit').on('click', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/HomepageManagement/GetFixtureToEdit',
+                data: { id },
+                success: function (res) {
+                    var self = $(this);
+                    $('#AddModal .modal-body').html(res);
+                    $('.league-select').select2();
+                    $('#AddModal').modal('show');
+                    GetSeason();
+                    $('#btn-save').on('click', function () {
+                        $('.error-input').html('');
+                        var form = '#AddModal';
+                        self.prop('disabled', true);
+                        if (!validateForm(form)) {
+                            self.prop('disabled', false);
+                            return false;
+                        }
+                        var seasonId = $(form + ' .season-select').val();
+                        var order = $(form + ' #order').val();
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Admin/HomepageManagement/EditFixture',
+                            data: { id, seasonId, order },
+                            success: function (response) {
+                                if (response.isSuccessful) {
+                                    $(form).modal('hide');
+                                    GetSuccessPopup('#NoticeModal', 'Update Fixture successfully!');
+                                    setTimeout(function () {
+                                        $('#NoticeModal').modal('hide');
+                                        GetDataGrid();
+                                    }, 1000);
+                                } else {
+                                    self.prop('disabled', false);
+                                    var mess = response.message == '' ? 'An error occurred while add league, please try again' : response.message;
+                                    GetErrorPopup('#NoticeModal', mess);
+                                }
+                            }
+                        })
+                    });
+                }
+            })
+            validateNumber();
+            validateForm();
+        });
+    }
+
+    function Add() {
+        $('.btn-add-fixture').on('click', () => {
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/HomepageManagement/GetFixtureToAdd',
+                success: function (res) {
+                    var self = $(this);
+                    $('#AddModal .modal-body').html(res);
+                    $('.league-select').select2();
+                    $('#AddModal').modal('show');
+                    GetSeason();
+                    $('#btn-save').on('click', function () {
+                        $('.error-input').html('');
+                        var form = '#AddModal';
+                        self.prop('disabled', true);
+                        if (!validateForm(form)) {
+                            self.prop('disabled', false);
+                            return false;
+                        }
+                        var leagueId = $(form + ' #leagueId').val();
+                        var seasonId = $(form + ' .season-select').val();
+                        var order = $(form + ' #order').val();
+                        var year = $('option:selected', form + ' .season-select').data('name');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Admin/HomepageManagement/AddFixture',
+                            data: { leagueId, seasonId, year, order },
+                            success: function (response) {
+                                if (response.isSuccessful) {
+                                    $(form).modal('hide');
+                                    GetSuccessPopup('#NoticeModal', 'Update Match successfully!');
+                                    setTimeout(function () {
+                                        $('#NoticeModal').modal('hide');
+                                        GetDataGrid();
+                                    }, 1000);
+                                } else {
+                                    self.prop('disabled', false);
+                                    var mess = response.message == '' ? 'An error occurred while add league, please try again' : response.message;
+                                    GetErrorPopup('#NoticeModal', mess);
+                                }
+                            }
+                        })
+                    });
+                }
+            });
+            
+            validateNumber();
+            validateForm();
+        });
+    }
+
+    function Delete() {
+        $('.btn-Delete').on('click', function () {
+            id = $(this).data('id');
+            $('#ConfirmModal .confirm-action').data('action', 'remove');
+            $('#ConfirmModal .modal-body').html('Are you sure you want to remove this league ?');
+            $('#ConfirmModal').modal('show');
+        });
+
+        
+    }
+
+    function handleModal() {
+        $('.confirm-action').on('click', function () {
+            if (id == 0) {
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/HomepageManagement/DeleteFixture',
+                data: { id },
+                success: function (response) {
+                    $('#ConfirmModal').modal('hide');
+                    if (response.isSuccessful) {
+                        $('#NoticeModal' + ' .modal-title').removeClass('title-error').addClass('title-success');
+                        $('#NoticeModal' + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+                        $('#NoticeModal' + ' .modal-body').html('Remove league successfully!');
+                        $('#NoticeModal').modal('show');
+
+                        setTimeout(function () {
+                            $('#NoticeModal').modal('hide');
+                            GetDataGrid();
+                        }, 1000);
+                    } else {
+                        $('#NoticeModal' + ' .modal-title').removeClass('title-success').addClass('title-error');
+                        $('#NoticeModal' + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+                        $('#NoticeModal' + ' .modal-body').html('An error occurred while remove league, please try again');
+                        $('#NoticeModal').modal('show');
+                    }
+                }
+            })
+            url = "";
         });
     }
 
     function init() {
         GetDataGrid();
+        Add();
+        handleModal();
        
     }
 

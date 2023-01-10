@@ -268,7 +268,7 @@
             return await baseService.ExecuteNonQueryAsync(criteria);
         }
 
-        public async Task<IList<Season>> GetSeasonByLeagueIdAsync(int leagueId)
+        public async Task<IList<Season>> GetSeasonByLeagueIdAsync(long leagueId)
         {
             var criteria = new GetSeasonByLeagueIdCriteria { LeagueId  = leagueId };
             var seasons = await baseService.GetDataAsync<Season>(criteria);

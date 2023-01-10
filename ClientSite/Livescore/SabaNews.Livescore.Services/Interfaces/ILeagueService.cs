@@ -28,7 +28,7 @@
         Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum);
         Task<CommandResult> InsertTopScorerAsync(TopScorers topScorers);
         Task<CommandResult> UpdateTopScorerAsync(TopScorers topScorers);
-        Task<IList<Season>> GetSeasonByLeagueIdAsync(int leagueId);
+        Task<IList<Season>> GetSeasonByLeagueIdAsync(long leagueId);
         Task<IEnumerable<MiniGame>> GetDataMinigameAsync(GetDataMinigameCriteria criteria);
         Task<IList<MiniGame>> GetDetailMinigameAsync(int UserId);
         Task<CommandResult> InsertMinigameAsync(MiniGame miniGame);

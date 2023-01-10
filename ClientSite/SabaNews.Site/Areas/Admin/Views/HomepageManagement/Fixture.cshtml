@@ -31,17 +31,19 @@
 
         <div class="content">
             <div class="add-section">
-                <button href="javascript:;" class="label label-blue btn-link btn-add"><img src="~/images/icon/icon-plus.png" class="icon-add" />@ViewResources.AddLeague</button>
+                <button href="javascript:;" class="label label-blue btn-link btn-add btn-add-fixture">
+                    <img src="~/images/icon/icon-plus.png" class="icon-add" />@ViewResources.AddLeague
+                </button>
             </div>
             <div class="data-grid" id="data-grid"></div>
 
     </div>
 
-    <div class="modal modal-edit-center" id="AddLeagueContent" style="display:none">
+    <div class="modal modal-edit-center" id="AddModal" style="display:none">
         <div class="modal-content">
             <div class="modal-warning">
                 <div class="modal-title">
-                    <h2 class="title"></h2>
+                    <h2 class="title">Add League Fixture</h2>
                     <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
                         <i class="icon-close"></i>
                     </button>
@@ -108,5 +110,6 @@
 
 @section Scripts {
     <script src="~/js/admin/homepage/fixture.js" asp-append-version="true"></script>
+    <script src="~/js/select2.min.js" asp-append-version="true"></script>
   
 }
