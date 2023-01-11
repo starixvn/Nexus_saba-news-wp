@@ -21,6 +21,7 @@
         Task<CommandResult> InsertLeaguesExtraAsync(long leagueId);
         Task<CommandResult> UpdateLeaguesAsync(UpdateLeagueCriteria updateLeague);
         Task<IList<SeasonStandings>> GetLeagueSeasonStanding(GetLeagueSeasonStandingCriteria criteria);
+        Task<(League, IList<SeasonStandings>)> GetLeagueAndSeasonStandingAsync(GetLeagueAndSeasonStandingsCriteria criteria);
         Task<IList<Team>> GetAllTeamAsync();
         Task<IList<Player>> GetPlayerByIdTeamAsync(long teamId);
         Task<IList<TopScorers>> GetTop10ScorersAsync(GetTop10ScorersCriteria top10ScorersCriteria);

@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const fixtureSlice = createSlice({
-    name: 'fixtureSlice',
+const fixtureHomepageSlice = createSlice({
+    name: 'fixtureHomepageSlice',
     initialState: {
-        matches: null,
+        leagues: null,
         liveMatches: null,
         league: null
     },
     reducers: {
-        setMatches: (state, action) => {
-            state.matches = action.payload;
+        setLeagues: (state, action) => {
+            state.leagues = action.payload;
         },
         setLeague: (state, action) => {
             state.league = action.payload;
@@ -27,10 +27,10 @@ const fixtureSlice = createSlice({
     }
 });
 
-const { actions, reducer } = fixtureSlice;
+const { actions, reducer } = fixtureHomepageSlice;
 
 export const {
-    setMatches,
+    setLeagues,
     setLeague,
     setLiveMatches
 } = actions;

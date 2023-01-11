@@ -244,5 +244,6 @@
         <Setting Key="worldcup_minigame_getVoteMatch" SpName="worldcup_minigame_getVoteMatch" DbName="sabasports" Plain="0"></Setting>
 		<Setting Key="worldcup_minigame_get_by_stage" SpName="worldcup_minigame_get_by_stage" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="worldcup_minigame_get_list_users" SpName="worldcup_minigame_get_list_users" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="Livescore_League_GetLeagueAndSeasonStandings" SpName="Livescore_League_GetLeagueAndSeasonStandings" DbName="sabasports" Plain="0"></Setting>
     </Function>
 </Functions>

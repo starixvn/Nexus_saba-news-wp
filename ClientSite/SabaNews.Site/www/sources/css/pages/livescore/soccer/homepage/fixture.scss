@@ -1,11 +1,10 @@
 @import '~react-loading-skeleton/dist/skeleton.css';
-@import "../../../abstracts/variables";
-@import "../../../abstracts/mixins";
-@import "../../../base/base";
-@import "../../../components/block-extension";
-@import "../../../components/container";
-@import "../../../components/soccer-item";
-@import '/world-cup/components/wc-date-bar';
+@import "../../../../abstracts/variables";
+@import "../../../../abstracts/mixins";
+@import "../../../../base/base";
+@import "../../../../components/block-extension";
+@import "../../../../components/container";
+@import "../../../../components/soccer-item";
 
 
 .fixture-home-page{

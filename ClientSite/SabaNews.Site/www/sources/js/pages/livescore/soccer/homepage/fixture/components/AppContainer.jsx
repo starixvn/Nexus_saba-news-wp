@@ -21,7 +21,7 @@ export class AppContainer extends Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.handleResize);
-        this.props.getMatches();
+        this.props.getLeagues();
     }
 
     componentWillUnmount() {
@@ -77,31 +77,24 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { league, matches } = this.props;
-        const { isMobile } = this.state;
-        const matchGrid = this.getMatches();
+        const { leagues } = this.props;
         return (
-            <>
-                <div className="fixture-homepage-title">
-                    <div className="logo-wc-homepage">
-                        <img src={league != null ? league.icon : "css/images/logo-dummy.png"}/>
-                        <p className="text" onClick={event => this.handleClickLeague(event, league)}>Ngoại hạng Anh</p>
-                    </div>
-                    <div className="view-more" onClick={this.handleClickFixture}>
-                        Xem tất cả
+            <div className="container livescore-container">
+                <SignalR />
+                <div className="livescore-soccer">
+                    <div className="livescore-soccer-main">
+                        {
+                            leagues === null && <SkeletonGrid />
+                        }
+                        {
+                            leagues !== null &&
+                            leagues.map((item, key) => {
+                                return <Grid key={key} league={item.league} matches={item.matches} />
+                            })
+                        }
                     </div>
                 </div>
-                <SignalR />
-                {
-                    matches === null &&
-                    <SkeletonGrid isMobile={isMobile} />
-                }
-                {
-                    matchGrid.matches && matchGrid.matches.length > 0 &&
-                    <Grid isMobile={isMobile} matches={matchGrid.matches} league={league} isFinished={matchGrid.isFinished} />
-                }
-                { isMobile && <div  className="view-more-mb" onClick={this.handleClickFixture}>Xem tất cả</div> }
-            </>
+            </div>
         );
     }
 
@@ -111,8 +104,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { matches, league } = state;
-    return { matches, league };
+    const { leagues, league } = state;
+    return { leagues, league };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

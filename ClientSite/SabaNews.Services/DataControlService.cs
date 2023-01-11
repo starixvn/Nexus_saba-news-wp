@@ -10,6 +10,7 @@
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -250,33 +251,53 @@
 
         public async Task<(League, IList<Match>)> GetHomepageWCFixtureData()
         {
-            var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
-            return await matchService.GetMatchBySeasonAsync(criteria);
+            return await fetchDataService.GetWCFixtureData();
         }
 
-        public async Task<(League, IList<Match>)> GetHomepageFixtureData()
+        public async Task<List<MatchLeagueModel>> GetHomepageFixtureData()
         {
-            var criteria = new GetMatchBySeasonCriteria { LeagueId = HomeFixture.LeagueId, SeasonId = HomeFixture.SeasonId };
             if (IsUsingCache)
             {
-                (League league, IList<Match> matches) = await cacheWrapperService.GetAsync<(League, IList<Match>)>(CacheKey.FixtureHomePage);
+                var result = await cacheWrapperService.GetAsync<List<MatchLeagueModel>>(CacheKey.FixtureHomePage);
 
-                if (league == null)
+                if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
-
-                    (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
-                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, (league, matches),
+                    result = await fetchDataService.GetHomepageFixture();
+                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
                         });
                 }
 
-                return (league, matches);
+                return result;
             }
 
-            return await matchService.GetMatchBySeasonAsync(criteria);
+            return await fetchDataService.GetHomepageFixture();
+        }
+
+        public async Task<List<StandingLeagueModel>> GetHomepageStandingData()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<List<StandingLeagueModel>>(CacheKey.FixtureHomePage);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
+                    result = await fetchDataService.GetHomepageStanding();
+                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetHomepageStanding();
         }
     }
 }

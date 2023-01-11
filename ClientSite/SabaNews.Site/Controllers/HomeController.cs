@@ -282,11 +282,19 @@
         }
 
         [HttpPost]
-        [Route("api/match/get-matches-aff-cup")]
-        public async Task<IActionResult> GetMatchesAFFCup()
+        [Route("api/GetHomeFixture")]
+        public async Task<IActionResult> GetHomeFixture()
         {
-            (League league, IList<Match> matches) = await dataControlService.GetHomepageFixtureData();
-            return Json(new { league, matches });
+            var fixture = await dataControlService.GetHomepageFixtureData();
+            return Json(fixture);
+        }
+
+        [HttpPost]
+        [Route("api/GetHomeStanding")]
+        public async Task<IActionResult> GetHomeStanding()
+        {
+            var fixture = await dataControlService.GetHomepageStandingData();
+            return Json(fixture);
         }
     }
 }

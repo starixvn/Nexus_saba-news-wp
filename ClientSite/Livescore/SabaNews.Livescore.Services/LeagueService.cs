@@ -177,6 +177,13 @@
             return result.ToList();
         }
 
+        public async Task<(League, IList<SeasonStandings>)> GetLeagueAndSeasonStandingAsync(GetLeagueAndSeasonStandingsCriteria criteria)
+        {
+            (var leagues,  var standings) = await baseService.FetchMultipleAsync<League, SeasonStandings>(criteria);
+            var league = leagues.FirstOrDefault();
+            return (league, standings.ToList());
+        }
+
         public async Task<CommandResult> InsertTopScorerAsync(TopScorers topScorers)
         {
             var criteria = new InsertTopScorersCriteria

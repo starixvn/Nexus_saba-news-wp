@@ -2,9 +2,16 @@
 {
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
+    using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -20,11 +27,22 @@
     {
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
+        private readonly IMatchService matchService;
+        private readonly ILeagueService leagueService;
+        private readonly IOptionService optionService;
 
-        public FetchDataService(IPostService postService, IConfiguration configuration)
+        public FetchDataService(
+            IPostService postService,
+            IConfiguration configuration,
+            IMatchService matchService,
+            ILeagueService leagueService,
+            IOptionService optionService)
         {
             this.postService = postService;
             this.configuration = configuration;
+            this.matchService = matchService;
+            this.leagueService = leagueService;
+            this.optionService = optionService;
         }
 
         public async Task<PostViewModel> GetHomePageViewModel()
@@ -203,6 +221,38 @@
                 Category = cate,
             };
             return Model;
+        }
+
+        public async Task<(League, IList<Match>)> GetWCFixtureData()
+        {
+            var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            return await matchService.GetMatchBySeasonAsync(criteria);
+        }
+
+        public async Task<List<MatchLeagueModel>> GetHomepageFixture()
+        {
+            var option = await optionService.GetOptionAsync(OptionKey.HompageFixture);
+            var leagues = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
+            var result = new List<MatchLeagueModel>();
+            foreach (var item in leagues)
+            {
+                var (league, matches) = await matchService.GetMatchBySeasonAsync(new GetMatchBySeasonCriteria { LeagueId = item.LeagueId, SeasonId = item.SeasonId });
+                result.Add(new MatchLeagueModel { League = league, Matches = matches });
+            }
+            return result;
+        }
+
+        public async Task<List<StandingLeagueModel>> GetHomepageStanding()
+        {
+            var option = await optionService.GetOptionAsync(OptionKey.HompageFixture);
+            var leagues = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
+            var result = new List<StandingLeagueModel>();
+            foreach (var item in leagues)
+            {
+                var (league, standing) = await leagueService.GetLeagueAndSeasonStandingAsync(new GetLeagueAndSeasonStandingsCriteria { LeagueId = item.LeagueId, SeasonId = item.SeasonId });
+                result.Add(new StandingLeagueModel { League = league, Standing = standing });
+            }
+            return result;
         }
     }
 }

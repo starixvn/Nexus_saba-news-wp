@@ -4,6 +4,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -31,7 +32,10 @@
 
         Task<WorldCupViewModel> GetWorldCupPageViewModel();
 
-        Task<(League, IList<Match>)> GetHomepageFixtureData();
         Task<(League, IList<Match>)> GetHomepageWCFixtureData();
+
+        Task<List<MatchLeagueModel>> GetHomepageFixtureData();
+
+        Task<List<StandingLeagueModel>> GetHomepageStandingData();
     }
 }
