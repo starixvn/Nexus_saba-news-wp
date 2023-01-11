@@ -158,5 +158,9 @@
   {
     "outputFile": "wwwroot/styles/pages/admin/homepage/fixture.css",
     "inputFile": "wwwroot/styles/pages/admin/homepage/fixture.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/admin/footballnews/footballnews.css",
+    "inputFile": "wwwroot/styles/pages/admin/footballnews/footballnews.scss"
   }
 ]

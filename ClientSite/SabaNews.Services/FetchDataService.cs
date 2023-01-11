@@ -25,6 +25,7 @@
 
     public class FetchDataService : IFetchDataService
     {
+        private readonly IOptionService optionService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly IMatchService matchService;
@@ -62,11 +63,15 @@
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
 
+            var footballnews1 = await optionService.GetOptionAsync(OptionKey.footballnews1);
+            var footballnews2 = await optionService.GetOptionAsync(OptionKey.footballnews2);
+            var footballnews3 = await optionService.GetOptionAsync(OptionKey.footballnews3);
+
             List<IEnumerable<Post>> leaguePosts = new()
             {
-                await postService.GetPostsBySlugAsync(Constants.AFFSlug, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(Constants.EngLishPremierLeagueSlug, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(Constants.LaLigaSlug, Constants.FromFirstItem, Constants.GetFourItems)
+                await postService.GetPostsBySlugAsync(footballnews1.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballnews2.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballnews3.OptionValue, Constants.FromFirstItem, Constants.GetFourItems)
             };
 
             var viewModel = new PostViewModel

@@ -1,0 +1,91 @@
+﻿@using static SabaNews.Site.Extensions.LivescoreHelper
+@using SabaNews.Resources
+@using SabaNews.Core.Helper;
+@{
+    Layout = "_AdminLayout";
+}
+
+@section TopHeader{
+    Football News
+}
+
+@section Title{
+    Football News
+}
+@section ActiveMenu {
+    <input type="text" readonly hidden name="activeMenu" value="Football News" />
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/styles/pages/admin/footballnews/footballnews.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/styles/pages/jquery-ui.css" asp-append-version="true">
+}
+
+<section class="page-content">
+    <div class="content">
+        <div class="add-section">
+            <button href="javascript:;" class="label label-blue btn-link btn-add btn-add-fixture">
+                <img src="~/images/icon/icon-plus.png" class="icon-add" />Add Football News
+            </button>
+        </div>
+        <div class="data-grid" id="data-grid"></div>
+    </div>
+
+    <div class="modal" id="NoticeModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title title-success">
+                    <h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
+
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal confirm" id="ConfirmModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title">@ViewResources.Confirmation</h2>
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body"></div>
+                <div class="button-confirm">
+                    <button class="btn-custom-outline confirm-action">Yes</button>
+                    <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-edit-center" id="EditLeagueContent" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title"></h2>
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body ck-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/admin/footballnews/footballnews.js" asp-append-version="true"></script>
+    <script src="~/js/select2.min.js" asp-append-version="true"></script>
+}

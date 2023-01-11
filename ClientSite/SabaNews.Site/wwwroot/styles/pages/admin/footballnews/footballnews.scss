@@ -1,0 +1,173 @@
+﻿
+@import '../custom-modal';
+@import '../custom-input';
+
+.show-league {
+    border-bottom: 1px solid Silver;
+    width: 249px;
+    height: 28px;
+
+    .btn_major_league {
+        width: 113px;
+        color: navy;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        height: 28px;
+        margin-right: 30px;
+    }
+
+    .btn_major_league:hover {
+        cursor: pointer;
+    }
+
+    .btn_hot_league:hover {
+        cursor: pointer;
+    }
+
+    .btn_hot_league {
+        width: 106px;
+        color: navy;
+        font-size: 16px;
+        font-weight: bold;
+        height: 28px;
+        text-align: center;
+    }
+
+    .btn_show_league {
+        border-bottom: 3px solid navy;
+    }
+}
+
+.table-admin {
+    margin-top: 0;
+    max-width: 100%;
+
+    .icon-delete-admin:hover {
+        cursor: pointer;
+    }
+
+    .icon-sort-admin:hover {
+        cursor: pointer;
+    }
+
+    .icon-delete-admin, .icon-edit-admin {
+        font-size: 2rem;
+    }
+
+    .icon-edit-admin:hover {
+        cursor: pointer;
+    }
+
+    .main-pagination {
+        .items-pagination {
+            margin-top: 1rem;
+        }
+    }
+
+    td {
+        img {
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+        }
+    }
+}
+
+.add-section {
+    height: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 1rem;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.btn-add {
+    background-color: silver;
+    border: none;
+    color: black;
+    padding: 1px 10px;
+    margin-right: -5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.icon-add {
+    width: 20px;
+    height: 20px;
+    margin: -2px 5px 0 0;
+}
+
+.form-btn {
+    margin-top: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .btn-custom-admin {
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    .btn-btn-save {
+        background: #E13C29;
+        border: 1px solid #E13C29;
+        margin-right: 1rem;
+    }
+
+    .btn-btn-cancel {
+        border: 1px solid #E13C29;
+        background: #FCE6E4;
+        color: #E13C29;
+    }
+}
+
+.flex-form-input {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.1rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .label-admin {
+        margin-bottom: .6rem;
+    }
+
+    .form-group-input {
+        width: 50%;
+
+        &-left {
+            padding-right: .8rem;
+        }
+
+        &-right {
+            padding-left: .8rem;
+        }
+    }
+
+    .form-input {
+        width: 100%;
+    }
+
+    .custom-input {
+        width: 100%;
+        cursor: inherit;
+    }
+
+    .bg-custom-input {
+        background: #F1F1F1;
+    }
+}
+
+.error-input {
+    margin-top: 0.7rem !important;
+    color: red;
+}
