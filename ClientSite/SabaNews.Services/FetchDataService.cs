@@ -30,7 +30,6 @@
         private readonly IConfiguration configuration;
         private readonly IMatchService matchService;
         private readonly ILeagueService leagueService;
-        private readonly IOptionService optionService;
 
         public FetchDataService(
             IPostService postService,
