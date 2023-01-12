@@ -5,6 +5,7 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import Site from '@jsroot/common/site';
 
 export default class Grid extends PureComponent {
     constructor(props) {
@@ -39,6 +40,18 @@ export default class Grid extends PureComponent {
         }
         return preMatches;
     };
+
+    handleClickLeague = (event, league) => {
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.season ? league.season.seasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
     render() {
         const { league, matches } = this.props;
         if(matches.length === 0) {
@@ -50,7 +63,7 @@ export default class Grid extends PureComponent {
         return (
             <div className="wc-bg-overflow">
                 <div className="livescore-name-team">
-                    <span className="round-name">{CommonFunctions.getLeagueName(league)}</span>
+                    <span className="round-name"  onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
                 </div>
                 <Tabs  id="livescore-tab-league-detail"
                     className="live-score-nav"

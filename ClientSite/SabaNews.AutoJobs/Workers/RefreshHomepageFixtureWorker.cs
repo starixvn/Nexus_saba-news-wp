@@ -10,11 +10,11 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class RefreshFixtureHomepageWorker : BaseWorker
+    public class RefreshHomepageFixtureWorker : BaseWorker
     {
         private readonly IRefreshCachingService refreshCachingService;
 
-        public RefreshFixtureHomepageWorker(IRefreshCachingService refreshCachingService,
+        public RefreshHomepageFixtureWorker(IRefreshCachingService refreshCachingService,
             IOptions<List<JobSettings>> jobSettings,
             ILogServiceProvider logService) : base(logService)
         {

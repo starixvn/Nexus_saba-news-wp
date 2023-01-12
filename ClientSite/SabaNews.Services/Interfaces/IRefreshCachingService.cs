@@ -21,5 +21,7 @@
         Task UpdateWorldCupCaching();
 
         Task UpdateHomepageFixtureCaching();
+
+        Task UpdateHomepageStandingCaching();
     }
 }

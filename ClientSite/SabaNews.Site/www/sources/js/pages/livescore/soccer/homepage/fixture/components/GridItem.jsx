@@ -19,7 +19,7 @@ export default class GridItem extends PureComponent {
             const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
             const item = {
                 key,
-                text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
+                text: DateTimeService.formatDateTime(key, 'DD/MM/YYYY'),
                 childs: [match]
             };
             if (tempMatches.length === 0) {
@@ -27,7 +27,7 @@ export default class GridItem extends PureComponent {
             } else {
                 const index = tempMatches.findIndex(x => x.key === key);
                 if (index === - 1) {
-                    if(this.isShowMoreDate(isFixture, tempMatches)) {
+                    if(this.isShowMoreGroup(isFixture, tempMatches)) {
                         tempMatches.push(item);
                     } else {
                         break;
@@ -41,7 +41,7 @@ export default class GridItem extends PureComponent {
         return tempMatches;
     };
 
-    isShowMoreDate = (isFixture, tempMatches) => {
+    isShowMoreGroup = (isFixture, tempMatches) => {
         let isShowMore = false;
         if(isFixture) {
             const lastItem = tempMatches[tempMatches.length - 1];

@@ -258,13 +258,13 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheWrapperService.GetAsync<List<MatchLeagueModel>>(CacheKey.FixtureHomePage);
+                var result = await cacheWrapperService.GetAsync<List<MatchLeagueModel>>(CacheKey.HomePageFixture);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
                     result = await fetchDataService.GetHomepageFixture();
-                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, result,
+                    await cacheWrapperService.SetAsync(CacheKey.HomePageFixture, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
@@ -281,13 +281,13 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheWrapperService.GetAsync<List<StandingLeagueModel>>(CacheKey.FixtureHomePage);
+                var result = await cacheWrapperService.GetAsync<List<StandingLeagueModel>>(CacheKey.HomePageStanding);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get homepage fixture from DB---------");
                     result = await fetchDataService.GetHomepageStanding();
-                    await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage, result,
+                    await cacheWrapperService.SetAsync(CacheKey.HomePageStanding, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)

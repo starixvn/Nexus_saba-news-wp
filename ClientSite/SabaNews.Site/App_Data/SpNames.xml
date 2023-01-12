@@ -176,7 +176,7 @@
     <Function Name="Log">
         <Setting Key="log_writelog" SpName="log_writelog" DbName="sabasports" Plain="0" />
     </Function>
-    <Function>
+    <Function Name="Options">
         <Setting Key="Options_GetKey" SpName="Options_GetKey" DbName="sabasports" Plain="0" />
         <Setting Key="Options_UpdateKey" SpName="Options_UpdateKey" DbName="sabasports" Plain="0" />
     </Function>

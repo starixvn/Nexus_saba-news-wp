@@ -31,7 +31,7 @@ $(window).bind('unload', function (e) {
 
 $(document).ready(function () {
     $('.skeleton').hide();
-    $('.skeleton').hide().promise().done(function () { console.log(3); $('.post').show(); });
+    $('.skeleton').hide().promise().done(function () {  $('.post').show(); });
     $('.skeleton').hide();
     
     

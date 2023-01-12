@@ -112,10 +112,12 @@
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IMatchService, MatchService>();
+            services.AddTransient<ILeagueService, LeagueService>();
             services.AddTransient<IMatchRepository, MatchRepository>();
             services.AddTransient<IBannerService, BannerService>();
             services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
+            services.AddTransient<IOptionService, OptionService>();
         }
 
         private static void AddWorker(IServiceCollection services)
@@ -128,7 +130,8 @@
             services.AddHostedService<RefreshSitemapXmlFileWorker>();
             services.AddHostedService<RefreshBannerWorker>();
             services.AddHostedService<RefreshWorldCupCachingWorker>();
-            services.AddHostedService<RefreshFixtureHomepageWorker>();
+            services.AddHostedService<RefreshHomepageFixtureWorker>();
+            services.AddHostedService<RefreshHomepageStandingWorker>();
         }
     }
 }

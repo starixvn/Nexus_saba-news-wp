@@ -5,11 +5,7 @@ import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import SkeletonGrid from './SkeletonGrid';
 import SignalR from './SignalR';
-import moment from 'moment';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 import {  Width1024 } from '@jsroot/common/constants';
-import CommonFunctions from '@jsroot/common/common-functions';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -39,23 +35,6 @@ export class AppContainer extends Component {
         }
     };
 
-    checkIsFinished = league => {
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
-        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        return moment(today).isSameOrAfter(endTime);
-    };
-
-    handleClickLeague = (event, league) => {
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
-        const seasonId = league.season ? league.season.seasonId : 0;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
-    };
 
     handleClickFixture = event => {
         const url = 'lich-thi-dau/bong-da';
@@ -83,6 +62,7 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
+                        <div className="livescore-home-title" onClick={this.handleClickFixture}>Lịch thi đấu</div>
                         {
                             leagues === null && <SkeletonGrid />
                         }

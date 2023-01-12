@@ -6,10 +6,7 @@
     using Fanex.Caching;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Models.League;
-    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
-    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
 
@@ -20,21 +17,18 @@
         private readonly IPostService postService;
         private readonly IBannerService bannerService;
         private readonly ILogServiceProvider logService;
-        private readonly IMatchService matchService;
 
         public RefreshCachingService(IFetchDataService fetchDataService,
             ICacheWrapperService cacheWrapperService,
             IPostService postService,
             ILogServiceProvider logService,
-            IBannerService bannerService,
-            IMatchService matchService)
+            IBannerService bannerService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheWrapperService = cacheWrapperService;
             this.postService = postService;
             this.logService = logService;
             this.bannerService = bannerService;
-            this.matchService = matchService;
         }
 
         public async Task UpdateHomePageCaching()
@@ -252,16 +246,15 @@
 
         public async Task UpdateHomepageFixtureCaching()
         {
-            var criteria = new GetMatchBySeasonCriteria { LeagueId = HomeFixture.LeagueId, SeasonId = HomeFixture.SeasonId };
             var startTime = DateTime.Now;
             logService.WriteLogFileInfo("Start UpdateHomepageFixtureCaching");
 
             try
             {
-                (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
+                var result = await fetchDataService.GetHomepageFixture();
                 logService.WriteLogFileInfo(string.Format("After GetHomepageFixture - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheWrapperService.SetAsync(CacheKey.FixtureHomePage,
-                        (league, matches),
+                await cacheWrapperService.SetAsync(CacheKey.HomePageFixture,
+                        result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
@@ -274,6 +267,31 @@
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateHomepageFixtureCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+        }
+
+        public async Task UpdateHomepageStandingCaching()
+        {
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateHomepageStandingCaching");
+
+            try
+            {
+                var result = await fetchDataService.GetHomepageStanding();
+                logService.WriteLogFileInfo(string.Format("After GetHomepageStanding - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheWrapperService.SetAsync(CacheKey.HomePageStanding,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHompageFixtureTimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateHomepageStandingCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
     }
 }
