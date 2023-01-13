@@ -1,4 +1,6 @@
-﻿namespace SabaNews.Models.Home
+﻿using System;
+
+namespace SabaNews.Models.Home
 {
     public class FixtureHomepage
     {
@@ -7,5 +9,6 @@
         public long SeasonId { get; set; }
         public string Year { get; set; }
         public int Order { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

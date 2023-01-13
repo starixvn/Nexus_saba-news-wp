@@ -2,6 +2,7 @@
 {
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
@@ -240,7 +241,19 @@
             var result = new List<MatchLeagueModel>();
             foreach (var item in leagues)
             {
-                var (league, matches) = await matchService.GetMatchBySeasonAsync(new GetMatchBySeasonCriteria { LeagueId = item.LeagueId, SeasonId = item.SeasonId });
+                var criteria = new GetMatchBySeasonCriteria
+                {
+                    LeagueId = item.LeagueId,
+                    SeasonId = item.SeasonId
+                };
+                if (item.SeasonId == 0)
+                {
+                    var currentDate = DateTime.UtcNow;
+                    const byte TotalMonths = 1;
+                    criteria.FromTime = currentDate.AddMonths(-TotalMonths).ToStartOfDay();
+                    criteria.ToTime = currentDate.AddMonths(TotalMonths).ToEndOfDay();
+                }
+                var (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
                 result.Add(new MatchLeagueModel { League = league, Matches = matches });
             }
             return result;
@@ -248,7 +261,7 @@
 
         public async Task<List<StandingLeagueModel>> GetHomepageStanding()
         {
-            var option = await optionService.GetOptionAsync(OptionKey.HompageFixture);
+            var option = await optionService.GetOptionAsync(OptionKey.HompageStanding);
             var leagues = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
             var result = new List<StandingLeagueModel>();
             foreach (var item in leagues)

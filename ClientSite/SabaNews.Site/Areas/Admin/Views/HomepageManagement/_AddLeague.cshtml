@@ -1,0 +1,117 @@
+﻿@using static SabaNews.Site.Extensions.LivescoreHelper
+@using SabaNews.Resources
+<form id="updateMatch">
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                LeagueId
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input">
+                    <input class="form-control custom-input input-number " readonly type="number" name="order" id="addLeagueId" />
+                    <p class="error-input order-error"></p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-input form-group-input-right">
+            <label class="label-admin">
+                Priority
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input">
+                    <input class="form-control custom-input input-number order" type="number" name="order" id="order" value="@ViewBag.Order" />
+                    <p class="error-input order-error"></p>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                League Name
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input">
+                    <select class="form-control custom-input league-select" id="leagueId" style="width: 100%">
+                        <option value="0">-------</option>
+                        @foreach (var league in Model)
+                        {
+                            <option  value="@league.LeagueId" data-name="@GetLeagueName(league)">@GetLeagueName(league)</option>
+                        }
+                    </select>
+                    <p class="error-input league-error"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                Season
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input" id="seasonFilter">
+                    <select class="form-control custom-input season-select">
+                        <option value="">-------</option>
+                    </select>
+                    <p class="error-input season-error"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                League Icon
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input">
+                    <div class="admin-text-logo admin-text-logo-data-img" id="leagueIcon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                Country
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input">
+                   <label id="country"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                CountryVN
+            </label>
+            <div class="admin-text-logo">
+                <label id="countryVN"></label>
+            </div>
+        </div>
+    </div>
+    <div class="flex-form-input">
+        <div class="form-group-input form-group-input-left">
+            <label class="label-admin">
+                Country Icon
+            </label>
+            <div class="admin-text-logo">
+                <div class="form-input">
+                    <div class="admin-text-logo admin-text-logo-data-img" id="countryIcon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="form-btn">
+        <button class="btn-custom-admin btn-btn-save" type="button" id="btn-save">Save</button>
+        <button class="btn-custom-admin btn-btn-cancel" type="button" data-dismiss="modal">Cancel</button>
+    </div>
+</form>

@@ -7,5 +7,6 @@
         public long SeasonId { get; set; }
         public string Year { get; set; }
         public int Order { get; set; }
+        public bool IsFixtureOption { get; set; }
     }
 }

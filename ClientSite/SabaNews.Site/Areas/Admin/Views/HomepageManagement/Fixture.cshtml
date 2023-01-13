@@ -3,7 +3,6 @@
 @using SabaNews.Core.Helper;
 @{
     Layout = "_AdminLayout";
-    var count = 0;
 }
 
 @section TopHeader{
@@ -24,9 +23,9 @@
 }
 
     <section class="page-content">
-        <div class="form-horizontal show-league">
-            <p href="javascript:;" id="btn_major_league" class="label label-blue btn_major_league btn_show_league">Fixture</p>
-            <p href="javascript:;" id="btn_hot_league" class="label label-blue btn_hot_league">Standing</p>
+        <div class="form-horizontal navigation">
+            <p id="btn_major_league" class="label label-blue item-navigation active ">Fixture</p>
+            <p id="btn_hot_league" class="label label-blue item-navigation"> <a href="@Url.Action("Standing", "HomepageManagement")">Standing</a></p>
         </div>
 
         <div class="content">
@@ -109,6 +108,9 @@
 </section>
 
 @section Scripts {
+    <script>
+        var isFixtureOption = true;
+    </script>
     <script src="~/js/admin/homepage/fixture.js" asp-append-version="true"></script>
     <script src="~/js/select2.min.js" asp-append-version="true"></script>
   

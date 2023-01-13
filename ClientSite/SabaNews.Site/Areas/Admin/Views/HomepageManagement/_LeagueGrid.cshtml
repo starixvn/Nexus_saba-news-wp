@@ -1,6 +1,7 @@
 ﻿@using SabaNews.Resources;
 @using SabaNews.Site.Extensions;
 @using System.Linq;
+@using SabaNews.Core.Helper;
 @model SabaNews.Models.Home.FixtureGridViewModel;
 @{
     var count = 0;
@@ -10,8 +11,10 @@
         <thead>
             <tr>
                 <th width="2%">#</th>
-                <th width="12%">LeagueId</th>
-                <th width="8%">Season</th>
+                <th width="12%">@ViewResources.LeagueFullNameEN</th>
+                <th width="12%">@ViewResources.LeagueNameVN</th>
+                <th width="15%">Season</th>
+                <th width="15%">@ViewResources.CreatedDate</th>
                 <th width="5%">@ViewResources.Action</th>
             </tr>
         </thead>
@@ -23,11 +26,13 @@
                     count++;
                     <tr>
                         <td class="text-center">@fixture.Order</td>
-                        <td class="text-center">@(league != null ? LivescoreHelper.GetLeagueName(league) : fixture.LeagueId)</td>
+                        <td class="text-center">@league.LeagueFullNameEN</td>
+                        <td class="text-center">@league.LeagueNameVN</td>
                         <td class="text-center">@(fixture.Year != null ? fixture.Year : 0)</td>
+                        <td class="text-center">@DateTimeUtilize.FormatDateTime(fixture.CreatedDate, "dd/MM/yyyy HH:mm:ssss")</td>
                         <td class="text-center">
-                            <i class="icon icon-edit-admin btn-Edit" title="Edit" data-id="@fixture.Id"></i>
-                            <i class="icon icon-delete-admin btn-Delete" data-id="@fixture.Id" title="Delete"></i>
+                            <i class="icon icon-edit-admin btn-Edit" title="Edit" data-id="@fixture.Id" data-name="@LivescoreHelper.GetLeagueName(league)"></i>
+                            <i class="icon icon-delete-admin btn-Delete" data-id="@fixture.Id"  title="Delete"></i>
                         </td>
                     </tr>
                 }
