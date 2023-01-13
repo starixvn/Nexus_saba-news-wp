@@ -19,15 +19,39 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     public class FootballNewsController : AdminController
     {
         private readonly IPostService postService;
+        private readonly IOptionService optionService;
         private readonly IConfiguration configuration;
 
-        public FootballNewsController(IPostService postService, IConfiguration configuration)
+        public FootballNewsController(IPostService postService, IConfiguration configuration, IOptionService optionService)
         {
             this.postService = postService;
             this.configuration = configuration;
+            this.optionService = optionService;
         }
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            var footballnews1 = await optionService.GetOptionAsync(OptionKey.footballnews1);
+            var footballnews2 = await optionService.GetOptionAsync(OptionKey.footballnews2);
+            var footballnews3 = await optionService.GetOptionAsync(OptionKey.footballnews3);
+
+            List<IEnumerable<Post>> leaguePosts = new()
+            {
+                await postService.GetPostsBySlugAsync(footballnews1.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballnews2.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballnews3.OptionValue, Constants.FromFirstItem, Constants.GetFourItems)
+            };
+
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = await postService.GetMenuAsync(menuName);
+            var urls = new List<CateInfo>();
+            foreach (var item in menus)
+            {
+                var cateInfo = GetCateInfo(item.MenuTitle, item.Slug);
+                var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
+                cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
+                urls.Add(cateInfo);
+            }
+
             return View(); 
         }
 

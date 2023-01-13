@@ -1,0 +1,41 @@
+﻿@using SabaNews.Resources;
+@using SabaNews.Site.Extensions;
+@using System.Linq;
+@using SabaNews.Core.Helper;
+@model SabaNews.Models.Home.FixtureGridViewModel;
+@{
+    var count = 0;
+}
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th width="2%">#</th>
+                <th width="12%">Category</th>
+                <th width="12%">Created Date</th>
+                <th width="5%">@ViewResources.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var fixture in Model.ListFixture)
+                {
+                    count++;
+                    <tr>
+                        <td class="text-center">count</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">
+                            <i class="icon icon-edit-admin btn-Edit" title="Edit"></i>
+                        </td>
+                    </tr>
+                }
+            }
+            @if (Model.ListFixture.Count == 0)
+            {
+                <tr>
+                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
