@@ -128,8 +128,8 @@ export default class General extends PureComponent {
         }
         matches = this.sortMatches([...matches], false);
         if (this.isGroupByDate(stages, matches, league)) {
-            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).subtract(7, "days").format('YYYY-MM-DD');
-            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isAfter(lastWeek));
+            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).subtract(1, "day").format('YYYY-MM-DD');
+            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isSameOrAfter(lastWeek));
         } else {
             const match = matches[0];
             const lastRound = match.round ? match.round : 0;
@@ -150,8 +150,8 @@ export default class General extends PureComponent {
         }
         matches = this.sortMatches([...matches], true);
         if (this.isGroupByDate(stages, matches, league)) {
-            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).add(7, "days").format('YYYY-MM-DD');
-            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isBefore(lastWeek));
+            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).add(1, "day").format('YYYY-MM-DD');
+            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isSameOrBefore(lastWeek));
         } else {
             const match = matches[0];
             const lastRound = match.round ? match.round : 0;
