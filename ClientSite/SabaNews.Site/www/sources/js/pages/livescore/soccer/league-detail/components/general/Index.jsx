@@ -200,7 +200,7 @@ export default class General extends PureComponent {
         return (
             <div>
                 {
-                    matches.map(item => {
+                    matches.map((item, index) => {
                         return (
                             <div className="soccer-match-grid" key={item.key}>
                                 <div className="soccer-match-grid-item">
@@ -210,7 +210,7 @@ export default class General extends PureComponent {
                                             item.childs.map(child => <Item key={child.key} searchKey={searchKey} league={league} child={child} />)
                                         }
                                         {
-                                            tab &&
+                                            tab && index === (matches.length - 1) &&
                                             <p className="view-more-general-league" onClick={() => this.handleViewMore(tab)}><span>Hiển thị thêm</span> <i className="icon-chevron-down"></i></p>
                                         }
                                     </div>
