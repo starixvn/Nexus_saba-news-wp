@@ -957,9 +957,9 @@ describe('Index', () => {
             window.scrollTo =  jest.fn();
             // Act
             const container = shallow(<General {...props} />);
-            container.find('.post-match-grid .view-more').simulate('click', 'results');
-            container.find('.pre-match-grid .view-more').simulate('click', 'fixtures');
-            container.find('.standing-grid .view-more').simulate('click', 'standings');
+            container.find('.post-match-grid .view-more-general-league').simulate('click', 'results');
+            container.find('.pre-match-grid .view-more-general-league').simulate('click', 'fixtures');
+            container.find('.standing-grid .view-more-general-league').simulate('click', 'standings');
 
             // Assert
             expect(container).toMatchSnapshot();
