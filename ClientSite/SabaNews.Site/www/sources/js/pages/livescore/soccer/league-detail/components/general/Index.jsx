@@ -222,15 +222,15 @@ export default class General extends PureComponent {
                 </div>
                 {
                     todayMatches.length > 0 &&
-                    <div>
-                        <p>{LangHelper.getResource('TodayMatches')}</p>
+                    <>
+                        <div className="heading-general-league">{LangHelper.getResource('TodayMatches')}</div>
                         <Grid league={league} matches={todayMatches} searchKey={searchKey} />
-                    </div>
+                    </>
                 }
                 {
                     listPostMatches.length > 0 &&
                     <div className="post-match-grid">
-                        <p>{LangHelper.getResource('LastestScore')}</p>
+                        <div className="heading-general-league">{LangHelper.getResource('LastestScore')}</div>
                         <Grid league={league} matches={listPostMatches} searchKey={searchKey} />
                         <p className="view-more" onClick={() => this.handleViewMore('results')}>Hiển thị thêm</p>
                     </div>
@@ -238,7 +238,7 @@ export default class General extends PureComponent {
                 {
                     listPreMatches.length > 0 &&
                     <div className="pre-match-grid">
-                        <p>{LangHelper.getResource('Upcomming')}</p>
+                        <div className="heading-general-league">{LangHelper.getResource('Upcomming')}</div>
                         <Grid league={league} matches={listPreMatches} searchKey={searchKey} />
                         <p className="view-more" onClick={() => this.handleViewMore('fixtures')}>Hiển thị thêm</p>
                     </div>
