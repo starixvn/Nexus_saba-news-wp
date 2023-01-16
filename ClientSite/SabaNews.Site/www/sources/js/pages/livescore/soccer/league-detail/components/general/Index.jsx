@@ -5,7 +5,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
 import { LeagueType } from '@jsroot/common/constants';
-import Grid from '../match-grid/Grid';
+import Item from '../match-grid/Item';
 import Standing from './Standing';
 
 export default class General extends PureComponent {
@@ -17,7 +17,7 @@ export default class General extends PureComponent {
         };
     }
 
-    checkGroupLeagueType =  (stages, matches, league) => {
+    checkGroupLeagueType = (stages, matches, league) => {
         return stages.length <= 1
             && matches.filter(item => item.round > 0).length === 0
             && league.leagueType === LeagueType.League;
@@ -25,12 +25,12 @@ export default class General extends PureComponent {
 
     isGroupByDate = (stages, matches, league) => {
         return this.checkGroupLeagueType(stages, matches, league)
-        || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0)
-        || league.leagueType === LeagueType.Friendly;
+            || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0)
+            || league.leagueType === LeagueType.Friendly;
     };
 
     getRoundName = (round, type) => type === LeagueType.Cup ? `${LangHelper.getResource('Turn')} ${round}`
-                                                            : `${LangHelper.getResource('Round')} ${round}`;
+        : `${LangHelper.getResource('Round')} ${round}`;
 
     groupMatchesByStageAndRound = matches => {
         const totalItems = matches.length;
@@ -61,7 +61,7 @@ export default class General extends PureComponent {
     };
 
     groupMatches = matches => {
-        const {stages, league} = this.props;
+        const { stages, league } = this.props;
         if (this.isGroupByDate(stages, matches, league)) {
             return CommonFunctions.groupMatchesByDate(matches);
         }
@@ -73,7 +73,7 @@ export default class General extends PureComponent {
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
             let text;
-            if(!item.stage) {
+            if (!item.stage) {
                 text = '';
             } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === LeagueType.Cup) {
                 text = `${CommonFunctions.getStageName(item.stage)} - ${this.getRoundName(item.round, league.leagueType)}`;
@@ -113,7 +113,7 @@ export default class General extends PureComponent {
             const matchStage = match.stage;
             const matchStageId = matchStage ? matchStage.stageId : 0;
             const matchRound = match.round ? match.round : 0;
-            if(matchStageId === stage && matchRound === round) {
+            if (matchStageId === stage && matchRound === round) {
                 tmpMatches.push(match);
             }
         });
@@ -121,13 +121,13 @@ export default class General extends PureComponent {
     };
 
     filterPostMatches = matches => {
-        const {stages, league} = this.props
+        const { stages, league } = this.props
         let postMatches = [];
-        if(matches.length === 0) {
+        if (matches.length === 0) {
             return postMatches;
         }
         matches = this.sortMatches([...matches], false);
-        if(this.isGroupByDate(stages, matches, league)) {
+        if (this.isGroupByDate(stages, matches, league)) {
             const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).subtract(7, "days").format('YYYY-MM-DD');
             postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isAfter(lastWeek));
         } else {
@@ -143,13 +143,13 @@ export default class General extends PureComponent {
     };
 
     filterPreMatches = matches => {
-        const {stages, league} = this.props
+        const { stages, league } = this.props
         let postMatches = [];
-        if(matches.length === 0) {
+        if (matches.length === 0) {
             return postMatches;
         }
         matches = this.sortMatches([...matches], true);
-        if(this.isGroupByDate(stages, matches, league)) {
+        if (this.isGroupByDate(stages, matches, league)) {
             const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).add(7, "days").format('YYYY-MM-DD');
             postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isBefore(lastWeek));
         } else {
@@ -170,13 +170,13 @@ export default class General extends PureComponent {
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
         preMatches.forEach(item => {
             const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
-            if(moment(startTime).isSame(today)) {
+            if (moment(startTime).isSame(today)) {
                 todayMatches.push(item);
             }
         });
         postMatches.forEach(item => {
             const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
-            if(moment(startTime).isSame(today)) {
+            if (moment(startTime).isSame(today)) {
                 todayMatches.push(item);
             }
         });
@@ -190,9 +190,40 @@ export default class General extends PureComponent {
     };
 
     handleViewMore = key => {
-        window.scrollTo({top: 0});
+        window.scrollTo({ top: 0 });
         this.props.handleSelectTab(key);
+    };
+
+    renderGrid = (matches, tab) => {
+        const { league } = this.props;
+        const { searchKey } = this.state;
+        return (
+            <div>
+                {
+                    matches.map(item => {
+                        return (
+                            <div className="soccer-match-grid" key={item.key}>
+                                <div className="soccer-match-grid-item">
+                                    <div className="soccer-match-grid-item-header">{item.text}</div>
+                                    <div className="soccer-match-grid-item-body">
+                                        {
+                                            item.childs.map(child => <Item key={child.key} searchKey={searchKey} league={league} child={child} />)
+                                        }
+                                        {
+                                            tab &&
+                                            <p className="view-more" onClick={() => this.handleViewMore(tab)}>Hiển thị thêm</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        )
+
     }
+
 
     render() {
         let { league, preMatches, postMatches } = this.props;
@@ -207,7 +238,6 @@ export default class General extends PureComponent {
         const todayMatches = this.filterTodayMatches(preMatches, postMatches);
         const listPostMatches = this.filterPostMatches(postMatches);
         const listPreMatches = this.filterPreMatches(preMatches);
-        
         return (
             <div className="league-story">
                 <div className="group-searchbar">
@@ -224,23 +254,21 @@ export default class General extends PureComponent {
                     todayMatches.length > 0 &&
                     <>
                         <div className="heading-general-league">{LangHelper.getResource('TodayMatches')}</div>
-                        <Grid league={league} matches={todayMatches} searchKey={searchKey} />
+                        {this.renderGrid(todayMatches)}
                     </>
                 }
                 {
                     listPostMatches.length > 0 &&
                     <div className="post-match-grid">
                         <div className="heading-general-league">{LangHelper.getResource('LastestScore')}</div>
-                        <Grid league={league} matches={listPostMatches} searchKey={searchKey} />
-                        <p className="view-more" onClick={() => this.handleViewMore('results')}>Hiển thị thêm</p>
+                        {this.renderGrid(listPostMatches, 'results')}
                     </div>
                 }
                 {
                     listPreMatches.length > 0 &&
                     <div className="pre-match-grid">
                         <div className="heading-general-league">{LangHelper.getResource('Upcomming')}</div>
-                        <Grid league={league} matches={listPreMatches} searchKey={searchKey} />
-                        <p className="view-more" onClick={() => this.handleViewMore('fixtures')}>Hiển thị thêm</p>
+                        {this.renderGrid(listPreMatches, 'fixtures')}
                     </div>
                 }
                 {

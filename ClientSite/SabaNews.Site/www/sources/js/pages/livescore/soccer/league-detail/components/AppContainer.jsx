@@ -101,6 +101,10 @@ export class AppContainer extends Component {
         this.props.navigate(url);
     };
 
+    renderSkeletonGrid = (tab, match) => {
+        return tab && match === null && <SkeletonGrid  />
+    }
+
     renderTabs = () => {
         const { selectedTab, selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { league, stages, preMatches, postMatches } = this.props;
@@ -111,7 +115,7 @@ export class AppContainer extends Component {
             >
                 <Tab eventKey="general" title="Tổng hợp">
                     {
-                        preMatches === null && <SkeletonGrid />
+                        this.renderSkeletonGrid(true, preMatches)
                     }
                     {
                         (preMatches !== null || postMatches !== null) &&
@@ -120,7 +124,7 @@ export class AppContainer extends Component {
                 </Tab>
                 <Tab eventKey="fixtures" title="Lịch thi đấu">
                     {
-                        selectedFixtureTab && preMatches === null && <SkeletonGrid />
+                        this.renderSkeletonGrid(selectedFixtureTab, preMatches)
                     }
                     {
                         selectedFixtureTab && preMatches !== null && <MatchGrid sortAsc league={league} stages={stages} matches={preMatches} />
@@ -128,7 +132,7 @@ export class AppContainer extends Component {
                 </Tab>
                 <Tab eventKey="results" title="Kết quả">
                     {
-                        selectedResultsTab && postMatches === null && <SkeletonGrid />
+                        this.renderSkeletonGrid(selectedResultsTab, postMatches)
                     }
                     {
                         selectedResultsTab && postMatches !== null &&
