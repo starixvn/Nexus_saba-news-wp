@@ -113,7 +113,7 @@ export class Standing extends PureComponent {
             <div>
                 {
                     <div className="season-standings">
-                        <p>{LangHelper.getResource('Standing')}</p>
+                        <div className="heading-general-league">{LangHelper.getResource('Standing')}</div>
                         <div>
                             { seasonStanding.length > 1 && <div className="group-stage">{CommonFunctions.getStageName(seasonStanding.standing)}</div>}
                             { seasonStanding.length > 0 && <Grid standings={seasonStanding.standing.childs} isMobile={isMobile} isCup={seasonStanding.lengthChild > 1 } />}
