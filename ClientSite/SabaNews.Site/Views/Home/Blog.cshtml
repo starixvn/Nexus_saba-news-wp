@@ -1,4 +1,4 @@
-﻿@using DeviceDetectorNET;
+﻿@using static SabaNews.Site.Extensions.DeviceHelper;
 @{
     if (Model.Header.Controller == "Tag")
     {
@@ -23,10 +23,7 @@
         Model.Header.Description = description;
     }
 
-    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
-    detector.Parse();
-    bool isMobile = true;
-    bool isDesktop = detector.IsDesktop();
+    var isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
     var slug1 = Model.Slugs != null ? Model.Slugs.Slug1 : null;
     var slug2 = Model.Slugs != null ? Model.Slugs.Slug2 : null;
     var slug3 = Model.Slugs != null ? Model.Slugs.Slug3 : null;
