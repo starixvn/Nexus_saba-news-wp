@@ -128,7 +128,10 @@
     font-size: 1.4rem;
     line-height: 1.9rem;
     text-transform: uppercase;
-    margin: 1rem 0;
+    margin: 1.6rem 1rem 0 0;
+    @include Mobile{
+        margin: 1.2rem .8rem 0 0;
+    }
 }
 .view-more-general-league{
     font-weight: 600;
@@ -137,7 +140,18 @@
     display: inline-flex;
     justify-content: center;
     width: 100%;
+    cursor: pointer;
+    @include Mobile{
+        font-size: 1.1rem;
+    }
+    span{
+        text-decoration: underline;
+    }
     i{
         font-size: 1.6rem;
     }
+}
+
+.league-story{
+    margin-bottom: 3rem;
 }

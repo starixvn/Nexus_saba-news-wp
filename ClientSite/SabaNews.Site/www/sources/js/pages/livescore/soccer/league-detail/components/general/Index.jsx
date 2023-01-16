@@ -211,7 +211,7 @@ export default class General extends PureComponent {
                                         }
                                         {
                                             tab &&
-                                            <p className="view-more" onClick={() => this.handleViewMore(tab)}>Hiển thị thêm</p>
+                                            <p className="view-more-general-league" onClick={() => this.handleViewMore(tab)}><span>Hiển thị thêm</span> <i className="icon-chevron-down"></i></p>
                                         }
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@ export default class General extends PureComponent {
                     league.hasSeasonStandings &&
                     <div className="standing-grid">
                         <Standing />
-                        <p className="view-more" onClick={() => this.handleViewMore('standings')}>Hiển thị thêm</p>
+                        <p className="view-more-general-league" onClick={() => this.handleViewMore('standings')}><span>Hiển thị thêm</span> <i className="icon-chevron-down"></i></p>
                     </div>
                 }
             </div>
