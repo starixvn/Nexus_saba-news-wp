@@ -1,9 +1,9 @@
 ﻿.table-custom {
     border: 1px solid $border-color;
     border-radius: 3px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1rem;
     background: $border-soccer-item;
-    margin-top: 1.6rem;
+    margin-top: .8rem;
     overflow: hidden;
 
     @include Mobile {
