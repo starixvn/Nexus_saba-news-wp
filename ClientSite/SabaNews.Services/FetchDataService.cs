@@ -1,6 +1,9 @@
 ﻿namespace SabaNews.Services
 {
     using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;
@@ -13,6 +16,7 @@
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
     using SabaNews.Models.Home;
+    using SabaNews.Models.Options;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -63,29 +67,22 @@
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
 
-            var footballnews1 = await optionService.GetOptionAsync(OptionKey.footballnews1);
-            var footballnews2 = await optionService.GetOptionAsync(OptionKey.footballnews2);
-            var footballnews3 = await optionService.GetOptionAsync(OptionKey.footballnews3);
-
-            List<IEnumerable<Post>> leaguePosts = new()
-            {
-                await postService.GetPostsBySlugAsync(footballnews1.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(footballnews2.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(footballnews3.OptionValue, Constants.FromFirstItem, Constants.GetFourItems)
-            };
+            var leaguePosts = await GetFootballNews();
+            var footballNewUrls = await GetUrlsFootballNews();
 
             var viewModel = new PostViewModel
             {
                 NewPosts = (newPosts).ToArray(),
                 FootballPosts = (footballPosts).ToArray(),
-                LeaguePosts= leaguePosts,
+                LeaguePosts = leaguePosts,
                 OtherPosts = (otherPosts).ToArray(),
                 TennisPosts = (tennisPosts).ToArray(),
                 VideoPosts = (videoPosts).ToArray(),
                 GuessPosts = (guessPosts).ToArray(),
                 BackstagePosts = (backstagePosts).ToArray(),
                 TransferPosts = (transferPosts).ToArray(),
-                Category = category
+                Category = category,
+                FootballNewUrls = footballNewUrls
             };
 
             return viewModel;
@@ -270,6 +267,45 @@
                 result.Add(new StandingLeagueModel { League = league, Standing = standing });
             }
             return result;
+        }
+
+        private async Task<List<string>> GetUrlsFootballNews()
+        {
+            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
+            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
+            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
+
+            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
+            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
+            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
+
+            var urls = new List<string>
+            {
+                configuration.GetValue<string>("BaseUrl") + footballnewsleft.Url,
+                configuration.GetValue<string>("BaseUrl") + footballnewscenter.Url,
+                configuration.GetValue<string>("BaseUrl") + footballnewsright.Url
+            };
+            
+            return urls;
+        }
+
+        private async Task<List<IEnumerable<Post>>> GetFootballNews()
+        {
+            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
+            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
+            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
+
+            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
+            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
+            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
+
+            List<IEnumerable<Post>> leaguePosts = new()
+            {
+                await postService.GetPostsBySlugAsync(footballnewsleft.Slug, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballnewscenter.Slug, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballnewsright.Slug, Constants.FromFirstItem, Constants.GetFourItems)
+            };
+            return leaguePosts;
         }
     }
 }

@@ -13,6 +13,15 @@ using Microsoft.Extensions.Configuration;
 using SabaNews.Core.Services;
 using SabaNews.Services.Interfaces;
 using System.Configuration;
+using Newtonsoft.Json;
+using SabaNews.Models.Home;
+using SabaNews.Livescore.Models.League;
+using SabaNews.Livescore.Services;
+using SabaNews.Models.ViewModel.User;
+using SabaNews.Livescore.Services.Criteria.League;
+using SabaNews.Models.ManagementLeague;
+using System.Globalization;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace SabaNews.Site.Areas.Admin.Controllers
 {
@@ -28,51 +37,72 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             this.configuration = configuration;
             this.optionService = optionService;
         }
-        public async Task<ActionResult> Index()
+        public IActionResult Index()
         {
-            var footballnews1 = await optionService.GetOptionAsync(OptionKey.footballnews1);
-            var footballnews2 = await optionService.GetOptionAsync(OptionKey.footballnews2);
-            var footballnews3 = await optionService.GetOptionAsync(OptionKey.footballnews3);
-
-            List<IEnumerable<Post>> leaguePosts = new()
-            {
-                await postService.GetPostsBySlugAsync(footballnews1.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(footballnews2.OptionValue, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(footballnews3.OptionValue, Constants.FromFirstItem, Constants.GetFourItems)
-            };
-
-            var menuName = configuration.GetValue<string>("MenuName");
-            var menus = await postService.GetMenuAsync(menuName);
-            var urls = new List<CateInfo>();
-            foreach (var item in menus)
-            {
-                var cateInfo = GetCateInfo(item.MenuTitle, item.Slug);
-                var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
-                cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
-                urls.Add(cateInfo);
-            }
-
             return View(); 
         }
 
-        public async Task<ActionResult> GetSlugs()
+        public async Task<ActionResult> GetDataFootBallGrid()
+        {
+            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
+            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
+            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
+
+            var FootballNews = new List<FootballNewsHomePage>{
+                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue),
+                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue),
+                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue)
+            };
+
+            return PartialView("~/Areas/Admin/Views/FootballNews/_FootballNewsDataGrid.cshtml", FootballNews);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> EditCategory(int count)
         {
             var menuName = configuration.GetValue<string>("MenuName");
             var menus = await postService.GetMenuAsync(menuName);
-            return Json(menus);
+
+            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
+            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
+            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
+
+            var footballNews = new List<FootballNewsHomePage>{
+                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue),
+                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue),
+                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue)
+            };
+            ViewBag.SlugSelected = footballNews[count - 1].Slug;
+            ViewBag.Count = count;
+            return PartialView("~/Areas/Admin/Views/FootballNews/_EditFootBall.cshtml", menus);
         }
 
-        public async Task<ActionResult> GetUrlSlug(string slug)
+        [HttpPost]
+        public async Task<ActionResult> EditCategory(string category, int count)
         {
-            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-            if (post == null)
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = await postService.GetMenuAsync(menuName);
+            var slug = menus.Where(x => x.Slug == category).ToList();
+            var cateParents = await postService.GetCateParentsAsync(slug.First().Slug);
+            var categoryUpdate = new FootballNewsHomePage
             {
-                return Json(null);
-            }
-            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
-            var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
-            cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
-            return Json(cateInfo.Url);
+                Category = slug.First().MenuTitle,
+                Slug = slug.First().Slug,
+                CreatedDate = DateTime.UtcNow,
+                Url = PostHelper.GetCategoryLink(cateParents)
+
+            };
+            categoryUpdate.Url = categoryUpdate.Url[1..];
+            var cmdResult = optionService.UpdateOptionAsync(GetKeyOption(count), JsonConvert.SerializeObject(categoryUpdate));
+            return Json(cmdResult);
+        }
+
+        public async Task<ActionResult> GetSlugs(string category)
+        {
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = await postService.GetMenuAsync(menuName);
+            var slug = menus.Where(x => x.Slug == category).ToList();
+            return Json(slug[0]);
         }
 
         private static CateInfo GetCateInfo(string cateName, string cateSlug)
@@ -92,6 +122,22 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
             name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
             return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
+        }
+
+        private static string GetKeyOption(int count)
+        {
+            string key;
+            if (count == 1) {
+                key = OptionKey.FootballNewsLeft;
+            }
+            else if(count == 2) {
+                key = OptionKey.FootballNewsCenter;
+            }
+            else
+            {
+                key = OptionKey.FootballNewsRight;
+            }
+            return key;
         }
     }
 }
