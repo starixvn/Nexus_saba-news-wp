@@ -1,6 +1,79 @@
 ﻿
 @import '../custom-modal';
-@import '../custom-input';
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.form-input {
+    margin: 1rem 0;
+}
+.input-custom {
+    height: 4rem;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+    color: #444444;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #DDDDDD;
+}
+.form-section {
+
+    .left-section {
+        margin-top: 10px;
+        display: inline-block;
+        width: 30%;
+        font-weight: bold;
+        font-size: 14px;
+        color: #333333;
+    }
+
+    .right-section {
+        min-height: 25px;
+        display: inline-block;
+        width: 65%;
+    }
+
+    textarea {
+        display: inline-block;
+        margin-top: 10px;
+        width: 50%;
+    }
+}
+
+.title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+
+#gender input {
+    min-height: inherit;
+}
+
+#gender input {
+    width: auto;
+}
+
+#submit,
+#reset {
+    display: inline-block;
+    width: auto;
+    margin-top: 10px;
+    margin-left: 40%;
+}
+
+#reset {
+    margin-left: 10%;
+}
+
+
 .navigation {
     border-bottom: 1px solid Silver;
     height: 28px;

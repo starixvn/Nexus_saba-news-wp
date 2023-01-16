@@ -83,7 +83,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                     Id = maxId + 1,
                     LeagueId = model.LeagueId,
                     SeasonId = model.SeasonId,
-                    Year = model.Year,
                     Order = model.Order,
                     CreatedDate = DateTime.UtcNow
 
@@ -97,7 +96,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                     Id = 1,
                     LeagueId = model.LeagueId,
                     SeasonId = model.SeasonId,
-                    Year = model.Year,
                     Order = model.Order,
                     CreatedDate = DateTime.UtcNow
                 });
@@ -134,7 +132,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 Id = fixture.Id, 
                 LeagueId = fixture.LeagueId,
                 SeasonId = model.SeasonId, 
-                Year = model.Year, 
                 Order = model.Order,
                 CreatedDate = fixture.CreatedDate
             });

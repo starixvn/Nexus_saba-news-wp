@@ -14,20 +14,6 @@
         });
     };
 
-    function GetSeason() {
-        $('.league-select').on('change', function () {
-            var leagueId = $(this).val();
-            $.ajax({
-                url: "/Admin/MatchManagement/GetSeason",
-                type: 'POST',
-                data: { leagueId },
-                success: function (res) {
-                    $('#seasonFilter').html(res);
-                }
-            });
-        });
-        
-    };
     function validateNumber() {
         $('.input-number').on('keypress', function (e) {
             $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
@@ -69,7 +55,6 @@
                     $('#AddModal .title').html('League Editing / ' + name);
                     $('.league-select').select2();
                     $('#AddModal').modal('show');
-                    GetSeason();
                     $('#btn-save').on('click', function () {
                         $('.error-input').html('');
                         var form = '#AddModal';
@@ -78,13 +63,12 @@
                             self.prop('disabled', false);
                             return false;
                         }
-                        var seasonId = $(form + ' .season-select').val();
                         var order = $(form + ' #order').val();
-                        var year = $('option:selected', form + ' .season-select').data('name');
+                        var seasonId = $('option:selected', form + ' #leagueId').data('season');
                         $.ajax({
                             type: 'POST',
                             url: '/Admin/HomepageManagement/EditLeague',
-                            data: { id, seasonId, year, order, isFixtureOption },
+                            data: { id, seasonId, order, isFixtureOption },
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $(form).modal('hide');
@@ -121,7 +105,6 @@
                     $('.league-select').select2();
                     
                     $('#AddModal').modal('show');
-                    GetSeason();
                     $('#btn-save').on('click', function () {
                         $('.error-input').html('');
                         var form = '#AddModal';
@@ -131,14 +114,13 @@
                             return false;
                         }
                         var leagueId = $(form + ' #leagueId').val();
-                        var seasonId = $(form + ' .season-select').val();
                         var order = $(form + ' #order').val();
-                        var year = $('option:selected', form + ' .season-select').data('name');
+                        var seasonId = $('option:selected', form + ' #leagueId').data('season');
 
                         $.ajax({
                             type: 'POST',
                             url: '/Admin/HomepageManagement/AddLeague',
-                            data: { leagueId, seasonId, year, order, isFixtureOption },
+                            data: { leagueId, seasonId, order, isFixtureOption },
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $(form).modal('hide');
@@ -163,7 +145,6 @@
                             url: "/Admin/ManagementLeague/GetLeagueById",
                             data: { leagueId },
                             success: function (response) {
-                                console.log(response);
                                 let iconCountry = response.countryIconVN ?? response.countryLogo ?? "/css/images/logo-dummy.png";
                                 let iconLeague = response.iconVN ?? response.icon ?? "/css/images/logo-dummy.png";
                                 $('#addLeagueId').val(leagueId);
