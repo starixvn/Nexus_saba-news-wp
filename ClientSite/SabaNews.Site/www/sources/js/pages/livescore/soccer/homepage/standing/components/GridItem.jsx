@@ -1,43 +1,42 @@
 import React, { PureComponent } from 'react';
-import CommonFunctions from '@jsroot/common/common-functions';
 import Item from '../../../league-detail/components/standings/grid/index';
 
-export  default class Grid extends PureComponent {
+export  default class GridItem extends PureComponent {
     constructor(props) {
         super(props);
 
     }
 
-    groupStandingsByGroupName = seasonStandings => {
-        const totalItems = seasonStandings.length;
-        const standings = [];
+    groupStandingsByGroupName = standings => {
+        const totalItems = standings.length;
+        const tmpStandings = [];
         for (let i = 0; i < totalItems; i++) {
-            const temp = seasonStandings[i];
+            const temp = standings[i];
             const key = temp.groupName;
             const item = {
                 key,
                 childs: [temp]
             };
-            if (standings.length === 0) {
-                standings.push(item);
+            if (tmpStandings.length === 0) {
+                tmpStandings.push(item);
             } else {
-                const index = standings.findIndex(x => x.key === key);
+                const index = tmpStandings.findIndex(x => x.key === key);
                 if (index === - 1) {
-                    standings.push(item);
+                    tmpStandings.push(item);
                 } else {
-                    standings[index].childs.push(temp);
+                    tmpStandings[index].childs.push(temp);
                 }
             }
         }
 
-        return standings;
+        return tmpStandings;
     };
 
-    groupStandingsByStage = seasonStandings => {
-        let totalItems = seasonStandings.length;
-        const standings = [];
+    groupStandingsByStage = standings => {
+        let totalItems = standings.length;
+        const tmpStandings = [];
         for (let i = 0; i < totalItems; i++) {
-            const temp = { ...seasonStandings[i] };
+            const temp = { ...standings[i] };
             temp.promotion = JSON.parse(temp.promotion);
             temp.promotion = temp.promotion && temp.promotion.Color ? temp.promotion : null;
             const item = {
@@ -47,24 +46,24 @@ export  default class Grid extends PureComponent {
                 orderIndex: temp.orderIndex,
                 childs: [temp]
             };
-            if (standings.length === 0) {
-                standings.push(item);
+            if (tmpStandings.length === 0) {
+                tmpStandings.push(item);
             } else {
-                const index = standings.findIndex(x => x.stageId === temp.stageId);
+                const index = tmpStandings.findIndex(x => x.stageId === temp.stageId);
                 if (index === - 1) {
-                    standings.push(item);
+                    tmpStandings.push(item);
                 } else {
-                    standings[index].childs.push(temp);
+                    tmpStandings[index].childs.push(temp);
                 }
             }
         }
 
-        totalItems = standings.length;
+        totalItems = tmpStandings.length;
         for (let i = 0; i < totalItems; i++) {
-            standings[i].childs = this.groupStandingsByGroupName(standings[i].childs);
+            tmpStandings[i].childs = this.groupStandingsByGroupName(tmpStandings[i].childs);
         }
 
-        return standings;
+        return tmpStandings;
     };
 
     render() {

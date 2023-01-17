@@ -16,7 +16,7 @@ describe('actionCreators', () => {
         jest.clearAllMocks();
     });
 
-    describe('getMatches', () => {
+    describe('getLeagues', () => {
         it('should call setMatches when get matches have been done', async () => {
             // Arrange
             const expectedParams = {
@@ -24,7 +24,7 @@ describe('actionCreators', () => {
                 seasonId: WorldCup.seasonId
             };
             const response = {
-                data: {
+                data: [{
                     league: {
                         leagueId: 1,
                         leagueNameEN: 'Premier League',
@@ -35,26 +35,22 @@ describe('actionCreators', () => {
                         homeTeam: { teamId: 1, teamNameEN: 'Arsenal' },
                         awayTeam: { teamId: 2, teamNameEN: 'Everton' }
                     }]
-                }
+                }]
             };
             const promise = Promise.resolve(response);
             DataService.postDataAsync = jest.fn(() => promise);
             const expectedActions = [
-                { type: ActionCreators.setLeague.type, payload: response.data.league },
-                { type: ActionCreators.setMatches.type, payload: response.data.matches }
+                { type: ActionCreators.setLeagues.type, payload: response.data },
             ];
             const store = mockStore({
-                majorLeagues: [],
-                league: null,
-                preMatches: null,
-                postMatches: null
+                leagues: null,
             });
 
             // Act
-            await store.dispatch(ActionCreators.getMatches(expectedParams));
+            await store.dispatch(ActionCreators.getLeagues(expectedParams));
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('api/match/get-matches-aff-cup');
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('api/GetHomeFixture');
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
