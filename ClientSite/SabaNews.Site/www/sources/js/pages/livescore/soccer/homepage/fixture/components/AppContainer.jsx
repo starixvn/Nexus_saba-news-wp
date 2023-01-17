@@ -45,15 +45,6 @@ export class AppContainer extends Component {
         }
     };
 
-    getMatches = () => {
-        const { matches } = this.props;
-        if (!matches || matches.length === 0) {
-            return {matches: null};
-        }
-        const tempMatches = matches;
-        const isFinished = false;
-        return {matches: tempMatches, isFinished: isFinished};
-    };
 
     render() {
         const { leagues } = this.props;

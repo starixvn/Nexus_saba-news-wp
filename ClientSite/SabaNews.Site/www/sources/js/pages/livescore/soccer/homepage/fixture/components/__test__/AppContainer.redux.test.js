@@ -24,11 +24,11 @@ describe('connect ', () => {
     it('props should be mapped correctly', () => {
         // Arrange
         const expected = {
-            matches:null,
+            leagues:null,
             league: null
         };
         const state = {
-            matches:null,
+            leagues:null,
             league: null
         };
 

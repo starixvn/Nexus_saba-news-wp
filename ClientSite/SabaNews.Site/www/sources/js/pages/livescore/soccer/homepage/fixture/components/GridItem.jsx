@@ -9,7 +9,7 @@ export default class GridItem extends PureComponent {
         super(props);
     }
 
-    groupMatchesByDate = matches => {
+    groupMatches = matches => {
         const { isFixture } = this.props;
         const totalItems = matches.length;
         const tempMatches = [];
@@ -56,7 +56,7 @@ export default class GridItem extends PureComponent {
 
     render() {
         const { league } = this.props;
-        const matches = this.groupMatchesByDate(this.props.matches);
+        const matches = this.groupMatches(this.props.matches);
         return (
             <div className="league-story">
                 {
