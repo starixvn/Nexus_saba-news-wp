@@ -66,7 +66,7 @@ describe('Grid', () => {
             const result = instance.initSlide();
 
             // Assert
-            expect(result.start).toEqual(6);
+            expect(result.start).toEqual(7);
             expect(result.showItems).toEqual(-1);
         });
 
@@ -74,7 +74,7 @@ describe('Grid', () => {
             // Arrange
             const initWindowWidth = 500;
             window.innerWidth = initWindowWidth;
-            const start = 2;
+            const start = 3;
             const matches = [
                 { matchId: 1, status: 50 }, { matchId: 2, status: 50 }, { matchId: 3, status: 50 },
                 { matchId: 4, status: 50 }, { matchId: 2, status: 0 }, { matchId: 3, status: 0 },

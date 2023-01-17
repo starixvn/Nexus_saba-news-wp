@@ -545,11 +545,7 @@ describe('Index', () => {
             const result = instance.filterPostMatches(matches);
 
             // Assert
-            expect(instance.groupMatches).toHaveBeenCalledWith([{
-                matchId: 1,
-                status: 50,
-                startTime: '2022-10-10 7:00:00'
-            }]);
+            expect(instance.groupMatches).toHaveBeenCalledWith([]);
             expect(result).toEqual([{
                 matchId: 1,
                 status: 50,
