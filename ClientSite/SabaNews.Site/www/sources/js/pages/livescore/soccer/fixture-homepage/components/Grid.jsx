@@ -29,7 +29,7 @@ export default class Grid extends PureComponent {
         const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
         const showItems = Math.ceil(blockWidth / 200) - 1;
         if (!isFinished) {
-            const numberPostIndex = isMobile ? 0 : 2;
+            const numberPostIndex = isMobile ? 0 : 1;
             const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
             const startLastPage = matches.length - this.showItems + 1;
             if (postMatchIndex >= 0) {
