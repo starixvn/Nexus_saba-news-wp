@@ -18,7 +18,7 @@ export class AppContainer extends Component {
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {
-                            standings !== null &&
+                            standings !== null && standings.length > 0 &&
                             <Grid standings={standings}/>
                         }
                     </div>

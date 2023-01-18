@@ -17,6 +17,7 @@
     using SabaNews.Services;
     using Microsoft.AspNetCore.Mvc.Routing;
     using Microsoft.AspNetCore.Http;
+    using SabaNews.Models.Home;
 
     public class HomeControllerTests : Controller
     {
@@ -481,6 +482,36 @@
             // Assert
             var okResult = Assert.IsAssignableFrom<OkObjectResult>(result);
             Assert.Equal(false, okResult.Value);
+        }
+
+        [Fact]
+        public async Task GetHomeFixture_WhenCalled_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<MatchLeagueModel>>();
+            dataControlService.GetHomepageFixtureData().Returns(expected);
+            // Act
+            var result = await controller.GetHomeFixture();
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expected, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task GetHomeStanding_WhenCalled_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            dataControlService.GetHomepageStandingData().Returns(expected);
+            // Act
+            var result = await controller.GetHomeStanding();
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expected, jsonResult.Value);
         }
 
         #region Helpers

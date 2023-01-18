@@ -30,11 +30,11 @@
 
     public class FetchDataService : IFetchDataService
     {
-        private readonly IOptionService optionService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly IMatchService matchService;
         private readonly ILeagueService leagueService;
+        private readonly IOptionService optionService;
 
         public FetchDataService(
             IPostService postService,

@@ -7,6 +7,7 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
@@ -352,6 +353,86 @@
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
         }
 
+        [Fact]
+        public async Task UpdateHomepageFixtureCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<List<MatchLeagueModel>>();
+
+            fetchDataService.GetHomepageFixture().Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateHomepageFixtureCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateHomepageFixtureCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+
+            fetchDataService.When(x => x.GetHomepageFixture()).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateHomepageFixtureCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
+        [Fact]
+        public async Task UpdateHomepageStandingCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<List<StandingLeagueModel>>();
+
+            fetchDataService.GetHomepageStanding().Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateHomepageStandingCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateHomepageStandingCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+
+            fetchDataService.When(x => x.GetHomepageStanding()).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateHomepageStandingCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
 
         #region Helpers
         private RefreshCachingService GetRefreshCachingService()
@@ -361,8 +442,7 @@
             postService = Substitute.For<IPostService>();
             logService = Substitute.For<ILogServiceProvider>();
             bannerService = Substitute.For<IBannerService>();
-            matchService = Substitute.For<IMatchService>();
-            var service = new RefreshCachingService(fetchDataService, cacheWrapperService, postService, logService, bannerService, matchService);
+            var service = new RefreshCachingService(fetchDataService, cacheWrapperService, postService, logService, bannerService);
 
             return service;
         }

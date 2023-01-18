@@ -1,0 +1,58 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Sabanew.Site",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/ClientSite/SabaNews.Site/bin/Debug/net6.0/SabaNews.Site.dll",
+            "args": ["--urls","https://localhost:6001;http://localhost:6000"],
+            "cwd": "${workspaceFolder}\\ClientSite\\SabaNews.Site",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5555"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "SabaNews.AutoJobs",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/SabaNews.AutoJobs/bin/Debug/net6.0/SabaNews.AutoJobs.dll",
+            "args": [
+                ""
+            ],
+            "preLaunchTask": "Build: SabaNews.AutoJobs.csproj",
+            "cwd": "${workspaceFolder}/SabaNews.AutoJobs",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "presentation": {
+                "group": "ionide",
+                "hidden": false
+            }
+        },
+        {
+            "name": "ScheduledTasks",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/Livescore/SabaNews.Livescore.ScheduledTasks/bin/Debug/net6.0/SabaNews.Livescore.ScheduledTasks.dll",
+            "cwd": "${workspaceFolder}/Livescore/SabaNews.Livescore.ScheduledTasks",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "preLaunchTask": "Build: SabaNews.Livescore.ScheduledTasks.csproj",
+            "presentation": {
+                "group": "ionide",
+                "hidden": false
+            }
+        }
+    ]
+}
