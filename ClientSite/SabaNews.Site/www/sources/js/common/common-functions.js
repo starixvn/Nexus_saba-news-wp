@@ -335,7 +335,8 @@ export default class CommonFunctions {
     static getLeaguePageUrl(league) {
         const leagueName = Site.toSlug(this.getLeagueName(league));
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
-        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const currentSeasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const seasonId = league.season ? league.season.seasonId : currentSeasonId;
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
         return url;
     }
