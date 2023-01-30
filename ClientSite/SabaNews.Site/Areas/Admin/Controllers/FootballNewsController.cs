@@ -1,30 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SabaNews.Models.Event.WorldCup;
-using SabaNews.Services;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System;
-using SabaNews.Models.Posts;
-using SabaNews.Site.Extensions;
-using SabaNews.Core.Models;
-using System.Linq;
-using SabaNews.Core.Constants;
-using Microsoft.Extensions.Configuration;
-using SabaNews.Core.Services;
-using SabaNews.Services.Interfaces;
-using System.Configuration;
-using Newtonsoft.Json;
-using SabaNews.Models.Home;
-using SabaNews.Livescore.Models.League;
-using SabaNews.Livescore.Services;
-using SabaNews.Models.ViewModel.User;
-using SabaNews.Livescore.Services.Criteria.League;
-using SabaNews.Models.ManagementLeague;
-using System.Globalization;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-
-namespace SabaNews.Site.Areas.Admin.Controllers
+﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Services;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System;
+    using SabaNews.Site.Extensions;
+    using SabaNews.Core.Models;
+    using System.Linq;
+    using SabaNews.Core.Constants;
+    using Microsoft.Extensions.Configuration;
+    using SabaNews.Services.Interfaces;
+    using Newtonsoft.Json;
+    using SabaNews.Models.Home;
+
     public class FootballNewsController : AdminController
     {
         private readonly IPostService postService;
@@ -124,7 +113,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
         }
 
-        private static string GetKeyOption(int count)
+        public string GetKeyOption(int count)
         {
             string key;
             if (count == 1) {
