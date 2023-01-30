@@ -178,7 +178,7 @@
   left: -100000px;
   width: 100%;
   z-index: 1051;
-  width: 397px !important;
+  width: 250px !important;
 }
 
 #AddLeagueContent .modal-content .title {
@@ -344,37 +344,40 @@
   height: 42px;
 }
 
-#EditLeagueContent .modal-content .title {
+#EditCategory .modal-content {
+  max-width: 40rem !important;
+}
+#EditCategory .modal-content .title {
   color: #fff;
   font-size: 1.6rem;
   margin-bottom: 0;
   text-transform: unset;
   line-height: 1;
 }
-#EditLeagueContent .modal-content .modal-body {
+#EditCategory .modal-content .modal-body {
   padding: 1rem 1.6rem !important;
 }
-#EditLeagueContent .modal-content .row {
+#EditCategory .modal-content .row {
   display: inline;
   flex-wrap: wrap;
   flex: 1 0 100%;
   margin: 0;
 }
-#EditLeagueContent .modal-content td {
+#EditCategory .modal-content td {
   padding: 7px;
 }
-#EditLeagueContent .modal-content label {
+#EditCategory .modal-content label {
   font-weight: bold;
   font-size: 14px;
   color: #333333;
 }
-#EditLeagueContent .modal-content .lable-major {
+#EditCategory .modal-content .lable-major {
   margin-left: 120px;
 }
-#EditLeagueContent .modal-content .checkbox-major {
+#EditCategory .modal-content .checkbox-major {
   margin-left: 20px;
 }
-#EditLeagueContent .modal-content .form-control {
+#EditCategory .modal-content .form-control {
   display: block;
   height: 31px;
   padding: 5px 8px;
@@ -387,42 +390,42 @@
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-#EditLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-leagueNameVn, #EditLeagueContent .modal-content .txt-leagueFullNameVn {
-  width: 270px !important;
+#EditCategory .modal-content .txt-countryVn, #EditCategory .modal-content .txt-leagueNameVn, #EditCategory .modal-content .txt-leagueFullNameVn {
+  width: 250px !important;
 }
-#EditLeagueContent .modal-content .txt-countryEn {
+#EditCategory .modal-content .txt-countryEn {
   border: unset;
 }
-#EditLeagueContent .modal-content .txt-countryVn {
+#EditCategory .modal-content .txt-countryVn {
   font-weight: unset;
 }
-#EditLeagueContent .modal-content .txt-priority {
+#EditCategory .modal-content .txt-priority {
   width: 65px !important;
   margin-left: 100px;
   text-align: center;
 }
-#EditLeagueContent .modal-content .form-btn {
+#EditCategory .modal-content .form-btn {
   padding-top: 15px;
   padding-right: 5px;
   text-align: right;
 }
-#EditLeagueContent .modal-content .flex-form-input {
+#EditCategory .modal-content .flex-form-input {
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
   width: 348px;
 }
-#EditLeagueContent .modal-content .flex-form-input:last-child {
+#EditCategory .modal-content .flex-form-input:last-child {
   margin-bottom: 0;
 }
-#EditLeagueContent .modal-content .flex-form-input .label-admin {
+#EditCategory .modal-content .flex-form-input .label-admin {
   width: 30%;
   margin: 0;
 }
-#EditLeagueContent .modal-content .flex-form-input label {
+#EditCategory .modal-content .flex-form-input label {
   width: 148px;
 }
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img {
+#EditCategory .modal-content .flex-form-input .admin-text-logo-data-img {
   background: #FFFFFF;
   border: 1px solid #DDDDDD;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
@@ -434,13 +437,13 @@
   align-items: center;
   justify-content: center;
 }
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
+#EditCategory .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
   object-fit: cover;
   margin: 0 auto;
 }
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
+#EditCategory .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
   position: absolute;
   right: 3px;
   top: 3px;
@@ -449,18 +452,18 @@
   cursor: pointer;
   color: #4F4F4F;
 }
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus {
+#EditCategory .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus {
   outline: none;
 }
-#EditLeagueContent .modal-content .flex-form-input .w-75 {
+#EditCategory .modal-content .flex-form-input .w-75 {
   width: 256px !important;
   margin-right: 10px;
 }
-#EditLeagueContent .modal-content .flex-form-input .custom-input {
+#EditCategory .modal-content .flex-form-input .custom-input {
   width: 100%;
   cursor: inherit;
 }
-#EditLeagueContent .modal-content .form-btn .btn {
+#EditCategory .modal-content .form-btn .btn {
   margin-left: 12px;
   width: 80px;
   font-size: 15px;

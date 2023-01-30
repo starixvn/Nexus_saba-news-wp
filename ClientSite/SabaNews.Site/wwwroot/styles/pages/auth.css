@@ -1,4 +1,4 @@
-/*:root {
+﻿/*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
@@ -238,12 +238,6 @@
 }
 
 @media (max-width: 767px) {
-  .form-modal input::-moz-placeholder {
-    font-size: 1.3rem !important;
-  }
-  .form-modal input:-ms-input-placeholder {
-    font-size: 1.3rem !important;
-  }
   .form-modal input::placeholder {
     font-size: 1.3rem !important;
   }
@@ -264,4 +258,4 @@ input.error {
 
 .tab-pane.active {
   display: block;
-}/*# sourceMappingURL=auth.css.map */
+}

@@ -1,4 +1,4 @@
-/*:root {
+﻿/*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
@@ -349,22 +349,10 @@ p.has-text-align-center {
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none;
 }
-textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-  color: #828282;
-}
-textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
-  textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
-  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-    font-size: 1.6rem;
-  }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     font-size: 1.6rem;
   }
@@ -518,8 +506,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   overflow: hidden;
 }
 .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -569,6 +556,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   top: -0.9rem;
   right: 2.3rem;
   background: #fff;
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 @media screen and (max-width: 1024px) {
@@ -662,7 +651,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
     display: block;
     position: relative;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 99;
@@ -797,7 +785,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.5rem 0;
   background-color: #FFFDF9;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -1221,6 +1208,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .open .line-mb:nth-child(1) {
   top: 1.4rem;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 .open .line-mb:nth-child(2) {
@@ -1229,6 +1219,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .open .line-mb:nth-child(3) {
   top: 1.4rem;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
 
@@ -1638,15 +1631,6 @@ button {
   outline: none;
 }
 
-@-webkit-keyframes dhBlink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
 @keyframes dhBlink {
   0% {
     transform: scale(1);
@@ -1747,22 +1731,10 @@ button {
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none;
 }
-textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-  color: #828282;
-}
-textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
-  textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
-  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-    font-size: 1.6rem;
-  }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     font-size: 1.6rem;
   }
@@ -1834,7 +1806,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .fixed-social {
-  position: -webkit-sticky;
   position: sticky;
   top: 8rem;
   display: table;
@@ -2013,11 +1984,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .card-vertical__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transform: translateZ(0) scale(1, 1);
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -2124,11 +2095,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .card-horizontal__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transform: translateZ(0) scale(1, 1);
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -2221,8 +2192,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-swiper-slide .content-box {
   margin: 0.3rem 0;
@@ -2244,8 +2214,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-banner-align {
@@ -2271,8 +2240,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-banner-euro-desktop {
@@ -2294,8 +2262,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-mobile {
@@ -2323,8 +2290,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-sidebar {
@@ -2379,16 +2345,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__image img, skeleton-horizontal-highlight__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .skeleton-horizontal__title, skeleton-horizontal-highlight__title {
   height: 2rem;
@@ -2407,8 +2370,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__datetime, skeleton-horizontal-highlight__datetime {
   height: 2rem;
@@ -2427,8 +2389,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
   margin: 0.5rem 0;
@@ -2449,8 +2410,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 @media screen and (max-width: 1024px) {
   .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
@@ -2488,16 +2448,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .skeleton-vertical__title {
   display: initial;
@@ -2518,8 +2475,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__datetime {
   display: initial;
@@ -2541,8 +2497,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__description {
   margin: 0.3rem 0;
@@ -2564,22 +2519,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 @media screen and (max-width: 1024px) {
   .skeleton-vertical__description {
     font-size: 1.2rem;
     line-height: 2rem;
-  }
-}
-
-@-webkit-keyframes shimmer {
-  0% {
-    background-position: -450px 0;
-  }
-  100% {
-    background-position: 450px 0;
   }
 }
 
@@ -2736,8 +2681,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .comment-post .list_comments .comment_item .group-comment .avatar img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .comment-post .list_comments .comment_item .group-comment .user-comment {
   width: 90%;
@@ -3382,6 +3326,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   height: 10px;
   border: solid #2F2F2F;
   border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
@@ -4019,4 +3965,4 @@ img {
     display: block;
     width: 100%;
   }
-}/*# sourceMappingURL=detailnews.css.map */
+}

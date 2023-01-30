@@ -55,7 +55,7 @@
     left: -100000px;
     width: 100%;
     z-index: 1051;
-    width: 397px !important;
+    width: 250px !important;
 }
 
 #AddLeagueContent .modal-content {
@@ -256,8 +256,9 @@
     }
 }
 
-#EditLeagueContent {
+#EditCategory {
     .modal-content {
+        max-width: 40rem !important;
         .title {
             color: #fff;
             font-size: 1.6rem;
@@ -310,7 +311,7 @@
         }
 
         .txt-countryVn, .txt-leagueNameVn, .txt-leagueFullNameVn {
-            width: 270px !important;
+            width: 250px !important;
         }
 
         .txt-countryEn {
