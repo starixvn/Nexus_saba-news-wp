@@ -93,7 +93,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
             };
             categoryUpdate.Url = categoryUpdate.Url[1..];
-            var cmdResult = optionService.UpdateOptionAsync(GetKeyOption(count), JsonConvert.SerializeObject(categoryUpdate));
+            var cmdResult = await optionService.UpdateOptionAsync(GetKeyOption(count), JsonConvert.SerializeObject(categoryUpdate));
             return Json(cmdResult);
         }
 
