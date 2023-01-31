@@ -19,10 +19,9 @@
             // Arrange
             var controller = GetController();
             var enviroment = System.Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
-            var UnitTestDirectory = projectDirectory.Replace("\\bin", "");
-            var path = "FilesTest//";
-            var filePath = Path.Combine(UnitTestDirectory, path);
+            string projectDirectory = Directory.GetParent(enviroment).Parent.Parent.FullName;
+            var path = "FilesTest";
+            var filePath = Path.Combine(projectDirectory, path);
 
             pathService.MapAbsoluteRootPath(Arg.Do<string>(x => x = path)).Returns(filePath);
             //Act
@@ -39,10 +38,9 @@
             // Arrange
             var controller = GetController();
             var enviroment = System.Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
-            var UnitTestDirectory = projectDirectory.Replace("\\bin", "");
-            var path = "FilesTest//";
-            var filePath = Path.Combine(UnitTestDirectory, path);
+            string projectDirectory = Directory.GetParent(enviroment).Parent.Parent.FullName;
+            var path = "FilesTest";
+            var filePath = Path.Combine(projectDirectory, path);
 
             pathService.MapAbsoluteRootPath(Arg.Do<string>(x => x = path)).Returns(filePath);
             //Act
