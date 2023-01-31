@@ -237,8 +237,8 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         public string GetKeyOption(int count)
         {
             string key;
-            var footballNewsLeft = 1;
-            var footballNewscenter = 2;
+            const int footballNewsLeft = 1;
+            const int footballNewscenter = 2;
             if (count == footballNewsLeft)
             {
                 key = OptionKey.FootballNewsLeft;
