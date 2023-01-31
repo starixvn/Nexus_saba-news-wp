@@ -19,10 +19,9 @@
             // Arrange
             var controller = GetController();
             var enviroment = System.Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
-            var UnitTestDirectory = projectDirectory.Replace("\\bin", "");
+            string projectDirectory = Directory.GetParent(enviroment).Parent.Parent.FullName;
             var path = "FilesTest//TrackingSP.txt";
-            var filePath =  Path.Combine(UnitTestDirectory, path);
+            var filePath =  Path.Combine(projectDirectory, path);
             
             pathService.MapPathContentRoot(Arg.Do<string>(x => x = path)).Returns(filePath);
             //Act

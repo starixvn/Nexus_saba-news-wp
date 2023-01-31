@@ -167,7 +167,7 @@
 
             // Assert
             var okResult = Assert.IsAssignableFrom<OkObjectResult>(result);
-            Assert.Equal(false, okResult.Value);
+            Assert.False((bool)okResult.Value);
         }
 
         [Fact]
