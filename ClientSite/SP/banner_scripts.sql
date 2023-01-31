@@ -10,7 +10,7 @@ BEGIN
     DECLARE DesktopCenterUrl VARCHAR(500);
     DECLARE DesktopCenterNavigationUrl VARCHAR(500);
     DECLARE MobileCenterUrl VARCHAR(500);
-    DECLARE MobileCenterNavigationUrl VARCHAR(500);
+    DECLARE MobileCenterNavigationUrl VARCHAR(500); 
     DECLARE DesktopLeftUrl VARCHAR(500);
     DECLARE DesktopLeftNavigationUrl VARCHAR(500);
     DECLARE DesktopRightUrl VARCHAR(500);
