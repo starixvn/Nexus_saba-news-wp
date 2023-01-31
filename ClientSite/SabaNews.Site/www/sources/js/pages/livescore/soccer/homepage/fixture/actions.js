@@ -3,7 +3,6 @@ import DataService from '@jsroot/common/dataService';
 
 import {
     setLeagues,
-    setLeague,
     setLiveMatches
 } from './fixtureHomepageSlice';
 
@@ -16,7 +15,6 @@ const getLeagues= () => async dispatch => {
 
 export const ActionCreators = {
     setLeagues,
-    setLeague,
     setLiveMatches,
     getLeagues
 };

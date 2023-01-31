@@ -11,9 +11,6 @@ const fixtureHomepageSlice = createSlice({
         setLeagues: (state, action) => {
             state.leagues = action.payload;
         },
-        setLeague: (state, action) => {
-            state.league = action.payload;
-        },
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
             const leagues = state.leagues;
@@ -35,7 +32,6 @@ const { actions, reducer } = fixtureHomepageSlice;
 
 export const {
     setLeagues,
-    setLeague,
     setLiveMatches
 } = actions;
 
