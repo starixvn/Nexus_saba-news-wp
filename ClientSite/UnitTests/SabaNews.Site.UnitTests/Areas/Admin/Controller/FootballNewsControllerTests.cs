@@ -97,6 +97,57 @@
             Assert.Equal("~/Areas/Admin/Views/FootballNews/_EditFootBall.cshtml", viewResult.ViewName);
         }
 
+        [Fact]
+        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsLeft()
+        {
+            // Arrange
+            var controller = GetController();
+            //Act
+            var result = controller.GetKeyOption(1);
+
+            // Assert
+            Assert.Equal(OptionKey.FootballNewsLeft, result);
+        }
+
+        [Fact]
+        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsCenter()
+        {
+            // Arrange
+            var controller = GetController();
+            //Act
+            var result = controller.GetKeyOption(2);
+
+            // Assert
+            Assert.Equal(OptionKey.FootballNewsCenter, result);
+        }
+        [Fact]
+        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsRight()
+        {
+            // Arrange
+            var controller = GetController();
+            //Act
+            var result = controller.GetKeyOption(3);
+
+            // Assert
+            Assert.Equal(OptionKey.FootballNewsRight, result);
+        }
+
+        [Fact]
+        public async Task GetSlugs_WhenCalled_ReturnExpectedJson()
+        {
+            // Arrange
+            var controller = GetController();
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = new Fixture().Create<IEnumerable<Menu>>();
+            postService.GetMenuAsync(menuName).Returns(menus);
+            //Act
+            var result = await controller.GetSlugs(menus.First().Slug);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(menus.First(), viewResult.Value);
+        }
+
         #region Helpers
         private FootballNewsController GetController()
         {
