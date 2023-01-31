@@ -1,0 +1,449 @@
+@import '~react-loading-skeleton/dist/skeleton.css';
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: Open Sans, sans-serif;
+  color: #4F4F4F;
+  line-height: 2.2rem;
+  background-color: #FFFDF9;
+}
+
+.img-res {
+  max-width: 100%;
+  height: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 100%;
+  margin: 0;
+}
+
+.hidden-body, .overflow-modal {
+  overflow: hidden;
+}
+
+.wapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.hidden-body {
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+}
+@media screen and (max-width: 1024px) {
+  .hidden-body main {
+    overflow: hidden;
+  }
+}
+
+#app-container {
+  padding-top: 2rem;
+}
+@media screen and (max-width: 1024px) {
+  #app-container {
+    padding-top: 1rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+}
+
+.start-active:before {
+  color: #EF9123;
+}
+
+.icon-livescore {
+  font-size: 2rem;
+}
+@media screen and (max-width: 1024px) {
+  .icon-livescore {
+    font-size: 1.8rem;
+  }
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.livescore-soccer {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: unset;
+  grid-gap: 0;
+  align-items: start;
+}
+@media screen and (max-width: 1024px) {
+  .livescore-soccer {
+    grid-template-columns: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .livescore-soccer {
+    display: inherit;
+  }
+}
+
+.leagues-main {
+  margin: 0.5rem 0;
+}
+
+.livescore-soccer-extension {
+  padding-left: 1.6rem;
+  margin-bottom: 4rem;
+}
+@media screen and (max-width: 1024px) {
+  .livescore-soccer-extension {
+    display: none;
+  }
+}
+.livescore-soccer-extension .livescore-like {
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid #E6E6E6;
+  margin-bottom: 0.8rem;
+  position: relative;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .livescore-soccer-extension .livescore-like {
+    display: none;
+  }
+}
+.livescore-soccer-extension .livescore-like .title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: #E13C29;
+  text-transform: uppercase;
+}
+.livescore-soccer-extension .livescore-like .icon-livescore:before {
+  color: #223453;
+}
+.livescore-soccer-extension .livescore-like .number-like {
+  background: #E13C29;
+  padding: 0.3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #fff;
+  border-radius: 3px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.livescore-soccer-extension .leagues {
+  background: #FFFDF9;
+  border: 1px solid #DADADA;
+  border-radius: 3px;
+}
+.livescore-soccer-extension .leagues-group {
+  display: flex;
+  align-items: center;
+}
+.livescore-soccer-extension .leagues-title {
+  background-color: #fffdf9;
+  border-bottom: 1px solid #DADADA;
+  padding: 0.8rem 0.8rem 0.8rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.livescore-soccer-extension .leagues-title span {
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: #f12f19;
+  text-transform: uppercase;
+  background-color: #fffdf9;
+}
+@media screen and (max-width: 1024px) {
+  .livescore-soccer-extension .leagues-title span {
+    font-size: 1.6rem;
+  }
+}
+.livescore-soccer-extension .leagues-title i:before {
+  color: #223453;
+}
+.livescore-soccer-extension .leagues-item {
+  margin-bottom: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+}
+.livescore-soccer-extension .leagues-item:last-child {
+  margin-bottom: 0;
+}
+.livescore-soccer-extension .leagues-item .toggle-league {
+  display: none;
+}
+.livescore-soccer-extension .leagues-item .toggle-league i {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.livescore-soccer-extension .leagues-item:hover {
+  background: #F5F5F5;
+}
+.livescore-soccer-extension .leagues-item:hover .toggle-league {
+  display: block;
+}
+.livescore-soccer-extension .leagues-item:hover .leagues-name {
+  color: #E13C29;
+}
+.livescore-soccer-extension .leagues-item:hover .start-active {
+  display: block;
+}
+.livescore-soccer-extension .leagues-item:hover .leagues-name .text {
+  font-weight: 600;
+}
+.livescore-soccer-extension .leagues-item .leagues-name {
+  display: flex;
+  align-items: center;
+}
+.livescore-soccer-extension .leagues-item .leagues-name .logo {
+  height: 3rem;
+  width: 3rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 0.8rem;
+}
+.livescore-soccer-extension .leagues-item .leagues-name .text {
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  font-weight: 600;
+  max-width: 20rem;
+}
+
+.icon-close {
+  cursor: pointer;
+}
+.icon-close.rotare-plus {
+  transform: rotate(135deg);
+}
+
+.empty-league {
+  padding: 0 1rem;
+}
+
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 114rem;
+  }
+}
+
+.livescore-container {
+  width: 100%;
+  padding: 0 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media screen and (max-width: 1024px) {
+  .livescore-container {
+    padding: 0 1.2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .livescore-container {
+    max-width: 104rem;
+  }
+}
+
+.table-custom {
+  border: 1px solid #DADADA;
+  border-radius: 3px;
+  margin-bottom: 0.6rem;
+  background: #EDEDED;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .table-custom {
+    border-radius: 5px;
+  }
+}
+.table-custom .table-custom-cell {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+@media screen and (device-aspect-ratio: 40/71) {
+  .table-custom .table-custom-cell {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .table-custom .table-custom-cell {
+    font-size: 1.2rem;
+  }
+}
+.table-custom .table-custom-cell.cell-rank {
+  width: 4rem;
+}
+@media screen and (device-aspect-ratio: 40/71) {
+  .table-custom .table-custom-cell.cell-rank {
+    width: 3rem;
+  }
+}
+.table-custom .table-custom-cell.cell-participant {
+  align-self: center;
+  display: block;
+  flex: 1 0 15rem;
+  justify-content: flex-start;
+  width: 15rem;
+  z-index: 1;
+  text-align: left;
+}
+.table-custom .table-custom-cell.cell-form {
+  width: 11rem;
+}
+.table-custom-header {
+  display: flex;
+  height: 4rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  align-items: center;
+}
+.table-custom-header .table-custom-cell {
+  color: #324A75;
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .table-custom-header .table-custom-cell {
+    font-size: 1.1rem;
+  }
+}
+.table-custom-body {
+  background: #FFFDF9;
+  display: grid;
+  grid-auto-rows: 3.6rem;
+}
+.table-custom-body .table-custom-row {
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  align-items: center;
+}
+.table-custom-body .table-custom-row span {
+  color: #2F2F2F;
+}
+.table-custom-body .table-custom-row .table-bold {
+  font-weight: 700;
+}
+.table-custom-body .table-custom-row:last-child {
+  border-bottom: none;
+}
+.table-custom-body .table-custom-row .wld-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.table-custom-body .table-custom-row .wld-wrapper > div {
+  margin-right: 4px;
+}
+.table-custom-body .table-custom-row .wld-wrapper .wld {
+  border-radius: 3px;
+  color: #fff;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.table-custom-body .table-custom-row .wld-wrapper .wld.win {
+  background-color: #319C2F;
+}
+.table-custom-body .table-custom-row .wld-wrapper .wld.loss {
+  background-color: #E94633;
+}
+.table-custom-body .table-custom-row .wld-wrapper .wld.draw {
+  background-color: #D98800;
+}
+.table-custom .position {
+  border-radius: 3px;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  margin: 0 auto;
+}
+.table-custom .position.postition-color {
+  color: #fff;
+  font-weight: 700;
+}
+.table-custom .soccer-team {
+  display: flex;
+  align-items: center;
+}
+.table-custom .soccer-team-logo {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-right: 1rem;
+}
+.table-custom .soccer-team-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.promotion-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.6rem;
+}
+.promotion-flex:last-child {
+  margin-bottom: 0;
+}
+.promotion-color {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  margin-right: 1.4rem;
+  border-radius: 3px;
+}
+.promotion-name {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+}
+@media (max-width: 767px) {
+  .promotion-name {
+    font-size: 1.2rem;
+  }
+}/*# sourceMappingURL=standing.css.map */

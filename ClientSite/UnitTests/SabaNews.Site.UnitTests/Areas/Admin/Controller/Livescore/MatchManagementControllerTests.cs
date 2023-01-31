@@ -53,10 +53,10 @@
         {
             // Arrange
             var controller = GetController();
-            var leagueId = fixture.Create<int>();
+            var leagueId = fixture.Create<long>();
             var expectedLeague = fixture.Create<IList<Season>>();
 
-            leagueService.GetSeasonByLeagueIdAsync(Arg.Do<int>(x => x = leagueId)).Returns(expectedLeague);
+            leagueService.GetSeasonByLeagueIdAsync(Arg.Do<long>(x => x = leagueId)).Returns(expectedLeague);
             //Act
             var result = await controller.GetSeason(leagueId);
 

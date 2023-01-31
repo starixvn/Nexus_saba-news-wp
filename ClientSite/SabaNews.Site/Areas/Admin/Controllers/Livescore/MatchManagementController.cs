@@ -48,7 +48,7 @@
             return View("~/Areas/Admin/Views/Livescore/MatchManagement/Index.cshtml", model);
         }
 
-        public async Task<IActionResult> GetSeason(int leagueId)
+        public async Task<IActionResult> GetSeason(long leagueId)
         {
             var seasons = await leagueService.GetSeasonByLeagueIdAsync(leagueId);
             return PartialView("~/Areas/Admin/Views/Livescore/MatchManagement/_SeasonFilter.cshtml", seasons);
