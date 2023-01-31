@@ -42,47 +42,25 @@ describe('fixtureHomepageSlice', () => {
             });
         });
 
-        // describe('setLiveMatches', () => {
-        //     it('updates state correctly', () => {
-        //         expect(
-        //             fixtureSlice({
-        //                 matches: [{ matchId: 1 }, { matchId: 2 }],
-        //                 liveMatches: null
-        //             }, {
-        //                 type: setLiveMatches.type,
-        //                 payload: [
-        //                     { matchId: 1, status: 0 },
-        //                     { matchId: 3, status: 50 }
-        //                 ]
-        //             })
-        //         ).toEqual({
-        //             matches: [{ matchId: 1, status: 0 }, { matchId: 2 }],
-        //             liveMatches: null
-        //         });
-        //     });
-        // });
-
-        describe('setLeague', () => {
+        describe('setLiveMatches', () => {
             it('updates state correctly', () => {
                 expect(
-                    fixtureSlice({
-                        league: null
+                    fixtureHomepageSlice({
+                        leagues: [{ matches:[ {matchId: 1}, {matchId: 2}] }],
+                        liveMatches: null
                     }, {
-                        type: setLeague.type,
-                        payload: {
-                                leagueId: 1,
-                                leagueNameEN: 'Champions League',
-                                leagueNameVN: 'Champions League'
-                            }
+                        type: setLiveMatches.type,
+                        payload: [
+                            { matchId: 1, status: 0 },
+                            { matchId: 3, status: 50 }
+                        ]
                     })
                 ).toEqual({
-                    league: {
-                        leagueId: 1,
-                        leagueNameEN: 'Champions League',
-                        leagueNameVN: 'Champions League'
-                    }
+                    leagues: [{ matches:[ { matchId: 1, status: 0 }, {matchId: 2}] }],
+                    liveMatches: null
                 });
             });
         });
+
     });
 });
