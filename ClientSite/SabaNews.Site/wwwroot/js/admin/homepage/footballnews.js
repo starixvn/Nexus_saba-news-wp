@@ -1,7 +1,7 @@
 ﻿var footballnewsHomepage = (function ($) {
     function GetDataFootBallGrid() {
         $.ajax({
-            url: "/Admin/FootballNews/GetDataFootBallGrid",
+            url: "/Admin/HomepageManagement/GetDataFootBallGrid",
             type: 'POST',
             success: function (res) {
                 $('.data-grid').html(res);
@@ -10,7 +10,7 @@
                     var count = $(this).data("count");
                     $.ajax({
                         type: 'GET',
-                        url: "/Admin/FootballNews/EditCategory",
+                        url: "/Admin/HomepageManagement/EditCategory",
                         data: { count },
                         success: function (html) {
                             $('#EditCategory .title').html('Category Editing');
@@ -23,7 +23,7 @@
                                 let category = document.getElementById("Category").value;
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/Admin/FootballNews/GetSlugs",
+                                    url: "/Admin/HomepageManagement/GetSlugs",
                                     data: { category },
                                     success: function (response) {
                                         document.getElementById("editSlug").value = response.slug;
@@ -37,7 +37,7 @@
 
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/Admin/FootballNews/EditCategory",
+                                    url: "/Admin/HomepageManagement/EditCategory",
                                     data: { category, count },
                                     success: function (response) {
                                         $('#EditCategory').modal('hide');

@@ -18,12 +18,37 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
     using SabaNews.Core.Models;
     using SabaNews.Core.Constants;
     using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
+    using SabaNews.Models;
+    using SabaNews.Services;
+    using System.Configuration;
+    using System.Linq;
+    using Microsoft.Extensions.Configuration;
 
     public class HomepageManagementControllerTests : AdminController
     {
         private IOptionService optionService;
         private ILeagueService leagueService;
         private readonly IFixture fixture = new Fixture();
+        private IPostService postService;
+        private IConfiguration configuration;
+        private readonly Option optionLeft = new()
+        {
+            OptionId = 0,
+            OptionName = "football_news_left",
+            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
+        };
+        private readonly Option optionCenter = new()
+        {
+            OptionId = 0,
+            OptionName = "football_news_center",
+            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
+        };
+        private readonly Option optionRight = new()
+        {
+            OptionId = 0,
+            OptionName = "football_news_right",
+            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
+        };
 
         [Fact]
         public void Fixture_WhenCalled_ReturnExpectedView()
@@ -277,12 +302,118 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expectedResult, jsonResult.Value);
         }
+
+       
+
+        [Fact]
+        public void FootballNews_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.FootBall();
+
+            // Assert
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
+        public async Task GetDataFootBallGrid_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+
+            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
+            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+
+            //Act
+            var result = await controller.GetDataFootBallGrid();
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Areas/Admin/Views/HomepageManagement/FootballNews/_FootballNewsDataGrid.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task EditCategory_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = new Fixture().Create<IEnumerable<Menu>>();
+            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
+            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+            postService.GetMenuAsync(menuName).Returns(menus);
+            //Act
+            var result = await controller.EditCategory(1);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Areas/Admin/Views/HomepageManagement/FootballNews/_EditFootBall.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsLeft()
+        {
+            // Arrange
+            var controller = GetController();
+            //Act
+            var result = controller.GetKeyOption(1);
+
+            // Assert
+            Assert.Equal(OptionKey.FootballNewsLeft, result);
+        }
+
+        [Fact]
+        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsCenter()
+        {
+            // Arrange
+            var controller = GetController();
+            //Act
+            var result = controller.GetKeyOption(2);
+
+            // Assert
+            Assert.Equal(OptionKey.FootballNewsCenter, result);
+        }
+        [Fact]
+        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsRight()
+        {
+            // Arrange
+            var controller = GetController();
+            //Act
+            var result = controller.GetKeyOption(3);
+
+            // Assert
+            Assert.Equal(OptionKey.FootballNewsRight, result);
+        }
+
+        [Fact]
+        public async Task GetSlugs_WhenCalled_ReturnExpectedJson()
+        {
+            // Arrange
+            var controller = GetController();
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = new Fixture().Create<IEnumerable<Menu>>();
+            postService.GetMenuAsync(menuName).Returns(menus);
+            //Act
+            var result = await controller.GetSlugs(menus.First().Slug);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(menus.First(), viewResult.Value);
+        }
+
         #region Helpers
         private HomepageManagementController GetController()
         {
             leagueService = Substitute.For<ILeagueService>();
             optionService = Substitute.For<IOptionService>();
-            var controller = new HomepageManagementController(optionService, leagueService);
+            postService = Substitute.For<IPostService>();
+            configuration = Substitute.For<IConfiguration>();
+            var controller = new HomepageManagementController(optionService, leagueService, postService, configuration);
 
             return controller;
         }
