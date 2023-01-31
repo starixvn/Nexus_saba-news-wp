@@ -234,33 +234,16 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             return Json(slug[0]);
         }
 
-        private static CateInfo GetCateInfo(string cateName, string cateSlug)
-        {
-            var slug = cateSlug;
-            var name = cateName;
-            if (cateSlug == Constants.CollectionSlug || (cateSlug.Contains(Constants.BasketballSlug)
-                && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
-            {
-                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts };
-            }
-
-            var listCateSlug = cateSlug.Split(',');
-            var listCateName = cateName.Split(',');
-            var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-            var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-            slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
-            name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
-            return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
-        }
-
         public string GetKeyOption(int count)
         {
             string key;
-            if (count == 1)
+            var footballNewsLeft = 1;
+            var footballNewscenter = 2;
+            if (count == footballNewsLeft)
             {
                 key = OptionKey.FootballNewsLeft;
             }
-            else if (count == 2)
+            else if (count == footballNewscenter)
             {
                 key = OptionKey.FootballNewsCenter;
             }
