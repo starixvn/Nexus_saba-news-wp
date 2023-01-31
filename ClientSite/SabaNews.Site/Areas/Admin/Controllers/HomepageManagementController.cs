@@ -142,7 +142,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             listDataEdit.Add(new FixtureHomepage { 
                 Id = fixture.Id, 
                 LeagueId = fixture.LeagueId,
-                SeasonId = model.SeasonId, 
+                SeasonId = fixture.SeasonId, 
                 Order = model.Order,
                 CreatedDate = fixture.CreatedDate
             });
@@ -160,7 +160,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var listFixture = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
             var fixture = listFixture.Find(item => item.Id == id);
             var newListFixture = listFixture.Where(item => item.Id != id).ToList();
-            var listDataRemove = HandleOrder(newListFixture, fixture.Order);
+            var listDataRemove = HandleOrder(newListFixture, 0);
             var listFixtureJson = JsonConvert.SerializeObject(listDataRemove);
             var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson);
             return Json(cmdResult);
