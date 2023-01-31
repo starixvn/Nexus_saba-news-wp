@@ -57,13 +57,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Reposito
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Livescore", "Livescore", "{9A5E1408-0F2E-4CD5-AA5A-4A73A5D1086D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Provider.API.Tests", "..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.Tests.csproj", "{01D8B11D-A0A5-4295-9553-7D57CFAE784D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Provider.API.Tests", "UnitTests\Livescore\SabaNews.Livescore.Provider.API.Tests\SabaNews.Livescore.Provider.API.Tests.csproj", "{01D8B11D-A0A5-4295-9553-7D57CFAE784D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.SyncData.Tests", "..\SabaNews.Livescore.SyncData.Tests\SabaNews.Livescore.SyncData.Tests.csproj", "{F444838A-BEC1-4C14-8F13-EFD16BF2EC88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.SyncData.Tests", "UnitTests\Livescore\SabaNews.Livescore.SyncData.Tests\SabaNews.Livescore.SyncData.Tests.csproj", "{F444838A-BEC1-4C14-8F13-EFD16BF2EC88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Services.Tests", "..\SabaNews.Livescore.Services.Tests\SabaNews.Livescore.Services.Tests.csproj", "{CB1B1AB8-0805-40E6-999B-E99A9B61E882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Services.Tests", "UnitTests\Livescore\SabaNews.Livescore.Services.Tests\SabaNews.Livescore.Services.Tests.csproj", "{CB1B1AB8-0805-40E6-999B-E99A9B61E882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.ScheduledTasks.Tests", "..\SabaNews.Livescore.ScheduledTasks.Tests\SabaNews.Livescore.ScheduledTasks.Tests.csproj", "{D09FC435-1E2B-44AC-8C93-BF7BC89404EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.ScheduledTasks.Tests", "UnitTests\Livescore\SabaNews.Livescore.ScheduledTasks.Tests\SabaNews.Livescore.ScheduledTasks.Tests.csproj", "{D09FC435-1E2B-44AC-8C93-BF7BC89404EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

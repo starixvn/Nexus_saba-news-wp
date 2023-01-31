@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientSite\Livescore\SabaNews.Livescore.SyncData\SabaNews.Livescore.SyncData.csproj" />
+    <ProjectReference Include="..\..\..\Livescore\SabaNews.Livescore.SyncData\SabaNews.Livescore.SyncData.csproj" />
   </ItemGroup>
 
 </Project>
