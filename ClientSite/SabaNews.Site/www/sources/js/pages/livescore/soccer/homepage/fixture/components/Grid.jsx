@@ -42,7 +42,8 @@ export default class Grid extends PureComponent {
     };
 
     handleClickLeague = (event, league) => {
-        const url = CommonFunctions.getLeaguePageUrl(league);
+        const seasonId = league.season ? league.season.seasonId : 0;
+        const url = CommonFunctions.getLeaguePageUrl(league, seasonId);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

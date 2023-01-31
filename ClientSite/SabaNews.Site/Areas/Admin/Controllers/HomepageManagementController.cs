@@ -177,6 +177,5 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             }
             return listResult;
         }
-       
     }
 }

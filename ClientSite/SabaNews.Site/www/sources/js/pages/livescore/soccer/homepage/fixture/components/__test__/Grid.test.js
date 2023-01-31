@@ -127,11 +127,12 @@ describe('Grid', () => {
             };
 
             window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: null};
             const container = shallow(<Grid {...defaultProps} />);
             const instance = container.instance();
             CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
             // Act
-            instance.handleClickLeague(event);
+            instance.handleClickLeague(event, league);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
@@ -145,12 +146,13 @@ describe('Grid', () => {
                 ctrlKey: true
             };
             window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: {seasonId: 123} };
             const container = shallow(<Grid {...defaultProps} />);
             const instance = container.instance();
             CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
 
             // Act
-            instance.handleClickLeague(event);
+            instance.handleClickLeague(event, league);
 
             // Assert
             expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da', '_blank');

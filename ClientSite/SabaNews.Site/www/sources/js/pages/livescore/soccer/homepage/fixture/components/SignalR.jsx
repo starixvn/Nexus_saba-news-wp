@@ -44,7 +44,7 @@ export class SignalR extends Component {
             });
         } catch (err) {
             setTimeout(() => {
-                this.props.getMatches();
+                this.props.getLeagues();
                 this.startFixtureHomepage();
             }, 60 * 1000);
 

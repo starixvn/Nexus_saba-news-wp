@@ -144,7 +144,7 @@ describe('HeadToHead', () => {
                 ctrlKey: true
             };
             window.open = jest.fn();
-            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: 123};
+            const league = { leagueId: 12036, leagueNameVN: 'Euro'};
             DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
             const container = shallow(<HeadToHead {...defaultProps} />);
             const instance = container.instance();
@@ -162,7 +162,7 @@ describe('HeadToHead', () => {
                 ctrlKey: false
             };
             window.open = jest.fn();
-            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: 123};
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', currentSeasonId: 123};
             DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
             const container = shallow(<HeadToHead {...defaultProps} />);
             const instance = container.instance();
@@ -172,7 +172,7 @@ describe('HeadToHead', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/0/2022-06-01/12036');
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/123/2022-06-01/12036');
         });
     });
 

@@ -745,7 +745,7 @@ describe('MatchGeneralInfo', () => {
                 ctrlKey: true
             };
             window.open = jest.fn();
-            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: 123};
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', currentSeasonId: 123};
             DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
             const container = shallow(<MatchGeneralInfo {...defaultProps} />);
             const instance = container.instance();
@@ -753,7 +753,7 @@ describe('MatchGeneralInfo', () => {
             instance.handleClickLeague(event, league);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/0/2022-06-01/12036', '_blank');
+            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/123/2022-06-01/12036', '_blank');
         });
 
         it('calls correctly when ctrlKey = false', () => {
@@ -763,7 +763,7 @@ describe('MatchGeneralInfo', () => {
                 ctrlKey: false
             };
             window.open = jest.fn();
-            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: 123};
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', currentSeasonId: 123};
             DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
             const container = shallow(<MatchGeneralInfo {...defaultProps} />);
             const instance = container.instance();
@@ -773,7 +773,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/0/2022-06-01/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/123/2022-06-01/12036');
         });
     });
 

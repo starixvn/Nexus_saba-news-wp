@@ -15,12 +15,16 @@ const fixtureHomepageSlice = createSlice({
             state.league = action.payload;
         },
         setLiveMatches: (state, action) => {
-            const liveMatches = action.payload,
-            totalItems = liveMatches.length;
-            for (let i = 0; i < totalItems; i++) {
-                let index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
-                if (index >= 0) {
-                    state.matches[index] = liveMatches[i];
+            const liveMatches = action.payload;
+            const leagues = state.leagues;
+            const totalItems = leagues.length;
+            for (let leagueIndex = 0; leagueIndex < totalItems; leagueIndex++) {
+                const matches = leagues[leagueIndex].matches;
+                for (let liveIndex = 0; liveIndex < liveMatches.length; liveIndex++) {
+                    let index = matches.findIndex(item => item.matchId === liveMatches[liveIndex].matchId);
+                    if (index >= 0) {
+                        state.leagues[leagueIndex].matches[index] = liveMatches[liveIndex];
+                    }
                 }
             }
         }
