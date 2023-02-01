@@ -46,12 +46,12 @@
         public async Task<IActionResult> UploadBanner(IFormFile file, string type)
         {
             var banner = await bannerService.GetBannerInfoAsync();
-            var result = await fileService.UploadFileAsync(file, UploadDir.BannerUploadFolder);
-            if (!result.IsSuccessful)
+            var uploadResult = await fileService.UploadFileAsync(file, UploadDir.BannerUploadFolder);
+            if (!uploadResult.IsSuccessful)
             {
-                return Json(result);
+                return Json(uploadResult);
             }
-            var url = result.Message;
+            var url = uploadResult.AbsoluteUrl;
             switch (type)
             {
                 case BannerType.DesktopTop:
@@ -78,7 +78,7 @@
                 default:
                     throw new InvalidOperationException();
             }
-            result = await bannerService.UpdateBannerInfoAsync(banner, sessionService.User.Id);
+            var result = await bannerService.UpdateBannerInfoAsync(banner, sessionService.User.Id);
            
             return Json(result);
         }

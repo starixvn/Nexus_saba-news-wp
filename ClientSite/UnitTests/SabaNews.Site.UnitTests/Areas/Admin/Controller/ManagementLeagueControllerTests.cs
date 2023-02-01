@@ -230,7 +230,7 @@
                 Priority = 1
             };
             var expected = new Fixture().Create<CommandResult>();
-            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });

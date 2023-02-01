@@ -24,9 +24,9 @@
         }
 
 
-        public async Task<CommandResult> UploadFileAsync(IFormFile file, string dirFolder)
+        public async Task<UploadResult> UploadFileAsync(IFormFile file, string dirFolder)
         {
-            CommandResult result;
+            UploadResult result;
             try
             {
                 var Dir = pathService.MapAbsoluteRootPath(dirFolder);
@@ -47,12 +47,12 @@
 
                 string linkPhoto = dirFolder + filename;
                 string url = string.Concat(baseUrl, linkPhoto);
-                result = new CommandResult { Code = Constants.SuccessCode, Message = url };
+                result = new UploadResult { Code = Constants.SuccessCode, AbsoluteUrl = url, Url = linkPhoto };
 
             }
             catch (Exception e)
             {
-                result = new CommandResult { Message = e.Message };
+                result = new UploadResult { Message = e.Message };
             }
             return result;
         }

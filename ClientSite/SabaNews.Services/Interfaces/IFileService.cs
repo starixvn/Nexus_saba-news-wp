@@ -6,6 +6,6 @@
 
     public interface IFileService
     {
-        Task<CommandResult> UploadFileAsync(IFormFile file, string dirFolder);
+        Task<UploadResult> UploadFileAsync(IFormFile file, string dirFolder);
     }
 }

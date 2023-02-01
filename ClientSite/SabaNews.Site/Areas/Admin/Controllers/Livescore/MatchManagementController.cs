@@ -97,12 +97,12 @@
             if (model.HomeIcon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(model.HomeIcon, UploadDir.MatchTeamUploadFolder);
-                homeIconVN = uploadResult.IsSuccessful ? uploadResult.Message : homeIconVN;
+                homeIconVN = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : homeIconVN;
             }
             if (model.AwayIcon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(model.AwayIcon, UploadDir.MatchTeamUploadFolder);
-                awayIconVN = uploadResult.IsSuccessful ? uploadResult.Message : awayIconVN;
+                awayIconVN = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : awayIconVN;
             }
             DateTime? startTime;
             if (model.StartTime == DateTime.MinValue)   

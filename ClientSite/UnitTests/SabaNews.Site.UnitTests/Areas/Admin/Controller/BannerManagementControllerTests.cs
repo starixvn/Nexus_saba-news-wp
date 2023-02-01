@@ -104,7 +104,7 @@
         {
             // Arrange
             var controller = GetController();
-            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url" };
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });
@@ -135,7 +135,7 @@
         {
             // Arrange
             var controller = GetController();
-            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });

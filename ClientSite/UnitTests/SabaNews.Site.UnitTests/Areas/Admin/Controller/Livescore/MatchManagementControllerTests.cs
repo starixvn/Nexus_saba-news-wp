@@ -273,7 +273,7 @@
             var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
             var expectedMatch = fixture.Create<MatchUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
-            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
 
             matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
             matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
@@ -331,7 +331,7 @@
             var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
             var expectedMatch = fixture.Create<MatchUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
-            var expectedUploadResult = new CommandResult {  Message = "error code" };
+            var expectedUploadResult = new UploadResult {  Message = "error code" };
 
             matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
             matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);

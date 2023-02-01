@@ -96,14 +96,14 @@
             if (leagueUpdate.IconCountry != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconCountry, UploadDir.LeagueUploadFolder);
-                iconCountry = uploadResult.IsSuccessful ? uploadResult.Message : iconCountry;
+                iconCountry = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : iconCountry;
             }
 
             string iconLeague = leagueUpdate.IsDeletedIconLeague ? null : league[0].IconVN;
             if (leagueUpdate.IconLeague != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconLeague, UploadDir.LeagueUploadFolder);
-                iconLeague = uploadResult.IsSuccessful ? uploadResult.Message : iconLeague;
+                iconLeague = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : iconLeague;
             }
             var resultUpdateLeague = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
             {
@@ -157,14 +157,14 @@
             if (leagueUpdate.IconCountry != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconCountry, UploadDir.LeagueUploadFolder);
-                iconCountry = uploadResult.IsSuccessful ? uploadResult.Message : iconCountry;
+                iconCountry = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : iconCountry;
             }
 
             string iconLeague = leagueUpdate.IsDeletedIconLeague ? null : league.IconVN;
             if (leagueUpdate.IconLeague != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(leagueUpdate.IconLeague, UploadDir.LeagueUploadFolder);
-                iconLeague = uploadResult.IsSuccessful ? uploadResult.Message : iconLeague;
+                iconLeague = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : iconLeague;
             }
 
             var result = await leagueService.InsertLeaguesExtraAsync(leagueUpdate.LeagueId);
