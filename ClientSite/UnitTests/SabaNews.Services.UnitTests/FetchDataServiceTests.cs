@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services.UnitTests
 {
     using AutoFixture;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
     using NSubstitute;
@@ -16,6 +17,7 @@
     using SabaNews.Models.Home;
     using SabaNews.Models.Options;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Globalization;
@@ -390,7 +392,50 @@
             var actual = await service.GetFootballNews();
 
             //Assert
-            Assert.Equal(expected.Count(), actual.Count);
+            Assert.Equal(expected.Count, actual.Count);
+        }
+
+        [Fact]
+        public async Task GetHomePageViewModel_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+
+            var paramGetRecent = new Fixture().Create<GetRecentPostsParam>();
+            var post = new Fixture().Create<IEnumerable<Post>>();
+            var category = new Fixture().Create<Category>();
+
+            postService.GetRecentPostsAsync(paramGetRecent).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.OtherPostSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetNineItems).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
+            postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
+            postService.GetPageDetailBySlugAsync(Constants.HomeSlug).Returns(category);
+
+            var postLeft = new Fixture().Create<IEnumerable<Post>>();
+            var postCenter = new Fixture().Create<IEnumerable<Post>>();
+            var postRight = new Fixture().Create<IEnumerable<Post>>();
+
+            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
+            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+
+            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
+            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
+            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
+
+            postService.GetPostsBySlugAsync(footballnewsleft.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postLeft);
+            postService.GetPostsBySlugAsync(footballnewscenter.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postCenter);
+            postService.GetPostsBySlugAsync(footballnewsright.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postRight);
+
+            //Act
+            var actual = await service.GetHomePageViewModel();
+
+            //Assert
+            Assert.IsAssignableFrom<PostViewModel>(actual);
         }
 
         #region Helpers
