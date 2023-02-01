@@ -514,6 +514,86 @@
             Assert.Equal(expected, jsonResult.Value);
         }
 
+        [Fact]
+        public void OldCategory_WhenSlugIsNewPost_ReturnCorrectlyAction()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            dataControlService.GetHomepageStandingData().Returns(expected);
+            // Act
+            var result =  controller.OldCategory(Constants.NewPostSlug);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Category", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public void OldCategory_WhenSlugIsNotNewPost_ReturnCorrectlyAction()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            dataControlService.GetHomepageStandingData().Returns(expected);
+            // Act
+            var result = controller.OldCategory("bong-da");
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Category", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public void OldVideo_WhenCalled_ReturnCorrectlyAction()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            dataControlService.GetHomepageStandingData().Returns(expected);
+            // Act
+            var result = controller.OldVideo();
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Video", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public void OldSearch_WhenCalled_ReturnCorrectlyAction()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            dataControlService.GetHomepageStandingData().Returns(expected);
+            // Act
+            var result = controller.OldSearch();
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Search", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public void OldTag_WhenCalled_ReturnCorrectlyAction()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            dataControlService.GetHomepageStandingData().Returns(expected);
+            // Act
+            var result = controller.OldTag("tag");
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Tag", redirectResult.ActionName);
+        }
+
         #region Helpers
         private HomeController GetController()
         {

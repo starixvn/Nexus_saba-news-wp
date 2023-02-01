@@ -6,9 +6,12 @@ using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using SabaNews.Core.Constants;
 using SabaNews.Core.Services;
+using SabaNews.Livescore.Models.League;
+using SabaNews.Livescore.Models.Match;
 using SabaNews.Livescore.Services;
 using SabaNews.Models;
 using SabaNews.Models.Banner;
+using SabaNews.Models.Home;
 using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel;
 using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -430,6 +433,116 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public async Task GetHomepageWCFixtureData_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<(League, IList<Match>)>();
+            fetchDataService.GetWCFixtureData().Returns(expected);
+            //Act
+            var actual = await service.GetHomepageWCFixtureData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetHomepageFixtureData_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<List<MatchLeagueModel>>();
+            cacheWrapperService.GetAsync<List<MatchLeagueModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetHomepageFixtureData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetHomepageFixtureData_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            List<MatchLeagueModel> expectedFromCache = null;
+            var expected = fixture.Create<List<MatchLeagueModel>>();
+            cacheWrapperService.GetAsync<List<MatchLeagueModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetHomepageFixture().Returns(expected);
+
+            //Act
+            var actual = await service.GetHomepageFixtureData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<List<MatchLeagueModel>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetHomepageFixtureData_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var expected = fixture.Create<List<MatchLeagueModel>>();
+            fetchDataService.GetHomepageFixture().Returns(expected);
+
+            //Act
+            var actual = await service.GetHomepageFixtureData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetHomepageStandingData_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            cacheWrapperService.GetAsync<List<StandingLeagueModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetHomepageStandingData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetHomepageStandingData_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            List<StandingLeagueModel> expectedFromCache = null;
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            cacheWrapperService.GetAsync<List<StandingLeagueModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetHomepageStanding().Returns(expected);
+
+            //Act
+            var actual = await service.GetHomepageStandingData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<List<StandingLeagueModel>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetHomepageStandingData_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var expected = fixture.Create<List<StandingLeagueModel>>();
+            fetchDataService.GetHomepageStanding().Returns(expected);
+
+            //Act
+            var actual = await service.GetHomepageStandingData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+
 
         #region Helpers
 
