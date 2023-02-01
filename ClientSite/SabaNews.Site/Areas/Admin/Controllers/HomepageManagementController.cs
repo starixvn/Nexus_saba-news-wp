@@ -158,7 +158,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var optionKey = GetKeyOption(isFixtureOption);
             var option = await optionService.GetOptionAsync(optionKey);
             var listFixture = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
-            var fixture = listFixture.Find(item => item.Id == id);
             var newListFixture = listFixture.Where(item => item.Id != id).ToList();
             var listDataRemove = HandleOrder(newListFixture, 0);
             var listFixtureJson = JsonConvert.SerializeObject(listDataRemove);
@@ -262,7 +261,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         public static List<FixtureHomepage> HandleOrder(List<FixtureHomepage> fixtures, int order)
         {
             var listResult = new List<FixtureHomepage>();
-            var listFixture = fixtures.OrderBy(item => item.Order).ToList();
             var currentOrder = 1;
             foreach (var item in fixtures)
             {

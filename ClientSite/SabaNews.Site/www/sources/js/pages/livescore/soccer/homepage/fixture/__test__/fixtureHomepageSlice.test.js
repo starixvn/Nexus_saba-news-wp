@@ -22,7 +22,7 @@ describe('fixtureHomepageSlice', () => {
         describe('setLeagues', () => {
             it('updates state correctly', () => {
                 expect(
-                    fixtureHomepageSlice({
+                    fixtureSlice({
                         leagues: []
                     }, {
                         type: setLeagues.type,
@@ -45,7 +45,7 @@ describe('fixtureHomepageSlice', () => {
         describe('setLiveMatches', () => {
             it('updates state correctly', () => {
                 expect(
-                    fixtureHomepageSlice({
+                    fixtureSlice({
                         leagues: [{ matches:[ {matchId: 1}, {matchId: 2}] }],
                         liveMatches: null
                     }, {
