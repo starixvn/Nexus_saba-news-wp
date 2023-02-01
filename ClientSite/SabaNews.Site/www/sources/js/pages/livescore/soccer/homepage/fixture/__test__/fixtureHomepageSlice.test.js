@@ -1,6 +1,5 @@
 import fixtureHomepageSlice, {
     setLeagues,
-    setLeague,
     setLiveMatches
 } from '../fixtureHomepageSlice';
 
@@ -22,7 +21,7 @@ describe('fixtureHomepageSlice', () => {
         describe('setLeagues', () => {
             it('updates state correctly', () => {
                 expect(
-                    fixtureSlice({
+                    fixtureHomepageSlice({
                         leagues: []
                     }, {
                         type: setLeagues.type,
@@ -45,7 +44,7 @@ describe('fixtureHomepageSlice', () => {
         describe('setLiveMatches', () => {
             it('updates state correctly', () => {
                 expect(
-                    fixtureSlice({
+                    fixtureHomepageSlice({
                         leagues: [{ matches:[ {matchId: 1}, {matchId: 2}] }],
                         liveMatches: null
                     }, {

@@ -33,7 +33,7 @@ export class AppContainer extends Component {
                 this.setState({ isMobile: false });
             }
         }
-    }
+    };
 
 
     handleClickFixture = event => {
@@ -43,7 +43,7 @@ export class AppContainer extends Component {
         } else {
             window.location = url;
         }
-    }
+    };
 
 
     render() {
