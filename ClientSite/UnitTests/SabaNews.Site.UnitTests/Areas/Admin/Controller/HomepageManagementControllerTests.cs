@@ -23,6 +23,12 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
     using System.Configuration;
     using System.Linq;
     using Microsoft.Extensions.Configuration;
+    using SabaNews.Models.Posts;
+    using SabaNews.Models.Categories;
+    using Newtonsoft.Json;
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+    using SabaNews.Site.Extensions;
+    using System;
 
     public class HomepageManagementControllerTests : AdminController
     {
@@ -404,6 +410,28 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             // Assert
             var viewResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(menus.First(), viewResult.Value);
+        }
+
+        [Fact]
+        public async Task EditCategory_WhenCalled_ReturnExpectedJson()
+        {
+            // Arrange
+            var controller = GetController();
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = new Fixture().Create<IEnumerable<Menu>>();
+            var cateParents = new Fixture().Create<IList<CategoryGeneral>>();
+            var cmd = new Fixture().Create<CommandResult>();
+            var categoryUpdate = new Fixture().Create<FootballNewsHomePage>();
+
+            postService.GetMenuAsync(menuName).Returns(menus);
+            postService.GetCateParentsAsync(menus.First().Slug).Returns(cateParents);
+            optionService.UpdateOptionAsync(controller.GetKeyOption(1), JsonConvert.SerializeObject(categoryUpdate)).Returns(cmd);
+
+            //Act
+            var result = await controller.EditCategory(menus.First().Slug, 1);
+
+            // Assert
+            Assert.IsType<JsonResult>(result);
         }
 
         #region Helpers

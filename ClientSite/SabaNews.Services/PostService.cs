@@ -233,7 +233,7 @@
             return result;
         }
 
-        private static IList<Subjects> HandleSubjects(string categoriesSlug)
+        public static IList<Subjects> HandleSubjects(string categoriesSlug)
         {
             var subjects = new List<Subjects>();
             string[] categories = categoriesSlug.Split(new []{ "," }, StringSplitOptions.None);
@@ -261,7 +261,7 @@
             return subjects;
         }
 
-        private static bool CheckSoccer(string category)
+        public static bool CheckSoccer(string category)
         {
             const string search = Constants.FootballSlug + Constants.VideoFootballSlug +
                                 Constants.Euro2020VideoSlug + Constants.VideoWorldCup2022Slug +
@@ -273,7 +273,7 @@
             return false;
         }
 
-        private static bool CheckVideo(string categoriesSlug)
+        public static bool CheckVideo(string categoriesSlug)
         {
             string[] categories = categoriesSlug.Split(new []{ "," }, StringSplitOptions.None);
             foreach (var item in categories)
@@ -286,7 +286,7 @@
             return false;
         }
 
-        private static IList<string> HandleTags(string tags)
+        public static IList<string> HandleTags(string tags)
         {
             var result = new List<string>();
             string[] tagsList = tags.Split(new []{ ", " }, StringSplitOptions.None);

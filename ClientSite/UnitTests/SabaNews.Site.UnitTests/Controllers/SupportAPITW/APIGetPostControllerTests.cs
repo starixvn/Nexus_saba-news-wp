@@ -10,10 +10,7 @@ using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel.Posts;
 using SabaNews.Services;
 using SabaNews.Site.Controllers.SupportAPITW;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -24,7 +21,6 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
         private IPostService postService;
         private ICacheWrapperService cacheService;
         private readonly IFixture fixture = new Fixture();
-
 
         [Fact]
         public async Task GetPostList_WhenCalled_ReturnExpectedData()

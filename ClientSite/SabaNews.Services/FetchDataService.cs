@@ -269,7 +269,7 @@
             return result;
         }
 
-        private async Task<List<string>> GetUrlsFootballNews()
+        public async Task<List<string>> GetUrlsFootballNews()
         {
             var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
             var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
@@ -289,7 +289,7 @@
             return urls;
         }
 
-        private async Task<List<IEnumerable<Post>>> GetFootballNews()
+        public async Task<List<IEnumerable<Post>>> GetFootballNews()
         {
             var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
             var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);

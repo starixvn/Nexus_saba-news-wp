@@ -3,12 +3,14 @@
     using AutoFixture;
     using Microsoft.Extensions.Configuration;
     using NSubstitute;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
+    using SabaNews.Resources;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -586,6 +588,147 @@
             Assert.Equal(expectedInSecondPost.FeatureImage, imageSize50);
             Assert.Equal(expectedInSecondPost.FeatureImage, imageSizeInValid);
             Assert.Equal(expectedInMunitePost.FeatureImage, imageSize);
+        }
+
+        [Fact]
+        public void HandleSubjects_WhenCalled_ReturnExpectedBasketballSlug()
+        {
+            //Arrange
+            var categoriesSlug = Constants.BasketballSlug;
+
+            //Act
+            var actual = PostService.HandleSubjects(categoriesSlug);
+
+            //Assert
+            Assert.Equal(ViewResources.BasketballEN, actual.First().Name);
+        }
+
+        [Fact]
+        public void HandleSubjects_WhenCalled_ReturnExpectedBasketballVideoSlug()
+        {
+            //Arrange
+            var categoriesSlug = Constants.BasketballVideoSlug;
+
+            //Act
+            var actual = PostService.HandleSubjects(categoriesSlug);
+
+            //Assert
+            Assert.Equal(ViewResources.BasketballEN, actual.First().Name);
+        }
+
+        [Fact]
+        public void HandleSubjects_WhenCalled_ReturnExpectedTennisSlug()
+        {
+            //Arrange
+            var categoriesSlug = Constants.TennisSlug;
+
+            //Act
+            var actual = PostService.HandleSubjects(categoriesSlug);
+
+            //Assert
+            Assert.Equal(ViewResources.TennisEN, actual.First().Name);
+        }
+
+        [Fact]
+        public void HandleSubjects_WhenCalled_ReturnExpectedTennisVideoSlug()
+        {
+            //Arrange
+            var categoriesSlug = Constants.TennisVideoSlug;
+
+            //Act
+            var actual = PostService.HandleSubjects(categoriesSlug);
+
+            //Assert
+            Assert.Equal(ViewResources.TennisEN, actual.First().Name);
+        }
+
+        [Fact]
+        public void HandleSubjects_WhenCalled_ReturnExpectedSearchSlug()
+        {
+            //Arrange
+            var categoriesSlug = Constants.FootballSlug;
+
+            //Act
+            var actual = PostService.HandleSubjects(categoriesSlug);
+
+            //Assert
+            Assert.Equal(ViewResources.SoccerEN, actual.First().Name);
+        }
+
+        [Fact]
+        public void HandleSubjects_WhenCalled_ReturnExpectedsubjects()
+        {
+            //Arrange
+            var categoriesSlug = Constants.FootballSlug + "," + Constants.BasketballSlug;
+
+            //Act
+            var actual = PostService.HandleSubjects(categoriesSlug);
+
+            //Assert
+            Assert.Equal(ViewResources.All, actual.First().Name);
+        }
+
+        [Fact]
+        public void CheckSoccer_WhenCalled_ReturnExpectedTrue()
+        {
+            //Arrange
+            var categoriesSlug = Constants.FootballSlug;
+
+            //Act
+            var actual = PostService.CheckSoccer(categoriesSlug);
+
+            //Assert
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void CheckSoccer_WhenCalled_ReturnExpectedFalse()
+        {
+            //Arrange
+            var categoriesSlug = Constants.TennisSlug;
+
+            //Act
+            var actual = PostService.CheckSoccer(categoriesSlug);
+
+            //Assert
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void CheckVideo_WhenCalled_ReturnExpectedTrue()
+        {
+            //Arrange
+            var categoriesSlug = Constants.VideoSlug;
+            //Act
+            var actual = PostService.CheckVideo(categoriesSlug);
+
+            //Assert
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void CheckVideo_WhenCalled_ReturnExpectedFalse()
+        {
+            //Arrange
+            var categoriesSlug = Constants.FootballSlug;
+            //Act
+            var actual = PostService.CheckVideo(categoriesSlug);
+
+            //Assert
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void HandleTags_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var categoriesSlug = Constants.FootballSlug + ", " + Constants.BasketballSlug;
+            var expected = new List<string> { Constants.FootballSlug, Constants.BasketballSlug };
+            //Act
+            var actual = PostService.HandleTags(categoriesSlug);
+
+            //Assert
+            Assert.Equal(expected, actual);
         }
 
         private static IEnumerable<Post> GetTestPost()
