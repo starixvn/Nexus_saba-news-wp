@@ -8,7 +8,8 @@
         "build-pro": "node node_modules/webpack/bin/webpack.js --config www/webpackconfig/build/webpack.pro.conf.js",
         "test": "jest --coverage --config ./jest.config.js",
         "test:watch": "npm test -- --watch",
-        "jest-update-snapshot": "jest --updateSnapshot"
+        "jest-update-snapshot": "jest --updateSnapshot",
+        "test-coverage": "jest --ci -u --coverage"
     },
     "author": "",
     "license": "ISC",
@@ -69,7 +70,6 @@
         "swiper": "^6.8.4"
     },
     "jest": {
-        "testResultsProcessor": "jest-sonar-reporter",
-        "test-coverage": "jest --ci -u --coverage"
+        "testResultsProcessor": "jest-sonar-reporter"
     }
 }
