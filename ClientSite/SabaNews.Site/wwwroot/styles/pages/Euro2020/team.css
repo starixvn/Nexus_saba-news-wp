@@ -1830,7 +1830,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media (min-width: 1280px) {
   .container, .base-container {
-    max-width: 114rem;
+    max-width: 130rem;
   }
 }
 
@@ -1887,4 +1887,4 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     font-size: 1.4rem;
     margin-top: 1.2rem;
   }
-}/*# sourceMappingURL=team.css.map */
+}

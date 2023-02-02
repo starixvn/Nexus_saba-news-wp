@@ -1688,6 +1688,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+.block-columns {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: unset;
+  grid-gap: 2rem;
+  align-items: start;
+}
+
 button {
   outline: none;
   border: 0;
@@ -1789,12 +1797,13 @@ button {
 }
 @media (min-width: 1280px) {
   .container, .base-container {
-    max-width: 114rem;
+    max-width: 130rem;
   }
 }
 
 .card-horizontal__image, .card-vertical__image {
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .card-horizontal__image:hover img, .card-vertical__image:hover img {
   transition: all 0.5s ease;
@@ -1817,6 +1826,33 @@ button {
   margin-top: 5px;
 }
 
+.hover-image {
+  overflow: hidden;
+  border-radius: 3px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.hover-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0) scale(1, 1);
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  display: block;
+  transition: all 0.5s ease;
+}
+.hover-image:hover img {
+  transition: all 0.5s ease;
+  transform: scale(1.02);
+}
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -1830,6 +1866,7 @@ button {
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 1.6rem;
   margin-bottom: 1.6rem;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .card-horizontal:last-child {
   border-bottom: none;
@@ -2014,6 +2051,35 @@ button {
   font-style: normal;
   font-size: 1.3rem;
   margin-left: 0.3rem;
+}
+
+.box-vertical-image {
+  display: block;
+}
+.box-vertical-content {
+  margin-top: 1.2rem;
+}
+.box-vertical-content h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+  margin: 0;
+  color: #333;
+}
+.box-vertical-content h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+.box-vertical-content p {
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+}
+.box-vertical.box-vertical-hightlight .box-vertical-image {
+  height: 35rem;
+}
+.box-vertical.box-vertical-hightlight .box-vertical-content {
+  margin-top: 1.6rem;
 }
 
 .pagination {
@@ -3325,4 +3391,4 @@ button {
 
 .wapper {
   height: auto;
-}/*# sourceMappingURL=home.css.map */
+}

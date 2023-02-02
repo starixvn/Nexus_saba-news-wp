@@ -1831,7 +1831,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media (min-width: 1280px) {
   .container, .base-container {
-    max-width: 114rem;
+    max-width: 130rem;
   }
 }
 
@@ -2160,4 +2160,4 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 #table-scroll-main .main-table > tbody > tr:nth-last-child(-n+2) td {
   background-color: #fff;
-}/*# sourceMappingURL=ranking.css.map */
+}

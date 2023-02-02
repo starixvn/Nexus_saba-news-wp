@@ -50,3 +50,11 @@
         }
     }
 }
+
+.block-columns{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: unset;
+    grid-gap: 2rem;
+    align-items: start;
+}

@@ -6,7 +6,7 @@
     border-bottom: 1px solid $separator-color;
     padding-bottom: 1.6rem;
     margin-bottom: 1.6rem;
-
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     &:last-child {
         border-bottom: none;
         padding-bottom: 0;

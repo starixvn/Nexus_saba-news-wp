@@ -1563,6 +1563,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+.block-columns {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: unset;
+  grid-gap: 2rem;
+  align-items: start;
+}
+
 button {
   outline: none;
   border: 0;
@@ -1664,6 +1672,7 @@ button {
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 1.6rem;
   margin-bottom: 1.6rem;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .card-horizontal:last-child {
   border-bottom: none;
@@ -1848,6 +1857,35 @@ button {
   font-style: normal;
   font-size: 1.3rem;
   margin-left: 0.3rem;
+}
+
+.box-vertical-image {
+  display: block;
+}
+.box-vertical-content {
+  margin-top: 1.2rem;
+}
+.box-vertical-content h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+  margin: 0;
+  color: #333;
+}
+.box-vertical-content h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+.box-vertical-content p {
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+}
+.box-vertical.box-vertical-hightlight .box-vertical-image {
+  height: 35rem;
+}
+.box-vertical.box-vertical-hightlight .box-vertical-content {
+  margin-top: 1.6rem;
 }
 
 .pagination {
@@ -2205,6 +2243,13 @@ button {
   width: 100%;
   max-width: 20rem;
   max-height: 60rem;
+}
+
+.ads-insite {
+  margin-top: 2rem;
+}
+.ads-insite a {
+  display: block;
 }
 
 body {
@@ -3723,4 +3768,4 @@ input[type=number] {
 }
 .event-txt a {
   color: #ba0900;
-}/*# sourceMappingURL=membership-event.css.map */
+}

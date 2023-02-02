@@ -94,3 +94,38 @@
         margin-left: .3rem;
     }
 }
+
+
+
+.box-vertical{
+    &-image{
+        display: block;
+    }
+    &-content{
+        margin-top: 1.2rem;
+        h1{
+            font-weight: 700;
+            font-size: 2.4rem;
+            line-height: 3.3rem;
+            margin: 0;
+            color: $color-title;
+        }
+        h3{
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 2.4rem;
+        }
+        p{
+            margin-top: .8rem;
+            margin-bottom: 0;
+        }
+    }
+    &.box-vertical-hightlight{
+        .box-vertical-image{
+            height: 35rem;
+        }
+        .box-vertical-content{
+            margin-top: 1.6rem;
+        }
+    }
+}

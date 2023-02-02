@@ -1,4 +1,4 @@
-﻿/*:root {
+/*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
@@ -307,7 +307,7 @@ p.has-text-align-center {
 }
 @media (min-width: 1280px) {
   .container, .base-container {
-    max-width: 114rem;
+    max-width: 130rem;
   }
 }
 

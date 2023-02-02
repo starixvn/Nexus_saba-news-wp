@@ -1,4 +1,4 @@
-﻿/*:root {
+/*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
@@ -120,6 +120,18 @@
 }
 .custom-input.list-input {
   cursor: unset;
+  font-weight: normal;
+}
+.custom-input.list-input::-moz-placeholder {
+  color: #979797;
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.custom-input.list-input:-ms-input-placeholder {
+  color: #979797;
+  font-style: italic;
+  font-size: 1.4rem;
   font-weight: normal;
 }
 .custom-input.list-input::placeholder {
@@ -307,7 +319,8 @@
 #AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin: 0 auto;
 }
 #AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
@@ -440,7 +453,8 @@
 #EditCategory .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin: 0 auto;
 }
 #EditCategory .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
