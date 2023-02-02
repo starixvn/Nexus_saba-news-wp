@@ -37,23 +37,11 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         private readonly IFixture fixture = new Fixture();
         private IPostService postService;
         private IConfiguration configuration;
-        private readonly Option optionLeft = new()
+        private readonly Option option = new()
         {
             OptionId = 0,
-            OptionName = "football_news_left",
-            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
-        };
-        private readonly Option optionCenter = new()
-        {
-            OptionId = 0,
-            OptionName = "football_news_center",
-            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
-        };
-        private readonly Option optionRight = new()
-        {
-            OptionId = 0,
-            OptionName = "football_news_right",
-            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
+            OptionName = "football_news_categories",
+            OptionValue = "[{\"Category\":\"World Cup\",\"Id\":1,\"Slug\":\"world-cup\",\"Url\":\"/tin-the-thao/bong-da/quoc-te/world-cup\",\"CreatedDate\":\"2023-01-31T07:16:31.8439748Z\"},{\"Category\":\"La Liga\",\"Id\":2,\"Slug\":\"la-liga\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha/la-liga\",\"CreatedDate\":\"2023-01-31T06:45:02.7067665Z\"},{\"Category\":\"Tây Ban Nha\",\"Id\":3,\"Slug\":\"tay-ban-nha\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha\",\"CreatedDate\":\"2023-01-31T07:32:57.3471868Z\"}]"
         };
 
         [Fact]
@@ -330,9 +318,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             // Arrange
             var controller = GetController();
 
-            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
-            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
-            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
 
             //Act
             var result = await controller.GetDataFootBallGrid();
@@ -349,9 +335,8 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var controller = GetController();
             var menuName = configuration.GetValue<string>("MenuName");
             var menus = new Fixture().Create<IEnumerable<Menu>>();
-            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
-            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
-            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
+
             postService.GetMenuAsync(menuName).Returns(menus);
             //Act
             var result = await controller.EditCategory(1);
@@ -359,41 +344,6 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
             Assert.Equal("~/Areas/Admin/Views/HomepageManagement/FootballNews/_EditFootBall.cshtml", viewResult.ViewName);
-        }
-
-        [Fact]
-        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsLeft()
-        {
-            // Arrange
-            var controller = GetController();
-            //Act
-            var result = controller.GetKeyOption(1);
-
-            // Assert
-            Assert.Equal(OptionKey.FootballNewsLeft, result);
-        }
-
-        [Fact]
-        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsCenter()
-        {
-            // Arrange
-            var controller = GetController();
-            //Act
-            var result = controller.GetKeyOption(2);
-
-            // Assert
-            Assert.Equal(OptionKey.FootballNewsCenter, result);
-        }
-        [Fact]
-        public void GetKeyOption_WhenCalled_ReturnExpectedFootballNewsRight()
-        {
-            // Arrange
-            var controller = GetController();
-            //Act
-            var result = controller.GetKeyOption(3);
-
-            // Assert
-            Assert.Equal(OptionKey.FootballNewsRight, result);
         }
 
         [Fact]
@@ -423,9 +373,14 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var cmd = new Fixture().Create<CommandResult>();
             var categoryUpdate = new Fixture().Create<FootballNewsHomePage>();
 
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
+
+            footballNewsCategories[0] = categoryUpdate;
+
+            optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
             postService.GetMenuAsync(menuName).Returns(menus);
             postService.GetCateParentsAsync(menus.First().Slug).Returns(cateParents);
-            optionService.UpdateOptionAsync(controller.GetKeyOption(1), JsonConvert.SerializeObject(categoryUpdate)).Returns(cmd);
+            optionService.UpdateOptionAsync(OptionKey.FootballNewsCategories, JsonConvert.SerializeObject(footballNewsCategories)).Returns(cmd);
 
             //Act
             var result = await controller.EditCategory(menus.First().Slug, 1);
