@@ -7,25 +7,23 @@
     }
 
     &__title {
-        margin-bottom: 1.2rem;
+        margin-bottom: 2.4rem;
         position: relative;
-        padding-left: 1rem;
-
         @include tableMobile {
             margin-bottom: .9rem;
         }
 
-        &::after {
-            content: "";
-            display: block;
-            background: #F12F19;
-            position: absolute;
-            left: 0;
-            top: 2px;
-            width: .3rem;
-            height: 2rem;
-            z-index: 0;
-        }
+        // &::after {
+        //     content: "";
+        //     display: block;
+        //     background: #F12F19;
+        //     position: absolute;
+        //     left: 0;
+        //     top: 2px;
+        //     width: .3rem;
+        //     height: 2rem;
+        //     z-index: 0;
+        // }
 
         a {
             font-weight: bold;

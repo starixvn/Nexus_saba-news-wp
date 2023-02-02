@@ -62,16 +62,23 @@ export default class GridItem extends PureComponent {
                 {
                     matches.map(item => {
                         return (
-                            <div className="soccer-match-grid" key={item.key}>
-                                <div className="soccer-match-grid-item">
-                                    <div className="soccer-match-grid-item-header">{item.text}</div>
-                                    <div className="soccer-match-grid-item-body">
-                                        {
-                                            item.childs.map((match, key) => <Match key={key} match={{...match, league}} />)
-                                        }
-                                    </div>
-                                </div>
+
+                            <div className="group-duel" key={item.key}>
+                                <div className="duel-date">{item.text}</div> 
+                                {
+                                    item.childs.map((match, key) => <Match key={key} match={{...match, league}} />)
+                                }
                             </div>
+                            // <div className="soccer-match-grid" key={item.key}>
+                            //     <div className="soccer-match-grid-item">
+                            //         <div className="soccer-match-grid-item-header">{item.text}</div>
+                            //         <div className="soccer-match-grid-item-body">
+                            //             {
+                            //                 item.childs.map((match, key) => <Match key={key} match={{...match, league}} />)
+                            //             }
+                            //         </div>
+                            //     </div>
+                            // </div>
                         );
                     })
                 }

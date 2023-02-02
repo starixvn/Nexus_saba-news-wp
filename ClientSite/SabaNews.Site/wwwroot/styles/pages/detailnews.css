@@ -1525,25 +1525,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block__title {
-  margin-bottom: 1.2rem;
+  margin-bottom: 2.4rem;
   position: relative;
-  padding-left: 1rem;
 }
 @media screen and (max-width: 1024px) {
   .block__title {
     margin-bottom: 0.9rem;
   }
-}
-.block__title::after {
-  content: "";
-  display: block;
-  background: #F12F19;
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 0.3rem;
-  height: 2rem;
-  z-index: 0;
 }
 .block__title a {
   font-weight: bold;

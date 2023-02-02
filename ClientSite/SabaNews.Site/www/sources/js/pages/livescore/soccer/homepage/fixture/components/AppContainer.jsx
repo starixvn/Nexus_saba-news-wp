@@ -52,8 +52,8 @@ export class AppContainer extends Component {
             <>
                 <SignalR />
                 <div className="livescore-home">
+                    <div className="block__title" onClick={this.handleClickFixture}><a>Lịch thi đấu</a></div>
                     <div className="livescore-soccer-main">
-                        <div className="livescore-home-title" onClick={this.handleClickFixture}>Lịch thi đấu</div>
                         {
                             leagues === null && <SkeletonGrid />
                         }

@@ -16,6 +16,7 @@ export class AppContainer extends Component {
         return (
             <>
                 <div className="livescore-home">
+                    <div className="block__title"><a>Bảng xếp hạng</a></div>
                     <div className="livescore-soccer-main">
                         {
                             standings !== null && standings.length > 0 &&

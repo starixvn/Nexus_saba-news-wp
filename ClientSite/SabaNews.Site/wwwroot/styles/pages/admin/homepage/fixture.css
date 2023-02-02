@@ -168,7 +168,6 @@ body {
   height: 28px;
 }
 .navigation .item-navigation {
-  width: 113px;
   color: navy;
   font-size: 16px;
   font-weight: bold;
@@ -299,4 +298,4 @@ body {
 
 .modal-title .title {
   text-decoration: none !important;
-}/*# sourceMappingURL=fixture.css.map */
+}

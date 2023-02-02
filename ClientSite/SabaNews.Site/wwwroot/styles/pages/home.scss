@@ -845,8 +845,12 @@
 
 //new
 .main{
-    #fixture-homepage{
+    padding-top: 3rem;
+    #fixture-homepage,#standing-homepage{
         border: none;
+        .block__title{
+            margin-bottom: 1.2rem;
+        }
     }
     .block-news-hot{
         display: grid;
