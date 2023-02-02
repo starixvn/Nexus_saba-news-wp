@@ -76,6 +76,6 @@ export default class GridItem extends PureComponent {
                     })
                 }
             </div>
-        )
+        );
     }
 }

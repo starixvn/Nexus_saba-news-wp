@@ -21,7 +21,7 @@ export  default class Grid extends PureComponent {
             }
         }
         return selectedId;
-    }
+    };
     onChange = event => {
         this.setState({selectedLeagueId: parseInt(event.target.value)});
     };
@@ -31,7 +31,7 @@ export  default class Grid extends PureComponent {
         const {standings} = this.props;
         const currentStanding = standings.find(item => item.league.leagueId === selectedLeagueId);
         return currentStanding;
-    }
+    };
     render() {
         const { standings } = this.props;
         const { selectedLeagueId } = this.state;
@@ -49,6 +49,6 @@ export  default class Grid extends PureComponent {
                     <GridItem leagueStanding={currentLeagueStanding} />
                 </div>
             </div>
-        )
+        );
     }
 }

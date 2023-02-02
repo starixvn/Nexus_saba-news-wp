@@ -33,9 +33,9 @@
             var isValid = false;
             $(form + ' .season-error').html('season is required');
         }
-        if (($(form + ' #order').val() == '')) {
+        if (($(form + ' #order').val() <= 0)) {
             var isValid = false;
-            $(form + ' .order-error').html('order is required');
+            $(form + ' .order-error').html('priority is invalid');
         }
         return isValid;
     }
