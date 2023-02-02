@@ -69,6 +69,7 @@
         "swiper": "^6.8.4"
     },
     "jest": {
-        "testResultsProcessor": "jest-sonar-reporter"
+        "testResultsProcessor": "jest-sonar-reporter",
+        "test-coverage": "jest --ci -u --coverage"
     }
 }
