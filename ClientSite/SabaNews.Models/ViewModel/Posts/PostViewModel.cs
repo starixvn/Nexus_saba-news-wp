@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Models.ViewModel.Posts
 {
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -20,7 +21,7 @@
         public string RSSUrl { get; set; }
         public HeaderViewModel Header { get; set; }
         public BannerModel Banner { get; set; }
-        public List<string> FootballNewUrls { get; set; }
+        public List<FootballNewsHomePage> FootballNewCategory { get; set; }
         public List<IEnumerable<Post>> LeaguePosts { get; set; }
     }
 }

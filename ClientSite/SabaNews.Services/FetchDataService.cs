@@ -67,8 +67,7 @@
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
 
-            var leaguePosts = await GetFootballNews();
-            var footballNewUrls = await GetUrlsFootballNews();
+            var (footballNewUrls,leaguePosts) = await GetFootballNews();
 
             var viewModel = new PostViewModel
             {
@@ -82,7 +81,7 @@
                 BackstagePosts = (backstagePosts).ToArray(),
                 TransferPosts = (transferPosts).ToArray(),
                 Category = category,
-                FootballNewUrls = footballNewUrls
+                FootballNewCategory = footballNewUrls
             };
 
             return viewModel;
@@ -267,45 +266,19 @@
                 result.Add(new StandingLeagueModel { League = league, Standing = standing });
             }
             return result;
-        }
+        }       
 
-        public async Task<List<string>> GetUrlsFootballNews()
+        public async Task<(List<FootballNewsHomePage> ,List<IEnumerable<Post>>)> GetFootballNews()
         {
-            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
-            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
-            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
-
-            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
-            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
-            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
-
-            var urls = new List<string>
-            {
-                configuration.GetValue<string>("BaseUrl") + footballnewsleft.Url,
-                configuration.GetValue<string>("BaseUrl") + footballnewscenter.Url,
-                configuration.GetValue<string>("BaseUrl") + footballnewsright.Url
-            };
-            
-            return urls;
-        }
-
-        public async Task<List<IEnumerable<Post>>> GetFootballNews()
-        {
-            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
-            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
-            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
-
-            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
-            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
-            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
-
+            var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
             List<IEnumerable<Post>> leaguePosts = new()
             {
-                await postService.GetPostsBySlugAsync(footballnewsleft.Slug, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(footballnewscenter.Slug, Constants.FromFirstItem, Constants.GetFourItems),
-                await postService.GetPostsBySlugAsync(footballnewsright.Slug, Constants.FromFirstItem, Constants.GetFourItems)
+                await postService.GetPostsBySlugAsync(footballNewsCategories[0]?.Slug, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballNewsCategories[1]?.Slug, Constants.FromFirstItem, Constants.GetFourItems),
+                await postService.GetPostsBySlugAsync(footballNewsCategories[2]?.Slug, Constants.FromFirstItem, Constants.GetFourItems)
             };
-            return leaguePosts;
+            return (footballNewsCategories, leaguePosts);
         }
     }
 }

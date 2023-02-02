@@ -6,8 +6,6 @@
 
         public const string HompageStanding = "homepage_standing";
 
-        public const string FootballNewsLeft = "football_news_left";
-        public const string FootballNewsCenter = "football_news_center";
-        public const string FootballNewsRight = "football_news_right";
+        public const string FootballNewsCategories = "football_news_categories";
     }
 }

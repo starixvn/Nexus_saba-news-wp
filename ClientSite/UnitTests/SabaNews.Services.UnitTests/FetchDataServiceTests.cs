@@ -34,23 +34,11 @@
         private IOptionService optionService;
         private readonly IFixture fixture = new Fixture();
 
-        private readonly Option optionLeft = new()
+        private readonly Option option = new()
         {
             OptionId = 0,
-            OptionName = "football_news_left",
-            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
-        };
-        private readonly Option optionCenter = new()
-        {
-            OptionId = 0,
-            OptionName = "football_news_center",
-            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
-        };
-        private readonly Option optionRight = new()
-        {
-            OptionId = 0,
-            OptionName = "football_news_right",
-            OptionValue = "{\"Category\":\"Asian Cup\",\"Slug\":\"asian-cup\",\"Url\":\"tin-the-thao/bong-da/quoc-te/asian-cup\",\"CreatedDate\":\"2023-01-30T06:22:22.6951709Z\"}"
+            OptionName = "football_news_categories",
+            OptionValue = "[{\"Category\":\"World Cup\",\"Id\":1,\"Slug\":\"world-cup\",\"Url\":\"/tin-the-thao/bong-da/quoc-te/world-cup\",\"CreatedDate\":\"2023-01-31T07:16:31.8439748Z\"},{\"Category\":\"La Liga\",\"Id\":2,\"Slug\":\"la-liga\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha/la-liga\",\"CreatedDate\":\"2023-01-31T06:45:02.7067665Z\"},{\"Category\":\"Tây Ban Nha\",\"Id\":3,\"Slug\":\"tay-ban-nha\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha\",\"CreatedDate\":\"2023-01-31T07:32:57.3471868Z\"}]"
         };
 
         [Fact]
@@ -332,34 +320,6 @@
         }
 
         [Fact]
-        public async Task GetUrlsFootballNews_WhenCalled_ReturnExpectedData()
-        {
-            //Arrange
-            var service = GetFetchDataService();
-
-            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
-            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
-            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
-
-            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
-            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
-            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
-
-            var expected = new List<string>
-            {
-                configuration.GetValue<string>("BaseUrl") + footballnewsleft.Url,
-                configuration.GetValue<string>("BaseUrl") + footballnewscenter.Url,
-                configuration.GetValue<string>("BaseUrl") + footballnewsright.Url
-            };
-
-            //Act
-            var actual = await service.GetUrlsFootballNews();
-
-            //Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public async Task GetFootballNews_WhenCalled_ReturnExpectedData()
         {
             //Arrange
@@ -369,17 +329,13 @@
             var postCenter = new Fixture().Create<IEnumerable<Post>>();
             var postRight = new Fixture().Create<IEnumerable<Post>>();
 
-            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
-            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
-            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
 
-            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
-            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
-            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
 
-            postService.GetPostsBySlugAsync(footballnewsleft.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postLeft);
-            postService.GetPostsBySlugAsync(footballnewscenter.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postCenter);
-            postService.GetPostsBySlugAsync(footballnewsright.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postRight);
+            postService.GetPostsBySlugAsync(footballNewsCategories[0]?.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postLeft);
+            postService.GetPostsBySlugAsync(footballNewsCategories[1]?.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postCenter);
+            postService.GetPostsBySlugAsync(footballNewsCategories[2]?.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postRight);
 
             List<IEnumerable<Post>> expected = new()
             {
@@ -392,7 +348,7 @@
             var actual = await service.GetFootballNews();
 
             //Assert
-            Assert.Equal(expected.Count, actual.Count);
+            Assert.Equal(expected.Count, actual.Item2.Count);
         }
 
         [Fact]
@@ -419,17 +375,12 @@
             var postCenter = new Fixture().Create<IEnumerable<Post>>();
             var postRight = new Fixture().Create<IEnumerable<Post>>();
 
-            optionService.GetOptionAsync(OptionKey.FootballNewsLeft).Returns(optionLeft);
-            optionService.GetOptionAsync(OptionKey.FootballNewsCenter).Returns(optionCenter);
-            optionService.GetOptionAsync(OptionKey.FootballNewsRight).Returns(optionRight);
+            optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
 
-            var footballnewsleft = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue);
-            var footballnewscenter = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue);
-            var footballnewsright = JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue);
-
-            postService.GetPostsBySlugAsync(footballnewsleft.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postLeft);
-            postService.GetPostsBySlugAsync(footballnewscenter.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postCenter);
-            postService.GetPostsBySlugAsync(footballnewsright.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postRight);
+            postService.GetPostsBySlugAsync(footballNewsCategories[0]?.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postLeft);
+            postService.GetPostsBySlugAsync(footballNewsCategories[1]?.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postCenter);
+            postService.GetPostsBySlugAsync(footballNewsCategories[2]?.Slug, Constants.FromFirstItem, Constants.GetFourItems).Returns(postRight);
 
             //Act
             var actual = await service.GetHomePageViewModel();

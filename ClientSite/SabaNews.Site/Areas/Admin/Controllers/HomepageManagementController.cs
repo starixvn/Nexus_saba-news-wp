@@ -172,17 +172,9 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
         public async Task<ActionResult> GetDataFootBallGrid()
         {
-            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
-            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
-            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
-
-            var FootballNews = new List<FootballNewsHomePage>{
-                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue),
-                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue),
-                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue)
-            };
-
-            return PartialView("~/Areas/Admin/Views/HomepageManagement/FootballNews/_FootballNewsDataGrid.cshtml", FootballNews);
+            var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
+            return PartialView("~/Areas/Admin/Views/HomepageManagement/FootballNews/_FootballNewsDataGrid.cshtml", footballNewsCategories);
         }
 
         [HttpGet]
@@ -191,16 +183,9 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var menuName = configuration.GetValue<string>("MenuName");
             var menus = await postService.GetMenuAsync(menuName);
 
-            var optionLeft = await optionService.GetOptionAsync(OptionKey.FootballNewsLeft);
-            var optionCenter = await optionService.GetOptionAsync(OptionKey.FootballNewsCenter);
-            var optionRight = await optionService.GetOptionAsync(OptionKey.FootballNewsRight);
-
-            var footballNews = new List<FootballNewsHomePage>{
-                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionLeft.OptionValue),
-                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionCenter.OptionValue),
-                JsonConvert.DeserializeObject<FootballNewsHomePage>(optionRight.OptionValue)
-            };
-            ViewBag.SlugSelected = footballNews[count - 1].Slug;
+            var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
+            ViewBag.SlugSelected = footballNewsCategories[count - 1].Slug;
             ViewBag.Count = count;
             return PartialView("~/Areas/Admin/Views/HomepageManagement/FootballNews/_EditFootBall.cshtml", menus);
         }
@@ -212,6 +197,10 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var menus = await postService.GetMenuAsync(menuName);
             var slug = menus.Where(x => x.Slug == category).ToList();
             var cateParents = await postService.GetCateParentsAsync(slug.First().Slug);
+
+            var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);
+            var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
+
             var categoryUpdate = new FootballNewsHomePage
             {
                 Category = slug.First().MenuTitle,
@@ -221,7 +210,10 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
             };
             categoryUpdate.Url = categoryUpdate.Url[1..];
-            var cmdResult = await optionService.UpdateOptionAsync(GetKeyOption(count), JsonConvert.SerializeObject(categoryUpdate));
+
+            footballNewsCategories[count - 1] = categoryUpdate;
+
+            var cmdResult = await optionService.UpdateOptionAsync(OptionKey.FootballNewsCategories, JsonConvert.SerializeObject(footballNewsCategories));
             return Json(cmdResult);
         }
 
@@ -231,26 +223,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var menus = await postService.GetMenuAsync(menuName);
             var slug = menus.Where(x => x.Slug == category).ToList();
             return Json(slug[0]);
-        }
-
-        public string GetKeyOption(int count)
-        {
-            string key;
-            const int footballNewsLeft = 1;
-            const int footballNewscenter = 2;
-            if (count == footballNewsLeft)
-            {
-                key = OptionKey.FootballNewsLeft;
-            }
-            else if (count == footballNewscenter)
-            {
-                key = OptionKey.FootballNewsCenter;
-            }
-            else
-            {
-                key = OptionKey.FootballNewsRight;
-            }
-            return key;
         }
 
         private static string GetKeyOption(bool isFixtureOption)
