@@ -49,9 +49,9 @@ export class AppContainer extends Component {
     render() {
         const { leagues } = this.props;
         return (
-            <div className="container livescore-container">
+            <>
                 <SignalR />
-                <div className="livescore-soccer">
+                <div className="livescore-home">
                     <div className="livescore-soccer-main">
                         <div className="livescore-home-title" onClick={this.handleClickFixture}>Lịch thi đấu</div>
                         {
@@ -65,7 +65,7 @@ export class AppContainer extends Component {
                         }
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 

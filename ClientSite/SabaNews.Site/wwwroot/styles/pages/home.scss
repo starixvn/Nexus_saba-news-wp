@@ -829,6 +829,17 @@
     }
 }
 
+//new
+.main{
+    #fixture-homepage{
+        border: none;
+    }
+}
+
+
+
+
+
 .banner-euro-mobile {
     text-align: center;
     position : relative;
@@ -838,17 +849,6 @@
     }
 }
 
-/*.wapper.active-fixed {
-    .child-mobile-menu, .button-mobile, .top-header {
-        position: fixed;
-        z-index: 10005;
-        top: 0;
-    }
-
-    .button-mobile {
-        z-index: 10004;
-    }
-}*/
 
 .main {
     @include tableMobile {

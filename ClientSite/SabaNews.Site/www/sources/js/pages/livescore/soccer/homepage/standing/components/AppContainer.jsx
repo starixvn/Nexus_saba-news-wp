@@ -14,8 +14,8 @@ export class AppContainer extends Component {
     render() {
         const { standings } = this.props;
         return (
-            <div className="container livescore-container">
-                <div className="livescore-soccer">
+            <>
+                <div className="livescore-home">
                     <div className="livescore-soccer-main">
                         {
                             standings !== null && standings.length > 0 &&
@@ -23,7 +23,7 @@ export class AppContainer extends Component {
                         }
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

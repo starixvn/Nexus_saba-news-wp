@@ -54,6 +54,21 @@
 
 @(await Component.InvokeAsync("Menu", new { page = "home-page", CategorySlug = "/" }))
 <section class="main">
+    <div class="container">
+        <div class="block-columns">
+            <div class="columns columns-left">
+                left
+            </div> 
+            <div class="columns columns-right">
+                <div id="fixture-homepage"></div>
+                <div id="standing-homepage"></div>
+            </div> 
+        </div>
+    </div>
+
+
+
+
     <div class="colums-main">
 
         <div class="banner banner-desktop-center"></div>
@@ -65,12 +80,7 @@
             </div>*@
         }
 
-        <div class="fixture-home-page">
-            <div class="container">
-                <div id="fixture-homepage"></div>
-                <div id="standing-homepage"></div>
-            </div>
-        </div>
+        
 
         <div class="block block-hot-news">
             <div class="container">
@@ -479,6 +489,6 @@
             </div>
         </div>
     </div>
-    @await Html.PartialAsync(ViewResources.SidebarBannerView)
+    @* @await Html.PartialAsync(ViewResources.SidebarBannerView) *@
 </section>
 
