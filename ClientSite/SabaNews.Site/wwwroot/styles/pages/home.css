@@ -2090,7 +2090,6 @@ button {
   font-size: 2.4rem;
   line-height: 3.3rem;
   margin: 0;
-  color: #333;
 }
 .box-vertical-content h3 {
   font-weight: 700;
@@ -2101,6 +2100,10 @@ button {
   font-weight: 700;
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+.box-vertical-content a {
+  text-decoration: none;
+  color: #333;
 }
 .box-vertical-content p {
   margin-top: 0.8rem;
@@ -3567,6 +3570,18 @@ button {
 .main .block-news-hot .block-news-hot-child .box-vertical-image {
   height: 17rem;
 }
+.main .block-guess {
+  padding: 2rem;
+  background: #F5F6F6;
+}
+.main .block-guess .block__title a .marked-icon {
+  position: absolute;
+  top: -6px;
+  right: 110px;
+  left: auto;
+  display: block;
+}
+
 .banner-euro-mobile {
   text-align: center;
   position: relative;

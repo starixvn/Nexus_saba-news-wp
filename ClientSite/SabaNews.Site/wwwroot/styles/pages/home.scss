@@ -914,8 +914,20 @@
     }
 
     .block-guess{
+        padding: 2rem;
+        background: #F5F6F6;
         .block__content{
-            
+        }
+        .block__title{
+            a{
+                .marked-icon {
+                    position: absolute;
+                    top: -6px;
+                    right: 110px;
+                    left: auto;
+                    display: block;
+                }
+            }
         }
     }
     

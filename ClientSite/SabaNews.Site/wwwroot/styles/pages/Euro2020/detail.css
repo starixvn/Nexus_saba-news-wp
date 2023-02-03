@@ -2246,7 +2246,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-size: 2.4rem;
   line-height: 3.3rem;
   margin: 0;
-  color: #333;
 }
 .box-vertical-content h3 {
   font-weight: 700;
@@ -2257,6 +2256,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-weight: 700;
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+.box-vertical-content a {
+  text-decoration: none;
+  color: #333;
 }
 .box-vertical-content p {
   margin-top: 0.8rem;
