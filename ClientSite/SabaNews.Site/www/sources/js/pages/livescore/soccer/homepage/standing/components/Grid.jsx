@@ -38,13 +38,15 @@ export  default class Grid extends PureComponent {
         const currentLeagueStanding = this.getLeagueStanding();
         return (
             <div className="season-standings">
-                <select  onChange={this.onChange} value={selectedLeagueId}>
-                    {
-                        standings.map((standing, index) =>
-                        standing.standing.length > 0 &&
-                        <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
-                    }
-                </select>
+                <div className="control-standing">
+                    <select  onChange={this.onChange} value={selectedLeagueId}>
+                        {
+                            standings.map((standing, index) =>
+                            standing.standing.length > 0 &&
+                            <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
+                        }
+                    </select>
+                </div>
                 <GridItem leagueStanding={currentLeagueStanding} />
             </div>
         );

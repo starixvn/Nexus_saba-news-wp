@@ -17,3 +17,14 @@
 .table-custom{
     margin-top: 1rem;
 }
+.control-standing{
+   select{
+        background: transparent;
+        border: none;
+        outline: none;
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        color: #333;
+   }
+}
