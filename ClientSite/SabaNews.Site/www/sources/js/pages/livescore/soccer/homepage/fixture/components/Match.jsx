@@ -51,15 +51,39 @@ export default class Match extends PureComponent {
         const isIntermission = match.status === MatchStatus.Intermission;
         return (
             <>
-                <div className="duel-participant">
+                <div className="duel-participant live live-intermission"> 
                     <div className="flex-league">
-                        <div className="column column-left home-team"></div>
-                        <div className="column column-center"></div>
-                        <div className="column column-right away-team"></div>
+                        <div className="column column-left home-team">
+                            <ul className="team">
+                                <li className="team-name">Real Betis</li>
+                                <li className="team-logo">
+                                    <img loading="lazy" src="https://sports-cdn.zgsmxw.com/uploads/teamIcon/1533/9zvrnWACkbD.png" />
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="column column-center result-league">
+                            <div class="detail-score-wrapper live">
+                                <span>1</span>
+                                <span class="detail-score-divider"> - </span>
+                                <span>2</span>
+                            </div>
+                        </div>
+                        <div className="column column-right away-team">
+                            <ul className="team">
+                                <li className="team-logo">
+                                    <img loading="lazy" src="https://sports-cdn.zgsmxw.com/uploads/teamIcon/1533/9zvrnWACkbD.png" />
+                                </li>
+                                <li className="team-name">Real Betis</li>
+                            </ul>
+                        </div>
                     </div>
                     <div className="flex-league">
                         <div className="column column-left home-team"></div>
-                        <div className="column column-center"></div>
+                        <div className="column column-center">
+                            <div className="soccer-match-stage">
+                                <span>Hiệp 1: 1-0</span>
+                            </div>
+                        </div>
                         <div className="column column-right away-team"></div>
                     </div>
                 </div>
