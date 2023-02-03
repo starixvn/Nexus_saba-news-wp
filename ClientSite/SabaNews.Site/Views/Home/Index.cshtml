@@ -59,50 +59,52 @@
             <div class="columns columns-left">
                 <div class="block-news-hot">
                     <ul class="card-hightlight-text">
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
+                        @{
+                            int newPostIndex = 0;
+                            foreach (var item in Model.NewPosts)
+                            {
+                                newPostIndex++;
+                                if (newPostIndex <= 4)
+                                {
+                                    continue;
+                                }
+                                <li><a href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a></li>
+                            }
+                        }
                     </ul>
                     <div class="box-vertical box-vertical-hightlight">
-                        <a href="#" class="box-vertical-image hover-image">
-                            <img src="~/images/messi.png" class="img-res"/>
-                        </a> 
-                        <div class="box-vertical-content">
-                            <h1>Thuyền trưởng Hà Lan chỉ ra điểm yếu của Messi</h1>
-                            <p>HLV Louis van Gaal tin rằng Lionel Messi mang đến một điểm yếu cho Argentina mà ĐT Hà Lan có thể khai thác trong màn so tài sắp tới.</p>
-                        </div>
+                         @{
+                            var firstPost = Model.NewPosts[0];
+                            string firstImgUrl = firstPost.FeatureImage;
+                            <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
+                                <img src="@Url.Content(firstImgUrl)" class="img-res" />
+                            </a>
+                            <div class="box-vertical-content">
+                                <h1>@firstPost.PostTitle</h1>
+                                <p>@firstPost.PostExcerpt</p>
+                            </div>
+                        }
                     </div> 
                 </div>
                 <div class="block-news-hot-child">
-                    <div class="box-vertical">
-                        <a href="#" class="box-vertical-image hover-image">
-                            <img src="~/images/messi.png" class="img-res"/>
-                        </a> 
-                        <div class="box-vertical-content">
-                            <h3>Thuyền trưởng Hà Lan chỉ ra điểm yếu của Messi</h3>
-                        </div>
-                    </div>
-                    <div class="box-vertical">
-                        <a href="#" class="box-vertical-image hover-image">
-                            <img src="~/images/messi.png" class="img-res"/>
-                        </a> 
-                        <div class="box-vertical-content">
-                            <h3>Thuyền trưởng Hà Lan chỉ ra điểm yếu của Messi</h3>
-                        </div>
-                    </div> 
-                    <div class="box-vertical">
-                        <a href="#" class="box-vertical-image hover-image">
-                            <img src="~/images/messi.png" class="img-res"/>
-                        </a> 
-                        <div class="box-vertical-content">
-                            <h3>Thuyền trưởng Hà Lan chỉ ra điểm yếu của Messi</h3>
-                        </div>
-                    </div>  
+                    @{
+                        newPostIndex = 0;
+                        foreach (var item in Model.NewPosts)
+                        {
+                            newPostIndex++;
+                            if (newPostIndex < 5 && newPostIndex > 1)
+                            {
+                                <div class="box-vertical">
+                                    <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
+                                        <img src="@Url.Content(item.FeatureImage)" class="img-res" />
+                                    </a>
+                                    <div class="box-vertical-content">
+                                        <h3>@item.PostTitle</h3>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
                 </div> 
                 <div class="ads-insite">
                     <a href="#"><img src="~/images/ads-1.png" class="img-res"/></a>
@@ -150,95 +152,6 @@
                 <div class="skeleton-banner-mobile"></div>
             </div>*@
         }
-
-        
-
-        <div class="block block-hot-news">
-            <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost </a></h2>
-                <div class="block__content">
-                    <div class="group-hight-light">
-                        @{
-                            var firstPost = Model.NewPosts[0];
-                            <div class="post card-vertical card-vertical-highlight">
-                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="card-vertical__image">
-                                    @{ //short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
-                                        string firstImgUrl = firstPost.FeatureImage;
-
-                                        <picture>
-                                            <source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-                                            <source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@firstPost.PostTitle" class="img-res img-block">
-                                        </picture> }
-                                </a>
-                                <div class="group-title-home">
-                                    <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug })" class="card-vertical__title">@firstPost.PostTitle</a>
-                                    <p class="card-vertical__description text-description">
-                                        @Html.Raw(firstPost.PostExcerpt)
-                                        @if (firstPost.CommentCount > 0)
-                                        {
-                                            <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@firstPost.CommentCount</i></a>}
-                                    </p>
-                                </div>
-                            </div>
-
-                        }
-                        <div class="skeleton skeleton-vertical">
-                            <a class="skeleton-vertical__image"></a>
-                            <a class="skeleton-vertical__title"></a>
-                            <p class="skeleton-vertical__description text-description"></p>
-                        </div>
-                    </div>
-
-
-
-                    <div class="card-horizontal-section">
-                        @{
-                            int newPostIndex = 0;
-                            foreach (var item in Model.NewPosts)
-                            {
-                                {
-                                    newPostIndex++;
-                                    if (newPostIndex <= 1)
-                                    {
-                                        continue;
-                                    }
-                                }
-                                <div class="post card-title-wrapper card-item-@newPostIndex">
-                                    <a class="title" href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a>
-                                    <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="card-horizontal__image">
-                                        @{ string featuredImg = item.FeatureImage;
-
-                                            <picture>
-                                                <source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
-                                                <source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
-                                                <img asp-append-version="true" loading="lazy" src="@Url.Content(featuredImg)" alt="@item.PostTitle" class="img-res img-block">
-                                            </picture> }
-                                    </a>
-                                    <div class="sub-content">
-                                        <p class="description">
-                                            @Html.Raw(item.PostExcerpt)
-                                            @if (item.CommentCount > 0)
-                                            {
-                                                <a href="@Url.Action("Single", "Post", new { slug =  item.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@item.CommentCount</i></a>}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="skeleton skeleton-horizontal">
-                                    <a class="skeleton-horizontal__image"></a>
-                                    <a class="skeleton-horizontal__title"></a>
-                                    <p class="skeleton-horizontal__description text-description"></p>
-                                </div>
-                            }
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-
 
         <div class="banner-mobile banner-mobile-center"></div>
         @*<div class="skeleton-mobile skeleton-banner">
