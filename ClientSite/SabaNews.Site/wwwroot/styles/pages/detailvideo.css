@@ -1512,7 +1512,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 .block {
-  margin-bottom: 2rem;
+  margin-bottom: 3.2rem;
 }
 @media screen and (max-width: 1024px) {
   .block {
@@ -2209,6 +2209,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .box-vertical-content h3 {
   font-weight: 700;
   font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+.box-vertical-content h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
   line-height: 2.4rem;
 }
 .box-vertical-content p {

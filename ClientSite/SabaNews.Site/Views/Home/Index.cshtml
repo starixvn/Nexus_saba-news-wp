@@ -55,65 +55,104 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page", CategorySlug = "/" }))
 <section class="main">
     <div class="container">
-        <div class="block-columns">
-            <div class="columns columns-left">
-                <div class="block-news-hot">
-                    <ul class="card-hightlight-text">
-                        @{
-                            int newPostIndex = 0;
-                            foreach (var item in Model.NewPosts)
-                            {
-                                newPostIndex++;
-                                if (newPostIndex <= 4)
+        <div class="block">
+            <div class="block-columns">
+                <div class="columns columns-left">
+                    <div class="block-news-hot">
+                        <ul class="card-hightlight-text">
+                            @{
+                                int newPostIndex = 0;
+                                foreach (var item in Model.NewPosts)
                                 {
-                                    continue;
+                                    newPostIndex++;
+                                    if (newPostIndex <= 4)
+                                    {
+                                        continue;
+                                    }
+                                    <li><a href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a></li>
                                 }
-                                <li><a href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a></li>
                             }
-                        }
-                    </ul>
-                    <div class="box-vertical box-vertical-hightlight">
-                         @{
-                            var firstPost = Model.NewPosts[0];
-                            string firstImgUrl = firstPost.FeatureImage;
-                            <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
-                                <img src="@Url.Content(firstImgUrl)" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h1>@firstPost.PostTitle</h1>
-                                <p>@firstPost.PostExcerpt</p>
-                            </div>
-                        }
-                    </div> 
-                    <div class="block-news-hot-child">
-                        @{
-                            newPostIndex = 0;
-                            foreach (var item in Model.NewPosts)
-                            {
-                                newPostIndex++;
-                                if (newPostIndex < 5 && newPostIndex > 1)
+                        </ul>
+                        <div class="box-vertical box-vertical-hightlight">
+                            @{
+                                var firstPost = Model.NewPosts[0];
+                                string firstImgUrl = firstPost.FeatureImage;
+                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(firstImgUrl)" class="img-res" />
+                                </a>
+                                <div class="box-vertical-content">
+                                    <h1>@firstPost.PostTitle</h1>
+                                    <p>@firstPost.PostExcerpt</p>
+                                </div>
+                            }
+                        </div> 
+                        <div class="block-news-hot-child">
+                            @{
+                                newPostIndex = 0;
+                                foreach (var item in Model.NewPosts)
                                 {
-                                    <div class="box-vertical">
-                                        <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
-                                            <img src="@Url.Content(item.FeatureImage)" class="img-res" />
-                                        </a>
-                                        <div class="box-vertical-content">
-                                            <h3>@item.PostTitle</h3>
+                                    newPostIndex++;
+                                    if (newPostIndex < 5 && newPostIndex > 1)
+                                    {
+                                        <div class="box-vertical">
+                                            <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
+                                                <img src="@Url.Content(item.FeatureImage)" class="img-res" />
+                                            </a>
+                                            <div class="box-vertical-content">
+                                                <h3>@item.PostTitle</h3>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 }
                             }
-                        }
-                    </div> 
+                        </div> 
+                    </div>
+                    <div class="ads-insite">
+                        <a href="#"><img src="~/images/ads-1.png" class="img-res"/></a>
+                    </div>
+                </div> 
+                <div class="columns columns-right">
+                    <div id="fixture-homepage"></div>
+                    <div id="standing-homepage"></div>
+                </div> 
+            </div>
+        </div>
+         <div class="block block-guess">
+            <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess</a><span class="marked-icon"></span></h2>
+            <div class="block__content">
+                <div class="box-vertical">
+                    <a href="#" class="box-vertical-image hover-image">
+                        <img src="~/images/messi.png" class="img-res" />
+                    </a>
+                    <div class="box-vertical-content">
+                        <h2>Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</h2>
+                    </div>
                 </div>
-                <div class="ads-insite">
-                    <a href="#"><img src="~/images/ads-1.png" class="img-res"/></a>
+                <div class="box-vertical">
+                    <a href="#" class="box-vertical-image hover-image">
+                        <img src="~/images/messi.png" class="img-res" />
+                    </a>
+                    <div class="box-vertical-content">
+                        <h2>Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</h2>
+                    </div>
                 </div>
-            </div> 
-            <div class="columns columns-right">
-                <div id="fixture-homepage"></div>
-                <div id="standing-homepage"></div>
-            </div> 
+                <div class="box-vertical">
+                    <a href="#" class="box-vertical-image hover-image">
+                        <img src="~/images/messi.png" class="img-res" />
+                    </a>
+                    <div class="box-vertical-content">
+                        <h2>Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</h2>
+                    </div>
+                </div>
+                <div class="box-vertical">
+                    <a href="#" class="box-vertical-image hover-image">
+                        <img src="~/images/messi.png" class="img-res" />
+                    </a>
+                    <div class="box-vertical-content">
+                        <h2>Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
