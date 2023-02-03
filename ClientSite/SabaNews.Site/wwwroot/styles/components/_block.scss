@@ -55,4 +55,10 @@
     grid-template-rows: unset;
     grid-gap: 2rem;
     align-items: start;
+    @include tableMobile{
+        grid-gap: 1rem;
+    }
+    @include Mobile{
+        display: unset;
+    }
 }

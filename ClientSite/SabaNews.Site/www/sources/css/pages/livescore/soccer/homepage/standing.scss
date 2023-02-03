@@ -108,6 +108,13 @@
         color: #333;
         &.cell-rank{
             width: 5rem !important;
+            @include Mobile{
+                width: 4rem !important;
+            }
+        }
+        &.cell-participant{
+            flex: 1 0 12rem;
+            width: 12rem;
         }
     }
 }

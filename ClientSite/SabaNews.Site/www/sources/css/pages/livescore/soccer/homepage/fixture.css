@@ -792,6 +792,10 @@ body {
   color: #2F2F2F !important;
 }
 
+.livescore-home {
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #E5E5E5;
+}
 .livescore-home .livescore-name-team {
   display: block;
   background: #F5F3EF;
@@ -805,11 +809,26 @@ body {
   background: #F5F3EF;
   border: 1px solid #DADADA;
   border-radius: 3px;
-  overflow: hidden;
+  overflow: overlay;
+  max-height: 44.4rem;
+}
+.livescore-home .livescore-soccer-main::-webkit-scrollbar {
+  width: 0.6rem;
+}
+.livescore-home .livescore-soccer-main::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.livescore-home .livescore-soccer-main::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 .livescore-home .livescore-soccer-main .wc-bg-overflow {
   background: #FCFAF6;
   position: relative;
+  border-top: 1px solid #DADADA;
+}
+.livescore-home .livescore-soccer-main .wc-bg-overflow:first-child {
+  border-top: none;
 }
 .livescore-home .livescore-soccer-main .wc-bg-overflow .live-score-nav {
   position: absolute;
@@ -840,4 +859,79 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #E8E6E3;
+}
+.group-duel .duel-participant:last-child {
+  border-bottom: none;
+}
+.group-duel .duel-participant .flex-league {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.group-duel .live .soccer-match-stage span, .group-duel .live.live-intermission .soccer-match-stage span {
+  color: #E13C29;
+  font-size: 1rem;
+}
+.group-duel .live .soccer-match-stage span::before, .group-duel .live.live-intermission .soccer-match-stage span::before {
+  left: -10px;
+  top: 5px;
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.group-duel .live .soccer-match-stage span::after, .group-duel .live.live-intermission .soccer-match-stage span::after {
+  width: 1rem;
+  height: 1rem;
+  left: -13px;
+  top: 2px;
+}
+.group-duel .column-left .team-logo {
+  margin-left: 0.6rem;
+}
+.group-duel .column-left .team-name {
+  text-align: right;
+}
+.group-duel .column-right .team-logo {
+  margin-right: 0.6rem;
+}
+.group-duel .column-right .team-name {
+  text-align: left;
+}
+.group-duel .result-league {
+  margin: 0 2rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+}
+.group-duel .team {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+.group-duel .team-logo {
+  width: 2.2rem;
+  height: 2.2rem;
+  overflow: hidden;
+}
+.group-duel .team-logo img {
+  max-width: 100%;
+  height: auto;
+}
+.group-duel .team-name {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  width: 11rem;
+}
+.group-duel .team-name.win {
+  font-weight: 700;
+}
+.group-duel .soccer-match-stage {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4rem;
 }

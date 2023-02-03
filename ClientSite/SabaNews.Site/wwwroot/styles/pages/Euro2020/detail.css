@@ -1686,6 +1686,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   grid-gap: 2rem;
   align-items: start;
 }
+@media screen and (max-width: 1024px) {
+  .block-columns {
+    grid-gap: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .block-columns {
+    display: unset;
+  }
+}
 
 button {
   outline: none;

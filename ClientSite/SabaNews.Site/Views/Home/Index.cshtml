@@ -85,27 +85,27 @@
                             </div>
                         }
                     </div> 
-                </div>
-                <div class="block-news-hot-child">
-                    @{
-                        newPostIndex = 0;
-                        foreach (var item in Model.NewPosts)
-                        {
-                            newPostIndex++;
-                            if (newPostIndex < 5 && newPostIndex > 1)
+                    <div class="block-news-hot-child">
+                        @{
+                            newPostIndex = 0;
+                            foreach (var item in Model.NewPosts)
                             {
-                                <div class="box-vertical">
-                                    <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
-                                        <img src="@Url.Content(item.FeatureImage)" class="img-res" />
-                                    </a>
-                                    <div class="box-vertical-content">
-                                        <h3>@item.PostTitle</h3>
+                                newPostIndex++;
+                                if (newPostIndex < 5 && newPostIndex > 1)
+                                {
+                                    <div class="box-vertical">
+                                        <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
+                                            <img src="@Url.Content(item.FeatureImage)" class="img-res" />
+                                        </a>
+                                        <div class="box-vertical-content">
+                                            <h3>@item.PostTitle</h3>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             }
                         }
-                    }
-                </div> 
+                    </div> 
+                </div>
                 <div class="ads-insite">
                     <a href="#"><img src="~/images/ads-1.png" class="img-res"/></a>
                 </div>
@@ -121,7 +121,7 @@
     <hr />
     <hr />
     <hr />
-    <hr />
+    <hr style="margin-bottom: 5rem;"/>
 
 
 
