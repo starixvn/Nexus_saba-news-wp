@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react';
 import Item from '../../../league-detail/components/standings/grid/index';
+import THead from '../../../league-detail/components/standings/grid/THead';
+import TBody from '../../../league-detail/components/standings/grid/TBody';
+import { Tabs, Tab } from 'react-bootstrap';
 
 export  default class GridItem extends PureComponent {
     constructor(props) {
@@ -71,7 +74,27 @@ export  default class GridItem extends PureComponent {
         const lastStanding = standing[standing.length - 1];
         return (
             <div>
-                <Item standings={lastStanding.childs} isMobile={true} />
+                { lastStanding.childs.length === 1 &&
+                    <Item standings={lastStanding.childs} isMobile={true} />
+                }
+                {
+                    lastStanding.childs.length > 1 &&
+                    <Tabs  id="livescore-tab-league-detail"
+                    className="live-score-nav"
+                    >
+                        {
+                            lastStanding.childs.map((group, index) => {
+                                const groupName = group.key.charAt(0);
+                                return (
+                                    <Tab title={groupName} eventKey={group.key}  key={index}>
+                                        <THead groupName={groupName} isMobile={true} />
+                                        <TBody teams={group.childs} isMobile={true} />
+                                    </Tab>
+                                );
+                            })
+                        }
+                    </Tabs>
+                }
             </div>
         );
     }
