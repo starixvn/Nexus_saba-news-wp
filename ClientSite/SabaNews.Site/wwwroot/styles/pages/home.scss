@@ -21,6 +21,7 @@
 @import '../components/skeleton-loader';
 @import '../components/ads';
 @import '../components/_popup-event';
+@import '../components/scroll-snap';
 
 
 .main {
@@ -872,12 +873,18 @@
             }
         }
         .block__content {
-            // @include grid(repeat(3, 1fr), 1fr, 2rem);
-            // @include Mobile {
-            //     display: unset;
-            // }
+            .swiper-wrapper{
+                @include Mobile {
+                    @include grid(repeat(3, 1fr), 1fr, 2rem);
+                }
+            }
             .swiper-slide{
                 background-color: transparent;
+            }
+            .swiper-button, .swiper-pagination{
+                @include Mobile{
+                    display: none;
+                }
             }
         }
     }
