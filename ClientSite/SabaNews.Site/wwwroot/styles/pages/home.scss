@@ -854,10 +854,10 @@
     }
 
     .block-guess{
-        padding: 2rem;
+        padding: 2rem 2rem 4.5rem 2rem;
         background: #F5F6F6;
-        .block__content{
-        }
+        overflow: hidden;
+        position: relative;
         .block__title{
             a{
                 background: #F5F6F6;
@@ -876,7 +876,6 @@
             // @include Mobile {
             //     display: unset;
             // }
-            position: relative;
             .swiper-slide{
                 background-color: transparent;
             }
