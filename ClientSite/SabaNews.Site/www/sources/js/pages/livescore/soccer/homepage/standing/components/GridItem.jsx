@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import Item from '../../../league-detail/components/standings/grid/index';
-import THead from '../../../league-detail/components/standings/grid/THead';
-import TBody from '../../../league-detail/components/standings/grid/TBody';
+import Table from './table/Index';
+import TableHead from './table/Head';
+import TableBody from './table/Body';
 import { Tabs, Tab } from 'react-bootstrap';
 
 export  default class GridItem extends PureComponent {
@@ -75,7 +75,7 @@ export  default class GridItem extends PureComponent {
         return (
             <div>
                 { lastStanding.childs.length === 1 &&
-                    <Item standings={lastStanding.childs} isMobile={true} />
+                    <Table standings={lastStanding.childs} />
                 }
                 {
                     lastStanding.childs.length > 1 &&
@@ -87,8 +87,8 @@ export  default class GridItem extends PureComponent {
                                 const groupName = group.key.charAt(0);
                                 return (
                                     <Tab title={groupName} eventKey={group.key}  key={index}>
-                                        <THead groupName={groupName} isMobile={true} />
-                                        <TBody teams={group.childs} isMobile={true} />
+                                        <TableHead groupName={groupName} isMobile={true} />
+                                        <TableBody teams={group.childs} isMobile={true} />
                                     </Tab>
                                 );
                             })
