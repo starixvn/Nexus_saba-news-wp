@@ -39,6 +39,7 @@ export  default class Grid extends PureComponent {
         return (
             <div className="season-standings">
                 <div className="control-standing">
+                    <span>Ngoại Hạng Anh</span>
                     <select  onChange={this.onChange} value={selectedLeagueId}>
                         {
                             standings.map((standing, index) =>

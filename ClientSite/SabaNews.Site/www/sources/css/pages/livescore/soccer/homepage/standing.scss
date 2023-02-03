@@ -11,20 +11,35 @@
     .livescore-soccer-main{
         overflow: unset;
         max-height: 100%;
-        padding: 1rem 1.2rem;
     }
 }
 .table-custom{
-    margin-top: 1rem;
+    margin-top: 0;
+    margin: 1rem 1.2rem;
 }
 .control-standing{
-   select{
+    border-bottom: 1px solid #DADADA;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    select{
         background: transparent;
         border: none;
         outline: none;
+        width: 2.4rem;
+        height: 1rem;
+        font-size: 0;
+        option{
+            color: #4f4f4f;
+            font-weight: 400;
+            padding: 0 1.4rem;
+            font-size: 1.4rem;
+        }
+    }
+    span{
         font-weight: 700;
         font-size: 1.4rem;
         line-height: 1.9rem;
         color: #333;
-   }
+    }
 }
