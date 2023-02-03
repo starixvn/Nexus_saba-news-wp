@@ -5,3 +5,15 @@
 @import "../../../../components/block-extension";
 @import "../../../../components/container";
 @import '../../../../components/table-custom';
+
+#standing-homepage{
+    margin-top: 2rem;
+    .livescore-soccer-main{
+        overflow: unset;
+        max-height: 100%;
+        padding: 1rem 1.2rem;
+    }
+}
+.table-custom{
+    margin-top: 1rem;
+}

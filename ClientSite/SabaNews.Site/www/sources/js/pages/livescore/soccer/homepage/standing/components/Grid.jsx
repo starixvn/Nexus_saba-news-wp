@@ -45,9 +45,7 @@ export  default class Grid extends PureComponent {
                         <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
                     }
                 </select>
-                <div>
-                    <GridItem leagueStanding={currentLeagueStanding} />
-                </div>
+                <GridItem leagueStanding={currentLeagueStanding} />
             </div>
         );
     }
