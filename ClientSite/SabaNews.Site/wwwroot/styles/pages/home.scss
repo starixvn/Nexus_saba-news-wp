@@ -458,66 +458,6 @@
                 left: auto;
             }
         }
-
-        .block__content {
-            @include grid(repeat(3, 1fr), 1fr, #{$column-gap});
-
-            @include tableMobile {
-                @include grid(repeat(3, 1fr), 1fr, #{$column-gap-tablet});
-            }
-
-            @include Mobile {
-                display: inherit;
-            }
-
-            .card-horizontal {
-                border-color: #506180;
-            }
-
-            .card-vertical, .skeleton-vertical {
-                @include tableMobile {
-                    padding-bottom: 0;
-                }
-            }
-
-            .skeleton-vertical {
-                @include tableMobile {
-                    display: none;
-                }
-            }
-
-            .card-vertical__title {
-                color: #fff;
-                font-weight: normal;
-            }
-
-            .card-vertical__datetime {
-                color: #cbcbcb;
-            }
-
-
-
-
-            .card-vertical__image, .skeleton-vertical__image {
-                height: 20rem;
-
-                @include tableMobile {
-                    height: 9rem;
-                }
-
-                @include landscapeTablet {
-                    height: 18rem;
-                }
-
-                @include portraitTablet {
-                    height: 16rem;
-                }
-
-                @include Mobile {
-                    margin-bottom: 0;
-                }
-            }
-        }
     }
     // block-transfer
     .block-transfer {
@@ -920,13 +860,25 @@
         }
         .block__title{
             a{
+                background: #F5F6F6;
+                color: $color-main-title;
                 .marked-icon {
                     position: absolute;
-                    top: -6px;
-                    right: 110px;
+                    top: -5px;
+                    right: -40px;
                     left: auto;
                     display: block;
                 }
+            }
+        }
+        .block__content {
+            // @include grid(repeat(3, 1fr), 1fr, 2rem);
+            // @include Mobile {
+            //     display: unset;
+            // }
+            position: relative;
+            .swiper-slide{
+                background-color: transparent;
             }
         }
     }

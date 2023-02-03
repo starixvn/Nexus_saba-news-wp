@@ -1680,9 +1680,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .block-columns {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: unset;
+  display: flex;
   grid-gap: 2rem;
   align-items: start;
 }
