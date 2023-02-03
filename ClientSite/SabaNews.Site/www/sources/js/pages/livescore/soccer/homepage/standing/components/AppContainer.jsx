@@ -15,7 +15,7 @@ export class AppContainer extends Component {
         const { standings } = this.props;
         return (
             <>
-                <div className="livescore-home">
+                <div className="livescore-home livescore-standing">
                     <div className="block__title"><a>Bảng xếp hạng</a></div>
                     <div className="livescore-soccer-main">
                         {

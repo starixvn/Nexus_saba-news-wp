@@ -73,7 +73,7 @@ export  default class GridItem extends PureComponent {
         const standing = this.groupStandingsByStage(this.props.leagueStanding.standing)
         const lastStanding = standing[standing.length - 1];
         return (
-            <div>
+            <>
                 { lastStanding.childs.length === 1 &&
                     <Table standings={lastStanding.childs} />
                 }
@@ -87,15 +87,17 @@ export  default class GridItem extends PureComponent {
                                 const groupName = group.key.charAt(0);
                                 return (
                                     <Tab title={groupName} eventKey={group.key}  key={index}>
-                                        <TableHead groupName={groupName} isMobile={true} />
-                                        <TableBody teams={group.childs} isMobile={true} />
+                                        <div className="table-custom">
+                                            <TableHead groupName={groupName} isMobile={true} />
+                                            <TableBody teams={group.childs} isMobile={true} />
+                                        </div>
                                     </Tab>
                                 );
                             })
                         }
                     </Tabs>
                 }
-            </div>
+            </>
         );
     }
 }

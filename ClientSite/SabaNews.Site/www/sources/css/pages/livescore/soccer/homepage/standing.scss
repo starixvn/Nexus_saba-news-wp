@@ -12,7 +12,36 @@
         overflow: unset;
         max-height: 100%;
     }
+        
+    .live-score-nav{
+        margin: 1rem 1.2rem;
+        display: flex;
+        justify-content: flex-start;
+        a{
+            text-decoration: none;
+            background: #CFD4DC;
+            color: #333;
+            padding: .5rem 1rem;
+            font-weight: 600;
+            font-size: 1.4rem;
+            line-height: 1.9rem;
+            margin-right: 1.2rem;
+            &:last-child{
+                margin-right: 0;
+            }
+            &.active{
+                background: #3B3A3C;
+                color: #fff;
+            }
+        }
+    }
 }
+
+.livescore-standing{
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
 .table-custom{
     margin-top: 0;
     margin: 1rem 1.2rem;
@@ -41,5 +70,44 @@
         font-size: 1.4rem;
         line-height: 1.9rem;
         color: #333;
+    }
+}
+
+.table-custom{
+    border-radius: 0 0 3px 3px;
+    &-header{
+        height: 3.2rem;
+        background: #F5F3EF;
+        .table-custom-cell{
+            font-weight: 600;
+            color: #333;
+        }
+    }
+    &-body{
+        max-height: 25rem;
+        overflow: overlay;
+        &::-webkit-scrollbar {
+            width: .6rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($color: #000000, $alpha: .2);
+            border-radius: 3px;
+        }
+        .table-custom-row{
+            border-bottom: 1px solid #DADADA;
+        }  
+    }
+    &-cell{
+        font-size: 1.4rem !important;
+        line-height: 1.9rem !important;
+        color: #333;
+        &.cell-rank{
+            width: 5rem !important;
+        }
     }
 }
