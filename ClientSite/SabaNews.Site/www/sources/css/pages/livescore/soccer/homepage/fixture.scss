@@ -26,7 +26,7 @@
         background: #F5F3EF;
         border: 1px solid #DADADA;
         border-radius: 3px;
-        overflow: auto;
+        overflow: overlay;
         max-height: 48.4rem;
         &::-webkit-scrollbar {
             width: .6rem;
