@@ -1,7 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import LangHelper from '@jsroot/common/langHelper';
 import MatchStage from '@jsroot/components/MatchStage';
-import { MatchStatus, MatchResult } from '@jsroot/common/constants';
+import { MatchStatus } from '@jsroot/common/constants';
 import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -11,6 +12,47 @@ export default class Match extends PureComponent {
     constructor(props) {
         super(props);
     }
+
+    getMatchStage = () => {
+        const { match } = this.props;
+        const isLive = CommonFunctions.isLiveMatch(match.status);
+        let stage = '';
+        if(match.status === MatchStatus.Finished || isLive) {
+            return this.getFinalScore(match);
+        }
+        switch (match.status) {
+            case MatchStatus.NotStarted:
+                const startTime = DateTimeService.convertFromUTC(match.startTime);
+                stage = DateTimeService.toShortTimeFormat(startTime);
+                break;
+
+            case MatchStatus.Delay:
+                stage = LangHelper.getResource('Delay');
+                break;
+
+            case MatchStatus.Interrupt:
+                stage = LangHelper.getResource('Interrupt');
+                break;
+
+            case MatchStatus.Postpone:
+                stage = LangHelper.getResource('Postponed');
+                break;
+
+            case MatchStatus.Cancel:
+                stage = LangHelper.getResource('Cancel');
+                break;
+
+            case MatchStatus.TBD:
+                stage = <span title={LangHelper.getResource('ToBeDecided')}>{LangHelper.getResource('ToBeDecidedForShort')}</span>;
+                break;
+
+            default:
+                stage = LangHelper.getResource('Finish');
+                break;
+        }
+
+        return stage;
+    };
 
     onClick = event => {
         const url = CommonFunctions.getMatchDetailPageUrl(this.props.match);
@@ -25,7 +67,7 @@ export default class Match extends PureComponent {
         const isShowMore = name.length > 11;
         const teamName = isShowMore ? name.substring(0, 11) + '....' : name;
         return (
-            <li className="team-name" title={name}>{teamName}</li>
+            <li className="team-name" title={isShowMore ? name: ''}>{teamName}</li>
         )
     };
 
@@ -48,20 +90,8 @@ export default class Match extends PureComponent {
         return <Fragment />;
     };
 
-    getHalfScore = () => {
-        const { match } = this.props;
-        return (
-            <>
-                {
-                    match.status === MatchStatus.Finished &&
-                    <span>Hiệp 1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</span>
-                }
-            </>
-        );
-    };
 
-    getFinalScore = () => {
-        const { match } = this.props;
+    getFinalScore = match => {
         return (
             <>
                 <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
@@ -74,7 +104,6 @@ export default class Match extends PureComponent {
 
     render() {
         const { match } = this.props;
-        const teamResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
         const isLive = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         return (
@@ -91,8 +120,7 @@ export default class Match extends PureComponent {
                         </div>
                         <div className="column column-center result-league">
                             <div class={`detail-score-wrapper ${isLive ? 'live' : ''}`}>
-                                {match.status === MatchStatus.Finished && this.getFinalScore()}
-                                {match.status !== MatchStatus.Finished && <MatchStage match={match} />}
+                                {this.getMatchStage()}
                             </div>
                         </div>
                         <div className="column column-right away-team">
@@ -108,7 +136,7 @@ export default class Match extends PureComponent {
                         <div className="column column-left home-team"></div>
                         <div className="column column-center">
                             <div className="soccer-match-stage">
-                                {this.getHalfScore()}
+                            {isLive && <MatchStage match={match} /> }
                             </div>
                         </div>
                         <div className="column column-right away-team"></div>

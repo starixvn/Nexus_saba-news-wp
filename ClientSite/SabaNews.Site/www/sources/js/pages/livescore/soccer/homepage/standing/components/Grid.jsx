@@ -36,6 +36,9 @@ export  default class Grid extends PureComponent {
         const { standings } = this.props;
         const { selectedLeagueId } = this.state;
         const currentLeagueStanding = this.getLeagueStanding();
+        if(!currentLeagueStanding) {
+            return null;
+        }
         return (
             <div className="season-standings">
                 <div className="control-standing">

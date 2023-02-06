@@ -53,10 +53,10 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-home">
                     <div className="block__title" onClick={this.handleClickFixture}><a>Lịch thi đấu</a></div>
+                    {
+                        leagues === null && <SkeletonGrid />
+                    }
                     <div className="livescore-soccer-main">
-                        {
-                            leagues === null && <SkeletonGrid />
-                        }
                         {
                             leagues !== null &&
                             leagues.map((item, key) => {

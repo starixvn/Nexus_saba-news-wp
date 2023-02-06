@@ -2,7 +2,7 @@ import React from 'react';
 import TableHead from './Head';
 import TableBody from './Body';
 
-const Index = ({ standings, isMobile, isCup }) => {
+const Index = ({ standings, isCup }) => {
     const totalItems = standings.length;
     return (
         <>
@@ -12,8 +12,8 @@ const Index = ({ standings, isMobile, isCup }) => {
 
                     return (
                         <div key={index} className="table-custom">
-                            <TableHead groupName={groupName} isMobile={isMobile} />
-                            <TableBody teams={group.childs} isMobile={isMobile} />
+                            <TableHead groupName={groupName} />
+                            <TableBody teams={group.childs} />
                         </div>
                     );
                 })

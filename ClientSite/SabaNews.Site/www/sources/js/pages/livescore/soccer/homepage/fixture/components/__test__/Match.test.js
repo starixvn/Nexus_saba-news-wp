@@ -2,15 +2,196 @@ import React, { Fragment } from 'react';
 import { shallow } from 'enzyme';
 import Match from '../Match';
 import CommonFunctions from '@jsroot/common/common-functions';
+import LangHelper from '@jsroot/common/langHelper';
+import { MatchStatus } from '@jsroot/common/constants';
 
 describe('Match', () => {
     const defaultProps = {
-        match: {matchId: 1, status: 0, homeTeam: {teamId: 1, icon: 'icon'}, awayTeam: {teamId: 1, icon: 'icon'}},
+        match: {
+            matchId: 1,
+            status: 0,
+            homeTeam: {teamId: 1, icon: 'icon', teamNameVN: 'name'},
+            awayTeam: {teamId: 1, icon: 'icon', teamNameVN: 'namenamename'}
+        },
     };
 
 
     afterEach(() => {
         jest.clearAllMocks();
+    });
+
+    describe('getMatchStage', () => {
+        it('return as expected when match status = Finished', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.Finished
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('return as expected when match status = live', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.FirstHalf
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('return as expected when match status = NotStarted', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.NotStarted,
+                    startTime: '2020-10-10 10:00'
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toEqual('17:00');
+        });
+
+        it('return as expected when match status = Delay', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.Delay
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toEqual(LangHelper.getResource('Delay'));
+        });
+
+        it('return as expected when match status = Interrupt', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.Interrupt
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toEqual(LangHelper.getResource('Interrupt'));
+        });
+
+        it('return as expected when match status = Postpone', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.Postpone
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toEqual(LangHelper.getResource('Postponed'));
+        });
+
+        it('return as expected when match status = Cancel', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.Cancel
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toEqual(LangHelper.getResource('Cancel'));
+        });
+
+        it('return as expected when match status = TBD', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: MatchStatus.TBD
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('return as expected when match status is undefine', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: 123
+                }
+            }
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getMatchStage();
+
+            // Assert
+            expect(result).toEqual(LangHelper.getResource('Finish'));
+        });
     });
 
     describe('renderTeamStatus', () => {

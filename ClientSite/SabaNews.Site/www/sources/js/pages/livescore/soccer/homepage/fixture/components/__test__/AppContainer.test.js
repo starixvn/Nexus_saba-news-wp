@@ -180,7 +180,7 @@ describe('AppContainer', () => {
             window.open = jest.fn();
             const container = shallow(<AppContainer {...defaultProps} />);
             // Act
-            container.find('.livescore-home-title').simulate('click', event);
+            container.find('.block__title').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da', '_blank');
@@ -194,7 +194,7 @@ describe('AppContainer', () => {
             window.open = jest.fn();
             const container = shallow(<AppContainer {...defaultProps} />);
             // Act
-            container.find('.livescore-home-title').simulate('click', event);
+            container.find('.block__title').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);

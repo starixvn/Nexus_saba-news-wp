@@ -69,16 +69,6 @@ export default class GridItem extends PureComponent {
                                     item.childs.map((match, key) => <Match key={key} match={{...match, league}} />)
                                 }
                             </div>
-                            // <div className="soccer-match-grid" key={item.key}>
-                            //     <div className="soccer-match-grid-item">
-                            //         <div className="soccer-match-grid-item-header">{item.text}</div>
-                            //         <div className="soccer-match-grid-item-body">
-                            //             {
-                            //                 item.childs.map((match, key) => <Match key={key} match={{...match, league}} />)
-                            //             }
-                            //         </div>
-                            //     </div>
-                            // </div>
                         );
                     })
                 }

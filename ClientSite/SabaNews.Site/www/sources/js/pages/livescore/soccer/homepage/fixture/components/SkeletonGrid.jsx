@@ -1,70 +1,49 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { SwiperSlide, Swiper } from 'swiper/react';
-
-const SkeletonGrid = ({ isMobile }) => {
-    const blockWidth = document.getElementById('fixture-homepage').offsetWidth;
-    const items = Math.ceil(blockWidth / 200) - 1;
-
-    const loadSkeleton = () => {
+const SkeletonGrid = () => {
+    const MatchSkeleton = () => {
         return (
-            <div className="group-match-item home-skeleton">
-                <div className="soccer-match-item"
-                >
-                    <div className="soccer-match-date-result">
-                        <div className="group-live-icon">
-                            <i className="icon-livescore icon-wc-live" />
-                            <div className="soccer-match-stage"><Skeleton /></div>
-                        </div>
-                        <span className="wc-date"><Skeleton width={20} /></span>
+            <div className={`duel-participant`}>
+                <div className="flex-league">
+                    <div className="column column-left home-team">
+                        <ul className="team">
+                            <Skeleton width={40} />
+                        </ul>
                     </div>
-                    <div className="soccer-match-team team-skeleton">
-                        <div className="group-team">
-                            <div className="soccer-team home-team">
-                                <Skeleton circle className="soccer-team-logo" />
-                                <Skeleton className="soccer-team-name" width={100} />
-                                <div className="soccer-team-result">
-                                    <span className="total-score"><Skeleton /></span>
-                                    <span className="half-score"><Skeleton /></span>
-                                </div>
-                            </div>
-                            <div className="soccer-team away-team away-skeleton">
-                                <Skeleton circle className="soccer-team-logo" />
-                                <Skeleton className="soccer-team-name" width={100} />
-                                <div className="soccer-team-result">
-                                    <span className="total-score"><Skeleton /></span>
-                                    <span className="half-score"><Skeleton /></span>
-                                </div>
-                            </div>
+                    <div className="column column-center result-league">
+                        <div class={`detail-score-wrapper `}>
+                            <Skeleton width={20} />
                         </div>
+                    </div>
+                    <div className="column column-right away-team">
+                        <ul className="team">
+                            <Skeleton width={40} />
+                        </ul>
                     </div>
                 </div>
             </div>
         );
     };
     return (
-        <div className="wc-bg-overflow fixture-skeleton">
-            <div className="wc-date-bar">
-                {
-                    !isMobile &&
-                    <Swiper
-                        spaceBetween={10}
-                        slidesPerView={items}
-                    >
-                        {
-                            [...Array(items)].map((_, index) =>
-                                <SwiperSlide key={index}>
-                                    {loadSkeleton()}
-                                </SwiperSlide>
-                            )
-                        }
-                    </Swiper>
-                }
-                {
-                    isMobile &&
-                    [1, 2, 3].map(() => loadSkeleton())
-                }
-            </div>
+        <div className="livescore-soccer-main home-skeleton">
+            {
+                [1, 2, 3].map((index, _) => {
+                    return (
+                        <div className="wc-bg-overflow">
+                            <div className="livescore-name-team">
+                                <span className="round-name"><Skeleton width={20} /></span>
+                            </div>
+                            <div className="league-story">
+                                <div className="group-duel" key={index}>
+                                    <div className="duel-date"><Skeleton width={60} /></div>
+                                    {MatchSkeleton()}
+                                    {MatchSkeleton()}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 };

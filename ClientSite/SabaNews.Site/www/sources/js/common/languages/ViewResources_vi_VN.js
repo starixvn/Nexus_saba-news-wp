@@ -39,6 +39,7 @@
     PenaltyCancelled: 'Hủy phạt đền',
     PlayPenaltyVerification: 'Phạt đền, Thẻ vàng',
     PlayPenaltyChange: 'Hủy phạt đền, Xóa thẻ vàng',
+    pointer: "pointer",
     Round: 'Vòng',
     RedCardValid: 'Thẻ đỏ',
     RedCardCancelled: 'Hủy thẻ đỏ',
@@ -47,7 +48,12 @@
     RecentLeague: 'Giải đấu được thêm gần đây',
     Striker: 'Tiền đạo',
     SendPenaltyChange: 'Nâng mức thẻ',
+    Stage1: "Giai đoạn 1",
+    Stage2: "Giai đoạn 2",
+    Stage3: "Giai đoạn 3",
+    Stage4: "Giai đoạn 4",
     ToBeDecided: 'Chờ xác định',
+    ToBeDecidedForShort: 'CXĐ',
     Today: 'Hôm nay',
     TodayMatches: 'Trận đấu hôm nay',
     Turn: 'Lượt',
@@ -57,9 +63,5 @@
     StandingMinigame:'BẢNG XẾP HẠNG',
     Standing: 'Bảng xếp hạng',
     WinnersMinigame:'DANH SÁCH TRÚNG THƯỞNG',
-    Stage1: "Giai đoạn 1",
-    Stage2: "Giai đoạn 2",
-    Stage3: "Giai đoạn 3",
-    Stage4: "Giai đoạn 4",
-    pointer: "pointer"
+    
 };

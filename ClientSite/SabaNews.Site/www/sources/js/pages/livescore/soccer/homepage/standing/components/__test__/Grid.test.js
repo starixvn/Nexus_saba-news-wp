@@ -1,10 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Grid from '../Grid';
-import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 
 describe('Grid', () => {
     const defaultProps = {
@@ -77,8 +73,8 @@ describe('Grid', () => {
                 ...defaultProps,
                 standings:[
                     {
-                        league:{leagueId: 1},
-                        standing: []
+                        league:{leagueId: 1231231},
+                        standing: [{stageId: 1}]
                     },
                     {
                         league:{leagueId: 2, leagueNameVN:'league name'},

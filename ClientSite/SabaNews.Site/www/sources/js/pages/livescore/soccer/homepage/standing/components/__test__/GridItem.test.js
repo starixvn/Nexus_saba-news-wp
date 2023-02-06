@@ -162,6 +162,10 @@ describe('GridItem', () => {
                     {
                         stageId: 2, stageNameEN: 'Group', stageNameVN: '', orderIndex: 2,
                         groupName: 'A', teamId: 2, position: 2, promotion: null
+                    },
+                    {
+                        stageId: 2, stageNameEN: 'Group', stageNameVN: '', orderIndex: 2,
+                        groupName: 'B', teamId: 2, position: 2, promotion: null
                     }
                 ]}
             };
@@ -173,7 +177,7 @@ describe('GridItem', () => {
             expect(toJson(container)).toMatchSnapshot();
         });
 
-        it('renders correctly when promotions.length > 0', () => {
+        it('renders correctly when standing have one group', () => {
             // Arrange
             const props = {
                 ...defaultProps,
