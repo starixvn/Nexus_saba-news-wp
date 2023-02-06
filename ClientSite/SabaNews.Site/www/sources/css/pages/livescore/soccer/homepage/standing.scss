@@ -89,6 +89,9 @@
         overflow-x: hidden;
         &::-webkit-scrollbar {
             width: .6rem;
+            @include Mobile{
+                display: none;
+            }
         }
 
         &::-webkit-scrollbar-track {
@@ -109,9 +112,6 @@
         color: #333;
         &.cell-rank{
             width: 5rem !important;
-            @include Mobile{
-                width: 4rem !important;
-            }
         }
         &.cell-participant{
             flex: 1 0 12.5rem !important;

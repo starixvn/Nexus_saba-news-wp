@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -1879,6 +1880,24 @@ button {
   transform: scale(1.02);
 }
 
+.image-16-9 {
+  width: 100%;
+  margin: 0;
+  padding-top: 56.25%;
+  position: relative;
+}
+.image-16-9 img, .image-16-9 iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+}
+.image-16-9:hover img {
+  transition: all 0.5s ease;
+  transform: scale(1.01) translate(-50%, -50%);
+}
+
 .block-list {
   list-style: none;
   padding: 0;
@@ -2416,8 +2435,25 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   text-decoration: none;
   font-weight: 700;
   font-size: 1.4rem;
-  line-height: 2.2rem;
+  line-height: 1;
   color: #333;
+}
+.box-horizontal.box-video .box-horizontal-image {
+  position: relative;
+}
+.box-horizontal.box-video .box-horizontal-image:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  content: "Đang phát";
+  color: #fff;
+  text-align: center;
+  top: 0;
+  padding-top: 2rem;
+  display: block;
+  font-size: 1.2rem;
 }
 
 .comment {

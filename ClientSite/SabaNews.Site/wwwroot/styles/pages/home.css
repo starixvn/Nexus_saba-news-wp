@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -1624,6 +1625,24 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   transform: scale(1.02);
 }
 
+.image-16-9 {
+  width: 100%;
+  margin: 0;
+  padding-top: 56.25%;
+  position: relative;
+}
+.image-16-9 img, .image-16-9 iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+}
+.image-16-9:hover img {
+  transition: all 0.5s ease;
+  transform: scale(1.01) translate(-50%, -50%);
+}
+
 button {
   outline: none;
   border: 0;
@@ -2054,8 +2073,25 @@ button {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.4rem;
-  line-height: 2.2rem;
+  line-height: 1;
   color: #333;
+}
+.box-horizontal.box-video .box-horizontal-image {
+  position: relative;
+}
+.box-horizontal.box-video .box-horizontal-image:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  content: "Đang phát";
+  color: #fff;
+  text-align: center;
+  top: 0;
+  padding-top: 2rem;
+  display: block;
+  font-size: 1.2rem;
 }
 
 .comment {
@@ -2916,9 +2952,6 @@ button {
     grid-row: 2;
   }
 }
-.main .block-news-hot .block-news-hot-child .box-vertical-image {
-  height: 17rem;
-}
 .main .block-guess {
   padding: 2rem 2rem 4.5rem 2rem;
   background: #F5F6F6;
@@ -2975,6 +3008,11 @@ button {
 .main .block-video .block-child-video::-webkit-scrollbar {
   width: 0.6rem;
 }
+@media (max-width: 767px) {
+  .main .block-video .block-child-video::-webkit-scrollbar {
+    display: none;
+  }
+}
 .main .block-video .block-child-video::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -2992,7 +3030,7 @@ button {
   height: 6rem;
 }
 .main .block-video .block-child-video .box-horizontal-content {
-  max-width: 175px;
+  max-width: 17.5rem;
   width: 100%;
 }
 .main .block-video .block-child-video .box-horizontal-content a {

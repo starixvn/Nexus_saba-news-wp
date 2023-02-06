@@ -30,6 +30,9 @@
         max-height: 44.4rem;
         &::-webkit-scrollbar {
             width: .6rem;
+            @include Mobile{
+                display: none;
+            }
         }
 
         &::-webkit-scrollbar-track {

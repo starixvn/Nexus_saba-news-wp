@@ -93,9 +93,6 @@
                 grid-column: 1/4;
                 grid-row: 2;
             }
-            .box-vertical-image{
-                height: 17rem;
-            }
         }
     }
 
@@ -151,6 +148,9 @@
             padding-right: 1rem;
             &::-webkit-scrollbar {
                 width: .6rem;
+                @include Mobile{
+                    display: none;
+                }
             }
     
             &::-webkit-scrollbar-track {
@@ -170,7 +170,7 @@
                     height: 6rem;
                 }
                 &-content{
-                    max-width: 175px;
+                    max-width: 17.5rem;
                     width: 100%;
                     a{
                         font-weight: 600;

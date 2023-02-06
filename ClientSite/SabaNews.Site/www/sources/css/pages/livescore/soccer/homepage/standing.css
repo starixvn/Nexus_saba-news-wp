@@ -534,6 +534,11 @@ body {
 .table-custom-body::-webkit-scrollbar {
   width: 0.6rem;
 }
+@media (max-width: 767px) {
+  .table-custom-body::-webkit-scrollbar {
+    display: none;
+  }
+}
 .table-custom-body::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -551,11 +556,6 @@ body {
 }
 .table-custom-cell.cell-rank {
   width: 5rem !important;
-}
-@media (max-width: 767px) {
-  .table-custom-cell.cell-rank {
-    width: 4rem !important;
-  }
 }
 .table-custom-cell.cell-participant {
   flex: 1 0 12.5rem !important;

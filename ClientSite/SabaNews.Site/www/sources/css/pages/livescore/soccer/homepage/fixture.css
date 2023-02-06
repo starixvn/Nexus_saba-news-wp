@@ -815,6 +815,11 @@ body {
 .livescore-home .livescore-soccer-main::-webkit-scrollbar {
   width: 0.6rem;
 }
+@media (max-width: 767px) {
+  .livescore-home .livescore-soccer-main::-webkit-scrollbar {
+    display: none;
+  }
+}
 .livescore-home .livescore-soccer-main::-webkit-scrollbar-track {
   background-color: transparent;
 }

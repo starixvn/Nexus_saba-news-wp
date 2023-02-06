@@ -57,3 +57,23 @@
         }
     }
 }
+
+.image-16-9{
+    width: 100%;
+    margin: 0;
+    padding-top: 56.25%;
+    position: relative;
+    img, iframe{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: left;
+    }
+    &:hover {
+        img {
+            transition: all .5s ease;
+            transform: scale(1.01) translate(-50%,-50%);
+        }
+    }
+}
