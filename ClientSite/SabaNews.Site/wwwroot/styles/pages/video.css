@@ -1994,7 +1994,7 @@ button {
   }
 }
 
-.block__content:hover .swiper-button {
+.block-guess:hover .swiper-button {
   transform: translateX(0);
 }
 
