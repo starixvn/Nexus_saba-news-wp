@@ -137,14 +137,9 @@
                         @foreach (var post in Model.GuessPosts)
                         {
                             <div class="box-vertical swiper-slide scroll-snap-items">
-                            <a href="#" class="box-vertical-image hover-image image-16-9">
-                                    class="box-vertical-image hover-image">
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
+                                    class="box-vertical-image hover-image image-16-9">
                                     <img src="@Url.Content(post.FeatureImage)" class="img-res" />
-                            <a href="#" class="box-vertical-image hover-image image-16-9">
-                            <a href="#" class="box-vertical-image hover-image image-16-9">
-                            <a href="#" class="box-vertical-image hover-image image-16-9">
-                            <a href="#" class="box-vertical-image hover-image image-16-9">
-                            <a href="#" class="box-vertical-image hover-image image-16-9">
                                 </a>
                                 <div class="box-vertical-content">
                                     <h2><a
@@ -170,7 +165,7 @@
                         </h2>
                         <div class="group-video">
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image hover-image box-video image-16-9">
+                                <div class="swiper-video">
                                     <div class="swiper-container">
                                         <div class="swiper-wrapper">
                                             @foreach (var post in Model.VideoPosts)
@@ -182,46 +177,32 @@
                                                             <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                                         </a>
                                                         <div class="btn-play-video" post-id="@post.ID">
-                                                            <span class="icon-play"></span>
+                                                                <span class="icon-play"></span>
                                                         </div>
                                                     </div>
                                                     <div class="play_video"></div>
                                                     <div class="box-vertical-content">
                                                         <h4>
-                                        <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
+                                                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
                                                         </h4>
                                                     </div>
                                                 </div>
                                             }
-                                <div class="box-horizontal box-video">
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
                                         </div>
                                     </div>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
                                 </div>
                             </div>
                             <div class="block-child-video">
                                 @foreach (var post in Model.VideoPosts)
                                 {
-                                    <div class="box-horizontal">
+                                    <div class="box-horizontal box-video">
                                         <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-image">
                                             <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                         </a>
                                         <div class="box-horizontal-content">
                                             <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
+                                                <a
+                                                    href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
                                             </h5>
                                         </div>
                                     </div>
