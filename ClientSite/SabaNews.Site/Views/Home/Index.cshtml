@@ -165,32 +165,20 @@
                         </h2>
                         <div class="group-video">
                             <div class="box-vertical">
-                                <div class="swiper-video">
-                                    <div class="swiper-container">
-                                        <div class="swiper-wrapper">
-                                            @foreach (var post in Model.VideoPosts)
-                                            {
-                                                <div class="post swiper-slide" id="slide-@post.ID">
-                                                    <input type="hidden" name="iframe_value" value="@post.PostContent" />
-                                                    <div class="img-item">
-                                                        <a class="box-vertical-image hover-image box-video">
-                                                            <img src="@Url.Content(post.FeatureImage)" class="img-res" />
-                                                        </a>
-                                                        <div class="btn-play-video" post-id="@post.ID">
-                                                                <span class="icon-play"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="play_video"></div>
-                                                    <div class="box-vertical-content">
-                                                        <h4>
-                                                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                            }
+                                @{
+                                    var hotVideo = Model.VideoPosts[0];
+                                    <a class="box-vertical-image hover-image box-video image-16-9">
+                                        <img src="@Url.Content(hotVideo.FeatureImage)" class="img-res" />
+                                        <div class="btn-play-video" post-id="@hotVideo.ID">
+                                            <span class="icon-play"></span>
                                         </div>
+                                    </a>
+                                    <div class="box-vertical-content">
+                                        <h4>
+                                            <a href="@Url.Action("Single", "Post", new { slug = hotVideo.Slug })">@hotVideo.PostTitle</a>
+                                        </h4>
                                     </div>
-                                </div>
+                                }
                             </div>
                             <div class="block-child-video">
                                 @foreach (var post in Model.VideoPosts)
