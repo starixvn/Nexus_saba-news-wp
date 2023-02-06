@@ -223,6 +223,39 @@
             max-width: 23.5rem;
         }
     }
+
+    .pollevent{
+        width: auto;
+        margin: 2rem auto;
+        .poll-name{
+            background: linear-gradient(180deg, #565759 0%, #323334 100%);
+            border-radius: 3px 3px 0px 0px;
+        }
+        .poll-element{
+            height: 3.6rem;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .radio-border{
+            top: 0;
+            &::after{
+                top: 1px;
+            }
+        }
+        .poll-action{
+            .btn-result{
+                color: #777;
+            }
+            .btn-vote{
+                &.disabled{
+                    background: #DDDDDD;
+                    color: #A7A7A7;
+                }
+            }
+        }
+    }
+
 }
 
 

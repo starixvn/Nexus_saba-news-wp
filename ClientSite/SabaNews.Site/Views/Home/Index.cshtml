@@ -82,8 +82,7 @@
                             @{
                                 var firstPost = Model.NewPosts[0];
                                 string firstImgUrl = firstPost.FeatureImage;
-                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image image-16-9">
-                                    class="box-vertical-image hover-image">
+                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
                                     <img src="@Url.Content(firstImgUrl)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -101,7 +100,7 @@
                                     if (newPostIndex < 5 && newPostIndex > 1)
                                     {
                                         <div class="box-vertical">
-                                            <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image image-16-9">
+                                            <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
                                                 class="box-vertical-image hover-image">
                                                 <img src="@Url.Content(item.FeatureImage)" class="img-res" />
                                             </a>
@@ -138,7 +137,7 @@
                         {
                             <div class="box-vertical swiper-slide scroll-snap-items">
                                 <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
-                                    class="box-vertical-image image-16-9">
+                                    class="box-vertical-image hover-image">
                                     <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -167,7 +166,7 @@
                             <div class="box-vertical">
                                 @{
                                     var hotVideo = Model.VideoPosts[0];
-                                    <a class="box-vertical-image box-video image-16-9">
+                                    <a class="box-vertical-image box-video hover-image">
                                         <img src="@Url.Content(hotVideo.FeatureImage)" class="img-res" />
                                         <div class="btn-play-video" post-id="@hotVideo.ID">
                                             <span class="icon-play"></span>
@@ -204,7 +203,7 @@
                                 <a href="#" class="none-bg">AFF Cup</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image image-16-9">
+                                <a href="#" class="box-vertical-image hover-image">
                                     <img src="~/images/messi.png" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -222,7 +221,7 @@
                                 <a href="#" class="none-bg">ngoại hạng anh</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image image-16-9">
+                                <a href="#" class="box-vertical-image hover-image">
                                     <img src="~/images/messi.png" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -240,7 +239,7 @@
                                 <a href="#" class="none-bg">la liga</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image image-16-9">
+                                <a href="#" class="box-vertical-image hover-image">
                                     <img src="~/images/messi.png" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -262,7 +261,7 @@
                         <div class="block-columns-border">
                             <div class="block-event-item">
                                 <div class="box-vertical">
-                                    <a href="#" class="box-vertical-image image-16-9">
+                                    <a href="#" class="box-vertical-image hover-image">
                                         <img src="~/images/messi.png" class="img-res" />
                                     </a>
                                     <div class="box-vertical-content">
@@ -314,7 +313,7 @@
                                 <a href="#" class="none-bg">Chuyển nhượng</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image image-16-9">
+                                <a href="#" class="box-vertical-image hover-image">
                                     <img src="~/images/messi.png" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -332,7 +331,7 @@
                                 <a href="#" class="none-bg">Các môn khác</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image image-16-9">
+                                <a href="#" class="box-vertical-image hover-image">
                                     <img src="~/images/messi.png" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
