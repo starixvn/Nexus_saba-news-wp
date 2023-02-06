@@ -1870,6 +1870,8 @@ button {
   margin: 0;
   padding-top: 56.25%;
   position: relative;
+  overflow: hidden;
+  border-radius: 3px;
 }
 .image-16-9 img, .image-16-9 iframe {
   position: absolute;

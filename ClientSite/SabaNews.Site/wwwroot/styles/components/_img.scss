@@ -63,6 +63,8 @@
     margin: 0;
     padding-top: 56.25%;
     position: relative;
+    overflow: hidden;
+    border-radius: 3px;
     img, iframe{
         position: absolute;
         top: 50%;
