@@ -62,6 +62,10 @@
     @include Mobile{
         display: unset;
     }
+    .columns-left{
+        width: 100%;
+        max-width: 93rem;
+    }
     .columns-right{
         width: 35rem;
         @include Mobile{
@@ -72,9 +76,6 @@
 
 .block-last-page{
     .columns-left{
-        // width: clamp(98rem , 100% , 98rem);
-        width: 100%;
-        max-width: 93rem;
         border-right : 1px solid #E5E5E5;
         padding-right: 2rem;
         @include Mobile{

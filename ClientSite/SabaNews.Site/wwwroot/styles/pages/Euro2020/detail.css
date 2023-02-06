@@ -1699,6 +1699,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     display: unset;
   }
 }
+.block-columns .columns-left {
+  width: 100%;
+  max-width: 93rem;
+}
 .block-columns .columns-right {
   width: 35rem;
 }
@@ -1709,8 +1713,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .block-last-page .columns-left {
-  width: 100%;
-  max-width: 93rem;
   border-right: 1px solid #E5E5E5;
   padding-right: 2rem;
 }
