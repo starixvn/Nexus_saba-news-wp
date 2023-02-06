@@ -529,6 +529,7 @@ body {
 .table-custom-body {
   max-height: 25rem;
   overflow: overlay;
+  overflow-x: hidden;
 }
 .table-custom-body::-webkit-scrollbar {
   width: 0.6rem;
@@ -557,6 +558,6 @@ body {
   }
 }
 .table-custom-cell.cell-participant {
-  flex: 1 0 12rem;
-  width: 12rem;
+  flex: 1 0 12.5rem !important;
+  width: 12.5rem !important;
 }

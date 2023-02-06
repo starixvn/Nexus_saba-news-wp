@@ -2086,6 +2086,11 @@ button {
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
+.box-vertical-content h4 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+}
 .box-vertical-content a {
   text-decoration: none;
   color: #333;

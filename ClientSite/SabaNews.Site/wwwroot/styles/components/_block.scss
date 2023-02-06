@@ -59,4 +59,27 @@
     @include Mobile{
         display: unset;
     }
+    .columns-right{
+        width: 35rem;
+        @include Mobile{
+            width: auto;
+        }
+    }
+}
+
+.block-last-page{
+    .columns-left{
+        // width: clamp(98rem , 100% , 98rem);
+        width: 100%;
+        max-width: 93rem;
+        border-right : 1px solid #E5E5E5;
+        padding-right: 2rem;
+        @include Mobile{
+            padding-right: 0;
+            border-right: none;
+        }
+    }
+    .columns-right{
+        width: auto;
+    }
 }

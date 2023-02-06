@@ -1691,6 +1691,30 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     display: unset;
   }
 }
+.block-columns .columns-right {
+  width: 35rem;
+}
+@media (max-width: 767px) {
+  .block-columns .columns-right {
+    width: auto;
+  }
+}
+
+.block-last-page .columns-left {
+  width: 100%;
+  max-width: 93rem;
+  border-right: 1px solid #E5E5E5;
+  padding-right: 2rem;
+}
+@media (max-width: 767px) {
+  .block-last-page .columns-left {
+    padding-right: 0;
+    border-right: none;
+  }
+}
+.block-last-page .columns-right {
+  width: auto;
+}
 
 button {
   outline: none;
@@ -2070,6 +2094,11 @@ button {
   font-weight: 700;
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+.box-vertical-content h4 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
 }
 .box-vertical-content a {
   text-decoration: none;
