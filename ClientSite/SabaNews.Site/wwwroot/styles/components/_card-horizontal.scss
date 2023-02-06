@@ -87,7 +87,33 @@
 
 
 
-
+.box-horizontal{
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid #E4D9D0;
+    &:last-child{
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        border-bottom: none !important;
+    }
+    &-image{
+        width: 17rem;
+        display: block;
+    }
+    &-content{
+        h5{
+            a{
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 2.2rem;
+                color: #333;
+            }
+        }
+    }
+}
 
 .comment {
     display: inline-flex;

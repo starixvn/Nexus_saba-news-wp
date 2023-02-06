@@ -7,7 +7,7 @@
     }
 
     &__title {
-        margin-bottom: 2.4rem;
+        margin-bottom: 1.6rem;
         position: relative;
         @include tableMobile {
             margin-bottom: .9rem;
@@ -44,6 +44,9 @@
 
             @include tableMobile {
                 font-size: 1.6rem;
+            }
+            &.none-bg{
+                background-color: transparent;
             }
         }
     }

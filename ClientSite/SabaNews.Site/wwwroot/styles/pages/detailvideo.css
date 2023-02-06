@@ -1521,7 +1521,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block__title {
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.6rem;
   position: relative;
 }
 @media screen and (max-width: 1024px) {
@@ -1549,6 +1549,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .block__title a {
     font-size: 1.6rem;
   }
+}
+.block__title a.none-bg {
+  background-color: transparent;
 }
 
 .block-columns {
@@ -2256,6 +2259,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .box-vertical.box-vertical-hightlight .box-vertical-content {
   margin-top: 1.6rem;
 }
+.box-vertical .box-video {
+  position: relative;
+}
 
 .hide-section {
   display: none !important;
@@ -2797,6 +2803,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .ads-insite a {
   display: block;
+}
+
+.block-last-page .ads-insite {
+  margin-top: 0;
 }
 
 .event-modal-home .modal {

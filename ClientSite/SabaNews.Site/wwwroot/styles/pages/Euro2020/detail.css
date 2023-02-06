@@ -1649,7 +1649,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block__title {
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.6rem;
   position: relative;
 }
 @media screen and (max-width: 1024px) {
@@ -1677,6 +1677,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .block__title a {
     font-size: 1.6rem;
   }
+}
+.block__title a.none-bg {
+  background-color: transparent;
 }
 
 .block-columns {
@@ -2298,6 +2301,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .box-vertical.box-vertical-hightlight .box-vertical-content {
   margin-top: 1.6rem;
 }
+.box-vertical .box-video {
+  position: relative;
+}
 
 /*:root {
     --column : 12;
@@ -2388,6 +2394,30 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .card-horizontal__content .description {
     display: none;
   }
+}
+
+.box-horizontal {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid #E4D9D0;
+}
+.box-horizontal:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  border-bottom: none !important;
+}
+.box-horizontal-image {
+  width: 17rem;
+  display: block;
+}
+.box-horizontal-content h5 a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  color: #333;
 }
 
 .comment {
