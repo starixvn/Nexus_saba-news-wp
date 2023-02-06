@@ -22,13 +22,17 @@
 }
 
 @section Styles{
-     <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/fixture.chunk.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/standing.chunk.css" asp-append-version="true" />
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/fixture.chunk.css"
+        asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/standing.chunk.css"
+        asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/fixture.chunk.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/standing.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/fixture.chunk.css"
+        asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/standing.chunk.css"
+        asp-append-version="true" />
     </environment>
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
 }
@@ -69,7 +73,8 @@
                                     {
                                         continue;
                                     }
-                                    <li><a href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a></li>
+                                    <li><a href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a>
+                                    </li>
                                 }
                             }
                         </ul>
@@ -78,6 +83,7 @@
                                 var firstPost = Model.NewPosts[0];
                                 string firstImgUrl = firstPost.FeatureImage;
                                 <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image image-16-9">
+                                    class="box-vertical-image hover-image">
                                     <img src="@Url.Content(firstImgUrl)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
@@ -85,7 +91,7 @@
                                     <p>@firstPost.PostExcerpt</p>
                                 </div>
                             }
-                        </div> 
+                        </div>
                         <div class="block-news-hot-child">
                             @{
                                 newPostIndex = 0;
@@ -96,6 +102,7 @@
                                     {
                                         <div class="box-vertical">
                                             <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image image-16-9">
+                                                class="box-vertical-image hover-image">
                                                 <img src="@Url.Content(item.FeatureImage)" class="img-res" />
                                             </a>
                                             <div class="box-vertical-content">
@@ -107,74 +114,46 @@
                                     }
                                 }
                             }
-                        </div> 
+                        </div>
                     </div>
                     <div class="ads-insite">
-                        <a href="#"><img src="~/images/ads-1.png" class="img-res"/></a>
+                        <a href="#"><img src="~/images/ads-1.png" class="img-res" /></a>
                     </div>
-                </div> 
+                </div>
                 <div class="columns columns-right">
                     <div id="fixture-homepage"></div>
                     <div id="standing-homepage"></div>
-                </div> 
+                </div>
             </div>
         </div>
-         <div class="block block-guess">
+        <div class="block block-guess">
             <h2 class="block__title">
-                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess  <span class="marked-icon"></span></a>
+                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess
+                    <span class="marked-icon"></span></a>
             </h2>
             <div class="block__content">
                 <div class="swiper-guess">
                     <div class="swiper-wrapper scroll-snap">
-                        <div class="box-vertical swiper-slide scroll-snap-items">
+                        @foreach (var post in Model.GuessPosts)
+                        {
+                            <div class="box-vertical swiper-slide scroll-snap-items">
                             <a href="#" class="box-vertical-image hover-image image-16-9">
-                                <img src="~/images/messi.png" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h2><a href="#">Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</a></h2>
-                            </div>
-                        </div>
-                        <div class="box-vertical swiper-slide scroll-snap-items">
+                                    class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                             <a href="#" class="box-vertical-image hover-image image-16-9">
-                                <img src="~/images/messi.png" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h2><a href="#">Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</a></h2>
-                            </div>
-                        </div>
-                        <div class="box-vertical swiper-slide scroll-snap-items">
                             <a href="#" class="box-vertical-image hover-image image-16-9">
-                                <img src="~/images/messi.png" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h2><a href="#">Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</a></h2>
-                            </div>
-                        </div>
-                        <div class="box-vertical swiper-slide scroll-snap-items">
                             <a href="#" class="box-vertical-image hover-image image-16-9">
-                                <img src="~/images/messi.png" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h2><a href="#">Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</a></h2>
-                            </div>
-                        </div>
-                        <div class="box-vertical swiper-slide scroll-snap-items">
                             <a href="#" class="box-vertical-image hover-image image-16-9">
-                                <img src="~/images/messi.png" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h2><a href="#">Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</a></h2>
-                            </div>
-                        </div>
-                        <div class="box-vertical swiper-slide scroll-snap-items">
                             <a href="#" class="box-vertical-image hover-image image-16-9">
-                                <img src="~/images/messi.png" class="img-res" />
-                            </a>
-                            <div class="box-vertical-content">
-                                <h2><a href="#">Nhận định, soi kèo Club Brugge vs PSG (02h00 ngày 16/09): Dao giết trâu mổ gà</a></h2>
+                                </a>
+                                <div class="box-vertical-content">
+                                    <h2><a
+                                            href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
+                                    </h2>
+                                </div>
                             </div>
-                        </div>
-                     </div>
+                        }
+                    </div>
                 </div>
                 <div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
                 <div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
@@ -186,103 +165,68 @@
             <div class="block-columns">
                 <div class="columns columns-left">
                     <div class="block-video">
-                         <h2 class="block__title">
+                        <h2 class="block__title">
                             <a href="#" class="none-bg">Video</a>
                         </h2>
                         <div class="group-video">
                             <div class="box-vertical">
                                 <a href="#" class="box-vertical-image hover-image box-video image-16-9">
-                                    <img src="~/images/messi.png" class="img-res" />
-                                    <div class="btn-play-video">
-                                        <span class="icon-play"></span>
-                                    </div>
-                                </a>
-                                <div class="box-vertical-content">
-                                    <h4>
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            @foreach (var post in Model.VideoPosts)
+                                            {
+                                                <div class="post swiper-slide" id="slide-@post.ID">
+                                                    <input type="hidden" name="iframe_value" value="@post.PostContent" />
+                                                    <div class="img-item">
+                                                        <a class="box-vertical-image hover-image box-video">
+                                                            <img src="@Url.Content(post.FeatureImage)" class="img-res" />
+                                                        </a>
+                                                        <div class="btn-play-video" post-id="@post.ID">
+                                                            <span class="icon-play"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="play_video"></div>
+                                                    <div class="box-vertical-content">
+                                                        <h4>
                                         <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
                                         </a>
-                                    </h4>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            }
+                                <div class="box-horizontal box-video">
+                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
+                                        </a>
+                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
+                                        </a>
+                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
+                                        </a>
+                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
+                                        </a>
+                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
+                                        </a>
+                                        </div>
+                                    </div>
+                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
+                                        </a>
                                 </div>
                             </div>
                             <div class="block-child-video">
-                                <div class="box-horizontal box-video">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
+                                @foreach (var post in Model.VideoPosts)
+                                {
+                                    <div class="box-horizontal">
+                                        <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-image">
+                                            <img src="@Url.Content(post.FeatureImage)" class="img-res" />
+                                        </a>
+                                        <div class="box-horizontal-content">
+                                            <h5>
                                             <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
                                         </a>
-                                        </h5>
+                                            </h5>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="box-horizontal">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="box-horizontal">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="box-horizontal">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="box-horizontal">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="box-horizontal">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="box-horizontal">
-                                    <a href="#" class="box-horizontal-image hover-image">
-                                        <img src="~/images/messi.png" class="img-res" />
-                                    </a>
-                                    <div class="box-horizontal-content">
-                                        <h5>
-                                            <a href="#">Everton vs Arsenal, vòng 22 Ngoại hạng Anh 2022/23
-                                        </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div> 
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -299,7 +243,7 @@
     <hr />
     <hr />
     <hr />
-    <hr style="margin-bottom: 5rem;"/>
+    <hr style="margin-bottom: 5rem;" />
 
 
 
@@ -327,109 +271,43 @@
         {
             <div class="banner-euro-mobile banner-mobile-top"></div>
             @*<div class="skeleton-mobile skeleton-banner">r
-                <div class="skeleton-banner-mobile"></div>
-            </div>*@
+        <div class="skeleton-banner-mobile"></div>
+        </div>*@
         }
 
         <div class="banner-mobile banner-mobile-center"></div>
         @*<div class="skeleton-mobile skeleton-banner">
-            <div class="skeleton-banner-mobile"></div>
+        <div class="skeleton-banner-mobile"></div>
         </div>*@
-        <div class="block block-video">
-            <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
-                <div class="block__content flex-video">
-                    <div class="swiper-video">
-                        <div class="skeleton skeleton-swiper-slide">
-                            <div class="img-item"></div>
-                            <div class="content-box"></div>
-                        </div>
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                @foreach (var post in Model.VideoPosts)
-                                {
-                                    <div class="post swiper-slide" id="slide-@post.ID">
-                                        <input type="hidden" name="iframe_value" value="@post.PostContent" />
-                                        <div class="img-item">
-                                            @{ string videoImg = post.FeatureImage;
-                                                <picture>
-                                                    <source srcset="@Url.Content(videoImg)" type="image/webp">
-                                                    <source srcset="@Url.Content(videoImg)" type="image/jpeg">
-                                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
-                                                </picture> }
-
-                                            <div class="btn-play-video" post-id="@post.ID">
-                                                <span class="icon-play"></span>
-                                            </div>
-                                        </div>
-                                        <div class="play_video"></div>
-                                        <div class="content-box">
-                                            <h3 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                            <div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
-                            <div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                    <div class="slide-video">
-                        @foreach (var post in Model.VideoPosts)
-                        {
-                            <div class="post card-horizontal card-item">
-                                <a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
-                                    @{ string videoDesktopImg = post.FeatureImage;
-
-                                        <picture>
-                                            <source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
-                                            <source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
-                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
-                                        </picture> }
-                                </a>
-                                <div class="card-horizontal__content">
-                                    <p class="datetime">
-                                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" data-id="@post.ID" class="title">
-                                            @post.PostTitle
-                                        </a>
-                                        @if (post.CommentCount > 0)
-                                        {
-                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="skeleton skeleton-horizontal">
-                                <a class="skeleton-horizontal__image"></a>
-                                <div class="text-skeleton">
-                                    <a class="skeleton-horizontal__title"></a>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
         <div class="block block-soccer">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.FootballSlug })">@ViewResources.Football</a></h2>
+                <h2 class="block__title"><a
+                        href="@Url.Action("Category", "Home", new { slug1 = Constants.FootballSlug })">@ViewResources.Football</a>
+                </h2>
                 <div class="block__content">
                     @foreach (var post in Model.FootballPosts)
                     {
                         <div class="post card-vertical">
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image">
-                                @{ string footballImg = post.FeatureImage;
+                                @{
+                                    string footballImg = post.FeatureImage;
                                     <picture>
                                         <source srcset="@Url.Content(footballImg)" type="image/webp" class="img-res">
                                         <source srcset="@Url.Content(footballImg)" type="image/jpeg" class="img-res">
-                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(footballImg)" alt="@post.PostTitle" class="img-res img-block">
-                                    </picture> }
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(footballImg)"
+                                        alt="@post.PostTitle" class="img-res img-block">
+                                    </picture>
+                                }
                             </a>
                             <p class="card-vertical__datetime">
-                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
+                                    class="card-vertical__title">@post.PostTitle</a>
                                 @if (post.CommentCount > 0)
                                 {
-                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i
+                                            class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+                                }
                             </p>
                         </div>
                         <div class="skeleton skeleton-vertical">
@@ -444,27 +322,36 @@
 
         <div class="block block-guess">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess</a><span class="marked-icon"></span></h2>
+                <h2 class="block__title"><a
+                        href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess</a><span
+                        class="marked-icon"></span></h2>
                 <div class="block__content">
                     @foreach (var post in Model.GuessPosts)
                     {
                         <div class="post card-vertical">
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__image">
-                                @{ //short imgGuessSize =ImageWidth.Width500;
+                                @{
+                                    //short imgGuessSize =ImageWidth.Width500;
                                     string guessImgUrl = post.FeatureImage;
 
                                     <picture>
                                         <source srcset="@Url.Content(guessImgUrl)" type="image/webp" class="img-res">
                                         <source srcset="@Url.Content(guessImgUrl)" type="image/jpeg" class="img-res">
-                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(guessImgUrl)" alt="@post.PostTitle" class="img-res img-block">
-                                    </picture> }
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(guessImgUrl)"
+                                        alt="@post.PostTitle" class="img-res img-block">
+                                    </picture>
+                                }
                             </a>
                             <div class="group group-mobile">
                                 <p class="card-vertical__datetime">
-                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
+                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
+                                        class="card-vertical__title">@post.PostTitle</a>
                                     @if (post.CommentCount > 0)
                                     {
-                                        <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                                        <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment"
+                                            class="comment"><i class="icon-mode_comment_full"></i> <i
+                                                class="number">@post.CommentCount</i></a>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -479,13 +366,15 @@
 
         <div class="banner-mobile banner-mobile-bottom"></div>
         @*<div class="skeleton-mobile skeleton-banner">
-            <div class="skeleton-banner-mobile"></div>
+        <div class="skeleton-banner-mobile"></div>
         </div>*@
 
         <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">
-                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug })">@ViewResources.Backstage</a></h2>
+                    <h2 class="block__title"><a
+                            href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug })">@ViewResources.Backstage</a>
+                    </h2>
                     <div class="block__content">
                         <div class="skeleton skeleton-horizontal">
                             <a class="skeleton-horizontal__image"></a>
@@ -498,23 +387,31 @@
                             var firstBackStagePost = Model.BackstagePosts[0];
                         }
                         <div class="post card-horizontal card-horizontal-highlight card-item-1">
-                            <a href="@Url.Action("Single", "Post", new { slug = firstBackStagePost.Slug  })" class="card-horizontal__image">
-                                @{ //short backstageSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
+                            <a href="@Url.Action("Single", "Post", new { slug = firstBackStagePost.Slug  })"
+                                class="card-horizontal__image">
+                                @{
+                                    //short backstageSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
                                     string backstageImg = firstBackStagePost.FeatureImage;
 
                                     <picture>
                                         <source srcset="@Url.Content(backstageImg)" type="image/webp" class="img-res">
                                         <source srcset="@Url.Content(backstageImg)" type="image/jpeg" class="img-res">
-                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(backstageImg)" alt="@firstBackStagePost.PostTitle" class="img-res img-block">
-                                    </picture> }
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(backstageImg)"
+                                        alt="@firstBackStagePost.PostTitle" class="img-res img-block">
+                                    </picture>
+                                }
                             </a>
                             <div class="card-horizontal__content">
-                                <a class="title" href="@Url.Action("Single", "Post", new { slug = firstBackStagePost.Slug  })">@firstBackStagePost.PostTitle</a>
+                                <a class="title"
+                                    href="@Url.Action("Single", "Post", new { slug = firstBackStagePost.Slug  })">@firstBackStagePost.PostTitle</a>
                                 <p class="description">
                                     @Html.Raw(firstBackStagePost.PostExcerpt)
                                     @if (firstBackStagePost.CommentCount > 0)
                                     {
-                                        <a href="@Url.Action("Single", "Post", new { slug =  firstBackStagePost.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@firstBackStagePost.CommentCount</i></a>}
+                                        <a href="@Url.Action("Single", "Post", new { slug =  firstBackStagePost.Slug})#comment"
+                                            class="comment"><i class="icon-mode_comment_full"></i> <i
+                                                class="number">@firstBackStagePost.CommentCount</i></a>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -531,21 +428,29 @@
                                 }
 
                                 <div class="post card-vertical card-vertical-highlight card-item-@backstagePostIndex ">
-                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__image">
-                                        @{// backstageSize = ImageWidth.Width500;
+                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
+                                        class="card-vertical__image">
+                                        @{
+                                            // backstageSize = ImageWidth.Width500;
                                             backstageImg = post.FeatureImage;
 
                                             <picture>
                                                 <source srcset="@Url.Content(backstageImg)" type="image/webp" class="img-res">
                                                 <source srcset="@Url.Content(backstageImg)" type="image/jpeg" class="img-res">
-                                                <img asp-append-version="true" loading="lazy" src="@Url.Content(backstageImg)" alt="@post.PostTitle" class="img-res img-block">
-                                            </picture> }
+                                                <img asp-append-version="true" loading="lazy" src="@Url.Content(backstageImg)"
+                                            alt="@post.PostTitle" class="img-res img-block">
+                                            </picture>
+                                        }
                                     </a>
                                     <p class="card-vertical__datetime">
-                                        <a class="card-vertical__title" href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
+                                        <a class="card-vertical__title"
+                                            href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
                                         @if (post.CommentCount > 0)
                                         {
-                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment"
+                                                class="comment"><i class="icon-mode_comment_full"></i> <i
+                                                    class="number">@post.CommentCount</i></a>
+                                        }
                                     </p>
                                 </div>
                                 <div class="skeleton skeleton-vertical">
@@ -559,26 +464,35 @@
 
                 <div class="block block-transfer">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug })">@ViewResources.Transfer</a>
+                        <a
+                            href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug })">@ViewResources.Transfer</a>
                     </h2>
                     <div class="block__content">
                         @foreach (var post in Model.TransferPosts)
                         {
                             <div class="post card-horizontal">
-                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-horizontal__image">
-                                    @{ string transferImg = post.FeatureImage; }
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
+                                    class="card-horizontal__image">
+                                    @{
+                                        string transferImg = post.FeatureImage;
+                                    }
                                     <picture>
                                         <source srcset="@Url.Content(transferImg)" type="image/webp" class="img-res">
                                         <source srcset="@Url.Content(transferImg)" type="image/jpeg" class="img-res">
-                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(transferImg)" alt="@post.PostTitle" class="img-res img-block">
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(transferImg)"
+                                            alt="@post.PostTitle" class="img-res img-block">
                                     </picture>
                                 </a>
                                 <div class="card-horizontal__content">
                                     <p class="datetime">
-                                        <a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
+                                        <a class="title"
+                                            href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
                                         @if (post.CommentCount > 0)
                                         {
-                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment"
+                                                class="comment"><i class="icon-mode_comment_full"></i> <i
+                                                    class="number">@post.CommentCount</i></a>
+                                        }
                                     </p>
                                 </div>
                             </div>
@@ -596,19 +510,26 @@
 
         <div class="block block-others">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a></h2>
+                <h2 class="block__title"><a
+                        href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a>
+                </h2>
                 <div class="block__content">
                     <div class="post card-vertical card-vertical-highlight">
-                        <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__image">
-                            @{ short otherImgSize = isMobile ? ImageWidth.Width500 : ImageWidth.Width768;
-                                string otherFirstImgUrl = Model.OtherPosts[0].FeatureImage; }
+                        <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })"
+                            class="card-vertical__image">
+                            @{
+                                short otherImgSize = isMobile ? ImageWidth.Width500 : ImageWidth.Width768;
+                                string otherFirstImgUrl = Model.OtherPosts[0].FeatureImage;
+                            }
                             <picture>
                                 <source srcset="@Url.Content(otherFirstImgUrl)" type="image/webp" class="img-res">
                                 <source srcset="@Url.Content(otherFirstImgUrl)" type="image/jpeg" class="img-res">
-                                <img asp-append-version="true" loading="lazy" src="@Url.Content(otherFirstImgUrl)" alt="@Model.OtherPosts[0].PostTitle" class="img-res img-block">
+                                <img asp-append-version="true" loading="lazy" src="@Url.Content(otherFirstImgUrl)"
+                                    alt="@Model.OtherPosts[0].PostTitle" class="img-res img-block">
                             </picture>
                         </a>
-                        <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__title">@Model.OtherPosts[0].PostTitle</a>
+                        <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })"
+                            class="card-vertical__title">@Model.OtherPosts[0].PostTitle</a>
                     </div>
 
                     <div class="skeleton skeleton-vertical">
@@ -630,14 +551,17 @@
                                 }
                                 string otherImg = post.FeatureImage;
                                 <div class="post card-vertical">
-                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="card-vertical__image">
+                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })"
+                                        class="card-vertical__image">
                                         <picture>
                                             <source srcset="@Url.Content(otherImg)" type="image/webp" class="img-res">
                                             <source srcset="@Url.Content(otherImg)" type="image/jpeg" class="img-res">
-                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(otherImg)" alt="@post.PostTitle" class="img-res img-block">
+                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(otherImg)"
+                                            alt="@post.PostTitle" class="img-res img-block">
                                         </picture>
                                     </a>
-                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="card-vertical__title">@post.PostTitle</a>
+                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })"
+                                        class="card-vertical__title">@post.PostTitle</a>
                                 </div>
                                 <div class="skeleton skeleton-vertical">
                                     <a class="skeleton-vertical__image"></a>
