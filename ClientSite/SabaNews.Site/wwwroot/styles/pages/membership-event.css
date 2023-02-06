@@ -1542,6 +1542,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   z-index: 9;
   padding-right: 1rem;
   line-height: 1;
+  cursor: pointer;
 }
 .block__title a:hover {
   color: #cb200c;

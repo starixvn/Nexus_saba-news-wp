@@ -1520,6 +1520,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   z-index: 9;
   padding-right: 1rem;
   line-height: 1;
+  cursor: pointer;
 }
 .block__title a:hover {
   color: #cb200c;
@@ -1622,7 +1623,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .hover-image:hover img {
   transition: all 0.5s ease;
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .image-16-9 {
@@ -1635,8 +1636,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   transform-origin: left;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0) translateX(-50%) translateY(-50%) scale(1, 1);
+  transition: all 0.5s ease;
 }
 .image-16-9:hover img {
   transition: all 0.5s ease;
@@ -3035,6 +3038,54 @@ button {
 }
 .main .block-video .block-child-video .box-horizontal-content a {
   font-weight: 600;
+}
+.main .block-columns-border {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+.main .block-columns-border .block-event-item {
+  padding: 0 2rem;
+  border-right: 1px solid #E5E5E5;
+  width: 50%;
+}
+@media (max-width: 767px) {
+  .main .block-columns-border .block-event-item {
+    width: 100%;
+  }
+}
+.main .block-columns-border .block-event-item:last-child {
+  border-right: none;
+}
+@media (max-width: 767px) {
+  .main .block-columns-border .block-event-item {
+    border-right: none;
+  }
+}
+.main .block-columns-border .block-event-item .list-event-title {
+  list-style: none;
+  padding-left: 0;
+}
+.main .block-columns-border .block-event-item .list-event-title li {
+  border-top: 1px solid #E5E5E5;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+.main .block-columns-border .block-event-item .list-event-title li a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #333;
+}
+.main .block-behind {
+  padding: 2rem;
+  background: #FFF1E7;
+  border-radius: 3px;
+}
+.main .block-behind .box-horizontal-content {
+  width: 100%;
+  max-width: 23.5rem;
 }
 
 .banner-euro-mobile {

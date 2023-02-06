@@ -1541,6 +1541,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   z-index: 9;
   padding-right: 1rem;
   line-height: 1;
+  cursor: pointer;
 }
 .block__title a:hover {
   color: #cb200c;
@@ -1748,7 +1749,7 @@ button {
 }
 .hover-image:hover img {
   transition: all 0.5s ease;
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .image-16-9 {
@@ -1761,8 +1762,10 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   transform-origin: left;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0) translateX(-50%) translateY(-50%) scale(1, 1);
+  transition: all 0.5s ease;
 }
 .image-16-9:hover img {
   transition: all 0.5s ease;

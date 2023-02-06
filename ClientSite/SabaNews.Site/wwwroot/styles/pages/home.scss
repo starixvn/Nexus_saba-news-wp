@@ -179,6 +179,50 @@
             }
         }
     }
+    .block-columns-border{
+        display: flex;
+        justify-content: flex-start;
+        margin-left:-2rem;
+        margin-right: -2rem;
+        .block-event-item{
+            padding: 0 2rem;
+            border-right: 1px solid #E5E5E5;
+            width: 50%;
+            @include Mobile{
+                width: 100%;
+            }
+            &:last-child{
+                border-right: none;
+            }
+            @include Mobile{
+                border-right: none;
+            }
+            .list-event-title{
+                list-style: none;
+                padding-left: 0;
+                li{
+                    border-top: 1px solid #E5E5E5;
+                    padding-top: 1rem;
+                    margin-top: 1rem;
+                    a{
+                        text-decoration: none;
+                        font-weight: 700;
+                        font-size: 1.3rem;
+                        color : #333;
+                    }
+                }
+            }
+        }
+    }
+    .block-behind{
+        padding: 2rem;
+        background: #FFF1E7;
+        border-radius: 3px;
+        .box-horizontal-content{
+            width: 100%;
+            max-width: 23.5rem;
+        }
+    }
 }
 
 

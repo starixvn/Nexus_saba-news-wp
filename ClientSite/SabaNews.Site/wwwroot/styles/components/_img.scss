@@ -40,7 +40,7 @@
         -webkit-backface-visibility: hidden;
         -ms-transform: translateZ(0);
         -webkit-transform: translateZ(0);
-        transform: translateZ(0) scale(1,1);
+        transform: translateZ(0) scale(1,01);
         image-rendering: -moz-crisp-edges;
         image-rendering: -o-crisp-edges;
         image-rendering: -webkit-optimize-contrast;
@@ -53,7 +53,7 @@
     &:hover {
         img {
             transition: all .5s ease;
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
     }
 }
@@ -67,8 +67,13 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
         transform-origin: left;
+        -webkit-backface-visibility: hidden;
+        -ms-transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0) translateX(-50%) translateY(-50%) scale(1,01);
+        transition: all .5s ease;
+
     }
     &:hover {
         img {

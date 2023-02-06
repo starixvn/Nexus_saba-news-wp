@@ -37,7 +37,7 @@
             z-index: 9;
             padding-right: 1rem;
             line-height: 1;
-
+            cursor: pointer;
             &:hover {
                 color: darken($color-main-title, 10%);
             }
