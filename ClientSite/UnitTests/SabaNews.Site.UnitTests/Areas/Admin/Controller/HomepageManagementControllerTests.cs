@@ -150,9 +150,10 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var expectedOption = new Option{};
             var expectedResult = fixture.Create<CommandResult>();
             var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            sessionService.User.Returns(new UserSession{ Id = 1 });
             optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(expectedOption);
             leagueService.GetLeaguesAsync().Returns(expectedLeagues);
-            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value")).Returns(expectedResult);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value"), Arg.Do<long>(x => x = 1)).Returns(expectedResult);
 
             //Act
             var result = await controller.AddLeague(model);
@@ -203,9 +204,10 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var expectedLeagues = fixture.Create<IList<League>>();
             var expectedResult = fixture.Create<CommandResult>();
             var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            sessionService.User.Returns(new UserSession{ Id = 1 });
             optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
             leagueService.GetLeaguesAsync().Returns(expectedLeagues);
-            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value")).Returns(expectedResult);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value"), Arg.Do<long>(x => x = 1)).Returns(expectedResult);
             //Act
             var result = await controller.AddLeague(model);
 
@@ -258,8 +260,9 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var expectedLeagues = fixture.Create<IList<League>>();
             var expectedResult = fixture.Create<CommandResult>();
             var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            sessionService.User.Returns(new UserSession{ Id = 1 });
             optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
-            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value")).Returns(expectedResult);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value"), Arg.Do<long>(x => x = 1)).Returns(expectedResult);
             //Act
             var result = await controller.DeleteLeague(1, true);
 
@@ -283,8 +286,9 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var expectedLeagues = fixture.Create<IList<League>>();
             var expectedResult = fixture.Create<CommandResult>();
             var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            sessionService.User.Returns(new UserSession{ Id = 1 });
             optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
-            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value")).Returns(expectedResult);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value"), Arg.Do<long>(x => x = 1)).Returns(expectedResult);
             //Act
             var result = await controller.EditLeague(model);
 
@@ -372,7 +376,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
 
             footballNewsCategories[0] = categoryUpdate;
-
+            sessionService.User.Returns(new UserSession{ Id = 1 });
             optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
             postService.GetMenuAsync(menuName).Returns(menus);
             postService.GetCateParentsAsync(menus.First().Slug).Returns(cateParents);
@@ -392,7 +396,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             optionService = Substitute.For<IOptionService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
-            sessionService = Substitute.For<SessionService>();
+            sessionService = Substitute.For<ISessionService>();
             var controller = new HomepageManagementController(optionService, leagueService, postService, configuration, sessionService);
 
             return controller;
