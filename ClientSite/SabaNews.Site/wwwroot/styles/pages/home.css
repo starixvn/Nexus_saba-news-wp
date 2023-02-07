@@ -1505,7 +1505,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .block__title {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1.2rem;
   }
 }
 .block__title a {
@@ -3015,6 +3015,16 @@ button {
   overflow: hidden;
   position: relative;
 }
+@media (max-width: 767px) {
+  .main .block-guess {
+    padding: 1.2rem 1.2rem 3.5rem 1.2rem;
+  }
+}
+@media (max-width: 767px) {
+  .main .block-guess .block__title {
+    margin-bottom: 1.5rem;
+  }
+}
 .main .block-guess .block__title a {
   background: #F5F6F6;
   color: #F12F19;
@@ -3031,15 +3041,25 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
   }
 }
 .main .block-guess .block__content .swiper-slide {
   background-color: transparent;
 }
 @media (max-width: 767px) {
+  .main .block-guess .block__content .swiper-slide {
+    width: 30rem;
+  }
+}
+@media (max-width: 767px) {
   .main .block-guess .block__content .swiper-button, .main .block-guess .block__content .swiper-pagination {
     display: none;
+  }
+}
+@media (max-width: 767px) {
+  .main .block-guess .block__content .swiper-guess {
+    overflow: unset;
   }
 }
 .main .block-video {
@@ -3049,7 +3069,7 @@ button {
 }
 @media (max-width: 767px) {
   .main .block-video {
-    display: unset;
+    display: block;
     padding: 1.2rem;
   }
 }

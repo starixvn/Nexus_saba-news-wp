@@ -1651,7 +1651,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .block__title {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1.2rem;
   }
 }
 .block__title a {
