@@ -1855,6 +1855,7 @@ button {
 }
 .box-horizontal-image {
   width: 17rem;
+  height: 11rem;
   display: block;
 }
 .box-horizontal-content h5 a {
