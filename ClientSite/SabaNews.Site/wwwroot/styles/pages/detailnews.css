@@ -1567,7 +1567,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .block-columns {
-    grid-gap: 1rem;
+    display: unset;
   }
 }
 @media (max-width: 767px) {
@@ -1579,12 +1579,23 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100%;
   max-width: 93rem;
 }
+@media screen and (max-width: 1024px) {
+  .block-columns .columns-left {
+    max-width: 100%;
+  }
+}
 .block-columns .columns-right {
   width: 35rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-columns .columns-right {
+    width: auto;
+  }
 }
 @media (max-width: 767px) {
   .block-columns .columns-right {
     width: auto;
+    display: unset;
   }
 }
 
@@ -3424,6 +3435,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .ads-insite {
   margin-top: 2rem;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .ads-insite {
@@ -3451,6 +3463,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .ads-insite a .show-mobile {
     display: block;
   }
+}
+.ads-insite a img {
+  margin: 0 auto;
 }
 
 .block-last-page .ads-insite {

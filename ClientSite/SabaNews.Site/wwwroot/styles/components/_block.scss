@@ -57,7 +57,7 @@
     grid-gap: 2rem;
     align-items: start;
     @include tableMobile{
-        grid-gap: 1rem;
+        display: unset;
     }
     @include Mobile{
         display: unset;
@@ -65,11 +65,18 @@
     .columns-left{
         width: 100%;
         max-width: 93rem;
+        @include tableMobile{
+            max-width: 100%;
+        }
     }
     .columns-right{
         width: 35rem;
+        @include tableMobile{
+            width: auto;
+        }
         @include Mobile{
             width: auto;
+            display: unset;
         }
     }
 }

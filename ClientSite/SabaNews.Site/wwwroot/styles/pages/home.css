@@ -1541,7 +1541,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .block-columns {
-    grid-gap: 1rem;
+    display: unset;
   }
 }
 @media (max-width: 767px) {
@@ -1553,12 +1553,23 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100%;
   max-width: 93rem;
 }
+@media screen and (max-width: 1024px) {
+  .block-columns .columns-left {
+    max-width: 100%;
+  }
+}
 .block-columns .columns-right {
   width: 35rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-columns .columns-right {
+    width: auto;
+  }
 }
 @media (max-width: 767px) {
   .block-columns .columns-right {
     width: auto;
+    display: unset;
   }
 }
 
@@ -2715,6 +2726,7 @@ button {
 
 .ads-insite {
   margin-top: 2rem;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .ads-insite {
@@ -2742,6 +2754,9 @@ button {
   .ads-insite a .show-mobile {
     display: block;
   }
+}
+.ads-insite a img {
+  margin: 0 auto;
 }
 
 .block-last-page .ads-insite {
@@ -2926,6 +2941,11 @@ button {
 .main #fixture-homepage, .main #standing-homepage {
   border: none;
 }
+@media screen and (max-width: 1024px) {
+  .main #fixture-homepage, .main #standing-homepage {
+    width: 100%;
+  }
+}
 .main #fixture-homepage .block__title, .main #standing-homepage .block__title {
   margin-bottom: 1.2rem;
 }
@@ -3083,6 +3103,11 @@ button {
   grid-template-columns: 58rem auto;
   grid-gap: 2rem;
 }
+@media screen and (max-width: 1024px) {
+  .main .block-video .group-video {
+    grid-template-columns: 40rem auto;
+  }
+}
 @media (max-width: 767px) {
   .main .block-video .group-video {
     display: unset;
@@ -3130,15 +3155,15 @@ button {
   margin-left: -2rem;
   margin-right: -2rem;
 }
+@media (max-width: 767px) {
+  .main .block-columns-border {
+    flex-wrap: wrap;
+  }
+}
 .main .block-columns-border .block-event-item {
   padding: 0 2rem;
   border-right: 1px solid #E5E5E5;
   width: 50%;
-}
-@media (max-width: 767px) {
-  .main .block-columns-border .block-event-item {
-    width: 100%;
-  }
 }
 .main .block-columns-border .block-event-item:last-child {
   border-right: none;
@@ -3146,6 +3171,8 @@ button {
 @media (max-width: 767px) {
   .main .block-columns-border .block-event-item {
     border-right: none;
+    width: 100%;
+    margin-bottom: 1.6rem;
   }
 }
 .main .block-columns-border .block-event-item .list-event-title {

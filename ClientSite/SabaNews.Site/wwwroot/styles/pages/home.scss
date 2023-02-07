@@ -34,6 +34,9 @@
     padding-top: 3rem;
     #fixture-homepage,#standing-homepage{
         border: none;
+        @include tableMobile{
+            width: 100%;
+        }
         .block__title{
             margin-bottom: 1.2rem;
         }
@@ -174,6 +177,9 @@
             display: grid;
             grid-template-columns: 58rem auto;
             grid-gap: 2rem;
+            @include tableMobile{
+                grid-template-columns: 40rem auto;
+            }
             @include Mobile{
                 display: unset;
             }
@@ -220,18 +226,20 @@
         justify-content: flex-start;
         margin-left:-2rem;
         margin-right: -2rem;
+        @include Mobile{
+            flex-wrap: wrap;
+        }
         .block-event-item{
             padding: 0 2rem;
             border-right: 1px solid #E5E5E5;
             width: 50%;
-            @include Mobile{
-                width: 100%;
-            }
             &:last-child{
                 border-right: none;
             }
             @include Mobile{
                 border-right: none;
+                width: 100%;
+                margin-bottom: 1.6rem;
             }
             .list-event-title{
                 list-style: none;
