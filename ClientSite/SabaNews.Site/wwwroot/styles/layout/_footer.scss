@@ -7,7 +7,12 @@
     position: relative;
     margin-top: auto;
     @include tableMobile {
-        padding: 3.2rem 0 2rem;
+        padding: 2rem 0 2rem;
+    }
+    .container{
+        @include Mobile{
+            padding: 0;
+        }
     }
     &-list{
         display: flex;
@@ -16,6 +21,10 @@
             width: 50%;
             display: flex;
             border-right: 1px solid #676767;
+            @include Mobile{
+                display: unset;
+                padding: 0 1.2rem;
+            }
             &:first-child{
                 .footer-item{
                     &:first-child{
@@ -34,10 +43,20 @@
         width: 33.3%;
         display: flex;
         justify-content: center;
-        &:last-child{
+        @include tableMobile{
+            padding: 0 1.2rem;
+        }
+        @include Mobile{
             border-right: none;
+            width: 100%;
+            display: unset;
+            padding: 0;
         }
         &-block{
+            @include Mobile{
+                border-bottom: 1px solid #676767;
+                margin-bottom: 1.2rem;
+            }
             .heading-footer-list{
                 a {
                     text-decoration: none;
@@ -64,6 +83,12 @@
                 }
             }
         }
+        &:last-child{
+            border-right: none;
+            .footer-item-block{
+                border-bottom: none;
+            }
+        }
     }
 
     .footer-info{
@@ -73,6 +98,12 @@
         padding-top: 2rem;
         margin-top: 2rem;
         border-top: 1px solid #676767;
+        @include tableMobile{
+            flex-wrap: wrap;
+        }
+        @include Mobile{
+            padding: 2rem 1.2rem 0 1.2rem;
+        }
         .footer-logo{
             margin-right: 2rem;
             a{
@@ -86,10 +117,18 @@
                 padding-left: 0;
                 display: flex;
                 margin-bottom: 1.6rem;
+                @include tableMobile{
+                    flex-wrap: wrap;
+                    margin-bottom: 1.2rem;
+                }
                 li{
                     padding-right: 1rem;
                     margin-right: 1rem;
                     border-right: 1px solid #676767;
+                    @include tableMobile{
+                        padding-right: .3rem;
+                        margin-right: .3rem;
+                    }
                     &:last-child{
                         padding-right: 0;
                         border-right: 0;
@@ -101,6 +140,9 @@
                         font-size: 1.4rem;
                         line-height: 1.9rem;
                         color: #fff;
+                        @include Mobile{
+                            font-size: 1.3rem;
+                        }
                     }
                 }
             }
@@ -110,10 +152,16 @@
                 font-weight: 400;
                 font-size: 1.4rem;
                 line-height: 2.4rem;
+                @include Mobile{
+                    flex-wrap: wrap;
+                }
                 .copy-right-info{
                     margin-right: 2.4rem;
                     display: flex;
                     align-items: center;
+                    @include Mobile{
+                        flex-wrap: wrap;
+                    }
                 }
                 .follow{
                     display: inline-flex;
