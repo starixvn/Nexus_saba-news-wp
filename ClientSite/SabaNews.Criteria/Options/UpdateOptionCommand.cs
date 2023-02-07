@@ -6,6 +6,8 @@
 
         public string OptionValue { get; set; }
 
+        public long ActorId { get; set;}
+
         public override string GetSettingKey() => "Options_UpdateKey";
 
         public override bool IsValid() => !string.IsNullOrEmpty(OptionKey) && !string.IsNullOrEmpty(OptionValue);

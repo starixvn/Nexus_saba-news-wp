@@ -14,9 +14,9 @@
         {
             this.baseService = baseService;
         }
-        public async Task<CommandResult> UpdateOptionAsync(string key, string value)
+        public async Task<CommandResult> UpdateOptionAsync(string key, string value, long actorId = 0)
         {
-            var cmd = new UpdateOptionCommand { OptionKey = key, OptionValue = value };
+            var cmd = new UpdateOptionCommand { OptionKey = key, OptionValue = value, ActorId = actorId };
             return await baseService.ExecuteNonQueryAsync(cmd);
         }
 

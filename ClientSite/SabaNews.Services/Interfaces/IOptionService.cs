@@ -6,7 +6,7 @@
 
     public interface IOptionService
     {
-        Task<CommandResult> UpdateOptionAsync(string key, string value);
+        Task<CommandResult> UpdateOptionAsync(string key, string value, long actorId = 0);
         Task<Option> GetOptionAsync(string Key);
     }
 }

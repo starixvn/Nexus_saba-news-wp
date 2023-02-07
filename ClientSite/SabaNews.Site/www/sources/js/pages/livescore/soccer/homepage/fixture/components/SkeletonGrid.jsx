@@ -7,17 +7,17 @@ const SkeletonGrid = () => {
                 <div className="flex-league">
                     <div className="column column-left home-team">
                         <ul className="team">
-                            <Skeleton width={40} />
+                            <Skeleton width={60} />
                         </ul>
                     </div>
                     <div className="column column-center result-league">
-                        <div class={`detail-score-wrapper `}>
-                            <Skeleton width={20} />
+                        <div className={`detail-score-wrapper `}>
+                            <Skeleton width={30} />
                         </div>
                     </div>
                     <div className="column column-right away-team">
                         <ul className="team">
-                            <Skeleton width={40} />
+                            <Skeleton width={60} />
                         </ul>
                     </div>
                 </div>
@@ -29,13 +29,13 @@ const SkeletonGrid = () => {
             {
                 [1, 2, 3].map((index, _) => {
                     return (
-                        <div className="wc-bg-overflow">
+                        <div className="wc-bg-overflow" key={index}>
                             <div className="livescore-name-team">
-                                <span className="round-name"><Skeleton width={20} /></span>
+                                <span className="round-name"><Skeleton width={40} /></span>
                             </div>
                             <div className="league-story">
                                 <div className="group-duel" key={index}>
-                                    <div className="duel-date"><Skeleton width={60} /></div>
+                                    <div className="duel-date"><Skeleton width={70} /></div>
                                     {MatchSkeleton()}
                                     {MatchSkeleton()}
                                 </div>

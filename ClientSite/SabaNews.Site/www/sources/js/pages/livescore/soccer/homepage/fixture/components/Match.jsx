@@ -119,7 +119,7 @@ export default class Match extends PureComponent {
                             </ul>
                         </div>
                         <div className="column column-center result-league">
-                            <div class={`detail-score-wrapper ${isLive ? 'live' : ''}`}>
+                            <div className={`detail-score-wrapper ${isLive ? 'live' : ''}`}>
                                 {this.getMatchStage()}
                             </div>
                         </div>

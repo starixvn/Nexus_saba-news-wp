@@ -7,6 +7,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Home;
@@ -25,15 +26,19 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         private readonly ILeagueService leagueService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
-        public HomepageManagementController(IOptionService optionService, 
-            ILeagueService leagueService, 
-            IPostService postService, 
-            IConfiguration configuration)
+        private readonly ISessionService sessionService;
+        public HomepageManagementController(IOptionService optionService,
+            ILeagueService leagueService,
+            IPostService postService,
+            IConfiguration configuration,
+            ISessionService sessionService
+            )
         {
             this.optionService = optionService;
             this.leagueService = leagueService;
             this.postService = postService;
             this.configuration = configuration;
+            this.sessionService = sessionService;
         }
         public ActionResult Fixture()
         {
@@ -113,7 +118,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             }
             listFixture = listFixture.OrderBy(item => item.Order).ToList();
             var listFixtureJson = JsonConvert.SerializeObject(listFixture);
-            var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson);
+            var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson, sessionService.User.Id);
             return Json(cmdResult);
         }
 
@@ -148,7 +153,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             });
             listDataEdit = listDataEdit.OrderBy(item => item.Order).ToList();
             var listFixtureJson = JsonConvert.SerializeObject(listDataEdit);
-            var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson);
+            var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson, sessionService.User.Id);
             return Json(cmdResult);
         }
 
@@ -161,7 +166,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var newListFixture = listFixture.Where(item => item.Id != id).ToList();
             var listDataRemove = HandleOrder(newListFixture, 0);
             var listFixtureJson = JsonConvert.SerializeObject(listDataRemove);
-            var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson);
+            var cmdResult = await optionService.UpdateOptionAsync(optionKey, listFixtureJson, sessionService.User.Id);
             return Json(cmdResult);
         }
 
@@ -213,7 +218,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
             footballNewsCategories[count - 1] = categoryUpdate;
 
-            var cmdResult = await optionService.UpdateOptionAsync(OptionKey.FootballNewsCategories, JsonConvert.SerializeObject(footballNewsCategories));
+            var cmdResult = await optionService.UpdateOptionAsync(OptionKey.FootballNewsCategories, JsonConvert.SerializeObject(footballNewsCategories), sessionService.User.Id);
             return Json(cmdResult);
         }
 

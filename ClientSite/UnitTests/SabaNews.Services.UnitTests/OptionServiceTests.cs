@@ -27,7 +27,7 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateOptionCommand>(x => cmd = x)).Returns(expected);
 
             //Act
-            var actual = await service.UpdateOptionAsync(key, value);
+            var actual = await service.UpdateOptionAsync(key, value, 1);
 
             //Assert
             Assert.Equal(expected, actual);

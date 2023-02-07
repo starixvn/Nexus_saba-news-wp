@@ -8,7 +8,6 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Models.Options;
     using AutoFixture;
-    using SabaNews.Livescore.Services.Criteria.Match;
     using System.Collections.Generic;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -17,23 +16,20 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Core.Constants;
-    using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
     using SabaNews.Models;
     using SabaNews.Services;
-    using System.Configuration;
     using System.Linq;
     using Microsoft.Extensions.Configuration;
-    using SabaNews.Models.Posts;
     using SabaNews.Models.Categories;
     using Newtonsoft.Json;
     using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
-    using SabaNews.Site.Extensions;
-    using System;
+    using SabaNews.Core.Services;
 
     public class HomepageManagementControllerTests : AdminController
     {
         private IOptionService optionService;
         private ILeagueService leagueService;
+        private ISessionService sessionService;
         private readonly IFixture fixture = new Fixture();
         private IPostService postService;
         private IConfiguration configuration;
@@ -41,7 +37,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         {
             OptionId = 0,
             OptionName = "football_news_categories",
-            OptionValue = "[{\"Category\":\"World Cup\",\"Id\":1,\"Slug\":\"world-cup\",\"Url\":\"/tin-the-thao/bong-da/quoc-te/world-cup\",\"CreatedDate\":\"2023-01-31T07:16:31.8439748Z\"},{\"Category\":\"La Liga\",\"Id\":2,\"Slug\":\"la-liga\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha/la-liga\",\"CreatedDate\":\"2023-01-31T06:45:02.7067665Z\"},{\"Category\":\"Tây Ban Nha\",\"Id\":3,\"Slug\":\"tay-ban-nha\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha\",\"CreatedDate\":\"2023-01-31T07:32:57.3471868Z\"}]"
+            OptionValue = "[{\"Category\":\"World Cup\",\"Id\":1,\"Slug\":\"world-cup\",\"Url\":\"/tin-the-thao/bong-da/quoc-te/world-cup\",\"CreatedDate\":\"2023-01-31T07:16:31.8439748Z\"},{\"Category\":\"La Liga\",\"Id\":2,\"Slug\":\"la-liga\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha/la-liga\",\"CreatedDate\":\"2023-01-31T06:45:02.7067665Z\"},{\"Category\":\"Tï¿½y Ban Nha\",\"Id\":3,\"Slug\":\"tay-ban-nha\",\"Url\":\"/tin-the-thao/bong-da/tay-ban-nha\",\"CreatedDate\":\"2023-01-31T07:32:57.3471868Z\"}]"
         };
 
         [Fact]
@@ -396,7 +392,8 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             optionService = Substitute.For<IOptionService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
-            var controller = new HomepageManagementController(optionService, leagueService, postService, configuration);
+            sessionService = Substitute.For<SessionService>();
+            var controller = new HomepageManagementController(optionService, leagueService, postService, configuration, sessionService);
 
             return controller;
         }
