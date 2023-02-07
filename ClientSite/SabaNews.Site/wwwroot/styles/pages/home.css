@@ -1495,7 +1495,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .block {
-    margin-bottom: 0;
+    margin-bottom: 3rem;
     padding-bottom: 1.6rem;
   }
 }
@@ -2210,11 +2210,22 @@ button {
 .box-vertical-content {
   margin-top: 1.2rem;
 }
+@media (max-width: 767px) {
+  .box-vertical-content {
+    margin-top: 1rem;
+  }
+}
 .box-vertical-content h1 {
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 3.3rem;
   margin: 0;
+}
+@media (max-width: 767px) {
+  .box-vertical-content h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
 }
 .box-vertical-content h3 {
   font-weight: 700;
@@ -2241,6 +2252,14 @@ button {
 }
 .box-vertical.box-vertical-hightlight .box-vertical-image {
   height: 35rem;
+}
+@media (max-width: 767px) {
+  .box-vertical.box-vertical-hightlight .box-vertical-image {
+    height: 23rem;
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+    border-radius: 0;
+  }
 }
 .box-vertical.box-vertical-hightlight .box-vertical-content {
   margin-top: 1.6rem;
@@ -2697,8 +2716,32 @@ button {
 .ads-insite {
   margin-top: 2rem;
 }
+@media (max-width: 767px) {
+  .ads-insite {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+  }
+}
 .ads-insite a {
   display: block;
+}
+.ads-insite a .show-pc {
+  display: block;
+}
+@media (max-width: 767px) {
+  .ads-insite a .show-pc {
+    display: none;
+  }
+}
+.ads-insite a .show-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .ads-insite a .show-mobile {
+    display: block;
+  }
 }
 
 .block-last-page .ads-insite {
@@ -2951,6 +2994,19 @@ button {
   .main .block-news-hot .block-news-hot-child {
     grid-column: 1/4;
     grid-row: 2;
+    grid-template-columns: repeat(1, 1fr);
+    border-top: 1px solid #E5E5E5;
+    padding-top: 1.2rem;
+  }
+}
+@media (max-width: 767px) {
+  .main .block-news-hot .block-news-hot-child .box-vertical {
+    display: grid;
+    grid-template-columns: 13rem auto;
+    grid-gap: 1rem;
+  }
+  .main .block-news-hot .block-news-hot-child .box-vertical-content {
+    margin-top: 0;
   }
 }
 .main .block-guess {
@@ -2994,12 +3050,18 @@ button {
 @media (max-width: 767px) {
   .main .block-video {
     display: unset;
+    padding: 1.2rem;
   }
 }
 .main .block-video .group-video {
   display: grid;
   grid-template-columns: 58rem auto;
   grid-gap: 2rem;
+}
+@media (max-width: 767px) {
+  .main .block-video .group-video {
+    display: unset;
+  }
 }
 .main .block-video .block-child-video {
   max-height: 41rem;

@@ -40,8 +40,26 @@
 
 .ads-insite{
     margin-top: 2rem;
+    @include Mobile{
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        margin-left: -1.2rem;
+        margin-right: -1.2rem;
+    }
     a{
         display: block;
+        .show-pc{
+            display: block;
+            @include Mobile{
+                display: none;
+            }
+        }
+        .show-mobile{
+            display: none;
+            @include Mobile{
+                display: block;
+            }
+        }
     }
 }
 

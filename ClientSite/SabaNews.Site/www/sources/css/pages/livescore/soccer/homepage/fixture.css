@@ -932,6 +932,11 @@ body {
   line-height: 1.6rem;
   width: 10rem;
 }
+@media (max-width: 767px) {
+  .group-duel .team-name {
+    width: 9rem;
+  }
+}
 .group-duel .team-name.win {
   font-weight: 700;
 }

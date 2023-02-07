@@ -103,11 +103,18 @@
     }
     &-content{
         margin-top: 1.2rem;
+        @include Mobile{
+            margin-top: 1rem;
+        }
         h1{
             font-weight: 700;
             font-size: 2.4rem;
             line-height: 3.3rem;
             margin: 0;
+            @include Mobile{
+                font-size: 2rem;
+                line-height: 3rem;
+            }
         }
         h3{
             font-weight: 700;
@@ -136,6 +143,12 @@
     &.box-vertical-hightlight{
         .box-vertical-image{
             height: 35rem;
+            @include Mobile{
+                height: 23rem;
+                margin-left: -1.2rem;
+                margin-right: -1.2rem;
+                border-radius: 0;
+            }
         }
         .box-vertical-content{
             margin-top: 1.6rem;
