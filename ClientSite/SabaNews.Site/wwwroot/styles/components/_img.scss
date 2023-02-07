@@ -27,27 +27,20 @@
     }
 }
 
-
 .hover-image {
     overflow: hidden;
     border-radius: 3px;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
+    position: relative;
+    padding-bottom: 56.2%;
     img {
+        transition: all .5s ease;
+        position: absolute;
+        object-fit: cover;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: top;
-        -webkit-backface-visibility: hidden;
-        -ms-transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0) scale(1,01);
-        image-rendering: -moz-crisp-edges;
-        image-rendering: -o-crisp-edges;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-        -ms-interpolation-mode: nearest-neighbor;
-        display: block;
-        transition: all .5s ease;
+        object-position: center;
+        transform: translateZ(0)
     }
 
     &:hover {
@@ -58,6 +51,56 @@
     }
 }
 
-.image-16-9{
-    
+.hover-none-16-9{
+    overflow: hidden;
+    border-radius: 3px;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    img {
+        transition: all .5s ease;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        transform: translateZ(0)
+    }
+
+    &:hover {
+        img {
+            transition: all .5s ease;
+            transform: scale(1.01);
+        }
+    }
 }
+
+
+
+// .hover-image {
+//     overflow: hidden;
+//     border-radius: 3px;
+//     -webkit-mask-image: -webkit-radial-gradient(white, black);
+//     img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         object-position: top;
+//         -webkit-backface-visibility: hidden;
+//         -ms-transform: translateZ(0);
+//         -webkit-transform: translateZ(0);
+//         transform: translateZ(0) scale(1,01);
+//         image-rendering: -moz-crisp-edges;
+//         image-rendering: -o-crisp-edges;
+//         image-rendering: -webkit-optimize-contrast;
+//         image-rendering: crisp-edges;
+//         -ms-interpolation-mode: nearest-neighbor;
+//         display: block;
+//         transition: all .5s ease;
+//     }
+
+//     &:hover {
+//         img {
+//             transition: all .5s ease;
+//             transform: scale(1.01);
+//         }
+//     }
+// }
+
