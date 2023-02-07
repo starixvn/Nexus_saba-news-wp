@@ -3017,12 +3017,13 @@ button {
 }
 @media (max-width: 767px) {
   .main .block-guess {
-    padding: 1.2rem 1.2rem 3.5rem 1.2rem;
+    padding: 1.2rem 0 3.5rem 0;
   }
 }
 @media (max-width: 767px) {
   .main .block-guess .block__title {
     margin-bottom: 1.5rem;
+    padding: 0 1.2rem;
   }
 }
 .main .block-guess .block__title a {
@@ -3041,7 +3042,7 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-gap: 1rem;
+    grid-gap: 0;
   }
 }
 .main .block-guess .block__content .swiper-slide {
@@ -3050,6 +3051,10 @@ button {
 @media (max-width: 767px) {
   .main .block-guess .block__content .swiper-slide {
     width: 30rem;
+    margin-left: 1rem;
+  }
+  .main .block-guess .block__content .swiper-slide:last-child {
+    margin-right: 1rem;
   }
 }
 @media (max-width: 767px) {
