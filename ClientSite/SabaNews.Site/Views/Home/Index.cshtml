@@ -202,54 +202,75 @@
                     <div class="block block-event block-columns-border">
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
-                                <a href="#" class="none-bg">AFF Cup</a>
+                                <a href="@Model.FootballNewCategory[0].Url" class="none-bg">@Model.FootballNewCategory[0].Category</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image hover-image">
-                                    <img src="~/images/messi.png" class="img-res" />
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.LeaguePosts[0][0].FeatureImage)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h2><a href="#">Bị phóng viên UAE săm soi, thầy Park hết sức đề phòng</a></h2>
+                                    <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })">@Model.LeaguePosts[0][0].PostTitle</a></h2>
                                     <ul class="list-event-title">
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
+                                        @{
+                                            var LeaguePostsIndex = 0;
+                                            foreach(var post in Model.LeaguePosts[0]){
+                                                LeaguePostsIndex++;
+                                                if(LeaguePostsIndex <= 1){
+                                                    continue;
+                                                }
+                                                <li><a href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></li>
+                                            }
+                                        }
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
-                                <a href="#" class="none-bg">ngoại hạng anh</a>
+                                <a href="@Model.FootballNewCategory[1].Url" class="none-bg">@Model.FootballNewCategory[1].Category</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image hover-image">
-                                    <img src="~/images/messi.png" class="img-res" />
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.LeaguePosts[1][0].FeatureImage)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h2><a href="#">Bị phóng viên UAE săm soi, thầy Park hết sức đề phòng</a></h2>
+                                    <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })">@Model.LeaguePosts[1][0].PostTitle</a></h2>
                                     <ul class="list-event-title">
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
+                                        @{
+                                            var LeaguePostsCenterIndex = 0;
+                                            foreach(var post in Model.LeaguePosts[1]){
+                                                LeaguePostsCenterIndex++;
+                                                if(LeaguePostsCenterIndex <= 1){
+                                                    continue;
+                                                }
+                                                <li><a href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></li>
+                                            }
+                                        }
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
-                                <a href="#" class="none-bg">la liga</a>
+                                <a href="@Model.FootballNewCategory[2].Url" class="none-bg">@Model.FootballNewCategory[2].Category</a>
                             </h2>
                             <div class="box-vertical">
-                                <a href="#" class="box-vertical-image hover-image">
-                                    <img src="~/images/messi.png" class="img-res" />
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.LeaguePosts[2][0].FeatureImage)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h2><a href="#">Bị phóng viên UAE săm soi, thầy Park hết sức đề phòng</a></h2>
+                                    <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })">@Model.LeaguePosts[2][0].PostTitle</a></h2>
                                     <ul class="list-event-title">
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
-                                        <li><a href="#">Man United và chuỗi ngày giông bão trong tháng hai</a></li>
+                                        @{
+                                            var LeaguePostsLeftIndex = 0;
+                                            foreach(var post in Model.LeaguePosts[2]){
+                                                LeaguePostsLeftIndex++;
+                                                if(LeaguePostsLeftIndex <= 1){
+                                                    continue;
+                                                }
+                                                <li><a href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></li>
+                                            }
+                                        }
                                     </ul>
                                 </div>
                             </div>
