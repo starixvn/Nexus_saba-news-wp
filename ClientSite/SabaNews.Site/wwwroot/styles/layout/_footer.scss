@@ -2,71 +2,133 @@
 @import '../abstracts/_mixins.scss';
 
 .footer {
-    background-color: $color-pagination;
-    border-top: 4px solid $color-main-title;
-    padding: 3.6rem 0;
+    background: linear-gradient(180deg, #565759 0%, #323334 100%);
+    padding: 3.2rem 0 2rem;
     position: relative;
     margin-top: auto;
-
     @include tableMobile {
-        padding: .8rem 0;
+        padding: 3.2rem 0 2rem;
     }
-
-    .container {
+    &-list{
         display: flex;
         justify-content: space-between;
-        align-items: center;
-
-        @include tableMobile {
-            flex-direction: column-reverse;
-        }
-    }
-
-    .copy-right, .follow {
-        font-size: 1.6rem;
-        color: #fff;
-
-        @include tableMobile {
-            font-size: 1.2rem;
-        }
-    }
-
-    .copy-right {
-        display: flex;
-        align-items: center;
-
-        @include Mobile {
-            border-top: 1px solid #1B263A;
-            padding-top: .8rem;
-            width: 100%;
-            justify-content: space-between;
-        }
-    }
-
-    .follow {
-        display: flex;
-        align-items: center;
-
-        @include Mobile {
-            padding-bottom: .8rem;
-        }
-
-        [class*="icon-"] {
-            font-size: 2.4rem;
-            margin-right: 1.6rem;
-            cursor: pointer;
-            text-decoration: none;
-
-            &:before {
-                color: #fff;
+        &-group{
+            width: 50%;
+            display: flex;
+            border-right: 1px solid #676767;
+            &:first-child{
+                .footer-item{
+                    &:first-child{
+                        justify-content: flex-start;
+                        width: 30%;
+                    }
+                }
+            }
+            &:last-child{
+                border-right: none;
             }
         }
-
-        .icon-social-facebook {
-            margin-left: 1.6rem;
+    }
+    &-item{
+        border-right: 1px solid #676767;
+        width: 33.3%;
+        display: flex;
+        justify-content: center;
+        &:last-child{
+            border-right: none;
+        }
+        &-block{
+            .heading-footer-list{
+                a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: 700;
+                    font-size: 1.3rem;
+                    line-height: 1.8rem;
+                    text-transform: uppercase;
+                }
+            }
+            ul{
+                list-style: none;
+                padding-left: 0;
+                margin-top: 1.2rem;
+                li{
+                    margin-bottom: 1rem;
+                    a{
+                        text-decoration: none;
+                        color: #fff;
+                        font-weight: 400;
+                        font-size: 1.3rem;
+                        line-height: 1.8rem;
+                    }
+                }
+            }
         }
     }
 
+    .footer-info{
+        display: flex;
+        align-items: flex-start;
+        color: #fff;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid #676767;
+        .footer-logo{
+            margin-right: 2rem;
+            a{
+                display: block;
+                width: 10.4rem;
+            }
+        }
+        .footer-info-main{
+            ul{
+                list-style: none;
+                padding-left: 0;
+                display: flex;
+                margin-bottom: 1.6rem;
+                li{
+                    padding-right: 1rem;
+                    margin-right: 1rem;
+                    border-right: 1px solid #676767;
+                    &:last-child{
+                        padding-right: 0;
+                        border-right: 0;
+                        margin-right: 0;
+                    }
+                    a{
+                        text-decoration: none;
+                        font-weight: 400;
+                        font-size: 1.4rem;
+                        line-height: 1.9rem;
+                        color: #fff;
+                    }
+                }
+            }
+            .copy-right{
+                display: flex;
+                align-items: center;
+                font-weight: 400;
+                font-size: 1.4rem;
+                line-height: 2.4rem;
+                .copy-right-info{
+                    margin-right: 2.4rem;
+                    display: flex;
+                    align-items: center;
+                }
+                .follow{
+                    display: inline-flex;
+                    a{
+                        text-decoration: none;
+                        font-size: 2.4rem;
+                        margin-left: 1.6rem;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    
     .ex {
         display: inline-block;
         position: relative;
