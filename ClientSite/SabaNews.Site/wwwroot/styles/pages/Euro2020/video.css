@@ -2150,6 +2150,11 @@ button {
   display: block;
   font-size: 1.2rem;
 }
+@media (max-width: 767px) {
+  .box-horizontal.box-video .box-horizontal-image:after {
+    padding-top: 4rem;
+  }
+}
 
 .comment {
   display: inline-flex;
@@ -2319,6 +2324,11 @@ button {
 }
 .box-vertical.box-vertical-hightlight .box-vertical-content {
   margin-top: 1.6rem;
+}
+@media (max-width: 767px) {
+  .box-vertical.box-vertical-hightlight .box-vertical-content {
+    margin-top: 1rem;
+  }
 }
 .box-vertical .box-video {
   position: relative;

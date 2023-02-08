@@ -8,6 +8,9 @@
 
 #standing-homepage{
     margin-top: 2rem;
+    @include Mobile{
+        margin-top: 3rem;
+    }
     .livescore-soccer-main{
         overflow: unset;
         max-height: 100%;

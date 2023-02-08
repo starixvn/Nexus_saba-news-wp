@@ -13,6 +13,10 @@
 .livescore-home{
     padding-bottom: 1.6rem;
     border-bottom: 1px solid #E5E5E5;
+    @include Mobile{
+        padding-bottom: 0;
+        border-bottom: none;
+    }
     .livescore-name-team {
         display: block;
         background: #F5F3EF;

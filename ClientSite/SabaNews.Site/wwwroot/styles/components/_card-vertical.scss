@@ -152,6 +152,9 @@
         }
         .box-vertical-content{
             margin-top: 1.6rem;
+            @include Mobile{
+                margin-top: 1rem;
+            }
         }
     }
     .box-video{

@@ -1717,6 +1717,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+@media (max-width: 767px) {
+  .block-last-page .block-columns {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 0;
+  }
+}
 .block-last-page .columns-left {
   border-right: 1px solid #E5E5E5;
   padding-right: 2rem;
@@ -1725,10 +1732,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .block-last-page .columns-left {
     padding-right: 0;
     border-right: none;
+    order: 2;
   }
 }
 .block-last-page .columns-right {
   width: auto;
+}
+@media (max-width: 767px) {
+  .block-last-page .columns-right {
+    order: 1;
+  }
 }
 
 button {
@@ -2443,6 +2456,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-vertical.box-vertical-hightlight .box-vertical-content {
   margin-top: 1.6rem;
+}
+@media (max-width: 767px) {
+  .box-vertical.box-vertical-hightlight .box-vertical-content {
+    margin-top: 1rem;
+  }
 }
 .box-vertical .box-video {
   position: relative;

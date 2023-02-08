@@ -154,9 +154,6 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class="ads-insite">
-            <a href="#"><img src="~/images/mobile-ads.png" class="img-res show-mobile" /></a>
-        </div>
         <div class="block block-last-page">
             <div class="block-columns">
                 <div class="columns columns-left">
@@ -181,10 +178,10 @@
                                     </div>
                                 }
                             </div>
-                            <div class="block-child-video">
+                            <div class="block-child-video scroll-snap">
                                 @foreach (var post in Model.VideoPosts)
                                 {
-                                    <div class="box-horizontal box-video">
+                                    <div class="box-horizontal box-video scroll-snap-items">
                                         <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
                                             <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                         </a>
@@ -377,7 +374,8 @@
                 </div>
                 <div class="columns columns-right">
                     <div class="ads-insite">
-                        <a href="#"><img src="~/images/300x600.png" class="img-res" /></a>
+                        <a href="#"><img src="~/images/300x600.png" class="img-res img-res show-pc" /></a>
+                        <a href="#"><img src="~/images/mobile-ads.png" class="img-res show-mobile" /></a>
                     </div>
                 </div>
             </div>

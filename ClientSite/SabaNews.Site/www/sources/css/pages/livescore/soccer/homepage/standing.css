@@ -451,6 +451,11 @@ body {
 #standing-homepage {
   margin-top: 2rem;
 }
+@media (max-width: 767px) {
+  #standing-homepage {
+    margin-top: 3rem;
+  }
+}
 #standing-homepage .livescore-soccer-main {
   overflow: unset;
   max-height: 100%;
