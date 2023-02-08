@@ -1,0 +1,350 @@
+@using SabaNews.Core.Constants;
+@using System.Linq;
+@model IEnumerable<Menu>;
+
+@{
+    var topMenu = Model.Where(item => item.ParentId == 0).ToList();
+    var footballCateId = 0;
+    var vnCateId = 0;
+    var euroCateId = 0;
+    var englishCateId = 0;
+    var tbnCateId = 0;
+    var italyCateId = 0;
+    var franceCateId = 0;
+    var germanyCateId = 0;
+    var globalCateId = 0;
+    foreach(var item in Model)
+    {
+        switch (item.CateSlug)
+        {
+            case CategorySlug.Football:
+                footballCateId = item.PostId;
+                break;
+            case CategorySlug.Vietnam:
+                vnCateId = item.PostId;
+                break;
+            case CategorySlug.Europe:
+                euroCateId = item.PostId;
+                break;
+            case CategorySlug.England:
+                englishCateId = item.PostId;
+                break;
+            case CategorySlug.TBN:
+                tbnCateId = item.PostId;
+                break;
+            case CategorySlug.Italia:
+                italyCateId = item.PostId;
+                break;
+            case CategorySlug.France:
+                franceCateId = item.PostId;
+                break;
+            case CategorySlug.Germany:
+                germanyCateId = item.PostId;
+                break;
+            case CategorySlug.International:
+                globalCateId = item.PostId;
+                break;
+        }
+    }
+}
+
+<section class="footer">
+    <div class="container">
+        <div class="footer-list">
+            <div class="footer-list-group">
+                <div class="footer-item">
+                    <div class="footer-item-main">
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/">Trang Chủ</a></h6>
+                            <ul>
+                                <li><a href="/tin-the-thao">Tin mới nhất</a></li>
+                                @foreach (var menu in topMenu)
+                                {
+                                    var link = getMenuLink(menu);
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-main">
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/viet-nam">bóng đá việt nam</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == vnCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/viet-nam/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-main">
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/cup-chau-au">cúp châu âu</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == euroCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/cup-chau-au/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/anh">bóng đá Anh</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == englishCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/anh/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-list-group">
+                <div class="footer-item">
+                    <div class="footer-item-main">
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/tay-ban-nha">bóng đá tbn</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == tbnCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/tay-ban-nha/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/italia">Bóng đá italia</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == italyCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/italia/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-main">
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/phap">bóng đá pháp</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == franceCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/phap/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/duc">bóng đá đức</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == germanyCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/duc/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-main">
+                        <div class="footer-item-block">
+                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/quoc-te">bóng đá quốc tế</a></h6>
+                            <ul>
+                                @foreach (var menu in Model.Where(item => item.ParentId == globalCateId))
+                                {
+                                    var link = "/tin-the-thao/bong-da/quoc-te/" + menu.CateSlug;
+                                    <li><a href="@link">@menu.MenuTitle</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <div class="footer-logo">
+                <a href="#"><img src="~/images/logo-footer.png" class="img-res" /></a>
+            </div>
+            <div class="footer-info-main">
+                <ul class="footer-list-service">
+                    <li><a href="#">Thu thập và sử dụng thông tin</a></li>
+                    <li><a href="#">Lưu trữ thông tin cá nhân</a></li>
+                    <li><a href="#">Cookie</a></li>
+                    <li><a href="#">Tiết lộ thông tin cá nhân</a></li>
+                    <li><a href="#">Quảng cáo bên thứ ba</a></li>
+                    <li><a href="#">Bảo mật và An ninh</a></li>
+                </ul>
+                <div class="copy-right">
+                    <div class="copy-right-info">
+                        © @DateTime.Now.Year Bản quyền thuộc về SABA Sports
+                        <div class="ex">
+                            <a href="//www.dmca.com/Protection/Status.aspx?ID=f936b4b7-f675-4399-9627-694869ab0664"
+                                title="DMCA.com Protection Status" class="dmca-badge"> <img style="width:auto"
+                                    loading="lazy"
+                                    src="https://images.dmca.com/Badges/dmca_protected_sml_120b.png?ID=f936b4b7-f675-4399-9627-694869ab0664"
+                                    alt="DMCA.com Protection Status" /></a>
+                            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+                        </div>
+                    </div>
+                    <div class="follow">
+                        Theo dõi SABA Sports trên
+                        <a class="icon-social-facebook" href="https://www.facebook.com/sabasportsvietnam"></a>
+                        <a class="icon-social-youtube" href="https://www.youtube.com/SABASportsVietnam"></a>
+                        <a class="icon-tiktok" href="https://www.tiktok.com/@@sabasportsvietnam"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        @* <div class="footer-list">
+        <div class="footer-item">
+        <div class="footer-item-main">
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">CHUYÊN MỤC</a></h6>
+        <ul>
+        <li><a href="#">Tin mới nhất</a></li>
+        <li><a href="#">Lịch thi đấu</a></li>
+        <li><a href="#">Bóng đá</a></li>
+        <li><a href="#">Nhận định</a></li>
+        <li><a href="#">Hậu Trường</a></li>
+        <li><a href="#">Chuyển nhượng</a></li>
+        <li><a href="#">Các môn khác</a></li>
+        <li><a href="#">Video</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-item">
+        <div class="footer-item-main">
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">bóng đá việt nam</a></h6>
+        <ul>
+        <li><a href="#">V-League</a></li>
+        <li><a href="#">ĐT Việt Nam</a></li>
+        <li><a href="#">ĐT nữ Việt Nam</a></li>
+        <li><a href="#">U23 Việt Nam</a></li>
+        <li><a href="#">Futsal Việt Nam</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-item">
+        <div class="footer-item-main">
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">cúp châu âu</a></h6>
+        <ul>
+        <li><a href="#">Champions League</a></li>
+        <li><a href="#">Europa League</a></li>
+        <li><a href="#">Khác</a></li>
+        <li><a href="#">U23 Việt Nam</a></li>
+        <li><a href="#">Futsal Việt Nam</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">bóng đá Anh</a></h6>
+        <ul>
+        <li><a href="#">Ngoại hạng Anh</a></li>
+        <li><a href="#">FA Cup</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-item">
+        <div class="footer-item-main">
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">bóng đá tbn</a></h6>
+        <ul>
+        <li><a href="#">La Liga</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">La Liga</a></h6>
+        <ul>
+        <li><a href="#">Serie A</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-item">
+        <div class="footer-item-main">
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">bóng đá pháp</a></h6>
+        <ul>
+        <li><a href="#">League 1</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">bóng đá đức</a></h6>
+        <ul>
+        <li><a href="#">Bundesliga</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-item">
+        <div class="footer-item-main">
+        <div class="footer-item-block">
+        <h6 class="heading-footer-list"><a href="#">bóng đá quốc tế</a></h6>
+        <ul>
+        <li><a href="#">World Cup</a></li>
+        <li><a href="#">Euro</a></li>
+        <li><a href="#">Asian Cup</a></li>
+        <li><a href="#">Copa America</a></li>
+        <li><a href="#">AFF Cup</a></li>
+        <li><a href="#">Sea Games</a></li>
+        <li><a href="#">U23 Châu Á</a></li>
+        <li><a href="#">Khác</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        </div> *@
+    </div>
+    <div class="back-to-top-box">
+        <div class="back-to-top"><span class="icon-chevron-right"></span></div>
+    </div>
+</section>
+
+
+@functions {
+    private string getMenuLink(Menu menu)
+    {
+        if (menu == null) return null;
+        var link = "/tin-the-thao/" + menu.CateSlug;
+        if (menu.PageSlug == "lich-thi-dau")
+        {
+            link = Url.Action("Index", "Soccer");
+        }
+        else if (menu.PageSlug == "warning")
+        {
+            link = Url.Action("Warning", "Home");
+        }
+        else if (menu.CateSlug == "video")
+        {
+            link = "/video";
+        }
+        return link;
+    }
+}
