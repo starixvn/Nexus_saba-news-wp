@@ -87,7 +87,9 @@
         &:last-child{
             border-right: none;
             .footer-item-block{
-                border-bottom: none;
+                &:last-child{
+                    border-bottom: none;
+                }
             }
         }
     }

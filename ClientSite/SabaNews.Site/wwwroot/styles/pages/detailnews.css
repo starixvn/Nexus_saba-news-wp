@@ -307,7 +307,7 @@ p.has-text-align-center {
 .footer-item:last-child {
   border-right: none;
 }
-.footer-item:last-child .footer-item-block {
+.footer-item:last-child .footer-item-block:last-child {
   border-bottom: none;
 }
 .footer .footer-info {
