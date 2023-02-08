@@ -78,6 +78,10 @@ button {
     margin: 1rem auto 0;
     text-align: center;
     border-radius: 3px;
+    display: none;
+    @include Mobile{
+        display: block;
+    }
     a{
         font-weight: 600;
         font-size: 1.3rem;

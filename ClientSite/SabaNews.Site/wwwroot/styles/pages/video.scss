@@ -76,12 +76,8 @@
     }
 }
 
-.play_video iframe {
-    height: 43rem;
-
-    @media screen and (max-width: 767px) {
-        height: 22rem;
-    }
+.play_video {
+    border-radius: 0;
 }
 
 .sub-category {

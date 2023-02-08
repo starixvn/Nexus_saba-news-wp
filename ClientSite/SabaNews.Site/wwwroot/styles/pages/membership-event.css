@@ -1842,6 +1842,12 @@ button {
   margin: 1rem auto 0;
   text-align: center;
   border-radius: 3px;
+  display: none;
+}
+@media (max-width: 767px) {
+  .view-more-block {
+    display: block;
+  }
 }
 .view-more-block a {
   font-weight: 600;
@@ -2470,6 +2476,12 @@ button {
   margin: 1rem auto 0;
   text-align: center;
   border-radius: 3px;
+  display: none;
+}
+@media (max-width: 767px) {
+  .view-more-block {
+    display: block;
+  }
 }
 .view-more-block a {
   font-weight: 600;
