@@ -3420,7 +3420,7 @@ button {
 .main .block-video .block-child-video .block-view-more {
   background: #d0dae1;
   border-radius: 3px;
-  margin: 0 1rem;
+  margin: 0 1.2rem 0;
   height: 10.3rem;
   width: 8.8rem;
   display: flex;
