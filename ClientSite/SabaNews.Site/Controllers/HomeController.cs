@@ -224,6 +224,14 @@
             return Redirect("/lich-thi-dau/bong-da");
         }
 
+        [Route("policy")]
+        public ActionResult Policy()
+        {
+
+            return View();
+        }
+
+
         [HttpPost]
         [Route("api/post/category-posts")]
         public async Task<IActionResult> GetCategoryGrid(CategoryPostParams param)

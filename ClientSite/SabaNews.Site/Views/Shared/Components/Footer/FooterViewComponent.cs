@@ -8,9 +8,8 @@ namespace SabaNews.Views.Shared.Components
     public class FooterViewComponent : ViewComponent
     {
         private readonly IDataControlService dataControlService;
-        private readonly ISessionService sessionService;
 
-        public FooterViewComponent(IDataControlService dataControlService, ISessionService sessionService)
+        public FooterViewComponent(IDataControlService dataControlService)
         {
             this.dataControlService = dataControlService;
         }
