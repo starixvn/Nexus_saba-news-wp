@@ -64,7 +64,7 @@ export class AppContainer extends Component {
                             })
                         }
                     </div>
-                    <div class="view-more-block" onClick={this.handleClickFixture}>
+                    <div className="view-more-block" onClick={this.handleClickFixture}>
                         <a>Xem Thêm</a>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ import Table from './table/Index';
 import TableHead from './table/Head';
 import TableBody from './table/Body';
 import { Tabs, Tab } from 'react-bootstrap';
-import CommonFunctions from '@jsroot/common/common-functions';
 
 export  default class GridItem extends PureComponent {
     constructor(props) {
@@ -70,14 +69,6 @@ export  default class GridItem extends PureComponent {
         return tmpStandings;
     };
 
-    handleClickStanding = (event, league) => {
-        const url = `${CommonFunctions.getLeaguePageUrl(league)}/standings`;
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
-    };
 
     render() {
         const standing = this.groupStandingsByStage(this.props.leagueStanding.standing)
@@ -107,10 +98,6 @@ export  default class GridItem extends PureComponent {
                         }
                     </Tabs>
                 }
-
-                <div className="view-more-block" onClick={event => this.handleClickStanding(event, this.props.leagueStanding.league)}>
-                    <a>Xem Thêm</a>
-                </div>
             </>
         );
     }

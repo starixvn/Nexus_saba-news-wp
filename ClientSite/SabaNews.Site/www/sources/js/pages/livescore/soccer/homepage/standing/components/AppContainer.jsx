@@ -17,12 +17,10 @@ export class AppContainer extends Component {
             <>
                 <div className="livescore-home livescore-standing">
                     <div className="block__title"><a>Bảng xếp hạng</a></div>
-                    <div className="livescore-soccer-main">
-                        {
-                            standings !== null && standings.length > 0 &&
-                            <Grid standings={standings}/>
-                        }
-                    </div>
+                    {
+                        standings !== null && standings.length > 0 &&
+                        <Grid standings={standings} />
+                    }
                 </div>
             </>
         );
