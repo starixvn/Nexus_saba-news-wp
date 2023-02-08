@@ -4,13 +4,13 @@
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
-            var slide = $(this).parent().parent();
+            var slide = $(this).parent().parent().parent();
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
                 $('.img-item').show();
-                $('.swiper-slide').removeClass("active");
-                $('.slide-video .card-item').first().addClass("active");
-                var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
+                $('.swiper-slide-video').removeClass("active");
+                $('.slide-video .card-item').first().addClass("box-video");
+                var iframe = $(this).parent().parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
                 iframe = $(($.parseHTML(found[2].outerHTML)));
@@ -28,9 +28,9 @@
 
                 iframe.attr('src', src);
 
-                $(this).parent().parent().find('.play_video').html(iframe);
-                $(this).parent().hide();
-                $(this).parent().addClass('active');
+                $(this).parent().parent().parent().find('.play_video').html(iframe);
+                $(this).parent().parent().hide();
+                $(this).parent().parent().addClass('active');
 
                 const $btn = $(this);
                 var postId = $btn.attr("post-id");
@@ -53,16 +53,16 @@
         //Desktop
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
-            $('.block-video .swiper-slide').hide();
+            $('.block-video .swiper-slide-video').hide();
             var slide = $('#slide-' + id);
             slide.show();
             slide.find('.img-item').hide();
-            $('.slide-video .card-item').removeClass("active");
-            $(this).parent().addClass("active");
+            $('.slide-video .card-item').removeClass("box-video");
+            $(this).parent().addClass("box-video");
 
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
-                $('.swiper-slide').removeClass("active");
+                $('.swiper-slide-video').removeClass("active");
                 var iframe = slide.find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
