@@ -237,6 +237,20 @@
         "sourceMap": false
     },
     {
+        "outputFileName": "wwwroot/minify/js/home.min.js",
+        "inputFiles": [
+
+            "wwwroot/lib/swipper/js/swiper.min.js",
+            "wwwroot/js/swiper.js",
+            "wwwroot/js/home.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
         "outputFileName": "wwwroot/minify/styles/site.min.css",
         "inputFiles": [
             "wwwroot/styles/pages/auth.min.css"
