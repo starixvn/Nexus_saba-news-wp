@@ -57,6 +57,18 @@
     }
 }
 
+.play_video{
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative;
+    padding-bottom: 56.2%;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    iframe{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+}
 
 
 

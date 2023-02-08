@@ -265,11 +265,16 @@ p.has-text-align-center {
     padding: 0;
   }
 }
+.footer-item-block {
+  margin-bottom: 1.2rem;
+}
 @media (max-width: 767px) {
   .footer-item-block {
     border-bottom: 1px solid #676767;
-    margin-bottom: 1.2rem;
   }
+}
+.footer-item-block .heading-footer-list {
+  line-height: 1;
 }
 .footer-item-block .heading-footer-list a {
   text-decoration: none;
