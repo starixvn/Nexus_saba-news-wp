@@ -81,8 +81,8 @@
                 }
 
                 iframe.attr('src', src);
-                slide.find('.play_video').html(iframe);
                 slide.find('.play_video')[0].style.display = "block";
+                slide.find('.play_video').html(iframe);
 
                 if (id) {
                     $.ajax({
