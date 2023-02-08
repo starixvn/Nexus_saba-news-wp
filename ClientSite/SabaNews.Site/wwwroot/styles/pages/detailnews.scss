@@ -64,18 +64,18 @@ img {
     }
 }
 
-.play_video iframe {
-    height: 48rem;
-    width: 100%;
+// .play_video iframe {
+//     height: 48rem;
+//     width: 100%;
 
-    @include tableMobile {
-        height: 25rem;
-    }
+//     @include tableMobile {
+//         height: 25rem;
+//     }
 
-    @include Mobile {
-        height: 20rem;
-    }
-}
+//     @include Mobile {
+//         height: 20rem;
+//     }
+// }
 
 .single {
     max-height: 48rem;

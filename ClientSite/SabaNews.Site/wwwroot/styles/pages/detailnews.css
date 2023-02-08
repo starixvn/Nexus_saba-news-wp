@@ -3858,21 +3858,6 @@ img {
   }
 }
 
-.play_video iframe {
-  height: 48rem;
-  width: 100%;
-}
-@media screen and (max-width: 1024px) {
-  .play_video iframe {
-    height: 25rem;
-  }
-}
-@media (max-width: 767px) {
-  .play_video iframe {
-    height: 20rem;
-  }
-}
-
 .single {
   max-height: 48rem;
 }
