@@ -271,7 +271,7 @@
                             @{
                                 if(isMobile){
                                     <div class="view-more-block">
-                                        <a href="#">Xem Thêm</a>
+                                        <a href="@Model.FootballNewCategory[0].Url">Xem Thêm</a>
                                     </div>
                                 }
                             }
@@ -303,7 +303,7 @@
                             @{
                                 if(isMobile){
                                     <div class="view-more-block">
-                                        <a href="#">Xem Thêm</a>
+                                        <a href="@Model.FootballNewCategory[1].Url">Xem Thêm</a>
                                     </div>
                                 }
                             }
@@ -335,7 +335,7 @@
                             @{
                                 if(isMobile){
                                     <div class="view-more-block">
-                                        <a href="#">Xem Thêm</a>
+                                        <a href="@Model.FootballNewCategory[2].Url">Xem Thêm</a>
                                     </div>
                                 }
                             }
@@ -383,7 +383,7 @@
                             @{
                                 if(isMobile){
                                     <div class="view-more-block">
-                                        <a href="#">Xem Thêm</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })">Xem Thêm</a>
                                     </div>
                                 }
                             }
@@ -420,7 +420,7 @@
                             @{
                                 if(isMobile){
                                     <div class="view-more-block">
-                                        <a href="#">Xem Thêm</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">Xem Thêm</a>
                                     </div>
                                 }
                             }
@@ -453,7 +453,7 @@
                                 @{
                                     if(isMobile){
                                         <div class="view-more-block">
-                                            <a href="#">Xem Thêm</a>
+                                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">Xem Thêm</a>
                                         </div>
                                     }
                                 }
