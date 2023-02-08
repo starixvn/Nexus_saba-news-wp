@@ -1738,6 +1738,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .block-last-page .columns-right {
   width: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
 }
 @media (max-width: 767px) {
   .block-last-page .columns-right {

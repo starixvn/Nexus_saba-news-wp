@@ -99,6 +99,8 @@
     }
     .columns-right{
         width: auto;
+        position: sticky;
+        top: 70px;
         @include Mobile{
             order: 1;
         }
