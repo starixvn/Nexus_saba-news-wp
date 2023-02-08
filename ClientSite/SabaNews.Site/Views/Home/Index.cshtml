@@ -169,7 +169,7 @@
                                     {
                                         numVideos++;
                                         var display = numVideos == 1 ? "block" : "none";
-                                        <div style="display:@display;" class="box-play-video" id="slide-@post.ID">
+                                        <div style="display:@display;" class="box-play-home-video" id="slide-@post.ID">
                                             <input type="hidden" name="iframe_value" value="@post.PostContent" />
                                             <div class="img-item">
                                                 <a class="box-vertical-image hover-image">
@@ -193,7 +193,7 @@
                                 @foreach (var post in Model.VideoPosts)
                                 {
                                     <div class="box-horizontal scroll-snap-items card-item">
-                                        <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
+                                        <a href="javascript:;" data-id="@post.ID" class="image-home-slider box-horizontal-image hover-none-16-9">
                                             <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                         </a>
                                         <div class="box-horizontal-content">
