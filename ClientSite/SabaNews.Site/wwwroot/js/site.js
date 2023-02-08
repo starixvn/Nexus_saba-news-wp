@@ -1,16 +1,16 @@
-﻿var setUp = {
+﻿﻿var setUp = {
     HandleIframe: function () {
         //Desktop & Mobile
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
-            var slide = $(this).parent().parent().parent();
+            var slide = $(this).parent().parent();
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
                 $('.img-item').show();
-                $('.box-play-video').removeClass("active");
-                $('.slide-video .card-item').first().addClass("box-video");
-                var iframe = $(this).parent().parent().parent().find("input[name=iframe_value]").val();
+                $('.swiper-slide').removeClass("active");
+                $('.slide-video .card-item').first().addClass("active");
+                var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
                 iframe = $(($.parseHTML(found[2].outerHTML)));
@@ -28,10 +28,9 @@
 
                 iframe.attr('src', src);
 
-                $(this).parent().parent().parent().find('.play_video')[0].style.display = "block";
-                $(this).parent().parent().parent().find('.play_video').html(iframe);
-                $(this).parent().parent().hide();
-                $(this).parent().parent().addClass('active');
+                $(this).parent().parent().find('.play_video').html(iframe);
+                $(this).parent().hide();
+                $(this).parent().addClass('active');
 
                 const $btn = $(this);
                 var postId = $btn.attr("post-id");
@@ -60,6 +59,4 @@
 $(document).ready(function () {
     setUp.init();
 })
-
-
 
