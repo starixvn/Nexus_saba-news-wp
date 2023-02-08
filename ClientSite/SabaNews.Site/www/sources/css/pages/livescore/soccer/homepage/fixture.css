@@ -39,12 +39,6 @@ body {
   overflow: hidden;
 }
 
-.wapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 .hidden-body {
   position: fixed;
   height: 100%;

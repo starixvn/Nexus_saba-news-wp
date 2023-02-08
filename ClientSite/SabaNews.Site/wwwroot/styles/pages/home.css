@@ -80,12 +80,6 @@ body {
   width: 100% !important;
 }
 
-.wapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 .pd-column-left {
   padding-right: 1.5rem;
 }
