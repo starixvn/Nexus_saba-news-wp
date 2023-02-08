@@ -1840,6 +1840,24 @@ button {
     transform: scale(1.1);
   }
 }
+.view-more-block {
+  margin-top: 1rem;
+  background: #EAEFF2;
+  width: 10rem;
+  margin: 1rem auto 0;
+  text-align: center;
+  border-radius: 3px;
+}
+.view-more-block a {
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  text-decoration: none;
+  display: block;
+  padding: 0.6rem 1.2rem;
+  color: #333;
+}
+
 .container, .base-container {
   width: 100%;
   padding: 0 1rem;
