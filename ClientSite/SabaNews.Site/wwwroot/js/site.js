@@ -28,6 +28,7 @@
 
                 iframe.attr('src', src);
 
+                $(this).parent().parent().find('.play_video')[0].style.display = "block";
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
                 $(this).parent().addClass('active');
