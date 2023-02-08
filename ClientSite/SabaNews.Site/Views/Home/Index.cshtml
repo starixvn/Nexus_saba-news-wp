@@ -169,17 +169,17 @@
                                     {
                                         numVideos++;
                                         var display = numVideos == 1 ? "block" : "none";
-                                        <div style="display:@display;" id="slide-@post.ID">
+                                        <div style="display:@display;" class="box-play-video" id="slide-@post.ID">
                                             <input type="hidden" name="iframe_value" value="@post.PostContent" />
                                             <div class="img-item">
-                                                <a class="box-vertical-image box-video hover-image">
+                                                <a class="box-vertical-image hover-image">
                                                     <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                                     <div class="btn-play-video" post-id="@post.ID">
                                                         <span class="icon-play"></span>
                                                     </div>
                                                 </a>
                                             </div>
-                                            <div class="play_video"></div>
+                                            <div style="display:none;" class="play_video"></div>
                                             <div class="box-vertical-content">
                                                 <h4>
                                                     <a href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
@@ -192,7 +192,7 @@
                             <div class="block-child-video scroll-snap slide-video">
                                 @foreach (var post in Model.VideoPosts)
                                 {
-                                    <div class="box-horizontal box-video scroll-snap-items card-item">
+                                    <div class="box-horizontal scroll-snap-items card-item">
                                         <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
                                             <img src="@Url.Content(post.FeatureImage)" class="img-res" />
                                         </a>
