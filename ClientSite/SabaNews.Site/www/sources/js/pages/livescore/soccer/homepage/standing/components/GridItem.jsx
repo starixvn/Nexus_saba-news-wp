@@ -108,8 +108,8 @@ export  default class GridItem extends PureComponent {
                     </Tabs>
                 }
 
-                <div class="view-more-block" onClick={event => this.handleClickStanding(event, this.props.leagueStanding.league)}>
-                    <a href="#">Xem Thêm</a>
+                <div className="view-more-block" onClick={event => this.handleClickStanding(event, this.props.leagueStanding.league)}>
+                    <a>Xem Thêm</a>
                 </div>
             </>
         );

@@ -114,13 +114,9 @@
                             }
                         </div>
                     </div>
-                    @{
-                        if(isMobile){
-                            <div class="view-more-block">
-                                <a href="@Url.Action("Category", "Home")">Xem Thêm</a>
-                            </div>
-                        }
-                    }
+                    <div class="view-more-block">
+                        <a href="@Url.Action("Category", "Home")">Xem Thêm</a>
+                    </div>
 
                     <div class="ads-insite">
                         <a href="#"><img src="~/images/ads-1.png" class="img-res show-pc" /></a>
@@ -129,21 +125,7 @@
                 </div>
                 <div class="columns columns-right">
                     <div id="fixture-homepage"></div>
-                    @{
-                        if(isMobile){
-                            <div class="view-more-block">
-                                <a href="#">Xem Thêm</a>
-                            </div>
-                        }
-                    }
                     <div id="standing-homepage"></div>
-                    @{
-                        if(isMobile){
-                            <div class="view-more-block">
-                                <a href="#">Xem Thêm</a>
-                            </div>
-                        }
-                    }
                 </div>
             </div>
         </div>
@@ -170,7 +152,7 @@
                             </div>
                         }
                         <div class="block-view-more scroll-snap-items">
-                                    <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">Xem Thêm</a>
+                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">Xem Thêm</a>
                         </div>
                         }
                     </div>
@@ -261,13 +243,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            @{
-                                if(isMobile){
-                                    <div class="view-more-block">
-                                        <a href="@Model.FootballNewCategory[0].Url">Xem Thêm</a>
-                                    </div>
-                                }
-                            }
+                                <div class="view-more-block">
+                                    <a href="@Model.FootballNewCategory[0].Url">Xem Thêm</a>
+                                </div>
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
@@ -293,13 +271,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            @{
-                                if(isMobile){
-                                    <div class="view-more-block">
-                                        <a href="@Model.FootballNewCategory[1].Url">Xem Thêm</a>
-                                    </div>
-                                }
-                            }
+                            <div class="view-more-block">
+                                <a href="@Model.FootballNewCategory[1].Url">Xem Thêm</a>
+                            </div>
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
@@ -325,13 +299,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            @{
-                                if(isMobile){
-                                    <div class="view-more-block">
-                                        <a href="@Model.FootballNewCategory[2].Url">Xem Thêm</a>
-                                    </div>
-                                }
-                            }
+                            <div class="view-more-block">
+                                <a href="@Model.FootballNewCategory[2].Url">Xem Thêm</a>
+                            </div>
                         </div>
                     </div>
 
@@ -373,13 +343,9 @@
                                     }
                                 }
                             </div>
-                            @{
-                                if(isMobile){
-                                    <div class="view-more-block">
-                                        <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })">Xem Thêm</a>
-                                    </div>
-                                }
-                            }
+                            <div class="view-more-block">
+                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })">Xem Thêm</a>
+                            </div>
                         </div>
                     </div>
 
@@ -410,13 +376,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            @{
-                                if(isMobile){
-                                    <div class="view-more-block">
-                                        <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">Xem Thêm</a>
-                                    </div>
-                                }
-                            }
+                            <div class="view-more-block">
+                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">Xem Thêm</a>
+                            </div>
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
@@ -443,13 +405,9 @@
                                         }
                                     </ul>
                                 </div>
-                                @{
-                                    if(isMobile){
-                                        <div class="view-more-block">
-                                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">Xem Thêm</a>
-                                        </div>
-                                    }
-                                }
+                                <div class="view-more-block">
+                                    <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">Xem Thêm</a>
+                                </div>
                             </div>
                         </div>
                     </div>
