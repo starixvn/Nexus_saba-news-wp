@@ -169,12 +169,9 @@
                                 </div>
                             </div>
                         }
-                        @{
-                            if(isMobile){
-                                <div class="block-view-more scroll-snap-items">
+                        <div class="block-view-more scroll-snap-items">
                                     <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">Xem Thêm</a>
-                                </div>
-                            }
+                        </div>
                         }
                     </div>
                 </div>
@@ -233,13 +230,9 @@
                                         </div>
                                     </div>
                                 }
-                                @{
-                                    if(isMobile){
-                                        <div class="block-view-more scroll-snap-items">
+                                <div class="block-view-more scroll-snap-items">
                                             <a href="@Url.Action("Video", "Home")">Xem Thêm</a>
-                                        </div>
-                                    }
-                                }
+                                </div>
                             </div>
                         </div>
                     </div>
