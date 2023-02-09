@@ -53,7 +53,7 @@ export default class Grid extends PureComponent {
                 <div className="livescore-soccer-main">
                     <div className="season-standings">
                         <div className="control-standing">
-                            <span>{CommonFunctions.getLeagueName(currentLeagueStanding.league)}</span>
+                            <span onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}>{CommonFunctions.getLeagueName(currentLeagueStanding.league)}</span>
                             <select onChange={this.onChange} value={selectedLeagueId}>
                                 {
                                     standings.map((standing, index) =>
