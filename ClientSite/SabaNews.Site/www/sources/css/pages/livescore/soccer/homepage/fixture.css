@@ -794,6 +794,9 @@ body {
   font-size: 1.4rem;
   line-height: 1.9rem;
 }
+.livescore-home .livescore-name-team .round-name {
+  cursor: pointer;
+}
 .livescore-home .livescore-soccer-main {
   background: #F5F3EF;
   border: 1px solid #DADADA;
@@ -855,6 +858,7 @@ body {
   justify-content: center;
   padding: 0.6rem 0;
   border-bottom: 1px solid #E8E6E3;
+  cursor: pointer;
 }
 .group-duel .duel-participant:last-child {
   border-bottom: none;
