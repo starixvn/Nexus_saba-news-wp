@@ -18,6 +18,7 @@ if ($(window).innerWidth() >= 500) {
 	var homeSwiper = new Swiper('.swiper-guess', {
 		slidesPerView: 3,
 		spaceBetween: 20,
+		loop: true,
 		slidesPerGroup:3,
 		navigation: {
 			nextEl: '.swiper-button-next',
