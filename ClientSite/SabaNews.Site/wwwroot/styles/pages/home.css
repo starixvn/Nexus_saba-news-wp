@@ -1900,7 +1900,7 @@ button {
 }
 @media (max-width: 767px) {
   .view-more-block {
-    display: block;
+    display: flex;
   }
 }
 .view-more-block a {
@@ -3261,24 +3261,26 @@ button {
     overflow: unset;
   }
 }
-.main .block-guess .view-more-block {
-  background: #d0dae1;
-  border-radius: 3px;
-  margin: 0 1rem;
-  height: 16.8rem;
-  width: 8.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.main .block-guess .view-more-block a {
-  display: block;
-  text-decoration: none;
-  color: #333333;
-  font-weight: 600;
-  font-size: 1.3rem;
-  line-height: 2.4rem;
-  padding: 0;
+@media (max-width: 767px) {
+  .main .block-guess .view-more-block {
+    background: #d0dae1;
+    border-radius: 3px;
+    margin: 0 1rem;
+    height: 16.8rem;
+    width: 8.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main .block-guess .view-more-block a {
+    display: block;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+    padding: 0;
+  }
 }
 .main .block-video {
   background: #F5F6F7;
@@ -3382,24 +3384,26 @@ button {
 .main .block-video .block-child-video .box-horizontal-content a {
   font-weight: 600;
 }
-.main .block-video .block-child-video .view-more-block {
-  background: #d0dae1;
-  border-radius: 3px;
-  margin: 0 1.2rem 0;
-  height: 10.3rem;
-  width: 8.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.main .block-video .block-child-video .view-more-block a {
-  display: block;
-  text-decoration: none;
-  color: #333333;
-  font-weight: 600;
-  font-size: 1.3rem;
-  line-height: 2.4rem;
-  padding: 0;
+@media (max-width: 767px) {
+  .main .block-video .block-child-video .view-more-block {
+    background: #d0dae1;
+    border-radius: 3px;
+    margin: 0 1.2rem 0;
+    height: 10.3rem;
+    width: 8.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main .block-video .block-child-video .view-more-block a {
+    display: block;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+    padding: 0;
+  }
 }
 .main .block-columns-border {
   display: flex;

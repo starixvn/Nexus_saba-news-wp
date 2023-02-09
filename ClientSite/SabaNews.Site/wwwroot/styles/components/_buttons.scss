@@ -80,7 +80,7 @@ button {
     border-radius: 3px;
     display: none;
     @include Mobile{
-        display: block;
+        display: flex;
     }
     a{
         font-weight: 600;

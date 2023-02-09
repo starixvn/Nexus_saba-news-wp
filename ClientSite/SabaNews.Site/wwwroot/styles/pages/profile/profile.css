@@ -1827,7 +1827,7 @@ button {
 }
 @media (max-width: 767px) {
   .view-more-block {
-    display: block;
+    display: flex;
   }
 }
 .view-more-block a {

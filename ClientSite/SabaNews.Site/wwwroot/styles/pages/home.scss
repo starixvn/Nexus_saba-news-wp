@@ -179,23 +179,25 @@
                 }
             }
         }
-        .view-more-block{
-            background: #d0dae1;
-            border-radius: 3px;
-            margin: 0 1rem;
-            height: 16.8rem;
-            width: 8.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            a{
-                display: block;
-                text-decoration: none;
-                color: #333333;
-                font-weight: 600;
-                font-size: 1.3rem;
-                line-height: 2.4rem;
-                padding: 0;
+        @include Mobile{
+            .view-more-block{
+                background: #d0dae1;
+                border-radius: 3px;
+                margin: 0 1rem;
+                height: 16.8rem;
+                width: 8.8rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                a{
+                    display: block;
+                    text-decoration: none;
+                    color: #333333;
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    line-height: 2.4rem;
+                    padding: 0;
+                }
             }
         }
     }
@@ -288,23 +290,25 @@
                     }
                 }
             }
-            .view-more-block{
-                background: #d0dae1;
-                border-radius: 3px;
-                margin: 0 1.2rem 0; 
-                height: 10.3rem;
-                width: 8.8rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                a{
-                    display: block;
-                    text-decoration: none;
-                    color: #333333;
-                    font-weight: 600;
-                    font-size: 1.3rem;
-                    line-height: 2.4rem;
-                    padding: 0;
+            @include Mobile{
+                .view-more-block{
+                    background: #d0dae1;
+                    border-radius: 3px;
+                    margin: 0 1.2rem 0; 
+                    height: 10.3rem;
+                    width: 8.8rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    a{
+                        display: block;
+                        text-decoration: none;
+                        color: #333333;
+                        font-weight: 600;
+                        font-size: 1.3rem;
+                        line-height: 2.4rem;
+                        padding: 0;
+                    }
                 }
             }
         }
