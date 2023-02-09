@@ -74,6 +74,9 @@
                     font-size: 1.3rem;
                     line-height: 2.2rem;
                     text-decoration: none;
+                    @include Mobile{
+                        font-size: 1.4rem;
+                    }
                 }
                 &:last-child{
                     margin-bottom: 0;
@@ -348,6 +351,9 @@
                         font-weight: 700;
                         font-size: 1.3rem;
                         color : #333;
+                        @include Mobile{
+                            font-size: 1.4rem;
+                        }
                     }
                 }
             }

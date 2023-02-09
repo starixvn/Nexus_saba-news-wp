@@ -3150,6 +3150,11 @@ button {
   line-height: 2.2rem;
   text-decoration: none;
 }
+@media (max-width: 767px) {
+  .main .block-news-hot .card-hightlight-text li a {
+    font-size: 1.4rem;
+  }
+}
 .main .block-news-hot .card-hightlight-text li:last-child {
   margin-bottom: 0;
   border-bottom: none;
@@ -3449,6 +3454,11 @@ button {
   font-weight: 700;
   font-size: 1.3rem;
   color: #333;
+}
+@media (max-width: 767px) {
+  .main .block-columns-border .block-event-item .list-event-title li a {
+    font-size: 1.4rem;
+  }
 }
 .main .block-behind {
   padding: 2rem;
