@@ -175,6 +175,10 @@
     <Function Name="Log">
         <Setting Key="log_writelog" SpName="log_writelog" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="Options">
+        <Setting Key="Options_GetKey" SpName="Options_GetKey" DbName="sabasports" Plain="0" />
+        <Setting Key="Options_UpdateKey" SpName="Options_UpdateKey" DbName="sabasports" Plain="0" />
+    </Function>
     <Function Name="Livescore">
         <Setting Key="Livescore_League_GetMajorLeague" SpName="Livescore_League_GetMajorLeague" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_League_Get" SpName="Livescore_League_Get" DbName="sabasports" Plain="0" />
@@ -239,5 +243,6 @@
         <Setting Key="worldcup_minigame_getVoteMatch" SpName="worldcup_minigame_getVoteMatch" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="worldcup_minigame_get_by_stage" SpName="worldcup_minigame_get_by_stage" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="worldcup_minigame_get_list_users" SpName="worldcup_minigame_get_list_users" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="Livescore_League_GetLeagueAndSeasonStandings" SpName="Livescore_League_GetLeagueAndSeasonStandings" DbName="sabasports" Plain="0"></Setting>
 	</Function>
 </Functions>
