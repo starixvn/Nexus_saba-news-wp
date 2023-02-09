@@ -476,17 +476,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
   color: #828282;
 }
-textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
   textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
-  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     font-size: 1.6rem;
   }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
@@ -786,7 +780,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
     display: block;
     position: relative;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 99;
@@ -921,7 +914,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.5rem 0;
   background-color: #FFFDF9;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -1715,7 +1707,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .block-last-page .columns-right {
   width: auto;
-  position: -webkit-sticky;
   position: sticky;
   top: 70px;
 }
@@ -1888,15 +1879,6 @@ button {
 }
 .btn-custom-outline:focus {
   outline: none;
-}
-
-@-webkit-keyframes dhBlink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
 }
 
 @keyframes dhBlink {
@@ -2514,8 +2496,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-swiper-slide .content-box {
   margin: 0.3rem 0;
@@ -2537,8 +2518,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-banner-align {
@@ -2564,8 +2544,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-banner-euro-desktop {
@@ -2587,8 +2566,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-mobile {
@@ -2616,8 +2594,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-sidebar {
@@ -2672,8 +2649,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__image img, skeleton-horizontal-highlight__image img {
   width: 100%;
@@ -2700,8 +2676,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__datetime, skeleton-horizontal-highlight__datetime {
   height: 2rem;
@@ -2720,8 +2695,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
   margin: 0.5rem 0;
@@ -2742,8 +2716,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 @media screen and (max-width: 1024px) {
   .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
@@ -2781,8 +2754,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__image img {
   width: 100%;
@@ -2811,8 +2783,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__datetime {
   display: initial;
@@ -2834,8 +2805,7 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__description {
   margin: 0.3rem 0;
@@ -2857,22 +2827,12 @@ button {
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 @media screen and (max-width: 1024px) {
   .skeleton-vertical__description {
     font-size: 1.2rem;
     line-height: 2rem;
-  }
-}
-
-@-webkit-keyframes shimmer {
-  0% {
-    background-position: -450px 0;
-  }
-  100% {
-    background-position: 450px 0;
   }
 }
 
@@ -3054,7 +3014,6 @@ button {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   font-size: 1.4rem;
   color: #2F2F2F;
@@ -3114,7 +3073,6 @@ button {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
@@ -3303,7 +3261,7 @@ button {
     overflow: unset;
   }
 }
-.main .block-guess .block-view-more {
+.main .block-guess .view-more-block {
   background: #d0dae1;
   border-radius: 3px;
   margin: 0 1rem;
@@ -3313,13 +3271,14 @@ button {
   align-items: center;
   justify-content: center;
 }
-.main .block-guess .block-view-more a {
+.main .block-guess .view-more-block a {
   display: block;
   text-decoration: none;
   color: #333333;
   font-weight: 600;
   font-size: 1.3rem;
   line-height: 2.4rem;
+  padding: 0;
 }
 .main .block-video {
   background: #F5F6F7;
@@ -3423,7 +3382,7 @@ button {
 .main .block-video .block-child-video .box-horizontal-content a {
   font-weight: 600;
 }
-.main .block-video .block-child-video .block-view-more {
+.main .block-video .block-child-video .view-more-block {
   background: #d0dae1;
   border-radius: 3px;
   margin: 0 1.2rem 0;
@@ -3433,13 +3392,14 @@ button {
   align-items: center;
   justify-content: center;
 }
-.main .block-video .block-child-video .block-view-more a {
+.main .block-video .block-child-video .view-more-block a {
   display: block;
   text-decoration: none;
   color: #333333;
   font-weight: 600;
   font-size: 1.3rem;
   line-height: 2.4rem;
+  padding: 0;
 }
 .main .block-columns-border {
   display: flex;

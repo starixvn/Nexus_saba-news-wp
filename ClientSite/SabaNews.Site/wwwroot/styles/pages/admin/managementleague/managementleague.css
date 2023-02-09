@@ -128,12 +128,6 @@
   font-size: 1.4rem;
   font-weight: normal;
 }
-.custom-input.list-input:-ms-input-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
 .custom-input.list-input::placeholder {
   color: #979797;
   font-style: italic;

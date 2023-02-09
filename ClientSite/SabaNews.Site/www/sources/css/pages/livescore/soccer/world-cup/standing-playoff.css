@@ -163,22 +163,11 @@ body {
   left: -19px;
   top: 2px;
   position: absolute;
-  -webkit-animation: live 2s ease-in-out infinite;
-          animation: live 2s ease-in-out infinite;
+  animation: live 2s ease-in-out infinite;
 }
 @media (max-width: 767px) {
   .live .soccer-match-stage span:after {
     top: 1px;
-  }
-}
-
-@-webkit-keyframes live {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1.5);
-    background-color: rgba(225, 60, 41, 0);
   }
 }
 
@@ -681,7 +670,6 @@ body {
   background: #EDEDED;
   height: 4rem;
   display: flex;
-  position: -webkit-sticky;
   position: sticky;
   z-index: 2;
   left: 0;
@@ -697,7 +685,6 @@ body {
   width: 100%;
   height: 4rem;
   display: flex;
-  position: -webkit-sticky;
   position: sticky;
   z-index: 3;
   top: 0;
@@ -715,7 +702,6 @@ body {
   grid-auto-columns: 21rem;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   padding-bottom: 1rem;
 }
@@ -762,7 +748,6 @@ body {
 }
 .play-offs .draw-container .draw-wrapper .draw__header {
   grid-row: 1;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   font-weight: bold;
@@ -833,7 +818,6 @@ body {
 @media screen and (max-width: 1024px) {
   .play-offs .draw-container .draw-wrapper .draw__brackets {
     grid-gap: 0.8rem 0;
-    grid-auto-rows: -webkit-min-content;
     grid-auto-rows: min-content;
     align-content: flex-start;
     margin: 0 1.5rem;
@@ -892,7 +876,6 @@ body {
   border: 1px solid #DADADA;
   border-radius: 3px;
   cursor: pointer;
-  grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem/max-content 1fr -webkit-max-content;
   grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem/max-content 1fr max-content;
 }
 .play-offs .draw-container .draw-wrapper .draw__bracket .bracket--eventless {
@@ -965,7 +948,6 @@ body {
   z-index: 2;
   display: grid;
   align-items: center;
-  grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px -webkit-max-content 0;
   grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px max-content 0;
   text-decoration: none;
   cursor: pointer;
@@ -976,7 +958,6 @@ body {
 }
 @media screen and (max-width: 1024px) {
   .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__series .series {
-    grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px -webkit-max-content 0;
     grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px max-content 0;
   }
 }
@@ -1032,7 +1013,6 @@ body {
 .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__result {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(1.8rem, -webkit-max-content);
   grid-auto-columns: minmax(1.8rem, max-content);
   justify-items: flex-end;
   align-items: center;
@@ -1153,7 +1133,6 @@ body {
 @media screen and (max-width: 1024px) {
   .wc-date-bar {
     margin: 0;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
@@ -1262,7 +1241,6 @@ body {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
@@ -1534,7 +1512,6 @@ body {
   grid-auto-columns: 19rem;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .wc-playoffs-showpc .wc-result .draw__round {
@@ -1563,7 +1540,6 @@ body {
           clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
   cursor: pointer;
   color: #561020;
-  grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem/max-content 1fr -webkit-max-content;
   grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem/max-content 1fr max-content;
 }
 .wc-playoffs-showpc .wc-result .draw__bracket .bracket--eventless {
@@ -1647,7 +1623,6 @@ body {
   z-index: 2;
   display: grid;
   align-items: center;
-  grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px -webkit-max-content 0;
   grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px max-content 0;
   text-decoration: none;
   cursor: pointer;
@@ -1658,7 +1633,6 @@ body {
 }
 @media screen and (max-width: 1024px) {
   .wc-playoffs-showpc .wc-result .draw__bracket .bracket__series .series {
-    grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px -webkit-max-content 0;
     grid-template: ". time names . result ." auto/0px 3.7rem 1fr 0px max-content 0;
   }
 }
@@ -1714,7 +1688,6 @@ body {
 .wc-playoffs-showpc .wc-result .draw__bracket .bracket__result {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(1.8rem, -webkit-max-content);
   grid-auto-columns: minmax(1.8rem, max-content);
   justify-items: flex-end;
   align-items: center;

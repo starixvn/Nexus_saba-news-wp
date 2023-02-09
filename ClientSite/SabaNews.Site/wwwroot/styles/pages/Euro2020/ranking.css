@@ -463,7 +463,6 @@ p.has-text-align-center {
 }
 
 .block-extension .block-sticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -498,17 +497,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
   color: #828282;
 }
-textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
   textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
-  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     font-size: 1.6rem;
   }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
@@ -808,7 +801,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
     display: block;
     position: relative;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 99;
@@ -943,7 +935,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.5rem 0;
   background-color: #FFFDF9;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 99;

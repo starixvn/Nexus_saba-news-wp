@@ -38,7 +38,6 @@
 .page-items-right {
   padding-left: 2rem;
   border-left: 1px solid #DADACB;
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
   align-self: stretch;
@@ -52,7 +51,6 @@
 }
 
 .sticky-position {
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -253,17 +251,11 @@ body {
 .search-input form input::-moz-placeholder {
   color: transparent !important;
 }
-.search-input form input:-ms-input-placeholder {
-  color: transparent !important;
-}
 .search-input form input::placeholder {
   color: transparent !important;
 }
 @media screen and (max-width: 1024px) {
   .search-input form input::-moz-placeholder {
-    color: #C598A7 !important;
-  }
-  .search-input form input:-ms-input-placeholder {
     color: #C598A7 !important;
   }
   .search-input form input::placeholder {
@@ -422,9 +414,6 @@ body {
   color: #C598A7;
 }
 .show-on-pc .search-input form input::-moz-placeholder {
-  color: #C598A7 !important;
-}
-.show-on-pc .search-input form input:-ms-input-placeholder {
   color: #C598A7 !important;
 }
 .show-on-pc .search-input form input::placeholder {
@@ -879,7 +868,6 @@ body {
   align-items: center;
 }
 .minigame-table .minigame-table-flex.minigame-table-header {
-  position: -webkit-sticky;
   position: sticky;
   padding: 0.5rem 0;
   top: 0;

@@ -73,15 +73,6 @@ button {
   outline: none;
 }
 
-@-webkit-keyframes dhBlink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
 @keyframes dhBlink {
   0% {
     transform: scale(1);
@@ -554,7 +545,6 @@ button {
   box-shadow: 2px 2px 1px hsla(0deg, 0%, 0%, 0.15);
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -708,12 +698,6 @@ button {
   font-weight: normal;
 }
 .custom-input.list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
-.custom-input.list-input:-ms-input-placeholder {
   color: #979797;
   font-style: italic;
   font-size: 1.4rem;
@@ -1039,12 +1023,6 @@ button {
   font-weight: normal;
 }
 .page-table-control .list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
-.page-table-control .list-input:-ms-input-placeholder {
   color: #979797;
   font-style: italic;
   font-size: 1.4rem;

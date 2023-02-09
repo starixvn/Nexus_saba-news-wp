@@ -329,7 +329,6 @@ body {
   height: 4rem;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   align-items: center;
 }

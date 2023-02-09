@@ -176,17 +176,11 @@ body {
 .search-input form input::-moz-placeholder {
   color: transparent !important;
 }
-.search-input form input:-ms-input-placeholder {
-  color: transparent !important;
-}
 .search-input form input::placeholder {
   color: transparent !important;
 }
 @media screen and (max-width: 1024px) {
   .search-input form input::-moz-placeholder {
-    color: #C598A7 !important;
-  }
-  .search-input form input:-ms-input-placeholder {
     color: #C598A7 !important;
   }
   .search-input form input::placeholder {
@@ -345,9 +339,6 @@ body {
   color: #C598A7;
 }
 .show-on-pc .search-input form input::-moz-placeholder {
-  color: #C598A7 !important;
-}
-.show-on-pc .search-input form input:-ms-input-placeholder {
   color: #C598A7 !important;
 }
 .show-on-pc .search-input form input::placeholder {
@@ -908,7 +899,6 @@ body {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
@@ -988,7 +978,6 @@ body {
 .page-items-right {
   padding-left: 2rem;
   border-left: 1px solid #DADACB;
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
   align-self: stretch;
@@ -1002,7 +991,6 @@ body {
 }
 
 .sticky-position {
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }

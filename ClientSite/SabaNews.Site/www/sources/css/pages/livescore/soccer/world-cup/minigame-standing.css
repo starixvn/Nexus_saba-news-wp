@@ -127,19 +127,12 @@
   color: #833D55;
   font-style: italic;
 }
-.custom-search-input:-ms-input-placeholder {
-  color: #833D55;
-  font-style: italic;
-}
 .custom-search-input::placeholder {
   color: #833D55;
   font-style: italic;
 }
 @media (max-width: 767px) {
   .custom-search-input::-moz-placeholder {
-    font-size: 1.2rem;
-  }
-  .custom-search-input:-ms-input-placeholder {
     font-size: 1.2rem;
   }
   .custom-search-input::placeholder {

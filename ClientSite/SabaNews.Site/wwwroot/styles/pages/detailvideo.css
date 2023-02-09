@@ -471,17 +471,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
   color: #828282;
 }
-textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
   textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
-  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     font-size: 1.6rem;
   }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
@@ -781,7 +775,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
     display: block;
     position: relative;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 99;
@@ -916,7 +909,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.5rem 0;
   background-color: #FFFDF9;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -1519,7 +1511,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .block-extension .block-sticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -1736,7 +1727,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .block-last-page .columns-right {
   width: auto;
-  position: -webkit-sticky;
   position: sticky;
   top: 70px;
 }
@@ -1815,15 +1805,6 @@ button {
 }
 .btn-custom-outline:focus {
   outline: none;
-}
-
-@-webkit-keyframes dhBlink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
 }
 
 @keyframes dhBlink {
@@ -2139,17 +2120,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
   color: #828282;
 }
-textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
   textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
-  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     font-size: 1.6rem;
   }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
@@ -2223,7 +2198,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .fixed-social {
-  position: -webkit-sticky;
   position: sticky;
   top: 8rem;
   display: table;
@@ -2541,8 +2515,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-swiper-slide .content-box {
   margin: 0.3rem 0;
@@ -2564,8 +2537,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-banner-align {
@@ -2591,8 +2563,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-banner-euro-desktop {
@@ -2614,8 +2585,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-mobile {
@@ -2643,8 +2613,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 
 .skeleton-sidebar {
@@ -2699,8 +2668,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__image img, skeleton-horizontal-highlight__image img {
   width: 100%;
@@ -2727,8 +2695,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__datetime, skeleton-horizontal-highlight__datetime {
   height: 2rem;
@@ -2747,8 +2714,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
   margin: 0.5rem 0;
@@ -2769,8 +2735,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 @media screen and (max-width: 1024px) {
   .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
@@ -2808,8 +2773,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__image img {
   width: 100%;
@@ -2838,8 +2802,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__datetime {
   display: initial;
@@ -2861,8 +2824,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 .skeleton-vertical__description {
   margin: 0.3rem 0;
@@ -2884,22 +2846,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
   background-repeat: no-repeat;
   background-size: 450px 400px;
-  -webkit-animation: shimmer 1s linear infinite;
-          animation: shimmer 1s linear infinite;
+  animation: shimmer 1s linear infinite;
 }
 @media screen and (max-width: 1024px) {
   .skeleton-vertical__description {
     font-size: 1.2rem;
     line-height: 2rem;
-  }
-}
-
-@-webkit-keyframes shimmer {
-  0% {
-    background-position: -450px 0;
-  }
-  100% {
-    background-position: 450px 0;
   }
 }
 
@@ -2985,7 +2937,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .block-extension {
   padding-left: 2.8rem;
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -3171,7 +3122,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   font-size: 1.4rem;
   color: #2F2F2F;

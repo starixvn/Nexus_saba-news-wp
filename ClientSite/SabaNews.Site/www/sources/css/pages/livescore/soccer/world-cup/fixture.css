@@ -309,22 +309,11 @@ body {
   left: -19px;
   top: 2px;
   position: absolute;
-  -webkit-animation: live 2s ease-in-out infinite;
-          animation: live 2s ease-in-out infinite;
+  animation: live 2s ease-in-out infinite;
 }
 @media (max-width: 767px) {
   .live .soccer-match-stage span:after {
     top: 1px;
-  }
-}
-
-@-webkit-keyframes live {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1.5);
-    background-color: rgba(225, 60, 41, 0);
   }
 }
 
@@ -859,7 +848,6 @@ body {
 @media screen and (max-width: 1024px) {
   .wc-date-bar {
     margin: 0;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
@@ -968,7 +956,6 @@ body {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
