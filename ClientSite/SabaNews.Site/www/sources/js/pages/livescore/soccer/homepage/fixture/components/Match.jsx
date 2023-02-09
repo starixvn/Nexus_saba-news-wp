@@ -108,7 +108,7 @@ export default class Match extends PureComponent {
         const isIntermission = match.status === MatchStatus.Intermission;
         return (
             <>
-                <div className={`duel-participant ${isLive ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}>
+                <div className={`duel-participant ${isLive ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`} onClick={this.onClick}>
                     <div className="flex-league">
                         <div className="column column-left home-team">
                             <ul className="team">
