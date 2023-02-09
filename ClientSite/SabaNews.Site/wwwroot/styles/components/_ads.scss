@@ -59,6 +59,7 @@
             display: none;
             @include Mobile{
                 display: block;
+                width: 100%;
             }
         }
         img{

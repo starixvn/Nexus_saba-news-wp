@@ -74,7 +74,7 @@
             width: auto;
         }
         @include Mobile{
-            width: auto;
+            width: 100%;
             display: unset;
         }
     }

@@ -1682,7 +1682,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media (max-width: 767px) {
   .block-columns .columns-right {
-    width: auto;
+    width: 100%;
     display: unset;
   }
 }
@@ -2912,6 +2912,7 @@ button {
 @media (max-width: 767px) {
   .ads-insite a .show-mobile {
     display: block;
+    width: 100%;
   }
 }
 .ads-insite a img {
