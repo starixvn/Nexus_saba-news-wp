@@ -1815,7 +1815,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   transform: rotate(0.001deg) scale(1);
 }
 .hover-ff:hover img {
-  transform: rotate(0.001deg) scale(1.02);
+  transform: translateZ(0) rotate(0.0001deg) scale3d(1.02, 1.02, 2);
 }
 
 button {
