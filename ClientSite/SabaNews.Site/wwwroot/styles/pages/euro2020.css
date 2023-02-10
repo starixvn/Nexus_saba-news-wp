@@ -1951,6 +1951,14 @@ button {
   transform: rotate(0.01deg) scale(1.01);
 }
 
+.hover-ff img {
+  image-rendering: auto;
+  transform: rotate(0.001deg) scale(1);
+}
+.hover-ff:hover img {
+  transform: rotate(0.001deg) scale(1.05);
+}
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;

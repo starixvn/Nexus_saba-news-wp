@@ -100,3 +100,15 @@
     }
 }
 
+.hover-ff{
+    img{
+        image-rendering: auto;
+        transform: rotate(0.001deg) scale(1); 
+    }
+    &:hover{
+        img{
+            transform: rotate(0.001deg) scale(1.05); 
+        }
+    }
+}
+
