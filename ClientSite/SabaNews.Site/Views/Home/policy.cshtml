@@ -6,6 +6,23 @@
 	Chính sách đề cập đến cách SABA Sports xử lý thông tin cá nhân mà SABA Sports thu thập .
 }
 
+@section Scripts{
+	<script>
+		let hash = window.location.hash;
+		if($(hash + '-section')) {
+			$('html, body').animate({
+				scrollTop: $(hash + '-section').offset().top  - 20
+			});
+		}
+		$('.footer-list-service li a').on('click', function(){
+			hash = $(this).data('section');
+			$('html, body').animate({
+				scrollTop: $(hash + '-section').offset().top - 30
+			});
+		});
+	</script>
+}
+
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
@@ -17,7 +34,7 @@
 			<h2 class="block__title title-new-page"><a>Chính sách này đề cập đến cách SABA Sports xử lý thông tin cá nhân mà SABA Sports thu thập và nhận được từ bạn.</a></h2>
 			<div class="block__content">
 				<div class="warning content">
-					<div id="thu-thap">
+					<div id="thu-thap-section">
 						<p><strong>Thu thập và sử dụng thông tin</strong></p>
 						<p>
 							Khi bạn đăng ký tài khoản, đăng ký nhận bản tin từ SABA Sports, SABA Sports thu thập thông tin cá nhân chẳng hạn như tên người dùng, địa chỉ email, ngày sinh, giới tính và bất kỳ thông tin cá nhân nào khác mà bạn nhập vào, cũng như hình ảnh đại diện tài khoản của bạn.
@@ -31,13 +48,13 @@
 						</ul>
 					</div>
 
-					<div id="luu-giu">
+					<div id="luu-tru-section">
 						<p><strong>Lưu trữ thông tin cá nhân</strong></p>
 						<p>Các thông tin cá nhân thành viên sẽ được tự động lưu bảo mật trong bộ nhớ máy chủ website SABA Sports trong suốt thời gian là thành viên trên SABA Sports.</p>
 						<p>Ngay cả khi bạn xóa tài khoản (nếu có) dữ liệu đó vẫn có thể được lưu trữ.</p>
 					</div>
 					
-					<div id="cookie">
+					<div id="cookie-section">
 						<p><strong>Cookie</strong></p>
 						<p>Cookie là một lượng dữ liệu nhỏ, thường bao gồm ký hiệu định danh duy nhất ẩn danh được gửi đến trình duyệt của bạn từ các thiết bị (máy tính hoặc điện thoại…) của bạn và được lưu trữ trên thiết bị của bạn.</p>
 						<p>Bạn có thể cấu hình trình duyệt của mình để chấp nhận tất cả cookie, từ chối tất cả cookie hoặc thông báo cho bạn khi cookie được đặt.</p>
@@ -47,7 +64,7 @@
 						<p>Các tổ chức khác phải sử dụng cookie tuân theo các chính sách về quyền riêng tư của chính họ, chứ không phải chính sách này. Nhà quảng cáo hoặc các tổ chức khác không có quyền truy cập các cookie của SABA Sports.</p>
 					</div>
 
-					<div id="tiet-lo">
+					<div id="tiet-lo-section">
 						<p><strong>Tiết lộ thông tin cá nhân</strong></p>
 						<p>Ngưởi dùng và thành viên đồng ý rằng, trong trường hợp cần thiết, các cơ quan/ tổ chức/cá nhân sau có quyền được tiếp cận và thu thập các thông tin cá nhân của mình, bao gồm:</p>
 						<ul class="domain">
@@ -57,14 +74,15 @@
 						</ul>
 					</div>
 
-					<div id="quang-cao">
+					<div id="quang-cao-section">
 						<p><strong>Quảng cáo của bên thứ ba</strong></p>
 						<p>SABA Sports hiển thị các quảng cáo được lựa chọn trên thông tin cá nhân. SABA Sports không cung cấp bất kỳ thông tin cá nhân nào cho nhà quảng cáo khi bạn tương tác với hoặc xem quảng cáo.</p>
 						<p>Tuy nhiên, bằng việc tương tác với hoặc xem quảng cáo, bạn chấp thuận khả năng nhà quảng cáo sẽ giả định rằng bạn đáp ứng các tiêu chí nhắm mục tiêu được sử dụng để hiển thị quảng cáo.</p>
 						<p>Chúng tôi cũng có thể quảng cáo đến bạn thay cho một hoặc nhiều bên thứ ba, nhưng trong trường hợp làm như vậy chúng tôi sẽ không chia sẻ địa chỉ email của bạn hoặc thông tin cá nhân khác với các bên thứ ba đó.</p>
 					</div>
 					
-					<div id="bao-mat">
+					<div id="bao-mat-section">
+						<p><strong>Bảo mật và An ninh</strong></p>
 						<p>Chúng tôi sẽ thực hiện các biện pháp để bảo vệ dữ liệu cá nhân bằng cách sử dụng biện pháp bảo vệ an ninh tiêu chuẩn hợp lý, chống mất mát hoặc trộm cắp, cũng như truy cập trái phép, tiết lộ, sao chép, sử dụng hoặc sửa đổi không thích hợp.</p>
 						<p>Chỉ bạn và chúng tôi mới có thể nhìn thấy dữ liệu cá nhân của bạn được bảo vệ bằng mật khẩu và bằng phương thức khác theo quy định trong Chính sách về Quyền riêng tư này. Bạn đồng ý giữ bảo mật (các) mật khẩu của mình và không tiết lộ cho bất kỳ người nào khác, hoặc để cho mật khẩu bị tiết lộ.</p>
 						<p>SABA Sports có biện pháp bảo vệ tuân thủ các quy định để bảo vệ thông tin cá nhân của bạn. Tuy nhiên, truyền tải dữ liệu qua internet không được đảm bảo bảo mật 100%.</p>
