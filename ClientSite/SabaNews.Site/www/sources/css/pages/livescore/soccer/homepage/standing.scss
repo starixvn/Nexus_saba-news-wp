@@ -43,6 +43,13 @@
 .livescore-standing{
     padding-bottom: 0;
     border-bottom: none;
+    &.parent-ff-scroll{
+        .table-custom-body{
+            overflow: auto;
+            scrollbar-width: thin;
+            overflow-x: hidden;
+        }
+    }
 }
 
 .table-custom{
@@ -111,10 +118,6 @@
         .table-custom-row{
             border-bottom: 1px solid #DADADA;
         }
-        &.ff-scroll{
-            overflow: auto;
-            scrollbar-width: thin;
-        }  
     }
     &-cell{
         font-size: 1.3rem !important;

@@ -336,8 +336,10 @@ function fnBrowserDetect(){
       }else if(userAgent.match(/firefox|fxios/i)){
         browserName = "firefox";
         $('html').find('.livescore-soccer-main').addClass('ff-scroll');
-        $('html').find('.table-custom-body').addClass('ff-scroll');
+        $('html').find('.livescore-standing').addClass('parent-ff-scroll');
         $('html').find('.block-video .block-child-video').addClass('ff-scroll');
+        $('html').find('.hover-image').addClass('hover-ff');
+        $('html').find('.hover-none-16-9').addClass('hover-ff');
         console.log(browserName)
       }  else if(userAgent.match(/safari/i)){
         browserName = "safari";

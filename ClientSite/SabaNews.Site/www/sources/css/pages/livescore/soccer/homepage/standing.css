@@ -480,6 +480,11 @@ body {
   padding-bottom: 0;
   border-bottom: none;
 }
+.livescore-standing.parent-ff-scroll .table-custom-body {
+  overflow: auto;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+}
 
 .table-custom {
   margin-top: 0;
@@ -549,10 +554,6 @@ body {
 }
 .table-custom-body .table-custom-row {
   border-bottom: 1px solid #DADADA;
-}
-.table-custom-body.ff-scroll {
-  overflow: auto;
-  scrollbar-width: thin;
 }
 .table-custom-cell {
   font-size: 1.3rem !important;
