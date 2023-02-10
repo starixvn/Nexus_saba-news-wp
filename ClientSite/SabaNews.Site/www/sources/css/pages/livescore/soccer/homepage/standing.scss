@@ -110,6 +110,10 @@
         }
         .table-custom-row{
             border-bottom: 1px solid #DADADA;
+        }
+        &.ff-scroll{
+            overflow: auto;
+            scrollbar-width: thin;
         }  
     }
     &-cell{

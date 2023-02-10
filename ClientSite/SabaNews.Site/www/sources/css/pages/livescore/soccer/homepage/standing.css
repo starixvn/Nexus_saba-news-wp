@@ -254,7 +254,7 @@ body {
 }
 @media (min-width: 1280px) {
   .container {
-    max-width: 114rem;
+    max-width: 130rem;
   }
 }
 
@@ -549,6 +549,10 @@ body {
 }
 .table-custom-body .table-custom-row {
   border-bottom: 1px solid #DADADA;
+}
+.table-custom-body.ff-scroll {
+  overflow: auto;
+  scrollbar-width: thin;
 }
 .table-custom-cell {
   font-size: 1.3rem !important;

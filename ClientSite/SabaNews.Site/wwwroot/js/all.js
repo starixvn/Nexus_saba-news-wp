@@ -327,6 +327,33 @@ function getFavouriteMatchCount() {
 }
 
 
+function fnBrowserDetect(){
+    let userAgent = navigator.userAgent;
+    let browserName;
+    if(userAgent.match(/chrome|chromium|crios/i)){
+        browserName = "chrome";
+        console.log(browserName)
+      }else if(userAgent.match(/firefox|fxios/i)){
+        browserName = "firefox";
+        $('html').find('.livescore-soccer-main').addClass('ff-scroll');
+        $('html').find('.table-custom-body').addClass('ff-scroll');
+        $('html').find('.block-video .block-child-video').addClass('ff-scroll');
+        console.log(browserName)
+      }  else if(userAgent.match(/safari/i)){
+        browserName = "safari";
+        console.log(browserName)
+      }else if(userAgent.match(/opr\//i)){
+        browserName = "opera";
+        console.log(browserName)
+      } else if(userAgent.match(/edg/i)){
+        browserName = "edge";
+        console.log(browserName)
+      }else{
+        browserName="No browser detection";
+      }      
+}
+
+
 //submenu
 (function ($) {
     $.fn.menumaker = function (options) {
@@ -362,6 +389,7 @@ function getFavouriteMatchCount() {
         $('.menu-item ul li a').hover(function () {
             $(this).siblings('span').toggleClass('active-arrow')
         })
+        fnBrowserDetect();
     });
 })(jQuery);
 

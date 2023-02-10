@@ -314,6 +314,10 @@
                     }
                 }
             }
+            &.ff-scroll{
+                overflow: auto;
+                scrollbar-width: thin;
+            }
         }
     }
     .block-columns-border{

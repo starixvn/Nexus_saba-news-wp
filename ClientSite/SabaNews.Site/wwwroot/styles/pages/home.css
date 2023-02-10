@@ -3414,6 +3414,10 @@ button {
     padding: 0;
   }
 }
+.main .block-video .block-child-video.ff-scroll {
+  overflow: auto;
+  scrollbar-width: thin;
+}
 .main .block-columns-border {
   display: flex;
   justify-content: flex-start;
