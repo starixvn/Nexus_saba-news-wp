@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import CommonFunctions from '@jsroot/common/common-functions';
 import Grid from '../Grid';
 
 describe('Grid', () => {
@@ -64,6 +65,83 @@ describe('Grid', () => {
                 standing: [{stageId: 1}]
             });
         })
+    });
+
+    describe('handleClickStanding', () => {
+        const { location } = window;
+
+        beforeAll(() => {
+            delete window.location;
+            window.location = { href: '' };
+        });
+
+        afterAll(() => {
+            window.location = location;
+        });
+
+
+        it('calls correctly functions when ctrlKey = false', () => {
+            // Arrange
+            const event = {
+                target: { className: '' },
+                ctrlKey: false
+            };
+            const props = {
+                ...defaultProps,
+                standings:[
+                    {
+                        league:{leagueId: 1},
+                        standing: []
+                    },
+                    {
+                        league:{leagueId: 2},
+                        standing: [{stageId: 1}]
+                    }
+                ]
+            }
+            window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro'};
+            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('url');
+            const container = shallow(<Grid {...props} />);
+
+            // Act
+            container.find('.control-standing span').simulate('click', event, league);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+            expect(window.location).toEqual('url/standings');
+        });
+
+        it('calls correctly functions when ctrlKey = false', () => {
+            // Arrange
+            const event = {
+                target: { className: '' },
+                ctrlKey: true
+            };
+            const props = {
+                ...defaultProps,
+                standings:[
+                    {
+                        league:{leagueId: 1},
+                        standing: []
+                    },
+                    {
+                        league:{leagueId: 2},
+                        standing: [{stageId: 1}]
+                    }
+                ]
+            }
+            window.open = jest.fn();
+            const league = { leagueId: 12036, leagueNameVN: 'Euro'};
+            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('url');
+            const container = shallow(<Grid {...props} />);
+
+            // Act
+            container.find('.view-more-block').simulate('click', event, league);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledWith('url/standings', '_blank');
+        });
     });
 
     describe('renders', () => {

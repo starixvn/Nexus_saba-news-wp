@@ -215,8 +215,8 @@ describe('Match', () => {
                 match: {
                     ...defaultProps.match,
                     status: 50,
-                    homeTeamPenaltyScore: 1,
-                    awayTeamPenaltyScore: 0
+                    homeTeamPenaltyScore: 0,
+                    awayTeamPenaltyScore: 1
                 }
             };
             CommonFunctions.getTeamName = jest.fn().mockReturnValue('name');
@@ -224,7 +224,7 @@ describe('Match', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.renderTeamStatus(props.match, true);
+            const result = instance.renderTeamStatus(props.match, false);
 
             // Assert
             expect(result).toEqual(<li>PEN</li>);
@@ -300,7 +300,7 @@ describe('Match', () => {
             const container = shallow(<Match {...defaultProps} />);
 
             // Act
-            container.find('.group-match-item').simulate('click', event);
+            container.find('.duel-participant').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
@@ -319,11 +319,60 @@ describe('Match', () => {
             const container = shallow(<Match {...defaultProps} />);
 
             // Act
-            container.find('div.group-match-item').simulate('click', event);
+            container.find('.duel-participant').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledWith('url', '_blank');
         });
+    });
+
+    describe('renderTeamName', () => {
+        it('render correctly when team name length > 11', () => {
+            // Arrange
+            const name = "champions league";
+            const container = shallow(<Match {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.renderTeamName(name);
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        })
+    });
+
+    describe('getFinalScore', () => {
+        it('render correctly when match have extra score', () => {
+            // Arrange
+            const match = {
+                homeTeamExtraScore: 1,
+                awayTeamExtraScore: 2
+            };
+            const container = shallow(<Match {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getFinalScore(match);
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        })
+
+        it('render correctly when match have not extra score', () => {
+            // Arrange
+            const match = {
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 2
+            };
+            const container = shallow(<Match {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getFinalScore(match);
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        })
     });
 
     describe('renders', () => {
