@@ -19,7 +19,7 @@ export default class GridItem extends PureComponent {
             const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
             const item = {
                 key,
-                text: DateTimeService.formatDateTime(key, 'DD/MM/YYYY'),
+                text: DateTimeService.formatDateTime(key, 'DD/MM'),
                 childs: [match]
             };
             if (tempMatches.length === 0) {
