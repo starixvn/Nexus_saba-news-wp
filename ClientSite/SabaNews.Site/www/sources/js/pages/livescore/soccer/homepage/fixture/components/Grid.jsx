@@ -58,6 +58,9 @@ export default class Grid extends PureComponent {
         let postMatches = matches.filter(item => item.status === MatchStatus.Finished);
         let preMatches = this.filterPreMatches(matches);
         postMatches = this.sortMatches(postMatches, false);
+        if(preMatches.length === 0) {
+            return null;
+        }
         return (
             <div className="wc-bg-overflow">
                 <div className="livescore-name-team">
