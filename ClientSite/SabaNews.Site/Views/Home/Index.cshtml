@@ -86,7 +86,7 @@
                                     <img src="@Url.Content(firstImgUrl)" class="img-res" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h1><a href="#">@firstPost.PostTitle</a></h1>
+                                    <h1><a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})">@firstPost.PostTitle</a></h1>
                                     <p>@firstPost.PostExcerpt</p>
                                 </div>
                             }
@@ -105,7 +105,7 @@
                                             </a>
                                             <div class="box-vertical-content">
                                                 <h3>
-                                                    <a href="#">@item.PostTitle</a>
+                                                    <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})">@item.PostTitle</a>
                                                 </h3>
                                             </div>
                                         </div>
