@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Index from '../index';
+import Index from '../Index';
 
 describe('index', () => {
     afterAll(() => {
