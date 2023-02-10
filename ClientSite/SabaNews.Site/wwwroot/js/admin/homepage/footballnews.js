@@ -8,12 +8,13 @@
 
                 $('.btn-Edit').on('click', function () {
                     var count = $(this).data("count");
+                    var titleEdit= "Category Editing #" + count;
                     $.ajax({
                         type: 'GET',
                         url: "/Admin/HomepageManagement/EditCategory",
                         data: { count },
                         success: function (html) {
-                            $('#EditCategory .title').html('Category Editing');
+                            $('#EditCategory .title').html(titleEdit);
                             $('#EditCategory .modal-body').html(html);
                             $('#EditCategory').modal('show');
 
@@ -44,7 +45,7 @@
 
                                         $('#NoticeModal' + ' .modal-title').removeClass('title-error').addClass('title-success');
                                         $('#NoticeModal' + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
-                                        $('#NoticeModal' + ' .modal-body').html('Category was successfully Updated!');
+                                        $('#NoticeModal' + ' .modal-body').html('Category was successfully changed!');
                                         $('#NoticeModal').modal('show');
 
                                         setTimeout(function () {
