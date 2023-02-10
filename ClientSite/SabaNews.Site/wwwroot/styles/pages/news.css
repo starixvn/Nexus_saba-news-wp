@@ -3043,25 +3043,28 @@ button {
     margin-right: -1.2rem;
   }
 }
-.ads-insite a {
-  display: block;
-}
-.ads-insite a .show-pc {
+.ads-insite.show-pc {
   display: block;
 }
 @media (max-width: 767px) {
-  .ads-insite a .show-pc {
+  .ads-insite.show-pc {
     display: none;
   }
 }
-.ads-insite a .show-mobile {
+.ads-insite.show-mobile {
   display: none;
 }
 @media (max-width: 767px) {
-  .ads-insite a .show-mobile {
+  .ads-insite.show-mobile {
+    display: block;
+  }
+  .ads-insite.show-mobile img {
     display: block;
     width: 100%;
   }
+}
+.ads-insite a {
+  display: block;
 }
 .ads-insite a img {
   margin: 0 auto;

@@ -47,21 +47,24 @@
         margin-left: -1.2rem;
         margin-right: -1.2rem;
     }
-    a{
+    &.show-pc{
         display: block;
-        .show-pc{
-            display: block;
-            @include Mobile{
-                display: none;
-            }
-        }
-        .show-mobile{
+        @include Mobile{
             display: none;
-            @include Mobile{
+        }
+    }
+    &.show-mobile{
+        display: none;
+        @include Mobile{
+            display: block;
+            img{
                 display: block;
                 width: 100%;
             }
         }
+    }
+    a{
+        display: block;
         img{
             margin: 0 auto;
         }
