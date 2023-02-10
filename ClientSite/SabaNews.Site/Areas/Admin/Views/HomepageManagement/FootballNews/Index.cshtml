@@ -17,12 +17,18 @@
 }
 
 @section Styles{
+    <link rel="stylesheet" href="~/styles/pages/admin/homepage/fixture.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/admin/footballnews/footballnews.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/jquery-ui.css" asp-append-version="true">
 }
 
 <section class="page-content">
+    <div class="form-horizontal navigation" style="margin-bottom: 20px;">
+            <p id="btn_major_league" class="label label-blue item-navigation"><a href="@Url.Action("Fixture", "HomepageManagement")">Fixture</a></p>
+            <p id="btn_hot_league" class="label label-blue item-navigation"> <a href="@Url.Action("Standing", "HomepageManagement")">Standing</a></p>
+            <p id="btn_category" class="label label-blue item-navigation active">Category</p>
+    </div>
     <div class="content">
         <div class="data-grid" id="data-grid"></div>
     </div>
