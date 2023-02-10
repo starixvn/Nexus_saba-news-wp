@@ -172,6 +172,38 @@ describe('Grid', () => {
             expect(result).toEqual(null);
         });
 
+        it('render correctly when prematches is empty', () => {
+            // Arrange
+            const matches = [
+                {
+                    matchId: 1,
+                    status:50,
+                    endTime: '2023-09-01',
+                    startTime: '2023-09-01',
+                    league: {leagueNameVN: 'league'}
+                },
+                {
+                    matchId: 2,
+                    status:50,
+                    endTime: '2023-11-01',
+                    startTime: '2023-11-01',
+                    league: {leagueNameVN: 'league'}
+                }
+            ]
+            const props = {
+                ...defaultProps,
+                matches: matches,
+                league: {leagueNameVN: 'league'}
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
+
+            // Act
+            const container = shallow(<Grid {...props} />);
+
+            // Assert
+            expect(container).toEqual({});
+        });
+
         it('render correctly when matches have data', () => {
             // Arrange
             const matches = [

@@ -1,9 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import GridItem from '../GridItem';
-import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
 
 describe('GridItem', () => {
     const defaultProps = {
@@ -25,14 +22,14 @@ describe('GridItem', () => {
             ];
             const reponse = [
                 {
-                    key: '2022-05-25', text: '25/05/2022',
+                    key: '2022-05-25', text: '25/05',
                     childs: [
                         { matchId: 1, startTime: '2022-05-25' },
                         { matchId: 2, startTime: '2022-05-25' }
                     ]
                 },
                 {
-                    key: '2022-05-26', text: '26/05/2022',
+                    key: '2022-05-26', text: '26/05',
                     childs: [
                         { matchId: 3, startTime: '2022-05-26' }
                     ]
@@ -58,7 +55,7 @@ describe('GridItem', () => {
             ];
             const reponse = [
                 {
-                    key: '2022-05-25', text: '25/05/2022',
+                    key: '2022-05-25', text: '25/05',
                     childs: [
                         { matchId: 1, startTime: '2022-05-25' },
                         { matchId: 2, startTime: '2022-05-25' }
@@ -94,7 +91,7 @@ describe('GridItem', () => {
             // Arrange
             const matches = [
                 {
-                    key: '2022-05-25', text: '25/05/2022',
+                    key: '2022-05-25', text: '25/05',
                     childs: [
                         { matchId: 1, status: 10, startTime: '2022-05-25' },
                         { matchId: 2, status: 20, startTime: '2022-05-25' }
@@ -117,7 +114,7 @@ describe('GridItem', () => {
             const matches = [
                 {key: 'key 1'}, {key: 'key 2'},
                 {
-                    key: '2022-05-25', text: '25/05/2022',
+                    key: '2022-05-25', text: '25/05',
                     childs: [
                         { matchId: 1, status: 10, startTime: '2022-05-25' },
                         { matchId: 2, status: 10, startTime: '2022-05-25' }
@@ -138,7 +135,7 @@ describe('GridItem', () => {
             // Arrange
             const matches = [
                 {
-                    key: '2022-05-25', text: '25/05/2022',
+                    key: '2022-05-25', text: '25/05',
                     childs: [
                         { matchId: 1, status: 10, startTime: '2022-05-25' },
                         { matchId: 2, status: 0, startTime: '2022-05-25' }
