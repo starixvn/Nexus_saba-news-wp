@@ -58,9 +58,7 @@
                 End = Constants.GetTenItems
             };
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
-            var footballPosts = await postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var otherPosts = await postService.GetPostsBySlugAsync(Constants.OtherPostSlug, Constants.FromFirstItem, Constants.GetFourItems);
-            var tennisPosts = await postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var videoPosts = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var guessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetNineItems);
             var backstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetFourItems);
@@ -72,10 +70,8 @@
             var viewModel = new PostViewModel
             {
                 NewPosts = (newPosts).ToArray(),
-                FootballPosts = (footballPosts).ToArray(),
                 LeaguePosts = leaguePosts,
                 OtherPosts = (otherPosts).ToArray(),
-                TennisPosts = (tennisPosts).ToArray(),
                 VideoPosts = (videoPosts).ToArray(),
                 GuessPosts = (guessPosts).ToArray(),
                 BackstagePosts = (backstagePosts).ToArray(),
