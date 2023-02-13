@@ -43,7 +43,7 @@
             var isValid = false;
             $(form + ' .season-error').html('season is required');
         }
-        if ((order.val() <= 0 || order.val() > order.attr('max'))) {
+        if ((order.val() <= 0 || parseInt(order.val()) > parseInt(order.attr('max')))) {
             var isValid = false;
             var msg = 'priority value range is [1...' + order.attr('max') +']';
             if(order.attr('max') == 1) {

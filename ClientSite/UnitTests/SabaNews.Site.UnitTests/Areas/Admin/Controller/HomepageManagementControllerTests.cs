@@ -67,7 +67,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         }
 
         [Fact]
-        public async Task  GetLeagueGrid_WhenICalled_ReturnExpectedViewData()
+        public async Task  GetLeagueGrid_WhenHaveOption_ReturnExpectedViewData()
         {
             // Arrange
             var controller = GetController();
@@ -92,7 +92,28 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         }
 
         [Fact]
-        public async Task  GetLeagueToAdd_WhenListLeagueIsEmpty_ReturnExpectedViewData()
+        public async Task  GetLeagueGrid_WhenOptionIsEmpty_ReturnExpectedViewData()
+        {
+            // Arrange
+            var controller = GetController();
+            Option option = null;
+            var expectedLeagues = fixture.Create<IList<League>>();
+            var expectedOptionList = Helper.ParseJsonToList<FixtureHomepage>(null);
+            var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
+            leagueService.GetLeagueByIdsAsync(Arg.Do<GetLeagueByIdsCriteria>(x => x = criteria)).Returns(expectedLeagues);
+
+            //Act
+            var result = await controller.GetLeagueGrid(true);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<FixtureGridViewModel>(viewResult.Model);
+            Assert.Null(viewModel.Leagues);
+        }
+
+        [Fact]
+        public async Task  GetLeagueToAdd_WhenListLeagueHaveData_ReturnExpectedViewData()
         {
             // Arrange
             var controller = GetController();
@@ -117,14 +138,11 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         }
 
         [Fact]
-        public async Task  GetLeagueToAdd_WhenListLeagueHaveData_ReturnExpectedViewData()
+        public async Task  GetLeagueToAdd_WhenListLeagueIsEmpty_ReturnExpectedViewData()
         {
             // Arrange
             var controller = GetController();
-            var option = new Option
-            {
-                OptionId = 1,
-            };
+            var option = new Option{};
             var expectedLeagues = fixture.Create<IList<League>>();
             var expectedOptionList = Helper.ParseJsonToList<FixtureHomepage>(option.OptionValue);
             var criteria = fixture.Create<GetLeagueByIdsCriteria>();
@@ -147,7 +165,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var controller = GetController();
             var model = fixture.Create<UpdateFixtureModel>();
             var expectedLeagues = fixture.Create<IList<League>>();
-            var expectedOption = new Option{};
+            Option expectedOption = null;
             var expectedResult = fixture.Create<CommandResult>();
             var criteria = fixture.Create<GetLeagueByIdsCriteria>();
             sessionService.User.Returns(new UserSession{ Id = 1 });
@@ -216,37 +234,9 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             Assert.Equal(expectedResult, jsonResult.Value);
         }
 
-        [Fact]
-        public async Task  GetLeagueToEdit_WhenCalled_ReturnExpectedViewData()
-        {
-            // Arrange
-            var controller = GetController();
-            var option = new Option
-            {
-                OptionId = 1,
-                OptionValue = "[{\"Id\":3,\"LeagueId\":12002,\"Order\":1},{\"Id\":4,\"LeagueId\":12003,\"Order\":2}]"
-            };
-            var expectedSeason = fixture.Create<IList<Season>>();
-            var expectedLeagues = fixture.Create<League>();
-            var expectedOptionList = Helper.ParseJsonToList<FixtureHomepage>(option.OptionValue);
-            var criteria = fixture.Create<GetLeagueByIdsCriteria>();
-            optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
-            leagueService.GetSeasonByLeagueIdAsync(Arg.Do<long>(x => x = 1)).Returns(expectedSeason);
-            leagueService.GetLeagueByIdAsync(Arg.Do<long>(x => x = 1)).Returns(expectedLeagues);
-
-            //Act
-            var result = await controller.GetLeagueToEdit(3, true);
-
-            // Assert
-            var viewResult = Assert.IsType<PartialViewResult>(result);
-            var viewModel = Assert.IsAssignableFrom<FixtureEditViewModel>(viewResult.Model);
-            Assert.Equal(expectedLeagues, viewModel.League);
-            Assert.Equal(expectedSeason, viewModel.Seasons);
-            Assert.Equal(3, viewModel.Fixture.Id);
-        }
 
         [Fact]
-        public async Task  EditLeague_WhenCalled_ReturnExpectedViewData()
+        public async Task  EditLeague_WhenLeagueHaveData_ReturnExpectedViewData()
         {
              // Arrange
             var controller = GetController();
@@ -270,6 +260,29 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expectedResult, jsonResult.Value);
         }
+
+        [Fact]
+        public async Task  EditLeague_WhenLeagueIsEmpty_ReturnExpectedViewData()
+        {
+             // Arrange
+            var controller = GetController();
+            var model = new UpdateFixtureModel{Id = 1, Order = 1, SeasonId = 1};
+            Option option = null;
+            var expectedOptionList = Helper.ParseJsonToList<FixtureHomepage>(null);
+            var expectedLeagues = fixture.Create<IList<League>>();
+            var expectedResult = fixture.Create<CommandResult>();
+            var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            sessionService.User.Returns(new UserSession{ Id = 1 });
+            optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = "key"), Arg.Do<string>(x => x = "value"), Arg.Do<long>(x => x = 1)).Returns(expectedResult);
+            //Act
+            var result = await controller.DeleteLeague(1, true);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedResult, jsonResult.Value);
+        }
+
 
         [Fact]
         public async Task  DeleteLeague_WhenLeagueNotExisted_ReturnExpectedViewData()
