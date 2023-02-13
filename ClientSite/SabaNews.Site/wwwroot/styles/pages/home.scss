@@ -180,6 +180,12 @@
                 @include Mobile{
                     overflow: unset;
                 }
+                .box-vertical-image{
+                    height: 22rem;
+                    @include Mobile{
+                        height: auto;
+                    }
+                }
             }
         }
         @include Mobile{
@@ -433,56 +439,10 @@
             background: #DDD6D1;
         }
     }
-
-    .pollevent{
-        width: auto;
-        margin: 2rem auto;
-        .poll-name{
-            background: linear-gradient(180deg, #565759 0%, #323334 100%);
-            border-radius: 3px 3px 0px 0px;
-        }
-        .poll-element{
-            height: 3.6rem;
-            padding: 0 1rem;
-            display: flex;
-            align-items: center;
-        }
-        .radio-border{
-            top: 0;
-            &::after{
-                top: 1px;
-            }
-        }
-        .poll-action{
-            .btn-result{
-                color: #777;
-            }
-            .btn-vote{
-                &.disabled{
-                    background: #DDDDDD;
-                    color: #A7A7A7;
-                }
-            }
-        }
-    }
     .none-bottom-spacing{
         margin-bottom: 0;
     }
 }
-
-
-
-
-
-.banner-euro-mobile {
-    text-align: center;
-    position : relative;
-    img {
-        display: block;
-        margin-bottom: .8rem;
-    }
-}
-
 
 .main {
     @include tableMobile {

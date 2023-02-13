@@ -2852,45 +2852,6 @@ button {
     background-position: 450px 0;
   }
 }
-.banner-change-domain, .skeleton-banner-align {
-  position: absolute;
-  top: 14rem;
-  z-index: 9;
-}
-.banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
-  top: 7.5rem;
-  position: fixed;
-}
-@media screen and (max-width: 1024px) {
-  .banner-change-domain, .skeleton-banner-align {
-    display: none;
-  }
-}
-@media screen and (max-width: 1280px) {
-  .banner-change-domain, .skeleton-banner-align {
-    display: none;
-  }
-}
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  .banner-change-domain, .skeleton-banner-align {
-    display: none;
-  }
-}
-.banner-change-domain.banner-left, .banner-change-domain.skeleton-banner-align-left, .skeleton-banner-align.banner-left, .skeleton-banner-align.skeleton-banner-align-left {
-  right: 50%;
-  margin-right: 58rem;
-}
-.banner-change-domain.banner-right, .banner-change-domain.skeleton-banner-align-right, .skeleton-banner-align.banner-right, .skeleton-banner-align.skeleton-banner-align-right {
-  left: 50%;
-  margin-left: 58rem;
-}
-
-.skeleton-banner-align {
-  width: 100%;
-  max-width: 20rem;
-  max-height: 60rem;
-}
-
 .ads-insite {
   margin-top: 2rem;
   text-align: center;
@@ -3278,6 +3239,14 @@ button {
     overflow: unset;
   }
 }
+.main .block-guess .block__content .swiper-guess .box-vertical-image {
+  height: 22rem;
+}
+@media (max-width: 767px) {
+  .main .block-guess .block__content .swiper-guess .box-vertical-image {
+    height: auto;
+  }
+}
 @media (max-width: 767px) {
   .main .block-guess .view-more-block {
     background: #d0dae1;
@@ -3545,44 +3514,8 @@ button {
 .main .block-behind .view-more-block {
   background: #DDD6D1;
 }
-.main .pollevent {
-  width: auto;
-  margin: 2rem auto;
-}
-.main .pollevent .poll-name {
-  background: linear-gradient(180deg, #565759 0%, #323334 100%);
-  border-radius: 3px 3px 0px 0px;
-}
-.main .pollevent .poll-element {
-  height: 3.6rem;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-}
-.main .pollevent .radio-border {
-  top: 0;
-}
-.main .pollevent .radio-border::after {
-  top: 1px;
-}
-.main .pollevent .poll-action .btn-result {
-  color: #777;
-}
-.main .pollevent .poll-action .btn-vote.disabled {
-  background: #DDDDDD;
-  color: #A7A7A7;
-}
 .main .none-bottom-spacing {
   margin-bottom: 0;
-}
-
-.banner-euro-mobile {
-  text-align: center;
-  position: relative;
-}
-.banner-euro-mobile img {
-  display: block;
-  margin-bottom: 0.8rem;
 }
 
 @media screen and (max-width: 1024px) {
