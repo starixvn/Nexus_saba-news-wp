@@ -362,7 +362,6 @@ function getFavouriteMatchCount() {
         $('.menu-item ul li a').hover(function () {
             $(this).siblings('span').toggleClass('active-arrow')
         })
-        fnBrowserDetect();
     });
 })(jQuery);
 

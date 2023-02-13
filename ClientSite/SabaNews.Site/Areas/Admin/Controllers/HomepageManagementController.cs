@@ -74,7 +74,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var leagues = await leagueService.GetLeaguesAsync();
             var option = await optionService.GetOptionAsync(optionKey);
             var listFixture = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
-            var maxOrder = listFixture.Any() ? listFixture.Max(item => item.Order) : 0;
+            var maxOrder = listFixture.Any() ? listFixture.Max(item => item.Order) : 1;
             ViewBag.Order = maxOrder + 1;
             return PartialView("_AddLeague", leagues);
         }
@@ -128,10 +128,12 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var optionKey = GetKeyOption(isFixtureOption);
             var option = await optionService.GetOptionAsync(optionKey);
             var listFixture = Helper.ParseJsonToList<FixtureHomepage>(option?.OptionValue);
+            var lastFixture = listFixture.LastOrDefault();
+            var maxPriority = lastFixture != null ? lastFixture.Order : 1;
             var fixture = listFixture.Find(item => item.Id == id);
             var seasons = await leagueService.GetSeasonByLeagueIdAsync(fixture.LeagueId);
             var league = await leagueService.GetLeagueByIdAsync(fixture.LeagueId);
-            var model = new FixtureEditViewModel { League = league, Seasons = seasons, Fixture = fixture };
+            var model = new FixtureEditViewModel { League = league, Seasons = seasons, Fixture = fixture, MaxPriority = maxPriority };
             return PartialView("_EditLeague", model);
         }
 

@@ -8,5 +8,6 @@
         public League League { get; set; }
         public IList<Season> Seasons { get; set; }
         public FixtureHomepage Fixture { get; set; }
+        public int MaxPriority { get; set; }
     }
 }

@@ -16,15 +16,25 @@
 
     function validateNumber() {
         $('.input-number').on('keypress', function (e) {
+            let val = $(this).val();
             $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
-            if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+            if ((e.which != 46 || val.indexOf('.') != -1 || val > max) && (e.which < 48 || e.which > 57)) {
                 e.preventDefault();
             }
         });
+
+        // $('.input-number').on('keyup', function (e) {
+        //     const val = $(this).val();
+        //     const max = $(this).attr('max');
+        //     if(parseInt(val) > parseInt(max)) {
+        //         $(this).val(max);
+        //     }
+        // });
     }
 
     function validateForm(form) {
         var isValid = true;
+        var order = $(form + ' #order');
         if (($(form + ' #leagueId').val() <= 0)) {
             var isValid = false;
             $(form + ' .league-error').html('league is required');
@@ -33,9 +43,13 @@
             var isValid = false;
             $(form + ' .season-error').html('season is required');
         }
-        if (($(form + ' #order').val() <= 0)) {
+        if ((order.val() <= 0 || order.val() > order.attr('max'))) {
             var isValid = false;
-            $(form + ' .order-error').html('priority is invalid');
+            var msg = 'priority value range is [1...' + order.attr('max') +']';
+            if(order.attr('max') == 1) {
+                msg = 'priority value is invalid';
+            }
+            $(form + ' .order-error').html(msg);
         }
         return isValid;
     }
@@ -85,9 +99,9 @@
                             }
                         })
                     });
+                    validateNumber();
                 }
             })
-            validateNumber();
             validateForm();
         });
     }
@@ -103,7 +117,6 @@
                     $('#AddModal .modal-body').html(res);
                     $('#AddModal .title').html('Add League');
                     $('.league-select').select2();
-                    
                     $('#AddModal').modal('show');
                     $('#btn-save').on('click', function () {
                         $('.error-input').html('');
@@ -155,10 +168,9 @@
                             }
                         });
                     });
+                    validateNumber();
                 }
             });
-            
-            validateNumber();
             validateForm();
         });
     }
@@ -170,8 +182,6 @@
             $('#ConfirmModal .modal-body').html('Are you sure you want to remove this league ?');
             $('#ConfirmModal').modal('show');
         });
-
-        
     }
 
     function handleModal() {
