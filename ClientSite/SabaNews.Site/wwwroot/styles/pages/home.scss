@@ -163,6 +163,7 @@
             }
             .swiper-slide{
                 background-color: transparent;
+                width: 33%;
                 @include Mobile{
                     width: 30rem;
                     margin-left: 1rem;
