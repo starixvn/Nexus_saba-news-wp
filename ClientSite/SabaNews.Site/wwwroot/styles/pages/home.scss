@@ -41,7 +41,7 @@
             width: 100%;
         }
         .block__title{
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
     }
     .block-news-hot{
@@ -139,6 +139,8 @@
             margin-right: -1.2rem;
         }
         .block__title{
+            border-bottom: none;
+            margin-bottom: 1.6rem;
             @include Mobile{
                 margin-bottom: 2.5rem;
                 padding: 0 1.2rem;
@@ -146,6 +148,11 @@
             a{
                 background: #F5F6F6;
                 color: $color-main-title;
+                clip-path: none;
+                font-size: 2rem;
+                line-height: 1;
+                display: unset;
+                padding: 0 1rem 0 0;
                 .marked-icon {
                     position: absolute;
                     top: -5px;
@@ -221,6 +228,23 @@
             margin-left: -1.2rem;
             margin-right: -1.2rem;
         }
+
+        .block__title{
+            border-bottom: none;
+            margin-bottom: 1.6rem;
+            @include Mobile{
+                padding: 0 1.2rem;
+            }
+            a{
+                background: #F5F6F6;
+                color: $color-main-title;
+                clip-path: none;
+                font-size: 2rem;
+                line-height: 1;
+                display: unset;
+            }
+        }
+
         .box-vertical-content{
             @include Mobile{
                 display: none;

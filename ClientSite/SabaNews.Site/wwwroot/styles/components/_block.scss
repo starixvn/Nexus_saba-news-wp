@@ -6,41 +6,26 @@
     }
 
     &__title {
-        margin-bottom: 1.6rem;
+        margin-bottom: 1rem;
         position: relative;
+        border-bottom: 2px solid $color-main-title;
         @include tableMobile {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
-
-        // &::after {
-        //     content: "";
-        //     display: block;
-        //     background: #F12F19;
-        //     position: absolute;
-        //     left: 0;
-        //     top: 2px;
-        //     width: .3rem;
-        //     height: 2rem;
-        //     z-index: 0;
-        // }
-
         a {
             font-weight: bold;
-            font-size: 2rem;
-            line-height: 2.7rem;
-            color: $color-main-title;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
+            color: $bg-nav;
             text-decoration: none;
             text-transform: uppercase;
-            background-color: $bg-nav;
+            background-color: $color-main-title;
             position: relative;
             z-index: 9;
-            padding-right: 1rem;
-            line-height: 1;
+            padding: .4rem 3.2rem .2rem 1.2rem;
+            display: inline-block;
+            clip-path: polygon(90% 0, 100% 100%, 100% 100%, 0% 100%, 0 44%, 0% 0%);
             cursor: pointer;
-            &:hover {
-                color: darken($color-main-title, 10%);
-            }
-
             @include tableMobile {
                 font-size: 1.6rem;
             }

@@ -1615,30 +1615,30 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block__title {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1rem;
   position: relative;
+  border-bottom: 2px solid #F12F19;
 }
 @media screen and (max-width: 1024px) {
   .block__title {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 }
 .block__title a {
   font-weight: bold;
-  font-size: 2rem;
-  line-height: 2.7rem;
-  color: #F12F19;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  color: #FFFDF9;
   text-decoration: none;
   text-transform: uppercase;
-  background-color: #FFFDF9;
+  background-color: #F12F19;
   position: relative;
   z-index: 9;
-  padding-right: 1rem;
-  line-height: 1;
+  padding: 0.4rem 3.2rem 0.2rem 1.2rem;
+  display: inline-block;
+  -webkit-clip-path: polygon(90% 0, 100% 100%, 100% 100%, 0% 100%, 0 44%, 0% 0%);
+          clip-path: polygon(90% 0, 100% 100%, 100% 100%, 0% 100%, 0 44%, 0% 0%);
   cursor: pointer;
-}
-.block__title a:hover {
-  color: #cb200c;
 }
 @media screen and (max-width: 1024px) {
   .block__title a {
@@ -3078,7 +3078,7 @@ button {
   }
 }
 .main #fixture-homepage .block__title, .main #standing-homepage .block__title {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 .main .block-news-hot {
   display: grid;
@@ -3188,6 +3188,10 @@ button {
     margin-right: -1.2rem;
   }
 }
+.main .block-guess .block__title {
+  border-bottom: none;
+  margin-bottom: 1.6rem;
+}
 @media (max-width: 767px) {
   .main .block-guess .block__title {
     margin-bottom: 2.5rem;
@@ -3197,6 +3201,12 @@ button {
 .main .block-guess .block__title a {
   background: #F5F6F6;
   color: #F12F19;
+  -webkit-clip-path: none;
+          clip-path: none;
+  font-size: 2rem;
+  line-height: 1;
+  display: unset;
+  padding: 0 1rem 0 0;
 }
 .main .block-guess .block__title a .marked-icon {
   position: absolute;
@@ -3277,6 +3287,24 @@ button {
     margin-left: -1.2rem;
     margin-right: -1.2rem;
   }
+}
+.main .block-video .block__title {
+  border-bottom: none;
+  margin-bottom: 1.6rem;
+}
+@media (max-width: 767px) {
+  .main .block-video .block__title {
+    padding: 0 1.2rem;
+  }
+}
+.main .block-video .block__title a {
+  background: #F5F6F6;
+  color: #F12F19;
+  -webkit-clip-path: none;
+          clip-path: none;
+  font-size: 2rem;
+  line-height: 1;
+  display: unset;
 }
 @media (max-width: 767px) {
   .main .block-video .box-vertical-content {
