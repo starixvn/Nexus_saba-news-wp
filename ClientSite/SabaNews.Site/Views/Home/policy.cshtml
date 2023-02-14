@@ -11,13 +11,13 @@
 		let hash = window.location.hash;
 		if($(hash + '-section')) {
 			$('html, body').animate({
-				scrollTop: $(hash + '-section').offset().top  - 20
+				scrollTop: $(hash + '-section').offset().top  - 45
 			});
 		}
 		$('.footer-list-service li a').on('click', function(){
 			hash = $(this).data('section');
 			$('html, body').animate({
-				scrollTop: $(hash + '-section').offset().top - 30
+				scrollTop: $(hash + '-section').offset().top - 45
 			});
 		});
 	</script>
