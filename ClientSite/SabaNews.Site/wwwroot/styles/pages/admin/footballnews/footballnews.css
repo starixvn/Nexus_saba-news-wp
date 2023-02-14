@@ -1,4 +1,4 @@
-/*:root {
+﻿/*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
@@ -122,12 +122,6 @@
   cursor: unset;
   font-weight: normal;
 }
-.custom-input.list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
 .custom-input.list-input::placeholder {
   color: #979797;
   font-style: italic;
@@ -184,7 +178,7 @@
   left: -100000px;
   width: 100%;
   z-index: 1051;
-  width: 250px !important;
+  width: 300px !important;
 }
 
 #AddLeagueContent .modal-content .title {
@@ -313,8 +307,7 @@
 #AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin: 0 auto;
 }
 #AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
@@ -352,7 +345,7 @@
 }
 
 #EditCategory .modal-content {
-  max-width: 40rem !important;
+  max-width: 50rem !important;
 }
 #EditCategory .modal-content .title {
   color: #fff;
@@ -398,7 +391,10 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 #EditCategory .modal-content .txt-countryVn, #EditCategory .modal-content .txt-leagueNameVn, #EditCategory .modal-content .txt-leagueFullNameVn {
-  width: 250px !important;
+  width: 300px !important;
+}
+#EditCategory .modal-content .border {
+  border: 1px solid #CCC !important;
 }
 #EditCategory .modal-content .txt-countryEn {
   border: unset;
@@ -447,8 +443,7 @@
 #EditCategory .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin: 0 auto;
 }
 #EditCategory .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {

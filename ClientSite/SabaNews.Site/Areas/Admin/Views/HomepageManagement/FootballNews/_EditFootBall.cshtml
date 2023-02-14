@@ -2,6 +2,7 @@
 @using SabaNews.Models;
 @{
     var slugSelected = ViewBag.SlugSelected;
+    var categoryName = ViewBag.CategoryName;
     var count = ViewBag.Count;
 }
 <table width="100%" id="edit-league">
@@ -34,6 +35,20 @@
                                     if (item.Slug == slugSelected)
                                     {
                                         <input type="text" disabled value="@item.Slug" class="form-control txt-countryVn txt-countryEn" id="editSlug" name="Slug" />
+                                    }
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Category Name</label>
+                            </td>
+                            <td>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Slug == slugSelected)
+                                    {
+                                        <input type="text" value="@(categoryName ?? item.MenuTitle)" class="form-control border txt-countryVn txt-countryEn" id="editCategoryName" name="CategoryName" />
                                     }
                                 }
                             </td>

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -473,16 +473,10 @@ p.has-text-align-center {
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none;
 }
-textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
-  textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     font-size: 1.6rem;
   }
@@ -636,8 +630,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   overflow: hidden;
 }
 .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -687,6 +680,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   top: -0.9rem;
   right: 2.3rem;
   background: #fff;
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 @media screen and (max-width: 1024px) {
@@ -1337,6 +1332,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .open .line-mb:nth-child(1) {
   top: 1.4rem;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 .open .line-mb:nth-child(2) {
@@ -1345,6 +1343,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .open .line-mb:nth-child(3) {
   top: 1.4rem;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
 
@@ -1751,12 +1752,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .hover-image img {
   transition: all 0.5s ease;
   position: absolute;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  -o-object-position: top;
-     object-position: top;
+  object-position: top;
   -webkit-backface-visibility: hidden;
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -1791,10 +1790,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .hover-none-16-9 img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   -webkit-backface-visibility: hidden;
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -1949,10 +1946,8 @@ button {
 }
 .swiper-container .swiper-slide .img-item img, .swiper-guess .swiper-slide .img-item img {
   border-radius: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   height: 100%;
 }
 .swiper-container .swiper-slide .content-box, .swiper-guess .swiper-slide .content-box {
@@ -2200,11 +2195,11 @@ button {
 .card-horizontal__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transform: translateZ(0) scale(1, 1);
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -2335,11 +2330,11 @@ button {
 .card-vertical__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transform: translateZ(0) scale(1, 1);
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -2662,10 +2657,8 @@ button {
 .skeleton-horizontal__image img, skeleton-horizontal-highlight__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .skeleton-horizontal__title, skeleton-horizontal-highlight__title {
   height: 2rem;
@@ -2767,10 +2760,8 @@ button {
 .skeleton-vertical__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .skeleton-vertical__title {
   display: initial;
@@ -2987,6 +2978,7 @@ button {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   font-size: 1.4rem;
   color: #2F2F2F;
@@ -3039,6 +3031,8 @@ button {
   height: 10px;
   border: solid #2F2F2F;
   border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
@@ -3046,6 +3040,8 @@ button {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;

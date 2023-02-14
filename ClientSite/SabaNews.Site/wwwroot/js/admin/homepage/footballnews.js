@@ -28,18 +28,20 @@
                                     data: { category },
                                     success: function (response) {
                                         document.getElementById("editSlug").value = response.slug;
+                                        document.getElementById("editCategoryName").value = response.menuTitle;
                                     }
                                 });
                             });
 
                             $('#btn-save').on('click', function () {
                                 let category = document.getElementById("Category").value;
+                                let categoryName = document.getElementById("editCategoryName").value;
                                 var count = $(this).data("count");
 
                                 $.ajax({
                                     type: 'POST',
                                     url: "/Admin/HomepageManagement/EditCategory",
-                                    data: { category, count },
+                                    data: { category, count, categoryName },
                                     success: function (response) {
                                         $('#EditCategory').modal('hide');
 

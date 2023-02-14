@@ -194,11 +194,12 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
             ViewBag.SlugSelected = footballNewsCategories[count - 1].Slug;
             ViewBag.Count = count;
+            ViewBag.CategoryName = footballNewsCategories[count - 1].Category;
             return PartialView("~/Areas/Admin/Views/HomepageManagement/FootballNews/_EditFootBall.cshtml", menus);
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditCategory(string category, int count)
+        public async Task<ActionResult> EditCategory(string category, int count, string categoryName)
         {
             var menuName = configuration.GetValue<string>("MenuName");
             var menus = await postService.GetMenuAsync(menuName);
@@ -210,7 +211,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
             var categoryUpdate = new FootballNewsHomePage
             {
-                Category = slug.First().MenuTitle,
+                Category = categoryName ?? slug.First().MenuTitle,
                 Slug = slug.First().Slug,
                 CreatedDate = DateTime.UtcNow,
                 Url = PostHelper.GetCategoryLink(cateParents)

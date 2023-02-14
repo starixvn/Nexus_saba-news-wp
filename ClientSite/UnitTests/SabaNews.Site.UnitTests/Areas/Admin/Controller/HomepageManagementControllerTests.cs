@@ -396,7 +396,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             optionService.UpdateOptionAsync(OptionKey.FootballNewsCategories, JsonConvert.SerializeObject(footballNewsCategories)).Returns(cmd);
 
             //Act
-            var result = await controller.EditCategory(menus.First().Slug, 1);
+            var result = await controller.EditCategory(menus.First().Slug, 1, "name");
 
             // Assert
             Assert.IsType<JsonResult>(result);
