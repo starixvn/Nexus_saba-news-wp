@@ -134,7 +134,7 @@
         overflow: hidden;
         position: relative;
         @include Mobile{
-            padding: 1.2rem 0 3.5rem 0;
+            padding: 2rem 0 3.5rem 0;
             margin-left: -1.2rem;
             margin-right: -1.2rem;
         }
@@ -142,7 +142,6 @@
             border-bottom: none;
             margin-bottom: 1.6rem;
             @include Mobile{
-                margin-bottom: 2.5rem;
                 padding: 0 1.2rem;
             }
             a{
@@ -224,7 +223,7 @@
         padding: 2rem 0rem 2rem 2rem;
         @include Mobile{
             display: block;
-            padding: 1.2rem;
+            padding: 1.7rem 1.2rem;
             margin-left: -1.2rem;
             margin-right: -1.2rem;
         }
@@ -233,7 +232,7 @@
             border-bottom: none;
             margin-bottom: 1.6rem;
             @include Mobile{
-                padding: 0 1.2rem;
+                margin-bottom: 1.2rem;
             }
             a{
                 background: #F5F6F6;
@@ -242,6 +241,7 @@
                 font-size: 2rem;
                 line-height: 1;
                 display: unset;
+                padding: 0 1rem 0 0;
             }
         }
 
@@ -403,6 +403,22 @@
             margin-left:-1.2rem;
             margin-right: -1.2rem;
         }
+        .block__title{
+            border-bottom: none;
+            margin-bottom: 1.6rem;
+            @include Mobile{
+                margin-bottom: 1.2rem;
+            }
+            a{
+                background: #F5F6F6;
+                color: $color-main-title;
+                clip-path: none;
+                font-size: 2rem;
+                line-height: 1;
+                display: unset;
+                padding: 0 1rem 0 0;
+            }
+        }
         .box-vertical{
             @include Mobile{
                 margin-bottom: 2rem;
@@ -466,6 +482,14 @@
     }
     .none-bottom-spacing{
         margin-bottom: 0;
+    }
+
+    .block-tranfer{
+        .block__title{
+            a{
+                clip-path: polygon(94% 0,100% 100%,100% 100%,0% 100%,0 44%,0% 0%);
+            }
+        }
     }
 }
 

@@ -228,7 +228,7 @@
                             if(Model.LeaguePosts[0].Count != 0){
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
-                                        <a href="@Model.FootballNewCategory[0].Url" class="none-bg">@Model.FootballNewCategory[0].Category</a>
+                                        <a href="@Model.FootballNewCategory[0].Url">@Model.FootballNewCategory[0].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })" class="box-vertical-image hover-image">
@@ -260,7 +260,7 @@
                             if(Model.LeaguePosts[1].Count != 0){
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
-                                        <a href="@Model.FootballNewCategory[1].Url" class="none-bg">@Model.FootballNewCategory[1].Category</a>
+                                        <a href="@Model.FootballNewCategory[1].Url">@Model.FootballNewCategory[1].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })" class="box-vertical-image hover-image">
@@ -292,7 +292,7 @@
                             if(Model.LeaguePosts[2].Count != 0){
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
-                                        <a href="@Model.FootballNewCategory[2].Url" class="none-bg">@Model.FootballNewCategory[2].Category</a>
+                                        <a href="@Model.FootballNewCategory[2].Url">@Model.FootballNewCategory[2].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })" class="box-vertical-image hover-image">
@@ -327,7 +327,7 @@
 
                     <div class="block block-behind">
                         <h2 class="block__title">
-                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })" class="none-bg">@ViewResources.Backstage</a>
+                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug })" class="none-bg">@ViewResources.Backstage</a>
                         </h2>
                         <div class="block-columns-border">
                             <div class="block-event-item">
@@ -370,9 +370,9 @@
                     </div>
 
                     <div class="block block-event block-columns-border none-bottom-spacing">
-                        <div class="block-event-item item-league">
+                        <div class="block-event-item item-league block-tranfer">
                             <h2 class="block__title">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })" class="none-bg">@ViewResources.Transfer</a>
+                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">@ViewResources.Transfer</a>
                             </h2>
                             <div class="box-vertical">
                                 <a href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })" class="box-vertical-image hover-image">
@@ -402,7 +402,7 @@
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })" class="none-bg">@ViewResources.OtherPosts</a>
+                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a>
                             </h2>
                             <div class="box-vertical">
                                 <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="box-vertical-image hover-image">
