@@ -81,7 +81,8 @@
                         <div class="box-vertical box-vertical-hightlight">
                             @{
                                 var firstPost = Model.NewPosts[0];
-                                string firstImgUrl = firstPost.FeatureImage;
+                                string firstImgUrl = firstPost.GetImageBySize(ImageWidth.Width768);
+                                @* string firstImgUrl = firstPost.FeatureImage; *@
                                 <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
                                     <img src="@Url.Content(firstImgUrl)" class="img-res" alt="@firstPost.PostTitle" loading="lazy" />
                                 </a>
@@ -99,9 +100,10 @@
                                     newPostIndex++;
                                     if (newPostIndex < 5 && newPostIndex > 1)
                                     {
+                                        string img = item.GetImageBySize(ImageWidth.Width768);
                                         <div class="box-vertical">
                                             <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
-                                                <img src="@Url.Content(item.FeatureImage)" alt="@item.PostTitle" class="img-res" loading="lazy" />
+                                                <img src="@img" alt="@item.PostTitle" class="img-res" loading="lazy" />
                                             </a>
                                             <div class="box-vertical-content">
                                                 <h3>
@@ -141,10 +143,11 @@
                     <div class="swiper-wrapper scroll-snap">
                         @foreach (var post in Model.GuessPosts)
                         {
+                            var guessImg = post.GetImageBySize(ImageWidth.Width768);
                             <div class="box-vertical swiper-slide scroll-snap-items">
                                 <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
                                     class="box-vertical-image hover-image">
-                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                                    <img src="@guessImg" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
                                     <h2><a
@@ -176,13 +179,14 @@
                                     var numVideos = 0;
                                     foreach (var post in Model.VideoPosts)
                                     {
+                                        var videoImg = post.GetImageBySize(ImageWidth.Width768);
                                         numVideos++;
                                         var display = numVideos == 1 ? "block" : "none";
                                         <div style="display:@display;" class="box-play-video" id="slide-@post.ID">
                                             <input type="hidden" name="iframe_value" value="@post.PostContent" />
                                             <div class="img-item">
                                                 <a class="box-vertical-image hover-image">
-                                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                                                    <img src="@Url.Content(videoImg)" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                                     <div class="btn-play-video" post-id="@post.ID">
                                                         <span class="icon-play"></span>
                                                     </div>
@@ -201,9 +205,11 @@
                             <div class="block-child-video scroll-snap slide-video">
                                 @foreach (var post in Model.VideoPosts)
                                 {
+
+                                    var videoImg = post.GetImageBySize(isMobile ? ImageWidth.Width500 : ImageWidth.Width300);
                                     <div class="box-horizontal scroll-snap-items card-item">
                                         <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
-                                            <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                                            <img src="@Url.Content(videoImg)" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-horizontal-content">
                                             <h5>
