@@ -3781,20 +3781,6 @@ img {
   }
 }
 
-.single {
-  max-height: 48rem;
-}
-@media screen and (max-width: 1024px) {
-  .single {
-    max-height: 25rem;
-  }
-}
-@media (max-width: 767px) {
-  .single {
-    max-height: 20rem;
-  }
-}
-
 .tag-post {
   margin-bottom: 1.6rem;
 }
@@ -3841,20 +3827,31 @@ img {
   display: none;
 }
 
-.card-vertical-highlight [class*=card-vertical__]:not(.card-vertical__image) {
-  padding: 0 !important;
-  overflow: hidden;
+.card-vertical-highlight .card-vertical__video {
+  padding: 56.5% 0 0 0 !important;
   position: relative;
+  overflow: hidden;
+}
+.card-vertical-highlight .card-vertical__video img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .card-vertical-highlight .card-vertical__title {
   font-size: 2.8rem;
   line-height: 3.8rem;
+  padding: 0 !important;
 }
 @media screen and (max-width: 1024px) {
   .card-vertical-highlight .card-vertical__title {
     font-size: 2.4rem;
     line-height: 3.2rem;
   }
+}
+.card-vertical-highlight .card-vertical__datetime {
+  padding: 0 !important;
 }
 .card-vertical-highlight .card-vertical__image {
   display: none;
@@ -4175,31 +4172,6 @@ img {
   font-size: 1.6rem;
   position: relative;
   line-height: 1.5;
-  /*&:after {
-      content: "";
-      position: absolute;
-      right: -28px;
-      width: 0;
-      height: 0;
-      border-left: 28px solid #4daec6;
-      border-top: 24px solid transparent;
-      border-bottom: 24px solid transparent;
-      top: -1px;
-  }*/
-  /* &:before {
-      right: -27px;
-      border-left-color: #fff;
-      z-index: 99;
-      top: 0;
-      border-left: 27px solid #fff;
-      border-bottom: 23px solid transparent;
-      border-top: 23px solid transparent;
-      content: '';
-      position: absolute;
-      @include Mobile {
-          right: -26px;
-      }
-  }*/
 }
 .euro-detail-title:after {
   content: "";
@@ -4288,18 +4260,6 @@ img {
   padding-top: 6.6rem;
 }
 
-/*@media (max-device-width: 767px) {
-    .wapper.active-fixed {
-        .top-header {
-            position: fixed;
-            z-index: 10005;
-            top: 44px;
-        }
-    }
-    .hidden-body .wapper.active-fixed .top-header {
-        height: calc(100% - 44px);
-    }
-}*/
 .wrapper-embed {
   position: relative;
   width: 100%;
