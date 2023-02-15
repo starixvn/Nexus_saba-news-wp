@@ -3120,7 +3120,7 @@ button {
 }
 .main .block-news-hot .card-hightlight-text li a {
   color: #333;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.3rem;
   line-height: 2.2rem;
   text-decoration: none;
@@ -3466,7 +3466,7 @@ button {
 }
 .main .block-columns-border .block-event-item .list-event-title li a {
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.3rem;
   color: #333;
 }
