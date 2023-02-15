@@ -1637,7 +1637,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: inline;
   -webkit-clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
           clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
-  cursor: pointer;
   border-radius: 3px 0 0 0;
 }
 @media screen and (max-width: 1024px) {
@@ -3084,6 +3083,9 @@ button {
 }
 .main #fixture-homepage .block__title, .main #standing-homepage .block__title {
   margin-bottom: 1rem;
+}
+.main #fixture-homepage .block__title a {
+  cursor: pointer;
 }
 .main .block-news-hot {
   display: grid;

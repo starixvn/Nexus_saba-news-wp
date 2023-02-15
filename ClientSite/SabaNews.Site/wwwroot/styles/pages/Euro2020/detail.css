@@ -1786,7 +1786,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: inline;
   -webkit-clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
           clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
-  cursor: pointer;
   border-radius: 3px 0 0 0;
 }
 @media screen and (max-width: 1024px) {
