@@ -7,9 +7,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/ClientSite/SabaNews.Site/bin/Debug/net6.0/SabaNews.Site.dll",
+            "program": "${workspaceFolder}/SabaNews.Site/bin/Debug/net6.0/SabaNews.Site.dll",
             "args": ["--urls","https://localhost:6001;http://localhost:6000"],
-            "cwd": "${workspaceFolder}\\ClientSite\\SabaNews.Site",
+            "cwd": "${workspaceFolder}\\SabaNews.Site",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
