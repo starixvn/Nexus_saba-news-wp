@@ -340,6 +340,10 @@ body {
   scrollbar-width: thin;
   overflow-x: hidden;
 }
+.livescore-standing.parent-ff-scroll .scroll-dropdown-standing .dropdown-select {
+  overflow: auto;
+  scrollbar-width: thin;
+}
 
 .table-custom {
   margin-top: 0;

@@ -47,6 +47,12 @@
             scrollbar-width: thin;
             overflow-x: hidden;
         }
+        .scroll-dropdown-standing{
+            .dropdown-select{
+                overflow: auto;
+                scrollbar-width: thin;
+            }
+        }
     }
 }
 
