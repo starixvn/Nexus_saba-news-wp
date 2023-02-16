@@ -105,7 +105,7 @@
         if (src !== "") {
             link = link === "" ? "javascript:;" : link;
             html += '<a href="' + link + '">';
-            html += '<img loading="lazy test" src="' + src + '" asp-append-version="true" class="img-res">';
+            html += '<img loading="lazy" src="' + src + '" asp-append-version="true" class="img-res">';
             html += '</a>';
         }
        
