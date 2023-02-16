@@ -289,6 +289,7 @@ function toggleChangeDomainPopup() {
         }, 3000);
     }
 
+    
 
     $('#isHidePopupChangeDomain').on('change', function () {
         if ($(this).is(':checked')) {
