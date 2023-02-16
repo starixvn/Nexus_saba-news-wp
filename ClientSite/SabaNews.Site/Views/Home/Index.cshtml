@@ -206,7 +206,7 @@
                                 @foreach (var post in Model.VideoPosts)
                                 {
 
-                                    var videoImg = post.GetImageBySize(isMobile ? ImageWidth.Width500 : ImageWidth.Width300);
+                                    var videoImg = post.GetImageBySize(ImageWidth.Width768);
                                     <div class="box-horizontal scroll-snap-items card-item">
                                         <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
                                             <img src="@Url.Content(videoImg)" alt="@post.PostTitle" class="img-res" loading="lazy" />
@@ -232,13 +232,14 @@
                     <div class="block block-event block-columns-border">
                         @{
                             if(Model.LeaguePosts[0].Count != 0){
+                                var categoryImg = Model.LeaguePosts[0][0].GetImageBySize(ImageWidth.Width768);
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
                                         <a href="@Model.FootballNewCategory[0].Url">@Model.FootballNewCategory[0].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })" class="box-vertical-image hover-image">
-                                            <img src="@Url.Content(Model.LeaguePosts[0][0].FeatureImage)" alt="@Model.LeaguePosts[0][0].PostTitle" class="img-res" loading="lazy" />
+                                            <img src="@categoryImg" alt="@Model.LeaguePosts[0][0].PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
                                             <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })">@Model.LeaguePosts[0][0].PostTitle</a></h2>
@@ -264,13 +265,14 @@
                         }
                         @{
                             if(Model.LeaguePosts[1].Count != 0){
+                                var categoryImg = Model.LeaguePosts[1][0].GetImageBySize(ImageWidth.Width768);
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
                                         <a href="@Model.FootballNewCategory[1].Url">@Model.FootballNewCategory[1].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })" class="box-vertical-image hover-image">
-                                            <img src="@Url.Content(Model.LeaguePosts[1][0].FeatureImage)" alt="@Model.LeaguePosts[1][0].PostTitle" class="img-res" loading="lazy" />
+                                            <img src="@categoryImg" alt="@Model.LeaguePosts[1][0].PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
                                             <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })">@Model.LeaguePosts[1][0].PostTitle</a></h2>
@@ -296,13 +298,14 @@
                         }
                         @{
                             if(Model.LeaguePosts[2].Count != 0){
+                                var categoryImg = Model.LeaguePosts[2][0].GetImageBySize(ImageWidth.Width768);
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
                                         <a href="@Model.FootballNewCategory[2].Url">@Model.FootballNewCategory[2].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })" class="box-vertical-image hover-image">
-                                            <img src="@Url.Content(Model.LeaguePosts[2][0].FeatureImage)" alt="@Model.LeaguePosts[2][0].PostTitle" class="img-res" loading="lazy" />
+                                            <img src="@categoryImg" alt="@Model.LeaguePosts[2][0].PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
                                             <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })">@Model.LeaguePosts[2][0].PostTitle</a></h2>
@@ -330,7 +333,10 @@
 
                     <div class="ads-insite show-mobile banner-mobile-bottom">
                     </div>
+                    @{
 
+                        var backstageImg = Model.BackstagePosts[0].GetImageBySize(ImageWidth.Width768);
+                    }
                     <div class="block block-behind">
                         <h2 class="block__title">
                             <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug })" class="none-bg">@ViewResources.Backstage</a>
@@ -339,7 +345,7 @@
                             <div class="block-event-item">
                                 <div class="box-vertical">
                                     <a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })" class="box-vertical-image hover-image">
-                                        <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
+                                        <img src="@backstageImg" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
                                     </a>
                                     <div class="box-vertical-content">
                                         <h4><a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })">@Model.BackstagePosts[0].PostTitle</a></h4>
@@ -356,9 +362,10 @@
                                         if(BackstagePostsPostIndex <= 1){
                                             continue;
                                         }
+                                        var backImg = post.GetImageBySize(ImageWidth.Width768);
                                         <div class="box-horizontal">
                                             <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="box-horizontal-image hover-none-16-9">
-                                                <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                                                <img src="@backImg" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                             </a>
                                             <div class="box-horizontal-content">
                                                 <h5>
@@ -375,6 +382,10 @@
                         </div>
                     </div>
 
+                    @{
+
+                        var transferImg = Model.TransferPosts[0].GetImageBySize(ImageWidth.Width768);
+                    }
                     <div class="block block-event block-columns-border none-bottom-spacing">
                         <div class="block-event-item item-league block-tranfer">
                             <h2 class="block__title">
@@ -382,7 +393,7 @@
                             </h2>
                             <div class="box-vertical">
                                 <a href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })" class="box-vertical-image hover-image">
-                                    <img src="@Url.Content(Model.TransferPosts[0].FeatureImage)" alt="@Model.TransferPosts[0].PostTitle" class="img-res" loading="lazy" />
+                                    <img src="@transferImg" alt="@Model.TransferPosts[0].PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
                                     <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })">@Model.TransferPosts[0].PostTitle</a></h2>
@@ -406,13 +417,17 @@
                                 <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">Xem Thêm</a>
                             </div>
                         </div>
+                        @{
+
+                            var ortherImg = Model.OtherPosts[0].GetImageBySize(ImageWidth.Width768);
+                        }
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
                                 <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a>
                             </h2>
                             <div class="box-vertical">
                                 <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="box-vertical-image hover-image">
-                                    <img src="@Url.Content(Model.OtherPosts[0].FeatureImage)" alt="@Model.OtherPosts[0].PostTitle" class="img-res" loading="lazy" />
+                                    <img src="@ortherImg" alt="@Model.OtherPosts[0].PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
                                     <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })">@Model.OtherPosts[0].PostTitle</a></h2>
