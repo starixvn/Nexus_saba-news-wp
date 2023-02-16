@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import GridItem from './GridItem';
+
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
-
         this.state = {
             selectedLeagueId: this.initSelectedLeagueId()
         };
@@ -22,6 +22,7 @@ export default class Grid extends PureComponent {
         }
         return selectedId;
     };
+
     onChange = event => {
         this.setState({ selectedLeagueId: parseInt(event.target.value) });
     };
@@ -41,6 +42,7 @@ export default class Grid extends PureComponent {
             window.location = url;
         }
     };
+
     render() {
         const { standings } = this.props;
         const { selectedLeagueId } = this.state;
@@ -50,10 +52,11 @@ export default class Grid extends PureComponent {
         }
         return (
             <div>
+                <div className="block__title" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}><a>Bảng xếp hạng</a></div>
                 <div className="livescore-soccer-main">
                     <div className="season-standings">
                         <div className="control-standing">
-                            <span onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}>{CommonFunctions.getLeagueName(currentLeagueStanding.league)}</span>
+                            <span>{CommonFunctions.getLeagueName(currentLeagueStanding.league)}</span>
                             <select onChange={this.onChange} value={selectedLeagueId}>
                                 {
                                     standings.map((standing, index) =>

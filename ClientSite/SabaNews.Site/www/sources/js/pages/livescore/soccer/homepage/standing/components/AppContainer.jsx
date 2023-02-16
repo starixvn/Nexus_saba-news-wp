@@ -16,7 +16,6 @@ export class AppContainer extends Component {
         return (
             <>
                 <div className="livescore-home livescore-standing">
-                    <div className="block__title"><a>Bảng xếp hạng</a></div>
                     {
                         standings !== null && standings.length > 0 &&
                         <Grid standings={standings} />
