@@ -3084,7 +3084,7 @@ button {
 .main #fixture-homepage .block__title, .main #standing-homepage .block__title {
   margin-bottom: 1rem;
 }
-.main #fixture-homepage .block__title a {
+.main #fixture-homepage .block__title a, .main #standing-homepage .block__title a {
   cursor: pointer;
 }
 .main .block-news-hot {
