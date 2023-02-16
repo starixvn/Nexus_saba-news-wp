@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import GridItem from './GridItem';
+import { MobileMaxWidth } from '@jsroot/common/constants';
 
 export default class Grid extends PureComponent {
     constructor(props) {
@@ -27,6 +28,10 @@ export default class Grid extends PureComponent {
         this.setState({ selectedLeagueId: parseInt(event.target.value) });
     };
 
+    handleSelectLeague = leagueId => {
+        this.setState({ selectedLeagueId: parseInt(leagueId) });
+    };
+
     getLeagueStanding = () => {
         const { selectedLeagueId } = this.state;
         const { standings } = this.props;
@@ -50,6 +55,7 @@ export default class Grid extends PureComponent {
         if (!currentLeagueStanding) {
             return null;
         }
+        const isMobile = window.innerWidth < MobileMaxWidth;
         return (
             <div>
                 <div className="block__title" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}><a>Bảng xếp hạng</a></div>
@@ -57,13 +63,26 @@ export default class Grid extends PureComponent {
                     <div className="season-standings">
                         <div className="control-standing">
                             <span>{CommonFunctions.getLeagueName(currentLeagueStanding.league)}</span>
-                            <select onChange={this.onChange} value={selectedLeagueId}>
-                                {
-                                    standings.map((standing, index) =>
-                                        standing.standing.length > 0 &&
-                                        <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
-                                }
-                            </select>
+                            {
+                                !isMobile &&
+                                <ul>
+                                    {
+                                        standings.map((standing, index) =>
+                                            standing.standing.length > 0 &&
+                                            <li onClick={() => this.handleSelectLeague(standing.league.leagueId)} key={index}>{CommonFunctions.getLeagueName(standing.league)}</li>)
+                                    }
+                                </ul>
+                            }
+                            {
+                                isMobile &&
+                                <select onChange={this.onChange} value={selectedLeagueId}>
+                                    {
+                                        standings.map((standing, index) =>
+                                            standing.standing.length > 0 &&
+                                            <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
+                                    }
+                                </select>
+                            }
                         </div>
                         <GridItem leagueStanding={currentLeagueStanding} />
                     </div>
