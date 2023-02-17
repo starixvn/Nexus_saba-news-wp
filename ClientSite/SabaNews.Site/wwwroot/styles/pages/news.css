@@ -1669,6 +1669,27 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-color: transparent !important;
 }
 
+.title-new-page, .block-sticky .block__title, .block__content .block__title {
+  border-bottom: none;
+  margin-bottom: 1.2rem;
+}
+.title-new-page a, .block-sticky .block__title a, .block__content .block__title a {
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  color: #f12f19;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #fffdf9;
+  position: relative;
+  z-index: 9;
+  padding-right: 1rem;
+  line-height: 1;
+  padding: 0;
+  -webkit-clip-path: unset;
+          clip-path: unset;
+}
+
 .block-columns {
   display: flex;
   grid-gap: 2rem;
@@ -3497,23 +3518,9 @@ button {
   display: none;
 }
 
-.title-new-page {
+.title-new-page, .block-sticky .block__title, .block__content .block__title {
   padding-left: 0;
 }
-.title-new-page::after {
+.title-new-page::after, .block-sticky .block__title::after, .block__content .block__title::after {
   display: none;
 }
-
-/*
-.wapper.active-fixed {
-    .child-mobile-menu, .button-mobile, .top-header {
-        position: fixed;
-        z-index: 10005;
-        top: 0;
-    }
-
-    .button-mobile {
-        z-index: 10004;
-    }
-}
-*/

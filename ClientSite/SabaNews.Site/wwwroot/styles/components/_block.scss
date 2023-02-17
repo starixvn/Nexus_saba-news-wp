@@ -36,6 +36,33 @@
     }
 }
 
+.title-new-page{
+    border-bottom: none;
+    margin-bottom: 1.2rem;
+    a{
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.7rem;
+        color: #f12f19;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: #fffdf9;
+        position: relative;
+        z-index: 9;
+        padding-right: 1rem;
+        line-height: 1;
+        padding: 0;
+        clip-path: unset;
+    }
+}
+.block-sticky,.block__content{
+    .block__title{
+        @extend .title-new-page
+    }
+}
+
+
+
 .block-columns{
     display: flex;
     grid-gap: 2rem;
