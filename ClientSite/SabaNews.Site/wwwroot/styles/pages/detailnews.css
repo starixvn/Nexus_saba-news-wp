@@ -1902,12 +1902,6 @@ button {
   height: 100%;
   -o-object-position: top;
      object-position: top;
-  -webkit-backface-visibility: hidden;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
   transform: rotate(0.01deg) scale(1);
 }
 .hover-image:hover img {
@@ -1940,12 +1934,6 @@ button {
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
-  -webkit-backface-visibility: hidden;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
   display: block;
   transition: all 0.5s ease;
   transform: rotate(0.01deg) scale(1);
@@ -1953,6 +1941,15 @@ button {
 .hover-none-16-9:hover img {
   transition: all 0.5s ease;
   transform: rotate(0.01deg) scale(1.01);
+}
+
+.fix-chrome .hover-image img, .fix-chrome .hover-none-16-9 img {
+  -webkit-backface-visibility: hidden;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .hover-ff img {

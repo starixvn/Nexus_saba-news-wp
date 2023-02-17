@@ -65,26 +65,18 @@ export default class Grid extends PureComponent {
                     <div className="season-standings">
                         <div className="control-standing " >
                             <div className="parent-dropdown">
-                                {!isMobile &&
-                                    <MobileGrid standings={standings} currentLeagueStanding={currentLeagueStanding} handleSelectLeague={this.handleSelectLeague} />
-                                }
-                                {
-                                    isMobile &&
-                                    <span>
-                                        {CommonFunctions.getLeagueName(currentLeagueStanding.league)}
-                                        <i className="icon-chevron-down" />
-                                    </span>
-                                }
-                                {
-                                    isMobile &&
-                                    <select onChange={this.onChange} value={selectedLeagueId}>
-                                        {
-                                            standings.map((standing, index) =>
-                                                standing.standing.length > 0 &&
-                                                <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
-                                        }
-                                    </select>
-                                }
+                            <MobileGrid standings={standings} currentLeagueStanding={currentLeagueStanding} handleSelectLeague={this.handleSelectLeague} />
+                                <span className="mobile-match">
+                                    {CommonFunctions.getLeagueName(currentLeagueStanding.league)}
+                                    <i className="icon-chevron-down" />
+                                </span>
+                                <select onChange={this.onChange} value={selectedLeagueId}>
+                                    {
+                                        standings.map((standing, index) =>
+                                            standing.standing.length > 0 &&
+                                            <option value={standing.league.leagueId} key={index} >{CommonFunctions.getLeagueName(standing.league)}</option>)
+                                    }
+                                </select>
                             </div>
                         </div>
                         <GridItem leagueStanding={currentLeagueStanding} />

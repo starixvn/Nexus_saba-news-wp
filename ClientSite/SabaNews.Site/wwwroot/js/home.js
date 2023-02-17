@@ -106,6 +106,7 @@ var home = {
         let browserName;
         if (userAgent.match(/chrome|chromium|crios/i)) {
             browserName = "chrome";
+            $('body').addClass('fix-chrome')
         } else if (userAgent.match(/firefox|fxios/i)) {
             browserName = "firefox";
             $('html').find('.livescore-soccer-main').addClass('ff-scroll');
