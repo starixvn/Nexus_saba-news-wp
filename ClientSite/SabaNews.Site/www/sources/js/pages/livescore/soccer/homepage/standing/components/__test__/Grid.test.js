@@ -37,6 +37,31 @@ describe('Grid', () => {
             expect(result).toEqual(2);
         })
     });
+    describe('handleSelectLeague', () => {
+        it('setState correctly when call function', () =>  {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                standings:[
+                    {
+                        league:{leagueId: 1},
+                        standing: []
+                    },
+                    {
+                        league:{leagueId: 2},
+                        standing: [{stageId: 1}]
+                    }
+                ]
+            }
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.handleSelectLeague(3);
+
+            // Assert
+            expect(instance.state.selectedLeagueId).toEqual(3);
+        });
+    })
 
     describe('getLeagueStanding', () => {
         it('return correct standing when call function', () => {
@@ -105,7 +130,7 @@ describe('Grid', () => {
             const container = shallow(<Grid {...props} />);
 
             // Act
-            container.find('.control-standing span').simulate('click', event, league);
+            container.find('.block__title').simulate('click', event, league);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
@@ -145,8 +170,9 @@ describe('Grid', () => {
     });
 
     describe('renders', () => {
-        it('render correct', () => {
+        it('render correct when isMobile = true', () => {
             // Arrange
+            window.innerWidth = 500;
             const props = {
                 ...defaultProps,
                 standings:[
