@@ -253,7 +253,7 @@
     {
         "outputFileName": "wwwroot/minify/styles/site.min.css",
         "inputFiles": [
-            "wwwroot/styles/pages/auth.min.css"
+            "wwwroot/styles/pages/auth.css"
         ]
     },
     {
