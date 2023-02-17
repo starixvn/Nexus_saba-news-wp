@@ -7,7 +7,6 @@ import { MobileMaxWidth } from '@jsroot/common/constants';
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
-        this.wrapperRef = React.createRef();
         this.state = {
             selectedLeagueId: this.initSelectedLeagueId()
         };
