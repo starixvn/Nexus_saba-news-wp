@@ -57,7 +57,6 @@ export default class Grid extends PureComponent {
         if (!currentLeagueStanding) {
             return null;
         }
-        const isMobile = window.innerWidth < MobileMaxWidth;
         return (
             <div>
                 <div className="block__title" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}><a>Bảng xếp hạng</a></div>
