@@ -7,7 +7,7 @@
     .add_comment, .add_sub_comment {
         color: $color-fff;
         padding: 1rem 4rem;
-        background: #9f224e;
+        background: #f12f19;
         border: none;
         margin-top: 2rem;
         font-weight: bold;
@@ -83,11 +83,11 @@
         }
 
         .active {
-            color: #9f224e;
+            color: #f12f19;
             font-weight: 700;
 
             &:after {
-                background: #9f224e;
+                background: #f12f19;
             }
         }
     }

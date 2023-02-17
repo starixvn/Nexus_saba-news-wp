@@ -2748,7 +2748,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .comment-post .add_comment, .comment-post .add_sub_comment {
   color: #fff;
   padding: 1rem 4rem;
-  background: #9f224e;
+  background: #f12f19;
   border: none;
   margin-top: 2rem;
   font-weight: bold;
@@ -2815,11 +2815,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   left: 0;
 }
 .comment-post .filter_comment .active {
-  color: #9f224e;
+  color: #f12f19;
   font-weight: 700;
 }
 .comment-post .filter_comment .active:after {
-  background: #9f224e;
+  background: #f12f19;
 }
 .comment-post .list_comments .comment_item {
   margin-top: 2rem;
