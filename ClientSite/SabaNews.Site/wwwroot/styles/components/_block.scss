@@ -47,10 +47,9 @@
         display: unset;
     }
     .columns-left{
-        width: 100%;
-        max-width: 93rem;
+        width: 93rem;
         @include tableMobile{
-            max-width: 100%;
+            width: 100%;
         }
     }
     .columns-right{

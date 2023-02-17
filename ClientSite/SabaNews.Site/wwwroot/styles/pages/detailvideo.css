@@ -1684,12 +1684,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block-columns .columns-left {
-  width: 100%;
-  max-width: 93rem;
+  width: 93rem;
 }
 @media screen and (max-width: 1024px) {
   .block-columns .columns-left {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .block-columns .columns-right {
