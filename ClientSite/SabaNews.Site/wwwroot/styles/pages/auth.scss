@@ -119,7 +119,7 @@
                 }
 
                 .active {
-                    color: #9F224E;
+                    color: #f12f19;
 
                     &:after {
                         content: '';
@@ -129,7 +129,7 @@
                         position: absolute;
                         left: 0;
                         bottom: -1px;
-                        background: #9F224E;
+                        background: #f12f19;
                     }
                 }
             }
@@ -239,7 +239,7 @@
 }
 
 .btn-login, .btn-register, .btn-resetpass {
-    background: #9F224E;
+    background: #f12f19;
     border-radius: 3px;
     cursor: pointer;
     border: none;
