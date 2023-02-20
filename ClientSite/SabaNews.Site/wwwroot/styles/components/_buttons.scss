@@ -81,6 +81,7 @@ button {
     display: none;
     @include Mobile{
         display: flex;
+        justify-content: center;
     }
     a{
         font-weight: 600;

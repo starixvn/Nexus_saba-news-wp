@@ -1972,6 +1972,7 @@ button {
 @media (max-width: 767px) {
   .view-more-block {
     display: flex;
+    justify-content: center;
   }
 }
 .view-more-block a {
