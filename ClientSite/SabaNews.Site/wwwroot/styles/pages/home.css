@@ -2461,6 +2461,8 @@ button {
 .box-vertical-content p {
   margin-top: 0.8rem;
   margin-bottom: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 .box-vertical.box-vertical-hightlight .box-vertical-image {
   height: 35rem;
@@ -3138,7 +3140,7 @@ button {
 .main .block-news-hot .card-hightlight-text li a {
   color: #333;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   line-height: 2.2rem;
   text-decoration: none;
 }
@@ -3484,7 +3486,7 @@ button {
 .main .block-columns-border .block-event-item .list-event-title li a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #333;
 }
 @media (max-width: 767px) {
