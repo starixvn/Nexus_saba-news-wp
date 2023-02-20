@@ -2196,7 +2196,7 @@ button {
   gap: 1rem;
   padding-bottom: 1.6rem;
   margin-bottom: 1.6rem;
-  border-bottom: 1px solid #E4D9D0;
+  border-bottom: 1px solid #E5E5E5;
 }
 .box-horizontal:last-child {
   padding-bottom: 0 !important;
@@ -2207,6 +2207,9 @@ button {
   width: 17rem;
   height: 11rem;
   display: block;
+}
+.box-horizontal-content h5 {
+  line-height: 1.5;
 }
 .box-horizontal-content h5 a {
   text-decoration: none;

@@ -457,6 +457,7 @@
             }
         }
         .box-horizontal{
+            border-bottom: 1px solid #e4d9d0;
             @include Mobile{
                 flex-wrap: wrap;
                 padding-bottom: 0;
