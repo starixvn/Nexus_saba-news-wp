@@ -55,7 +55,7 @@
         clip-path: unset;
     }
 }
-.block-sticky,.block__content{
+.block-sticky,.block__content,.block-main{
     .block__title{
         @extend .title-new-page
     }

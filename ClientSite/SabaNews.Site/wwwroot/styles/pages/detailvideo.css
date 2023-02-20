@@ -1668,11 +1668,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-color: transparent !important;
 }
 
-.title-new-page, .block-sticky .block__title, .block__content .block__title {
+.title-new-page, .block-sticky .block__title, .block__content .block__title, .block-main .block__title {
   border-bottom: none;
   margin-bottom: 1.2rem;
 }
-.title-new-page a, .block-sticky .block__title a, .block__content .block__title a {
+.title-new-page a, .block-sticky .block__title a, .block__content .block__title a, .block-main .block__title a {
   font-weight: bold;
   font-size: 2rem;
   line-height: 2.7rem;
