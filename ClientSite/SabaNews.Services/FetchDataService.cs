@@ -55,7 +55,7 @@
             var paramGetRecent = new GetRecentPostsParam
             {
                 Start = Constants.FromFirstItem,
-                End = Constants.GetTenItems
+                End = Constants.GetTwelveItems
             };
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
             var otherPosts = await postService.GetPostsBySlugAsync(Constants.OtherPostSlug, Constants.FromFirstItem, Constants.GetFourItems);
