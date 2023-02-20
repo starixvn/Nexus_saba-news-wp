@@ -2908,6 +2908,7 @@ button {
 }
 .ads-insite a img {
   margin: 0 auto;
+  display: block;
 }
 
 .block-last-page .ads-insite {

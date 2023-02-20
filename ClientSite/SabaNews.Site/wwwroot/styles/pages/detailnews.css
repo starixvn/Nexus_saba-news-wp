@@ -3608,6 +3608,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .ads-insite a img {
   margin: 0 auto;
+  display: block;
 }
 
 .block-last-page .ads-insite {
