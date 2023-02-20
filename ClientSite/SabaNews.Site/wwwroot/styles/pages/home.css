@@ -3548,10 +3548,16 @@ button {
     display: none;
   }
 }
+.main .block-behind .block-event-item {
+  border-right: 1px solid #e4d9d0;
+}
 @media (max-width: 767px) {
   .main .block-behind .block-event-item {
     margin-bottom: 0;
   }
+}
+.main .block-behind .block-event-item:nth-child(2) {
+  border: none;
 }
 @media (max-width: 767px) {
   .main .block-behind .box-horizontal {
