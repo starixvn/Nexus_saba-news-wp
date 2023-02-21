@@ -83,11 +83,11 @@
                                 var firstPost = Model.NewPosts[0];
                                 string firstImgUrl = firstPost.GetImageBySize(ImageWidth.Width768);
                                 @* string firstImgUrl = firstPost.FeatureImage; *@
-                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
+                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug })" class="box-vertical-image hover-image">
                                     <img src="@Url.Content(firstImgUrl)" class="img-res" alt="@firstPost.PostTitle" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h1><a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})">@firstPost.PostTitle</a></h1>
+                                    <h1><a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug })">@firstPost.PostTitle</a></h1>
                                     <p>@firstPost.PostExcerpt</p>
                                 </div>
                             }
@@ -107,7 +107,7 @@
                                             </a>
                                             <div class="box-vertical-content">
                                                 <h3>
-                                                    <a href="@Url.Action("Single", "Post", new { slug =  item.Slug})">@item.PostTitle</a>
+                                                    <a href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a>
                                                 </h3>
                                             </div>
                                         </div>
@@ -205,7 +205,6 @@
                             <div class="block-child-video scroll-snap slide-video">
                                 @foreach (var post in Model.VideoPosts)
                                 {
-
                                     var videoImg = post.GetImageBySize(ImageWidth.Width768);
                                     <div class="box-horizontal scroll-snap-items card-item">
                                         <a href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
