@@ -760,6 +760,10 @@ body {
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 1.9rem;
+  width: 4rem;
+}
+.group-duel .result-league .detail-score-wrapper {
+  text-align: center;
 }
 .group-duel .team {
   list-style: none;
