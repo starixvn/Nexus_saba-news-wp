@@ -198,6 +198,12 @@ p.has-text-align-center {
   overflow-x: hidden !important;
 }
 
+.wapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 button {
   outline: none;
   border: 0;

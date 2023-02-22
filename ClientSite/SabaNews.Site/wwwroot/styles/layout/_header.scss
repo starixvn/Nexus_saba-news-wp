@@ -1080,14 +1080,27 @@
             top: 7rem;
             bottom: 0;
             position: fixed;
+            z-index: 8;
         }
 
         .header .child-mobile-menu {
             display: none;
         }
-
+        .header{
+            position: fixed;
+            z-index: 9;
+        }
         .child-mobile-menu {
             position: relative;
+            z-index: 8;
+        }
+    }
+}
+
+.active-fixed{
+    @include tableMobile{
+        .header{
+            display: none;
         }
     }
 }

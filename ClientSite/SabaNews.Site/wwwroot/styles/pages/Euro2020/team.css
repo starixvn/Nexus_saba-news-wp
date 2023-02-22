@@ -198,6 +198,12 @@ p.has-text-align-center {
   overflow-x: hidden !important;
 }
 
+.wapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -1494,12 +1500,24 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     top: 7rem;
     bottom: 0;
     position: fixed;
+    z-index: 8;
   }
   .hidden-body .header .child-mobile-menu {
     display: none;
   }
+  .hidden-body .header {
+    position: fixed;
+    z-index: 9;
+  }
   .hidden-body .child-mobile-menu {
     position: relative;
+    z-index: 8;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .active-fixed .header {
+    display: none;
   }
 }
 
