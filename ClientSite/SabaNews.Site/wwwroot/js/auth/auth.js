@@ -24,7 +24,7 @@
                 });
                 
                 // HandleRegister();
-                // HandleForgotPassword();
+                HandleForgotPassword();
                 HandleModal(openForm);
             }
         });
@@ -166,47 +166,53 @@
                 dataType: 'html',
                 success: function (response) {
                     $('#authModal').html(response);
-                    HandleSubmitForgotPassword();
+                    document.querySelector("#form-forgot-password > button").addEventListener('click', (e) => {
+                        e.preventDefault();
+                        HandleSubmitForgotPassword();
+                    });
                 }
             });
         });
     }
 
     function HandleSubmitForgotPassword() {
-        // var email = document.querySelector("#form-forgot-password > div > input").value;
-        // var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        // if (!mailFormat.test(email) || email === "Hãy nhập email"){
-        //     flag = false;
-        //     var aTag = document.createElement("label");
-        //     aTag.id = "email-error";
-        //     aTag.htmlFor = "email";
-        //     aTag.classList.add("error");
-        //     aTag.innerHTML = email === "Hãy nhập email" ? "" : "Email không có thật";
-        //     document.querySelector("#form-login > div:nth-child(2)").append(aTag);
-        // }
+        var email = document.querySelector("#form-forgot-password > div > input").value;
+        var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!mailFormat.test(email) || email === ""){
+            $("#email-error").remove();
+            flag = false;
+            var aTag = document.createElement("label");
+            aTag.id = "email-error";
+            aTag.htmlFor = "email";
+            aTag.classList.add("error");
+            aTag.innerHTML = email === "" ? "Hãy nhập email" : "Email không có thật";
+            document.querySelector("#form-forgot-password > div").append(aTag);
+        }
 
-        // $("#form-forgot-password .btn-resetpass").prop('disabled', true);
-        // $("#form-forgot-password .btn-resetpass").addClass('btn-disabled');
-        // $.ajax({
-        //     url: '/Auth/ForgotPassword',
-        //     method: "POST",
-        //     data: {email},
-        //     success: function (res) {
-        //         if (res.isSuccessful) {
-        //             const emailForget = $('#authModal form#form-forgot-password').find('input[name="email"]').val();
-        //             const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
-        //             const bodyModal = formatString(html, emailForget, window.location.origin);
-        //             $('#authModal .modal-body').html(bodyModal);
-        //         } else {
-        //             $('#authModal form#form-forgot-password').find('.summary-eror').text(res.message);
-        //             $("#form-forgot-password .btn-resetpass").prop('disabled', false);
-        //             $("#form-forgot-password .btn-resetpass").removeClass('btn-disabled');
-        //         }
-        //     },
-        //     error: function (jqXHR, textStatus, errorThrown) {
-        //         console.log(textStatus + ': ' + errorThrown);
-        //     }
-        // });
+        if(mailFormat.test(email) && email != ""){
+            $("#form-forgot-password .btn-resetpass").prop('disabled', true);
+            $("#form-forgot-password .btn-resetpass").addClass('btn-disabled');
+            $.ajax({
+                url: '/Auth/ForgotPassword',
+                method: "POST",
+                data: {email},
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        const emailForget = $('#authModal form#form-forgot-password').find('input[name="email"]').val();
+                        const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
+                        const bodyModal = formatString(html, emailForget, window.location.origin);
+                        $('#authModal .modal-body').html(bodyModal);
+                    } else {
+                        $('#authModal form#form-forgot-password').find('.summary-eror').text(res.message);
+                        $("#form-forgot-password .btn-resetpass").prop('disabled', false);
+                        $("#form-forgot-password .btn-resetpass").removeClass('btn-disabled');
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ': ' + errorThrown);
+                }
+            });
+        }
     }
 
     function HandleModal(openForm) {
