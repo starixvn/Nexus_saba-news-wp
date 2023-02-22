@@ -4214,19 +4214,12 @@ img {
   font-size: 1.6rem;
   position: relative;
   line-height: 1.5;
-}
-.euro-detail-title:after {
-  content: "";
   background-color: #03647B;
-  width: 62px;
-  height: 100%;
-  position: absolute;
-  z-index: 0;
 }
 .euro-detail-title span {
   width: 90%;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .euro-detail-title span {
     width: 80%;
   }
@@ -4238,7 +4231,7 @@ img {
   font-size: 2.4rem;
   position: inherit;
   z-index: 9999;
-  width: 10%;
+  width: 8%;
   display: flex;
   align-items: center;
   justify-content: center;

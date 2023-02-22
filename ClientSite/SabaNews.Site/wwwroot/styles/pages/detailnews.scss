@@ -493,23 +493,14 @@ img {
     font-size: 1.6rem;
     position: relative;
     line-height: 1.5;
-
-    &:after {
-        content: '';
-        background-color: #03647B;
-        width: 62px;
-        height: 100%;
-        position: absolute;
-        z-index: 0;
-    }
-    span {
+    background-color: #03647B;
+    
+    span{
         width: 90%;
-
-        @include Mobile {
+        @include tableMobile{
             width: 80%;
         }
     }
-
     .euro-number {
         color: #fff;
         margin-right: 10px;
@@ -517,7 +508,7 @@ img {
         font-size: 2.4rem;
         position: inherit;
         z-index: 9999;
-        width: 10%;
+        width: 8%;
         display: flex;
         align-items: center;
         justify-content: center;
