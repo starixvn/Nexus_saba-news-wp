@@ -23,7 +23,11 @@
                     HandleLoginAcc(returnUrl);
                 });
                 
-                // HandleRegister();
+                document.querySelector("#form-register > button").addEventListener('click', (e) => {
+                    e.preventDefault();
+                    HandleRegister();
+                });
+
                 HandleForgotPassword();
                 HandleModal(openForm);
             }
@@ -88,68 +92,78 @@
     }
 
     function HandleRegister() {
-        const element = '#authModal form#form-register';
+        var name = document.querySelector("#form-register > div:nth-child(2) > input").value;
+        var email = document.querySelector("#form-register > div:nth-child(3) > input").value;
+        var password = document.querySelector("#password").value;
+        var confirmPassword = document.querySelector("#form-register > div:nth-child(5) > input").value;
+        var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
+        if(name === ""){
+            $("#name-error").remove();
+            var aTag = document.createElement("label");
+            aTag.id = "name-error";
+            aTag.htmlFor = "name";
+            aTag.classList.add("error");
+            aTag.innerHTML = "Hãy nhập tên";
+            document.querySelector("#form-register > div:nth-child(2)").append(aTag);
+        }
 
+        if (!mailFormat.test(email) || email === ""){
+            $("#email-error").remove();
+            var aTag = document.createElement("label");
+            aTag.id = "email-error";
+            aTag.htmlFor = "email";
+            aTag.classList.add("error");
+            aTag.innerHTML = email === "" ? "Hãy nhập email" : "Email không có thật";
+            document.querySelector("#form-register > div:nth-child(3)").append(aTag);
+        }
 
-        // $(element).validate({
-        //     rules: {
-        //         name: "required",
-        //         email: {
-        //             required: true,
-        //             validEmail: true
-        //         },
-        //         password: {
-        //             required: true,
-        //             minlength: 6
-        //         },
-        //         confirmPassword: {
-        //             required: true,
-        //             equalTo: '#password'
-        //         }
-        //     },
-        //     messages: {
-        //         name: _viewResource.NameRequired,
-        //         email: {
-        //             required: _viewResource.EmailRequired,
-        //             email: _viewResource.EmailInvalid
-        //         },
-        //         password: {
-        //             required: _viewResource.PasswordRequired,
-        //             minlength: _viewResource.PasswordMinLength
-        //         },
-        //         confirmPassword: {
-        //             required: _viewResource.ConfirmPasswordRequired,
-        //             equalTo: _viewResource.ConfirmPasswordEqualTo
-        //         }
-        //     },
-        //     submitHandler: function (form) {
-        //         $(element + " .btn-register").prop('disabled', true);
-        //         $(element + " .btn-register").addClass('btn-disabled');
-        //         $.ajax({
-        //             url: '/Auth/Register',
-        //             method: "POST",
-        //             data: $(form).serialize(),
-        //             success: function (res) {
-        //                 if (res.isSuccessful) {
-        //                     const email = $(form).find('input[name="email"]').val();
-        //                     const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
-        //                     const bodyModal = formatString(html, email, window.location.origin);
-        //                     $('#authModal').css("max-width", "63rem");
-        //                     $('#authModal .modal-body').html(bodyModal);
-        //                     HandleCloseModal();
-        //                 } else {
-        //                     $(form).find('.summary-eror').text(res.message);
-        //                     $(element + " .btn-register").prop('disabled', false);
-        //                     $(element + " .btn-register").removeClass('btn-disabled');
-        //                 }
-        //             },
-        //             error: function (jqXHR, textStatus, errorThrown) {
-        //                 console.log(textStatus + ': ' + errorThrown);
-        //             }
-        //         });
-        //     }
-        // });
+        if (password === ""){
+            $("#password-error").remove();
+            var aTag = document.createElement("label");
+            aTag.id = "password-error";
+            aTag.htmlFor = "password";
+            aTag.classList.add("error");
+            aTag.innerHTML = "Hãy nhập mật khẩu";
+            document.querySelector("#form-register > div:nth-child(4)").append(aTag);
+        }
+
+        if (confirmPassword === "" || password != confirmPassword){
+            $("#confirmPassword-error").remove();
+            var aTag = document.createElement("label");
+            aTag.id = "confirmPassword-error";
+            aTag.htmlFor = "confirmPassword";
+            aTag.classList.add("error");
+            aTag.innerHTML = password === confirmPassword ? "Hãy xác thực mật khẩu" : "Xác thực mật khẩu sai";
+            document.querySelector("#form-register > div:nth-child(5)").append(aTag);
+        }
+
+        if(name != "" && mailFormat.test(email) && email != "" && password != "" && confirmPassword != "" && password === confirmPassword){
+            $(element + " .btn-register").prop('disabled', true);
+            $(element + " .btn-register").addClass('btn-disabled');
+            $.ajax({
+                url: '/Auth/Register',
+                method: "POST",
+                data: {name, email, password, confirmPassword},
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        const email = $('#authModal form#form-register').find('input[name="email"]').val();
+                        const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
+                        const bodyModal = formatString(html, email, window.location.origin);
+                        $('#authModal').css("max-width", "63rem");
+                        $('#authModal .modal-body').html(bodyModal);
+                        HandleCloseModal();
+                    } else {
+                        $('#authModal form#form-register').find('.summary-eror').text(res.message);
+                        $(element + " .btn-register").prop('disabled', false);
+                        $(element + " .btn-register").removeClass('btn-disabled');
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ': ' + errorThrown);
+                }
+            });
+        }
     }
 
     function HandleCloseModal() {
@@ -247,6 +261,7 @@
         var email = document.querySelector("#form-login > div:nth-child(2) > input").value;
         var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         if (!mailFormat.test(email)){
+            $("#email-error").remove();
             flag = false;
             var aTag = document.createElement("label");
             aTag.id = "email-error";
@@ -255,15 +270,13 @@
             aTag.innerHTML = "Email không có thật";
             document.querySelector("#form-login > div:nth-child(2)").append(aTag);
         }
-        else{
-            $("#email-error").remove();
-        }
     }
 
     function AddPasswordValidation() {
         var password = document.querySelector("#form-login > div:nth-child(3) > input").value;
         var check = $("#password-error").length;
-        if (password === "" && check == 0){
+        if (password === "" && check === 0){
+            $("#password-error").remove();
             var aTag = document.createElement("label");
             aTag.id = "password-error";
             aTag.htmlFor = "password";
