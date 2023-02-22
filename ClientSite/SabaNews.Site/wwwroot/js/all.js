@@ -12,7 +12,6 @@ $('.submenu').click(function () {
         }
     }
 })
-
 $(document).mousedown('a', function () {
     $(window).unbind('beforeunload');
 });

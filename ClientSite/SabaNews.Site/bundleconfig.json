@@ -208,12 +208,10 @@
         "outputFileName": "wwwroot/minify/js/site.min.js",
         "inputFiles": [
             "wwwroot/lib/jquery/dist/jquery.min.js",
-            "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
             "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
             "wwwroot/js/common.js",
             "wwwroot/js/site.js",
-            "wwwroot/js/all.js",
-            "wwwroot/js/auth/auth.js"
+            "wwwroot/js/all.js"
         ],
         "minify": {
             "enabled": true,
