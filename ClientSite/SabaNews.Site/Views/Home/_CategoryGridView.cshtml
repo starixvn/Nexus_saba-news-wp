@@ -33,7 +33,7 @@
                 continue;
             }
         }
-        <div class="post card-horizontal">
+        <div class="post card-horizontal @postIndex @ViewBag.CurrentPage">
             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52">
                 <picture>
                     <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
@@ -53,5 +53,9 @@
                 </p>
             </div>
         </div>
+        @if(postIndex == 2 && ViewBag.CurrentPage == 2)
+        {
+            <div class="ads-insite show-mobile banner-mobile-bottom"></div>
+        }
     }
 }

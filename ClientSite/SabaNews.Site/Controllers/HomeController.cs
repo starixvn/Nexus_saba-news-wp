@@ -270,6 +270,7 @@
                 return Ok(false);
             }
             var view = param.IsVideo ? "~/Views/Home/_VideoGridView.cshtml" : "~/Views/Home/_CategoryGridView.cshtml";
+            ViewBag.CurrentPage = param.Page;
             return PartialView(view, posts);
         }
 

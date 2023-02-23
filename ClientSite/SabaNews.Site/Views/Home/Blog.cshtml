@@ -45,7 +45,7 @@
         window.keyword = '@Model.Header.Keyword';
         window.type = '@Model.Header.Controller';
     </script>
-    <script src="~/js/post/blog.js" asp-append-version="true"></script>
+    <script src="~/minify/js/blog.min.js" asp-append-version="true"></script>
     
 }
 @section Metadata {
@@ -211,6 +211,15 @@
                                 </p>
                             </div>
                         </div>
+                        @if(postIndex == 3)
+                        {
+                            <div class="ads-insite show-pc banner-left"></div>
+                            <div class="ads-insite show-mobile banner-mobile-top"></div>
+                        }
+                        else if(postIndex == 5)
+                        {
+                            <div class="ads-insite show-mobile banner-mobile-center"></div>
+                        }
                         <div class="skeleton skeleton-horizontal">
                             <a class="skeleton-horizontal__image"></a>
                             <div class="text-skeleton">
@@ -230,10 +239,9 @@
                     </div>
                 </div>
             }
-            
         </div>
+        <div class="ads-insite show-pc banner-right"></div>
 
         @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory })
     </div>
-    @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>

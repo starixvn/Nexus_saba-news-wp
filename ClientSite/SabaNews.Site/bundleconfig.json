@@ -246,6 +246,18 @@
         "sourceMap": false
     },
     {
+        "outputFileName": "wwwroot/minify/js/blog.min.js",
+        "inputFiles": [
+
+            "wwwroot/js/post/blog.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
         "outputFileName": "wwwroot/minify/styles/site.min.css",
         "inputFiles": [
             "wwwroot/styles/pages/auth.css"

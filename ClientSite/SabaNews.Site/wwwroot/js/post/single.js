@@ -64,6 +64,11 @@
 
     }
 
+    function LoadBannerContent() {
+        var html = $('.banner-content').html();
+        $('.content').find('p').eq(0).after(html);
+    }
+
     function getScrollTop(isMobile, href, scrollTop) {
         var offsetTop = 0;
         if (isMobile) {
@@ -80,6 +85,7 @@
     function init() {
         UpdatePostView();
         ScrollItem();
+        LoadBannerContent();
     }
 
     return {
