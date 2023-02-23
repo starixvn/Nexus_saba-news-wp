@@ -1,17 +1,27 @@
 ﻿.block-extension {
-    .block-sticky {
+    .sticky-parent{
         position: -webkit-sticky;
         position: sticky;
         top: 7rem;
-        @include tableMobile{
-            position : unset;
+        .block-sticky {
+            @include tableMobile{
+                position : unset;
+            }
+            .skeleton-vertical {
+                .skeleton-vertical__image {
+                    height: 20.1rem;
+                }
+            }
         }
-        .skeleton-vertical {
-            .skeleton-vertical__image {
-                height: 20.1rem;
+        .ads-insite{
+            margin-bottom: 2rem;
+            margin-top: 0;
+            img{
+                width: 100%;
             }
         }
     }
+    
 
     .card-vertical {
         margin-bottom: 1.2rem;
