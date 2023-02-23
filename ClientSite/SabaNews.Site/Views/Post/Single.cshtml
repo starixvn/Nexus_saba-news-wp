@@ -214,7 +214,7 @@
             @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        
+        <div class="ads-insite show-pc banner-right"></div>
         @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
 
     </div>
@@ -223,7 +223,17 @@
 </section>
 <div class="banner-content" style="display: none;">
     <div class="ads-insite show-pc banner-left"></div>
-    <div class="ads-insite show-mobile banner-mobile-top"></div>
+    @* <div class="ads-insite show-mobile banner-mobile-top"></div> *@
+    <div id="ir__wrap" class="show-mobile">
+        <div class="ir__slot">
+            <div class="ir__box">
+                <div class="ir__media">
+                    <img src="~/images/300x600.png" alt="ads">
+                    @* <iframe id="bs__plus__timestamp__1673497736381" src="url" style="width:100%!important;height:515.5555555555555px!important;" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe> *@
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="auth-form">
     <div class="modal" id="announcement">

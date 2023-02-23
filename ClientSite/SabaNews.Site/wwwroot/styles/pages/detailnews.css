@@ -3641,12 +3641,101 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .block__content .ads-insite, .detail-container .ads-insite {
-  margin: -0.5rem 0 1rem 0;
+  margin: 2rem 0;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
 }
 
 .block-last-page .ads-insite {
   margin-top: 0;
+}
+
+#ir__wrap {
+  min-width: 300px;
+  height: 500px;
+  position: relative !important;
+  visibility: visible !important;
+  overflow: hidden !important;
+  margin-bottom: 1rem;
+}
+#ir__wrap.show-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  #ir__wrap.show-mobile {
+    display: block;
+  }
+}
+
+#ir__wrap .ir__slot {
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute !important;
+  clip: rect(0, auto, auto, 0) !important;
+}
+
+#ir__wrap .ir__slot > .ir__box {
+  -webkit-backface-visibility: hidden !important;
+          backface-visibility: hidden !important;
+  transform: translate3d(0px, 0px, 0px) !important;
+  visibility: visible !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 0px !important;
+  left: 0px !important;
+}
+
+#ir__wrap .ir__slot > .ir__box > .ir__media {
+  display: block !important;
+  margin: 0 auto !important;
+  width: 300px;
+  height: auto;
+}
+
+#ir__wrap .ir__slot > .ir__box > .ir__media > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform: translate3d(-50%, -50%, 0);
+  visibility: visible;
+  overflow: hidden;
+}
+
+#ir__wrap .ir__trademark,
+#ir__wrap .ir__label {
+  display: inline-block !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 15px !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+  font-family: arial, sans-serif !important;
+  text-align: center !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: rgba(0, 0, 0, 0.95) !important;
+  font-size: 7pt !important;
+  line-height: 9pt !important;
+  margin: 0 !important;
+  padding: 2px 10px !important;
+}
+
+#ir__wrap .ir__trademark {
+  top: auto !important;
+  bottom: 0 !important;
+  text-align: right !important;
+}
+
+#ir__wrap .ir__trademark, #ir__wrap .ir__label {
+  position: absolute !important;
+}
+
+.ir__media img {
+  width: 100%;
 }
 
 .event-modal-home .modal {
