@@ -4214,7 +4214,6 @@ img {
   font-size: 1.6rem;
   position: relative;
   line-height: 1.5;
-  background-color: #03647B;
 }
 .euro-detail-title span {
   width: 90%;
@@ -4235,10 +4234,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #03647B;
 }
 @media (max-width: 767px) {
   .euro-detail-title .euro-number {
-    width: 20%;
+    width: 15%;
   }
 }
 
