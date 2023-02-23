@@ -47,6 +47,9 @@
         var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         var password = document.querySelector("#form-login > div:nth-child(3) > input").value;
 
+        $("#email-error").remove();
+        $("#password-error").remove();
+
         if (!mailFormat.test(email) || email === ""){
             flag = false;
             var aTag = document.createElement("label");
@@ -98,8 +101,12 @@
         var confirmPassword = document.querySelector("#form-register > div:nth-child(5) > input").value;
         var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
+        $("#name-error").remove();
+        $("#email-error").remove();
+        $("#password-error").remove();
+        $("#confirmPassword-error").remove();
+
         if(name === ""){
-            $("#name-error").remove();
             var aTag = document.createElement("label");
             aTag.id = "name-error";
             aTag.htmlFor = "name";
@@ -109,7 +116,6 @@
         }
 
         if (!mailFormat.test(email) || email === ""){
-            $("#email-error").remove();
             var aTag = document.createElement("label");
             aTag.id = "email-error";
             aTag.htmlFor = "email";
@@ -119,7 +125,6 @@
         }
 
         if (password === ""){
-            $("#password-error").remove();
             var aTag = document.createElement("label");
             aTag.id = "password-error";
             aTag.htmlFor = "password";
@@ -129,18 +134,17 @@
         }
 
         if (confirmPassword === "" || password != confirmPassword){
-            $("#confirmPassword-error").remove();
             var aTag = document.createElement("label");
             aTag.id = "confirmPassword-error";
             aTag.htmlFor = "confirmPassword";
             aTag.classList.add("error");
-            aTag.innerHTML = password === confirmPassword ? "Hãy xác thực mật khẩu" : "Xác thực mật khẩu sai";
+            aTag.innerHTML = confirmPassword === "" ? "Hãy xác thực mật khẩu" : "Xác thực mật khẩu sai";
             document.querySelector("#form-register > div:nth-child(5)").append(aTag);
         }
-
+        
         if(name != "" && mailFormat.test(email) && email != "" && password != "" && confirmPassword != "" && password === confirmPassword){
-            $(element + " .btn-register").prop('disabled', true);
-            $(element + " .btn-register").addClass('btn-disabled');
+            $('#authModal form#form-register' + " .btn-register").prop('disabled', true);
+            $('#authModal form#form-register' + " .btn-register").addClass('btn-disabled');
             $.ajax({
                 url: '/Auth/Register',
                 method: "POST",
@@ -155,8 +159,8 @@
                         HandleCloseModal();
                     } else {
                         $('#authModal form#form-register').find('.summary-eror').text(res.message);
-                        $(element + " .btn-register").prop('disabled', false);
-                        $(element + " .btn-register").removeClass('btn-disabled');
+                        $('#authModal form#form-register' + " .btn-register").prop('disabled', false);
+                        $('#authModal form#form-register' + " .btn-register").removeClass('btn-disabled');
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

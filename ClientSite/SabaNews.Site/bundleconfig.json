@@ -211,7 +211,8 @@
             "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
             "wwwroot/js/common.js",
             "wwwroot/js/site.js",
-            "wwwroot/js/all.js"
+            "wwwroot/js/all.js",
+            "wwwroot/js/auth/auth.js"
         ],
         "minify": {
             "enabled": true,
