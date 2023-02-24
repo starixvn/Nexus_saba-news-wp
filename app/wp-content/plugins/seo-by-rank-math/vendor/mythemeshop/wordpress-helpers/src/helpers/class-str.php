@@ -160,11 +160,12 @@ class Str {
 	/**
 	 * Convert a number to K, M, B, etc.
 	 *
-	 * @param int|double $number Number which to convert to pretty string.
+	 * @param int|double $number    Number which to convert to pretty string.
+	 * @param int        $precision Decimal places in the human-readable format.
 	 *
 	 * @return string
 	 */
-	public static function human_number( $number ) {
+	public static function human_number( $number, $precision = 1 ) {
 
 		if ( ! is_numeric( $number ) ) {
 			return 0;
@@ -184,7 +185,7 @@ class Str {
 		$units = array( '', 'K', 'M', 'B', 'T', 'Q' );
 
 		if ( array_key_exists( $unit, $units ) ) {
-			return sprintf( '%s%s%s', $negative, rtrim( number_format( $number / pow( 1000, $unit ), 1 ), '.0' ), $units[ $unit ] );
+			return sprintf( '%s%s%s', $negative, rtrim( number_format( $number / pow( 1000, $unit ), $precision ), '.0' ), $units[ $unit ] );
 		}
 
 		return $number;
@@ -195,11 +196,13 @@ class Str {
 	 *
 	 * @param {string} $str    Text to truncate.
 	 * @param {number} $length Length to truncate for.
+	 * @param {string} $append Append to the end if string is truncated.
 	 *
 	 * @return {string} Truncated text.
 	 */
-	public static function truncate( $str, $length = 110 ) {
+	public static function truncate( $str, $length = 110, $append = '' ) {
 		$str     = wp_strip_all_tags( $str, true );
+		$strlen  = mb_strlen( $str );
 		$excerpt = mb_substr( $str, 0, $length );
 
 		// Remove part of an entity at the end.
@@ -209,6 +212,29 @@ class Str {
 			$excerpt = mb_substr( $str, 0, $strrpos( trim( $excerpt ), ' ' ) );
 		}
 
+		if ( $strlen > $length ) {
+			$excerpt .= $append;
+		}
+
 		return $excerpt;
+	}
+
+	/**
+	 * Multibyte ucwords.
+	 *
+	 * @param string $string String to convert.
+	 */
+	public static function mb_ucwords( $string ) {
+		if ( ! function_exists( 'mb_convert_case' ) || ! function_exists( 'mb_detect_encoding' ) || mb_detect_encoding( $string ) !== 'UTF-8' ) {
+			return ucwords( $string );
+		}
+
+		$words = preg_split( '/([\s]+)/u', $string, -1, PREG_SPLIT_DELIM_CAPTURE );
+		$ucwords = '';
+		foreach ( $words as $word ) {
+			$ucwords .= preg_match( '/[\p{L}]/u', $word[0] ) ? mb_strtoupper( $word[0], 'UTF-8' ) . mb_substr( $word, 1, mb_strlen( $word ), 'UTF-8' ) : $word;
+		}
+
+		return $ucwords;
 	}
 }

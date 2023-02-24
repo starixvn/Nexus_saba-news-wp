@@ -26,122 +26,158 @@ class KB {
 	 *
 	 * @var array
 	 */
-	private $links = [
-		'pro-general-g'               => 'https://rankmath.com/pricing/?utm_source=Plugin&utm_medium=Gutenberg%20General%20Tab%20Notice&utm_campaign=WP',
-		'pro-general-ce'              => 'https://rankmath.com/pricing/?utm_source=Plugin&utm_medium=CE%20General%20Tab%20Notice&utm_campaign=WP',
-		'seo-suite'                   => 'https://rankmath.com/?utm_source=Plugin&utm_campaign=WP',
-		'logo'                        => 'https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=Plugin&utm_campaign=WP',
-		'rm-privacy'                  => 'https://rankmath.com/privacy-policy/?utm_source=Plugin&utm_campaign=WP',
-		'usage-policy'                => 'https://rankmath.com/usage-tracking/?utm_source=Plugin&utm_medium=Analytics%20Privacy%20Notice&utm_campaign=WP',
-		'free-account'                => 'https://rankmath.com/#signup',
-		'free-account-benefits'       => 'https://rankmath.com/kb/free-account-benefits/?utm_source=Plugin&utm_campaign=WP',
-		'wp-error-fixes'              => 'https://mythemeshop.com/wordpress-errors-fixes/?utm_source=Plugin&utm_campaign=WP',
-		'article'                     => 'https://developers.google.com/search/docs/data-types/article/?utm_campaign=Rank+Math',
-		'how-to-setup'                => 'https://rankmath.com/kb/how-to-setup/?utm_source=Plugin&utm_campaign=WP',
-		'seo-import'                  => 'https://rankmath.com/kb/how-to-setup/#import-data?utm_source=Plugin&utm_campaign=WP',
-		'local-seo'                   => 'https://rankmath.com/kb/how-to-setup/#easy-and-advanced-mode?utm_source=Plugin&utm_campaign=WP',
-		'seo-tweaks'                  => 'https://rankmath.com/kb/how-to-setup/#optimization?utm_source=Plugin&utm_campaign=WP',
-		'analytics'                   => 'https://rankmath.com/kb/how-to-setup/#google-search-console?utm_source=Plugin&utm_campaign=WP',
-		'remove-category-base'        => 'https://rankmath.com/kb/general-settings/#strip-category-base?utm_source=Plugin&utm_campaign=WP',
-		'link-settings'               => 'https://rankmath.com/kb/general-settings/#links?utm_source=Plugin&utm_campaign=WP',
-		'image-settings'              => 'https://rankmath.com/kb/general-settings/#images?utm_source=Plugin&utm_campaign=WP',
-		'breadcrumbs'                 => 'https://rankmath.com/kb/general-settings/#breadcrumbs?utm_source=Plugin&utm_campaign=WP',
-		'webmaster-tools'             => 'https://rankmath.com/kb/general-settings/#webmaster-tools?utm_source=Plugin&utm_campaign=WP',
-		'edit-robotstxt'              => 'https://rankmath.com/kb/general-settings/#edit-robotstxt?utm_source=Plugin&utm_campaign=WP',
-		'edit-htaccess'               => 'https://rankmath.com/kb/general-settings/#edit-htaccess?utm_source=Plugin&utm_campaign=WP',
-		'woocommerce-settings'        => 'https://rankmath.com/kb/general-settings/#woo-commerce?utm_source=Plugin&utm_campaign=WP',
-		'404-monitor-settings'        => 'https://rankmath.com/kb/general-settings/#404-monitor?utm_source=Plugin&utm_campaign=WP',
-		'redirections-settings'       => 'https://rankmath.com/kb/general-settings/#redirections?utm_source=Plugin&utm_campaign=WP',
-		'analytics-settings'          => 'https://rankmath.com/kb/general-settings/#search-console?utm_source=Plugin&utm_campaign=WP',
-		'other-settings'              => 'https://rankmath.com/kb/general-settings/#others?utm_source=Plugin&utm_campaign=WP',
-		'score-100-sw'                => 'https://rankmath.com/kb/score-100-in-tests/?utm_source=Plugin&utm_medium=Setup%20Wizard&utm_campaign=WP',
-		'score-100-dh'                => 'https://rankmath.com/kb/score-100-in-tests/?utm_source=Plugin&utm_medium=Dashboard%20Help&utm_campaign=WP',
-		'score-100-ce'                => 'https://rankmath.com/kb/score-100-in-tests/?utm_source=Plugin&utm_medium=Classic&utm_campaign=WP',
-		'score-100-ge'                => 'https://rankmath.com/kb/score-100-in-tests/?utm_source=Plugin&utm_medium=Gutenberg&utm_campaign=WP',
-		'toc'                         => 'https://rankmath.com/kb/score-100-in-tests/#table-of-contents?utm_source=Plugin&utm_campaign=WP',
-		'content-length'              => 'https://rankmath.com/kb/score-100-in-tests/#content-length?utm_source=Plugin&utm_campaign=WP',
-		'sentiments'                  => 'https://monkeylearn.com/sentiment-analysis/?utm_campaign=Rank+Math',
-		'rm-requirements'             => 'https://rankmath.com/kb/requirements/?utm_source=Plugin&utm_campaign=WP',
-		'rm-kb'                       => 'https://rankmath.com/kb/wordpress/seo-suite/?utm_source=Plugin&utm_campaign=WP',
-		'fix-404'                     => 'https://rankmath.com/kb/fix-404-errors/?utm_source=Plugin&utm_campaign=WP',
-		'import-export-settings'      => 'https://rankmath.com/kb/import-export-settings/?utm_source=Plugin&utm_campaign=WP',
-		'social-tab'                  => 'https://rankmath.com/kb/meta-box-social-tab/?utm_source=Plugin&utm_campaign=WP',
-		'404-monitor'                 => 'https://rankmath.com/kb/monitor-404-errors/?utm_source=Plugin&utm_campaign=WP',
-		'redirections'                => 'https://rankmath.com/kb/setting-up-redirections/?utm_source=Plugin&utm_campaign=WP',
-		'role-manager'                => 'https://rankmath.com/kb/role-manager/?utm_source=Plugin&utm_campaign=WP',
-		'analytics-kb'                => 'https://rankmath.com/kb/search-console/?utm_source=Plugin&utm_campaign=WP',
-		'rich-snippets'               => 'https://rankmath.com/kb/rich-snippets/?utm_source=Plugin&utm_campaign=WP',
-		'seo-analysis'                => 'https://rankmath.com/kb/seo-analysis/?utm_source=Plugin&utm_campaign=WP',
-		'rm-support'                  => 'https://support.rankmath.com/?utm_source=Plugin&utm_campaign=WP',
-		'review-rm'                   => 'https://wordpress.org/support/plugin/seo-by-rank-math/reviews/?rate=5#new-post',
-		'fb-group'                    => 'https://www.facebook.com/groups/rankmathseopluginwordpress/',
-		'tw-link'                     => 'https://twitter.com/rankmathseo',
-		'fb-link'                     => 'https://www.facebook.com/rankmath/',
-		'configure-sitemaps'          => 'https://rankmath.com/kb/configure-sitemaps/?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-general'             => 'https://rankmath.com/kb/configure-sitemaps/#general?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-posts'               => 'https://rankmath.com/kb/configure-sitemaps/#posts?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-pages'               => 'https://rankmath.com/kb/configure-sitemaps/#pages?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-media'               => 'https://rankmath.com/kb/configure-sitemaps/#media?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-product'             => 'https://rankmath.com/kb/configure-sitemaps/#products?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-category'            => 'https://rankmath.com/kb/configure-sitemaps/#categories?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-tag'                 => 'https://rankmath.com/kb/configure-sitemaps/#tags?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-product_cat'         => 'https://rankmath.com/kb/configure-sitemaps/#product-categories?utm_source=Plugin&utm_campaign=WP',
-		'sitemap-product_tag'         => 'https://rankmath.com/kb/configure-sitemaps/#product-tags?utm_source=Plugin&utm_campaign=WP',
-		'titles-meta'                 => 'https://rankmath.com/kb/titles-and-meta/?utm_source=Plugin&utm_campaign=WP',
-		'local-seo-settings'          => 'https://rankmath.com/kb/local-seo/?utm_source=Plugin&utm_campaign=WP',
-		'social-meta-settings'        => 'https://rankmath.com/kb/titles-and-meta/#social-meta?utm_source=Plugin&utm_campaign=WP',
-		'homepage-settings'           => 'https://rankmath.com/kb/titles-and-meta/#homepage?utm_source=Plugin&utm_campaign=WP',
-		'author-settings'             => 'https://rankmath.com/kb/titles-and-meta/#authors?utm_source=Plugin&utm_campaign=WP',
-		'misc-settings'               => 'https://rankmath.com/kb/titles-and-meta/#misc-pages?utm_source=Plugin&utm_campaign=WP',
-		'post-settings'               => 'https://rankmath.com/kb/titles-and-meta/#Posts?utm_source=Plugin&utm_campaign=WP',
-		'page-settings'               => 'https://rankmath.com/kb/titles-and-meta/#pages?utm_source=Plugin&utm_campaign=WP',
-		'media-settings'              => 'https://rankmath.com/kb/titles-and-meta/#media?utm_source=Plugin&utm_campaign=WP',
-		'product-settings'            => 'https://rankmath.com/kb/titles-and-meta/#products?utm_source=Plugin&utm_campaign=WP',
-		'category-settings'           => 'https://rankmath.com/kb/titles-and-meta/#categories?utm_source=Plugin&utm_campaign=WP',
-		'tag-settings'                => 'https://rankmath.com/kb/titles-and-meta/#tags?utm_source=Plugin&utm_campaign=WP',
-		'product-categories-settings' => 'https://rankmath.com/kb/titles-and-meta/#product-categories?utm_source=Plugin&utm_campaign=WP',
-		'product-tags-settings'       => 'https://rankmath.com/kb/titles-and-meta/#product-tags?utm_source=Plugin&utm_campaign=WP',
-		'version-control'             => 'https://rankmath.com/kb/version-control/?utm_source=Plugin&utm_campaign=WP',
-		'general-settings'            => 'https://rankmath.com/kb/general-settings/?utm_source=Plugin&utm_campaign=WP',
-		'google-api-key'              => 'https://rankmath.com/kb/how-to-get-a-google-api-key/?utm_source=Plugin&utm_campaign=WP',
-		'instant-indexing'            => 'https://rankmath.com/blog/google-indexing-api/?utm_source=Plugin&utm_campaign=WP',
-		'bing-instant-indexing'       => 'https://rankmath.com/blog/bing-indexing-api/?utm_source=Plugin&utm_campaign=WP',
+	private static $links = [
+		// General.
+		'seo-suite'                       => 'https://rankmath.com/',
+		'blog'                            => 'https://rankmath.com/blog/',
+		'free-account'                    => 'https://rankmath.com/my-account/',
+		'support'                         => 'https://rankmath.com/support/',
+		'pro'                             => 'https://rankmath.com/pricing/',
+		'changelog'                       => 'https://rankmath.com/changelog/',
+		'changelog-free'                  => 'https://rankmath.com/changelog/free/',
+		'help-affiliate'                  => 'https://rankmath.com/affiliates/',
+		'content-ai'                      => 'https://rankmath.com/content-ai/',
+		'content-ai-pricing-tables'       => 'https://rankmath.com/content-ai/?#pricing-tables',
+		'free-vs-pro'                     => 'https://rankmath.com/free-vs-pro/',
+		'google-updates'                  => 'https://rankmath.com/google-updates/',
+		'usage-policy'                    => 'https://rankmath.com/usage-tracking/',
+		'logo'                            => 'https://rankmath.com/wordpress/plugin/seo-suite/',
+
+		// Knowledgebase.
+		'knowledgebase'                   => 'https://rankmath.com/kb/',
+		'how-to-setup'                    => 'https://rankmath.com/kb/how-to-setup/',
+		'how-to-setup-your-site'          => 'https://rankmath.com/kb/how-to-setup/?#your-site',
+		'seo-import'                      => 'https://rankmath.com/kb/how-to-setup/?#import-data',
+		'seo-tweaks'                      => 'https://rankmath.com/kb/how-to-setup/?#optimization',
+		'local-seo'                       => 'https://rankmath.com/kb/how-to-setup/?#easy-and-advanced-mode',
+		'general-settings'                => 'https://rankmath.com/kb/general-settings/',
+		'remove-category-base'            => 'https://rankmath.com/kb/general-settings/?#strip-category-base',
+		'link-settings'                   => 'https://rankmath.com/kb/general-settings/?#links',
+		'image-settings'                  => 'https://rankmath.com/kb/general-settings/?#images',
+		'breadcrumbs'                     => 'https://rankmath.com/kb/general-settings/?#breadcrumbs',
+		'webmaster-tools'                 => 'https://rankmath.com/kb/general-settings/?#webmaster-tools',
+		'edit-robotstxt'                  => 'https://rankmath.com/kb/general-settings/?#edit-robotstxt',
+		'edit-htaccess'                   => 'https://rankmath.com/kb/general-settings/?#edit-htaccess',
+		'woocommerce-settings'            => 'https://rankmath.com/kb/general-settings/?#woo-commerce',
+		'404-monitor-settings'            => 'https://rankmath.com/kb/general-settings/?#404-monitor',
+		'redirections-settings'           => 'https://rankmath.com/kb/general-settings/?#redirections',
+		'analytics-settings'              => 'https://rankmath.com/kb/general-settings/?#search-console',
+		'other-settings'                  => 'https://rankmath.com/kb/general-settings/?#others',
+		'score-100'                       => 'https://rankmath.com/kb/score-100-in-tests/',
+		'content-length'                  => 'https://rankmath.com/kb/score-100-in-tests/?#content-length',
+		'configure-sitemaps'              => 'https://rankmath.com/kb/configure-sitemaps/',
+		'sitemap-general'                 => 'https://rankmath.com/kb/configure-sitemaps/?#general',
+		'sitemap-media'                   => 'https://rankmath.com/kb/configure-sitemaps/?#media',
+		'sitemap-product'                 => 'https://rankmath.com/kb/configure-sitemaps/?#products',
+		'social-meta-settings'            => 'https://rankmath.com/kb/titles-and-meta/?#social-meta',
+		'homepage-settings'               => 'https://rankmath.com/kb/titles-and-meta/?#homepage',
+		'author-settings'                 => 'https://rankmath.com/kb/titles-and-meta/?#authors',
+		'misc-settings'                   => 'https://rankmath.com/kb/titles-and-meta/?#misc-pages',
+		'post-settings'                   => 'https://rankmath.com/kb/titles-and-meta/?#Posts',
+		'page-settings'                   => 'https://rankmath.com/kb/titles-and-meta/?#pages',
+		'media-settings'                  => 'https://rankmath.com/kb/titles-and-meta/?#media',
+		'product-settings'                => 'https://rankmath.com/kb/titles-and-meta/?#products',
+		'category-settings'               => 'https://rankmath.com/kb/titles-and-meta/?#categories',
+		'tag-settings'                    => 'https://rankmath.com/kb/titles-and-meta/?#tags',
+		'product-categories-settings'     => 'https://rankmath.com/kb/titles-and-meta/?#product-categories',
+		'product-tags-settings'           => 'https://rankmath.com/kb/titles-and-meta/?#product-tags',
+		'seo-email-reporting'             => 'https://rankmath.com/kb/seo-email-reporting/',
+		'email-reports-logo'              => 'https://rankmath.com/kb/seo-email-reporting/#report-logo',
+		'kb-seo-suite'                    => 'https://rankmath.com/kb/wordpress/seo-suite/',
+		'kb-search'                       => 'https://rankmath.com/kb/wordpress/seo-suite/?ht-kb-search=1',
+		'help-analytics'                  => 'https://rankmath.com/kb/analytics/',
+		'top-5-winning-and-losing'        => 'https://rankmath.com/kb/analytics/?#top-5-winning-and-losing-posts-pro',
+		'using-ga4'                       => 'https://rankmath.com/kb/using-ga4/',
+		'local-seo-settings'              => 'https://rankmath.com/kb/local-seo/',
+		'kml-sitemap'                     => 'https://rankmath.com/kb/kml-sitemap/',
+		'news-sitemap'                    => 'https://rankmath.com/kb/news-sitemap/',
+		'role-manager'                    => 'https://rankmath.com/kb/role-manager/',
+		'seo-analysis'                    => 'https://rankmath.com/kb/seo-analysis/',
+		'requirements'                    => 'https://rankmath.com/kb/requirements/',
+		'video-sitemap'                   => 'https://rankmath.com/kb/video-sitemap/',
+		'rich-snippets'                   => 'https://rankmath.com/kb/rich-snippets/',
+		'podcast-settings'                => 'https://rankmath.com/kb/podcast-schema/',
+		'fix-404'                         => 'https://rankmath.com/kb/fix-404-errors/',
+		'titles-meta'                     => 'https://rankmath.com/kb/titles-and-meta/',
+		'version-control'                 => 'https://rankmath.com/kb/version-control/',
+		'headless-support'                => 'https://rankmath.com/kb/headless-support/',
+		'faq-schema-block'                => 'https://rankmath.com/kb/faq-schema-block/',
+		'404-monitor'                     => 'https://rankmath.com/kb/monitor-404-errors/',
+		'meta-box-social-tab'             => 'https://rankmath.com/kb/meta-box-social-tab/',
+		'instant-indexing'                => 'https://rankmath.com/kb/how-to-use-indexnow/',
+		'analytics-stats-bar'             => 'https://rankmath.com/kb/analytics-stats-bar/',
+		'content-ai-settings'             => 'https://rankmath.com/kb/how-to-use-content-ai/',
+		'content-ai-links'                => 'https://rankmath.com/kb/how-to-use-content-ai/?#links',
+		'content-ai-keywords'             => 'https://rankmath.com/kb/how-to-use-content-ai/?#keywords',
+		'content-ai-credits-usage'        => 'https://rankmath.com/kb/how-to-use-content-ai/?#credits-usage',
+		'free-account-benefits'           => 'https://rankmath.com/kb/free-account-benefits/',
+		'import-export-settings'          => 'https://rankmath.com/kb/import-export-settings/',
+		'location-data-shortcode'         => 'https://rankmath.com/kb/location-data-shortcode/',
+		'redirections'                    => 'https://rankmath.com/kb/setting-up-redirections/',
+		'about-and-mentions-schema'       => 'https://rankmath.com/kb/about-and-mentions-schema/',
+		'url-inspection-api'              => 'https://rankmath.com/kb/url-inspection-api-integration/',
+		'pillar-content-internal-linking' => 'https://rankmath.com/kb/pillar-content-internal-linking/',
+		'breadcrumbs-install'             => 'https://rankmath.com/kb/breadcrumbs/?#add-breadcrumbs-theme',
+		'change-seo-score-backlink'       => 'https://rankmath.com/kb/filters-hooks-api-developer/?#change-seo-score-backlink',
+		'unable-to-encrypt'               => 'https://rankmath.com/kb/fix-automatic-update-unavailable-for-this-plugin/?#unable-to-encrypt',
+		'google-verification-kb'          => 'https://rankmath.com/kb/google-site-verification/',
+		'bing-verification-kb'            => 'https://rankmath.com/kb/verify-your-site-with-bing-webmaster-tools/',
+		'baidu-verification-kb'           => 'https://rankmath.com/kb/baidu-webmaster-tools-verification/',
+		'yandex-verification-kb'          => 'https://rankmath.com/kb/verifying-your-domain-with-yandex/',
+		'norton-verification-kb'          => 'https://rankmath.com/kb/verify-site-with-norton-safe-web/',
+		'pinterest-verification-kb'       => 'https://rankmath.com/kb/pinterest-site-verification/',
+
+		// SEO Analysis.
+		'analysis-site-tagline'           => 'https://rankmath.com/kb/seo-analysis/?#site-tagline-test',
+		'analysis-blog-public'            => 'https://rankmath.com/kb/seo-analysis/?#blog-public-test',
+		'analysis-permalink-structure'    => 'https://rankmath.com/kb/seo-analysis/?#permalink-structure-test',
+		'analysis-focus-keywords'         => 'https://rankmath.com/kb/seo-analysis/?#focus-keywords-test',
+		'analysis-post-titles'            => 'https://rankmath.com/kb/seo-analysis/?#post-titles-missing-focus-keywords-test',
+		'analysis-search-console'         => 'https://rankmath.com/kb/seo-analysis/?#search-console-test',
+		'analysis-sitemaps'               => 'https://rankmath.com/kb/seo-analysis/?#sitemaps-test',
+		'analysis-auto-update'            => 'https://rankmath.com/kb/seo-analysis/?#priority',
+
+		// Social Media.
+		'yt-link'                         => 'http://youtube.com/rankmath',
+		'fb-group'                        => 'https://www.facebook.com/groups/rankmathseopluginwordpress/',
+
+		// Other.
+		'google-article-schema'           => 'https://developers.google.com/search/docs/data-types/article/?utm_campaign=Rank+Math',
 	];
 
 	/**
 	 * Echo the link.
 	 *
 	 * @param string $id Id of the link to get.
+	 * @param  string $medium Medium of the link to get.
 	 */
-	public static function the( $id ) {
-		echo self::get( $id );
+	public static function the( $id, $medium = '' ) {
+		echo self::get( $id, $medium );
 	}
 
 	/**
 	 * Return the link.
 	 *
 	 * @param  string $id Id of the link to get.
+	 * @param  string $medium Medium of the link to get.
 	 * @return string
 	 */
-	public static function get( $id ) {
-		static $manager = null;
+	public static function get( $id, $medium = '' ) {
+		$links = self::get_links();
+		$url   = isset( $links[ $id ] ) ? $links[ $id ] : '#';
 
-		if ( null === $manager ) {
-			$manager = new self;
-			$manager->register();
+		if ( empty( $medium ) ) {
+			return $url;
 		}
 
-		return isset( $manager->links[ $id ] ) ? $manager->links[ $id ] : '#';
-	}
-
-	/**
-	 * Register links.
-	 */
-	private function register() {
-		$links = $this->get_links();
-		foreach ( $links as $id => $link ) {
-			$this->links[ $id ] = $link;
-		}
+		return add_query_arg(
+			[
+				'utm_source'   => 'Plugin',
+				'utm_medium'   => rawurlencode( $medium ),
+				'utm_campaign' => 'WP',
+			],
+			$url
+		);
 	}
 
 	/**
@@ -149,7 +185,7 @@ class KB {
 	 *
 	 * @return array
 	 */
-	private function get_links() {
-		return $this->links;
+	public static function get_links() {
+		return self::$links;
 	}
 }

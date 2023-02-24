@@ -33,11 +33,23 @@ class Rollback_Version {
 	 * @return boolean Whether it is rollback or not.
 	 */
 	public static function is_rollback_version() {
-		return boolval( get_option( self::ROLLBACK_VERSION_OPTION, false ) );
+		$is_rollback = boolval( get_option( self::ROLLBACK_VERSION_OPTION, false ) );
+		if ( ! $is_rollback ) {
+			return false;
+		}
+
+		$current_version = rank_math()->version;
+		$latest_version  = Beta_Optin::get_latest_version();
+		if ( $current_version === $latest_version ) {
+			delete_option( self::ROLLBACK_VERSION_OPTION );
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
-	 * Rollback or not?
+	 * Check if we should roll back in this request or not.
 	 */
 	public static function should_rollback() {
 		if ( ! Param::post( 'rm_rollback_version' ) ) {
@@ -69,7 +81,7 @@ class Rollback_Version {
 		wp_enqueue_script( 'updates' );
 		$plugin = 'seo-by-rank-math/rank-math.php';
 		$nonce  = 'upgrade-plugin_' . $plugin;
-		$url    = 'update.php?action=upgrade-plugin&plugin=' . urlencode( $plugin );
+		$url    = 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $plugin );
 		if ( ! class_exists( '\Plugin_Upgrader' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 		}

@@ -1,13 +1,14 @@
 <?php
 /**
- * The Link Classifier.
- *
- * Determines of a link is an outbound or internal one.
+ * The link classifier finds out if a link points to internal content or external content.
  *
  * @since      0.9.0
  * @package    RankMath
  * @subpackage RankMath\Sitemap
  * @author     Rank Math <support@rankmath.com>
+ *
+ * @copyright Copyright (C) 2008-2019, Yoast BV
+ * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
  */
 
 namespace RankMath\Sitemap;
@@ -39,7 +40,7 @@ class Classifier {
 	protected $base_path = '';
 
 	/**
-	 * Constructor setting the base url
+	 * Constructor setting the base url.
 	 *
 	 * @param string $base_url The base url to set.
 	 */
@@ -81,7 +82,7 @@ class Classifier {
 	}
 
 	/**
-	 * Returns true when the link starts with https:// or http://
+	 * Returns true when the link starts with `https://` or `http://`.
 	 *
 	 * @param  array $url_parts The URL parts to use.
 	 * @return bool True if the URL starts with a protocol.
@@ -115,7 +116,7 @@ class Classifier {
 	}
 
 	/**
-	 * Checks if the link contains valid scheme
+	 * Checks if the link contains valid scheme.
 	 *
 	 * @param  array $url_parts The URL parts to use.
 	 * @return bool
@@ -125,7 +126,7 @@ class Classifier {
 	}
 
 	/**
-	 * Checks if the base host is equal to the host
+	 * Checks if the base host is equal to the host.
 	 *
 	 * @param  array $url_parts The URL parts to use.
 	 * @return bool

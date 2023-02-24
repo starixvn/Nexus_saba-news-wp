@@ -1,6 +1,6 @@
 <?php
 /**
- * The Sitemap Generator
+ * The sitemap generator.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -167,6 +167,10 @@ class Generator extends XML {
 			}
 
 			$links = $provider->get_sitemap_links( $type, $this->max_entries, $page );
+			if ( empty( $links ) && ( empty( $provider->should_show_empty ) || $page > 1 ) ) {
+				continue;
+			}
+
 			return $this->get_sitemap( $links, $type, $page );
 		}
 
@@ -297,9 +301,7 @@ class Generator extends XML {
 		$output  = $this->newline( '<url>', 1 );
 		$output .= $this->newline( '<loc>' . $this->encode_url_rfc3986( htmlspecialchars( $url['loc'] ) ) . '</loc>', 2 );
 		$output .= empty( $date ) ? '' : $this->newline( '<lastmod>' . htmlspecialchars( $date ) . '</lastmod>', 2 );
-		if ( ! empty( $url['images'] ) ) {
-			$output .= $this->sitemap_images( $url );
-		}
+		$output .= $this->sitemap_images( $url );
 		$output .= $this->newline( '</url>', 1 );
 
 		/**
@@ -318,6 +320,10 @@ class Generator extends XML {
 	 * @return string
 	 */
 	public function sitemap_images( $url ) {
+		if ( empty( $url['images'] ) ) {
+			return '';
+		}
+
 		$output = '';
 		foreach ( $url['images'] as $img ) {
 
@@ -327,14 +333,6 @@ class Generator extends XML {
 
 			$output .= $this->newline( '<image:image>', 2 );
 			$output .= $this->newline( '<image:loc>' . esc_html( $this->encode_url_rfc3986( $img['src'] ) ) . '</image:loc>', 3 );
-
-			if ( ! empty( $img['title'] ) ) {
-				$output .= $this->add_cdata( $img['title'], 'image:title', 3 );
-			}
-			if ( ! empty( $img['alt'] ) ) {
-				$output .= $this->add_cdata( $img['alt'], 'image:caption', 3 );
-			}
-
 			$output .= $this->newline( '</image:image>', 2 );
 		}
 
@@ -414,9 +412,9 @@ class Generator extends XML {
 		parse_str( $query, $parsed_query );
 
 		if ( defined( 'PHP_QUERY_RFC3986' ) ) { // PHP 5.4+.
-			$parsed_query = http_build_query( $parsed_query, null, '&amp;', PHP_QUERY_RFC3986 );
+			$parsed_query = http_build_query( $parsed_query, '', '&amp;', PHP_QUERY_RFC3986 );
 		} else {
-			$parsed_query = http_build_query( $parsed_query, null, '&amp;' );
+			$parsed_query = http_build_query( $parsed_query, '', '&amp;' );
 			$parsed_query = str_replace( '+', '%20', $parsed_query );
 			$parsed_query = str_replace( '%7E', '~', $parsed_query );
 		}

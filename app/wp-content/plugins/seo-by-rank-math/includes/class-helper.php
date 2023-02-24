@@ -18,6 +18,9 @@ use RankMath\Helpers\Post_Type;
 use RankMath\Helpers\Options;
 use RankMath\Helpers\Taxonomy;
 use RankMath\Helpers\WordPress;
+use RankMath\Helpers\Schema;
+use RankMath\Helpers\Analytics;
+use RankMath\Helpers\DB;
 use RankMath\Replace_Variables\Replacer;
 
 defined( 'ABSPATH' ) || exit;
@@ -27,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class Helper {
 
-	use Api, Attachment, Conditional, Choices, Post_Type, Options, Taxonomy, WordPress;
+	use Api, Attachment, Conditional, Choices, Post_Type, Options, Taxonomy, WordPress, Schema, DB, Analytics;
 
 	/**
 	 * Replace `%variables%` with context-dependent value.
@@ -36,14 +39,40 @@ class Helper {
 	 * @param array  $args    Context object, can be post, taxonomy or term.
 	 * @param array  $exclude Excluded variables won't be replaced.
 	 *
-	 * @copyright Copyright (C) 2008-2019, Yoast BV
-	 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
-	 *
 	 * @return string
 	 */
 	public static function replace_vars( $content, $args = [], $exclude = [] ) {
-		$replace = new Replacer();
-		return $replace->replace( $content, $args, $exclude );
+		return ( new Replacer() )->replace( $content, $args, $exclude );
+	}
+
+	/**
+	 * Replace `%variables%` with context-dependent value in SEO fields.
+	 *
+	 * @param string $content The string containing the %variables%.
+	 * @param object $post    Context object, can be post, taxonomy or term.
+	 *
+	 * @return string
+	 */
+	public static function replace_seo_fields( $content, $post ) {
+		if ( empty( $post ) || ! in_array( $content, [ '%seo_title%', '%seo_description%', '%url%' ], true ) ) {
+			return self::replace_vars( $content, $post );
+		}
+
+		if ( '%seo_title%' === $content ) {
+			$default = self::get_settings( "titles.pt_{$post->post_type}_title", '%title% %sep% %sitename%' );
+			$title   = self::get_post_meta( 'title', $post->ID, $default );
+
+			return self::replace_vars( $title, $post );
+		}
+
+		if ( '%seo_description%' === $content ) {
+			$default = self::get_settings( "titles.pt_{$post->post_type}_description", '%excerpt%' );
+			$desc    = self::get_post_meta( 'description', $post->ID, $default );
+
+			return self::replace_vars( $desc, $post );
+		}
+
+		return self::get_post_meta( 'canonical', $post->ID, get_the_permalink( $post->ID ) );
 	}
 
 	/**
@@ -76,7 +105,7 @@ class Helper {
 	public static function get_midnight( $time ) {
 		$org_time = $time;
 		if ( is_numeric( $time ) ) {
-			$time = date_i18n( 'Y-m-d H:i:s', $time );
+			$time = self::get_date( 'Y-m-d H:i:s', $time, false, true );
 		}
 
 		// Early bail if time format is invalid.
@@ -95,25 +124,20 @@ class Helper {
 	 *
 	 * @param  string $url  The URL to parse.
 	 * @param  string $part The URL part to retrieve.
-	 * @return string The extracted URL part.
 	 *
-	 * @copyright Copyright (C) 2008-2019, Yoast BV
-	 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
+	 * @return string The extracted URL part.
 	 */
 	public static function get_url_part( $url, $part ) {
 		$url_parts = wp_parse_url( $url );
 
-		if ( isset( $url_parts[ $part ] ) ) {
-			return $url_parts[ $part ];
-		}
-
-		return '';
+		return $url_parts[ $part ] ?? '';
 	}
 
 	/**
 	 * Get current page URL.
 	 *
 	 * @param  bool $ignore_qs Ignore query string.
+	 *
 	 * @return string
 	 */
 	public static function get_current_page_url( $ignore_qs = false ) {
@@ -132,6 +156,7 @@ class Helper {
 	 * Get module by ID.
 	 *
 	 * @param  string $id ID to get module.
+	 *
 	 * @return object Module class object.
 	 */
 	public static function get_module( $id ) {
@@ -141,7 +166,7 @@ class Helper {
 	/**
 	 * Modify module status.
 	 *
-	 * @param string $modules Modules to modify.
+	 * @param array $modules Modules to modify.
 	 */
 	public static function update_modules( $modules ) {
 		$stored = get_option( 'rank_math_modules', [] );
@@ -155,9 +180,32 @@ class Helper {
 			}
 
 			$stored[] = $module;
+			Installer::create_tables( [ $module ] );
 		}
 
 		update_option( 'rank_math_modules', array_unique( $stored ) );
+	}
+
+	/**
+	 * Get list of currently active modules.
+	 *
+	 * @return array
+	 */
+	public static function get_active_modules() {
+		$registered_modules = rank_math()->manager->modules;
+		$stored             = array_values( get_option( 'rank_math_modules', [] ) );
+		foreach ( $stored as $key => $value ) {
+			if (
+				! isset( $registered_modules[ $value ] )
+				|| ! is_object( $registered_modules[ $value ] )
+				|| ! method_exists( $registered_modules[ $value ], 'is_disabled' )
+				|| $registered_modules[ $value ]->is_disabled()
+			) {
+				unset( $stored[ $key ] );
+			}
+		}
+
+		return $stored;
 	}
 
 	/**
@@ -168,8 +216,19 @@ class Helper {
 	 *  - SG CachePress
 	 *  - WPEngine
 	 *  - Varnish
+	 *
+	 * @param string $context Context for cache to clear.
 	 */
-	public static function clear_cache() {
+	public static function clear_cache( $context = '' ) {
+
+		/**
+		 * Filter: 'rank_math/pre_clear_cache' - Allow developers to extend/override cache clearing.
+		 * Pass a truthy value to override the cache clearing.
+		 */
+		if ( apply_filters( 'rank_math/pre_clear_cache', false, $context ) ) {
+			return;
+		}
+
 		// Clean WordPress cache.
 		if ( function_exists( 'wp_cache_clear_cache' ) ) {
 			wp_cache_clear_cache();
@@ -221,8 +280,9 @@ class Helper {
 		wp_remote_request(
 			'http://' . $purgeme,
 			[
-				'method'  => 'PURGE',
-				'headers' => [
+				'method'   => 'PURGE',
+				'blocking' => false,
+				'headers'  => [
 					'host'           => $parsed_url['host'],
 					'X-Purge-Method' => 'default',
 				],
@@ -231,7 +291,7 @@ class Helper {
 	}
 
 	/**
-	 * Is localhost.
+	 * Check if current environment is a localhost.
 	 *
 	 * @return boolean
 	 */
@@ -241,8 +301,53 @@ class Helper {
 			'::1', // IPv6 address.
 		];
 
+		return in_array( self::get_remote_addr(), $whitelist, true );
+	}
+
+	/**
+	 * Get IP address from which the user is viewing the current page.
+	 *
+	 * @return string
+	 */
+	public static function get_remote_addr() {
 		$ip = filter_input( INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP );
 
-		return in_array( $ip, $whitelist, true );
+		// INPUT_SERVER is not available on some hosts, let's try INPUT_ENV.
+		if ( ! $ip ) {
+			$ip = filter_input( INPUT_ENV, 'REMOTE_ADDR', FILTER_VALIDATE_IP );
+		}
+
+		// If we still don't have it, try to get it from the $_SERVER global.
+		if ( ! $ip && isset( $_SERVER['REMOTE_ADDR'] ) ) {
+			$ip = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP );
+		}
+
+		return $ip ? $ip : '';
+	}
+
+	/**
+	 * Get date using date_i18n() or date().
+	 *
+	 * @param string      $format Format to display the date.
+	 * @param int|boolean $timestamp_with_offset A sum of Unix timestamp and timezone offset in seconds.
+	 * @param boolean     $gmt Whether to use GMT timezone. Only applies if timestamp is not provided.
+	 * @param boolean     $mode Whether to use date() or date_i18n().
+	 * @return mixin
+	 */
+	public static function get_date( $format, $timestamp_with_offset = false, $gmt = false, $mode = false ) {
+		if ( true === $mode ) {
+			return date( $format, $timestamp_with_offset ); // phpcs:ignore
+		}
+		return date_i18n( $format, $timestamp_with_offset, $gmt );
+	}
+
+	/**
+	 * Check for valid image url.
+	 *
+	 * @param string $image_url The image url.
+	 * @return boolean
+	 */
+	public static function is_image_url( $image_url ) {
+		return filter_var( $image_url, FILTER_VALIDATE_URL ) && preg_match( '/\.(jpg|jpeg|png|gif|webp)$/i', $image_url );
 	}
 }

@@ -10,6 +10,8 @@
 
 namespace RankMath\Schema;
 
+use RankMath\Helper;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -18,9 +20,9 @@ defined( 'ABSPATH' ) || exit;
 class Website implements Snippet {
 
 	/**
-	 * Outputs code to allow recognition of the internal search engine.
+	 * Generate WebSite JSON-LD.
 	 *
-	 * @link https://developers.google.com/structured-data/site-name
+	 * @link https://schema.org/WebSite
 	 *
 	 * @param array  $data   Array of JSON-LD data.
 	 * @param JsonLD $jsonld JsonLD Instance.
@@ -34,6 +36,11 @@ class Website implements Snippet {
 			'url'   => get_home_url(),
 			'name'  => $jsonld->get_website_name(),
 		];
+
+		$alternate_name = Helper::get_settings( 'titles.website_alternate_name' );
+		if ( $alternate_name ) {
+			$data['WebSite']['alternateName'] = $alternate_name;
+		}
 		$jsonld->add_prop( 'publisher', $data['WebSite'], 'publisher', $data );
 		$jsonld->add_prop( 'language', $data['WebSite'] );
 
@@ -42,20 +49,22 @@ class Website implements Snippet {
 		 *
 		 * @param boolean Display or not the JSON-LD for the Sitelinks Searchbox.
 		 */
-		if ( ! apply_filters( 'rank_math/json_ld/disable_search', false ) ) {
-			/**
-			 * Change the search URL in the JSON-LD.
-			 *
-			 * @param string $search_url The search URL with `{search_term_string}` placeholder.
-			 */
-			$search_url = apply_filters( 'rank_math/json_ld/search_url', home_url( '/?s={search_term_string}' ) );
-
-			$data['WebSite']['potentialAction'] = [
-				'@type'       => 'SearchAction',
-				'target'      => $search_url,
-				'query-input' => 'required name=search_term_string',
-			];
+		if ( apply_filters( 'rank_math/json_ld/disable_search', ! is_front_page() || is_paged() ) ) {
+			return $data;
 		}
+
+		/**
+		 * Change the search URL in the JSON-LD.
+		 *
+		 * @param string $search_url The search URL with `{search_term_string}` placeholder.
+		 */
+		$search_url = apply_filters( 'rank_math/json_ld/search_url', home_url( '/?s={search_term_string}' ) );
+
+		$data['WebSite']['potentialAction'] = [
+			'@type'       => 'SearchAction',
+			'target'      => $search_url,
+			'query-input' => 'required name=search_term_string',
+		];
 
 		return $data;
 	}

@@ -31,20 +31,23 @@ class Article implements Snippet {
 	 * @return array
 	 */
 	public function process( $data, $jsonld ) {
-		if ( ! $type = Helper::get_post_meta( 'snippet_article_type' ) ) { // phpcs:ignore
-			$type = Helper::get_default_schema_type( $jsonld->post->post_type );
-		}
-
 		$entity = [
-			'@type'         => $type,
-			'headline'      => $jsonld->parts['title'],
-			'datePublished' => $jsonld->parts['published'],
-			'dateModified'  => $jsonld->parts['modified'],
-			'author'        => [
-				'@type' => 'Person',
-				'name'  => $jsonld->parts['author'],
-			],
-			'isPrimary'     => true,
+			'@type'          => Helper::get_default_schema_type( $jsonld->post->ID ),
+			'headline'       => $jsonld->parts['title'],
+			'keywords'       => Helper::replace_vars( '%keywords%', $jsonld->post ),
+			'datePublished'  => $jsonld->parts['published'],
+			'dateModified'   => $jsonld->parts['modified'],
+			'isPrimary'      => true,
+			'articleSection' => Helper::replace_vars( '%primary_taxonomy_terms%', $jsonld->post ),
+			'author'         => ! empty( $data['ProfilePage'] ) ?
+				[
+					'@id'  => $data['ProfilePage']['@id'],
+					'name' => $jsonld->parts['author'],
+				] :
+				[
+					'@type' => 'Person',
+					'name'  => $jsonld->parts['author'],
+				],
 		];
 
 		$jsonld->add_prop( 'publisher', $entity, 'publisher', $data );

@@ -1,6 +1,6 @@
 <?php
 /**
- * The Redirections Export.
+ * Export Redirections in various formats.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -10,6 +10,8 @@
 
 namespace RankMath\Redirections;
 
+use RankMath\KB;
+use RankMath\Redirections\Import_Export;
 use RankMath\Helper;
 use RankMath\Traits\Hooker;
 use MyThemeShop\Helpers\Param;
@@ -18,8 +20,6 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Export class.
- *
- * @codeCoverageIgnore
  */
 class Export {
 
@@ -57,7 +57,7 @@ class Export {
 
 		$items = DB::get_redirections(
 			[
-				'limit'  => 1000,
+				'limit'  => Import_Export::get()->limit,
 				'status' => 'active',
 			]
 		);
@@ -68,7 +68,7 @@ class Export {
 
 		$text[] = '# Created by Rank Math';
 		$text[] = '# ' . date_i18n( 'r' );
-		$text[] = '# Rank Math ' . trim( rank_math()->version ) . ' - https://rankmath.com/';
+		$text[] = '# Rank Math ' . trim( rank_math()->version ) . ' - ' . KB::get( 'seo-suite' );
 		$text[] = '';
 
 		$text = array_merge( $text, $this->$server( $items['redirections'] ) );
@@ -76,7 +76,7 @@ class Export {
 		$text[] = '';
 		$text[] = '# Rank Math Redirections END';
 
-		echo implode( PHP_EOL, $text ) . PHP_EOL;
+		echo implode( PHP_EOL, $text ) . PHP_EOL; // phpcs:ignore
 		exit;
 	}
 
@@ -112,9 +112,9 @@ class Export {
 		foreach ( $sources as $from ) {
 			$url = $from['pattern'];
 			if ( 'regex' !== $from['comparison'] && strpos( $url, '?' ) !== false || strpos( $url, '&' ) !== false ) {
-				$url_parts = parse_url( $url );
+				$url_parts = wp_parse_url( $url );
 				$url       = $url_parts['path'];
-				$output[]  = sprintf( 'RewriteCond %%{QUERY_STRING} ^%s$', preg_quote( $url_parts['query'] ) );
+				$output[]  = sprintf( 'RewriteCond %%{QUERY_STRING} ^%s$', preg_quote( $url_parts['query'], null ) );
 			}
 
 			// Get rewrite string.
@@ -171,7 +171,7 @@ class Export {
 	 * @return string
 	 */
 	private function is_valid_regex( $source ) {
-		if ( 'regex' == $source['comparison'] && @preg_match( $source['pattern'], null ) === false ) { // phpcs:ignore
+		if ( 'regex' == $source['comparison'] && @preg_match( '/' . $source['pattern'] . '/', null ) === false ) { // phpcs:ignore
 			return false;
 		}
 
@@ -217,7 +217,7 @@ class Export {
 			'end'      => '{url}/?$',
 		];
 
-		$url = preg_quote( $url );
+		$url = preg_quote( $url, null );
 		return isset( $hash[ $comparison ] ) ? str_replace( '{url}', $url, $hash[ $comparison ] ) : $url;
 	}
 
@@ -229,7 +229,7 @@ class Export {
 	 * @return string
 	 */
 	private function encode2nd( $url ) {
-		$url = urlencode( $url );
+		$url = rawurlencode( $url );
 		$url = str_replace( '%2F', '/', $url );
 		$url = str_replace( '%3F', '?', $url );
 		$url = str_replace( '%3A', ':', $url );

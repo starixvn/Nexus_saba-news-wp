@@ -1,10 +1,10 @@
 === Comments Like Dislike ===
-Contributors: Happy Coders
+Contributors: happy-coders, regankhadgi
 Donate link: http://wphappycoders.com/
 Tags: comments, comment, rating, like, dislike
-Requires at least: 4.5
-Tested up to: 5.6
-Stable tag: 1.1.2
+Requires at least: 5.5
+Tested up to: 6.0
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,23 @@ Our plugin does contains many actions and filters which are described inside the
 7. Like Dislike Design Settings
 
 == Changelog ==
+= 1.1.7 = 
+* WP 6.0 Compatiblity check
+
+= 1.1.6 = 
+* WP 5.8 Compatibility check
+
+= 1.1.5 = 
+* WP 5.8 Compatibility check
+* Fixed some backend layout issues
+    
+= 1.1.4 = 
+* Fixed some security issues
+* Fixed for ajax loading comments
+
+= 1.1.3 = 
+* Fixed some security issues
+
 = 1.1.2 = 
 * WP 5.6 compatibility check
 

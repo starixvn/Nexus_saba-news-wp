@@ -3,18 +3,18 @@
  * Rank Math SEO Plugin.
  *
  * @package      RANK_MATH
- * @copyright    Copyright (C) 2019-2020, Rank Math - support@rankmath.com
+ * @copyright    Copyright (C) 2019-2021, Rank Math - support@rankmath.com
  * @link         https://rankmath.com
  * @since        0.9.0
  *
  * @wordpress-plugin
  * Plugin Name:       Rank Math SEO
- * Version:           1.0.56.1
+ * Version:           1.0.109
  * Plugin URI:        https://s.rankmath.com/home
  * Description:       Rank Math is a revolutionary SEO product that combines the features of many SEO tools and lets you multiply your traffic in the easiest way possible.
  * Author:            Rank Math
  * Author URI:        https://s.rankmath.com/home
- * License:           GPL v3
+ * License:           GPL-3.0+
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       rank-math
  * Domain Path:       /languages
@@ -34,7 +34,7 @@ final class RankMath {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.56.1';
+	public $version = '1.0.109';
 
 	/**
 	 * Rank Math database version.
@@ -55,7 +55,7 @@ final class RankMath {
 	 *
 	 * @var string
 	 */
-	private $php_version = '5.6';
+	private $php_version = '7.2';
 
 	/**
 	 * Holds various class instances.
@@ -184,9 +184,6 @@ final class RankMath {
 		// Instantiate classes.
 		$this->instantiate();
 
-		// Initialize the action and filter hooks.
-		$this->init_actions();
-
 		// Loaded action.
 		do_action( 'rank_math/loaded' );
 	}
@@ -300,6 +297,9 @@ final class RankMath {
 		// Frontend SEO Score.
 		$this->container['frontend_seo_score'] = new \RankMath\Frontend_SEO_Score();
 		$this->load_3rd_party();
+
+		// Initialize the action and filter hooks.
+		$this->init_actions();
 	}
 
 	/**
@@ -314,6 +314,7 @@ final class RankMath {
 		// Add plugin action links.
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
 		add_filter( 'plugin_action_links_' . plugin_basename( RANK_MATH_FILE ), [ $this, 'plugin_action_links' ] );
+		add_action( 'after_plugin_row_' . plugin_basename( RANK_MATH_FILE ), [ $this, 'plugin_row_deactivate_notice' ], 10, 2 );
 
 		// Booting.
 		add_action( 'plugins_loaded', [ $this, 'init' ], 14 );
@@ -342,7 +343,9 @@ final class RankMath {
 		$controllers = [
 			new \RankMath\Rest\Admin(),
 			new \RankMath\Rest\Front(),
+			new \RankMath\Rest\Shared(),
 			new \RankMath\Rest\Post(),
+			new \RankMath\Rest\Headless(),
 		];
 
 		foreach ( $controllers as $controller ) {
@@ -376,10 +379,33 @@ final class RankMath {
 	 * Load 3rd party modules.
 	 */
 	private function load_3rd_party() {
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
 
-		if ( defined( 'ELEMENTOR_VERSION' ) ) {
+		// Elementor.
+		if ( is_plugin_active( 'elementor/elementor.php' ) ) {
 			new \RankMath\Elementor\Elementor();
 		}
+
+		// Divi theme.
+		add_action(
+			'after_setup_theme',
+			function() {
+				if ( defined( 'ET_CORE' ) ) {
+					new \RankMath\Divi\Divi();
+				}
+			},
+			11
+		);
+		add_action(
+			'current_screen',
+			function() {
+				if ( defined( 'ET_CORE' ) ) {
+					new \RankMath\Divi\Divi_Admin();
+				}
+			}
+		);
 	}
 
 	/**
@@ -415,6 +441,34 @@ final class RankMath {
 	}
 
 	/**
+	 * Add a notice when rank_math_clear_data_on_uninstall filter is present in the theme.
+	 *
+	 * @param string $file        Plugin file.
+	 * @param array  $plugin_data Plugin info.
+	 *
+	 * @return void
+	 */
+	public function plugin_row_deactivate_notice( $file, $plugin_data ) {
+		if ( false === apply_filters( 'rank_math_clear_data_on_uninstall', false ) ) {
+			return;
+		}
+
+		if ( is_multisite() && ! is_network_admin() && is_plugin_active_for_network( $file ) ) {
+			return;
+		}
+
+		$wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
+		echo '<tr class="plugin-update-tr active rank-math-deactivate-notice-row" data-slug="" data-plugin="' . esc_attr( $file ) . '" style="position: relative; top: -1px;"><td colspan="' . esc_attr( $wp_list_table->get_column_count() ) . '" class="plugin-update colspanchange"><div class="notice inline notice-error notice-alt"><p>';
+		echo sprintf(
+			/* translators: 1. Bold text 2. Bold text */
+			esc_html__( '%1$s A filter to remove the Rank Math data from the database is present. Deactivating & Deleting this plugin will remove everything related to the Rank Math plugin. %2$s', 'rank-math' ),
+			'<strong>' . esc_html__( 'CAUTION:', 'rank-math' ) . '</strong>',
+			'<br /><strong>' . esc_html__( 'This action is IRREVERSIBLE.', 'rank-math' ) . '</strong>'
+		);
+		echo '</p></div></td></tr>';
+	}
+
+	/**
 	 * Add extra links as row meta on the plugin screen.
 	 *
 	 * @param  mixed $links Plugin Row Meta.
@@ -422,7 +476,6 @@ final class RankMath {
 	 * @return array
 	 */
 	public function plugin_row_meta( $links, $file ) {
-
 		if ( plugin_basename( RANK_MATH_FILE ) !== $file ) {
 			return $links;
 		}
@@ -445,7 +498,7 @@ final class RankMath {
 	 *     - WP_LANG_DIR/plugins/rank-math-LOCALE.mo
 	 */
 	public function localization_setup() {
-		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
+		$locale = get_user_locale();
 		$locale = apply_filters( 'plugin_locale', $locale, 'rank-math' ); // phpcs:ignore
 
 		unload_textdomain( 'rank-math' );
@@ -467,6 +520,7 @@ final class RankMath {
 			$this->container['json']->add( 'endpoint', esc_url_raw( rest_url( 'rankmath/v1' ) ), 'rankMath' );
 			$this->container['json']->add( 'security', wp_create_nonce( 'rank-math-ajax-nonce' ), 'rankMath' );
 			$this->container['json']->add( 'restNonce', ( wp_installing() && ! is_multisite() ) ? '' : wp_create_nonce( 'wp_rest' ), 'rankMath' );
+			$this->container['json']->add( 'modules', \RankMath\Helper::get_active_modules(), 'rankMath' );
 		}
 	}
 

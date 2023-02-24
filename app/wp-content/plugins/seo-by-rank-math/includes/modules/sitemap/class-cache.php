@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles sitemaps caching and invalidation.
+ * Handle sitemap caching and invalidation.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -45,11 +45,16 @@ class Cache {
 	const STORAGE_KEY_PREFIX = 'rank_math_';
 
 	/**
-	 * The Constructor
+	 * The constructor.
 	 */
 	public function __construct() {
 		$this->wp_filesystem = WordPress::get_filesystem();
 		$this->mode          = $this->is_writable() ? 'file' : 'db';
+
+		/**
+		 * Change sitemap caching mode (can be "file" or "db").
+		 */
+		$this->mode = apply_filters( 'rank_math/sitemap/cache_mode', $this->mode );
 	}
 
 	/**
@@ -58,6 +63,10 @@ class Cache {
 	 * @return bool
 	 */
 	public function is_writable() {
+		if ( is_null( $this->wp_filesystem ) || ! Helper::is_filesystem_direct() ) {
+			return false;
+		}
+
 		$directory_separator = '/';
 		$folder_path         = $this->get_cache_directory();
 		$test_file           = $folder_path . $this->get_storage_key();
@@ -86,16 +95,20 @@ class Cache {
 	 *
 	 * @param  string $type Sitemap type.
 	 * @param  int    $page Page number to retrieve.
+	 * @param  bool   $html Is HTML sitemap.
 	 * @return false|string false on no cache found otherwise sitemap file.
 	 */
-	public function get_sitemap( $type, $page ) {
-		$filename = $this->get_storage_key( $type, $page );
-		if ( false === $filename ) {
+	public function get_sitemap( $type, $page, $html = false ) {
+		$filename = $this->get_storage_key( $type, $page, $html );
+		if ( false === $filename || is_null( $this->wp_filesystem ) ) {
 			return false;
 		}
 
-		if ( 'file' === $this->mode ) {
-			return $this->wp_filesystem->get_contents( self::get_cache_directory() . $filename );
+		$path = self::get_cache_directory() . $filename;
+		if ( 'file' === $this->mode
+			&& is_a( $this->wp_filesystem, 'WP_Filesystem_Direct' )
+			&& $this->wp_filesystem->exists( $path ) ) {
+			return $this->wp_filesystem->get_contents( $path );
 		}
 
 		$filename = "sitemap_{$type}_$filename";
@@ -109,11 +122,12 @@ class Cache {
 	 * @param  string $type    Sitemap type.
 	 * @param  int    $page    Page number to store.
 	 * @param  string $sitemap Sitemap body to store.
+	 * @param  bool   $html    Is HTML sitemap.
 	 * @return boolean
 	 */
-	public function store_sitemap( $type, $page, $sitemap ) {
-		$filename = $this->get_storage_key( $type, $page );
-		if ( false === $filename ) {
+	public function store_sitemap( $type, $page, $sitemap, $html = false ) {
+		$filename = $this->get_storage_key( $type, $page, $html );
+		if ( false === $filename || is_null( $this->wp_filesystem ) ) {
 			return false;
 		}
 
@@ -130,22 +144,22 @@ class Cache {
 	}
 
 	/**
-	 * Get filename for sitemap
+	 * Get filename for sitemap.
 	 *
 	 * @param  null|string $type The type to get the key for. Null or '1' for index cache.
 	 * @param  int         $page The page of cache to get the key for.
 	 * @return boolean|string The key where the cache is stored on. False if the key could not be generated.
 	 */
-	public function get_storage_key( $type = null, $page = 1 ) {
+	private function get_storage_key( $type = null, $page = 1, $html = false ) {
 		$type = is_null( $type ) ? '1' : $type;
 
-		$filename = self::STORAGE_KEY_PREFIX . md5( "{$type}_{$page}_" . home_url() ) . '.xml';
+		$filename = self::STORAGE_KEY_PREFIX . md5( "{$type}_{$page}_" . home_url() ) . '.' . ( $html ? 'html' : 'xml' );
 
 		return $filename;
 	}
 
 	/**
-	 * Get cache directory
+	 * Get cache directory.
 	 *
 	 * @return string
 	 */
@@ -192,15 +206,26 @@ class Cache {
 	 * @param null|string $type The type to get the key for. Null for all caches.
 	 */
 	public static function invalidate_storage( $type = null ) {
-		$directory     = self::get_cache_directory();
+		/**
+		 * Filter: 'rank_math/sitemap/invalidate_storage' - Allow developers to disable sitemap cache invalidation.
+		 */
+		if ( ! apply_filters( 'rank_math/sitemap/invalidate_storage', true, $type ) ) {
+			return;
+		}
+
 		$wp_filesystem = WordPress::get_filesystem();
+		if ( is_null( $wp_filesystem ) ) {
+			return;
+		}
+
+		$directory = self::get_cache_directory();
 
 		if ( is_null( $type ) ) {
 			$wp_filesystem->delete( $directory, true );
 			wp_mkdir_p( $directory );
 			self::clear_transients();
 			self::cached_files( false );
-			Helper::clear_cache();
+			Helper::clear_cache( 'sitemap' );
 			return;
 		}
 
@@ -217,7 +242,12 @@ class Cache {
 
 		self::clear_transients( $type );
 		self::cached_files( $data );
-		Helper::clear_cache();
+		Helper::clear_cache( 'sitemap/' . $type );
+
+		/**
+		 * Action: 'rank_math/sitemap/invalidated_storage' - Runs after sitemap cache invalidation.
+		 */
+		do_action( 'rank_math/sitemap/invalidated_storage', $type );
 	}
 
 	/**

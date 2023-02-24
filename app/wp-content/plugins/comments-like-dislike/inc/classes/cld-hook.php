@@ -26,7 +26,7 @@ if (!class_exists('CLD_Comments_Hooks')) {
              *
              * @since 1.0.2
              */
-            if (is_admin()) {
+            if (is_admin() && !wp_doing_ajax()) {
                 return $comment_text;
             }
             ob_start();

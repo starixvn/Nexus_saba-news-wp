@@ -12,7 +12,9 @@ namespace RankMath\Analytics;
 
 use RankMath\Helper;
 use RankMath\Google\Api;
+use RankMath\Google\Console;
 use MyThemeShop\Helpers\Str;
+use MyThemeShop\Helpers\DB as DB_Helper;
 use MyThemeShop\Database\Database;
 
 defined( 'ABSPATH' ) || exit;
@@ -34,7 +36,7 @@ class DB {
 	}
 
 	/**
-	 * Get analytics table.
+	 * Get console data table.
 	 *
 	 * @return \MyThemeShop\Database\Query_Builder
 	 */
@@ -52,20 +54,33 @@ class DB {
 	}
 
 	/**
+	 * Get inspections table.
+	 *
+	 * @return \MyThemeShop\Database\Query_Builder
+	 */
+	public static function inspections() {
+		return Database::table( 'rank_math_analytics_inspections' );
+	}
+
+	/**
 	 * Delete a record.
 	 *
 	 * @param  int $days Decide whether to delete all or delete 90 days data.
 	 */
 	public static function delete_by_days( $days ) {
-		if ( -1 === $days ) {
-			self::analytics()->truncate();
-		} else {
-			$start = date_i18n( 'Y-m-d H:i:s', strtotime( '-1 days' ) );
-			$end   = date_i18n( 'Y-m-d H:i:s', strtotime( '-' . $days . ' days' ) );
+		// Delete console data.
+		if ( Console::is_console_connected() ) {
+			if ( -1 === $days ) {
+				self::analytics()->truncate();
+			} else {
+				$start = date_i18n( 'Y-m-d H:i:s', strtotime( '-1 days' ) );
+				$end   = date_i18n( 'Y-m-d H:i:s', strtotime( '-' . $days . ' days' ) );
 
-			self::analytics()->whereBetween( 'created', [ $end, $start ] )->delete();
+				self::analytics()->whereBetween( 'created', [ $end, $start ] )->delete();
+			}
 		}
 
+		// Delete analytics, adsense data.
 		do_action( 'rank_math/analytics/delete_by_days', $days );
 		self::purge_cache();
 
@@ -78,10 +93,12 @@ class DB {
 	public static function delete_data_log() {
 		$days = Helper::get_settings( 'general.console_caching_control', 90 );
 
+		// Delete old console data more than 2 times ago of specified number of days to keep the data.
 		$start = date_i18n( 'Y-m-d H:i:s', strtotime( '-' . ( $days * 2 ) . ' days' ) );
 
 		self::analytics()->where( 'created', '<', $start )->delete();
 
+		// Delete old analytics and adsense data.
 		do_action( 'rank_math/analytics/delete_data_log', $start );
 	}
 
@@ -123,33 +140,18 @@ class DB {
 			->selectCount( 'DISTINCT(created)', 'days' )
 			->getVar();
 
-		$rows = self::get_total_rows();
-		$size = $wpdb->get_var( 'SELECT SUM((data_length + index_length)) AS size FROM information_schema.TABLES WHERE table_schema="' . $wpdb->dbname . '" AND table_name IN ( ' . '"' . $wpdb->prefix . 'rank_math_analytics_gsc", "' . $wpdb->prefix . 'rank_math_analytics_ga", "' . $wpdb->prefix . 'rank_math_analytics_adsense"' . ' )' ); // phpcs:ignore
-		$data = compact( 'days', 'rows', 'size' );
-
-		set_transient( $key, $data, DAY_IN_SECONDS );
-
-		return $data;
-	}
-
-	public static function get_total_rows() {
 		$rows = self::analytics()
 			->selectCount( 'id' )
 			->getVar();
 
-		if ( Api::get()->is_analytics_connected() ) {
-			$rows += self::table( 'rank_math_analytics_ga' )
-				->selectCount( 'id' )
-				->getVar();
-		}
+		$size = $wpdb->get_var( 'SELECT SUM((data_length + index_length)) AS size FROM information_schema.TABLES WHERE table_schema="' . $wpdb->dbname . '" AND (table_name="' . $wpdb->prefix . 'rank_math_analytics_gsc")' ); // phpcs:ignore
+		$data = compact( 'days', 'rows', 'size' );
 
-		if ( method_exists( '\RankMathPro\Google\Adsense', 'is_adsense_connected' ) && \RankMathPro\Google\Adsense::is_adsense_connected() ) {
-			$rows += self::table( 'rank_math_analytics_adsense' )
-				->selectCount( 'id' )
-				->getVar();
-		}
+		$data = apply_filters( 'rank_math/analytics/analytics_tables_info', $data );
 
-		return $rows;
+		set_transient( $key, $data, DAY_IN_SECONDS );
+
+		return $data;
 	}
 
 	/**
@@ -173,55 +175,36 @@ class DB {
 	}
 
 	/**
-	 * Check if a date exists in the sysyem.
+	 * Check if console data exists at specified date.
 	 *
-	 * @param  string $date   Date.
-	 * @param  string $action Action.
+	 * @param  string $date   Date to check data existence.
+	 * @param  string $action Action name to filter data type.
 	 * @return boolean
 	 */
 	public static function date_exists( $date, $action = 'console' ) {
-		$table = [
-			'console'   => 'rank_math_analytics_gsc',
-			'analytics' => 'rank_math_analytics_ga',
-			'adsense'   => 'rank_math_analytics_adsense',
-		];
+		$tables['console'] = DB_Helper::check_table_exists( 'rank_math_analytics_gsc' ) ? 'rank_math_analytics_gsc' : '';
 
-		$table = self::table( $table[ $action ] );
+		/**
+		 * Filter: 'rank_math/analytics/date_exists_tables' - Allow developers to add more tables to check.
+		 */
+		$tables = apply_filters( 'rank_math/analytics/date_exists_tables', $tables, $date, $action );
+
+		if ( empty( $tables[ $action ] ) ) {
+			return true; // Should return true to avoid further data fetch action.
+		}
+
+		$table = self::table( $tables[ $action ] );
 
 		$id = $table
 			->select( 'id' )
-			->where( 'created', $date )
+			->where( 'DATE(created)', $date )
 			->getVar();
 
 		return $id > 0 ? true : false;
 	}
 
 	/**
-	 * Check if a date exists in the sysyem.
-	 *
-	 * @param  string $date  Date.
-	 * @param  string $table Table name.
-	 * @return boolean
-	 */
-	public static function job_date_exists( $date, $table = 'console' ) {
-		$tables = [
-			'adsense'   => 'rank_math_analytics_adsense',
-			'analytics' => 'rank_math_analytics_ga',
-			'console'   => 'rank_math_analytics_gsc',
-		];
-		$table  = isset( $tables[ $table ] ) ? $tables [ $table ] : $table;
-		$id     = self::table( $table );
-
-		$id = $id
-			->select( 'id' )
-			->where( 'created', $date )
-			->getVar();
-
-		return $id > 0 ? true : false;
-	}
-
-	/**
-	 * Add a new record.
+	 * Add a new record into objects table.
 	 *
 	 * @param array $args Values to insert.
 	 *
@@ -254,7 +237,78 @@ class DB {
 	}
 
 	/**
-	 * Update a record.
+	 * Add new record in the inspections table.
+	 *
+	 * @param array $args Values to insert.
+	 *
+	 * @return bool|int
+	 */
+	public static function store_inspection( $args = [] ) {
+		if ( empty( $args ) || empty( $args['page'] ) ) {
+			return false;
+		}
+
+		unset( $args['id'] );
+
+		$defaults = self::get_inspection_defaults();
+
+		// Only keep $args items that are in $defaults.
+		$args = array_intersect_key( $args, $defaults );
+
+		// Apply defaults.
+		$args = wp_parse_args( $args, $defaults );
+
+		// We only have strings: placeholders will be '%s'.
+		$format = array_fill( 0, count( $args ), '%s' );
+
+		// Check if we have an existing record, based on 'page'.
+		$id = self::inspections()
+			->select( 'id' )
+			->where( 'page', $args['page'] )
+			->getVar();
+
+		if ( $id ) {
+			return self::inspections()
+				->set( $args )
+				->where( 'id', $id )
+				->update();
+		}
+
+		return self::inspections()->insert( $args, $format );
+	}
+
+	/**
+	 * Get inspection defaults.
+	 *
+	 * @return array
+	 */
+	public static function get_inspection_defaults() {
+		$defaults = [
+			'created'                  => current_time( 'mysql' ),
+			'page'                     => '',
+			'index_verdict'            => 'VERDICT_UNSPECIFIED',
+			'indexing_state'           => 'INDEXING_STATE_UNSPECIFIED',
+			'coverage_state'           => '',
+			'page_fetch_state'         => 'PAGE_FETCH_STATE_UNSPECIFIED',
+			'robots_txt_state'         => 'ROBOTS_TXT_STATE_UNSPECIFIED',
+			'mobile_usability_verdict' => 'VERDICT_UNSPECIFIED',
+			'mobile_usability_issues'  => '',
+			'rich_results_verdict'     => 'VERDICT_UNSPECIFIED',
+			'rich_results_items'       => '',
+			'last_crawl_time'          => '',
+			'crawled_as'               => 'CRAWLING_USER_AGENT_UNSPECIFIED',
+			'google_canonical'         => '',
+			'user_canonical'           => '',
+			'sitemap'                  => '',
+			'referring_urls'           => '',
+			'raw_api_response'         => '',
+		];
+
+		return apply_filters( 'rank_math/analytics/inspection_defaults', $defaults );
+	}
+
+	/**
+	 * Add/Update a record into/from objects table.
 	 *
 	 * @param array $args Values to update.
 	 *
@@ -265,20 +319,22 @@ class DB {
 			return false;
 		}
 
+		// If object exists, try to update.
 		$old_id = absint( $args['id'] );
 		if ( ! empty( $old_id ) ) {
 			unset( $args['id'] );
 
 			$updated = self::objects()->set( $args )
-			->where( 'id', $old_id )
-			->where( 'object_id', absint( $args['object_id'] ) )
-			->update();
+				->where( 'id', $old_id )
+				->where( 'object_id', absint( $args['object_id'] ) )
+				->update();
 
 			if ( ! empty( $updated ) ) {
 				return $old_id;
 			}
 		}
 
+		// In case of new object or failed to update, try to add.
 		return self::add_object( $args );
 	}
 
@@ -297,7 +353,7 @@ class DB {
 	}
 
 	/**
-	 * Bulk inserts records into a table using WPDB.  All rows must contain the same keys.
+	 * Bulk inserts records into a console table using WPDB.  All rows must contain the same keys.
 	 *
 	 * @param  string $date        Date.
 	 * @param  array  $rows        Rows to insert.
@@ -363,7 +419,7 @@ class DB {
 	}
 
 	/**
-	 * Remove hash part.
+	 * Remove hash part from Url.
 	 *
 	 * @param  string $url Url to process.
 	 * @return string
@@ -389,5 +445,50 @@ class DB {
 		}
 
 		return $number;
+	}
+
+	/**
+	 * Get all inspections.
+	 *
+	 * @param array $params   REST Parameters.
+	 * @param int   $per_page Limit.
+	 */
+	public static function get_inspections( $params, $per_page ) {
+		$page     = ! empty( $params['page'] ) ? absint( $params['page'] ) : 1;
+		$per_page = absint( $per_page );
+		$offset   = ( $page - 1 ) * $per_page;
+
+		$inspections = self::inspections()->table;
+		$objects     = self::objects()->table;
+
+		$query = self::inspections()
+			->select( [ "$inspections.*", "$objects.title", "$objects.object_id" ] )
+			->leftJoin( $objects, "$inspections.page", "$objects.page" )
+			->where( "$objects.page", '!=', '' )
+			->orderBy( 'id', 'DESC' )
+			->limit( $per_page, $offset );
+
+		do_action_ref_array( 'rank_math/analytics/get_inspections_query', [ &$query, $params ] );
+
+		$results = $query->get();
+
+		return apply_filters( 'rank_math/analytics/get_inspections_results', $results );
+	}
+
+	/**
+	 * Get inspections count.
+	 *
+	 * @param array $params   REST Parameters.
+	 *
+	 * @return int
+	 */
+	public static function get_inspections_count( $params ) {
+		$pages = self::objects()->select( 'page' )->get( ARRAY_A );
+		$pages = array_unique( wp_list_pluck( $pages, 'page' ) );
+		$query = self::inspections()->selectCount( 'id', 'total' )->whereIn( 'page', $pages );
+
+		do_action_ref_array( 'rank_math/analytics/get_inspections_count_query', [ &$query, $params ] );
+
+		return $query->getVar();
 	}
 }

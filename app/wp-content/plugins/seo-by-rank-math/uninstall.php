@@ -25,9 +25,13 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Clear cron.
-wp_clear_scheduled_hook( 'rank_math_tracker_send_event' );
-wp_clear_scheduled_hook( 'rank_math_search_console_get_analytics' );
+// Clear scheduled tasks.
+if ( class_exists( 'ActionScheduler_QueueRunner' ) ) {
+	ActionScheduler_QueueRunner::instance()->unhook_dispatch_async_request();
+}
+if ( class_exists( 'ActionScheduler_DBStore' ) ) {
+	ActionScheduler_DBStore::instance()->cancel_actions_by_group( 'rank-math' );
+}
 
 // Set rank_math_clear_data_on_uninstall to TRUE to delete all data on uninstall.
 if ( true === apply_filters( 'rank_math_clear_data_on_uninstall', false ) ) {
@@ -64,12 +68,14 @@ function rank_math_remove_data() {
 	rank_math_delete_meta( 'term' );
 
 	// Drop Tables.
-	rank_math_drop_table( 'rank_math_404_logs' );
-	rank_math_drop_table( 'rank_math_redirections' );
-	rank_math_drop_table( 'rank_math_redirections_cache' );
-	rank_math_drop_table( 'rank_math_internal_links' );
-	rank_math_drop_table( 'rank_math_internal_meta' );
-	rank_math_drop_table( 'rank_math_sc_analytics' );
+	rank_math_drop_table( '404_logs' );
+	rank_math_drop_table( 'redirections' );
+	rank_math_drop_table( 'redirections_cache' );
+	rank_math_drop_table( 'internal_links' );
+	rank_math_drop_table( 'internal_meta' );
+	rank_math_drop_table( 'analytics_gsc' );
+	rank_math_drop_table( 'analytics_objects' );
+	rank_math_drop_table( 'analytics_inspections' );
 
 	// Remove Capabilities.
 	/**
@@ -117,5 +123,5 @@ function rank_math_delete_meta( $table = 'post' ) {
 function rank_math_drop_table( $name ) {
 	global $wpdb;
 
-	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}{$name}" ); // phpcs:ignore
+	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}rank_math_{$name}" ); // phpcs:ignore
 }

@@ -7,11 +7,12 @@
  */
 
 use RankMath\Helper;
+use RankMath\KB;
 
 defined( 'ABSPATH' ) || exit;
 
-$company = [ [ 'knowledgegraph_type', 'company' ] ];
-$person  = [ [ 'knowledgegraph_type', 'person' ] ];
+$rank_math_company = [ [ 'knowledgegraph_type', 'company' ] ];
+$rank_math_person  = [ [ 'knowledgegraph_type', 'person' ] ];
 
 $cmb->add_field(
 	[
@@ -29,10 +30,29 @@ $cmb->add_field(
 
 $cmb->add_field(
 	[
+		'id'      => 'website_name',
+		'type'    => 'text',
+		'name'    => esc_html__( 'Website Name', 'rank-math' ),
+		'desc'    => esc_html__( 'Enter the name of your site to appear in search results.', 'rank-math' ),
+		'default' => get_bloginfo( 'name' ),
+	]
+);
+
+$cmb->add_field(
+	[
+		'id'      => 'website_alternate_name',
+		'type'    => 'text',
+		'name'    => esc_html__( 'Website Alternate Name', 'rank-math' ),
+		'desc'    => esc_html__( 'An alternate version of your site name (for example, an acronym or shorter name).', 'rank-math' ),
+	]
+);
+
+$cmb->add_field(
+	[
 		'id'      => 'knowledgegraph_name',
 		'type'    => 'text',
-		'name'    => esc_html__( 'Name', 'rank-math' ),
-		'desc'    => esc_html__( 'Your name or company name', 'rank-math' ),
+		'name'    => esc_html__( 'Person/Organization Name', 'rank-math' ),
+		'desc'    => esc_html__( 'Your name or company name intended to feature in Google\'s Knowledge Panel.', 'rank-math' ),
 		'default' => get_bloginfo( 'name' ),
 	]
 );
@@ -42,7 +62,7 @@ $cmb->add_field(
 		'id'      => 'knowledgegraph_logo',
 		'type'    => 'file',
 		'name'    => esc_html__( 'Logo', 'rank-math' ),
-		'desc'    => __( '<strong>Min Size: 160Χ90px, Max Size: 1920X1080px</strong>.<br /> A squared image is preferred by the search engines.', 'rank-math' ),
+		'desc'    => __( '<strong>Min Size: 112Χ112px</strong>.<br /> A squared image is preferred by the search engines.', 'rank-math' ),
 		'options' => [ 'url' => false ],
 	]
 );
@@ -72,7 +92,7 @@ $cmb->add_field(
 		'type' => 'text',
 		'name' => esc_html__( 'Phone', 'rank-math' ),
 		'desc' => esc_html__( 'Search engines may prominently display your contact phone number for mobile users.', 'rank-math' ),
-		'dep'  => $person,
+		'dep'  => $rank_math_person,
 	]
 );
 
@@ -96,7 +116,7 @@ $cmb->add_field(
 			'rows'        => 2,
 			'placeholder' => '{address} {locality}, {region} {country}. {postalcode}.',
 		],
-		'dep'        => $company,
+		'dep'        => $rank_math_company,
 	]
 );
 
@@ -107,11 +127,26 @@ $cmb->add_field(
 		'name'       => esc_html__( 'Business Type', 'rank-math' ),
 		'options'    => Helper::choices_business_types( true ),
 		'attributes' => ( 'data-s2' ),
-		'dep'        => $company,
+		'dep'        => $rank_math_company,
 	]
 );
 
-$opening_hours = $cmb->add_field(
+$cmb->add_field(
+	[
+		'id'      => 'opening_hours_format',
+		'type'    => 'switch',
+		'name'    => esc_html__( 'Opening Hours Format', 'rank-math' ),
+		'options' => [
+			'off' => '24:00',
+			'on'  => '12:00',
+		],
+		'desc'    => esc_html__( 'Time format used in the contact shortcode.', 'rank-math' ),
+		'default' => 'off',
+		'dep'     => $rank_math_company,
+	]
+);
+
+$rank_math_opening_hours = $cmb->add_field(
 	[
 		'id'      => 'opening_hours',
 		'type'    => 'group',
@@ -121,13 +156,13 @@ $opening_hours = $cmb->add_field(
 			'add_button'    => esc_html__( 'Add time', 'rank-math' ),
 			'remove_button' => esc_html__( 'Remove', 'rank-math' ),
 		],
-		'dep'     => $company,
+		'dep'     => $rank_math_company,
 		'classes' => 'cmb-group-text-only',
 	]
 );
 
 $cmb->add_group_field(
-	$opening_hours,
+	$rank_math_opening_hours,
 	[
 		'id'      => 'day',
 		'type'    => 'select',
@@ -144,30 +179,16 @@ $cmb->add_group_field(
 );
 
 $cmb->add_group_field(
-	$opening_hours,
+	$rank_math_opening_hours,
 	[
-		'id'         => 'time',
-		'type'       => 'text',
-		'attributes' => [ 'placeholder' => esc_html__( 'e.g. 09:00-17:00', 'rank-math' ) ],
+		'id'          => 'time',
+		'type'        => 'text',
+		'attributes'  => [ 'placeholder' => esc_html__( 'e.g. 09:00-17:00', 'rank-math' ) ],
+		'time_format' => 'H:i',
 	]
 );
 
-$cmb->add_field(
-	[
-		'id'      => 'opening_hours_format',
-		'type'    => 'switch',
-		'name'    => esc_html__( 'Opening Hours Format', 'rank-math' ),
-		'options' => [
-			'off' => '24:00',
-			'on'  => '12:00',
-		],
-		'desc'    => esc_html__( 'Time format used in the contact shortcode.', 'rank-math' ),
-		'default' => 'off',
-		'dep'     => $company,
-	]
-);
-
-$phones = $cmb->add_field(
+$rank_math_phones = $cmb->add_field(
 	[
 		'id'      => 'phone_numbers',
 		'type'    => 'group',
@@ -177,13 +198,13 @@ $phones = $cmb->add_field(
 			'add_button'    => esc_html__( 'Add number', 'rank-math' ),
 			'remove_button' => esc_html__( 'Remove', 'rank-math' ),
 		],
-		'dep'     => $company,
+		'dep'     => $rank_math_company,
 		'classes' => 'cmb-group-text-only',
 	]
 );
 
 $cmb->add_group_field(
-	$phones,
+	$rank_math_phones,
 	[
 		'id'      => 'type',
 		'type'    => 'select',
@@ -193,7 +214,7 @@ $cmb->add_group_field(
 );
 
 $cmb->add_group_field(
-	$phones,
+	$rank_math_phones,
 	[
 		'id'         => 'number',
 		'type'       => 'text',
@@ -207,40 +228,40 @@ $cmb->add_field(
 		'type' => 'text',
 		'name' => esc_html__( 'Price Range', 'rank-math' ),
 		'desc' => esc_html__( 'The price range of the business, for example $$$.', 'rank-math' ),
-		'dep'  => $company,
+		'dep'  => $rank_math_company,
 	]
 );
 
-$about_page    = Helper::get_settings( 'titles.local_seo_about_page' );
-$about_options = [ '' => __( 'Select Page', 'rank-math' ) ];
+$rank_math_about_page    = Helper::get_settings( 'titles.local_seo_about_page' );
+$rank_math_about_options = [ '' => __( 'Select Page', 'rank-math' ) ];
 
-if ( $about_page ) {
-	$about_options[ $about_page ] = get_the_title( $about_page );
+if ( $rank_math_about_page ) {
+	$rank_math_about_options[ $rank_math_about_page ] = get_the_title( $rank_math_about_page );
 }
 
 $cmb->add_field(
 	[
 		'id'         => 'local_seo_about_page',
 		'type'       => 'select',
-		'options'    => $about_options,
+		'options'    => $rank_math_about_options,
 		'name'       => esc_html__( 'About Page', 'rank-math' ),
 		'desc'       => esc_html__( 'Select a page on your site where you want to show the LocalBusiness meta data.', 'rank-math' ),
 		'attributes' => ( 'data-s2-pages' ),
 	]
 );
 
-$contact_page    = Helper::get_settings( 'titles.local_seo_contact_page' );
-$contact_options = [ '' => __( 'Select Page', 'rank-math' ) ];
+$rank_math_contact_page    = Helper::get_settings( 'titles.local_seo_contact_page' );
+$rank_math_contact_options = [ '' => __( 'Select Page', 'rank-math' ) ];
 
-if ( $contact_page ) {
-	$contact_options[ $contact_page ] = get_the_title( $contact_page );
+if ( $rank_math_contact_page ) {
+	$rank_math_contact_options[ $rank_math_contact_page ] = get_the_title( $rank_math_contact_page );
 }
 
 $cmb->add_field(
 	[
 		'id'         => 'local_seo_contact_page',
 		'type'       => 'select',
-		'options'    => $contact_options,
+		'options'    => $rank_math_contact_options,
 		'name'       => esc_html__( 'Contact Page', 'rank-math' ),
 		'desc'       => esc_html__( 'Select a page on your site where you want to show the LocalBusiness meta data.', 'rank-math' ),
 		'attributes' => ( 'data-s2-pages' ),
@@ -254,7 +275,7 @@ $cmb->add_field(
 		'name'       => esc_html__( 'Google Maps API Key', 'rank-math' ),
 		/* translators: %s expands to "Google Maps Embed API" https://developers.google.com/maps/documentation/embed/ */
 		'desc'       => sprintf( esc_html__( 'An API Key is required to display embedded Google Maps on your site. Get it here: %s', 'rank-math' ), '<a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">' . __( 'Google Maps Embed API', 'rank-math' ) . '</a>' ),
-		'dep'        => $company,
+		'dep'        => $rank_math_company,
 		'attributes' => [ 'type' => 'password' ],
 	]
 );
@@ -265,7 +286,8 @@ $cmb->add_field(
 		'type'  => 'text',
 		'name'  => esc_html__( 'Geo Coordinates', 'rank-math' ),
 		'desc'  => esc_html__( 'Latitude and longitude values separated by comma.', 'rank-math' ),
-		'dep'   => $company,
-		'after' => '<strong style="margin-top:20px; display:block; text-align:right;">' . sprintf( __( 'Multiple Locations are available in the %s.', 'rank-math' ), '<a href="https://rankmath.com/prcing/?utm_source=Plugin&utm_medium=Multiple%20Location%20Notice&utm_campaign=WP" target="_blank">PRO Version</a>' ) . '</strong>',
+		'dep'   => $rank_math_company,
+		/* Translators: placeholder is a link to the Pro version */
+		'after' => '<strong style="margin-top:20px; display:block; text-align:right;">' . sprintf( __( 'Multiple Locations are available in the %s.', 'rank-math' ), '<a href="' . KB::get( 'pro', 'Multiple Location Notice' ) . '" target="_blank">PRO Version</a>' ) . '</strong>',
 	]
 );

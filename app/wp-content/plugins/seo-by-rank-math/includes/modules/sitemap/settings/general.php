@@ -1,6 +1,6 @@
 <?php
 /**
- * Sitemap - General
+ * Sitemap settings - General tab.
  *
  * @package    RankMath
  * @subpackage RankMath\Sitemap
@@ -81,7 +81,7 @@ $cmb->add_field(
 		'id'      => 'ping_search_engines',
 		'type'    => 'toggle',
 		'name'    => esc_html__( 'Ping Search Engines', 'rank-math' ),
-		'desc'    => esc_html__( 'Automatically notify Google &amp; Bing when a sitemap gets updated.', 'rank-math' ),
+		'desc'    => esc_html__( 'Automatically notify Google when a sitemap gets updated.', 'rank-math' ),
 		'default' => 'on',
 		'classes' => 'rank-math-advanced-option',
 	]

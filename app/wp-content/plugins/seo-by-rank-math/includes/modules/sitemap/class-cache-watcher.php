@@ -1,6 +1,6 @@
 <?php
 /**
- * The Cache Watcher.
+ * The sitemap cache watcher.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -48,7 +48,7 @@ class Cache_Watcher {
 	protected static $clear_types = [];
 
 	/**
-	 * Hook methods for invalidation on necessary events.
+	 * The constructor.
 	 */
 	public function __construct() {
 		$this->action( 'save_post', 'save_post' );
@@ -69,13 +69,14 @@ class Cache_Watcher {
 		add_action( 'update_option', [ __CLASS__, 'clear_on_option_update' ] );
 		add_action( 'deleted_term_relationships', [ __CLASS__, 'invalidate' ] );
 
-		// Option on updatation of which clear cache.
+		// Clear cache when user updates any of these options.
 		self::register_clear_on_option_update( 'home' );
 		self::register_clear_on_option_update( 'permalink_structure' );
 		self::register_clear_on_option_update( 'rank_math_modules' );
 		self::register_clear_on_option_update( 'rank-math-options-titles' );
 		self::register_clear_on_option_update( 'rank-math-options-general' );
 		self::register_clear_on_option_update( 'rank-math-options-sitemap' );
+		self::register_clear_on_option_update( 'date_format' );
 	}
 
 	/**
@@ -84,10 +85,6 @@ class Cache_Watcher {
 	 * @param int $post_id Post ID to possibly invalidate for.
 	 */
 	public function save_post( $post_id ) {
-		if ( false === Sitemap::is_object_indexable( $post_id ) ) {
-			return false;
-		}
-
 		$post = get_post( $post_id );
 		if ( ! empty( $post->post_password ) ) {
 			return false;
@@ -145,7 +142,7 @@ class Cache_Watcher {
 		$post_type = get_post_type( $post );
 		wp_cache_delete( 'lastpostmodified:gmt:' . $post_type, 'timeinfo' );
 
-		// None of our interest..
+		// None of our interest.
 		// If the post type is excluded in options, we can stop.
 		return 'nav_menu_item' === $post_type || ! Sitemap::is_object_indexable( $post->ID );
 	}
@@ -181,7 +178,7 @@ class Cache_Watcher {
 			do_action( 'rank_math/sitemap/hit_index' );
 		}
 
-		Sitemap::ping_search_engines();
+		Sitemap::ping_google();
 	}
 
 	/**
@@ -190,13 +187,14 @@ class Cache_Watcher {
 	 * @return bool
 	 */
 	private function maybe_ping_search_engines() {
-		$ping = false;
+		$ping                  = false;
+		$accessible_post_types = Helper::get_accessible_post_types();
+
 		foreach ( $this->importing_post_types as $post_type ) {
 			wp_cache_delete( 'lastpostmodified:gmt:' . $post_type, 'timeinfo' );
 
-			// Just have the cache deleted for nav_menu_item.
-			if ( 'nav_menu_item' === $post_type ) {
-				continue;
+			if ( in_array( $post_type, $accessible_post_types, true ) ) {
+				$ping = true;
 			}
 		}
 
@@ -209,7 +207,7 @@ class Cache_Watcher {
 	 * @param int    $unused    Unused term ID value.
 	 * @param string $taxonomy  Taxonomy to invalidate.
 	 */
-	public function invalidate_term( $unused, $taxonomy ) {
+	public static function invalidate_term( $unused, $taxonomy ) {
 		if ( false !== Helper::get_settings( 'sitemap.tax_' . $taxonomy . '_sitemap' ) ) {
 			self::invalidate( $taxonomy );
 		}

@@ -12,10 +12,8 @@ namespace RankMath\Redirections;
 
 use WP_Query;
 use RankMath\Helper;
-use RankMath\Helpers\Sitepress;
 use RankMath\Traits\Hooker;
 use MyThemeShop\Helpers\Str;
-use MyThemeShop\Helpers\Param;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -88,15 +86,11 @@ class Redirector {
 	 * Set the required values.
 	 */
 	private function start() {
-		$this->uri = str_replace( home_url( '/' ), '', Param::server( 'REQUEST_URI' ) );
-		$this->uri = urldecode( $this->uri );
-		$this->uri = trim( Redirection::strip_subdirectory( $this->uri ), '/' );
-
 		// Complete request uri.
-		$this->full_uri = $this->uri;
+		$this->full_uri = Redirection::get_full_uri();
 
 		// Remove query string.
-		$this->uri = explode( '?', $this->uri );
+		$this->uri = explode( '?', $this->full_uri );
 		if ( isset( $this->uri[1] ) ) {
 			$this->query_string = $this->uri[1];
 		}
@@ -111,7 +105,7 @@ class Redirector {
 	 * Run the system flow.
 	 */
 	private function flow() {
-		$flow = [ 'pre_filter', 'from_cahce', 'everything', 'fallback' ];
+		$flow = [ 'pre_filter', 'from_cache', 'everything', 'fallback' ];
 		foreach ( $flow as $func ) {
 			if ( false !== $this->matched ) {
 				break;
@@ -139,18 +133,15 @@ class Redirector {
 			return;
 		}
 
-		// Debug if on.
 		$this->do_debugging();
 
-		// @codeCoverageIgnoreStart
 		if ( true === $this->do_filter( 'redirection/add_query_string', true ) && Str::is_non_empty( $this->query_string ) ) {
 			$this->redirect_to .= '?' . $this->query_string;
 		}
 
-		if ( wp_redirect( esc_url_raw( $this->redirect_to ), $header_code, $this->get_redirect_header() ) ) {
+		if ( wp_redirect( esc_url_raw( $this->redirect_to ), $header_code, $this->get_redirect_header() ) ) { // phpcs:ignore
 			exit;
 		}
-		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -178,8 +169,6 @@ class Redirector {
 	/**
 	 * Sets the hook for setting the template include. This is the file that we want to show.
 	 *
-	 * @codeCoverageIgnore
-	 *
 	 * @param string $template The template to look for.
 	 *
 	 * @return bool True when template should be included.
@@ -196,8 +185,6 @@ class Redirector {
 
 	/**
 	 * Returns the template that should be included.
-	 *
-	 * @codeCoverageIgnore
 	 *
 	 * @param string $template The template that will included before executing hook.
 	 *
@@ -233,23 +220,20 @@ class Redirector {
 	/**
 	 * Search from cache.
 	 */
-	private function from_cahce() {
-		// If there is a queried object.
-		$object_id = get_queried_object_id();
-		if ( $object_id ) {
-			$redirection = Cache::get_by_object_id( $object_id, $this->get_current_object_type() );
-			if ( $redirection && trim( $redirection->from_url, '/' ) === $this->uri ) {
+	private function from_cache() {
+		$redirections = Cache::get_by_object_id_or_url( (int) get_queried_object_id(), $this->get_current_object_type(), $this->uri );
+		foreach ( $redirections as $redirection ) {
+			if ( empty( $redirection->object_id ) ) {
 				$this->cache = true;
 				$this->set_redirection( $redirection->redirection_id );
 				return;
 			}
-		}
 
-		$redirection = Cache::get_by_url( $this->uri );
-		if ( $redirection ) {
-			$this->cache = true;
-			$this->set_redirection( $redirection->redirection_id );
-			return;
+			if ( trim( $redirection->from_url, '/' ) === $this->uri ) {
+				$this->cache = true;
+				$this->set_redirection( $redirection->redirection_id );
+				return;
+			}
 		}
 	}
 
@@ -278,11 +262,10 @@ class Redirector {
 
 	/**
 	 * Do the fallback strategy here.
-	 *
-	 * @codeCoverageIgnore
 	 */
 	private function fallback() {
-		if ( ! is_404() ) {
+		$wp_redirect_admin_locations = $this->do_filter( 'redirection/fallback_exclude_locations', [ 'login', 'admin', 'dashboard' ] );
+		if ( ! is_404() || ! $this->uri || in_array( $this->uri, $wp_redirect_admin_locations, true ) ) {
 			return;
 		}
 
@@ -306,20 +289,13 @@ class Redirector {
 
 	/**
 	 * Show debugging interstitial if enabled.
-	 *
-	 * @codeCoverageIgnore
 	 */
 	private function do_debugging() {
 		if ( ! Helper::get_settings( 'general.redirections_debug' ) || ! Helper::has_cap( 'redirections' ) ) {
 			return;
 		}
 
-		$this->filter( 'user_has_cap', 'filter_user_has_cap' );
-
-		require_once ABSPATH . 'wp-admin/includes/screen.php';
-
-		include_once \dirname( __FILE__ ) . '/views/debugging.php';
-		exit;
+		new Debugger( get_object_vars( $this ) );
 	}
 
 	/**
@@ -332,7 +308,8 @@ class Redirector {
 			$redirection = DB::get_redirection_by_id( $redirection, 'active' );
 		}
 
-		if ( false === $redirection || ! DB::compare_sources( $redirection['sources'], $this->uri ) ) {
+		$custom_match = $this->do_filter( 'redirection/redirection_match', false, $redirection );
+		if ( false === $redirection || ( ! DB::compare_sources( $redirection['sources'], $this->uri ) && ! $custom_match ) ) {
 			return;
 		}
 
@@ -385,8 +362,6 @@ class Redirector {
 	/**
 	 * Get the object type for the current page.
 	 *
-	 * @codeCoverageIgnore
-	 *
 	 * @return string object type name.
 	 */
 	private function get_current_object_type() {
@@ -396,9 +371,12 @@ class Redirector {
 			'WP_User' => 'user',
 		];
 		$object = get_queried_object();
-		$object = get_class( $object );
+		if ( ! $object ) {
+			return 'none';
+		}
 
-		return isset( $hash[ $object ] ) ? $hash[ $object ] : 'any';
+		$object = get_class( $object );
+		return isset( $hash[ $object ] ) ? $hash[ $object ] : 'none';
 	}
 
 	/**
@@ -419,7 +397,7 @@ class Redirector {
 	 * @return string
 	 */
 	private function get_redirect_header() {
-		return true === $this->do_filter( 'redirection/add_redirect_header', true ) ? 'Rank Math SEO' : 'WordPress';
+		return true === $this->do_filter( 'redirection/add_redirect_header', true ) ? 'Rank Math' : 'WordPress';
 	}
 
 	/**

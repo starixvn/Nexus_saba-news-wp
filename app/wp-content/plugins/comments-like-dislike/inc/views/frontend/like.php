@@ -1,12 +1,11 @@
 <div class="cld-like-wrap  cld-common-wrap">
-    <a href="<?php echo $href; ?>"
-       class="cld-like-trigger cld-like-dislike-trigger <?php echo ($user_ip_check == 1 || isset($_COOKIE['cld_' . $comment_id])) ? 'cld-prevent' : ''; ?>"
-       title="<?php echo $like_title; ?>"
-       data-comment-id="<?php echo $comment_id; ?>"
+    <a href="<?php echo esc_attr($href); ?>"
+       class="cld-like-trigger cld-like-dislike-trigger <?php echo ($already_liked == 1) ? 'cld-prevent' : ''; ?>"
+       title="<?php echo esc_attr($like_title); ?>"
+       data-comment-id="<?php echo intval($comment_id); ?>"
        data-trigger-type="like"
        data-restriction="<?php echo esc_attr($cld_settings['basic_settings']['like_dislike_resistriction']); ?>"
-       data-ip-check="<?php echo $user_ip_check; ?>"
-       data-user-check="<?php echo $user_check; ?>"
+       data-already-liked="<?php echo esc_attr($already_liked) ?>"
 
        >
            <?php

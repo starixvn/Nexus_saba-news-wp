@@ -68,6 +68,8 @@ class Yoast extends Plugin_Importer {
 	 */
 	public function convert_variables( $string ) {
 		$string = str_replace( '%%term_title%%', '%term%', $string );
+		$string = str_replace( '%%category_description%%', '%term_description%', $string );
+		$string = str_replace( '%%searchphrase%%', '%search_query%', $string );
 		$string = preg_replace( '/%%cf_([^%]+)%%/i', '%customfield($1)%', $string );
 		$string = preg_replace( '/%%ct_([^%]+)%%/i', '%customterm($1)%', $string );
 		$string = preg_replace( '/%%ct_desc_([^%]+)%%/i', '%customterm($1)%', $string );
@@ -123,6 +125,7 @@ class Yoast extends Plugin_Importer {
 		$this->social_webmaster_settings( $yoast_main, $yoast_social );
 		$this->breadcrumb_settings( $yoast_titles, $yoast_internallinks );
 		$this->misc_settings( $yoast_titles, $yoast_social );
+		$this->slack_settings( $yoast_main );
 		$this->update_settings();
 
 		return true;
@@ -217,18 +220,16 @@ class Yoast extends Plugin_Importer {
 		$this->set_primary_term( $post_ids );
 
 		$hash = [
-			'_yoast_wpseo_title'                    => 'rank_math_title',
-			'_yoast_wpseo_metadesc'                 => 'rank_math_description',
-			'_yoast_wpseo_focuskw'                  => 'rank_math_focus_keyword',
-			'_yoast_wpseo_canonical'                => 'rank_math_canonical_url',
-			'_yoast_wpseo_opengraph-title'          => 'rank_math_facebook_title',
-			'_yoast_wpseo_opengraph-description'    => 'rank_math_facebook_description',
-			'_yoast_wpseo_twitter-title'            => 'rank_math_twitter_title',
-			'_yoast_wpseo_twitter-description'      => 'rank_math_twitter_description',
-			'_yoast_wpseo_bctitle'                  => 'rank_math_breadcrumb_title',
-			'_yoast_wpseo_newssitemap-stocktickers' => 'rank_math_news_sitemap_stock_tickers',
-			'_yoast_wpseo_newssitemap-genre'        => 'rank_math_news_sitemap_genres',
-			'_yoast_wpseo_newssitemap-exclude'      => 'rank_math_news_sitemap_exclude',
+			'_yoast_wpseo_title'                 => 'rank_math_title',
+			'_yoast_wpseo_metadesc'              => 'rank_math_description',
+			'_yoast_wpseo_focuskw'               => 'rank_math_focus_keyword',
+			'_yoast_wpseo_canonical'             => 'rank_math_canonical_url',
+			'_yoast_wpseo_opengraph-title'       => 'rank_math_facebook_title',
+			'_yoast_wpseo_opengraph-description' => 'rank_math_facebook_description',
+			'_yoast_wpseo_twitter-title'         => 'rank_math_twitter_title',
+			'_yoast_wpseo_twitter-description'   => 'rank_math_twitter_description',
+			'_yoast_wpseo_bctitle'               => 'rank_math_breadcrumb_title',
+			'_yoast_wpseo_newssitemap-exclude'   => 'rank_math_news_sitemap_exclude',
 		];
 
 		foreach ( $post_ids as $post ) {
@@ -573,19 +574,9 @@ class Yoast extends Plugin_Importer {
 			return;
 		}
 
-		$extra_fks = implode( ', ', array_map( [ $this, 'map_focus_keyword' ], $extra_fks ) );
+		$extra_fks = implode( ', ', array_column( $extra_fks, 'keyword' ) );
 		$main_fk   = get_post_meta( $post_id, 'rank_math_focus_keyword', true );
 		update_post_meta( $post_id, 'rank_math_focus_keyword', $main_fk . ', ' . $extra_fks );
-	}
-
-	/**
-	 * Return Focus Keyword from entry.
-	 *
-	 * @param  array $entry Yoast focus keyword entry.
-	 * @return string
-	 */
-	public function map_focus_keyword( $entry ) {
-		return $entry['keyword'];
 	}
 
 	/**
@@ -701,6 +692,15 @@ class Yoast extends Plugin_Importer {
 			if ( empty( $this->get_meta( 'user', $userid, 'rank_math_robots' ) ) && get_user_meta( $userid, 'wpseo_noindex_author', true ) ) {
 				update_user_meta( $userid, 'rank_math_robots', [ 'noindex' ] );
 			}
+
+			$social_urls = [];
+			foreach ( [ 'linkedin', 'myspace', 'pinterest', 'instagram', 'soundcloud', 'tumblr', 'youtube', 'wikipedia' ] as $key ) {
+				$social_urls[] = get_user_meta( $userid, $key, true );
+			}
+
+			if ( ! empty( $social_urls ) ) {
+				update_user_meta( $userid, 'additional_profile_urls', implode( ' ', array_filter( $social_urls ) ) );
+			}
 		}
 
 		return $this->get_pagination_arg();
@@ -801,10 +801,12 @@ class Yoast extends Plugin_Importer {
 		$logo_id  = 'company' === $knowledgegraph_type ? 'company_logo_id' : 'person_logo_id';
 
 		$hash = [
-			'company_name'      => 'knowledgegraph_name',
-			'company_or_person' => 'knowledgegraph_type',
-			$logo_key           => 'knowledgegraph_logo',
-			$logo_id            => 'knowledgegraph_logo_id',
+			'company_name'           => 'knowledgegraph_name',
+			'website_name'           => 'website_name',
+			'alternate_website_name' => 'website_alternate_name',
+			'company_or_person'      => 'knowledgegraph_type',
+			$logo_key                => 'knowledgegraph_logo',
+			$logo_id                 => 'knowledgegraph_logo_id',
 		];
 		$this->replace( $hash, $yoast_titles, $this->titles );
 
@@ -845,6 +847,26 @@ class Yoast extends Plugin_Importer {
 	}
 
 	/**
+	 * Slack enhanced sharing.
+	 *
+	 * @param array $yoast_main Settings.
+	 */
+	private function slack_settings( $yoast_main ) {
+		$slack_enhanced_sharing = 'off';
+		if ( ! empty( $yoast_main['enable_enhanced_slack_sharing'] ) ) {
+			$slack_enhanced_sharing = 'on';
+		}
+		$this->titles['pt_post_slack_enhanced_sharing']     = $slack_enhanced_sharing;
+		$this->titles['pt_page_slack_enhanced_sharing']     = $slack_enhanced_sharing;
+		$this->titles['pt_product_slack_enhanced_sharing']  = $slack_enhanced_sharing;
+		$this->titles['pt_download_slack_enhanced_sharing'] = $slack_enhanced_sharing;
+		$this->titles['author_slack_enhanced_sharing']      = $slack_enhanced_sharing;
+		foreach ( Helper::get_accessible_taxonomies() as $taxonomy => $object ) {
+			$this->titles[ 'tax_' . $taxonomy . '_slack_enhanced_sharing' ] = $slack_enhanced_sharing;
+		}
+	}
+
+	/**
 	 * Sitemap settings.
 	 *
 	 * @param array $yoast_main    Settings.
@@ -881,7 +903,6 @@ class Yoast extends Plugin_Importer {
 
 		$this->get_settings();
 		$this->sitemap['news_sitemap_publication_name'] = ! empty( $yoast_news['news_sitemap_name'] ) ? $yoast_news['news_sitemap_name'] : '';
-		$this->sitemap['news_sitemap_default_genres']   = ! empty( $yoast_news['news_sitemap_default_genre'] ) ? [ $yoast_news['news_sitemap_default_genre'] ] : [];
 		if ( ! empty( $yoast_news['news_sitemap_include_post_types'] ) ) {
 			$this->sitemap['news_sitemap_post_type'] = array_keys( $yoast_news['news_sitemap_include_post_types'] );
 			$this->add_excluded_news_terms( $yoast_news );
@@ -983,8 +1004,8 @@ class Yoast extends Plugin_Importer {
 
 		$post_types = array_keys( $yoast_news['news_sitemap_include_post_types'] );
 		foreach ( $post_types as $post_type ) {
-			$taxonomies = get_object_taxonomies( $post_type, 'objects' );
-
+			$taxonomies   = get_object_taxonomies( $post_type, 'objects' );
+			$exclude_data = [];
 			foreach ( $taxonomies as $taxonomy ) {
 				if ( ! $taxonomy->show_ui ) {
 					continue;
@@ -1006,9 +1027,13 @@ class Yoast extends Plugin_Importer {
 					$field = "{$taxonomy->name}_{$term}_for_{$post_type}";
 					$key   = "news_sitemap_exclude_{$post_type}_terms";
 					if ( isset( $exclude_terms[ $field ] ) && 'on' === $exclude_terms[ $field ] ) {
-						$this->sitemap[ $key ][] = $term_id;
+						$exclude_data[ $taxonomy->name ][] = $term_id;
 					}
 				}
+			}
+
+			if ( ! empty( $exclude_data ) ) {
+				$this->sitemap[ "news_sitemap_exclude_{$post_type}_terms" ] = [ $exclude_data ];
 			}
 		}
 	}
@@ -1124,7 +1149,6 @@ class Yoast extends Plugin_Importer {
 	private function social_webmaster_settings( $yoast_main, $yoast_social ) {
 		$hash = [
 			'baiduverify'     => 'baidu_verify',
-			'alexaverify'     => 'alexa_verify',
 			'googleverify'    => 'google_verify',
 			'msverify'        => 'bing_verify',
 			'pinterestverify' => 'pinterest_verify',
@@ -1137,6 +1161,10 @@ class Yoast extends Plugin_Importer {
 			'twitter_site'  => 'twitter_author_names',
 			'fbadminapp'    => 'facebook_app_id',
 		];
+
+		if ( ! empty( $yoast_social['other_social_urls'] ) ) {
+			$this->titles['social_additional_profiles'] = implode( PHP_EOL, $yoast_social['other_social_urls'] );
+		}
 		$this->replace( $hash, $yoast_social, $this->titles );
 	}
 
@@ -1163,12 +1191,11 @@ class Yoast extends Plugin_Importer {
 		$this->replace( $hash, $yoast_internallinks, $this->settings, 'convert_bool' );
 
 		// RSS.
-		$yoast_rss = get_option( 'wpseo_rss' );
-		$hash      = [
+		$hash = [
 			'rssbefore' => 'rss_before_content',
 			'rssafter'  => 'rss_after_content',
 		];
-		$this->replace( $hash, $yoast_rss, $this->settings, 'convert_variables' );
+		$this->replace( $hash, $yoast_titles, $this->settings, 'convert_variables' );
 	}
 
 	/**

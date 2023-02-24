@@ -100,7 +100,7 @@ class SEOPress extends Plugin_Importer {
 		$string = str_replace( '%%currentdate%%', '%currentdate%', $string );
 		$string = str_replace( '%%currentday%%', '%currentday%', $string );
 		$string = str_replace( '%%currentmonth%%', '%currentmonth%', $string );
-		$string = str_replace( '%%currentyear%%', '%year%', $string );
+		$string = str_replace( '%%currentyear%%', '%currentyear%', $string );
 		$string = str_replace( '%%currenttime%%', '%time%', $string );
 		$string = str_replace( '%%author_bio%%', '%user_description%', $string );
 		$string = str_replace( '%%wc_single_cat%%', '%term%', $string );
@@ -359,6 +359,17 @@ class SEOPress extends Plugin_Importer {
 			'seopress_social_knowledge_img'              => 'knowledgegraph_logo',
 		];
 		$this->replace( $hash, $social, $this->titles );
+
+		$additional_urls = [];
+		foreach ( [ 'pinterest', 'instagram', 'youtube', 'linkedin' ] as $service ) {
+			if ( ! empty( $social[ "seopress_social_accounts_{$service}" ] ) ) {
+				$additional_urls[] = $social[ "seopress_social_accounts_{$service}" ];
+			}
+		}
+
+		if ( ! empty( $additional_urls ) ) {
+			$this->titles['social_additional_profiles'] = implode( PHP_EOL, $additional_urls );
+		}
 
 		// OpenGraph.
 		if ( isset( $social['og_default_image'] ) ) {
@@ -774,8 +785,13 @@ class SEOPress extends Plugin_Importer {
 
 		if ( ! $is_noindex || ! $is_nofollow ) {
 			$robots    = $this->get_default_robots( $object_id, $object_type );
-			$current[] = ! $is_noindex && ! empty( $robots['noindex'] ) ? 'noindex' : 'index';
 			$current[] = ! $is_nofollow && ! empty( $robots['nofollow'] ) ? 'nofollow' : '';
+
+			// Keep global no index status.
+			if ( ! empty( $robots['noindex'] ) ) {
+				unset( $current[ 'index' ] );
+				$current[] = 'noindex';
+			}
 		}
 
 		$this->update_meta( $object_type, $object_id, 'rank_math_robots', array_unique( $current ) );

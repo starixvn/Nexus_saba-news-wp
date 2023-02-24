@@ -13,7 +13,6 @@ namespace RankMath\Monitor;
 use RankMath\Helper;
 use RankMath\Traits\Ajax;
 use RankMath\Traits\Hooker;
-use MyThemeShop\Helpers\Arr;
 use MyThemeShop\Helpers\Str;
 use MyThemeShop\Helpers\Param;
 use MyThemeShop\Helpers\Conditional;
@@ -30,8 +29,6 @@ class Monitor {
 
 	/**
 	 * The Constructor.
-	 *
-	 * @codeCoverageIgnore
 	 */
 	public function __construct() {
 		if ( is_admin() ) {
@@ -42,16 +39,48 @@ class Monitor {
 			$this->ajax( 'delete_log', 'delete_log' );
 		}
 
-		$this->action( 'get_header', 'capture_404' );
+		if ( Helper::has_cap( '404_monitor' ) && Conditional::is_rest() ) {
+			$this->action( 'rank_math/dashboard/widget', 'dashboard_widget', 11 );
+		}
+
+		$this->action( $this->get_hook(), 'capture_404' );
+
 		if ( Helper::has_cap( '404_monitor' ) ) {
 			$this->action( 'rank_math/admin_bar/items', 'admin_bar_items', 11 );
 		}
 	}
 
 	/**
+	 * Add stats in the admin dashboard widget.
+	 */
+	public function dashboard_widget() {
+		$data = DB::get_stats();
+		?>
+		<h3>
+			<?php esc_html_e( '404 Monitor', 'rank-math' ); ?>
+			<a href="<?php echo esc_url( Helper::get_admin_url( '404-monitor' ) ); ?>" class="rank-math-view-report" title="<?php esc_html_e( 'View Report', 'rank-math' ); ?>"><i class="dashicons dashicons-chart-bar"></i></a>
+		</h3>
+		<div class="rank-math-dashboard-block">
+			<div>
+				<h4>
+					<?php esc_html_e( 'Log Count', 'rank-math' ); ?>
+					<span class="rank-math-tooltip"><em class="dashicons-before dashicons-editor-help"></em><span><?php esc_html_e( 'Total number of 404 pages opened by the users.', 'rank-math' ); ?></span></span>
+				</h4>
+				<strong class="text-large"><?php echo esc_html( Str::human_number( $data->total ) ); ?></strong>
+			</div>
+			<div>
+				<h4>
+					<?php esc_html_e( 'URL Hits', 'rank-math' ); ?>
+					<span class="rank-math-tooltip"><em class="dashicons-before dashicons-editor-help"></em><span><?php esc_html_e( 'Total number visits received on all the 404 pages.', 'rank-math' ); ?></span></span>
+				</h4>
+				<strong class="text-large"><?php echo esc_html( Str::human_number( $data->hits ) ); ?></strong>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Add admin bar item.
-	 *
-	 * @codeCoverageIgnore
 	 *
 	 * @param Admin_Bar_Menu $menu Menu class instance.
 	 */
@@ -68,9 +97,7 @@ class Monitor {
 	}
 
 	/**
-	 * Delete log.
-	 *
-	 * @codeCoverageIgnore
+	 * Delete a log item.
 	 */
 	public function delete_log() {
 
@@ -84,11 +111,11 @@ class Monitor {
 		}
 
 		DB::delete_log( $id );
-		$this->success( esc_html__( 'Log successfully deleted.', 'rank-math' ) );
+		$this->success( esc_html__( 'Log item successfully deleted.', 'rank-math' ) );
 	}
 
 	/**
-	 * This function logs the request details when is_404().
+	 * Log the request details when is_404() is true and WP's response code is *not* 410 or 451.
 	 */
 	public function capture_404() {
 		if ( ! is_404() || in_array( http_response_code(), [ 410, 451 ], true ) ) {
@@ -113,7 +140,6 @@ class Monitor {
 		DB::add(
 			[
 				'uri'        => $uri,
-				'ip'         => Param::server( 'REMOTE_ADDR', '' ),
 				'referer'    => Param::server( 'HTTP_REFERER', '' ),
 				'user_agent' => $this->get_user_agent(),
 			]
@@ -121,9 +147,9 @@ class Monitor {
 	}
 
 	/**
-	 * Check if current URL is excluded.
+	 * Check if given URL is excluded.
 	 *
-	 * @param string $uri Check this URI for exclusion.
+	 * @param string $uri The URL to check for exclusion.
 	 *
 	 * @return boolean
 	 */
@@ -134,6 +160,8 @@ class Monitor {
 		}
 
 		foreach ( $excludes as $rule ) {
+			$rule['exclude'] = empty( $rule['exclude'] ) ? '' : $this->sanitize_exclude_pattern( $rule['exclude'], $rule['comparison'] );
+
 			if ( ! empty( $rule['exclude'] ) && Str::comparison( $rule['exclude'], $uri, $rule['comparison'] ) ) {
 				return true;
 			}
@@ -143,7 +171,27 @@ class Monitor {
 	}
 
 	/**
-	 * Get user-agent.
+	 * Check if regex pattern has delimiters or not, and add them if not.
+	 *
+	 * @param string $pattern The pattern to check.
+	 * @param string $comparison The comparison type.
+	 *
+	 * @return string
+	 */
+	private function sanitize_exclude_pattern( $pattern, $comparison ) {
+		if ( 'regex' !== $comparison ) {
+			return $pattern;
+		}
+
+		if ( preg_match( '[^(?:([^a-zA-Z0-9\\\\]).*\\1|\\(.*\\)|\\{.*\\}|\\[.*\\]|<.*>)[imsxADSUXJu]*$]', $pattern ) ) {
+			return $pattern;
+		}
+
+		return '[' . addslashes( $pattern ) . ']';
+	}
+
+	/**
+	 * Get user-agent header.
 	 *
 	 * @return string
 	 */
@@ -153,15 +201,16 @@ class Monitor {
 			return '';
 		}
 
-		$parsed = $this->parse_user_agent( $u_agent );
+		$parsed  = $this->parse_user_agent( $u_agent );
+		$nice_ua = '';
 		if ( ! empty( $parsed['browser'] ) ) {
-			$u_agent .= $parsed['browser'];
+			$nice_ua .= $parsed['browser'];
 		}
 		if ( ! empty( $parsed['version'] ) ) {
-			$u_agent .= ' ' . $parsed['version'];
+			$nice_ua .= ' ' . $parsed['version'];
 		}
 
-		return $u_agent;
+		return $nice_ua . ' | ' . $u_agent;
 	}
 
 	/**
@@ -190,5 +239,22 @@ class Monitor {
 			'browser'  => $agent->browser(),
 			'version'  => $agent->browserVersion(),
 		];
+	}
+
+	/**
+	 * Function to get the hook name depending on the theme.
+	 *
+	 * @return string WP hook.
+	 */
+	private function get_hook() {
+		if ( defined( 'CT_VERSION' ) ) {
+			return 'oxygen_enqueue_frontend_scripts';
+		}
+
+		if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+			return 'wp_head';
+		}
+
+		return 'get_header';
 	}
 }

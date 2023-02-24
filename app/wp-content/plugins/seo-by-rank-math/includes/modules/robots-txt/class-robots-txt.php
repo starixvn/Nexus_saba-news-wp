@@ -1,6 +1,6 @@
 <?php
 /**
- * The robots txt module.
+ * The robots.txt editor module.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -66,7 +66,7 @@ class Robots_Txt {
 					'icon'      => 'rm-icon rm-icon-robots',
 					'title'     => esc_html__( 'Edit robots.txt', 'rank-math' ),
 					/* translators: Link to kb article */
-					'desc'      => sprintf( esc_html__( 'Edit your robots.txt file to control what bots see. %s.', 'rank-math' ), '<a href="' . KB::get( 'edit-robotstxt' ) . '" target="_blank">' . esc_html__( 'Learn more', 'rank-math' ) . '</a>' ),
+					'desc'      => sprintf( esc_html__( 'Edit your robots.txt file to control what bots see. %s.', 'rank-math' ), '<a href="' . KB::get( 'edit-robotstxt', 'Options Panel Robots Tab' ) . '" target="_blank">' . esc_html__( 'Learn more', 'rank-math' ) . '</a>' ),
 					'file'      => dirname( __FILE__ ) . '/options.php',
 					'classes'   => 'rank-math-advanced-option',
 					'after_row' => '<div class="rank-math-desc">' . __( 'Leave the field empty to let WordPress handle the contents dynamically. If an actual robots.txt file is present in the root folder of your site, this option won\'t take effect and you have to edit the file directly, or delete it and then edit from here.', 'rank-math' ) . '</div>',
@@ -79,21 +79,14 @@ class Robots_Txt {
 	}
 
 	/**
-	 * Get robots.txt related data.
+	 * Get robots.txt related data: whether the file exists, the contents
+	 * of the file, and the "Search engine visibility" setting for the site.
 	 *
 	 * @return array
 	 */
 	public static function get_robots_data() {
 		$wp_filesystem = WordPress::get_filesystem();
 		$public        = absint( get_option( 'blog_public' ) );
-
-		if ( $wp_filesystem->exists( ABSPATH . 'robots.txt' ) ) {
-			return [
-				'exists'  => true,
-				'default' => $wp_filesystem->get_contents( ABSPATH . 'robots.txt' ),
-				'public'  => $public,
-			];
-		}
 
 		$default  = '# This file is automatically added by Rank Math SEO plugin to help a website index better';
 		$default .= "\n# More info: https://s.rankmath.com/home\n";
@@ -104,10 +97,28 @@ class Robots_Txt {
 			$default .= "Disallow: /wp-admin/\n";
 			$default .= "Allow: /wp-admin/admin-ajax.php\n";
 		}
+		$default = apply_filters( 'robots_txt', $default, $public );
+
+		if ( empty( $wp_filesystem ) || ! Helper::is_filesystem_direct() ) {
+			return [
+				'exists'   => false,
+				'default'  => $default,
+				'public'   => $public,
+				'writable' => false,
+			];
+		}
+
+		if ( $wp_filesystem->exists( ABSPATH . 'robots.txt' ) ) {
+			return [
+				'exists'  => true,
+				'default' => $wp_filesystem->get_contents( ABSPATH . 'robots.txt' ),
+				'public'  => $public,
+			];
+		}
 
 		return [
 			'exists'  => false,
-			'default' => apply_filters( 'robots_txt', $default, $public ),
+			'default' => $default,
 			'public'  => $public,
 		];
 	}

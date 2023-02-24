@@ -1,10 +1,10 @@
 <?php
 /**
- * The Status module.
+ * The Status & Tools internal module.
  *
  * @since      1.0.33
  * @package    RankMath
- * @subpackage RankMath
+ * @subpackage RankMath\Status
  * @author     Rank Math <support@rankmath.com>
  */
 
@@ -76,7 +76,7 @@ class Status extends Base {
 	}
 
 	/**
-	 * Display dashabord tabs.
+	 * Display dashboard tabs.
 	 */
 	public function display_nav() {
 		$default_tab = $this->do_filter( 'tools/default_tab', 'status' );

@@ -13,7 +13,6 @@ namespace RankMath\Paper;
 use RankMath\Post;
 use RankMath\Helper;
 use RankMath\Helpers\Security;
-use MyThemeShop\Helpers\WordPress;
 use MyThemeShop\Helpers\Str;
 
 defined( 'ABSPATH' ) || exit;
@@ -72,7 +71,7 @@ class Singular implements IPaper {
 	 * @return array
 	 */
 	public function canonical() {
-		$object_id          = Post::get_simple_page_id();
+		$object_id          = Post::get_page_id();
 		$canonical          = get_permalink( $object_id );
 		$canonical_unpaged  = $canonical;
 		$canonical_override = Post::get_meta( 'canonical_url', $object_id );
@@ -81,9 +80,9 @@ class Singular implements IPaper {
 		 * Fix paginated pages canonical, but only if the page is truly paginated.
 		 *
 		 * @copyright Copyright (C) 2008-2019, Yoast BV
- 		 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
+		 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
 		 */
-		if ( get_query_var( 'page' ) > 1 ) {
+		if ( is_singular() && get_query_var( 'page' ) > 1 ) {
 			$num_pages = ( substr_count( get_queried_object()->post_content, '<!--nextpage-->' ) + 1 );
 			if ( $num_pages && get_query_var( 'page' ) <= $num_pages ) {
 				global $wp_rewrite;
@@ -118,11 +117,11 @@ class Singular implements IPaper {
 	}
 
 	/**
-	 * Retrieves the SEO title set in the post metabox.
+	 * Get the SEO title set in the post metabox.
 	 *
-	 * @param object|null $object Object to retrieve the title from.
+	 * @param object|null $object Post object to retrieve the title for.
 	 *
-	 * @return string The SEO title for the specified object, or queried object if not supplied.
+	 * @return string
 	 */
 	protected function get_post_title( $object = null ) {
 		if ( ! is_object( $object ) ) {

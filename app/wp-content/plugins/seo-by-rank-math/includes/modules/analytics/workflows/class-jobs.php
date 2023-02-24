@@ -13,7 +13,10 @@ namespace RankMath\Analytics\Workflow;
 use Exception;
 use RankMath\Helper;
 use RankMath\Google\Api;
+use RankMath\Google\Console;
+use RankMath\Google\Url_Inspection;
 use RankMath\Analytics\DB;
+use RankMath\Traits\Cache;
 use RankMath\Traits\Hooker;
 use RankMath\Analytics\Stats;
 use RankMath\Analytics\Watcher;
@@ -25,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class Jobs {
 
-	use Hooker;
+	use Hooker, Cache;
 
 	/**
 	 * Main instance
@@ -51,18 +54,26 @@ class Jobs {
 	public function hooks() {
 		$this->action( 'rank_math/analytics/flat_posts', 'do_flat_posts' );
 		$this->action( 'rank_math/analytics/flat_posts_completed', 'flat_posts_completed' );
-		$this->action( 'rank_math/analytics/clear_cache', 'clear_cache', 99 );
 		add_action( 'rank_math/analytics/sync_sitemaps', [ Api::get(), 'sync_sitemaps' ] );
 
-		// Daily Tasks.
-		$this->action( 'rank_math/analytics/data_fetch', 'data_fetch' );
+		if ( Console::is_console_connected() ) {
+			$this->action( 'rank_math/analytics/clear_cache', 'clear_cache', 99 );
 
-		// Data Fetcher.
-		$this->action( 'rank_math/analytics/get_console_data', 'get_console_data' );
+			// Fetch missing google data action.
+			$this->action( 'rank_math/analytics/data_fetch', 'data_fetch' );
+
+			// Console data fetch.
+			$this->filter( 'rank_math/analytics/get_console_days', 'get_console_days' );
+			$this->action( 'rank_math/analytics/get_console_data', 'get_console_data' );
+			$this->action( 'rank_math/analytics/handle_console_response', 'handle_console_response' );
+
+			// Inspections data fetch.
+			$this->action( 'rank_math/analytics/get_inspections_data', 'get_inspections_data' );
+		}
 	}
 
 	/**
-	 * Perform these tasks daily.
+	 * Fetch missing console data.
 	 */
 	public function data_fetch() {
 		$this->check_for_missing_dates( 'console' );
@@ -76,20 +87,17 @@ class Jobs {
 			->selectCount( 'id' )
 			->getVar();
 
-
-		if ( ! empty( $rows ) ) {
-			return;
-		}
-
 		Workflow::kill_workflows();
 	}
 
 	/**
-	 * Process posts.
+	 * Add/update posts info from objects table.
 	 *
 	 * @param  array $ids Posts ids to process.
 	 */
 	public function do_flat_posts( $ids ) {
+		Inspections::kill_jobs();
+
 		foreach ( $ids as $id ) {
 			Watcher::get()->update_post_info( $id );
 		}
@@ -101,8 +109,11 @@ class Jobs {
 	public function clear_cache() {
 		global $wpdb;
 
-		// Delete all useless data from gsc.
+		// Delete all useless data from console data table.
 		$wpdb->get_results( "DELETE FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE page NOT IN ( SELECT page from {$wpdb->prefix}rank_math_analytics_objects )" );
+
+		// Delete useless data from inspections table too.
+		$wpdb->get_results( "DELETE FROM {$wpdb->prefix}rank_math_analytics_inspections WHERE page NOT IN ( SELECT page from {$wpdb->prefix}rank_math_analytics_objects )" );
 
 		delete_transient( 'rank_math_analytics_data_info' );
 		DB::purge_cache();
@@ -110,10 +121,46 @@ class Jobs {
 		$this->calculate_stats();
 
 		update_option( 'rank_math_analytics_last_updated', time() );
+
+		Workflow::do_workflow( 'inspections' );
 	}
 
 	/**
-	 * Get analytics data.
+	 * Set the console start and end dates.
+	 */
+	public function get_console_days( $args = [] ) {
+		set_time_limit( 300 );
+
+		$rows = Api::get()->get_search_analytics( $args['start_date'], $args['end_date'], [ 'date' ] );
+
+		if ( empty( $rows ) ) {
+			return [];
+		}
+
+		$empty_dates = get_option( 'rank_math_console_empty_dates', [] );
+
+		$dates = [];
+
+		foreach ( $rows as $row ) {
+
+			// Have at least few impressions.
+			if ( $row['impressions'] ) {
+				$date = $row['keys'][0];
+
+				if ( ! DB::date_exists( $date, 'console' ) && ! in_array( $date, $empty_dates, true ) ) {
+					$dates[] = [
+						'start_date' => $date,
+						'end_date'   => $date,
+					];
+				}
+			}
+		}
+
+		return $dates;
+	}
+
+	/**
+	 * Get console data.
 	 *
 	 * @param string $date Date to fetch data for.
 	 */
@@ -129,6 +176,63 @@ class Jobs {
 
 		try {
 			DB::add_query_page_bulk( $date, $rows );
+
+			// Clear the cache here.
+			$this->cache_flush_group( 'rank_math_rest_keywords_rows' );
+			$this->cache_flush_group( 'rank_math_posts_rows_by_objects' );
+			$this->cache_flush_group( 'rank_math_analytics_summary' );
+		} catch ( Exception $e ) {} // phpcs:ignore
+	}
+
+	/**
+	 * Handlle console response.
+	 *
+	 * @param array $data API request and response data.
+	 */
+	public function handle_console_response( $data = [] ) {
+		if ( 200 !== $data['code'] ) {
+			return;
+		}
+
+		if ( isset( $data['formatted_response']['rows'] ) && ! empty( $data['formatted_response']['rows'] ) ) {
+			return;
+		}
+
+		if ( ! isset( $data['args']['startDate'] ) ) {
+			return;
+		}
+
+		$dates = get_option( 'rank_math_console_empty_dates', [] );
+		if ( ! $dates ) {
+			$dates = [];
+		}
+
+		$dates[] = $data['args']['startDate'];
+		$dates[] = $data['args']['endDate'];
+
+		$dates = array_unique( $dates );
+
+		update_option( 'rank_math_console_empty_dates', $dates );
+	}
+
+	/**
+	 * Get inspection results from the API and store them in the database.
+	 *
+	 * @param string $page URI to fetch data for.
+	 */
+	public function get_inspections_data( $page ) {
+		// If the option is disabled, don't fetch data.
+		if ( ! \RankMath\Analytics\Url_Inspection::is_enabled() ) {
+			return;
+		}
+
+		$inspection = Url_Inspection::get()->get_inspection_data( $page );
+		if ( empty( $inspection ) ) {
+			return;
+		}
+
+		try {
+			DB::store_inspection( $inspection );
 		} catch ( Exception $e ) {} // phpcs:ignore
 	}
 
@@ -141,9 +245,10 @@ class Jobs {
 		$count = 1;
 		$hook  = "get_{$action}_data";
 		$start = Helper::get_midnight( time() + DAY_IN_SECONDS );
+		$days  = Helper::get_settings( 'general.console_caching_control', 90 );
 
-		for ( $current = 1; $current <= 90; $current++ ) {
-			$date = date_i18n( 'Y-m-d', $start - ( DAY_IN_SECONDS * $current ) );
+		for ( $current = 1; $current <= $days; $current++ ) {
+			$date = Helper::get_date( 'Y-m-d', $start - ( DAY_IN_SECONDS * $current ), false, true );
 			if ( ! DB::date_exists( $date, $action ) ) {
 				$count++;
 				as_schedule_single_action(

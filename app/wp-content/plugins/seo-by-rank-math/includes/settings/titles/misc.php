@@ -17,7 +17,11 @@ $cmb->add_field(
 		'id'      => 'disable_date_archives',
 		'type'    => 'switch',
 		'name'    => esc_html__( 'Date Archives', 'rank-math' ),
-		'desc'    => esc_html__( 'Enable or disable the date archive (_e.g: domain.com/2019/06/_). If this option is disabled, the date archives will be redirected to the homepage.', 'rank-math' ),
+		'desc'    => sprintf(
+			// Translators: placeholder is an example URL.
+			esc_html__( 'Enable or disable the date archives (e.g: %s). If this option is disabled, the date archives will be redirected to the homepage.', 'rank-math' ),
+			'<code>domain.com/2019/06/</code>'
+		),
 		'options' => [
 			'on'  => esc_html__( 'Disabled', 'rank-math' ),
 			'off' => esc_html__( 'Enabled', 'rank-math' ),
@@ -50,7 +54,7 @@ $cmb->add_field(
 		'dep'        => $dep,
 		'attributes' => [
 			'class'                  => 'cmb2-textarea-small wp-exclude-emoji',
-			'data-gramm_editor'      => 'false',
+			'data-gramm'             => 'false',
 			'rows'                   => 2,
 			'data-exclude-variables' => 'seo_title,seo_description',
 		],
@@ -67,7 +71,7 @@ $cmb->add_field(
 		'options'           => Helper::choices_robots(),
 		'select_all_button' => false,
 		'dep'               => $dep,
-		'classes'           => 'rank-math-advanced-option',
+		'classes'           => 'rank-math-advanced-option rank-math-robots-data',
 	]
 );
 
@@ -121,10 +125,10 @@ $cmb->add_field(
 
 $cmb->add_field(
 	[
-		'id'      => 'noindex_paginated_pages',
+		'id'      => 'noindex_archive_subpages',
 		'type'    => 'toggle',
-		'name'    => esc_html__( 'Noindex Paginated Pages', 'rank-math' ),
-		'desc'    => wp_kses_post( __( 'Set this to on to prevent /page/2 and further of any archive to show up in the search results.', 'rank-math' ) ),
+		'name'    => esc_html__( 'Noindex Subpages', 'rank-math' ),
+		'desc'    => esc_html__( 'Prevent all paginated pages from getting indexed by search engines.', 'rank-math' ),
 		'default' => 'off',
 		'classes' => 'rank-math-advanced-option',
 	]
@@ -132,10 +136,10 @@ $cmb->add_field(
 
 $cmb->add_field(
 	[
-		'id'      => 'noindex_archive_subpages',
+		'id'      => 'noindex_paginated_pages',
 		'type'    => 'toggle',
-		'name'    => esc_html__( 'Noindex Archive Subpages', 'rank-math' ),
-		'desc'    => esc_html__( 'Prevent paginated archive pages from getting indexed by search engines.', 'rank-math' ),
+		'name'    => esc_html__( 'Noindex Paginated Single Pages', 'rank-math' ),
+		'desc'    => esc_html__( 'Prevent paginated pages of single pages and posts to show up in the search results. This also applies for the Blog page.', 'rank-math' ),
 		'default' => 'off',
 		'classes' => 'rank-math-advanced-option',
 	]

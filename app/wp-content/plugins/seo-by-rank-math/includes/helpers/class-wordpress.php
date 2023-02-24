@@ -18,6 +18,8 @@ use MyThemeShop\Helpers\Str;
 use RankMath\Helpers\Security;
 use MyThemeShop\Helpers\WordPress as WP_Helper;
 use RankMath\Role_Manager\Capability_Manager;
+use stdClass;
+use WP_Screen;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -35,8 +37,7 @@ trait WordPress {
 	 * @param int    $status   Status code to use.
 	 */
 	public static function redirect( $location, $status = 302 ) {
-		header( 'X-Redirect-By: Rank Math' );
-		wp_safe_redirect( $location, $status );
+		wp_safe_redirect( $location, $status, 'Rank Math' );
 		exit;
 	}
 
@@ -75,10 +76,11 @@ trait WordPress {
 	 * @param  string $key      Internal key of the value to get (without prefix).
 	 * @param  mixed  $term     Term to get the meta value for either (string) term name, (int) term ID or (object) term.
 	 * @param  string $taxonomy Name of the taxonomy to which the term is attached.
+	 * @param  string $default  Default value to use.
 	 * @return mixed
 	 */
-	public static function get_term_meta( $key, $term = 0, $taxonomy = '' ) {
-		return Term::get_meta( $key, $term, $taxonomy );
+	public static function get_term_meta( $key, $term = 0, $taxonomy = '', $default = '' ) {
+		return Term::get_meta( $key, $term, $taxonomy, $default );
 	}
 
 	/**
@@ -88,10 +90,11 @@ trait WordPress {
 	 *
 	 * @param  string $key  Internal key of the value to get (without prefix).
 	 * @param  mixed  $user User to get the meta value for either (int) user ID or (object) user.
+	 * @param  string $default  Default value to use.
 	 * @return mixed
 	 */
-	public static function get_user_meta( $key, $user = 0 ) {
-		return User::get_meta( $key, $user );
+	public static function get_user_meta( $key, $user = 0, $default = '' ) {
+		return User::get_meta( $key, $user, $default );
 	}
 
 	/**
@@ -252,7 +255,11 @@ trait WordPress {
 	 */
 	public static function get_thumbnail_with_fallback( $post_id, $size = 'thumbnail' ) {
 		if ( has_post_thumbnail( $post_id ) ) {
-			return wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $size );
+			$thumbnail_id     = get_post_thumbnail_id( $post_id );
+			$image            = wp_get_attachment_image_src( $thumbnail_id, $size );
+			$image['caption'] = $image ? get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) : '';
+
+			return self::validate_image_data( $image );
 		}
 
 		preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches );
@@ -262,15 +269,15 @@ trait WordPress {
 		}
 
 		$fb_image = Helper::get_post_meta( 'facebook_image_id', $post_id );
-		$tw_image = Helper::get_post_meta( 'twitter_image_id', $post_id );
+		$tw_image = Helper::get_post_meta( 'twitter_image_id', $post_id, Helper::get_settings( 'titles.open_graph_image_id' ) );
 		$og_image = $fb_image ? $fb_image : $tw_image;
-
-		if ( $og_image ) {
-			return wp_get_attachment_image_src( $og_image, $size );
+		if ( ! $og_image ) {
+			return false;
 		}
 
-		$default_og = Helper::get_settings( 'titles.open_graph_image_id' );
-		return $default_og ? wp_get_attachment_image_src( $default_og, $size ) : false;
+		$image            = wp_get_attachment_image_src( $og_image, $size );
+		$image['caption'] = $image ? get_post_meta( $og_image, '_wp_attachment_image_alt', true ) : '';
+		return self::validate_image_data( $image );
 	}
 
 	/**
@@ -321,19 +328,21 @@ trait WordPress {
 	 * @return array
 	 */
 	public static function get_robots_defaults() {
-		$screen = get_current_screen();
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : new stdClass();
 		$robots = Helper::get_settings( 'titles.robots_global', [] );
 
-		if ( 'post' === $screen->base && Helper::get_settings( "titles.pt_{$screen->post_type}_custom_robots" ) ) {
-			$robots = Helper::get_settings( "titles.pt_{$screen->post_type}_robots", [] );
-		}
+		if ( $screen instanceof WP_Screen ) {
+			if ( in_array( $screen->base, [ 'post', 'edit' ], true ) && isset( $screen->post_type ) && Helper::get_settings( "titles.pt_{$screen->post_type}_custom_robots" ) ) {
+				$robots = Helper::get_settings( "titles.pt_{$screen->post_type}_robots", [] );
+			}
 
-		if ( 'term' === $screen->base && Helper::get_settings( "titles.tax_{$screen->taxonomy}_custom_robots" ) ) {
-			$robots = Helper::get_settings( "titles.tax_{$screen->taxonomy}_robots", [] );
-		}
+			if ( in_array( $screen->base, [ 'term', 'edit-tags' ], true ) && isset( $screen->taxonomy ) && Helper::get_settings( "titles.tax_{$screen->taxonomy}_custom_robots" ) ) {
+				$robots = Helper::get_settings( "titles.tax_{$screen->taxonomy}_robots", [] );
+			}
 
-		if ( in_array( $screen->base, [ 'profile', 'user-edit' ], true ) && Helper::get_settings( 'titles.author_custom_robots' ) ) {
-			$robots = Helper::get_settings( 'titles.author_robots', [] );
+			if ( in_array( $screen->base, [ 'profile', 'user-edit' ], true ) && Helper::get_settings( 'titles.author_custom_robots' ) ) {
+				$robots = Helper::get_settings( 'titles.author_robots', [] );
+			}
 		}
 
 		if ( is_array( $robots ) && ! in_array( 'noindex', $robots, true ) ) {
@@ -349,19 +358,22 @@ trait WordPress {
 	 * @return array
 	 */
 	public static function get_advanced_robots_defaults() {
-		$screen          = get_current_screen();
+		$screen          = function_exists( 'get_current_screen' ) ? get_current_screen() : new stdClass();
 		$advanced_robots = Helper::get_settings( 'titles.advanced_robots_global', [] );
 
-		if ( 'post' === $screen->base && Helper::get_settings( "titles.pt_{$screen->post_type}_custom_robots" ) ) {
-			$advanced_robots = Helper::get_settings( "titles.pt_{$screen->post_type}_advanced_robots", [] );
-		}
+		if ( $screen instanceof WP_Screen ) {
 
-		if ( 'term' === $screen->base && Helper::get_settings( "titles.tax_{$screen->taxonomy}_custom_robots" ) ) {
-			$advanced_robots = Helper::get_settings( "titles.tax_{$screen->taxonomy}_advanced_robots", [] );
-		}
+			if ( 'post' === $screen->base && Helper::get_settings( "titles.pt_{$screen->post_type}_custom_robots" ) ) {
+				$advanced_robots = Helper::get_settings( "titles.pt_{$screen->post_type}_advanced_robots", [] );
+			}
 
-		if ( in_array( $screen->base, [ 'profile', 'user-edit' ], true ) && Helper::get_settings( 'titles.author_custom_robots' ) ) {
-			$advanced_robots = Helper::get_settings( 'titles.author_advanced_robots', [] );
+			if ( 'term' === $screen->base && Helper::get_settings( "titles.tax_{$screen->taxonomy}_custom_robots" ) ) {
+				$advanced_robots = Helper::get_settings( "titles.tax_{$screen->taxonomy}_advanced_robots", [] );
+			}
+
+			if ( in_array( $screen->base, [ 'profile', 'user-edit' ], true ) && Helper::get_settings( 'titles.author_custom_robots' ) ) {
+				$advanced_robots = Helper::get_settings( 'titles.author_advanced_robots', [] );
+			}
 		}
 
 		return $advanced_robots;
@@ -423,7 +435,12 @@ trait WordPress {
 			return false;
 		}
 
-		$screen = get_current_screen();
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
+
+		if ( ! $screen instanceof WP_Screen ) {
+			return false;
+		}
+
 		if ( method_exists( $screen, 'is_block_editor' ) ) {
 			return $screen->is_block_editor();
 		}
@@ -433,6 +450,26 @@ trait WordPress {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Validate Image data. Remove empty values and add default height and width to image
+	 *
+	 * @param  array $image The Image data.
+	 * @return array Array of image data
+	 *
+	 * @since 1.0.64
+	 */
+	private static function validate_image_data( $image ) {
+		$image = array_filter( $image );
+		if ( empty( $image ) ) {
+			return [];
+		}
+
+		$image[1] = isset( $image[1] ) ? $image[1] : 200;
+		$image[2] = isset( $image[2] ) ? $image[2] : 200;
+
+		return $image;
 	}
 
 	/**
@@ -520,5 +557,21 @@ trait WordPress {
 		$classes = array_filter( $classes );
 
 		return implode( ' ', $classes );
+	}
+
+	/**
+	 * An helper function get the home_url without the WPML language parameter.
+	 *
+	 * @param string $path   Path relative to the home URL.
+	 * @param string $scheme Scheme to give the home URL context.
+	 *
+	 * @return string
+	 */
+	public static function get_home_url( $path = '', $scheme = null ) {
+		Sitepress::get()->remove_home_url_filter();
+		$home_url = home_url( $path, $scheme );
+		Sitepress::get()->restore_home_url_filter();
+
+		return $home_url;
 	}
 }

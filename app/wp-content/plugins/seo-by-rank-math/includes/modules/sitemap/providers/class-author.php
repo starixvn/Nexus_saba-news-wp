@@ -1,6 +1,6 @@
 <?php
 /**
- * The Sitemap Module
+ * The sitemap provider for author archives.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -15,6 +15,7 @@ namespace RankMath\Sitemap\Providers;
 
 use RankMath\Helper;
 use RankMath\Sitemap\Router;
+use RankMath\Sitemap\Sitemap;
 use RankMath\Traits\Hooker;
 
 defined( 'ABSPATH' ) || exit;
@@ -42,7 +43,7 @@ class Author implements Provider {
 	 * @return boolean
 	 */
 	public function handles_type( $type ) {
-		return 'author' === $type;
+		return 'author' === $type && Helper::get_settings( 'sitemap.authors_sitemap' );
 	}
 
 	/**
@@ -52,6 +53,10 @@ class Author implements Provider {
 	 * @return array
 	 */
 	public function get_index_links( $max_entries ) {
+		if ( ! Helper::get_settings( 'sitemap.authors_sitemap' ) ) {
+			return [];
+		}
+
 		$users = $this->get_users();
 
 		if ( empty( $users ) ) {
@@ -89,6 +94,11 @@ class Author implements Provider {
 	 */
 	public function get_sitemap_links( $type, $max_entries, $current_page ) {
 		$links = [];
+
+		if ( $current_page < 1 ) {
+			$current_page = 1;
+		}
+
 		$users = $this->get_users(
 			[
 				'offset' => ( $current_page - 1 ) * $max_entries,
@@ -100,6 +110,7 @@ class Author implements Provider {
 			return $links;
 		}
 
+		Sitemap::maybe_redirect( count( $users ), $max_entries );
 		foreach ( $users as $user ) {
 			$url = $this->get_sitemap_url( $user );
 			if ( ! empty( $url ) ) {

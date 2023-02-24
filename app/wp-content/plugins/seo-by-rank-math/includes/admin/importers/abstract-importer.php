@@ -128,7 +128,7 @@ abstract class Plugin_Importer {
 				'postmeta'     => esc_html__( 'Import Post Meta', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import meta information of your posts/pages like the focus keyword, titles, descriptions, robots meta, OpenGraph info, etc.', 'rank-math' ) ),
 				'termmeta'     => esc_html__( 'Import Term Meta', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import data like category, tag, and CPT meta data from SEO.', 'rank-math' ) ),
 				'usermeta'     => esc_html__( 'Import Author Meta', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import meta information like titles, descriptions, focus keyword, robots meta, etc., of your author archive pages.', 'rank-math' ) ),
-				'redirections' => esc_html__( 'Import Redirections', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import all the redirections you have already set up in.', 'rank-math' ) ),
+				'redirections' => esc_html__( 'Import Redirections', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import all the redirections you have already set up in Yoast Premium.', 'rank-math' ) ),
 				'blocks'       => esc_html__( 'Import Blocks', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import and convert all compatible blocks in post contents.', 'rank-math' ) ),
 				'locations'    => esc_html__( 'Import Locations', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import Locations Settings from Yoast plugin.', 'rank-math' ) ),
 				'news'         => esc_html__( 'Import News Settings', 'rank-math' ) . Admin_Helper::get_tooltip( esc_html__( 'Import News Settings from Yoast News Add-on.', 'rank-math' ) ),
@@ -216,7 +216,7 @@ abstract class Plugin_Importer {
 	 * @return mixed
 	 */
 	private function format_message( $result, $action, $message ) {
-		if ( 'blocks' === $action ) {
+		if ( 'blocks' === $action || 'recalculate' === $action ) {
 			return is_array( $result ) ? sprintf( $message, $result['start'], $result['end'], $result['total_items'] ) : $result;
 		}
 
@@ -521,9 +521,13 @@ abstract class Plugin_Importer {
 			return false;
 		}
 
-		$table = DB::query_builder( 'options' )->selectCount( '*', 'count' );
+		$table = DB::query_builder( 'options' )->select( 'option_id' );
 		foreach ( $this->option_keys as $option_key ) {
-			$table->orWhere( 'option_name', $option_key );
+			if ( '%' === substr( $option_key, -1 ) ) {
+				$table->orWhereLike( 'option_name', substr( $option_key, 0, -1 ), '' );
+			} else {
+				$table->orWhere( 'option_name', $option_key );
+			}
 		}
 
 		return absint( $table->getVar() ) > 0 ? true : false;
@@ -539,7 +543,21 @@ abstract class Plugin_Importer {
 			return false;
 		}
 
-		$result = DB::query_builder( 'postmeta' )->selectCount( '*', 'count' )->whereLike( 'meta_key', $this->meta_key )->getVar();
+		$result = DB::query_builder( 'postmeta' )->select( 'meta_id' )->whereLike( 'meta_key', $this->meta_key, '' )->getVar();
 		return absint( $result ) > 0 ? true : false;
+	}
+
+	/**
+	 * Recalculate SEO scores.
+	 */
+	private function recalculate() {
+		$this->set_pagination( \RankMath\Tools\Update_Score::get()->find( false ) );
+
+		$return = $this->get_pagination_arg();
+		$data   = \RankMath\Tools\Update_Score::get()->update_seo_score();
+
+		$return['data'] = $data;
+
+		return $return;
 	}
 }

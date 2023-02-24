@@ -21,9 +21,9 @@ defined( 'ABSPATH' ) || exit;
 class Block {
 
 	/**
-	 * [clean_text description]
+	 * Function to certain tags from the text.
 	 *
-	 * @param [type] $text [description].
+	 * @param string $text Block content.
 	 *
 	 * @return string
 	 */
@@ -32,13 +32,13 @@ class Block {
 	}
 
 	/**
-	 * [get_image description]
+	 * Function to get the block image.
 	 *
-	 * @param array  $attrs [description].
-	 * @param string $size  [description].
-	 * @param string $class [description].
+	 * @param array  $attrs Block attributes data.
+	 * @param string $size  Image size.
+	 * @param string $class Attachment image class.
 	 *
-	 * @return [type]           [description]
+	 * @return string The HTML image element.
 	 */
 	protected function get_image( $attrs, $size = 'thumbnail', $class = 'class=alignright' ) {
 		if ( ! isset( $attrs['imageID'] ) ) {
@@ -104,5 +104,23 @@ class Block {
 		}
 
 		return 'div';
+	}
+
+	/**
+	 * Normalize the block text.
+	 *
+	 * @param string $text  Text.
+	 * @param string $block Block name.
+	 *
+	 * @return string
+	 */
+	protected function normalize_text( $text, $block ) {
+		/**
+		 * Filter: Allow developers to preserve line breaks.
+		 *
+		 * @param bool   $return If set, this will convert all remaining line breaks after paragraphing.
+		 * @param string $block  Block name.
+		 */
+		return wpautop( $text, apply_filters( 'rank_math/block/preserve_line_breaks', true, $block ) );
 	}
 }

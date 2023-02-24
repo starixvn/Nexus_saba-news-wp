@@ -1,6 +1,6 @@
 <?php
 /**
- * The Sitemap provider for post type.
+ * The sitemap provider for post types.
  *
  * @since      0.9.0
  * @package    RankMath
@@ -162,11 +162,12 @@ class Post_Type implements Provider {
 	 */
 	public function get_sitemap_links( $type, $max_entries, $current_page ) {
 		$links     = [];
-		$steps     = min( 100, $max_entries );
+		$steps     = $max_entries;
 		$offset    = ( $current_page > 1 ) ? ( ( $current_page - 1 ) * $max_entries ) : 0;
 		$total     = ( $offset + $max_entries );
 		$typecount = $this->get_post_type_count( $type );
 
+		Sitemap::maybe_redirect( $typecount, $max_entries );
 		if ( $total > $typecount ) {
 			$total = $typecount;
 		}

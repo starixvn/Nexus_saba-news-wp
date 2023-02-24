@@ -3,8 +3,8 @@ Contributors: kevinvess
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=forcelogin%40vess%2eme&lc=US&item_name=Force%20Login%20for%20WordPress&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: privacy, private, protected, registered only, restricted, access, closed, force user login, hidden, login, password
 Requires at least: 4.6
-Tested up to: 5.5
-Stable tag: 5.5
+Tested up to: 6.1
+Stable tag: 5.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,9 +47,9 @@ By default, the plugin sends visitors back to the URL they tried to access. Howe
 
 = 2. How can I add exceptions for certain pages or posts? =
 
-You can bypass Force Login based on any condition or specify an array of URLs to allow by adding the following filter to your functions.php file.
+You can bypass Force Login based on any condition by adding the following filter to your functions.php file.
 
-You may also use the WordPress [Conditional Tags](https://developer.wordpress.org/themes/references/list-of-conditional-tags/).
+You may use the WordPress [Conditional Tags](https://developer.wordpress.org/themes/references/list-of-conditional-tags/) in your code.
 
 `
 /**
@@ -60,18 +60,10 @@ You may also use the WordPress [Conditional Tags](https://developer.wordpress.or
  * @return bool
  */
 function my_forcelogin_bypass( $bypass, $visited_url ) {
-  // Allow all single posts
-  if ( is_single() ) {
-    $bypass = true;
-  }
 
-  // Allow these absolute URLs
-  $allowed = array(
-    home_url( '/mypage/' ),
-    home_url( '/2015/03/post-title/' ),
-  );
-  if ( ! $bypass ) {
-    $bypass = in_array( $visited_url, $allowed );
+  // Allow 'My Page' to be publicly accessible
+  if ( is_page('my-page') ) {
+    $bypass = true;
   }
 
   return $bypass;
@@ -79,18 +71,9 @@ function my_forcelogin_bypass( $bypass, $visited_url ) {
 add_filter( 'v_forcelogin_bypass', 'my_forcelogin_bypass', 10, 2 );
 `
 
-= 3. How can I add exceptions for dynamic URLs? =
+Check out the [Force Login Wiki on GitHub](https://github.com/kevinvess/wp-force-login/wiki) for additional examples to allow URLs to be publicly accessible.
 
-Some URLs have unique query strings appended to the end of it, which is composed of a series of parameter-value pairs.
-
-For example:
-`
-//example.com/mypage/?parameter=value
-`
-
-Checkout the [Force Login Wiki on GitHub](https://github.com/kevinvess/wp-force-login/wiki/Bypass-Dynamic-URLs) for examples of the different methods for allowing dynamic URLs.
-
-= 4. How do I hide the "← Back to {sitename}" link? =
+= 3. How do I hide the "← Back to {sitename}" link? =
 
 The WordPress login screen includes a "← Back to {sitename}" link below the login form; which may not actually take you back to the site while Force Login is activated. You can hide this link by adding the following action to your functions.php file.
 
@@ -106,6 +89,19 @@ add_action( 'login_enqueue_scripts', 'my_forcelogin_hide_backtoblog' );
 
 
 == Changelog ==
+
+= 5.6.3 =
+* Fix - Fixed issue for sites with a custom login URL.
+
+= 5.6.2 =
+* Fix - Fixed issue for sites with a custom login URL.
+
+= 5.6.1 =
+* Fix - Fixed too many redirects issue for Multisite users.
+
+= 5.6 =
+* Feature - Added filter for Multisite unauthorized error message.
+* Tweak - Allow logged-in Multisite users to access bypassed pages of other sites.
 
 = 5.5 =
 * Tweak - Deprecated whitelist filter, use v_forcelogin_bypass instead.

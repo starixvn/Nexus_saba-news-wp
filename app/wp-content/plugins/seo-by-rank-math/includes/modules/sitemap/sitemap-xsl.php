@@ -1,6 +1,6 @@
 <?php
 /**
- * Sitemap stylesheet.
+ * The XSL stylesheet output.
  *
  * @package    RankMath
  * @subpackage RankMath\Sitemap
@@ -25,7 +25,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
-				<title><?php echo esc_html( $title ); ?></title>
+				<xsl:choose>
+					<xsl:when test="kml:kml">
+						<title><?php echo esc_html( $kml_title ); ?></title>
+					</xsl:when>
+					<xsl:otherwise>
+						<title><?php echo esc_html( $title ); ?></title>
+					</xsl:otherwise>
+				</xsl:choose>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 				<style type="text/css">
 					body {
@@ -75,7 +82,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 						max-width: 75%;
 						margin: 0 auto;
 					}
-
 					table {
 						border: none;
 						border-collapse: collapse;
@@ -86,7 +92,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 						background-color: #4275f4;
 						color: #fff;
 						text-align: left;
-						padding: 15px;
+						padding: 15px 10px;
 						font-size: 14px;
 						cursor: pointer;
 					}
@@ -145,13 +151,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 						<div id="content">
 							<p class="expl">
-								This KML file contains <xsl:value-of select="count(kml:kml/kml:Document/kml:Placemark)"/> Locations.
+								This KML file contains <xsl:value-of select="count(kml:kml/kml:Document/kml:Folder/kml:Placemark)"/> Locations.
 							</p>
 							<p class="expl">
 								<?php
 								printf(
 									/* translators: xsl value count */
-									__( '<a href="%s">&#8592; Sitemap Index</a>', 'rank-math' ),
+									wp_kses_post( __( '<a href="%s">&#8592; Sitemap Index</a>', 'rank-math' ) ),
 									esc_url( Router::get_base_url( 'sitemap_index.xml' ) )
 								);
 								?>
@@ -169,7 +175,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 								<tbody>
 									<xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
 									<xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
-									<xsl:for-each select="kml:kml/kml:Document/kml:Placemark">
+									<xsl:for-each select="kml:kml/kml:Document/kml:Folder/kml:Placemark">
 										<tr>
 											<td>
 												<xsl:variable name="itemURL">
@@ -238,7 +244,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 									<?php
 									printf(
 										/* translators: xsl value count */
-										__( 'This XML Sitemap Index file contains <strong>%s</strong> sitemaps.', 'rank-math' ),
+										wp_kses_post( __( 'This XML Sitemap Index file contains <strong>%s</strong> sitemaps.', 'rank-math' ) ),
 										'<xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/>'
 									);
 									?>
@@ -277,7 +283,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 									<?php
 									printf(
 										/* translators: xsl value count */
-										__( 'This XML Sitemap contains <strong>%s</strong> URLs.', 'rank-math' ),
+										wp_kses_post( __( 'This XML Sitemap contains <strong>%s</strong> URLs.', 'rank-math' ) ),
 										'<xsl:value-of select="count(sitemap:urlset/sitemap:url)"/>'
 									);
 									?>
@@ -287,7 +293,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 									<?php
 									printf(
 										/* translators: xsl value count */
-										__( '<a href="%s">&#8592; Sitemap Index</a>', 'rank-math' ),
+										wp_kses_post( __( '<a href="%s">&#8592; Sitemap Index</a>', 'rank-math' ) ),
 										esc_url( Router::get_base_url( 'sitemap_index.xml' ) )
 									);
 									?>
@@ -297,9 +303,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 									<thead>
 										<tr>
-											<th width="80%"><?php esc_html_e( 'URL', 'rank-math' ); ?></th>
+											<th width="75%"><?php esc_html_e( 'URL', 'rank-math' ); ?></th>
 											<?php if ( Helper::get_settings( 'sitemap.include_images' ) ) : // phpcs:ignore ?><th width="5%"><?php esc_html_e( 'Images', 'rank-math' ); ?></th><?php endif; ?>
-											<th title="Last Modification Time" width="15%"><?php esc_html_e( 'Last Mod.', 'rank-math' ); ?></th>
+											<th title="Last Modification Time" width="20%"><?php esc_html_e( 'Last Mod.', 'rank-math' ); ?></th>
 										</tr>
 									</thead>
 

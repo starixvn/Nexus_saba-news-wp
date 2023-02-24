@@ -9,6 +9,7 @@
 
 namespace RankMath;
 
+use RankMath\KB;
 use RankMath\Post;
 use RankMath\Helper;
 use RankMath\Traits\Hooker;
@@ -39,7 +40,7 @@ class Frontend_SEO_Score {
 	private $css_added = false;
 
 	/**
-	 * Magic method to use in case the class would be sent to string.
+	 * Convenience method to output as string.
 	 *
 	 * @return string
 	 */
@@ -54,7 +55,6 @@ class Frontend_SEO_Score {
 	 */
 	public function __construct() {
 		$this->filter( 'the_content', 'insert_score' );
-		$this->action( 'rank_math/metabox/settings/advanced', 'metabox_settings_advanced', 11 );
 
 		$this->add_shortcode( 'rank_math_seo_score', 'shortcode' );
 	}
@@ -139,7 +139,7 @@ class Frontend_SEO_Score {
 
 		// If template is empty we output $score value directly.
 		$html     = $score;
-		$backlink = '<a href="https://rankmath.com" target="_blank" rel="noopener">Rank Math SEO</a>';
+		$backlink = '<a href="' . KB::get( 'seo-suite', 'Frontend SEO score' ) . '" target="_blank" rel="noopener">Rank Math SEO</a>';
 		if ( ! empty( $args['template'] ) ) {
 			ob_start();
 
@@ -234,27 +234,6 @@ class Frontend_SEO_Score {
 		$post_type = get_post_type();
 		return Helper::get_settings( 'general.frontend_seo_score' ) &&
 			in_array( $post_type, (array) Helper::get_settings( 'general.frontend_seo_score_post_types' ), true );
-	}
-
-	/**
-	 * Metabox settings in advanced tab.
-	 *
-	 * @param \CMB2 $cmb The CMB2 metabox object.
-	 */
-	public function metabox_settings_advanced( $cmb ) {
-		$cmb->add_field(
-			[
-				'id'         => 'rank_math_dont_show_seo_score',
-				'type'       => 'switch',
-				'name'       => esc_html__( 'Show SEO Score on Front-end', 'rank-math' ),
-				'options'    => [
-					'on'  => esc_html__( 'Off', 'rank-math' ),
-					'off' => esc_html__( 'On', 'rank-math' ),
-				],
-				'show_on_cb' => [ $this, 'show_on' ],
-				'default'    => Admin_Helper::is_home_page() ? 'on' : 'off',
-			]
-		);
 	}
 
 	/**

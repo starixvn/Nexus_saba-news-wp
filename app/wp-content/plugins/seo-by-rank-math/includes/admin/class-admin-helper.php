@@ -12,6 +12,7 @@
 
 namespace RankMath\Admin;
 
+use RankMath\KB;
 use RankMath\Helper;
 use RankMath\Data_Encryption;
 use RankMath\Helpers\Security;
@@ -31,12 +32,19 @@ class Admin_Helper {
 	 * @return array
 	 */
 	public static function get_htaccess_data() {
-		if ( ! function_exists( 'get_home_path' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
+		if ( ! Helper::is_filesystem_direct() ) {
+			return [
+				'content'  => '',
+				'writable' => false,
+			];
 		}
-		$wp_filesystem = WordPress::get_filesystem();
-		$htaccess_file = get_home_path() . '.htaccess';
 
+		$wp_filesystem = WordPress::get_filesystem();
+		if ( empty( $wp_filesystem ) ) {
+			return;
+		}
+
+		$htaccess_file = get_home_path() . '.htaccess';
 		return ! $wp_filesystem->exists( $htaccess_file ) ? false : [
 			'content'  => $wp_filesystem->get_contents( $htaccess_file ),
 			'writable' => $wp_filesystem->is_writable( $htaccess_file ),
@@ -66,7 +74,7 @@ class Admin_Helper {
 		$view = rank_math()->admin_dir() . "views/{$view}.php";
 
 		if ( ! file_exists( $view ) ) {
-			wp_redirect( Helper::get_admin_url() );
+			Helper::redirect( Helper::get_admin_url() );
 			exit;
 		}
 
@@ -118,6 +126,7 @@ class Admin_Helper {
 				}
 			}
 
+			Helper::remove_notification( 'rank-math-site-url-mismatch' );
 			update_option( 'rank_math_registration_skip', 1 );
 			return update_option( $row, $data );
 		}
@@ -134,7 +143,64 @@ class Admin_Helper {
 			}
 		}
 
+		if ( ! self::is_valid_registration( $options ) ) {
+			// Delete invalid registration data.
+			delete_option( $row );
+
+			// Ask the user to reconnect.
+			Helper::add_notification(
+				__( 'Unable to validate Rank Math SEO registration data.', 'rank-math' ) .
+				' <a href="' . esc_url( self::get_activate_url() ) . '">' . __( 'Please try reconnecting.', 'rank-math' ) . '</a> ' .
+				sprintf(
+					/* translators: KB Link */
+					__( 'If the issue persists, please try the solution described in our Knowledge Base article: %s', 'rank-math' ),
+					'<a href="' . KB::get( 'unable-to-encrypt', 'Registration Data' ) . '" target="_blank">' . __( '[3. Unable to Encrypt]', 'rank-math' ) . '</a>'
+				),
+				[ 'type' => 'error' ]
+			);
+
+			return false;
+		}
+
+		/**
+		 * Filter whether we need to check for URL mismatch or not.
+		 */
+		$do_url_check = apply_filters( 'rank_math/registration/do_url_check', ! get_option( 'rank_math_siteurl_mismatch_notice_dismissed' ) );
+		if ( $do_url_check && isset( $options['site_url'] ) && Helper::get_home_url() !== $options['site_url'] ) {
+			$message = esc_html__( 'Seems like your site URL has changed since you connected to Rank Math.', 'rank-math' ) . ' <a href="' . self::get_activate_url() . '">' . esc_html__( 'Click here to reconnect.', 'rank-math' ) . '</a>';
+			Helper::add_notification(
+				$message,
+				[
+					'type' => 'warning',
+					'id'   => 'rank-math-site-url-mismatch',
+				]
+			);
+		}
+
 		return $options;
+	}
+
+	/**
+	 * Check if registration data is valid.
+	 *
+	 * @param array $data Registration data.
+	 *
+	 * @return bool
+	 */
+	public static function is_valid_registration( $data ) {
+		if ( empty( $data['username'] ) || empty( $data['email'] ) || empty( $data['api_key'] ) || empty( $data['plan'] ) ) {
+			return false;
+		}
+
+		if ( ! filter_var( $data['email'], FILTER_VALIDATE_EMAIL ) ) {
+			return false;
+		}
+
+		if ( strlen( $data['plan'] ) > 32 ) { // This can happen when the decryption fails for some reason.
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -147,7 +213,7 @@ class Admin_Helper {
 	}
 
 	/**
-	 * Is user plan expire.
+	 * Is user plan expired.
 	 *
 	 * @return boolean
 	 */
@@ -168,6 +234,8 @@ class Admin_Helper {
 		if ( $registered && isset( $registered['username'] ) && isset( $registered['api_key'] ) ) {
 			Api::get()->deactivate_site( $registered['username'], $registered['api_key'] );
 			self::get_registration_data( false );
+
+			do_action( 'rank_math/deregister_site' );
 		}
 	}
 
@@ -200,8 +268,7 @@ class Admin_Helper {
 	 */
 	public static function is_post_edit() {
 		global $pagenow;
-
-		return 'post.php' === $pagenow || 'post-new.php' === $pagenow;
+		return ! Helper::is_ux_builder() && ( 'post.php' === $pagenow || 'post-new.php' === $pagenow );
 	}
 
 	/**
@@ -297,7 +364,7 @@ class Admin_Helper {
 					'view'  => 'help',
 					'nonce' => wp_create_nonce( 'rank_math_register_product' ),
 				],
-				admin_url( 'admin.php' )
+				( is_multisite() && is_plugin_active_for_network( plugin_basename( RANK_MATH_FILE ) ) ) ? network_admin_url( 'admin.php' ) : admin_url( 'admin.php' )
 			);
 		} else {
 			$redirect_to = Security::add_query_arg_raw(
@@ -315,7 +382,7 @@ class Admin_Helper {
 
 		return apply_filters(
 			'rank_math/license/activate_url',
-			Security::add_query_arg_raw( $args, 'https://rankmath.com/auth/' ),
+			Security::add_query_arg_raw( $args, 'https://rankmath.com/auth' ),
 			$args
 		);
 	}
@@ -329,6 +396,11 @@ class Admin_Helper {
 	 */
 	public static function is_home_page() {
 		$front_page = (int) get_option( 'page_on_front' );
+
+		if ( Helper::is_divi_frontend_editor() ) {
+			$p = get_post();
+			return ! empty( $p->ID ) && $p->ID === $front_page;
+		}
 
 		return $front_page && self::is_post_edit() && (int) Param::get( 'post' ) === $front_page;
 	}
@@ -353,5 +425,35 @@ class Admin_Helper {
 	 */
 	public static function get_trends_icon_svg() {
 		return '<svg viewBox="0 0 610 610"><path d="M18.85,446,174.32,290.48l58.08,58.08L76.93,504a14.54,14.54,0,0,1-20.55,0L18.83,466.48a14.54,14.54,0,0,1,0-20.55Z" style="fill:#4285f4"/><path d="M242.65,242.66,377.59,377.6l-47.75,47.75a14.54,14.54,0,0,1-20.55,0L174.37,290.43l47.75-47.75A14.52,14.52,0,0,1,242.65,242.66Z" style="fill:#ea4335"/><polygon points="319.53 319.53 479.26 159.8 537.34 217.88 377.61 377.62 319.53 319.53" style="fill:#fabb05"/><path d="M594.26,262.73V118.61h0a16.94,16.94,0,0,0-16.94-16.94H433.2a16.94,16.94,0,0,0-12,28.92L565.34,274.71h0a16.94,16.94,0,0,0,28.92-12Z" style="fill:#34a853"/><rect width="610" height="610" style="fill:none"/></svg>';
+	}
+
+	/**
+	 * Check if siteurl & home options are both valid URLs.
+	 *
+	 * @return boolean
+	 */
+	public static function is_site_url_valid() {
+		return (bool) filter_var( get_option( 'siteurl' ), FILTER_VALIDATE_URL ) && (bool) filter_var( get_option( 'home' ), FILTER_VALIDATE_URL );
+	}
+
+	/**
+	 * Maybe show notice about invalid siteurl.
+	 */
+	public static function maybe_show_invalid_siteurl_notice() {
+		if ( ! self::is_site_url_valid() ) {
+			?>
+			<p class="notice notice-warning notice-alt notice-connect-disabled">
+				<?php
+				printf(
+					// Translators: 1 is "WordPress Address (URL)", 2 is "Site Address (URL)", 3 is a link to the General Settings, with "WordPress General Settings" as anchor text.
+					esc_html__( 'Rank Math cannot be connected because your site URL doesn\'t appear to be a valid URL. If the domain name contains special characters, please make sure to use the encoded version in the %1$s &amp; %2$s fields on the %3$s page.', 'rank-math' ),
+					'<strong>' . esc_html__( 'WordPress Address (URL)', 'rank-math' ) . '</strong>',
+					'<strong>' . esc_html__( 'Site Address (URL)', 'rank-math' ) . '</strong>',
+					'<a href="' . esc_url( admin_url( 'options-general.php' ) ) . '">' . esc_html__( 'WordPress General Settings', 'rank-math' ) . '</a>'
+				);
+				?>
+			</p>
+			<?php
+		}
 	}
 }

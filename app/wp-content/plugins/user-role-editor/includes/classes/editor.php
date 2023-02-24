@@ -5,7 +5,7 @@
  * @package    User-Role-Editor
  * @subpackage Editor
  * @author     Vladimir Garagulya <support@role-editor.com>
- * @copyright  Copyright (c) 2010 - 2019, Vladimir Garagulia
+ * @copyright  Copyright (c) 2010 - 2021, Vladimir Garagulia
  **/
 class URE_Editor {
 
@@ -137,6 +137,9 @@ class URE_Editor {
         }
         
         $this->apply_to_all = isset( $_POST['values']['ure_apply_to_all']) ? true : false;
+        if ( empty( $this->apply_to_all ) && isset( $_POST['ure_apply_to_all'] ) ) {
+            $this->apply_to_all = true;
+        }
         
         return true;
     }
@@ -234,7 +237,8 @@ class URE_Editor {
                     esc_html__('does not exist', 'user-role-editor');
         } else {
             $this->current_role = $role_id;
-            $this->current_role_name = $this->roles[$this->current_role]['name'];
+            $roles = $this->lib->get_user_roles();
+            $this->current_role_name = $roles[$this->current_role]['name'];
             $mess = '';
         }
         
@@ -247,7 +251,8 @@ class URE_Editor {
     // Visual Composer capabilities are excluded from a role update as they may store not boolean values.
     protected function restore_visual_composer_caps() {
         
-        if (!isset($this->roles[$this->current_role]) || !is_array($this->roles[$this->current_role]['capabilities'])) {
+        if ( !isset( $this->roles[$this->current_role] ) || 
+             !is_array( $this->roles[$this->current_role]['capabilities'] ) ) {
             return false;
         }
         
@@ -274,7 +279,7 @@ class URE_Editor {
                 
         foreach ( $this->full_capabilities as $cap ) {
             $cap_id_esc = URE_Capability::escape( $cap['inner'] );
-            if ( isset( $_POST['values'][$cap_id_esc] ) ) {
+            if ( isset( $_POST['values'][$cap_id_esc] ) || isset( $_POST[$cap_id_esc] ) ) {
                 $this->capabilities_to_save[ $cap['inner'] ] = true;
             }
         }
@@ -291,7 +296,11 @@ class URE_Editor {
      */
     protected function is_full_network_synch() {
         
-        if (is_network_admin()) {   // for Pro version
+        /* is_network_admin() returns wrong result for the AJAX calls from the network admin
+         * so have to use this way
+         */
+        $network_admin = $this->lib->get_request_var('network_admin', 'post', 'int');
+        if ( $network_admin==1 ) {   // for Pro version only
             $result = true;
         } else {
             $result = defined('URE_MULTISITE_DIRECT_UPDATE') && URE_MULTISITE_DIRECT_UPDATE == 1;
@@ -446,6 +455,34 @@ class URE_Editor {
         return true;
     }
     // end of save_roles()    
+
+
+    protected function leave_roles_for_blog( $blog_id, $leave_roles ) {
+        global $wpdb;
+        
+        $prefix = $wpdb->get_blog_prefix( $blog_id );
+        $options_table_name = $prefix . 'options';
+        $option_name = $prefix . 'user_roles';
+        
+        $query = "SELECT option_value
+                    FROM {$options_table_name}
+                    WHERE option_name='$option_name'
+                    LIMIT 1";
+        $value = $wpdb->get_var( $query );
+        if ( empty( $value ) ) {
+            return $this->roles;
+        }
+        $blog_roles = unserialize( $value );
+        
+        $roles = $this->roles;
+        foreach( $leave_roles as $role_id ) {
+            $roles[$role_id] = $blog_roles[$role_id];
+        }
+        $serialized_roles = serialize( $roles );
+        
+        return $serialized_roles;
+    }
+    // end of leave_roles_for_blog()
     
     
     /**
@@ -473,16 +510,31 @@ class URE_Editor {
 
         $serialized_roles = serialize( $this->roles );
         $blog_ids = $this->lib->get_blog_ids();
-        foreach ($blog_ids as $blog_id) {
-            $prefix = $wpdb->get_blog_prefix($blog_id);
+        /*
+         * Roles to leave unchanged during network update which overwrites all roles by default
+         * $leave_roles = array( blog_id => array('role_id1', 'role_id2', ... );
+         */
+        $leave_roles = apply_filters('ure_network_update_leave_roles', array(), 10, 1 );
+        if ( empty( $leave_roles ) || !is_array( $leave_roles ) ) {
+            $leave_roles = array();
+        }
+        foreach ( $blog_ids as $blog_id ) {
+            $prefix = $wpdb->get_blog_prefix( $blog_id );
             $options_table_name = $prefix . 'options';
             $option_name = $prefix . 'user_roles';
+            if ( !isset( $leave_roles[$blog_id] ) ) {
+                // overwrites all roles
+                $roles = $serialized_roles;
+            } else {
+                // overwrite except roles you have to leave untouched for this blog
+                $roles = $this->leave_roles_for_blog( $blog_id, $leave_roles[$blog_id] );
+            }
             $query = "UPDATE {$options_table_name}
-                        SET option_value='$serialized_roles'
-                        WHERE option_name='$option_name'
-                        LIMIT 1";
-            $wpdb->query($query);
-            if ($wpdb->last_error) {
+                SET option_value='$roles'
+                WHERE option_name='$option_name'
+                LIMIT 1";
+            $wpdb->query( $query );
+            if ( $wpdb->last_error ) {
                 return false;
             }
             // @TODO: save role additional options     
@@ -610,6 +662,180 @@ class URE_Editor {
     // end of check_blog_user()
 
     
+    private function get_user_primary_role( $user ) {
+        
+        $role = ( is_array( $user->roles ) && count( $user->roles )>0 ) ? $user->roles[0] : '';
+        
+        return $role;
+    }
+    
+    
+    private function get_new_primary_role( $user ) {
+        $wp_roles = wp_roles();
+        
+        $select_primary_role = apply_filters( 'ure_users_select_primary_role', true );
+        if ( $select_primary_role  || $this->lib->is_super_admin()) {
+            $role = isset( $_POST['values']['primary_role'] ) ? URE_Base_Lib::filter_string_var( $_POST['values']['primary_role'] ) : false;  
+            if ( empty( $role ) || !isset( $wp_roles->roles[$role] ) ) {
+                $role = '';
+            }
+        } else {
+            $role = $this->get_user_primary_role( $user );
+        }
+        
+        return $role;
+    }
+    // end of get_new_primary_role()
+    
+    
+    private function get_bbpress_role( $user ) {
+        
+        $bbpress = $this->lib->get_bbpress();        
+        if ( $bbpress->is_active() ) {
+            $role = bbp_get_user_role( $user->ID );
+        } else {
+            $role = '';
+        }
+        
+        return $role;
+    }
+    // end of get_bbpress_role()
+    
+    /**
+     * Add other roles to roles array for this user, extracting selected values from the POST
+     * 
+     * @param array $roles
+     */
+    private function add_other_roles( $roles ) {
+        
+        $wp_roles = wp_roles();
+        
+        $post_values = isset( $_POST['values'] ) && is_array( $_POST['values'] ) ? $_POST['values'] : array();
+        foreach ( $post_values as $key => $value ) {
+            $result = preg_match( '/^wp_role_(.+)/', $key, $match );
+            if ( $result !== 1 ) {
+                continue;
+            }
+            $role = $match[1];
+            if ( !isset( $wp_roles->roles[$role] ) ) {
+                // Skip role if it does not exist
+                continue;
+            }
+            if ( !in_array( $role, $roles ) ) {
+                $roles[] = $role;
+            }
+        }
+
+        return $roles;
+    }
+    // end of add_other_roles()
+    
+    
+    /**
+     * Provide a valid placement of a primary role - 1st element of roles array
+     * 
+     * @param WP_User $user
+     * @param array $new_roles
+     */    
+    private function set_primary_role( $user, $new_primary_role ) {
+
+        
+        if ( count( $user->roles )<=1 ) {
+            // User does not have roles at all or has only single one
+            return;
+        }
+                        
+        $current_primary_role = reset( $user->roles );
+        if ( $current_primary_role === $new_primary_role ) {
+            // Current primary role is equal to a new one - nothing was changed
+            return;
+        }                
+        
+        // remove primary role from user capabilities array
+        unset( $user->caps[$new_primary_role] );    
+        // insert new primary role as the 1st elemnt of user capabilities array
+        $user->caps = array($new_primary_role=>true) + $user->caps;
+        
+        // update user permissions ar WordPress internal data structures - exactly the same way as WordPress itself does at WP_User::add_role()
+        update_user_meta( $user->ID, $user->cap_key, $user->caps );
+	$user->get_role_caps();
+        $user->update_user_level_from_caps();
+        
+    }
+    // end of set_primary_role()
+    
+    
+    private function update_user_roles( $user, $new_roles ) {
+        
+        foreach( $user->roles as $role ) {
+            if ( !in_array( $role, $new_roles ) ) {
+                $user->remove_role( $role );
+            }
+        }
+        
+        foreach( $new_roles as $role ) {
+            if ( !in_array( $role, $user->roles ) ) {
+                $user->add_role( $role );
+            }
+        }               
+        
+        if ( !empty( $new_roles ) ) {
+            $this->set_primary_role( $user, $new_roles[0] );
+        }
+                
+    }
+    // end of update_user_roles()
+
+    /**
+     * Remove from user directly granted capabilities
+     * 
+     * @param WP_User $user 
+     */
+    private function remove_user_capabilities( $user, $caps_to_save ) {
+
+        if ( empty( $user->caps ) ) {
+            return;
+        }
+        
+        $roles = wp_roles()->roles;
+        $roles_id = array_keys( $roles );
+        $caps = array_keys( $user->caps );
+        foreach( $caps as $cap ) {
+            if ( in_array( $cap, $roles_id ) ) {
+                // It's a role ID, skip it
+                continue;
+            }            
+            if ( !in_array( $cap, $caps_to_save ) ) {                
+                $user->remove_cap( $cap );
+            }
+        }
+        
+    }
+    // end of remove_user_capabilities()
+    
+    
+    /**
+     * Update individual capabilities of the user
+     * 
+     * @param WP_User $user
+     */
+    private function update_user_capabilities( $user ) {
+        // $edit_user_caps = $this->get_edit_user_caps_mode();
+        
+        $caps_to_save = array_keys( $this->capabilities_to_save );        
+        $this->remove_user_capabilities( $user, $caps_to_save );               
+        $user_caps = array_keys( $user->caps );
+        
+        // process new added capabilities
+        foreach ($caps_to_save as $cap ) {
+            if ( !in_array( $cap, $user_caps ) ) {
+                $user->add_cap( $cap );
+            }
+        }
+
+    } 
+    // end of update_user_capabilities()
+    
     
     /**
      * Update user roles and capabilities
@@ -625,9 +851,7 @@ class URE_Editor {
         }
         
         do_action( 'ure_before_user_permissions_update', $user->ID );
-        
-        $wp_roles = wp_roles();
-        
+                
         $multisite = $this->lib->get('multisite');
         if ($multisite) {
             if ( !$this->check_blog_user( $user ) ) {
@@ -635,70 +859,25 @@ class URE_Editor {
             }
         }
         
-        $select_primary_role = apply_filters( 'ure_users_select_primary_role', true );
-        if ( $select_primary_role  || $this->lib->is_super_admin()) {
-            $primary_role = $this->lib->get_request_var('primary_role', 'post');  
-            if ( empty( $primary_role ) || !isset( $wp_roles->roles[$primary_role] ) ) {
-                $primary_role = '';
-            }
-        } else {
-            if ( !empty( $user->roles ) ) {
-                $primary_role = $user->roles[0];
-            } else {
-                $primary_role = '';
-            }
-        }
+        $new_primary_role = $this->get_new_primary_role( $user );
+        $bbp_role = $this->get_bbpress_role( $user );                                        
+        // Build new roles array for the user
+        $new_roles = array();
         
-        $bbpress = $this->lib->get_bbpress();        
-        if ( $bbpress->is_active() ) {
-            $bbp_user_role = bbp_get_user_role( $user->ID );
-        } else {
-            $bbp_user_role = '';
-        }
-        
-        $edit_user_caps_mode = $this->get_edit_user_caps_mode();
-        if ( !$edit_user_caps_mode ) {    // readonly mode
-            $this->capabilities_to_save = $user->caps;
-        }
-        
-        // revoke all roles and capabilities from this user
-        $user->roles = array();
-        $user->remove_all_caps();
-
         // restore primary role
-        if ( !empty( $primary_role ) ) {
-            $user->add_role( $primary_role );
+        if ( !empty( $new_primary_role ) ) {
+            $new_roles[] = $new_primary_role;
         }
-
-        // restore bbPress user role if he had one
-        if ( !empty( $bbp_user_role ) ) {
-            $user->add_role( $bbp_user_role );
+        
+        // restore bbPress user role if user had one
+        if ( !empty( $bbp_role ) ) {
+            $new_roles[] = $bbp_role;
         }
-
-        // add other roles to user
-        foreach ($_POST as $key => $value) {
-            $result = preg_match( '/^wp_role_(.+)/', $key, $match );
-            if ( $result !== 1 ) {
-                continue;
-            }
-            $role = $match[1];
-            if ( !isset( $wp_roles->roles[$role] ) ) {
-                continue;
-            }
-            $user->add_role( $role );
-            if ( !$edit_user_caps_mode && isset( $this->capabilities_to_save[$role] ) ) {
-                unset( $this->capabilities_to_save[$role] );
-            }                            
-        }
-                
-        // add individual capabilities to user
-        if ( count( $this->capabilities_to_save ) > 0) {
-            foreach ($this->capabilities_to_save as $key => $value) {
-                $user->add_cap( $key );
-            }
-        }
-        $user->update_user_level_from_caps();
-                
+        
+        $new_roles = $this->add_other_roles( $new_roles );
+        $this->update_user_roles( $user, $new_roles );        
+        $this->update_user_capabilities( $user );                
+        
         do_action('ure_user_permissions_update', $user->ID, $user);  // In order other plugins may hook to the user permissions update
                         
         return true;
@@ -920,6 +1099,21 @@ class URE_Editor {
     }
     // end of update_role()
     
+    
+    public function update_network() {
+        
+        $this->init0();
+        $this->roles = $this->lib->get_user_roles();
+        $this->full_capabilities = $this->lib->init_full_capabilities( $this->ure_object );
+        if ( isset( $_POST['user_role'] ) ) {
+            $this->notification = $this->init_current_role_name();
+        }
+        $this->prepare_capabilities_to_save();
+        $this->notification = $this->permissions_object_update( $this->notification );
+                
+    }
+    // end of update_network()
+        
     
     /**
      * process rename role request
@@ -1199,10 +1393,6 @@ class URE_Editor {
                 $this->notification = esc_html__( 'User Roles are restored to WordPress default values. ', 'user-role-editor' );
                 break;
             }
-            case 'update': {
-                $this->update();                
-                break;
-            }
             default: {
                 do_action( 'ure_process_user_request' );
             }
@@ -1249,7 +1439,8 @@ class URE_Editor {
             } else {
                 $this->current_role = $this->get_last_role_id();
             }
-            $this->current_role_name = $this->roles[$this->current_role]['name'];
+            $roles = $this->lib->get_user_roles();
+            $this->current_role_name = $roles[$this->current_role]['name'];
         }
         
     }
@@ -1292,7 +1483,7 @@ class URE_Editor {
             <h1><?php _e('User Role Editor', 'user-role-editor'); ?></h1>
             <div id="ure_container">                
                 <div id="user_role_editor" class="ure-table-cell" >
-                    <form id="ure_form" method="post" action="<?php echo URE_WP_ADMIN_URL . URE_PARENT . '?page=users-' . URE_PLUGIN_FILE; ?>" >			
+                    <form id="ure_form" method="post" action="<?php echo admin_url() . URE_PARENT . '?page=users-' . URE_PLUGIN_FILE; ?>" >			
                         <div id="ure_form_controls">
         <?php
         $view->display();
@@ -1308,9 +1499,11 @@ class URE_Editor {
 ?>
                 </div>
 <?php
+/*
         if (!$this->lib->is_pro()) {
             $view->advertise_commercials();
-        }
+        } 
+ */
         $view->display_edit_dialogs();
         do_action( 'ure_dialogs_html' );
         URE_Role_View::output_confirmation_dialog();
