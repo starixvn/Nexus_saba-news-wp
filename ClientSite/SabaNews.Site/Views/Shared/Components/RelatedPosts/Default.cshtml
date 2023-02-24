@@ -12,7 +12,7 @@
     {
         string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width768) : post.FeatureImage;
         <div class="post card-horizontal card-horizontal-highlight">
-            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image">
+            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image hover-image">
                 <picture>
                     <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
                     <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">

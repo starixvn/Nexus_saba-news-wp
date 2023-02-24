@@ -2203,6 +2203,7 @@ button {
 }
 .card-horizontal__image {
   height: 11rem;
+  border-radius: 3px;
 }
 @media screen and (max-width: 1024px) {
   .card-horizontal__image {
@@ -2216,13 +2217,6 @@ button {
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0) scale(1, 1);
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
 }
 .card-horizontal__content .title {
   font-weight: bold;
@@ -2230,7 +2224,6 @@ button {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
-  /*display: block;*/
   display: initial;
 }
 .card-horizontal__content .title:hover {
@@ -2354,13 +2347,6 @@ button {
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0) scale(1, 1);
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
 }
 .card-vertical__title {
   color: #333;
@@ -2369,7 +2355,6 @@ button {
   letter-spacing: -0.02rem;
   text-decoration: none;
   transition: color 0.3s ease;
-  /*display: block;*/
   display: initial;
   line-height: 2rem;
 }

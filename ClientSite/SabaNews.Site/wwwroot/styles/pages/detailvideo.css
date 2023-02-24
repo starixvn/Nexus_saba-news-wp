@@ -2439,13 +2439,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0) scale(1, 1);
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
 }
 .card-vertical__title {
   color: #333;
@@ -2454,7 +2447,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   letter-spacing: -0.02rem;
   text-decoration: none;
   transition: color 0.3s ease;
-  /*display: block;*/
   display: initial;
   line-height: 2rem;
 }
