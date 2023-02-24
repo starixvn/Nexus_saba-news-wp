@@ -157,7 +157,7 @@ class Product {
 	 *
 	 * @return string $name         The normalized string.
 	 */
-	static function key_ready_name( $string ) {
+	public static function key_ready_name( $string ) {
 		return str_replace( '-', '_', strtolower( trim( $string ) ) );
 	}
 
@@ -320,6 +320,15 @@ class Product {
 		$name = rtrim( $name, '- ()' );
 
 		return $name;
+	}
+
+	/**
+	 * Return the product version cache key.
+	 *
+	 * @return string The product version cache key.
+	 */
+	public function get_cache_key() {
+		return $this->get_key() . '_' . preg_replace( '/[^0-9a-zA-Z ]/m', '', $this->get_version() ) . 'versions';
 	}
 
 	/**

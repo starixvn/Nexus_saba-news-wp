@@ -16,16 +16,16 @@
  * Plugin Name: Revive Old Posts
  * Plugin URI: https://revive.social/
  * Description: WordPress plugin that helps you to keeps your old posts alive by sharing them and driving more traffic to them from twitter/facebook or linkedin. It also helps you to promote your content. You can set time and no of posts to share to drive more traffic.For questions, comments, or feature requests, <a href="http://revive.social/support/?utm_source=plugindesc&utm_medium=announce&utm_campaign=top">contact </a> us!
- * Version:           9.0.5
+ * Version:           9.0.12
  * Author:            revive.social
  * Author URI:        https://revive.social/
- * Requires at least: 3.5
- * Tested up to:      5.7
+ * Requires at least: 4.7
+ * Tested up to:      6.0
  * Stable tag:        trunk
  * WordPress Available:  yes
  * Pro Slug:          tweet-old-post-pro
  * Requires License:    no
- * Requires PHP: 7.1
+ * Requires PHP: 7.2
  * License:           GPLv2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: tweet-old-post
@@ -40,7 +40,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 if ( function_exists( 'phpversion' ) ) {
 
-	if ( version_compare( phpversion(), '7.1', '<' ) ) {
+	if ( version_compare( phpversion(), '7.2', '<' ) ) {
 		add_action( 'admin_notices', 'rop_php_notice' );
 		add_action( 'admin_init', 'deactivate_rop', 1 );
 		return;
@@ -48,7 +48,7 @@ if ( function_exists( 'phpversion' ) ) {
 }
 
 if ( defined( 'PHP_VERSION' ) ) {
-	if ( version_compare( PHP_VERSION, '7.1', '<' ) ) {
+	if ( version_compare( PHP_VERSION, '7.2', '<' ) ) {
 		add_action( 'admin_notices', 'rop_php_notice' );
 		add_action( 'admin_init', 'deactivate_rop', 1 );
 		return;
@@ -88,7 +88,7 @@ function rop_buffer_present() {
 
 	foreach ( $services as $service ) {
 
-		if ( strpos( $service['service'], 'buffer' ) !== false ) {
+		if ( isset( $service['service'] ) && strpos( $service['service'], 'buffer' ) !== false ) {
 			add_action( 'admin_notices', 'rop_buffer_present_notice' );
 
 			if ( ! function_exists( 'deactivate_plugins' ) ) {
@@ -162,7 +162,7 @@ function run_rop() {
 	define( 'ROP_CRON_ALTERNATIVE', $use_remote_cron );
 
 	define( 'ROP_PRO_URL', 'http://revive.social/plugins/revive-old-post/' );
-	define( 'ROP_LITE_VERSION', '9.0.5' );
+	define( 'ROP_LITE_VERSION', '9.0.12' );
 	define( 'ROP_LITE_BASE_FILE', __FILE__ );
 	$debug = false;
 	if ( function_exists( 'wp_get_environment_type' ) ) {

@@ -2,8 +2,8 @@
 Contributors: codeinwp,marius2012,marius_codeinwp,hardeepasrani,Madalin_Themeisle, rsocial, uriahs-victor
 Tags: share to social media, auto publish, auto post, social media scheduling, social media auto posting, social media marketing, social media automation, social media sharing
 Requires at least: 4.7
-Tested up to: 5.8
-Requires PHP: 7.1
+Tested up to: 6.1
+Requires PHP: 7.2
 Stable tag: trunk
 
 
@@ -72,6 +72,10 @@ Once set, the plugin will then be able to determine which content to auto share 
 ### A RSS to Social Media Plugin
 
 With our Revive Network addon, you can share posts from any RSS feed to Facebook, Twitter, Linkedin, Tumblr, Google My Business, Vkontakte(VK) or Instagram (imported post needs to have an image).
+
+### A WP Auto Republish Plugin
+
+Revive Old Posts can work as a WP Auto Republish plugin that updates your post's publish date after it has been shared to your connected social media accounts.
 
 ---
 
@@ -142,6 +146,8 @@ Some of the available networks and features require the Pro version of the plugi
 - Post to Vk Profiles [Pro]
 
 - Post to Vk Communities [Pro]
+
+- WordPress Auto Republish post after sharing [Pro]
 
 - Share multilingual posts to respective pages with WPML example, share English Posts to your English social media accounts and Spanish posts to your Spanish social media accounts. [Pro]
 
@@ -298,6 +304,66 @@ http://revive.social/plugins/revive-old-post
 
 
 == Changelog ==
+
+##### [Version 9.0.12](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.11...v9.0.12) (2023-01-31)
+
+* Improved query strings encoding
+
+
+
+
+##### [Version 9.0.11](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.10...v9.0.11) (2023-01-03)
+
+- Harden security of the plugin
+
+
+
+
+##### [Version 9.0.10](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.9...v9.0.10) (2022-08-26)
+
+- [Dev] Remove old buffer service that doesn't exist anymore.
+- [Dev] Less cumbersome error messages when services fail to build by using getMessage() instead of getTrace()
+
+
+
+
+##### [Version 9.0.9](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.8...v9.0.9) (2022-07-25)
+
+- [New Pro] Option to automatically crop Instagram Images if they do not meet the Instagram supported aspect ratios
+- [Fix] PHP 8 related errors
+- [Fix] Long taxonomy names were overflowing their container in multiselect fields
+- [Info] Tested on WP 6.0
+- [Info] Minimum PHP version has been changed to 7.2 to address composer dependency PHP errors
+- [Info] Updated Themeisle SDK
+
+
+
+
+##### [Version 9.0.8](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.7...v9.0.8) (2022-04-22)
+
+### Info
+- Update tested up to version
+
+
+
+
+##### [Version 9.0.7](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.6...v9.0.7) (2022-04-21)
+
+### Info
+- Update WP tested up to version
+- Added two new hooks  and  that fire before post is shared
+- Clean up some old options from version < 8.0 when housekeeping option is turned on
+
+
+
+
+##### [Version 9.0.6](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.5...v9.0.6) (2021-12-13)
+
+### Fixes
+- The same post would some times get shared too soon after it had previously been shared.
+
+
+
 
 ##### [Version 9.0.5](https://github.com/Codeinwp/tweet-old-post/compare/v9.0.4...v9.0.5) (2021-08-17)
 

@@ -59,7 +59,6 @@ class Rop_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 		$this->set_allowed_screens();
-		$this->logger = new Rop_Logger();
 		add_action( 'admin_notices', array( &$this, 'display_global_status_warning' ) );
 	}
 
@@ -360,7 +359,7 @@ class Rop_Admin {
 		$signature = md5( $admin_url . $token );
 
 		$rop_auth_app_data = array(
-			'adminEmail'          => base64_encode( get_option( 'admin_email' ) ),
+			'adminEmail'          => urlencode( base64_encode( get_option( 'admin_email' ) ) ),
 			'authAppUrl'          => ROP_AUTH_APP_URL,
 			'authAppFacebookPath' => ROP_APP_FACEBOOK_PATH,
 			'authAppTwitterPath'  => ROP_APP_TWITTER_PATH,
@@ -512,10 +511,6 @@ class Rop_Admin {
 			case 'pinterest':
 				$pinterest_service = new Rop_Pinterest_Service();
 				$pinterest_service->authorize();
-				break;
-			case 'buffer':
-				$buffer_service = new Rop_Buffer_Service();
-				$buffer_service->authorize();
 				break;
 			default:
 				$fb_service = new Rop_Facebook_Service();
@@ -799,7 +794,6 @@ class Rop_Admin {
 	 * @param int $post_id The post ID.
 	 */
 	public function maybe_publish_now( $post_id ) {
-		
 		if ( ! isset( $_POST['rop_publish_now_nonce'] ) || ! wp_verify_nonce( $_POST['rop_publish_now_nonce'], 'rop_publish_now_nonce' ) ) {
 			return;
 		}
@@ -832,7 +826,7 @@ class Rop_Admin {
 		if ( ! is_array( $enabled ) ) {
 				$enabled = array();
 		}
-		//$this->logger->alert_error('maybe_publish_now - ' . json_encode($enabled));
+
 		$services = new Rop_Services_Model();
 		$settings = new Rop_Settings_Model();
 
@@ -1007,7 +1001,6 @@ class Rop_Admin {
 	 * @param bool  $is_future_post Whether method was called by share_scheduled_future_post() method.
 	 */
 	public function rop_cron_job_publish_now( $post_id = '', $accounts_data = array(), $is_future_post = false ) {
-		//$this->logger->alert_error( 'rop_cron_job_publish_now'  );
 		$queue           = new Rop_Queue_Model();
 		$services_model  = new Rop_Services_Model();
 		$logger          = new Rop_Logger();
@@ -1024,13 +1017,13 @@ class Rop_Admin {
 		}
 
 		$queue_stack = $queue->build_queue_publish_now( $post_id, $accounts_data, $is_future_post, $settings->get_true_instant_share() );
-		//$this->logger->alert_error( 'build_queue_publish_now - ' . json_encode($queue_stack)  );
+
 		if ( empty( $queue_stack ) ) {
 			$logger->info( 'Publish now queue stack is empty.' );
 		} else {
 			$logger->info( 'Fetching publish now queue: ' . print_r( $queue_stack, true ) );
 		}
-		//$this->logger->alert_error('queue_stack...' . json_encode($queue_stack));
+
 		foreach ( $queue_stack as $account => $events ) {
 			foreach ( $events as $index => $event ) {
 				$post    = $event['post'];
@@ -1056,7 +1049,7 @@ class Rop_Admin {
 					}
 				} catch ( Exception $exception ) {
 					$error_message = sprintf( Rop_I18n::get_labels( 'accounts.service_error' ), $account_data['service'] );
-					$logger->alert_error( $error_message . ' Error: ' . print_r( $exception->getTrace(), true ) );
+					$logger->alert_error( $error_message . ' Error: ' . print_r( $exception->getMessage(), true ) );
 				}
 			}
 		}
@@ -1079,7 +1072,6 @@ class Rop_Admin {
 	 * @access  public
 	 */
 	public function rop_cron_job() {
-		$this->logger->alert_error( 'rop_cron_job'  );
 		$queue           = new Rop_Queue_Model();
 		$queue_stack     = $queue->build_queue();
 		$services_model  = new Rop_Services_Model();
@@ -1129,6 +1121,7 @@ class Rop_Admin {
 									continue;
 								}
 
+								do_action( 'rop_before_prepare_post', $post );
 								$post_data = $queue->prepare_post_object( $post, $account );
 
 								if ( $revive_network_active ) {
@@ -1138,13 +1131,26 @@ class Rop_Admin {
 										$revive_network_settings = Revive_Network_Rop_Post_Helper::revive_network_get_plugin_settings();
 										$delete_post_after_share = $revive_network_settings['delete_rss_item_after_share'];
 
-										// adjust post data to suit Revive Network
+										// Adjust post data to suit Revive Network
 										$post_data = Revive_Network_Rop_Post_Helper::revive_network_prepare_revive_network_share( $post_data );
 									}
 								}
 
+								$response = false;
 								$logger->info( 'Posting', array( 'extra' => $post_data ) );
-								$response = $service->share( $post_data, $account_data );
+
+								/*
+								 * Extra check to make sure the post isn't already in the buffer for the given account.
+								 * If it is then don't share it again until the buffer is cleared.
+								 */
+								$duplicate = $posts_selector_model->buffer_has_post_id( $account, $post );
+
+								if ( $duplicate === false ) {
+									do_action( 'rop_before_share', $post_data );
+									$response = $service->share( $post_data, $account_data );
+								} else {
+									$logger->info( Rop_I18n::get_labels( 'sharing.post_already_shared' ), array( 'extra' => $post_data ) );
+								}
 
 								if ( $revive_network_active ) {
 
@@ -1158,12 +1164,12 @@ class Rop_Admin {
 									}
 								}
 
-								if ( $response === true ) {
-									update_option( 'rop_last_post_shared', $post_shared );
-								}
-
 								$posts_selector_model->update_buffer( $account, $post_data['post_id'] );
 
+								if ( $response === true ) {
+									update_option( 'rop_last_post_shared', $post_shared );
+									do_action( 'rop_after_share', $post_data );
+								}
 							}
 						} catch ( Exception $exception ) {
 							$error_message = sprintf( Rop_I18n::get_labels( 'accounts.service_error' ), $account_data['service'] );
@@ -1661,38 +1667,40 @@ class Rop_Admin {
 		if ( version_compare( $installed_at_version, '9.0.3', '>' ) ) {
 			return;
 		}
-		
+
 		$user_id = get_current_user_id();
 
 		if ( get_user_meta( $user_id, 'rop-remove-remote-cron-notice-dismissed' ) ) {
 			return;
 		}
 
-		$using_remote_cron = (bool) get_option('rop_use_remote_cron');
+		$using_remote_cron = (bool) get_option( 'rop_use_remote_cron' );
 
-		if( $using_remote_cron ){
+		if ( $using_remote_cron ) {
 			delete_option( 'rop_use_remote_cron' );
 		}
 
-		$dismiss_link = add_query_arg( array(
-			'rop-remove-remote-cron-notice-dismissed' => '1',
-		));
+		$dismiss_link = add_query_arg(
+			array(
+				'rop-remove-remote-cron-notice-dismissed' => '1',
+			)
+		);
 
-		$rop = __('Revive Old Posts: ', 'tweet-old-post');
-		$admin_url = admin_url('admin.php?page=TweetOldPost');
-		$notice_text = sprintf( __('We\'ve removed the Remote Cron service feature of Revive Old Posts. If you used this option in the past, then please %1$shead to the Revive Old Posts dashboard%2$s to start sharing using the default WordPress cron. If post sharing is not working for you, then please see %3$shere for solutions.%2$s', 'tweet-old-post'), "<a href='$admin_url'>", "</a>", "<a href='https://docs.revive.social/article/686-fix-revive-old-post-not-posting' target='blank'>" );
+		$rop = __( 'Revive Old Posts: ', 'tweet-old-post' );
+		$admin_url = admin_url( 'admin.php?page=TweetOldPost' );
+		$notice_text = sprintf( __( 'We\'ve removed the Remote Cron service feature of Revive Old Posts. If you used this option in the past, then please %1$shead to the Revive Old Posts dashboard%2$s to start sharing using the default WordPress cron. If post sharing is not working for you, then please see %3$shere for solutions.%2$s', 'tweet-old-post' ), "<a href='$admin_url'>", '</a>', "<a href='https://docs.revive.social/article/686-fix-revive-old-post-not-posting' target='blank'>" );
 
-		$message = <<<MSG
+		$message = <<<HTML
 		<p style="font-size: 14px">
 		<b>$rop</b> $notice_text 
 		<a style='float: right;' href='$dismiss_link'>Dismiss</a>
 		</p>
-MSG;
+HTML;
 
 		?>
 
 		<div class="notice notice-error">
-			<?php echo $message ?>
+			<?php echo $message; ?>
 		</div>
 		<?php
 
@@ -1711,4 +1719,6 @@ MSG;
 		}
 
 	}
+
+
 }

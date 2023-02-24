@@ -98,7 +98,7 @@ class Rollback extends Abstract_Module {
 	 */
 	private function get_api_versions() {
 
-		$cache_key      = $this->product->get_key() . '_' . preg_replace( '/[^0-9a-zA-Z ]/m', '', $this->product->get_version() ) . 'versions';
+		$cache_key      = $this->product->get_cache_key();
 		$cache_versions = get_transient( $cache_key );
 		if ( false === $cache_versions ) {
 			$versions = $this->get_remote_versions();
@@ -120,7 +120,9 @@ class Rollback extends Abstract_Module {
 		if ( empty( $url ) ) {
 			return [];
 		}
-		$response = wp_remote_get( $url );
+		$response = function_exists( 'wp_remote_get_wp_remote_get' )
+			? wp_remote_get_wp_remote_get( $url )
+			: wp_remote_get( $url ); //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
 		if ( is_wp_error( $response ) ) {
 			return array();
 		}
@@ -191,7 +193,7 @@ class Rollback extends Abstract_Module {
 	 * Start the rollback operation.
 	 */
 	public function start_rollback() {
-		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], $this->product->get_key() . '_rollback' ) ) {
+		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], $this->product->get_key() . '_rollback' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			wp_nonce_ays( '' );
 		}
 
@@ -228,9 +230,12 @@ class Rollback extends Abstract_Module {
 
 		$transient = get_transient( $this->product->get_key() . '_warning_rollback' );
 
+		// Style fix for the api link that gets outside the content.
+		echo '<style>body#error-page{word-break:break-word;}</style>';
+
 		if ( false === $transient ) {
 			set_transient( $this->product->get_key() . '_warning_rollback', 'in progress', 30 );
-			require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 			$title         = sprintf( apply_filters( $this->product->get_key() . '_rollback_message', 'Rolling back %s to v%s' ), $this->product->get_name(), $version );
 			$plugin        = $plugin_folder . '/' . $plugin_file;
 			$nonce         = 'upgrade-plugin_' . $plugin;
@@ -241,7 +246,7 @@ class Rollback extends Abstract_Module {
 			delete_transient( $this->product->get_key() . '_warning_rollback' );
 			wp_die(
 				'',
-				$title,
+				esc_attr( $title ),
 				array(
 					'response' => 200,
 				)
@@ -268,9 +273,12 @@ class Rollback extends Abstract_Module {
 
 		$transient = get_transient( $this->product->get_key() . '_warning_rollback' );
 
+		// Style fix for the api link that gets outside the content.
+		echo '<style>body#error-page{word-break:break-word;}</style>';
+
 		if ( false === $transient ) {
 			set_transient( $this->product->get_key() . '_warning_rollback', 'in progress', 30 );
-			require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 			$title = sprintf( apply_filters( $this->product->get_key() . '_rollback_message', 'Rolling back %s to v%s' ), $this->product->get_name(), $version );
 			$theme = $folder . '/style.css';
 			$nonce = 'upgrade-theme_' . $theme;
@@ -281,7 +289,7 @@ class Rollback extends Abstract_Module {
 			delete_transient( $this->product->get_key() . '_warning_rollback' );
 			wp_die(
 				'',
-				$title,
+				esc_attr( $title ),
 				array(
 					'response' => 200,
 				)
@@ -335,7 +343,7 @@ class Rollback extends Abstract_Module {
 	 * @return bool Which version is greater?
 	 */
 	public function sort_rollback_array( $a, $b ) {
-		return version_compare( $a['version'], $b['version'], '<' ) > 0;
+		return version_compare( $b['version'], $a['version'] );
 	}
 
 	/**
@@ -367,10 +375,26 @@ class Rollback extends Abstract_Module {
 	}
 
 	/**
+	 * Fires after the option has been updated.
+	 *
+	 * @param mixed  $old_value The old option value.
+	 * @param mixed  $value     The new option value.
+	 * @param string $option    Option name.
+	 */
+	public function update_active_plugins_action( $old_value, $value, $option ) {
+		delete_site_transient( 'update_plugins' );
+		wp_cache_delete( 'plugins', 'plugins' );
+	}
+
+	/**
 	 * Set the rollback hook. Strangely, this does not work if placed in the ThemeIsle_SDK_Rollback class, so it is being called from there instead.
 	 */
 	public function add_hooks() {
 		add_action( 'admin_post_' . $this->product->get_key() . '_rollback', array( $this, 'start_rollback' ) );
 		add_action( 'admin_footer', array( $this, 'add_footer' ) );
+
+		// This hook will be invoked after the plugin activation.
+		// We use this to force an update of the cache so that Update is present immediate after a rollback.
+		add_action( 'update_option_active_plugins', array( $this, 'update_active_plugins_action' ), 10, 3 );
 	}
 }

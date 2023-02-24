@@ -357,7 +357,6 @@ class Facebook
      */
     public function post($endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
     {
-        $this->logger->alert_error('post');
         return $this->sendRequest(
             'POST',
             $endpoint,

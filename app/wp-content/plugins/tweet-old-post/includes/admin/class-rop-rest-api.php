@@ -789,7 +789,6 @@ class Rop_Rest_Api {
 	 * @return mixed|null
 	 */
 	private function authenticate_service( $data ) {
-		$log->alert_error( 'authenticate_service' );
 		$new_service = array();
 		$factory     = new Rop_Services_Factory();
 		try {
@@ -1001,7 +1000,7 @@ class Rop_Rest_Api {
 	 * @return  array
 	 */
 	private function add_account_fb( $data ) {
-		$log = new Rop_Logger();
+
 		$services         = array();
 		$active_accounts  = array();
 		$facebook_service = new Rop_Facebook_Service();
@@ -1037,7 +1036,7 @@ class Rop_Rest_Api {
 		} else {
 			update_option( $rop_facebook_via_rs_app_option, 'true' );
 		}
-		//$log->alert_error( 'add_account_fb - ' . json_encode( $services ) . ' data: ' . json_encode($data));
+
 		return $this->response->to_array();
 	}
 
