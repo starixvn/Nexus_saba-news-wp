@@ -55,9 +55,21 @@
         clip-path: unset;
     }
 }
-.block-sticky,.block__content,.block-main{
+.block-sticky,.block-category{
     .block__title{
         @extend .title-new-page
+    }
+}
+
+.block-detail{
+    .block__title{
+        margin-bottom: 1.6rem;
+        @include tableMobile{
+            margin-bottom: 1rem;
+        }
+        a{
+            clip-path: polygon(93% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
+        }
     }
 }
 

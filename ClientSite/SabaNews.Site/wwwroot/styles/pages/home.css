@@ -1666,11 +1666,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-color: transparent !important;
 }
 
-.title-new-page, .block-sticky .block__title, .block__content .block__title, .block-main .block__title {
+.title-new-page, .block-sticky .block__title, .block-category .block__title {
   border-bottom: none;
   margin-bottom: 1.2rem;
 }
-.title-new-page a, .block-sticky .block__title a, .block__content .block__title a, .block-main .block__title a {
+.title-new-page a, .block-sticky .block__title a, .block-category .block__title a {
   font-weight: bold;
   font-size: 2rem;
   line-height: 2.7rem;
@@ -1685,6 +1685,19 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0;
   -webkit-clip-path: unset;
           clip-path: unset;
+}
+
+.block-detail .block__title {
+  margin-bottom: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-detail .block__title {
+    margin-bottom: 1rem;
+  }
+}
+.block-detail .block__title a {
+  -webkit-clip-path: polygon(93% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
+          clip-path: polygon(93% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
 }
 
 .block-columns {

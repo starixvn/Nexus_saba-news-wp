@@ -480,6 +480,31 @@ p.has-text-align-center {
 .block-extension .sticky-parent .block-sticky .skeleton-vertical .skeleton-vertical__image {
   height: 20.1rem;
 }
+.block-extension .sticky-parent .block-sticky .block__title {
+  border-bottom: 2px solid #f12f19;
+  margin-bottom: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-extension .sticky-parent .block-sticky .block__title {
+    margin-bottom: 1rem;
+  }
+}
+.block-extension .sticky-parent .block-sticky .block__title a {
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  color: #fffdf9;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #f12f19;
+  position: relative;
+  z-index: 9;
+  padding: 0.4rem 3.2rem 0.2rem 1.2rem;
+  display: inline;
+  -webkit-clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
+  clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
+  border-radius: 3px 0 0 0;
+}
 .block-extension .sticky-parent .ads-insite {
   margin-bottom: 2rem;
   margin-top: 0;
