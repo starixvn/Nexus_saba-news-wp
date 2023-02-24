@@ -52,8 +52,35 @@
             }
         });
     },
+    HandleLivescore: function () {
+        let userAgent = navigator.userAgent;
+        let browserName;
+        if (userAgent.match(/chrome|chromium|crios/i)) {
+            browserName = "chrome";
+            $('body').addClass('fix-chrome')
+        } else if (userAgent.match(/firefox|fxios/i)) {
+            browserName = "firefox";
+            $('html').find('.livescore-soccer-main').addClass('ff-scroll');
+            $('html').find('.livescore-standing').addClass('parent-ff-scroll');
+            $('html').find('.block-video .block-child-video').addClass('ff-scroll');
+            $('html').find('.hover-image').addClass('hover-ff');
+            $('html').find('.hover-none-16-9').addClass('hover-ff');
+        } else if (userAgent.match(/safari/i)) {
+            browserName = "safari";
+            console.log(browserName)
+        } else if (userAgent.match(/opr\//i)) {
+            browserName = "opera";
+            console.log(browserName)
+        } else if (userAgent.match(/edg/i)) {
+            browserName = "edge";
+            console.log(browserName)
+        } else {
+            browserName = "No browser detection";
+        }
+    },
     init: function () {
         this.HandleIframe();
+        this.HandleLivescore();
     }
 }
 
