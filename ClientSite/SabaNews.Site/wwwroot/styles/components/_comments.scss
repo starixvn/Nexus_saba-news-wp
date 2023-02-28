@@ -2,7 +2,7 @@
 @import '../abstracts/_mixins.scss';
 
 .comment-post {
-    padding: 2rem 0;
+    padding: 0 0 2rem 0;
 
     .add_comment, .add_sub_comment {
         color: $color-fff;

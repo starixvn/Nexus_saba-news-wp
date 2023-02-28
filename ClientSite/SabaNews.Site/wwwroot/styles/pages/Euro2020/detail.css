@@ -1657,28 +1657,28 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding-top: 2rem !important;
 }
 
-.block-extension .sticky-parent {
+.block-extension .block-sticky {
   position: sticky;
   top: 7rem;
 }
 @media screen and (max-width: 1024px) {
-  .block-extension .sticky-parent .block-sticky {
+  .block-extension .block-sticky {
     position: unset;
   }
 }
-.block-extension .sticky-parent .block-sticky .skeleton-vertical .skeleton-vertical__image {
+.block-extension .block-sticky .skeleton-vertical .skeleton-vertical__image {
   height: 20.1rem;
 }
-.block-extension .sticky-parent .block-sticky .block__title {
+.block-extension .block-sticky .block__title {
   border-bottom: 2px solid #f12f19;
   margin-bottom: 1.6rem;
 }
 @media screen and (max-width: 1024px) {
-  .block-extension .sticky-parent .block-sticky .block__title {
+  .block-extension .block-sticky .block__title {
     margin-bottom: 1rem;
   }
 }
-.block-extension .sticky-parent .block-sticky .block__title a {
+.block-extension .block-sticky .block__title a {
   font-weight: bold;
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -1694,11 +1694,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
   border-radius: 3px 0 0 0;
 }
-.block-extension .sticky-parent .ads-insite {
-  margin-bottom: 2rem;
-  margin-top: 0;
+.block-extension .ads-insite {
+  margin: 0 0 2rem 0 !important;
 }
-.block-extension .sticky-parent .ads-insite img {
+.block-extension .ads-insite img {
   width: 100%;
 }
 .block-extension .card-vertical {
@@ -2797,7 +2796,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     --padding-col : 0 1.5rem;
 }*/
 .comment-post {
-  padding: 2rem 0;
+  padding: 0 0 2rem 0;
 }
 .comment-post .add_comment, .comment-post .add_sub_comment {
   color: #fff;

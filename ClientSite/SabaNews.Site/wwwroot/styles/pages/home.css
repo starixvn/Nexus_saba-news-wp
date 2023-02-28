@@ -2932,8 +2932,7 @@ button {
 }
 
 .block__content .ads-insite, .detail-container .ads-insite {
-  margin: 2rem 0;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  margin: 2rem -1.2rem;
 }
 
 .block-last-page .ads-insite {
