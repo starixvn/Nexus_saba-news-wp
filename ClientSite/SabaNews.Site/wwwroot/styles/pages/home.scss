@@ -157,6 +157,9 @@
                 line-height: 1;
                 display: unset;
                 padding: 0 1rem 0 0;
+                &::after{
+                    display: none;
+                }
                 .marked-icon {
                     position: absolute;
                     top: -5px;
@@ -247,6 +250,9 @@
                 line-height: 1;
                 display: unset;
                 padding: 0 1rem 0 0;
+                &::after{
+                    display: none;
+                }
             }
         }
 
@@ -421,6 +427,9 @@
                 line-height: 1;
                 display: unset;
                 padding: 0 1rem 0 0;
+                &::after{
+                    display: none;
+                }
             }
         }
         .box-vertical{
@@ -493,13 +502,13 @@
         margin-bottom: 0;
     }
 
-    .block-tranfer{
-        .block__title{
-            a{
-                clip-path: polygon(94% 0,100% 100%,100% 100%,0% 100%,0 44%,0% 0%);
-            }
-        }
-    }
+    // .block-tranfer{
+    //     .block__title{
+    //         a{
+    //             clip-path: polygon(94% 0,100% 100%,100% 100%,0% 100%,0 44%,0% 0%);
+    //         }
+    //     }
+    // }
 }
 
 .main {

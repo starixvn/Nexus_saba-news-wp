@@ -22,10 +22,21 @@
             background-color: $color-main-title;
             position: relative;
             z-index: 9;
-            padding: .4rem 3.2rem .2rem 1.2rem;
+            padding: .4rem 1.2rem .2rem 1.2rem;
             display: inline;
-            clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
+            // clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
             border-radius: 3px 0 0 0;
+            &::after{
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 2rem;
+                top: 0;
+                right: -10px;
+                transform: skew(18deg);
+                z-index: 1;
+                background-color: $color-main-title;
+            }
             @include tableMobile {
                 font-size: 1.6rem;
             }
@@ -53,6 +64,9 @@
         line-height: 1;
         padding: 0;
         clip-path: unset;
+        &::after{
+            display: none;
+        }
     }
 }
 .block-sticky,.block-category{
@@ -67,9 +81,9 @@
         @include tableMobile{
             margin-bottom: 1rem;
         }
-        a{
-            clip-path: polygon(93% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
-        }
+        // a{
+        //     clip-path: polygon(93% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
+        // }
     }
 }
 
