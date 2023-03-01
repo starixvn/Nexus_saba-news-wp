@@ -1800,14 +1800,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
   }
 }
-.block-columns .columns-right {
-  width: 35rem;
-}
-@media screen and (max-width: 1024px) {
-  .block-columns .columns-right {
-    width: auto;
-  }
-}
 @media (max-width: 767px) {
   .block-columns .columns-right {
     display: unset;
@@ -3722,7 +3714,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100% !important;
   height: 100% !important;
   position: fixed !important;
-  top: 10px !important;
+  top: 44px !important;
   left: 0px !important;
 }
 
@@ -3735,11 +3727,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 #ir__wrap .ir__slot > .ir__box > .ir__media > * {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, 0, 0);
   visibility: visible;
   overflow: hidden;
 }

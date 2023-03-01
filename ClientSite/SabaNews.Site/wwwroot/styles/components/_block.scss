@@ -106,10 +106,6 @@
         }
     }
     .columns-right{
-        width: 35rem;
-        @include tableMobile{
-            width: auto;
-        }
         @include Mobile{
             display: unset;
         }
