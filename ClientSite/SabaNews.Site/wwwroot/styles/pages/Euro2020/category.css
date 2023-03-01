@@ -469,30 +469,30 @@ p.has-text-align-center {
 }
 
 .block-extension {
-  position: unset;
+  height: 100%;
 }
-.block-extension .sticky-parent {
+.block-extension .sidebar-posts {
   position: sticky;
   top: 7rem;
 }
 @media screen and (max-width: 1024px) {
-  .block-extension .sticky-parent .block-sticky {
+  .block-extension .block-sticky {
     position: unset;
   }
 }
-.block-extension .sticky-parent .block-sticky .skeleton-vertical .skeleton-vertical__image {
+.block-extension .block-sticky .skeleton-vertical .skeleton-vertical__image {
   height: 20.1rem;
 }
-.block-extension .sticky-parent .block-sticky .block__title {
+.block-extension .block-sticky .block__title {
   border-bottom: 2px solid #f12f19;
   margin-bottom: 1.6rem;
 }
 @media screen and (max-width: 1024px) {
-  .block-extension .sticky-parent .block-sticky .block__title {
+  .block-extension .block-sticky .block__title {
     margin-bottom: 1rem;
   }
 }
-.block-extension .sticky-parent .block-sticky .block__title a {
+.block-extension .block-sticky .block__title a {
   font-weight: bold;
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -506,7 +506,7 @@ p.has-text-align-center {
   display: inline;
   border-radius: 3px 0 0 0;
 }
-.block-extension .sticky-parent .block-sticky .block__title a::after {
+.block-extension .block-sticky .block__title a::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -2685,8 +2685,6 @@ button {
 
 .block-extension {
   padding-left: 2.8rem;
-  position: sticky;
-  top: 7rem;
 }
 @media screen and (max-width: 1024px) {
   .block-extension {

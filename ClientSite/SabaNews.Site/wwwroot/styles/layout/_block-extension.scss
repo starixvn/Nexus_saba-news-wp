@@ -1,51 +1,50 @@
 ﻿.block-extension {
-    position: unset;
-    .sticky-parent{
-        position: -webkit-sticky;
+    height: 100%;
+    .sidebar-posts{
         position: sticky;
         top: 7rem;
-        .block-sticky {
+    }
+    .block-sticky {
+        @include tableMobile{
+            position : unset;
+        }
+        .skeleton-vertical {
+            .skeleton-vertical__image {
+                height: 20.1rem;
+            }
+        }
+        .block__title{
+            border-bottom: 2px solid #f12f19;
+            margin-bottom: 1.6rem;
             @include tableMobile{
-                position : unset;
+                margin-bottom: 1rem;
             }
-            .skeleton-vertical {
-                .skeleton-vertical__image {
-                    height: 20.1rem;
-                }
-            }
-            .block__title{
-                border-bottom: 2px solid #f12f19;
-                margin-bottom: 1.6rem;
-                @include tableMobile{
-                    margin-bottom: 1rem;
-                }
-                a{
-                    font-weight: bold;
-                    font-size: 1.6rem;
-                    line-height: 2.2rem;
-                    color: #fffdf9;
-                    text-decoration: none;
-                    text-transform: uppercase;
+            a{
+                font-weight: bold;
+                font-size: 1.6rem;
+                line-height: 2.2rem;
+                color: #fffdf9;
+                text-decoration: none;
+                text-transform: uppercase;
+                background-color: #f12f19;
+                position: relative;
+                z-index: 9;
+                padding: 0.4rem 1.2rem 0.2rem 1.2rem;
+                display: inline;
+                // -webkit-clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
+                // clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
+                border-radius: 3px 0 0 0;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 2rem;
+                    top: 0;
+                    right: -10px;
+                    transform: skew(18deg);
+                    z-index: 1;
                     background-color: #f12f19;
-                    position: relative;
-                    z-index: 9;
-                    padding: 0.4rem 1.2rem 0.2rem 1.2rem;
-                    display: inline;
-                    // -webkit-clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
-                    // clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
-                    border-radius: 3px 0 0 0;
-                    &::after{
-                        content: "";
-                        position: absolute;
-                        height: 100%;
-                        width: 2rem;
-                        top: 0;
-                        right: -10px;
-                        transform: skew(18deg);
-                        z-index: 1;
-                        background-color: #f12f19;
-                        display:  block;
-                    }
+                    display:  block;
                 }
             }
         }
