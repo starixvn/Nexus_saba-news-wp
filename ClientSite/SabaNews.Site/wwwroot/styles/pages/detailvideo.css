@@ -1566,6 +1566,18 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: inline;
   border-radius: 3px 0 0 0;
 }
+.block-extension .sticky-parent .block-sticky .block__title a::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2rem;
+  top: 0;
+  right: -10px;
+  transform: skew(18deg);
+  z-index: 1;
+  background-color: #f12f19;
+  display: block;
+}
 .block-extension .ads-insite {
   margin: 0 0 2rem 0 !important;
 }
