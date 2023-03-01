@@ -2570,8 +2570,8 @@ button {
 }
 @media (max-width: 767px) {
   .ads-insite {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     margin-left: -1.2rem;
     margin-right: -1.2rem;
   }
@@ -2614,11 +2614,11 @@ button {
 
 #ir__wrap {
   min-width: 300px;
-  height: 500px;
+  height: 325px;
   position: relative !important;
   visibility: visible !important;
   overflow: hidden !important;
-  margin-bottom: 1rem;
+  margin: 0 -1.2rem;
 }
 #ir__wrap.show-mobile {
   display: none;
@@ -2645,7 +2645,7 @@ button {
   width: 100% !important;
   height: 100% !important;
   position: fixed !important;
-  top: 0px !important;
+  top: 10px !important;
   left: 0px !important;
 }
 
