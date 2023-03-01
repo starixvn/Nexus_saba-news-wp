@@ -80,7 +80,10 @@
         }
     }
     .columns-right{
-        width: auto;
+        width: 35rem;
+        @include tableMobile{
+            width: auto;
+        }
         @include Mobile{
             display: unset;
         }
@@ -105,6 +108,7 @@
         }
     }
     .columns-right{
+        width: auto;
         @include Mobile{
             order: 1;
             width: 100%;
