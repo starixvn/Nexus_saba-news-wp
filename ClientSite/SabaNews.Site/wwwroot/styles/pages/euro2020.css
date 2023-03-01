@@ -1732,12 +1732,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block-columns .columns-right {
-  width: 35rem;
-}
-@media screen and (max-width: 1024px) {
-  .block-columns .columns-right {
-    width: auto;
-  }
+  width: auto;
 }
 @media (max-width: 767px) {
   .block-columns .columns-right {
@@ -1762,11 +1757,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     border-right: none;
     order: 2;
   }
-}
-.block-last-page .columns-right {
-  width: auto;
-  position: sticky;
-  top: 70px;
 }
 @media (max-width: 767px) {
   .block-last-page .columns-right {

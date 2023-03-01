@@ -431,13 +431,13 @@ button {
 .ck-content hr {
   margin: 15px 0;
   height: 4px;
-  background: hsl(0deg, 0%, 87%);
+  background: hsl(0, 0%, 87%);
   border: 0;
 }
 
 /* ckeditor5-basic-styles/theme/code.css */
 .ck-content code {
-  background-color: hsla(0deg, 0%, 78%, 0.3);
+  background-color: hsla(0, 0%, 78%, 0.3);
   padding: 0.15em;
   border-radius: 2px;
 }
@@ -450,13 +450,13 @@ button {
   margin-left: 0;
   margin-right: 0;
   font-style: italic;
-  border-left: solid 5px hsl(0deg, 0%, 80%);
+  border-left: solid 5px hsl(0, 0%, 80%);
 }
 
 /* ckeditor5-block-quote/theme/blockquote.css */
 .ck-content[dir=rtl] blockquote {
   border-left: 0;
-  border-right: solid 5px hsl(0deg, 0%, 80%);
+  border-right: solid 5px hsl(0, 0%, 80%);
 }
 
 /* ckeditor5-table/theme/table.css */
@@ -471,7 +471,7 @@ button {
   border-spacing: 0;
   width: 100%;
   height: 100%;
-  border: 1px double hsl(0deg, 0%, 70%);
+  border: 1px double hsl(0, 0%, 70%);
 }
 
 /* ckeditor5-table/theme/table.css */
@@ -479,13 +479,13 @@ button {
 .ck-content .table table th {
   min-width: 2em;
   padding: 0.4em;
-  border: 1px solid hsl(0deg, 0%, 75%);
+  border: 1px solid hsl(0, 0%, 75%);
 }
 
 /* ckeditor5-table/theme/table.css */
 .ck-content .table table th {
   font-weight: bold;
-  background: hsla(0deg, 0%, 0%, 0.05);
+  background: hsla(0, 0%, 0%, 0.05);
 }
 
 /* ckeditor5-table/theme/table.css */
@@ -525,7 +525,7 @@ button {
 .ck-content .page-break::after {
   content: "";
   position: absolute;
-  border-bottom: 2px dashed hsl(0deg, 0%, 77%);
+  border-bottom: 2px dashed hsl(0, 0%, 77%);
   width: 100%;
 }
 
@@ -536,14 +536,14 @@ button {
   padding: 0.3em 0.6em;
   display: block;
   text-transform: uppercase;
-  border: 1px solid hsl(0deg, 0%, 77%);
+  border: 1px solid hsl(0, 0%, 77%);
   border-radius: 2px;
   font-family: Helvetica, Arial, Tahoma, Verdana, Sans-Serif;
   font-size: 0.75em;
   font-weight: bold;
-  color: hsl(0deg, 0%, 20%);
-  background: hsl(0deg, 0%, 100%);
-  box-shadow: 2px 2px 1px hsla(0deg, 0%, 0%, 0.15);
+  color: hsl(0, 0%, 20%);
+  background: hsl(0, 0%, 100%);
+  box-shadow: 2px 2px 1px hsla(0, 0%, 0%, 0.15);
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -595,7 +595,7 @@ button {
   content: "";
   width: 100%;
   height: 100%;
-  border: 1px solid hsl(0deg, 0%, 20%);
+  border: 1px solid hsl(0, 0%, 20%);
   border-radius: 2px;
   transition: 250ms ease-in-out box-shadow, 250ms ease-in-out background, 250ms ease-in-out border;
 }
@@ -619,13 +619,13 @@ button {
 
 /* ckeditor5-list/theme/todolist.css */
 .ck-content .todo-list .todo-list__label > input[checked]::before {
-  background: hsl(126deg, 64%, 41%);
-  border-color: hsl(126deg, 64%, 41%);
+  background: hsl(126, 64%, 41%);
+  border-color: hsl(126, 64%, 41%);
 }
 
 /* ckeditor5-list/theme/todolist.css */
 .ck-content .todo-list .todo-list__label > input[checked]::after {
-  border-color: hsl(0deg, 0%, 100%);
+  border-color: hsl(0, 0%, 100%);
 }
 
 /* ckeditor5-list/theme/todolist.css */
@@ -641,9 +641,9 @@ button {
 /* ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre {
   padding: 1em;
-  color: hsl(0deg, 0%, 20.8%);
-  background: hsla(0deg, 0%, 78%, 0.3);
-  border: 1px solid hsl(0deg, 0%, 77%);
+  color: hsl(0, 0%, 20.8%);
+  background: hsla(0, 0%, 78%, 0.3);
+  border: 1px solid hsl(0, 0%, 77%);
   border-radius: 2px;
   text-align: left;
   direction: ltr;
