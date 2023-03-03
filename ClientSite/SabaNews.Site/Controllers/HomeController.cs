@@ -22,14 +22,17 @@
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
+        private readonly IUserService userService;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IUserService userService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
+            this.userService = userService;
         }
 
         public async Task<IActionResult> Index()
@@ -188,6 +191,44 @@
             return RedirectToAction("Tag", "Home", new { tagname });
         }
 
+        [Route("author/{authorId}")]
+        public async Task<IActionResult> Author(int authorId, int page = 1)
+        {
+            var start = (page - 1) * Constants.Perpage;
+            var criteria = new GetPostsByAuthorCriteria { AuthorId = authorId, Start = start, End = Constants.Perpage };
+            var user = await userService.GetUserByIdAsync(authorId);
+            var posts = await postService.GetPostsByAuthor(criteria);
+            var totalItems = criteria.TotalItems;
+            var authorName = user != null ? user.Name : "";
+            var model = new BlogViewModel
+            {
+                Posts = posts.ToList(),
+                Category = new Category
+                {
+                    OgTitle = string.Concat(authorName, " | ", Constants.SiteName),
+                    OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
+                    Url = Url.Action("Author", "Home", new { authorId }, Request.Scheme)
+                },
+                Header = new HeaderViewModel
+                {
+                    Title = string.Concat(authorName, " | ", Constants.SiteName),
+                    HeadTitle = "Tác giả: '" + authorName + "'",
+                    Controller = Constants.Author,
+                    Keyword = authorId.ToString()
+                },
+                Paging = new PagingModel
+                {
+                    CurrentPage = page,
+                    PageSize = Constants.Perpage,
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
+                    Href = Url.Action("Author", "Home", new { authorId, page = (int?)null }, Request.Scheme)
+                }
+            };
+
+            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
+            return View(view, model);
+        }
+
         [Route("warning")]
         public async Task<IActionResult> Warning()
         {
@@ -262,7 +303,7 @@
                 };
                 posts = await postService.GetPostsByCateSlugsPaging(criteria);
             }
-
+            
             if (!posts.Any())
             {
                 return Ok(false);
@@ -277,10 +318,19 @@
         public async Task<IActionResult> GetTypePostsGrid(TypePostParam param)
         {
             var start = (param.Page - 1) * param.PageSize;
-            var posts = param.Type == Constants.Search
-                        ? await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize })
-                        : await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
-
+            IEnumerable<Post> posts = new List<Post>();
+            if(param.Type == Constants.Search)
+            {
+                posts = await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize });
+            }
+            else if(param.Type == Constants.Tag)
+            {
+                posts = await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
+            }
+            else if(param.Type == Constants.Author)
+            {
+                posts = await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize });
+            }
             if (!posts.Any())
             {
                 return Ok(false);

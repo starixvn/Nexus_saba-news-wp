@@ -34,6 +34,7 @@
         public const string SearchTitle = "Kết quả tìm kiếm";
         public const string Search = "Search";
         public const string Tag = "Tag";
+        public const string Author = "Author";
         public const string DateSearch = "DateSearch";
         public const string Football = "Bóng đá";
         public const string Video = "Video";

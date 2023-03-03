@@ -1,16 +1,11 @@
 ﻿namespace SabaNews.Site.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
-    using Fanex.Caching;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Options;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;

@@ -18,12 +18,14 @@
     using Microsoft.AspNetCore.Mvc.Routing;
     using Microsoft.AspNetCore.Http;
     using SabaNews.Models.Home;
+    using SabaNews.Core.Models;
 
     public class HomeControllerTests : Controller
     {
         private IDataControlService dataControlService;
         private IPostService postService;
         private IConfiguration configuration;
+        private IUserService userService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -334,6 +336,64 @@
         }
 
         [Fact]
+        public async Task Auth_WhenHaveFullData_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            controller.Url = Substitute.For<IUrlHelper>();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+            var page = fixture.Create<int>();
+            var authorId = fixture.Create<int>();
+            UserSession user = null;
+            var criteria = fixture.Create<GetPostsByAuthorCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            postService.GetPostsByAuthor(Arg.Do<GetPostsByAuthorCriteria>(x => criteria = x)).Returns(expected);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = authorId )).Returns(user);
+            configuration.GetValue<string>("BaseUrl").Returns("baseurl");
+            //Act
+            var result = await controller.Author(authorId, page);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.Posts);
+            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task Auth_WhenPostIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            controller.Url = Substitute.For<IUrlHelper>();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+            var page = fixture.Create<int>();
+            var authorId = fixture.Create<int>();
+            UserSession user = null;
+            var criteria = fixture.Create<GetPostsByAuthorCriteria>();
+            IEnumerable<Post> expected = new List<Post>();
+            postService.GetPostsByAuthor(Arg.Do<GetPostsByAuthorCriteria>(x => criteria = x)).Returns(expected);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = authorId )).Returns(user);
+            configuration.GetValue<string>("BaseUrl").Returns("baseurl");
+            //Act
+            var result = await controller.Author(authorId, page);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.Posts);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
         public void RedirectLivescorePage_WhenCalled_RedirectCorrectly()
         {
             // Arrange
@@ -456,6 +516,27 @@
             var param = fixture.Create<TypePostParam>();
             param.Type = Constants.Tag;
             postService.GetPostByTagAsync(Arg.Do<GetPostsByTagCriteria>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetTypePostsGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+            Assert.Equal("~/Views/Home/_CategoryGridView.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetTypePostsGrid_WhenIsAuthorType_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetPostsByAuthorCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<TypePostParam>();
+            param.Keyword = "123";
+            param.Type = Constants.Author;
+            postService.GetPostsByAuthor(Arg.Do<GetPostsByAuthorCriteria>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetTypePostsGrid(param);
 
@@ -600,7 +681,8 @@
             dataControlService = Substitute.For<IDataControlService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
-            var controller = new HomeController(postService, dataControlService, configuration);
+            userService = Substitute.For<IUserService>();
+            var controller = new HomeController(postService, dataControlService, configuration, userService);
 
             return controller;
         }

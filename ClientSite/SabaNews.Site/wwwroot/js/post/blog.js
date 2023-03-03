@@ -19,7 +19,7 @@
 
         var url = '/api/post/category-posts';
         var data = { slugs, page, pageSize, type, isVideo };
-        if (type === "Search" || type === "Tag") {
+        if (type === "Search" || type === "Tag" || type === "Author") {
             url = '/api/post/type-posts';
             data = { keyword, type, page, pageSize }
         }

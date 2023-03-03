@@ -27,6 +27,8 @@
         public string Type { get; set; }
         public string Metadata { get; set; }
         public int CommentCount { get; set; }
+        public long AuthorId { get; set; }
+        public string Author { get; set; }
         public IEnumerable<ImageInfo> Images { get; set; }
 
         public string PostTime

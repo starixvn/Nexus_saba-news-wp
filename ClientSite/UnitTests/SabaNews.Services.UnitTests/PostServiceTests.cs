@@ -558,6 +558,23 @@
         }
 
         [Fact]
+        public async Task GetPostsByAuthor_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var Ids = fixture.Create<string>();
+            var criteria = fixture.Create<GetPostsByAuthorCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetPostsByAuthorCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPostsByAuthor(criteria);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public void PostFunction_WhenCalled_ReturnExpectedData()
         {
             //Arrange

@@ -56,5 +56,7 @@
         Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData);
 
         Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug);
+
+        Task<IEnumerable<Post>> GetPostsByAuthor(GetPostsByAuthorCriteria criteria);
     }
 }

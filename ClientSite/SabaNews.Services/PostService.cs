@@ -233,6 +233,12 @@
             return result;
         }
 
+        public async Task<IEnumerable<Post>> GetPostsByAuthor(GetPostsByAuthorCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(result).ToList();
+        }
+
         public static IList<Subjects> HandleSubjects(string categoriesSlug)
         {
             var subjects = new List<Subjects>();
