@@ -153,6 +153,27 @@
         }
 
         [Fact]
+        public async Task UpdateLeaguesExtraAsync_WhenPriorityHigherFirstLeague_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<UpdateLeagueExtraCriteria>();
+            var league = fixture.Create<League>();
+            league.Priority = 5;
+            var leagues = fixture.Create<IList<League>>();
+            leagues[0].Priority = 4;
+            var expected = new CommandResult { Code = 0 };
+            baseService.GetDataAsync<League>(Arg.Any<GetAllLeaguesCriteria>()).Returns(leagues);
+            baseService.GetDataAsync<League>(Arg.Any<GetLeagueByIdsCriteria>()).Returns(leagues);
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await service.UpdateLeaguesExtraAsync(league);
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
         public async Task DeleteLeaguesExtraAsync_WhenCalled_ReturnExpectedResult()
         {
             //Arrange
@@ -212,6 +233,29 @@
             var model = fixture.Create<UpdateTopScorersCriteria>();
             var topScorersList = fixture.Create<IList<TopScorers>>();
             var topScorers = fixture.Create<TopScorers>();
+            var modelPriority = fixture.Create<UpdatePriorityTopScorersCriteria>();
+            var expected = new CommandResult { Code = 0 };
+
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateTopScorersCriteria>(x => model = x)).Returns(expected);
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdatePriorityTopScorersCriteria>(x => modelPriority = x)).Returns(expected);
+            baseService.GetDataAsync<TopScorers>(Arg.Any<GetTopScorersByRowNumCriteria>()).Returns(topScorersList);
+            //Act
+            var actual = await service.UpdateTopScorerAsync(topScorers);
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task UpdateTopScorerAsync_WhenRankingLowerThanCurrentRank_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<UpdateTopScorersCriteria>();
+            var topScorersList = fixture.Create<IList<TopScorers>>();
+            topScorersList[0].Top = 10;
+            var topScorers = fixture.Create<TopScorers>();
+            topScorers.Top = 1;
             var modelPriority = fixture.Create<UpdatePriorityTopScorersCriteria>();
             var expected = new CommandResult { Code = 0 };
 
@@ -327,6 +371,21 @@
             var actual = await service.GetLeagueSeasonStanding(criteria);
             //Assert
             Assert.Equal(standings, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagueAndSeasonStandingAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var criteria = fixture.Create<GetLeagueAndSeasonStandingsCriteria >();
+            (var league, var standing) = fixture.Create<(IEnumerable<League>, IEnumerable<SeasonStandings>)>();
+            baseService.FetchMultipleAsync<League, SeasonStandings>(Arg.Do<GetLeagueAndSeasonStandingsCriteria>(x => x = criteria)).Returns((league, standing));
+            //Act
+            var actual = await service.GetLeagueAndSeasonStandingAsync(criteria);
+            //Assert
+            Assert.Equal(standing, actual.Item2);
         }
 
         [Fact]
