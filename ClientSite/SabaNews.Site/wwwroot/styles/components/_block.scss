@@ -101,10 +101,12 @@
     .columns-left{
         border-right : 1px solid #E5E5E5;
         padding-right: 2rem;
+        width: 105rem;
         @include Mobile{
             padding-right: 0;
             border-right: none;
             order: 2;
+            width: 100%;
         }
     }
     .columns-right{
