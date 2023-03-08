@@ -42,7 +42,7 @@
         };
 
         [Fact]
-        public async Task GetHomePageViewModel_WhenCalled_ReturnExpectedPostViewModel()
+        public void GetHomePageViewModel_WhenCalled_ReturnExpectedPostViewModel()
         {
             //Arrange
             var service = GetFetchDataService();

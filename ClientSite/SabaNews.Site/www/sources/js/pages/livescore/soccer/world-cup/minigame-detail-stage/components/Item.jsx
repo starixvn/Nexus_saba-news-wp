@@ -62,9 +62,8 @@ export class Item extends PureComponent {
                 matchId: match.matchId,
                 stage: window.stage
             };
-            this.props.updateVote(params).then(() => {
-                this.props.getVotes();
-            });
+            this.props.updateVote(params);
+            this.props.getVotes();
         });
     };
 

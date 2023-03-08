@@ -15,7 +15,7 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "")
+        public IViewComponentResult Invoke(string cateSlug = "")
         {
             var isAuthenticated = sessionService.User != null;
             var model = new TopHeaderViewModel

@@ -14,12 +14,12 @@
         private ISessionService sessionService;
 
         [Fact]
-        public async Task InvokeAsync_IsNotAuthenticate_ReturnExpectedViewResult()
+        public void InvokeAsync_IsNotAuthenticate_ReturnExpectedViewResult()
         {
             //Arrange
             var component = GetViewComponent();
             //Act
-            var actual = await component.InvokeAsync();
+            var actual = component.Invoke();
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
             var viewModel = Assert.IsType<TopHeaderViewModel>(viewResult.ViewData.Model);
@@ -27,13 +27,13 @@
         }
 
         [Fact]
-        public async Task InvokeAsync_IsAdmin_ReturnExpectedViewResult()
+        public void InvokeAsync_IsAdmin_ReturnExpectedViewResult()
         {
             //Arrange
             var component = GetViewComponent();
             sessionService.User = new UserSession { Id = 1, Metadata = "administratorUser" };
             //Act
-            var actual = await component.InvokeAsync();
+            var actual = component.Invoke();
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
             var viewModel = Assert.IsType<TopHeaderViewModel>(viewResult.ViewData.Model);

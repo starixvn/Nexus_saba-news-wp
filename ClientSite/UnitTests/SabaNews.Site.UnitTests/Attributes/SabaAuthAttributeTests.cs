@@ -22,7 +22,7 @@
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
-        public async Task OnAuthorization_WhenPostIsNull_ReturnExpectedVData()
+        public void OnAuthorization_WhenPostIsNull_ReturnExpectedVData()
         {
             // Arrange
             var attr = new SabaAuthAttribute();

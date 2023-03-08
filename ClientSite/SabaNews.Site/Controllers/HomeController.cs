@@ -10,8 +10,6 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
-    using SabaNews.Livescore.Models.League;
-    using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
@@ -83,11 +81,10 @@
                 slug = null;
             }
             return RedirectToAction("Category", "Home", new { slug1 = slug });
-            
         }
 
         [Route("/video/{slug2?}/{slug3?}")]
-        public async Task<IActionResult> Video( string slug2 = null, string slug3 = null)
+        public async Task<IActionResult> Video(string slug2 = null, string slug3 = null)
         {
             var viewModel = await dataControlService.GetCategoryViewModel(new GetPostsByCateSlugsParam { Slug1 = Constants.VideoSlug, Slug2 = slug2, Slug3 = slug3, Page = Constants.FirstPage });
             if (viewModel == null)
@@ -104,7 +101,7 @@
         {
             return RedirectToAction("Video", "Home");
         }
-        
+
 
         [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
@@ -239,7 +236,8 @@
             var slug = param.Slugs.Slug1 ??= Constants.NewPostSlug;
             int pageSize = param.PageSize;
             var start = (param.Page - 1) * pageSize;
-            if (param.IsVideo) {
+            if (param.IsVideo)
+            {
                 start = param.Page > Constants.SecondPage ? (param.Page - 1) * pageSize + 1 : Constants.GetTenItems;
             }
             IEnumerable<Post> posts;
@@ -264,7 +262,7 @@
                 };
                 posts = await postService.GetPostsByCateSlugsPaging(criteria);
             }
-            
+
             if (!posts.Any())
             {
                 return Ok(false);
@@ -282,7 +280,7 @@
             var posts = param.Type == Constants.Search
                         ? await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize })
                         : await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
-                                                 
+
             if (!posts.Any())
             {
                 return Ok(false);
