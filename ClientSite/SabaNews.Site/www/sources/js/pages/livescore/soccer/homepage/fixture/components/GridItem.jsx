@@ -27,7 +27,7 @@ export default class GridItem extends PureComponent {
             } else {
                 const index = tempMatches.findIndex(x => x.key === key);
                 if (index === - 1) {
-                    if(this.isShowMoreGroup(isFixture, tempMatches)) {
+                    if (this.isShowMoreGroup(isFixture, tempMatches)) {
                         tempMatches.push(item);
                     } else {
                         break;
@@ -43,11 +43,11 @@ export default class GridItem extends PureComponent {
 
     isShowMoreGroup = (isFixture, tempMatches) => {
         let isShowMore = false;
-        if(isFixture) {
+        if (isFixture) {
             const lastItem = tempMatches[tempMatches.length - 1];
             const listMatches = lastItem.childs;
             const lastMatch = listMatches[listMatches.length - 1];
-            if((CommonFunctions.isLiveMatch(lastMatch.status) || lastMatch.status === MatchStatus.Delay) && tempMatches.length < 3) {
+            if ((CommonFunctions.isLiveMatch(lastMatch.status) || lastMatch.status === MatchStatus.Delay) && tempMatches.length < 3) {
                 isShowMore = true;
             }
         }
@@ -64,9 +64,9 @@ export default class GridItem extends PureComponent {
                         return (
 
                             <div className="group-duel" key={item.key}>
-                                <div className="duel-date">{item.text}</div> 
+                                <div className="duel-date">{item.text}</div>
                                 {
-                                    item.childs.map((match, key) => <Match key={key} match={{...match, league}} />)
+                                    item.childs.map((match, key) => <Match key={key} match={{ ...match, league }} />)
                                 }
                             </div>
                         );

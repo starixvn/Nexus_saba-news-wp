@@ -17,7 +17,7 @@ export default class Match extends PureComponent {
         const { match } = this.props;
         const isLive = CommonFunctions.isLiveMatch(match.status);
         let stage = '';
-        if(match.status === MatchStatus.Finished || isLive) {
+        if (match.status === MatchStatus.Finished || isLive) {
             return this.getFinalScore(match);
         }
         switch (match.status) {
@@ -67,7 +67,7 @@ export default class Match extends PureComponent {
         const isShowMore = name.length > 11;
         const teamName = isShowMore ? name.substring(0, 11) + '....' : name;
         return (
-            <li className="team-name" title={isShowMore ? name: ''}>{teamName}</li>
+            <li className="team-name" title={isShowMore ? name : ''}>{teamName}</li>
         )
     };
 
@@ -136,7 +136,7 @@ export default class Match extends PureComponent {
                         <div className="column column-left home-team"></div>
                         <div className="column column-center">
                             <div className="soccer-match-stage">
-                            {isLive && <MatchStage match={match} /> }
+                                {isLive && <MatchStage match={match} />}
                             </div>
                         </div>
                         <div className="column column-right away-team"></div>

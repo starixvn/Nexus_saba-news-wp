@@ -16,7 +16,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using SabaNews.Site.Extensions;
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -146,10 +145,11 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var fixture = listFixture.Find(item => item.Id == model.Id);
             var newListFixture = listFixture.Where(item => item.Id != model.Id).ToList();
             var listDataEdit = HandleOrder(newListFixture, model.Order);
-            listDataEdit.Add(new FixtureHomepage { 
-                Id = fixture.Id, 
+            listDataEdit.Add(new FixtureHomepage
+            {
+                Id = fixture.Id,
                 LeagueId = fixture.LeagueId,
-                SeasonId = fixture.SeasonId, 
+                SeasonId = fixture.SeasonId,
                 Order = model.Order,
                 CreatedDate = fixture.CreatedDate
             });

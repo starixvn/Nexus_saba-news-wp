@@ -44,7 +44,7 @@
                 LeagueId = DefaultLeagueId,
                 SeasonId = DefaultSeasonId
             };
-            
+
             return View("~/Areas/Admin/Views/Livescore/MatchManagement/Index.cshtml", model);
         }
 
@@ -105,7 +105,7 @@
                 awayIconVN = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : awayIconVN;
             }
             DateTime? startTime;
-            if (model.StartTime == DateTime.MinValue)   
+            if (model.StartTime == DateTime.MinValue)
             {
                 startTime = null;
             }
@@ -137,7 +137,7 @@
                 AwayTeamPenaltyScore = Helper.CheckOriginValue(match.AwayTeamPenaltyScore, model.AwayTeamPenaltyScore)
             };
             var result = await matchService.UpdateMatchAsync(cmd);
-            
+
             return Json(result);
         }
 

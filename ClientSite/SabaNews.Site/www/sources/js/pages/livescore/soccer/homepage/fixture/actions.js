@@ -6,7 +6,7 @@ import {
     setLiveMatches
 } from './fixtureHomepageSlice';
 
-const getLeagues= () => async dispatch => {
+const getLeagues = () => async dispatch => {
     const url = Site.resolveClientUrl('api/GetHomeFixture');
     await DataService.postDataAsync(url).then(response => {
         dispatch(setLeagues(response.data));

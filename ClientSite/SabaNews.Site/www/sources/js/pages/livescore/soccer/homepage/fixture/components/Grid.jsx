@@ -52,21 +52,21 @@ export default class Grid extends PureComponent {
     };
     render() {
         const { league, matches } = this.props;
-        if(matches.length === 0) {
+        if (matches.length === 0) {
             return null;
         }
         let postMatches = matches.filter(item => item.status === MatchStatus.Finished);
         let preMatches = this.filterPreMatches(matches);
         postMatches = this.sortMatches(postMatches, false);
-        if(preMatches.length === 0) {
+        if (preMatches.length === 0) {
             return null;
         }
         return (
             <div className="wc-bg-overflow">
                 <div className="livescore-name-team">
-                    <span className="round-name"  onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
+                    <span className="round-name" onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
                 </div>
-                <Tabs  id="livescore-tab-league-detail"
+                <Tabs id="livescore-tab-league-detail"
                     className="live-score-nav"
                 >
                     <Tab title="LTĐ" eventKey="fixture">

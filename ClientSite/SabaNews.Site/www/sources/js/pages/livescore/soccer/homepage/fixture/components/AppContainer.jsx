@@ -5,7 +5,7 @@ import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import SkeletonGrid from './SkeletonGrid';
 import SignalR from './SignalR';
-import {  Width1024 } from '@jsroot/common/constants';
+import { Width1024 } from '@jsroot/common/constants';
 
 export class AppContainer extends Component {
     constructor(props) {

@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import GridItem from './GridItem';
 import MobileGrid from './MobileGrid';
-import { MobileMaxWidth } from '@jsroot/common/constants';
 
 export default class Grid extends PureComponent {
     constructor(props) {
@@ -64,7 +63,7 @@ export default class Grid extends PureComponent {
                     <div className="season-standings">
                         <div className="control-standing " >
                             <div className="parent-dropdown">
-                            <MobileGrid standings={standings} currentLeagueStanding={currentLeagueStanding} handleSelectLeague={this.handleSelectLeague} />
+                                <MobileGrid standings={standings} currentLeagueStanding={currentLeagueStanding} handleSelectLeague={this.handleSelectLeague} />
                                 <span className="mobile-match">
                                     {CommonFunctions.getLeagueName(currentLeagueStanding.league)}
                                     <i className="icon-chevron-down" />

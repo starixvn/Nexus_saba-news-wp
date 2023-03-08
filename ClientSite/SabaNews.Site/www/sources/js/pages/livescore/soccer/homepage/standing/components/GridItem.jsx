@@ -4,7 +4,7 @@ import TableHead from './table/Head';
 import TableBody from './table/Body';
 import { Tabs, Tab } from 'react-bootstrap';
 
-export  default class GridItem extends PureComponent {
+export default class GridItem extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -75,19 +75,19 @@ export  default class GridItem extends PureComponent {
         const lastStanding = standing[standing.length - 1];
         return (
             <>
-                { lastStanding.childs.length === 1 &&
+                {lastStanding.childs.length === 1 &&
                     <Table standings={lastStanding.childs} />
                 }
                 {
                     lastStanding.childs.length > 1 &&
-                    <Tabs  id="livescore-tab-league-detail"
-                    className="live-score-nav"
+                    <Tabs id="livescore-tab-league-detail"
+                        className="live-score-nav"
                     >
                         {
                             lastStanding.childs.map((group, index) => {
                                 const groupName = group.key.charAt(0);
                                 return (
-                                    <Tab title={groupName} eventKey={group.key}  key={index}>
+                                    <Tab title={groupName} eventKey={group.key} key={index}>
                                         <div className="table-custom">
                                             <TableHead groupName={groupName} isMobile={true} />
                                             <TableBody teams={group.childs} isMobile={true} />

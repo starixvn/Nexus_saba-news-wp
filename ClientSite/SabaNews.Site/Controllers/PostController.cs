@@ -65,9 +65,8 @@
             }
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
-            var topParentCate = PostHelper.GetTopCateParent(cateParents);
+            cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
             cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
-            cateInfo.Parent = topParentCate;
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {
@@ -78,7 +77,7 @@
                 IsVideo = PostHelper.CheckIsVideo(cateParents),
                 CateInfo = cateInfo
             };
-            
+
             return View(model);
         }
 
@@ -118,12 +117,11 @@
         {
             var slug = cateSlug;
             var name = cateName;
-            if (cateSlug == Constants.CollectionSlug || (cateSlug.Contains(Constants.BasketballSlug) 
+            if (cateSlug == Constants.CollectionSlug || (cateSlug.Contains(Constants.BasketballSlug)
                 && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
             {
-                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts }; 
+                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts };
             }
-            
             var listCateSlug = cateSlug.Split(',');
             var listCateName = cateName.Split(',');
             var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
@@ -183,7 +181,7 @@
         [Route("api/post/lastestNews")]
         public async Task<IActionResult> GetLastestNews()
         {
-            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems});
+            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems });
             return Ok(posts);
         }
 
