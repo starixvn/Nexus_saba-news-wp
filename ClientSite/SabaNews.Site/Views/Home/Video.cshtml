@@ -48,18 +48,24 @@
         {
             if (!isMobile)
             {
-                <ul class="sub-category">
-                    @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
-                    {
-                        <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = (string)null })">@menu.MenuTitle</a></li>
-                    }
-                </ul>
-                <ul class="sub-category last">
-                    @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
-                    {
-                        <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = menu.CateSlug })">@menu.MenuTitle</a></li>
-                    }
-                </ul>
+                if(Model.GetSubMenu(Model.Slugs.Slug1).Count > 0)
+                {
+                    <ul class="sub-category">
+                        @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
+                        {
+                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = (string)null })">@menu.MenuTitle</a></li>
+                        }
+                    </ul>
+                }
+                if(Model.GetSubMenu(Model.Slugs.Slug2).Count > 0)
+                {
+                    <ul class="sub-category last">
+                        @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
+                        {
+                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = menu.CateSlug })">@menu.MenuTitle</a></li>
+                        }
+                    </ul>
+                }
             }
             else
             {
