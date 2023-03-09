@@ -66,7 +66,11 @@
 
     function LoadBannerContent() {
         var html = $('.banner-content').html();
-        $('.content').find('p').eq(0).after(html);
+        if($('.content').find('p').eq(0).html() !== '') {
+            $('.content').find('p').eq(0).after(html);
+        } else {
+            $('.content').find('p').eq(1).after(html);
+        }
     }
 
     function getScrollTop(isMobile, href, scrollTop) {
