@@ -31,8 +31,6 @@
                 z-index: 9;
                 padding: 0.4rem 1.2rem 0.2rem 1.2rem;
                 display: inline;
-                // -webkit-clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
-                // clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
                 border-radius: 3px 0 0 0;
                 &::after{
                     content: "";
@@ -41,7 +39,7 @@
                     width: 2rem;
                     top: 0;
                     right: -10px;
-                    transform: skew(18deg);
+                    transform: skew(25deg);
                     z-index: 1;
                     background-color: #f12f19;
                     display:  block;

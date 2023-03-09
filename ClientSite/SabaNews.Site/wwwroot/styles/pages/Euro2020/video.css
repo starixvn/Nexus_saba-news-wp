@@ -513,7 +513,7 @@ p.has-text-align-center {
   width: 2rem;
   top: 0;
   right: -10px;
-  transform: skew(18deg);
+  transform: skew(25deg);
   z-index: 1;
   background-color: #f12f19;
   display: block;

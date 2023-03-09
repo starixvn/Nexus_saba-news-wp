@@ -24,7 +24,6 @@
             z-index: 9;
             padding: .4rem 1.2rem .2rem 1.2rem;
             display: inline-block;
-            // clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
             border-radius: 3px 0 0 0;
             &::after{
                 content: "";
@@ -33,7 +32,7 @@
                 width: 2rem;
                 top: 0;
                 right: -10px;
-                transform: skew(18deg);
+                transform: skew(25deg);
                 z-index: 1;
                 background-color: $color-main-title;
             }
@@ -47,33 +46,41 @@
     }
 }
 
-.title-new-page{
+
+.heading-category{
+    @extend .block__title;
+    margin-bottom: 0;
+    margin-right: 3rem;
     border-bottom: none;
-    margin-bottom: 1.2rem;
-    a{
-        font-weight: bold;
-        font-size: 2rem;
-        line-height: 2.7rem;
-        color: #f12f19;
-        text-decoration: none;
-        text-transform: uppercase;
-        background-color: #fffdf9;
-        position: relative;
-        z-index: 9;
-        padding-right: 1rem;
-        line-height: 1;
-        padding: 0;
-        clip-path: unset;
-        &::after{
-            display: none;
-        }
-    }
 }
-.block-sticky,.block-category{
-    .block__title{
-        @extend .title-new-page
-    }
-}
+
+// .title-new-page{
+//     border-bottom: none;
+//     margin-bottom: 1.2rem;
+//     a{
+//         font-weight: bold;
+//         font-size: 2rem;
+//         line-height: 2.7rem;
+//         color: #f12f19;
+//         text-decoration: none;
+//         text-transform: uppercase;
+//         background-color: #fffdf9;
+//         position: relative;
+//         z-index: 9;
+//         padding-right: 1rem;
+//         line-height: 1;
+//         padding: 0;
+//         clip-path: unset;
+//         &::after{
+//             display: none;
+//         }
+//     }
+// }
+// .block-sticky,.block-category{
+//     .block__title{
+//         @extend .title-new-page
+//     }
+// }
 
 .block-detail{
     .block__title{
@@ -81,9 +88,6 @@
         @include tableMobile{
             margin-bottom: 1rem;
         }
-        // a{
-        //     clip-path: polygon(93% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
-        // }
     }
 }
 
