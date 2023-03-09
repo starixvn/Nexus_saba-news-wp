@@ -118,7 +118,12 @@
                 }
                 <div style="display: none;" class="single play_video"></div>
                 <h1 class="card-vertical__title">@Model.SinglePost.PostTitle</h1>
-                <p class="card-vertical__datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                <div class="card-vertical__datetime">
+                     <div class="author-section" style="text-align:right">
+                        <a href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author </a>
+                    </div>
+                    <span class="date"> - @Model.SinglePost.PostTimeFormatSingle</span>
+                </div>
                 @if (!Model.IsVideo)
                 {
                     <div class="content">
@@ -205,9 +210,7 @@
                     }
                 }
             </ul>
-            <div class="author-section" style="text-align:right">
-                <a style="text-decoration: none; color:#000; font-weight:bold" href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author</a>
-            </div>
+           
             
             <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
             <input name="isVideo" id="isVideo" type="hidden" value="@Model.IsVideo.ToString()" />
