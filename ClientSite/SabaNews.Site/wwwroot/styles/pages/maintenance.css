@@ -311,6 +311,10 @@ p.has-text-align-center {
   }
 }
 
+.medium-container, .detail-container {
+  max-width: 110rem;
+}
+
 body {
   display: flex;
   height: 100vh;

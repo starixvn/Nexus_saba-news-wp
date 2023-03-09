@@ -35,7 +35,10 @@
 
 .block__content,.detail-container{
     .ads-insite{
-        margin: 2rem -1.2rem;
+        margin: 2rem 0;
+        @include Mobile{
+            margin: 2rem -1.2rem;
+        }
     }
 }
 
