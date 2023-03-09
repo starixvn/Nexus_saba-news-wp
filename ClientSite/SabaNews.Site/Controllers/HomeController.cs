@@ -330,6 +330,8 @@
             else if(param.Type == Constants.Author)
             {
                 posts = await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize });
+            } else {
+                return Ok(false);
             }
             if (!posts.Any())
             {
