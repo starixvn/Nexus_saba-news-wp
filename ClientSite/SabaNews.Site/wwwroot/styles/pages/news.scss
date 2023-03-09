@@ -252,12 +252,12 @@
         }
 
         a {
-            color: #4F4F4F;
+            color: #333;
             text-decoration: none;
-            padding-bottom: 1.2rem;
+            padding-bottom: .6rem;
             display: inline-block;
             position: relative;
-
+            font-weight: 600;
             @include tableMobile {
                 padding-bottom: 0;
             }
