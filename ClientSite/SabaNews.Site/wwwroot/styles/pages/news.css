@@ -1741,9 +1741,17 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .heading-category {
-  margin-bottom: 0;
+  margin-bottom: 2.4rem;
   margin-right: 3rem;
   border-bottom: none;
+}
+
+.block-sticky .heading-category {
+  margin-bottom: 1.2rem;
+}
+
+.title-new-page {
+  margin-bottom: 2.4rem;
 }
 
 .block-detail .block__title, .block-detail .heading-category {
@@ -3603,18 +3611,23 @@ button {
   margin-bottom: 1.5rem;
 }
 
+.group-sub-category {
+  margin-bottom: 1.2rem;
+}
+.group-sub-category .heading-category {
+  margin-bottom: 0;
+}
+
 .sub-category {
   list-style: none;
   display: flex;
   border-bottom: 1px solid #D4D4D4;
-  margin-bottom: 1.2rem;
 }
 @media screen and (max-width: 1024px) {
   .sub-category {
     overflow-x: overlay;
     overflow-y: hidden;
     white-space: nowrap;
-    margin-bottom: 1.2rem;
   }
   .sub-category::-webkit-scrollbar {
     display: none;
@@ -3656,6 +3669,9 @@ button {
 .sub-category .sub-item:hover a:before, .sub-category .sub-item.active a:before {
   width: 100%;
 }
+.sub-category:first-child {
+  margin-bottom: 1.2rem;
+}
 .sub-category:last-child {
   border: none;
 }
@@ -3667,6 +3683,9 @@ button {
 }
 .sub-category:last-child .sub-item.active a:before {
   display: none;
+}
+.sub-category:last-child .sub-item a {
+  padding-bottom: 0;
 }
 
 .title-new-page {

@@ -1740,9 +1740,17 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .heading-category {
-  margin-bottom: 0;
+  margin-bottom: 2.4rem;
   margin-right: 3rem;
   border-bottom: none;
+}
+
+.block-sticky .heading-category {
+  margin-bottom: 1.2rem;
+}
+
+.title-new-page {
+  margin-bottom: 2.4rem;
 }
 
 .block-detail .block__title, .block-detail .heading-category {

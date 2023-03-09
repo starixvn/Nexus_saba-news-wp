@@ -225,19 +225,21 @@
         }
     }
 }
+.group-sub-category{
+    margin-bottom: 1.2rem;
+    .heading-category{
+        margin-bottom: 0;
+    }
+}
 
 .sub-category {
     list-style: none;
     display: flex;
     border-bottom: 1px solid #D4D4D4;
-    margin-bottom: 1.2rem;
-
     @include tableMobile {
         overflow-x: overlay;
         overflow-y: hidden;
         white-space: nowrap;
-        margin-bottom: 1.2rem;
-
         &::-webkit-scrollbar {
             display: none;
         }
@@ -283,6 +285,10 @@
         }
     }
 
+    &:first-child{
+        margin-bottom: 1.2rem;
+    }
+
     &:last-child {
         border: none;
 
@@ -299,6 +305,9 @@
                 &:before {
                     display: none;
                 }
+            }
+            a{
+                padding-bottom: 0;
             }
         }
     }

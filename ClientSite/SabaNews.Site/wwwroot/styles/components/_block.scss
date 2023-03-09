@@ -49,9 +49,18 @@
 
 .heading-category{
     @extend .block__title;
-    margin-bottom: 0;
+    margin-bottom: 2.4rem;
     margin-right: 3rem;
     border-bottom: none;
+}
+.block-sticky{
+    .heading-category{
+        margin-bottom: 1.2rem;
+    }
+}
+
+.title-new-page{
+    margin-bottom: 2.4rem;
 }
 
 // .title-new-page{
