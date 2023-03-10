@@ -39,7 +39,7 @@
 
 @(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug, Slugs = Model.Slugs }))
 <section class="main">
-    <div class="base-container">
+    <div class="base-container medium-container">
         @if (!isMobile)
         {
             <h2 class="block__title title-new-page"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
@@ -105,7 +105,7 @@
             }
         }
     </div>
-    <div class="container">
+    <div class="container medium-container">
         <div class="block block-main">
             
             <div class="block__swipper">
