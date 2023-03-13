@@ -3487,6 +3487,7 @@ button {
   margin-bottom: 1.6rem;
   background-color: #E8EAEF;
   padding-bottom: 0;
+  border-bottom: none;
 }
 .block-main .card-horizontal-highlight .text-skeleton, .block-main .skeleton-horizontal-highlight .text-skeleton {
   padding: 16px;
