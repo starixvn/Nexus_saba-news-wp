@@ -501,8 +501,8 @@ p.has-text-align-center {
   background-color: #f12f19;
   position: relative;
   z-index: 9;
-  padding: 0.4rem 1.2rem 0.2rem 1.2rem;
-  display: inline;
+  padding: 0.5rem 1.2rem 0.3rem 1.2rem;
+  display: inline-block;
   border-radius: 3px 0 0 0;
 }
 .block-extension .block-sticky .block__title a::after {
@@ -2011,7 +2011,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .medium-container, .detail-container {
-  max-width: 110rem;
+  max-width: 112rem;
 }
 
 .block__content .sub-category {

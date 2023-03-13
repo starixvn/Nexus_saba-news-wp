@@ -4,10 +4,10 @@
 
 
 .main .container {
-    @include grid(70% 30%, unset, 0);
+    @include grid(auto 32rem, unset, 0);
 
     @include tableMobile {
-        grid-template-columns: 60% 40%;
+        grid-template-columns: auto 32rem;
     }
 
     @include Mobile {
@@ -16,7 +16,7 @@
 }
 
 .main .detail-container {
-    @include grid(5% 65% 30%, unset, 0);
+    @include grid(5% 65% 32rem, unset, 0);
     align-items : start;
 
     @include tableMobile {
@@ -45,7 +45,7 @@
 
 
 .block-main {
-    padding-right: 2.8rem;
+    padding-right: 2rem;
     border-right: 1px solid $separator-color;
 
     @include tableMobile {
@@ -59,7 +59,7 @@
 }
 
 .block-extension {
-    padding-left: 2.8rem;
+    padding-left: 2rem;
     @include tableMobile {
         padding-left: 1rem;
     }
