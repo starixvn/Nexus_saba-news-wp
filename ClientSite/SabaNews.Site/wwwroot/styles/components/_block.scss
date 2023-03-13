@@ -119,8 +119,10 @@
         }
     }
     .columns-right{
+        width: 35rem;
         @include Mobile{
             display: unset;
+            width: auto;
         }
     }
 }
