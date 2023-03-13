@@ -1870,7 +1870,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-bottom: none;
 }
 .heading-category a {
-  padding: 0.5rem 1.2rem 0.3rem 1.2rem;
+  padding: 0.6rem 1.2rem 0.4rem 1.2rem;
 }
 
 .block-sticky .block__title, .block-sticky .heading-category {
