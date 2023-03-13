@@ -3144,6 +3144,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   transform: translate3d(-50%, 0, 0);
   visibility: visible;
   overflow: hidden;
+  width: 100%;
+  display: block;
 }
 
 #ir__wrap .ir__trademark,
