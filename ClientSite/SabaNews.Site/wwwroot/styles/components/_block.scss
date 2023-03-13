@@ -22,20 +22,10 @@
             background-color: $color-main-title;
             position: relative;
             z-index: 9;
-            padding: .4rem 1.2rem .2rem 1.2rem;
-            display: inline-block;
+            padding: .4rem 3.2rem .2rem 1.2rem;
+            display: inline;
+            clip-path: polygon(90% 0,100% 100%,0% 100%,0% 0%,0 0,100% 0%);
             border-radius: 3px 0 0 0;
-            &::after{
-                content: "";
-                position: absolute;
-                height: 100%;
-                width: 2rem;
-                top: 0;
-                right: -10px;
-                transform: skew(25deg);
-                z-index: 1;
-                background-color: $color-main-title;
-            }
             @include tableMobile {
                 font-size: 1.6rem;
             }
@@ -46,57 +36,28 @@
     }
 }
 
-
-.heading-category{
-    @extend .block__title;
-    margin-bottom: 2.4rem;
-    margin-right: 3rem;
+.title-new-page{
     border-bottom: none;
-}
-.block-sticky{
-    .block__title{
-        margin-bottom: 1.2rem !important;
+    margin-bottom: 1.2rem;
+    a{
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.7rem;
+        color: #f12f19;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: #fffdf9;
+        position: relative;
+        z-index: 9;
+        padding-right: 1rem;
+        line-height: 1;
+        padding: 0;
+        clip-path: unset;
     }
 }
-
-.title-new-page{
-    margin-bottom: 2.4rem;
-}
-
-// .title-new-page{
-//     border-bottom: none;
-//     margin-bottom: 1.2rem;
-//     a{
-//         font-weight: bold;
-//         font-size: 2rem;
-//         line-height: 2.7rem;
-//         color: #f12f19;
-//         text-decoration: none;
-//         text-transform: uppercase;
-//         background-color: #fffdf9;
-//         position: relative;
-//         z-index: 9;
-//         padding-right: 1rem;
-//         line-height: 1;
-//         padding: 0;
-//         clip-path: unset;
-//         &::after{
-//             display: none;
-//         }
-//     }
-// }
-// .block-sticky,.block-category{
-//     .block__title{
-//         @extend .title-new-page
-//     }
-// }
-
-.block-detail{
+.block-sticky,.block__content,.block-main{
     .block__title{
-        margin-bottom: 1.6rem;
-        @include tableMobile{
-            margin-bottom: 1rem;
-        }
+        @extend .title-new-page
     }
 }
 
@@ -120,9 +81,11 @@
     }
     .columns-right{
         width: 35rem;
+        @include tableMobile{
+            width: auto;
+        }
         @include Mobile{
             display: unset;
-            width: auto;
         }
     }
 }
