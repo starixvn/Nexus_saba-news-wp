@@ -1841,7 +1841,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: relative;
   z-index: 9;
   padding: 0.4rem 1.2rem 0.2rem 1.2rem;
-  display: inline-block;
+  display: initial;
   border-radius: 3px 0 0 0;
 }
 .block__title a::after, .heading-category a::after {

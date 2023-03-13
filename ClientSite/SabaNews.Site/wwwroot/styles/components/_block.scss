@@ -23,7 +23,7 @@
             position: relative;
             z-index: 9;
             padding: .4rem 1.2rem .2rem 1.2rem;
-            display: inline-block;
+            display: initial;
             border-radius: 3px 0 0 0;
             &::after{
                 content: "";
