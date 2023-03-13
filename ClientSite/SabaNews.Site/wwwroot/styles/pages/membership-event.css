@@ -1544,16 +1544,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-extension .block-sticky .skeleton-vertical .skeleton-vertical__image {
   height: 20.1rem;
 }
-.block-extension .block-sticky .block__title {
+.block-extension .block-sticky .block__title, .block-extension .block-sticky .heading-category {
   border-bottom: 2px solid #f12f19;
   margin-bottom: 1.6rem;
 }
 @media screen and (max-width: 1024px) {
-  .block-extension .block-sticky .block__title {
+  .block-extension .block-sticky .block__title, .block-extension .block-sticky .heading-category {
     margin-bottom: 1rem;
   }
 }
-.block-extension .block-sticky .block__title a {
+.block-extension .block-sticky .block__title a, .block-extension .block-sticky .heading-category a {
   font-weight: bold;
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -1567,7 +1567,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: inline;
   border-radius: 3px 0 0 0;
 }
-.block-extension .block-sticky .block__title a::after {
+.block-extension .block-sticky .block__title a::after, .block-extension .block-sticky .heading-category a::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -1696,17 +1696,17 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin-bottom: 3rem;
   }
 }
-.block__title {
+.block__title, .heading-category {
   margin-bottom: 1rem;
   position: relative;
   border-bottom: 2px solid #F12F19;
 }
 @media screen and (max-width: 1024px) {
-  .block__title {
+  .block__title, .heading-category {
     margin-bottom: 1rem;
   }
 }
-.block__title a {
+.block__title a, .heading-category a {
   font-weight: bold;
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -1716,40 +1716,51 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-color: #F12F19;
   position: relative;
   z-index: 9;
-  padding: 0.4rem 3.2rem 0.2rem 1.2rem;
-  display: inline;
-  -webkit-clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
-          clip-path: polygon(90% 0, 100% 100%, 0% 100%, 0% 0%, 0 0, 100% 0%);
+  padding: 0.4rem 1.2rem 0.2rem 1.2rem;
+  display: inline-block;
   border-radius: 3px 0 0 0;
 }
+.block__title a::after, .heading-category a::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2rem;
+  top: 0;
+  right: -10px;
+  transform: skew(25deg);
+  z-index: 1;
+  background-color: #F12F19;
+}
 @media screen and (max-width: 1024px) {
-  .block__title a {
+  .block__title a, .heading-category a {
     font-size: 1.6rem;
   }
 }
-.block__title a.none-bg {
+.block__title a.none-bg, .heading-category a.none-bg {
   background-color: transparent !important;
 }
 
-.title-new-page, .block-sticky .block__title, .block__content .block__title, .block-main .block__title {
+.heading-category {
+  margin-bottom: 2.4rem;
+  margin-right: 3rem;
   border-bottom: none;
-  margin-bottom: 1.2rem;
 }
-.title-new-page a, .block-sticky .block__title a, .block__content .block__title a, .block-main .block__title a {
-  font-weight: bold;
-  font-size: 2rem;
-  line-height: 2.7rem;
-  color: #f12f19;
-  text-decoration: none;
-  text-transform: uppercase;
-  background-color: #fffdf9;
-  position: relative;
-  z-index: 9;
-  padding-right: 1rem;
-  line-height: 1;
-  padding: 0;
-  -webkit-clip-path: unset;
-          clip-path: unset;
+
+.block-sticky .block__title, .block-sticky .heading-category {
+  margin-bottom: 1.2rem !important;
+}
+
+.title-new-page {
+  margin-bottom: 2.4rem;
+}
+
+.block-detail .block__title, .block-detail .heading-category {
+  margin-bottom: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-detail .block__title, .block-detail .heading-category {
+    margin-bottom: 1rem;
+  }
 }
 
 .block-columns {
@@ -1778,14 +1789,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-columns .columns-right {
   width: 35rem;
 }
-@media screen and (max-width: 1024px) {
-  .block-columns .columns-right {
-    width: auto;
-  }
-}
 @media (max-width: 767px) {
   .block-columns .columns-right {
     display: unset;
+    width: auto;
   }
 }
 
