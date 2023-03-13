@@ -1883,6 +1883,26 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .title-new-page {
   margin-bottom: 2.4rem;
+  position: relative;
+  border-bottom: none;
+}
+.title-new-page::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #D4D4D4;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .title-new-page::before {
+    display: none;
+  }
+}
+.title-new-page a {
+  padding: 0.6rem 1.2rem 0.4rem 1.2rem;
 }
 
 .block-detail .block__title, .block-detail .heading-category {

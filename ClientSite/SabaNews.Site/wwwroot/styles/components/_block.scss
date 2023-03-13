@@ -64,6 +64,24 @@
 
 .title-new-page{
     margin-bottom: 2.4rem;
+    position: relative;
+    border-bottom: none;
+    &::before{
+        content:  "";
+        display: block;
+        height: 1px;
+        background: #D4D4D4;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        @include tableMobile{
+            display: none;
+        }
+    }
+    a{
+        padding: 0.6rem 1.2rem 0.4rem 1.2rem;
+    }
 }
 
 

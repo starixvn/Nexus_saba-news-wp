@@ -630,10 +630,6 @@ body {
   color: #2F2F2F !important;
 }
 
-.livescore-home {
-  padding-bottom: 1.6rem;
-  border-bottom: 1px solid #E5E5E5;
-}
 @media (max-width: 767px) {
   .livescore-home {
     padding-bottom: 0;
