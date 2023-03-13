@@ -44,7 +44,7 @@
 
         &-highlight {
             height: 26.6rem;
-            grid-template-columns: 44rem 1fr;
+            grid-template-columns: 47rem 1fr;
             grid-column-gap: 0;
             grid-template-rows: unset;
             align-items: flex-start;
@@ -90,7 +90,7 @@
 
             .description {
                 margin-top: 1rem;
-
+                font-weight: 500;
                 @include tableMobile {
                     display: block;
                     margin-top: 0;

@@ -2390,6 +2390,7 @@ button {
 .card-vertical__description {
   margin: 0.3rem 0;
   line-height: 1.9rem;
+  font-weight: 500;
 }
 @media screen and (max-width: 1024px) {
   .card-vertical__description {
@@ -2457,7 +2458,7 @@ button {
   margin-top: 0.8rem;
   margin-bottom: 0;
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .box-vertical.box-vertical-hightlight .box-vertical-image {
   height: 35rem;
