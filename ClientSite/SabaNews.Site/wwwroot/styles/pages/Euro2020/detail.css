@@ -2832,6 +2832,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }*/
 .comment-post {
   padding: 0 0 2rem 0;
+  position: relative;
+  z-index: 0;
 }
 .comment-post .add_comment, .comment-post .add_sub_comment {
   color: #fff;
@@ -2841,6 +2843,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-top: 2rem;
   font-weight: bold;
   border-radius: 3px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 .comment-post .heading-post-comment {
   margin-bottom: 1.5rem;
