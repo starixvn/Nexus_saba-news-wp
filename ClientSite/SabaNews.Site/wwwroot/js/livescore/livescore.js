@@ -55,8 +55,28 @@
         }
     }
 
+    function scrollDetailPageLiveScore() {
+        var heightContainer = $('.sticky-header').outerHeight();
+        if ($(window).scrollTop() > heightContainer) {
+            $('.detail-fixed').addClass('active-scroll');
+        } else {
+            $('.detail-fixed').removeClass('active-scroll');
+        }
+
+        if($(window).scrollTop() > $('.footer').offset().top - 200) {
+            $('.detail-fixed').removeClass('active-scroll');
+        }
+    }
+
+    function HandleScroll() {
+        $(window).scroll(function () {
+            scrollDetailPageLiveScore();
+        });
+    }
+
     function init() {
         updateCurrentTime();
+        HandleScroll();
         //RefreshFavMatch();
     }
 

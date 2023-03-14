@@ -118,14 +118,6 @@ $(document).ready(function () {
         }
     }
 
-    function scrollDetailPageLiveScore() {
-        var heightContainer = $('.sticky-header').outerHeight();
-        if ($(window).scrollTop() > heightContainer) {
-            $('.detail-fixed').addClass('active-scroll');
-        } else {
-            $('.detail-fixed').removeClass('active-scroll');
-        }
-    }
 
     function scrollTopY() {
         var top_of_window = $(window).scrollTop();
@@ -142,7 +134,6 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         scrollBackTop();
-        scrollDetailPageLiveScore();
         scrollTopY();
     });
 
