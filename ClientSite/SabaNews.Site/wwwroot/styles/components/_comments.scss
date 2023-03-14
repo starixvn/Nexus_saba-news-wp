@@ -10,10 +10,16 @@
         padding: 1rem 4rem;
         background: #f12f19;
         border: none;
-        margin-top: 2rem;
+        margin-top: 1.2rem;
         font-weight: bold;
         border-radius: 3px;
         appearance: none;
+    }
+    .add_comment{
+        @include Mobile{
+            width: 100%;
+            font-size: 1.4rem;
+        }
     }
 
     .heading-post-comment {
@@ -85,11 +91,11 @@
         }
 
         .active {
-            color: #f12f19;
+            color: #48041A;
             font-weight: 700;
 
             &:after {
-                background: #f12f19;
+                background: #48041A;
             }
         }
     }
@@ -100,7 +106,21 @@
 
             .group-comment {
                 @include flex(flex-start,nowrap, flex-start);
-
+                .controls{
+                    margin-top: .6rem;
+                    &-reply {
+                        a {
+                            color: #838383;
+                            font-size: 1.4rem;
+                            font-weight: 500;
+                            i{
+                                &::before{
+                                    color: #838383;
+                                }
+                            }
+                        }
+                    }
+                }
                 .avatar {
                     margin: 0 1rem 0 0;
                     width: 3.6rem;
@@ -136,7 +156,7 @@
 
                         a {
                             text-decoration: none;
-                            color: $color-input;
+                            color: #838383;
                         }
                     }
 
@@ -144,14 +164,13 @@
                         margin-right: .5rem;
 
                         a {
-                            color: #04416D;
+                            color: #333333;
                             text-decoration: none;
                             font-weight: bold;
                         }
                     }
-
                     .group-sub-comment {
-                        margin-top: 2rem;
+                        margin-top: 1.2rem;
                         padding-left: 1rem;
                         border-left: 1px solid $separator-color;
 
@@ -170,15 +189,7 @@
 
                         .controls {
                             margin: 1rem 0 0 0;
-                        }
-
-                        .controls-reply {
-                            a {
-                                color: #076db6;
-                                font-size: 1.3rem;
-                                font-weight: bold;
-                            }
-                        }
+                        } 
                     }
                 }
             }
