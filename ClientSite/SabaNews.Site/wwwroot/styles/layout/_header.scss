@@ -324,9 +324,10 @@
         width: 5rem;
         height: 3rem;
         background: url(../../images/icon/arrow.svg) no-repeat;
+        background-position: 2px;
         position: absolute;
         top: .7rem;
-        right: -.1rem;
+        right: 0;
     }
 
     .main-child-menu {

@@ -860,9 +860,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 5rem;
   height: 3rem;
   background: url(../../images/icon/arrow.svg) no-repeat;
+  background-position: 2px;
   position: absolute;
   top: 0.7rem;
-  right: -0.1rem;
+  right: 0;
 }
 .child-mobile-menu .main-child-menu {
   display: flex;
