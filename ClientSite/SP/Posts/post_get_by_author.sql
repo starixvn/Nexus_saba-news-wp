@@ -11,8 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_author`(
     OUT TotalItems int  
 	/*
 		Creator: Hank@20230203
-        Revisions:
-			- Hank@20230203: init
+        Revisions: - 20230203@Hank: init
     */
 )
 BEGIN

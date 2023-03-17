@@ -9,9 +9,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_slug`(
     
     /*
 		Creator: Hank@20210203
-        Revisions:
-			- Hank@20210203: init
-            - Hank@20231303: add author
+        Revisions:	- 20210203@Hank: init
+					- 20231303@Hank: add author
     */
 )
 BEGIN
