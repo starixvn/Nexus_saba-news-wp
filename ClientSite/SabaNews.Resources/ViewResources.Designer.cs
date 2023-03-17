@@ -374,6 +374,15 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("BannerManagement", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Banner Management.
+        /// </summary>
+        public static string BannerPostAdmin {
+            get {
+                return ResourceManager.GetString("BannerPostAdmin", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Bóng rổ.
@@ -2957,5 +2966,7 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
+
+
     }
 }

@@ -76,7 +76,9 @@
     }
 
     function LoadBanner() {
-        if (($('.banner-left').length > 0 && $('.banner-right').length > 0) || $('.banner-desktop-top').length > 0) {
+        if($('.singe-page').length > 0) return false;
+        if (($('.banner-left').length > 0 && $('.banner-right').length > 0)
+            || $('.banner-desktop-top').length > 0) {
             $("body").addClass("overflow-section");
             $.ajax({
                 url: "/api/banner",
@@ -90,14 +92,12 @@
                     $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl));
                     $(".banner-mobile-center").html(GeneralBannerHtml(res.mobileCenterUrl, res.mobileCenterNavigationUrl));
                     $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl));
-                    $(".skeleton-banner").hide();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus + ': ' + errorThrown);
                 }
             });
         }
-        
     }
 
     function GeneralBannerHtml(src, link) {
@@ -108,7 +108,6 @@
             html += '<img loading="lazy" src="' + src + '" asp-append-version="true" class="img-res">';
             html += '</a>';
         }
-       
         return html;
     }
     function init() {

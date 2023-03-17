@@ -22,6 +22,12 @@
             return banner;
         }
 
+        public async Task<BannerPost> GetBannerPostAsync()
+        {
+            var banner = await baseService.GetDataEntityAsync<BannerPost>(new GetBannerPostCriteria());
+            return banner;
+        }
+
         public async Task<CommandResult> UpdateBannerInfoAsync(BannerModel banner, int ActorId)
         {
             var criteria = new UpdateBannerInfoCommand

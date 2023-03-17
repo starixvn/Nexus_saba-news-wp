@@ -20,36 +20,23 @@
     public class BannerManagementControllerTests : AdminController
     {
         private IBannerService bannerService;
+        private IOptionService optionService;
         private IFileService fileService;
         private ISessionService sessionService;
         private readonly IFixture fixture = new Fixture();
 
-        [Theory]
-        [InlineData(BannerType.DesktopTop)]
-        [InlineData(BannerType.DesktopTopNavigation)]
-        [InlineData(BannerType.DesktopCenter)]
-        [InlineData(BannerType.DesktopCenterNavigation)]
-        [InlineData(BannerType.DesktopLeft)]
-        [InlineData(BannerType.DesktopLeftNavigation)]
-        [InlineData(BannerType.DesktopRight)]
-        [InlineData(BannerType.DesktopRightNavigation)]
-        [InlineData(BannerType.MobileTop)]
-        [InlineData(BannerType.MobileTopNavigation)]
-        [InlineData(BannerType.MobileCenter)]
-        [InlineData(BannerType.MobileCenterNavigation)]
-        [InlineData(BannerType.MobileBottom)]
-        [InlineData(BannerType.MobileBottomNavigation)]
-        public async Task UpdateInfo_WhenCalled_ReturnExpectedData(string type)
+        [Fact]
+        public async Task UpdateInfo_WhenValueIsNotNull_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
             var user = fixture.Create<UserSession>();
             var value = fixture.Create<string>();
+            var type = fixture.Create<string>();
             var expectedBanner = fixture.Create<BannerModel>();
             var expectedCommand = fixture.Create<CommandResult>();
             sessionService.User.Returns(user);
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
-            bannerService.UpdateBannerInfoAsync(Arg.Do<BannerModel>(x => x = expectedBanner), user.Id).Returns(expectedCommand);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = type), Arg.Do<string>(x => x = value), user.Id).Returns(expectedCommand);
 
             //Act
             var actual = await controller.UpdateInfo(value, type);
@@ -61,19 +48,27 @@
         }
 
         [Fact]
-        public void UpdateInfo_WhenCalled_ThrowException()
+        public async Task UpdateInfo_WhenValueIsNull_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var value = fixture.Create<string>();
+            var user = fixture.Create<UserSession>();
+            string value = null;
             var type = fixture.Create<string>();
             var expectedBanner = fixture.Create<BannerModel>();
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
+            var expectedCommand = fixture.Create<CommandResult>();
+            sessionService.User.Returns(user);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = type), Arg.Do<string>(x => x = value), user.Id).Returns(expectedCommand);
 
-            // Act&Assert
-            Assert.ThrowsAsync<InvalidOperationException>(() => controller.UpdateInfo(type, value));
+            //Act
+            var actual = await controller.UpdateInfo(value, type);
 
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(actual);
+            var result = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(expectedCommand, result);
         }
+
 
         [Fact]
         public async Task Index_WhenCalled_ReturnExpectedViewResult()
@@ -92,18 +87,12 @@
             Assert.Equal(expected, viewModel);
         }
 
-        [Theory]
-        [InlineData(BannerType.DesktopTop)]
-        [InlineData(BannerType.DesktopCenter)]
-        [InlineData(BannerType.DesktopLeft)]
-        [InlineData(BannerType.DesktopRight)]
-        [InlineData(BannerType.MobileTop)]
-        [InlineData(BannerType.MobileCenter)]
-        [InlineData(BannerType.MobileBottom)]
-        public async Task UploadBanner_WhenCalled_ReturnExpectedViewResult(string type)
+        [Fact]
+        public async Task UploadBanner_WhenCalled_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
+            var type = fixture.Create<string>();
             var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url" };
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
@@ -114,13 +103,11 @@
                 ContentType = "application/pdf"
             };
             var user = fixture.Create<UserSession>();
-            var expectedBanner = fixture.Create<BannerModel>();
             var expectedCommand = fixture.Create<CommandResult>();
             sessionService.User.Returns(user);
 
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
             fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = file), Arg.Do<string>(x => x = UploadDir.BannerUploadFolder)).Returns(expectedUploadResult);
-            bannerService.UpdateBannerInfoAsync(Arg.Do<BannerModel>(x => x = expectedBanner), user.Id).Returns(expectedCommand);
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = type), Arg.Do<string>(x => x = "value"), user.Id).Returns(expectedCommand);
             //Act
             var actual = await controller.UploadBanner(file, type);
 
@@ -130,40 +117,15 @@
             Assert.Equal(expectedCommand, result);
         }
 
-        [Fact]
-        public void UploadBanner_WhenCalled_ThrowException()
-        {
-            // Arrange
-            var controller = GetController();
-            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
-            var stream = new MemoryStream();
-            var header = new HeaderDictionary();
-            header.Add("Name", new string[1] { "Value" });
-            var file = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
-            {
-                Headers = header,
-                ContentType = "application/pdf"
-            };
-            var user = fixture.Create<UserSession>();
-            var expectedBanner = fixture.Create<BannerModel>();
-            sessionService.User.Returns(user);
-            var type = fixture.Create<string>();
-
-            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = file), Arg.Do<string>(x => x = UploadDir.BannerUploadFolder)).Returns(expectedUploadResult);
-
-
-            // Act&Assert
-            Assert.ThrowsAsync<InvalidOperationException>(() => controller.UploadBanner(file, type));
-
-        }
 
         #region Helpers
         private BannerManagementController GetController()
         {
             bannerService = Substitute.For<IBannerService>();
+            optionService = Substitute.For<IOptionService>();
             fileService = Substitute.For<IFileService>();
             sessionService = Substitute.For<ISessionService>();
-            var controller = new BannerManagementController(bannerService, sessionService, fileService);
+            var controller = new BannerManagementController(bannerService, optionService, sessionService, fileService);
 
             return controller;
         }

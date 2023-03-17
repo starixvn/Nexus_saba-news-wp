@@ -10,6 +10,6 @@
 
         public override string GetSettingKey() => "Options_UpdateKey";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(OptionKey) && !string.IsNullOrEmpty(OptionValue);
+        public override bool IsValid() => !string.IsNullOrEmpty(OptionKey) ;
     }
 }

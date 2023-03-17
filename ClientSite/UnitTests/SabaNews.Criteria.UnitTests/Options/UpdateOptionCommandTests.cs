@@ -27,7 +27,6 @@ namespace SabaNews.Criteria.UnitTests.Options
 
         [Theory]
         [InlineData("", "")]
-        [InlineData("key", "")]
         [InlineData("", "value")]
         public void IsValid_WhenCalled_ReturnFalse(string key, string value)
         {

@@ -1083,4 +1083,7 @@
   <data name="HomepageManagement" xml:space="preserve">
     <value>Homepage Widgets</value>
   </data>
+  <data name="BannerPostAdmin" xml:space="preserve">
+    <value>Banner Post Detail Info</value>
+  </data>
 </root>

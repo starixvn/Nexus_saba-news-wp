@@ -9,7 +9,6 @@
                 return false;
             }
             var type = $(this).data('type');
-            console.log(value, type);
             SaveNavigationData(value, type);
         });
     }

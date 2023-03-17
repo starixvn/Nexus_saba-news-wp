@@ -213,7 +213,8 @@
             "wwwroot/js/common.js",
             "wwwroot/js/site.js",
             "wwwroot/js/all.js",
-            "wwwroot/js/auth/auth.js"
+            "wwwroot/js/auth/auth.js",
+            "wwwroot/js/post/load-component.js"
         ],
         "minify": {
             "enabled": true,
