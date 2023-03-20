@@ -401,6 +401,15 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("BannerMobile", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Banner Interscroller.
+        /// </summary>
+        public static string BannerInterscroller {
+            get {
+                return ResourceManager.GetString("BannerInterscroller", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Bóng rổ.
