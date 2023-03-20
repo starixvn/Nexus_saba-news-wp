@@ -1086,4 +1086,10 @@
   <data name="BannerPostAdmin" xml:space="preserve">
     <value>Banner Post Detail Info</value>
   </data>
+  <data name="BannerDesktop" xml:space="preserve">
+    <value>Banner Desktop Info</value>
+  </data>
+  <data name="BannerMobile" xml:space="preserve">
+    <value>Banner Mobile Info</value>
+  </data>
 </root>

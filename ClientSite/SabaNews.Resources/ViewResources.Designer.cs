@@ -383,6 +383,24 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("BannerPostAdmin", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Banner Desktop.
+        /// </summary>
+        public static string BannerDesktop {
+            get {
+                return ResourceManager.GetString("BannerDesktop", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Banner Mobile.
+        /// </summary>
+        public static string BannerMobile {
+            get {
+                return ResourceManager.GetString("BannerMobile", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Bóng rổ.

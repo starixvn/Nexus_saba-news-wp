@@ -76,7 +76,6 @@
     }
 
     function LoadBanner() {
-        if($('.singe-page').length > 0) return false;
         if (($('.banner-left').length > 0 && $('.banner-right').length > 0)
             || $('.banner-desktop-top').length > 0) {
             $("body").addClass("overflow-section");
@@ -92,6 +91,7 @@
                     $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl));
                     $(".banner-mobile-center").html(GeneralBannerHtml(res.mobileCenterUrl, res.mobileCenterNavigationUrl));
                     $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl));
+                    $(".banner-post-mobile-top").html(GeneralBannerHtml(res.postMobileTopUrl, res.postMobileTopNavigationUrl));
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus + ': ' + errorThrown);

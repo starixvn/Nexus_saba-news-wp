@@ -32,5 +32,9 @@
         public string MobileBottomUrlKey { get; set; } = BannerKey.MobileBottom;
         public string MobileBottomNavigationUrl { get; set; }
         public string MobileBottomNavigationUrlKey { get; set; } = BannerKey.MobileBottomNavigation;
+        public string PostMobileTopUrl { get; set; }
+        public string PostMobileTopUrlKey { get; set; } = BannerKey.PostMobileTopUrl;
+        public string PostMobileTopNavigationUrl { get; set; }
+        public string PostMobileTopNavigationUrlKey { get; set; } = BannerKey.PostMobileTopNavigation;
     }
 }

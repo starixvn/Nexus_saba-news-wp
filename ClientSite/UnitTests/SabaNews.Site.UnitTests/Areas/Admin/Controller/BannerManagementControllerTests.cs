@@ -71,7 +71,7 @@
 
 
         [Fact]
-        public async Task Index_WhenCalled_ReturnExpectedViewResult()
+        public async Task Desktop_WhenCalled_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
@@ -79,7 +79,41 @@
             var expectedCommand = fixture.Create<CommandResult>();
             bannerService.GetBannerInfoAsync().Returns(expected);
             //Act
-            var actual = await controller.Index();
+            var actual = await controller.Desktop();
+
+            //Assert
+            var viewResult = Assert.IsType<ViewResult>(actual);
+            var viewModel = Assert.IsType<BannerModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+        }
+
+        [Fact]
+        public async Task Mobile_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<BannerModel>();
+            var expectedCommand = fixture.Create<CommandResult>();
+            bannerService.GetBannerInfoAsync().Returns(expected);
+            //Act
+            var actual = await controller.Mobile();
+
+            //Assert
+            var viewResult = Assert.IsType<ViewResult>(actual);
+            var viewModel = Assert.IsType<BannerModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+        }
+
+        [Fact]
+        public async Task Post_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<BannerModel>();
+            var expectedCommand = fixture.Create<CommandResult>();
+            bannerService.GetBannerInfoAsync().Returns(expected);
+            //Act
+            var actual = await controller.Post();
 
             //Assert
             var viewResult = Assert.IsType<ViewResult>(actual);

@@ -31,22 +31,6 @@
         }
 
 
-        [Fact]
-        public async Task GetBannerPostAsync_WhenCalled_ReturnExpectedBannerModel()
-        {
-            //Arrange
-            var service = GetBannerService();
-            var fixture = new Fixture();
-            var expected = fixture.Create<BannerPost>();
-            var criteria = new GetBannerPostCriteria();
-            baseService.GetDataEntityAsync<BannerPost>(Arg.Do<GetBannerPostCriteria>(x => criteria = x)).Returns(expected);
-
-            //Act
-            var actual = await service.GetBannerPostAsync();
-
-            //Assert
-            Assert.Equal(expected, actual);
-        }
 
         [Fact]
         public async Task UpdateBannerInfoAsync_WhenCalled_ReturnExpectedCommandResult()

@@ -28,16 +28,24 @@
             this.sessionService = sessionService;
             this.fileService = fileService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Desktop()
         {
             var banner = await bannerService.GetBannerInfoAsync();
 
             return View(banner);
         }
 
+        public async Task<IActionResult> Mobile()
+        {
+            var banner = await bannerService.GetBannerInfoAsync();
+
+            return View(banner);
+        }
+
+
         public async Task<IActionResult> Post()
         {
-            var banner = await bannerService.GetBannerPostAsync();
+            var banner = await bannerService.GetBannerInfoAsync();
 
             return View(banner);
         }
