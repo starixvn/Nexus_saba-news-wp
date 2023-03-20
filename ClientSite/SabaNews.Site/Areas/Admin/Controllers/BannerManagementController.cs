@@ -28,18 +28,19 @@
             this.sessionService = sessionService;
             this.fileService = fileService;
         }
+        
         public async Task<IActionResult> Desktop()
         {
             var banner = await bannerService.GetBannerInfoAsync();
 
-            return View(banner);
+            return View("~/Areas/Admin/Views/BannerManagement/desktop.cshtml", banner);
         }
 
         public async Task<IActionResult> Mobile()
         {
             var banner = await bannerService.GetBannerInfoAsync();
 
-            return View(banner);
+            return View("~/Areas/Admin/Views/BannerManagement/mobile.cshtml", banner);
         }
 
 
@@ -47,7 +48,7 @@
         {
             var banner = await bannerService.GetBannerInfoAsync();
 
-            return View(banner);
+            return View("~/Areas/Admin/Views/BannerManagement/post.cshtml", banner);
         }
 
         [HttpPost]
