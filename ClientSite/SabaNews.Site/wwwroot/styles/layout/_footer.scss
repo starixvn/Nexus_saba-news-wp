@@ -109,9 +109,19 @@
         }
         .footer-logo{
             margin-right: 2rem;
+            @include Mobile{
+                margin-right: 0;
+                margin-bottom: 1.2rem;
+            }
             a{
                 display: block;
-                width: 10.4rem;
+                width: 11.6rem;
+                @include Mobile{
+                    width: 8.8rem;
+                }
+                img{
+                    display: block;
+                }
             }
         }
         .footer-info-main{
