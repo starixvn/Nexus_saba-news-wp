@@ -245,6 +245,78 @@
 					</div>
 				</div>
 			</div>
+
+
+			@*---- Desktop right banner section-----*@
+			<div class="block-extension">
+				<div class="group-table">
+					<div class="left-table">
+						<div class="label-fill">@ViewResources.DesktopRightBanner</div>
+					</div>
+					<div class="right-table">
+						<div class="box-control">
+							<div class="main-fill name-section">
+								<ul class="txt-fill">
+									<li class="txt-feild"><img src="@Model.DesktopRightUrl" asp-append-version="true" width="200" /></li>
+								</ul>
+							</div>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.DesktopRightUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="@Model.DesktopRightUrlKey">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
+						</div>
+						<div class="box-edit-form">
+							<div class="title">
+								<span>@ViewResources.DesktopRightBanner</span>
+								<button type="button" class="button btn-custom-outline list-banner">@ViewResources.UploadedBanners</button>
+							</div>
+							<form enctype="multipart/form-data" method="post" data-type="@Model.DesktopRightUrlKey" class="upload-banner" id="uploadDesktopRight">
+								<div class="input-upload">
+									<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
+									<span class="txt-img"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
+									<div class="img-upload">
+										<img class="review_photo" src="#" alt="review photo" width="150" style="display:none" />
+										<p class="error photo-error"></p>
+										<button type="submit" name="" class="save-img">@ViewResources.SaveAction</button>
+										<button type="button" class="cancel-upload icon-close" style="display:none"></button>
+									</div>
+								</div>
+							</form>
+							<span class="close-edit icon-close"></span>
+						</div>
+					</div>
+				</div>
+				<div class="group-table">
+					<div class="left-table">
+						<div class="label-fill">@ViewResources.NavigationUrl</div>
+					</div>
+					<div class="right-table">
+						<div class="box-control">
+							<div class="main-fill name-section">
+								<ul class="txt-fill">
+									<li class="txt-feild">@Model.DesktopRightNavigationUrl</li>
+								</ul>
+							</div>
+							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+						</div>
+						<div class="box-edit-form" id="form_update_name">
+							<div class="title">@ViewResources.NavigationUrl</div>
+							<input type="text" name="NavigationUrl" value="@Model.DesktopRightNavigationUrl" class="input-edit" />
+							<p class="error navagation-error">@ViewResources.NavigationUrlRequired</p>
+							<button class="btn-submit-edit btn-save-navigation" data-type="@Model.DesktopRightNavigationUrlKey" data-current="@Model.DesktopRightNavigationUrl">@ViewResources.Save</button>
+							<span class="close-edit icon-close"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 	</div>
 </section>
 
