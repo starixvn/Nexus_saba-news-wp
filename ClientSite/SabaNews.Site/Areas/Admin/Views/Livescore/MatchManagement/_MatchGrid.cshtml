@@ -34,7 +34,7 @@
                             <td class="text-center">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
                             <td class="text-center">@status.Name</td>
                             <td class="text-center">@match.Round</td>
-                            <td class="text-center">@(match.Stage.StageNameVN ?? match.Stage.StageNameEN)</td>
+                            <td class="text-center">@(match.Stage != null ? (match.Stage.StageNameVN ?? match.Stage.StageNameEN) : "")</td>
                             <td class="text-center"><img src="@(match.HomeTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon))" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamName(match.HomeTeam)</td>
                             <td class="text-center"><img src="@(match.AwayTeam.IconVN ?? LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon))" width="100"></td>
