@@ -61,7 +61,7 @@
             if (isLogin)
             {
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
-                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+                savePost = user?.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
