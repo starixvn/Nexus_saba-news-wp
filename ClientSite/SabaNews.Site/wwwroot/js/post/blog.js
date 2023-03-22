@@ -45,24 +45,10 @@
                     $('.lds-ellipsis').hide();
                 }
             }
-            LoadBanner()
+            $('.banner-category-scroll').html($('.banner-mobile-bottom').html());
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             console.log('server not responding...');
-        });
-    }
-
-    function LoadBanner() {
-        $.ajax({
-            url: "/api/banner",
-            type: "POST",
-            success: function (res) {
-                $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl));
-                $(".skeleton-banner").hide();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus + ': ' + errorThrown);
-            }
         });
     }
 
