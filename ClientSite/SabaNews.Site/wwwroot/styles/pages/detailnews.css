@@ -4078,7 +4078,7 @@ img {
 .card-vertical-highlight .card-vertical__datetime {
   padding: 0 !important;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   margin: 1.2rem 0 1rem 0;
 }
 @media (max-width: 767px) {
@@ -4088,7 +4088,7 @@ img {
 }
 .card-vertical-highlight .card-vertical__datetime .author-section a {
   color: #555;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 600;
   text-transform: capitalize;
   margin-right: 3px;
