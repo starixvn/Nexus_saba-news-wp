@@ -331,9 +331,23 @@ p.has-text-align-center {
 .footer .footer-info .footer-logo {
   margin-right: 2rem;
 }
+@media (max-width: 767px) {
+  .footer .footer-info .footer-logo {
+    margin-right: 0;
+    margin-bottom: 1.2rem;
+  }
+}
 .footer .footer-info .footer-logo a {
   display: block;
-  width: 10.4rem;
+  width: 11.6rem;
+}
+@media (max-width: 767px) {
+  .footer .footer-info .footer-logo a {
+    width: 8.8rem;
+  }
+}
+.footer .footer-info .footer-logo a img {
+  display: block;
 }
 .footer .footer-info .footer-info-main ul {
   list-style: none;
@@ -2490,6 +2504,7 @@ button {
 .box-vertical-content h3, .box-vertical-content h2 {
   font-weight: 700;
   font-size: 1.6rem;
+  font-size: 1.6rem;
   line-height: 2.4rem;
 }
 .box-vertical-content h4 {
@@ -3290,7 +3305,7 @@ button {
 }
 @media (max-width: 767px) {
   .main .block-news-hot .card-hightlight-text li a {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 .main .block-news-hot .card-hightlight-text li:last-child {
@@ -3641,7 +3656,7 @@ button {
 }
 @media (max-width: 767px) {
   .main .block-columns-border .block-event-item .list-event-title li a {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 .main .block-behind {

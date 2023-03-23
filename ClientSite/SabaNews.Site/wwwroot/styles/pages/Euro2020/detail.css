@@ -331,9 +331,23 @@ p.has-text-align-center {
 .footer .footer-info .footer-logo {
   margin-right: 2rem;
 }
+@media (max-width: 767px) {
+  .footer .footer-info .footer-logo {
+    margin-right: 0;
+    margin-bottom: 1.2rem;
+  }
+}
 .footer .footer-info .footer-logo a {
   display: block;
-  width: 10.4rem;
+  width: 11.6rem;
+}
+@media (max-width: 767px) {
+  .footer .footer-info .footer-logo a {
+    width: 8.8rem;
+  }
+}
+.footer .footer-info .footer-logo a img {
+  display: block;
 }
 .footer .footer-info .footer-info-main ul {
   list-style: none;
@@ -2599,6 +2613,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-vertical-content h3, .box-vertical-content h2 {
   font-weight: 700;
+  font-size: 1.6rem;
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
