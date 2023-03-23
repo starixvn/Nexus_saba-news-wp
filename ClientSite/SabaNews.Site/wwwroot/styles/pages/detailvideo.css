@@ -2571,7 +2571,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .box-vertical-content h3, .box-vertical-content h2 {
   font-weight: 700;
   font-size: 1.6rem;
-  font-size: 1.6rem;
   line-height: 2.4rem;
 }
 .box-vertical-content h4 {
