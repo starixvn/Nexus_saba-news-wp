@@ -76,6 +76,7 @@
     }
 
     function LoadBanner() {
+        if($('.singe-page').length > 0) return  false;
         if (($('.banner-left').length > 0 && $('.banner-right').length > 0)
             || $('.banner-desktop-top').length > 0) {
             $("body").addClass("overflow-section");

@@ -64,6 +64,50 @@
 
     }
 
+    function LoadBanner() {
+        $("body").addClass("overflow-section");
+        $.ajax({
+            url: "/api/banner",
+            type: "POST",
+            success: function (res) {
+                $("body").removeClass("overflow-section");
+                $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl));
+                $(".banner-right").html(GeneralBannerHtml(res.desktopRightUrl, res.desktopRightNavigationUrl));
+                $(".banner-desktop-top").html(GeneralBannerHtml(res.desktopTopUrl, res.desktopTopNavigationUrl));
+                $(".banner-desktop-center").html(GeneralBannerHtml(res.desktopCenterUrl, res.desktopCenterNavigationUrl));
+                $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl));
+                $(".banner-mobile-center").html(GeneralBannerHtml(res.mobileCenterUrl, res.mobileCenterNavigationUrl));
+                $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl));
+                $(".    ").html(GeneralBannerHtml(res.postMobileTopUrl, res.postMobileTopNavigationUrl, true));
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus + ': ' + errorThrown);
+            }
+        });
+    }
+
+    function GeneralBannerHtml(src, link, isIntercroller = false) {
+        var html = "";
+        if (src !== "") {
+            link = link === "" ? "javascript:;" : link;
+            html += '<a href="' + link + '">';
+            html += '<img loading="lazy" src="' + src + '" asp-append-version="true" class="img-res">';
+            html += '</a>';
+        }
+        if(isIntercroller && src !== "") {
+            var interscrollerHtml = '';
+            interscrollerHtml += '<div id="ir__wrap" class="show-mobile">';
+            interscrollerHtml += '<div class="ir__slot">';
+            interscrollerHtml += '<div class="ir__box">';
+            interscrollerHtml += '<div class="ir__media banner-post-mobile-top">'+ html +'</div>';
+            interscrollerHtml += '</div>';
+            interscrollerHtml += '</div>';
+            interscrollerHtml += '</div>';
+            html = interscrollerHtml;
+        }
+        return html;
+    }
+
     function LoadBannerContent() {
         var html = $('.banner-content').html();
         if($('.content').find('p').eq(0).html() !== '') {
@@ -87,6 +131,7 @@
 
     function init() {
         UpdatePostView();
+        LoadBanner();
         ScrollItem();
         LoadBannerContent();
     }
