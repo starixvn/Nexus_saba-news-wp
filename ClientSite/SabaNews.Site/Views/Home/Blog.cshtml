@@ -89,7 +89,7 @@
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory, Slugs = Model.Slugs }))
 <section class="main">
     <div class="base-container medium-container">
-        @if (!isMobile && Model.Header.Controller != "category")
+        @if (isMobile && Model.Header.Controller != "category")
         {
             <h2 class="block__title title-new-page"><a>@Model.HeadTitle</a></h2>
         }
