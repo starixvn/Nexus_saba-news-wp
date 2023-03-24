@@ -80,23 +80,27 @@ export default class GridItem extends PureComponent {
                 }
                 {
                     lastStanding.childs.length > 1 &&
-                    <Tabs id="livescore-tab-league-detail"
-                        className="live-score-nav"
-                    >
-                        {
-                            lastStanding.childs.map((group, index) => {
-                                const groupName = group.key.charAt(0);
-                                return (
-                                    <Tab title={groupName} eventKey={group.key} key={index}>
-                                        <div className="table-custom">
-                                            <TableHead groupName={groupName} isMobile={true} />
-                                            <TableBody teams={group.childs} isMobile={true} />
-                                        </div>
-                                    </Tab>
-                                );
-                            })
-                        }
-                    </Tabs>
+                    <div className="group-standing">
+                        <span className="btn-btn-standing prev-standing disabled"><i className="icon-chevron-left" /></span>
+                        <Tabs id="livescore-tab-league-detail"
+                            className="live-score-nav"
+                        >
+                            {
+                                lastStanding.childs.map((group, index) => {
+                                    const groupName = group.key.charAt(0);
+                                    return (
+                                        <Tab title={groupName} eventKey={group.key} key={index}>
+                                            <div className="table-custom">
+                                                <TableHead groupName={groupName} isMobile={true} />
+                                                <TableBody teams={group.childs} isMobile={true} />
+                                            </div>
+                                        </Tab>
+                                    );
+                                })
+                            }
+                        </Tabs>
+                        <span className="btn-btn-standing next-standing"><i className="icon-chevron-right" /></span>
+                    </div>
                 }
             </>
         );

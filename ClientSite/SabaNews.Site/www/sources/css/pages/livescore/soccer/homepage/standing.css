@@ -309,19 +309,29 @@ body {
   max-height: 100%;
 }
 #standing-homepage .live-score-nav {
-  margin: 1rem 1.2rem;
-  display: flex;
-  justify-content: flex-start;
+  margin: 1rem 5.4rem 1.2rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 240px;
+}
+#standing-homepage .live-score-nav::-webkit-scrollbar {
+  display: none;
 }
 #standing-homepage .live-score-nav a {
   text-decoration: none;
   background: #CFD4DC;
   color: #333;
-  padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 1.4rem;
   line-height: 1.9rem;
   margin-right: 1.2rem;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
 }
 #standing-homepage .live-score-nav a:last-child {
   margin-right: 0;
@@ -477,7 +487,7 @@ body {
 }
 
 .table-custom {
-  border-radius: 0 0 3px 3px;
+  border-radius: 3px;
 }
 .table-custom-header {
   height: 3.2rem;
@@ -521,4 +531,41 @@ body {
 .table-custom-cell.cell-participant {
   flex: 1 0 12.5rem !important;
   width: 12.5rem !important;
+}
+
+.group-standing {
+  position: relative;
+}
+.group-standing .btn-btn-standing {
+  width: 3rem;
+  height: 3rem;
+  background: #E4E4E4;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+.group-standing .btn-btn-standing:hover {
+  border: 1px solid #A7A7A7;
+}
+.group-standing .btn-btn-standing i {
+  font-size: 2.4rem;
+}
+.group-standing .btn-btn-standing.disabled {
+  background: #EDEDED;
+}
+.group-standing .btn-btn-standing.disabled i::before {
+  color: #A7A7A7;
+}
+.group-standing .btn-btn-standing.disabled:hover {
+  border: none;
+}
+.group-standing .btn-btn-standing.prev-standing {
+  left: 12px;
+}
+.group-standing .btn-btn-standing.next-standing {
+  right: 12px;
 }
