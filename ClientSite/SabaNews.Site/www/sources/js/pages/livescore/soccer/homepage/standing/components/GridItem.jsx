@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import Table from './table/Index';
-import TableHead from './table/Head';
-import TableBody from './table/Body';
-import { Tabs, Tab } from 'react-bootstrap';
+import Item from './Item';
 
 export default class GridItem extends PureComponent {
     constructor(props) {
@@ -79,28 +77,7 @@ export default class GridItem extends PureComponent {
                     <Table standings={lastStanding.childs} />
                 }
                 {
-                    lastStanding.childs.length > 1 &&
-                    <div className="group-standing">
-                        <span className="btn-btn-standing prev-standing disabled"><i className="icon-chevron-left" /></span>
-                        <Tabs id="livescore-tab-league-detail"
-                            className="live-score-nav"
-                        >
-                            {
-                                lastStanding.childs.map((group, index) => {
-                                    const groupName = group.key.charAt(0);
-                                    return (
-                                        <Tab title={groupName} eventKey={group.key} key={index}>
-                                            <div className="table-custom">
-                                                <TableHead groupName={groupName} isMobile={true} />
-                                                <TableBody teams={group.childs} isMobile={true} />
-                                            </div>
-                                        </Tab>
-                                    );
-                                })
-                            }
-                        </Tabs>
-                        <span className="btn-btn-standing next-standing"><i className="icon-chevron-right" /></span>
-                    </div>
+                    lastStanding.childs.length > 1 && <Item standings={lastStanding.childs} />
                 }
             </>
         );
