@@ -110,7 +110,6 @@
 
         $(document).on('click', '.crop', function () {
             var form = "#" + $(this).parent().parent().attr('data-form');
-            console.log(form);
             var url = $(this).data('url');
             $(form + ' .review_photo').attr('src', url);
             $(form).attr('data-action', 'update');
@@ -120,8 +119,7 @@
 
         $('.input-banner-url').on('keyup', function(){
             var url = $(this).val();
-            var form = "#" + $(this).parent().parent().parent().find('form').attr('id');
-            console.log(form)
+            var form = "#" + $(this).parent().parent().find('form').attr('id');
             $(form + ' .review_photo').attr('src', url);
             $(form).attr('data-action', 'update');
             ChangePhotoHanlder(form);
@@ -129,7 +127,6 @@
     };
 
     function ChangePhotoHanlder(form) {
-        console.log(form);
         $(form + ' .review_photo').show();
         $(form + ' .photo-error').hide();
         $(form + ' .save-img').css('display', 'block');
