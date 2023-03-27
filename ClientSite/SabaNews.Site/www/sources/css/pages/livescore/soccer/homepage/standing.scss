@@ -15,16 +15,39 @@
     }
         
     .live-score-nav{
-        margin: 1rem 5.4rem 1.2rem;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-        width: 240px;
-        &::-webkit-scrollbar {
-            display: none;
+        margin: 1rem 1.2rem;
+        display: flex;
+        align-items: center;
+        .btn-btn-standing{
+            width: 3rem;
+            height: 3rem;
+            background: #E4E4E4;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            &:hover{
+                border: 1px solid #A7A7A7;
+            }
+            i{
+                font-size: 2.4rem;
+            }
+            &.disabled{
+                background: #EDEDED;
+                cursor: no-drop;
+                i{
+                    &::before{
+                        color: #A7A7A7;
+                    }
+                }
+                &:hover{
+                    border: none;
+                }
+            }
         }
-        a{
-            text-decoration: none;
+
+        li{
             background: #CFD4DC;
             color: #333;
             font-weight: 600;
@@ -37,6 +60,7 @@
             justify-content: center;
             width: 3rem;
             height: 3rem;
+            cursor: pointer;
             &:last-child{
                 margin-right: 0;
             }
@@ -234,41 +258,4 @@
     }
 }
 
-.group-standing{
-    position: relative;
-    .btn-btn-standing{
-        width: 3rem;
-        height: 3rem;
-        background: #E4E4E4;
-        border-radius: 3px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        cursor: pointer;
-        &:hover{
-            border: 1px solid #A7A7A7;
-        }
-        i{
-            font-size: 2.4rem;
-        }
-        &.disabled{
-            background: #EDEDED;
-            i{
-                &::before{
-                    color: #A7A7A7;
-                }
-            }
-            &:hover{
-                border: none;
-            }
-        }
-        &.prev-standing{
-            left: 12px;
-        }
-        &.next-standing{
-            right: 12px;
-        }
-    }
-}
+
