@@ -2,15 +2,23 @@ import React, { PureComponent } from 'react';
 import TableHead from './table/Head';
 import TableBody from './table/Body';
 
-const endItem = 6;
+const showItem = 6;
 export default class GridItem extends PureComponent {
     constructor(props) {
         super(props);
-        this.totalItem = props.standings.length - 1;
         this.state = {
             selectedKey: props.standings[0].key,
             startItem: 0,
-            endItem: endItem
+            endItem: showItem
+        }
+    }
+    componentDidUpdate(prevProps) {
+        if(this.props.standings !== prevProps.standings) {
+            this.setState({
+                selectedKey: this.props.standings[0].key,
+                startItem: 0,
+                endItem: showItem
+            });
         }
     }
 
@@ -19,8 +27,9 @@ export default class GridItem extends PureComponent {
     };
 
     handleNextTab = () => {
+        const { standings } = this.props;
         const { startItem, endItem } = this.state;
-        if(endItem < this.totalItem) {
+        if(endItem < standings.length && standings.length > showItem) {
             this.setState({startItem: startItem + 1, endItem: endItem  + 1});
         }
     };
@@ -35,21 +44,26 @@ export default class GridItem extends PureComponent {
 
     render() {
         const { startItem, endItem, selectedKey } = this.state;
-        const standings = this.props.standings.slice(startItem, endItem);
-        const selectedGroup = this.props.standings.find(item => item.key === selectedKey);
+        const { standings  } = this.props;
+        const standingsShow = standings.slice(startItem, endItem);
+        const selectedGroup = standings.find(item => item.key === selectedKey);
+        const totalItem = standings.length;
+        if(!selectedGroup) {
+            return null;
+        }
         return (
             <>
                 <ul className="homepage-group-standing live-score-nav">
                     <li className={`btn-btn-standing prev-standing ${startItem === 0 ? 'disabled': '' }`} onClick={this.handlePrevTab}><i className="icon-chevron-left" /></li>
                     {
-                        standings.map((group, index) => {
+                        standingsShow.map((group, index) => {
                             const groupName = group.key.charAt(0);
                             return (
-                                <li onClick={() => this.handleSelectedGroup(group.key)} className="group" key={index}>{groupName}</li>
+                                <li onClick={() => this.handleSelectedGroup(group.key)} className={`${selectedKey === group.key ? 'active' : ''}`} key={index}>{groupName}</li>
                             )
                         })
                     }
-                    <li  className={`btn-btn-standing next-standing ${endItem >= this.totalItem ? 'disabled': '' }`} onClick={this.handleNextTab}><i className="icon-chevron-right" /></li>
+                    <li  className={`btn-btn-standing next-standing ${(endItem >= totalItem || totalItem <= endItem) ? 'disabled': '' }`} onClick={this.handleNextTab}><i className="icon-chevron-right" /></li>
                 </ul>
                 <div className="table-custom">
                     <TableHead groupName={selectedGroup.key.charAt(0)} isMobile={true} />
