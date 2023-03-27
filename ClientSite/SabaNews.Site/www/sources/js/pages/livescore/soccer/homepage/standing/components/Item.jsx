@@ -66,7 +66,7 @@ export default class GridItem extends PureComponent {
                     <li  className={`btn-btn-standing next-standing ${(endItem >= totalItem || totalItem <= endItem) ? 'disabled': '' }`} onClick={this.handleNextTab}><i className="icon-chevron-right" /></li>
                 </ul>
                 <div className="table-custom">
-                    <TableHead groupName={selectedGroup.key.charAt(0)} isMobile={true} />
+                    <TableHead groupName={`Bảng ${selectedGroup.key.charAt(0)}`} isMobile={true} />
                     <TableBody teams={selectedGroup.childs} isMobile={true} />
                 </div>
             </>
