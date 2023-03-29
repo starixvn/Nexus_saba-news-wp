@@ -3,9 +3,10 @@ import GridItem from './GridItem';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
+dayjs.extend(isSameOrAfter);
 
 export default class Grid extends PureComponent {
     constructor(props) {
@@ -22,19 +23,19 @@ export default class Grid extends PureComponent {
 
     sortMatches = (matches, sortAsc) => {
         if (sortAsc) {
-            return matches.sort((item1, item2) => moment(item1.startTime).diff(moment(item2.startTime)));
+            return matches.sort((item1, item2) => dayjs(item1.startTime).diff(dayjs(item2.startTime)));
         } else {
-            return matches.sort((item1, item2) => moment(item2.startTime).diff(moment(item1.startTime)));
+            return matches.sort((item1, item2) => dayjs(item2.startTime).diff(dayjs(item1.startTime)));
         }
     };
 
     filterPreMatches = matches => {
         const preMatches = [];
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
         for (let i = 0; i < matches.length; i++) {
             const match = matches[i];
-            const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
-            if (match.status !== MatchStatus.Finished && moment(endTime).isSameOrAfter(today)) {
+            const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
+            if (match.status !== MatchStatus.Finished && dayjs(endTime).isSameOrAfter(today)) {
                 preMatches.push(match);
             }
         }

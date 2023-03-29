@@ -3,7 +3,6 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 import MatchStage from '@jsroot/components/MatchStage';
 import { MatchStatus } from '@jsroot/common/constants';
-import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 

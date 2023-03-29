@@ -52,6 +52,7 @@
         "@reduxjs/toolkit": "^1.8.1",
         "axios": "^0.26.1",
         "bootstrap": "^4.5.0",
+        "dayjs": "^1.11.7",
         "moment": "^2.29.3",
         "node-sass": "^7.0.3",
         "prop-types": "^15.7.2",

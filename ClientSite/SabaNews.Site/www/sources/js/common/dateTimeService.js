@@ -1,4 +1,7 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+dayjs.extend(utc)
+
 
 const ClientTimezone = 7;
 
@@ -10,7 +13,7 @@ export default class DateTimeService {
     static getCurrentClientDateTime() {
         const tempdate = new Date();
         const utcdatestring = tempdate.toUTCString();
-        return moment(utcdatestring).utcOffset(ClientTimezone);
+        return dayjs(utcdatestring).utcOffset(utcdatestring);
     }
 
     static convertFromUTC(date) {
@@ -22,14 +25,14 @@ export default class DateTimeService {
             tempdate.getMinutes(),
             tempdate.getSeconds()));
         const utcdatestring = utcdate.toUTCString();
-        return moment(utcdatestring).utcOffset(ClientTimezone);
+        return dayjs(utcdatestring).utcOffset(utcdatestring);
     }
 
     static formatDateTime(date, format) {
-        return moment(date).format(format);
+        return dayjs(date).format(format);
     }
 
     static toShortTimeFormat(date) {
-        return moment(date).format('HH:mm');
+        return dayjs(date).format('HH:mm');
     }
 }
