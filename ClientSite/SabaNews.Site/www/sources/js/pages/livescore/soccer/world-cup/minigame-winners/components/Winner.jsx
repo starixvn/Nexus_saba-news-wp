@@ -3,7 +3,7 @@ import { getVoteResult } from '../../common.functions';
 import Item from './Item';
 import { WorldCup } from '@jsroot/common/constants';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export default class Winner extends PureComponent {
     constructor(props) {
@@ -164,7 +164,7 @@ export default class Winner extends PureComponent {
                     sortPointZero.push(item);
                  }
                  if(count === 0 || index === Winner.length - 1){
-                    sortPointZero.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
+                    sortPointZero.sort((item1, item2) => dayjs(item1.updatedDate).diff(dayjs(item2.updatedDate)));
                     sortPoint.push(...sortPointZero);
                     sortPointZero = [item];
                  }

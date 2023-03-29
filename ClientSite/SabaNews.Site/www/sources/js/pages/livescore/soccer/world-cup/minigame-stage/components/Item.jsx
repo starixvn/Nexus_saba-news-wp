@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import { EqualHeight, EqualHeightElement } from 'react-equal-height';
@@ -52,7 +52,7 @@ export class Item extends PureComponent {
         await DataService.postDataAsync(url, { matchId: match.matchId }).then(response => {
             const voteMatch = response.data;
             const startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
-            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+            const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
             const minutes = startTime.diff(currentTime, 'minutes');
             if (voteMatch.status === MatchStatus.Finished
                 || minutes <= 30
@@ -91,7 +91,7 @@ export class Item extends PureComponent {
     checkDisabledVote = () => {
         const { match } = this.props;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
-        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
         const minutes = startTime.diff(currentTime, 'minutes');
         let status = false;
         if (match.status === MatchStatus.Finished

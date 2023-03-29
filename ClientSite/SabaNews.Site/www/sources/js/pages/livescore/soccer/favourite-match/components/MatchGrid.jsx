@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import League from './League';
 
 export default class MatchGrid extends PureComponent {
@@ -90,9 +90,9 @@ export default class MatchGrid extends PureComponent {
 
     sortMatches = (matches, sortAsc) => {
         if (sortAsc) {
-            return matches.sort((item1, item2) => moment(item1.key).diff(moment(item2.key)));
+            return matches.sort((item1, item2) => dayjs(item1.key).diff(dayjs(item2.key)));
         } else {
-            return matches.sort((item1, item2) => moment(item2.key).diff(moment(item1.key)));
+            return matches.sort((item1, item2) => dayjs(item2.key).diff(dayjs(item1.key)));
         }
     };
 

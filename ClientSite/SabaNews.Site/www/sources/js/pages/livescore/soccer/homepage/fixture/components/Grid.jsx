@@ -3,9 +3,10 @@ import GridItem from './GridItem';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import DateTimeService from '@jsroot/common/dateTimeService';
+
 dayjs.extend(isSameOrAfter);
 
 export default class Grid extends PureComponent {

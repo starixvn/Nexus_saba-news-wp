@@ -4,13 +4,16 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import SignalR from './SignalR';
-import moment from 'moment';
 import { MatchStatus } from '@jsroot/common/constants';
-moment.updateLocale('vi', {
+import SignalR from './SignalR';
+import dayjs from 'dayjs';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import _ from 'dayjs/locale/vi';
+dayjs.extend(updateLocale);
+dayjs.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
-moment.locale('vi');
+dayjs.locale('vi');
 export class AppContainer extends Component {
     constructor(props) {
         super(props);

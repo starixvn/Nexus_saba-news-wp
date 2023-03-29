@@ -1,7 +1,7 @@
 import React from 'react';
 import { WorldCup, MatchStatus, MatchResult } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export  const getMatchByEventStage = matches => {
     let tmpMatches = [];
@@ -103,15 +103,15 @@ export const getVoteResult = (match, vote) => {
 export const getMinigameStageStartTime = stage => {
     switch(stage) {
         case WorldCup.MinigameStage.Stage1:
-            return moment(new Date(2022, 10, 16, 8, 0, 0));
+            return dayjs(new Date(2022, 10, 16, 8, 0, 0));
         case WorldCup.MinigameStage.Stage2:
-            return moment(new Date(2022, 10, 22, 8, 0, 0));
+            return dayjs(new Date(2022, 10, 22, 8, 0, 0));
         case WorldCup.MinigameStage.Stage3:
-            return moment(new Date(2022, 10, 26, 8, 0, 0));
+            return dayjs(new Date(2022, 10, 26, 8, 0, 0));
         case WorldCup.MinigameStage.Stage4:
-            return moment(new Date(2022, 10, 30, 8, 0, 0));
+            return dayjs(new Date(2022, 10, 30, 8, 0, 0));
         default:
-            return moment(new Date(2022, 10, 30, 8, 0, 0));
+            return dayjs(new Date(2022, 10, 30, 8, 0, 0));
     }
 }
 

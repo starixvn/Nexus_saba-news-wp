@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { shallow } from 'enzyme';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import toJson from 'enzyme-to-json';
 import { AppContainer } from '../AppContainer';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -201,11 +201,11 @@ describe('AppContainer', () => {
 
             // Assert
             expect(dates.length).toEqual(5);
-            expect(moment(dates[0]).format('YYYY-MM-DD')).toEqual(moment('2022-05-25').format('YYYY-MM-DD'));
-            expect(moment(dates[1]).format('YYYY-MM-DD')).toEqual(moment('2022-05-26').format('YYYY-MM-DD'));
-            expect(moment(dates[2]).format('YYYY-MM-DD')).toEqual(moment('2022-05-27').format('YYYY-MM-DD'));
-            expect(moment(dates[3]).format('YYYY-MM-DD')).toEqual(moment('2022-05-28').format('YYYY-MM-DD'));
-            expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
+            expect(dayjs(dates[0]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-25').format('YYYY-MM-DD'));
+            expect(dayjs(dates[1]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-26').format('YYYY-MM-DD'));
+            expect(dayjs(dates[2]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-27').format('YYYY-MM-DD'));
+            expect(dayjs(dates[3]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-28').format('YYYY-MM-DD'));
+            expect(dayjs(dates[4]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-29').format('YYYY-MM-DD'));
         });
 
         it('returns correctly dates when selectedDate = minDate + 1', () => {
@@ -222,11 +222,11 @@ describe('AppContainer', () => {
 
             // Assert
             expect(dates.length).toEqual(5);
-            expect(moment(dates[0]).format('YYYY-MM-DD')).toEqual(moment('2022-05-25').format('YYYY-MM-DD'));
-            expect(moment(dates[1]).format('YYYY-MM-DD')).toEqual(moment('2022-05-26').format('YYYY-MM-DD'));
-            expect(moment(dates[2]).format('YYYY-MM-DD')).toEqual(moment('2022-05-27').format('YYYY-MM-DD'));
-            expect(moment(dates[3]).format('YYYY-MM-DD')).toEqual(moment('2022-05-28').format('YYYY-MM-DD'));
-            expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
+            expect(dayjs(dates[0]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-25').format('YYYY-MM-DD'));
+            expect(dayjs(dates[1]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-26').format('YYYY-MM-DD'));
+            expect(dayjs(dates[2]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-27').format('YYYY-MM-DD'));
+            expect(dayjs(dates[3]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-28').format('YYYY-MM-DD'));
+            expect(dayjs(dates[4]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-29').format('YYYY-MM-DD'));
         });
 
         it('returns correctly dates when selectedDate > minDate + 1 and selectedDate = maxDate', () => {
@@ -244,11 +244,11 @@ describe('AppContainer', () => {
 
             // Assert
             expect(dates.length).toEqual(5);
-            expect(moment(dates[0]).format('YYYY-MM-DD')).toEqual(moment('2022-05-26').format('YYYY-MM-DD'));
-            expect(moment(dates[1]).format('YYYY-MM-DD')).toEqual(moment('2022-05-27').format('YYYY-MM-DD'));
-            expect(moment(dates[2]).format('YYYY-MM-DD')).toEqual(moment('2022-05-28').format('YYYY-MM-DD'));
-            expect(moment(dates[3]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
-            expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-30').format('YYYY-MM-DD'));
+            expect(dayjs(dates[0]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-26').format('YYYY-MM-DD'));
+            expect(dayjs(dates[1]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-27').format('YYYY-MM-DD'));
+            expect(dayjs(dates[2]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-28').format('YYYY-MM-DD'));
+            expect(dayjs(dates[3]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-29').format('YYYY-MM-DD'));
+            expect(dayjs(dates[4]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-30').format('YYYY-MM-DD'));
         });
 
         it('returns correctly dates when selectedDate > minDate + 1 and selectedDate = maxDate - 1', () => {
@@ -266,11 +266,11 @@ describe('AppContainer', () => {
 
             // Assert
             expect(dates.length).toEqual(5);
-            expect(moment(dates[0]).format('YYYY-MM-DD')).toEqual(moment('2022-05-26').format('YYYY-MM-DD'));
-            expect(moment(dates[1]).format('YYYY-MM-DD')).toEqual(moment('2022-05-27').format('YYYY-MM-DD'));
-            expect(moment(dates[2]).format('YYYY-MM-DD')).toEqual(moment('2022-05-28').format('YYYY-MM-DD'));
-            expect(moment(dates[3]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
-            expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-30').format('YYYY-MM-DD'));
+            expect(dayjs(dates[0]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-26').format('YYYY-MM-DD'));
+            expect(dayjs(dates[1]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-27').format('YYYY-MM-DD'));
+            expect(dayjs(dates[2]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-28').format('YYYY-MM-DD'));
+            expect(dayjs(dates[3]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-29').format('YYYY-MM-DD'));
+            expect(dayjs(dates[4]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-30').format('YYYY-MM-DD'));
         });
 
         it('returns correctly dates when selectedDate > minDate + 1 and selectedDate < maxDate - 1', () => {
@@ -288,11 +288,11 @@ describe('AppContainer', () => {
 
             // Assert
             expect(dates.length).toEqual(5);
-            expect(moment(dates[0]).format('YYYY-MM-DD')).toEqual(moment('2022-05-25').format('YYYY-MM-DD'));
-            expect(moment(dates[1]).format('YYYY-MM-DD')).toEqual(moment('2022-05-26').format('YYYY-MM-DD'));
-            expect(moment(dates[2]).format('YYYY-MM-DD')).toEqual(moment('2022-05-27').format('YYYY-MM-DD'));
-            expect(moment(dates[3]).format('YYYY-MM-DD')).toEqual(moment('2022-05-28').format('YYYY-MM-DD'));
-            expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
+            expect(dayjs(dates[0]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-25').format('YYYY-MM-DD'));
+            expect(dayjs(dates[1]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-26').format('YYYY-MM-DD'));
+            expect(dayjs(dates[2]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-27').format('YYYY-MM-DD'));
+            expect(dayjs(dates[3]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-28').format('YYYY-MM-DD'));
+            expect(dayjs(dates[4]).format('YYYY-MM-DD')).toEqual(dayjs('2022-05-29').format('YYYY-MM-DD'));
         });
     });
 

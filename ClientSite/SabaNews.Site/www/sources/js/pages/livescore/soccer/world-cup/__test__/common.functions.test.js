@@ -2,7 +2,7 @@ import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import functions from '../common.functions';
 import CommonFunctions from '@jsroot/common/common-functions';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 describe('common.functions', () => {
     beforeAll(() => {
@@ -312,7 +312,7 @@ describe('common.functions', () => {
             const result = functions.getMinigameStageStartTime(1);
 
             // Assert
-            expect(result).toEqual(moment(new Date(2022, 10, 16, 8, 0, 0)));
+            expect(result).toEqual(dayjs(new Date(2022, 10, 16, 8, 0, 0)));
         });
 
         it('return correct when stage = 2', () => {
@@ -320,21 +320,21 @@ describe('common.functions', () => {
             const result = functions.getMinigameStageStartTime(2);
 
             // Assert
-            expect(result).toEqual(moment(new Date(2022, 10, 22, 8, 0, 0)));
+            expect(result).toEqual(dayjs(new Date(2022, 10, 22, 8, 0, 0)));
         });
         it('return correct when stage = 3', () => {
             // Act
             const result = functions.getMinigameStageStartTime(3);
 
             // Assert
-            expect(result).toEqual(moment(new Date(2022, 10, 26, 8, 0, 0)));
+            expect(result).toEqual(dayjs(new Date(2022, 10, 26, 8, 0, 0)));
         });
         it('return correct when stage = 4', () => {
             // Act
             const result = functions.getMinigameStageStartTime(4);
 
             // Assert
-            expect(result).toEqual(moment(new Date(2022, 10, 30, 8, 0, 0)));
+            expect(result).toEqual(dayjs(new Date(2022, 10, 30, 8, 0, 0)));
         });
 
         it('return correct when stage > 4', () => {
@@ -342,7 +342,7 @@ describe('common.functions', () => {
             const result = functions.getMinigameStageStartTime(5);
 
             // Assert
-            expect(result).toEqual(moment(new Date(2022, 10, 30, 8, 0, 0)));
+            expect(result).toEqual(dayjs(new Date(2022, 10, 30, 8, 0, 0)));
         });
     })
 })

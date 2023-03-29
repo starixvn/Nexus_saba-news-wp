@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import MatchGrid  from '../MatchGrid';
 import CommonFunctions from '@jsroot/common/common-functions';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
 describe('MatchGrid', () => {
@@ -123,12 +123,12 @@ describe('MatchGrid', () => {
             const response = [
                 {
                     key: '2020-06-01',
-                    text: moment('2020-06-01').format('dddd - DD/MM/YYYY'),
+                    text: dayjs('2020-06-01').format('dddd - DD/MM/YYYY'),
                     childs: []
                 },
                 {
                     key: '2020-06-02',
-                    text:  moment('2020-06-02').format('dddd - DD/MM/YYYY'),
+                    text:  dayjs('2020-06-02').format('dddd - DD/MM/YYYY'),
                     childs: []
                 }
             ]
@@ -148,12 +148,12 @@ describe('MatchGrid', () => {
             const matches = [
                 {
                     key: '2020-06-01',
-                    text: moment('2020-06-01').format('dddd, DD/MM/YYYY'),
+                    text: dayjs('2020-06-01').format('dddd, DD/MM/YYYY'),
                     childs: []
                 },
                 {
                     key: '2020-06-02',
-                    text:  moment('2020-06-02').format('dddd, DD/MM/YYYY'),
+                    text:  dayjs('2020-06-02').format('dddd, DD/MM/YYYY'),
                     childs: []
                 }
             ]
@@ -170,12 +170,12 @@ describe('MatchGrid', () => {
             const matches = [
                 {
                     key: '2020-06-01',
-                    text: moment('2020-06-01').format('dddd, DD/MM/YYYY'),
+                    text: dayjs('2020-06-01').format('dddd, DD/MM/YYYY'),
                     childs: []
                 },
                 {
                     key: '2020-06-02',
-                    text:  moment('2020-06-02').format('dddd, DD/MM/YYYY'),
+                    text:  dayjs('2020-06-02').format('dddd, DD/MM/YYYY'),
                     childs: []
                 }
             ]

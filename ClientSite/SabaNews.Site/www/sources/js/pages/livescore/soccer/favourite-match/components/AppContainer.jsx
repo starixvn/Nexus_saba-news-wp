@@ -6,18 +6,20 @@ import { Tabs, Tab } from 'react-bootstrap';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import Breadscrum from '@jsroot/components/Breadscrum';
 import MatchGrid from './MatchGrid';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import _ from 'dayjs/locale/vi';
 import SignalR from './SignalR';
 import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import queryString from 'query-string';
 import LastestNews from '@jsroot/components/LastestNews';
 import CommonFunctions from '@jsroot/common/common-functions';
-
-moment.updateLocale('vi', {
+dayjs.extend(updateLocale);
+dayjs.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
-moment.locale('vi');
+dayjs.locale('vi');
 
 export class AppContainer extends Component {
     constructor(props) {

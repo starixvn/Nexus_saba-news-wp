@@ -1,6 +1,6 @@
 import React , { Fragment } from 'react';
 import { shallow } from 'enzyme';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import toJson from 'enzyme-to-json';
 import FavouriteLeagueIcon from '../FavouriteLeagueIcon';
 import DateTimeService from '@jsroot/common/dateTimeService';

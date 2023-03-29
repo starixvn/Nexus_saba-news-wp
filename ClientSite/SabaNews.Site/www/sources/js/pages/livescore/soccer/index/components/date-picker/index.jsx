@@ -1,7 +1,7 @@
 ﻿import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { ActionCreators } from '../../actions';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi';
@@ -32,7 +32,7 @@ export class Index extends PureComponent {
 
     onChange = date => {
         this.handleToggle();
-        date = moment(date).format('YYYY-MM-DD');
+        date = dayjs(date).format('YYYY-MM-DD');
         window.isLivePage = false;
         this.props.setSelectedDate(date);
 

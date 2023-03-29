@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+dayjs.extend(isSameOrAfter);
 
 const favouriteMatchSlice = createSlice({
     name: 'favouriteMatchSlice',
@@ -34,13 +36,13 @@ const favouriteMatchSlice = createSlice({
             const totalItem = data.matches.length;
             for (let i = 0; i < totalItem; i++) {
                 const match = matchesTmp[i];
-                const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
-                const startTime = moment(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
-                const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
+                const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+                const startTime = dayjs(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
+                const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
 
                 if ((match.status === MatchStatus.NotStarted || match.status === MatchStatus.Delay
                     || match.status === MatchStatus.Postpone || match.status === MatchStatus.TBD)
-                    && (moment(startTime).isSameOrAfter(today) || moment(endTime).isSameOrAfter(today))) {
+                    && (dayjs(startTime).isSameOrAfter(today) || dayjs(endTime).isSameOrAfter(today))) {
                     preMatches.push(match);
                 }
 

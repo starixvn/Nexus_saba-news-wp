@@ -1,12 +1,16 @@
 import React, { PureComponent } from 'react';
 import { Form } from 'react-bootstrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
 import { LeagueType } from '@jsroot/common/constants';
 import Item from '../match-grid/Item';
 import Standing from './Standing';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
 
 export default class General extends PureComponent {
     constructor(props) {
@@ -95,9 +99,9 @@ export default class General extends PureComponent {
 
     sortMatches = (matches, sortAsc) => {
         if (sortAsc) {
-            return matches.sort((item1, item2) => moment(item1.startTime).diff(moment(item2.startTime)));
+            return matches.sort((item1, item2) => dayjs(item1.startTime).diff(dayjs(item2.startTime)));
         } else {
-            return matches.sort((item1, item2) => moment(item2.startTime).diff(moment(item1.startTime)));
+            return matches.sort((item1, item2) => dayjs(item2.startTime).diff(dayjs(item1.startTime)));
         }
     };
 
@@ -128,16 +132,16 @@ export default class General extends PureComponent {
         }
         matches = this.sortMatches([...matches], false);
         if (this.isGroupByDate(stages, matches, league)) {
-            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).subtract(1, "day").format('YYYY-MM-DD');
-            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isSameOrAfter(lastWeek));
+            const lastWeek = dayjs(DateTimeService.getCurrentClientDateTime()).subtract(1, "day").format('YYYY-MM-DD');
+            postMatches = matches.filter(item => dayjs(dayjs(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isSameOrAfter(lastWeek));
         } else {
             const match = matches[0];
             const lastRound = match.round ? match.round : 0;
             const lastStage = match.stage ? match.stage.stageId : 0;
             postMatches = this.filterRoundAndStage(matches, lastStage, lastRound);
         }
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
-        postMatches = postMatches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isBefore(today));
+        const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        postMatches = postMatches.filter(item => dayjs(dayjs(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isBefore(today));
         postMatches = this.groupMatches(postMatches);
         return postMatches;
     };
@@ -150,16 +154,16 @@ export default class General extends PureComponent {
         }
         matches = this.sortMatches([...matches], true);
         if (this.isGroupByDate(stages, matches, league)) {
-            const lastWeek = moment(DateTimeService.getCurrentClientDateTime()).add(1, "day").format('YYYY-MM-DD');
-            postMatches = matches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isSameOrBefore(lastWeek));
+            const lastWeek = dayjs(DateTimeService.getCurrentClientDateTime()).add(1, "day").format('YYYY-MM-DD');
+            postMatches = matches.filter(item => dayjs(dayjs(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isSameOrBefore(lastWeek));
         } else {
             const match = matches[0];
             const lastRound = match.round ? match.round : 0;
             const lastStage = match.stage ? match.stage.stageId : 0;
             postMatches = this.filterRoundAndStage(matches, lastStage, lastRound);
         }
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
-        postMatches = postMatches.filter(item => moment(moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isAfter(today));
+        const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        postMatches = postMatches.filter(item => dayjs(dayjs(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD')).isAfter(today));
         postMatches = this.groupMatches(postMatches);
         return postMatches;
     };
@@ -167,16 +171,16 @@ export default class General extends PureComponent {
 
     filterTodayMatches = (preMatches, postMatches) => {
         let todayMatches = [];
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
         preMatches.forEach(item => {
-            const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
-            if (moment(startTime).isSame(today)) {
+            const startTime = dayjs(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
+            if (dayjs(startTime).isSame(today)) {
                 todayMatches.push(item);
             }
         });
         postMatches.forEach(item => {
-            const startTime = moment(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
-            if (moment(startTime).isSame(today)) {
+            const startTime = dayjs(DateTimeService.convertFromUTC(item.startTime)).format('YYYY-MM-DD');
+            if (dayjs(startTime).isSame(today)) {
                 todayMatches.push(item);
             }
         });

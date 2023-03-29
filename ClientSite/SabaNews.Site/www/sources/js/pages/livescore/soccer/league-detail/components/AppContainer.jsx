@@ -2,7 +2,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Tabs, Tab } from 'react-bootstrap';
-import moment from 'moment';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
@@ -18,11 +17,14 @@ import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
-
-moment.updateLocale('vi', {
+import dayjs from 'dayjs';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import _ from 'dayjs/locale/vi';
+dayjs.extend(updateLocale);
+dayjs.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
-moment.locale('vi');
+dayjs.locale('vi');
 
 export class AppContainer extends Component {
     constructor(props) {

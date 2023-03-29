@@ -5,9 +5,12 @@ import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import SkeletonGrid from './SkeletonGrid';
 import SignalR from './SignalR';
-import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { WorldCup, Width1024, MatchStatus } from '@jsroot/common/constants';
+import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+dayjs.extend(isSameOrAfter);
+
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -37,9 +40,9 @@ export class AppContainer extends Component {
     }
 
     checkIsFinished = league => {
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
-        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        return moment(today).isSameOrAfter(endTime);
+        const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
+        const endTime = dayjs(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
+        return dayjs(today).isSameOrAfter(endTime);
     };
 
     getMatches = () => {

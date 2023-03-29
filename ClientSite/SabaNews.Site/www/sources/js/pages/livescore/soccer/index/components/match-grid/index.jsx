@@ -1,7 +1,7 @@
 ﻿import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import SearchBar from '../SearchBar';
 import Grid from './Grid';
 import { ActionCreators } from '../../actions';
@@ -80,7 +80,7 @@ export class MatchGrid extends PureComponent {
 
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
-        if (moment(selectedDate).isBefore(today) && !window.isLivePage) {
+        if (dayjs(selectedDate).isBefore(today) && !window.isLivePage) {
             matches = matches.filter(match => match.status === MatchStatus.Finished
                 || this.checkPreMatch(match.status)
                 || CommonFunctions.isLiveMatch(match.status));

@@ -8,7 +8,7 @@ import Site from '@jsroot/common/site';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { EqualHeight, EqualHeightElement } from 'react-equal-height';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DataService from '@jsroot/common/dataService';
 
 export class Item extends PureComponent {
@@ -51,7 +51,7 @@ export class Item extends PureComponent {
         await DataService.postDataAsync(urlVoteMatch, {matchId: match.matchId}).then(response => {
             const voteMatch = response.data;
             const startTimeVote = DateTimeService.convertFromUTC(voteMatch.startTime);
-            const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+            const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
             const minutes = startTimeVote.diff(currentTime, 'minutes');
             if(voteMatch.status === MatchStatus.Finished
                 || minutes <= 30 || this.checkKnockoutMatch()) {
@@ -111,7 +111,7 @@ export class Item extends PureComponent {
     checkDisabledVote = () => {
         const { match } = this.props;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
-        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
         const minutes = startTime.diff(currentTime, 'minutes');
         let status = false;
         if (match.status === MatchStatus.Finished

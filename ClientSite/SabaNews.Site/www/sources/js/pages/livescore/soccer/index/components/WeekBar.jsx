@@ -1,5 +1,5 @@
 ﻿import React, { PureComponent } from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -8,18 +8,19 @@ import WeekDay from './WeekDay';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
+
 export class WeekBar extends PureComponent {
     onPrev = () => {
         const dateRanges = [...this.props.dateRanges];
         dateRanges.pop();
-        dateRanges.unshift(DateTimeService.formatDateTime(moment(dateRanges[0]).subtract(1, 'days'), 'YYYY-MM-DD'));
+        dateRanges.unshift(DateTimeService.formatDateTime(dayjs(dateRanges[0]).subtract(1, 'days'), 'YYYY-MM-DD'));
         this.props.setDateRanges(dateRanges);
     };
 
     onNext = () => {
         const dateRanges = [...this.props.dateRanges];
         dateRanges.shift();
-        dateRanges.push(DateTimeService.formatDateTime(moment(dateRanges[dateRanges.length - 1]).add(1, 'days'), 'YYYY-MM-DD'));
+        dateRanges.push(DateTimeService.formatDateTime(dayjs(dateRanges[dateRanges.length - 1]).add(1, 'days'), 'YYYY-MM-DD'));
         this.props.setDateRanges(dateRanges);
     };
 
@@ -36,7 +37,7 @@ export class WeekBar extends PureComponent {
         return (
             <div className="livescore-soccer-week-bar">
                 <button className="btn-prev-date" onClick={this.onPrev}
-                    disabled={dateRanges.length === 0 || moment(dateRanges[0]).isSame(minDate)}
+                    disabled={dateRanges.length === 0 || dayjs(dateRanges[0]).isSame(minDate)}
                 >
                     <i className="icon-livescore icon-chevron-left" />
                 </button>
@@ -51,7 +52,7 @@ export class WeekBar extends PureComponent {
                     )
                 }
                 <button className="btn-next-date" onClick={this.onNext}
-                    disabled={dateRanges.length === 0 || moment(dateRanges[dateRanges.length - 1]).isSame(maxDate)}
+                    disabled={dateRanges.length === 0 || dayjs(dateRanges[dateRanges.length - 1]).isSame(maxDate)}
                 >
                     <i className="icon-livescore icon-chevron-right" />
                 </button>

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { getVoteResult, getMinigameStageStartTime } from '../../common.functions';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class Item extends PureComponent {
@@ -28,7 +28,7 @@ export default class Item extends PureComponent {
         const lastMatch = matches[matches.length - 1];
         const startTime = getMinigameStageStartTime(stage);
         const lastTime = DateTimeService.convertFromUTC(lastMatch.startTime);
-        const currentTime = moment(DateTimeService.getCurrentClientDateTime());
+        const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
         const startMinutes = startTime.diff(currentTime, 'minutes');
         const lastMinutes = lastTime.diff(currentTime, 'minutes');
         let status = '';

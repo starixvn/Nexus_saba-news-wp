@@ -1,9 +1,9 @@
 ﻿import React from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 const WeekDay = ({ isMobile, today, selectedDate, currentDate, onClick }) => {
-    const date = moment(currentDate);
-    const isActive = moment(selectedDate).isSame(date) && !window.isLivePage;
+    const date = dayjs(currentDate);
+    const isActive = dayjs(selectedDate).isSame(date) && !window.isLivePage;
     const isToday = date.isSame(today);
 
     return (

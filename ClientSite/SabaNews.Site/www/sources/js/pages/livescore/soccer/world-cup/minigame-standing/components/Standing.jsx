@@ -1,7 +1,7 @@
 import Item from './Item';
 import { getVoteResult } from '../../common.functions';
 import { WorldCup, MobileMaxWidth } from '@jsroot/common/constants';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import React, { PureComponent } from 'react';
 
@@ -197,7 +197,7 @@ export default class Standing extends PureComponent {
                     sortPointZero.push(item);
                  }
                  if(count === 0 || index === standing.length - 1){
-                    sortPointZero.sort((item1, item2) => moment(item1.updatedDate).diff(moment(item2.updatedDate)));
+                    sortPointZero.sort((item1, item2) => dayjs(item1.updatedDate).diff(dayjs(item2.updatedDate)));
                     sortPoint.push(...sortPointZero);
                     sortPointZero = [item];
                  }

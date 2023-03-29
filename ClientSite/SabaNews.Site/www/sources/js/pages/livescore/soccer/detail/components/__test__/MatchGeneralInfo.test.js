@@ -1,6 +1,6 @@
 import React , { Fragment } from 'react';
 import { shallow } from 'enzyme';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import toJson from 'enzyme-to-json';
 import MatchGeneralInfo from '../MatchGeneralInfo';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -35,7 +35,7 @@ describe('MatchGeneralInfo', () => {
         CommonFunctions.getTeamName = jest.fn();
         CommonFunctions.getTeamName.mockReturnValueOnce('Belgium').mockReturnValueOnce('Croatia');
 
-        DateTimeService.convertFromUTC = jest.fn().mockReturnValue(moment(new Date("2022-06-01")));
+        DateTimeService.convertFromUTC = jest.fn().mockReturnValue(dayjs(new Date("2022-06-01")));
 
         Site.toSlug = jest.fn();
         Site.toSlug.mockReturnValueOnce('world-cup').mockReturnValueOnce('belgium').mockReturnValueOnce('croatia');

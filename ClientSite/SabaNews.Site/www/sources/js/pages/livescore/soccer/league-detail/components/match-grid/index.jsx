@@ -1,6 +1,6 @@
 ﻿import React, { PureComponent } from 'react';
 import { Form } from 'react-bootstrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Grid from './Grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -124,9 +124,9 @@ export default class MatchGrid extends PureComponent {
 
     sortMatches = (matches, sortAsc) => {
         if (sortAsc) {
-            return matches.sort((item1, item2) => moment(item1.startTime).diff(moment(item2.startTime)));
+            return matches.sort((item1, item2) => dayjs(item1.startTime).diff(dayjs(item2.startTime)));
         } else {
-            return matches.sort((item1, item2) => moment(item2.startTime).diff(moment(item1.startTime)));
+            return matches.sort((item1, item2) => dayjs(item2.startTime).diff(dayjs(item1.startTime)));
         }
     };
 

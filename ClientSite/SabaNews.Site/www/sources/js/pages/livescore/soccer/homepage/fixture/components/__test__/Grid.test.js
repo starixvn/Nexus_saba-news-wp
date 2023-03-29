@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Grid from '../Grid';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 describe('Grid', () => {
     const defaultProps = {
@@ -37,12 +37,12 @@ describe('Grid', () => {
             const matches = [
                 {
                     key: '2020-06-01',
-                    text: moment('2020-06-01').format('dddd, DD/MM/YYYY'),
+                    text: dayjs('2020-06-01').format('dddd, DD/MM/YYYY'),
                     childs: []
                 },
                 {
                     key: '2020-06-02',
-                    text:  moment('2020-06-02').format('dddd, DD/MM/YYYY'),
+                    text:  dayjs('2020-06-02').format('dddd, DD/MM/YYYY'),
                     childs: []
                 }
             ]
@@ -59,12 +59,12 @@ describe('Grid', () => {
             const matches = [
                 {
                     key: '2020-06-01',
-                    text: moment('2020-06-01').format('dddd, DD/MM/YYYY'),
+                    text: dayjs('2020-06-01').format('dddd, DD/MM/YYYY'),
                     childs: []
                 },
                 {
                     key: '2020-06-02',
-                    text:  moment('2020-06-02').format('dddd, DD/MM/YYYY'),
+                    text:  dayjs('2020-06-02').format('dddd, DD/MM/YYYY'),
                     childs: []
                 }
             ]

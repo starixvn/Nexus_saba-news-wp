@@ -1,8 +1,9 @@
 ﻿import { createSlice } from '@reduxjs/toolkit';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
-
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+dayjs.extend(isSameOrAfter);
 const leagueDetailSlice = createSlice({
     name: 'leagueDetailSlice',
     initialState: {
@@ -29,13 +30,13 @@ const leagueDetailSlice = createSlice({
                 postMatches = [];
             for (let i = 0; i < totalItems; i++) {
                 const match = matches[i];
-                const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
-                const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
+                const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+                const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
                 if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
                     stages.push(match.stage);
                 }
 
-                if (match.status !== MatchStatus.Finished && moment(endTime).isSameOrAfter(today)) {
+                if (match.status !== MatchStatus.Finished && dayjs(endTime).isSameOrAfter(today)) {
                     preMatches.push(match);
                 }
 

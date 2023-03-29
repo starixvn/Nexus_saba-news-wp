@@ -5,8 +5,11 @@ import { ActionCreators } from '../actions';
 import Stage from './Stage';
 import MobileStage from './MobileStage';
 import { MobileMaxWidth } from '@jsroot/common/constants';
-import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+dayjs.extend(isSameOrAfter);
+
 export class Grid extends Component {
     constructor(props) {
         super(props);
@@ -40,9 +43,9 @@ export class Grid extends Component {
         const { league, stages } = this.props;
         const notStartStage = stages.find(item => !item.isFinished);
         let stageId;
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
-        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        if(!notStartStage || moment(today).isSameOrAfter(endTime)) {
+        const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
+        const endTime = dayjs(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
+        if(!notStartStage || dayjs(today).isSameOrAfter(endTime)) {
             stageId = stages[stages.length - 1].key;
         } else {
             stageId = notStartStage.key;
