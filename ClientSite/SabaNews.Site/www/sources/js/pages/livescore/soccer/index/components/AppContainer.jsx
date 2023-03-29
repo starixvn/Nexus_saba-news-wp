@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import dayjs from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import _ from 'dayjs/locale/vi';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
@@ -14,11 +13,11 @@ import SkeletonGrid from './match-grid/SkeletonGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MobileMaxWidth } from '@jsroot/common/constants';
 dayjs.extend(updateLocale);
-dayjs.updateLocale('vi', {
+dayjs.updateLocale('en', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
     weekdaysShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 });
-dayjs.locale('vi');
+
 
 export class AppContainer extends Component {
     static defaultProps = {
