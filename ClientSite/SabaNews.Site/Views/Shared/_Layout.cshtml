@@ -106,6 +106,14 @@
     <input type="hidden" id="RootUrl" value="@Url.Content("~/")" />
     @Html.AntiForgeryToken()
     <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
+    @* <script src="~/lib/jquery/dist/jquery.min.js"," asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"," asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap-modal.js"," asp-append-version="true"></script>
+    <script src="~/js/common.js"," asp-append-version="true"></script>
+    <script src="~/js/site.js"," asp-append-version="true"></script>
+    <script src="~/js/all.js"," asp-append-version="true"></script>
+    <script src="~/js/auth/auth.js"," asp-append-version="true"></script>
+    <script src="~/js/post/load-component.js"," asp-append-version="true"></script> *@
     <script>
         window.currentTime = new Date('@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(DateTime.UtcNow, "yyyy-MM-dd HH:mm:ss")');
     </script>

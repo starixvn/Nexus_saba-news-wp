@@ -208,8 +208,7 @@
         "outputFileName": "wwwroot/minify/js/site.min.js",
         "inputFiles": [
             "wwwroot/lib/jquery/dist/jquery.min.js",
-            "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
-            "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+            "wwwroot/lib/bootstrap/dist/js/bootstrap-modal.min.js",
             "wwwroot/js/common.js",
             "wwwroot/js/site.js",
             "wwwroot/js/all.js",
