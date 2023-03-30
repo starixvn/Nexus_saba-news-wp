@@ -236,7 +236,6 @@
     {
         "outputFileName": "wwwroot/minify/js/home.min.js",
         "inputFiles": [
-            "wwwroot/lib/swipper/js/swiper.min.js",
             "wwwroot/js/home.js"
         ],
         "minify": {

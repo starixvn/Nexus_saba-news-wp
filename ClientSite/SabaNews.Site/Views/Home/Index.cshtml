@@ -53,6 +53,11 @@
         <script src="~/js/pro/pages/livescore/soccer/homepage/fixture.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/homepage/standing.chunk.js" asp-append-version="true"></script>
     </environment>
+    <script type="text/javascript">
+        if (screen && screen.width > 760) {
+            document.write('<script type="text/javascript" src="/minify/js/swiper.min.js"><\/script>');
+        }
+    </script>
     <script src="~/minify/js/home.min.js" asp-append-version="true"></script>
 }
 

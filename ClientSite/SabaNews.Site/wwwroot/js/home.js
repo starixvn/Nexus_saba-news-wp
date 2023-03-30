@@ -51,6 +51,7 @@ var home = {
                 }
             }
         });
+
         //Desktop
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
