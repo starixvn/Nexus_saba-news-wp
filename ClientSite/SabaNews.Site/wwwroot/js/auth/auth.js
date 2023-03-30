@@ -27,7 +27,7 @@
                     e.preventDefault();
                     HandleRegister();
                 });
-
+                HandleValidate();
                 HandleForgotPassword();
                 HandleModal(openForm);
             }
@@ -41,6 +41,81 @@
             GetModalLogin(returnUrl, openForm);
         });
     }
+
+    function HandleValidate() {
+        $('input[name=email]').on('keyup', function(){
+            let err = $(this).parent().find("#email-error");
+            if(err.length === 0) return false;
+            let email = $(this).val();
+            let mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            err.hide();
+            if(!mailFormat.test(email) || email === "") {
+                let message = email ==="" ? "Hãy nhập email" : "Email không có thật"
+                err.html(message)
+                err.show();
+            }
+        });
+
+        $('#form-login input[name=password]').on('keyup', function(){
+            let err = $(this).parent().find("#password-error");
+            if(err.length === 0) return false;
+            let val = $(this).val();
+            err.hide();
+            if(val === "") {
+                let message = "Hãy nhập mật khẩu";
+                err.html(message)
+                err.show();
+            }
+        });
+
+        $('#form-register input[name=name]').on('keyup', function(){
+            let err = $(this).parent().find("#name-error");
+            if(err.length === 0) return false;
+            let val = $(this).val();
+            err.hide();
+            if(val === "") {
+                let message = "Hãy nhập tên";
+                err.html(message)
+                err.show();
+            }
+        });
+
+        $('#form-register input[name=password]').on('keyup', function(){
+            let err = $(this).parent().find("#password-error");
+            if(err.length === 0) return false;
+            let val = $(this).val();
+            err.hide();
+            let message = "";
+            if(val === "") {
+                message = "Hãy nhập mật khẩu";
+            } else if(val.length < 6) {
+                message = "Mật khẩu ít nhất 6 kí tự";
+            }
+            if(message !== "") {
+                err.html(message)
+                err.show();
+            }
+        });
+
+        $('#form-register input[name=confirmPassword]').on('keyup', function(){
+            let err = $(this).parent().find("#confirmPassword-error");
+            if(err.length === 0) return false;
+            let val = $(this).val();
+            let password = $(this).parent().parent().find('input[name=password]').val();
+            let message = "";
+            err.hide();
+            if(val === "") {
+                message = "Hãy xác thực mật khẩu";
+            } else if(password !== val) {
+                message = "Xác thực mật khẩu sai";
+            }
+            if(message !== "") {
+                err.html(message)
+                err.show();
+            }
+        });
+    }
+
 
     function HandleLoginAcc(returnUrl) {
         var email = document.querySelector("#form-login > div:nth-child(2) > input").value;
