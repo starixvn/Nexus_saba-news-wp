@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import GridItem from './GridItem';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
-import { Tabs, Tab } from 'react-bootstrap';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
@@ -18,7 +17,7 @@ export default class Grid extends PureComponent {
     }
 
 
-    handleSelectTab = key => {
+    handleSelectedTab = key => {
         this.setState({ selectedTab: key });
     };
 
@@ -52,23 +51,42 @@ export default class Grid extends PureComponent {
             window.location = url;
         }
     };
+
+    getCurrentMatches = () => {
+        const {selectedTab} = this.state;
+        const { matches } = this.props;
+        let matchList = [];
+        if(selectedTab === 'fixture') {
+            matchList =  this.filterPreMatches(matches);
+        } else if(selectedTab === 'result') {
+            matchList = matches.filter(item => item.status === MatchStatus.Finished);
+            matchList = this.sortMatches(matchList, false);
+        }
+        return matchList;
+    };
     render() {
         const { league, matches } = this.props;
+        const { selectedTab } = this.state;
         if (matches.length === 0) {
             return null;
         }
-        let postMatches = matches.filter(item => item.status === MatchStatus.Finished);
-        let preMatches = this.filterPreMatches(matches);
-        postMatches = this.sortMatches(postMatches, false);
-        if (preMatches.length === 0) {
+        const matchList = this.getCurrentMatches();
+        if (matchList.length === 0) {
             return null;
         }
+        console.log(1111);
+        const isFixture = selectedTab === 'fixture';
         return (
             <div className="wc-bg-overflow">
                 <div className="livescore-name-team">
                     <span className="round-name" onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
                 </div>
-                <Tabs id="livescore-tab-league-detail"
+                <ul className="live-score-nav">
+                    <li className={selectedTab === 'fixture' ? 'active' : ''} onClick={() => this.handleSelectedTab('fixture')}>LTD</li>
+                    <li className={selectedTab === 'result' ? 'active' : ''} onClick={() => this.handleSelectedTab('result')}>KQ</li>
+                </ul>
+                <GridItem matches={matchList} league={league} isFixture={isFixture} />
+                {/* <Tabs id="livescore-tab-league-detail"
                     className="live-score-nav"
                 >
                     <Tab title="LTĐ" eventKey="fixture">
@@ -77,7 +95,7 @@ export default class Grid extends PureComponent {
                     <Tab title="KQ" eventKey="result">
                         <GridItem matches={postMatches} league={league} />
                     </Tab>
-                </Tabs>
+                </Tabs> */}
             </div>
         );
     }
