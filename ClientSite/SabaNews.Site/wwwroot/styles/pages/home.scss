@@ -24,14 +24,9 @@
 @import '../components/scroll-snap';
 
 
-
-
-
-
-
 //new
 .main{
-    padding-top: 3rem;
+    padding-top: 2rem;
     @include Mobile{
         padding-top: 0;
     }

@@ -2,7 +2,6 @@
     {
         "outputFileName": "wwwroot/minify/styles/home.min.css",
         "inputFiles": [
-            "wwwroot/lib/swipper/css/swiper.min.css",
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/home.css"
         ]
