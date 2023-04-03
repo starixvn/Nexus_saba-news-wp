@@ -53,13 +53,16 @@
                 position: absolute;
                 top: 10px;
                 right: 10px;
-                a{
+                list-style: none;
+                display: flex;
+                li{
                     padding: 0 .6rem;
                     font-weight: 700;
                     font-size: 1.4rem;
                     line-height: 1.9rem;
                     color: #888888;
                     text-decoration: none;
+                    cursor: pointer;
                     &.active{
                         color: #333333;
                     }
