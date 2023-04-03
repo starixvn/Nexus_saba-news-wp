@@ -81,7 +81,7 @@ export default class Grid extends PureComponent {
                     <span className="round-name" onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
                 </div>
                 <ul className="live-score-nav">
-                    <li className={selectedTab === 'fixture' ? 'active' : ''} onClick={() => this.handleSelectedTab('fixture')}>LTD</li>
+                    <li className={selectedTab === 'fixture' ? 'active' : ''} onClick={() => this.handleSelectedTab('fixture')}>LTĐ</li>
                     <li className={selectedTab === 'result' ? 'active' : ''} onClick={() => this.handleSelectedTab('result')}>KQ</li>
                 </ul>
                 <GridItem matches={matchList} league={league} isFixture={isFixture} />
