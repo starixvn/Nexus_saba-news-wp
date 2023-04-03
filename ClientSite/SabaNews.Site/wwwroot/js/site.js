@@ -74,7 +74,7 @@
             browserName = "edge";
             console.log(browserName)
         } else {
-            browserName = "No browser detected";
+            browserName = "No browser detection";
         }
     },
     init: function () {
