@@ -1,6 +1,5 @@
 ﻿﻿var setUp = {
     HandleIframe: function () {
-        //Desktop & Mobile
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
@@ -75,7 +74,7 @@
             browserName = "edge";
             console.log(browserName)
         } else {
-            browserName = "No browser detection";
+            browserName = "No browser detected";
         }
     },
     init: function () {

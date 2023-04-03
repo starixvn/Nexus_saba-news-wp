@@ -74,7 +74,6 @@ export default class Grid extends PureComponent {
         if (matchList.length === 0) {
             return null;
         }
-        console.log(1111);
         const isFixture = selectedTab === 'fixture';
         return (
             <div className="wc-bg-overflow">
@@ -86,16 +85,6 @@ export default class Grid extends PureComponent {
                     <li className={selectedTab === 'result' ? 'active' : ''} onClick={() => this.handleSelectedTab('result')}>KQ</li>
                 </ul>
                 <GridItem matches={matchList} league={league} isFixture={isFixture} />
-                {/* <Tabs id="livescore-tab-league-detail"
-                    className="live-score-nav"
-                >
-                    <Tab title="LTĐ" eventKey="fixture">
-                        <GridItem matches={preMatches} league={league} isFixture />
-                    </Tab>
-                    <Tab title="KQ" eventKey="result">
-                        <GridItem matches={postMatches} league={league} />
-                    </Tab>
-                </Tabs> */}
             </div>
         );
     }
