@@ -17,14 +17,14 @@ describe('Grid', () => {
         jest.clearAllMocks();
     });
 
-    describe('handleSelectTab', () => {
+    describe('handleSelectedTab', () => {
         it('setState correctly when call function', () => {
             // Arrange
             const container = shallow(<Grid {...defaultProps} />);
             const instance = container.instance();
             instance.setState = jest.fn();
             // Act
-            instance.handleSelectTab('fixture');
+            instance.handleSelectedTab('fixture');
 
             // Assert
             expect(instance.setState).toHaveBeenCalled();
@@ -106,6 +106,108 @@ describe('Grid', () => {
         })
     });
 
+    describe('getCurrentMatches', () => {
+        it('return correctly match list when selectedTab = fixture', () =>{
+            //Arrange
+            const matches = [
+                {
+                    matchId: 1,
+                    status:50,
+                    endTime: '2023-09-01',
+                },
+                {
+                    matchId: 2,
+                    status:0,
+                    endTime: '2023-11-01',
+                }
+            ]
+            const props = {
+                ...defaultProps,
+                matches: matches,
+                league: {leagueId: 1, leagueNameVN: 'league name'}
+            }
+            const instance = shallow(<Grid {...props} />).instance();
+            instance.state.selectedTab = 'fixture';
+            instance.filterPreMatches  = jest.fn().mockReturnValue(matches);
+            // Act
+            const result = instance.getCurrentMatches(matches);
+
+            // Assert
+            expect(instance.filterPreMatches).toHaveBeenCalled();
+            expect(result).toEqual(matches);
+        });
+
+        it('return correctly match list when selectedTab = result', () =>{
+            //Arrange
+            const expectedResult =  [
+                {
+                    matchId: 2,
+                    status: 50,
+                    endTime: '2023-09-01',
+                }
+            ];
+            const matches = [
+                {
+                    matchId: 1,
+                    status:0,
+                    endTime: '2023-11-01',
+                },
+                {
+                    matchId: 2,
+                    status: 50,
+                    endTime: '2023-09-01',
+                }
+            ]
+            const props = {
+                ...defaultProps,
+                matches: matches,
+                league: {leagueId: 1, leagueNameVN: 'league name'}
+            }
+            const instance = shallow(<Grid {...props} />).instance();
+            instance.state.selectedTab = 'result';
+            // Act
+            const result = instance.getCurrentMatches(matches);
+
+            // Assert
+            expect(result).toEqual(expectedResult);
+        });
+
+        it('return correctly match list when selectedTab is others', () =>{
+            //Arrange
+            const expectedResult =  [
+                {
+                    matchId: 2,
+                    status: 50,
+                    endTime: '2023-09-01',
+                }
+            ];
+            const matches = [
+                {
+                    matchId: 1,
+                    status:0,
+                    endTime: '2023-11-01',
+                },
+                {
+                    matchId: 2,
+                    status: 50,
+                    endTime: '2023-09-01',
+                }
+            ]
+            const props = {
+                ...defaultProps,
+                matches: matches,
+                league: {leagueId: 1, leagueNameVN: 'league name'}
+            }
+            const instance = shallow(<Grid {...props} />).instance();
+            instance.state.selectedTab = 'standing';
+            // Act
+            const result = instance.getCurrentMatches(matches);
+
+            // Assert
+            expect(result).toEqual([]);
+        });
+    });
+
     describe('handleClickLeague', () => {
         const { location } = window;
 
@@ -172,7 +274,7 @@ describe('Grid', () => {
             expect(result).toEqual(null);
         });
 
-        it('render correctly when prematches is empty', () => {
+        it('render correctly when current matches is empty', () => {
             // Arrange
             const matches = [
                 {
@@ -234,7 +336,44 @@ describe('Grid', () => {
 
             // Assert
             container.find('.round-name').simulate('click', {ctrlKey: true});
+            container.find('.live-score-nav li').at(0).simulate('click', 'fixture');
+            container.find('.live-score-nav li').at(1).simulate('click', 'standing');
             expect(container).toMatchSnapshot();
+        });
+
+        it('render correctly when selectedTab = result', () => {
+            // Arrange
+            const matches = [
+                {
+                    matchId: 1,
+                    status:50,
+                    endTime: '2023-09-01',
+                    startTime: '2023-09-01',
+                    league: {leagueNameVN: 'league'}
+                },
+                {
+                    matchId: 2,
+                    status:0,
+                    endTime: '2023-11-01',
+                    startTime: '2023-11-01',
+                    league: {leagueNameVN: 'league'}
+                }
+            ]
+            const props = {
+                ...defaultProps,
+                matches: matches,
+                league: {leagueNameVN: 'league'}
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+            instance.selectedTab = 'result';
+            instance.getCurrentMatches = jest.fn().mockReturnValue(matches);
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toMatchSnapshot();
         });
     });
 
