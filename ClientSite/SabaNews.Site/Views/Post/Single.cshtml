@@ -210,16 +210,34 @@
                     }
                 }
             </ul>
+            @if(Model.IsVideo)
+            {
+                <div class="ads-insite show-pc banner-left"></div>
+            }
+            @if(!Model.IsVideo)
+            {
+                <div class="ads-insite show-mobile banner-mobile-center"></div>
+            }
             <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
             <input name="isVideo" id="isVideo" type="hidden" value="@Model.IsVideo.ToString()" />
             <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
-            <div class="ads-insite show-mobile banner-mobile-center"></div>
             <div class="comment-post" id="comment">
             </div>
+            @if(Model.IsVideo)
+            {
+                <div class="ads-insite show-mobile banner-mobile-top"></div>
+            }
             @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        <div class="ads-insite show-mobile banner-mobile-bottom"></div>
+        @if(!Model.IsVideo)
+        {
+            <div class="ads-insite show-mobile banner-mobile-bottom"></div>
+        }
+        else
+        {
+            <div class="ads-insite show-mobile banner-mobile-center"></div>
+        }
         @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
 
     </div>
