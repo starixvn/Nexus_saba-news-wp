@@ -80,7 +80,7 @@ body {
 
 .livescore-soccer {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 69% 31%;
   grid-template-rows: unset;
   grid-gap: 0;
   align-items: start;

@@ -81,7 +81,7 @@ body {
 
 .livescore-soccer {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 69% 31%;
   grid-template-rows: unset;
   grid-gap: 0;
   align-items: start;
@@ -730,7 +730,7 @@ body {
   border: 1px solid #DADADA;
   box-sizing: border-box;
   border-radius: 5px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
   background-color: #e9e9e9;
   overflow: hidden;
 }
@@ -750,7 +750,7 @@ body {
   grid-template-rows: unset;
   grid-gap: 0;
   grid-auto-flow: column;
-  padding: 0.4rem 2.6rem;
+  padding: 0.4rem 2.2rem;
   cursor: pointer;
 }
 @media screen and (max-width: 1024px) {
@@ -2389,4 +2389,16 @@ body {
 
 .livescore-soccer-main {
   margin-bottom: 3.2rem;
+}
+
+.ads-insite {
+  margin: 0.8rem 0;
+}
+@media (max-width: 767px) {
+  .ads-insite {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+  }
 }
