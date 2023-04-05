@@ -50,3 +50,12 @@ body {
 .livescore-soccer-main{
     margin-bottom: 3.2rem;
 }
+.ads-insite{
+    margin: .8rem 0;
+    @include Mobile{
+        margin-top: .8rem;
+        margin-bottom: .8rem;
+        margin-left: -1.2rem;
+        margin-right: -1.2rem;
+    }
+}
