@@ -45,7 +45,7 @@
                     $('.lds-ellipsis').hide();
                 }
             }
-            $('.banner-category-scroll').html($('.banner-mobile-bottom').html());
+            $('.banner-category-scroll').html($('.banner-scroll').html());
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             console.log('server not responding...');
