@@ -21,7 +21,7 @@ export default class Banner extends PureComponent {
             case BannerType.MobileCenter:
                 return { src: banner.mobileCenterUrl, link: banner.mobileCenterNavigationUrl };
             case BannerType.MobileBottom:
-                return { src: banner.mobileBottomUrl, link: banner.mobileBottomUrl };
+                return { src: banner.mobileBottomUrl, link: banner.mobileBottomNavigationUrl };
             default: return bannerData;
         }
     };

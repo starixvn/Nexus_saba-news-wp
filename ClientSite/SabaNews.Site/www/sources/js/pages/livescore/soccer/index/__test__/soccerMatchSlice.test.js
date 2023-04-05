@@ -6,7 +6,8 @@
     setMatches,
     setLiveMatches,
     setFlagToggleFavLeagueIcon,
-    setLeagues
+    setLeagues,
+    setBanner
 } from '../soccerMatchSlice';
 
 describe('soccerMatchSlice', () => {
@@ -356,6 +357,21 @@ describe('soccerMatchSlice', () => {
                         {leagueId: 1},
                         {leagueId: 2}
                     ]
+                });
+            })
+        });
+
+        describe('setBanner', () => {
+            it('should update state correctly', () => {
+                expect(
+                    soccerMatchSlice({
+                        banner: {}
+                    }, {
+                        type: setBanner.type,
+                        payload: {'desktop': 'desktopUrl', 'mobile': 'mobileUrl'}
+                    })
+                ).toEqual({
+                    banner: {'desktop': 'desktopUrl', 'mobile': 'mobileUrl'}
                 });
             })
         });

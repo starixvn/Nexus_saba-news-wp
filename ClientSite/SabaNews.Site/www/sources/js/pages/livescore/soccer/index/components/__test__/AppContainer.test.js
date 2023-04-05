@@ -16,6 +16,7 @@ describe('AppContainer', () => {
         getFavLeagues: jest.fn(),
         getMatchesByDate: jest.fn(),
         getLeagues: jest.fn(),
+        getBanner: jest.fn(),
         setSearchKey: jest.fn(),
         getLiveMatches: jest.fn(),
         setDateRanges: jest.fn(),
@@ -42,7 +43,7 @@ describe('AppContainer', () => {
             window.innerWidth = 600;
 
             // Act
-            const instance = shallow(<AppContainer />).instance();
+            const instance = shallow(<AppContainer {...defaultProps}/>).instance();
 
             // Assert
             expect(instance.state).toEqual({ isMobile: true });
@@ -53,7 +54,7 @@ describe('AppContainer', () => {
             window.innerWidth = 768;
 
             // Act
-            const instance = shallow(<AppContainer />).instance();
+            const instance = shallow(<AppContainer {...defaultProps}/>).instance();
 
             // Assert
             expect(instance.state).toEqual({ isMobile: true });
@@ -64,7 +65,7 @@ describe('AppContainer', () => {
             window.innerWidth = 960;
 
             // Act
-            const instance = shallow(<AppContainer />).instance();
+            const instance = shallow(<AppContainer {...defaultProps}/>).instance();
 
             // Assert
             expect(instance.state).toEqual({ isMobile: false });
@@ -99,7 +100,7 @@ describe('AppContainer', () => {
             // Arrange
             window.removeEventListener = jest.fn();
 
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
 
             // Act
@@ -114,7 +115,7 @@ describe('AppContainer', () => {
         it('updates correctly state when isMobile = false and window.innerWidth < 768', () => {
             // Arrange
             window.innerWidth = 767;
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
             instance.setState({ isMobile: false });
 
@@ -128,7 +129,7 @@ describe('AppContainer', () => {
         it('updates correctly state when isMobile = false and window.innerWidth = 768', () => {
             // Arrange
             window.innerWidth = 768;
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
             instance.setState({ isMobile: false });
 
@@ -142,7 +143,7 @@ describe('AppContainer', () => {
         it('do nothing when isMobile = true and window.innerWidth < 768', () => {
             // Arrange
             window.innerWidth = 767;
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
             instance.setState({ isMobile: true });
             instance.setState = jest.fn();
@@ -158,7 +159,7 @@ describe('AppContainer', () => {
         it('do nothing when isMobile = true and window.innerWidth = 768', () => {
             // Arrange
             window.innerWidth = 768;
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
             instance.setState({ isMobile: true });
             instance.setState = jest.fn();
@@ -174,7 +175,7 @@ describe('AppContainer', () => {
         it('updates correctly state when isMobile = true and window.innerWidth > 768', () => {
             // Arrange
             window.innerWidth = 769;
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
             instance.setState({ isMobile: true });
 
@@ -357,7 +358,7 @@ describe('AppContainer', () => {
     describe('render', () => {
         it('renders correctly when matches = null', () => {
             // Arrange
-            const container = shallow(<AppContainer />);
+            const container = shallow(<AppContainer {...defaultProps}/>);
             const instance = container.instance();
             instance.getMatches = jest.fn();
             instance.getDateRanges = jest.fn();

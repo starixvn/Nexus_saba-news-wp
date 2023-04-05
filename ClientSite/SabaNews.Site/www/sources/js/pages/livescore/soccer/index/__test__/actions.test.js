@@ -150,4 +150,26 @@ describe('actionCreators', () => {
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
+
+    describe('getBanner', () => {
+        it('should call setLeagues when get major leagues have been done', async () => {
+            // Arrange
+            const response = {
+                data: {'desktop': 'desktopUrl', 'mobile': 'mobileUrl'}
+            };
+            const promise = Promise.resolve(response);
+            DataService.postDataAsync = jest.fn(() => promise);
+            const expectedActions = [{ type: ActionCreators.setBanner.type, payload: response.data }];
+            const store = mockStore({
+                banner: []
+            });
+
+            // Act
+            await store.dispatch(ActionCreators.getBanner());
+
+            // Assert
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('api/banner');
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
 });
