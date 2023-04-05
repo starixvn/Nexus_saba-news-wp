@@ -1,7 +1,8 @@
 ﻿import React, { PureComponent } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import League from './League';
-
+import Banner from '@jsroot/components/Banner';
+import { BannerType } from '@jsroot/common/constants';
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
@@ -61,7 +62,7 @@ export default class Grid extends PureComponent {
 
     render() {
         const { hasMore, leagues } = this.state;
-
+        const { banner } = this.props;
         return (
             <div className="soccer-match-grid">
                 <InfiniteScroll initialLoad={false}
@@ -71,8 +72,21 @@ export default class Grid extends PureComponent {
                     useWindow={true}
                 >
                     {
-                        leagues.map((league, index) =>
-                            <League key={index} league={league} />)
+                        leagues.map((league, index) => {
+                            return (
+                                <div key={index}>
+                                    <League league={league} />
+                                    <div className="banner-euro-desktop banner-desktop-top"></div>
+                                    {index === 1 &&
+                                        <>
+                                            <Banner banner={banner} type={BannerType.DesktopLeft} />
+                                            <Banner banner={banner} type={BannerType.MobileTop} isMobile />
+                                        </>
+                                    }
+                                    {index === 3 && <Banner banner={banner} type={BannerType.MobileCenter} isMobile />}
+                                </div>
+                            );
+                        })
                     }
                 </InfiniteScroll>
             </div>

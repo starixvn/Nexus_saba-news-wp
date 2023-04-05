@@ -9,7 +9,8 @@ import {
     setMatches,
     setLiveMatches,
     setFlagToggleFavLeagueIcon,
-    setLeagues
+    setLeagues,
+    setBanner
 } from './soccerMatchSlice';
 
 const getMatchesByDate = params => async dispatch => {
@@ -47,6 +48,13 @@ const getLeagues = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
+const getBanner = () => async dispatch => {
+    const url = Site.resolveClientUrl('api/banner');
+    await DataService.postDataAsync(url).then(response => {
+        dispatch(setBanner(response.data));
+    }).catch(Site.handleAxiosError);
+};
+
 export const ActionCreators = {
     setSearchKey,
     setSelectedDate,
@@ -59,5 +67,7 @@ export const ActionCreators = {
     setLiveMatches,
     setFlagToggleFavLeagueIcon,
     setLeagues,
-    getLeagues
+    getLeagues,
+    getBanner,
+    setBanner
 };

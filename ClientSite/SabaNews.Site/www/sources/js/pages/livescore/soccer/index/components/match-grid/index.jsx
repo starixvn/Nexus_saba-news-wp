@@ -79,7 +79,7 @@ export class MatchGrid extends PureComponent {
     };
 
     render() {
-        let { matches, selectedDate, today, searchKey } = this.props;
+        let { matches, selectedDate, today, searchKey, banner } = this.props;
         if (dayjs(selectedDate).isBefore(today) && !window.isLivePage) {
             matches = matches.filter(match => match.status === MatchStatus.Finished
                 || this.checkPreMatch(match.status)
@@ -106,7 +106,7 @@ export class MatchGrid extends PureComponent {
                 }
                 {
                     totalMatches > 0 &&
-                    <Grid leagues={leagues} />
+                    <Grid leagues={leagues} banner={banner}/>
                 }
             </>
         );
@@ -116,8 +116,8 @@ export class MatchGrid extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { selectedDate, today, searchKey } = state;
-    return { selectedDate, today, searchKey };
+    const { selectedDate, today, searchKey, banner } = state;
+    return { selectedDate, today, searchKey, banner };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchGrid);

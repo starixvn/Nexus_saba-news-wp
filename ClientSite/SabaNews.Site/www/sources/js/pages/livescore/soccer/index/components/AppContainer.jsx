@@ -6,12 +6,13 @@ import updateLocale from 'dayjs/plugin/updateLocale';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import Banner from '@jsroot/components/Banner';
 import DateBar from './DateBar';
 import MatchGrid from './match-grid/index';
 import SignalR from './SignalR';
 import SkeletonGrid from './match-grid/SkeletonGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import { MobileMaxWidth } from '@jsroot/common/constants';
+import { MobileMaxWidth, BannerType } from '@jsroot/common/constants';
 dayjs.extend(updateLocale);
 dayjs.updateLocale('en', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
@@ -60,6 +61,7 @@ export class AppContainer extends Component {
         this.props.setDateRanges(this.getDateRanges(this.props.selectedDate));
         this.props.getFavLeagues();
         this.props.getLeagues();
+        this.props.getBanner();
         this.getMatches(this.props.selectedDate);
     }
 
@@ -127,7 +129,7 @@ export class AppContainer extends Component {
 
     render() {
         const isMobile = this.state.isMobile;
-        const { matches, favLeagues, totalLiveMatches, leagues } = this.props;
+        const { matches, favLeagues, totalLiveMatches, leagues, banner } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
@@ -147,6 +149,7 @@ export class AppContainer extends Component {
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
                         <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
+                        <Banner banner={banner} type={BannerType.DesktopRight}  />
                     </div>
                 </div>
             </div>
@@ -160,12 +163,12 @@ const mapStateToProps = state => {
     const {
         minDate, maxDate, selectedDate, dateRanges,
         searchKey, favLeagues, matches, totalLiveMatches,
-        flagToggleFavLeagueIcon, leagues
+        flagToggleFavLeagueIcon, leagues, banner
     } = state;
     return {
         minDate, maxDate, selectedDate, dateRanges,
         searchKey, favLeagues, matches, totalLiveMatches,
-        flagToggleFavLeagueIcon, leagues
+        flagToggleFavLeagueIcon, leagues, banner
     };
 };
 
