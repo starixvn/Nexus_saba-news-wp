@@ -31,7 +31,10 @@
 
 
 .block__swipper {
-    margin-bottom: 2.5rem;
+    margin-bottom: 4rem;
+    @include Mobile{
+        margin-bottom: 2.5rem;
+    }
 
     .swiper-container {
         .skeleton-swiper-slide {

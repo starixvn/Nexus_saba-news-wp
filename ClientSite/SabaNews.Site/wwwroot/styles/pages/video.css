@@ -3368,7 +3368,12 @@ button {
 }
 
 .block__swipper {
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
+}
+@media (max-width: 767px) {
+  .block__swipper {
+    margin-bottom: 2.5rem;
+  }
 }
 .block__swipper .swiper-container .skeleton-swiper-slide {
   height: 49rem;
