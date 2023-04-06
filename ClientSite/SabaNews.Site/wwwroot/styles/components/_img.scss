@@ -4,13 +4,14 @@
     &:hover{
         img{
             transition: all 0.5s ease;
-            transform: scale(1.02); 
+            transform: rotate(0.01deg) scale(1.01); 
         }
     }
     img{
         transition: all 0.5s ease;
         width: 100%;
         display: block;
+        transform: rotate(0.01deg) scale(1); 
     }
     source{
         width: 100%;
@@ -89,7 +90,7 @@
 }
 
 .fix-chrome{
-    .hover-image,.hover-none-16-9{
+    .hover-image,.hover-none-16-9,.card-horizontal__image,.card-vertical__image{
         img{
             -webkit-backface-visibility: hidden;
             image-rendering: -moz-crisp-edges;

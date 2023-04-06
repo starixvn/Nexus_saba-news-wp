@@ -1999,12 +1999,13 @@ button {
 }
 .card-horizontal__image:hover img, .card-vertical__image:hover img {
   transition: all 0.5s ease;
-  transform: scale(1.02);
+  transform: rotate(0.01deg) scale(1.01);
 }
 .card-horizontal__image img, .card-vertical__image img {
   transition: all 0.5s ease;
   width: 100%;
   display: block;
+  transform: rotate(0.01deg) scale(1);
 }
 .card-horizontal__image source, .card-vertical__image source {
   width: 100%;
@@ -2075,7 +2076,7 @@ button {
   transform: rotate(0.01deg) scale(1.01);
 }
 
-.fix-chrome .hover-image img, .fix-chrome .hover-none-16-9 img {
+.fix-chrome .hover-image img, .fix-chrome .hover-none-16-9 img, .fix-chrome .card-horizontal__image img, .fix-chrome .card-vertical__image img {
   -webkit-backface-visibility: hidden;
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
