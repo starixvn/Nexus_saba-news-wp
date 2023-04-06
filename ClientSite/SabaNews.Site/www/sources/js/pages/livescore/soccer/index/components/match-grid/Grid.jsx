@@ -76,7 +76,6 @@ export default class Grid extends PureComponent {
                             return (
                                 <div key={index}>
                                     <League league={league} />
-                                    <div className="banner-euro-desktop banner-desktop-top"></div>
                                     {index === 1 &&
                                         <>
                                             <Banner banner={banner} type={BannerType.DesktopLeft} />
