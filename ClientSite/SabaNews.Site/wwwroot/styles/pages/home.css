@@ -3243,7 +3243,7 @@ button {
 }
 
 .main {
-  padding-top: 2rem;
+  padding-top: 3rem;
 }
 @media (max-width: 767px) {
   .main {
