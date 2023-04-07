@@ -50,7 +50,6 @@
     return {
         init
     }
-
 })(jQuery);
 
 $(document).ready(function () {
