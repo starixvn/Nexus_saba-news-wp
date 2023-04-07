@@ -1848,7 +1848,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-last-page .columns-left {
   border-right: 1px solid #E5E5E5;
   padding-right: 2rem;
-  width: 105rem;
+  width: 96rem;
 }
 @media (max-width: 767px) {
   .block-last-page .columns-left {
