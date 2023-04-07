@@ -145,7 +145,7 @@
             document.querySelector("#form-login > div:nth-child(3)").append(aTag);
         }
 
-        if(mailFormat.test(email) && email != "" || password != ""){
+        if(mailFormat.test(email) && email != "" && password != ""){
             $.ajax({
                 url: '/Auth/Login',
                 method: "POST",
@@ -175,6 +175,7 @@
         var password = document.querySelector("#password").value;
         var confirmPassword = document.querySelector("#form-register > div:nth-child(5) > input").value;
         var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        let isValid = true;
 
         $("#name-error").remove();
         $("#email-error").remove();
@@ -182,6 +183,7 @@
         $("#confirmPassword-error").remove();
 
         if(name === ""){
+            isValid = false;
             var aTag = document.createElement("label");
             aTag.id = "name-error";
             aTag.htmlFor = "name";
@@ -191,6 +193,7 @@
         }
 
         if (!mailFormat.test(email) || email === ""){
+            isValid = false;
             var aTag = document.createElement("label");
             aTag.id = "email-error";
             aTag.htmlFor = "email";
@@ -199,16 +202,18 @@
             document.querySelector("#form-register > div:nth-child(3)").append(aTag);
         }
 
-        if (password === ""){
+        if (password === "" || password.length < 6){
+            isValid = false;
             var aTag = document.createElement("label");
             aTag.id = "password-error";
             aTag.htmlFor = "password";
             aTag.classList.add("error");
-            aTag.innerHTML = "Hãy nhập mật khẩu";
+            aTag.innerHTML = password.length < 6 ? "Mật khẩu ít nhất 6 kí tự" : "Hãy nhập mật khẩu";
             document.querySelector("#form-register > div:nth-child(4)").append(aTag);
         }
 
         if (confirmPassword === "" || password != confirmPassword){
+            isValid = false;
             var aTag = document.createElement("label");
             aTag.id = "confirmPassword-error";
             aTag.htmlFor = "confirmPassword";
@@ -217,7 +222,7 @@
             document.querySelector("#form-register > div:nth-child(5)").append(aTag);
         }
         
-        if(name != "" && mailFormat.test(email) && email != "" && password != "" && confirmPassword != "" && password === confirmPassword){
+        if(isValid){
             $('#authModal form#form-register' + " .btn-register").prop('disabled', true);
             $('#authModal form#form-register' + " .btn-register").addClass('btn-disabled');
             $.ajax({
