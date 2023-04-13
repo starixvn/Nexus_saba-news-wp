@@ -52,7 +52,7 @@ export class Item extends PureComponent {
     render() {
         const { Winner, number, winnerLength, selectedStage } = this.props;
         const updatedDate = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
-        const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/yyyy, HH:mm:ss');
+        const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/YYYY, HH:mm:ss');
         return (
             <>
                 {

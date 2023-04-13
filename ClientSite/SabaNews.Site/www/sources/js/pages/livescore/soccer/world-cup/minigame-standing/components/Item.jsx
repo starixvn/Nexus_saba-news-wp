@@ -48,7 +48,7 @@ export class Item extends PureComponent {
     render() {
         const { standing, number, standingLength, rank, stagesSelected } = this.props;
         const updatedDate = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
-        const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/yyyy, HH:mm:ss');
+        const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/YYYY, HH:mm:ss');
         return (
             <>
                 <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${stagesSelected === 4 ? 'cursor-items' : ''}`}
