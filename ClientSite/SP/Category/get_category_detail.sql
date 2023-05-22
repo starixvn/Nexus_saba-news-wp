@@ -9,6 +9,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_category_detail`(
 		Creator: Hank@20220720
         Revisions:
 			- 20220720@Hank: init
+            - 20230519@Hank: migrate rank math to yoast plugin
     */
 )
 BEGIN
@@ -29,13 +30,11 @@ BEGIN
     SELECT t.term_id, t.name INTO cateParentId, cateParentName FROM wp_terms as t where t.term_id = cateParentId;
     
 	SELECT  t.name as Title , t.term_id as CateId, t.slug as Slug, cateParentId, cateParentName
-		,(SELECT meta_value FROM wp_termmeta tm1  WHERE  meta_key = "rank_math_description" AND tm1.term_id = t.term_id) as description
-        ,(SELECT meta_value FROM wp_termmeta tm2  WHERE  meta_key = "rank_math_facebook_image" AND tm2.term_id = t.term_id) as OgImage
-        ,(SELECT meta_value FROM wp_termmeta tm3  WHERE  meta_key = "rank_math_facebook_description" AND tm3.term_id = t.term_id) as OgDescription
-        ,(SELECT meta_value FROM wp_termmeta tm4  WHERE  meta_key = "rank_math_facebook_title" AND tm4.term_id = t.term_id) as OgTitle
-        ,(SELECT meta_value FROM wp_termmeta tm5  WHERE  meta_key = "rank_math_title" AND tm5.term_id = t.term_id) as SEOTitle
+		, yi.title as SEOTitle, yi.description as description
+        , yi.open_graph_title as OgTitle, yi.open_graph_description as OgDescription, yi.open_graph_image as OgImage
     FROM wp_terms t 
     INNER JOIN wp_term_taxonomy wt ON  t.term_id = wt.term_id AND wt.taxonomy = "category"
+    LEFT JOIN wp_yoast_indexable yi ON yi.object_id = t.term_id AND yi.object_type = "term" AND yi.object_sub_type = "category"
     WHERE t.slug = slug;
 END
 

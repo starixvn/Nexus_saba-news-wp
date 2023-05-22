@@ -9,16 +9,15 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_page_detail_by_slug`(
 		Creator: Hank@20220720
         Revisions:
 			- 20220720@Hank: init
+            - 20230519@Hank: migrate rank math to yoast plugin
     */
 )
 BEGIN
 	SELECT p.post_title as title, p.ID as CateId
-    ,(SELECT meta_value FROM wp_postmeta pm1  WHERE  meta_key = "rank_math_title" AND pm1.post_id = p.ID) as SEOTitle
-	,(SELECT meta_value FROM wp_postmeta pm2  WHERE  meta_key = "rank_math_description" AND pm2.post_id = p.ID) as Description
-    ,(SELECT meta_value FROM wp_postmeta pm3  WHERE  meta_key = "rank_math_facebook_image" AND pm3.post_id = p.ID) as OgImage
-	,(SELECT meta_value FROM wp_postmeta pm4  WHERE  meta_key = "rank_math_facebook_description" AND pm4.post_id = p.ID) as OgDescription
-	,(SELECT meta_value FROM wp_postmeta pm5  WHERE  meta_key = "rank_math_facebook_title" AND pm5.post_id = p.ID) as OgTitle
+    , yi.title as SEOTitle, yi.description as description
+	, yi.open_graph_title as OgTitle, yi.open_graph_description as OgDescription, yi.open_graph_image as OgImage
 	FROM wp_posts p 
+    LEFT JOIN wp_yoast_indexable yi ON yi.object_id = p.ID AND yi.object_type = "post" AND yi.object_sub_type = "page"
 	where p.post_name = Slug AND p.post_type = "page";
 END
 //
