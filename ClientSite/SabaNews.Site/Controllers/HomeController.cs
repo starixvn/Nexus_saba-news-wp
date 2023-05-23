@@ -303,7 +303,6 @@
                 };
                 posts = await postService.GetPostsByCateSlugsPaging(criteria);
             }
-            
             if (!posts.Any())
             {
                 return Ok(false);
