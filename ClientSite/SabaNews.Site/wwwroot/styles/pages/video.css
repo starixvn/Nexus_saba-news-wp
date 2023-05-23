@@ -3422,18 +3422,23 @@ button {
   border-radius: 0;
 }
 
-.sub-category {
-  list-style: none;
-  display: flex;
-  border-bottom: 1px solid #D4D4D4;
+.group-sub-category {
   margin-bottom: 1.2rem;
+}
+.group-sub-category .heading-category {
+  margin-bottom: 0;
+}
+
+.sub-category {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 @media screen and (max-width: 1024px) {
   .sub-category {
     overflow-x: overlay;
     overflow-y: hidden;
     white-space: nowrap;
-    margin-bottom: 1.2rem;
   }
   .sub-category::-webkit-scrollbar {
     display: none;
@@ -3447,11 +3452,12 @@ button {
   margin-right: 0;
 }
 .sub-category .sub-item a {
-  color: #4F4F4F;
+  color: #333;
   text-decoration: none;
-  padding-bottom: 1.2rem;
   display: inline-block;
   position: relative;
+  font-weight: 600;
+  font-size: 1.4rem;
 }
 @media screen and (max-width: 1024px) {
   .sub-category .sub-item a {
@@ -3461,7 +3467,7 @@ button {
 .sub-category .sub-item a:before {
   position: absolute;
   width: 0;
-  bottom: -1px;
+  bottom: -4px;
   height: 0.2rem;
   background-color: #F12F19;
   content: "";
@@ -3474,17 +3480,38 @@ button {
 .sub-category .sub-item:hover a:before, .sub-category .sub-item.active a:before {
   width: 100%;
 }
-.sub-category.last {
+.sub-category:first-child {
+  margin-bottom: 1.2rem;
+}
+.sub-category:first-child::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #D4D4D4;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .sub-category:first-child::before {
+    display: none;
+  }
+}
+.sub-category:last-child {
   border: none;
 }
-.sub-category.last .sub-item {
+.sub-category:last-child .sub-item {
   font-weight: 400;
 }
-.sub-category.last .sub-item:hover a:before, .sub-category.last .sub-item:hover a.active a {
+.sub-category:last-child .sub-item:hover a:before, .sub-category:last-child .sub-item:hover a.active a {
   display: none;
 }
-.sub-category.last .sub-item.active a:before {
+.sub-category:last-child .sub-item.active a:before {
   display: none;
+}
+.sub-category:last-child .sub-item a {
+  padding-bottom: 0;
 }
 
 .title-new-page {

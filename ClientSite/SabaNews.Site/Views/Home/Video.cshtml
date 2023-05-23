@@ -70,7 +70,7 @@
                 }
                 else if (subMenu.Count > 0)
                 {
-                    <ul class="sub-category">
+                    <div class="sub-category">
                         @foreach (var menu in subMenu)
                         {
                             var link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = Model.Slugs.Slug3 });
@@ -78,9 +78,9 @@
                             {
                                 link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = menu.CateSlug });
                             }
-                            <li class="sub-item @(Model.Header.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></li>
+                            <h2 class="sub-item @(Model.Header.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
                         }
-                    </ul>
+                    </div>
                 }
             }
         }
