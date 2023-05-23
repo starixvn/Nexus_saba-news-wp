@@ -1,6 +1,4 @@
 .tag-post{
-    padding: 0;
-    list-style: none;
     @include flex(center, wrap, flex-start, row);
     .tag-item{
         background-color: $block-highlight-bgcolor;
@@ -20,6 +18,7 @@
             line-height: 2.4rem;
             color: $color-input;
             display: block;
+            font-weight: 500;
         }
     }
 }

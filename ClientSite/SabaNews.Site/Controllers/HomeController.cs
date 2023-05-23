@@ -168,7 +168,7 @@
                 Header = new HeaderViewModel
                 {
                     Title = string.Concat(tag, " | ", Constants.SiteName),
-                    HeadTitle = "Tag: '" + tag + "'",
+                    HeadTitle = tag,
                     Keyword = tagname,
                     Controller = Constants.Tag
                 },

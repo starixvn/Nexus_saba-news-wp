@@ -2209,8 +2209,6 @@ button {
 }
 
 .tag-post {
-  padding: 0;
-  list-style: none;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -2236,6 +2234,7 @@ button {
   line-height: 2.4rem;
   color: #828282;
   display: block;
+  font-weight: 500;
 }
 
 /*:root {

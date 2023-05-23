@@ -2337,8 +2337,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .tag-post {
-  padding: 0;
-  list-style: none;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -2364,6 +2362,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   line-height: 2.4rem;
   color: #828282;
   display: block;
+  font-weight: 500;
 }
 
 .card-vertical {
