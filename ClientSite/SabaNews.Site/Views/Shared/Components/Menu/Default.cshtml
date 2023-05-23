@@ -16,9 +16,11 @@
                 </div>*@
 
             <div class="logo">
-                <a href="@Url.Action("Index", "Home")">
-                    <img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true">
-                </a>
+                <h1>
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/images/sabasports.svg" alt="SABA Sports, tin bong da, tin the thao, ltd bong da" asp-append-version="true">
+                    </a>
+                </h1>
             </div>
             <ul class="header-auth-provider">
                 <li class="item-control languages-box">
@@ -128,10 +130,6 @@
                             var lv2Menus = Model.Menus.Where(item => item.ParentId == menu.PostId);
                             <li class="menu-item">
                                 <a href="@link" class="item @activeMenu">@menu.MenuTitle</a>
-                                @if (menu.CateSlug == Constants.GuessSlug)
-                                {
-                                    <span class="marked-icon"></span>
-                                }
                                 @if (menu.PageSlug == Constants.MatchScheduleSlug)
                                 {
                                     <ul>

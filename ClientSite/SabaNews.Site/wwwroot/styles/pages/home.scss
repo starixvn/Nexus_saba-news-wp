@@ -64,7 +64,7 @@
                 grid-row: 3;
                 margin-top: 1rem;
             }
-            li{
+            .card-hightlight-item{
                 padding-bottom: 1.2rem;
                 border-bottom: 1px solid #E2E2E2;
                 margin-bottom: 1.2rem;
@@ -380,9 +380,7 @@
                 }
             }
             .list-event-title{
-                list-style: none;
-                padding-left: 0;
-                li{
+                .heading-box-content{
                     border-top: 1px solid #E5E5E5;
                     padding-top: 1rem;
                     margin-top: 1rem;

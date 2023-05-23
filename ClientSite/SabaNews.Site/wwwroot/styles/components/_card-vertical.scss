@@ -96,7 +96,7 @@
         @include Mobile{
             margin-top: 1rem;
         }
-        h1{
+        h1,.heading-hight-light{
             font-weight: 700;
             font-size: 2.4rem;
             line-height: 3.3rem;
@@ -125,6 +125,11 @@
             margin-bottom: 0;
             font-size: 1.4rem;
             font-weight: 500;
+        }
+        .heading-box-content{
+            font-weight: 700;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
         }
     }
     &.box-vertical-hightlight{

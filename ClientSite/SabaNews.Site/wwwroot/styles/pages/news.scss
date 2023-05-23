@@ -232,7 +232,6 @@
 }
 
 .sub-category {
-    list-style: none;
     display: flex;
     align-items: center;
     position: relative;
@@ -260,6 +259,7 @@
             display: inline-block;
             position: relative;
             font-weight: 600;
+            font-size: 1.4rem;
             @include tableMobile {
                 padding-bottom: 0;
             }

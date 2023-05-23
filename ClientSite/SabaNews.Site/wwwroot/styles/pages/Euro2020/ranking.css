@@ -1532,21 +1532,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
-.marked-icon {
-  background: url("../../images/man.png") no-repeat;
-  width: 36px;
-  height: 36px;
-  margin-left: 0.3rem;
-}
-@media screen and (max-width: 1024px) {
-  .marked-icon {
-    position: absolute;
-    top: 8px;
-    left: 135px;
-    display: block;
-  }
-}
-
 @media screen and (max-width: 1024px) {
   .hidden-body .group-menu, .hidden-body .padding-mobile-none, .hidden-body .top-header, .hidden-body .nav-menu {
     height: 100%;

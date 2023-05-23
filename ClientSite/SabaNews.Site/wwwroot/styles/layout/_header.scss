@@ -1051,21 +1051,6 @@
         }
     }
 }
-
-.marked-icon {
-    background: url("../../images/man.png") no-repeat;
-    width: 36px;
-    height: 36px;
-    margin-left: .3rem;
-
-    @include tableMobile {
-        position: absolute;
-        top: 8px;
-        left: 135px;
-        display: block;
-    }
-}
-
 .hidden-body {
     @include tableMobile {
         .group-menu, .padding-mobile-none, .top-header, .nav-menu {
