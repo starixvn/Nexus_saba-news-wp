@@ -469,6 +469,7 @@
             //Assert
             Assert.Equal(expected, actual);
         }
+        
 
         [Fact]
         public async Task GetRSSDataAsync_WhenCalled_ReturnExpectedPosts()
@@ -481,6 +482,38 @@
 
             //Act
             var actual = await service.GetRSSDataAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetRSSCategoryBySlugAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var criteria = fixture.Create<GetRSSCategoryCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetRSSCategoryCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetRSSCategoryBySlugAsync("slug");
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetRSSRecentBySlugAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var criteria = fixture.Create<GetRSSRecentCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetRSSRecentCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetRSSRecentBySlugAsync();
 
             //Assert
             Assert.Equal(expected, actual);

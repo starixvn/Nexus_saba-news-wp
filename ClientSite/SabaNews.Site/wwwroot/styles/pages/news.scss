@@ -340,6 +340,34 @@
         border-radius: 3px 0 0 3px;
     }
 }
+.list-rss {
+    list-style-type: none;
+    li {
+        margin-bottom: 15px;
+        font-size: 16px;
+        position: relative;
+        padding-left: 18px;
+
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #ef4136;
+            display: inline-block;
+            border-radius: 40px;
+            left: 0;
+            position: absolute;
+            top: 9px;
+        }
+    }
+
+    .rss-category {
+        font-weight: 700;
+        color: #ef4136;
+        text-decoration: none;
+    }
+}
+
 
 
 

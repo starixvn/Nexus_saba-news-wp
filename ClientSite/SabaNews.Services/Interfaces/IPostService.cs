@@ -58,5 +58,8 @@
         Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug);
 
         Task<IEnumerable<Post>> GetPostsByAuthor(GetPostsByAuthorCriteria criteria);
+
+        Task<IEnumerable<Post>> GetRSSCategoryBySlugAsync(string slug);
+        Task<IEnumerable<Post>> GetRSSRecentBySlugAsync();
     }
 }

@@ -2693,8 +2693,7 @@ button {
 }
 
 #ir__wrap .ir__slot > .ir__box {
-  -webkit-backface-visibility: hidden !important;
-          backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
   transform: translate3d(0px, 0px, 0px) !important;
   visibility: visible !important;
   overflow: hidden !important;
@@ -2716,8 +2715,7 @@ button {
   position: absolute;
   top: 0;
   left: 50%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transform: translate3d(-50%, 0, 0);
   visibility: visible;
   overflow: hidden;

@@ -379,6 +379,16 @@
             return FormatData(posts);
         }
 
+        public async Task<IEnumerable<Post>> GetRSSCategoryBySlugAsync(string slug)
+        {
+            return await baseService.GetDataAsync<Post>(new GetRSSCategoryCriteria { Slug = slug });
+        }
+
+        public async Task<IEnumerable<Post>> GetRSSRecentBySlugAsync()
+        {
+            return await baseService.GetDataAsync<Post>(new GetRSSRecentCriteria());
+        }
+
         public async Task<CommandResult> UpdateVideoView(int postId)
         {
             var command = new UpdateVideoViewCommand

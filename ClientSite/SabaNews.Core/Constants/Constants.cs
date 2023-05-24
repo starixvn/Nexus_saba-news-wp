@@ -95,12 +95,14 @@
         public const string ViewUrl = "Url";
         public const string Empty = "";
         public const string ViewRSSUrl = "RSSUrl";
+        public const string HomepageRSS = "trang-chu";
 
         public const string Separate = "-";
         public const string SiteName = "SABA Sports";
         public const string SepVar = "%sep%";
         public const string SiteNameVar = "%sitename%";
         public const string CurrentDateVar = "%current_date_custom%";
+        public const string SiteMail = "info@sabavn.com";
         public const string ThumbnailSize = "-818x461";
         public const string None = "none";
         public const string pageType = "page";

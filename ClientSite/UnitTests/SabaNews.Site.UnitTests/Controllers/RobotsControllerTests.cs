@@ -1,12 +1,19 @@
 ﻿namespace SabaNews.Site.UnitTests.Controllers
 {
     using AutoFixture;
+    using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Options;
     using NSubstitute;
     using Sabanews.Controllers;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Models;
+    using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.RSS;
+    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
     using System;
@@ -17,8 +24,11 @@
 
     public class RobotsControllerTests : Controller
     {
+        
         private IDataControlService dataControlService;
         private IConfiguration configuration;
+        private  IPostService postService;
+        private  ICacheWrapperService cacheService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -97,19 +107,100 @@
         }
 
         [Fact]
-        public async Task RSS_WhenCalled_ReturnExpectedData()
+        public async Task RSS_WhenCalled_ReturnExpectedViewData()
         {
             // Arrange
             var controller = GetController();
-            var testPosts = fixture.Create<List<Post>>();
-            testPosts[0].Images = null;
-            testPosts[0].FeatureImage = null;
-            testPosts[0].PostDateGMT = DateTime.MinValue;
-            var expected = (IEnumerable<Post>)testPosts;
-            dataControlService.GenerateRSSData().Returns(expected);
-            var expectedSitemap = RssHelper.GetRSSDocument(expected, "");
+            var expected = fixture.Create<List<Menu>>();
+            dataControlService.GetMenuData().Returns(expected);
             //Act
             var actual = await controller.RSS();
+
+            //Assert
+            var viewResult = Assert.IsType<ViewResult>(actual);
+            var viewModel = Assert.IsType<RSSHomeModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.Menus);
+        }
+
+        [Fact]
+        public async Task RSS_WhenCacheIsDisabled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var cate = "cate.rss";
+            var expectedPost = fixture.Create<List<Post>>();
+            var expectedCategory = fixture.Create<Category>();
+            var expectedParentCate = new List<CategoryGeneral>();
+            expectedParentCate.Add(new CategoryGeneral { Slug = "tin-the-thao" });
+            expectedCategory.Url = "tin-the-thao/";
+            postService.GetRSSCategoryBySlugAsync(Arg.Do<string>(x => x = cate)).Returns(expectedPost);
+            postService.GetCateDetailAsync(Arg.Do<string>(x => x = cate)).Returns(expectedCategory);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = cate)).Returns(expectedParentCate);
+             var model = new RSSCategoryModel
+            {
+                Posts = expectedPost,
+                Category = expectedCategory
+            };
+            var expectedSitemap = RssHelper.GetRSSDocument(model, "");
+            //Act
+            var actual = await controller.CategoryRSS(cate);
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
+
+        [Fact]
+        public async Task RSS_WhenCacheReturnEmpty_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController(true);
+            var cate = "trang-chu.rss";
+            var key = fixture.Create<string>();
+            RSSCategoryModel model = null;
+            var expectedPost = fixture.Create<List<Post>>();
+            var expectedCategory = fixture.Create<Category>();
+            cacheService.GetAsync<RSSCategoryModel>(Arg.Do<string>(x => x = key)).Returns(model);
+            postService.GetRSSRecentBySlugAsync().Returns(expectedPost);
+            postService.GetPageDetailBySlugAsync(Arg.Do<string>(x => x = cate)).Returns(expectedCategory);
+             var expectedModel = new RSSCategoryModel
+            {
+                Posts = expectedPost,
+                Category = expectedCategory
+            };
+            var expectedSitemap = RssHelper.GetRSSDocument(expectedModel, "");
+            //Act
+            var actual = await controller.CategoryRSS(cate);
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<RSSCategoryModel>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task RSS_WhenCacheHaveData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController(true);
+            var cate = "trang-chu.rss";
+            var key = fixture.Create<string>();
+            var expectedPost = fixture.Create<List<Post>>();
+            var expectedCategory = fixture.Create<Category>();
+            var expectedParentCate = new List<CategoryGeneral>();
+            expectedParentCate.Add(new CategoryGeneral { Slug = "tin-the-thao" });
+            expectedCategory.Url = "tin-the-thao/";
+
+             var expectedModel = new RSSCategoryModel
+            {
+                Posts = expectedPost,
+                Category = expectedCategory
+            };
+            cacheService.GetAsync<RSSCategoryModel>(Arg.Do<string>(x => x = key)).Returns(expectedModel);
+            var expectedSitemap = RssHelper.GetRSSDocument(expectedModel, "");
+            //Act
+            var actual = await controller.CategoryRSS(cate);
 
             //Assert
             var viewResult = Assert.IsType<ContentResult>(actual);
@@ -117,11 +208,19 @@
         }
 
         #region Helpers
-        private RobotsController GetController()
+        private RobotsController GetController(bool enabledCache = true)
         {
+           var inMemorySettings = new Dictionary<string, string> {
+                {"RSSCacheConfig:Enabled", enabledCache.ToString()},
+                {"RSSCacheConfig:OutOfRangeTimeout", "5"}
+            };
+            configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
             dataControlService = Substitute.For<IDataControlService>();
-            configuration = Substitute.For<IConfiguration>();
-            var controller = new RobotsController(dataControlService, configuration);
+            postService = Substitute.For<IPostService>();
+            cacheService = Substitute.For<ICacheWrapperService>();
+            var controller = new RobotsController(dataControlService, configuration, postService, cacheService);
 
             return controller;
         }

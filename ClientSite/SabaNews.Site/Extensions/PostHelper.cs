@@ -16,7 +16,7 @@
             var link = new StringBuilder();
             foreach (var cate in cates)
             {
-                link.Append($"/{cate.Slug}");
+                link.Append($"{cate.Slug}/");
             }
             return link.ToString();
         }
