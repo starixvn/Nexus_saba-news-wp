@@ -2876,6 +2876,15 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("Video", resourceCulture);
             }
         }
+
+         /// <summary>
+        ///   Looks up a localized string similar to Video bàn thắng.
+        /// </summary>
+        public static string VideoHome {
+            get {
+                return ResourceManager.GetString("VideoHome", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Video Details.

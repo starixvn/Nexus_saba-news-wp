@@ -1098,4 +1098,7 @@
   <data name="TransferHome" xml:space="preserve">
     <value>Tin chuyển nhượng</value>
   </data>
+  <data name="VideoHome" xml:space="preserve">
+    <value>Video bàn thắng</value>
+  </data>
 </root>
