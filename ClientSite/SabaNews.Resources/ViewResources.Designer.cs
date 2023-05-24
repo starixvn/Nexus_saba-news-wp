@@ -1816,7 +1816,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Các môn khác.
+        ///   Looks up a localized string similar to Tin thể thao.
         /// </summary>
         public static string OtherPosts {
             get {
@@ -2721,6 +2721,15 @@ namespace SabaNews.Resources {
         public static string Transfer {
             get {
                 return ResourceManager.GetString("Transfer", resourceCulture);
+            }
+        }
+
+         /// <summary>
+        ///   Looks up a localized string similar to Tin chuyển nhượng.
+        /// </summary>
+        public static string TransferHome {
+            get {
+                return ResourceManager.GetString("TransferHome", resourceCulture);
             }
         }
         

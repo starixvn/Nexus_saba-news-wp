@@ -56,6 +56,7 @@
     @if (Model.Category != null)
     {
         <meta name="robots" content="noarchive">
+        <link rel="canonical" href="@Model.Category.Url">
         <meta property="og:site_name" content="@ViewResources.SiteName" />
         <meta property="og:type" content="website" />
         <meta property="og:url" itemprop="url" content="@Model.Category.Url" />
@@ -202,7 +203,18 @@
                                 </picture>
                             </a>
                             <div class="card-horizontal__content">
-                                <h2><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h2>
+                                @if(postIndex <= 3)
+                                {
+                                    <h2><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h2>
+                                }
+                                else if(postIndex > 3 && Model.Header.Controller == "Tag")
+                                {
+                                    <h3><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h3>
+                                }
+                                else
+                                {
+                                    <a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
+                                }
                                 <p class="description">@Html.Raw(post.PostExcerpt)</p>
                                 <p class="datetime">
                                     <span>@post.PostTime</span>

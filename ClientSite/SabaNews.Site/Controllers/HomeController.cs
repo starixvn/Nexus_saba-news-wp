@@ -70,8 +70,8 @@
             }
 
             viewModel.Header.ActiveCategory = slug1;
-            viewModel.Paging.Href = Url.Action("Category", "Home", new { slug1, page = (int?)null });
             viewModel.Menus = await dataControlService.GetMenuData();
+            viewModel.Category.Url = Url.Action("Category", "Home", new { slug1, slug2, slug3 }, Request.Scheme);
             return View(Constants.BlogView, viewModel);
         }
 

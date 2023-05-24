@@ -349,7 +349,7 @@
     <value>Khác</value>
   </data>
   <data name="OtherPosts" xml:space="preserve">
-    <value>Các môn khác</value>
+    <value>Tin thể thao</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Tổng quan</value>
@@ -1094,5 +1094,8 @@
   </data>
   <data name="BannerInterscroller" xml:space="preserve">
     <value>Banner Interscroller</value>
+  </data>
+  <data name="TransferHome" xml:space="preserve">
+    <value>Tin chuyển nhượng</value>
   </data>
 </root>
