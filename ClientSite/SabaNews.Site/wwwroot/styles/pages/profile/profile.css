@@ -1532,10 +1532,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-extension {
   height: 100%;
 }
-.block-extension .sidebar-posts {
-  position: sticky;
-  top: 7rem;
-}
 @media screen and (max-width: 1024px) {
   .block-extension .block-sticky {
     position: unset;

@@ -1,9 +1,5 @@
 ﻿.block-extension {
     height: 100%;
-    .sidebar-posts{
-        position: sticky;
-        top: 7rem;
-    }
     .block-sticky {
         @include tableMobile{
             position : unset;
