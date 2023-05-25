@@ -154,7 +154,7 @@
             var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(Constants.OtherPostSlug, viewModel.CateInfo.Slug);
-            Assert.Equal($"/tin-the-thao/{cateSlug}", viewModel.CateInfo.Url);
+            Assert.Equal($"tin-the-thao/{cateSlug}/", viewModel.CateInfo.Url);
         }
 
         [Fact]
@@ -224,7 +224,7 @@
             var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(Constants.FootballSlug, viewModel.CateInfo.Slug);
-            Assert.Equal("/tin-the-thao/bong-da", viewModel.CateInfo.Url);
+            Assert.Equal("tin-the-thao/bong-da/", viewModel.CateInfo.Url);
         }
 
         [Fact]
@@ -258,7 +258,7 @@
             var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(WorldCup2022.HomepageSlug, viewModel.CateInfo.Slug);
-            Assert.Equal("/tin-the-thao/bong-da", viewModel.CateInfo.Url);
+            Assert.Equal("tin-the-thao/bong-da/", viewModel.CateInfo.Url);
         }
 
 
