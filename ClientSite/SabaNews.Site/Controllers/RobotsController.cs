@@ -100,7 +100,7 @@
                     await cacheService.SetAsync(cacheKey, model,
                     new CacheItemOptions
                     {
-                        RelativeExpiration = TimeSpan.FromMinutes(cacheConfig.OutOfRangeTimeout)
+                        RelativeExpiration = TimeSpan.FromMinutes(cacheConfig.Timeout)
                     });
                 }
             }

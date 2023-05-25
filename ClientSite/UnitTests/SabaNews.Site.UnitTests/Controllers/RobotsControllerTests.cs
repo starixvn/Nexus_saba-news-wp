@@ -212,7 +212,7 @@
         {
            var inMemorySettings = new Dictionary<string, string> {
                 {"RSSCacheConfig:Enabled", enabledCache.ToString()},
-                {"RSSCacheConfig:OutOfRangeTimeout", "5"}
+                {"RSSCacheConfig:Timeout", "5"}
             };
             configuration = new ConfigurationBuilder()
                 .AddInMemoryCollection(inMemorySettings)
