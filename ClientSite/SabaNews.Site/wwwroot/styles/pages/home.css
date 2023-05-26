@@ -3347,6 +3347,9 @@ button {
   .main .block-news-hot .block-news-hot-child .box-vertical-content {
     margin-top: 0;
   }
+  .main .block-news-hot .block-news-hot-child .box-vertical-image {
+    max-height: 8rem;
+  }
 }
 .main .block-guess {
   padding: 2rem 2rem 4.5rem 2rem;
