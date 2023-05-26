@@ -2402,3 +2402,7 @@ body {
     margin-right: -1.2rem;
   }
 }
+
+.block__title {
+  margin-bottom: 0.8rem;
+}

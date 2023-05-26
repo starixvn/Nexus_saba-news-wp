@@ -135,6 +135,7 @@ export class AppContainer extends Component {
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
+                        <div class="block__title"><h1><a>Lịch thi đấu</a></h1></div>
                         <DateBar isMobile={isMobile} totalMatches={totalLiveMatches}
                             getDateRanges={this.getDateRanges}
                             onClick={this.getMatches}
