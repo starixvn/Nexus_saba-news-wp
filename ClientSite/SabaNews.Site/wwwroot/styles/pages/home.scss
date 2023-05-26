@@ -432,12 +432,20 @@
             display: grid;
             grid-template-columns: repeat(4,1fr);
             grid-gap: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E4D9D0;
             @include tableMobile {
                 display: grid;
                 grid-template-columns: repeat(3,1fr);
             }
             @include Mobile {
                 display: block;
+                border-top : none;
+            }
+            .heading-box-content{
+                a{
+                    font-size: 1.4rem;
+                }
             }
         }
 

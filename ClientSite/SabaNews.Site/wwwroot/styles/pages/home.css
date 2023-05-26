@@ -3684,6 +3684,8 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #E4D9D0;
 }
 @media screen and (max-width: 1024px) {
   .main .block-behind .block-behind-vertical {
@@ -3694,7 +3696,11 @@ button {
 @media (max-width: 767px) {
   .main .block-behind .block-behind-vertical {
     display: block;
+    border-top: none;
   }
+}
+.main .block-behind .block-behind-vertical .heading-box-content a {
+  font-size: 1.4rem;
 }
 @media (max-width: 767px) {
   .main .block-behind .box-vertical {
