@@ -364,9 +364,44 @@
                                     }
                                 }
                             </div>
-                            <div class="view-more-block">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })">Xem Thêm</a>
+                        </div>
+
+                        <div class="block-behind-vertical">
+                            <div class="box-vertical">
+                                <a href="" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
+                                </a>
+                                <div class="box-vertical-content">
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })">@Model.BackstagePosts[0].PostTitle</a></h4>
+                                </div>
                             </div>
+                            <div class="box-vertical">
+                                <a href="" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
+                                </a>
+                                <div class="box-vertical-content">
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })">@Model.BackstagePosts[0].PostTitle</a></h4>
+                                </div>
+                            </div>
+                            <div class="box-vertical">
+                                <a href="" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
+                                </a>
+                                <div class="box-vertical-content">
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })">@Model.BackstagePosts[0].PostTitle</a></h4>
+                                </div>
+                            </div>
+                            <div class="box-vertical">
+                                <a href="" class="box-vertical-image hover-image">
+                                    <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
+                                </a>
+                                <div class="box-vertical-content">
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })">@Model.BackstagePosts[0].PostTitle</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view-more-block">
+                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })">Xem Thêm</a>
                         </div>
                     </div>
 

@@ -425,6 +425,22 @@
                 }
             }
         }
+        .block-columns-border{
+            margin-bottom: 2rem;
+        }
+        .block-behind-vertical{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-gap: 2rem;
+            @include tableMobile {
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+            }
+            @include Mobile {
+                display: block;
+            }
+        }
+
         .box-vertical{
             @include Mobile{
                 margin-bottom: 2rem;

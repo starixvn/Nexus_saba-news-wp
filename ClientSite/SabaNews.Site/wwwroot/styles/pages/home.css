@@ -3677,6 +3677,25 @@ button {
 .main .block-behind .block__title a::after, .main .block-behind .heading-category a::after {
   display: none;
 }
+.main .block-behind .block-columns-border {
+  margin-bottom: 2rem;
+}
+.main .block-behind .block-behind-vertical {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+}
+@media screen and (max-width: 1024px) {
+  .main .block-behind .block-behind-vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .main .block-behind .block-behind-vertical {
+    display: block;
+  }
+}
 @media (max-width: 767px) {
   .main .block-behind .box-vertical {
     margin-bottom: 2rem;
