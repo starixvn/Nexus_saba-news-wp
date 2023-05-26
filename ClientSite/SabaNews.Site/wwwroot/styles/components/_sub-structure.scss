@@ -4,7 +4,7 @@
 
 
 .main .container {
-    @include grid(auto 32rem, unset, 0);
+    @include grid(auto 37rem, unset, 0);
 
     @include tableMobile {
         grid-template-columns: auto 32rem;
@@ -16,7 +16,7 @@
 }
 
 .main .detail-container {
-    @include grid(5% 65% 32rem, unset, 0);
+    @include grid(5% 63% 35rem, unset, 0);
     align-items : start;
 
     @include tableMobile {

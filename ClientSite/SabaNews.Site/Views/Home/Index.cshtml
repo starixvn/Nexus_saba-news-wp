@@ -380,7 +380,7 @@
                                     <img src="@Url.Content(Model.TransferPosts[0].FeatureImage)" alt="@Model.TransferPosts[0].PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })">@Model.TransferPosts[0].PostTitle</a></h2>
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })">@Model.TransferPosts[0].PostTitle</a></h4>
                                     <div class="list-event-title">
                                         @{
                                             var TransferPostIndex = 0;
@@ -410,7 +410,7 @@
                                     <img src="@Url.Content(Model.OtherPosts[0].FeatureImage)" alt="@Model.OtherPosts[0].PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h2><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })">@Model.OtherPosts[0].PostTitle</a></h2>
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })">@Model.OtherPosts[0].PostTitle</a></h4>
                                     <div class="list-event-title">
                                         @{
                                             var OtherPostIndex = 0;
