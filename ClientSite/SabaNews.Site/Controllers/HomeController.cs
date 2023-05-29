@@ -16,6 +16,7 @@
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Extensions;
 
     public class HomeController : Controller
     {
@@ -53,27 +54,44 @@
             return View(viewModel);
         }
 
-        [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
-        public async Task<IActionResult> Category(string slug1 = null, string slug2 = null, string slug3 = null)
+        [Route("/{slug:categoryslug}")]
+        public async Task<IActionResult> Category(string slug)
         {
-            var param = new GetPostsByCateSlugsParam
-            {
-                Slug1 = slug1,
-                Slug2 = slug2,
-                Slug3 = slug3,
-                Page = Constants.FirstPage
-            };
-            var viewModel = await dataControlService.GetCategoryViewModel(param);
+            slug = slug.Replace(CategoryKey.Prefix, "");
+            var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
             }
-
-            viewModel.Header.ActiveCategory = slug1;
-            viewModel.Menus = await dataControlService.GetMenuData();
-            viewModel.Category.Url = Url.Action("Category", "Home", new { slug1, slug2, slug3 }, Request.Scheme);
+            var menus = await dataControlService.GetMenuData();
+            var slugs = PostHelper.GetCategorySlugs(menus.ToList(), slug);
+            viewModel.Header.ActiveCategory = slugs.Slug1 != null ? slugs.Slug1 : slug;
+            viewModel.Menus = menus;
+            viewModel.Slugs = slugs;
             return View(Constants.BlogView, viewModel);
         }
+
+        // [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
+        // public async Task<IActionResult> Category(string slug1 = null, string slug2 = null, string slug3 = null)
+        // {
+        //     var param = new GetPostsByCateSlugsParam
+        //     {
+        //         Slug1 = slug1,
+        //         Slug2 = slug2,
+        //         Slug3 = slug3,
+        //         Page = Constants.FirstPage
+        //     };
+        //     var viewModel = await dataControlService.GetCategoryViewModel(param);
+        //     if (viewModel == null)
+        //     {
+        //         return View(Constants.EmptyBlogView);
+        //     }
+
+        //     viewModel.Header.ActiveCategory = slug1;
+        //     viewModel.Paging.Href = Url.Action("Category", "Home", new { slug1, page = (int?)null });
+        //     viewModel.Menus = await dataControlService.GetMenuData();
+        //     return View(Constants.BlogView, viewModel);
+        // }
 
         [Route("/tin-the-thao/{slug?}/page/{page}")]
         [Route("/tin-the-thao/page/{page}")]
@@ -86,15 +104,20 @@
             return RedirectToAction("Category", "Home", new { slug1 = slug });
         }
 
-        [Route("/video/{slug2?}/{slug3?}")]
-        public async Task<IActionResult> Video(string slug2 = null, string slug3 = null)
+        [Route("/video/{slug?}")]
+        public async Task<IActionResult> Video(string slug = null)
         {
-            var viewModel = await dataControlService.GetCategoryViewModel(new GetPostsByCateSlugsParam { Slug1 = Constants.VideoSlug, Slug2 = slug2, Slug3 = slug3, Page = Constants.FirstPage });
+            slug ??= Constants.VideoSlug;
+            var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
             }
             viewModel.Menus = await dataControlService.GetMenuData();
+            viewModel.Slugs = new Slugs
+            {
+                Slug1 = slug
+            };
             var view = (viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }
@@ -274,7 +297,7 @@
         [Route("api/post/category-posts")]
         public async Task<IActionResult> GetCategoryGrid(CategoryPostParams param)
         {
-            var slug = param.Slugs.Slug1 ??= Constants.NewPostSlug;
+            var slug = param.Slug ??= Constants.NewPostSlug;
             int pageSize = param.PageSize;
             var start = (param.Page - 1) * pageSize;
             if (param.IsVideo)
@@ -293,15 +316,13 @@
             }
             else
             {
-                var criteria = new GetPostsByCateSlugsPagingCriteria
+                var criteria = new GetPostsByCateSlugCriteria
                 {
-                    Slug1 = slug,
-                    Slug2 = param.Slugs.Slug2,
-                    Slug3 = param.Slugs.Slug3,
-                    Start = start,
-                    End = pageSize
+                   _CategorySlug = slug,
+                    _Start = start,
+                    _End = pageSize
                 };
-                posts = await postService.GetPostsByCateSlugsPaging(criteria);
+                posts = await postService.GetPostsByCateSlugAsync(criteria);
             }
             if (!posts.Any())
             {

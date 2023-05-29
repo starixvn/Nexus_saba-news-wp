@@ -19,6 +19,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.HttpOverrides;
+    using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -119,6 +120,9 @@
 
             services.Configure<MailConfigs>(options => Configuration.GetSection("MailConfigs").Bind(options));
             services.Configure<LivescoreMainPageCacheConfig>(options => Configuration.GetSection("LivescoreMainPageCacheConfig").Bind(options));
+            services.Configure<RouteOptions>(options => {
+                options.ConstraintMap.Add("categoryslug", typeof(CategoryConstraint));
+            });
 
             services.AddResponseCompression();
             services.AddResponseCaching();

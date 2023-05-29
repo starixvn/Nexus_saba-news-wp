@@ -83,20 +83,18 @@
             return viewModel;
         }
 
-        public async Task<BlogViewModel> GetCategoryViewModel(GetPostsByCateSlugsParam param)
+        public async Task<BlogViewModel> GetCategoryViewModel(string slug)
         {
             var pageSize = Constants.Perpage;
             var controller = "category";
-            var slug = param.Slug1;
-            var page = param.Page;
             if (slug == Constants.VideoSlug)
             {
                 controller = "video";
             }
-            var start = (page - 1) * pageSize;
+            var start = Constants.FromFirstItem;
             IEnumerable<Post> posts;
             int totalItems;
-            if (slug == null)
+            if (slug == Constants.NewPostSlug)
             {
                 var paramGetRecent = new GetRecentPostsParam
                 {
@@ -105,21 +103,18 @@
                 };
                 posts = await postService.GetRecentPostsAsync(paramGetRecent);
                 totalItems = paramGetRecent.TotalIItems;
-                slug = Constants.NewPostSlug;
             }
             else
             {
-                var criteriaCategory = new GetPostsByCateSlugsCriteria
+                var criteriaCategory = new GetPostsByCateSlugCriteria
                 {
-                    Slug1 = param.Slug1,
-                    Slug2 = param.Slug2,
-                    Slug3 = param.Slug3,
-                    Start = start,
-                    End = pageSize
+                    _CategorySlug = slug,
+                    _Start = start,
+                    _End = pageSize
+
                 };
-                posts = await postService.GetPostsByCateSlugs(criteriaCategory);
+                posts = await postService.GetPostsByCateSlugAsync(criteriaCategory);
                 totalItems = criteriaCategory.TotalItems;
-                slug = criteriaCategory.Slug;
             }
             if (!posts.Any())
             {
@@ -139,17 +134,11 @@
             };
             var paging = new PagingModel
             {
-                CurrentPage = page,
+                CurrentPage = 1,
                 PageSize = pageSize,
                 TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize)
             };
 
-            var slugs = new Slugs
-            {
-                Slug1 = param.Slug1,
-                Slug2 = param.Slug2,
-                Slug3 = param.Slug3
-            };
 
             var model = new BlogViewModel
             {
@@ -157,7 +146,7 @@
                 Category = cate,
                 Header = header,
                 Paging = paging,
-                Slugs = slugs
+                Slug = slug
             };
             return model;
         }

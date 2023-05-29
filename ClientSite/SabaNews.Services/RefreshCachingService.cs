@@ -93,14 +93,13 @@
                     Constants.BackstageSlug,
                     Constants.TransferSlug,
                     Constants.BasketballSlug,
-                    Constants.TennisSlug,
+                    Constants.OtherPostSlug,
                     Constants.VideoSlug
                 };
                 foreach (var slug in listCategoryCaching)
                 {
                     var key = CacheKey.CategoryViewModel + "-" + slug;
-                    var param = new GetPostsByCateSlugsParam { Slug1 = slug, Page = Constants.FirstPage };
-                    var data = await fetchDataService.GetCategoryViewModel(param);
+                    var data = await fetchDataService.GetCategoryViewModel(slug);
                     logService.WriteLogFileInfo(string.Format("After GetCategoryViewModel - {1} - {0}", DateTime.Now.Subtract(startTime).Milliseconds, slug));
                     await cacheWrapperService.SetAsync(key,
                         data,

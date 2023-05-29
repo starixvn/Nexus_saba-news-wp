@@ -17,9 +17,7 @@
 
 @section Scripts {
     <script>
-        window.slugs = {
-            slug1: '@Model.Header.Slug'
-        };
+        window.slug = '@Model.Slug'
         window.paging = {
             page: '@Model.Paging.CurrentPage',
             pageSize: '@Model.Paging.PageSize',
@@ -50,11 +48,11 @@
             else
             {
                 var subMenu = Model.GetSubMenu(Model.Header.Slug);
-                if (Model.Slugs.Slug3 != null)
+                if (Model.Slugs != null && Model.Slugs.Slug3 != null)
                 {
                     var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
                     var coMenu = Model.GetCoMenu(Model.Slugs.Slug3);
-                    var menuLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = Model.Slugs.Slug3 });
+                    var menuLink = Url.Action("Video", "Home", new { slug = Model.Slug });
                     <div class="menu-select single-select-menu">
                         <a href="@menuLink">@menu.MenuTitle</a>
                         <select class="select_ad" onChange="window.location.href=this.value">
@@ -62,7 +60,7 @@
                             {
 
                                 var selected = menu.PostId == item.PostId ? "selected" : "";
-                                var subLink = $"/tin-the-thao/{Model.Slugs.Slug1}/{Model.Slugs.Slug2}/{item.CateSlug}";
+                                var subLink = $"/video/{item.CateSlug}";
                                 <!option class="@selected" @selected value="@subLink">@item.MenuTitle</!option>
                             }
                         </select>
@@ -73,11 +71,7 @@
                     <div class="sub-category">
                         @foreach (var menu in subMenu)
                         {
-                            var link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = Model.Slugs.Slug3 });
-                            if (Model.Slugs.Slug2 != null)
-                            {
-                                link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = menu.CateSlug });
-                            }
+                            var link = Url.Action("Video", "Home", new { slug = menu.CateSlug });
                             <h2 class="sub-item @(Model.Header.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
                         }
                     </div>

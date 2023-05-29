@@ -3,7 +3,9 @@
     using HtmlAgilityPack;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Models;
     using SabaNews.Models.Categories;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.StoryPost;
     using System.Collections.Generic;
     using System.Linq;
@@ -33,6 +35,29 @@
             var cates = new List<CateInfo>();
             cates.AddRange(WorldCup2022.Cates);
             return cates;
+        }
+
+        public static Slugs GetCategorySlugs(List<Menu> menus, string cateSlug) {
+            var listCate = new List<string>();
+            if(cateSlug != Constants.NewPostSlug)
+            {
+                listCate.Add(cateSlug);
+            }
+            var cate = menus.Find(item => item.CateSlug == cateSlug);
+            var currentSlug = menus.Find(item => item.PostId == cate?.ParentId);
+            while(currentSlug != null  || listCate.Count > 3)
+            {
+                listCate.Add(currentSlug.CateSlug);
+                currentSlug = menus.Find(item => item.PostId == currentSlug.ParentId);
+            }
+            var slugs = new Slugs
+            {
+                Slug1 = listCate.Count >= 1 ? listCate[listCate.Count - 1] : null,
+                Slug2 = listCate.Count >= 2 ? listCate[listCate.Count - 2] : null,
+                Slug3 = listCate.Count >= 3 ? listCate[listCate.Count - 3] : null
+            };
+            return slugs;
+
         }
 
         public static string GetTopCateParent(IList<CategoryGeneral> cates)

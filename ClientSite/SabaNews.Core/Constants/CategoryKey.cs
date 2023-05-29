@@ -1,6 +1,6 @@
 namespace SabaNews.Core.Constants
 {
-    public static class CategorySlug
+    public static class CategoryKey
     {
         public const string Football = "bong-da";
 
@@ -19,5 +19,7 @@ namespace SabaNews.Core.Constants
         public const string Germany = "duc";
 
         public const string International = "quoc-te";
+
+        public const string Prefix = "category-";
     }
 }

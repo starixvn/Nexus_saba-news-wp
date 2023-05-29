@@ -18,7 +18,7 @@
 
         Task<IEnumerable<Menu>> GetMenuData();
 
-        Task<BlogViewModel> GetCategoryViewModel(GetPostsByCateSlugsParam param);
+        Task<BlogViewModel> GetCategoryViewModel(string slug);
 
         Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData();
 

@@ -2,7 +2,7 @@
     var paging = window.paging;
     var pageSize = paging.pageSize;
     var page = paging.page;
-    var slugs = window.slugs;
+    var slug = window.slug;
     var isVideo = window.isVideo;
     var keyword = window.keyword;
     var type = window.type;
@@ -18,7 +18,7 @@
         }
 
         var url = '/api/post/category-posts';
-        var data = { slugs, page, pageSize, type, isVideo };
+        var data = { slug, page, pageSize, type, isVideo };
         if (type === "Search" || type === "Tag" || type === "Author") {
             url = '/api/post/type-posts';
             data = { keyword, type, page, pageSize }

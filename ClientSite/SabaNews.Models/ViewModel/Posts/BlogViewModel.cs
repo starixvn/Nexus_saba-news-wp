@@ -14,8 +14,10 @@
         public PagingModel Paging { get; set; }
         public IEnumerable<Menu> Menus { get; set; }
         public Slugs Slugs { get; set; }
+        public string Slug { get; set; }
 
-        public IEnumerable<Menu> GetSubMenu(string cateSlug) {
+        public IEnumerable<Menu> GetSubMenu(string cateSlug)
+        {
             var menu = new List<Menu>();
             if (Menus.Any() && cateSlug != null)
             {
@@ -25,7 +27,8 @@
             return menu;
         }
 
-        public Menu GetMenuDetail(string cateSlug) {
+        public Menu GetMenuDetail(string cateSlug)
+        {
             return Menus.FirstOrDefault(item => item.CateSlug == cateSlug);
         }
 
@@ -39,6 +42,7 @@
             }
             return menu;
         }
+
 
         public string HeadTitle
         {

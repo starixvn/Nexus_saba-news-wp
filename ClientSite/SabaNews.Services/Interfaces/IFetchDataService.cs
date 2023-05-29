@@ -17,7 +17,7 @@
 
         Task<IEnumerable<Menu>> GetMenuData();
 
-        Task<BlogViewModel> GetCategoryViewModel(GetPostsByCateSlugsParam param);
+        Task<BlogViewModel> GetCategoryViewModel(string slug);
 
         Task<Euro2020ViewModel> GetEuro2020ViewModel();
 
