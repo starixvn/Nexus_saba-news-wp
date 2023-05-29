@@ -58,16 +58,18 @@
         public async Task<IActionResult> Category(string slug)
         {
             slug = slug.Replace(CategoryKey.Prefix, "");
-            var viewModel = await dataControlService.GetCategoryViewModel(slug);
+            var (cateSlug, id) = PostHelper.GetCategoryInfo(slug);
+            var viewModel = await dataControlService.GetCategoryViewModel(cateSlug);
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
             }
             var menus = await dataControlService.GetMenuData();
-            var slugs = PostHelper.GetCategorySlugs(menus.ToList(), slug);
+            var slugs = PostHelper.GetCategorySlugs(menus.ToList(), cateSlug);
             viewModel.Header.ActiveCategory = slugs.Slug1 != null ? slugs.Slug1 : slug;
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
+            viewModel.Header.Slug = cateSlug;
             return View(Constants.BlogView, viewModel);
         }
 

@@ -34,6 +34,7 @@
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
 
         Task<Category> GetCateDetailAsync(string slug);
+        Task<Category> GetCateDetailAsync(string slug, long id);
 
         Task<Category> GetPageDetailBySlugAsync(string slug);
 

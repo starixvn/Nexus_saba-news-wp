@@ -21,5 +21,7 @@ namespace SabaNews.Core.Constants
         public const string International = "quoc-te";
 
         public const string Prefix = "category-";
+
+        public const string Suffix = "-c";
     }
 }

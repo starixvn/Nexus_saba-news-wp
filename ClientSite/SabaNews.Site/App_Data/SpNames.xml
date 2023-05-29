@@ -62,6 +62,7 @@
         <Setting Key="post_get_by_author" SpName="post_get_by_author" DbName="sabasports" Plain="0" />
         <Setting Key="rss_get_category" SpName="rss_get_category" DbName="sabasports" Plain="0" />
         <Setting Key="rss_get_recent" SpName="rss_get_recent" DbName="sabasports" Plain="0" />
+        <Setting Key="category_get_by_id" SpName="category_get_by_id" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Comment">
         <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">

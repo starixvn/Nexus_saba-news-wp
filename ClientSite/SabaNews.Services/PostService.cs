@@ -155,6 +155,17 @@
             return ReplaceStringFromVarSeo(cate);
         }
 
+        public async Task<Category> GetCateDetailAsync(string slug, long id)
+        {
+            var criteria = new GetCateByIdCriteria
+            {
+                Slug = slug,
+                CateId = id
+            };
+            var cate = await baseService.GetDataEntityAsync<Category>(criteria);
+            return ReplaceStringFromVarSeo(cate);
+        }
+
         public async Task<Category> GetPageDetailBySlugAsync(string slug)
         {
             var criteria = new GetPageDetailBySlugCriteria
