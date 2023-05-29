@@ -139,11 +139,16 @@ img {
 
     .card-vertical__datetime{
         padding: 0 !important;
-        display: flex;
-        align-items: flex-end;
         margin: 1.2rem 0 1rem 0;
+        display: flex;
+        justify-content: space-between;
         @include Mobile{
             margin: .6rem 0;
+            flex-wrap: wrap;
+        }
+        .group-author{
+            display: flex;
+            align-items: flex-end;
         }
         .author-section{
             a{
@@ -156,6 +161,19 @@ img {
                 @include Mobile{
                     font-size: 1.2rem;
                 }
+            }
+        }
+        .google-news{
+            background: #EDEFF3;
+            border-radius: 5px;
+            padding: .2rem 1.6rem;
+            text-decoration: none;
+            color: #333333;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            img{
+                margin-left: 1rem;
             }
         }
     }

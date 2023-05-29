@@ -40,7 +40,7 @@
                         <i class="icon-social icon-detail_facebook"></i>
                     </a>
                 </li>
-                <li class="item-social icon-mobile">
+                 <li class="item-social icon-mobile">
                     <a href="javascript:;"
                        rel="nofollow"
                        class="item intent copy-clipboard"
@@ -119,10 +119,16 @@
                 <div style="display: none;" class="single play_video"></div>
                 <h1 class="card-vertical__title">@Model.SinglePost.PostTitle</h1>
                 <div class="card-vertical__datetime">
-                     <div class="author-section" style="text-align:right">
-                        <a href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author </a>
+                    <div class="group-author">
+                        <div class="author-section" style="text-align:right">
+                            <a href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author </a>
+                        </div>
+                        <span class="date"> - @Model.SinglePost.PostTimeFormatSingle</span>
                     </div>
-                    <span class="date"> - @Model.SinglePost.PostTimeFormatSingle</span>
+                    <a href="https://news.google.com/publications/CAAqBwgKMJ_HzwswzuLmAw?hl=vi&gl=VN&ceid=VN%3Avi" class="google-news">
+                        <span>Theo dõi <b>SABAVN</b> trên</span>
+                        <img src="~/images/google-news-text.svg" alt="google-news-text" />
+                    </a>
                 </div>
                 @if (!Model.IsVideo)
                 {

@@ -4075,14 +4075,19 @@ img {
 }
 .card-vertical-highlight .card-vertical__datetime {
   padding: 0 !important;
-  display: flex;
-  align-items: flex-end;
   margin: 1.2rem 0 1rem 0;
+  display: flex;
+  justify-content: space-between;
 }
 @media (max-width: 767px) {
   .card-vertical-highlight .card-vertical__datetime {
     margin: 0.6rem 0;
+    flex-wrap: wrap;
   }
+}
+.card-vertical-highlight .card-vertical__datetime .group-author {
+  display: flex;
+  align-items: flex-end;
 }
 .card-vertical-highlight .card-vertical__datetime .author-section a {
   color: #555;
@@ -4096,6 +4101,19 @@ img {
   .card-vertical-highlight .card-vertical__datetime .author-section a {
     font-size: 1.2rem;
   }
+}
+.card-vertical-highlight .card-vertical__datetime .google-news {
+  background: #EDEFF3;
+  border-radius: 5px;
+  padding: 0.2rem 1.6rem;
+  text-decoration: none;
+  color: #333333;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+.card-vertical-highlight .card-vertical__datetime .google-news img {
+  margin-left: 1rem;
 }
 .card-vertical-highlight .card-vertical__image {
   display: none;
