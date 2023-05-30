@@ -6,9 +6,9 @@ namespace SabaNews.Site.Extensions
 
     public class CategoryConstraint : IRouteConstraint
     {
-        public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values,  RouteDirection routeDirection)
+        public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values,  RouteDirection routeDirection)
         {
-            string slug = values[parameterName].ToString();
+            string slug = values[routeKey].ToString();
             return slug.EndsWith(CategoryKey.Suffix);
         }
     }

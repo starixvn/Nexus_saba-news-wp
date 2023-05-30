@@ -65,7 +65,7 @@
             }
             var menus = await dataControlService.GetMenuData();
             var slugs = PostHelper.GetCategorySlugs(menus.ToList(), slug);
-            viewModel.Header.ActiveCategory = slugs.Slug1 != null ? slugs.Slug1 : slug;
+            viewModel.Header.ActiveCategory = slugs.Slug1 ?? slug;
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.BlogView;
@@ -103,7 +103,7 @@
             {
                 slug = null;
             }
-            return RedirectToAction("Category", "Home", new { slug = slug });
+            return RedirectToAction("Category", "Home", new { slug });
         }
 
         [Route("/video/{slug?}")]

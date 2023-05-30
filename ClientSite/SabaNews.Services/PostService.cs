@@ -370,7 +370,7 @@
             posts.AddRange(SiteMap.Pages.Select(item => new SitemapModel { Url = item }));
             var cates = GetCategoriesSiteMap(categories);
 
-            var newSiteMap = posts.Concat(categories);
+            var newSiteMap = posts.Concat(cates);
 
             return newSiteMap;
         }
@@ -417,7 +417,7 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        private List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories)
+        private static List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories)
         {
             var cateList = new List<SitemapModel>();
             foreach (var cate in categories)

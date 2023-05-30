@@ -49,7 +49,7 @@
         {
             get
             {
-                return Header.HeadTitle;
+                return (Category != null && !string.IsNullOrEmpty(Category.CateParentName) && Category.CateParentId != Constants.PostsId) ? Category.CateParentName : Header.HeadTitle;
             }
         }
 

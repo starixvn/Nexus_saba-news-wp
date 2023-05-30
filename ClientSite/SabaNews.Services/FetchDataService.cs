@@ -91,7 +91,7 @@
             {
                 controller = "video";
             }
-            var start = Constants.FromFirstItem;
+            const int start = Constants.FromFirstItem;
             IEnumerable<Post> posts;
             int totalItems;
             if (slug == Constants.NewPostSlug)
@@ -122,7 +122,7 @@
             }
             var cate = await postService.GetCateDetailAsync(slug);
             var cateParents = await postService.GetCateParentsAsync(slug);
-            var IsVideo = cateParents.Where(cate => cate.Slug == Constants.VideoSlug).Any();
+            var IsVideo = cateParents.Any(cate => cate.Slug == Constants.VideoSlug);
             var title = cate.SEOTitle ??= cate.Title;
             pageSize = slug == Constants.VideoSlug ? Constants.PageSizeVideo : Constants.Perpage;
             var header = new HeaderViewModel
