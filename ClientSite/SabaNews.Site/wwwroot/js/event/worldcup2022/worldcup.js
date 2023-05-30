@@ -10,7 +10,6 @@
                 data: { more },
             }).done(function (data) {
                 $('#topScorersWC').html(data);
-                $('[data-toggle="tooltip"]').tooltip();
                 $('.top-scorer-hide-button').on('click', function () {
                     $('.top-scorer-table .wc-table-row.more').toggleClass('hide');
                     $('.top-scorer-table .wc-table-row.ori').toggleClass('show');
