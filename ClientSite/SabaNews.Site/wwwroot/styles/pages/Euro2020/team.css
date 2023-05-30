@@ -540,7 +540,7 @@ p.has-text-align-center {
 }
 .block-extension .card-vertical:not(:first-child) .card-vertical__title {
   font-size: 1.4rem;
-  font-weight: normal;
+  font-weight: 600;
 }
 .block-extension .card-vertical:last-child {
   border-bottom: none;

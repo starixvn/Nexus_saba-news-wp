@@ -2406,3 +2406,19 @@ body {
 .block__title {
   margin-bottom: 0.8rem;
 }
+
+.about-livescore {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  padding: 1.6rem;
+  background: #F5F6F7;
+  border: 1px solid #E9E9E9;
+  border-radius: 3px;
+}
+.about-livescore .about-livescore-text {
+  margin-bottom: 1rem;
+}
+.about-livescore .about-livescore-text:last-child {
+  margin-bottom: 0;
+}
