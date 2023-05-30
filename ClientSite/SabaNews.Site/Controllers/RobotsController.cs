@@ -125,8 +125,7 @@
             {
                 posts = await postService.GetRSSCategoryBySlugAsync(slug);
                 category = await postService.GetCateDetailAsync(slug);
-                var cateParents = await postService.GetCateParentsAsync(slug);
-                category.Url = PostHelper.GetCategoryLink(cateParents);
+                category.Url  = slug + CategoryKey.Suffix;
             }
             var model = new RSSCategoryModel
             {

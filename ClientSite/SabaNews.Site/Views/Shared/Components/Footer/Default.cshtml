@@ -57,7 +57,7 @@
                         <div class="footer-item-block">
                             <h6 class="heading-footer-list"><a href="/">Trang Chủ</a></h6>
                             <ul>
-                                <li><a href="/tin-the-thao">Tin mới nhất</a></li>
+                                <li><a href="@Url.Action("Category", "Home", new { slug = Constants.NewPostSlug + CategoryKey.Suffix })">Tin mới nhất</a></li>
                                 @foreach (var menu in topMenu)
                                 {
                                     var link = getMenuLink(menu);
@@ -70,11 +70,11 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/viet-nam">bóng đá việt nam</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "viet-nam" + CategoryKey.Suffix })">bóng đá việt nam</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == vnCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/viet-nam/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
@@ -84,21 +84,21 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/cup-chau-au">cúp châu âu</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "cup-chau-au" + CategoryKey.Suffix })">cúp châu âu</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == euroCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/cup-chau-au/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/anh">bóng đá Anh</a></h6>
+                            <h6 class="heading-footer-list"><a href="/@Url.Action("Category", "Home", new { slug = "anh" + CategoryKey.Suffix })">bóng đá Anh</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == englishCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/anh/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
@@ -111,21 +111,21 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/tay-ban-nha">bóng đá tbn</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "tay-ban-nha" + CategoryKey.Suffix })">bóng đá tbn</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == tbnCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/tay-ban-nha/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/italia">Bóng đá italia</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "italia" + CategoryKey.Suffix })">Bóng đá italia</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == italyCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/italia/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
@@ -135,21 +135,21 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/phap">bóng đá pháp</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "phap" + CategoryKey.Suffix })">bóng đá pháp</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == franceCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/phap/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/duc">bóng đá đức</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "duc" + CategoryKey.Suffix })">bóng đá đức</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == germanyCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/duc/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
@@ -159,11 +159,11 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/tin-the-thao/bong-da/quoc-te">bóng đá quốc tế</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "quoc-te" + CategoryKey.Suffix })">bóng đá quốc tế</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == globalCateId))
                                 {
-                                    var link = "/tin-the-thao/bong-da/quoc-te/" + menu.CateSlug;
+                                    var link = getMenuLink(menu);
                                     <li><a href="@link">@menu.MenuTitle</a></li>
                                 }
                             </ul>
@@ -332,7 +332,7 @@
     private string getMenuLink(Menu menu)
     {
         if (menu == null) return null;
-        var link = "/tin-the-thao/" + menu.CateSlug;
+        var link = Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix });
         if (menu.PageSlug == "lich-thi-dau")
         {
             link = Url.Action("Index", "Soccer");
@@ -340,10 +340,6 @@
         else if (menu.PageSlug == "warning")
         {
             link = Url.Action("Warning", "Home");
-        }
-        else if (menu.CateSlug == "video")
-        {
-            link = "/video";
         }
         return link;
     }

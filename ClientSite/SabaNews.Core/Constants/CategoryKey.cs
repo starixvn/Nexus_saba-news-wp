@@ -22,6 +22,6 @@ namespace SabaNews.Core.Constants
 
         public const string Prefix = "category-";
 
-        public const string Suffix = "-c";
+        public const string Suffix = "-sabavn";
     }
 }

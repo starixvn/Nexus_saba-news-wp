@@ -85,16 +85,11 @@
 
         public async Task<BlogViewModel> GetCategoryViewModel(string slug)
         {
-            (slug, var id) = Helper.GetCategoryInfo(slug);
             var pageSize = Constants.Perpage;
             var controller = "category";
             if (slug == Constants.VideoSlug)
             {
                 controller = "video";
-            }
-            var cate = await postService.GetCateDetailAsync(slug, id);
-            if(cate == null) {
-                return null;
             }
             var start = Constants.FromFirstItem;
             IEnumerable<Post> posts;
@@ -125,6 +120,9 @@
             {
                 return null;
             }
+            var cate = await postService.GetCateDetailAsync(slug);
+            var cateParents = await postService.GetCateParentsAsync(slug);
+            var IsVideo = cateParents.Where(cate => cate.Slug == Constants.VideoSlug).Any();
             var title = cate.SEOTitle ??= cate.Title;
             pageSize = slug == Constants.VideoSlug ? Constants.PageSizeVideo : Constants.Perpage;
             var header = new HeaderViewModel
@@ -150,7 +148,8 @@
                 Category = cate,
                 Header = header,
                 Paging = paging,
-                Slug = slug
+                Slug = slug,
+                IsVideo = IsVideo
             };
             return model;
         }

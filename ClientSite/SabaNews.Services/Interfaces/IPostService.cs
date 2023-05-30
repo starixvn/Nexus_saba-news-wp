@@ -17,6 +17,8 @@
 
         Task<IEnumerable<Post>> GetPostsByCateSlugAsync(GetPostsByCateSlugCriteria criteria);
 
+        Task<IEnumerable<Post>> GetPostsByCateSlugPagingAsync(GetPostsByCateSlugPagingCriteria criteria);
+
         Task<IEnumerable<Post>> GetPostsByCateSlugNotContainChidrenAsync(GetPostsByCateSlugNotContainChildrenCriteria criteria);
 
         Task<IEnumerable<Post>> GetRecentPostsAsync(GetRecentPostsParam postParam);
@@ -34,7 +36,6 @@
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
 
         Task<Category> GetCateDetailAsync(string slug);
-        Task<Category> GetCateDetailAsync(string slug, long id);
 
         Task<Category> GetPageDetailBySlugAsync(string slug);
 

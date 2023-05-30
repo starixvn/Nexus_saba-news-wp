@@ -100,13 +100,13 @@
                         <h1 class="heading-category"><a>@Model.HeadTitle</a></h1>
                         @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
                         {
-                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix + menu.CateId })">@menu.MenuTitle</a></li>
+                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></li>
                         }
                     </div>
                     <div class="sub-category">
                         @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
                         {
-                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix + menu.CateId })">@menu.MenuTitle</a></li>
+                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></li>
                         }
                     </div>
                 </div>
@@ -119,13 +119,13 @@
                     var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
                     var coMenu = Model.GetCoMenu(Model.Slugs.Slug3);
                     <div class="menu-select single-select-menu">
-                        <a href="@Url.Action("Category", "Home", new { slug = CategoryKey.Prefix + Model.Slug })">@menu.MenuTitle</a>
+                        <a href="@Url.Action("Category", "Home", new { slug = Model.Slug + CategoryKey.Suffix })">@menu.MenuTitle</a>
                         <select class="select_ad"   onChange="window.location.href=this.value">
                             @foreach (var item in coMenu)
                             {
 
                                 var selected = menu.PostId == item.PostId ? "selected" : "";
-                                <!option class="@selected" @selected value="@Url.Action("Category", "Home", new { slug = item.CateSlug + CategoryKey.Suffix + menu.CateId })">@item.MenuTitle</!option>
+                                <!option class="@selected" @selected value="@Url.Action("Category", "Home", new { slug = item.CateSlug + CategoryKey.Suffix })">@item.MenuTitle</!option>
                             }
                         </select>
                     </div>
@@ -135,7 +135,7 @@
                     <div class="sub-category">
                         @foreach (var menu in subMenu)
                         {
-                            var link = Url.Action("Category", "Home", new { slug = CategoryKey.Prefix + menu.CateSlug });
+                            var link = Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix });
                             <li class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></li>
                         }
                     </div>

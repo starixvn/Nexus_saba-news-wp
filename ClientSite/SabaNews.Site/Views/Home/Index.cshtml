@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     <div class="view-more-block">
-                        <a href="@Url.Action("Category", "Home")">Xem Thêm</a>
+                        <a href="@Url.Action("Category", "Home", new { slug = Constants.NewPostSlug + CategoryKey.Suffix })">Xem Thêm</a>
                     </div>
 
                     <div class="ads-insite show-pc banner-left">
@@ -135,7 +135,7 @@
         </div>
         <div class="block block-guess">
             <h2 class="block__title">
-                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess</a>
+                <a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug + CategoryKey.Suffix })">@ViewResources.Guess
             </h2>
             <div class="block__content">
                 <div class="swiper-guess">
@@ -155,7 +155,7 @@
                             </div>
                         }
                         <div class="view-more-block scroll-snap-items">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">Xem Thêm</a>
+                                <a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug + CategoryKey.Suffix })">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                 <div class="columns columns-left">
                     <div class="block block-video">
                         <h2 class="block__title">
-                            <a href="@Url.Action("Video", "Home")" class="none-bg">@ViewResources.VideoHome</a>
+                            <a href="@Url.Action("Category", "Home", new { slug = Constants.VideoSlug + CategoryKey.Suffix })" class="none-bg">@ViewResources.Video</a>
                         </h2>
                         <div class="group-video">
                             <div class="box-vertical">
@@ -229,7 +229,7 @@
                             if(Model.LeaguePosts[0].Count != 0){
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
-                                        <a href="@Model.FootballNewCategory[0].Url">@Model.FootballNewCategory[0].Category</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[0].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[0].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })" class="box-vertical-image hover-image">
@@ -252,7 +252,7 @@
                                         </div>
                                     </div>
                                         <div class="view-more-block">
-                                            <a href="@Model.FootballNewCategory[0].Url">Xem Thêm</a>
+                                            <a href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[0].Slug + CategoryKey.Suffix })">Xem Thêm</a>
                                         </div>
                                 </div>
                             }
@@ -261,7 +261,7 @@
                             if(Model.LeaguePosts[1].Count != 0){
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
-                                        <a href="@Model.FootballNewCategory[1].Url">@Model.FootballNewCategory[1].Category</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[1].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[1].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })" class="box-vertical-image hover-image">
@@ -284,7 +284,7 @@
                                         </div>
                                     </div>
                                     <div class="view-more-block">
-                                        <a href="@Model.FootballNewCategory[1].Url">Xem Thêm</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[1].Slug + CategoryKey.Suffix })">Xem Thêm</a>
                                     </div>
                                 </div>
                             }
@@ -293,7 +293,7 @@
                             if(Model.LeaguePosts[2].Count != 0){
                                 <div class="block-event-item item-league">
                                     <h2 class="block__title">
-                                        <a href="@Model.FootballNewCategory[2].Url">@Model.FootballNewCategory[2].Category</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[2].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[2].Category</a>
                                     </h2>
                                     <div class="box-vertical">
                                         <a href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })" class="box-vertical-image hover-image">
@@ -316,7 +316,7 @@
                                         </div>
                                     </div>
                                     <div class="view-more-block">
-                                        <a href="@Model.FootballNewCategory[2].Url">Xem Thêm</a>
+                                        <a href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[2].Slug + CategoryKey.Suffix })">Xem Thêm</a>
                                     </div>
                                 </div>
                             }
@@ -328,7 +328,7 @@
 
                     <div class="block block-behind">
                         <h2 class="block__title">
-                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug })" class="none-bg">@ViewResources.Backstage</a>
+                            <a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug + CategoryKey.Suffix })" class="none-bg">@ViewResources.Backstage</a>
                         </h2>
                         <div class="block-columns-border">
                             <div class="block-event-item">
@@ -387,14 +387,14 @@
                             }
                         </div>
                         <div class="view-more-block">
-                            <a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug   })">Xem Thêm</a>
+                                <a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug + CategoryKey.Suffix   })">Xem Thêm</a>
                         </div>
                     </div>
 
                     <div class="block block-event block-columns-border none-bottom-spacing">
                         <div class="block-event-item item-league block-tranfer">
                             <h2 class="block__title">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">@ViewResources.TransferHome</a>
+                                <a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug + CategoryKey.Suffix  })">CHUYỂN NHƯỢNG</a>
                             </h2>
                             <div class="box-vertical">
                                 <a href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })" class="box-vertical-image hover-image">
@@ -419,12 +419,12 @@
                                 </div>
                             </div>
                             <div class="view-more-block">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug  })">Xem Thêm</a>
+                                <a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug + CategoryKey.Suffix  })">Xem Thêm</a>
                             </div>
                         </div>
                         <div class="block-event-item item-league">
                             <h2 class="block__title">
-                                <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a>
+                                <a href="@Url.Action("Category", "Home", new { slug = Constants.OtherPostSlug + CategoryKey.Suffix  })">@ViewResources.OtherPosts</a>
                             </h2>
                             <div class="box-vertical">
                                 <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="box-vertical-image hover-image">
@@ -448,7 +448,7 @@
                                     </div>
                                 </div>
                                 <div class="view-more-block">
-                                    <a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">Xem Thêm</a>
+                                    <a href="@Url.Action("Category", "Home", new { slug = Constants.OtherPostSlug + CategoryKey.Suffix })">Xem Thêm</a>
                                 </div>
                             </div>
                         </div>

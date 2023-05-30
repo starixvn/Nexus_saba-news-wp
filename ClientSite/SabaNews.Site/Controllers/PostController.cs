@@ -61,7 +61,7 @@
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
-            cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
+            cateInfo.Url = Url.Action("Category", "Home", new { slug = cateInfo.Slug + CategoryKey.Suffix});
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {

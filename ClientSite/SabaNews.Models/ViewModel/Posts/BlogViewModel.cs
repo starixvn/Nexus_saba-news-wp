@@ -15,6 +15,7 @@
         public IEnumerable<Menu> Menus { get; set; }
         public Slugs Slugs { get; set; }
         public string Slug { get; set; }
+        public bool IsVideo { get; set; }
 
         public IEnumerable<Menu> GetSubMenu(string cateSlug)
         {
@@ -48,7 +49,7 @@
         {
             get
             {
-                return (Category != null && !string.IsNullOrEmpty(Category.CateParentName) && Category.CateParentId != Constants.PostsId) ? Category.CateParentName : Header.HeadTitle;
+                return Header.HeadTitle;
             }
         }
 

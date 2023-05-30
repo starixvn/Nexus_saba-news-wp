@@ -218,7 +218,7 @@
     private string getMenuLink(Menu menu)
     {
         if (menu == null) return null;
-        var link = Url.Action("Category", "Home", new {slug =  menu.CateSlug + CategoryKey.Suffix + menu.CateId});
+        var link = Url.Action("Category", "Home", new {slug =  menu.CateSlug + CategoryKey.Suffix});
         if (menu.PageSlug == Constants.MatchScheduleSlug)
         {
             link = Url.Action("Index", "Soccer");
@@ -226,10 +226,6 @@
         else if (menu.PageSlug == Constants.WarningSlug)
         {
             link = Url.Action("Warning", "Home");
-        }
-        else if (menu.CateSlug == Constants.VideoSlug)
-        {
-            link = "/video";
         }
         else if (menu.CateSlug == Constants.Euro2020Slug)
         {
@@ -246,7 +242,7 @@
             <ul>
                 @foreach (var subMenu in subMenus)
                 {
-                    var subLink = Url.Action("Category", "Home", new {slug = subMenu.CateSlug + CategoryKey.Suffix + subMenu.CateId });
+                    var subLink = Url.Action("Category", "Home", new {slug = subMenu.CateSlug + CategoryKey.Suffix });
                     var nextLevelMenu = Menus.Where(item => item.ParentId.Equals(subMenu.PostId)).Count();
                     <li>
                         <a href="@subLink">@subMenu.MenuTitle</a>

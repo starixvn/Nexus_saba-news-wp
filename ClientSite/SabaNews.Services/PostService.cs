@@ -51,6 +51,12 @@
             return FormatData(posts).ToList();
         }
 
+        public async Task<IEnumerable<Post>> GetPostsByCateSlugPagingAsync(GetPostsByCateSlugPagingCriteria criteria)
+        {
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts).ToList();
+        }
+
         public async Task<IEnumerable<Post>> GetPostsByCateSlugNotContainChidrenAsync(GetPostsByCateSlugNotContainChildrenCriteria criteria)
         {
             var posts = await baseService.GetDataAsync<Post>(criteria);
@@ -155,16 +161,6 @@
             return ReplaceStringFromVarSeo(cate);
         }
 
-        public async Task<Category> GetCateDetailAsync(string slug, long id)
-        {
-            var criteria = new GetCateByIdCriteria
-            {
-                Slug = slug,
-                CateId = id
-            };
-            var cate = await baseService.GetDataEntityAsync<Category>(criteria);
-            return ReplaceStringFromVarSeo(cate);
-        }
 
         public async Task<Category> GetPageDetailBySlugAsync(string slug)
         {
@@ -374,7 +370,7 @@
             posts.AddRange(SiteMap.Pages.Select(item => new SitemapModel { Url = item }));
             var cates = GetCategoriesSiteMap(categories);
 
-            var newSiteMap = posts.Concat(cates);
+            var newSiteMap = posts.Concat(categories);
 
             return newSiteMap;
         }
@@ -421,24 +417,13 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        private List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories, int cateId = 0, string link = "")
+        private List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories)
         {
             var cateList = new List<SitemapModel>();
-            foreach (var cate in categories.Where(item => item.Parent == cateId).ToList())
+            foreach (var cate in categories)
             {
-                var url = link != "" ? $"{link}/{cate.Slug}" : cate.Slug;
-                if (cate.Slug == Constants.Euro2020Slug)
-                {
-                    url = url.Replace($"{Constants.NewPostSlug}/", "");
-                }
-                cate.Url = url;
+                cate.Url = cate.Slug + CategoryKey.Suffix;
                 cateList.Add(cate);
-                var subCate = categories.Where(item => item.Parent == cate.ID).ToList();
-                if (subCate.Any())
-                {
-                    var tmp = GetCategoriesSiteMap(categories, cate.ID, url);
-                    cateList.AddRange(tmp);
-                }
             }
             return cateList.ToList();
         }
