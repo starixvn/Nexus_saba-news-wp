@@ -100,13 +100,13 @@
                         <h1 class="heading-category"><a>@Model.HeadTitle</a></h1>
                         @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
                         {
-                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.Prefix + menu.CateSlug })">@menu.MenuTitle</a></li>
+                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix + menu.CateId })">@menu.MenuTitle</a></li>
                         }
                     </div>
                     <div class="sub-category">
                         @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
                         {
-                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = CategoryKey.Prefix + menu.CateSlug })">@menu.MenuTitle</a></li>
+                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix + menu.CateId })">@menu.MenuTitle</a></li>
                         }
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                             {
 
                                 var selected = menu.PostId == item.PostId ? "selected" : "";
-                                <!option class="@selected" @selected value="@Url.Action("Category", "Home", new { slug = CategoryKey.Prefix + item.CateSlug })">@item.MenuTitle</!option>
+                                <!option class="@selected" @selected value="@Url.Action("Category", "Home", new { slug = item.CateSlug + CategoryKey.Suffix + menu.CateId })">@item.MenuTitle</!option>
                             }
                         </select>
                     </div>

@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using System.Linq;
 
     public static class Helper
     {
@@ -23,6 +24,16 @@
             }
             result = JsonConvert.DeserializeObject<List<T>>(data);
             return result;
+        }
+
+        public static (string, long) GetCategoryInfo(string slug)
+        {
+            var list = slug.Split('-');
+            var lastword = list[list.Length - 1];
+            var listSLug = list.Take(list.Length - 1);
+            var id = lastword.Substring(1);
+            var cateSlug = string.Join("-", listSLug);
+            return (cateSlug, long.Parse(id));
         }
     }
 }

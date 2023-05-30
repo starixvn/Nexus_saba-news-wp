@@ -2,12 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Fanex.Caching;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Services;
-    using SabaNews.Models.Posts;
+    using SabaNews.Models;
     using SabaNews.Services.Interfaces;
 
     public class RefreshCachingService : IRefreshCachingService
@@ -86,18 +86,10 @@
 
             try
             {
-                var listCategoryCaching = new List<string>
+                var menus = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
+                foreach(var cate in menus.Where(item => item.ParentId == 0 && !string.IsNullOrEmpty(item.CateSlug)))
                 {
-                    Constants.FootballSlug,
-                    Constants.GuessSlug,
-                    Constants.BackstageSlug,
-                    Constants.TransferSlug,
-                    Constants.BasketballSlug,
-                    Constants.OtherPostSlug,
-                    Constants.VideoSlug
-                };
-                foreach (var slug in listCategoryCaching)
-                {
+                    var slug = cate.CateSlug + CategoryKey.Suffix + cate.CateId;
                     var key = CacheKey.CategoryViewModel + "-" + slug;
                     var data = await fetchDataService.GetCategoryViewModel(slug);
                     logService.WriteLogFileInfo(string.Format("After GetCategoryViewModel - {1} - {0}", DateTime.Now.Subtract(startTime).Milliseconds, slug));

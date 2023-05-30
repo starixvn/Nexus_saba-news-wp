@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
@@ -57,19 +58,16 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
-            slug = slug.Replace(CategoryKey.Prefix, "");
-            var (cateSlug, id) = PostHelper.GetCategoryInfo(slug);
-            var viewModel = await dataControlService.GetCategoryViewModel(cateSlug);
+            var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
             }
             var menus = await dataControlService.GetMenuData();
-            var slugs = PostHelper.GetCategorySlugs(menus.ToList(), cateSlug);
-            viewModel.Header.ActiveCategory = slugs.Slug1 != null ? slugs.Slug1 : slug;
+            var slugs = PostHelper.GetCategorySlugs(menus.ToList(), viewModel.Slug);
+            viewModel.Header.ActiveCategory = slugs.Slug1 != null ? slugs.Slug1 : viewModel.Slug;
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
-            viewModel.Header.Slug = cateSlug;
             return View(Constants.BlogView, viewModel);
         }
 
