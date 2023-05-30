@@ -1,9 +1,7 @@
 ﻿namespace SabaNews.Services.UnitTests
 {
     using AutoFixture;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
-    using Newtonsoft.Json;
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
@@ -14,6 +12,7 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
+    using SabaNews.Models.Categories;
     using SabaNews.Models.Home;
     using SabaNews.Models.Options;
     using SabaNews.Models.Posts;
@@ -80,22 +79,26 @@
             var service = GetFetchDataService();
             var slug = Constants.VideoSlug;
             var page = fixture.Create<int>();
-            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugCriteria>();
 
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
-            param.Slug1 = Constants.VideoSlug;
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
             var category = fixture.Create<Category>();
-            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(posts);
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 2, Slug = "video" }
+            };
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => criteria = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
-
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
             //Act
-            var actual = await service.GetCategoryViewModel(param);
+            var actual = await service.GetCategoryViewModel(slug);
 
             //Assert
             Assert.Equal(posts.ToArray(), actual.Posts);
             Assert.Equal(category, actual.Category);
+            Assert.True(actual.IsVideo);
         }
 
         [Fact]
@@ -103,18 +106,24 @@
         {
             //Arrange
             var service = GetFetchDataService();
-            var slug = fixture.Create<string>();
+            var slug = Constants.NewPostSlug;
             var param = new GetPostsByCateSlugsParam();
 
             var paramGetRecent = fixture.Create<GetRecentPostsParam>();
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 2, Slug = "bong-da" }
+            };
             var category = new Category { CateId = 1, Description = "description", Title = "title" };
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => paramGetRecent = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
 
             //Act
-            var actual = await service.GetCategoryViewModel(param);
+            var actual = await service.GetCategoryViewModel(slug);
 
             //Assert
             Assert.Equal(posts.ToArray(), actual.Posts);
@@ -123,6 +132,7 @@
             Assert.Equal(category.Description, actual.Header.Description);
             Assert.Equal(category.Title, actual.Header.Title);
             Assert.Equal(category.CateId, actual.Header.CategoryId);
+            Assert.False(actual.IsVideo);
         }
 
         [Fact]
@@ -131,7 +141,6 @@
             //Arrange
             var service = GetFetchDataService();
             var slug = Constants.VideoSlug;
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
 
             var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
             var newPosts = fixture.Create<IEnumerable<Post>>();
@@ -141,7 +150,7 @@
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
 
             //Act
-            var actual = await service.GetCategoryViewModel(param);
+            var actual = await service.GetCategoryViewModel(slug);
 
             //Assert
             Assert.Null(actual);

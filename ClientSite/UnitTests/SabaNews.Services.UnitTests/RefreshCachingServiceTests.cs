@@ -116,9 +116,8 @@
             var slug = fixture.Create<string>();
             var page = fixture.Create<int>();
             var data = fixture.Create<BlogViewModel>();
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
 
-            fetchDataService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(data);
+            fetchDataService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(data);
             logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
 
 
@@ -139,9 +138,8 @@
             var slug = fixture.Create<string>();
             var page = fixture.Create<int>();
             var exception = fixture.Create<Exception>();
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
 
-            fetchDataService.When(x => x.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x))).Throw(exception);
+            fetchDataService.When(x => x.GetCategoryViewModel(Arg.Do<string>(x => slug = x))).Throw(exception);
             logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
 
 

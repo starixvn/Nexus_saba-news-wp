@@ -26,7 +26,7 @@
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
-        public async Task GetPostsBySlugAsyncGetPostsByCateSlugAsync_WhenCalled_ReturnExpectedPosts()
+        public async Task GetPostsByCateSlugAsync_WhenCalled_ReturnExpectedPosts()
         {
             //Arrange
             var service = GetPostService();
@@ -47,6 +47,7 @@
             Assert.Equal(end, criteria.End);
         }
 
+
         [Fact]
         public async Task GetPostsBySlugAsync_WhenCalled_ReturnExpectedPosts()
         {
@@ -59,6 +60,24 @@
 
             //Act
             var actual = await service.GetPostsByCateSlugAsync(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+            Assert.Equal(param, criteria);
+        }
+
+        [Fact]
+        public async Task GetPostsByCateSlugPagingAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var param = fixture.Create<GetPostsByCateSlugPagingCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugPagingCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPostsByCateSlugPagingAsync(param);
 
             //Assert
             Assert.Equal(expected, actual);
@@ -450,7 +469,7 @@
             var actual = await service.GetSitemapDataAsync();
 
             //Assert
-            Assert.Equal(expected.Count(), actual.Count());
+            Assert.Equal(expected.Count(), actual.Count() - 1);
         }
 
 

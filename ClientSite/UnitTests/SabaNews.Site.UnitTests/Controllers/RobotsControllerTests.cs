@@ -132,7 +132,7 @@
             var expectedCategory = fixture.Create<Category>();
             var expectedParentCate = new List<CategoryGeneral>();
             expectedParentCate.Add(new CategoryGeneral { Slug = "tin-the-thao" });
-            expectedCategory.Url = "tin-the-thao/";
+            expectedCategory.Url = "cate-sabavn";
             postService.GetRSSCategoryBySlugAsync(Arg.Do<string>(x => x = cate)).Returns(expectedPost);
             postService.GetCateDetailAsync(Arg.Do<string>(x => x = cate)).Returns(expectedCategory);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = cate)).Returns(expectedParentCate);

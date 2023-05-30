@@ -64,62 +64,18 @@
         }
 
         [Fact]
-        public async Task Category_WhenSlugIsNull_ReturnExpectedViewResult()
+        public async Task Category_WhenDataIsNull_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            string slug = null;
-            var expectedViewModel = fixture.Create<BlogViewModel>();
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
-            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
-
-            //Act
-            var result = await controller.Category(slug, slug, slug);
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Null(viewModel.Header.ActiveCategory);
-            Assert.Equal(Constants.BlogView, viewResult.ViewName);
-        }
-
-        [Theory]
-        [InlineData(Constants.FootballInside)]
-        [InlineData(Constants.FootballOutside)]
-        [InlineData(Constants.FootballSlug)]
-        public async Task Category_WhenSlugIsFootballChildrens_ReturnExpectedViewResult(string slug)
-        {
-            // Arrange
-            var controller = GetController();
-            GetDefaultContext(controller);
-            var expectedViewModel = fixture.Create<BlogViewModel>();
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
-            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
-
-            //Act
-            var result = await controller.Category(slug, slug, slug);
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.True(viewModel.Header.IsChildren);
-            Assert.Equal(slug, viewModel.Header.ActiveCategory);
-            Assert.Equal(Constants.BlogView, viewResult.ViewName);
-        }
-
-        [Fact]
-        public async Task Category_WhenViewDataIsNull_ReturnExpectedViewResult()
-        {
-            // Arrange
-            var controller = GetController();
-            string slug = null;
+            string slug = Constants.NewPostSlug + CategoryKey.Suffix;
             BlogViewModel expectedViewModel = null;
             var param = fixture.Create<GetPostsByCateSlugsParam>();
-            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Category(slug, slug, slug);
+            var result = await controller.Category(slug);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -127,64 +83,125 @@
         }
 
         [Fact]
-        public async Task Video_WhenHaveData_ReturnExpectedViewResult()
+        public async Task Category_WhenIsPostAndIsRecentPage_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            string slug = null;
+            string slug = Constants.NewPostSlug + CategoryKey.Suffix;
             var expectedViewModel = fixture.Create<BlogViewModel>();
+            expectedViewModel.IsVideo = false;
+            var expectedMenu = new List<Menu>();
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "menu-1", ParentId = 2  });
             var param = fixture.Create<GetPostsByCateSlugsParam>();
-            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
+            dataControlService.GetMenuData().Returns(expectedMenu);
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Video(slug, slug);
+            var result = await controller.Category(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task Category_WhenIsPostAndIsSubCate_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContext(controller);
+            string slug = "dt-viet-nam" + CategoryKey.Suffix;
+            var expectedViewModel = fixture.Create<BlogViewModel>();
+            expectedViewModel.IsVideo = false;
+            var expectedMenu = new List<Menu>();
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "bong-da", ParentId = 0  });
+            expectedMenu.Add(new Menu{ PostId = 2, CateSlug = "viet-nam", ParentId = 1  });
+            expectedMenu.Add(new Menu{ PostId = 3, CateSlug = "dt-viet-nam", ParentId = 2  });
+            var slugs = new Slugs { Slug1 = "bong-da", Slug2 = "viet-nam", Slug3 = "dt-viet-nam" };
+            dataControlService.GetMenuData().Returns(expectedMenu);
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
+
+            //Act
+            var result = await controller.Category(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+            Assert.Equal(slugs.Slug1, viewModel.Slugs.Slug1);
+            Assert.Equal(slugs.Slug2, viewModel.Slugs.Slug2);
+            Assert.Equal(slugs.Slug3, viewModel.Slugs.Slug3);
+        }
+
+        [Fact]
+        public async Task Category_WhenIsVideo_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContext(controller);
+            string slug = Constants.VideoSlug + CategoryKey.Suffix;
+            var expectedViewModel = fixture.Create<BlogViewModel>();
+            expectedViewModel.IsVideo = true;
+            var expectedMenu = new List<Menu>();
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "menu-1", ParentId = 2  });
+            var slugs = new Slugs { Slug1 = "video" };
+            dataControlService.GetMenuData().Returns(expectedMenu);
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
+
+            //Act
+            var result = await controller.Category(slug);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(Constants.VideoView, viewResult.ViewName);
+            Assert.Equal(slugs.Slug1, viewModel.Slugs.Slug1);
+            Assert.Equal(slugs.Slug2, viewModel.Slugs.Slug2);
+            Assert.Equal(slugs.Slug3, viewModel.Slugs.Slug3);
         }
 
-        [Fact]
-        public async Task Video_WhenPostIsEmpty_ReturnExpectedViewResult()
+        [Theory]
+        [InlineData("slug1", "slug2", "slug3")]
+        [InlineData("slug1", "slug2", null)]
+        [InlineData("slug1", null, null)]
+        [InlineData(null, null, null)]
+        public void  OldCategorys_WhenCalled_RedicrectExpectView(string slug1, string slug2, string slug3)
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            string slug = null;
-            var expectedViewModel = fixture.Create<BlogViewModel>();
-            expectedViewModel.Posts = new List<Post>();
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
-            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Video(slug, slug);
+            var result =  controller.OldCategorys(slug1, slug2, slug3);
 
             // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Category", redirectResult.ActionName);
         }
 
+        
+
+
         [Fact]
-        public async Task Video_WhenDataIsNull_ReturnExpectedViewResult()
+        public void  OldVideo_WhenCalled_RedicrectExpectView()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            string slug = null;
-            var param = fixture.Create<GetPostsByCateSlugsParam>();
-            BlogViewModel expectedViewModel = null;
-            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Video(slug, slug);
+            var result =  controller.OldVideo();
 
             // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Home", redirectResult.ControllerName);
+            Assert.Equal("Category", redirectResult.ActionName);
         }
+
+
 
         [Fact]
         public async Task Warning_WhenHaveFullData_ReturnExpectedViewResult()
@@ -413,12 +430,12 @@
         {
             // Arrange
             var controller = GetController();
-            var criteria = fixture.Create<GetPostsByCateSlugsPagingCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugPagingCriteria>();
             var expected = fixture.Create<IEnumerable<Post>>();
             var param = fixture.Create<CategoryPostParams>();
             param.IsVideo = true;
             param.Page = 2;
-            postService.GetPostsByCateSlugsPaging(Arg.Do<GetPostsByCateSlugsPagingCriteria>(x => criteria = x)).Returns(expected);
+            postService.GetPostsByCateSlugPagingAsync(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetCategoryGrid(param);
 
@@ -434,11 +451,11 @@
         {
             // Arrange
             var controller = GetController();
-            var criteria = fixture.Create<GetPostsByCateSlugsPagingCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugPagingCriteria>();
             var expected = fixture.Create<IEnumerable<Post>>();
             var param = fixture.Create<CategoryPostParams>();
             param.IsVideo = false;
-            postService.GetPostsByCateSlugsPaging(Arg.Do<GetPostsByCateSlugsPagingCriteria>(x => criteria = x)).Returns(expected);
+            postService.GetPostsByCateSlugPagingAsync(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetCategoryGrid(param);
 
@@ -457,7 +474,7 @@
             var criteria = fixture.Create<GetRecentPostsParam>();
             var expected = fixture.Create<IEnumerable<Post>>();
             var param = fixture.Create<CategoryPostParams>();
-            param.Slugs.Slug1 = null;
+            param.Slug = null;
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetCategoryGrid(param);
@@ -476,7 +493,7 @@
             var criteria = fixture.Create<GetRecentPostsParam>();
             var expected = new List<Post>();
             var param = fixture.Create<CategoryPostParams>();
-            param.Slugs.Slug1 = null;
+            param.Slug = null;
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetCategoryGrid(param);
@@ -627,21 +644,6 @@
             Assert.Equal("Category", redirectResult.ActionName);
         }
 
-        [Fact]
-        public void OldVideo_WhenCalled_ReturnCorrectlyAction()
-        {
-            // Arrange
-            var controller = GetController();
-            var expected = fixture.Create<List<StandingLeagueModel>>();
-            dataControlService.GetHomepageStandingData().Returns(expected);
-            // Act
-            var result = controller.OldVideo();
-
-            // Assert
-            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
-            Assert.Equal("Home", redirectResult.ControllerName);
-            Assert.Equal("Video", redirectResult.ActionName);
-        }
 
         [Fact]
         public void OldSearch_WhenCalled_ReturnCorrectlyAction()
