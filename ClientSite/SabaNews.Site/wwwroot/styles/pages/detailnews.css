@@ -4089,6 +4089,11 @@ img {
   display: flex;
   align-items: flex-end;
 }
+@media (max-width: 767px) {
+  .card-vertical-highlight .card-vertical__datetime .group-author {
+    margin-bottom: 0.4rem;
+  }
+}
 .card-vertical-highlight .card-vertical__datetime .author-section a {
   color: #555;
   font-size: 1.4rem;
@@ -4108,9 +4113,14 @@ img {
   padding: 0.2rem 1.6rem;
   text-decoration: none;
   color: #333333;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
+}
+@media (max-width: 767px) {
+  .card-vertical-highlight .card-vertical__datetime .google-news {
+    padding: 0 1.2rem;
+  }
 }
 .card-vertical-highlight .card-vertical__datetime .google-news img {
   margin-left: 1rem;
