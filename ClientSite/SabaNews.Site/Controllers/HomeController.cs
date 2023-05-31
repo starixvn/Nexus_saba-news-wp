@@ -313,6 +313,10 @@
             {
                 return Ok(false);
             }
+            if(param.Page == Constants.SecondPage)
+            {
+                posts = posts.Where(item => param.FirstPagePosts.All(id => id != item.ID));
+            }
             var view = param.IsVideo ? "~/Views/Home/_VideoGridView.cshtml" : "~/Views/Home/_CategoryGridView.cshtml";
             ViewBag.CurrentPage = param.Page;
             return PartialView(view, posts);

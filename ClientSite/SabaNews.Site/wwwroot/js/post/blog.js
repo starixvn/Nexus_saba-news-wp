@@ -9,6 +9,9 @@
     var currentscrollHeight = 0;
     var isLoadData = true;
     var windowWidth = window.innerWidth;
+    var firstPagePosts = $('#category-grid .page-1').map(function () {
+        return this.value;
+    }).get();
 
     function GetDataGrid(page) {
         if (page > paging.totalPages) {
@@ -18,7 +21,7 @@
         }
 
         var url = '/api/post/category-posts';
-        var data = { slug, page, pageSize, type, isVideo };
+        var data = { slug, page, pageSize, type, isVideo, firstPagePosts };
         if (type === "Search" || type === "Tag" || type === "Author") {
             url = '/api/post/type-posts';
             data = { keyword, type, page, pageSize }
