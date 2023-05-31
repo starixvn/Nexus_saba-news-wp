@@ -57,8 +57,7 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
-            var suffixIndex = slug.LastIndexOf(CategoryKey.Suffix);
-            slug = slug.Substring(0, suffixIndex);
+            slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
