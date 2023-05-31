@@ -94,7 +94,7 @@
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/@Url.Action("Category", "Home", new { slug = "anh" + CategoryKey.Suffix })">bóng đá Anh</a></h6>
+                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "anh" + CategoryKey.Suffix })">bóng đá Anh</a></h6>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == englishCateId))
                                 {
