@@ -98,15 +98,15 @@
                 <div class="group-sub-category">
                     <div class="sub-category">
                         <h1 class="heading-category"><a>@Model.HeadTitle</a></h1>
-                        @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
+                        @foreach (var menu in Model.GetSubMenu(slug1))
                         {
-                            <h2 class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                            <h2 class="sub-item @(slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
                         }
                     </div>
                     <div class="sub-category">
-                        @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
+                        @foreach (var menu in Model.GetSubMenu(slug2))
                         {
-                            <h2 class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                            <h2 class="sub-item @(slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
                         }
                     </div>
                 </div>
@@ -114,10 +114,10 @@
             else
             {
                 var subMenu = Model.GetSubMenu(Model.Slug);
-                if (Model.Slugs.Slug3 != null)
+                if (slug3 != null)
                 {
-                    var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
-                    var coMenu = Model.GetCoMenu(Model.Slugs.Slug3);
+                    var menu = Model.GetMenuDetail(slug3);
+                    var coMenu = Model.GetCoMenu(slug3);
                     <div class="menu-select single-select-menu">
                         <a href="@Url.Action("Category", "Home", new { slug = Model.Slug + CategoryKey.Suffix })">@menu.MenuTitle</a>
                         <select class="select_ad"   onChange="window.location.href=this.value">
