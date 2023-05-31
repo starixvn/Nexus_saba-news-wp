@@ -100,13 +100,13 @@
                         <h1 class="heading-category"><a>@Model.HeadTitle</a></h1>
                         @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
                         {
-                            <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></li>
+                            <h2 class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
                         }
                     </div>
                     <div class="sub-category">
                         @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
                         {
-                            <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></li>
+                            <h2 class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
                         }
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         @foreach (var menu in subMenu)
                         {
                             var link = Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix });
-                            <li class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></li>
+                            <h2 class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
                         }
                     </div>
                 }
