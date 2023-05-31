@@ -10,6 +10,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
+    using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
@@ -106,6 +107,19 @@
                 return await GetPollData(questId, themeId);
             }
             return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetSameCategoryPosts(string slug)
+        {
+            var criteria =  new GetPostsByCateSlugCriteria
+            {
+                _Start = Constants.FromFirstItem,
+                _End = Constants.GetTenItems,
+                _CategorySlug = slug
+            };
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            return PartialView("_SameCategory", posts);
         }
 
         private static CateInfo GetCateInfo(string cateName, string cateSlug)

@@ -13,8 +13,8 @@
 }
 
 @section Scripts{
+    <script> window.cateSlug = '@Model.CateInfo.Slug'</script>
     <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
-    
 }
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
@@ -137,7 +137,6 @@
                     </div>
                 }
             </div>
-            
 
 
             <div class="main-social">
@@ -232,6 +231,7 @@
             {
                 <div class="ads-insite show-mobile banner-mobile-top"></div>
             }
+            <div class="same-category-post"></div>
             @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>

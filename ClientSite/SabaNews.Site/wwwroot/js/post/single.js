@@ -117,6 +117,20 @@
         }
     }
 
+    function LoadSameCategoryPost() {
+        if($('.same-category-post').length == 0) {
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Post/GetSameCategoryPosts',
+            data: {slug: window.cateSlug},
+            success: function(res) {
+                $('.same-category-post').html(res);
+            }
+        });
+    }
+
     function getScrollTop(isMobile, href, scrollTop) {
         var offsetTop = 0;
         if (isMobile) {
@@ -134,6 +148,7 @@
         LoadBanner();
         ScrollItem();
         LoadBannerContent();
+        LoadSameCategoryPost();
     }
 
     return {
