@@ -13,7 +13,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug`(
 		Creator: Hank@20210720
         Revisions:
 			- 20210720@Hank: init
-            - 20220727@Hank: get sub cate posts
+            - 20221001@Hank: get sub cate from function & filter by post type
+            - 20230525@Hank: refactor
     */
 )
 BEGIN
@@ -48,10 +49,6 @@ BEGIN
         ) AS t; 
         
     
-    SELECT t.term_id, t.name, wtt.parent INTO category, cate_name, cate_parent 
-    FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug;
-    
-    
     INSERT INTO tmp_PostIds (PostId)
     SELECT p.ID
 	FROM wp_posts as p
@@ -64,7 +61,6 @@ BEGIN
 	SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent, p.post_excerpt as PostExcerpt
     , p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_name as Slug
     , pp.guid as FeatureImage, m1.meta_value as Metadata, p.comment_count as CommentCount
-    , cate_parent_name as CategoryParent, cate_name as Categories
 	FROM wp_posts as p
 	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
 	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
