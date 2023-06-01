@@ -313,7 +313,7 @@
             {
                 return Ok(false);
             }
-            if(param.Page == Constants.SecondPage)
+            if(param.Page == Constants.SecondPage && param.FirstPagePosts != null)
             {
                 posts = posts.Where(item => param.FirstPagePosts.All(id => id != item.ID));
             }
