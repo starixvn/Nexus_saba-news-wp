@@ -112,13 +112,13 @@
         [HttpPost]
         public async Task<IActionResult> GetSameCategoryPosts(string slug)
         {
-            var criteria =  new GetPostsByCateSlugCriteria
+            var criteria =  new GetPostsByCateSlugPagingCriteria
             {
                 _Start = Constants.FromFirstItem,
                 _End = Constants.GetTenItems,
                 _CategorySlug = slug
             };
-            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            var posts = await postService.GetPostsByCateSlugPagingAsync(criteria);
             return PartialView("_SameCategory", posts);
         }
 
