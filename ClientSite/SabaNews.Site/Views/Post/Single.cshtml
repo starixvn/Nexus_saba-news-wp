@@ -243,7 +243,9 @@
         {
             <div class="ads-insite show-mobile banner-mobile-center"></div>
         }
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
+        <div class="block block-extension">
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
+        </div>
 
     </div>
 </section>

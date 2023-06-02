@@ -113,7 +113,9 @@
                     </div>
                 }
             </div>
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
+            <div class="block block-extension">
+                @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
+            </div>
         </div>
     </div>
 </div>

@@ -165,6 +165,8 @@
         </div>
         <div class="banner-scroll banner-mobile-center" style="display: none;"></div>
         <div class="ads-insite show-mobile banner-mobile-bottom"></div>
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
+        <div class="block block-extension">
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
+        </div>
     </div>
 </section>

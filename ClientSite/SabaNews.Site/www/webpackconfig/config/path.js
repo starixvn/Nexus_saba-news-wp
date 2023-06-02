@@ -18,8 +18,9 @@ const cssPaths = {
     livescore_soccer_worldcup_minigame_detail_stage: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-detail-stage.scss'],
     livescore_soccer_worldcup_minigame_detail: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-detail.scss'],
     livescore_soccer_worldcup_minigame_winner: ['./www/sources/css/pages/livescore/soccer/world-cup/minigame-winners.scss'],
-    livescore_soccer_homepage_fixture: ['./www/sources/css/pages/livescore/soccer/homepage/fixture.scss'],
-    livescore_soccer_homepage_standing: ['./www/sources/css/pages/livescore/soccer/homepage/standing.scss'],
+    livescore_soccer_homepage_fixture: ['./www/sources/css/pages/livescore/soccer/sidebar/fixture.scss'],
+    livescore_soccer_homepage_standing: ['./www/sources/css/pages/livescore/soccer/sidebar/standing.scss'],
+    livescore_soccer_category_standing: ['./www/sources/css/pages/livescore/soccer/sidebar/category-standing.scss'],
 };
 
 const scriptPaths = {
@@ -39,8 +40,9 @@ const scriptPaths = {
     livescore_soccer_worldcup_minigame_detail_stage: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-detail-stage/index.jsx'],
     livescore_soccer_worldcup_minigame_detail: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-detail/index.jsx'],
     livescore_soccer_worldcup_minigame_winner: ['./www/sources/js/pages/livescore/soccer/world-cup/minigame-winners/index.jsx'],
-    livescore_soccer_homepage_fixture: ['./www/sources/js/pages/livescore/soccer/homepage/fixture/index.jsx'],
-    livescore_soccer_homepage_standing: ['./www/sources/js/pages/livescore/soccer/homepage/standing/index.jsx']
+    livescore_soccer_homepage_fixture: ['./www/sources/js/pages/livescore/soccer/sidebar/fixture/index.jsx'],
+    livescore_soccer_homepage_standing: ['./www/sources/js/pages/livescore/soccer/sidebar/standing/index.jsx'],
+    livescore_soccer_category_standing: ['./www/sources/js/pages/livescore/soccer/sidebar/category-standing/index.jsx']
 };
 
 module.exports = {

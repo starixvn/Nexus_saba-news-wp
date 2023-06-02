@@ -21,6 +21,9 @@
                 <h3>@ViewResources.UnsubscribeSuccessfully</h3>
             </div>
         </div>
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
+        <div class="block block-extension">
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
+        </div>
+        
     </div>
 </section>

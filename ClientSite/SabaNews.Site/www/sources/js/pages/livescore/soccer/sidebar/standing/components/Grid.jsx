@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
-import GridItem from './GridItem';
+import StandingGrid from '../../standing-grid/Index';
 import MobileGrid from './MobileGrid';
 
 export default class Grid extends PureComponent {
@@ -56,6 +56,7 @@ export default class Grid extends PureComponent {
         if (!currentLeagueStanding) {
             return null;
         }
+        console.log(currentLeagueStanding);
         return (
             <div>
                 <div className="block__title" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}> <h2><a>Bảng xếp hạng</a></h2> </div>
@@ -77,7 +78,7 @@ export default class Grid extends PureComponent {
                                 </select>
                             </div>
                         </div>
-                        <GridItem leagueStanding={currentLeagueStanding} />
+                        <StandingGrid leagueStanding={currentLeagueStanding} />
                     </div>
                 </div>
                 <div className="view-more-block" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}>

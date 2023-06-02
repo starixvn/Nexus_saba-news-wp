@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Table from './table/Index';
-import Item from './Item';
+import MultipleGroupStanding from './MultipleGroupStanding';
 
-export default class GridItem extends PureComponent {
+export default class StandingGrid extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -77,7 +77,7 @@ export default class GridItem extends PureComponent {
                     <Table standings={lastStanding.childs} />
                 }
                 {
-                    lastStanding.childs.length > 1 && <Item standings={lastStanding.childs} />
+                    lastStanding.childs.length > 1 && <MultipleGroupStanding standings={lastStanding.childs} />
                 }
             </>
         );

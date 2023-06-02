@@ -3,7 +3,7 @@ import TableHead from './table/Head';
 import TableBody from './table/Body';
 
 const showItem = 6;
-export default class GridItem extends PureComponent {
+export default class MultipleGroupStanding extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

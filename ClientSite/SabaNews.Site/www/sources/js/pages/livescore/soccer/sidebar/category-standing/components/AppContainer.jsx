@@ -2,34 +2,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Grid from './Grid';
+import StandingGrid from '../../standing-grid/Index';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
-        this.props.getStandings();
+        this.props.getStanding();
     }
     render() {
-        const { standings } = this.props;
+        const { standing, league } = this.props;
         return (
-            <>
-                <div className="livescore-home livescore-standing">
-                    {
-                        standings !== null && standings.length > 0 &&
-                        <Grid standings={standings} />
-                    }
-                </div>
-            </>
+            <div className="livescore-home livescore-standing">
+                {
+                    standing != null &&
+                    <StandingGrid leagueStanding={{league, standing}} />
+                }
+            </div>
         );
     }
 }
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { standings } = state;
-    return { standings };
+    const { standing, league } = state;
+    return { standing, league };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
