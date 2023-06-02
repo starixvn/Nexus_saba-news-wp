@@ -3,6 +3,7 @@
 @model SabaNews.Models.Categories.CateLivescoreManageViewModel;
 @using System.Linq;
 @using SabaNews.Models.Categories;
+@using SabaNews.Models
 
 @using static SabaNews.Site.Extensions.LivescoreHelper
 @{
@@ -44,43 +45,14 @@
                         @{
                             var football = Model.Menus.FirstOrDefault(item => item.CateSlug == Constants.FootballSlug);
                             var count = 0;
+                            renderRow(football, 0);
                             foreach (var menu in Model.Menus.Where(item => item.ParentId == football.PostId))
                             {
-                                var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
                                 count++;
-                                <tr  data-id=@menu.CateId>
-                                    <td class="text-center">@count</td>
-                                    <td class="text-left">@menu.MenuTitle</td>
-                                    <td class="text-center">
-                                        <select class="form-control input-custom league-select" style="width:100%">
-                                        <option value="0">-------</option>
-                                            @foreach (var item in Model.Leagues)
-                                            {
-                                                <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
-                                                    @(item.LeagueId == leagueId ? "selected" : "")>@GetLeagueName(item)</option>
-                                            }
-                                        </select>
-                                    </td>
-                                    <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>
-                                </tr>
+                                renderRow(menu, count);
                                 @foreach (var subMenu in Model.Menus.Where(item => item.ParentId == menu.PostId))
                                 {
-                                    (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), subMenu.CateId);
-                                    <tr  data-id=@subMenu.CateId>
-                                        <td class="text-center"></td>
-                                        <td class="text-center">@subMenu.MenuTitle</td>
-                                        <td class="text-center">
-                                            <select class="form-control input-custom league-select" style="width:100%">
-                                                <option value="0">-------</option>
-                                                @foreach (var item in Model.Leagues)
-                                                {
-                                                    <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
-                                                        @(item.LeagueId == leagueId ? "selected" : "")>@GetLeagueName(item)</option>
-                                                }
-                                            </select>
-                                        </td>
-                                        <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>
-                                    </tr>
+                                    renderRow(subMenu, 0);
                                 }
                             }
                         }
@@ -125,6 +97,34 @@
             }
         }
         return (league, leagueId, display);
+    }
+
+    void renderRow(Menu menu, int count)
+    {
+        var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
+        var isFoolball = menu.CateSlug == Constants.FootballSlug;
+        <tr  data-id=@menu.CateId>
+            @if(isFoolball)
+            {
+                <td class="text-left" colspan="2">@menu.MenuTitle</td>
+            }
+            else
+            {
+                <td class="text-center">@(count != 0 ? count : "" )</td>
+                <td class="text-left">@menu.MenuTitle</td>
+            }
+            <td class="text-center">
+                <select class="form-control input-custom league-select" style="width:100%">
+                <option value="0">-------</option>
+                    @foreach (var item in Model.Leagues)
+                    {
+                        <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
+                            @(item.LeagueId == leagueId ? "selected" : "")>@GetLeagueName(item)</option>
+                    }
+                </select>
+            </td>
+            <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>
+        </tr>
     }
 }
 @section Scripts {

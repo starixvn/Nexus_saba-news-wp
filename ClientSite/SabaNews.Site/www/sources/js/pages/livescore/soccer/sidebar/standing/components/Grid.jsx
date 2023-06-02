@@ -56,7 +56,6 @@ export default class Grid extends PureComponent {
         if (!currentLeagueStanding) {
             return null;
         }
-        console.log(currentLeagueStanding);
         return (
             <div>
                 <div className="block__title" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}> <h2><a>Bảng xếp hạng</a></h2> </div>
