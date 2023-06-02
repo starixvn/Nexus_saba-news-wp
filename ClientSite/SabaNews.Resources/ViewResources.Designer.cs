@@ -734,6 +734,15 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("CustomerRole", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Category Management.
+        /// </summary>
+        public static string CategoryManagement {
+            get {
+                return ResourceManager.GetString("CategoryManagement", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Delete.

@@ -64,6 +64,10 @@
         <Setting Key="rss_get_recent" SpName="rss_get_recent" DbName="sabasports" Plain="0" />
         <Setting Key="get_posts_by_cate_slug_paging" SpName="get_posts_by_cate_slug_paging" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="Category">
+        <Setting Key="cate_get_livescore" SpName="cate_get_livescore" DbName="sabasports" Plain="0" />
+        <Setting Key="cate_update_livescore" SpName="cate_update_livescore" DbName="sabasports" Plain="0" />
+    </Function>
     <Function Name="Comment">
         <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">
             <Mapping DataField="comment_ID" ObjectProperty="CommentID" class="Comment" />

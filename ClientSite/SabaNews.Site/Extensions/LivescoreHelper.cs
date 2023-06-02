@@ -49,6 +49,13 @@
             return leagueName;
         }
 
+        public static string GetLeagueName(string leagueEN, string leagueFullEN, string leagueVN)
+        {
+            string leagueName = string.IsNullOrEmpty(leagueEN) ? leagueEN : leagueFullEN;
+            leagueName = !string.IsNullOrEmpty(leagueVN) ? leagueVN : leagueName;
+            return leagueName;
+        }
+
 
         public static List<StandingGroupModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
         {

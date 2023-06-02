@@ -1,0 +1,133 @@
+@using SabaNews.Resources
+@using SabaNews.Core.Constants;
+@model SabaNews.Models.Categories.CateLivescoreManageViewModel;
+@using System.Linq;
+@using SabaNews.Models.Categories;
+
+@using static SabaNews.Site.Extensions.LivescoreHelper
+@{
+    Layout = "_AdminLayout";
+}
+
+@section TopHeader{
+    @ViewResources.CategoryManagement
+}
+
+@section Title{
+    @ViewResources.CategoryManagement
+}
+@section ActiveMenu {
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.CategoryManagement" />
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/styles/pages/admin/category/index.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/styles/pages/jquery-ui.css" asp-append-version="true">
+}
+
+<section class="page-content">
+
+    <div class="content">
+        <div class="data-grid" id="data-grid">
+            <div class="table-admin">
+                <table class="data-grid">
+                    <thead>
+                        <tr>
+                            <th width="2%">#</th>
+                            <th width="12%">Category</th>
+                            <th width="12%">League</th>
+                            <th width="12%">Display</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var football = Model.Menus.FirstOrDefault(item => item.CateSlug == Constants.FootballSlug);
+                            var count = 0;
+                            foreach (var menu in Model.Menus.Where(item => item.ParentId == football.PostId))
+                            {
+                                var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
+                                count++;
+                                <tr  data-id=@menu.CateId>
+                                    <td class="text-center">@count</td>
+                                    <td class="text-left">@menu.MenuTitle</td>
+                                    <td class="text-center">
+                                        <select class="form-control input-custom league-select" style="width:100%">
+                                        <option value="0">-------</option>
+                                            @foreach (var item in Model.Leagues)
+                                            {
+                                                <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
+                                                    @(item.LeagueId == leagueId ? "selected" : "")>@GetLeagueName(item)</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>
+                                </tr>
+                                @foreach (var subMenu in Model.Menus.Where(item => item.ParentId == menu.PostId))
+                                {
+                                    (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), subMenu.CateId);
+                                    <tr  data-id=@subMenu.CateId>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">@subMenu.MenuTitle</td>
+                                        <td class="text-center">
+                                            <select class="form-control input-custom league-select" style="width:100%">
+                                                <option value="0">-------</option>
+                                                @foreach (var item in Model.Leagues)
+                                                {
+                                                    <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
+                                                        @(item.LeagueId == leagueId ? "selected" : "")>@GetLeagueName(item)</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="NoticeModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title title-success">
+                    <h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
+
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal"
+                        aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@functions {
+    private (string, long, bool) GetLeagueData(List<CateLivescore> cates, long cateId)
+    {
+        var cate = cates.FirstOrDefault(item => item.CateId == cateId);
+        var display = false;
+        var league = "";
+        long leagueId = 0;
+        if (cate != null)
+        {
+            display = cate.Status == CategoryKey.ShowLivescore;
+            leagueId = cate.LeagueId;
+            if(cate.LeagueId != 0)
+            {
+                league = GetLeagueName(cate.LeagueNameEN, cate.LeagueFullNameEN, cate.LeagueNameVN);
+            }
+        }
+        return (league, leagueId, display);
+    }
+}
+@section Scripts {
+    <script src="~/js/select2.min.js" asp-append-version="true"></script>
+    <script src="~/js/admin/category/index.js" asp-append-version="true"></script>
+}

@@ -68,7 +68,7 @@
             viewModel.Header.ActiveCategory = slugs.Slug1 ?? slug;
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
-            var view = viewModel.IsVideo ? Constants.VideoView : Constants.BlogView;
+            var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
             return View(view, viewModel);
         }
 

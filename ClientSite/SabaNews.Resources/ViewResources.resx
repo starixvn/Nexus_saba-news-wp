@@ -1101,4 +1101,7 @@
   <data name="VideoHome" xml:space="preserve">
     <value>Video bàn thắng</value>
   </data>
+  <data name="CategoryManagement" xml:space="preserve">
+    <value>Category Management</value>
+  </data>
 </root>

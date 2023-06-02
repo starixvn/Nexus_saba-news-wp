@@ -23,5 +23,8 @@ namespace SabaNews.Core.Constants
         public const string Prefix = "category-";
 
         public const string Suffix = "-sabavn";
+
+        public const int ShowLivescore = 1;
+        public const int HideLivescore = 0;
     }
 }
