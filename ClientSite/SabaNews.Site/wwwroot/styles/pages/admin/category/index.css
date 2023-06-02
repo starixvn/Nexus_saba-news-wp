@@ -117,28 +117,17 @@ body {
 
 .table-admin {
   margin-top: 0;
-  max-width: 70% !important;
 }
 .table-admin .icon-delete-admin:hover {
   cursor: pointer;
 }
-.table-admin .icon-sort-admin:hover {
-  cursor: pointer;
+.table-admin .league-level1 {
+  background: #ffe5de;
+  font-weight: bold;
 }
-.table-admin .icon-delete-admin, .table-admin .icon-edit-admin {
-  font-size: 2rem;
-}
-.table-admin .icon-edit-admin:hover {
-  cursor: pointer;
-}
-.table-admin .main-pagination .items-pagination {
-  margin-top: 1rem;
-}
-.table-admin td img {
-  width: 3rem;
-  height: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+.table-admin .league-level2 {
+  background: #d5e6ff;
+  font-weight: bold;
 }
 
 .error-input {

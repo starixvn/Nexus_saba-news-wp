@@ -36,9 +36,9 @@
                     <thead>
                         <tr>
                             <th width="2%">#</th>
-                            <th width="12%">Category</th>
-                            <th width="12%">League</th>
-                            <th width="12%">Display</th>
+                            <th width="15%">Category</th>
+                            <th width="15%">League</th>
+                            <th width="6%">Display</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,7 +103,7 @@
     {
         var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
         var isFoolball = menu.CateSlug == Constants.FootballSlug;
-        <tr  data-id=@menu.CateId>
+        <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"")" data-id=@menu.CateId>
             @if(isFoolball)
             {
                 <td class="text-left" colspan="2">@menu.MenuTitle</td>
