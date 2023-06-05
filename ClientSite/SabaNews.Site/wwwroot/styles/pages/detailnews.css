@@ -3390,7 +3390,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -4572,4 +4571,4 @@ img {
     display: block;
     width: 100%;
   }
-}/*# sourceMappingURL=detailnews.css.map */
+}

@@ -3049,7 +3049,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -3459,4 +3458,4 @@ body {
   width: 100%;
   height: 100%;
   border: none;
-}/*# sourceMappingURL=detailvideo.css.map */
+}

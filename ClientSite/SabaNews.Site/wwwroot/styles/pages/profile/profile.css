@@ -2579,7 +2579,6 @@ button {
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -3380,4 +3379,4 @@ button {
   text-align: center;
   font-weight: normal;
   font-size: 1.6rem;
-}/*# sourceMappingURL=profile.css.map */
+}

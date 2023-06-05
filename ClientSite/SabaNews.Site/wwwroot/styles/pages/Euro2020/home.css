@@ -2703,7 +2703,6 @@ button {
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -3843,4 +3842,4 @@ button {
 
 .wapper {
   height: auto;
-}/*# sourceMappingURL=home.css.map */
+}

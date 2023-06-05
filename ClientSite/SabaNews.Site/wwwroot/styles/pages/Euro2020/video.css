@@ -2609,7 +2609,6 @@ button {
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -3070,4 +3069,4 @@ button {
 }
 .wapper.active-fixed .button-mobile {
   z-index: 10004;
-}/*# sourceMappingURL=video.css.map */
+}

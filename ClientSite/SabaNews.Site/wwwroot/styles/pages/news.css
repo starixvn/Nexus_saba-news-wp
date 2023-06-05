@@ -2959,7 +2959,6 @@ button {
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -3762,4 +3761,4 @@ button {
   font-weight: 700;
   color: #ef4136;
   text-decoration: none;
-}/*# sourceMappingURL=news.css.map */
+}

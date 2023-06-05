@@ -2941,7 +2941,6 @@ button {
 @media (max-width: 767px) {
   .block-extension {
     padding: 0;
-    padding-top: 2.4rem;
   }
 }
 
@@ -3506,4 +3505,4 @@ button {
 }
 .title-new-page::after {
   display: none;
-}/*# sourceMappingURL=video.css.map */
+}
