@@ -30,7 +30,8 @@ const { actions, reducer } = fixtureCategorySlice;
 
 export const {
     setMatches,
-    setLeague
+    setLeague,
+    setLiveMatches
 } = actions;
 
 export default reducer;

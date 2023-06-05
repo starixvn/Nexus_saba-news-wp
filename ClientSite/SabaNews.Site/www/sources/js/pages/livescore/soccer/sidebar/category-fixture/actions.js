@@ -3,7 +3,8 @@ import DataService from '@jsroot/common/dataService';
 
 import {
     setMatches,
-    setLeague
+    setLeague,
+    setLiveMatches
 } from './fixtureCategorySlice';
 
 const getMatches= () => async dispatch => {
@@ -11,7 +12,7 @@ const getMatches= () => async dispatch => {
         leagueId: window.leagueId,
         seasonId: window.seasonId
     }
-    const url = Site.resolveClientUrl('soccer/GetMatchesBySeason');
+    const url = Site.resolveClientUrl('soccer/getMatchesBySeason');
     await DataService.postDataAsync(url, param).then(response => {
         const { league, matches } = response.data;
         dispatch(setMatches(matches));
@@ -22,5 +23,6 @@ const getMatches= () => async dispatch => {
 export const ActionCreators = {
     setMatches,
     setLeague,
+    setLiveMatches,
     getMatches
 };

@@ -27,9 +27,6 @@ export class AppContainer extends Component {
 
     render() {
         const { matches, league } = this.props;
-        if( matches === null || league === null) {
-            return null;
-        }
         return (
             <>
                 <SignalR />
@@ -39,7 +36,10 @@ export class AppContainer extends Component {
                         matches === null && <SkeletonGrid />
                     }
                     <div className="livescore-soccer-main">
-                        <MatchGrid league={league} matches={matches} isShowEmptyFixture={true} />
+                        {
+                            matches !== null && league !== null &&
+                            <MatchGrid league={league} matches={matches} isShowEmptyFixture={true} />
+                        }
                     </div>
                     <div className="view-more-block" onClick={this.handleClickFixture}>
                         <a>Xem Thêm</a>
