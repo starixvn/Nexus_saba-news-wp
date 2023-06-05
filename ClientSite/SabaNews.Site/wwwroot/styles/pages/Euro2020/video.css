@@ -2612,6 +2612,22 @@ button {
   }
 }
 
+.video-sidebar {
+  margin-top: 2rem;
+}
+.video-sidebar .card-horizontal {
+  grid-template-columns: 13rem 1fr;
+}
+.video-sidebar .card-horizontal__image {
+  border-radius: 3px !important;
+  height: 9.4rem;
+}
+.video-sidebar .card-horizontal__content .title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.6rem;
+}
+
 .flag-italia {
   display: inline-block;
   width: 32px;

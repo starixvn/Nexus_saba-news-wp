@@ -68,3 +68,21 @@
         padding: 0;
     }
 }
+
+.video-sidebar{
+    margin-top: 2rem;
+    .card-horizontal{
+        grid-template-columns: 13rem 1fr;
+        &__image{
+            border-radius: 3px !important;
+            height: 9.4rem
+        }
+        &__content{
+            .title{
+                font-weight: 600;
+                font-size: 1.4rem;
+                line-height: 2.6rem;
+            }
+        }
+    }
+}
