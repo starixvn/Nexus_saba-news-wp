@@ -182,9 +182,7 @@ body {
 .table-custom-header {
   display: flex;
   height: 4rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   align-items: center;
 }
 .table-custom-header .table-custom-cell {
@@ -296,24 +294,24 @@ body {
   }
 }
 
-#standing-homepage {
+.sidebar-standing {
   margin-top: 2.2rem;
 }
 @media (max-width: 767px) {
-  #standing-homepage {
-    margin-top: 3rem;
+  .sidebar-standing {
+    margin-top: 2rem;
   }
 }
-#standing-homepage .livescore-soccer-main {
+.sidebar-standing .livescore-soccer-main {
   overflow: unset;
   max-height: 100%;
 }
-#standing-homepage .live-score-nav {
+.sidebar-standing .live-score-nav {
   margin: 1rem 1.2rem;
   display: flex;
   align-items: center;
 }
-#standing-homepage .live-score-nav .btn-btn-standing {
+.sidebar-standing .live-score-nav .btn-btn-standing {
   width: 3rem;
   height: 3rem;
   background: #E4E4E4;
@@ -323,23 +321,23 @@ body {
   justify-content: center;
   cursor: pointer;
 }
-#standing-homepage .live-score-nav .btn-btn-standing:hover {
+.sidebar-standing .live-score-nav .btn-btn-standing:hover {
   border: 1px solid #A7A7A7;
 }
-#standing-homepage .live-score-nav .btn-btn-standing i {
+.sidebar-standing .live-score-nav .btn-btn-standing i {
   font-size: 2.4rem;
 }
-#standing-homepage .live-score-nav .btn-btn-standing.disabled {
+.sidebar-standing .live-score-nav .btn-btn-standing.disabled {
   background: #EDEDED;
   cursor: no-drop;
 }
-#standing-homepage .live-score-nav .btn-btn-standing.disabled i::before {
+.sidebar-standing .live-score-nav .btn-btn-standing.disabled i::before {
   color: #A7A7A7;
 }
-#standing-homepage .live-score-nav .btn-btn-standing.disabled:hover {
+.sidebar-standing .live-score-nav .btn-btn-standing.disabled:hover {
   border: none;
 }
-#standing-homepage .live-score-nav li {
+.sidebar-standing .live-score-nav li {
   background: #CFD4DC;
   color: #333;
   font-weight: 600;
@@ -354,10 +352,10 @@ body {
   height: 3rem;
   cursor: pointer;
 }
-#standing-homepage .live-score-nav li:last-child {
+.sidebar-standing .live-score-nav li:last-child {
   margin-right: 0;
 }
-#standing-homepage .live-score-nav li.active {
+.sidebar-standing .live-score-nav li.active {
   background: #3B3A3C;
   color: #fff;
 }
@@ -552,4 +550,4 @@ body {
 .table-custom-cell.cell-participant {
   flex: 1 0 12.5rem !important;
   width: 12.5rem !important;
-}/*# sourceMappingURL=category-standing.css.map */
+}
