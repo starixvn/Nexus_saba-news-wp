@@ -39,6 +39,27 @@ body {
     .league-level2{
         background: #d5e6ff;
         font-weight: bold;
+
+        .league-name{
+            position: relative;
+
+            &::after{
+                position: absolute;
+                content: "";
+                top: 2rem;
+                right: 1rem;
+                border-style: solid;
+                border-color: #888 transparent transparent transparent;
+                border-width: 6px 6px 0 6px;
+            }
+
+            &.active{
+                &::after{
+                    border-width: 0 6px 6px 6px;
+                    border-color: transparent transparent #888 transparent;
+                }
+            }
+        }
     }
 }
 

@@ -112,7 +112,7 @@
             else
             {
                 <td class="text-center">@(count != 0 ? count : "" )</td>
-                <td class="text-left">@menu.MenuTitle</td>
+                <td class="text-left @(count != 0 ? "league-name":"")">@menu.MenuTitle</td>
             }
             <td class="text-center">
                 <select class="form-control input-custom league-select" style="width:100%">
