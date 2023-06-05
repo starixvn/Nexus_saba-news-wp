@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import StandingGrid from '../../standing-grid/Index';
+import Grid from './Grid';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -14,10 +14,10 @@ export class AppContainer extends Component {
     render() {
         const { standing, league } = this.props;
         return (
-            <div className="livescore-home livescore-standing">
+            <div className="livescore-home livescore-standing sidebar-standing">
                 {
-                    standing != null &&
-                    <StandingGrid leagueStanding={{league, standing}} />
+                    standing !== null && league !== null  &&
+                    <Grid league={league} standing={standing} />
                 }
             </div>
         );

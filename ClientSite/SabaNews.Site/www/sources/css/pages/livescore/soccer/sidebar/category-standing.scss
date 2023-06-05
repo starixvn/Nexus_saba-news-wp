@@ -4,7 +4,7 @@
 @import "../../../../base/base";
 @import "../../../../components/container";
 @import '../../../../components/table-custom';
-#standing-homepage{
+.sidebar-standing{
     margin-top: 2.2rem;
     @include Mobile{
         margin-top: 3rem;
