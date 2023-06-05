@@ -104,7 +104,7 @@
         var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
         var isFoolball = menu.CateSlug == Constants.FootballSlug;
         var parent = Model.Menus.FirstOrDefault(item => item.PostId == menu.ParentId);
-        <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"") @(isParent ? "" : "parent-" + parent?.CateId)"  data-id=@menu.CateId>
+        <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"") @(isParent ? "" : "child parent-" + parent?.CateId)"  data-id=@menu.CateId>
             @if(isFoolball)
             {
                 <td class="text-left" colspan="2">@menu.MenuTitle</td>

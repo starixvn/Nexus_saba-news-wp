@@ -3,7 +3,6 @@ var categoryLivescore = (function ($) {
     $('.league-select').select2();
 
     function UpdateInfo(leagueId, seasonId, status, cateId) {
-        console.log(leagueId, seasonId, status, cateId);
         $.ajax({
             type: 'POST',
             url: '/Admin/CategoryManagement/UpdateCate',
@@ -35,10 +34,10 @@ var categoryLivescore = (function ($) {
             var cateId = $(this).parent().parent().data('id');
             UpdateInfo(leagueId, seasonId, status, cateId);
         });
-
-        $('.league-level2').on('click', function() {
-            console.log(1);
-            var id = $(this).data('id');
+        $('.child').addClass('hide');
+        $('.league-name').on('click', function() {
+            var id = $(this).parent().data('id');
+            $(this).toggleClass('active');
             $('.parent-'+ id).toggleClass('hide');
         });
     }

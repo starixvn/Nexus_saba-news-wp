@@ -103,7 +103,7 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+            Assert.Equal(Constants.CategoryView, viewResult.ViewName);
         }
 
         [Fact]
@@ -129,7 +129,7 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+            Assert.Equal(Constants.CategoryView, viewResult.ViewName);
             Assert.Equal(slugs.Slug1, viewModel.Slugs.Slug1);
             Assert.Equal(slugs.Slug2, viewModel.Slugs.Slug2);
             Assert.Equal(slugs.Slug3, viewModel.Slugs.Slug3);
@@ -675,6 +675,22 @@
             var redirectResult = Assert.IsType<RedirectToActionResult>(result);
             Assert.Equal("Home", redirectResult.ControllerName);
             Assert.Equal("Tag", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task GetVideo_WhenCalled_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            dataControlService.GetVideo().Returns(expected);
+            // Act
+            var result = await controller.GetVideo();
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
         }
 
         #region Helpers
