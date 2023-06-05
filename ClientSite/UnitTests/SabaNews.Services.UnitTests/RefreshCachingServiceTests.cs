@@ -431,6 +431,52 @@
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
         }
 
+        [Fact]
+        public async Task UpdateVideoCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<IEnumerable<Post>>();
+            var slug = "slug";
+            var start = 0;
+            var end = 10;
+
+            postService.GetPostsBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => start = x) , Arg.Do<int>(x => end = x)).Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateVideoCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateVideoCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+            var slug = "slug";
+            var start = 0;
+            var end = 10;
+
+            postService.When(x => x.GetPostsBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => start = x) , Arg.Do<int>(x => end = x))).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateVideoCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
 
         #region Helpers
         private RefreshCachingService GetRefreshCachingService()

@@ -10,7 +10,7 @@ namespace SabaNews.Criteria.Category
 
         public int Status {get;set;}
 
-        public long ActorId { get; set;} = 0;
+        public long ActorId { get; set;}
 
         public override string GetSettingKey() => "cate_update_livescore";
 

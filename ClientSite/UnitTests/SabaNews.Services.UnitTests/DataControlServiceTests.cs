@@ -539,6 +539,58 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task GetVideo_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetVideo();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetVideo_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var start = 0;
+            var end = 10;
+            IEnumerable<Post> expectedFromCache = null;
+            var expected = fixture.Create<IEnumerable<Post>>();
+            cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            postService.GetPostsBySlugAsync(Arg.Do<string>(x => key = x), Arg.Do<int>(x => start = x), Arg.Do<int>(x => end = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetVideo();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Post>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetVideo_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var start = 0;
+            var end = 10;
+            var expected = fixture.Create<IEnumerable<Post>>();
+            postService.GetPostsBySlugAsync(Arg.Do<string>(x => key = x), Arg.Do<int>(x => start = x), Arg.Do<int>(x => end = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetVideo();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
 
 
         #region Helpers
