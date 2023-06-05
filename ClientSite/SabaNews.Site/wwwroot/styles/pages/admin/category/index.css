@@ -133,6 +133,22 @@ body {
   background: #d5e6ff;
   font-weight: bold;
 }
+.table-admin .league-level2 .league-name {
+  position: relative;
+}
+.table-admin .league-level2 .league-name::after {
+  position: absolute;
+  content: "";
+  top: 2rem;
+  right: 1rem;
+  border-style: solid;
+  border-color: #888 transparent transparent transparent;
+  border-width: 6px 6px 0 6px;
+}
+.table-admin .league-level2 .league-name.active::after {
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #888 transparent;
+}
 
 .error-input {
   margin-top: 0.7rem !important;

@@ -2469,6 +2469,8 @@ button {
   margin-top: 2rem;
 }
 .video-sidebar .card-horizontal {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   grid-template-columns: 13rem 1fr;
 }
 .video-sidebar .card-horizontal__image {

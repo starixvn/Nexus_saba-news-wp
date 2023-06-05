@@ -72,6 +72,8 @@
 .video-sidebar{
     margin-top: 2rem;
     .card-horizontal{
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
         grid-template-columns: 13rem 1fr;
         &__image{
             border-radius: 3px !important;
