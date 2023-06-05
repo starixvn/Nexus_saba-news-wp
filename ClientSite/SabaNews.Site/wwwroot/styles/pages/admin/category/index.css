@@ -101,6 +101,10 @@ body {
   padding: 0;
 }
 
+.hide {
+  display: none;
+}
+
 .input-custom {
   height: 4rem;
   background: #FFFFFF;

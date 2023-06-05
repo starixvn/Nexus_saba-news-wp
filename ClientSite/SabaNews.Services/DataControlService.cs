@@ -298,5 +298,29 @@
 
             return await fetchDataService.GetHomepageStanding();
         }
+
+        public async Task<IEnumerable<Post>> GetVideo()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Post>>(CacheKey.Video);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
+
+                    result = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+                    await cacheWrapperService.SetAsync(CacheKey.Video, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheVideoTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+        }
     }
 }

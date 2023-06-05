@@ -29,7 +29,7 @@
 
 <section class="page-content">
 
-    <div class="content">
+<div class="content">
         <div class="data-grid" id="data-grid">
             <div class="table-admin">
                 <table class="data-grid">
@@ -45,11 +45,11 @@
                         @{
                             var football = Model.Menus.FirstOrDefault(item => item.CateSlug == Constants.FootballSlug);
                             var count = 0;
-                            renderRow(football, 0);
+                            renderRow(football, 0, true);
                             foreach (var menu in Model.Menus.Where(item => item.ParentId == football.PostId))
                             {
                                 count++;
-                                renderRow(menu, count);
+                                renderRow(menu, count, true);
                                 @foreach (var subMenu in Model.Menus.Where(item => item.ParentId == menu.PostId))
                                 {
                                     renderRow(subMenu, 0);
@@ -99,11 +99,12 @@
         return (league, leagueId, display);
     }
 
-    void renderRow(Menu menu, int count)
+    void renderRow(Menu menu, int count, bool isParent = false)
     {
         var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
         var isFoolball = menu.CateSlug == Constants.FootballSlug;
-        <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"")" data-id=@menu.CateId>
+        var parent = Model.Menus.FirstOrDefault(item => item.PostId == menu.ParentId);
+        <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"") @(isParent ? "" : "parent-" + parent?.CateId)"  data-id=@menu.CateId>
             @if(isFoolball)
             {
                 <td class="text-left" colspan="2">@menu.MenuTitle</td>

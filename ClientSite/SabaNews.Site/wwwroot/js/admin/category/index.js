@@ -33,11 +33,13 @@ var categoryLivescore = (function ($) {
             var seasonId = league.find('option:selected').data('season');;
             var status = $(this).is(":checked")? 1 : 0;
             var cateId = $(this).parent().parent().data('id');
-            // if(status == 1 && leagueId == 0) {
-            //     GetErrorPopup('#NoticeModal', "Please select league first!");
-            //     return false;
-            // }
             UpdateInfo(leagueId, seasonId, status, cateId);
+        });
+
+        $('.league-level2').on('click', function() {
+            console.log(1);
+            var id = $(this).data('id');
+            $('.parent-'+ id).toggleClass('hide');
         });
     }
 

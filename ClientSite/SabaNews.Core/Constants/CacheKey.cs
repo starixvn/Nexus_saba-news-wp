@@ -26,5 +26,6 @@
         public const string GetPostDetailContent = "GetPostDetailContent";
         public const string HomePageFixture = "HomePageFixture";
         public const string HomePageStanding = "HomePageStanding";
+        public const string Video = "VideoCache";
     }
 }

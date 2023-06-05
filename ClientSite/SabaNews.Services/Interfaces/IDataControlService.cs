@@ -37,5 +37,7 @@
         Task<List<MatchLeagueModel>> GetHomepageFixtureData();
 
         Task<List<StandingLeagueModel>> GetHomepageStandingData();
+
+        Task<IEnumerable<Post>> GetVideo();
     }
 }

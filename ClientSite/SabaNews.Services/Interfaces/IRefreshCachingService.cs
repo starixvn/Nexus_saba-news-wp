@@ -23,5 +23,6 @@
         Task UpdateHomepageFixtureCaching();
 
         Task UpdateHomepageStandingCaching();
+        Task UpdateVideoCaching();
     }
 }

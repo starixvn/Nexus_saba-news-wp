@@ -70,8 +70,10 @@
         $(window).on("scroll", function () {
             const scrollHeight = $(document).height();
             const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
-            const mobileScroll = windowWidth > 768 ? 0 : $('.sidebar-posts').innerHeight();
-            const isBottom = scrollHeight - $('.footer').innerHeight() - mobileScroll < scrollPos;
+            const bottomHeight = windowWidth > 768 
+                            ? $('#category-grid').innerHeight() + $('.header').innerHeight() +  100
+                            : scrollHeight - $('.block-extension').innerHeight() -  $('.footer').innerHeight();
+            const isBottom = bottomHeight < scrollPos;
             if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
                 page++;
                 GetDataGrid(page);
@@ -89,10 +91,25 @@
         });
     }
 
+    function GetDataSidebar() {
+        if($('.video-sidebar').length === 0) {
+            return false;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/GetVideo',
+            success: function(res) {
+                $('.video-sidebar').html(res);
+            }
+        })
+    }
+
 
 
     function init() {
         InfiniteScroll();
+        GetDataSidebar();
     }
 
     return {

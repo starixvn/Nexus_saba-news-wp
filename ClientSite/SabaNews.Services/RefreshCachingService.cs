@@ -292,5 +292,30 @@
 
             logService.WriteLogFileInfo(string.Format("Done UpdateHomepageStandingCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
+
+        public async Task UpdateVideoCaching()
+        {
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateVideoCaching");
+
+            try
+            {
+                var result = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+                logService.WriteLogFileInfo(string.Format("After GetVideoData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheWrapperService.SetAsync(CacheKey.Video,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheVideoTimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateVideoCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+        }
     }
 }

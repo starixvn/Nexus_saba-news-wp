@@ -364,5 +364,14 @@
             var fixture = await dataControlService.GetHomepageStandingData();
             return Json(fixture);
         }
+
+        [HttpPost]
+        [Route("api/GetVideo")]
+        public async Task<IActionResult> GetVideo()
+        {
+            var video = await dataControlService.GetVideo();
+            video = video.Skip(Constants.FromFirstItem).Take(Constants.GetSixItems).ToList();
+            return PartialView("_VideoSidebar", video);
+        }
     }
 }
