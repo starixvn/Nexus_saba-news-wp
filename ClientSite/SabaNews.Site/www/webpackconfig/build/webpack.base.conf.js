@@ -31,6 +31,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/homepage/fixture`]: pathConfig.scriptPaths.livescore_soccer_homepage_fixture,
             [`${jsPath}/pages/livescore/soccer/homepage/standing`]: pathConfig.scriptPaths.livescore_soccer_homepage_standing,
             [`${jsPath}/pages/livescore/soccer/category/standing`]: pathConfig.scriptPaths.livescore_soccer_category_standing,
+            [`${jsPath}/pages/livescore/soccer/category/fixture`]: pathConfig.scriptPaths.livescore_soccer_category_fixture,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
@@ -49,6 +50,7 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/homepage/fixture`]: pathConfig.cssPaths.livescore_soccer_homepage_fixture,
             [`${cssPath}/pages/livescore/soccer/homepage/standing`]: pathConfig.cssPaths.livescore_soccer_homepage_standing,
             [`${cssPath}/pages/livescore/soccer/category/standing`]: pathConfig.cssPaths.livescore_soccer_category_standing,
+            [`${cssPath}/pages/livescore/soccer/category/fixture`]: pathConfig.cssPaths.livescore_soccer_category_fixture,
 
         },
         output: {

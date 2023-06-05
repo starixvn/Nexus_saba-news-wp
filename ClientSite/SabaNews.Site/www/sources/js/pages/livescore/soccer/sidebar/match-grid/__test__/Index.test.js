@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Grid from '../Grid';
+import MatchGrid from '../Index';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import dayjs from 'dayjs';
 
-describe('Grid', () => {
+describe('MatchGrid', () => {
     const defaultProps = {
         league: null,
         matches: [],
@@ -20,7 +20,7 @@ describe('Grid', () => {
     describe('handleSelectedTab', () => {
         it('setState correctly when call function', () => {
             // Arrange
-            const container = shallow(<Grid {...defaultProps} />);
+            const container = shallow(<MatchGrid {...defaultProps} />);
             const instance = container.instance();
             instance.setState = jest.fn();
             // Act
@@ -46,7 +46,7 @@ describe('Grid', () => {
                     childs: []
                 }
             ]
-            const instance = shallow(<Grid {...defaultProps} />).instance();
+            const instance = shallow(<MatchGrid {...defaultProps} />).instance();
             // Act
             const result = instance.sortMatches(matches, true);
 
@@ -68,7 +68,7 @@ describe('Grid', () => {
                     childs: []
                 }
             ]
-            const instance = shallow(<Grid {...defaultProps} />).instance();
+            const instance = shallow(<MatchGrid {...defaultProps} />).instance();
             // Act
             const result = instance.sortMatches(matches, false);
 
@@ -93,7 +93,7 @@ describe('Grid', () => {
                 }
             ]
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
-            const instance = shallow(<Grid {...defaultProps} />).instance();
+            const instance = shallow(<MatchGrid {...defaultProps} />).instance();
             // Act
             const result = instance.filterPreMatches(matches);
 
@@ -126,7 +126,7 @@ describe('Grid', () => {
                 matches: matches,
                 league: {leagueId: 1, leagueNameVN: 'league name'}
             }
-            const instance = shallow(<Grid {...props} />).instance();
+            const instance = shallow(<MatchGrid {...props} />).instance();
             instance.state.selectedTab = 'fixture';
             instance.filterPreMatches  = jest.fn().mockReturnValue(matches);
             // Act
@@ -163,7 +163,7 @@ describe('Grid', () => {
                 matches: matches,
                 league: {leagueId: 1, leagueNameVN: 'league name'}
             }
-            const instance = shallow(<Grid {...props} />).instance();
+            const instance = shallow(<MatchGrid {...props} />).instance();
             instance.state.selectedTab = 'result';
             // Act
             const result = instance.getCurrentMatches(matches);
@@ -198,7 +198,7 @@ describe('Grid', () => {
                 matches: matches,
                 league: {leagueId: 1, leagueNameVN: 'league name'}
             }
-            const instance = shallow(<Grid {...props} />).instance();
+            const instance = shallow(<MatchGrid {...props} />).instance();
             instance.state.selectedTab = 'standing';
             // Act
             const result = instance.getCurrentMatches(matches);
@@ -230,7 +230,7 @@ describe('Grid', () => {
 
             window.open = jest.fn();
             const league = { leagueId: 12036, leagueNameVN: 'Euro', season: null};
-            const container = shallow(<Grid {...defaultProps} />);
+            const container = shallow(<MatchGrid {...defaultProps} />);
             const instance = container.instance();
             CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
             // Act
@@ -249,7 +249,7 @@ describe('Grid', () => {
             };
             window.open = jest.fn();
             const league = { leagueId: 12036, leagueNameVN: 'Euro', season: {seasonId: 123} };
-            const container = shallow(<Grid {...defaultProps} />);
+            const container = shallow(<MatchGrid {...defaultProps} />);
             const instance = container.instance();
             CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
 
@@ -264,7 +264,7 @@ describe('Grid', () => {
     describe('renders', () => {
         it('return null when matches is empty', () => {
             // Arrange
-            const container = shallow(<Grid {...defaultProps} />);
+            const container = shallow(<MatchGrid {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -300,7 +300,7 @@ describe('Grid', () => {
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
 
             // Act
-            const container = shallow(<Grid {...props} />);
+            const container = shallow(<MatchGrid {...props} />);
 
             // Assert
             expect(container).toEqual({});
@@ -332,7 +332,7 @@ describe('Grid', () => {
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
 
             // Act
-            const container = shallow(<Grid {...props} />);
+            const container = shallow(<MatchGrid {...props} />);
 
             // Assert
             container.find('.round-name').simulate('click', {ctrlKey: true});
@@ -365,7 +365,7 @@ describe('Grid', () => {
                 league: {leagueNameVN: 'league'}
             }
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
-            const container = shallow(<Grid {...props} />);
+            const container = shallow(<MatchGrid {...props} />);
             const instance = container.instance();
             instance.selectedTab = 'result';
             instance.getCurrentMatches = jest.fn().mockReturnValue(matches);

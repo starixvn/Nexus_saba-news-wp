@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import GridItem  from '../GridItem';
+import StandingGrid  from '../Index';
 
-describe('GridItem', () => {
+describe('StandingGrid', () => {
     const defaultProps = {
         leagueStanding: {standing:[{stage: 1, promotion: null}]}
     };
@@ -23,7 +23,7 @@ describe('GridItem', () => {
                 { groupName: 'A', teamId: 3, position: 2 }
             ];
 
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<StandingGrid {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -70,7 +70,7 @@ describe('GridItem', () => {
                 }
             ];
 
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<StandingGrid {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -144,7 +144,7 @@ describe('GridItem', () => {
             };
 
             // Act
-            const container = shallow(<GridItem {...props} />);
+            const container = shallow(<StandingGrid {...props} />);
 
             // Assert
             expect(toJson(container)).toMatchSnapshot();
@@ -171,7 +171,7 @@ describe('GridItem', () => {
             };
 
             // Act
-            const container = shallow(<GridItem {...props} />);
+            const container = shallow(<StandingGrid {...props} />);
 
             // Assert
             expect(toJson(container)).toMatchSnapshot();
@@ -194,7 +194,7 @@ describe('GridItem', () => {
             };
 
             // Act
-            const container = shallow(<GridItem {...props} />);
+            const container = shallow(<StandingGrid {...props} />);
 
             // Assert
             expect(toJson(container)).toMatchSnapshot();

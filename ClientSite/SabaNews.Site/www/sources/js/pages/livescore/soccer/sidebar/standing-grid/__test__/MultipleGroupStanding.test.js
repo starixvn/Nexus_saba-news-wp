@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Item  from '../Item';
+import MultipleGroupStanding  from '../MultipleGroupStanding';
 
 describe('GridItem', () => {
     const defaultProps = {
@@ -19,7 +19,7 @@ describe('GridItem', () => {
                 standings:[{key: 1, stage: 2, promotion: null}]
             }
 
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<MultipleGroupStanding {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -33,7 +33,7 @@ describe('GridItem', () => {
     describe('handleSelectedGroup', () => {
         it('setState correctly when call function', () => {
             // Arrange
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<MultipleGroupStanding {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -48,7 +48,7 @@ describe('GridItem', () => {
     describe('handleNextTab', () => {
         it('setState correctly when totalGroup < 6', () => {
             // Arrange
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<MultipleGroupStanding {...defaultProps} />);
             const instance = container.instance();
             instance.state = {endItem : 6, startItem: 1};
 
@@ -74,7 +74,7 @@ describe('GridItem', () => {
                     {key: 'G', stage: 1, promotion: null}
                 ]
             }
-            const container = shallow(<Item {...props} />);
+            const container = shallow(<MultipleGroupStanding {...props} />);
             const instance = container.instance();
             instance.state = {endItem : 6, startItem: 1};
 
@@ -90,7 +90,7 @@ describe('GridItem', () => {
     describe('handlePrevTab', () => {
         it('setState correctly when startItem = 0', () => {
             // Arrange
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<MultipleGroupStanding {...defaultProps} />);
             const instance = container.instance();
             instance.state = {endItem : 6, startItem: 0};
 
@@ -104,7 +104,7 @@ describe('GridItem', () => {
 
         it('setState correctly when startItem > 0', () => {
             // Arrange
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<MultipleGroupStanding {...defaultProps} />);
             const instance = container.instance();
             instance.state = {endItem : 6, startItem: 1};
 
@@ -120,7 +120,7 @@ describe('GridItem', () => {
     describe('renders', () => {
         it('return null when selectedGroup is null', () => {
             // Arrange
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<MultipleGroupStanding {...defaultProps} />);
             const instance = container.instance();
             instance.state = {endItem : 6, startItem: 1, selectedKey: 'L'};
 
@@ -146,7 +146,7 @@ describe('GridItem', () => {
                 ]
             }
             // Act
-            const container = shallow(<Item {...props} />);
+            const container = shallow(<MultipleGroupStanding {...props} />);
 
             // Assert
             container.find('.homepage-group-standing li').at(1).simulate('click', 'A');

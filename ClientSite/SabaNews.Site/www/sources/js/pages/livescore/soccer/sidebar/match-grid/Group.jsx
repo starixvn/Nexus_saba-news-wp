@@ -4,7 +4,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { MatchStatus } from '@jsroot/common/constants';
 
-export default class GridItem extends PureComponent {
+export default class Group extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -57,6 +57,9 @@ export default class GridItem extends PureComponent {
     render() {
         const { league } = this.props;
         const matches = this.groupMatches(this.props.matches);
+        if(matches.length === 0) {
+            return 'Dữ liệu đang được cập nhật';
+        }
         return (
             <div className="league-story">
                 {

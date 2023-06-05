@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GridItem from '../GridItem';
+import Group from '../Group';
 
-describe('GridItem', () => {
+describe('GroupMatch', () => {
     const defaultProps = {
         league: null,
         matches: []
@@ -35,7 +35,7 @@ describe('GridItem', () => {
                     ]
                 }
             ]
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<Group {...defaultProps} />);
             const instance = container.instance();
             instance.isShowMoreGroup = jest.fn().mockReturnValue(true);
 
@@ -62,7 +62,7 @@ describe('GridItem', () => {
                     ]
                 }
             ]
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<Group {...defaultProps} />);
             const instance = container.instance();
             instance.isShowMoreGroup = jest.fn().mockReturnValue(false);
 
@@ -77,7 +77,7 @@ describe('GridItem', () => {
     describe('isShowMoreGroup', () => {
         it('return correctly when isFixture = false', () => {
             // Arrange
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<Group {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -98,7 +98,7 @@ describe('GridItem', () => {
                     ]
                 }
             ]
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<Group {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -121,7 +121,7 @@ describe('GridItem', () => {
                     ]
                 }
             ]
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<Group {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -142,7 +142,7 @@ describe('GridItem', () => {
                     ]
                 }
             ]
-            const container = shallow(<GridItem {...defaultProps} />);
+            const container = shallow(<Group {...defaultProps} />);
             const instance = container.instance();
 
             // Act
@@ -165,7 +165,7 @@ describe('GridItem', () => {
                 ...defaultProps,
                 matches: matches
             }
-            const container = shallow(<GridItem {...props} />);
+            const container = shallow(<Group {...props} />);
             const instance = container.instance();
 
             // Act

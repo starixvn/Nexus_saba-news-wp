@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Grid from './Grid';
-import SkeletonGrid from './SkeletonGrid';
+import MatchGrid from '../../match-grid/Index';
+import SkeletonGrid from '../../match-grid/SkeletonGrid';
 import SignalR from './SignalR';
 import { Width1024 } from '@jsroot/common/constants';
 
@@ -60,7 +60,7 @@ export class AppContainer extends Component {
                         {
                             leagues !== null &&
                             leagues.map((item, key) => {
-                                return <Grid key={key} league={item.league} matches={item.matches} />
+                                return <MatchGrid key={key} league={item.league} matches={item.matches} />
                             })
                         }
                     </div>

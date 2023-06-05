@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import GridItem from './GridItem';
+import Group from './Group';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -8,7 +8,7 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 
 dayjs.extend(isSameOrAfter);
 
-export default class Grid extends PureComponent {
+export default class MatchGrid extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -65,13 +65,13 @@ export default class Grid extends PureComponent {
         return matchList;
     };
     render() {
-        const { league, matches } = this.props;
+        const { league, matches, isShowEmptyFixture } = this.props;
         const { selectedTab } = this.state;
         if (matches.length === 0) {
             return null;
         }
         const matchList = this.getCurrentMatches();
-        if (matchList.length === 0) {
+        if (matchList.length === 0 && !isShowEmptyFixture) {
             return null;
         }
         const isFixture = selectedTab === 'fixture';
@@ -84,7 +84,7 @@ export default class Grid extends PureComponent {
                     <li className={selectedTab === 'fixture' ? 'active' : ''} onClick={() => this.handleSelectedTab('fixture')}>LTĐ</li>
                     <li className={selectedTab === 'result' ? 'active' : ''} onClick={() => this.handleSelectedTab('result')}>KQ</li>
                 </ul>
-                <GridItem matches={matchList} league={league} isFixture={isFixture} />
+                <Group matches={matchList} league={league} isFixture={isFixture} />
             </div>
         );
     }
