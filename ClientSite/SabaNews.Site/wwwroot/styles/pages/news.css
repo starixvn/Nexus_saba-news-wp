@@ -3497,9 +3497,10 @@ button {
   background-color: #E8EAEF;
   padding-bottom: 0;
   border-bottom: none;
+  border-radius: 3px;
 }
 .block-main .card-horizontal-highlight .text-skeleton, .block-main .skeleton-horizontal-highlight .text-skeleton {
-  padding: 16px;
+  padding: 1.2rem;
 }
 @media screen and (max-width: 1024px) {
   .block-main .card-horizontal-highlight, .block-main .skeleton-horizontal-highlight {
@@ -3513,7 +3514,7 @@ button {
   }
 }
 .block-main .card-horizontal-highlight .card-horizontal__content, .block-main .skeleton-horizontal-highlight .card-horizontal__content {
-  padding: 16px;
+  padding: 1.2rem;
 }
 @media screen and (max-width: 1024px) {
   .block-main .card-horizontal-highlight .card-horizontal__content, .block-main .skeleton-horizontal-highlight .card-horizontal__content {
@@ -3527,18 +3528,19 @@ button {
   }
 }
 .block-main .card-horizontal-highlight .title, .block-main .skeleton-horizontal-highlight .title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 2.8rem;
 }
 @media (max-width: 767px) {
   .block-main .card-horizontal-highlight .title, .block-main .skeleton-horizontal-highlight .title {
     font-size: 1.6rem;
-    line-height: 2.2rem;
+    line-height: 2.4rem;
   }
 }
 .block-main .card-horizontal-highlight .description, .block-main .skeleton-horizontal-highlight .description {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   font-weight: 500;
+  font-size: 1.3rem;
 }
 @media screen and (max-width: 1024px) {
   .block-main .card-horizontal-highlight .description, .block-main .skeleton-horizontal-highlight .description {

@@ -52,8 +52,9 @@
             background-color: $block-highlight-bgcolor;
             padding-bottom: 0;
             border-bottom: none;
+            border-radius: 3px;
             .text-skeleton {
-                padding: 16px;
+                padding: 1.2rem;
             }
             @include tableMobile {
                 display: inherit;
@@ -65,7 +66,7 @@
             }
 
             .card-horizontal__content {
-                padding: 16px;
+                padding: 1.2rem;
 
                 @include tableMobile {
                     margin-top: 1rem;
@@ -78,18 +79,19 @@
             }
 
             .title {
-                font-size: 2rem;
+                font-size: 1.6rem;
                 line-height: 2.8rem;
 
                 @include Mobile {
                     font-size: 1.6rem;
-                    line-height: 2.2rem;
+                    line-height: 2.4rem;
                 }
             }
 
             .description {
-                margin-top: 1rem;
+                margin-top: .6rem;
                 font-weight: 500;
+                font-size: 1.3rem;
                 @include tableMobile {
                     display: block;
                     margin-top: 0;
