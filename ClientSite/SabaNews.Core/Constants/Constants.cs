@@ -182,6 +182,7 @@
 
         public const int CacheHomePageTimeoutMinutes = 20;
         public const int CacheCategoryTimeoutMinutes = 10;
+        public const int CacheSubCategoryTimeoutMinutes = 2;
         public const int CacheMenuTimeoutMinutes = 700;
         public const int CacheSitemapTimeoutMinutes = 30;
         public const int CacheNewSitemapTimeoutMinutes = 30;

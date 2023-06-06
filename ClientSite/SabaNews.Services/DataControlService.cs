@@ -87,7 +87,7 @@
                         await cacheWrapperService.SetAsync(cacheKey, result,
                             new CacheItemOptions
                             {
-                                RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheCategoryTimeoutMinutes)
+                                RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSubCategoryTimeoutMinutes)
                             });
                     }
                 }
