@@ -28,7 +28,7 @@
         }
 
         #region Helpers
-        private RefreshSitemapXmlFileWorker GetWorker()
+        private RefreshVideoCachingWorker GetWorker()
         {
             var settings = Substitute.For<IOptionsSnapshot<List<JobSettings>>>();
             var jobSettings = new List<JobSettings>
@@ -43,7 +43,7 @@
             settings.Value.Returns(jobSettings);
             refreshCachingService = Substitute.For<IRefreshCachingService>();
             ILogServiceProvider logService = Substitute.For<ILogServiceProvider>();
-            var service = new RefreshSitemapXmlFileWorker(refreshCachingService, settings, logService);
+            var service = new RefreshVideoCachingWorker(refreshCachingService, settings, logService);
 
             return service;
         }
