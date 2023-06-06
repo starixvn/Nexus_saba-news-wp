@@ -3550,8 +3550,9 @@ button {
 }
 @media (max-width: 767px) {
   .block-main .card-horizontal-highlight .description, .block-main .skeleton-horizontal-highlight .description {
-    font-size: 1.2rem;
-    line-height: 2rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    margin-bottom: 0.8rem;
   }
 }
 .block-main .card-horizontal-highlight .skeleton-horizontal__title, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__title {
