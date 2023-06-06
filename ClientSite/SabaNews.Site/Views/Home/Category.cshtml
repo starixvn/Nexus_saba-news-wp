@@ -144,7 +144,7 @@
                         <p class="skeleton-horizontal__datetime"></p>
                     </div>
                 </div>
-                <div class="post card-horizontal card-horizontal-highlight">
+                <div class="post card-horizontal card-horizontal-highlight none-border-mobile">
                     <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="card-horizontal__image thumb thumb-56 hover-image">
                         <picture>
                             <source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp" class="img-res">
@@ -168,14 +168,17 @@
                     int postIndex = 0;
                     foreach (var post in Model.Posts)
                     {
+                        var classHeading = "";
+                        postIndex++;
+                        if (postIndex <= 1)
                         {
-                            postIndex++;
-                            if (postIndex <= 1)
-                            {
-                                continue;
-                            }
+                            continue;
                         }
-                        <div class="post card-horizontal">
+                        if(postIndex < 3)
+                        {
+                            classHeading = "none-border-mobile";
+                        }
+                        <div class="post card-horizontal @classHeading">
                             <input hidden class="page-1" value="@post.ID" />
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52 hover-image">
                                 <picture>
