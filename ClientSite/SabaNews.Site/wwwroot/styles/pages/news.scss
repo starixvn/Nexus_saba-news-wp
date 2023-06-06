@@ -123,6 +123,15 @@
                 }
             }
         }
+        &.none-border-mobile{
+            &:nth-child(5){
+                @include Mobile{
+                    border-bottom: none;
+                    padding-bottom: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 
     .skeleton-horizontal__image {

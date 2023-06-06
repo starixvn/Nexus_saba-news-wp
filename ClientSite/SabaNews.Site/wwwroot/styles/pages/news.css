@@ -3571,6 +3571,13 @@ button {
     height: 20rem;
   }
 }
+@media (max-width: 767px) {
+  .block-main .card-horizontal.none-border-mobile:nth-child(5), .block-main .skeleton-horizontal.none-border-mobile:nth-child(5) {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
 .block-main .skeleton-horizontal__image {
   height: 11rem;
 }
