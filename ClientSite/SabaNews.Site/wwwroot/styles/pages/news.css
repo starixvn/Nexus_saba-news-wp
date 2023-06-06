@@ -3533,8 +3533,8 @@ button {
 }
 @media (max-width: 767px) {
   .block-main .card-horizontal-highlight .title, .block-main .skeleton-horizontal-highlight .title {
-    font-size: 1.6rem;
-    line-height: 2.4rem;
+    font-size: 2rem;
+    line-height: 3rem;
   }
 }
 .block-main .card-horizontal-highlight .description, .block-main .skeleton-horizontal-highlight .description {
