@@ -1,5 +1,6 @@
 .statistic {
   width: 27.6rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -12,6 +13,7 @@
   }
 }
 .statistic-sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -322,8 +324,7 @@
 .minigame-table .table-row .team-choose .minigame-team img {
   width: 3.9rem;
   height: 2.6rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 @media (max-width: 767px) {
   .minigame-table .table-row .team-choose .minigame-team img {

@@ -113,6 +113,7 @@ body {
 
 .statistic {
   width: 27.6rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -125,6 +126,7 @@ body {
   }
 }
 .statistic-sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -187,8 +189,7 @@ body {
 }
 .dots-parent ul li {
   background: #E8E8D6;
-  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   margin-right: 5px;
 }
 .dots-parent ul li:last-child {
@@ -348,8 +349,7 @@ body {
 .statistic-grid .statistic-team-logo {
   width: 7.5rem;
   height: 5rem;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   display: block;
   border-radius: 3px;
 }

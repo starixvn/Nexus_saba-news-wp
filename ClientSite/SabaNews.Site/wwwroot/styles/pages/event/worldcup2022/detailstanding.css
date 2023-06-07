@@ -38,8 +38,7 @@ body {
   align-items: center;
   width: 19rem;
   justify-content: center;
-  -webkit-clip-path: polygon(0 0, 100% 0, 77% 100%, 23% 100%);
-          clip-path: polygon(0 0, 100% 0, 77% 100%, 23% 100%);
+  clip-path: polygon(0 0, 100% 0, 77% 100%, 23% 100%);
   transition: height 0.5s, polygon 0.5s !important;
 }
 @media screen and (min-width: 1391px) {
@@ -89,8 +88,7 @@ body {
   }
   .top-header.scroll-height .wc-logo a {
     height: 5rem;
-    -webkit-clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
   }
   .top-header.scroll-height .wc-logo .logo-none-scroll {
     opacity: 0;
@@ -173,16 +171,10 @@ body {
     width: 100%;
   }
 }
-.search-input form input::-moz-placeholder {
-  color: transparent !important;
-}
 .search-input form input::placeholder {
   color: transparent !important;
 }
 @media screen and (max-width: 1024px) {
-  .search-input form input::-moz-placeholder {
-    color: #C598A7 !important;
-  }
   .search-input form input::placeholder {
     color: #C598A7 !important;
   }
@@ -266,8 +258,7 @@ body {
   align-items: center;
   width: 19rem;
   justify-content: center;
-  -webkit-clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
-          clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
 }
 .header-controls .logo img {
@@ -338,9 +329,6 @@ body {
   transition: all 0.3s ease-in-out;
   color: #C598A7;
 }
-.show-on-pc .search-input form input::-moz-placeholder {
-  color: #C598A7 !important;
-}
 .show-on-pc .search-input form input::placeholder {
   color: #C598A7 !important;
 }
@@ -394,8 +382,7 @@ body {
   overflow: hidden;
 }
 .auth-provider .avatar-user img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -653,9 +640,7 @@ body {
 .wc-table .wc-table-header {
   display: flex;
   height: 5.8rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   align-items: center;
   padding: 1rem 1.2rem;
   border-bottom: 1px solid #C49F5D;
@@ -699,8 +684,7 @@ body {
 .wc-table .team-logo img {
   width: 3.6rem;
   height: 2.4rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .wc-table .team-name {
   width: 11rem;
@@ -856,8 +840,7 @@ body {
   font-weight: 700;
   font-size: 2rem;
   color: #510D1D;
-  -webkit-clip-path: polygon(93% 0, 100% 49%, 93% 100%, 7% 100%, 0 49%, 7% 0);
-          clip-path: polygon(93% 0, 100% 49%, 93% 100%, 7% 100%, 0 49%, 7% 0);
+  clip-path: polygon(93% 0, 100% 49%, 93% 100%, 7% 100%, 0 49%, 7% 0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -907,6 +890,7 @@ body {
 .page-items-right {
   padding-left: 2rem;
   border-left: 1px solid #DADACB;
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
   align-self: stretch;
@@ -920,6 +904,7 @@ body {
 }
 
 .sticky-position {
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -953,8 +938,7 @@ body {
   width: 0.7rem;
   height: 0.7rem;
   margin: 0 0.2rem;
-  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 .dots span.dots-items {
   width: 1rem;

@@ -546,6 +546,7 @@ button {
   box-shadow: 2px 2px 1px hsla(0, 0%, 0%, 0.15);
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -647,9 +648,7 @@ button {
   border-radius: 2px;
   text-align: left;
   direction: ltr;
-  -moz-tab-size: 4;
-    -o-tab-size: 4;
-       tab-size: 4;
+  tab-size: 4;
   white-space: pre-wrap;
   font-style: normal;
   min-width: 200px;
@@ -696,12 +695,6 @@ button {
 }
 .custom-input.list-input {
   cursor: unset;
-  font-weight: normal;
-}
-.custom-input.list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
   font-weight: normal;
 }
 .custom-input.list-input::placeholder {
@@ -1021,12 +1014,6 @@ button {
 
 .page-table-control .list-input {
   cursor: unset;
-  font-weight: normal;
-}
-.page-table-control .list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
   font-weight: normal;
 }
 .page-table-control .list-input::placeholder {

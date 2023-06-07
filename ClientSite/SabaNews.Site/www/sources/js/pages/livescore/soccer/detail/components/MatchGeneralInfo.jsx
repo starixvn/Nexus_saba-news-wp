@@ -229,6 +229,9 @@ export default class MatchGeneralInfo extends PureComponent {
                     </ul>
                 }
                 {this.renderLeague(generalInfo, isEvent)}
+                <div className="document-text">
+                    *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ có tính chất tham khảo.
+                </div>
                 <div className="duel-participant">
                     {
                         !isEvent &&

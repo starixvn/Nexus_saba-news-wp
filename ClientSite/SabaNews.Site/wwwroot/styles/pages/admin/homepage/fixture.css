@@ -207,8 +207,7 @@ body {
 .table-admin td img {
   width: 3rem;
   height: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .add-section {

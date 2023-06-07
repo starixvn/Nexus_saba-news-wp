@@ -489,16 +489,10 @@ p.has-text-align-center {
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none;
 }
-textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-  color: #828282;
-}
 textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
   color: #828282;
 }
 @media screen and (max-width: 1024px) {
-  textarea::-moz-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-moz-placeholder {
-    font-size: 1.6rem;
-  }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     font-size: 1.6rem;
   }
@@ -652,8 +646,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   overflow: hidden;
 }
 .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -703,6 +696,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   top: -0.9rem;
   right: 2.3rem;
   background: #fff;
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 @media screen and (max-width: 1024px) {
@@ -1354,6 +1349,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .open .line-mb:nth-child(1) {
   top: 1.4rem;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 .open .line-mb:nth-child(2) {
@@ -1362,6 +1360,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .open .line-mb:nth-child(3) {
   top: 1.4rem;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
 
@@ -2011,12 +2012,10 @@ button {
 .hover-image img {
   transition: all 0.5s ease;
   position: absolute;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  -o-object-position: top;
-     object-position: top;
+  object-position: top;
   transform: rotate(0.01deg) scale(1);
 }
 .hover-image:hover img {
@@ -2045,10 +2044,8 @@ button {
 .hover-none-16-9 img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   display: block;
   transition: all 0.5s ease;
   transform: rotate(0.01deg) scale(1);
@@ -2124,10 +2121,8 @@ button {
 .card-horizontal__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .card-horizontal__content .title {
   font-weight: bold;
@@ -2254,10 +2249,8 @@ button {
 .card-vertical__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .card-vertical__title {
   color: #333;
@@ -2576,10 +2569,8 @@ button {
 .skeleton-horizontal__image img, skeleton-horizontal-highlight__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .skeleton-horizontal__title, skeleton-horizontal-highlight__title {
   height: 2rem;
@@ -2681,10 +2672,8 @@ button {
 .skeleton-vertical__image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
 }
 .skeleton-vertical__title {
   display: initial;
@@ -3340,6 +3329,7 @@ button {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   font-size: 1.4rem;
   color: #2F2F2F;
@@ -3392,6 +3382,8 @@ button {
   height: 10px;
   border: solid #2F2F2F;
   border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 

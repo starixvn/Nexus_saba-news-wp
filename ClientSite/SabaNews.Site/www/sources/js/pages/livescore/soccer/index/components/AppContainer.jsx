@@ -136,6 +136,9 @@ export class AppContainer extends Component {
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         <div class="block__title"><h1><a>Lịch thi đấu bóng đá hôm nay</a></h1></div>
+                        <div className="document-text">
+                            *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ có tính chất tham khảo.
+                        </div>
                         <DateBar isMobile={isMobile} totalMatches={totalLiveMatches}
                             getDateRanges={this.getDateRanges}
                             onClick={this.getMatches}

@@ -19,10 +19,20 @@
 @import '../../../components/tooltip';
 @import '../../../components/breadcrumb';
 @import '../../../components/modal';
+@import '../../../components/text-document';
 
 //wc
 @import './world-cup/components/wc-date-bar';
 
+.document-text{
+    margin-bottom: 1.2rem;
+}
+
+.active-scroll{
+    .document-text{
+        margin: 1.2rem;
+    }
+}
 
 .livescore-soccer {
     padding-bottom: 5rem;

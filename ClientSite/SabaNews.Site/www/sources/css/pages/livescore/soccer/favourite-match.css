@@ -218,8 +218,7 @@ body {
 .livescore-soccer-extension .leagues-item .leagues-name .logo {
   height: 3rem;
   width: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 0.8rem;
 }
 .livescore-soccer-extension .leagues-item .leagues-name .text {
@@ -929,18 +928,11 @@ body {
     height: 3.4rem;
   }
 }
-.group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-  font-style: italic;
-  font-size: 1.4rem !important;
-}
 .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
   font-style: italic;
   font-size: 1.4rem !important;
 }
 @media screen and (max-width: 1024px) {
-  .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-    font-size: 1.2rem !important;
-  }
   .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
     font-size: 1.2rem !important;
   }
@@ -1177,8 +1169,7 @@ body {
   flex: 1;
 }
 .Toastify__toast-icon {
-  -webkit-margin-end: 10px;
-          margin-inline-end: 10px;
+  margin-inline-end: 10px;
   width: 20px;
   flex-shrink: 0;
   display: flex;
@@ -1853,18 +1844,11 @@ body {
     height: 3.4rem;
   }
 }
-.livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-  font-style: italic;
-  font-size: 1.4rem !important;
-}
 .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
   font-style: italic;
   font-size: 1.4rem !important;
 }
 @media screen and (max-width: 1024px) {
-  .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-    font-size: 1.2rem !important;
-  }
   .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
     font-size: 1.2rem !important;
   }
@@ -2067,6 +2051,8 @@ body {
 .livescore-recent-post__item .img-item img {
   transition: all 0.5s ease;
   -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transform: translateZ(0) scale(1, 1);
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -2075,8 +2061,7 @@ body {
   -ms-interpolation-mode: nearest-neighbor;
   display: block;
   height: 8rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
 }
 .livescore-recent-post__item .img-item:hover img {

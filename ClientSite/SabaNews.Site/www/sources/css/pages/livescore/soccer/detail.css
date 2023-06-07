@@ -218,8 +218,7 @@ body {
 .livescore-soccer-extension .leagues-item .leagues-name .logo {
   height: 3rem;
   width: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 0.8rem;
 }
 .livescore-soccer-extension .leagues-item .leagues-name .text {
@@ -432,8 +431,7 @@ body {
 }
 .duel-participant .flex-league .column .team-logo img {
   max-width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
   margin: 0 auto;
   image-rendering: -webkit-optimize-contrast;
@@ -1384,10 +1382,13 @@ span.number-position {
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .item-th {
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   font-size: 1.3rem;
   line-height: 1.9rem;
@@ -1465,6 +1466,7 @@ span.number-position {
   }
 }
 .time-line-main .line-up-live-item {
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   position: relative;
   z-index: 1;
@@ -1472,6 +1474,7 @@ span.number-position {
 .time-line-main .line-up-live-item .inner-item-db {
   width: calc((100% - 2.4rem) / 2);
   margin-top: 0;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-item-align: center;
   align-items: center;
@@ -1515,6 +1518,8 @@ span.number-position {
   justify-content: flex-end;
 }
 .time-line-main .line-up-live-item .inner-item-db.item-th-home .item-th {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .time-line-main .line-up-live-item .inner-item-db.item-th-home .item-th li {
@@ -1530,6 +1535,8 @@ span.number-position {
   }
 }
 .time-line-main .line-up-live-item .inner-item-db.item-th-home .icon-th {
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
   order: 2;
   margin-left: 5px;
 }
@@ -1557,7 +1564,12 @@ span.number-position {
   text-align: center;
   min-height: 5rem;
   font-weight: bold;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   font-size: 1.4rem;
   color: #2F2F2F;
@@ -2420,18 +2432,11 @@ span.number-position {
     height: 3.4rem;
   }
 }
-.group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-  font-style: italic;
-  font-size: 1.4rem !important;
-}
 .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
   font-style: italic;
   font-size: 1.4rem !important;
 }
 @media screen and (max-width: 1024px) {
-  .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-    font-size: 1.2rem !important;
-  }
   .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
     font-size: 1.2rem !important;
   }
@@ -2719,8 +2724,7 @@ span.number-position {
   flex: 1;
 }
 .Toastify__toast-icon {
-  -webkit-margin-end: 10px;
-          margin-inline-end: 10px;
+  margin-inline-end: 10px;
   width: 20px;
   flex-shrink: 0;
   display: flex;
@@ -3395,18 +3399,11 @@ span.number-position {
     height: 3.4rem;
   }
 }
-.livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-  font-style: italic;
-  font-size: 1.4rem !important;
-}
 .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
   font-style: italic;
   font-size: 1.4rem !important;
 }
 @media screen and (max-width: 1024px) {
-  .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-    font-size: 1.2rem !important;
-  }
   .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
     font-size: 1.2rem !important;
   }
@@ -3540,6 +3537,23 @@ span.number-position {
   font-size: 1.3rem !important;
 }
 
+.document-text {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 5px;
+  background: #F9F6F0;
+  margin-bottom: 0.8rem;
+}
+@media (max-width: 767px) {
+  .document-text {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+}
+
 .wc-date-control {
   width: 4rem;
   height: 8rem;
@@ -3558,8 +3572,7 @@ span.number-position {
   color: #fff;
 }
 .wc-date-control-next {
-  -webkit-clip-path: polygon(0 50%, 100% 100%, 100% 0);
-          clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  clip-path: polygon(0 50%, 100% 100%, 100% 0);
   justify-content: flex-end;
   right: -100px;
   cursor: pointer;
@@ -3570,8 +3583,7 @@ span.number-position {
   }
 }
 .wc-date-control-prev {
-  -webkit-clip-path: polygon(100% 45%, 0% 100%, 0 0);
-          clip-path: polygon(100% 45%, 0% 100%, 0 0);
+  clip-path: polygon(100% 45%, 0% 100%, 0 0);
   left: -100px;
   cursor: pointer;
 }
@@ -3613,6 +3625,8 @@ span.number-position {
 @media screen and (max-width: 1024px) {
   .wc-date-bar {
     margin: 0;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
@@ -3721,6 +3735,8 @@ span.number-position {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
@@ -3742,6 +3758,14 @@ span.number-position {
   .scroll-snap .post-items:last-child, .scroll-snap .wc-table:last-child {
     margin-right: 0;
   }
+}
+
+.document-text {
+  margin-bottom: 1.2rem;
+}
+
+.active-scroll .document-text {
+  margin: 1.2rem;
 }
 
 .livescore-soccer {
@@ -4072,8 +4096,7 @@ span.number-position {
 .match-detail-world-cup .duel-participant .flex-league .column-center.result-league .detail-score-wrapper {
   border-radius: 0;
   background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-  -webkit-clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
-          clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
+  clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
   padding: 0.8rem 1rem;
 }
 .match-detail-world-cup .duel-participant .flex-league .column-center.result-league .detail-score-wrapper span {
@@ -4156,8 +4179,7 @@ span.number-position {
 .match-detail-world-cup .livescore-league-header-detail-group .title-section {
   background: linear-gradient(162deg, #FFD68F 0%, #C2A97D 99.91%);
   margin-bottom: 0;
-  -webkit-clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
-          clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+  clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
   width: 26.6rem;
   height: 6.6rem;
 }
@@ -4203,8 +4225,7 @@ span.number-position {
   height: 1rem;
 }
 .match-detail-world-cup .head-top-team {
-  -webkit-clip-path: polygon(92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%, 8% 0);
-          clip-path: polygon(92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%, 8% 0);
+  clip-path: polygon(92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%, 8% 0);
   background: #DDDDBF;
   position: relative;
 }
@@ -4217,8 +4238,7 @@ span.number-position {
   right: 1px;
   bottom: 1px;
   background: #EDEDD5;
-  -webkit-clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
-          clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+  clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
   z-index: -1;
 }
 .match-detail-world-cup .head-top-team .time-event-title, .match-detail-world-cup .head-top-team .time-event-score {

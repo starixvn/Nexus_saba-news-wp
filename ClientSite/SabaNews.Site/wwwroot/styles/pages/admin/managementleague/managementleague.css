@@ -122,12 +122,6 @@
   cursor: unset;
   font-weight: normal;
 }
-.custom-input.list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
 .custom-input.list-input::placeholder {
   color: #979797;
   font-style: italic;
@@ -313,8 +307,7 @@
 #AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin: 0 auto;
 }
 #AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
@@ -448,8 +441,7 @@
 #EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin: 0 auto;
 }
 #EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {

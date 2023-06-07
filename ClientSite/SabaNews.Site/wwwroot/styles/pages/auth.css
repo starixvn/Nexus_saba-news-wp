@@ -238,9 +238,6 @@
 }
 
 @media (max-width: 767px) {
-  .form-modal input::-moz-placeholder {
-    font-size: 1.3rem !important;
-  }
   .form-modal input::placeholder {
     font-size: 1.3rem !important;
   }

@@ -218,8 +218,7 @@ body {
 .livescore-soccer-extension .leagues-item .leagues-name .logo {
   height: 3rem;
   width: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 0.8rem;
 }
 .livescore-soccer-extension .leagues-item .leagues-name .text {
@@ -949,8 +948,7 @@ body {
   flex: 1;
 }
 .Toastify__toast-icon {
-  -webkit-margin-end: 10px;
-          margin-inline-end: 10px;
+  margin-inline-end: 10px;
   width: 20px;
   flex-shrink: 0;
   display: flex;
@@ -1609,6 +1607,8 @@ body {
 .livescore-recent-post__item .img-item img {
   transition: all 0.5s ease;
   -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transform: translateZ(0) scale(1, 1);
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -1617,8 +1617,7 @@ body {
   -ms-interpolation-mode: nearest-neighbor;
   display: block;
   height: 8rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
 }
 .livescore-recent-post__item .img-item:hover img {
@@ -1650,8 +1649,7 @@ body {
   position: relative;
   padding: 5px 7px;
   background: #66172A;
-  -webkit-clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
-          clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
+  clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
 }
 @media screen and (max-width: 1024px) {
   .live-score-nav {
@@ -1667,8 +1665,7 @@ body {
   right: 1px;
   bottom: 1px;
   background: #EEEEE4;
-  -webkit-clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
-          clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
+  clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
   z-index: -1;
 }
 .live-score-nav a {
@@ -1686,8 +1683,7 @@ body {
   text-transform: unset;
 }
 .live-score-nav a.active {
-  -webkit-clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
-          clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
+  clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
   background: linear-gradient(180deg, #67182B 0%, #470817 100%);
   color: #fff;
 }
@@ -1728,8 +1724,7 @@ body {
   top: 0;
   right: 50%;
   transform: translate(50%, -50%);
-  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
-          clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
 }
 @media screen and (max-width: 1024px) {
   .livescore-soccer .soccer-match-grid-item .soccer-match-grid-item-header {
@@ -1739,8 +1734,7 @@ body {
     width: 100%;
     height: 3rem;
     background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-    -webkit-clip-path: polygon(97% 0, 100% 50%, 97% 100%, 3% 100%, 0 50%, 3% 0);
-            clip-path: polygon(97% 0, 100% 50%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+    clip-path: polygon(97% 0, 100% 50%, 97% 100%, 3% 100%, 0 50%, 3% 0);
     color: #fff;
   }
 }
@@ -1949,8 +1943,7 @@ body {
   width: 4.2rem;
   height: 2.8rem;
   overflow: hidden;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 @media screen and (max-width: 1024px) {
   .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-status {
@@ -1979,8 +1972,7 @@ body {
   padding-left: 0;
   background: linear-gradient(180deg, #67182B 0%, #470817 100%);
   margin: 0 2rem;
-  -webkit-clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
-          clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
+  clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
   height: 50px;
   justify-content: center;
 }

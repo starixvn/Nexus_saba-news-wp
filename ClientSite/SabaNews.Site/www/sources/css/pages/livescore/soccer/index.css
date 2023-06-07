@@ -220,8 +220,7 @@ body {
 .livescore-soccer-extension .leagues-item .leagues-name .logo {
   height: 3rem;
   width: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 0.8rem;
 }
 .livescore-soccer-extension .leagues-item .leagues-name .text {
@@ -551,18 +550,11 @@ body {
     height: 3.4rem;
   }
 }
-.group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-  font-style: italic;
-  font-size: 1.4rem !important;
-}
 .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
   font-style: italic;
   font-size: 1.4rem !important;
 }
 @media screen and (max-width: 1024px) {
-  .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-    font-size: 1.2rem !important;
-  }
   .group-searchbar .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
     font-size: 1.2rem !important;
   }
@@ -1359,10 +1351,6 @@ body {
   background-color: #e8e8e8;
   cursor: context-menu;
 }
-.react-datepicker-wrapper-container .react-datepicker-wrapper .react-datepicker__input-container input.form-control:-moz-read-only {
-  background-color: #fff;
-  cursor: pointer;
-}
 .react-datepicker-wrapper-container .react-datepicker-wrapper .react-datepicker__input-container input.form-control:read-only {
   background-color: #fff;
   cursor: pointer;
@@ -1535,8 +1523,7 @@ body {
   flex: 1;
 }
 .Toastify__toast-icon {
-  -webkit-margin-end: 10px;
-          margin-inline-end: 10px;
+  margin-inline-end: 10px;
   width: 20px;
   flex-shrink: 0;
   display: flex;
@@ -2211,18 +2198,11 @@ body {
     height: 3.4rem;
   }
 }
-.livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-  font-style: italic;
-  font-size: 1.4rem !important;
-}
 .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
   font-style: italic;
   font-size: 1.4rem !important;
 }
 @media screen and (max-width: 1024px) {
-  .livescore-soccer-search-bar .livescore-soccer-searchbox::-moz-placeholder {
-    font-size: 1.2rem !important;
-  }
   .livescore-soccer-search-bar .livescore-soccer-searchbox::placeholder {
     font-size: 1.2rem !important;
   }
@@ -2354,6 +2334,23 @@ body {
 
 .txt {
   font-size: 1.3rem !important;
+}
+
+.document-text {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 5px;
+  background: #F9F6F0;
+  margin-bottom: 0.8rem;
+}
+@media (max-width: 767px) {
+  .document-text {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
 }
 
 body {

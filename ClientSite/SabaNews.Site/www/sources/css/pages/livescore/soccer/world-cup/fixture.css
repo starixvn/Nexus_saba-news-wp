@@ -219,8 +219,7 @@ body {
 .livescore-soccer-extension .leagues-item .leagues-name .logo {
   height: 3rem;
   width: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 0.8rem;
 }
 .livescore-soccer-extension .leagues-item .leagues-name .text {
@@ -793,8 +792,7 @@ body {
   color: #fff;
 }
 .wc-date-control-next {
-  -webkit-clip-path: polygon(0 50%, 100% 100%, 100% 0);
-          clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  clip-path: polygon(0 50%, 100% 100%, 100% 0);
   justify-content: flex-end;
   right: -100px;
   cursor: pointer;
@@ -805,8 +803,7 @@ body {
   }
 }
 .wc-date-control-prev {
-  -webkit-clip-path: polygon(100% 45%, 0% 100%, 0 0);
-          clip-path: polygon(100% 45%, 0% 100%, 0 0);
+  clip-path: polygon(100% 45%, 0% 100%, 0 0);
   left: -100px;
   cursor: pointer;
 }
@@ -848,6 +845,8 @@ body {
 @media screen and (max-width: 1024px) {
   .wc-date-bar {
     margin: 0;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
@@ -956,6 +955,8 @@ body {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;

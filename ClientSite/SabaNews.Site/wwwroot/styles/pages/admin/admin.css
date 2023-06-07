@@ -476,12 +476,6 @@ button {
   cursor: unset;
   font-weight: normal;
 }
-.custom-input.list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
 .custom-input.list-input::placeholder {
   color: #979797;
   font-style: italic;
@@ -642,6 +636,8 @@ button {
   top: -0.5rem;
   right: 8rem;
   background: #1F2252;
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 .warning-admin .tooltip-icon:hover .tooltip-content {

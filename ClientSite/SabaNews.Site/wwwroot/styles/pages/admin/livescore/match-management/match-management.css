@@ -126,12 +126,6 @@
   cursor: unset;
   font-weight: normal;
 }
-.custom-input.list-input::-moz-placeholder {
-  color: #979797;
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: normal;
-}
 .custom-input.list-input::placeholder {
   color: #979797;
   font-style: italic;
@@ -165,8 +159,7 @@
 .table-admin td img {
   width: 3rem;
   height: 3rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .input-upload {
@@ -350,8 +343,7 @@
 .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin: 0 auto;
 }
 .admin-text-logo-data-img .icon-close {
