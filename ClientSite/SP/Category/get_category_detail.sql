@@ -10,6 +10,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_category_detail`(
         Revisions:
 			- 20220720@Hank: init
             - 20230519@Hank: migrate rank math to yoast plugin
+            - 20230606@Hank: select league
     */
 )
 BEGIN
@@ -30,10 +31,12 @@ BEGIN
     SELECT t.term_id, t.name INTO cateParentId, cateParentName FROM wp_terms as t where t.term_id = cateParentId;
     
 	SELECT  t.name as Title , t.term_id as CateId, t.slug as Slug, cateParentId, cateParentName
-		, yi.title as SEOTitle, yi.description as description
-        , yi.open_graph_title as OgTitle, yi.open_graph_description as OgDescription, yi.open_graph_image as OgImage
+		,yi.title as SEOTitle, yi.description as description
+        ,yi.open_graph_title as OgTitle, yi.open_graph_description as OgDescription, yi.open_graph_image as OgImage
+        ,tl.LeagueId, tl.SeasonId
     FROM wp_terms t 
     INNER JOIN wp_term_taxonomy wt ON  t.term_id = wt.term_id AND wt.taxonomy = "category"
+    LEFT JOIN wp_term_livescore tl ON tl.TermId = wt.term_id AND tl.LeagueId > 0 AND tl.Status = 1
     LEFT JOIN wp_yoast_indexable yi ON yi.object_id = t.term_id AND yi.object_type = "term" AND yi.object_sub_type = "category"
     WHERE t.slug = slug;
 END
