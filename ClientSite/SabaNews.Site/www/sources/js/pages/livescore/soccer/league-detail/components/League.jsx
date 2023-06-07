@@ -20,7 +20,7 @@ const League = ({ league, onUpdateFavLeague, flagToggleFavLeagueIcon }) => {
                 </div>
             </div>
             <div className="document-text">
-                *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ có tính chất tham khảo.
+                *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ mang tính chất tham khảo.
             </div>
         </>
     );
