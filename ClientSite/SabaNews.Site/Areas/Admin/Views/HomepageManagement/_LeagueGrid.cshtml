@@ -25,11 +25,12 @@
                     count++;
                     <tr>
                         <td class="text-center">@fixture.Order</td>
-                        <td class="text-center">@league.LeagueFullNameEN</td>
-                        <td class="text-center">@league.LeagueNameVN</td>
+                        <td class="text-center">@(league != null ? league.LeagueFullNameEN : "")</td>
+                        <td class="text-center">@(league != null ? league.LeagueNameVN : "")</td>
                         <td class="text-center">@DateTimeUtilize.FormatDateTime(fixture.CreatedDate, "dd/MM/yyyy HH:mm:ssss")</td>
                         <td class="text-center">
-                            <i class="icon icon-edit-admin btn-Edit" title="Edit" data-id="@fixture.Id" data-name="@LivescoreHelper.GetLeagueName(league)"></i>
+                            <i class="icon icon-edit-admin btn-Edit" title="Edit" data-id="@fixture.Id" 
+                                data-name="@(league != null ? LivescoreHelper.GetLeagueName(league) : "")"></i>
                             <i class="icon icon-delete-admin btn-Delete" data-id="@fixture.Id"  title="Delete"></i>
                         </td>
                     </tr>
