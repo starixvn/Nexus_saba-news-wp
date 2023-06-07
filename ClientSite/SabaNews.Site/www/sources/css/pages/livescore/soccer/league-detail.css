@@ -2147,6 +2147,23 @@ body {
   font-size: 1.3rem !important;
 }
 
+.document-text {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 5px;
+  background: #F9F6F0;
+  margin-bottom: 0.8rem;
+}
+@media (max-width: 767px) {
+  .document-text {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+}
+
 .livescore-soccer .soccer-match-grid-item .soccer-match-grid-item-header {
   padding: 1rem 1.2rem;
   color: #324A75;
@@ -2182,6 +2199,7 @@ body {
 }
 .livescore-soccer .livescore-league-header-detail {
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 .livescore-soccer .livescore-soccer-search-bar {
   width: 100%;

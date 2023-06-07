@@ -12,6 +12,7 @@
 @import '../../../components/tooltip';
 @import '../../../components/breadcrumb';
 @import '../../../components/modal';
+@import '../../../components/text-document';
 
 .livescore-soccer {
     .soccer-match-grid {
@@ -58,6 +59,7 @@
 
     .livescore-league-header-detail {
         justify-content: space-between;
+        margin-bottom: 1rem;
     }
 
     .livescore-soccer-search-bar{

@@ -6,18 +6,23 @@ import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 
 const League = ({ league, onUpdateFavLeague, flagToggleFavLeagueIcon }) => {
     return (
-        <div className="livescore-league-header-detail">
-            <div className="livescore-league-header-detail-group">
-                <div className="livescore-league-header-detail-logo"><TeamIcon src={CommonFunctions.getLeagueIcon(league)} /></div>
-                <div className="livescore-league-header-detail-name">
-                    {CommonFunctions.getLeagueName(league)}
+        <>
+            <div className="livescore-league-header-detail">
+                <div className="livescore-league-header-detail-group">
+                    <div className="livescore-league-header-detail-logo"><TeamIcon src={CommonFunctions.getLeagueIcon(league)} /></div>
+                    <div className="livescore-league-header-detail-name">
+                        {CommonFunctions.getLeagueName(league)}
+                    </div>
+                    <FavouriteLeagueIcon league={league} onUpdateFavLeague={onUpdateFavLeague} flagToggle={flagToggleFavLeagueIcon}/>
                 </div>
-                <FavouriteLeagueIcon league={league} onUpdateFavLeague={onUpdateFavLeague} flagToggle={flagToggleFavLeagueIcon}/>
+                <div className="group-searchbar">
+                    <FavoriteMatches isMobile />
+                </div>
             </div>
-            <div className="group-searchbar">
-                <FavoriteMatches isMobile />
+            <div className="document-text">
+                *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ có tính chất tham khảo.
             </div>
-        </div>
+        </>
     );
 };
 
