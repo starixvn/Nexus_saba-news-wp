@@ -178,7 +178,7 @@ export class AppContainer extends Component {
                             </div>
                         </div>
 
-                        <div className="livescore-news">
+                        {/* <div className="livescore-news">
                             <div class="block__title">
                                 <h2><a>Tin lịch thi đấu bóng đá</a></h2>
                             </div>
@@ -196,7 +196,7 @@ export class AppContainer extends Component {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                     <div className="livescore-soccer-extension">
