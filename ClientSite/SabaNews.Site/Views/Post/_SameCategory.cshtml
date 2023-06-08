@@ -14,7 +14,7 @@
                     </picture>
                 </a>
                 <div class="card-horizontal__content">
-                    <h4><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h4>
+                    <h3><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h3>
                     <p class="datetime">
                         <span>@post.PostTime</span>
                         @if (post.CommentCount > 0)
