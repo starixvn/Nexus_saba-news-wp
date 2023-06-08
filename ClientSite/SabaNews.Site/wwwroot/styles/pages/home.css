@@ -1655,6 +1655,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.5rem 1.2rem 0.3rem 1.2rem;
   display: inline-block;
   border-radius: 3px 0 0 0;
+  cursor: pointer;
 }
 .block__title a::after, .heading-category a::after {
   content: "";

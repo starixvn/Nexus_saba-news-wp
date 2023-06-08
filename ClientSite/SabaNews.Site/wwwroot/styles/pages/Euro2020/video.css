@@ -2630,6 +2630,11 @@ button {
   line-height: 2.6rem;
 }
 
+.text-no-data {
+  text-align: center;
+  padding: 0.5rem;
+}
+
 .flag-italia {
   display: inline-block;
   width: 32px;

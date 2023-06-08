@@ -58,14 +58,13 @@ export default class Group extends PureComponent {
         const { league } = this.props;
         const matches = this.groupMatches(this.props.matches);
         if(matches.length === 0) {
-            return 'Dữ liệu đang được cập nhật';
+            return <p className="text-no-data">Dữ Liệu Đang Được Cập Nhật</p>;
         }
         return (
             <div className="league-story">
                 {
                     matches.map(item => {
                         return (
-
                             <div className="group-duel" key={item.key}>
                                 <div className="duel-date">{item.text}</div>
                                 {
