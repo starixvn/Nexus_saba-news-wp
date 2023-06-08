@@ -115,11 +115,11 @@
             var criteria =  new GetPostsByCateSlugPagingCriteria
             {
                 _Start = Constants.FromFirstItem,
-                _End = Constants.GetTenItems,
+                _End = Constants.GetElevenItems,
                 _CategorySlug = slug
             };
             var posts = await postService.GetPostsByCateSlugPagingAsync(criteria);
-            posts = posts.Where(item => item.ID != postId).ToList();
+            posts = posts.Where(item => item.ID != postId).Take(Constants.GetTenItems).ToList();
             return PartialView("_SameCategory", posts);
         }
 
