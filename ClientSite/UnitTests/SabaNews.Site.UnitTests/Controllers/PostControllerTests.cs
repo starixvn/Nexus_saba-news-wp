@@ -25,6 +25,8 @@
     using System.Net.Http;
     using Microsoft.Extensions.Options;
     using Microsoft.AspNetCore.Mvc.Routing;
+    using SabaNews.Criteria.Posts;
+    using System.Linq;
 
     public class PostControllerTests : Controller
     {
@@ -288,6 +290,28 @@
 
             // Assert
             Assert.True(expected.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task GetSameCategoryPosts_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postId = fixture.Create<long>();
+            var criteria = fixture.Create<GetPostsByCateSlugPagingCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+
+            postService.GetPostsByCateSlugPagingAsync(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var result = await controller.GetSameCategoryPosts(slug, postId);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsType<List<Post>>(viewResult.Model);
+            Assert.Equal("_SameCategory", viewResult.ViewName);
+            Assert.Equal(viewModel, expected.ToList());
         }
 
         [Fact]
