@@ -8,7 +8,7 @@
 
 
 <div class="block-sticky">
-    <h3 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewData[ViewResources.ViewDataHeadTitle]</a></h3>
+    <h3 class="block__title"><a href="@Url.Action("Category", "Home", new {slug = Constants.NewPostSlug + CategoryKey.Prefix})">@ViewData[ViewResources.ViewDataHeadTitle]</a></h3>
     <div class="block__content">
         <div class="block-item">
             @foreach (var post in Model.Posts)

@@ -16,7 +16,6 @@
         public Slugs Slugs { get; set; }
         public string Slug { get; set; }
         public bool IsVideo { get; set; }
-
         public IEnumerable<Menu> GetSubMenu(string cateSlug)
         {
             var menu = new List<Menu>();

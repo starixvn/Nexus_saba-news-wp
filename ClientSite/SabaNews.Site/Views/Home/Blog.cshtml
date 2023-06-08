@@ -1,5 +1,4 @@
-﻿@using static SabaNews.Site.Extensions.DeviceHelper;
-@{
+﻿@{
     if (Model.Header.Controller == "Tag")
     {
         var description = "MỚI NHẤT: ";
@@ -45,11 +44,12 @@
     <meta http-equiv="REFRESH" content="1800" />
     @if (Model.Header.Controller == "Tag")
     {
-        <meta name="robots" content="noarchive">
+        <meta name="robots" content="noarchive" />
+        <link rel="canonical" href="@Model.Category.Url" >
     }
     else if (Model.Header.Controller == "Search")
     {
-        <meta name="robots" content="noindex, nofollow">
+        <meta name="robots" content="noindex, nofollow" />
     }
 }
 

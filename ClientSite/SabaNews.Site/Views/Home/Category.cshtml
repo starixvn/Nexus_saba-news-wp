@@ -13,7 +13,6 @@
     <meta name="apple-mobile-web-app-title" content="@ViewResources.SiteName" />
     <meta http-equiv="REFRESH" content="1800" />
     <meta name="robots" content="noarchive">
-    <link rel="canonical" href="@Model.Category.Url">
     <meta property="og:site_name" content="@ViewResources.SiteName" />
     <meta property="og:type" content="website" />
     <meta property="og:url" itemprop="url" content="@Model.Category.Url" />
@@ -25,6 +24,7 @@
     <meta name="twitter:title" content="@Model.Category.OgTitle">
     <meta name="twitter:description" content="@Model.Category.OgDescription">
     <meta name="twitter:image" content="@Model.Category.OgImage" />
+    <link rel="canonical" href="@Model.Category.Url">
 }
 
 @section Scripts {

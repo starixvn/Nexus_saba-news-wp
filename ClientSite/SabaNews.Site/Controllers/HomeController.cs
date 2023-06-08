@@ -65,9 +65,11 @@
             }
             var menus = await dataControlService.GetMenuData();
             var slugs = PostHelper.GetCategorySlugs(menus.ToList(), slug);
+            var domain = configuration.GetValue<string>("BaseUrl");
             viewModel.Header.ActiveCategory = slugs.Slug1 ?? slug;
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
+            viewModel.Category.Url = $"{domain}{slug}{CategoryKey.Suffix}";
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
             return View(view, viewModel);
         }
@@ -164,14 +166,15 @@
             var posts = await postService.GetPostByTagAsync(criteria);
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
+            var domain = configuration.GetValue<string>("BaseUrl");
             var model = new BlogViewModel
             {
                 Posts = posts.ToList(),
                 Category = new Category
                 {
                     OgTitle = string.Concat(tag, " | ", Constants.SiteName),
-                    OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
-                    Url = Url.Action("Tag", "Home", new { tagname }, Request.Scheme)
+                    OgImage = string.Concat(domain, "images/sabasports.svg"),
+                    Url = $"{domain}tag/{tagname}"
                 },
                 Header = new HeaderViewModel
                 {
