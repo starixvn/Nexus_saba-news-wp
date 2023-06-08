@@ -110,7 +110,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetSameCategoryPosts(string slug)
+        public async Task<IActionResult> GetSameCategoryPosts(string slug, long postId)
         {
             var criteria =  new GetPostsByCateSlugPagingCriteria
             {
@@ -119,6 +119,7 @@
                 _CategorySlug = slug
             };
             var posts = await postService.GetPostsByCateSlugPagingAsync(criteria);
+            posts = posts.Where(item => item.ID != postId).ToList();
             return PartialView("_SameCategory", posts);
         }
 

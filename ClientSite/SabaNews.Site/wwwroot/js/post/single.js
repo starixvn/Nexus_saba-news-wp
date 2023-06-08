@@ -124,7 +124,7 @@
         $.ajax({
             type: 'POST',
             url: '/Post/GetSameCategoryPosts',
-            data: {slug: window.cateSlug},
+            data: {slug: window.cateSlug, postId: window.postId},
             success: function(res) {
                 $('.same-category-post').html(res);
             }

@@ -13,7 +13,10 @@
 }
 
 @section Scripts{
-    <script> window.cateSlug = '@Model.CateInfo.Slug'</script>
+    <script> 
+        window.cateSlug = '@Model.CateInfo.Slug';
+        window.postId = '@Model.SinglePost.ID';
+    </script>
     <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
 }
 @section Styles{
