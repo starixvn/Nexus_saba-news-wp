@@ -90,12 +90,18 @@ body {
         padding-bottom: 1.2rem;
         margin-bottom: 1.2rem;
         grid-template-columns: 21.3rem 1fr;
+        &__image{
+            cursor: pointer;
+        }
     }
     .block__title{
         margin-bottom: 1.2rem;
         @include Mobile{
             margin-bottom: 1rem;
         }
+    }
+    .title{
+        cursor: pointer;
     }
 }
 
