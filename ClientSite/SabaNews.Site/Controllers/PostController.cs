@@ -195,6 +195,20 @@
             return Ok(posts);
         }
 
+        [HttpPost]
+        [Route("api/post/today-fixture")]
+        public async Task<IActionResult> GetTodayFixturePost()
+        {
+            var criteria = new GetPostsByTagCriteria
+            {
+                _Tag = Constants.TodayFixtureTag,
+                _Start = Constants.FromFirstItem,
+                _End = Constants.GetFiveItems
+            };
+            var posts = await postService.GetPostByTagAsync(criteria);
+            return Ok(posts);
+        }
+
         public string GetClientIP()
         {
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();

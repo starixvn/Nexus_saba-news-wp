@@ -20,7 +20,8 @@ const soccerMatchSlice = createSlice({
         matches: null,
         totalLiveMatches: 0,
         leagues: [],
-        banner: null
+        banner: null,
+        todayFixturePosts: null
     },
     reducers: {
         setSearchKey: (state, action) => {
@@ -63,6 +64,9 @@ const soccerMatchSlice = createSlice({
         },
         setBanner: (state, action) => {
             state.banner = action.payload;
+        },
+        setTodayFixturePosts: (state, action) => {
+            state.todayFixturePosts = action.payload;
         }
     }
 });
@@ -78,7 +82,8 @@ export const {
     setLiveMatches,
     setFlagToggleFavLeagueIcon,
     setLeagues,
-    setBanner
+    setBanner,
+    setTodayFixturePosts
 } = actions;
 
 export default reducer;

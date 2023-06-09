@@ -10,7 +10,8 @@ import {
     setLiveMatches,
     setFlagToggleFavLeagueIcon,
     setLeagues,
-    setBanner
+    setBanner,
+    setTodayFixturePosts
 } from './soccerMatchSlice';
 
 const getMatchesByDate = params => async dispatch => {
@@ -55,6 +56,13 @@ const getBanner = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
+const getTodayFixturePosts = () => async dispatch => {
+    const url = Site.resolveClientUrl('api/post/today-fixture');
+    await DataService.postDataAsync(url).then(response => {
+        dispatch(setTodayFixturePosts(response.data));
+    }).catch(Site.handleAxiosError);
+};
+
 export const ActionCreators = {
     setSearchKey,
     setSelectedDate,
@@ -69,5 +77,7 @@ export const ActionCreators = {
     setLeagues,
     getLeagues,
     getBanner,
-    setBanner
+    setBanner,
+    setTodayFixturePosts,
+    getTodayFixturePosts
 };

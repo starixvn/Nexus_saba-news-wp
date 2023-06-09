@@ -193,5 +193,6 @@
         public const int CacheVideoTimeoutMinutes = 30;
 
         public const string TokenAPIGetData = "U0FCQSBTUE9SVFMgaMOyYSB2w6BvIGN14buZYyBjaMahaSE=";
+        public const string TodayFixtureTag = "lich-thi-dau-hom-nay";
     }
 }

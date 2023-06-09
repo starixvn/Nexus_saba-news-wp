@@ -13,6 +13,7 @@ import SignalR from './SignalR';
 import SkeletonGrid from './match-grid/SkeletonGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MobileMaxWidth, BannerType } from '@jsroot/common/constants';
+import TodayPost from './TodayPost';
 dayjs.extend(updateLocale);
 dayjs.updateLocale('en', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
@@ -177,7 +178,7 @@ export class AppContainer extends Component {
                                 các nền tảng mạng xã hội như Youtube, Facebook của Next Media, VFF Channel, Thethao360...
                             </div>
                         </div>
-
+                        <TodayPost />
                     </div>
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
