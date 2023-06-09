@@ -36,7 +36,7 @@ export class TodayPost extends PureComponent {
                                     </h3>
                                     <p className="description">{post.postExcerpt}</p>
                                     <p className="datetime">
-                                        <span>{post.PostTime}</span>
+                                        <span>{post.postTime}</span>
                                     </p>
                                 </div>
                             </div>

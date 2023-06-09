@@ -150,29 +150,29 @@ export class AppContainer extends Component {
                         {
                             matches !== null && <MatchGrid matches={matches} />
                         }
-                        <div class="about-livescore">
-                            <div class="about-livescore-text">
+                        <div className="about-livescore">
+                            <div className="about-livescore-text">
                                 SABAVN, một chuyên trang thể thao hàng đầu tại Việt Nam, cam kết mang đến cho quý độc giả những thông tin mới nhất về lịch thi đấu 
                                 bóng đá hôm nay và rạng sáng mai của hàng trăm giải đấu bóng đá trên khắp thế giới. Chúng tôi hiểu rằng LTĐ bóng đá là món ăn tinh 
                                 thần không thể thiếu đối với người Việt.
                             </div>
-                            <div class="about-livescore-text">
+                            <div className="about-livescore-text">
                                 Tại SABAVN.com, quý độc giả sẽ tìm thấy lịch thi đấu bóng đá hôm nay của các giải đấu hàng đầu trên toàn cầu như 
                                 Ngoại hạng Anh, FA Cup, C1, C2, C3, La Liga, Serie A, Cup Liên đoàn, Bundesliga, UEFA Nations League, cùng nhiều giải giao hữu quan trọng khác.
                             </div>
-                            <div class="about-livescore-text">
+                            <div className="about-livescore-text">
                                 Chúng tôi cũng cung cấp lịch thi đấu bóng đá theo ngày của AFF Cup, K.League, J.League, U22 Đông Nam Á, SEA Games, Asiad; LTĐ Olympic, Asian Cup,
                                 U23 Châu Á, V-League, Cup Quốc gia, Thai League.
                             </div>
-                            <div class="about-livescore-text">
+                            <div className="about-livescore-text">
                                 Ngoài ra, SABAVN còn đem đến cho độc giả lịch thi đấu bóng đá chi tiết
                                 theo từng vòng đấu, lượt trận của các đội bóng lớn như MU, Man City, Real Madrid, AC Milan, Chelsea, Barcelona, Arsenal, Liverpool, Dortmund, Bayern Munich.
                             </div>
-                            <div class="about-livescore-text">
+                            <div className="about-livescore-text">
                                 Bạn sẽ tìm thấy lịch bóng đá hôm nay của Juventus, PSG, Tottenham, và cả lịch thi đấu U19 Việt Nam, U23 Việt Nam, ĐT Việt Nam, lịch trực tiếp bóng đá V-League của HAGL, 
                                 Hà Nội, SLNA, Thanh Hóa, Công An Hà Nội tại SABAVN.com.
                             </div>
-                            <div class="about-livescore-text">
+                            <div className="about-livescore-text">
                                 SABAVN không chỉ cập nhật lịch trực tiếp và lịch phát sóng bóng đá hôm nay trên các 
                                 kênh nổi tiếng như K+1, K+PM, K+NS, K+PC, On Sports, FOX Sports, VTV6, VTC3, THVL2, VTC Now, Thể Thao TV, Bóng Đá TV, SCTV, TTTT, mà còn liên tục cập nhật trên 
                                 các nền tảng mạng xã hội như Youtube, Facebook của Next Media, VFF Channel, Thethao360...

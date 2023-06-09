@@ -376,5 +376,20 @@
             video = video.Skip(Constants.FromFirstItem).Take(Constants.GetSixItems).ToList();
             return PartialView("_VideoSidebar", video);
         }
+
+        [HttpPost]
+        [Route("api/GetCategorySidebar")]
+        public async Task<IActionResult> GetCategorySidebar(string slug, int limitItem)
+        {
+            var criteria =  new GetPostsByCateSlugPagingCriteria
+            {
+                _Start = Constants.FromFirstItem,
+                _End = limitItem,
+                _CategorySlug = slug
+            };
+            var posts = await postService.GetPostsByCateSlugPagingAsync(criteria);
+            ViewBag.Slug = slug;
+            return PartialView("_CategorySidebar", posts);
+        }
     }
 }

@@ -91,11 +91,10 @@
         });
     }
 
-    function GetDataSidebar() {
+    function GetVideoSidebar() {
         if($('.video-sidebar').length === 0) {
             return false;
         }
-
         $.ajax({
             type: 'POST',
             url: '/api/GetVideo',
@@ -105,11 +104,29 @@
         })
     }
 
+    function GetPostSidebar() {
+        if($('#guess-section').length === 0) {
+            return false;
+        }
+        var slug = $('#guess-section').data('slug');
+        var limitItem = $('#guess-section').data('limit');
+        console.log(slug, limitItem);
+        $.ajax({
+            type: 'POST',
+            url: '/api/GetCategorySidebar',
+            data: {slug, limitItem },
+            success: function(res) {
+                $('#guess-section').html(res);
+            }
+        })
+    }
+
 
 
     function init() {
         InfiniteScroll();
-        GetDataSidebar();
+        GetVideoSidebar();
+        GetPostSidebar();
     }
 
     return {
