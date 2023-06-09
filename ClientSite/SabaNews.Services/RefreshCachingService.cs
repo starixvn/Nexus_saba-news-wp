@@ -317,5 +317,30 @@
 
             logService.WriteLogFileInfo(string.Format("Done UpdateVideoCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
+
+        public async Task UpdateRecentPostsCaching()
+        {
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateRecentPostCaching");
+
+            try
+            {
+                var result = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
+                logService.WriteLogFileInfo(string.Format("After GetRecentPostData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheWrapperService.SetAsync(CacheKey.RecentPost,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRecentPostTimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateRecentPostCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+        }
     }
 }

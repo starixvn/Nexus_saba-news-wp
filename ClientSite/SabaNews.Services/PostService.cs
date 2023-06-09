@@ -71,17 +71,6 @@
                 End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            postParam.TotalIItems = criteria.TotalItems;
-            if (postParam.PostID != 0)
-            {
-                var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
-                var totalRealItems = postParam.End - 1;
-                posts = excerptCurrentPost;
-                if (excerptCurrentPost.Count > totalRealItems)
-                {
-                    posts = excerptCurrentPost.Skip(postParam.Start).Take(totalRealItems).ToList();
-                }
-            }
             return FormatData(posts).ToList();
         }
 

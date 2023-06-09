@@ -5,5 +5,7 @@
         public int PostId { get; set; }
 
         public string CateSlug { get; set; }
+
+        public int LimitItem { get; set; }
     }
 }

@@ -136,7 +136,7 @@ export class AppContainer extends Component {
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <div class="block__title"><h1><a>Lịch thi đấu bóng đá hôm nay</a></h1></div>
+                        <div className="block__title"><h1><a>Lịch thi đấu bóng đá hôm nay</a></h1></div>
                         <div className="document-text">
                             *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ mang tính chất tham khảo.
                         </div>

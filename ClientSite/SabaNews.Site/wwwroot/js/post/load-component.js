@@ -42,10 +42,11 @@
         if (block.length > 0) {
             var postID = block.data("postid");
             var cateSlug = block.data("cateslug");
+            var limitItem = block.data("limititem");
             $.ajax({
                 url: "/api/post/sidebar-posts",
                 type: "POST",
-                data: { postID, cateSlug },
+                data: { postID, cateSlug, limitItem },
                 success: function (res) {
                     block.html(res);
                 },

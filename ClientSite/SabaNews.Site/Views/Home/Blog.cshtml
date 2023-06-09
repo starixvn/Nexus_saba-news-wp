@@ -1,6 +1,8 @@
 ﻿@{
+    var limitSidebarItem = 0;
     if (Model.Header.Controller == "Tag")
     {
+        limitSidebarItem = 10;
         var description = "MỚI NHẤT: ";
         int i = 0;
         foreach (var post in Model.Posts)
@@ -35,6 +37,21 @@
         window.keyword = '@Model.Header.Keyword';
         window.type = '@Model.Header.Controller';
     </script>
+    @if (Model.Header.Controller == "Tag")
+    {
+        <environment include="Development">
+            <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/dev/pages/livescore/soccer/homepage/fixture.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/dev/pages/livescore/soccer/homepage/standing.chunk.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/pro/pages/livescore/soccer/homepage/fixture.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/pro/pages/livescore/soccer/homepage/standing.chunk.js" asp-append-version="true"></script>
+        </environment>
+    }
     <script src="~/minify/js/blog.min.js" asp-append-version="true"></script>
 }
 @section Metadata {
@@ -58,6 +75,21 @@
 }
 
 @section Styles{
+    @if (Model.Header.Controller == "Tag")
+    {
+        <environment include="Development">
+            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/fixture.chunk.css"
+            asp-append-version="true" />
+            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/standing.chunk.css"
+            asp-append-version="true" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/fixture.chunk.css"
+            asp-append-version="true" />
+            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/standing.chunk.css"
+            asp-append-version="true" />
+        </environment>
+    }
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
 
@@ -161,7 +193,7 @@
                 }
             </div>
             @if (Model.Posts.Count == Model.Paging.PageSize)
-            { 
+            {
                 <div class="loading-page">
                     <div class="lds-ellipsis">
                         <div></div><div></div><div></div><div></div>
@@ -171,7 +203,12 @@
         </div>
         <div class="banner-scroll banner-mobile-bottom" style="display: none;"></div>
         <div class="block block-extension">
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory })
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory, LimitItem = limitSidebarItem })
+            @if (Model.Header.Controller == "Tag")
+            {
+                <div id="fixture-homepage"></div>
+                <div id="standing-homepage"></div>
+            }
         </div>
     </div>
 </section>

@@ -27,5 +27,6 @@
         public const string HomePageFixture = "HomePageFixture";
         public const string HomePageStanding = "HomePageStanding";
         public const string Video = "VideoCache";
+        public const string RecentPost = "RecentPost";
     }
 }

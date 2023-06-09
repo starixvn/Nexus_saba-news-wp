@@ -174,9 +174,9 @@
 
         [HttpPost]
         [Route("api/post/sidebar-posts")]
-        public IActionResult GetSidebarPosts(string cateSlug, int postID)
+        public IActionResult GetSidebarPosts(string cateSlug, int postID, int limitItem)
         {
-            return ViewComponent("Sidebar", new { cateSlug, postID });
+            return ViewComponent("Sidebar", new { cateSlug, postID, limitItem });
         }
 
         [HttpPost]
@@ -191,7 +191,8 @@
         [Route("api/post/lastestNews")]
         public async Task<IActionResult> GetLastestNews()
         {
-            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems });
+            var posts = await dataControlService.GetRecentPostsAsync();
+            posts = posts.Take(Constants.GetFiveItems);
             return Ok(posts);
         }
 

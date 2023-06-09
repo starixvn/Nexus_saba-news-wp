@@ -307,7 +307,7 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get Video data from DB---------");
 
                     result = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
                     await cacheWrapperService.SetAsync(CacheKey.Video, result,
@@ -321,6 +321,30 @@
             }
 
             return await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+        }
+
+        public async Task<IEnumerable<Post>> GetRecentPostsAsync()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Post>>(CacheKey.RecentPost);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get recent posts data from DB---------");
+
+                    result = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
+                    await cacheWrapperService.SetAsync(CacheKey.Video, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRecentPostTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
         }
     }
 }

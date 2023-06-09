@@ -8,14 +8,17 @@
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
     using SabaNews.Services;
+    using SabaNews.Services.Interfaces;
 
     public class RelatedPostsViewComponent : ViewComponent
     {
         private readonly IPostService postService;
+        private readonly IDataControlService dataControlService;
 
-        public RelatedPostsViewComponent(IPostService postService)
+        public RelatedPostsViewComponent(IPostService postService, IDataControlService dataControlService)
         {
             this.postService = postService;
+            this.dataControlService = dataControlService;
         }
 
 
@@ -24,15 +27,10 @@
             IEnumerable<Post> posts ;
             if (slug == "")
             {
-                var recentParam = new GetRecentPostsParam
-                {
-                    Start = Constants.FromFirstItem,
-                    End = Constants.GetElevenItems,
-                    PostID = postID
-                };
-                posts = await postService.GetRecentPostsAsync(recentParam);
+                posts = await dataControlService.GetRecentPostsAsync();
+                posts = posts.Where(item => item.ID != postID).Take(Constants.GetTenItems).ToList();
             }
-            else 
+            else
             {
                 var criteria = new GetPostsByCateSlugCriteria
                 {
@@ -50,7 +48,6 @@
                 var allPosts = await postService.GetPostsByCateSlugAsync(criteria);
                 posts = GetPostsExcerptPostID(allPosts, relatedParam);
             }
-            
             return View(posts);
         }
 
