@@ -2214,8 +2214,8 @@ button {
 }
 .card-horizontal:last-child {
   border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 @media screen and (max-width: 1024px) {
   .card-horizontal {
@@ -2707,19 +2707,19 @@ button {
   }
 }
 
-.video-sidebar {
+.video-sidebar, #guess-section {
   margin-top: 2rem;
 }
-.video-sidebar .card-horizontal {
+.video-sidebar .card-horizontal, #guess-section .card-horizontal {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   grid-template-columns: 13rem 1fr;
 }
-.video-sidebar .card-horizontal__image {
+.video-sidebar .card-horizontal__image, #guess-section .card-horizontal__image {
   border-radius: 3px !important;
   height: 9.4rem;
 }
-.video-sidebar .card-horizontal__content .title {
+.video-sidebar .card-horizontal__content .title, #guess-section .card-horizontal__content .title {
   font-weight: 600;
   font-size: 1.4rem;
   line-height: 2.6rem;

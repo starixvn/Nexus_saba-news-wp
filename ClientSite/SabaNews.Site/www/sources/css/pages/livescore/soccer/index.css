@@ -2419,3 +2419,31 @@ body {
 .about-livescore .about-livescore-text:last-child {
   margin-bottom: 0;
 }
+
+.livescore-news {
+  margin-top: 2rem;
+}
+@media (max-width: 767px) {
+  .livescore-news {
+    margin-top: 1.2rem;
+  }
+}
+.livescore-news .card-horizontal {
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+  grid-template-columns: 21.3rem 1fr;
+}
+.livescore-news .card-horizontal__image {
+  cursor: pointer;
+}
+.livescore-news .block__title {
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 767px) {
+  .livescore-news .block__title {
+    margin-bottom: 1rem;
+  }
+}
+.livescore-news .title {
+  cursor: pointer;
+}

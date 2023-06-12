@@ -380,6 +380,13 @@
     }
 }
 
+#guess-section{
+    margin-top: 2.2rem;
+    @include tableMobile{
+        margin-top: 3rem;
+    }
+}
+
 
 
 
