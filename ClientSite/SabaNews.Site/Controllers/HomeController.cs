@@ -24,6 +24,8 @@
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly IUserService userService;
+        private readonly string domain;
+
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
@@ -34,12 +36,12 @@
             this.dataControlService = dataControlService;
             this.configuration = configuration;
             this.userService = userService;
+            domain = configuration.GetValue<string>("BaseUrl");
         }
 
         public async Task<IActionResult> Index()
         {
             var viewModel = await dataControlService.GetHomePageViewModel();
-            var domain = configuration.GetValue<string>("BaseUrl");
             var title = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
             var header = new HeaderViewModel
             {
@@ -65,7 +67,6 @@
             }
             var menus = await dataControlService.GetMenuData();
             var slugs = PostHelper.GetCategorySlugs(menus.ToList(), slug);
-            var domain = configuration.GetValue<string>("BaseUrl");
             viewModel.Header.ActiveCategory = slugs.Slug1 ?? slug;
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
@@ -166,7 +167,6 @@
             var posts = await postService.GetPostByTagAsync(criteria);
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
-            var domain = configuration.GetValue<string>("BaseUrl");
             var model = new BlogViewModel
             {
                 Posts = posts.ToList(),
@@ -217,7 +217,7 @@
                 Category = new Category
                 {
                     OgTitle = string.Concat(authorName, " | ", Constants.SiteName),
-                    OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
+                    OgImage = string.Concat(domain, "images/sabasports.svg"),
                     Url = Url.Action("Author", "Home", new { authorId }, Request.Scheme)
                 },
                 Header = new HeaderViewModel
