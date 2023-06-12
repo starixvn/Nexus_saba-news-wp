@@ -591,6 +591,57 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task GetRecentPostsAsync_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetRecentPostsAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetRecentPostsAsync_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            IEnumerable<Post> expectedFromCache = null;
+            var expected = fixture.Create<IEnumerable<Post>>();
+            cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetRecentPostsAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Post>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetRecentPostsAsync_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(expected);
+
+
+            //Act
+            var actual = await service.GetRecentPostsAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
 
 
         #region Helpers

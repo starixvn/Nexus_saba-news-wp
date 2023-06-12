@@ -428,9 +428,10 @@
             var controller = GetController();
             var postId = fixture.Create<int>();
             var slug = fixture.Create<string>();
+            var limitItem = 5;
 
             //Act
-            var result = controller.GetSidebarPosts(slug, postId);
+            var result = controller.GetSidebarPosts(slug, postId, limitItem);
 
             // Assert
             Assert.IsType<ViewComponentResult>(result);
@@ -461,10 +462,28 @@
             var param = fixture.Create<GetRecentPostsParam>();
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
-            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(expectedRecentPosts);
+            dataControlService.GetRecentPostsAsync().Returns(expectedRecentPosts);
 
             //Act
             var result = await controller.GetLastestNews();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(expectedRecentPosts, okResult.Value);
+        }
+
+        [Fact]
+        public async Task GetTodayFixturePost_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<GetPostsByTagCriteria>();
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+
+            postService.GetPostByTagAsync(Arg.Do<GetPostsByTagCriteria>(x => param = x)).Returns(expectedRecentPosts);
+
+            //Act
+            var result = await controller.GetTodayFixturePost();
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);

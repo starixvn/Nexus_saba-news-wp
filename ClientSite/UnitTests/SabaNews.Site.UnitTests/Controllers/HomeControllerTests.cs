@@ -693,6 +693,23 @@
             Assert.Equal(expected, viewModel);
         }
 
+        [Fact]
+        public async Task GetCategorySidebar_WhenCalled_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<GetPostsByCateSlugPagingCriteria>();
+            postService.GetPostsByCateSlugPagingAsync(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => x = param)).Returns(expected);
+            // Act
+            var result = await controller.GetCategorySidebar("slug", 10);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+        }
+
         #region Helpers
         private HomeController GetController()
         {

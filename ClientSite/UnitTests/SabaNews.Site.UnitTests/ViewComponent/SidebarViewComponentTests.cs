@@ -6,6 +6,7 @@
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
+    using SabaNews.Services.Interfaces;
     using SabaNews.Views.Shared.Components;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -14,6 +15,7 @@
     public class SidebarViewComponentTests
     {
         private IPostService postService;
+        private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -26,7 +28,7 @@
             var model = fixture.Create<GetRecentPostsParam>();
 
             var expected = fixture.Create<IEnumerable<Post>>();
-            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => model = x)).Returns(expected);
+           dataControlService.GetRecentPostsAsync().Returns(expected);
 
             //Act
             var actual = await component.InvokeAsync(cateSlug, postId);
@@ -47,7 +49,7 @@
             var model = fixture.Create<GetRecentPostsParam>();
 
             var expected = fixture.Create<IEnumerable<Post>>();
-            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => model = x)).Returns(expected);
+            dataControlService.GetRecentPostsAsync().Returns(expected);
 
             //Act
             var actual = await component.InvokeAsync(cateSlug, postId);
@@ -104,8 +106,9 @@
         private SidebarViewComponent GetViewComponent()
         {
             postService = Substitute.For<IPostService>();
+            dataControlService = Substitute.For<IDataControlService>();
 
-            var component = new SidebarViewComponent(postService);
+            var component = new SidebarViewComponent(postService, dataControlService);
 
             return component;
         }

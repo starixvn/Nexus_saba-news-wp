@@ -477,6 +477,48 @@
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
         }
 
+        [Fact]
+        public async Task UpdateRecentPostsCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<GetRecentPostsParam>();
+
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateRecentPostsCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateRecentPostsCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+            var param = fixture.Create<GetRecentPostsParam>();
+
+            postService.When(x => x.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x))).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateRecentPostsCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
 
         #region Helpers
         private RefreshCachingService GetRefreshCachingService()

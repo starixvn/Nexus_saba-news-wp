@@ -6,6 +6,7 @@
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
     using SabaNews.Services;
+    using SabaNews.Services.Interfaces;
     using SabaNews.Site.Views.Shared.Components.RelatedPosts;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -14,6 +15,7 @@
     public class RelatedPostsViewComponentTests
     {
         private IPostService postService;
+        private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -26,7 +28,7 @@
             var model = fixture.Create<GetRecentPostsParam>();
 
             var expected = fixture.Create<IEnumerable<Post>>();
-            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => model = x)).Returns(expected);
+            dataControlService.GetRecentPostsAsync().Returns(expected);
 
             //Act
             var actual = await component.InvokeAsync(postId, slug);
@@ -106,8 +108,9 @@
         private RelatedPostsViewComponent GetViewComponent()
         {
             postService = Substitute.For<IPostService>();
+            dataControlService = Substitute.For<IDataControlService>();
             
-            var component = new RelatedPostsViewComponent(postService);
+            var component = new RelatedPostsViewComponent(postService, dataControlService);
 
             return component;
         }
