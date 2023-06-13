@@ -18,18 +18,25 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using System.Collections;
+    using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
     {
         private readonly IBaseService baseService;
         private readonly ISerializerService serializerService;
         private readonly IConfiguration configuration;
+        private readonly IOptionService optionService;
 
-        public PostService(IBaseService baseService, ISerializerService serializerService, IConfiguration configuration)
+        public PostService(IBaseService baseService, 
+            ISerializerService serializerService, 
+            IConfiguration configuration,
+            IOptionService optionService)
         {
             this.baseService = baseService;
             this.serializerService = serializerService;
             this.configuration = configuration;
+            this.optionService = optionService;
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end, string postType = Constants.postType)
@@ -105,8 +112,8 @@
                     var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                     post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 }
-
-                post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
+                var metadata = serializerService.Unserializer(post.Metadata);
+                post.Images = GetListImageFromMetadata(metadata, post.FeatureImage);
                 post.CategoriesSlug ??= "";
                 post.CatesName ??= "";
             }
@@ -307,45 +314,12 @@
                     var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                     post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 }
-                post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
+                var metadata = serializerService.Unserializer(post.Metadata);
+                post.Images = GetListImageFromMetadata(metadata, post.FeatureImage);
             }
             return posts;
         }
 
-        private static Category ReplaceStringFromVarSeo(Category cate)
-        {
-            const string dateFormat = "dd/MM/yyyy";
-            if (cate == null)
-            {
-                return cate;
-            }
-            if (cate.SEOTitle != null)
-            {
-                var result = Regex.Replace(cate.SEOTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                result =  Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.SEOTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
-            }
-            if (cate.Description != null)
-            {
-                var result = Regex.Replace(cate.Description, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.Description = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
-            }
-            if (cate.OgDescription != null)
-            {
-                var result = Regex.Replace(cate.OgDescription, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.OgDescription = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
-            }
-            if (cate.OgTitle != null)
-            {
-                var result = Regex.Replace(cate.OgTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.OgTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
-            }
-
-            return cate;
-        }
 
         public async Task<IEnumerable<SitemapModel>> GetSitemapDataAsync()
         {
@@ -407,6 +381,18 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
+        public async Task<SEOSettingModel> GetSeoSettingAsync()
+        {
+            var setting =  await optionService.GetOptionAsync(OptionKey.YoastSEOSetting);
+            var hashObject = serializerService.Unserializer(setting.OptionValue);
+            var seoSetting = new SEOSettingModel
+            {
+                TagTitle = hashObject["title-tax-post_tag"].ToString(),
+                TagDescription = hashObject["metadesc-tax-post_tag"].ToString()
+            };
+            return seoSetting;
+        }
+
         private static List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories)
         {
             var cateList = new List<SitemapModel>();
@@ -416,6 +402,88 @@
                 cateList.Add(cate);
             }
             return cateList.ToList();
+        }
+
+        private static IEnumerable<ImageInfo> GetListImageFromMetadata(Hashtable hashTable, string featuredImage)
+        {
+            var results = new List<ImageInfo>();
+            try
+            {
+                if (hashTable.Contains("sizes"))
+                {
+                    var sizes = hashTable["sizes"];
+                    var sizeHash = (Hashtable)sizes;
+                    var imageBaseUrl = string.Join("/", featuredImage.Split('/').SkipLast(1).ToArray());
+                    results = MappingHashTableToListImgInfo(imageBaseUrl, sizeHash);
+                }
+            }
+            catch
+            {
+                return results;
+            }
+            return results;
+        }
+
+        private static List<ImageInfo> MappingHashTableToListImgInfo(string imageBaseUrl, Hashtable sizeHash)
+        {
+            var images = new List<ImageInfo>();
+            if (sizeHash != null)
+            {
+                foreach (Hashtable item in sizeHash.Values)
+                {
+                    if (IsValidKeys(item))
+                    {
+                        images.Add(new ImageInfo
+                        {
+                            Width = Int32.Parse(item["width"].ToString()),
+                            Height = Int32.Parse(item["height"].ToString()),
+                            ImageType = item.ContainsKey("mime-type") ? (string)item["mime-type"] : string.Empty,
+                            ImageUrl = string.Format("{0}/{1}", imageBaseUrl, (string)item["file"])
+                        });
+                    }
+                }
+            }
+            return images;
+        }
+
+        private static bool IsValidKeys(Hashtable item)
+        {
+            return item.ContainsKey("width") && item.ContainsKey("height") && item.ContainsKey("file");
+        }
+
+        private static Category ReplaceStringFromVarSeo(Category cate)
+        {
+            const string dateFormat = "dd/MM/yyyy";
+            if (cate == null)
+            {
+                return cate;
+            }
+            if (cate.SEOTitle != null)
+            {
+                var result = Regex.Replace(cate.SEOTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                result =  Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.SEOTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+            }
+            if (cate.Description != null)
+            {
+                var result = Regex.Replace(cate.Description, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.Description = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+            }
+            if (cate.OgDescription != null)
+            {
+                var result = Regex.Replace(cate.OgDescription, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.OgDescription = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+            }
+            if (cate.OgTitle != null)
+            {
+                var result = Regex.Replace(cate.OgTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.OgTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+            }
+
+            return cate;
         }
     }
 }

@@ -1,17 +1,14 @@
 ﻿namespace SabaNews.Services
 {
     using Fanex.Logging;
-    using SabaNews.Models.Posts;
     using System;
     using System.Collections;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
     using System.Text;
 
     public interface ISerializerService
     {
-        IEnumerable<ImageInfo> GetListImageFromMetadata(string featuredImage, string metadata);
+        Hashtable Unserializer(string metadata);
     }
 
     public class SerializerService : ISerializerService
@@ -36,9 +33,9 @@
             this.logService = logService;
         }
 
-        public IEnumerable<ImageInfo> GetListImageFromMetadata(string featuredImage, string metadata)
+        public Hashtable Unserializer(string metadata)
         {
-            var results = new List<ImageInfo>();
+            Hashtable results = null;
             if (string.IsNullOrWhiteSpace(metadata))
             {
                 return results;
@@ -49,14 +46,7 @@
                 pos = 0;
                 var decryptedData = DeserializeString(metadata);
 
-                var hashTable = (Hashtable)decryptedData;
-                if (hashTable.Contains("sizes"))
-                {
-                    var sizes = hashTable["sizes"];
-                    var sizeHash = (Hashtable)sizes;
-                    var imageBaseUrl = string.Join("/", featuredImage.Split('/').SkipLast(1).ToArray());
-                    results = MappingHashTableToListImgInfo(imageBaseUrl, sizeHash);
-                }
+                results = (Hashtable)decryptedData;
                 return results;
             }
             catch
@@ -65,33 +55,6 @@
             }
         }
 
-        private static List<ImageInfo> MappingHashTableToListImgInfo(string imageBaseUrl, Hashtable sizeHash)
-        {
-            var images = new List<ImageInfo>();
-
-            if (sizeHash != null)
-            {
-                foreach (Hashtable item in sizeHash.Values)
-                {
-                    if (IsValidKeys(item))
-                    {
-                        images.Add(new ImageInfo
-                        {
-                            Width = (int)item["width"],
-                            Height = (int)item["height"],
-                            ImageType = item.ContainsKey("mime-type") ? (string)item["mime-type"] : string.Empty,
-                            ImageUrl = string.Format("{0}/{1}", imageBaseUrl, (string)item["file"])
-                        });
-                    }
-                }
-            }
-            return images;
-        }
-
-        private static bool IsValidKeys(Hashtable item)
-        {
-            return item.ContainsKey("width") && item.ContainsKey("height") && item.ContainsKey("file");
-        }
 
         private object DeserializeString(string str)
         {

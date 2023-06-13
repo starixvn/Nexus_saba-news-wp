@@ -7,5 +7,7 @@
         public const string HompageStanding = "homepage_standing";
 
         public const string FootballNewsCategories = "football_news_categories";
+
+        public const string YoastSEOSetting = "wpseo_titles";
     }
 }
