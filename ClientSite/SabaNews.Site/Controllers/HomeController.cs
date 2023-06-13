@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -165,23 +166,32 @@
             var start = (page - 1) * Constants.Perpage;
             var criteria = new GetPostsByTagCriteria { _Tag = tagname.Trim(), _Start = start, _End = Constants.Perpage };
             var posts = await postService.GetPostByTagAsync(criteria);
+            if(!posts.Any())
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var seoInfo = await postService.GetSeoSettingAsync();
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
+            var title = string.IsNullOrEmpty(seoInfo.TagTitle)
+                        ? string.Concat(tag, " | ", Constants.SiteName)
+                        : Regex.Replace(seoInfo.TagTitle, WordpressVariable.TermTitle, tag, RegexOptions.IgnoreCase);
             var model = new BlogViewModel
             {
                 Posts = posts.ToList(),
                 Category = new Category
                 {
-                    OgTitle = string.Concat(tag, " | ", Constants.SiteName),
+                    OgTitle = title,
                     OgImage = string.Concat(domain, "images/sabasports.svg"),
                     Url = $"{domain}tag/{tagname}"
                 },
                 Header = new HeaderViewModel
                 {
-                    Title = string.Concat(tag, " | ", Constants.SiteName),
+                    Title = title,
                     HeadTitle = tag,
                     Keyword = tagname,
-                    Controller = Constants.Tag
+                    Controller = Constants.Tag,
+                    Description = string.IsNullOrEmpty(seoInfo.TagDescription) ? "" : Regex.Replace(seoInfo.TagDescription, WordpressVariable.TermTitle, tag, RegexOptions.IgnoreCase)
                 },
                 Paging = new PagingModel
                 {
@@ -192,8 +202,7 @@
                 }
             };
 
-            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, model);
+            return View(Constants.BlogView, model);
         }
 
         [Route("tag/{tagname}/page/{page}")]

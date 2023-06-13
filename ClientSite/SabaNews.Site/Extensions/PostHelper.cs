@@ -2,14 +2,17 @@
 {
     using HtmlAgilityPack;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Models;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
     using SabaNews.Models.StoryPost;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     public static class PostHelper
     {
@@ -96,13 +99,10 @@
                         title = figcaption.SelectSingleNode("a").InnerHtml;
                     }
                 }
-                
                 stories.Add(new StoryPostModel { ImgSrc = img, Title = title, Link = link });
             }
             return stories;
         }
-
-        
 
     }
 }

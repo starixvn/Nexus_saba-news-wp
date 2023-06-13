@@ -313,7 +313,38 @@
             var page = fixture.Create<int>();
             var criteria = fixture.Create<GetPostsByTagCriteria>();
             var expected = fixture.Create<IEnumerable<Post>>();
+            var expectedSeoInfo = fixture.Create<SEOSettingModel>();
             postService.GetPostByTagAsync(Arg.Do<GetPostsByTagCriteria>(x => criteria = x)).Returns(expected);
+            postService.GetSeoSettingAsync().Returns(expectedSeoInfo);
+            configuration.GetValue<string>("BaseUrl").Returns("baseurl");
+            //Act
+            var result = await controller.Tag(keyword, page);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.Posts);
+            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task Tag_WhenSeoInfoIsEmpty_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            controller.Url = Substitute.For<IUrlHelper>();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+            string keyword = fixture.Create<string>();
+            var page = fixture.Create<int>();
+            var criteria = fixture.Create<GetPostsByTagCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var expectedSeoInfo = new SEOSettingModel();
+            postService.GetPostByTagAsync(Arg.Do<GetPostsByTagCriteria>(x => criteria = x)).Returns(expected);
+            postService.GetSeoSettingAsync().Returns(expectedSeoInfo);
             configuration.GetValue<string>("BaseUrl").Returns("baseurl");
             //Act
             var result = await controller.Tag(keyword, page);
@@ -347,8 +378,6 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(expected, viewModel.Posts);
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }
 

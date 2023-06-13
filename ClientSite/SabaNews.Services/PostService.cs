@@ -292,7 +292,7 @@
                 {
                     return true;
                 }
-            }           
+            }
             return false;
         }
 
@@ -384,11 +384,11 @@
         public async Task<SEOSettingModel> GetSeoSettingAsync()
         {
             var setting =  await optionService.GetOptionAsync(OptionKey.YoastSEOSetting);
-            var hashObject = serializerService.Unserializer(setting.OptionValue);
+            var hashObject = serializerService.Unserializer(setting?.OptionValue);
             var seoSetting = new SEOSettingModel
             {
-                TagTitle = hashObject["title-tax-post_tag"].ToString(),
-                TagDescription = hashObject["metadesc-tax-post_tag"].ToString()
+                TagTitle =  hashObject == null ? "" : Helper.ReplaceStringFromVarSeo(hashObject["title-tax-post_tag"].ToString()),
+                TagDescription =  hashObject == null ? "" : Helper.ReplaceStringFromVarSeo(hashObject["metadesc-tax-post_tag"].ToString())
             };
             return seoSetting;
         }

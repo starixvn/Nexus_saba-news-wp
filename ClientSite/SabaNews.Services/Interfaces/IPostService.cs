@@ -63,5 +63,6 @@
 
         Task<IEnumerable<Post>> GetRSSCategoryBySlugAsync(string slug);
         Task<IEnumerable<Post>> GetRSSRecentBySlugAsync();
+        Task<SEOSettingModel> GetSeoSettingAsync();
     }
 }

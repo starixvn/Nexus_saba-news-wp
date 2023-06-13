@@ -9,9 +9,12 @@
     using SabaNews.Criteria;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
+    using SabaNews.Models.Options;
     using SabaNews.Models.Posts;
     using SabaNews.Resources;
+    using SabaNews.Services.Interfaces;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -22,6 +25,7 @@
     {
         private IBaseService baseService;
         private ISerializerService serializerService;
+        private IOptionService optionService;
         private IConfiguration configuration;
         private readonly IFixture fixture = new Fixture();
 
@@ -799,6 +803,50 @@
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task GetSeoSettingAsync_WhenUnserializerHaveData_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var optionKey = "optionKey";
+            var criteria = fixture.Create<GetRSSRecentCriteria>();
+            var expectedOption = fixture.Create<Option>();
+            var expectedResult = new SEOSettingModel { TagTitle = "tag title", TagDescription = "tag description" };
+            var hashObject = new Hashtable();
+            hashObject.Add("title-tax-post_tag",  expectedResult.TagTitle);
+            hashObject.Add("metadesc-tax-post_tag",  expectedResult.TagDescription);
+            optionService.GetOptionAsync(Arg.Do<string>(x => optionKey = x)).Returns(expectedOption);
+            serializerService.Unserializer(Arg.Do<string>(x => optionKey = x)).Returns(hashObject);
+
+            //Act
+            var actual = await service.GetSeoSettingAsync();
+
+            //Assert
+            Assert.Equal(expectedResult.TagDescription, actual.TagDescription);
+            Assert.Equal(expectedResult.TagTitle, actual.TagTitle);
+        }
+
+        [Fact]
+        public async Task GetSeoSettingAsync_WhenUnserializerIsNull_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var optionKey = "optionKey";
+            var criteria = fixture.Create<GetRSSRecentCriteria>();
+            var expectedOption = fixture.Create<Option>();
+            var expectedResult = new SEOSettingModel { TagTitle = "", TagDescription = "" };
+            Hashtable hashObject = null;
+            optionService.GetOptionAsync(Arg.Do<string>(x => optionKey = x)).Returns(expectedOption);
+            serializerService.Unserializer(Arg.Do<string>(x => optionKey = x)).Returns(hashObject);
+
+            //Act
+            var actual = await service.GetSeoSettingAsync();
+
+            //Assert
+            Assert.Equal(expectedResult.TagDescription, actual.TagDescription);
+            Assert.Equal(expectedResult.TagTitle, actual.TagTitle);
+        }
+
         private static IEnumerable<Post> GetTestPost()
         {
             List<Post> expected = new List<Post>();
@@ -822,7 +870,8 @@
             baseService = Substitute.For<IBaseService>();
             serializerService = Substitute.For<ISerializerService>();
             configuration = Substitute.For<IConfiguration>();
-            var service = new PostService(baseService, serializerService, configuration);
+            optionService = Substitute.For<IOptionService>();
+            var service = new PostService(baseService, serializerService, configuration, optionService);
 
             return service;
         }
