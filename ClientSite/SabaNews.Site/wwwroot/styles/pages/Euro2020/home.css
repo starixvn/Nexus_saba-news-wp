@@ -1880,6 +1880,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: relative;
   border-bottom: none;
 }
+@media (max-width: 767px) {
+  .title-new-page {
+    border-bottom: 2px solid #f12f19;
+    margin-bottom: 1rem;
+  }
+}
 .title-new-page::before {
   content: "";
   display: block;

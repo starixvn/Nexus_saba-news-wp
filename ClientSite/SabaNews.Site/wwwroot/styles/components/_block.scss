@@ -67,6 +67,10 @@
     margin-bottom: 2.4rem;
     position: relative;
     border-bottom: none;
+    @include Mobile{
+        border-bottom: 2px solid #f12f19;
+        margin-bottom: 1rem;
+    }
     &::before{
         content:  "";
         display: block;
