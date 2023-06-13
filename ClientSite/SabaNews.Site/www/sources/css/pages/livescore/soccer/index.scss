@@ -90,8 +90,14 @@ body {
         padding-bottom: 1.2rem;
         margin-bottom: 1.2rem;
         grid-template-columns: 21.3rem 1fr;
+        @include Mobile{
+            grid-template-columns: 13rem 1fr;
+        }
         &__image{
             cursor: pointer;
+            @include Mobile{
+                height: 8rem;
+            }
         }
     }
     .block__title{
@@ -102,6 +108,10 @@ body {
     }
     .title{
         cursor: pointer;
+        @include Mobile{
+            font-size: 1.5rem;
+            line-height: 2.4rem;
+        }
     }
 }
 

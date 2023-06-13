@@ -2433,8 +2433,18 @@ body {
   margin-bottom: 1.2rem;
   grid-template-columns: 21.3rem 1fr;
 }
+@media (max-width: 767px) {
+  .livescore-news .card-horizontal {
+    grid-template-columns: 13rem 1fr;
+  }
+}
 .livescore-news .card-horizontal__image {
   cursor: pointer;
+}
+@media (max-width: 767px) {
+  .livescore-news .card-horizontal__image {
+    height: 8rem;
+  }
 }
 .livescore-news .block__title {
   margin-bottom: 1.2rem;
@@ -2446,4 +2456,10 @@ body {
 }
 .livescore-news .title {
   cursor: pointer;
+}
+@media (max-width: 767px) {
+  .livescore-news .title {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+  }
 }
