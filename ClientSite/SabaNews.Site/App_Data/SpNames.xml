@@ -63,6 +63,7 @@
         <Setting Key="rss_get_category" SpName="rss_get_category" DbName="sabasports" Plain="0" />
         <Setting Key="rss_get_recent" SpName="rss_get_recent" DbName="sabasports" Plain="0" />
         <Setting Key="get_posts_by_cate_slug_paging" SpName="get_posts_by_cate_slug_paging" DbName="sabasports" Plain="0" />
+        <Setting Key="posts_sitemap_get_by_date" SpName="posts_sitemap_get_by_date" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Category">
         <Setting Key="cate_get_livescore" SpName="cate_get_livescore" DbName="sabasports" Plain="0" />

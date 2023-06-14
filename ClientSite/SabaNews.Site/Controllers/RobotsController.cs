@@ -25,6 +25,9 @@
         private readonly IConfiguration configuration;
 
         private const string RssCacheKey = "RSSCacheConfig";
+        public const string articleDaySlug = "article-day-";
+        public const string articleYearSlug = "article-year-";
+        public const string xmlSuffix = ".xml";
         private readonly string domain;
 
         public RobotsController(
@@ -57,9 +60,37 @@
         }
 
         [Route("sitemap.xml")]
-        public async Task<ContentResult> Sitemap()
+        public ContentResult Sitemap()
         {
             string sitemap = SitemapHelper.GetSitemapForDayAndYear(domain);
+            return Content(sitemap, "text/xml", Encoding.UTF8);
+        }
+
+        [Route("sitemap/{slug}")]
+        public async Task<ContentResult> SitemapCategory(string slug)
+        {
+            var sitemap = "";
+            if(slug.Contains(articleDaySlug))
+            {
+                var dateSlug = slug.Replace(articleDaySlug, "").Replace(xmlSuffix, "");
+                var date = DateTime.Parse(dateSlug);
+                var posts = await postService.GetSitemapPostsByDate(date);
+                sitemap = SitemapHelper.GetSitemapDocument(posts, domain);
+            }
+            else if(slug.Contains(articleYearSlug))
+            {
+                var year = Int32.Parse(slug.Replace(articleYearSlug, "").Replace(xmlSuffix, ""));
+                sitemap = SitemapHelper.GetSitemapForYear(year, domain);
+
+            }
+            return Content(sitemap, "text/xml", Encoding.UTF8);
+        }
+
+        [Route("sitemap/categories.xml")]
+        public async Task<ContentResult> SitemapCategories()
+        {
+            var menu = await dataControlService.GetMenuData();
+            var sitemap = SitemapHelper.GetSitemapCategories(menu, domain);
             return Content(sitemap, "text/xml", Encoding.UTF8);
         }
 
@@ -110,6 +141,7 @@
             string rss = RssHelper.GetRSSDocument(model, domain);
             return Content(rss, "text/xml", Encoding.UTF8);
         }
+
 
         private async Task<RSSCategoryModel> GetDataCategory(string slug)
         {

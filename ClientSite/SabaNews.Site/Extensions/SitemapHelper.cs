@@ -5,6 +5,7 @@
     using System.Xml.Linq;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
 
     public static class SitemapHelper
     {
@@ -13,21 +14,47 @@
         private const int lastHoursOfDay = 23;
         private const int lastMinute = 59;
         private const int lastSecond = 59;
+        private const int fromYear = 2020;
 
         public static string GetSitemapForDayAndYear(string domain)
         {
             XElement root = new(xmlns + "urlset");
             var currentDate = DateTime.Now;
             var firstDateOfYear = new DateTime(DateTime.Now.Year, 1, 1);
-            while(currentDate >= firstDateOfYear)
+
+            XElement urlElement = RenderPostSitemap("sitemap/categories.xml", DateTime.UtcNow, domain);
+            root.Add(urlElement);
+            urlElement = RenderPostSitemap("sitemap-news.xml", DateTime.UtcNow, domain);
+            root.Add(urlElement);
+            while (currentDate >= firstDateOfYear)
             {
-                XElement urlElement = new(
-                    xmlns + "url",
-                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}")),
-                    new XElement(
-                        xmlns + "lastmod",
-                        DateTimeExtensions.ToDateGMTSEAsia(currentDate)));
-                    root.Add(urlElement);
+                urlElement = RenderPostSitemap($"sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}.xml", currentDate, domain);
+                root.Add(urlElement);
+                currentDate = currentDate.AddDays(-1);
+                currentDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
+            }
+            var currentYear = DateTime.Now.AddYears(-1).Year;
+            var firstYear = fromYear;
+            while (currentYear >= firstYear)
+            {
+                urlElement = RenderPostSitemap($"sitemap/article-year-{currentYear}.xml", currentDate, domain);
+                root.Add(urlElement);
+                currentYear--;
+            }
+
+            XDocument document = new(root);
+            return document.ToString();
+        }
+
+        public static string GetSitemapForYear(int year, string domain)
+        {
+            XElement root = new(xmlns + "urlset");
+            var currentDate = new DateTime(year, 12, 31, 23, 59, 59);
+            var firstDateOfYear = new DateTime(year, 1, 1);
+            while (currentDate >= firstDateOfYear)
+            {
+                XElement urlElement = RenderPostSitemap($"sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}.xml", currentDate, domain);
+                root.Add(urlElement);
                 currentDate = currentDate.AddDays(-1);
                 currentDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
             }
@@ -36,23 +63,42 @@
             return document.ToString();
         }
 
-        public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes, string domain)
+        public static string GetSitemapDocument(IList<Post> sitemapNodes, string domain)
         {
             XElement root = new(xmlns + "urlset");
 
-            foreach (SitemapModel sitemapNode in sitemapNodes)
+            foreach (var sitemapNode in sitemapNodes)
             {
-                if (!string.IsNullOrEmpty(sitemapNode.Url))
+                XElement urlElement = RenderPostSitemap(sitemapNode.Slug, sitemapNode.PostDate, domain);
+                root.Add(urlElement);
+            }
+
+            XDocument document = new(root);
+            return document.ToString();
+        }
+
+        public static string GetSitemapCategories(IEnumerable<Menu> menus, string domain)
+        {
+            XElement root = new(xmlns + "urlset");
+            XElement urlElement = new(
+                       xmlns + "url",
+                       new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}")),
+                       new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTime.UtcNow)),
+                       new XElement(xmlns + "changefreq", "daily"),
+                       new XElement(xmlns + "priority", 0.1));
+            root.Add(urlElement);
+            foreach (var menu in menus)
+            {
+                if (!string.IsNullOrEmpty(menu.CateSlug))
                 {
-                    XElement urlElement = new(
-                    xmlns + "url",
-                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Url}")),
-                    sitemapNode.ModifiedDate == null ? null : new XElement(
-                        xmlns + "lastmod",
-                        DateTimeExtensions.ToDateGMTSEAsia(sitemapNode.ModifiedDate.Value)));
+                    urlElement = new(
+                        xmlns + "url",
+                        new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{menu.CateSlug}{CategoryKey.Suffix}")),
+                        new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTime.UtcNow)),
+                        new XElement(xmlns + "changefreq", "daily"),
+                        new XElement(xmlns + "priority", 0.1));
                     root.Add(urlElement);
                 }
-                
             }
 
             XDocument document = new(root);
@@ -86,6 +132,17 @@
 
             XDocument document = new(root);
             return document.ToString();
+        }
+
+        private static XElement RenderPostSitemap(string url, DateTime datetime, string domain)
+        {
+            XElement urlElement = new(
+                xmlns + "url",
+                new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{url}")),
+                new XElement(
+                    xmlns + "lastmod",
+                    DateTimeExtensions.ToDateGMTSEAsia(datetime)));
+            return urlElement;
         }
     }
 }

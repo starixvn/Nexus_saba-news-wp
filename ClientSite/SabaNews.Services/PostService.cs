@@ -393,6 +393,12 @@
             return seoSetting;
         }
 
+        public async Task<IList<Post>> GetSitemapPostsByDate(DateTime date)
+        {
+            var result = await baseService.GetDataAsync<Post>(new GetSitemapPostsByDateCriteria { Date = date });
+            return result.ToList();
+        }
+
         private static List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories)
         {
             var cateList = new List<SitemapModel>();

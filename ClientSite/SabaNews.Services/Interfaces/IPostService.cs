@@ -62,7 +62,11 @@
         Task<IEnumerable<Post>> GetPostsByAuthor(GetPostsByAuthorCriteria criteria);
 
         Task<IEnumerable<Post>> GetRSSCategoryBySlugAsync(string slug);
+
         Task<IEnumerable<Post>> GetRSSRecentBySlugAsync();
+
         Task<SEOSettingModel> GetSeoSettingAsync();
+
+        Task<IList<Post>> GetSitemapPostsByDate(DateTime date);
     }
 }
