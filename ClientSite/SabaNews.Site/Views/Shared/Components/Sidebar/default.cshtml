@@ -24,7 +24,7 @@
                                 <img asp-append-version="true" loading="lazy" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block lazy">
                             </picture>
                         </a>}
-                    <h4><a class="card-vertical__title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h4>
+                    <h3><a class="card-vertical__title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h3>
                     <p class="card-vertical__datetime">
                         <span>@post.PostTime</span>
                         @if (post.CommentCount > 0)
