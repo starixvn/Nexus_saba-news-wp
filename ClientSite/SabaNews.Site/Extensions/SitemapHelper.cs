@@ -10,6 +10,31 @@
     {
         private static readonly XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         private static readonly XNamespace xmlns_news = "http://www.google.com/schemas/sitemap-news/0.9";
+        private const int lastHoursOfDay = 23;
+        private const int lastMinute = 59;
+        private const int lastSecond = 59;
+
+        public static string GetSitemapForDayAndYear(string domain)
+        {
+            XElement root = new(xmlns + "urlset");
+            var currentDate = DateTime.Now;
+            var firstDateOfYear = new DateTime(DateTime.Now.Year, 1, 1);
+            while(currentDate >= firstDateOfYear)
+            {
+                XElement urlElement = new(
+                    xmlns + "url",
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}")),
+                    new XElement(
+                        xmlns + "lastmod",
+                        DateTimeExtensions.ToDateGMTSEAsia(currentDate)));
+                    root.Add(urlElement);
+                currentDate = currentDate.AddDays(-1);
+                currentDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
+            }
+
+            XDocument document = new(root);
+            return document.ToString();
+        }
 
         public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes, string domain)
         {

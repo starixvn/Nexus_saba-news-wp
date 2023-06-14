@@ -82,7 +82,6 @@
                 {
                     return stories;
                 }
-                
             }
             foreach (var item in nodes)
             {
