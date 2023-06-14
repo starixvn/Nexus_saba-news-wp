@@ -71,6 +71,7 @@
                 End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+            postParam.TotalIItems = criteria.TotalItems;
             return FormatData(posts).ToList();
         }
 
