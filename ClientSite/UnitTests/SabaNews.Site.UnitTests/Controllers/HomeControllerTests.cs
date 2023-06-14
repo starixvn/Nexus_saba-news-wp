@@ -453,6 +453,20 @@
             Assert.Equal("/lich-thi-dau/bong-da", redirectResult.Url);
         }
 
+        [Fact]
+        public void Policy_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            //Act
+            var result =  controller.Policy();
+
+            // Assert
+            Assert.IsType<ViewResult>(result);
+           
+        }
+
 
         [Fact]
         public async Task GetCategoryGrid_WhenSlugIsVideoCategory_ReturnCorrectlyData()

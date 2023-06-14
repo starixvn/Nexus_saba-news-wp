@@ -84,11 +84,11 @@
             {
                 slug = slug3;
             }
-            else if(slug2 != null)
+            else if (slug2 != null)
             {
                 slug = slug2;
             }
-            else if(slug1 != null )
+            else if (slug1 != null)
             {
                 slug = slug1;
             }
@@ -166,7 +166,7 @@
             var start = (page - 1) * Constants.Perpage;
             var criteria = new GetPostsByTagCriteria { _Tag = tagname.Trim(), _Start = start, _End = Constants.Perpage };
             var posts = await postService.GetPostByTagAsync(criteria);
-            if(!posts.Any())
+            if (!posts.Any())
             {
                 return View(Constants.EmptyBlogView);
             }
@@ -315,7 +315,7 @@
             {
                 var criteria = new GetPostsByCateSlugPagingCriteria
                 {
-                   _CategorySlug = slug,
+                    _CategorySlug = slug,
                     _Start = start,
                     _End = pageSize
                 };
@@ -325,7 +325,7 @@
             {
                 return Ok(false);
             }
-            if(param.Page == Constants.SecondPage && param.FirstPagePosts != null)
+            if (param.Page == Constants.SecondPage && param.FirstPagePosts != null)
             {
                 posts = posts.Where(item => param.FirstPagePosts.All(id => id != item.ID));
             }
@@ -340,18 +340,20 @@
         {
             var start = (param.Page - 1) * param.PageSize;
             IEnumerable<Post> posts = new List<Post>();
-            if(param.Type == Constants.Search)
+            if (param.Type == Constants.Search)
             {
                 posts = await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize });
             }
-            else if(param.Type == Constants.Tag)
+            else if (param.Type == Constants.Tag)
             {
                 posts = await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
             }
-            else if(param.Type == Constants.Author)
+            else if (param.Type == Constants.Author)
             {
                 posts = await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize });
-            } else {
+            }
+            else
+            {
                 return Ok(false);
             }
             if (!posts.Any())
@@ -390,7 +392,7 @@
         [Route("api/GetCategorySidebar")]
         public async Task<IActionResult> GetCategorySidebar(string slug, int limitItem)
         {
-            var criteria =  new GetPostsByCateSlugPagingCriteria
+            var criteria = new GetPostsByCateSlugPagingCriteria
             {
                 _Start = Constants.FromFirstItem,
                 _End = limitItem,
