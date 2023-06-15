@@ -393,9 +393,15 @@
             return seoSetting;
         }
 
-        public async Task<IList<Post>> GetSitemapPostsByDate(DateTime date)
+        public async Task<IList<Post>> GetSitemapPostsByDateAsync(DateTime date)
         {
             var result = await baseService.GetDataAsync<Post>(new GetSitemapPostsByDateCriteria { Date = date });
+            return result.ToList();
+        }
+
+        public async Task<IList<Category>> GetAllTagAsync()
+        {
+            var result = await baseService.GetDataAsync<Category>(new GetAllTagsCriteria());
             return result.ToList();
         }
 

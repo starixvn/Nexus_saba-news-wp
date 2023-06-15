@@ -69,7 +69,7 @@
 
             foreach (var sitemapNode in sitemapNodes)
             {
-                XElement urlElement = RenderPostSitemap(sitemapNode.Slug, sitemapNode.PostDate, domain);
+                XElement urlElement = RenderPostSitemap(sitemapNode.Slug, sitemapNode.PostDate, domain, false);
                 root.Add(urlElement);
             }
 
@@ -134,10 +134,11 @@
             return document.ToString();
         }
 
-        private static XElement RenderPostSitemap(string url, DateTime datetime, string domain)
+        private static XElement RenderPostSitemap(string url, DateTime datetime, string domain, bool isSitemap = true)
         {
+            var root = isSitemap ? "sitemap" : "url";
             XElement urlElement = new(
-                xmlns + "url",
+                xmlns + root,
                 new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{url}")),
                 new XElement(
                     xmlns + "lastmod",

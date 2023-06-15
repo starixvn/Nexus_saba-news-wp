@@ -67,14 +67,14 @@
         }
 
         [Route("sitemap/{slug}")]
-        public async Task<ContentResult> SitemapCategory(string slug)
+        public async Task<ContentResult> SitemapGeneral(string slug)
         {
             var sitemap = "";
             if(slug.Contains(articleDaySlug))
             {
                 var dateSlug = slug.Replace(articleDaySlug, "").Replace(xmlSuffix, "");
                 var date = DateTime.Parse(dateSlug);
-                var posts = await postService.GetSitemapPostsByDate(date);
+                var posts = await postService.GetSitemapPostsByDateAsync(date);
                 sitemap = SitemapHelper.GetSitemapDocument(posts, domain);
             }
             else if(slug.Contains(articleYearSlug))

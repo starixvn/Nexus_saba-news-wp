@@ -847,6 +847,39 @@
             Assert.Equal(expectedResult.TagTitle, actual.TagTitle);
         }
 
+        [Fact]
+        public async Task GetSitemapPostsByDateAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var criteria = fixture.Create<GetSitemapPostsByDateCriteria>();
+            var date = fixture.Create<DateTime>();
+            var expected = fixture.Create<IList<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetSitemapPostsByDateCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetSitemapPostsByDateAsync(date);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        public async Task GetAllTagAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var criteria = fixture.Create<GetAllTagsCriteria>();
+            var expected = fixture.Create<IList<Category>>();
+            baseService.GetDataAsync<Category>(Arg.Do<GetAllTagsCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetAllTagAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+
         private static IEnumerable<Post> GetTestPost()
         {
             List<Post> expected = new List<Post>();

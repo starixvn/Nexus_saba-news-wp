@@ -67,6 +67,8 @@
 
         Task<SEOSettingModel> GetSeoSettingAsync();
 
-        Task<IList<Post>> GetSitemapPostsByDate(DateTime date);
+        Task<IList<Post>> GetSitemapPostsByDateAsync(DateTime date);
+
+        Task<IList<Category>> GetAllTagAsync();
     }
 }

@@ -24,12 +24,16 @@
 
     public class RobotsControllerTests : Controller
     {
-        
         private IDataControlService dataControlService;
         private IConfiguration configuration;
         private  IPostService postService;
         private  ICacheWrapperService cacheService;
         private readonly IFixture fixture = new Fixture();
+
+        private const string RssCacheKey = "RSSCacheConfig";
+        public const string articleDaySlug = "article-day-";
+        public const string articleYearSlug = "article-year-";
+        public const string xmlSuffix = ".xml";
 
         [Fact]
         public void RobotsTxt_WhenCalled_ReturnExpectedData()
@@ -57,15 +61,13 @@
         }
 
         [Fact]
-        public async Task Sitemap_WhenCalled_ReturnExpectedData()
+        public void Sitemap_WhenCalled_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var expected = fixture.Create<IEnumerable<SitemapModel>>();
-            dataControlService.GenerateSitmapXmlData().Returns(expected);
-            var expectedSitemap = SitemapHelper.GetSitemapDocument(expected, "");
+            var expectedSitemap = SitemapHelper.GetSitemapForDayAndYear("");
             //Act
-            var actual = await controller.Sitemap();
+            var actual = controller.Sitemap();
 
             //Assert
             var viewResult = Assert.IsType<ContentResult>(actual);
@@ -73,22 +75,55 @@
         }
 
         [Fact]
-        public async Task Sitemap_WhenMofidiedDateIsNull_ReturnExpectedData()
+        public async Task SitemapGeneral_WhenArticleSitemap_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
-            var expected = new List<SitemapModel>();
-            expected.Add(new SitemapModel { ID = 1, Url = "url", ModifiedDate = DateTime.Now });
-            expected.Add(new SitemapModel { ID = 2, Url = "url" });
-            dataControlService.GenerateSitmapXmlData().Returns(expected);
+            var expected = fixture.Create<IList<Post>>();
+            var slug = "2023-10-10" + articleDaySlug;
+            var date = new DateTime(2023, 10, 10);
+            postService.GetSitemapPostsByDateAsync(Arg.Do<DateTime>(x => x = date)).Returns(expected);
             var expectedSitemap = SitemapHelper.GetSitemapDocument(expected, "");
             //Act
-            var actual = await controller.Sitemap();
+            var actual = await controller.SitemapGeneral(slug);
 
             //Assert
             var viewResult = Assert.IsType<ContentResult>(actual);
             Assert.Equal(expectedSitemap, viewResult.Content);
         }
+
+        [Fact]
+        public async Task SitemapGeneral_WhenYearSitemap_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IList<Post>>();
+            var slug = "2020" + articleYearSlug;
+            var expectedSitemap = SitemapHelper.GetSitemapForYear(2020, "");
+            //Act
+            var actual = await controller.SitemapGeneral(slug);
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
+        [Fact]
+        public async Task SitemapCategories_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IEnumerable<Menu>>();
+            dataControlService.GetMenuData().Returns(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapCategories(expected, "");
+            //Act
+            var actual = await controller.SitemapCategories();
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
 
         [Fact]
         public async Task SitemapNews_WhenCalled_ReturnExpectedData()
