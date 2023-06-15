@@ -3,7 +3,6 @@
     using SabaNews.Core.Constants;
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
 
     public class Post
@@ -60,7 +59,7 @@
             get
             {
                 var day = dayOfWeeks[(int)PostDate.DayOfWeek];
-                return $"{day}, {PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi"))}";
+                return $"{day}, {PostDate.ToString("dd/MM/yyyy, HH:mm")}";
             }
         }
 
