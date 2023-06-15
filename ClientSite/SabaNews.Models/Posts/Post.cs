@@ -8,6 +8,7 @@
 
     public class Post
     {
+        private string[] dayOfWeeks = {"Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"};
         public int ID { get; set; }
         public int EditorId { get; set; }
         public string PostName { get; set; }
@@ -58,7 +59,8 @@
         {
             get
             {
-                return PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi"));
+                var day = dayOfWeeks[(int)PostDate.DayOfWeek];
+                return $"{day}, {PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi"))}";
             }
         }
 
