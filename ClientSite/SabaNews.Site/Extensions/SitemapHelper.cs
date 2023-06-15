@@ -14,11 +14,12 @@
         private const int lastHoursOfDay = 23;
         private const int lastMinute = 59;
         private const int lastSecond = 59;
-        private const int fromYear = 2020;
+        private const int firstYear = 2020;
+        private const string urlset = "urlset";
 
         public static string GetSitemapForDayAndYear(string domain)
         {
-            XElement root = new(xmlns + "urlset");
+            XElement root = new(xmlns + urlset);
             var currentDate = DateTime.Now;
             var firstDateOfYear = new DateTime(DateTime.Now.Year, 1, 1);
 
@@ -34,7 +35,6 @@
                 currentDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
             }
             var currentYear = DateTime.Now.AddYears(-1).Year;
-            var firstYear = fromYear;
             while (currentYear >= firstYear)
             {
                 urlElement = RenderPostSitemap($"sitemap/article-year-{currentYear}.xml", currentDate, domain);
@@ -48,7 +48,7 @@
 
         public static string GetSitemapForYear(int year, string domain)
         {
-            XElement root = new(xmlns + "urlset");
+            XElement root = new(xmlns + urlset);
             var currentDate = new DateTime(year, 12, 31, 23, 59, 59);
             var firstDateOfYear = new DateTime(year, 1, 1);
             while (currentDate >= firstDateOfYear)
@@ -65,7 +65,7 @@
 
         public static string GetSitemapDocument(IList<Post> sitemapNodes, string domain)
         {
-            XElement root = new(xmlns + "urlset");
+            XElement root = new(xmlns + urlset);
 
             foreach (var sitemapNode in sitemapNodes)
             {
@@ -79,7 +79,7 @@
 
         public static string GetSitemapCategories(IEnumerable<Menu> menus, string domain)
         {
-            XElement root = new(xmlns + "urlset");
+            XElement root = new(xmlns + urlset);
             XElement urlElement = new(
                        xmlns + "url",
                        new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}")),
@@ -107,7 +107,7 @@
 
         public static string GetSitemapNews(IEnumerable<NewsSitemapModel> sitemapNodes, string domain)
         {
-            XElement root = new(xmlns + "urlset",
+            XElement root = new(xmlns + urlset,
                     new XAttribute(XNamespace.Xmlns + "news", xmlns_news));
 
             foreach (NewsSitemapModel sitemapNode in sitemapNodes)

@@ -25,9 +25,10 @@
         private readonly IConfiguration configuration;
 
         private const string RssCacheKey = "RSSCacheConfig";
-        public const string articleDaySlug = "article-day-";
-        public const string articleYearSlug = "article-year-";
-        public const string xmlSuffix = ".xml";
+        private const string articleDaySlug = "article-day-";
+        private const string articleYearSlug = "article-year-";
+        private const string xmlSuffix = ".xml";
+        private const string xmlType = "text/xml";
         private readonly string domain;
 
         public RobotsController(
@@ -63,7 +64,7 @@
         public ContentResult Sitemap()
         {
             string sitemap = SitemapHelper.GetSitemapForDayAndYear(domain);
-            return Content(sitemap, "text/xml", Encoding.UTF8);
+            return Content(sitemap, xmlType, Encoding.UTF8);
         }
 
         [Route("sitemap/{slug}")]
@@ -83,7 +84,10 @@
                 sitemap = SitemapHelper.GetSitemapForYear(year, domain);
 
             }
-            return Content(sitemap, "text/xml", Encoding.UTF8);
+            else {
+                return null;
+            }
+            return Content(sitemap, xmlType, Encoding.UTF8);
         }
 
         [Route("sitemap/categories.xml")]
@@ -91,7 +95,7 @@
         {
             var menu = await dataControlService.GetMenuData();
             var sitemap = SitemapHelper.GetSitemapCategories(menu, domain);
-            return Content(sitemap, "text/xml", Encoding.UTF8);
+            return Content(sitemap, xmlType, Encoding.UTF8);
         }
 
         [Route("sitemap-news.xml")]
@@ -99,7 +103,7 @@
         {
             var data = await dataControlService.GenerateNewsSitmapXmlData();
             string sitemap = SitemapHelper.GetSitemapNews(data, domain);
-            return Content(sitemap, "text/xml", Encoding.UTF8);
+            return Content(sitemap, xmlType, Encoding.UTF8);
         }
 
         [Route("rss.html")]
@@ -139,7 +143,7 @@
                 model = await GetDataCategory(slug);
             }
             string rss = RssHelper.GetRSSDocument(model, domain);
-            return Content(rss, "text/xml", Encoding.UTF8);
+            return Content(rss, xmlType, Encoding.UTF8);
         }
 
 
