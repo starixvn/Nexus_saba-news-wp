@@ -70,19 +70,24 @@
         [Route("sitemap/{slug}")]
         public async Task<ContentResult> SitemapGeneral(string slug)
         {
-            string sitemap;
+            var sitemap = "";
             if(slug.Contains(articleDaySlug))
             {
                 var dateSlug = slug.Replace(articleDaySlug, "").Replace(xmlSuffix, "");
-                var date = DateTime.Parse(dateSlug);
-                var posts = await postService.GetSitemapPostsByDateAsync(date);
-                sitemap = SitemapHelper.GetSitemapDocument(posts, domain);
+                if(DateTime.TryParse(dateSlug, out DateTime date))
+                {
+                    var posts = await postService.GetSitemapPostsByDateAsync(date);
+                    sitemap = SitemapHelper.GetSitemapDocument(posts, domain);
+                }
             }
             else if(slug.Contains(articleYearSlug))
             {
-                var year = Int32.Parse(slug.Replace(articleYearSlug, "").Replace(xmlSuffix, ""));
-                sitemap = SitemapHelper.GetSitemapForYear(year, domain);
+                var yearSlug = slug.Replace(articleYearSlug, "").Replace(xmlSuffix, "");
+                if(Int32.TryParse(yearSlug, out int year))
+                {
+                    sitemap = SitemapHelper.GetSitemapForYear(year, domain);
 
+                }
             }
             else {
                 sitemap = "";
