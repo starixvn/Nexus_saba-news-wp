@@ -70,7 +70,7 @@
         [Route("sitemap/{slug}")]
         public async Task<ContentResult> SitemapGeneral(string slug)
         {
-            var sitemap = "";
+            string sitemap;
             if(slug.Contains(articleDaySlug))
             {
                 var dateSlug = slug.Replace(articleDaySlug, "").Replace(xmlSuffix, "");
@@ -85,7 +85,7 @@
 
             }
             else {
-                return null;
+                sitemap = "";
             }
             return Content(sitemap, xmlType, Encoding.UTF8);
         }
