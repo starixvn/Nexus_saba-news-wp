@@ -124,6 +124,22 @@
             Assert.Equal(expectedSitemap, viewResult.Content);
         }
 
+        [Fact]
+        public async Task SitemapTags_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IList<Category>>();
+            postService.GetAllTagAsync().Returns(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapTags(expected, "");
+            //Act
+            var actual = await controller.SitemapTags();
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
 
         [Fact]
         public async Task SitemapNews_WhenCalled_ReturnExpectedData()

@@ -103,6 +103,14 @@
             return Content(sitemap, xmlType, Encoding.UTF8);
         }
 
+        [Route("sitemap/tag.xml")]
+        public async Task<ContentResult> SitemapTags()
+        {
+            var tags = await postService.GetAllTagAsync();
+            var sitemap = SitemapHelper.GetSitemapTags(tags, domain);
+            return Content(sitemap, xmlType, Encoding.UTF8);
+        }
+
         [Route("sitemap-news.xml")]
         public async Task<ContentResult> SitemapNews()
         {

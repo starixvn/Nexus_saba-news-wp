@@ -80,25 +80,28 @@
         public static string GetSitemapCategories(IEnumerable<Menu> menus, string domain)
         {
             XElement root = new(xmlns + urlset);
-            XElement urlElement = new(
-                       xmlns + "url",
-                       new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}")),
-                       new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTime.UtcNow)),
-                       new XElement(xmlns + "changefreq", "daily"),
-                       new XElement(xmlns + "priority", 0.1));
+            XElement urlElement = RenderCategorySitemap("", domain);
             root.Add(urlElement);
             foreach (var menu in menus)
             {
                 if (!string.IsNullOrEmpty(menu.CateSlug))
                 {
-                    urlElement = new(
-                        xmlns + "url",
-                        new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{menu.CateSlug}{CategoryKey.Suffix}")),
-                        new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTime.UtcNow)),
-                        new XElement(xmlns + "changefreq", "daily"),
-                        new XElement(xmlns + "priority", 0.1));
+                    urlElement = RenderCategorySitemap($"{menu.CateSlug}{CategoryKey.Suffix}", domain);
                     root.Add(urlElement);
                 }
+            }
+
+            XDocument document = new(root);
+            return document.ToString();
+        }
+
+        public static string GetSitemapTags(IList<Category> tags, string domain)
+        {
+            XElement root = new(xmlns + urlset);
+            foreach (var tag in tags)
+            {
+                XElement urlElement = RenderCategorySitemap($"tag/{tag.Slug}", domain);
+                root.Add(urlElement);
             }
 
             XDocument document = new(root);
@@ -143,6 +146,17 @@
                 new XElement(
                     xmlns + "lastmod",
                     DateTimeExtensions.ToDateGMTSEAsia(datetime)));
+            return urlElement;
+        }
+
+        private static XElement RenderCategorySitemap(string url, string domain)
+        {
+            XElement urlElement = new(
+                    xmlns + "url",
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{url}")),
+                    new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTime.UtcNow)),
+                    new XElement(xmlns + "changefreq", "daily"),
+                    new XElement(xmlns + "priority", 0.1));
             return urlElement;
         }
     }
