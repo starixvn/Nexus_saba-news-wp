@@ -55,11 +55,11 @@
                             }
                             else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
                             {
-                                <li class="avatar-user"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                                <li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                             }
                             else
                             {
-                                <li class="avatar-user"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                                <li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                             }
                             <li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
                         </ul>
@@ -72,11 +72,11 @@
                                     }
                                     else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
                                     {
-                                        <li class="avatar-user"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                                        <li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                                     }
                                     else
                                     {
-                                        <li class="avatar-user"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                                        <li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                                     }
                                     <li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
                                 </ul>

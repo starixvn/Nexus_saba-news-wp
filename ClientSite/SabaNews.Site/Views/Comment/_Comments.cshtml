@@ -42,11 +42,11 @@
 					}
 					else if (comment.Photo.ToLower().Contains("https://") || comment.Photo.ToLower().Contains("http://"))
 					{
-						<span><img asp-append-version="true" class="profile_image" loading="lazy" src="@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
+						<span><img asp-append-version="true" alt="@comment.CommentAuthor" class="profile_image" loading="lazy" src="@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
 					}
 					else
 					{
-						<span><img asp-append-version="true" class="profile_image" loading="lazy" src="~/uploads/@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
+						<span><img asp-append-version="true" alt="@comment.CommentAuthor" class="profile_image" loading="lazy" src="~/uploads/@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
 					}
 				</div>
 				<div class="user-comment">

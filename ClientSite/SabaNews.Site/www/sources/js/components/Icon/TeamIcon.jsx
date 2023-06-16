@@ -1,14 +1,14 @@
 ﻿import React from 'react';
 import Site from '@jsroot/common/site';
 
-const TeamIcon = ({ className, src, onClick }) => {
+const TeamIcon = ({ className, src, alt = "alt", onClick }) => {
     const handleClick = event => {
         if(onClick) {
             onClick(event);
         }
     };
     return (
-        <img className={className} loading="lazy" onClick={handleClick}
+        <img className={className} alt={alt} loading="lazy" onClick={handleClick}
             src={src ? src : Site.resolveClientUrl('css/images/logo-dummy.png')}
         />
     );

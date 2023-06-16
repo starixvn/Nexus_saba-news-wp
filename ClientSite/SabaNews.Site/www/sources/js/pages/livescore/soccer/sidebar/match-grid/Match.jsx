@@ -105,43 +105,43 @@ export default class Match extends PureComponent {
         const { match } = this.props;
         const isLive = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
+        const homeName = CommonFunctions.getTeamName(match.homeTeam);
+        const awayName = CommonFunctions.getTeamName(match.awayTeam);
         return (
-            <>
-                <div className={`duel-participant ${isLive ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`} onClick={this.onClick}>
-                    <div className="flex-league">
-                        <div className="column column-left home-team">
-                            <ul className="team">
-                                {this.renderTeamName(CommonFunctions.getTeamName(match.homeTeam))}
-                                <li className="team-logo">
-                                    <TeamIcon className="" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="column column-center result-league">
-                            <div className={`detail-score-wrapper ${isLive ? 'live' : ''}`}>
-                                {this.getMatchStage()}
-                            </div>
-                        </div>
-                        <div className="column column-right away-team">
-                            <ul className="team">
-                                <li className="team-logo">
-                                    <TeamIcon className="" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                                </li>
-                                {this.renderTeamName(CommonFunctions.getTeamName(match.awayTeam))}
-                            </ul>
+            <div className={`duel-participant ${isLive ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`} onClick={this.onClick}>
+                <div className="flex-league">
+                    <div className="column column-left home-team">
+                        <ul className="team">
+                            {this.renderTeamName(homeName)}
+                            <li className="team-logo">
+                                <TeamIcon alt={homeName} src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="column column-center result-league">
+                        <div className={`detail-score-wrapper ${isLive ? 'live' : ''}`}>
+                            {this.getMatchStage()}
                         </div>
                     </div>
-                    <div className="flex-league">
-                        <div className="column column-left home-team"></div>
-                        <div className="column column-center">
-                            <div className="soccer-match-stage">
-                                {isLive && <MatchStage match={match} />}
-                            </div>
-                        </div>
-                        <div className="column column-right away-team"></div>
+                    <div className="column column-right away-team">
+                        <ul className="team">
+                            <li className="team-logo">
+                                <TeamIcon alt={awayName} src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                            </li>
+                            {this.renderTeamName(awayName)}
+                        </ul>
                     </div>
                 </div>
-            </>
+                <div className="flex-league">
+                    <div className="column column-left home-team"></div>
+                    <div className="column column-center">
+                        <div className="soccer-match-stage">
+                            {isLive && <MatchStage match={match} />}
+                        </div>
+                    </div>
+                    <div className="column column-right away-team"></div>
+                </div>
+            </div>
         );
     }
 }

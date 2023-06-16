@@ -86,14 +86,14 @@
                 type: "POST",
                 success: function (res) {
                     $("body").removeClass("overflow-section");
-                    $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl));
-                    $(".banner-right").html(GeneralBannerHtml(res.desktopRightUrl, res.desktopRightNavigationUrl));
-                    $(".banner-desktop-top").html(GeneralBannerHtml(res.desktopTopUrl, res.desktopTopNavigationUrl));
-                    $(".banner-desktop-center").html(GeneralBannerHtml(res.desktopCenterUrl, res.desktopCenterNavigationUrl));
-                    $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl));
-                    $(".banner-mobile-center").html(GeneralBannerHtml(res.mobileCenterUrl, res.mobileCenterNavigationUrl));
-                    $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl));
-                    $(".banner-post-mobile-top").html(GeneralBannerHtml(res.postMobileTopUrl, res.postMobileTopNavigationUrl));
+                    $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl, "Banner left"));
+                    $(".banner-right").html(GeneralBannerHtml(res.desktopRightUrl, res.desktopRightNavigationUrl, "Banner right"));
+                    $(".banner-desktop-top").html(GeneralBannerHtml(res.desktopTopUrl, res.desktopTopNavigationUrl, "Banner top"));
+                    $(".banner-desktop-center").html(GeneralBannerHtml(res.desktopCenterUrl, res.desktopCenterNavigationUrl, "Banner center"));
+                    $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl, "Banner top"));
+                    $(".banner-mobile-center").html(GeneralBannerHtml(res.mobileCenterUrl, res.mobileCenterNavigationUrl, "Banner center"));
+                    $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl, "Banner bottom"));
+                    $(".banner-post-mobile-top").html(GeneralBannerHtml(res.postMobileTopUrl, res.postMobileTopNavigationUrl, "Banner top"));
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus + ': ' + errorThrown);
@@ -102,12 +102,12 @@
         }
     }
 
-    function GeneralBannerHtml(src, link) {
+    function GeneralBannerHtml(src, link, alt) {
         var html = "";
         if (src !== "") {
             link = link === "" ? "javascript:;" : link;
             html += '<a href="' + link + '">';
-            html += '<img loading="lazy" src="' + src + '" asp-append-version="true" class="img-res">';
+            html += '<img loading="lazy" alt="'+ alt +'" src="' + src + '" asp-append-version="true" class="img-res">';
             html += '</a>';
         }
         return html;
