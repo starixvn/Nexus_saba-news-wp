@@ -10,8 +10,6 @@
 
         Task UpdateCategoryCaching();
 
-        Task UpdateSitemapData();
-
         Task UpdateNewsSitemapData();
 
         Task UpdateRSSData();

@@ -124,26 +124,8 @@
 
         public async Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData()
         {
-            if (IsUsingCache)
-            {
-                var result = await cacheWrapperService.GetAsync<IEnumerable<SitemapModel>>(CacheKey.SitemapXml);
-
-                if (result == null)
-                {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Sitemap data from DB---------");
-
-                    result = await postService.GetSitemapDataAsync();
-                    await cacheWrapperService.SetAsync(CacheKey.SitemapXml, result,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSitemapTimeoutMinutes)
-                        });
-                }
-
-                return result;
-            }
-
             return await postService.GetSitemapDataAsync();
+
         }
 
         public async Task<IEnumerable<NewsSitemapModel>> GenerateNewsSitmapXmlData()

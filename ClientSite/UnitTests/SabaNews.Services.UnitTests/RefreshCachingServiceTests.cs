@@ -151,45 +151,6 @@
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
         }
 
-        [Fact]
-        public async Task UpdateSitemapData_WhenCalled_CallExpectedFunction()
-        {
-            //Arrange
-            var service = GetRefreshCachingService();
-            var logMessage = fixture.Create<string>();
-            var data = fixture.Create<IEnumerable<SitemapModel>>();
-
-            postService.GetSitemapDataAsync().Returns(data);
-            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
-
-
-            //Act
-            await service.UpdateSitemapData();
-
-            //Assert
-            logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
-        }
-
-        [Fact]
-        public async Task UpdateSitemapData_WhenCalled_ThrowException()
-        {
-            //Arrange
-            var service = GetRefreshCachingService();
-            var logMessage = fixture.Create<string>();
-            var exception = fixture.Create<Exception>();
-
-            postService.When(x => x.GetSitemapDataAsync()).Throw(exception);
-            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
-
-
-            //Act
-            await service.UpdateSitemapData();
-
-            //Assert
-            await logService.Received().WriteExceptionSentryErrorAsync(exception);
-            logService.Received().WriteLogFileInfo(Arg.Any<string>());
-        }
 
         [Fact]
         public async Task UpdateNewsSitemapData_WhenCalled_CallExpectedFunction()

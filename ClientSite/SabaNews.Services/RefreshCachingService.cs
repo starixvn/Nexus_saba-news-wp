@@ -6,7 +6,6 @@
     using Fanex.Caching;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Services;
     using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
 
@@ -116,31 +115,6 @@
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateCategoryCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-        }
-
-        public async Task UpdateSitemapData()
-        {
-            var startTime = DateTime.Now;
-            logService.WriteLogFileInfo("Start UpdateSitemapData");
-
-            try
-            {
-                var result = await postService.GetSitemapDataAsync();
-                logService.WriteLogFileInfo(string.Format("After GetSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheWrapperService.SetAsync(CacheKey.SitemapXml,
-                        result,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSitemapTimeoutMinutes)
-                        });
-            }
-            catch (Exception ex)
-            {
-                await logService.WriteExceptionSentryErrorAsync(ex);
-                logService.WriteLogFileInfo(ex.ToString());
-            }
-
-            logService.WriteLogFileInfo(string.Format("Done UpdateSitemapData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
 
         public async Task UpdateNewsSitemapData()
