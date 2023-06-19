@@ -22,6 +22,7 @@ const cssPaths = {
     livescore_soccer_homepage_standing: ['./www/sources/css/pages/livescore/soccer/sidebar/standing.scss'],
     livescore_soccer_category_standing: ['./www/sources/css/pages/livescore/soccer/sidebar/category-standing.scss'],
     livescore_soccer_category_fixture: ['./www/sources/css/pages/livescore/soccer/sidebar/category-fixture.scss'],
+    livescore_soccer_match_detail_shortcut: ['./www/sources/css/pages/livescore/soccer/match-detail-shortcut.scss'],
 };
 
 const scriptPaths = {
@@ -44,7 +45,8 @@ const scriptPaths = {
     livescore_soccer_homepage_fixture: ['./www/sources/js/pages/livescore/soccer/sidebar/fixture/index.jsx'],
     livescore_soccer_homepage_standing: ['./www/sources/js/pages/livescore/soccer/sidebar/standing/index.jsx'],
     livescore_soccer_category_standing: ['./www/sources/js/pages/livescore/soccer/sidebar/category-standing/index.jsx'],
-    livescore_soccer_category_fixture: ['./www/sources/js/pages/livescore/soccer/sidebar/category-fixture/index.jsx']
+    livescore_soccer_category_fixture: ['./www/sources/js/pages/livescore/soccer/sidebar/category-fixture/index.jsx'],
+    livescore_soccer_match_detail_shortcut: ['./www/sources/js/pages/livescore/soccer/match-detail-shortcut/index.jsx']
 };
 
 module.exports = {
