@@ -7,7 +7,7 @@
 
     public class Post
     {
-        private string[] dayOfWeeks = {"Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"};
+        private readonly string[] dayOfWeeks = {"Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"};
         public int ID { get; set; }
         public int EditorId { get; set; }
         public string PostName { get; set; }

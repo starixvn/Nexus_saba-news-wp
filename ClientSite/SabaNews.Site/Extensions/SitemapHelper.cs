@@ -25,6 +25,8 @@
 
             XElement urlElement = RenderPostSitemap("sitemap/categories.xml", DateTime.UtcNow, domain);
             root.Add(urlElement);
+            urlElement = RenderPostSitemap("sitemap/tag.xml", DateTime.UtcNow, domain);
+            root.Add(urlElement);
             urlElement = RenderPostSitemap("sitemap-news.xml", DateTime.UtcNow, domain);
             root.Add(urlElement);
             while (currentDate >= firstDateOfYear)
