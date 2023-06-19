@@ -52,7 +52,7 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/homepage/standing`]: pathConfig.cssPaths.livescore_soccer_homepage_standing,
             [`${cssPath}/pages/livescore/soccer/category/standing`]: pathConfig.cssPaths.livescore_soccer_category_standing,
             [`${cssPath}/pages/livescore/soccer/category/fixture`]: pathConfig.cssPaths.livescore_soccer_category_fixture,
-            [`${cssPath}/pages/livescore/soccer/match_detail_shortcut`]: pathConfig.cssPaths.livescore_soccer_match_detail_shortcut,
+            [`${cssPath}/pages/livescore/soccer/match-detail-shortcut`]: pathConfig.cssPaths.livescore_soccer_match_detail_shortcut,
 
         },
         output: {
