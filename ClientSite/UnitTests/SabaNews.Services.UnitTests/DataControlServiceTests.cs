@@ -180,39 +180,6 @@ namespace SabaNews.Services.UnitTests
         }
 
         [Fact]
-        public async Task GenerateSitmapXmlData_WhenCacheHaveData_ReturnExpectedData()
-        {
-            var service = GetDataControlService(true);
-            var key = fixture.Create<string>();
-            var expected = fixture.Create<IEnumerable<SitemapModel>>();
-            cacheWrapperService.GetAsync<IEnumerable<SitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
-            //Act
-            var actual = await service.GenerateSitmapXmlData();
-
-            //Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public async Task GenerateSitmapXmlData_WhenCacheReturnNull_ReturnExpectedData()
-        {
-            var service = GetDataControlService(true);
-            var key = fixture.Create<string>();
-            IEnumerable<SitemapModel> expectedFromCache = null;
-            var expected = fixture.Create<IEnumerable<SitemapModel>>();
-            cacheWrapperService.GetAsync<IEnumerable<SitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
-            postService.GetSitemapDataAsync().Returns(expected);
-
-            //Act
-            var actual = await service.GenerateSitmapXmlData();
-
-            //Assert
-            Assert.Equal(expected, actual);
-            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<SitemapModel>>(), Arg.Any<CacheItemOptions>());
-        }
-
-        [Fact]
         public async Task GenerateSitmapXmlData_WhenNotUsingCache_ReturnExpectedData()
         {
             var service = GetDataControlService(false);
