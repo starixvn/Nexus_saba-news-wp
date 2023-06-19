@@ -105,7 +105,6 @@
             </ul>
         </div>
         <div class="block block-main block-detail">
-            <div id="match-detail-shortcut"></div>
             @if (Model.IsVideo)
             {
                 <div class="skeleton skeleton-vertical">
@@ -150,6 +149,7 @@
                         <img src="~/images/google-news-text.svg" alt="google-news-text" />
                     </a>
                 </div>
+                <div id="match-detail-shortcut"></div>
                 @if (!Model.IsVideo)
                 {
                     <div class="content">

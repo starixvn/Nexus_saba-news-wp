@@ -1,0 +1,90 @@
+@import '../../../abstracts/variables';
+@import '../../../abstracts/mixins';
+@import '../../../components/duel-participant';
+@import '../../../components/soccer-staus';
+@import '../../../components/dot_live';
+
+.icon-livescore {
+    font-size: 2rem;
+}
+
+#match-detail-shortcut{
+    margin: 2.4rem 0;
+    @include Mobile{
+        margin: .6rem 0;
+    }
+    .duel-participant{
+        @include Mobile{
+            padding: .4rem;
+        }
+    }
+    .league-and-time {
+        background: #F5F5F5;
+        border-radius: 3px;
+        padding: .5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        .league{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            &-logo{
+                width: 3rem;
+                height: 3rem;
+                margin-right: .6rem;
+                img{
+                    object-fit: cover;
+                }
+            }
+            &-name{
+                color: #333333;
+                font-weight: 600;
+                font-size: 1.4rem;
+                line-height: 2.4rem;
+                @include Mobile{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        p{
+            @extend .league-name;
+            .days{
+                @include Mobile{
+                    display: none;
+                }
+            }
+        }
+    }
+    .center-league{
+        border-bottom: 1px solid #E9E9E9;
+        padding-bottom: 1rem;
+    }
+    .view-detail {
+        text-align: center;
+        margin-bottom: 1rem;
+        @include Mobile{
+            margin-bottom: 1.6rem;
+        }
+        span{
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            background: #EAEFF2;
+            border-radius: 3px;
+            padding: .7rem 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.8rem;
+            @include Mobile{
+                font-size: 1.2rem;
+            }
+            i{
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
