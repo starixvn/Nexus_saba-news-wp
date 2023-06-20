@@ -215,7 +215,7 @@
                                 @{
                                     if(isMobile){
                                         <div class="view-more-block scroll-snap-items">
-                                            <a title="Xem thêm" href="@Url.Action("Video", "Home")">Xem Thêm</a>
+                                            <a title="Xem thêm" href="@Url.Action("Category", "Home", new { slug = Constants.VideoSlug + CategoryKey.Suffix })">Xem Thêm</a>
                                         </div>
                                     }
                                 }
