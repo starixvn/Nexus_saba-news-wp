@@ -32,7 +32,9 @@
 
 .active-scroll{
     .document-text{
-        margin: 1.2rem;
+        @include Mobile{
+            margin: 1.2rem;
+        }
     }
 }
 

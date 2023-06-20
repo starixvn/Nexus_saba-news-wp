@@ -3764,8 +3764,10 @@ span.number-position {
   margin-bottom: 1.2rem;
 }
 
-.active-scroll .document-text {
-  margin: 1.2rem;
+@media (max-width: 767px) {
+  .active-scroll .document-text {
+    margin: 1.2rem;
+  }
 }
 
 .livescore-soccer {
