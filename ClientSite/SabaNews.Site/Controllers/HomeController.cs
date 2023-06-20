@@ -77,7 +77,7 @@
         }
 
         [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
-        public ActionResult OldCategorys(string slug1 = null, string slug2 = null, string slug3 = null)
+        public ActionResult OldCategories(string slug1 = null, string slug2 = null, string slug3 = null)
         {
             string slug;
             if (slug3 != null)

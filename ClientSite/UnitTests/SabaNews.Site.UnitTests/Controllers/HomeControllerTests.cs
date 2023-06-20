@@ -174,7 +174,7 @@
             GetDefaultContext(controller);
 
             //Act
-            var result =  controller.OldCategorys(slug1, slug2, slug3);
+            var result =  controller.OldCategories(slug1, slug2, slug3);
 
             // Assert
             var redirectResult = Assert.IsType<RedirectToActionResult>(result);
