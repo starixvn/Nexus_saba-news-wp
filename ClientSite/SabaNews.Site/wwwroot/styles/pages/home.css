@@ -1652,7 +1652,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-color: #F12F19;
   position: relative;
   z-index: 9;
-  padding: 0.5rem 1.2rem 0.3rem 1.2rem;
+  padding: 0.5rem 1.5rem 0.3rem 1.2rem;
   display: inline-block;
   border-radius: 3px 0 0 0;
   cursor: pointer;

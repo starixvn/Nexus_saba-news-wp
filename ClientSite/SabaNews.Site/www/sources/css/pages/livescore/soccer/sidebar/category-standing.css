@@ -251,7 +251,7 @@ body {
 .table-custom .position.postition-color {
   color: #fff;
   font-weight: 700;
-  -webkit-text-stroke: 1px #333;
+  color: #000000;
 }
 .table-custom .soccer-team {
   display: flex;
