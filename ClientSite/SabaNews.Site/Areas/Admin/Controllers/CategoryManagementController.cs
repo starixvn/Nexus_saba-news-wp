@@ -13,18 +13,15 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     public class CategoryManagementController : AdminController
     {
         private readonly IDataControlService dataControlService;
-        private readonly IConfiguration configuration;
         private readonly ICategoryService categoryService;
         private readonly ILeagueService leagueService;
         private readonly ISessionService sessionService;
         public CategoryManagementController(
-            IConfiguration configuration,
             IDataControlService dataControlService,
             ICategoryService categoryService,
             ILeagueService leagueService,
             ISessionService sessionService)
         {
-            this.configuration = configuration;
             this.dataControlService = dataControlService;
             this.categoryService = categoryService;
             this.leagueService = leagueService;
