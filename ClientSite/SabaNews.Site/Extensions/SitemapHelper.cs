@@ -16,10 +16,11 @@
         private const int lastSecond = 59;
         private const int firstYear = 2020;
         private const string urlset = "urlset";
+        private const string sitemapIndex = "sitemapindex";
 
         public static string GetSitemapForDayAndYear(string domain)
         {
-            XElement root = new(xmlns + urlset);
+            XElement root = new(xmlns + sitemapIndex);
             var currentDate = DateTime.Now;
             var firstDateOfYear = new DateTime(DateTime.Now.Year, 1, 1);
 
