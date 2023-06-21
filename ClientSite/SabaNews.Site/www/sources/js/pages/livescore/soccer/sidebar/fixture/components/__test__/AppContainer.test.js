@@ -183,7 +183,7 @@ describe('AppContainer', () => {
             container.find('.block__title').simulate('click', event);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da', '_blank');
+            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da', '_blank');
         });
 
         it('calls correctly when ctrlKey = false', () => {
@@ -198,7 +198,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da');
+            expect(window.location).toEqual('/lich-thi-dau/bong-da');
         });
     });
 

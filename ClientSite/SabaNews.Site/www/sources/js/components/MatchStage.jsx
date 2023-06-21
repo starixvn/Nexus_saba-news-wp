@@ -97,7 +97,9 @@ export default class MatchStage extends PureComponent {
             case MatchStatus.TBD:
                 stage = LangHelper.getResource('ToBeDecided');
                 break;
-
+            case MatchStatus.CutInHalf:
+                stage = LangHelper.getResource('CutInHalf');
+                break;
             default:
                 stage = LangHelper.getResource('Finish');
                 break;

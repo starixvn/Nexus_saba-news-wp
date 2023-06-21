@@ -25,6 +25,7 @@
             new MatchStatus { Id = 50, Name = "Finished" },
             new MatchStatus { Id = 60, Name = "Delay" },
             new MatchStatus { Id = 61, Name = "Interrupt" },
+            new MatchStatus { Id = 62, Name = "Cut In Half" },
             new MatchStatus { Id = 63, Name = "Postpone" },
             new MatchStatus { Id = 64, Name = "Cancel" },
             new MatchStatus { Id = 99, Name = "TBD" },

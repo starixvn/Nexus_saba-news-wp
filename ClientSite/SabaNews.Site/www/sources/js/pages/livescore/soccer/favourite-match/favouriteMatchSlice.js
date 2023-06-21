@@ -46,7 +46,7 @@ const favouriteMatchSlice = createSlice({
                     preMatches.push(match);
                 }
 
-                if (match.status === MatchStatus.Finished) {
+                if (match.status === MatchStatus.Finished || match.status === MatchStatus.CutInHalf) {
                     postMatches.push(match);
                 }
             }

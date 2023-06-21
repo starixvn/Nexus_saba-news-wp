@@ -16,7 +16,7 @@ export default class Match extends PureComponent {
         const { match } = this.props;
         const isLive = CommonFunctions.isLiveMatch(match.status);
         let stage = '';
-        if (match.status === MatchStatus.Finished || isLive) {
+        if (match.status === MatchStatus.Finished || match.status === MatchStatus.CutInHalf || isLive) {
             return this.getFinalScore(match);
         }
         switch (match.status) {
@@ -44,7 +44,6 @@ export default class Match extends PureComponent {
             case MatchStatus.TBD:
                 stage = <span title={LangHelper.getResource('ToBeDecided')}>{LangHelper.getResource('ToBeDecidedForShort')}</span>;
                 break;
-
             default:
                 stage = LangHelper.getResource('Finish');
                 break;

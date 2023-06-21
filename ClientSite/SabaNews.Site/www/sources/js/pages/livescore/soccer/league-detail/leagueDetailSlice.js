@@ -36,11 +36,11 @@ const leagueDetailSlice = createSlice({
                     stages.push(match.stage);
                 }
 
-                if (match.status !== MatchStatus.Finished && dayjs(endTime).isSameOrAfter(today)) {
+                if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(endTime).isSameOrAfter(today)) {
                     preMatches.push(match);
                 }
 
-                if (match.status === MatchStatus.Finished) {
+                if (match.status === MatchStatus.Finished || match.status === MatchStatus.CutInHalf) {
                     postMatches.push(match);
                 }
             }

@@ -78,10 +78,15 @@ export class MatchGrid extends PureComponent {
                 || status === MatchStatus.TBD;
     };
 
+    checkPostMatch = status => {
+        return status === MatchStatus.Finished || status === MatchStatus.CutInHalf;
+    }
+
     render() {
         let { matches, selectedDate, today, searchKey, banner } = this.props;
         if (dayjs(selectedDate).isBefore(today) && !window.isLivePage) {
-            matches = matches.filter(match => match.status === MatchStatus.Finished
+            matches = matches.filter(match =>
+                this.checkPostMatch(match.status)
                 || this.checkPreMatch(match.status)
                 || CommonFunctions.isLiveMatch(match.status));
         }

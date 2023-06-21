@@ -4,6 +4,7 @@
     Cancel: 'Hủy',
     Defender: 'Hậu vệ',
     Delay: 'Tạm hoãn',
+    CutInHalf: 'Kết thúc sớm',
     ExtraTimeEnd: 'Kết thúc hiệp phụ',
     EmptyFavLeague: 'Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.',
     Ending: 'sắp kết thúc',

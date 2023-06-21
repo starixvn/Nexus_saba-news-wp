@@ -35,7 +35,7 @@ export default class MatchGrid extends PureComponent {
         for (let i = 0; i < matches.length; i++) {
             const match = matches[i];
             const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
-            if (match.status !== MatchStatus.Finished && dayjs(endTime).isSameOrAfter(today)) {
+            if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(endTime).isSameOrAfter(today)) {
                 preMatches.push(match);
             }
         }
@@ -59,7 +59,7 @@ export default class MatchGrid extends PureComponent {
         if(selectedTab === 'fixture') {
             matchList =  this.filterPreMatches(matches);
         } else if(selectedTab === 'result') {
-            matchList = matches.filter(item => item.status === MatchStatus.Finished);
+            matchList = matches.filter(item => item.status === MatchStatus.Finished || item.status === MatchStatus.CutInHalf);
             matchList = this.sortMatches(matchList, false);
         }
         return matchList;
