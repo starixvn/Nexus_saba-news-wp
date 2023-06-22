@@ -13,29 +13,38 @@
 }
 
 @section Scripts{
-    <script> 
+    <script>
         window.cateSlug = '@Model.CateInfo.Slug';
         window.postId = '@Model.SinglePost.ID';
+        window.matchId = '@Model.MatchId';
     </script>
-    <environment include="Development">
-        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/pages/livescore/soccer/match-detail-shortcut.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/pages/livescore/soccer/match-detail-shortcut.chunk.js" asp-append-version="true"></script>
-    </environment>
+    @if (!string.IsNullOrEmpty(Model.MatchId))
+    {
+        <environment include="Development">
+            <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/dev/pages/livescore/soccer/match-detail-shortcut.chunk.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+            <script src="~/js/pro/pages/livescore/soccer/match-detail-shortcut.chunk.js" asp-append-version="true"></script>
+        </environment>
+    }
+
     <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
 }
 @section Styles{
-    <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/match-detail-shortcut.chunk.css"
-        asp-append-version="true" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/match-detail-shortcut.chunk.css"
-        asp-append-version="true" />
-    </environment>
+    @if (!string.IsNullOrEmpty(Model.MatchId))
+    {
+        <environment include="Development">
+            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/match-detail-shortcut.chunk.css"
+                asp-append-version="true" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/match-detail-shortcut.chunk.css"
+                asp-append-version="true" />
+        </environment>
+    }
+
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 
 }
@@ -51,53 +60,51 @@
             </div>
             <ul class="social">
                 <li class="item-social icon-mobile">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
-                       data-count="facebook" target="_blank"
-                       rel="nofollow"
-                       class="item intent facebook"
-                       title="@ViewResources.ShareFacebook">
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl" data-count="facebook"
+                        target="_blank" rel="nofollow" class="item intent facebook"
+                        title="@ViewResources.ShareFacebook">
                         <i class="icon-social icon-detail_facebook"></i>
                     </a>
                 </li>
-                 <li class="item-social icon-mobile">
-                    <a href="javascript:;"
-                       rel="nofollow"
-                       class="item intent copy-clipboard"
-                       title="@ViewResources.CopyLink">
+                <li class="item-social icon-mobile">
+                    <a href="javascript:;" rel="nofollow" class="item intent copy-clipboard"
+                        title="@ViewResources.CopyLink">
                         <i class="icon-social icon-link"></i>
                     </a>
                     <span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
                 </li>
                 <li class="item-social icon-mobile">
-                    <a href="javascript:;" class="item intent save_post @(Model.SavePost != null ? "active" : "")" title="@ViewResources.SavePost">
-                        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
-                            <path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2" />
+                    <a href="javascript:;" class="item intent save_post @(Model.SavePost != null ? "active" : "")"
+                        title="@ViewResources.SavePost">
+                        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="svg-bookmark">
+                            <path
+                                d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z"
+                                stroke="#999999" stroke-width="2" />
                         </svg>
                     </a>
                 </li>
                 <li class="item-social icon-mobile">
-                    <a href="#comment"
-                       class="item intent"
-                       title="@ViewResources.Comment">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-comment">
-                            <path d="M16.991 1.8V1.80056L16.9987 15.5844L15.1071 13.6929L14.8142 13.4H14.4H1.8C1.36228 13.4 1 13.0377 1 12.6V1.8C1 1.36228 1.36228 1 1.8 1H16.2C16.6312 1 16.991 1.35575 16.991 1.8Z" stroke="#999999" stroke-width="2" />
+                    <a href="#comment" class="item intent" title="@ViewResources.Comment">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="svg-comment">
+                            <path
+                                d="M16.991 1.8V1.80056L16.9987 15.5844L15.1071 13.6929L14.8142 13.4H14.4H1.8C1.36228 13.4 1 13.0377 1 12.6V1.8C1 1.36228 1.36228 1 1.8 1H16.2C16.6312 1 16.991 1.35575 16.991 1.8Z"
+                                stroke="#999999" stroke-width="2" />
                         </svg>
                     </a>
                 </li>
                 <li class="item-social icon-mobile">
                     @if (Model.IsVideo)
                     {
-                        <a href="@Url.Action("Video", "Home")"
-                           class="item intent"
-                           title="@ViewResources.Back @ViewResources.Video">
+                        <a href="@Url.Action("Video", "Home")" class="item intent"
+                            title="@ViewResources.Back @ViewResources.Video">
                             <i class="icon-social icon-back"></i>
                         </a>
                     }
                     else
                     {
-                        <a href="@Model.CateInfo.Url"
-                           class="item intent"
-                           title="@ViewResources.Back @Model.CateInfo.Name">
+                        <a href="@Model.CateInfo.Url" class="item intent" title="@ViewResources.Back @Model.CateInfo.Name">
                             <i class="icon-social icon-back"></i>
                         </a>
                     }
@@ -113,7 +120,7 @@
                 </div>
             }
             else
-            { 
+            {
                 <div class="skeleton skeleton-vertical">
                     <a class="skeleton-vertical__title" style="margin-bottom:0.8rem"></a>
                     <a class="skeleton-vertical__image"></a>
@@ -128,7 +135,8 @@
                         <picture>
                             <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
                             <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
-                            <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
+                            <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)"
+                                alt="@Model.SinglePost.PostTitle" class="img-res img-block">
                         </picture>
                         <div class="btn-play-video" post-id="@Model.SinglePost.ID">
                             <span class="icon-play"></span>
@@ -140,11 +148,13 @@
                 <div class="card-vertical__datetime">
                     <div class="group-author">
                         <div class="author-section" style="text-align:right">
-                            <a href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author </a>
+                            <a href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author
+                            </a>
                         </div>
                         <span class="date"> - @Model.SinglePost.PostTimeFormatSingle</span>
                     </div>
-                    <a href="https://news.google.com/publications/CAAqBwgKMJ_HzwswzuLmAw?hl=vi&gl=VN&ceid=VN%3Avi" class="google-news">
+                    <a href="https://news.google.com/publications/CAAqBwgKMJ_HzwswzuLmAw?hl=vi&gl=VN&ceid=VN%3Avi"
+                        class="google-news">
                         <span>Theo dõi <b>SABAVN</b> trên</span>
                         <img src="~/images/google-news-text.svg" alt="google-news-text" />
                     </a>
@@ -166,25 +176,26 @@
                     <li class="item-social">
                         @if (Model.IsVideo)
                         {
-                            <a href="@Url.Action("Video", "Home")"
-                               class="item intent"
-                               title="@ViewResources.Back @ViewResources.Video">
+                            <a href="@Url.Action("Video", "Home")" class="item intent"
+                                title="@ViewResources.Back @ViewResources.Video">
                                 <i class="icon-social icon-back"></i>
                             </a>
                         }
                         else
                         {
-                            <a href="@Model.CateInfo.Url"
-                               class="item intent"
-                               title="@ViewResources.Back @Model.CateInfo.Name">
+                            <a href="@Model.CateInfo.Url" class="item intent"
+                                title="@ViewResources.Back @Model.CateInfo.Name">
                                 <i class="icon-social icon-back"></i>
                             </a>
                         }
                     </li>
                     <li class="item-social">
                         <a href="javascript:;" class="item intent save_post @(Model.SavePost != null ? "active" : "")">
-                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
-                                <path d="M0.51 2.00031V2C0.51 1.17287 1.1794 0.5 2 0.5H12C12.8239 0.5 13.5 1.17614 13.5 2V17.2417L7.19696 14.5404L7 14.456L6.80304 14.5404L0.500474 17.2415L0.51 2.00031Z" fill="none" stroke="#999999" />
+                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
+                                <path
+                                    d="M0.51 2.00031V2C0.51 1.17287 1.1794 0.5 2 0.5H12C12.8239 0.5 13.5 1.17614 13.5 2V17.2417L7.19696 14.5404L7 14.456L6.80304 14.5404L0.500474 17.2415L0.51 2.00031Z"
+                                    fill="none" stroke="#999999" />
                             </svg>
                             Lưu Tin
                         </a>
@@ -193,29 +204,27 @@
                 <ul class="social right-social">
                     <li class="item-social">Chia sẻ:</li>
                     <li class="item-social">
-                        <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
-                           data-count="facebook" target="_blank"
-                           rel="nofollow"
-                           class="item intent facebook"
-                           title="@ViewResources.ShareFacebook">
+                        <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl" data-count="facebook"
+                            target="_blank" rel="nofollow" class="item intent facebook"
+                            title="@ViewResources.ShareFacebook">
                             <i class="icon-social icon-detail_facebook"></i>
                         </a>
                     </li>
                     <li class="item-social">
                         <a href="javascript:;"
-                           onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=@Model.SinglePost.PostTitle&body=@Model.AbsoluteUrl', '_blank')"
-                           rel="nofollow" class="item"
-                           title="@ViewResources.ShareMail">
-                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-email">
-                                <path d="M16.2 0H1.8C0.81 0 0.00899999 0.7875 0.00899999 1.75L0 12.25C0 13.2125 0.81 14 1.8 14H16.2C17.19 14 18 13.2125 18 12.25V1.75C18 0.7875 17.19 0 16.2 0ZM16.2 3.5L9 7.875L1.8 3.5V1.75L9 6.125L16.2 1.75V3.5Z" fill="#999999" />
+                            onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=@Model.SinglePost.PostTitle&body=@Model.AbsoluteUrl', '_blank')"
+                            rel="nofollow" class="item" title="@ViewResources.ShareMail">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="svg-email">
+                                <path
+                                    d="M16.2 0H1.8C0.81 0 0.00899999 0.7875 0.00899999 1.75L0 12.25C0 13.2125 0.81 14 1.8 14H16.2C17.19 14 18 13.2125 18 12.25V1.75C18 0.7875 17.19 0 16.2 0ZM16.2 3.5L9 7.875L1.8 3.5V1.75L9 6.125L16.2 1.75V3.5Z"
+                                    fill="#999999" />
                             </svg>
                         </a>
                     </li>
                     <li class="item-social">
-                        <a href="javascript:;"
-                           rel="nofollow"
-                           class="item intent copy-clipboard"
-                           title="@ViewResources.CopyLink">
+                        <a href="javascript:;" rel="nofollow" class="item intent copy-clipboard"
+                            title="@ViewResources.CopyLink">
                             <i class="icon-social icon-link"></i>
                         </a>
                         <span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
@@ -230,15 +239,16 @@
                     var tags = Model.SinglePost.Tags.Split(',');
                     @for (var i = 0; i < tags.Length; i++)
                     {
-                        <h3 class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></h3>
+                        <h3 class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })"
+                                class="tag">@tags[i]</a></h3>
                     }
                 }
             </div>
-            @if(Model.IsVideo)
+            @if (Model.IsVideo)
             {
                 <div class="ads-insite show-pc banner-left"></div>
             }
-            @if(!Model.IsVideo)
+            @if (!Model.IsVideo)
             {
                 <div class="ads-insite show-mobile banner-mobile-center"></div>
             }
@@ -247,15 +257,16 @@
             <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
             <div class="comment-post" id="comment">
             </div>
-            @if(Model.IsVideo)
+            @if (Model.IsVideo)
             {
                 <div class="ads-insite show-mobile banner-mobile-top"></div>
             }
             <div class="same-category-post"></div>
-            @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
+            @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId =
+            Model.SinglePost.ID })
 
         </div>
-        @if(!Model.IsVideo)
+        @if (!Model.IsVideo)
         {
             <div class="ads-insite show-mobile banner-mobile-bottom"></div>
         }
@@ -264,7 +275,8 @@
             <div class="ads-insite show-mobile banner-mobile-center"></div>
         }
         <div class="block block-extension">
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId =
+            Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
         </div>
 
     </div>

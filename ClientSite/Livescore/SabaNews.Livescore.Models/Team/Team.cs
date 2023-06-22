@@ -11,5 +11,7 @@
 
         public string Icon { get; set; }
         public string IconVN { get; set; }
+        public int RedCard { get; set; }
+        public int YellowCard { get; set; }
     }
 }

@@ -59,6 +59,7 @@
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
                 savePost = user?.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
+            var matchId = PostHelper.GetMatchInfoFromContent(post.PostContent);
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
@@ -71,7 +72,8 @@
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",
                 IsVideo = PostHelper.CheckIsVideo(cateParents),
-                CateInfo = cateInfo
+                CateInfo = cateInfo,
+                MatchId = matchId
             };
 
             return View(model);

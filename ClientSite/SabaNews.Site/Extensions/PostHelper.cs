@@ -103,5 +103,17 @@
             return stories;
         }
 
+        public static string GetMatchInfoFromContent(string postContent)
+        {
+            string matchId = null;
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(postContent);
+            var matchNode = document.DocumentNode.SelectSingleNode("//div[contains(@class, 'match-info')]");
+            if(matchNode != null) {
+                matchId = matchNode.Attributes["data-id"].Value;
+            }
+            return matchId;
+        }
+
     }
 }

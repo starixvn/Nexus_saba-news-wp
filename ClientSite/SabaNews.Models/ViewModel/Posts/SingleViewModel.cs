@@ -19,5 +19,6 @@
         public string CateName { get; set; }
         public string CateUrl { get; set; }
         public string CateParent { get; set; }
+        public string MatchId { get; set; }
     }
 }
