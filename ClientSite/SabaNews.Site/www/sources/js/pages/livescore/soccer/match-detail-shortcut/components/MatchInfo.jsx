@@ -70,16 +70,6 @@ export default class MatchInfo extends PureComponent {
         return <Fragment />;
     };
 
-    getAggregateScore = match => {
-        const homeScore = match.homeTeamAggregateScore;
-        const awayScore = match.awayTeamAggregateScore;
-
-        if (match.isSecondLeg && match.status === MatchStatus.Finished && (homeScore > 0 || awayScore > 0)) {
-            return <li>AGG: {homeScore} - {awayScore}</li>;
-        }
-
-        return null;
-    };
 
     getPenScore = match => {
         const homeScore = match.homeTeamPenaltyScore;
@@ -174,7 +164,7 @@ export default class MatchInfo extends PureComponent {
 
 
     render() {
-        const { match, incidents } = this.props;
+        const { match } = this.props;
         const leagueName = CommonFunctions.getLeagueName(match.league);
         const homeTeamName = CommonFunctions.getTeamName(match.homeTeam);
         const awayTeamName = CommonFunctions.getTeamName(match.awayTeam);

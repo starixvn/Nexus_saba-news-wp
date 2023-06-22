@@ -7,7 +7,7 @@ import {
 } from './matchDetailShortcutSlice';
 
 const getMatchDetail = () => async dispatch => {
-    const url = Site.resolveClientUrl('soccer/GetMatchById');
+    const url = Site.resolveClientUrl('soccer/GetMatchGeneralInfo');
     await DataService.postDataAsync(url, {matchId: window.matchId}).then(response => {
         const { match, incidents } =  response.data;
         dispatch(setIncident(incidents));

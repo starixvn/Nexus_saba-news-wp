@@ -273,7 +273,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetMatchById([FromBody] GetMatchByIdCriteria criteria)
+        public async Task<IActionResult> GetMatchGeneralInfo([FromBody] GetMatchByIdCriteria criteria)
         {
             var matchId = criteria.MatchId;
             var match = await matchService.GetMatchByIdAsync(criteria);
