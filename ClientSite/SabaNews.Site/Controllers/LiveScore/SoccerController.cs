@@ -181,6 +181,10 @@
         [HttpPost]
         public async Task<IActionResult> GetMatchesBySeason([FromBody] GetMatchBySeasonParams model)
         {
+            if(model == null)
+            {
+                return Json(null);
+            }
             var criteria = new GetMatchBySeasonCriteria
             {
                 LeagueId = model.LeagueId,
