@@ -128,7 +128,7 @@ export default class CommonFunctions {
             matchIds = [];
         } else {
             matchIds = JSON.parse(matchIds.toString());
-            matchIds = matchIds.filter(match => match !== null);
+            matchIds = matchIds.filter(match => match !== null && !isNaN(match));
         }
 
         return matchIds;
