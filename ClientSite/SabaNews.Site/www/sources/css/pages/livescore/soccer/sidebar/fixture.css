@@ -779,7 +779,7 @@ body {
 }
 .group-duel .team-logo img {
   max-width: 100%;
-  height: auto;
+  height: 100%;
 }
 .group-duel .team-name {
   font-weight: 400;

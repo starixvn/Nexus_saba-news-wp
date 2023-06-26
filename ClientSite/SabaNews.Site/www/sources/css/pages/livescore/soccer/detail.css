@@ -641,6 +641,7 @@ body {
 }
 .duel-participant .flex-league .column .soccer-match-stage span {
   color: #2F2F2F;
+  line-height: 1.5rem;
 }
 .duel-participant-result {
   margin: 0 4rem;
