@@ -73,6 +73,7 @@
             const bottomHeight = windowWidth > 768 
                             ? $('#category-grid').innerHeight() + $('.header').innerHeight() +  100
                             : scrollHeight - $('.block-extension').innerHeight() -  $('.footer').innerHeight();
+            console.log(bottomHeight, scrollPos, currentscrollHeight, scrollHeight, isLoadData);
             const isBottom = bottomHeight < scrollPos;
             if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
                 page++;
