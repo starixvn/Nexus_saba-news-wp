@@ -54,6 +54,7 @@
         }
         p{
             @extend .league-name;
+            margin-bottom: 0;
             .days{
                 @include Mobile{
                     display: none;

@@ -606,6 +606,9 @@
     font-size: 1.2rem;
   }
 }
+#match-detail-shortcut .league-and-time p {
+  margin-bottom: 0;
+}
 @media (max-width: 767px) {
   #match-detail-shortcut .league-and-time p .days {
     display: none;
