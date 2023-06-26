@@ -776,6 +776,7 @@ body {
   width: 2.2rem;
   height: 2.2rem;
   overflow: hidden;
+  text-align: center;
 }
 .group-duel .team-logo img {
   max-width: 100%;
