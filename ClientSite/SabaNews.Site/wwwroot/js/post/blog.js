@@ -68,17 +68,16 @@
 
     function InfiniteScroll() {
         $(window).on("scroll", function () {
-            const scrollHeight = $(document).height();
+            const scrollHeight = $('#category-grid').height();
             const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
             const bottomHeight = windowWidth > 768 
                             ? $('#category-grid').innerHeight() + $('.header').innerHeight() +  100
-                            : scrollHeight - $('.block-extension').innerHeight() -  $('.footer').innerHeight();
-            console.log(bottomHeight, scrollPos, currentscrollHeight, scrollHeight, isLoadData);
+                            : $(document).height() - $('.block-extension').innerHeight() -  $('.footer').innerHeight();
             const isBottom = bottomHeight < scrollPos;
-            if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
+            if (isBottom &&  currentscrollHeight < scrollHeight && isLoadData && page < 50) {
+                currentscrollHeight = scrollHeight;
                 page++;
                 GetDataGrid(page);
-                currentscrollHeight = scrollHeight;
             }
         });
 
@@ -87,7 +86,7 @@
             page++;
             GetDataGrid(page);
             $('.lds-ellipsis').show();
-            currentscrollHeight = $(document).height();
+            currentscrollHeight = $('#category-grid').height();
             isLoadData = true;
         });
     }
