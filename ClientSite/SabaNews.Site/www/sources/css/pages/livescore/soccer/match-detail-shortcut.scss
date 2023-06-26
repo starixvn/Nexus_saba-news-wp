@@ -13,6 +13,9 @@
     @include Mobile{
         margin: .6rem 0;
     }
+    li{
+        margin-bottom: 0;
+    }
     .duel-participant{
         @include Mobile{
             padding: .4rem;

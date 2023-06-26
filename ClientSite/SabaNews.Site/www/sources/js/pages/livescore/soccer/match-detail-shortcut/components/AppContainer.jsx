@@ -18,10 +18,10 @@ export class AppContainer extends Component {
     render() {
         const { match, incidents } = this.props;
         return (
-            <div className="duel-participant">
+            <>
                 <SignalR />
                 { match !== null && incidents !== null && <MatchInfo match={match} incidents={incidents} /> }
-            </div>
+            </>
         );
     }
 
