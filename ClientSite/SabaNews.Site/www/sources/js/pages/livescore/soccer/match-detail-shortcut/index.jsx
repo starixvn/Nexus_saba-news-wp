@@ -13,4 +13,4 @@ ReactDOM.render(
     <Provider store={store}>
         <AppContainer />
     </Provider>,
-    document.getElementById('match-detail-shortcut'));
+    document.getElementById('match-detail'));

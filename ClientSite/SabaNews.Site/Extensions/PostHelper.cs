@@ -108,7 +108,7 @@
             string matchId = null;
             HtmlDocument document = new HtmlDocument();
             document.LoadHtml(postContent);
-            var matchNode = document.DocumentNode.SelectSingleNode("//div[contains(@id, 'match-detail-shortcut')]");
+            var matchNode = document.DocumentNode.SelectSingleNode("//div[contains(@id, 'match-detail')]");
             if(matchNode != null) {
                 matchId = matchNode.Attributes["data-id"].Value;
             }
