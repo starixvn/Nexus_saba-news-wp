@@ -191,13 +191,9 @@ export default class MatchInfo extends PureComponent {
                         </ul>
                     </div>
                     <div className={`column column-center ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-middle' : ''}`}>
-                        <div className="soccer-match-stage">
-                            <span className="">
-                                {
-                                    match.status !== MatchStatus.NotStarted && <MatchStage match={match} />
-                                }
-                            </span>
-                        </div>
+                        {
+                            match.status !== MatchStatus.NotStarted && <MatchStage match={match} />
+                        }
                     </div>
                     <div className="column column-right away-team">
                         <ul className="soccer-team-status">
