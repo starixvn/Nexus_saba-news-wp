@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Site from '@jsroot/common/site';
 import { ActionCreators } from '../actions';
+const matchId = parseInt(window.matchId);
 
 export class SignalR extends Component {
     constructor(props) {
@@ -27,7 +28,8 @@ export class SignalR extends Component {
             .build();
 
         this.connection.on('UpdateMatchDetail', data => {
-            this.props.setMatch(data);
+            const { generalInfo } = data;
+            this.props.setMatch(generalInfo);
         });
 
         this.connection.onclose(async () => {
@@ -40,9 +42,9 @@ export class SignalR extends Component {
     }
 
     componentWillUnmount() {
-        this.connection.invoke('LeaveSoccerGroup', window.matchId)
+        this.connection.invoke('LeaveSoccerGroup', matchId)
             .then(() => {
-                console.log(`leave group ${window.matchId}`); //NOSONAR
+                console.log(`leave group ${matchId}`); //NOSONAR
             }).catch(err => {
                 console.error(err.toString()); //NOSONAR
             });
@@ -52,9 +54,9 @@ export class SignalR extends Component {
     start = async () => {
         try {
             await this.connection.start().then(() => {
-                this.connection.invoke('JoinSoccerGroup', window.matchId)
+                this.connection.invoke('JoinSoccerGroup', matchId)
                     .then(() => {
-                        console.log(`join group ${window.matchId}`); //NOSONAR
+                        console.log(`join group ${matchId}`); //NOSONAR
                     }).catch(err => {
                         console.error(err.toString()); //NOSONAR
                     });
