@@ -20,6 +20,22 @@
         @include Mobile{
             padding: .4rem;
         }
+        .flex-league{
+            align-items: flex-start;
+            .column-left{
+                ul{
+                    margin-bottom: .6rem;
+                    @include Mobile{
+                        margin-bottom: .4rem;
+                    }
+                    li{
+                        span{
+                            line-height: 2.4rem;
+                        }
+                    }
+                }
+            }
+        }
     }
     .league-and-time {
         background: #F5F5F5;
