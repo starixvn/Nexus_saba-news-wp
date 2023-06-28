@@ -110,10 +110,11 @@
 
     function LoadBannerContent() {
         var html = $('.banner-content').html();
-        if($('.content').find('p').eq(0).html() !== '') {
-            $('.content').find('p').eq(0).after(html);
+        var firstParagrapthContent = $('.content').find('p:not([class]');
+        if(firstParagrapthContent.eq(0).html() !== '') {
+            firstParagrapthContent.eq(0).after(html);
         } else {
-            $('.content').find('p').eq(1).after(html);
+            firstParagrapthContent.eq(1).after(html);
         }
     }
 
