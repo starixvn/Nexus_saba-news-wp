@@ -556,23 +556,51 @@
   font-size: 2rem;
 }
 
-#match-detail-shortcut {
+#match-detail {
   margin: 2.4rem 0;
 }
 @media (max-width: 767px) {
-  #match-detail-shortcut {
+  #match-detail {
     margin: 0.6rem 0;
   }
 }
-#match-detail-shortcut li {
+#match-detail li {
   margin-bottom: 0;
 }
 @media (max-width: 767px) {
-  #match-detail-shortcut .duel-participant {
+  #match-detail .duel-participant {
     padding: 0.4rem;
   }
 }
-#match-detail-shortcut .league-and-time {
+#match-detail .duel-participant .flex-league {
+  align-items: flex-start;
+}
+#match-detail .duel-participant .flex-league .column-left ul {
+  margin-bottom: 0.6rem;
+}
+@media (max-width: 767px) {
+  #match-detail .duel-participant .flex-league .column-left ul {
+    margin-bottom: 0.4rem;
+  }
+}
+#match-detail .duel-participant .flex-league .column-left ul li span {
+  line-height: 2.4rem;
+}
+#match-detail .duel-participant .flex-league.live .soccer-match-stage span {
+  font-size: 1.2rem;
+}
+@media (max-width: 767px) {
+  #match-detail .duel-participant .flex-league.live .soccer-match-stage span {
+    font-size: 0.8rem;
+  }
+  #match-detail .duel-participant .flex-league.live .soccer-match-stage span::before {
+    top: 3px;
+  }
+  #match-detail .duel-participant .flex-league.live .soccer-match-stage span::after {
+    top: -1px;
+  }
+}
+#match-detail .league-and-time {
   background: #F5F5F5;
   border-radius: 3px;
   padding: 0.5rem 1rem;
@@ -581,53 +609,53 @@
   align-items: center;
   margin-bottom: 1rem;
 }
-#match-detail-shortcut .league-and-time .league {
+#match-detail .league-and-time .league {
   list-style: none;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-#match-detail-shortcut .league-and-time .league-logo {
+#match-detail .league-and-time .league-logo {
   width: 3rem;
   height: 3rem;
   margin-right: 0.6rem;
 }
-#match-detail-shortcut .league-and-time .league-logo img {
+#match-detail .league-and-time .league-logo img {
   object-fit: cover;
 }
-#match-detail-shortcut .league-and-time .league-name, #match-detail-shortcut .league-and-time p {
+#match-detail .league-and-time .league-name, #match-detail .league-and-time p {
   color: #333333;
   font-weight: 600;
   font-size: 1.4rem;
   line-height: 2.4rem;
 }
 @media (max-width: 767px) {
-  #match-detail-shortcut .league-and-time .league-name, #match-detail-shortcut .league-and-time p {
+  #match-detail .league-and-time .league-name, #match-detail .league-and-time p {
     font-size: 1.2rem;
   }
 }
-#match-detail-shortcut .league-and-time p {
+#match-detail .league-and-time p {
   margin-bottom: 0;
 }
 @media (max-width: 767px) {
-  #match-detail-shortcut .league-and-time p .days {
+  #match-detail .league-and-time p .days {
     display: none;
   }
 }
-#match-detail-shortcut .center-league {
+#match-detail .center-league {
   border-bottom: 1px solid #E9E9E9;
   padding-bottom: 1rem;
 }
-#match-detail-shortcut .view-detail {
+#match-detail .view-detail {
   text-align: center;
   margin-bottom: 1rem;
 }
 @media (max-width: 767px) {
-  #match-detail-shortcut .view-detail {
+  #match-detail .view-detail {
     margin-bottom: 1.6rem;
   }
 }
-#match-detail-shortcut .view-detail span {
+#match-detail .view-detail span {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -639,10 +667,10 @@
   line-height: 1.8rem;
 }
 @media (max-width: 767px) {
-  #match-detail-shortcut .view-detail span {
+  #match-detail .view-detail span {
     font-size: 1.2rem;
   }
 }
-#match-detail-shortcut .view-detail span i {
+#match-detail .view-detail span i {
   font-size: 2rem;
 }

@@ -35,6 +35,22 @@
                     }
                 }
             }
+            &.live{
+                .soccer-match-stage{
+                    span{
+                        font-size: 1.2rem;
+                        @include Mobile{
+                            font-size: .8rem;
+                            &::before{
+                                top: 3px;
+                            }
+                            &::after{
+                                top: -1px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     .league-and-time {
