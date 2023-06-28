@@ -119,7 +119,8 @@ export default class CommonFunctions {
         return statusId === MatchStatus.NotStarted
             || statusId === MatchStatus.Postpone
             || statusId === MatchStatus.Cancel
-            || statusId === MatchStatus.TBD;
+            || statusId === MatchStatus.TBD
+            || statusId === MatchStatus.Delay;
     }
 
     static getFavouriteMatches() {

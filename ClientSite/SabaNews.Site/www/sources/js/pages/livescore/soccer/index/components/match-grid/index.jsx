@@ -75,7 +75,8 @@ export class MatchGrid extends PureComponent {
     checkPreMatch = status => {
         return status === MatchStatus.Postpone
                 || status === MatchStatus.Cancel
-                || status === MatchStatus.TBD;
+                || status === MatchStatus.TBD
+                || status === MatchStatus.Delay;
     };
 
     checkPostMatch = status => {

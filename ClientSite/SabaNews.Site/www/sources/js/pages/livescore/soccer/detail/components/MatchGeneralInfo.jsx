@@ -238,7 +238,6 @@ export default class MatchGeneralInfo extends PureComponent {
                         <FavouriteIcon matchId={generalInfo.matchId} flagToggle={this.state.flagToggleMatchIcon} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
                     }
                     {
-                        !isPreMatch &&
                         <div className="flex-league first-league">
                             <div className="column column-left home-team">
                                 <ul className="soccer-team-status">
