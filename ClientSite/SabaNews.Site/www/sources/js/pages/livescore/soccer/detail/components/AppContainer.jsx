@@ -42,9 +42,6 @@ export class AppContainer extends Component {
             return null;
         }
         const isEvent = this.checkIsEvent(match.generalInfo.league, window.isEventPage);
-        const homeTeamName = CommonFunctions.getTeamName(match.generalInfo.homeTeam);
-        const awayTeamName = CommonFunctions.getTeamName(match.generalInfo.awayTeam);
-        document.title = `${this.getEventTitle(isEvent)} ${homeTeamName} vs ${awayTeamName}`;
         return (
             <>
                 <div className="container livescore-container">

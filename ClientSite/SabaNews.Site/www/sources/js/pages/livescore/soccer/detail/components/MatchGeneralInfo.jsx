@@ -212,6 +212,45 @@ export default class MatchGeneralInfo extends PureComponent {
         return leagueName;
     };
 
+    getMatchScoreTitle = () => {
+        const { generalInfo } = this.props.match;
+        const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
+        if(isPreMatch) {
+            return "vs";
+        }
+        const homeScore = generalInfo.homeTeamExtraScore ? generalInfo.homeTeamExtraScore : generalInfo.homeTeamTotalScore;
+        const awayScore = generalInfo.awayTeamExtraScore ? generalInfo.awayTeamExtraScore : generalInfo.awayTeamTotalScore;
+        const score = `${homeScore}-${awayScore}`;
+        if (generalInfo.isSecondLeg  && (generalInfo.homeTeamAggregateScore > 0 || generalInfo.awayTeamAggregateScore > 0)) {
+            return `${score} (AGG: ${generalInfo.homeTeamAggregateScore} - ${generalInfo.awayTeamAggregateScore})`;
+        }
+        if ((generalInfo.homeTeamPenaltyScore > 0 || generalInfo.awayTeamPenaltyScore > 0)) {
+            return `${score} (PEN: ${generalInfo.homeTeamPenaltyScore} - ${generalInfo.awayTeamPenaltyScore})`;
+        }
+        return score;
+    }
+
+    getMatchTitle = () => {
+        const { generalInfo } = this.props.match;
+        const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
+        const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
+        let matchStatus = "";
+        if(isPreMatch) {
+            matchStatus = LangHelper.getResource('Fixture');
+        } else if(isLiveMatch) {
+            matchStatus = LangHelper.getResource('Live');
+        } else {
+            matchStatus = LangHelper.getResource('Result');
+        }
+        const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
+        const homeTeamName = CommonFunctions.getTeamName(generalInfo.homeTeam);
+        const awayTeamName = CommonFunctions.getTeamName(generalInfo.awayTeam);
+        const leagueName = CommonFunctions.getLeagueName(generalInfo.league);
+        const matchScore = this.getMatchScoreTitle()
+        return `${matchStatus} ${homeTeamName} ${matchScore} ${awayTeamName} - ${leagueName} - ${startTime.format('DD/MM/YYYY')}`;
+    }
+
+
     renderBody = () => {
         const { generalInfo } = this.props.match;
         const isEvent = this.props.isEvent;
@@ -302,6 +341,7 @@ export default class MatchGeneralInfo extends PureComponent {
     };
 
     render() {
+        document.title = this.getMatchTitle();
         return (
             <Fragment>
                 <div className="sticky-header">
