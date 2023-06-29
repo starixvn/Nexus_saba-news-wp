@@ -32,8 +32,7 @@ describe('MatchGeneralInfo', () => {
 
         CommonFunctions.getLeagueNameWithStage = jest.fn(() => 'World Cup');
 
-        CommonFunctions.getTeamName = jest.fn();
-        CommonFunctions.getTeamName.mockReturnValueOnce('Belgium').mockReturnValueOnce('Croatia');
+        CommonFunctions.getTeamName = jest.fn().mockReturnValueOnce('Belgium').mockReturnValueOnce('Croatia');
 
         DateTimeService.convertFromUTC = jest.fn().mockReturnValue(dayjs(new Date("2022-06-01")));
 
@@ -849,6 +848,188 @@ describe('MatchGeneralInfo', () => {
             expect(result).toMatchSnapshot();
 
         });
+    });
+
+    describe('getLeagueName', () => {
+        it('return currectly name when isEvent = true and match round is zero', () => {
+            // Arrange
+            const  generalInfo = {
+                matchId: 1,
+                round: 0,
+                startTime: '2022-06-12',
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 1,
+                homeTeamAggregateScore: 2,
+                awayTeamAggregateScore: 3,
+                status: 0,
+                league: {icon: 'icon'},
+                homeTeam: {icon:'icon'},
+                awayTeam: {icon:'icon'},
+                isSecondLeg: true
+            }
+            CommonFunctions.getStageName = jest.fn().mockReturnValue('Stage');
+            const container = shallow(<MatchGeneralInfo {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.getLeagueName(generalInfo, true);
+
+            // Assert
+            expect(result).toEqual("Stage ");
+        })
+
+        it('return currectly name when isEvent = true and match round > 0', () => {
+            // Arrange
+            const  generalInfo = {
+                matchId: 1,
+                round: 1,
+                startTime: '2022-06-12',
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 1,
+                homeTeamAggregateScore: 2,
+                awayTeamAggregateScore: 3,
+                status: 0,
+                league: {icon: 'icon'},
+                homeTeam: {icon:'icon'},
+                awayTeam: {icon:'icon'},
+                isSecondLeg: true
+            }
+            CommonFunctions.getStageName = jest.fn().mockReturnValue('Stage');
+            const container = shallow(<MatchGeneralInfo {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.getLeagueName(generalInfo, true);
+
+            // Assert
+            expect(result).toEqual("Stage - Turn 1");
+        })
+
+        it('return currectly name when isEvent = false and match round > 0', () => {
+            // Arrange
+            const  generalInfo = {
+                matchId: 1,
+                round: 1,
+                startTime: '2022-06-12',
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 1,
+                homeTeamAggregateScore: 2,
+                awayTeamAggregateScore: 3,
+                status: 0,
+                league: {icon: 'icon'},
+                homeTeam: {icon:'icon'},
+                awayTeam: {icon:'icon'},
+                isSecondLeg: true
+            }
+            CommonFunctions.getLeagueName = jest.fn().mockReturnValue('League');
+            const container = shallow(<MatchGeneralInfo {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.getLeagueName(generalInfo, false);
+
+            // Assert
+            expect(result).toEqual("League");
+        })
+    });
+
+    describe('getMatchTitle', () => {
+        it('return correctly title when match in pre-match', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    generalInfo: {
+                        matchId: 1,
+                        startTime: '2022-06-12',
+                        homeTeamTotalScore: 1,
+                        awayTeamTotalScore: 1,
+                        homeTeamAggregateScore: 2,
+                        awayTeamAggregateScore: 3,
+                        status: 0,
+                        league: {icon: 'icon'},
+                        homeTeam: {icon:'icon'},
+                        awayTeam: {icon:'icon'},
+                        isSecondLeg: true
+                    }
+                }
+            };
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('Team');
+            CommonFunctions.isPreMatch = jest.fn().mockReturnValue(true);
+            const container = shallow(<MatchGeneralInfo {...props} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.getMatchTitle();
+
+            // Assert
+            expect(result).toEqual("Fixture Team vs Team - World Cup - 01/06/2022");
+        });
+
+        it('return correctly title when match in live and have agg score', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    generalInfo: {
+                        matchId: 1,
+                        startTime: '2022-06-12',
+                        homeTeamTotalScore: 1,
+                        awayTeamTotalScore: 1,
+                        homeTeamAggregateScore: 2,
+                        awayTeamAggregateScore: 3,
+                        status: 0,
+                        league: {icon: 'icon'},
+                        homeTeam: {icon:'icon'},
+                        awayTeam: {icon:'icon'},
+                        isSecondLeg: true
+                    }
+                }
+            };
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('Team');
+            CommonFunctions.isPreMatch = jest.fn().mockReturnValue(false);
+            CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(true);
+            const container = shallow(<MatchGeneralInfo {...props} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.getMatchTitle();
+
+            // Assert
+            expect(result).toEqual("Live Team 1-1 (AGG: 2-3) Team - World Cup - 01/06/2022");
+        })
+
+        it('return correctly title when match in post-match and have penalty score', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    generalInfo: {
+                        matchId: 1,
+                        startTime: '2022-06-12',
+                        homeTeamTotalScore: 1,
+                        awayTeamTotalScore: 1,
+                        homeTeamExtraScore: 2,
+                        awayTeamExtraScore: 3,
+                        homeTeamPenaltyScore: 4,
+                        awayTeamPenaltyScore: 5,
+                        status: 0,
+                        league: {icon: 'icon'},
+                        homeTeam: {icon:'icon'},
+                        awayTeam: {icon:'icon'},
+                        isSecondLeg: false
+                    }
+                }
+            };
+            CommonFunctions.getTeamName = jest.fn().mockReturnValue('Team');
+            CommonFunctions.isPreMatch = jest.fn().mockReturnValue(false);
+            CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(false);
+            const container = shallow(<MatchGeneralInfo {...props} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.getMatchTitle();
+
+            // Assert
+            expect(result).toEqual("Result Team 2-3 (PEN: 4-5) Team - World Cup - 01/06/2022");
+        })
     });
 
     describe('render', () => {

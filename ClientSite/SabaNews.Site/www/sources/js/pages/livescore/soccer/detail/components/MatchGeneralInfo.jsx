@@ -222,10 +222,10 @@ export default class MatchGeneralInfo extends PureComponent {
         const awayScore = generalInfo.awayTeamExtraScore ? generalInfo.awayTeamExtraScore : generalInfo.awayTeamTotalScore;
         const score = `${homeScore}-${awayScore}`;
         if (generalInfo.isSecondLeg  && (generalInfo.homeTeamAggregateScore > 0 || generalInfo.awayTeamAggregateScore > 0)) {
-            return `${score} (AGG: ${generalInfo.homeTeamAggregateScore} - ${generalInfo.awayTeamAggregateScore})`;
+            return `${score} (AGG: ${generalInfo.homeTeamAggregateScore}-${generalInfo.awayTeamAggregateScore})`;
         }
         if ((generalInfo.homeTeamPenaltyScore > 0 || generalInfo.awayTeamPenaltyScore > 0)) {
-            return `${score} (PEN: ${generalInfo.homeTeamPenaltyScore} - ${generalInfo.awayTeamPenaltyScore})`;
+            return `${score} (PEN: ${generalInfo.homeTeamPenaltyScore}-${generalInfo.awayTeamPenaltyScore})`;
         }
         return score;
     }
