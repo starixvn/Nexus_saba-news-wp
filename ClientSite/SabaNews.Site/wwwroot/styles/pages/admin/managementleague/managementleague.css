@@ -181,14 +181,14 @@
   width: 397px !important;
 }
 
-#AddLeagueContent .modal-content .title {
+#AddLeagueContent .modal-content .title, #EditLeagueContent .modal-content .title {
   color: #fff;
   font-size: 1.6rem;
   margin-bottom: 0;
   text-transform: unset;
   line-height: 1;
 }
-#AddLeagueContent .modal-content .select2-dropdown {
+#AddLeagueContent .modal-content .select2-dropdown, #EditLeagueContent .modal-content .select2-dropdown {
   background-color: white;
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -200,33 +200,33 @@
   z-index: 1051;
   width: 397px !important;
 }
-#AddLeagueContent .modal-content .select2-container {
+#AddLeagueContent .modal-content .select2-container, #EditLeagueContent .modal-content .select2-container {
   margin-left: -375px;
 }
-#AddLeagueContent .modal-content .modal-body {
+#AddLeagueContent .modal-content .modal-body, #EditLeagueContent .modal-content .modal-body {
   padding: 1rem 1.6rem !important;
 }
-#AddLeagueContent .modal-content .row {
+#AddLeagueContent .modal-content .row, #EditLeagueContent .modal-content .row {
   display: inline;
   flex-wrap: wrap;
   flex: 1 0 100%;
   margin: 0;
 }
-#AddLeagueContent .modal-content td {
+#AddLeagueContent .modal-content td, #EditLeagueContent .modal-content td {
   padding: 7px;
 }
-#AddLeagueContent .modal-content label {
+#AddLeagueContent .modal-content label, #EditLeagueContent .modal-content label {
   font-weight: bold;
   font-size: 14px;
   color: #333333;
 }
-#AddLeagueContent .modal-content .lable-major {
+#AddLeagueContent .modal-content .lable-major, #EditLeagueContent .modal-content .lable-major {
   margin-left: 40px;
 }
-#AddLeagueContent .modal-content .checkbox-major {
+#AddLeagueContent .modal-content .checkbox-major, #EditLeagueContent .modal-content .checkbox-major {
   margin-left: 5px;
 }
-#AddLeagueContent .modal-content .form-control {
+#AddLeagueContent .modal-content .form-control, #EditLeagueContent .modal-content .form-control {
   display: block;
   height: 31px;
   padding: 5px 8px;
@@ -239,60 +239,60 @@
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-#AddLeagueContent .modal-content .label-LeagueID {
+#AddLeagueContent .modal-content .label-LeagueID, #EditLeagueContent .modal-content .label-LeagueID {
   width: 70px;
 }
-#AddLeagueContent .modal-content .txt-countryVn, #AddLeagueContent .modal-content .txt-leagueNameVn, #AddLeagueContent .modal-content .txt-leagueFullNameVn, #AddLeagueContent .modal-content .txt-countryEn {
+#AddLeagueContent .modal-content .txt-countryVn, #AddLeagueContent .modal-content .txt-leagueNameVn, #AddLeagueContent .modal-content .txt-leagueFullNameVn, #AddLeagueContent .modal-content .txt-countryEn, #EditLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-leagueNameVn, #EditLeagueContent .modal-content .txt-leagueFullNameVn, #EditLeagueContent .modal-content .txt-countryEn {
   width: 397px !important;
   margin-left: -375px;
 }
-#AddLeagueContent .modal-content .txt-countryEn {
+#AddLeagueContent .modal-content .txt-countryEn, #EditLeagueContent .modal-content .txt-countryEn {
   border: unset;
 }
-#AddLeagueContent .modal-content .txt-countryVn {
+#AddLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-countryVn {
   width: 250px !important;
   margin-left: -375px;
 }
-#AddLeagueContent .modal-content .txt-leagueId {
+#AddLeagueContent .modal-content .txt-leagueId, #EditLeagueContent .modal-content .txt-leagueId {
   width: 60px !important;
   margin-left: 77px;
   margin-right: 40px;
 }
-#AddLeagueContent .modal-content .txt-countryEn {
+#AddLeagueContent .modal-content .txt-countryEn, #EditLeagueContent .modal-content .txt-countryEn {
   font-weight: unset;
 }
-#AddLeagueContent .modal-content .txt-priority {
+#AddLeagueContent .modal-content .txt-priority, #EditLeagueContent .modal-content .txt-priority {
   width: 65px !important;
   margin-left: 10px;
   text-align: center;
 }
-#AddLeagueContent .modal-content .form-btn {
+#AddLeagueContent .modal-content .form-btn, #EditLeagueContent .modal-content .form-btn {
   padding-top: 15px;
   padding-right: 5px;
   text-align: right;
 }
-#AddLeagueContent .modal-content .form-btn .btn {
+#AddLeagueContent .modal-content .form-btn .btn, #EditLeagueContent .modal-content .form-btn .btn {
   margin-left: 12px;
   width: 80px;
   font-size: 15px;
 }
-#AddLeagueContent .modal-content .flex-form-input {
+#AddLeagueContent .modal-content .flex-form-input, #EditLeagueContent .modal-content .flex-form-input {
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
   width: 348px;
 }
-#AddLeagueContent .modal-content .flex-form-input:last-child {
+#AddLeagueContent .modal-content .flex-form-input:last-child, #EditLeagueContent .modal-content .flex-form-input:last-child {
   margin-bottom: 0;
 }
-#AddLeagueContent .modal-content .flex-form-input .label-admin {
+#AddLeagueContent .modal-content .flex-form-input .label-admin, #EditLeagueContent .modal-content .flex-form-input .label-admin {
   width: 30%;
   margin: 0;
 }
-#AddLeagueContent .modal-content .flex-form-input label {
+#AddLeagueContent .modal-content .flex-form-input label, #EditLeagueContent .modal-content .flex-form-input label {
   width: 148px;
 }
-#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img {
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img, #EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img {
   background: #FFFFFF;
   border: 1px solid #DDDDDD;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
@@ -304,13 +304,13 @@
   align-items: center;
   justify-content: center;
 }
-#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img, #EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
   width: 4rem;
   height: 4rem;
   object-fit: cover;
   margin: 0 auto;
 }
-#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close, #EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
   position: absolute;
   right: 3px;
   top: 3px;
@@ -319,14 +319,14 @@
   cursor: pointer;
   color: #4F4F4F;
 }
-#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus {
+#AddLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus, #EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus {
   outline: none;
 }
-#AddLeagueContent .modal-content .flex-form-input .w-75 {
+#AddLeagueContent .modal-content .flex-form-input .w-75, #EditLeagueContent .modal-content .flex-form-input .w-75 {
   width: 256px !important;
   margin-right: 10px;
 }
-#AddLeagueContent .modal-content .flex-form-input .custom-input {
+#AddLeagueContent .modal-content .flex-form-input .custom-input, #EditLeagueContent .modal-content .flex-form-input .custom-input {
   width: 100%;
   cursor: inherit;
 }
@@ -342,132 +342,6 @@
 }
 #leagueshot .selected td {
   height: 42px;
-}
-
-#EditLeagueContent .modal-content .title {
-  color: #fff;
-  font-size: 1.6rem;
-  margin-bottom: 0;
-  text-transform: unset;
-  line-height: 1;
-}
-#EditLeagueContent .modal-content .select2-container {
-  margin-left: -297px;
-}
-#EditLeagueContent .modal-content .modal-body {
-  padding: 1rem 1.6rem !important;
-}
-#EditLeagueContent .modal-content .row {
-  display: inline;
-  flex-wrap: wrap;
-  flex: 1 0 100%;
-  margin: 0;
-}
-#EditLeagueContent .modal-content td {
-  padding: 7px;
-}
-#EditLeagueContent .modal-content label {
-  font-weight: bold;
-  font-size: 14px;
-  color: #333333;
-}
-#EditLeagueContent .modal-content .lable-major {
-  margin-left: 120px;
-}
-#EditLeagueContent .modal-content .checkbox-major {
-  margin-left: 20px;
-}
-#EditLeagueContent .modal-content .form-control {
-  display: block;
-  height: 31px;
-  padding: 5px 8px;
-  line-height: 1.5;
-  border: 1px solid #CCC;
-  font-size: 14px;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-#EditLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-leagueNameVn, #EditLeagueContent .modal-content .txt-leagueFullNameVn {
-  width: 270px !important;
-  margin-left: -284px;
-}
-#EditLeagueContent .modal-content .txt-countryEn {
-  border: unset;
-}
-#EditLeagueContent .modal-content .txt-countryVn {
-  font-weight: unset;
-}
-#EditLeagueContent .modal-content .txt-priority {
-  width: 65px !important;
-  margin-left: 100px;
-  text-align: center;
-}
-#EditLeagueContent .modal-content .form-btn {
-  padding-top: 15px;
-  padding-right: 5px;
-  text-align: right;
-}
-#EditLeagueContent .modal-content .flex-form-input {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  width: 348px;
-}
-#EditLeagueContent .modal-content .flex-form-input:last-child {
-  margin-bottom: 0;
-}
-#EditLeagueContent .modal-content .flex-form-input .label-admin {
-  width: 30%;
-  margin: 0;
-}
-#EditLeagueContent .modal-content .flex-form-input label {
-  width: 148px;
-}
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img {
-  background: #FFFFFF;
-  border: 1px solid #DDDDDD;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  text-align: center;
-  position: relative;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img img {
-  width: 4rem;
-  height: 4rem;
-  object-fit: cover;
-  margin: 0 auto;
-}
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close {
-  position: absolute;
-  right: 3px;
-  top: 3px;
-  font-size: 1.2rem;
-  background: transparent;
-  cursor: pointer;
-  color: #4F4F4F;
-}
-#EditLeagueContent .modal-content .flex-form-input .admin-text-logo-data-img .icon-close:focus {
-  outline: none;
-}
-#EditLeagueContent .modal-content .flex-form-input .w-75 {
-  width: 256px !important;
-  margin-right: 10px;
-}
-#EditLeagueContent .modal-content .flex-form-input .custom-input {
-  width: 100%;
-  cursor: inherit;
-}
-#EditLeagueContent .modal-content .form-btn .btn {
-  margin-left: 12px;
-  width: 80px;
-  font-size: 15px;
 }
 
 .page-content .error {
