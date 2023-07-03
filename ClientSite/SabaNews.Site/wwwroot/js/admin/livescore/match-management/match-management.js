@@ -6,11 +6,11 @@
     var dateSort = 'asc';
     var leagueName = '';
     var seasonName = '';
-    function GetSeason(leagueId) {
+    function GetSeason(leagueId, season = 0) {
         $.ajax({
             url: "/Admin/MatchManagement/GetSeason",
             type: 'POST',
-            data: { leagueId },
+            data: { leagueId, season },
             success: function (res) {
                 $('#seasonFilter').html(res);
             }
@@ -287,7 +287,8 @@
         });
         $('.league-select').on('change', function () {
             var currentLeagueId = $(this).val();
-            GetSeason(currentLeagueId);
+            var season = $(this).find('option:selected').data('season');
+            GetSeason(currentLeagueId, season);
         });
         $('.btn_league').click(function () {
             initAddLeague();

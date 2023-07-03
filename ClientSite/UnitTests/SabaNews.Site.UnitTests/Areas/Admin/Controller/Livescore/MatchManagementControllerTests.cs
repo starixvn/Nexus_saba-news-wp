@@ -49,7 +49,7 @@
         }
 
         [Fact]
-        public async Task GetSeason_WhenCalled_ReturnExpectedData()
+        public async Task GetSeason_WhenCurrentSeasonIsZero_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
@@ -58,12 +58,33 @@
 
             leagueService.GetSeasonByLeagueIdAsync(Arg.Do<long>(x => x = leagueId)).Returns(expectedLeague);
             //Act
-            var result = await controller.GetSeason(leagueId);
+            var result = await controller.GetSeason(leagueId, 0);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
             var viewModel = Assert.IsAssignableFrom<IList<Season>>(viewResult.Model);
             Assert.Equal(expectedLeague, viewModel);
+        }
+
+        [Fact]
+        public async Task GetSeason_WhenCurrentSeasonNotInList_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var leagueId = fixture.Create<long>();
+            var expectedSeason = new List<Season>();
+            expectedSeason.Add(new Season { SeasonId = 1, Year = "2023" });
+            expectedSeason.Add(new Season { SeasonId = 2, Year = "2022" });
+
+            leagueService.GetSeasonByLeagueIdAsync(Arg.Do<long>(x => x = leagueId)).Returns(expectedSeason);
+            // expectedSeason.Add(new Season { SeasonId = 111, Year = "111" });
+            //Act
+            var result = await controller.GetSeason(leagueId, 111);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IList<Season>>(viewResult.Model);
+            Assert.Equal(expectedSeason, viewModel);
         }
 
         [Fact]

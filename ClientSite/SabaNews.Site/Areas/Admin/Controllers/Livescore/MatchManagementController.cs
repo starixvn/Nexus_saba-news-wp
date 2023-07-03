@@ -16,6 +16,7 @@
     using System.Globalization;
     using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;
+    using SabaNews.Livescore.Models.League;
 
     public class MatchManagementController : AdminController
     {
@@ -48,9 +49,14 @@
             return View("~/Areas/Admin/Views/Livescore/MatchManagement/Index.cshtml", model);
         }
 
-        public async Task<IActionResult> GetSeason(long leagueId)
+        public async Task<IActionResult> GetSeason(long leagueId, long season)
         {
             var seasons = await leagueService.GetSeasonByLeagueIdAsync(leagueId);
+            var currentSeason = seasons.FirstOrDefault(item => item.SeasonId == season);
+            if(season > 0 && currentSeason == null)
+            {
+                seasons.Insert(0, new Season { SeasonId = season, Year = season.ToString() });
+            }
             return PartialView("~/Areas/Admin/Views/Livescore/MatchManagement/_SeasonFilter.cshtml", seasons);
         }
 
