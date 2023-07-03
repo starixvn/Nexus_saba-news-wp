@@ -120,15 +120,15 @@
                 <option value="0">-------</option>
                     @foreach (var item in Model.Leagues)
                     {
-                        <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
+                        <option value="@item.LeagueId" data-season="@item.CurrentSeasonId" data-icon="@(item.IconVN ?? GetTeamIcon(item.Icon))"
                             @(item.LeagueId == cate?.LeagueId ? "selected" : "")>@GetLeagueName(item)</option>
                     }
                 </select>
             </td>
-            <td>
-                @if(cate != null)
+            <td class="league-icon">
+                @if(cate != null && cate.LeagueId != 0)
                 {
-                    <img src="@(cate.IconVN ?? GetTeamIcon(cate.Icon))" width="100">
+                    <img src="@(cate.IconVN ?? GetTeamIcon(cate.Icon))">
                 }
             </td>
             <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>

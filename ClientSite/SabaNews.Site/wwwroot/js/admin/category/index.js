@@ -20,9 +20,18 @@ var categoryLivescore = (function ($) {
     function Edit() {
         $('.league-select').on('change', function() {
             var leagueId = $(this).val();
-            var seasonId = $(this).find('option:selected').data('season');;
-            var status = $(this).parent().parent().find('.cate-status').is(":checked")? 1 : 0;
-            var cateId = $(this).parent().parent().data('id');
+            var seasonId = $(this).find('option:selected').data('season');
+            var icon = $(this).find('option:selected').data('icon');
+            var row = $(this).parent().parent();
+            var status = row.find('.cate-status').is(":checked")? 1 : 0;
+            var cateId = row.data('id');
+            if( typeof icon !== "undefined") {
+                var img = $('<img />', {src : icon});
+                img.appendTo('body');
+                row.find('.league-icon').html(img)
+            } else {
+                row.find('.league-icon').html('')
+            }
             UpdateInfo(leagueId, seasonId, status, cateId);
         });
 
