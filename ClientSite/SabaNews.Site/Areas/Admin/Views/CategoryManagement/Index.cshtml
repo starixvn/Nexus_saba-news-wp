@@ -38,6 +38,7 @@
                             <th width="2%">#</th>
                             <th width="15%">Category</th>
                             <th width="15%">League</th>
+                            <th width="15%">League Icon</th>
                             <th width="6%">Display</th>
                         </tr>
                     </thead>
@@ -81,7 +82,7 @@
     </div>
 </section>
 @functions {
-    private (string, long, bool) GetLeagueData(List<CateLivescore> cates, long cateId)
+    private (string, CateLivescore, bool) GetLeagueData(List<CateLivescore> cates, long cateId)
     {
         var cate = cates.FirstOrDefault(item => item.CateId == cateId);
         var display = false;
@@ -96,12 +97,12 @@
                 league = GetLeagueName(cate.LeagueNameEN, cate.LeagueFullNameEN, cate.LeagueNameVN);
             }
         }
-        return (league, leagueId, display);
+        return (league, cate, display);
     }
 
     void renderRow(Menu menu, int count, bool isParent = false)
     {
-        var (league, leagueId, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
+        var (league, cate, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
         var isFoolball = menu.CateSlug == Constants.FootballSlug;
         var parent = Model.Menus.FirstOrDefault(item => item.PostId == menu.ParentId);
         <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"") @(isParent ? "" : "child parent-" + parent?.CateId)"  data-id=@menu.CateId>
@@ -120,9 +121,15 @@
                     @foreach (var item in Model.Leagues)
                     {
                         <option value="@item.LeagueId" data-season="@item.CurrentSeasonId"
-                            @(item.LeagueId == leagueId ? "selected" : "")>@GetLeagueName(item)</option>
+                            @(item.LeagueId == cate?.LeagueId ? "selected" : "")>@GetLeagueName(item)</option>
                     }
                 </select>
+            </td>
+            <td>
+                @if(cate != null)
+                {
+                    <img src="@(cate.IconVN ?? GetTeamIcon(cate.Icon))" width="100">
+                }
             </td>
             <td class="text-center"><input class="cate-status" type="checkbox" @(display ? "checked" : "")/></td>
         </tr>
