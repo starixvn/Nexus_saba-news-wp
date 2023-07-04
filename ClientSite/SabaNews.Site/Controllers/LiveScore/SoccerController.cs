@@ -6,6 +6,7 @@
     using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
+    using Newtonsoft.Json.Linq;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Extensions;
     using SabaNews.Core.Models;
@@ -181,7 +182,7 @@
         [HttpPost]
         public async Task<IActionResult> GetMatchesBySeason([FromBody] GetMatchBySeasonParams model)
         {
-            if(model == null)
+            if (model == null)
             {
                 return Json(null);
             }
@@ -212,7 +213,7 @@
         public async Task<IActionResult> GetLeagueSeasonStanding([FromBody] GetLeagueAndSeasonStandingsCriteria criteria)
         {
             var (league, standing) = await leagueService.GetLeagueAndSeasonStandingAsync(criteria);
-            return Json(new {league, standing});
+            return Json(new { league, standing });
         }
 
         [HttpPost]
@@ -226,6 +227,10 @@
         [HttpPost]
         public async Task<IActionResult> GetMatchDetail([FromBody] GetMatchByIdCriteria criteria)
         {
+            if (criteria == null)
+            {
+                return Json(null);
+            }
             var matchId = criteria.MatchId;
             var result = new MatchDetail
             {
@@ -241,6 +246,10 @@
         [HttpPost]
         public async Task<IActionResult> GetFavMatches([FromBody] GetMatchByIdsCriteria criteria)
         {
+            if (!ValidateJson(criteria.MatchIds))
+            {
+                return Json(null);
+            }
             var result = new MatchFavourite
             {
                 Matches = await matchService.GetMatchByIdsAsync(criteria),
@@ -259,8 +268,12 @@
         [HttpPost]
         public async Task<IActionResult> GetFavLeagues([FromBody] FavLeagueModel model)
         {
+            if(model.LeagueIds != null && !ValidateJson(model.LeagueIds))
+            {
+                return Json(null);
+            }
             var leagues = model.LeagueIds == null
-                        ? await leagueService.GetMajorLeagueAsync() 
+                        ? await leagueService.GetMajorLeagueAsync()
                         : await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = model.LeagueIds });
             return Json(leagues);
         }
@@ -277,7 +290,20 @@
         {
             var match = await matchService.GetMatchByIdAsync(criteria);
             var incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = criteria.MatchId });
-            return Json(new {match, incidents});
+            return Json(new { match, incidents });
+        }
+
+        private static bool ValidateJson(string json)
+        {
+            try
+            {
+                JToken.Parse(json);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
     }
