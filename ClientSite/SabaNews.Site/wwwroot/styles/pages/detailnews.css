@@ -4630,9 +4630,10 @@ table {
 }
 table thead tr th {
   background: #F5F3EF;
+  padding: 0.5rem 0.8rem;
 }
 table tbody tr td {
-  padding: 0.5rem;
+  padding: 0.5rem 0.8rem;
   border: 1px solid #dadada;
   border-bottom: none;
   border-right: none;
