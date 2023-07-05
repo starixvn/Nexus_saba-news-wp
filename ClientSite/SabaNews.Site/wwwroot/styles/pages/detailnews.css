@@ -4549,6 +4549,7 @@ img {
   width: 100%;
   overflow: hidden;
   padding-top: 56.25%;
+  margin-bottom: 1rem;
 }
 .wrapper-embed iframe {
   position: absolute;
