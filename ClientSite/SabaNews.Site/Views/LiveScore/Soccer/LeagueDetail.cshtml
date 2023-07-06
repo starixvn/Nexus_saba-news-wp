@@ -32,6 +32,9 @@
         <script src="~/js/pro/pages/livescore/soccer/league-detail.chunk.js" asp-append-version="true"></script>
     </environment>
 }
+@section Metadata {
+    <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
+}
 @section Title{Chi tiết giải đấu}
 @(await Component.InvokeAsync("Menu", new { CategorySlug = "home-page" }))
 <div id="app-container"></div>
