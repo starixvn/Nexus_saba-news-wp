@@ -725,6 +725,11 @@ img {
         color: #5267A5;
         font-weight: 600;
         min-width: 65rem;
+        @include Mobile{
+            min-width: auto;
+            position: sticky;
+            left: 0;
+        }
     }
 }
 

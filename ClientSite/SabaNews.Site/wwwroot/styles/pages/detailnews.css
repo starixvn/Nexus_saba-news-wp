@@ -4632,6 +4632,13 @@ img {
   font-weight: 600;
   min-width: 65rem;
 }
+@media (max-width: 767px) {
+  .wp-block-table .wp-element-caption {
+    min-width: auto;
+    position: sticky;
+    left: 0;
+  }
+}
 
 table {
   width: 100%;
