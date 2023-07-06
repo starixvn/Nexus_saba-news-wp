@@ -717,13 +717,20 @@ img {
     border: 1px solid #DADADA;
     margin: 1rem 0;
     border-radius: 3px;
+    text-align: center;
+    .wp-element-caption{
+        border-top: 1px solid #5267A5;
+        font-size: 1.4rem;
+        background: #E5E7ED;
+        color: #5267A5;
+        font-weight: 600;
+    }
 }
 
 table{
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    text-align: center;
     color : #333;
     font-size: 1.4rem;
     thead{
