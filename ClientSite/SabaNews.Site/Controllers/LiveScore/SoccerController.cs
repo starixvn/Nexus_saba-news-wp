@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json.Linq;
     using SabaNews.Core.Constants;
@@ -28,19 +29,24 @@
         private readonly IPostService postService;
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
+        private readonly IConfiguration configuration;
+        private readonly string domain;
 
         public SoccerController(
             IOptionsSnapshot<LivescoreMainPageCacheConfig> cacheConfigs,
             ICacheWrapperService cacheService,
             IPostService postService,
             ILeagueService leagueService,
-            IMatchService matchService)
+            IMatchService matchService,
+            IConfiguration configuration)
         {
             this.cacheConfigs = cacheConfigs.Value;
             this.cacheService = cacheService;
             this.postService = postService;
             this.leagueService = leagueService;
             this.matchService = matchService;
+            this.configuration = configuration;
+            domain = configuration.GetValue<string>("BaseUrl");
         }
 
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
@@ -49,6 +55,7 @@
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle ??= pageDetail.Title;
             var description = !string.IsNullOrWhiteSpace(pageDetail.Description) ? pageDetail.Description : title;
+            pageDetail.Url = $"{domain}lich-thi-dau/bong-da";
             var model = new PageViewModel
             {
                 Category = pageDetail,
@@ -71,6 +78,7 @@
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle ??= pageDetail.Title;
             var description = !string.IsNullOrWhiteSpace(pageDetail.Description) ? pageDetail.Description : title;
+            pageDetail.Url = $"{domain}lich-thi-dau/bong-da/truc-tiep";
             var model = new PageViewModel
             {
                 Category = pageDetail,

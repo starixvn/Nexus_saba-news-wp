@@ -6,6 +6,7 @@
     using AutoFixture;
     using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
     using NSubstitute;
     using SabaNews.Core.Models;
@@ -28,6 +29,7 @@
         private ILeagueService leagueService;
         private IMatchService matchService;
         private ICacheWrapperService cacheService;
+        private IConfiguration configuration;
         private readonly IFixture fixture = new Fixture();
 
         #region Index
@@ -808,7 +810,8 @@
             postService = Substitute.For<IPostService>();
             leagueService = Substitute.For<ILeagueService>();
             matchService = Substitute.For<IMatchService>();
-            return new SoccerController(options, cacheService, postService, leagueService, matchService);
+            configuration = Substitute.For<IConfiguration>() ;
+            return new SoccerController(options, cacheService, postService, leagueService, matchService, configuration);
         }
 
         #endregion
