@@ -745,6 +745,9 @@ table{
                     border-left: none;
                 }
             }
+            &:nth-child(even){
+                background: #F5F3EF;;
+            }
         }
     }
     &.has-fixed-layout{

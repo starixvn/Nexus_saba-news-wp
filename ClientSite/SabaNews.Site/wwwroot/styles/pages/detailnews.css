@@ -4645,6 +4645,9 @@ table tbody tr td {
 table tbody tr td:first-child {
   border-left: none;
 }
+table tbody tr:nth-child(even) {
+  background: #F5F3EF;
+}
 table.has-fixed-layout {
   min-width: 65rem;
 }
