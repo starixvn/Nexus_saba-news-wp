@@ -729,8 +729,12 @@ table{
     thead{
         tr{
             th{
-                background: #F5F3EF;
+                background: #EDEBE7;
                 padding: .5rem .8rem;
+                border-left: 1px solid #DADADA;
+                &:first-child{
+                    border-left: none;
+                }
             }
         }
     }

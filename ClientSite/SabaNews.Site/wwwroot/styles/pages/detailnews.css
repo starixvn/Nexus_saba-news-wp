@@ -4633,8 +4633,12 @@ table {
   font-size: 1.4rem;
 }
 table thead tr th {
-  background: #F5F3EF;
+  background: #EDEBE7;
   padding: 0.5rem 0.8rem;
+  border-left: 1px solid #DADADA;
+}
+table thead tr th:first-child {
+  border-left: none;
 }
 table tbody tr td {
   padding: 0.5rem 0.8rem;
