@@ -1,4 +1,5 @@
 ﻿@using static SabaNews.Site.Extensions.DeviceHelper;
+@using SabaNews.Core.Constants;
 @section Metadata {
     <meta name="description" content='@Model.Header.Description' />
     <meta property="og:description" content='@Model.Category.OgDescription' />
@@ -33,17 +34,33 @@
 
 @{
     bool isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
+    var slug1 = Model.Slugs != null ? Model.Slugs.Slug1 : null;
+    var slug2 = Model.Slugs != null ? Model.Slugs.Slug2 : null;
+    var slug3 = Model.Slugs != null ? Model.Slugs.Slug3 : null;
 }
 
 @(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug, Slugs = Model.Slugs }))
 <section class="main">
     <div class="base-container medium-container">
-        
         @if (Model.Menus != null)
         {
              @if (!isMobile)
             {
-                <h1 class="block__title title-new-page"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h1>
+                <div class="group-sub-category">
+                    <div class="sub-category">
+                        <h1 class="heading-category"><a>Video</a></h1>
+                        @foreach (var menu in Model.GetSubMenu(slug1))
+                        {
+                            <h2 class="sub-item @(slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                        }
+                    </div>
+                    <div class="sub-category">
+                        @foreach (var menu in Model.GetSubMenu(slug2))
+                        {
+                            <h2 class="sub-item @(slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                        }
+                    </div>
+                </div>
             }
             else
             {
@@ -52,7 +69,7 @@
                 {
                     var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
                     var coMenu = Model.GetCoMenu(Model.Slugs.Slug3);
-                    var menuLink = Url.Action("Video", "Home", new { slug = Model.Slug });
+                    var menuLink = Url.Action("Category", "Home", new { slug = Model.Slug + CategoryKey.Suffix });
                     <div class="menu-select single-select-menu">
                         <a href="@menuLink">@menu.MenuTitle</a>
                         <select class="select_ad" onChange="window.location.href=this.value">
@@ -60,7 +77,7 @@
                             {
 
                                 var selected = menu.PostId == item.PostId ? "selected" : "";
-                                var subLink = $"/video/{item.CateSlug}";
+                                var subLink = Url.Action("Category", "Home", new { slug = item.CateSlug + CategoryKey.Suffix });
                                 <!option class="@selected" @selected value="@subLink">@item.MenuTitle</!option>
                             }
                         </select>
@@ -71,7 +88,7 @@
                     <div class="sub-category">
                         @foreach (var menu in subMenu)
                         {
-                            var link = Url.Action("Video", "Home", new { slug = menu.CateSlug });
+                            var link = Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix });
                             <h2 class="sub-item @(Model.Header.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
                         }
                     </div>
@@ -81,7 +98,6 @@
     </div>
     <div class="container medium-container">
         <div class="block block-main">
-            
             <div class="block__swipper">
                 <div class="swiper-container">
                     @* <div class="skeleton skeleton-swiper-slide">
