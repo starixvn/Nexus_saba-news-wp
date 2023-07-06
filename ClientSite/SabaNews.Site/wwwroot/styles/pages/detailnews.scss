@@ -729,9 +729,10 @@ table{
     thead{
         tr{
             th{
-                background: #EDEBE7;
+                background: #DADADA;
                 padding: .5rem .8rem;
-                border-left: 1px solid #DADADA;
+                border-left: 1px solid #F5F3EF;
+                font-weight: 700;
                 &:first-child{
                     border-left: none;
                 }
