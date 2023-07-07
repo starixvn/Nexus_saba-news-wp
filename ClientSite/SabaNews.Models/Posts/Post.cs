@@ -29,6 +29,8 @@
         public int CommentCount { get; set; }
         public long AuthorId { get; set; }
         public string Author { get; set; }
+        public string SeoTitle { get; set; }
+        public string SeoDescription { get; set; }
         public IEnumerable<ImageInfo> Images { get; set; }
 
         public string PostTime

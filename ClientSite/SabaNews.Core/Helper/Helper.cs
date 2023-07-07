@@ -49,5 +49,17 @@
 
             return result;
         }
+
+        public static string ReplaceStringFromVarSeo(string str, string title)
+        {
+            const string dateFormat = "dd/MM/yyyy";
+            var result = Regex.Replace(str, WordpressVariable.SepVar, WordpressVariable.Separate, RegexOptions.IgnoreCase);
+            result = Regex.Replace(result, WordpressVariable.SiteNameVar, WordpressVariable.SiteName, RegexOptions.IgnoreCase);
+            result = Regex.Replace(result, WordpressVariable.PageVar, WordpressVariable.PageValue, RegexOptions.IgnoreCase);
+            result = Regex.Replace(result, WordpressVariable.TitleVar, title, RegexOptions.IgnoreCase);
+            result = Regex.Replace(result, WordpressVariable.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+
+            return result;
+        }
     }
 }

@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
@@ -58,13 +59,15 @@
             {
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
                 savePost = user?.HandleSavePosts.Find(val => val.PostID == post.ID);
-            }
+            } 
             var matchId = PostHelper.GetMatchInfoFromContent(post.PostContent);
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
             cateInfo.Url = Url.Action("Category", "Home", new { slug = cateInfo.Slug + CategoryKey.Suffix});
             var domain = configuration.GetValue<string>("BaseUrl");
+            post.SeoTitle = string.IsNullOrEmpty(post.SeoTitle) ? post.PostTitle : Helper.ReplaceStringFromVarSeo(post.SeoTitle, post.PostTitle);
+            post.SeoDescription = string.IsNullOrEmpty(post.SeoDescription) ? post.PostExcerpt : Helper.ReplaceStringFromVarSeo(post.SeoDescription, post.PostTitle);
             var model = new SingleViewModel
             {
                 SinglePost = post,

@@ -104,7 +104,7 @@
                 PostType = postType
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
-            if (post != null)
+            if (post != null)  
             {
                 if (string.IsNullOrEmpty(post.PostExcerpt))
                 {

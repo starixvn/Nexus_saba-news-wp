@@ -1,8 +1,8 @@
 ﻿@section Metadata {
-    <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt : "&nbsp;" )' />
+    <meta name="description" content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : "&nbsp;" )' />
     <meta property="og:url" content='@Model.AbsoluteUrl' />
     <meta property="og:description" content="&nbsp;" />
-    <meta property="og:title" content='@Model.SinglePost.PostTitle' />
+    <meta property="og:title" content='@Model.SinglePost.SeoTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@Model.AbsoluteUrl" />
     <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
@@ -10,7 +10,7 @@
 }
 
 @section Title{
-    @Model.SinglePost.PostTitle
+    @Model.SinglePost.SeoTitle
 }
 
 @section Scripts{
