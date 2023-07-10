@@ -457,7 +457,7 @@
                 margin-bottom: 2rem;
             }
             &-content{
-                h4{
+                h4,.heading-box-content{
                     @include Mobile{
                         line-height: 1;
                     }

@@ -3707,12 +3707,12 @@ button {
   }
 }
 @media (max-width: 767px) {
-  .main .block-behind .box-vertical-content h4 {
+  .main .block-behind .box-vertical-content h4, .main .block-behind .box-vertical-content .heading-box-content {
     line-height: 1;
   }
 }
 @media (max-width: 767px) {
-  .main .block-behind .box-vertical-content h4 a {
+  .main .block-behind .box-vertical-content h4 a, .main .block-behind .box-vertical-content .heading-box-content a {
     font-weight: 700;
     font-size: 1.6rem;
     line-height: 2.6rem;
