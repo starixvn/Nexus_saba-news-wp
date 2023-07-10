@@ -73,6 +73,7 @@
         public const int Perpage = 10;
         public const int PageSizeVideo = 9;
         public const int Total = 10000;
+        public const int MaxTotalPost = 500;
         public const int ExcerptLength = 200;
         public const int NumberMinutesAHour = 60;
         public const int NumberSecondsAMinute = 60;

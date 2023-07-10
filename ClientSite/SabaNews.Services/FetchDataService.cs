@@ -102,7 +102,7 @@
                     End = pageSize
                 };
                 posts = await postService.GetRecentPostsAsync(paramGetRecent);
-                totalItems = paramGetRecent.TotalIItems;
+                totalItems = Constants.MaxTotalPost;
             }
             else
             {

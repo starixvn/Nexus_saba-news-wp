@@ -49,6 +49,7 @@
                 }
             }
             $('.banner-category-scroll').html($('.banner-scroll').html());
+            firstPagePosts = [];
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             console.log('server not responding...');
