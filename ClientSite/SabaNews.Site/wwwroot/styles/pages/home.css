@@ -3753,7 +3753,7 @@ button {
   .main .block-behind .box-horizontal-content {
     max-width: 100%;
   }
-  .main .block-behind .box-horizontal-content h5 a {
+  .main .block-behind .box-horizontal-content .heading-box-content a {
     font-weight: 700;
     font-size: 1.6rem;
     line-height: 1;

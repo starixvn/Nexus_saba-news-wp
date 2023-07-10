@@ -498,7 +498,7 @@
                 max-width: 23.5rem;
                 @include Mobile{
                     max-width: 100%;
-                    h5{
+                    .heading-box-content{
                         a{
                             font-weight: 700;
                             font-size: 1.6rem;
