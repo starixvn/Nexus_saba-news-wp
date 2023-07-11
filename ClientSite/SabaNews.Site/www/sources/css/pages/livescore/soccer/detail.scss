@@ -25,7 +25,11 @@
 @import './world-cup/components/wc-date-bar';
 
 
-
+#app-container{
+    @include Mobile{
+        height: 100vh !important;
+    }
+}
 .document-text{
     margin-bottom: 1.2rem;
 }
@@ -34,6 +38,12 @@
     .document-text{
         @include Mobile{
             margin: 1.2rem;
+        }
+    }
+    .none-livescore {
+        margin: 1rem 0;
+        @include Mobile{
+            margin: 1rem 1.2rem;
         }
     }
 }

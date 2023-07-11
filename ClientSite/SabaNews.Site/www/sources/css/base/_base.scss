@@ -37,14 +37,6 @@ body {
 .hidden-body, .overflow-modal {
     overflow: hidden;
 }
-
-// .wapper {
-//     display: flex;
-//     flex-direction: column;
-//     height: 100vh;
-
-// }
-
 .hidden-body {
     position: fixed;
     height: 100%;
@@ -58,7 +50,6 @@ body {
 
 #app-container {
     padding-top: 2rem;
-
     @include tableMobile {
         padding-top: 1rem;
         position: relative;
