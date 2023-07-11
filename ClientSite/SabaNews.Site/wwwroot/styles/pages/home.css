@@ -3254,6 +3254,7 @@ button {
 }
 .main .block-news-hot {
   display: grid;
+  grid-template-rows: unset;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
   margin-bottom: 2rem;
@@ -3311,6 +3312,7 @@ button {
 }
 .main .block-news-hot .block-news-hot-child {
   display: grid;
+  grid-template-rows: unset;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
   grid-column: 1/4;
@@ -3333,6 +3335,7 @@ button {
   .main .block-news-hot .block-news-hot-child .box-vertical {
     display: grid;
     grid-template-columns: 13rem auto;
+    grid-template-rows: unset;
     grid-gap: 0.8rem;
     padding-bottom: 1.2rem;
     margin-bottom: 1.2rem;
@@ -3359,8 +3362,7 @@ button {
 @media (max-width: 767px) {
   .main .block-guess {
     padding: 2rem 0 2rem 0;
-    margin-left: -1.2rem;
-    margin-right: -1.2rem;
+    margin: 0 -1.2rem;
   }
 }
 .main .block-guess .block__title, .main .block-guess .heading-category {
@@ -3454,14 +3456,13 @@ button {
 .main .block-video {
   background: #F5F6F7;
   border-radius: 3px;
-  padding: 2rem 0rem 2rem 2rem;
+  padding: 2rem 0 2rem 2rem;
 }
 @media (max-width: 767px) {
   .main .block-video {
     display: block;
     padding: 1.7rem 1.2rem;
-    margin-left: -1.2rem;
-    margin-right: -1.2rem;
+    margin: 0 -1.2rem;
   }
 }
 .main .block-video .block__title, .main .block-video .heading-category {
@@ -3493,6 +3494,7 @@ button {
 .main .block-video .group-video {
   display: grid;
   grid-template-columns: 58rem auto;
+  grid-template-rows: unset;
   grid-gap: 2rem;
 }
 @media screen and (max-width: 1024px) {
@@ -3514,13 +3516,11 @@ button {
   .main .block-video .block-child-video {
     max-height: unset;
     padding-right: 0;
-    margin-left: -1.2rem;
-    margin-right: -1.2rem;
+    margin: 1.2rem -1.2rem 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 0;
-    margin-top: 1.2rem;
   }
 }
 .main .block-video .block-child-video::-webkit-scrollbar {
@@ -3542,8 +3542,7 @@ button {
   .main .block-video .block-child-video .box-horizontal {
     display: unset;
     width: 19rem;
-    margin-left: 1.2rem;
-    margin-bottom: 0;
+    margin: 0 0 0 1.2rem;
     padding-bottom: 0;
     border-bottom: none;
   }
@@ -3651,8 +3650,7 @@ button {
 @media (max-width: 767px) {
   .main .block-behind {
     padding: 2rem 1.2rem;
-    margin-left: -1.2rem;
-    margin-right: -1.2rem;
+    margin: 0 -1.2rem;
   }
 }
 .main .block-behind .block__title, .main .block-behind .heading-category {
@@ -3681,6 +3679,7 @@ button {
 }
 .main .block-behind .block-behind-vertical {
   display: grid;
+  grid-template-rows: unset;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
   padding-top: 2rem;
