@@ -23,13 +23,6 @@
 
 //wc
 @import './world-cup/components/wc-date-bar';
-
-
-#app-container{
-    @include Mobile{
-        height: 100vh !important;
-    }
-}
 .document-text{
     margin-bottom: 1.2rem;
 }
