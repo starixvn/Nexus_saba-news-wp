@@ -143,7 +143,7 @@ $(document).ready(function () {
 
 
     $('.back-to-top').click(function () {
-        $('html, body').animate({ scrollTop: 0 }, 1000);
+        $('html, body').animate({ scrollTop: 0 }, 300);
     });
 
     $('#detail-page').bind("cut copy paste contextmenu", function (e) {
@@ -232,7 +232,7 @@ $(document).ready(function () {
         var leftPos = $('.main-child-menu').scrollLeft();
         $(".main-child-menu").animate({
             scrollLeft: leftPos + 200
-        }, 800);
+        }, 300);
     });
   
     $('.search-input button').on('click', function (e) {
