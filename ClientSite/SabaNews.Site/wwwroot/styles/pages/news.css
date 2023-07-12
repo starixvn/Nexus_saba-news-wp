@@ -2590,16 +2590,20 @@ button {
   object-fit: cover;
   object-position: top;
 }
-.skeleton-horizontal__title, .skeleton-horizontal-highlight__title {
+.skeleton-horizontal__row, .skeleton-horizontal-highlight__row {
   height: 2rem;
   background: #d9d9d9;
-  width: 95%;
+  width: 100%;
   display: block;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 0.5rem;
 }
-.skeleton-horizontal__title:before, .skeleton-horizontal-highlight__title:before {
+.skeleton-horizontal__row:last-child, .skeleton-horizontal-highlight__row:last-child {
+  margin-bottom: 0;
+}
+.skeleton-horizontal__row:before, .skeleton-horizontal-highlight__row:before {
   position: absolute;
   content: "";
   height: 100%;
@@ -2609,10 +2613,16 @@ button {
   background-size: 450px 400px;
   animation: shimmer 1s linear infinite;
 }
+.skeleton-horizontal__title, .skeleton-horizontal-highlight__title {
+  margin-bottom: 0.5rem;
+}
+.skeleton-horizontal__description, .skeleton-horizontal-highlight__description {
+  margin-bottom: 0.5rem;
+}
 .skeleton-horizontal__datetime, .skeleton-horizontal-highlight__datetime {
   height: 2rem;
   background: #d9d9d9;
-  width: 7rem;
+  width: 9.7rem;
   display: block;
   border-radius: 20px;
   position: relative;
@@ -2628,32 +2638,12 @@ button {
   background-size: 450px 400px;
   animation: shimmer 1s linear infinite;
 }
-.skeleton-horizontal__description, .skeleton-horizontal-highlight__description {
-  margin: 0.5rem 0;
-  line-height: 1.9rem;
-  height: 2rem;
-  background: #d9d9d9;
-  width: 95%;
-  display: block;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
+
+.skeleton-horizontal-highlight .skeleton-horizontal__title {
+  margin-bottom: 1.5rem;
 }
-.skeleton-horizontal__description:before, .skeleton-horizontal-highlight__description:before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
-  background-repeat: no-repeat;
-  background-size: 450px 400px;
-  animation: shimmer 1s linear infinite;
-}
-@media screen and (max-width: 1024px) {
-  .skeleton-horizontal__description, .skeleton-horizontal-highlight__description {
-    font-size: 1.2rem;
-    line-height: 2rem;
-  }
+.skeleton-horizontal-highlight .skeleton-horizontal__description {
+  margin-bottom: 1.5rem;
 }
 
 .skeleton-vertical {
@@ -2698,7 +2688,7 @@ button {
   line-height: 2rem;
   height: 2rem;
   background: #d9d9d9;
-  width: 90%;
+  width: 100%;
   display: block;
   border-radius: 20px;
   position: relative;
@@ -2741,7 +2731,7 @@ button {
   line-height: 1.9rem;
   height: 2rem;
   background: #d9d9d9;
-  width: 90%;
+  width: 100%;
   display: block;
   border-radius: 10px;
   margin: 0 auto;
@@ -3507,9 +3497,6 @@ button {
     margin-bottom: 1.2rem;
   }
 }
-.block-main .card-horizontal__title, .block-main .skeleton-horizontal__title {
-  width: 80%;
-}
 .block-main .card-horizontal-highlight, .block-main .skeleton-horizontal-highlight {
   height: 26.6rem;
   grid-template-columns: 47rem 1fr;
@@ -3577,9 +3564,6 @@ button {
     line-height: 2.4rem;
     margin-bottom: 0.8rem;
   }
-}
-.block-main .card-horizontal-highlight .skeleton-horizontal__title, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__title {
-  width: 95%;
 }
 .block-main .card-horizontal-highlight .card-horizontal__image, .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .card-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
   height: 100%;

@@ -38,10 +38,6 @@
             margin-bottom: 1.2rem;
         }
 
-        &__title {
-            width: 80%;
-        }
-
         &-highlight {
             height: 26.6rem;
             grid-template-columns: 47rem 1fr;
@@ -103,11 +99,6 @@
                     margin-bottom: .8rem;
                 }
             }
-
-            .skeleton-horizontal__title {
-                width: 95%;
-            }
-
             .card-horizontal__image, .skeleton-horizontal__image {
                 height: 100%;
 
