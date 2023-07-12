@@ -89,6 +89,19 @@
     }
 }
 
+.skeleton-banner-mobile{
+    height: 24rem;
+    margin: 1.5rem 0;
+    display: none;
+    @include Mobile{
+        display: block;
+    }
+    @extend .skeleton-banner-align;
+}
+
+
+
+
 .skeleton-banner-euro-desktop {
     overflow: hidden;
     display: block;
@@ -159,7 +172,7 @@
     }
 }
 
-.skeleton-horizontal, skeleton-horizontal-highlight {
+.skeleton-horizontal, .skeleton-horizontal-highlight {
     @include grid(19.5rem 1fr, none, 1.2rem);
     overflow: hidden;
     border-bottom: 1px solid $separator-color;
@@ -396,6 +409,8 @@
         }
     }
 }
+
+
 
 
 @keyframes shimmer {

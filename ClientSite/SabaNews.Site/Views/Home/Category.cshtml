@@ -178,6 +178,14 @@
                         {
                             classHeading = "none-border-mobile";
                         }
+                        <div class="skeleton skeleton-horizontal">
+                            <a class="skeleton-horizontal__image"></a>
+                            <div class="text-skeleton">
+                                <a class="skeleton-horizontal__title"></a>
+                                <p class="skeleton-horizontal__description text-description"></p>
+                                <p class="skeleton-horizontal__datetime"></p>
+                            </div>
+                        </div>
                         <div class="post card-horizontal @classHeading">
                             <input hidden class="page-1" value="@post.ID" />
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52 hover-image">
@@ -209,10 +217,17 @@
                         @if(postIndex == 3)
                         {
                             <div class="ads-insite show-pc banner-left"></div>
-                            <div class="ads-insite show-mobile banner-mobile-top"></div>
+                            <div class="skeleton skeleton-banner-mobile">
+                                <div class="skeleton-banner"></div>
+                            </div>
+                            <div class="ads-insite show-mobile banner-mobile-top">
+                            </div>
                         }
                         else if(postIndex == 8)
                         {
+                            <div class="skeleton skeleton-banner-mobile">
+                                <div class="skeleton-banner"></div>
+                            </div>
                             <div class="ads-insite show-mobile banner-mobile-center"></div>
                         }
                         <div class="skeleton skeleton-horizontal">
