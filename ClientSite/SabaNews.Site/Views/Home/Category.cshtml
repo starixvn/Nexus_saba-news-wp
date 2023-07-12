@@ -140,13 +140,8 @@
                     <a class="skeleton-horizontal__image"></a>
                     <div class="text-skeleton">
                         <div class="skeleton-horizontal__title">
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
-                        </div>
-                        <div class="skeleton-horizontal__description text-description">
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
+                            <p class="skeleton-horizontal__row">@Model.Posts[0].PostTitle</p>
+                            <p class="skeleton-horizontal__row">@Model.Posts[0].PostExcerpt</p>
                             <p class="skeleton-horizontal__row"></p>
                         </div>
                         <p class="skeleton-horizontal__datetime"></p>
@@ -190,11 +185,10 @@
                             <a class="skeleton-horizontal__image"></a>
                             <div class="text-skeleton">
                                 <div class="skeleton-horizontal__title">
-                                    <p class="skeleton-horizontal__row"></p>
-                                    <p class="skeleton-horizontal__row"></p>
+                                    @post.PostTitle
                                 </div>
                                 <div class="skeleton-horizontal__description text-description">
-                                   <p class="skeleton-horizontal__row"></p>
+                                   @post.PostExcerpt
                                 </div>
                                 <p class="skeleton-horizontal__datetime"></p>
                             </div>
@@ -237,14 +231,6 @@
                         {
                             <div class="ads-insite show-mobile banner-mobile-center"></div>
                         }
-                        <div class="skeleton skeleton-horizontal">
-                            <a class="skeleton-horizontal__image"></a>
-                            <div class="text-skeleton">
-                                <a class="skeleton-horizontal__title"></a>
-                                <p class="skeleton-horizontal__description text-description"></p>
-                                <p class="skeleton-horizontal__datetime"></p>
-                            </div>
-                        </div>
                     }
                 }
             </div>
