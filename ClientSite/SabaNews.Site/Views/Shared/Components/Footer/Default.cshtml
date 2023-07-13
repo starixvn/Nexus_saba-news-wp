@@ -55,7 +55,7 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="/">Trang Chủ</a></h6>
+                            <div class="heading-footer-list"><a href="/">Trang Chủ</a></div>
                             <ul>
                                 <li><a href="@Url.Action("Category", "Home", new { slug = Constants.NewPostSlug + CategoryKey.Suffix })">Tin mới nhất</a></li>
                                 @foreach (var menu in topMenu)
@@ -70,7 +70,7 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "viet-nam" + CategoryKey.Suffix })">bóng đá việt nam</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "viet-nam" + CategoryKey.Suffix })">bóng đá việt nam</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == vnCateId))
                                 {
@@ -84,7 +84,7 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "cup-chau-au" + CategoryKey.Suffix })">cúp châu âu</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "cup-chau-au" + CategoryKey.Suffix })">cúp châu âu</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == euroCateId))
                                 {
@@ -94,7 +94,7 @@
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "anh" + CategoryKey.Suffix })">bóng đá Anh</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "anh" + CategoryKey.Suffix })">bóng đá Anh</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == englishCateId))
                                 {
@@ -111,7 +111,7 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "tay-ban-nha" + CategoryKey.Suffix })">bóng đá tbn</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "tay-ban-nha" + CategoryKey.Suffix })">bóng đá tbn</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == tbnCateId))
                                 {
@@ -121,7 +121,7 @@
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "italia" + CategoryKey.Suffix })">Bóng đá italia</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "italia" + CategoryKey.Suffix })">Bóng đá italia</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == italyCateId))
                                 {
@@ -135,7 +135,7 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "phap" + CategoryKey.Suffix })">bóng đá pháp</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "phap" + CategoryKey.Suffix })">bóng đá pháp</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == franceCateId))
                                 {
@@ -145,7 +145,7 @@
                             </ul>
                         </div>
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "duc" + CategoryKey.Suffix })">bóng đá đức</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "duc" + CategoryKey.Suffix })">bóng đá đức</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == germanyCateId))
                                 {
@@ -159,7 +159,7 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <h6 class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "quoc-te" + CategoryKey.Suffix })">bóng đá quốc tế</a></h6>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = "quoc-te" + CategoryKey.Suffix })">bóng đá quốc tế</a></div>
                             <ul>
                                 @foreach (var menu in Model.Where(item => item.ParentId == globalCateId))
                                 {
@@ -215,7 +215,7 @@
         <div class="footer-item">
         <div class="footer-item-main">
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">CHUYÊN MỤC</a></h6>
+        <div class="heading-footer-list"><a href="#">CHUYÊN MỤC</a></div>
         <ul>
         <li><a href="#">Tin mới nhất</a></li>
         <li><a href="#">Lịch thi đấu</a></li>
@@ -232,7 +232,7 @@
         <div class="footer-item">
         <div class="footer-item-main">
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">bóng đá việt nam</a></h6>
+        <div class="heading-footer-list"><a href="#">bóng đá việt nam</a></div>
         <ul>
         <li><a href="#">V-League</a></li>
         <li><a href="#">ĐT Việt Nam</a></li>
@@ -247,7 +247,7 @@
         <div class="footer-item">
         <div class="footer-item-main">
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">cúp châu âu</a></h6>
+        <div class="heading-footer-list"><a href="#">cúp châu âu</a></div>
         <ul>
         <li><a href="#">Champions League</a></li>
         <li><a href="#">Europa League</a></li>
@@ -258,7 +258,7 @@
         </ul>
         </div>
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">bóng đá Anh</a></h6>
+        <div class="heading-footer-list"><a href="#">bóng đá Anh</a></div>
         <ul>
         <li><a href="#">Ngoại hạng Anh</a></li>
         <li><a href="#">FA Cup</a></li>
@@ -270,14 +270,14 @@
         <div class="footer-item">
         <div class="footer-item-main">
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">bóng đá tbn</a></h6>
+        <div class="heading-footer-list"><a href="#">bóng đá tbn</a></div>
         <ul>
         <li><a href="#">La Liga</a></li>
         <li><a href="#">Khác</a></li>
         </ul>
         </div>
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">La Liga</a></h6>
+        <div class="heading-footer-list"><a href="#">La Liga</a></div>
         <ul>
         <li><a href="#">Serie A</a></li>
         <li><a href="#">Khác</a></li>
@@ -288,14 +288,14 @@
         <div class="footer-item">
         <div class="footer-item-main">
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">bóng đá pháp</a></h6>
+        <div class="heading-footer-list"><a href="#">bóng đá pháp</a></div>
         <ul>
         <li><a href="#">League 1</a></li>
         <li><a href="#">Khác</a></li>
         </ul>
         </div>
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">bóng đá đức</a></h6>
+        <div class="heading-footer-list"><a href="#">bóng đá đức</a></div>
         <ul>
         <li><a href="#">Bundesliga</a></li>
         <li><a href="#">Khác</a></li>
@@ -306,7 +306,7 @@
         <div class="footer-item">
         <div class="footer-item-main">
         <div class="footer-item-block">
-        <h6 class="heading-footer-list"><a href="#">bóng đá quốc tế</a></h6>
+        <div class="heading-footer-list"><a href="#">bóng đá quốc tế</a></div>
         <ul>
         <li><a href="#">World Cup</a></li>
         <li><a href="#">Euro</a></li>
