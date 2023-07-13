@@ -136,23 +136,7 @@
     <div class="container medium-container">
         <div class="block block-main block-category">
             <div id="category-grid" class="block__content">
-                <div class="skeleton skeleton-horizontal skeleton-horizontal-highlight">
-                    <a class="skeleton-horizontal__image"></a>
-                    <div class="text-skeleton">
-                        <div class="skeleton-horizontal__title">
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
-                        </div>
-                        <div class="skeleton-horizontal__description">
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
-                            <p class="skeleton-horizontal__row"></p>
-                        </div>
-                        <p class="skeleton-horizontal__datetime"></p>
-                    </div>
-                </div>
-                <div class="post card-horizontal card-horizontal-highlight none-border-mobile">
+                <div class="card-horizontal card-horizontal-highlight none-border-mobile">
                     <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="card-horizontal__image thumb thumb-56 hover-image">
                         <picture>
                             <source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp" class="img-res">
@@ -172,6 +156,22 @@
                         </p>
                     </div>
                 </div>
+                @* <div class="skeleton skeleton-horizontal skeleton-horizontal-highlight">
+                    <a class="skeleton-horizontal__image"></a>
+                    <div class="text-skeleton">
+                        <div class="skeleton-horizontal__title">
+                            <p class="skeleton-horizontal__row"></p>
+                            <p class="skeleton-horizontal__row"></p>
+                            <p class="skeleton-horizontal__row"></p>
+                        </div>
+                        <div class="skeleton-horizontal__description">
+                            <p class="skeleton-horizontal__row"></p>
+                            <p class="skeleton-horizontal__row"></p>
+                            <p class="skeleton-horizontal__row"></p>
+                        </div>
+                        <p class="skeleton-horizontal__datetime"></p>
+                    </div>
+                </div> *@
                 @{
                     int postIndex = 0;
                     foreach (var post in Model.Posts)
@@ -186,20 +186,7 @@
                         {
                             classHeading = "none-border-mobile";
                         }
-                        <div class="skeleton skeleton-horizontal">
-                            <a class="skeleton-horizontal__image"></a>
-                            <div class="text-skeleton">
-                                <div class="skeleton-horizontal__title">
-                                    <p class="skeleton-horizontal__row"></p>
-                                </div>
-                                <div class="skeleton-horizontal__description text-description">
-                                   <p class="skeleton-horizontal__row"></p>
-                                   <p class="skeleton-horizontal__row"></p>
-                                </div>
-                                <p class="skeleton-horizontal__datetime"></p>
-                            </div>
-                        </div>
-                        <div class="post card-horizontal @classHeading">
+                        <div class="card-horizontal @classHeading">
                             <input hidden class="page-1" value="@post.ID" />
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52 hover-image">
                                 <picture>
@@ -227,6 +214,19 @@
                                 </p>
                             </div>
                         </div>
+                        @* <div class="skeleton skeleton-horizontal">
+                            <a class="skeleton-horizontal__image"></a>
+                            <div class="text-skeleton">
+                                <div class="skeleton-horizontal__title">
+                                    <p class="skeleton-horizontal__row"></p>
+                                </div>
+                                <div class="skeleton-horizontal__description text-description">
+                                   <p class="skeleton-horizontal__row"></p>
+                                   <p class="skeleton-horizontal__row"></p>
+                                </div>
+                                <p class="skeleton-horizontal__datetime"></p>
+                            </div>
+                        </div> *@
                         @if(postIndex == 3)
                         {
                             <div class="ads-insite show-pc banner-left"></div>
