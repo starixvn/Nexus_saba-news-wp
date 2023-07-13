@@ -78,7 +78,7 @@ export default class Grid extends PureComponent {
                                     <League league={league} />
                                     {index === 1 &&
                                         <>
-                                            <Banner banner={banner} type={BannerType.DesktopLeft} />
+                                            <Banner banner={banner} type={BannerType.DesktopLeft}/>
                                             <Banner banner={banner} type={BannerType.MobileTop} isMobile />
                                         </>
                                     }

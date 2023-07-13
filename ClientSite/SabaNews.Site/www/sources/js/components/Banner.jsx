@@ -37,7 +37,7 @@ export default class Banner extends PureComponent {
         return (
             <div className={`ads-insite ${classDevice}`}>
                 <a href={link}>
-                    <img src={bannerData.src} className='img-res' />
+                    <img src={bannerData.src} className='img-res' alt='banner-livescore' width="auto" height="240"/>
                 </a>
             </div>
         )
