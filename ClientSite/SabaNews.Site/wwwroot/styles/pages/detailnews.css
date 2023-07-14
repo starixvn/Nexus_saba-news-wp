@@ -4291,3 +4291,8 @@ table tbody tr:nth-child(even) {
 table.has-fixed-layout {
   min-width: 65rem;
 }
+
+#match-detail {
+  display: block;
+  min-height: 22.2rem;
+}
