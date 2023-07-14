@@ -279,7 +279,7 @@
         [Route("lich-thi-dau")]
         public ActionResult RedirectLivescorePage()
         {
-            return Redirect("/lich-thi-dau/bong-da");
+            return Redirect("/lich-thi-dau/bong-da/");
         }
 
         [Route("policy")]

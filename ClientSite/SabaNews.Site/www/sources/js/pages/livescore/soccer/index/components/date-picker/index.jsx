@@ -61,7 +61,6 @@ export class Index extends PureComponent {
                     onChange={this.onChange}
                     open={open}
                     closeOnScroll={this.closeOnScroll}
-                    onClickOutside={this.closeOnScroll}
                 />
             </div>
         );
