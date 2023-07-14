@@ -91,7 +91,7 @@
         if (src !== "") {
             link = link === "" ? "javascript:;" : link;
             html += '<a href="' + link + '">';
-            html += '<img loading="lazy" with="' + width + '" height="' + height + '" alt="'+ alt +'" src="' + src + '" asp-append-version="true" class="img-res">';
+            html += '<img loading="lazy" width="' + width + '" height="' + height + '" alt="'+ alt +'" src="' + src + '" asp-append-version="true" class="img-res">';
             html += '</a>';
             $(bannerType).html(html);
         } else {
