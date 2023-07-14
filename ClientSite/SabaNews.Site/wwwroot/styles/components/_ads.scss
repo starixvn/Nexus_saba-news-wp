@@ -59,7 +59,9 @@
 }
 .show-mobile{
     min-height: 24rem;
-    background: #ddd;
+    &.banner-mobile-bottom{
+        min-height: 20rem;
+    }
 }
 
 

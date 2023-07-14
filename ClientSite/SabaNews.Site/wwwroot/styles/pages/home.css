@@ -2595,7 +2595,9 @@ button {
 
 .show-mobile {
   min-height: 24rem;
-  background: #ddd;
+}
+.show-mobile.banner-mobile-bottom {
+  min-height: 20rem;
 }
 
 #ir__wrap {
