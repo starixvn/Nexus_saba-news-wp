@@ -11,17 +11,17 @@ export default class Banner extends PureComponent {
         const bannerData = null;
         switch (type) {
             case BannerType.DesktopTop:
-                return { src: banner.desktopTopUrl, link: banner.desktopTopNavigationUrl };
+                return { src: banner.desktopTopUrl, link: banner.desktopTopNavigationUrl, width: 320, height: 70 };
             case BannerType.DesktopLeft:
-                return { src: banner.desktopLeftUrl, link: banner.desktopLeftNavigationUrl };
+                return { src: banner.desktopLeftUrl, link: banner.desktopLeftNavigationUrl, width: 910, height: 150 };
             case BannerType.DesktopRight:
-                return { src: banner.desktopRightUrl, link: banner.desktopRightNavigationUrl };
+                return { src: banner.desktopRightUrl, link: banner.desktopRightNavigationUrl, width: 300, height: 600 };
             case BannerType.MobileTop:
-                return { src: banner.mobileTopUrl, link: banner.mobileTopNavigationUrl };
+                return { src: banner.mobileTopUrl, link: banner.mobileTopNavigationUrl, width: 375, height: 240 };
             case BannerType.MobileCenter:
-                return { src: banner.mobileCenterUrl, link: banner.mobileCenterNavigationUrl };
+                return { src: banner.mobileCenterUrl, link: banner.mobileCenterNavigationUrl, width: 375, height: 240 };
             case BannerType.MobileBottom:
-                return { src: banner.mobileBottomUrl, link: banner.mobileBottomNavigationUrl };
+                return { src: banner.mobileBottomUrl, link: banner.mobileBottomNavigationUrl, width: 375, height: 240 };
             default: return bannerData;
         }
     };
@@ -37,7 +37,7 @@ export default class Banner extends PureComponent {
         return (
             <div className={`ads-insite ${classDevice}`}>
                 <a href={link}>
-                    <img src={bannerData.src} className='img-res' alt='banner-livescore' width="auto" height="240"/>
+                    <img src={bannerData.src} className='img-res' alt='banner-livescore' width={bannerData.width} height={bannerData.height}/>
                 </a>
             </div>
         )

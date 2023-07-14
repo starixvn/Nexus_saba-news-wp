@@ -86,14 +86,14 @@
                 type: "POST",
                 success: function (res) {
                     $("body").removeClass("overflow-section");
-                    $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl, 910, 150, "Banner left"));
-                    $(".banner-right").html(GeneralBannerHtml(res.desktopRightUrl, res.desktopRightNavigationUrl, 300, 600, "Banner right"));
-                    $(".banner-desktop-top").html(GeneralBannerHtml(res.desktopTopUrl, res.desktopTopNavigationUrl, 320, 70, "Banner top"));
-                    $(".banner-desktop-center").html(GeneralBannerHtml(res.desktopCenterUrl, res.desktopCenterNavigationUrl, "100%", "100%", "Banner center"));
-                    $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl, 375, 240, "Banner top"));
-                    $(".banner-mobile-center").html(GeneralBannerHtml(res.mobileCenterUrl, res.mobileCenterNavigationUrl, 375, 240, "Banner center"));
-                    $(".banner-mobile-bottom").html(GeneralBannerHtml(res.mobileBottomUrl, res.mobileBottomNavigationUrl, 375, 240 , "Banner bottom"));
-                    $(".banner-post-mobile-top").html(GeneralBannerHtml(res.postMobileTopUrl, res.postMobileTopNavigationUrl, "100%", "100%", "Banner top"));
+                    GeneralBannerHtml(".banner-left", res.desktopLeftUrl, res.desktopLeftNavigationUrl, 910, 150, "Banner left");
+                    GeneralBannerHtml(".banner-right", res.desktopRightUrl, res.desktopRightNavigationUrl, 300, 600, "Banner right");
+                    GeneralBannerHtml(".banner-desktop-top", res.desktopTopUrl, res.desktopTopNavigationUrl, 320, 70, "Banner top");
+                    GeneralBannerHtml(".banner-desktop-center", res.desktopCenterUrl, res.desktopCenterNavigationUrl, "100%", "100%", "Banner center");
+                    GeneralBannerHtml(".banner-mobile-top", res.mobileTopUrl, res.mobileTopNavigationUrl, 375, 240, "Banner top");
+                    GeneralBannerHtml(".banner-mobile-center", res.mobileCenterUrl, res.mobileCenterNavigationUrl, 375, 240, "Banner center");
+                    GeneralBannerHtml(".banner-mobile-bottom", res.mobileBottomUrl, res.mobileBottomNavigationUrl, 375, 240 , "Banner bottom");
+                    GeneralBannerHtml(".banner-post-mobile-top", res.postMobileTopUrl, res.postMobileTopNavigationUrl, "100%", "100%", "Banner top");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus + ': ' + errorThrown);
@@ -102,15 +102,18 @@
         }
     }
 
-    function GeneralBannerHtml(src, link, width, height, alt) {
+
+    function GeneralBannerHtml(bannerType, src, link, width, height, alt) {
         var html = "";
         if (src !== "") {
             link = link === "" ? "javascript:;" : link;
             html += '<a href="' + link + '">';
             html += '<img loading="lazy" with="' + width + '" height="' + height + '" alt="'+ alt +'" src="' + src + '" asp-append-version="true" class="img-res">';
             html += '</a>';
+            $(bannerType).html(html);
+        } else {
+            $(bannerType).css("min-height" ,"unset");
         }
-        return html;
     }
     function init() {
         LoadRelatedPosts();
