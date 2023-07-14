@@ -49,6 +49,20 @@
 } 
 
 
+.show-pc{
+    &.banner-left{
+        min-height: 11.6rem;
+    }
+    &.banner-right{
+        min-height: 60rem;
+    }
+}
+.show-mobile{
+    min-height: 24rem;
+    background: #ddd;
+}
+
+
 
 
 

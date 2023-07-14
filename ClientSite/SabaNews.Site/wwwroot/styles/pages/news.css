@@ -2797,6 +2797,18 @@ button {
   margin-top: 0;
 }
 
+.show-pc.banner-left {
+  min-height: 11.6rem;
+}
+.show-pc.banner-right {
+  min-height: 60rem;
+}
+
+.show-mobile {
+  min-height: 24rem;
+  background: #ddd;
+}
+
 #ir__wrap {
   min-width: 300px;
   height: 100vh;
@@ -3424,4 +3436,8 @@ button {
   #guess-section {
     margin-top: 3rem;
   }
+}
+
+.show-pc.banner-right {
+  min-height: 70rem !important;
 }
