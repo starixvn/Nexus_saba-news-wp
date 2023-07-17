@@ -63,6 +63,24 @@ body {
     }
 }
 
+.soccer-match-grid{
+    .ads-insite{
+        min-height: 11.6rem;
+        @include Mobile{
+            min-height: 24rem;
+        }
+    }
+}
+
+.livescore-soccer-extension{
+    .ads-insite{
+        min-height: 60rem;
+        @include Mobile{
+            min-height: 24rem;
+        }
+    }
+}
+
 .block__title{
     margin-bottom: .8rem;
 }
