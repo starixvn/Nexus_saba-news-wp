@@ -515,6 +515,8 @@ img {
     }
 }
 
+
+
 .ul1 {
     margin-left: 2rem;
     li{
@@ -523,6 +525,12 @@ img {
           color: #0066CC;
         }
     }
+}
+
+.content{
+    ul {
+        @extend .ul1;
+    }   
 }
 
 .content .p1 {
