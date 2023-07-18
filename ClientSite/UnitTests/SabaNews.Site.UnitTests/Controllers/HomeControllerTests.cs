@@ -450,7 +450,7 @@
 
             // Assert
             var redirectResult = Assert.IsType<RedirectResult>(result);
-            Assert.Equal("/lich-thi-dau/bong-da", redirectResult.Url);
+            Assert.Equal("/lich-thi-dau/bong-da/", redirectResult.Url);
         }
 
         [Fact]

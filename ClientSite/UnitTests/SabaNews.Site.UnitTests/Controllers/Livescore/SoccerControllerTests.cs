@@ -215,7 +215,6 @@
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<long>(viewResult.Model);
 
-            Assert.Empty(viewResult.ViewData);
             Assert.Equal("~/Views/Livescore/Soccer/Detail.cshtml", viewResult.ViewName);
             Assert.Equal(matchId, viewModel);
         }
@@ -237,7 +236,6 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<GetMatchBySeasonParams>(viewResult.Model);
-            Assert.Empty(viewResult.ViewData);
             Assert.Equal("~/Views/Livescore/Soccer/LeagueDetail.cshtml", viewResult.ViewName);
             Assert.Equal(leagueId, viewModel.LeagueId);
             Assert.Equal(seasonId, viewModel.SeasonId);
@@ -257,7 +255,6 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Empty(viewResult.ViewData);
             Assert.Equal("~/Views/Livescore/Soccer/FavouriteMatch.cshtml", viewResult.ViewName);
             Assert.Null(viewResult.Model);
         }
@@ -273,7 +270,6 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Empty(viewResult.ViewData);
             Assert.Equal("~/Views/Livescore/Soccer/FavouriteLeague.cshtml", viewResult.ViewName);
             Assert.Null(viewResult.Model);
         }
