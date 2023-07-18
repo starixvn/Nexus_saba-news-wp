@@ -27,9 +27,7 @@
                 <h4>@ViewResources.NotFoundPostMsg</h4>
             </div>
         </div>
-        <div class="block block-extension">
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
-        </div>
+        @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId =
+            0 })
     </div>
-    @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>
