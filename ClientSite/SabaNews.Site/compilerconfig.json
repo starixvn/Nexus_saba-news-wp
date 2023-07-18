@@ -12,6 +12,10 @@
     "inputFile": "wwwroot/styles/pages/news.scss"
   },
   {
+    "outputFile": "wwwroot/styles/pages/notfound.css",
+    "inputFile": "wwwroot/styles/pages/notfound.scss"
+  },
+  {
     "outputFile": "wwwroot/styles/pages/video.css",
     "inputFile": "wwwroot/styles/pages/video.scss"
   },

@@ -14,6 +14,13 @@
         ]
     },
     {
+        "outputFileName": "wwwroot/minify/styles/notfound.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/notfound.css"
+        ]
+    },
+    {
         "outputFileName": "wwwroot/minify/styles/profile.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
