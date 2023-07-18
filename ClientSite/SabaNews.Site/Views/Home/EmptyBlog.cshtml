@@ -20,7 +20,26 @@
 
 @(await Component.InvokeAsync("Menu"))
 <section class="main">
-    <div class="container medium-container">
+    <div class="notfound-container">
+        <div class="img-notfound">
+            <img src="~/images/404.png" alt="not-found" class="img-res" width="277" height="224" />
+        </div>
+        <div class="text-notfound">
+            Trang bạn đang tìm không tồn tại, hãy tìm kiếm kết quả hoặc trở về trang chủ!
+        </div>
+        <form action="" method="post" class="form-notfound">
+            <input type="text" placeholder="ĐƯỢC CẢI TIẾN BỞI Google">
+            <button class="search-button">
+                <i class="icon-search"></i>
+            </button>
+        </form>
+        <div class="back-to-home">
+            <a href="#">Quay lại trang chủ</a>
+        </div>
+        @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId =
+            0 })
+    </div>
+    @* <div class="container medium-container">
         <div class="block block-main">
             <h1 class="block__title title-new-page" style="margin-bottom: 1rem;"><a>404 </a></h1>
             <div class="block__content">
@@ -29,5 +48,5 @@
         </div>
         @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId =
             0 })
-    </div>
+    </div> *@
 </section>
