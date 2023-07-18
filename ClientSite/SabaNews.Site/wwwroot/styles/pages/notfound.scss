@@ -21,5 +21,21 @@
 .notfound-container{
     max-width: 82rem;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
+}
+
+.img-notfound,.text-notfound,.back-to-home , .form-notfound {
+    text-align: center;
+    color: #333;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.text-notfound{
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+.text-notfound{
+    font-size: 1.6rem;
+    font-weight: 400;
 }
