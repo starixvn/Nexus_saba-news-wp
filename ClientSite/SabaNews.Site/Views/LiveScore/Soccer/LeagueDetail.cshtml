@@ -34,6 +34,7 @@
 }
 @section Metadata {
     <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
+    <link rel="canonical" href="@ViewBag.Link" />
 }
 @section Title{Chi tiết giải đấu}
 @(await Component.InvokeAsync("Menu", new { CategorySlug = "home-page" }))

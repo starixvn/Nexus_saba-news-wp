@@ -1,9 +1,21 @@
-﻿@section Title{
+﻿@using Microsoft.Extensions.Configuration;
+@inject IConfiguration configuration
+
+@{
+    var baseUrl = configuration.GetValue<string>("BaseUrl");
+    var link = Context.Request.Path.ToString().Substring(1);
+    var canonicalLink = @baseUrl + @link;
+}
+@section Title{
 	@ViewResources.NotFoundPostMsg
 }
 
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
+}
+
+@section Metadata {
+    <link rel="canonical" href="@canonicalLink" >
 }
 
 @(await Component.InvokeAsync("Menu"))

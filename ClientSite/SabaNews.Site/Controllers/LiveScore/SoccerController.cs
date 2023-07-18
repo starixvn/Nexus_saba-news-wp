@@ -96,6 +96,7 @@
         [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
         public IActionResult MatchResult(string league, string match, long matchId)
         {
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{match}/{matchId}";
             return View("~/Views/Livescore/Soccer/Detail.cshtml", matchId);
         }
 
@@ -109,18 +110,21 @@
                 Date = date,
                 SelectedTab = selectedTab
             };
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
         [Route("lich-thi-dau/bong-da/tran-dau-quan-tam")]
         public IActionResult FavouriteMatch()
         {
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/tran-dau-quan-tam";
             return View("~/Views/Livescore/Soccer/FavouriteMatch.cshtml");
         }
 
         [Route("lich-thi-dau/bong-da/giai-dau-quan-tam")]
         public IActionResult FavouriteLeague()
         {
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/giai-dau-quan-tam";
             return View("~/Views/Livescore/Soccer/FavouriteLeague.cshtml");
         }
 
