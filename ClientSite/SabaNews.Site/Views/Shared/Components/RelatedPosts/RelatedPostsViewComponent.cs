@@ -22,7 +22,7 @@
         }
 
 
-        public async Task<IViewComponentResult> InvokeAsync(int postID, string slug = "")
+        public async Task<IViewComponentResult> InvokeAsync(int postID, string title, string slug = "")
         {
             IEnumerable<Post> posts ;
             if (slug == "")
@@ -48,6 +48,7 @@
                 var allPosts = await postService.GetPostsByCateSlugAsync(criteria);
                 posts = GetPostsExcerptPostID(allPosts, relatedParam);
             }
+            ViewBag.Title = title ?? Constants.RelatedPostsTitle;
             return View(posts);
         }
 

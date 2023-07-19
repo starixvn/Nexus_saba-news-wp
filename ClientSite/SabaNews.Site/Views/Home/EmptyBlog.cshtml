@@ -39,7 +39,6 @@
         <div class="back-to-home">
             <a href="#">Quay lại trang chủ</a>
         </div>
-        @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId =
-            0 })
+        @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = 0, Title = "Tin mới nhất" })
     </div>
 </section>

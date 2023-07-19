@@ -4,10 +4,11 @@
         if (block.length > 0) {
             var postID = block.data("postid");
             var cateSlug = block.data("cateslug");
+            var title = block.data("title");
             $.ajax({
                 url: "/api/post/related-posts",
                 type: "POST",
-                data: { postID, cateSlug },
+                data: { postID, cateSlug, title },
                 success: function (res) {
                     block.html(res);
                 },

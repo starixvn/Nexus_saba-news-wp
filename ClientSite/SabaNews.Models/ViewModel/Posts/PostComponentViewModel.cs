@@ -7,5 +7,7 @@
         public string CateSlug { get; set; }
 
         public int LimitItem { get; set; }
+
+        public string Title { get; set; }
     }
 }

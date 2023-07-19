@@ -109,6 +109,7 @@
         public const string postType = "post";
         public const string storyPostType = "story_post";
         public const string RecentPostsTitle = "TIN MỚI NHẤT";
+        public const string RelatedPostsTitle = "Có thể bạn quan tâm";
         public const string MostViewPostTitle = "TIN TIÊU ĐIỂM";
         public const string CommentTypeLike = "like";
         public const string CommentTypeUnlike = "unlike";

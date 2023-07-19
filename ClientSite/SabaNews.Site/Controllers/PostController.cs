@@ -172,9 +172,9 @@
 
         [HttpPost]
         [Route("api/post/related-posts")]
-        public IActionResult GetRelatedPosts(string cateSlug, int postID)
+        public IActionResult GetRelatedPosts(string cateSlug, int postID, string title)
         {
-            return ViewComponent("RelatedPosts", new { cateSlug, postID });
+            return ViewComponent("RelatedPosts", new { cateSlug, postID, title });
         }
 
         [HttpPost]

@@ -7,7 +7,7 @@
 }
 
 <div class="block__content">
-    <h3 class="block__title"><a>@ViewResources.RelatedPosts</a></h3>
+    <h3 class="block__title"><a>@ViewBag.Title</a></h3>
     @foreach (var post in Model)
     {
         string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width768) : post.FeatureImage;
