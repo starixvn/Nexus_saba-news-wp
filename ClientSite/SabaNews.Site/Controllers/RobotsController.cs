@@ -159,6 +159,12 @@
             return Content(rss, xmlType, Encoding.UTF8);
         }
 
+        [Route("404")]
+        public IActionResult PageNotFound()
+        {
+            return View(Constants.EmptyBlogView);
+        }
+
 
         private async Task<RSSCategoryModel> GetDataCategory(string slug)
         {
