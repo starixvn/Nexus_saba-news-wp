@@ -31,7 +31,7 @@
             dataControlService.GetRecentPostsAsync().Returns(expected);
 
             //Act
-            var actual = await component.InvokeAsync(postId, slug);
+            var actual = await component.InvokeAsync(postId, "title", slug);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
@@ -63,7 +63,7 @@
             postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeAsync(postId, slug);
+            var actual = await component.InvokeAsync(postId, "title", slug);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
@@ -96,7 +96,7 @@
             postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeAsync(postId, slug);
+            var actual = await component.InvokeAsync(postId, "title", slug);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);

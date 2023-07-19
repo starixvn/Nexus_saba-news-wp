@@ -413,9 +413,10 @@
             var controller = GetController();
             var postId = fixture.Create<int>();
             var slug = fixture.Create<string>();
+            var title = fixture.Create<string>();
 
             //Act
-            var result = controller.GetRelatedPosts(slug, postId);
+            var result = controller.GetRelatedPosts(slug, postId, title);
 
             // Assert
             Assert.IsType<ViewComponentResult>(result);
