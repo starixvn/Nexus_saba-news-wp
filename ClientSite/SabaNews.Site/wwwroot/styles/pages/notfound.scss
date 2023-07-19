@@ -107,6 +107,7 @@
 
 .related-posts{
     margin-top: 8rem;
+    min-height: 50rem;
     @include Mobile{
         margin-top: 5rem;
     }
