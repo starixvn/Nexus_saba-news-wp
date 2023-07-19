@@ -3,8 +3,6 @@
 
 @{
     var baseUrl = configuration.GetValue<string>("BaseUrl");
-    var link = Context.Request.Path.ToString().Substring(1);
-    var canonicalLink = @baseUrl + @link;
 }
 @section Title{
 	@ViewResources.NotFoundPostMsg
@@ -20,7 +18,7 @@
 
 
 @section Metadata {
-    <link rel="canonical" href="@canonicalLink" >
+    <link rel="canonical" href="@baseUrl" >
 }
 
 @(await Component.InvokeAsync("Menu"))
