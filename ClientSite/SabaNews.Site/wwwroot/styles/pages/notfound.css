@@ -2136,9 +2136,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border: none;
   outline: none;
   cursor: pointer;
+  color: #4F4F4F;
 }
 .form-notfound .search-button i {
   font-size: 2.4rem;
+  color: #4F4F4F;
 }
 
 .back-to-home {
