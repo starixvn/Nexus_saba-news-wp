@@ -37,3 +37,9 @@
     text-transform: uppercase;
   }
 }
+.my-league-item-img{
+  height: 3rem;
+}
+.livescore-recent-post__item{
+  grid-template: "recentPostImg recentPostDescription" auto / 12rem;
+}
