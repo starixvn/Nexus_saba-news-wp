@@ -146,7 +146,7 @@
                 }
             };
 
-            var view = (posts != null && posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
+            var view = (posts != null && posts.Any()) ? "Search" : "SearchNotFound";
             return View(view, model);
         }
 
