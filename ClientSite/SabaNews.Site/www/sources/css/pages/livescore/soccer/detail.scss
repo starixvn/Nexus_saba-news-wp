@@ -354,6 +354,11 @@
     @include tableMobile{
         margin-top: 2rem;
     }
+
+    .document-text{
+        display: none;
+    }
+
     .sticky-header{
         position: relative;
     }
