@@ -161,7 +161,7 @@ export class AppContainer extends Component {
     render() {
         const { favLeagues, league, leagues } = this.props;
         if (league !== null) {
-            document.title = CommonFunctions.getLeagueName(league);
+            document.title = `Livescore ${CommonFunctions.getLeagueName(league)} ${league.season.year}  `;
         }
 
         return (
