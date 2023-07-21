@@ -10,6 +10,7 @@ export const DateBar = ({ isMobile, totalMatches, onClick, navigate, getDateRang
         window.isLivePage = true;
         onClick();
         navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`));
+        document.title = 'TRỰC TIẾP BÓNG ĐÁ HÔM NAY - Link xem bóng đá online';
     };
 
     return (

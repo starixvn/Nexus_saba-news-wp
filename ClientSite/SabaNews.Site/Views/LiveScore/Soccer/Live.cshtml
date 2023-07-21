@@ -1,6 +1,4 @@
-﻿@using SabaNews.Models.ViewModel.Posts
-@model PageViewModel
-@section Styles{
+﻿@section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/index.chunk.css" asp-append-version="true" />
@@ -30,15 +28,14 @@
 }
 @section Metadata {
     <meta name="description" content='Xem bóng đá trực tiếp trận đấu trên SABA VN, linh xem TRỰC TIẾP BÓNG ĐÁ mới nhất cho điện thoại, máy tính mới nhất.' />
-    <meta property="og:description" content='@Model.Category.OgDescription' />
-    <meta property="og:title" content='@Model.Category.OgTitle' />
-    <meta property="og:image" content='@Model.Category.OgImage' />
+    <meta property="og:description" content='Xem bóng đá trực tiếp trận đấu trên SABA VN, linh xem TRỰC TIẾP BÓNG ĐÁ mới nhất cho điện thoại, máy tính mới nhất.' />
+    <meta property="og:title" content='TRỰC TIẾP BÓNG ĐÁ HÔM NAY - Link xem bóng đá online' />
     <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
-    <link rel="canonical" href="@Model.Category.Url" >
+    <link rel="canonical" href="@Model" >
 }
 @section Title {
     TRỰC TIẾP BÓNG ĐÁ HÔM NAY - Link xem bóng đá online
 }
-@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.CategorySlug }))
+@(await Component.InvokeAsync("Menu", new { CategorySlug = "lich-thi-dau" }))
 <div id="app-container"></div>
 @await Html.PartialAsync(ViewResources.SidebarBannerView)

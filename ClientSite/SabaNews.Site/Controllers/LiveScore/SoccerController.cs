@@ -92,24 +92,10 @@
         }
 
         [Route("lich-thi-dau/bong-da/truc-tiep")]
-        public async Task<IActionResult> Live()
+        public IActionResult Live()
         {
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.SEOTitle ??= pageDetail.Title;
-            var description = !string.IsNullOrWhiteSpace(pageDetail.Description) ? pageDetail.Description : title;
-            pageDetail.Url = $"{domain}lich-thi-dau/bong-da/truc-tiep";
-            var model = new PageViewModel
-            {
-                Category = pageDetail,
-                Header = new HeaderViewModel
-                {
-                    CategorySlug = Constants.MatchScheduleSlug,
-                    CategoryId = pageDetail.CateId,
-                    Title = title,
-                    Description = description
-                }
-            };
-            return View("~/Views/Livescore/Soccer/Live.cshtml", model);
+            var url = new Category { Url = $"{domain}lich-thi-dau/bong-da/truc-tiep" };
+            return View("~/Views/Livescore/Soccer/Live.cshtml", url);
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
