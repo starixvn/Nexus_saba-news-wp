@@ -235,13 +235,11 @@ export default class MatchGeneralInfo extends PureComponent {
         const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
         const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
         let matchStatus = "";
-       
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         const homeTeamName = CommonFunctions.getTeamName(generalInfo.homeTeam);
         const awayTeamName = CommonFunctions.getTeamName(generalInfo.awayTeam);
         const leagueName = CommonFunctions.getLeagueName(generalInfo.league);
         const matchScore = this.getMatchScoreTitle()
-        console.log(generalInfo)
         if(isPreMatch) {
             matchStatus = LangHelper.getResource('Fixture');
             document.head.querySelector('meta[name="description"]').content = `Xem lịch thi đấu bóng đá Đội ${homeTeamName} vs Đội ${awayTeamName} ${startTime.format('DD/MM/YYYY')} mới nhất. Cập nhật LTD đội ${homeTeamName} vs đội ${awayTeamName} chính xác nhất trên SABA VN.`;
@@ -250,7 +248,7 @@ export default class MatchGeneralInfo extends PureComponent {
             document.head.querySelector('meta[name="description"]').content = `Xem trực tiếp đội ${homeTeamName} vs đội ${awayTeamName} ${leagueName} mùa giải mới nhất. Link xem đội ${homeTeamName} vs đội ${awayTeamName} online HD, cập nhật liên tục trên SABA VN.`;
         } else {
             matchStatus = LangHelper.getResource('Result');
-            document.head.querySelector('meta[name="description"]').content = `Kết quả trận đấu ${homeTeamName} vs ${awayTeamName} ${startTime.format('DD/MM/YYYY')} ${leagueName}. Xem kết quả trực tuyến trận ${homeTeamName} vs ${awayTeamName} chính xác nhất trên SABA VN`;
+            document.head.querySelector('meta[name="description"]').content = `Kết quả trận đấu ${homeTeamName} vs ${awayTeamName} ${startTime.format('DD/MM/YYYY')} ${leagueName} . Xem kết quả trực tuyến trận ${homeTeamName} vs ${awayTeamName} chính xác nhất trên SABA VN`;
         }
         return `${matchStatus} ${homeTeamName} ${matchScore} ${awayTeamName} - ${leagueName} - ${startTime.format('DD/MM/YYYY')}`;
     }
