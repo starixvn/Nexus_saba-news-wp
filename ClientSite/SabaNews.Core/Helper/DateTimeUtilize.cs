@@ -31,5 +31,11 @@
             return time.Subtract(timeSpan._timeSpan);
         }
 
+        public static DateTime ConvertToClientDatetime(DateTime time)
+        {
+            var timeSpan = new DateTimeUtilize();
+            return time.Add(timeSpan._timeSpan);
+        }
+
     }
 }

@@ -212,7 +212,6 @@
     { 
         <span class="icon-arrow scroll-mobile-menu"></span>
     }
-    
 </div>
 @functions {
     private string getMenuLink(Menu menu)
@@ -221,7 +220,7 @@
         var link = Url.Action("Category", "Home", new {slug =  menu.CateSlug + CategoryKey.Suffix});
         if (menu.PageSlug == Constants.MatchScheduleSlug)
         {
-            link = "/lich-thi-dau/bong-da/";
+            link = "/lich-thi-dau/bong-da";
         }
         else if (menu.PageSlug == Constants.WarningSlug)
         {

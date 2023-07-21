@@ -10,6 +10,7 @@
     using Newtonsoft.Json.Linq;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Extensions;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
@@ -18,6 +19,7 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
@@ -50,12 +52,29 @@
         }
 
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
-        public async Task<IActionResult> Index(DateTime? eventDate)
+        public IActionResult Index(DateTime? eventDate)
         {
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.SEOTitle ??= pageDetail.Title;
-            var description = !string.IsNullOrWhiteSpace(pageDetail.Description) ? pageDetail.Description : title;
-            pageDetail.Url = $"{domain}lich-thi-dau/bong-da";
+            string title;
+            string description;
+            var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
+            if(eventDate == null || eventDate >= today)
+            {
+                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + today.ToString("dd/MM");
+                description = $"Lịch thi đấu bóng đá ngày {today.ToString("dd/MM")} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {today.ToString("dd/MM")} liên tục trên SABA VN.";
+            }
+            else
+            {
+                title = "Kết quả bóng đá, tỷ số bóng đá ngày " + eventDate?.ToString("dd/MM");
+                description = $"Xem kết quả bóng đá ngày {eventDate?.ToString("dd/MM")} chính xác nhất. Cập nhật tỉ số trận đấu ngày {eventDate?.ToString("dd/MM")} đầy đủ và trực quan nhất cho độc giả trân SABA VN.";
+            }
+            var pageDetail = new Category
+            {
+                Title = title,
+                OgTitle = title,
+                Description = description,
+                OgDescription = description,
+                Url = $"{domain}lich-thi-dau/bong-da"
+            };
             var model = new PageViewModel
             {
                 Category = pageDetail,
