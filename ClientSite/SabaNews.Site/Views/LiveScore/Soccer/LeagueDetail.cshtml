@@ -32,12 +32,38 @@
         <script src="~/js/pro/pages/livescore/soccer/league-detail.chunk.js" asp-append-version="true"></script>
     </environment>
 }
+@{
+    var title = "title";
+    var description = "description";
+    if(Model.SelectedTab == "" || Model.SelectedTab == "tong-hop" || Model.SelectedTab == "general")
+    {
+        title = "Livescore  " + Model.LeagueName;
+        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {Model.LeagueName} nhanh và chính xác nhất trên SABA VN";
+    }
+    else if(Model.SelectedTab == "lich-thi-dau" || Model.SelectedTab == "fixtures")
+    {
+        title = "Lịch thi đấu " + Model.LeagueName;
+        description = $"Xem lịch thi đấu {Model.LeagueName} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu {Model.LeagueName} được cập nhất liên tục cho độc giả.";
+    }
+    else if(Model.SelectedTab == "lich-thi-dau" || Model.SelectedTab == "fixtures")
+    {
+        title = "KQBĐ trực tuyến " + Model.LeagueName;
+        description = $"Xem KQBĐ trực tuyến {Model.LeagueName}. Cập nhật kết quả bóng đá và tỉ số trận đấu {Model.LeagueName} chính xác nhất trên SABA VN.";
+    }
+    else
+    {
+        title = "Livescore  " + Model.LeagueName;
+        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {Model.LeagueName} nhanh và chính xác nhất trên SABA VN";
+    }
+}
 @section Metadata {
     <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
-    <meta name="description" content='Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore + tên giải nhanh và chính xác nhất trên SABA VN.' />
+    <meta name="description" content='@description' />
     <link rel="canonical" href="@ViewBag.Link" />
 }
-@section Title{Chi tiết giải đấu}
+@section Title{
+    @title
+}
 @(await Component.InvokeAsync("Menu", new { CategorySlug = "home-page" }))
 <div id="app-container"></div>
 @await Html.PartialAsync(ViewResources.SidebarBannerView)

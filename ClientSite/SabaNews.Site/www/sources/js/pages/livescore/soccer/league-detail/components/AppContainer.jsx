@@ -30,23 +30,23 @@ export class AppContainer extends Component {
     constructor(props) {
         super(props);
 
-        const tabs = ['general', 'fixtures', 'results', 'standings'];
+        const tabs = ['tong-hop', 'lich-thi-dau', 'ket-qua', 'bang-xep-hang'];
         let selectedTab = window.getMatchByStageParams.selectedTab.toLowerCase(),
             selectedResultsTab = false,
             selectedStandingsTab = false,
             selectedFixtureTab = false;
         if (selectedTab.length === 0 || tabs.findIndex(tab => tab === selectedTab) === -1) {
-            selectedTab = 'general';
+            selectedTab = 'tong-hop';
         }
 
         switch (selectedTab) {
-            case 'fixtures':
+            case 'lich-thi-dau':
                 selectedFixtureTab = true;
                 break;
-            case 'results':
+            case 'ket-qua':
                 selectedResultsTab = true;
                 break;
-            case 'standings':
+            case 'bang-xep-hang':
                 selectedStandingsTab = true;
                 break;
         }
@@ -78,19 +78,19 @@ export class AppContainer extends Component {
         let { selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { league } = this.props;
         switch (key) {
-            case 'fixtures':
+            case 'lich-thi-dau':
                 if (!selectedFixtureTab) {
                     selectedFixtureTab = true;
                 }
                 document.head.querySelector('meta[name="description"]').content = ` Xem lịch thi đấu ${CommonFunctions.getLeagueName(league)} ${league.season.year} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu ${CommonFunctions.getLeagueName(league)} ${league.season.year} được cập nhất liên tục cho độc giả.`;
                 break;
-            case 'results':
+            case 'ket-qua':
                 if (!selectedResultsTab) {
                     selectedResultsTab = true;
                 }
                 document.head.querySelector('meta[name="description"]').content = `Xem KQBĐ trực tuyến ${CommonFunctions.getLeagueName(league)} ${league.season.year}. Cập nhật kết quả bóng đá và tỉ số trận đấu ${CommonFunctions.getLeagueName(league)} ${league.season.year} chính xác nhất trên SABA VN.`;
                 break;
-            case 'standings':
+            case 'bang-xep-hang':
                 if (!selectedStandingsTab) {
                     selectedStandingsTab = true;
                 }
@@ -123,7 +123,7 @@ export class AppContainer extends Component {
                 className="live-score-nav"
                 onSelect={this.handleSelectTab}
             >
-                <Tab eventKey="general" title="Tổng hợp">
+                <Tab eventKey="tong-hop" title="Tổng hợp">
                     {
                         this.renderSkeletonGrid(true, preMatches)
                     }
@@ -132,7 +132,7 @@ export class AppContainer extends Component {
                         <General  league={league} stages={stages} preMatches={preMatches} postMatches={postMatches} handleSelectTab={this.handleSelectTab}/>
                     }
                 </Tab>
-                <Tab eventKey="fixtures" title="Lịch thi đấu">
+                <Tab eventKey="lich-thi-dau" title="Lịch thi đấu">
                     {
                         this.renderSkeletonGrid(selectedFixtureTab, preMatches)
                     }
@@ -140,7 +140,7 @@ export class AppContainer extends Component {
                         selectedFixtureTab && preMatches !== null && <MatchGrid sortAsc league={league} stages={stages} matches={preMatches} />
                     }
                 </Tab>
-                <Tab eventKey="results" title="Kết quả">
+                <Tab eventKey="ket-qua" title="Kết quả">
                     {
                         this.renderSkeletonGrid(selectedResultsTab, postMatches)
                     }
@@ -149,7 +149,7 @@ export class AppContainer extends Component {
                         <MatchGrid sortAsc={false} league={league} stages={stages} matches={postMatches} />
                     }
                 </Tab>
-                <Tab eventKey="standings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
+                <Tab eventKey="bang-xep-hang" title="BXH" disabled={!league || !league.hasSeasonStandings}>
                     {
                         selectedStandingsTab &&
                         <SeasonStandings />
@@ -169,6 +169,7 @@ export class AppContainer extends Component {
     render() {
         const { favLeagues, league, leagues } = this.props;
 
+            document.getElementsByTagName('meta')["description"].content = "My new page keywords!!";
 
         return (
             <div className="container livescore-container">

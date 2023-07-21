@@ -10,5 +10,6 @@
         public DateTime Date { get; set; }
         public float Timezone { get; set; }
         public string SelectedTab { get; set; }
+        public string LeagueName { get; set; }
     }
 }

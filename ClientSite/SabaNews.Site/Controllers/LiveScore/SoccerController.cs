@@ -108,12 +108,39 @@
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
         public IActionResult LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
+            var tab = "tong-hop";
+            var isRedirect = true;
+            switch(selectedTab)
+            {
+                case null:
+                case "general":
+                    tab = "tong-hop";
+                    break;
+                case "fixtures":
+                    tab = "lich-thi-dau";
+                    break;
+                case "results":
+                    tab = "ket-qua";
+                    break;
+                case "standings":
+                    tab = "bang-xep-hang";
+                    break;
+                default:
+                    tab = "tong-hop";
+                    isRedirect = false;
+                    break;
+            }
+            if(isRedirect)
+            {
+                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{tab}");
+            }
             var model = new GetMatchBySeasonParams
             {
                 LeagueId = leagueId,
                 SeasonId = seasonId,
                 Date = date,
-                SelectedTab = selectedTab
+                SelectedTab = selectedTab,
+                LeagueName = league
             };
             ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
