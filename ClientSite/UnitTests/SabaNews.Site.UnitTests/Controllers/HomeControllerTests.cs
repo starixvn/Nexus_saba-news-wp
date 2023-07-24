@@ -274,7 +274,7 @@
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.Posts);
-            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+            Assert.Equal("Search", viewResult.ViewName);
         }
 
         [Fact]
@@ -295,7 +295,7 @@
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.Posts);
-            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+            Assert.Equal("SearchNotFound", viewResult.ViewName);
         }
 
         [Fact]
@@ -450,7 +450,7 @@
 
             // Assert
             var redirectResult = Assert.IsType<RedirectResult>(result);
-            Assert.Equal("/lich-thi-dau/bong-da/", redirectResult.Url);
+            Assert.Equal("/lich-thi-dau/bong-da", redirectResult.Url);
         }
 
         [Fact]

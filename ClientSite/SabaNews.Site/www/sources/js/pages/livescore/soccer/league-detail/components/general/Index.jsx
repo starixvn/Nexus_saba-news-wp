@@ -265,21 +265,21 @@ export default class General extends PureComponent {
                     listPostMatches.length > 0 &&
                     <div className="post-match-grid">
                         <div className="heading-general-league">{LangHelper.getResource('LastestScore')}</div>
-                        {this.renderGrid(listPostMatches, 'results')}
+                        {this.renderGrid(listPostMatches, 'ket-qua')}
                     </div>
                 }
                 {
                     listPreMatches.length > 0 &&
                     <div className="pre-match-grid">
                         <div className="heading-general-league">{LangHelper.getResource('Upcomming')}</div>
-                        {this.renderGrid(listPreMatches, 'fixtures')}
+                        {this.renderGrid(listPreMatches, 'lich-thi-dau')}
                     </div>
                 }
                 {
                     league.hasSeasonStandings &&
                     <div className="standing-grid">
                         <Standing />
-                        <p className="view-more-general-league" onClick={() => this.handleViewMore('standings')}><span>Hiển thị thêm</span> <i className="icon-chevron-down"></i></p>
+                        <p className="view-more-general-league" onClick={() => this.handleViewMore('bang-xep-hang')}><span>Hiển thị thêm</span> <i className="icon-chevron-down"></i></p>
                     </div>
                 }
             </div>

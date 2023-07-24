@@ -28,7 +28,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link'});
+            expect(result).toEqual({src: 'url', link: 'link', width:320, height: 70});
         });
 
         it('return correctly banner data when type is DesktopLeft', () => {
@@ -43,7 +43,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link'});
+            expect(result).toEqual({src: 'url', link: 'link', width:910, height: 150});
         });
 
         it('return correctly banner data when type is DesktopRight', () => {
@@ -58,7 +58,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link'});
+            expect(result).toEqual({src: 'url', link: 'link', width:300, height: 600});
         });
 
         it('return correctly banner data when type is MobileTop', () => {
@@ -73,7 +73,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link'});
+            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240});
         });
 
         it('return correctly banner data when type is MobileCenter', () => {
@@ -88,7 +88,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link'});
+            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240});
         });
 
         it('return correctly banner data when type is MobileBottom', () => {
@@ -103,7 +103,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link'});
+            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240});
         });
 
         it('return correctly banner data when type is others', () => {

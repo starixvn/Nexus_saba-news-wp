@@ -77,18 +77,25 @@ export class AppContainer extends Component {
     handleSelectTab = key => {
         let { selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { league } = this.props;
+        const leagueName = CommonFunctions.getLeagueName(league);
         switch (key) {
+            case 'tong-hop':
+                if (!selectedFixtureTab) {
+                    selectedFixtureTab = true;
+                }
+                document.title = ` Livescore ${leagueName} ${league.season.year}`;
+                break;
             case 'lich-thi-dau':
                 if (!selectedFixtureTab) {
                     selectedFixtureTab = true;
                 }
-                document.head.querySelector('meta[name="description"]').content = ` Xem lịch thi đấu ${CommonFunctions.getLeagueName(league)} ${league.season.year} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu ${CommonFunctions.getLeagueName(league)} ${league.season.year} được cập nhất liên tục cho độc giả.`;
+                document.title = ` Lịch thi đấu ${leagueName} ${league.season.year}`;
                 break;
             case 'ket-qua':
                 if (!selectedResultsTab) {
                     selectedResultsTab = true;
                 }
-                document.head.querySelector('meta[name="description"]').content = `Xem KQBĐ trực tuyến ${CommonFunctions.getLeagueName(league)} ${league.season.year}. Cập nhật kết quả bóng đá và tỉ số trận đấu ${CommonFunctions.getLeagueName(league)} ${league.season.year} chính xác nhất trên SABA VN.`;
+                document.title = ` KQBĐ trực tuyến ${leagueName} ${league.season.year}`;
                 break;
             case 'bang-xep-hang':
                 if (!selectedStandingsTab) {
@@ -100,8 +107,7 @@ export class AppContainer extends Component {
         this.setState({ selectedTab: key, selectedFixtureTab, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(this.props.league));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${params.seasonId}/${params.date}/${params.leagueId}/${key}`);
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${Site.toSlug(leagueName)}/${params.seasonId}/${params.date}/${params.leagueId}/${key}`);
         this.props.navigate(url);
     };
 
@@ -112,12 +118,6 @@ export class AppContainer extends Component {
     renderTabs = () => {
         const { selectedTab, selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { league, stages, preMatches, postMatches } = this.props;
-        if (league !== null) {
-            document.title = `Livescore ${CommonFunctions.getLeagueName(league)} ${league.season.year}  `;
-        }
-        if(selectedTab === 'results' && league !== null){
-            document.title = `KQBĐ trực tuyến ${CommonFunctions.getLeagueName(league)} ${league.season.year}  `;
-        }
         return (
             <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
                 className="live-score-nav"
@@ -169,11 +169,9 @@ export class AppContainer extends Component {
     render() {
         const { favLeagues, league, leagues } = this.props;
 
-            document.getElementsByTagName('meta')["description"].content = "My new page keywords!!";
-
         return (
             <div className="container livescore-container">
-                <SignalR getMatches={this.getMatches} />    
+                <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {

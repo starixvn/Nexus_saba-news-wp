@@ -15,6 +15,9 @@ describe('DateBar', () => {
     };
 
     beforeAll(() => {
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'description');
+        document.head.appendChild(meta); 
         Site.resolveClientUrl = jest.fn(url => url);
         LangHelper.getResource = jest.fn(key => key);
     });

@@ -99,14 +99,14 @@
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
-        public IActionResult MatchResult(string league, string match, long matchId)
+        public IActionResult MatchDetail(string league, string match, long matchId)
         {
             ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{match}/{matchId}";
             return View("~/Views/Livescore/Soccer/Detail.cshtml", matchId);
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
-        public IActionResult LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
+        public async Task<IActionResult> LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
             var tab = "tong-hop";
             var isRedirect = true;
@@ -134,13 +134,19 @@
             {
                 return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{tab}");
             }
+            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
+            if(leagueDetail == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
             var model = new GetMatchBySeasonParams
             {
                 LeagueId = leagueId,
                 SeasonId = seasonId,
                 Date = date,
                 SelectedTab = selectedTab,
-                LeagueName = league
+                LeagueName = league,
+                League = leagueDetail
             };
             ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);

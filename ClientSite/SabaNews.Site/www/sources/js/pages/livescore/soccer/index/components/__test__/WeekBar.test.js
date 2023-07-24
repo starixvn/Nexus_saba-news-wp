@@ -18,6 +18,12 @@ describe('WeekBar', () => {
         onClick: jest.fn()
     };
 
+    beforeAll(() => {
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'description');
+        document.head.appendChild(meta); 
+    });
+
     afterEach(() => {
         jest.clearAllMocks();
     });

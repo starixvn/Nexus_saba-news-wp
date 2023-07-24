@@ -34,10 +34,10 @@ describe('AppContainer', () => {
     });
 
     describe('constructor', () => {
-        it('inital correctly state when selectedTab = fixtures', () => {
+        it('inital correctly state when selectedTab = lich-thi-dau', () => {
             // Arrange
             window.getMatchByStageParams = {
-                selectedTab: 'fixtures'
+                selectedTab: 'lich-thi-dau'
             };
 
             // Act
@@ -46,17 +46,17 @@ describe('AppContainer', () => {
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'fixtures',
+                selectedTab: 'lich-thi-dau',
                 selectedResultsTab: false,
                 selectedStandingsTab: false,
                 selectedFixtureTab: true
             });
         });
 
-        it('inital correctly state when selectedTab = results', () => {
+        it('inital correctly state when selectedTab = ket-qua', () => {
             // Arrange
             window.getMatchByStageParams = {
-                selectedTab: 'results'
+                selectedTab: 'ket-qua'
             };
 
             // Act
@@ -65,17 +65,17 @@ describe('AppContainer', () => {
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'results',
+                selectedTab: 'ket-qua',
                 selectedResultsTab: true,
                 selectedStandingsTab: false,
                 selectedFixtureTab: false
             });
         });
 
-        it('inital correctly state when selectedTab = standings', () => {
+        it('inital correctly state when selectedTab = bang-xep-hang', () => {
             // Arrange
             window.getMatchByStageParams = {
-                selectedTab: 'standings'
+                selectedTab: 'bang-xep-hang'
             };
 
             // Act
@@ -84,14 +84,14 @@ describe('AppContainer', () => {
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'standings',
+                selectedTab: 'bang-xep-hang',
                 selectedResultsTab: false,
                 selectedStandingsTab: true,
                 selectedFixtureTab: false
             });
         });
 
-        it('inital correctly state when selectedTab != (fixtures, results, standings)', () => {
+        it('inital correctly state when selectedTab != (lich-thi-dau, ket-qua, bang-xep-hang)', () => {
             // Arrange
             window.getMatchByStageParams = {
                 selectedTab: 'abc'
@@ -103,7 +103,7 @@ describe('AppContainer', () => {
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'general',
+                selectedTab: 'tong-hop',
                 selectedResultsTab: false,
                 selectedStandingsTab: false,
                 selectedFixtureTab: false
@@ -172,70 +172,103 @@ describe('AppContainer', () => {
             jest.clearAllMocks();
         });
 
-        it('updates correctly state when selectedTab = fixtures', () => {
+        it('updates correctly state when selectedTab = tong-hop', () => {
             // Arrange
-            const container = shallow(<AppContainer {...defaultProps} />);
+            // Arrange
+            const props = {
+                ...defaultProps,
+                league: {season: {year: '2022'}}
+            };
+            const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
 
             // Act
-            instance.handleSelectTab('fixtures');
+            instance.handleSelectTab('tong-hop');
 
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'fixtures',
+                selectedTab: 'tong-hop',
                 selectedResultsTab: false,
                 selectedStandingsTab: false,
                 selectedFixtureTab: true
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/fixtures');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/tong-hop');
         });
 
-        it('updates correctly state when selectedTab = results', () => {
+        it('updates correctly state when selectedTab = lich-thi-dau', () => {
             // Arrange
-            const container = shallow(<AppContainer {...defaultProps} />);
+            // Arrange
+            const props = {
+                ...defaultProps,
+                league: {season: {year: '2022'}}
+            };
+            const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
 
             // Act
-            instance.handleSelectTab('results');
+            instance.handleSelectTab('lich-thi-dau');
 
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'results',
+                selectedTab: 'lich-thi-dau',
+                selectedResultsTab: false,
+                selectedStandingsTab: false,
+                selectedFixtureTab: true
+            });
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/lich-thi-dau');
+        });
+
+        it('updates correctly state when selectedTab = ket-qua', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                league: {season: {year: '2022'}}
+            };
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
+
+            // Act
+            instance.handleSelectTab('ket-qua');
+
+            // Assert
+            expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
+                selectedTab: 'ket-qua',
                 selectedResultsTab: true,
                 selectedStandingsTab: false,
                 selectedFixtureTab: false
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/results');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/ket-qua');
         });
 
-        it('updates correctly state when selectedTab = standings', () => {
+        it('updates correctly state when selectedTab = bang-xep-hang', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
 
             // Act
-            instance.handleSelectTab('standings');
+            instance.handleSelectTab('bang-xep-hang');
 
             // Assert
             expect(instance.state).toEqual({
                 flagToggleFavLeagueIcon: false,
-                selectedTab: 'standings',
+                selectedTab: 'bang-xep-hang',
                 selectedResultsTab: false,
                 selectedStandingsTab: true,
                 selectedFixtureTab: false
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/standings');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/bang-xep-hang');
         });
     });
 
     describe('renderTabs', () => {
-        it('return as expected when selectedTab = fixtures and preMatches = null', () => {
+        it('return as expected when selectedTab = lich-thi-dau and preMatches = null', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'fixtures' });
+            instance.setState({ selectedTab: 'lich-thi-dau' });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -244,12 +277,12 @@ describe('AppContainer', () => {
             expect(toJson(result)).toMatchSnapshot();
         });
 
-        it('return as expected when selectedTab = fixtures and preMatches != null', () => {
+        it('return as expected when selectedTab = lich-thi-dau and preMatches != null', () => {
             // Arrange
             const props = { ...defaultProps, preMatches: [] };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'fixtures' });
+            instance.setState({ selectedTab: 'lich-thi-dau' });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -258,11 +291,11 @@ describe('AppContainer', () => {
             expect(toJson(result)).toMatchSnapshot();
         });
 
-        it('return as expected when selectedTab = results and postMatches = null', () => {
+        it('return as expected when selectedTab = ket-qua and postMatches = null', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'results', selectedResultsTab: true });
+            instance.setState({ selectedTab: 'ket-qua', selectedResultsTab: true });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -271,12 +304,12 @@ describe('AppContainer', () => {
             expect(toJson(result)).toMatchSnapshot();
         });
 
-        it('return as expected when selectedTab = results and postMatches != null', () => {
+        it('return as expected when selectedTab = ket-qua and postMatches != null', () => {
             // Arrange
             const props = { ...defaultProps, postMatches: [] };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'results', selectedResultsTab: true });
+            instance.setState({ selectedTab: 'ket-qua', selectedResultsTab: true });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -285,11 +318,11 @@ describe('AppContainer', () => {
             expect(toJson(result)).toMatchSnapshot();
         });
 
-        it('return as expected when selectedTab = standings and league = null', () => {
+        it('return as expected when selectedTab = bang-xep-hang and league = null', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'standings', selectedStandingsTab: true });
+            instance.setState({ selectedTab: 'bang-xep-hang', selectedStandingsTab: true });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -298,7 +331,7 @@ describe('AppContainer', () => {
             expect(toJson(result)).toMatchSnapshot();
         });
 
-        it('return as expected when selectedTab = standings and league != null and hasSeasonStandings = false', () => {
+        it('return as expected when selectedTab = bang-xep-hang and league != null and hasSeasonStandings = false', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -306,7 +339,7 @@ describe('AppContainer', () => {
             };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'standings', selectedStandingsTab: true });
+            instance.setState({ selectedTab: 'bang-xep-hang', selectedStandingsTab: true });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -315,7 +348,7 @@ describe('AppContainer', () => {
             expect(toJson(result)).toMatchSnapshot();
         });
 
-        it('return as expected when selectedTab = standings and league != null and hasSeasonStandings = true', () => {
+        it('return as expected when selectedTab = bang-xep-hang and league != null and hasSeasonStandings = true', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -323,7 +356,7 @@ describe('AppContainer', () => {
             };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'standings', selectedStandingsTab: true });
+            instance.setState({ selectedTab: 'bang-xep-hang', selectedStandingsTab: true });
 
             // Act
             const result = shallow(instance.renderTabs());
@@ -376,7 +409,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(toJson(container)).toMatchSnapshot();
-            expect(document.title).toEqual('World Cup');
+            expect(document.title).toEqual('KQBĐ trực tuyến World Cup 2022');
         });
     });
 });

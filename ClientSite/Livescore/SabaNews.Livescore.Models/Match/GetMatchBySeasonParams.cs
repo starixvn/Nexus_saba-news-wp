@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.Models.Match
 {
     using System;
+    using SabaNews.Livescore.Models.League;
 
     public class GetMatchBySeasonParams
     {
@@ -11,5 +12,6 @@
         public float Timezone { get; set; }
         public string SelectedTab { get; set; }
         public string LeagueName { get; set; }
+        public League League {get;set;}
     }
 }

@@ -1,5 +1,6 @@
 ﻿@using SabaNews.Livescore.Models.Match
 @model GetMatchBySeasonParams
+@using static SabaNews.Site.Extensions.LivescoreHelper
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
@@ -37,23 +38,23 @@
     var description = "description";
     if(Model.SelectedTab == "" || Model.SelectedTab == "tong-hop" || Model.SelectedTab == "general")
     {
-        title = "Livescore  " + Model.LeagueName;
-        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {Model.LeagueName} nhanh và chính xác nhất trên SABA VN";
+        title = $"Livescore {GetLeagueName(Model.League)} {Model.League.Year}";
+        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {GetLeagueName(Model.League)} {Model.League.Year} nhanh và chính xác nhất trên SABA VN";
     }
     else if(Model.SelectedTab == "lich-thi-dau" || Model.SelectedTab == "fixtures")
     {
-        title = "Lịch thi đấu " + Model.LeagueName;
-        description = $"Xem lịch thi đấu {Model.LeagueName} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu {Model.LeagueName} được cập nhất liên tục cho độc giả.";
+        title = $"Lịch thi đấu {GetLeagueName(Model.League)} {Model.League.Year}";
+        description = $"Xem lịch thi đấu {GetLeagueName(Model.League)} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu {GetLeagueName(Model.League)} {Model.League.Year} được cập nhất liên tục cho độc giả.";
     }
-    else if(Model.SelectedTab == "lich-thi-dau" || Model.SelectedTab == "fixtures")
+    else if(Model.SelectedTab == "ket-qua" || Model.SelectedTab == "results")
     {
-        title = "KQBĐ trực tuyến " + Model.LeagueName;
-        description = $"Xem KQBĐ trực tuyến {Model.LeagueName}. Cập nhật kết quả bóng đá và tỉ số trận đấu {Model.LeagueName} chính xác nhất trên SABA VN.";
+        title = $"KQBĐ trực tuyến {GetLeagueName(Model.League)} {Model.League.Year}";
+        description = $"Xem KQBĐ trực tuyến {GetLeagueName(Model.League)}. Cập nhật kết quả bóng đá và tỉ số trận đấu {GetLeagueName(Model.League)} {Model.League.Year} chính xác nhất trên SABA VN.";
     }
     else
     {
-        title = "Livescore  " + Model.LeagueName;
-        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {Model.LeagueName} nhanh và chính xác nhất trên SABA VN";
+        title = $"Livescore {GetLeagueName(Model.League)} {Model.League.Year}";
+        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {GetLeagueName(Model.League)}  {Model.League.Year}nhanh và chính xác nhất trên SABA VN";
     }
 }
 @section Metadata {

@@ -9,6 +9,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
     using NSubstitute;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
@@ -35,18 +36,18 @@
         #region Index
 
         [Fact]
-        public async Task Index_DescriptionIsNullOrWhiteSpace_ReturnExpectedViewResult()
+        public void Index_EventDateIsNull_ReturnExpectedViewResult()
         {
+            var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
             // Arrange
             var pageDetail = new Category
             {
-                Title = "title"
+                Title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + today.ToString("dd/MM")
             };
             var controller = GetController();
-            postService.GetPageDetailBySlugAsync("lich-thi-dau").Returns(pageDetail);
 
             // Act
-            var result = await controller.Index(null);
+            var result =  controller.Index(null);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -55,75 +56,31 @@
             Assert.Single(viewResult.ViewData);
             Assert.Null(viewResult.ViewData["EventDate"]);
             Assert.Equal("~/Views/Livescore/Soccer/Index.cshtml", viewResult.ViewName);
-            Assert.Null(viewModel.Post);
-            Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
-            Assert.Equal(pageDetail.Title, viewModel.Header.Title);
-            Assert.Equal(pageDetail.Title, viewModel.Header.Description);
-            Assert.Null(viewModel.Header.HeadTitle);
-            Assert.Null(viewModel.Header.Controller);
-            Assert.Null(viewModel.Header.Slug);
-            Assert.False(viewModel.Header.IsChildren);
-            Assert.Null(viewModel.Header.ActiveCategory);
-            Assert.Null(viewModel.Header.Keyword);
+            Assert.Equal(pageDetail.Title, viewModel.Category.Title);
         }
 
         [Fact]
-        public async Task Index_DescriptionIsValid_ReturnExpectedViewResult()
+        public void Index_EventDateisPast_ReturnExpectedViewResult()
         {
             // Arrange
+            var eventDate = DateTime.UtcNow.AddDays(-2);
             var pageDetail = new Category
             {
-                Title = "title",
+                Title = "Kết quả bóng đá, tỷ số bóng đá ngày " + eventDate.ToString("dd/MM"),
                 Description = "description"
             };
             var controller = GetController();
-            postService.GetPageDetailBySlugAsync("lich-thi-dau").Returns(pageDetail);
 
             // Act
-            var result = await controller.Index(null);
+            var result = controller.Index(eventDate);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<PageViewModel>(viewResult.Model);
-
-            Assert.Single(viewResult.ViewData);
-            Assert.Null(viewResult.ViewData["EventDate"]);
-            Assert.Equal("~/Views/Livescore/Soccer/Index.cshtml", viewResult.ViewName);
-            Assert.Null(viewModel.Post);
-            Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
-            Assert.Equal(pageDetail.Title, viewModel.Header.Title);
-            Assert.Equal(pageDetail.Description, viewModel.Header.Description);
-            Assert.Null(viewModel.Header.HeadTitle);
-            Assert.Null(viewModel.Header.Controller);
-            Assert.Null(viewModel.Header.Slug);
-            Assert.False(viewModel.Header.IsChildren);
-            Assert.Null(viewModel.Header.ActiveCategory);
-            Assert.Null(viewModel.Header.Keyword);
-        }
-
-        [Fact]
-        public async Task Index_EventDateIsValid_ReturnExpectedViewResult()
-        {
-            // Arrange
-            var eventDate = fixture.Create<DateTime>();
-            var pageDetail = new Category
-            {
-                Title = "title",
-                Description = "description"
-            };
-            var controller = GetController();
-            postService.GetPageDetailBySlugAsync("lich-thi-dau").Returns(pageDetail);
-
-            // Act
-            var result = await controller.Index(eventDate);
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
 
             Assert.Single(viewResult.ViewData);
             Assert.Equal(eventDate, viewResult.ViewData["EventDate"]);
+            Assert.Equal(pageDetail.Title, viewModel.Category.Title);
         }
 
         #endregion
@@ -131,7 +88,7 @@
         #region Live
 
         [Fact]
-        public async Task Live_DescriptionIsNullOrWhiteSpace_ReturnExpectedViewResult()
+        public void Live_DescriptionIsNullOrWhiteSpace_ReturnExpectedViewResult()
         {
             // Arrange
             var pageDetail = new Category
@@ -142,65 +99,18 @@
             postService.GetPageDetailBySlugAsync("lich-thi-dau").Returns(pageDetail);
 
             // Act
-            var result = await controller.Live();
+            var result = controller.Live();
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<PageViewModel>(viewResult.Model);
 
-            Assert.Empty(viewResult.ViewData);
             Assert.Equal("~/Views/Livescore/Soccer/Live.cshtml", viewResult.ViewName);
-            Assert.Null(viewModel.Post);
-            Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
-            Assert.Equal(pageDetail.Title, viewModel.Header.Title);
-            Assert.Equal(pageDetail.Title, viewModel.Header.Description);
-            Assert.Null(viewModel.Header.HeadTitle);
-            Assert.Null(viewModel.Header.Controller);
-            Assert.Null(viewModel.Header.Slug);
-            Assert.False(viewModel.Header.IsChildren);
-            Assert.Null(viewModel.Header.ActiveCategory);
-            Assert.Null(viewModel.Header.Keyword);
-        }
-
-        [Fact]
-        public async Task Live_DescriptionIsValid_ReturnExpectedViewResult()
-        {
-            // Arrange
-            var pageDetail = new Category
-            {
-                Title = "title",
-                Description = "description"
-            };
-            var controller = GetController();
-            postService.GetPageDetailBySlugAsync("lich-thi-dau").Returns(pageDetail);
-
-            // Act
-            var result = await controller.Live();
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<PageViewModel>(viewResult.Model);
-
-            Assert.Empty(viewResult.ViewData);
-            Assert.Equal("~/Views/Livescore/Soccer/Live.cshtml", viewResult.ViewName);
-            Assert.Null(viewModel.Post);
-            Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
-            Assert.Equal(pageDetail.Title, viewModel.Header.Title);
-            Assert.Equal(pageDetail.Description, viewModel.Header.Description);
-            Assert.Null(viewModel.Header.HeadTitle);
-            Assert.Null(viewModel.Header.Controller);
-            Assert.Null(viewModel.Header.Slug);
-            Assert.False(viewModel.Header.IsChildren);
-            Assert.Null(viewModel.Header.ActiveCategory);
-            Assert.Null(viewModel.Header.Keyword);
         }
 
         #endregion
 
         [Fact]
-        public void MatchResult_WhenCalled_ReturnExpectedViewResult()
+        public void MatchDetail_WhenCalled_ReturnExpectedViewResult()
         {
             // Arrange
             var league = fixture.Create<string>();
@@ -209,7 +119,7 @@
             var controller = GetController();
 
             // Act
-            var result = controller.MatchResult(league, match, matchId);
+            var result = controller.MatchDetail(league, match, matchId);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -219,19 +129,65 @@
             Assert.Equal(matchId, viewModel);
         }
 
-        [Fact]
-        public void LeagueDetail_WhenCalled_ReturnExpectedViewResult()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("general")]
+        [InlineData("fixtures")]
+        [InlineData("results")]
+        [InlineData("standings")]
+        public async void LeagueDetail_OldSelectedTab_RedirectCorrectNewTab(string selectedTab)
         {
             // Arrange
             var league = fixture.Create<string>();
             var seasonId = fixture.Create<long>();
             var date = fixture.Create<DateTime>();
             var leagueId = fixture.Create<long>();
-            var selectedTab = fixture.Create<string>();
             var controller = GetController();
+            var tab = "tong-hop";
+            switch(selectedTab)
+            {
+                case null:
+                case "general":
+                    tab = "tong-hop";
+                    break;
+                case "fixtures":
+                    tab = "lich-thi-dau";
+                    break;
+                case "results":
+                    tab = "ket-qua";
+                    break;
+                case "standings":
+                    tab = "bang-xep-hang";
+                    break;
+                default:
+                    tab = "tong-hop";
+                    break;
+            }
+            var rediectUrl = $"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{tab}";
 
             // Act
-            var result = controller.LeagueDetail(league, seasonId, date, leagueId, selectedTab);
+            var result = await controller.LeagueDetail(league, seasonId, date, leagueId, selectedTab);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal(rediectUrl, redirectResult.Url);
+        }
+
+        [Fact]
+        public async Task LeagueDetail_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var league = fixture.Create<string>();
+            var seasonId = fixture.Create<long>();
+            var date = fixture.Create<DateTime>();
+            var leagueId = fixture.Create<long>();
+            var selectedTab = "lich-thi-dau";
+            var expectedLeague = fixture.Create<League>();
+            
+            leagueService.GetLeagueByIdAsync(leagueId).Returns(expectedLeague);
+            // Act
+            var result = await controller.LeagueDetail(league, seasonId, date, leagueId, selectedTab);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -241,7 +197,6 @@
             Assert.Equal(seasonId, viewModel.SeasonId);
             Assert.Equal(date, viewModel.Date);
             Assert.Equal(selectedTab, viewModel.SelectedTab);
-            Assert.Equal(0, viewModel.Timezone);
         }
 
         [Fact]
