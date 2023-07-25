@@ -102,6 +102,7 @@
         public IActionResult MatchDetail(string league, string match, long matchId)
         {
             ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{match}/{matchId}";
+            ViewBag.team = match;
             return View("~/Views/Livescore/Soccer/Detail.cshtml", matchId);
         }
 
