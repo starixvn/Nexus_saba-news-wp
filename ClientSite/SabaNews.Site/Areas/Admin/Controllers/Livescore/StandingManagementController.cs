@@ -102,5 +102,12 @@
             return Json(result);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ResetData(long seasonId)
+        {
+            var result = await leagueService.RemoveStandingCustomAsync(seasonId);
+            return Json(result);
+        }
+
     }
 }

@@ -319,5 +319,12 @@
             }
             return result;
         }
+
+        public async Task<CommandResult> RemoveStandingCustomAsync(long seasonId)
+        {
+            var cmd = new RemoveCustomStandingCommand { SeasonId = seasonId };
+
+            return await baseService.ExecuteNonQueryAsync(cmd);
+        }
     }
 }

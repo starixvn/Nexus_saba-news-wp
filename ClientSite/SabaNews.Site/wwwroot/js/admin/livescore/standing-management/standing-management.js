@@ -200,11 +200,33 @@
         });
         $('.league-select').on('change', function () {
             var currentLeagueId = $(this).val();
-            
             GetSeason(currentLeagueId);
         });
         $('.btn_league').click(function () {
             initAddLeague();
+        });
+
+        $('#reset-data').on('click', function() {
+            if(confirm("Your custotm data will be removed when reset, Are you sure?")) {
+                $.ajax({
+                    url: "/Admin/StandingManagement/ResetData",
+                    type: "POST",
+                    data: {seasonId},
+                    success: function(res) {
+                        if (res.isSuccessful) {
+                            $('#EditStandingModal').modal('hide');
+                            GetSuccessPopup('#NoticeModal', 'Reset data succesfully!');
+                            setTimeout(function () {
+                                $('#NoticeModal').modal('hide');
+                                GetDataGrid();
+                            }, 1000);
+                        } else {
+                            $(this).prop('disabled', false);
+                            GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
+                        }
+                    }
+                })
+            }
         });
     }
 

@@ -35,5 +35,6 @@
         Task<CommandResult> InsertMinigameAsync(MiniGame miniGame);
         Task<SeasonStandingUpdate> GetLeagueSeasonStandingDetailAsync(GetLeagueSeasonStandingDetailCriteria criteria);
         Task<CommandResult> UpdateStandingAsync(StandingUpdateModel model);
+        Task<CommandResult> RemoveStandingCustomAsync(long seasonId);
     }
 }

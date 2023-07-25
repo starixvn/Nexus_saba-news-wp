@@ -20,6 +20,15 @@
     <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
 }
 
+@section Scripts {
+    <script>
+        window.leagueId = '@Model.LeagueId';
+        window.seasonId = '@Model.SeasonId';
+    </script>
+    <script src="~/js/admin/livescore/standing-management/standing-management.js" asp-append-version="true"></script>
+    <script src="~/js/select2.min.js" asp-append-version="true"></script>
+}
+
 <section class="page-content">
     <div class="form-horizontal filter">
         <div class="form-input">
@@ -42,6 +51,7 @@
 
         </div>
         <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
+        <button class="btn-custom-admin" type="button" id="reset-data">Reset Data</button>
     </div>
     <div class="content">
         <div class="data-grid" id="data-grid"></div>
@@ -101,11 +111,3 @@
     </div>
 </section>
 
-@section Scripts {
-    <script>
-        window.leagueId = '@Model.LeagueId';
-        window.seasonId = '@Model.SeasonId';
-    </script>
-    <script src="~/js/admin/livescore/standing-management/standing-management.js" asp-append-version="true"></script>
-    <script src="~/js/select2.min.js" asp-append-version="true"></script>
-}
