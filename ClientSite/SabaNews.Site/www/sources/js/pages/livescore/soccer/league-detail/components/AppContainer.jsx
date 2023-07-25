@@ -83,19 +83,19 @@ export class AppContainer extends Component {
                 if (!selectedFixtureTab) {
                     selectedFixtureTab = true;
                 }
-                document.title = ` Livescore ${leagueName} ${league.season.year}`;
+                document.title = ` Livescore ${leagueName} ${league.season?.year}`;
                 break;
             case 'lich-thi-dau':
                 if (!selectedFixtureTab) {
                     selectedFixtureTab = true;
                 }
-                document.title = ` Lịch thi đấu ${leagueName} ${league.season.year}`;
+                document.title = ` Lịch thi đấu ${leagueName} ${league.season?.year}`;
                 break;
             case 'ket-qua':
                 if (!selectedResultsTab) {
                     selectedResultsTab = true;
                 }
-                document.title = ` KQBĐ trực tuyến ${leagueName} ${league.season.year}`;
+                document.title = ` KQBĐ trực tuyến ${leagueName} ${league.season?.year}`;
                 break;
             case 'bang-xep-hang':
                 if (!selectedStandingsTab) {
