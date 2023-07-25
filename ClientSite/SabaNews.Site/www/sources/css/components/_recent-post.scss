@@ -43,7 +43,7 @@
     }
     &__item{
         display: grid;
-        grid-template: "recentPostImg recentPostDescription" 8rem / 12rem ;
+        grid-template: "recentPostImg recentPostDescription" auto / 12rem ;
         grid-gap: 1.2rem;
         border-bottom: 1px solid #E9E9E9;
         padding-bottom: 1.2rem;
