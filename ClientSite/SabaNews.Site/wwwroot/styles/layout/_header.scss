@@ -1115,12 +1115,11 @@
         .content-menu{
             padding-top: 1.6rem;
             .block-menu{
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, 160px);
+                gap: 19px;
                 &-item{
-                    margin-bottom: 2.4rem;
-                    width: 16rem;
+                   
                 }
                 &-list{
                     list-style: none;

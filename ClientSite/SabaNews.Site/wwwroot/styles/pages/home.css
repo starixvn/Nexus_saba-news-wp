@@ -1539,13 +1539,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding-top: 1.6rem;
 }
 .menu-popup-content .content-menu .block-menu {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-.menu-popup-content .content-menu .block-menu-item {
-  margin-bottom: 2.4rem;
-  width: 16rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  gap: 19px;
 }
 .menu-popup-content .content-menu .block-menu-list {
   list-style: none;
