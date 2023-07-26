@@ -21,6 +21,9 @@ describe('AppContainer', () => {
     };
 
     beforeEach(() => {
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'description');
+        document.head.appendChild(meta); 
         window.getMatchByStageParams = {
             selectedTab: ''
         };
@@ -409,7 +412,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(toJson(container)).toMatchSnapshot();
-            expect(document.title).toEqual('KQBĐ trực tuyến World Cup 2022');
+            expect(document.title).toEqual('KQBĐ trực tuyến World Cup 2022 [CẬP NHẬT]');
         });
     });
 });

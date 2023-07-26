@@ -43,7 +43,7 @@
             // Arrange
             var pageDetail = new Category
             {
-                Title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + today.ToString("dd/MM")
+                Title = "Lịch thi đấu và kết quả bóng đá hôm nay " + today.ToString("dd/MM")
             };
             var controller = GetController();
 
@@ -81,6 +81,30 @@
 
             Assert.Single(viewResult.ViewData);
             Assert.Equal(eventDate, viewResult.ViewData["EventDate"]);
+            Assert.Equal(pageDetail.Title, viewModel.Category.Title);
+        }
+
+        [Fact]
+        public void Index_EventDateIsFuture_ReturnExpectedViewResult()
+        {
+            var eventDate = DateTime.UtcNow.AddDays(2);
+            // Arrange
+            var pageDetail = new Category
+            {
+                Title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + eventDate.ToString("dd/MM")
+            };
+            var controller = GetController();
+
+            // Act
+            var result =  controller.Index(eventDate);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<PageViewModel>(viewResult.Model);
+
+            Assert.Single(viewResult.ViewData);
+            Assert.Equal(eventDate, viewResult.ViewData["EventDate"]);
+            Assert.Equal("~/Views/Livescore/Soccer/Index.cshtml", viewResult.ViewName);
             Assert.Equal(pageDetail.Title, viewModel.Category.Title);
         }
 

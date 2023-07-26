@@ -39,17 +39,17 @@
     if(Model.SelectedTab == "" || Model.SelectedTab == "tong-hop" || Model.SelectedTab == "general")
     {
         title = $"Livescore {GetLeagueName(Model.League)} {Model.League.Year}";
-        description = $" Cập nhật LTĐ, KQBD, link xem trực tiếp Livescore {GetLeagueName(Model.League)} {Model.League.Year} nhanh và chính xác nhất trên SABA VN";
+        description = $" Cập nhật LTĐ, KQBĐ, link xem trực tiếp Livescore {GetLeagueName(Model.League)} {Model.League.Year} nhanh và chính xác nhất trên SABA VN";
     }
     else if(Model.SelectedTab == "lich-thi-dau" || Model.SelectedTab == "fixtures")
     {
-        title = $"Lịch thi đấu {GetLeagueName(Model.League)} {Model.League.Year}";
-        description = $"Xem lịch thi đấu {GetLeagueName(Model.League)} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu {GetLeagueName(Model.League)} {Model.League.Year} được cập nhất liên tục cho độc giả.";
+        title = $"Lịch thi đấu {GetLeagueName(Model.League)} {Model.League.Year} [Mới nhất]";
+        description = $"Xem lịch thi đấu {GetLeagueName(Model.League)} {Model.League.Year} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu {GetLeagueName(Model.League)} {Model.League.Year} được cập nhất liên tục cho độc giả.";
     }
     else if(Model.SelectedTab == "ket-qua" || Model.SelectedTab == "results")
     {
-        title = $"KQBĐ trực tuyến {GetLeagueName(Model.League)} {Model.League.Year}";
-        description = $"Xem KQBĐ trực tuyến {GetLeagueName(Model.League)}. Cập nhật kết quả bóng đá và tỉ số trận đấu {GetLeagueName(Model.League)} {Model.League.Year} chính xác nhất trên SABA VN.";
+        title = $"KQBĐ trực tuyến {GetLeagueName(Model.League)} {Model.League.Year} [CẬP NHẬT]";
+        description = $"Xem KQBĐ trực tuyến {GetLeagueName(Model.League)} {Model.League.Year} mới nhất. Cập nhật kết quả bóng đá và tỉ số trận đấu {GetLeagueName(Model.League)} {Model.League.Year} chính xác nhất trên SABA VN.";
     }
     else
     {

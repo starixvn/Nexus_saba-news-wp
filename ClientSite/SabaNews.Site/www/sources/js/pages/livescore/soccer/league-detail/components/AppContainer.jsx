@@ -83,19 +83,22 @@ export class AppContainer extends Component {
                 if (!selectedFixtureTab) {
                     selectedFixtureTab = true;
                 }
-                document.title = ` Livescore ${leagueName} ${league.season?.year}`;
+                document.title = `Livescore ${leagueName} ${league.season?.year}`;
+                document.head.querySelector('meta[name="description"]').content = `Cập nhật LTĐ, KQBD, link xem trực tiếp ${leagueName} ${league.season?.year} nhanh và chính xác nhất trên SABA VN.`;
                 break;
             case 'lich-thi-dau':
                 if (!selectedFixtureTab) {
                     selectedFixtureTab = true;
                 }
-                document.title = ` Lịch thi đấu ${leagueName} ${league.season?.year}`;
+                document.title = `Lịch thi đấu ${leagueName} ${league.season?.year} [Mới nhất]`;
+                document.head.querySelector('meta[name="description"]').content = `Xem lịch thi đấu ${leagueName} ${league.season?.year} mới nhất trên SABA VN. LTĐ và xem trực tiếp các trận đấu ${leagueName} ${league.season?.year} được cập nhất liên tục cho độc giả`;
                 break;
             case 'ket-qua':
                 if (!selectedResultsTab) {
                     selectedResultsTab = true;
                 }
-                document.title = ` KQBĐ trực tuyến ${leagueName} ${league.season?.year}`;
+                document.title = `KQBĐ trực tuyến ${leagueName} ${league.season?.year} [CẬP NHẬT]`;
+                document.head.querySelector('meta[name="description"]').content = `Xem KQBĐ trực tuyến ${leagueName} ${league.season?.year} mới nhất. Cập nhật kết quả bóng đá và tỉ số trận đấu ${leagueName} ${league.season?.year} chính xác nhất trên SABA VN`;
                 break;
             case 'bang-xep-hang':
                 if (!selectedStandingsTab) {

@@ -57,11 +57,17 @@
             string title;
             string description;
             var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
-            if(eventDate == null || eventDate >= today)
+            if(eventDate == null || eventDate?.Date == today.Date)
             {
                 var dateFormat = today.ToString("dd/MM");
-                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + today.ToString(dateFormat);
-                description = $"Lịch thi đấu bóng đá ngày {today.ToString(dateFormat)} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {today.ToString(dateFormat)} liên tục trên SABA VN.";
+                title = "Lịch thi đấu và kết quả bóng đá hôm nay " + dateFormat;
+                description = $"Xem LTĐ và KQBĐ hôm nay ngày {dateFormat} nhanh và chính xác nhất. Cập nhật LTĐ và KQBĐ hôm nay trên SABA VN";
+            }
+            else if(eventDate > today)
+            {
+                var dateFormat = eventDate?.ToString("dd/MM");
+                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + dateFormat;
+                description = $"Lịch thi đấu bóng đá ngày {dateFormat} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {dateFormat} liên tục trên SABA VN.";
             }
             else
             {

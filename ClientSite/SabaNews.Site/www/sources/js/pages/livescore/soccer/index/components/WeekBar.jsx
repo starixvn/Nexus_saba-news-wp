@@ -31,12 +31,16 @@ export class WeekBar extends PureComponent {
         this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/${date}`));
         const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
         const selectedDate = dayjs(date).format('YYYY-MM-DD');
-        if(dayjs(selectedDate).isBefore(today)) {
-            document.title = "Kết quả bóng đá, tỷ số bóng đá ngày " + dayjs(date).format("DD/MM");
-            document.head.querySelector('meta[name="description"]').content = `Lịch thi đấu bóng đá ngày ${dayjs(date).format("DD/MM")} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày xx/yy liên tục trên SABA VN`;
+        const DateShow = dayjs(date).format("DD/MM");
+        if(dayjs(selectedDate).isSame(today)) {
+            document.title = 'Lịch thi đấu và kết quả bóng đá hôm nay ' + DateShow;
+            document.head.querySelector('meta[name="description"]').content = `Xem LTĐ và KQBĐ hôm nay ngày ${DateShow} nhanh và chính xác nhất. Cập nhật LTĐ và KQBĐ hôm nay trên SABA VN`;
+        } else if(dayjs(selectedDate).isAfter(today)) {
+            document.title = 'Lịch thi đấu bóng đá, trực tiếp bóng đá ngày ' + DateShow;
+            document.head.querySelector('meta[name="description"]').content = `Lịch thi đấu bóng đá ngày ${DateShow} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày ${DateShow} liên tục trên SABA VN`;
         } else {
-            document.title = 'Lịch thi đấu và kết quả bóng đá hôm nay ' + dayjs(date).format("DD/MM");
-            document.head.querySelector('meta[name="description"]').content = `Xem kết quả bóng đá ngày ${dayjs(date).format("DD/MM")} chính xác nhất. Cập nhật tỉ số trận đấu ngày xx/yy đầy đủ và trực quan nhất cho độc giả trân SABA VN.`;
+            document.title = 'Kết quả bóng đá, tỷ số bóng đá ngày ' + DateShow;
+            document.head.querySelector('meta[name="description"]').content = `Xem kết quả bóng đá ngày ${DateShow} chính xác nhất. Cập nhật tỉ số trận đấu ngày ${DateShow} đầy đủ và trực quan nhất cho độc giả trên SABA VN.`;
         }
     };
 
