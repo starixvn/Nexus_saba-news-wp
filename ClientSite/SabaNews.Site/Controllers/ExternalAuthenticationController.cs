@@ -46,7 +46,7 @@
             {
                 return Redirect(returnUrl);
             }
-            var claims = result.Principal.Identities.FirstOrDefault().Claims;
+            var claims = result.Principal.Identities.FirstOrDefault()?.Claims;
             var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
             if (sessionService.User != null && sessionService.User.Email != email)
             {
@@ -74,7 +74,7 @@
                 LastName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value,
                 DisplayName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
                 Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
-                Avatar = claims.FirstOrDefault(c => c.Type == ClaimTypes.Thumbprint).Value,
+                Avatar = claims.FirstOrDefault(c => c.Type == ClaimTypes.Thumbprint)?.Value,
                 LoginType = provider
             };
             return userInfo;

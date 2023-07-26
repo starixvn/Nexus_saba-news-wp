@@ -9,6 +9,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
     using NSubstitute;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -171,6 +172,28 @@
             // Assert
             var redirectResult = Assert.IsType<RedirectResult>(result);
             Assert.Equal(rediectUrl, redirectResult.Url);
+        }
+
+        [Fact]
+        public async Task LeagueDetail_WhenLeagueIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var league = fixture.Create<string>();
+            var seasonId = fixture.Create<long>();
+            var date = fixture.Create<DateTime>();
+            var leagueId = fixture.Create<long>();
+            var selectedTab = "lich-thi-dau";
+            League expectedLeague = null;
+            
+            leagueService.GetLeagueByIdAsync(leagueId).Returns(expectedLeague);
+            // Act
+            var result = await controller.LeagueDetail(league, seasonId, date, leagueId, selectedTab);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+           
         }
 
         [Fact]
@@ -409,6 +432,28 @@
         #region GetMatchesBySeason
 
         [Fact]
+        public async Task GetMatchesBySeason_ParamIsNULL_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var date = new DateTime(2022, 5, 25);
+            var fromTime = date.AddMonths(-6).AddHours(-7);
+            var toTime = date.AddDays(1).AddSeconds(-1).AddMonths(6).AddHours(-7);
+            var league = fixture.Create<League>();
+            var matches = fixture.Create<IList<Match>>();
+            GetMatchBySeasonParams model = null;
+            var criteria = new GetMatchBySeasonCriteria();
+            var controller = GetController();
+            matchService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteria = x)).Returns((league, matches));
+
+            // Act
+            var result = await controller.GetMatchesBySeason(model);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(jsonResult.Value);
+        }
+
+        [Fact]
         public async Task GetMatchesBySeason_SeasonIdEquals0_ReturnExpectedJsonResult()
         {
             // Arrange
@@ -571,6 +616,23 @@
             var jsonResult = Assert.IsType<JsonResult>(result);
             var actual = Assert.IsAssignableFrom<IList<League>>(jsonResult.Value);
             Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchDetail_ParamIsNULL_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var match = fixture.Create<Match>();
+           
+            GetMatchByIdCriteria criteria = null;
+            var controller = GetController();
+
+            // Act
+            var result = await controller.GetMatchDetail(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(jsonResult.Value);
         }
 
         [Fact]

@@ -63,7 +63,7 @@
         public static string GetTopCateParent(IList<CategoryGeneral> cates)
         {
             var parents = cates.Where(item => item.Slug != Constants.NewPostSlug).ToList();
-            return parents.Any() ? parents.FirstOrDefault().Slug : cates.FirstOrDefault().Slug;
+            return parents.Any() ? parents.FirstOrDefault()?.Slug : cates.FirstOrDefault()?.Slug;
         }
 
         public static List<StoryPostModel> GetListImageFromPostContent(string postContent)
