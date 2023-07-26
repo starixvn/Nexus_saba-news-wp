@@ -487,7 +487,6 @@
 
     .group-menu {
         @include flex(center,nowrap, flex-start,row);
-
         @include tableMobile {
             padding: 0;
             flex-wrap: wrap;
@@ -518,7 +517,7 @@
                 position: relative;
                 list-style: none;
                 width: 100%;
-                @include flex(center, nowrap, space-around,row);
+                @include flex(center, nowrap, space-between,row);
                 height: 4rem;
 
                 @include tableMobile {
@@ -537,7 +536,16 @@
                     padding: 0 1.2rem;
                 }
 
-
+                .open-menu-popup{
+                    line-height: 1;
+                    cursor: pointer;
+                    @include tableMobile{
+                        display: none !important;
+                    }
+                    i{
+                        font-size: 2.4rem;
+                    }
+                }
                 .menu-item {
                     position: relative;
                     display: flex;
@@ -548,7 +556,6 @@
                         display: block;
                         height: auto;
                     }
-
                     &:after {
                         @include tableMobile {
                             content: "";
@@ -595,7 +602,7 @@
                         }
                     }
 
-                    &:nth-last-child(2) {
+                    &:nth-last-child(3) {
 
                         a {
                             border: none;
@@ -627,6 +634,13 @@
                             @include tableMobile {
                                 color: inherit;
                             }
+                        }
+                    }
+                    .hide-popup{
+                        opacity: 0.5;
+                        cursor: not-allowed;
+                        &:hover{
+                            color: #2f2f2f;
                         }
                     }
 
@@ -1051,6 +1065,73 @@
         }
     }
 }
+
+.menu-popup{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #FFFDF9;
+    z-index: 99;
+    height: 100vh;
+    width: 100%;
+    border-top: 1px solid #E4E4E4;
+    &.hide-popup{
+        display: none;
+    }
+    @include tableMobile{
+        display: none !important;
+    }
+
+    .group-column-popup{
+        max-width: 147rem;
+        padding: 0 1rem;
+        margin: 0 auto;
+    }
+    &-header{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid #E4E4E4;
+        color: $color-title;
+        .all-category{
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .close-popup{
+            a{
+                text-decoration: none;
+                font-size: 2.4rem;
+                display: block;
+                color: $color-title;
+            }
+        }
+    }
+    &-content{
+        display: grid;
+        grid-template-columns: auto 20.9rem;
+        gap: 1.2rem;
+        .content-menu{
+            padding-top: 1.6rem;
+            .block-menu{
+                &-item{
+                    margin-bottom: 2.4rem;
+                }
+                &-list{
+                    list-style: none;
+                }
+            }
+        }
+        .slide-bar-menu{
+            padding: 1.6rem 0 0 1.2rem;
+            border-left: 1px solid #E4E4E4;
+        }
+    }
+}
+
+
+
 .hidden-body {
     @include tableMobile {
         .group-menu, .padding-mobile-none, .top-header, .nav-menu {
