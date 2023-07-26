@@ -100,7 +100,7 @@
                 <li class="item-social icon-mobile">
                     @if (Model.IsVideo)
                     {
-                        <a href="@Url.Action("Video", "Home")" class="item intent"
+                        <a href="@Url.Action("Category", "Home", new { slug = "video-sabavn"})" class="item intent"
                             title="@ViewResources.Back @ViewResources.Video">
                             <i class="icon-social icon-back"></i>
                         </a>
@@ -178,7 +178,7 @@
                     <li class="item-social">
                         @if (Model.IsVideo)
                         {
-                            <a href="@Url.Action("Video", "Home")" class="item intent"
+                            <a href="@Url.Action("Category", "Home", new { slug = "video-sabavn"})" class="item intent"
                                 title="@ViewResources.Back @ViewResources.Video">
                                 <i class="icon-social icon-back"></i>
                             </a>
