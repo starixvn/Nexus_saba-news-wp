@@ -983,6 +983,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-direction: row;
   height: 4rem;
 }
+.top-header .group-menu .nav-menu .main-menu.hide-popup {
+  cursor: not-allowed;
+}
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu .main-menu {
     position: unset;
@@ -1097,7 +1100,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .hide-popup {
   opacity: 0.5;
-  cursor: not-allowed;
+  pointer-events: none;
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .hide-popup:hover {
   color: #2f2f2f;
@@ -1504,7 +1507,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .menu-popup .group-column-popup {
-  max-width: 147rem;
+  max-width: 130rem;
   padding: 0 1rem;
   margin: 0 auto;
 }
@@ -1535,8 +1538,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .menu-popup-content .content-menu {
   padding-top: 1.6rem;
 }
+.menu-popup-content .content-menu .block-menu {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .menu-popup-content .content-menu .block-menu-item {
   margin-bottom: 2.4rem;
+  width: 16rem;
 }
 .menu-popup-content .content-menu .block-menu-list {
   list-style: none;

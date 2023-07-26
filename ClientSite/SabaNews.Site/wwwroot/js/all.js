@@ -317,7 +317,7 @@ function getFavouriteMatchCount() {
 
 //menu popup header pc
 $('.open-menu-popup,.close-popup').click(function () {
-    $('.menu-popup, .main-menu .menu-item a').toggleClass('hide-popup');
+    $('.menu-popup,.main-menu, .main-menu .menu-item a').toggleClass('hide-popup');
 });
 $('.block-menu-list').each(function () {
     var lengthLi = $(this).find('li').length;

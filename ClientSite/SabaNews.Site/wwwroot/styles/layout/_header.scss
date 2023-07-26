@@ -511,15 +511,15 @@
                 padding-bottom: 4rem;
                 overflow: auto;
             }
-
-
             .main-menu {
                 position: relative;
                 list-style: none;
                 width: 100%;
                 @include flex(center, nowrap, space-between,row);
                 height: 4rem;
-
+                &.hide-popup{
+                    cursor: not-allowed;
+                }
                 @include tableMobile {
                     position: unset;
                     margin: 0;
@@ -638,7 +638,7 @@
                     }
                     .hide-popup{
                         opacity: 0.5;
-                        cursor: not-allowed;
+                        pointer-events: none;
                         &:hover{
                             color: #2f2f2f;
                         }
@@ -1083,7 +1083,7 @@
     }
 
     .group-column-popup{
-        max-width: 147rem;
+        max-width: 130rem;
         padding: 0 1rem;
         margin: 0 auto;
     }
@@ -1115,8 +1115,12 @@
         .content-menu{
             padding-top: 1.6rem;
             .block-menu{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
                 &-item{
                     margin-bottom: 2.4rem;
+                    width: 16rem;
                 }
                 &-list{
                     list-style: none;
