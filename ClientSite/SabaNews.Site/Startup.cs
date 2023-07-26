@@ -36,6 +36,7 @@
     public class Startup
     {
         private readonly ConnectionMultiplexer Redis;
+        private const int NotFoundCode = 404;
 
         public Startup(IConfiguration configuration)
         {
@@ -182,7 +183,7 @@
             {
                 await next();
 
-                if (ctx.Response.StatusCode == 404 && !ctx.Response.HasStarted)
+                if (ctx.Response.StatusCode == NotFoundCode && !ctx.Response.HasStarted)
                 {
                     ctx.Request.Path = "/404";
                     await next();

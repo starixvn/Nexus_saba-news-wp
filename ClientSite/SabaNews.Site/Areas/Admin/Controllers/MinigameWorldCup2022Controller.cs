@@ -116,7 +116,7 @@
             foreach (var vote in votes)
             {
                 var matchVote = WorldCupHelper.GetMatch(matches, vote);
-                var (status, score) = WorldCupHelper.GetVoteResult(matchVote, vote);
+                var (_, score) = WorldCupHelper.GetVoteResult(matchVote, vote);
                 vote.Point = score;
             }
             var miniGames = await worldcupService.GetMinigameUsersAsync(criteriaVoteMinigame);

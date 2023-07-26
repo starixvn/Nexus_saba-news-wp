@@ -52,7 +52,7 @@
             }
             if (vote.Count != 0 && match.Status == FinishStatus)
             {
-                var (status, score) = GetVoteResult(match, vote[0]);
+                var (status, _) = GetVoteResult(match, vote[0]);
                 iconResult = status ? "win" : "lose";
             }
             return iconResult;

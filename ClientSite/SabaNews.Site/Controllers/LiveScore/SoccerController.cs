@@ -59,13 +59,15 @@
             var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
             if(eventDate == null || eventDate >= today)
             {
-                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + today.ToString("dd/MM");
-                description = $"Lịch thi đấu bóng đá ngày {today.ToString("dd/MM")} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {today.ToString("dd/MM")} liên tục trên SABA VN.";
+                var dateFormat = today.ToString("dd/MM");
+                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + today.ToString(dateFormat);
+                description = $"Lịch thi đấu bóng đá ngày {today.ToString(dateFormat)} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {today.ToString(dateFormat)} liên tục trên SABA VN.";
             }
             else
             {
-                title = "Kết quả bóng đá, tỷ số bóng đá ngày " + eventDate?.ToString("dd/MM");
-                description = $"Xem kết quả bóng đá ngày {eventDate?.ToString("dd/MM")} chính xác nhất. Cập nhật tỉ số trận đấu ngày {eventDate?.ToString("dd/MM")} đầy đủ và trực quan nhất cho độc giả trân SABA VN.";
+                var dateFormat = eventDate?.ToString("dd/MM");
+                title = "Kết quả bóng đá, tỷ số bóng đá ngày " + dateFormat;
+                description = $"Xem kết quả bóng đá ngày {dateFormat} chính xác nhất. Cập nhật tỉ số trận đấu ngày {dateFormat} đầy đủ và trực quan nhất cho độc giả trân SABA VN.";
             }
             var pageDetail = new Category
             {
@@ -109,7 +111,7 @@
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
-            var tab = "tong-hop";
+            string tab;
             var isRedirect = true;
             switch(selectedTab)
             {
