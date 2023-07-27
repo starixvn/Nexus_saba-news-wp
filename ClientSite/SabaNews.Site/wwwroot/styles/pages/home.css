@@ -1532,8 +1532,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-top: 1.6rem;
   padding-bottom: 1.6rem;
   max-height: calc(100vh - 25rem);
-  width: calc(100% - 1.2rem);
   overflow: auto;
+  padding-right: 1rem;
 }
 .menu-popup-content .content-menu::-webkit-scrollbar {
   width: 0.6rem;
@@ -1546,7 +1546,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .menu-popup-content .content-menu .block-menu {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 16rem);
+  grid-template-columns: repeat(auto-fit, 15.5rem);
   gap: 1.9rem;
   margin-bottom: 1.2rem;
   padding-bottom: 1.2rem;
@@ -1592,7 +1592,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #E13C29;
 }
 .menu-popup-content .slide-bar-menu {
-  padding: 1.6rem 0 0 1.2rem;
+  padding: 1.6rem 0 0 1rem;
   border-left: 1px solid #E4E4E4;
 }
 .menu-popup-content .slide-bar-menu .box-slidebar {
