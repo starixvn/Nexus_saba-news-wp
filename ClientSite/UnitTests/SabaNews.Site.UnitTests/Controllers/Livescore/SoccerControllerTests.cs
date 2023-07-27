@@ -135,24 +135,48 @@
         #endregion
 
         [Fact]
-        public void MatchDetail_WhenCalled_ReturnExpectedViewResult()
+        public async void MatchDetail_WhenMatchIsNotFound_ReturnExpectedViewResult()
         {
             // Arrange
             var league = fixture.Create<string>();
             var match = fixture.Create<string>();
             var matchId = fixture.Create<long>();
+            var criteria = fixture.Create<GetSummaryMatchByIdCriteria>();
+            Match expected = null;
             var controller = GetController();
-
+            matchService.GetSummaryMatchByIdAsync(criteria).Returns(expected);
             // Act
-            var result = controller.MatchDetail(league, match, matchId);
+            var result = await controller.MatchDetail(league, match, matchId);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<long>(viewResult.Model);
+
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async void MatchDetail_WhenMatchHaveFound_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var league = fixture.Create<string>();
+            var match = fixture.Create<string>();
+            var matchId = fixture.Create<long>();
+            var criteria = fixture.Create<GetSummaryMatchByIdCriteria>();
+            var expected = fixture.Create<Match>();
+            var controller = GetController();
+            matchService.GetSummaryMatchByIdAsync(Arg.Do<GetSummaryMatchByIdCriteria>(x => x = criteria)).Returns(expected);
+
+            // Act
+            var result = await controller.MatchDetail(league, match, matchId);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<MatchDetailModel>(viewResult.Model);
 
             Assert.Equal("~/Views/Livescore/Soccer/Detail.cshtml", viewResult.ViewName);
-            Assert.Equal(matchId, viewModel);
+            Assert.Equal(expected, viewModel.Match);
         }
+
 
         [Theory]
         [InlineData(null)]

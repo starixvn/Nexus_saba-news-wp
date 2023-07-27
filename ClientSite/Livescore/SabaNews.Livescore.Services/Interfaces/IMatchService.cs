@@ -28,6 +28,8 @@
 
         Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria);
 
+        Task<Match> GetSummaryMatchByIdAsync(GetSummaryMatchByIdCriteria criteria);
+
         Task<MatchUpdate> GetMatchByIdUpdateAsync(GetMatchByIdUpdateCriteria criteria);
 
         Task<IList<Match>> GetMatchByIdsAsync(GetMatchByIdsCriteria criteria);

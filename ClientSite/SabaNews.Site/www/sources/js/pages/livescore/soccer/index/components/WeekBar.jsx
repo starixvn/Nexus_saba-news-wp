@@ -40,7 +40,7 @@ export class WeekBar extends PureComponent {
             document.head.querySelector('meta[name="description"]').content = `Lịch thi đấu bóng đá ngày ${DateShow} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày ${DateShow} liên tục trên SABA VN`;
         } else {
             document.title = 'Kết quả bóng đá, tỷ số bóng đá ngày ' + DateShow;
-            document.head.querySelector('meta[name="description"]').content = `Xem kết quả bóng đá ngày ${DateShow} chính xác nhất. Cập nhật tỉ số trận đấu ngày ${DateShow} đầy đủ và trực quan nhất cho độc giả trên SABA VN.`;
+            document.head.querySelector('meta[name="description"]').content = `Xem kết quả bóng đá ngày ${DateShow} chính xác nhất. Cập nhật tỷ số trận đấu ngày ${DateShow} đầy đủ và trực quan nhất cho độc giả trên SABA VN.`;
         }
     };
 

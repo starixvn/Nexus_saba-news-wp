@@ -95,8 +95,15 @@
 
         public static bool IsLiveMatch(int status)
         {
-            var live = MatchConstants.ListLiveMatchStatus.FirstOrDefault(item => item == status);
-            return live != 0;
+            var live = MatchConstants.ListLiveMatchStatus.Where(item => item == status);
+            return live.Any();
+
+        }
+
+        public static bool IsPreMatch(int status)
+        {
+            var result = MatchConstants.ListPreMatchStatus.Where(item => item == status);
+            return result.Any();
 
         }
 

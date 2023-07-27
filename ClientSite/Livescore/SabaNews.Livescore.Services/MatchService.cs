@@ -125,6 +125,11 @@
             return await matchRepository.GetMatchByIdAsync(criteria);
         }
 
+        public async Task<Match> GetSummaryMatchByIdAsync(GetSummaryMatchByIdCriteria criteria)
+        {
+            return await matchRepository.GetSummaryMatchByIdAsync(criteria);
+        }
+
         public async Task<MatchUpdate> GetMatchByIdUpdateAsync(GetMatchByIdUpdateCriteria criteria)
         {
             return await matchRepository.GetMatchByIdUpdateAsync(criteria);

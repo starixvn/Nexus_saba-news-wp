@@ -242,13 +242,10 @@ export default class MatchGeneralInfo extends PureComponent {
         const matchScore = this.getMatchScoreTitle()
         if(isPreMatch) {
             matchStatus = LangHelper.getResource('Fixture');
-            document.head.querySelector('meta[name="description"]').content = `Xem lịch thi đấu bóng đá Đội ${homeTeamName} vs Đội ${awayTeamName} ${startTime.format('DD/MM/YYYY')} mới nhất. Cập nhật LTD đội ${homeTeamName} vs đội ${awayTeamName} chính xác nhất trên SABA VN.`;
         } else if(isLiveMatch) {
             matchStatus = LangHelper.getResource('Live');
-            document.head.querySelector('meta[name="description"]').content = `Xem trực tiếp đội ${homeTeamName} vs đội ${awayTeamName} ${leagueName} mùa giải mới nhất. Link xem đội ${homeTeamName} vs đội ${awayTeamName} online HD, cập nhật liên tục trên SABA VN.`;
         } else {
             matchStatus = LangHelper.getResource('Result');
-            document.head.querySelector('meta[name="description"]').content = `Kết quả trận đấu ${homeTeamName} vs ${awayTeamName} ${startTime.format('DD/MM/YYYY')} ${leagueName} . Xem kết quả trực tuyến trận ${homeTeamName} vs ${awayTeamName} chính xác nhất trên SABA VN`;
         }
         return `${matchStatus} ${homeTeamName} ${matchScore} ${awayTeamName} - ${leagueName} - ${startTime.format('DD/MM/YYYY')}`;
     }

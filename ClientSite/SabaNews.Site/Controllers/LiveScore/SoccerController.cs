@@ -73,7 +73,7 @@
             {
                 var dateFormat = eventDate?.ToString("dd/MM");
                 title = "Kết quả bóng đá, tỷ số bóng đá ngày " + dateFormat;
-                description = $"Xem kết quả bóng đá ngày {dateFormat} chính xác nhất. Cập nhật tỉ số trận đấu ngày {dateFormat} đầy đủ và trực quan nhất cho độc giả trân SABA VN.";
+                description = $"Xem kết quả bóng đá ngày {dateFormat} chính xác nhất. Cập nhật tỷ số trận đấu ngày {dateFormat} đầy đủ và trực quan nhất cho độc giả trên SABA VN.";
             }
             var pageDetail = new Category
             {
@@ -81,7 +81,7 @@
                 OgTitle = title,
                 Description = description,
                 OgDescription = description,
-                Url = $"{domain}lich-thi-dau/bong-da"
+                Url = $"{domain}lich-thi-dau/bong-da/{eventDate?.ToString("yyyy-MM-dd")}"
             };
             var model = new PageViewModel
             {
@@ -107,11 +107,19 @@
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
-        public IActionResult MatchDetail(string league, string match, long matchId)
+        public async Task<IActionResult> MatchDetail(string league, string match, long matchId)
         {
-            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{match}/{matchId}";
-            ViewBag.team = match;
-            return View("~/Views/Livescore/Soccer/Detail.cshtml", matchId);
+            var matchInfo = await matchService.GetSummaryMatchByIdAsync(new GetSummaryMatchByIdCriteria { MatchId = matchId });
+            if(matchInfo == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var viewModel = new MatchDetailModel
+            {
+                Match = matchInfo,
+                Url = $"{domain}lich-thi-dau/bong-da/{league}/{match}/{matchId}"
+            };
+            return View("~/Views/Livescore/Soccer/Detail.cshtml", viewModel);
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
@@ -157,7 +165,7 @@
                 LeagueName = league,
                 League = leagueDetail
             };
-            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}";
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 

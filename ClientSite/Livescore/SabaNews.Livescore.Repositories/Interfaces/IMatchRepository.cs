@@ -17,5 +17,6 @@
         Task<IList<Match>> GetMatchByIdsAsync(ICriteria criteria);
         Task<IList<Match>> GetMatchBySeasonFilterAsync(ICriteria criteria);
         Task<MatchUpdate> GetMatchByIdUpdateAsync(ICriteria criteria);
+        Task<Match> GetSummaryMatchByIdAsync(ICriteria criteria);
     }
 }
