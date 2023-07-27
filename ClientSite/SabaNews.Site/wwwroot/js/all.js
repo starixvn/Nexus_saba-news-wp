@@ -317,12 +317,12 @@ function getFavouriteMatchCount() {
 
 //menu popup header pc
 $('.open-menu-popup,.close-popup').click(function () {
-    $('.menu-popup,.main-menu, .main-menu .menu-item a').toggleClass('hide-popup');
+    $('.menu-popup,.main-menu .menu-item a').toggleClass('hide-popup');
 });
 $('.block-menu-list').each(function () {
     var lengthLi = $(this).find('li').length;
-    if(lengthLi > 3) {
-        $('li' , this).eq(2).nextAll().hide().addClass('toggleable');
+    if(lengthLi > 4) {
+        $('li' , this).eq(3).nextAll().hide().addClass('toggleable');
         $(this).append('<li class="more">Xem thêm</li>');  
     }
 })
