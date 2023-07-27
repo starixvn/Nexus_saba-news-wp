@@ -1535,15 +1535,75 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .menu-popup-content .content-menu .block-menu {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 160px);
-  gap: 19px;
+  grid-template-columns: repeat(auto-fit, 16rem);
+  gap: 1.9rem;
 }
 .menu-popup-content .content-menu .block-menu-list {
   list-style: none;
 }
+.menu-popup-content .content-menu .block-menu-list li {
+  margin-bottom: 1.1rem;
+  line-height: normal;
+}
+.menu-popup-content .content-menu .block-menu-list li:last-child {
+  margin-bottom: 0;
+}
+.menu-popup-content .content-menu .block-menu-list li.more {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  color: #333;
+  cursor: pointer;
+}
+.menu-popup-content .content-menu .block-menu-list li a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #333;
+}
+.menu-popup-content .content-menu .block-menu-title {
+  margin-bottom: 1.1rem;
+  line-height: normal;
+}
+.menu-popup-content .content-menu .block-menu-title a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #E13C29;
+}
 .menu-popup-content .slide-bar-menu {
   padding: 1.6rem 0 0 1.2rem;
   border-left: 1px solid #E4E4E4;
+}
+.menu-popup-content .slide-bar-menu .box-slidebar {
+  border-radius: 5px;
+  background: #F5F6F6;
+  padding: 1.2rem;
+}
+.menu-popup-content .slide-bar-menu .box-slidebar-title {
+  font-size: 1.4rem;
+  color: #E13C29;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  line-height: normal;
+}
+.menu-popup-content .slide-bar-menu .box-slidebar-keywork {
+  list-style: none;
+}
+.menu-popup-content .slide-bar-menu .box-slidebar-keywork li {
+  margin-bottom: 1rem;
+  line-height: normal;
+}
+.menu-popup-content .slide-bar-menu .box-slidebar-keywork li:last-child {
+  margin-bottom: 0;
+}
+.menu-popup-content .slide-bar-menu .box-slidebar-keywork li a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #333;
 }
 
 @media screen and (max-width: 1024px) {
