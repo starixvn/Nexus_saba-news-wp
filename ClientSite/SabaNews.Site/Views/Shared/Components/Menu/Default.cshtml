@@ -169,28 +169,36 @@
                 <div class="menu-popup-content">
                     <div class="content-menu">
                         <div class="block-menu">
-                            @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
-                            {
-                                var link = getMenuLink(menu);
-                                var subMenus = Model.Menus.Where(item => item.ParentId == menu.PostId);
-                                <div class="block-menu-item">
-                                    <div class="block-menu-title"><a href="@link" title="@menu.MenuTitle">@menu.MenuTitle</a></div>
-                                    @if (menu.PageSlug == Constants.MatchScheduleSlug)
-                                    {
-                                        <ul class="block-menu-list">
-                                            <li>
-                                                <a href="@Url.Action("FavouriteMatch", "Soccer")">Trận đấu quan tâm</a>
-                                            </li>
-                                            <li><a href="@Url.Action("FavouriteLeague", "Soccer")">Giải đấu của tôi</a></li>
-                                        </ul>
+                            @{
+                                int indexItem = 1;
+                                @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
+                                {
+                                    var link = getMenuLink(menu);
+                                    var subMenus = Model.Menus.Where(item => item.ParentId == menu.PostId);
+                                    indexItem++;
+                                    Console.WriteLine(indexItem);
+                                    @if(indexItem > 0 && indexItem % 6 == 2) {
+                                        @:</div><div class="block-menu">
                                     }
-                                    <ul class="block-menu-list">
-                                        @foreach (var subMenu in subMenus){
-                                            var subLink = Url.Action("Category", "Home", new {slug = subMenu.CateSlug + CategoryKey.Suffix });
-                                            <li><a href="@subLink" title="@subMenu.MenuTitle">@subMenu.MenuTitle</a></li>
+                                    <div class="block-menu-item">
+                                        <div class="block-menu-title"><a href="@link" title="@menu.MenuTitle">@menu.MenuTitle</a></div>
+                                        @if (menu.PageSlug == Constants.MatchScheduleSlug)
+                                        {
+                                            <ul class="block-menu-list">
+                                                <li>
+                                                    <a href="@Url.Action("FavouriteMatch", "Soccer")">Trận đấu quan tâm</a>
+                                                </li>
+                                                <li><a href="@Url.Action("FavouriteLeague", "Soccer")">Giải đấu của tôi</a></li>
+                                            </ul>
                                         }
-                                    </ul>
-                                </div>
+                                        <ul class="block-menu-list">
+                                            @foreach (var subMenu in subMenus){
+                                                var subLink = Url.Action("Category", "Home", new {slug = subMenu.CateSlug + CategoryKey.Suffix });
+                                                <li><a href="@subLink" title="@subMenu.MenuTitle">@subMenu.MenuTitle</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
                             }
                         </div>
                     </div>

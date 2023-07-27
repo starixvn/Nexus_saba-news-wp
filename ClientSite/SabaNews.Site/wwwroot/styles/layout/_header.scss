@@ -1109,6 +1109,7 @@
             margin-top: 1.6rem;
             padding-bottom: 1.6rem;
             max-height: calc(100vh - 25rem);
+            width: calc(100% - 1.2rem);
             overflow: auto;
             &::-webkit-scrollbar{
                 width: .6rem;
@@ -1124,6 +1125,14 @@
                 display: grid;
                 grid-template-columns: repeat(auto-fit, 16rem);
                 gap: 1.9rem;
+                margin-bottom: 1.2rem;
+                padding-bottom: 1.2rem;
+                border-bottom: 1px solid #E4E4E4;
+                &:first-child, &:last-child{
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    border: none;
+                }
                 &-list{
                     list-style: none;
                     li{
