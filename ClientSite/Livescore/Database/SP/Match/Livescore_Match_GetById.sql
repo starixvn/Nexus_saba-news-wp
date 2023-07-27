@@ -15,6 +15,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetById`(
             - 20220915@Hank add Team Name & Icon VN & data custom
             - 20221227@Hank: select league IconVN
             - 20230625@Hank: select red card, yellow card
+            - 20230625@Hank: get season data
     */
 )
 BEGIN
@@ -32,7 +33,7 @@ BEGIN
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
         ,m.LeagueId,  l.LeagueNameVN,  l.LeagueNameEN, l.LeagueFullNameEN, l.CurrentRound, l.CurrentSeasonId, l.Icon, l.IconVN
-        ,m.SeasonId
+        ,m.SeasonId, s.Year
         ,ss.StageId, ss.StageNameEN, COALESCE(ss.StageNameVN, rr.NameVN) AS StageNameVN, ss.StageNameVN as StageNameCustom
         ,rr.NameVN as StageNameResource, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
 		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.TeamNameVN, h.Icon, h.IconVN, sh.YellowCard, sh.RedCard
@@ -43,7 +44,8 @@ BEGIN
 		INNER JOIN livescore_team a ON m.AwayTeamId = a.TeamId
 		LEFT JOIN livescore_match_statistic sh ON m.MatchId = sh.MatchId AND m.HomeTeamId = sh.TeamId
 		LEFT JOIN livescore_match_statistic sa ON m.MatchId = sa.MatchId AND m.AwayTeamId = sa.TeamId
-        LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId
+        LEFT JOIN livescore_season s ON m.SeasonId = s.SeasonId
+        LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId AND ss.SeasonId = s.SeasonId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId
