@@ -239,5 +239,9 @@
         <Setting Key="worldcup_minigame_get_list_users" SpName="worldcup_minigame_get_list_users" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_League_GetLeagueAndSeasonStandings" SpName="Livescore_League_GetLeagueAndSeasonStandings" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Standing_RemoveCustom" SpName="Livescore_Standing_RemoveCustom" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="Livescore_Match_GetSummaryById" SpName="Livescore_Match_GetSummaryById" DbName="sabasports" Plain="0">
+            <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
+            <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
+        </Setting>
 	</Function>
 </Functions>

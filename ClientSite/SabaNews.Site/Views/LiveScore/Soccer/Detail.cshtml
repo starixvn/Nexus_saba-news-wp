@@ -36,6 +36,7 @@
     var homeTeamName = GetTeamName(Model.Match.HomeTeam);
     var awayTeamName = GetTeamName(Model.Match.AwayTeam);
     var leagueName = GetLeagueName(Model.Match.League);
+    var seasonYear = Model.Match.League.Season?.Year;
     string matchScore = "";
     string matchStatus;
     string description;
@@ -65,12 +66,12 @@
     else if(isLiveMatch)
     {
         matchStatus = "Trực tiếp";
-        description = $"Xem trực tiếp đội {homeTeamName} vs đội {awayTeamName} {leagueName} mùa giải mới nhất. Link xem đội {homeTeamName} vs đội {awayTeamName} online HD, cập nhật liên tục trên SABA VN.";
+        description = $"Xem trực tiếp đội {homeTeamName} vs đội {awayTeamName} {leagueName} {seasonYear} mùa giải mới nhất. Link xem đội {homeTeamName} vs đội {awayTeamName} online HD, cập nhật liên tục trên SABA VN.";
     }
     else
     {
         matchStatus = "Kết quả";
-        description = $"Kết quả trận đấu {homeTeamName} vs {awayTeamName} {dateShow} {leagueName} . Xem kết quả trực tuyến trận {homeTeamName} vs {awayTeamName} chính xác nhất trên SABA VN";
+        description = $"Kết quả trận đấu {homeTeamName} vs {awayTeamName} {dateShow} {leagueName} {seasonYear}. Xem kết quả trực tuyến trận {homeTeamName} vs {awayTeamName} chính xác nhất trên SABA VN";
     }
     var title = $"{matchStatus} {homeTeamName} {matchScore} {awayTeamName} - {leagueName} - {dateShow}";
 }
