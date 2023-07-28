@@ -154,9 +154,9 @@
             return model;
         }
 
-        public async Task<IEnumerable<Menu>> GetMenuData()
+        public async Task<IEnumerable<Menu>> GetMenuData(string menuType)
         {
-            var menuName = configuration.GetValue<string>("MenuName");
+            var menuName = configuration.GetValue<string>($"Menu:{menuType}");
             var menus = await postService.GetMenuAsync(menuName);
             return menus;
         }
@@ -254,7 +254,7 @@
                 result.Add(new StandingLeagueModel { League = league, Standing = standing });
             }
             return result;
-        }       
+        }
 
         public async Task<(List<FootballNewsHomePage> ,List<IEnumerable<Post>>)> GetFootballNews()
         {

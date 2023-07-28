@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
+    using SabaNews.Core.Constants;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
@@ -16,7 +17,7 @@
     {
         Task<PostViewModel> GetHomePageViewModel();
 
-        Task<IEnumerable<Menu>> GetMenuData();
+        Task<IEnumerable<Menu>> GetMenuData(string menuType = MenuType.MainMenu);
 
         Task<BlogViewModel> GetCategoryViewModel(string slug);
 

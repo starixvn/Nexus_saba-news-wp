@@ -98,7 +98,7 @@
             return await fetchDataService.GetCategoryViewModel(slug);
         }
 
-        public async Task<IEnumerable<Menu>> GetMenuData()
+        public async Task<IEnumerable<Menu>> GetMenuData(string menuType = MenuType.MainMenu)
         {
             if (IsUsingCache)
             {
@@ -106,10 +106,9 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
-
-                    result = await fetchDataService.GetMenuData();
-                    await cacheWrapperService.SetAsync(CacheKey.Menu, result,
+                    logServiceProvider.WriteLogFileInfo($"-------Get {menuType} data from DB---------");
+                    result = await fetchDataService.GetMenuData(menuType);
+                    await cacheWrapperService.SetAsync(menuType, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
@@ -119,7 +118,7 @@
                 return result;
             }
 
-            return await fetchDataService.GetMenuData();
+            return await fetchDataService.GetMenuData(menuType);
         }
 
         public async Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData()

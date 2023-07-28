@@ -61,14 +61,22 @@
 
             try
             {
-                var data = await fetchDataService.GetMenuData();
-                logService.WriteLogFileInfo(string.Format("After GetMenuData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheWrapperService.SetAsync(CacheKey.Menu,
-                        data,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
-                        });
+                var listMenu = new List<string>
+                {
+                    MenuType.MainMenu,
+                    MenuType.DetailMenu
+                };
+                foreach(var menuType in listMenu)
+                {
+                    var data = await fetchDataService.GetMenuData(menuType);
+                    logService.WriteLogFileInfo(string.Format("After GetMenuData - {0} - {1}", menuType, DateTime.Now.Subtract(startTime).Milliseconds));
+                    await cacheWrapperService.SetAsync(menuType,
+                            data,
+                            new CacheItemOptions
+                            {
+                                RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
+                            });
+                }
             }
             catch (Exception ex)
             {

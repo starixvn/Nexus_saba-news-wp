@@ -15,7 +15,7 @@
     {
         Task<PostViewModel> GetHomePageViewModel();
 
-        Task<IEnumerable<Menu>> GetMenuData();
+        Task<IEnumerable<Menu>> GetMenuData(string menuType);
 
         Task<BlogViewModel> GetCategoryViewModel(string slug);
 
