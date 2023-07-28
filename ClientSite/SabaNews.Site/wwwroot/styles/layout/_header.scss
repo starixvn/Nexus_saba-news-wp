@@ -620,9 +620,13 @@
                         color: #2F2F2F;
 
                         @include tableMobile {
-                            padding: 1.5rem 0;
+                            padding: 1.1rem 2rem 1.1rem 0;
                             margin-right: 0;
                             display: block;
+                            text-transform: uppercase;
+                            line-height: normal;
+                            color: #E13C29;
+                            font-weight: 600;
                         }
 
                         &:hover {
@@ -670,7 +674,7 @@
                             @include tableMobile {
                                 display: block;
                                 transform: unset;
-                                top: 14px;
+                                top: 9px;
                                 right: 0;
                             }
 
@@ -691,7 +695,19 @@
 
                             @include tableMobile {
                                 box-shadow: unset;
-                                padding-left: 2rem;
+                            }
+                            &:before {
+                                @include tableMobile {
+                                    content: "";
+                                    display: block;
+                                    position: absolute;
+                                    top: 0;
+                                    width: 100%;
+                                    right: 50%;
+                                    height: 1px;
+                                    background: $border-calendar;
+                                    transform: translate(50%,0);
+                                }
                             }
 
                             li {
@@ -721,9 +737,9 @@
                                     line-height: 1.8rem;
 
                                     @include tableMobile {
-                                        font-weight: 600;
-                                        padding: 1.5rem 0;
-                                        line-height: 1.9rem;
+                                        font-weight: 400;
+                                        padding: 1.1rem 0 1.1rem 1.1rem;
+                                        line-height: normal;
                                     }
 
                                     &:hover {
@@ -773,13 +789,15 @@
                         @include tableMobile {
                             display: none;
                             visibility: unset;
-                            position: unset;
+                            position: relative;
                             opacity: 1;
                             background: unset;
                             border: none;
                             border-radius: 0;
                             width: 100%;
                             padding: 0;
+                            top: -1px;
+                            left: 0px;
                         }
 
                         .submenu-button {
@@ -791,6 +809,12 @@
 
             .active-main-menu {
                 display: flex;
+                @include tableMobile{
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0 1.2rem;
+                    align-items: flex-start;
+                }
             }
 
             .active-arrow {
@@ -827,11 +851,12 @@
     @include tableMobile {
         width: 100%;
         display: block;
-        padding: 0 1.2rem;
+        padding: 0 1.2rem 1.2rem;
         background-color: $bg-nav;
         position: absolute !important;
         top: 0;
         z-index: 99;
+        border-bottom: 1px solid #E0E0E0;
     }
 
     @include Mobile {
@@ -1172,35 +1197,58 @@
         .slide-bar-menu{
             padding: 1.6rem 0 0 1rem;
             border-left: 1px solid #E4E4E4;
-            .box-slidebar{
-                border-radius: 5px;
-                background: #F5F6F6;
-                padding: 1.2rem;
-                &-title{
-                    font-size: 1.4rem;
-                    color: #E13C29;
-                    font-weight: 600;
-                    margin-bottom: 1rem;
-                    text-transform: uppercase;
-                    line-height: normal;
-                }
-                &-keywork{
-                    list-style: none;
-                    li{
-                        margin-bottom: 1rem;
-                        line-height: normal;
-                        &:last-child{
-                            margin-bottom: 0;
-                        }
-                        a{
-                            text-decoration: none;
-                            font-size: 1.3rem;
-                            font-weight: 400;
-                            color: $color-title;
-                        }
-                    }
-                }
+        }
+    }
+}
+
+.box-slidebar{
+    border-radius: 5px;
+    background: #F5F6F6;
+    padding: 1.2rem;
+    &-title{
+        font-size: 1.4rem;
+        color: #E13C29;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        line-height: normal;
+    }
+    &-list{
+        list-style: none;
+        li{
+            margin-bottom: 1rem;
+            line-height: normal;
+            &:last-child{
+                margin-bottom: 0;
             }
+            a{
+                text-decoration: none;
+                font-size: 1.3rem;
+                font-weight: 400;
+                color: $color-title;
+            }
+        }
+    }
+}
+
+
+.keywork{
+    display: none;
+    margin: 1rem 1.2rem;
+    @include tableMobile{
+        display: block;
+    }
+    @extend .box-slidebar;
+    &-title{
+        @extend .box-slidebar-title;
+    }
+    &-list{
+        @extend .box-slidebar-list;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        li{
+            margin-bottom: 0;
         }
     }
 }
