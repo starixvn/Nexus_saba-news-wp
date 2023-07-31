@@ -153,7 +153,7 @@ namespace SabaNews.Services.UnitTests
             IEnumerable<Menu> expectedFromCache = null;
             var expected = fixture.Create<IEnumerable<Menu>>();
             cacheWrapperService.GetAsync<IEnumerable<Menu>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
-            fetchDataService.GetMenuData().Returns(expected);
+            fetchDataService.GetMenuData(Arg.Do<string>(x => x = MenuType.MainMenu)).Returns(expected);
 
             //Act
             var actual = await service.GetMenuData();
@@ -170,7 +170,7 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Menu>>();
-            fetchDataService.GetMenuData().Returns(expected);
+            fetchDataService.GetMenuData(Arg.Do<string>(x => x = MenuType.MainMenu)).Returns(expected);
 
             //Act
             var actual = await service.GetMenuData();

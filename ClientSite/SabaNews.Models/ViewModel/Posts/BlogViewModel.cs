@@ -2,6 +2,7 @@
 {
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
     using System.Collections.Generic;
     using System.Linq;
@@ -16,29 +17,40 @@
         public Slugs Slugs { get; set; }
         public string Slug { get; set; }
         public bool IsVideo { get; set; }
-        public string PageTitle { get; set; }
-        public IEnumerable<Menu> GetSubMenu(string cateSlug)
+        public MenuItems MenuItems { get; set; }
+        public IEnumerable<Menu> GetSubMenu(int postId)
         {
             var menu = new List<Menu>();
-            if (Menus.Any() && cateSlug != null)
+            if (Menus.Any() && postId > 0)
             {
-                var menuItem = GetMenuDetail(cateSlug);
+                var menuItem = GetMenuDetail(postId);
                 menu = Menus?.Where(item => item.ParentId == menuItem?.PostId).ToList();
             }
             return menu;
         }
 
-        public Menu GetMenuDetail(string cateSlug)
-        {
-            return Menus.FirstOrDefault(item => item.CateSlug == cateSlug);
-        }
-
-        public IEnumerable<Menu> GetCoMenu(string cateSlug)
+        public IEnumerable<Menu> GetSubMenu(string slug)
         {
             var menu = new List<Menu>();
-            if (Menus.Any() && cateSlug != null)
+            if (Menus.Any() && !string.IsNullOrEmpty(slug))
             {
-                var menuItem = GetMenuDetail(cateSlug);
+                var menuItem =  Menus.FirstOrDefault(item => item.CateSlug == slug);
+                menu = Menus?.Where(item => item.ParentId == menuItem?.PostId).ToList();
+            }
+            return menu;
+        }
+
+        public Menu GetMenuDetail(int postId)
+        {
+            return Menus.FirstOrDefault(item => item.PostId == postId);
+        }
+
+        public IEnumerable<Menu> GetCoMenu(int postId)
+        {
+            var menu = new List<Menu>();
+            if (Menus.Any() && postId > 0)
+            {
+                var menuItem = GetMenuDetail(postId);
                 menu = Menus?.Where(item => item.ParentId == menuItem?.ParentId).ToList();
             }
             return menu;

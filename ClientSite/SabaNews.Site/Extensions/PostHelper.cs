@@ -39,18 +39,18 @@
 
         public static (Slugs, string) GetCategorySlugs(List<Menu> menus, string cateSlug) {
             var listCate = new List<string>();
-            string parentName = "";
+            var listId = new List<long>();
             if(cateSlug != Constants.NewPostSlug)
             {
                 listCate.Add(cateSlug);
             }
-            var cate = menus.Find(item => item.CateSlug == cateSlug);
-            var currentSlug = menus.Find(item => item.PostId == cate?.ParentId);
+            var cate = menus.LastOrDefault(item => item.CateSlug == cateSlug);
+            var currentSlug = menus.LastOrDefault(item => item.PostId == cate?.ParentId);
             while(currentSlug != null  || listCate.Count > 3)
             {
                 parentName = currentSlug.MenuTitle;
                 listCate.Add(currentSlug.CateSlug);
-                currentSlug = menus.Find(item => item.PostId == currentSlug.ParentId);
+                currentSlug = menus.LastOrDefault(item => item.PostId == currentSlug.ParentId);
             }
             var slugs = new Slugs
             {
@@ -59,6 +59,30 @@
                 Slug3 = listCate.Count >= 3 ? listCate[listCate.Count - 3] : null
             };
             return (slugs, parentName);
+
+        }
+
+        public static (MenuItems, string) GetMenuActive(List<Menu> menus, string cateSlug) {
+            var listCate = new List<MenuInfo>();
+            var cate = menus.LastOrDefault(item => item.CateSlug == cateSlug);
+            if(cate != null)
+            {
+                listCate.Add(new MenuInfo { PostId = cate.PostId, CateSlug = cate.CateSlug  });
+            }
+            var currentCate = menus.LastOrDefault(item => item.PostId == cate?.ParentId);
+            while(currentCate != null  || listCate.Count > 3)
+            {
+                listCate.Add(new MenuInfo { PostId = currentCate.PostId, CateSlug = currentCate.CateSlug  });
+                currentCate = menus.LastOrDefault(item => item.PostId == currentCate.ParentId);
+            }
+            var activeMenu = listCate.Count >= 1 ? listCate[listCate.Count - 1].CateSlug : null;
+            var menuItems = new MenuItems
+            {
+                Item1 = listCate.Count >= 1 ? listCate[listCate.Count - 1].PostId : 0,
+                Item2 = listCate.Count >= 2 ? listCate[listCate.Count - 2].PostId : 0,
+                Item3 = listCate.Count >= 3 ? listCate[listCate.Count - 3].PostId : 0
+            };
+            return (menuItems, activeMenu);
 
         }
 

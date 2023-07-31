@@ -167,7 +167,7 @@
             postService.GetMenuAsync(Arg.Do<string>(x => menuName = x)).Returns(expected);
 
             //Act
-            var actual = await service.GetMenuData();
+            var actual = await service.GetMenuData(MenuType.MainMenu);
 
             //Assert
             Assert.Equal(expected, actual);

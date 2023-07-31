@@ -1,11 +1,12 @@
 ﻿namespace SabaNews.Views.Shared.Components
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Models;
-    using SabaNews.Models.Posts;
+    using SabaNews.Models.Categories;
     using SabaNews.Services.Interfaces;
 
     public class MenuViewComponent : ViewComponent
@@ -19,18 +20,21 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "", Slugs slugs = null)
+        public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "", MenuItems menuItems = null)
         {
-            var menus = await dataControlService.GetMenuData();
-            
+            var menus = await dataControlService.GetMenuData(MenuType.MainMenu);
+            var detailMenu = await dataControlService.GetMenuData(MenuType.DetailMenu);
+            var popularKeyword = detailMenu.Where(item => item.ParentId == 0).LastOrDefault();
             var isAuthenticated = sessionService.User != null;
             var model = new MenuViewModel
             {
                 Menus = menus,
+                DetailMenu = detailMenu,
+                PopularKeyword = popularKeyword,
                 Page = page,
                 IsAuthenticated = isAuthenticated,
                 CategorySlug = categorySlug,
-                Slugs = slugs,
+                MenuItems = menuItems,
                 IsAdmin = isAuthenticated && !string.IsNullOrWhiteSpace(sessionService.User.Metadata)
                         && sessionService.User.Metadata.Contains(Role.Administrator)
             };

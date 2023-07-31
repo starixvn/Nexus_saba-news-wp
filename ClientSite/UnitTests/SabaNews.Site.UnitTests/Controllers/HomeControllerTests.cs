@@ -19,6 +19,7 @@
     using Microsoft.AspNetCore.Http;
     using SabaNews.Models.Home;
     using SabaNews.Core.Models;
+    using SabaNews.Models.Categories;
 
     public class HomeControllerTests : Controller
     {
@@ -119,7 +120,7 @@
             expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "bong-da", ParentId = 0  });
             expectedMenu.Add(new Menu{ PostId = 2, CateSlug = "viet-nam", ParentId = 1  });
             expectedMenu.Add(new Menu{ PostId = 3, CateSlug = "dt-viet-nam", ParentId = 2  });
-            var slugs = new Slugs { Slug1 = "bong-da", Slug2 = "viet-nam", Slug3 = "dt-viet-nam" };
+            var menuItems = new MenuItems { Item1 = 1, Item2 = 2, Item3 = 3};
             dataControlService.GetMenuData().Returns(expectedMenu);
             dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
 
@@ -130,9 +131,9 @@
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(Constants.CategoryView, viewResult.ViewName);
-            Assert.Equal(slugs.Slug1, viewModel.Slugs.Slug1);
-            Assert.Equal(slugs.Slug2, viewModel.Slugs.Slug2);
-            Assert.Equal(slugs.Slug3, viewModel.Slugs.Slug3);
+            Assert.Equal(menuItems.Item1, viewModel.MenuItems.Item1);
+            Assert.Equal(menuItems.Item2, viewModel.MenuItems.Item2);
+            Assert.Equal(menuItems.Item3, viewModel.MenuItems.Item3);
         }
 
         [Fact]
@@ -156,10 +157,10 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(Constants.VideoView, viewResult.ViewName);
-            Assert.Equal(slugs.Slug1, viewModel.Slugs.Slug1);
-            Assert.Equal(slugs.Slug2, viewModel.Slugs.Slug2);
-            Assert.Equal(slugs.Slug3, viewModel.Slugs.Slug3);
+            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+            Assert.Equal(1, viewModel.MenuItems.Item1);
+            Assert.Equal(0, viewModel.MenuItems.Item2);
+            Assert.Equal(0, viewModel.MenuItems.Item3);
         }
 
         [Theory]

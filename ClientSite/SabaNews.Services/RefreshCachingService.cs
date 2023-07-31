@@ -95,6 +95,7 @@
             {
                 var listCategoryCaching = new List<string>
                 {
+                    Constants.NewPostSlug,
                     Constants.FootballSlug,
                     Constants.GuessSlug,
                     Constants.BackstageSlug,

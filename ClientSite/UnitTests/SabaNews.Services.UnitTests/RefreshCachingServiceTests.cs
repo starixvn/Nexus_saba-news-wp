@@ -3,6 +3,7 @@
     using AutoFixture;
     using Fanex.Caching;
     using NSubstitute;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Services;
     using SabaNews.Models;
@@ -75,7 +76,7 @@
             var logMessage = fixture.Create<string>();
             var data = fixture.Create<IEnumerable<Menu>>();
 
-            fetchDataService.GetMenuData().Returns(data);
+            fetchDataService.GetMenuData(Arg.Do<string>(x => x = MenuType.MainMenu)).Returns(data);
             logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
 
 
@@ -95,7 +96,7 @@
             var logMessage = fixture.Create<string>();
             var exception = fixture.Create<Exception>();
 
-            fetchDataService.When(x => x.GetMenuData()).Throw(exception);
+            fetchDataService.When(x => x.GetMenuData(Arg.Do<string>(x => x = MenuType.MainMenu))).Throw(exception);
             logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
 
 

@@ -2,9 +2,9 @@
 @using SabaNews.Core.Constants;
 @{
     var isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
-    var slug1 = Model.Slugs != null ? Model.Slugs.Slug1 : null;
-    var slug2 = Model.Slugs != null ? Model.Slugs.Slug2 : null;
-    var slug3 = Model.Slugs != null ? Model.Slugs.Slug3 : null;
+    var item1 = Model.MenuItems != null ? Model.MenuItems.Item1 : null;
+    var item2 = Model.MenuItems != null ? Model.MenuItems.Item2: null;
+    var item3 = Model.MenuItems != null ? Model.MenuItems.Item3 : null;
 }
 
 @section Metadata {
@@ -78,7 +78,7 @@
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
 
-@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory, Slugs = Model.Slugs }))
+@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory, MenuItems = Model.MenuItems }))
 <section class="main">
     <div class="base-container medium-container">
         @if (Model.Menus != null)
@@ -88,15 +88,15 @@
                 <div class="group-sub-category">
                     <div class="sub-category">
                         <h1 class="heading-category"><a>@Model.PageTitle</a></h1>
-                        @foreach (var menu in Model.GetSubMenu(slug1))
+                        @foreach (var menu in Model.GetSubMenu(item1))
                         {
-                            <h2 class="sub-item @(slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                            <h2 class="sub-item @item2 @menu.PostId @(item2 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>
                         }
                     </div>
                     <div class="sub-category">
-                        @foreach (var menu in Model.GetSubMenu(slug2))
+                        @foreach (var menu in Model.GetSubMenu(item2))
                         {
-                            <h2 class="sub-item @(slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                            <h2 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>
                         }
                     </div>
                 </div>
@@ -104,10 +104,10 @@
             else
             {
                 var subMenu = Model.GetSubMenu(Model.Slug);
-                if (slug3 != null)
+                if (item3 > 0)
                 {
-                    var menu = Model.GetMenuDetail(slug3);
-                    var coMenu = Model.GetCoMenu(slug3);
+                    var menu = Model.GetMenuDetail(item3);
+                    var coMenu = Model.GetCoMenu(item3);
                     <div class="menu-select single-select-menu">
                         <a href="@Url.Action("Category", "Home", new { slug = Model.Slug + CategoryKey.Suffix })">@menu.MenuTitle</a>
                         <select class="select_ad"   onChange="window.location.href=this.value">
@@ -115,7 +115,7 @@
                             {
 
                                 var selected = menu.PostId == item.PostId ? "selected" : "";
-                                <!option class="@selected" @selected value="@Url.Action("Category", "Home", new { slug = item.CateSlug + CategoryKey.Suffix })">@item.MenuTitle</!option>
+                                <!option class="@selected" @selected value="@getMenuLink(item)">@item.MenuTitle</!option>
                             }
                         </select>
                     </div>
@@ -125,7 +125,7 @@
                     <div class="sub-category">
                         @foreach (var menu in subMenu)
                         {
-                            var link = Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix });
+                            var link = @getMenuLink(menu);
                             <h2 class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
                         }
                     </div>
@@ -258,3 +258,15 @@
         </div>
     </div>
 </section>
+
+@functions {
+    private string getMenuLink(Menu menu)
+    {
+        var link = Url.Action("Category", "Home", new {slug =  menu.CateSlug + CategoryKey.Suffix});
+        if(!String.IsNullOrEmpty(menu.CustomLink))
+        {
+            link = menu.CustomLink;
+        }
+        return link;
+    }
+}

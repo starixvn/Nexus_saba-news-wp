@@ -72,10 +72,10 @@
                 return View(Constants.EmptyBlogView);
             }
             var menus = await dataControlService.GetMenuData();
-            var (slugs, parentName) = PostHelper.GetCategorySlugs(menus.ToList(), slug);
-            viewModel.Header.ActiveCategory = slugs.Slug1 ?? slug;
+            var (menuItems, activeMenu) = PostHelper.GetMenuActive(menus.ToList(), slug);
+            viewModel.Header.ActiveCategory = activeMenu ?? slug;
             viewModel.Menus = menus;
-            viewModel.Slugs = slugs;
+            viewModel.MenuItems = menuItems;
             viewModel.Category.Url = $"{domain}{slug}{CategoryKey.Suffix}";
             viewModel.PageTitle = string.IsNullOrEmpty(parentName) ? viewModel.Category.Title: parentName;
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;

@@ -12,6 +12,7 @@ namespace SabaNews.Models
         public int ParentId { get; set; }
         public string PageSlug { get; set; }
         public string PageTitle { get; set; }
+        public string CustomLink { get; set; }
 
         public string MenuTitle
         {
