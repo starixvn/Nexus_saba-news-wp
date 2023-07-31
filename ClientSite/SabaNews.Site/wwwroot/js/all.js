@@ -58,7 +58,7 @@ $(document).ready(function () {
     })
 
 
-    $(window).on("load resize", function (e) {
+    $(window).on("resize", function (e) {
         var widthContainer = $('.livescore-soccer-main').innerWidth();
         $('.detail-fixed').css("width", widthContainer);
     });
@@ -109,33 +109,15 @@ $(document).ready(function () {
         window.addEventListener('scroll', function () { checkScrollHome() })
     }
     
-
-
     function scrollBackTop() {
-        if ($(window).scrollTop()) {
+        if (document.body.scrollTop > 100) {
             $('.back-to-top').fadeIn();
         } else {
             $('.back-to-top').fadeOut();
         }
     }
-
-
-    function scrollTopY() {
-        var top_of_window = $(window).scrollTop();
-        var widthContainer = $('.livescore-soccer-main').innerWidth();
-        if (top_of_window > 0) {
-            $('.detail-fixed').css("width", widthContainer);
-        } else {
-            $('.detail-fixed').css("width", "auto");
-        }
-    }
-
-
-
-
-    $(window).scroll(function () {
+    $("html, body").on("scroll", function (e) {
         scrollBackTop();
-        scrollTopY();
     });
 
 

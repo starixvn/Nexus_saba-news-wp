@@ -15,7 +15,6 @@
 html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -37,6 +36,10 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 .img-res {
