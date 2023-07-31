@@ -24,7 +24,11 @@
 
 .header {
     background-color: $bg-nav;
-
+    @include tableMobile{
+        display : flex;
+        justify-content: space-between;
+        width: 100%;
+    }
     .header-controls {
         padding: .8rem 0;
         border-bottom: 1px solid $separator-color;
@@ -32,6 +36,7 @@
         @include tableMobile {
             border-bottom: none;
             height: 7rem;
+            width: 100%;
         }
 
         .container {
@@ -500,12 +505,6 @@
 
         .nav-menu {
             width: 100%;
-
-
-            @include landscapeTablet {
-                width: calc(100% - 120px);
-            }
-
             @include tableMobile {
                 padding-top: 4.6rem;
                 padding-bottom: 4rem;
@@ -558,7 +557,7 @@
                             content: "";
                             display: block;
                             position: absolute;
-                            bottom: 0;
+                            top: 0;
                             width: 100%;
                             right: 50%;
                             height: 1px;
@@ -605,11 +604,11 @@
                             border: none;
                         }
 
-                        &:after {
-                            @include tableMobile {
-                                display: none;
-                            }
-                        }
+                        // &:after {
+                        //     @include tableMobile {
+                        //         display: none;
+                        //     }
+                        // }
                     }
 
                     .item {
@@ -949,6 +948,12 @@
         &:nth-child(3) {
             top: 2rem;
         }
+    }
+}
+
+.button-mobile{
+    @include tableMobile {
+        position: relative;
     }
 }
 

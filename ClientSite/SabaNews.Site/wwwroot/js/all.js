@@ -65,14 +65,14 @@ $(document).ready(function () {
     
     //mobile
     $('.button-mobile').click(function () {
-        var windowWidth = window.innerWidth;
+        // var windowWidth = window.innerWidth;
         if ($(window).innerWidth() <= 1024) {
             $('.main-menu').toggleClass('active-main-menu');
             $('.nav-menu').toggleClass('active-nav');
             $(this).toggleClass('open');
             $('body').toggleClass('hidden-body');
-            $('.header-controls').removeClass('width-100-saba');
-            $('.header-controls').css('width', windowWidth);
+            // $('.header-controls').removeClass('width-100-saba');
+            // $('.header-controls').css('width', windowWidth);
             $('.has-sub ul').hide();
             $(".submenu-button").removeClass('submenu-opened');
         }
@@ -239,7 +239,6 @@ $(document).ready(function () {
     
     
     $(window).on('scroll', function () {
-        var banner = $('.banner').offset();
         const header = $('.header-controls').innerHeight();
         const topHeader = $('.top-header').innerHeight();
         const top = header + topHeader - 15;

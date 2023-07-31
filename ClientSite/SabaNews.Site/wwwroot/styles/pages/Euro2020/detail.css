@@ -535,6 +535,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .header {
   background-color: #FFFDF9;
 }
+@media screen and (max-width: 1024px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
 .header .header-controls {
   padding: 0.8rem 0;
   border-bottom: 1px solid #e5e5e5;
@@ -543,6 +550,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .header .header-controls {
     border-bottom: none;
     height: 7rem;
+    width: 100%;
   }
 }
 .header .header-controls .container {
@@ -963,11 +971,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .top-header .group-menu .nav-menu {
   width: 100%;
 }
-@media only screen and (min-width: 1024px) and (max-width: 1366px) {
-  .top-header .group-menu .nav-menu {
-    width: calc(100% - 120px);
-  }
-}
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu {
     padding-top: 4.6rem;
@@ -1032,7 +1035,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     content: "";
     display: block;
     position: absolute;
-    bottom: 0;
+    top: 0;
     width: 100%;
     right: 50%;
     height: 1px;
@@ -1070,11 +1073,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(3) a {
   border: none;
-}
-@media screen and (max-width: 1024px) {
-  .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(3):after {
-    display: none;
-  }
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item {
   text-decoration: none;
@@ -1385,6 +1383,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .button-mobile .line-mb:nth-child(3), .button-detail-page .line-mb:nth-child(3) {
   top: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .button-mobile {
+    position: relative;
+  }
 }
 
 @media screen and (max-width: 1024px) {

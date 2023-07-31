@@ -53,8 +53,6 @@ body {
     @include tableMobile {
         padding-top: 1rem;
         position: relative;
-        overflow-x: hidden;
-        height: 100vh !important;
     }
 }
 
