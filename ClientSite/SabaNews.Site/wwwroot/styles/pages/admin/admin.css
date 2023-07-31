@@ -417,6 +417,11 @@ button {
 .slide-nav .menu-slide {
   list-style: none;
   padding-left: 2.7rem;
+  overflow: auto;
+  height: calc(100% - 10rem);
+}
+.slide-nav .menu-slide::-webkit-scrollbar {
+  display: none;
 }
 .slide-nav .menu-slide .menu-item {
   padding: 2rem 0;
