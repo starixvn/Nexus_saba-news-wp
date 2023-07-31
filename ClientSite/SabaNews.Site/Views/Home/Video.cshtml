@@ -39,7 +39,7 @@
     var item3 = Model.MenuItems != null ? Model.MenuItems.Item3 : null;
 }
 
-@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.ActiveCategory, Slugs = Model.Slugs }))
+@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.ActiveCategory, MenuItems = Model.MenuItems }))
 <section class="main">
     <div class="base-container medium-container">
         @if (Model.Menus != null)

@@ -170,6 +170,7 @@
                 <div class="menu-popup-content">
                     <div class="content-menu">
                         <div class="block-menu">
+                            
                             @{
                                 int indexItem = 1;
                                 @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId))
@@ -177,9 +178,21 @@
                                     var link = getMenuLink(menu);
                                     var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
                                     indexItem++;
-                                    Console.WriteLine(indexItem);
                                     @if(indexItem > 0 && indexItem % 6 == 2) {
                                         @:</div><div class="block-menu">
+                                    }
+                                    @if(indexItem == 2)
+                                    {
+                                        <div class="block-menu-item">
+                                            <ul class="block-menu-list">
+                                                <li><a href="/" title="Trang chủ">Trang chủ</a></li>
+                                                <li><a href="/" title="Trang chủ">Tin nóng</a></li>
+                                                <li><a href="/" title="Trang chủ">Kết quả</a></li>
+                                                <li><a href="/lich-thi-dau/bong-da/truc-tiep" title="Trang chủ">Trực tiếp</a></li>
+                                                <li><a href="/hau-truong-sabavn" title="Trang chủ">Hậu Trường</a></li>
+                                                <li><a href="/chuyen-nhuong-sabavn" title="Trang chủ">Chuyển Nhượng</a></li>
+                                            </ul>
+                                        </div>
                                     }
                                     <div class="block-menu-item">
                                         <div class="block-menu-title"><a href="@link" title="@menu.MenuTitle">@menu.MenuTitle</a></div>

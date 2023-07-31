@@ -22,9 +22,9 @@
 
         public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "", MenuItems menuItems = null)
         {
-            var menus = await dataControlService.GetMenuData(MenuType.MainMenu);
+            var menus = await dataControlService.GetMenuData();
             var detailMenu = await dataControlService.GetMenuData(MenuType.DetailMenu);
-            var popularKeyword = detailMenu.Where(item => item.ParentId == 0).LastOrDefault();
+            var popularKeyword = detailMenu.LastOrDefault(item => item.ParentId == 0);
             var isAuthenticated = sessionService.User != null;
             var model = new MenuViewModel
             {
