@@ -1021,6 +1021,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
+    align-items: flex-start;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -1034,8 +1035,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu {
     padding-top: 4.6rem;
-    padding-bottom: 4rem;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    height: calc(100vh - 16rem);
   }
 }
 .top-header .group-menu .nav-menu .main-menu-pc, .top-header .group-menu .nav-menu .main-menu-mobile {
@@ -1058,8 +1060,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     z-index: 999;
     display: none;
     background-color: #FFFDF9;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
     justify-content: inherit;
     border-top: 1px solid #E0E0E0;
     border-bottom: 1px solid #E0E0E0;
@@ -1764,8 +1764,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
     z-index: 100;
     display: block;
-    overflow: auto;
-    height: calc(100vh - 7rem);
     top: 7rem;
     bottom: 0;
     position: fixed;

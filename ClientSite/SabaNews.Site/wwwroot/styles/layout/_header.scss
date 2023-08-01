@@ -497,6 +497,7 @@
             flex-wrap: wrap;
             justify-content: center;
             position: relative;
+            align-items: flex-start;
         }
 
         @include landscapeTablet {
@@ -507,8 +508,9 @@
             width: 100%;
             @include tableMobile {
                 padding-top: 4.6rem;
-                padding-bottom: 4rem;
                 overflow: auto;
+                -webkit-overflow-scrolling: touch;
+                height: calc(100vh - 16rem);
             }
             .main-menu-pc {
                 position: relative;
@@ -524,8 +526,6 @@
                     z-index: 999;
                     display: none;
                     background-color: $bg-nav;
-                    overflow: auto;
-                    -webkit-overflow-scrolling: touch;
                     justify-content: inherit;
                     border-top: 1px solid $border-calendar;
                     border-bottom: 1px solid $border-calendar;
@@ -1276,8 +1276,8 @@
             width: 100%;
             z-index: 100;
             display: block;
-            overflow: auto;
-            height: calc(100vh - 7rem);
+            // overflow: auto;
+            // height: calc(100vh - 7rem);
             top: 7rem;
             bottom: 0;
             position: fixed;
