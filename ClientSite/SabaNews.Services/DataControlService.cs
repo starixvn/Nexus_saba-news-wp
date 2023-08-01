@@ -102,7 +102,7 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(menuType);
 
                 if (result == null)
                 {
