@@ -114,7 +114,7 @@
     <div class="container padding-mobile-none">
         <div class="group-menu">
             <div class="nav-menu">
-                <ul class="main-menu" id="meumutilv">
+                <ul class="main-menu-pc">
                     <li class="menu-item hiden-icon-mobile">
                         <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
                     </li>
@@ -127,7 +127,7 @@
                             var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                             var lv2Menus = Model.Menus.Where(item => item.ParentId == menu.PostId);
                             <li class="menu-item">
-                                <a href="@link" class="item @activeMenu">@menu.MenuTitle</a>
+                                <a href="@link" class="item" title="@menu.MenuTitle">@menu.MenuTitle</a>
                                 @{RenderSubMenu(Model.Menus, menu.PostId);}
                             </li>
                         }
@@ -135,6 +135,26 @@
                     <li class="open-menu-popup">
                         <i class="icon-menu"></i>
                     </li>
+                </ul>
+
+                <ul class="main-menu-mobile">
+                    @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId))
+                    {
+                        var link = getMenuLink(menu);
+                        var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
+                        <li class="menu-item">
+                            <a href="@link" class="item">@menu.MenuTitle</a>
+                            @if(subMenus.Count() > 0){
+
+                            <ul>
+                                @foreach (var subMenu in subMenus){
+                                    var subLink = getMenuLink(subMenu);
+                                    <li><a href="@subLink" title="@subMenu.MenuTitle">@subMenu.MenuTitle</a></li>
+                                }
+                            </ul>
+                            }
+                        </li>
+                    }
                     <li class="right-header-section search-input">
                         <form action="/Search" method="post" id="search">
                             <input class="keyword-input search-box" id="search-keyword" type="text" placeholder="Tìm kiếm...">

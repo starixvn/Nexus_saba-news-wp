@@ -510,7 +510,7 @@
                 padding-bottom: 4rem;
                 overflow: auto;
             }
-            .main-menu {
+            .main-menu-pc {
                 position: relative;
                 list-style: none;
                 width: 100%;
@@ -583,22 +583,7 @@
                         margin-right: 0;
                     }
 
-
-                    &:first-child {
-                        a {
-                            @include tableMobile {
-                                display: none;
-                            }
-                        }
-
-                        &:after {
-                            @include tableMobile {
-                                display: none;
-                            }
-                        }
-                    }
-
-                    &:nth-last-child(3) {
+                    &:nth-last-child(2) {
                         a {
                             border: none;
                         }
@@ -608,7 +593,7 @@
                             }
                         }
                     }
-                    &:nth-last-child(4){
+                    &:nth-last-child(1){
                         @include tableMobile{
                             &::after{
                                 display: none;
@@ -808,6 +793,20 @@
                             display: block !important;
                         }
                     }
+                }
+            }
+            .main-menu-pc{
+                display: flex;
+                @include tableMobile{
+                    display: none
+                }
+            }
+
+            .main-menu-mobile{
+                @extend .main-menu-pc;
+                display: none;
+                @include tableMobile{
+                    display: flex;
                 }
             }
 
