@@ -171,11 +171,14 @@
                     }
                 }
             </div>
-            <div class="loading-page">
-                <div class="lds-ellipsis">
-                    <div></div><div></div><div></div><div></div>
+            @if(Model.Posts.Count >= 10)
+            {
+                <div class="loading-page">
+                    <div class="lds-ellipsis">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
         <div class="banner-scroll banner-mobile-center" style="display: none;"></div>
         <div class="ads-insite show-mobile banner-mobile-bottom"></div>

@@ -111,12 +111,14 @@
 </div>
 @{
     var popularKeywords = Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId);
+    var parentDetailMenus = Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId);
 }
 <div class="top-header">
     <div class="container padding-mobile-none">
         <div class="group-menu">
             <div class="nav-menu">
-                <ul class="main-menu-pc">
+                @* Desktop header menu *@
+                <ul class="main-menu-pc @Model.CategorySlug" >
                     <li class="menu-item hiden-icon-mobile">
                         <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
                     </li>
@@ -129,7 +131,7 @@
                             var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                             var lv2Menus = Model.Menus.Where(item => item.ParentId == menu.PostId);
                             <li class="menu-item">
-                                <a href="@link" class="item" title="@menu.MenuTitle">@menu.MenuTitle</a>
+                                <a href="@link" class="item @activeMenu"  title="@menu.MenuTitle">@menu.MenuTitle</a>
                                 @{RenderSubMenu(Model.Menus, menu.PostId);}
                             </li>
                         }
@@ -139,6 +141,10 @@
                     </li>
                 </ul>
 
+                @* End Desktop header menu *@
+
+
+                @* Mobile popup menu *@
                 <ul class="main-menu-mobile">
                     <li class="menu-item">
                         <a href="/" class="item" title="Trang chủ">Trang chủ</a>
@@ -158,7 +164,7 @@
                     <li class="menu-item">
                         <a href="/" class="item" title="Trang chủ">chuyển nhượng</a>
                     </li>
-                    @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId))
+                    @foreach (var menu in parentDetailMenus)
                     {
                         var link = getMenuLink(menu);
                         var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
@@ -183,6 +189,7 @@
                         </form>
                     </li>
                 </ul>
+
                 <div class="keywork">
                     <div class="keywork-title">Từ khóa phổ biến</div>
                     <ul class="keywork-list">
@@ -193,10 +200,12 @@
                         }
                     </ul>
                 </div>
+
+                @* End Mobile popup menu *@
             </div>
         </div>
 
-
+        @* Desktop popup menu *@
         <div class="menu-popup hide-popup">
             <div class="group-column-popup">
                 <ul class="menu-popup-header">
@@ -208,7 +217,7 @@
                         <div class="block-menu">
                             @{
                                 int indexItem = 1;
-                                @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId))
+                                @foreach (var menu in parentDetailMenus)
                                 {
                                     var link = getMenuLink(menu);
                                     var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
@@ -258,13 +267,15 @@
                 </div>
             </div>
         </div>
+
+        @* End Desktop popup menu *@
     </div>
 </div>
 
 
 
 
-
+@* Mobile header menu *@
 <div class="child-mobile-menu">
     @{
         var count = 0;
@@ -321,6 +332,8 @@
         <span class="icon-arrow scroll-mobile-menu"></span>
     }
 </div>
+@* End Mobile header menu *@
+
 @functions {
     private string getMenuLink(Menu menu)
     {
