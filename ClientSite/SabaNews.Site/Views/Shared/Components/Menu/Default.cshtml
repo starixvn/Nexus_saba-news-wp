@@ -109,7 +109,9 @@
         </div>
     </div>
 </div>
-
+@{
+    var popularKeywords = Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId);
+}
 <div class="top-header">
     <div class="container padding-mobile-none">
         <div class="group-menu">
@@ -167,7 +169,7 @@
                 <div class="keywork">
                     <div class="keywork-title">Từ khóa phổ biến</div>
                     <ul class="keywork-list">
-                        @foreach (var keyword in Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId))
+                        @foreach (var keyword in popularKeywords)
                         {
                             var link = getMenuLink(keyword);
                                 <li><a href="@link">@keyword.MenuTitle</a></li>
@@ -187,7 +189,6 @@
                 <div class="menu-popup-content">
                     <div class="content-menu">
                         <div class="block-menu">
-                            
                             @{
                                 int indexItem = 1;
                                 @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId))
@@ -229,7 +230,7 @@
                         <div class="box-slidebar">
                             <div class="box-slidebar-title">Từ khóa phổ biến</div>
                             <ul class="box-slidebar-list">
-                                @foreach (var keyword in Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId))
+                                @foreach (var keyword in popularKeywords)
                                 {
                                     var link = getMenuLink(keyword);
                                         <li><a href="@link">@keyword.MenuTitle</a></li>
