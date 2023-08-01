@@ -95,14 +95,13 @@
             {
                 var listCategoryCaching = new List<string>
                 {
-                    Constants.NewPostSlug,
-                    Constants.FootballSlug,
-                    Constants.GuessSlug,
-                    Constants.BackstageSlug,
-                    Constants.TransferSlug,
-                    Constants.BasketballSlug,
-                    Constants.OtherPostSlug,
-                    Constants.VideoSlug
+                    CategoryKey.NewPostSlug,
+                    CategoryKey.GuessSlug,
+                    CategoryKey.BackstageSlug,
+                    CategoryKey.TransferSlug,
+                    CategoryKey.OtherPostSlug,
+                    CategoryKey.VideoSlug,
+                    CategoryKey.VNFootballSlug
                 };
                 foreach (var slug in listCategoryCaching)
                 {

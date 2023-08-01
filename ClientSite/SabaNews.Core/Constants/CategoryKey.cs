@@ -23,6 +23,20 @@ namespace SabaNews.Core.Constants
 
         public const string International = "doi-tuyen";
 
+        public const string NewPostSlug = "tin-the-thao";
+
+        public const string GuessSlug = "nhan-dinh-bong-da";
+
+        public const string BackstageSlug = "hau-truong";
+
+        public const string TransferSlug = "chuyen-nhuong";
+
+        public const string OtherPostSlug = "cac-mon-khac";
+
+        public const string VideoSlug = "video";
+
+        public const string VNFootballSlug = "viet-nam-sabavn";
+
         public const string Prefix = "category-";
 
         public const string Suffix = "-sabavn";

@@ -146,8 +146,8 @@
             var expectedViewModel = fixture.Create<BlogViewModel>();
             expectedViewModel.IsVideo = true;
             var expectedMenu = new List<Menu>();
-            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "menu-1", ParentId = 2  });
-            var slugs = new Slugs { Slug1 = "video" };
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "video", ParentId = 0  });
+            expectedMenu.Add(new Menu{ PostId = 2, CateSlug = "viet-nam-video", ParentId = 1  });
             dataControlService.GetMenuData().Returns(expectedMenu);
             dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
 
@@ -157,7 +157,7 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(Constants.BlogView, viewResult.ViewName);
+            Assert.Equal(Constants.VideoView, viewResult.ViewName);
             Assert.Equal(1, viewModel.MenuItems.Item1);
             Assert.Equal(0, viewModel.MenuItems.Item2);
             Assert.Equal(0, viewModel.MenuItems.Item3);
