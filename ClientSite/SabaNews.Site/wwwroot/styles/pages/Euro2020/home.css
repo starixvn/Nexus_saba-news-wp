@@ -1698,7 +1698,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-slidebar-title, .keywork-title {
   font-size: 1.4rem;
-  color: #E13C29;
+  color: #333;
   font-weight: 600;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -1730,10 +1730,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     display: block;
   }
 }
-.keywork-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+@media screen and (max-width: 1024px) {
+  .keywork-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+  }
 }
 .keywork-list li {
   margin-bottom: 0;

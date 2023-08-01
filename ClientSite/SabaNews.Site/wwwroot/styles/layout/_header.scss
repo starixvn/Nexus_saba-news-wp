@@ -1212,7 +1212,7 @@
     padding: 1.2rem;
     &-title{
         font-size: 1.4rem;
-        color: #E13C29;
+        color: #333;
         font-weight: 600;
         margin-bottom: 1rem;
         text-transform: uppercase;
@@ -1249,9 +1249,11 @@
     }
     &-list{
         @extend .box-slidebar-list;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
+        @include tableMobile{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.6rem;
+        }
         li{
             margin-bottom: 0;
         }

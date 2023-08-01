@@ -147,14 +147,11 @@
                 <div class="keywork">
                     <div class="keywork-title">Từ khóa phổ biến</div>
                     <ul class="keywork-list">
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
-                        <li><a href="#">Manchester United</a></li>
+                        @foreach (var keyword in Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId))
+                        {
+                            var link = getMenuLink(keyword);
+                                <li><a href="@link">@keyword.MenuTitle</a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -186,12 +183,12 @@
                                         indexItem++;
                                         <div class="block-menu-item">
                                             <ul class="block-menu-list">
-                                                <li><a href="/" title="Trang chủ">Trang chủ</a></li>
-                                                <li><a href="/" title="Trang chủ">Tin nóng</a></li>
-                                                <li><a href="/" title="Trang chủ">Kết quả</a></li>
-                                                <li><a href="/lich-thi-dau/bong-da/truc-tiep" title="Trang chủ">Trực tiếp</a></li>
-                                                <li><a href="/hau-truong-sabavn" title="Trang chủ">Hậu Trường</a></li>
-                                                <li><a href="/chuyen-nhuong-sabavn" title="Trang chủ">Chuyển Nhượng</a></li>
+                                                <div class="block-menu-title"><a href="/" title="Trang chủ">Trang chủ</a></div>
+                                                <div class="block-menu-title"><a href="/" title="Trang chủ">Tin nóng</a></div>
+                                                <div class="block-menu-title"><a href="/" title="Trang chủ">Kết quả</a></div>
+                                                <div class="block-menu-title"><a href="/lich-thi-dau/bong-da/truc-tiep" title="Trang chủ">Trực tiếp</a></div>
+                                                <div class="block-menu-title"><a href="/hau-truong-sabavn" title="Trang chủ">Hậu Trường</a></div>
+                                                <div class="block-menu-title"><a href="/chuyen-nhuong-sabavn" title="Trang chủ">Chuyển Nhượng</a></div>
                                             </ul>
                                         </div>
                                     }
@@ -211,13 +208,13 @@
                     <div class="slide-bar-menu">
                         <div class="box-slidebar">
                             <div class="box-slidebar-title">Từ khóa phổ biến</div>
-                            @foreach (var keyword in Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId))
-                            {
-                                var link = getMenuLink(keyword);
-                                <ul class="box-slidebar-list">
-                                    <li><a href="@link">@keyword.MenuTitle</a></li>
-                                </ul>
-                            }
+                            <ul class="box-slidebar-list">
+                                @foreach (var keyword in Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId))
+                                {
+                                    var link = getMenuLink(keyword);
+                                        <li><a href="@link">@keyword.MenuTitle</a></li>
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>
