@@ -557,7 +557,7 @@
                             content: "";
                             display: block;
                             position: absolute;
-                            top: 0;
+                            bottom: 0;
                             width: 100%;
                             right: 50%;
                             height: 1px;
@@ -599,16 +599,21 @@
                     }
 
                     &:nth-last-child(3) {
-
                         a {
                             border: none;
                         }
-
-                        // &:after {
-                        //     @include tableMobile {
-                        //         display: none;
-                        //     }
-                        // }
+                        @include tableMobile{
+                            &::after{
+                                display: none;
+                            }
+                        }
+                    }
+                    &:nth-last-child(4){
+                        @include tableMobile{
+                            &::after{
+                                display: none;
+                            }
+                        }
                     }
 
                     .item {

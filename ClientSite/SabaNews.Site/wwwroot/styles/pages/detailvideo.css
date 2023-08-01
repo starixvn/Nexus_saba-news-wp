@@ -1030,7 +1030,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     content: "";
     display: block;
     position: absolute;
-    top: 0;
+    bottom: 0;
     width: 100%;
     right: 50%;
     height: 1px;
@@ -1068,6 +1068,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(3) a {
   border: none;
+}
+@media screen and (max-width: 1024px) {
+  .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(3)::after {
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(4)::after {
+    display: none;
+  }
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item {
   text-decoration: none;
