@@ -111,7 +111,6 @@
         }
         var slug = $('#guess-section').data('slug');
         var limitItem = $('#guess-section').data('limit');
-        console.log(slug, limitItem);
         $.ajax({
             type: 'POST',
             url: '/api/GetCategorySidebar',
@@ -121,14 +120,19 @@
             }
         })
     }
+
     function DetectRowsInElement () {
         const cards = document.querySelector('.group-parent-sub');
         let row = 0;
         [...cards.children].forEach((el) => {
+            var wappedCate = "";
             if (!el.previousElementSibling || el.offsetLeft < el.previousElementSibling.offsetLeft) {
                 row++;
             }
             if(row > 1){
+                var cate = $(el).find("a");
+                wappedCate = '<li><a href="'+ cate.attr("href") +'">'+ cate.text() +'</a></li>';
+                $('.list-dropdown-category').append(wappedCate);
                 $('.button-dropdown-category').show();
             }
             el.classList.add(`${row > 1 ? 'wrapped' : 'no-wrapped'}`);
@@ -137,6 +141,13 @@
         $('.button-dropdown-category').click(function () {
             $('.list-dropdown-category').toggleClass('toggle-show');
         })
+
+        $(window).click(function (e) {
+            var elmClass = e.target.className;
+            if (!elmClass !== 'button-dropdown-category' && elmClass !== 'icon-button-dot') {
+                $('.list-dropdown-category').removeClass('toggle-show');
+            }
+        });
     }
     function init() {
         InfiniteScroll();
