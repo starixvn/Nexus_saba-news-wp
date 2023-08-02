@@ -58,9 +58,9 @@
     }
 
     function InfiniteScroll() {
-        $(window).on("scroll", function () {
+        $("body").on("scroll", function () {
             const scrollHeight = $(document).height();
-            const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
+            const scrollPos = Math.floor($("body").height() + $("body").scrollTop());
             const isBottom = scrollHeight - $('.footer').innerHeight() < scrollPos;
             if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
                 page++;
