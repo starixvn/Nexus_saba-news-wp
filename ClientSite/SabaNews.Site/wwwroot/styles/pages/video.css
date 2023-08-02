@@ -3333,11 +3333,23 @@ button {
   right: 0;
   background: #FFFDF9;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  min-width: 20rem;
+  max-width: 20rem;
+  max-height: 17rem;
   border: 1px solid #DADADA;
   border-radius: 3px;
   list-style: none;
   display: none;
+  overflow: auto;
+}
+.sub-category.parent-sub .list-dropdown-category::-webkit-scrollbar {
+  width: 0.6rem;
+}
+.sub-category.parent-sub .list-dropdown-category::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sub-category.parent-sub .list-dropdown-category::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 .sub-category.parent-sub .list-dropdown-category li a {
   display: block;
