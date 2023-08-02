@@ -121,13 +121,28 @@
             }
         })
     }
-
-
-
+    function DetectRowsInElement () {
+        const cards = document.querySelector('.group-parent-sub');
+        let row = 0;
+        [...cards.children].forEach((el) => {
+            if (!el.previousElementSibling || el.offsetLeft < el.previousElementSibling.offsetLeft) {
+                row++;
+            }
+            if(row > 1){
+                $('.button-dropdown-category').show();
+            }
+            el.classList.add(`${row > 1 ? 'wrapped' : 'no-wrapped'}`);
+             $('.wrapped').hide();
+        });
+        $('.button-dropdown-category').click(function () {
+            $('.list-dropdown-category').toggleClass('toggle-show');
+        })
+    }
     function init() {
         InfiniteScroll();
         GetVideoSidebar();
         GetPostSidebar();
+        DetectRowsInElement();
     }
 
     return {

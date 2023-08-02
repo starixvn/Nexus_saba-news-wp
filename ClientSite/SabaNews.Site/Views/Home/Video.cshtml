@@ -47,12 +47,20 @@
             if (!isMobile)
             {
                 <div class="group-sub-category">
-                    <div class="sub-category">
-                        <h1 class="heading-category"><a>@Model.HeadTitle</a></h1>
-                        @foreach (var menu in Model.GetSubMenu(item1))
-                        {
-                            <h2 class="sub-item @item2 @menu.PostId @(item2 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
-                        }
+                    <div class="sub-category parent-sub">
+                        <h1 class="heading-category count-wrap"><a>@Model.HeadTitle</a></h1>
+                        <div class="group-parent-sub">
+                             @foreach (var menu in Model.GetSubMenu(item1))
+                            {
+                                <h2 class="sub-item @item2 @menu.PostId @(item2 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                            }
+                        </div>
+                        <span class="button-dropdown-category"><i class="icon-button-dot"></i></span>
+                        <ul class="list-dropdown-category">
+                            <li><a href="#">dsdsadsadsasdaasd</a></li>
+                            <li><a href="#">dsdsadsadsasdaasd</a></li>
+                            <li><a href="#">dsdsadsadsasdaasd</a></li>
+                        </ul>
                     </div>
                     <div class="sub-category">
                         @foreach (var menu in Model.GetSubMenu(item2))

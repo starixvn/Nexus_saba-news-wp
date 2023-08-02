@@ -22,6 +22,7 @@
 @import '../components/ads';
 @import '../components/_popup-event';
 @import '../components/loading';
+@import '../components/sub-menu-category';
 
 .main {
     @include tableMobile {
@@ -227,108 +228,7 @@
         }
     }
 }
-.group-sub-category{
-    margin-bottom: 1.2rem;
-    .heading-category{
-        margin-bottom: 0;
-    }
-}
 
-.sub-category {
-    display: flex;
-    align-items: center;
-    position: relative;
-    @include tableMobile {
-        overflow-x: overlay;
-        overflow-y: hidden;
-        white-space: nowrap;
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
-
-
-    .sub-item {
-        margin-right: 2.2rem;
-        font-weight: bold;
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        a {
-            color: #333;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            font-weight: 600;
-            font-size: 1.4rem;
-            @include tableMobile {
-                padding-bottom: 0;
-            }
-
-            &:before {
-                position: absolute;
-                width: 0;
-                bottom: -4px;
-                height: .2rem;
-                background-color: #F12F19;
-                content: '';
-                left: 0;
-                transition: width .09s ease-in;
-            }
-        }
-
-        &:hover a, &.active a {
-            color: #F12F19;
-
-            &:before {
-                width: 100%;
-            }
-        }
-    }
-
-    &:first-child{
-        margin-bottom: 1.2rem;
-        &::before{
-            content:  "";
-            display: block;
-            height: 1px;
-            background: #D4D4D4;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            @include tableMobile{
-                display: none;
-            }
-        }
-
-    }
-
-    &:last-child {
-        border: none;
-
-        .sub-item {
-            font-weight: 400;
-
-            &:hover a {
-                &:before, &.active a {
-                    display: none;
-                }
-            }
-
-            &.active a {
-                &:before {
-                    display: none;
-                }
-            }
-            a{
-                padding-bottom: 0;
-            }
-        }
-    }
-}
 
 .title-new-page {
     padding-left: 0;
