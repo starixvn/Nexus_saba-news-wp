@@ -309,12 +309,12 @@ span.number-position {
     width: 14px;
     right: -7px;
     bottom: -4px;
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
 
     @include Mobile {
-        width: 14px;
-        width: 14px;
+        width: 1.4rem;
+        width: 1.4rem;
     }
 
     svg {
@@ -369,12 +369,13 @@ span.number-position {
 .number-goal {
     position: absolute;
     color: #fff;
-    left: -5px;
+    left: -7px;
     font-size: 1.2rem;
 
     @include Mobile {
         font-size: 1rem;
         top: 4px;
+        left: -5px;
     }
 }
 
