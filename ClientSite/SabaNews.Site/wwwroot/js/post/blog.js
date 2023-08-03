@@ -153,7 +153,7 @@
         InfiniteScroll();
         GetVideoSidebar();
         GetPostSidebar();
-        DetectRowsInElement();
+        // DetectRowsInElement();
     }
 
     return {
