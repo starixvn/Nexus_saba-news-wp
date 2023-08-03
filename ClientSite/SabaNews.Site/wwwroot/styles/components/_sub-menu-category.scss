@@ -106,6 +106,8 @@
         .group-parent-sub{
             display: flex;
             flex-wrap: wrap;
+            overflow: hidden;
+            height: 2.9rem;
         }
         .list-dropdown-category{
             position: absolute;

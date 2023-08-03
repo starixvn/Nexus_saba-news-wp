@@ -3326,6 +3326,8 @@ button {
 .sub-category.parent-sub .group-parent-sub {
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
+  height: 2.9rem;
 }
 .sub-category.parent-sub .list-dropdown-category {
   position: absolute;
