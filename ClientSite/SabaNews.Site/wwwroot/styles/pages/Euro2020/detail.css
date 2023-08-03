@@ -1094,6 +1094,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu-pc .menu-item .item:hover, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item .item:hover {
   color: #F12F19;
+  opacity: 1 !important;
 }
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu .main-menu-pc .menu-item .item:hover, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item .item:hover {
@@ -1618,16 +1619,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-bottom: 0;
 }
 .menu-popup-content .content-menu .block-menu-list li.more {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   margin-bottom: 0;
-  color: #333;
+  color: #595959;
   cursor: pointer;
 }
 .menu-popup-content .content-menu .block-menu-list li a {
   text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.4rem;
+  font-weight: 500;
   color: #333;
 }
 .menu-popup-content .content-menu .block-menu-title {
@@ -1654,7 +1655,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .box-slidebar-title, .keywork-title {
   font-size: 1.4rem;
   color: #333;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 1rem;
   text-transform: uppercase;
   line-height: normal;

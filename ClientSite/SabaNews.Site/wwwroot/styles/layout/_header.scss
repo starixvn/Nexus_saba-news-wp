@@ -620,7 +620,7 @@
 
                         &:hover {
                             color: $color-main-title;
-
+                            opacity: 1 !important;
                             @include tableMobile {
                                 color: inherit;
                             }
@@ -1176,16 +1176,16 @@
                             margin-bottom: 0;
                         }
                         &.more{
-                            font-size: 1.2rem;
+                            font-size: 1.3rem;
                             font-weight: 400;
                             margin-bottom: 0;
-                            color: $color-title;
+                            color: #595959;
                             cursor: pointer;
                         }
                         a{
                             text-decoration: none;
-                            font-size: 1.3rem;
-                            font-weight: 400;
+                            font-size: 1.4rem;
+                            font-weight: 500;
                             color: $color-title;
                         }
                     }
@@ -1217,7 +1217,7 @@
     &-title{
         font-size: 1.4rem;
         color: #333;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 1rem;
         text-transform: uppercase;
         line-height: normal;
