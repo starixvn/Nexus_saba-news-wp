@@ -12,6 +12,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetSeasonStandings`(
 			- 202200512@Tim: check 2nd leg
             - 202200615@Hank: check combine & delete match
             - 20220915@Hank: add team name & icon vn & update standing info
+            - 20230804@Hank: check duplicate stageId
     */
 )
 BEGIN
@@ -37,7 +38,7 @@ BEGIN
         ,(IFNULL(se.Position, s.Position)) as Position,  s.Promotion
     FROM livescore_season_standings s
 		INNER JOIN livescore_team t ON s.TeamId = t.TeamId
-        INNER JOIN livescore_season_stage ss ON s.StageId = ss.StageId
+        INNER JOIN livescore_season_stage ss ON s.StageId = ss.StageId AND s.SeasonId = ss.SeasonId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
          LEFT JOIN livescore_season_standings_extra se ON se.SeasonId = s.SeasonId AND se.StageId = s.StageId AND se.TeamId = s.TeamId
     WHERE s.SeasonId = seasonId AND s.StageId > 0
@@ -81,7 +82,7 @@ BEGIN
     FROM livescore_match m
         INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
         INNER JOIN livescore_team a ON m.AwayTeamId = a.TeamId
-        INNER JOIN livescore_season_stage ss ON m.StageId = ss.StageId
+        INNER JOIN livescore_season_stage ss ON m.StageId = ss.StageId AND m.SeasonId = ss.SeasonId
         LEFT JOIN livescore_match_statistic sh ON m.MatchId = sh.MatchId AND m.HomeTeamId = sh.TeamId
         LEFT JOIN livescore_match_statistic sa ON m.MatchId = sa.MatchId AND m.AwayTeamId = sa.TeamId
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime

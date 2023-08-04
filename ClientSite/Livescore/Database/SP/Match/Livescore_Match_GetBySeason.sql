@@ -16,6 +16,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
             - 202200610@Hank: check deleted match
             - 2022008100@Hank: add TeamNameVN & IconVN,  select season, data custom
             - 20221227@Hank: select league IconVN
+            - 20230804@Hank: check duplicate stageId
     */
 )
 BEGIN    
@@ -76,7 +77,7 @@ BEGIN
         INNER JOIN livescore_team a ON m.AwayTeamId = a.TeamId
         LEFT JOIN livescore_match_statistic sh ON m.MatchId = sh.MatchId AND m.HomeTeamId = sh.TeamId
         LEFT JOIN livescore_match_statistic sa ON m.MatchId = sa.MatchId AND m.AwayTeamId = sa.TeamId
-        LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId
+        LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId AND m.SeasonId = ss.SeasonId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId

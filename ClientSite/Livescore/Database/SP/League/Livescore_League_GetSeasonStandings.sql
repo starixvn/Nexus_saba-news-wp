@@ -11,6 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetSeasonStandings`(
 		Creator: Hank@20220811
         Revisions:
 			- 20220811@Hank: init
+            - 20230804@Hank: check duplicate stageId
     */
 )
 BEGIN
@@ -36,7 +37,7 @@ BEGIN
         ,(IFNULL(se.Position, s.Position)) as Position,  s.Promotion
     FROM livescore_season_standings s
 		INNER JOIN livescore_team t ON s.TeamId = t.TeamId
-        INNER JOIN livescore_season_stage ss ON s.StageId = ss.StageId
+        INNER JOIN livescore_season_stage ss ON s.StageId = ss.StageId AND s.SeasonId = ss.SeasonId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_season_standings_extra se ON se.SeasonId = s.SeasonId AND se.StageId = s.StageId AND se.TeamId = s.TeamId
     WHERE s.SeasonId = seasonId AND s.StageId > 0
