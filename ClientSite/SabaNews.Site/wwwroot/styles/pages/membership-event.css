@@ -1082,7 +1082,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     padding: 1.1rem 2rem 1.1rem 0;
     margin-right: 0;
     display: block;
-    text-transform: uppercase;
     line-height: normal;
     color: #E13C29;
     font-weight: 600;
@@ -1635,7 +1634,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   text-decoration: none;
   font-size: 1.4rem;
   font-weight: 600;
-  text-transform: uppercase;
   color: #E13C29;
 }
 .menu-popup-content .slide-bar-menu {
