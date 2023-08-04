@@ -147,17 +147,19 @@
                 @* Mobile popup menu *@
                 <div class="main-menu-mobile">
                     @{
-                        int indexMobile = 1;
+                        var defaultIndex = 5;
+                        int mobileIndex = defaultIndex;
+                        int half = (parentDetailMenus.Count() + 6) / 2;
+                        <ul>
                         @foreach (var menu in parentDetailMenus)
                         {
                             var link = getMenuLink(menu);
                             var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
-                            indexMobile++;
-                            @if(indexMobile > 0 && indexMobile % 6 == 2) {
+                            mobileIndex++;
+                            @if(mobileIndex == half) {
                                 @:</ul><ul>
                             }
-                            @if(indexMobile == 2){
-                                indexMobile++;
+                            @if(mobileIndex == defaultIndex + 1 ){
                                 <li class="menu-item">
                                     <a href="/" class="item" title="Trang chủ">Trang chủ</a>
                                 </li>
@@ -185,7 +187,7 @@
                                     </form>
                                 </li>
                             }
-                            <li class="menu-item">
+                            <li class="menu-item" @defaultIndex @mobileIndex @half>
                                 <a href="@link" class="item">@menu.MenuTitle</a>
                                 @if(subMenus.Count() > 0){
                                     <ul>
@@ -197,6 +199,7 @@
                                 }
                             </li>
                         }
+                        </ul>
                     }
                 </div>
 
