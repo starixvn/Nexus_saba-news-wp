@@ -147,9 +147,9 @@
                 @* Mobile popup menu *@
                 <div class="main-menu-mobile">
                     @{
-                        var defaultIndex = 5;
-                        int mobileIndex = defaultIndex;
-                        int half = (parentDetailMenus.Count() + 6) / 2;
+                        const int defaultIndex = 5;
+                        var mobileIndex = defaultIndex;
+                        var half = (parentDetailMenus.Count() + defaultIndex + 2) / 2;
                         <ul>
                         @foreach (var menu in parentDetailMenus)
                         {
