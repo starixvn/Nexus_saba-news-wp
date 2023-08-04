@@ -1,4 +1,5 @@
 {
     "liveSassCompile.settings.generateMap": false,
-    "liveSassCompile.settings.autoprefix": null
+    "liveSassCompile.settings.autoprefix": null,
+    "omnisharp.autoStart": true
 }

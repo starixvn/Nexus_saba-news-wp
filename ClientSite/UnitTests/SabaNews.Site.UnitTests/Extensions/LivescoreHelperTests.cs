@@ -36,10 +36,38 @@
         }
 
         [Fact]
+        public void GetTeamName_WhenVnNameIsNull_ReturnExpectedData()
+        {
+            // Arrange
+            var team = new Team { TeamNameEN = "EN" };
+            string teamName = !string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
+            teamName = !string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : teamName;
+            //Act
+            var result = LivescoreHelper.GetTeamName(team);
+
+            // Assert
+            Assert.Equal(result, teamName);
+        }
+
+        [Fact]
         public void GetStandingTeamName_WhenCalled_ReturnExpectedData()
         {
             // Arrange
             var standing = fixture.Create<SeasonStandings>();
+            string teamName = !string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
+            teamName = !string.IsNullOrEmpty(standing.TeamNameVN) ? standing.TeamNameVN : teamName;
+            //Act
+            var result = LivescoreHelper.GetStandingTeamName(standing);
+
+            // Assert
+            Assert.Equal(result, teamName);
+        }
+
+        [Fact]
+        public void GetStandingTeamName_WhenVnNameIsNull_ReturnExpectedData()
+        {
+            // Arrange
+            var standing = new SeasonStandings { TeamNameEN = "EN" };
             string teamName = !string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
             teamName = !string.IsNullOrEmpty(standing.TeamNameVN) ? standing.TeamNameVN : teamName;
             //Act
@@ -78,10 +106,10 @@
         }
 
         [Fact]
-        public void GetLeagueName_WhenCalled_ReturnExpectedData()
+        public void GetLeagueName_WhenHaveNameVN_ReturnExpectedData()
         {
             // Arrange
-            var league = fixture.Create<League>();
+            var league = new League { LeagueFullNameEN = "Full nameEN", LeagueNameEN = "name EN", LeagueNameVN = "VN" };
             string leagueName = string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
             leagueName = !string.IsNullOrEmpty(league.LeagueNameVN) ? league.LeagueNameVN : leagueName;
 
@@ -91,6 +119,22 @@
             // Assert
             Assert.Equal(result, leagueName);
         }
+
+        [Fact]
+        public void GetLeagueName_WhenDontHaveNameVN_ReturnExpectedData()
+        {
+            // Arrange
+            var league = new League { LeagueFullNameEN = "Full nameEN", LeagueNameEN = "name EN" };
+            string leagueName = string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
+            leagueName = !string.IsNullOrEmpty(league.LeagueNameVN) ? league.LeagueNameVN : leagueName;
+
+            //Act
+            var result = LivescoreHelper.GetLeagueName(league);
+
+            // Assert
+            Assert.Equal(result, leagueName);
+        }
+
 
 
         [Fact]
@@ -149,21 +193,28 @@
         }
 
         [Fact]
-        public void GetMatchTotalScore_WhenCalled_ReturnExpectedData()
+        public void IsPreMatch_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var status = fixture.Create<int>();
+
+            var live = MatchConstants.ListPreMatchStatus.FirstOrDefault(item => item == status);
+
+            //Act
+            var result = LivescoreHelper.IsPreMatch(status);
+
+            // Assert
+            Assert.Equal(result, live != 0);
+        }
+
+        [Fact]
+        public void GetMatchTotalScore_WhenIsHome_ReturnExpectedData()
         {
             // Arrange
             var match = fixture.Create<Match>();
-            var isHome = fixture.Create<bool>();
-            short expected;
-            if (isHome)
-            {
-                expected = match.HomeTeamExtraScore > 0 ? match.HomeTeamExtraScore : match.HomeTeamTotalScore;
-            }
-            else
-            {
-                expected = match.AwayTeamExtraScore > 0 ? match.AwayTeamExtraScore : match.AwayTeamTotalScore;
-            }
-
+            var isHome = true;
+            short? expected = match.HomeTeamExtraScore > 0 ? match.HomeTeamExtraScore : match.HomeTeamTotalScore;
+           
             //Act
             var result = LivescoreHelper.GetMatchTotalScore(match, isHome);
 
@@ -172,24 +223,27 @@
         }
 
         [Fact]
-        public void CheckMatchResult_WhenCalled_ReturnExpectedData()
+        public void GetMatchTotalScore_WhenIsAway_ReturnExpectedData()
         {
             // Arrange
-            var homeScore = fixture.Create<short>();
-            var awayScore = fixture.Create<short>();
-            short expected;
-            if (homeScore > awayScore)
-            {
-                expected = MatchConstants.Win;
-            }
-            else if (homeScore < awayScore)
-            {
-                expected = MatchConstants.Lose;
-            }
-            else
-            {
-                expected = MatchConstants.Draw;
-            }
+            var match = fixture.Create<Match>();
+            var isHome = false;
+            short? expected = match.AwayTeamExtraScore > 0 ? match.AwayTeamExtraScore : match.AwayTeamTotalScore;
+           
+            //Act
+            var result = LivescoreHelper.GetMatchTotalScore(match, isHome);
+
+            // Assert
+            Assert.Equal(result, expected);
+        }
+
+        [Fact]
+        public void CheckMatchResult_WhenHomeWin_ReturnExpectedResult()
+        {
+            // Arrange
+            short? homeScore = 2;
+            short? awayScore = 1;
+            short expected = MatchConstants.Win;
 
             //Act
             var result = LivescoreHelper.CheckMatchResult(homeScore, awayScore);
@@ -199,48 +253,43 @@
         }
 
         [Fact]
-        public void GetMatchResult_WhenCalled_ReturnExpectedData()
+        public void CheckMatchResult_WhenAwayWin_ReturnExpectedResult()
         {
             // Arrange
-            var match = fixture.Create<Match>();
-            var teamId = fixture.Create<long>();
+            short? homeScore = 1;
+            short? awayScore = 2;
+            short? expected = MatchConstants.Lose;;
 
-            var homePEN = match.HomeTeamPenaltyScore;
-            var awayPEN = match.AwayTeamPenaltyScore;
-            var homeAGG = match.HomeTeamAggregateScore;
-            var awayAGG = match.AwayTeamAggregateScore;
-            var homeExtra = match.HomeTeamExtraScore;
-            var awayExtra = match.AwayTeamExtraScore;
-            var homeTotal = match.HomeTeamTotalScore;
-            var awayTotal = match.AwayTeamTotalScore;
-            if (match.AwayTeam.TeamId == teamId)
-            {
-                awayPEN = match.HomeTeamPenaltyScore;
-                homePEN = match.AwayTeamPenaltyScore;
-                awayAGG = match.HomeTeamAggregateScore;
-                homeAGG = match.AwayTeamAggregateScore;
-                awayExtra = match.HomeTeamExtraScore;
-                homeExtra = match.AwayTeamExtraScore;
-                awayTotal = match.HomeTeamTotalScore;
-                homeTotal = match.AwayTeamTotalScore;
-            }
-            short expected;
-            if (homePEN > 0 || awayPEN > 0)
-            {
-                expected = LivescoreHelper.CheckMatchResult(homePEN, awayPEN);
-            }
-            else if (match.IsSecondLeg && (homeAGG > 0 || awayAGG > 0))
-            {
-                expected = LivescoreHelper.CheckMatchResult(homeAGG, awayAGG);
-            }
-            else if (homeExtra > 0 || awayExtra > 0)
-            {
-                expected = LivescoreHelper.CheckMatchResult(homeExtra, awayExtra);
-            }
-            else
-            {
-                expected = LivescoreHelper.CheckMatchResult(homeTotal, awayTotal);
-            }
+            //Act
+            var result = LivescoreHelper.CheckMatchResult(homeScore, awayScore);
+
+            // Assert
+            Assert.Equal(result, expected);
+        }
+
+        [Fact]
+        public void CheckMatchResult_WhenDraw_ReturnExpectedResult()
+        {
+            // Arrange
+            short? homeScore = 2;
+            short? awayScore = 2;
+            short? expected = MatchConstants.Draw;
+
+            //Act
+            var result = LivescoreHelper.CheckMatchResult(homeScore, awayScore);
+
+            // Assert
+            Assert.Equal(result, expected);
+        }
+
+        [Fact]
+        public void GetMatchResult_WhenHomeLoseByPEN_ReturnExpectedData()
+        {
+            // Arrange
+            var match = new Match { HomeTeamPenaltyScore = 1, AwayTeamPenaltyScore = 2, AwayTeam = new Team { TeamId = 112 } };
+            var teamId = 111;
+
+            short? expected = MatchConstants.Lose;
 
             //Act
             var result = LivescoreHelper.GetMatchResult(match, teamId);
@@ -248,5 +297,55 @@
             // Assert
             Assert.Equal(result, expected);
         }
+
+        [Fact]
+        public void GetMatchResult_WhenHomeWinByAGG_ReturnExpectedData()
+        {
+            // Arrange
+            var match =  new Match { HomeTeamAggregateScore = 1, AwayTeamAggregateScore = 2, IsSecondLeg = true, AwayTeam = new Team { TeamId = 111 } };
+            var teamId = 111;
+
+            short? expected = MatchConstants.Win;
+
+            //Act
+            var result = LivescoreHelper.GetMatchResult(match, teamId);
+
+            // Assert
+            Assert.Equal(result, expected);
+        }
+
+        [Fact]
+        public void GetMatchResult_WhenHomeWinByExtraScore_ReturnExpectedData()
+        {
+            // Arrange
+            var match = new Match { HomeTeamExtraScore = 2, AwayTeamExtraScore = 1, AwayTeam = new Team { TeamId = 112 } };
+            var teamId = 111;
+
+            short? expected = MatchConstants.Win;
+
+            //Act
+            var result = LivescoreHelper.GetMatchResult(match, teamId);
+
+            // Assert
+            Assert.Equal(result, expected);
+        }
+
+        [Fact]
+        public void GetMatchResult_WhenHomeWinByTotalScore_ReturnExpectedData()
+        {
+            // Arrange
+            var match = new Match { HomeTeamTotalScore = 2, AwayTeamTotalScore = 1, AwayTeam = new Team { TeamId = 112 } };
+            var teamId = 111;
+
+            short? expected = MatchConstants.Win;
+
+            //Act
+            var result = LivescoreHelper.GetMatchResult(match, teamId);
+
+            // Assert
+            Assert.Equal(result, expected);
+        }
+
+        
     }
 }
