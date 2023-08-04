@@ -1078,7 +1078,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin-right: 0;
     display: block;
     line-height: normal;
-    color: #E13C29;
+    color: #333;
     font-weight: 600;
   }
 }
