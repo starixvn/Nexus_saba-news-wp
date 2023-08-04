@@ -582,8 +582,7 @@
                         order: 2;
                         margin-right: 0;
                     }
-
-                    &:nth-last-child(2) {
+                    &:last-child{
                         a {
                             border: none;
                         }
@@ -593,13 +592,24 @@
                             }
                         }
                     }
-                    &:nth-last-child(1){
-                        @include tableMobile{
-                            &::after{
-                                display: none;
-                            }
-                        }
-                    }
+
+                    // &:nth-last-child(2) {
+                    //     a {
+                    //         border: none;
+                    //     }
+                    //     @include tableMobile{
+                    //         &::after{
+                    //             display: none;
+                    //         }
+                    //     }
+                    // }
+                    // &:nth-last-child(1){
+                    //     @include tableMobile{
+                    //         &::after{
+                    //             display: none;
+                    //         }
+                    //     }
+                    // }
 
                     .item {
                         text-decoration: none;

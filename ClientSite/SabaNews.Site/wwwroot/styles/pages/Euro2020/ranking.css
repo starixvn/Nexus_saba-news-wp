@@ -1122,16 +1122,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin-right: 0;
   }
 }
-.top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) a, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) a {
+.top-header .group-menu .nav-menu .main-menu-pc .menu-item:last-child a, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:last-child a {
   border: none;
 }
 @media screen and (max-width: 1024px) {
-  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2)::after, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2)::after {
-    display: none;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(1)::after, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(1)::after {
+  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:last-child::after, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:last-child::after {
     display: none;
   }
 }

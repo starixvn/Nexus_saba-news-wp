@@ -145,50 +145,60 @@
 
 
                 @* Mobile popup menu *@
-                <ul class="main-menu-mobile">
-                    <li class="menu-item">
-                        <a href="/" class="item" title="Trang chủ">Trang chủ</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="/tag/diem-tin-bong-da-hom-nay" class="item" title="Trang chủ">Tin nóng</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="/tag/ket-qua-bong-da-hom-nay" class="item" title="Trang chủ">Kết quả</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="/lich-thi-dau/bong-da/truc-tiep" class="item" title="Trang chủ">trực tiếp</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="/hau-truong-sabavn" class="item" title="Trang chủ">hậu trường</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="/chuyen-nhuong-sabavn" class="item" title="Trang chủ">chuyển nhượng</a>
-                    </li>
-                    @foreach (var menu in parentDetailMenus)
-                    {
-                        var link = getMenuLink(menu);
-                        var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
-                        <li class="menu-item">
-                            <a href="@link" class="item">@menu.MenuTitle</a>
-                            @if(subMenus.Count() > 0){
-                                <ul>
-                                    @foreach (var subMenu in subMenus){
-                                        var subLink = getMenuLink(subMenu);
-                                        <li><a href="@subLink" title="@subMenu.MenuTitle">@subMenu.MenuTitle</a></li>
-                                    }
-                                </ul>
+                <div class="main-menu-mobile">
+                    @{
+                        int indexMobile = 1;
+                        @foreach (var menu in parentDetailMenus)
+                        {
+                            var link = getMenuLink(menu);
+                            var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
+                            indexMobile++;
+                            @if(indexMobile > 0 && indexMobile % 6 == 2) {
+                                @:</ul><ul>
                             }
-                        </li>
+                            @if(indexMobile == 2){
+                                indexMobile++;
+                                <li class="menu-item">
+                                    <a href="/" class="item" title="Trang chủ">Trang chủ</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/tag/diem-tin-bong-da-hom-nay" class="item" title="Trang chủ">Tin nóng</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/tag/ket-qua-bong-da-hom-nay" class="item" title="Trang chủ">Kết quả</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/lich-thi-dau/bong-da/truc-tiep" class="item" title="Trang chủ">trực tiếp</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/hau-truong-sabavn" class="item" title="Trang chủ">hậu trường</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/chuyen-nhuong-sabavn" class="item" title="Trang chủ">chuyển nhượng</a>
+                                </li>
+                                <li class="right-header-section search-input">
+                                    <form action="/Search" method="post" id="search">
+                                        <input class="keyword-input search-box" id="search-keyword" type="text" placeholder="Tìm kiếm...">
+                                        <button type="submit" class="btn btn-search" aria-label="search">
+                                            <i class="icon-search"></i>
+                                        </button>
+                                    </form>
+                                </li>
+                            }
+                            <li class="menu-item">
+                                <a href="@link" class="item">@menu.MenuTitle</a>
+                                @if(subMenus.Count() > 0){
+                                    <ul>
+                                        @foreach (var subMenu in subMenus){
+                                            var subLink = getMenuLink(subMenu);
+                                            <li><a href="@subLink" title="@subMenu.MenuTitle">@subMenu.MenuTitle</a></li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
                     }
-                    <li class="right-header-section search-input">
-                        <form action="/Search" method="post" id="search">
-                            <input class="keyword-input search-box" id="search-keyword" type="text" placeholder="Tìm kiếm...">
-                            <button type="submit" class="btn btn-search" aria-label="search">
-                                <i class="icon-search"></i>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
+                </div>
 
                 <div class="keywork">
                     <div class="keywork-title">Từ khóa phổ biến</div>
