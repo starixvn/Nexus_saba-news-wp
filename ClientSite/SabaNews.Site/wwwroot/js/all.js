@@ -106,15 +106,16 @@ $(document).ready(function () {
     }
     
     function scrollBackTop() {
-        if (document.body.scrollTop > 100) {
+        if ($(document).scrollTop() > 100) {
             $('.back-to-top').fadeIn();
         } else {
             $('.back-to-top').fadeOut();
         }
     }
-    $("html, body").on("scroll", function (e) {
+    $(window).scroll(function () {
         scrollBackTop();
     });
+
 
 
 

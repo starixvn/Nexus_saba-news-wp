@@ -68,9 +68,9 @@
     }
 
     function InfiniteScroll() {
-        $("body").on("scroll", function () {
+        $(window).scroll(function () {
             const scrollHeight = $('#category-grid').height();
-            const scrollPos = Math.floor($("body").height() + $("body").scrollTop());
+            const scrollPos = Math.floor($("body").height() + $(document).scrollTop());
             const bottomHeight = windowWidth > 768 
                             ? $('#category-grid').innerHeight() + $('.header').innerHeight() +  100
                             : $(document).height() - $('.block-extension').innerHeight() -  $('.footer').innerHeight();
