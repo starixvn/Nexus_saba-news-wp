@@ -56,7 +56,7 @@
     }
 
     function scrollDetailPageLiveScore() {
-        $("html, body").on("scroll", function (e) {
+        $(window).scroll(function () {
             var heightContainer = $('.sticky-header').outerHeight();
             var widthContainer = $('.livescore-soccer-main').innerWidth();
             $('.detail-fixed').css("width", widthContainer);

@@ -106,7 +106,7 @@ $(document).ready(function () {
     }
     
     function scrollBackTop() {
-        if ($(document).scrollTop() > 100) {
+        if ($(window).scrollTop() > 100) {
             $('.back-to-top').fadeIn();
         } else {
             $('.back-to-top').fadeOut();
