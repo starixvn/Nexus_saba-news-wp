@@ -70,6 +70,7 @@ export default class Grid extends PureComponent {
                     loadMore={this.loadMore}
                     hasMore={hasMore}
                     useWindow={true}
+    
                 >
                     {
                         leagues.map((league, index) => {
