@@ -231,7 +231,12 @@ p.has-text-align-center {
 .footer-list {
   display: grid;
   justify-content: space-between;
-  grid-template-columns: 54% 54%;
+  grid-template-columns: 55% 45%;
+}
+@media (max-width: 767px) {
+  .footer-list {
+    grid-template-columns: 50% 50%;
+  }
 }
 .footer-list-group {
   display: flex;
@@ -249,6 +254,9 @@ p.has-text-align-center {
 }
 .footer-list-group:last-child {
   border-right: none;
+}
+.footer-list-group:last-child .footer-item {
+  width: 40%;
 }
 .footer-item {
   border-right: 1px solid #676767;
@@ -299,7 +307,7 @@ p.has-text-align-center {
   text-transform: uppercase;
 }
 .footer-item-block.show-pc-pl {
-  padding-left: 7rem;
+  padding-left: 8rem;
 }
 @media (max-width: 767px) {
   .footer-item-block.show-mb {
