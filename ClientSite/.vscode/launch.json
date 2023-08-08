@@ -1,7 +1,6 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
         {
             "name": "Sabanew.Site",
             "type": "coreclr",
@@ -31,7 +30,7 @@
             "args": [
                 ""
             ],
-            "preLaunchTask": "Build: SabaNews.AutoJobs.csproj",
+            "preLaunchTask": "build",
             "cwd": "${workspaceFolder}/SabaNews.AutoJobs",
             "console": "internalConsole",
             "stopAtEntry": false,
@@ -48,7 +47,7 @@
             "cwd": "${workspaceFolder}/Livescore/SabaNews.Livescore.ScheduledTasks",
             "console": "internalConsole",
             "stopAtEntry": false,
-            "preLaunchTask": "Build: SabaNews.Livescore.ScheduledTasks.csproj",
+            "preLaunchTask": "build",
             "presentation": {
                 "group": "ionide",
                 "hidden": false
