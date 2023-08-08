@@ -305,7 +305,7 @@
             postService.GetPostsByCateSlugPagingAsync(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => criteria = x)).Returns(expected);
 
             //Act
-            var result = await controller.GetSameCategoryPosts(slug, postId);
+            var result = await controller.GetPostsSameCategory(slug, postId);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);

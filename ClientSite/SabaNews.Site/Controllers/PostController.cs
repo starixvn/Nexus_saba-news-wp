@@ -115,7 +115,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetSameCategoryPosts(string slug, long postId)
+        public async Task<IActionResult> GetPostsSameCategory(string slug, long postId)
         {
             var criteria =  new GetPostsByCateSlugPagingCriteria
             {
