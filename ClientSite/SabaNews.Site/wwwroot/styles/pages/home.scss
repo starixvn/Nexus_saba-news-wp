@@ -344,10 +344,10 @@
     .block-columns-border{
         display: flex;
         justify-content: flex-start;
-        margin-left:-2rem;
-        margin-right: -2rem;
+        margin: 0 -2rem;
         @include Mobile{
             flex-wrap: wrap;
+            margin: 2rem -2rem;
         }
         .block-event-item{
             padding: 0 2rem;
@@ -387,7 +387,7 @@
         border-radius: 3px;
         @include  Mobile{
             padding: 2rem 1.2rem;
-            margin: 0 -1.2rem;
+            margin: 2rem -1.2rem;
         }
         .block__title{
             border-bottom: none;

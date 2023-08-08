@@ -3522,12 +3522,12 @@ button {
 .main .block-columns-border {
   display: flex;
   justify-content: flex-start;
-  margin-left: -2rem;
-  margin-right: -2rem;
+  margin: 0 -2rem;
 }
 @media (max-width: 767px) {
   .main .block-columns-border {
     flex-wrap: wrap;
+    margin: 2rem -2rem;
   }
 }
 .main .block-columns-border .block-event-item {
@@ -3571,7 +3571,7 @@ button {
 @media (max-width: 767px) {
   .main .block-behind {
     padding: 2rem 1.2rem;
-    margin: 0 -1.2rem;
+    margin: 2rem -1.2rem;
   }
 }
 .main .block-behind .block__title, .main .block-behind .heading-category {
