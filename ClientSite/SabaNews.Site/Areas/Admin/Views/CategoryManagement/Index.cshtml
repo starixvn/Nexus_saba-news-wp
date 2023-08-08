@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="~/styles/pages/jquery-ui.css" asp-append-version="true">
 }
 
+@{
+    var menus = Model.Menus.Where(item => item.CateSlug != null);
+}
 <section class="page-content">
 
 <div class="content">
@@ -44,14 +47,14 @@
                     </thead>
                     <tbody>
                         @{
-                            var football = Model.Menus.FirstOrDefault(item => item.CateSlug == Constants.FootballSlug);
+                            @* var football = Model.Menus.FirstOrDefault(item => item.CateSlug == Constants.FootballSlug); *@
                             var count = 0;
-                            renderRow(football, 0, true);
-                            foreach (var menu in Model.Menus.Where(item => item.ParentId == football.PostId))
+                            @* renderRow(football, 0, true); *@
+                            foreach (var menu in menus.Where(item => item.ParentId == 0))
                             {
                                 count++;
                                 renderRow(menu, count, true);
-                                @foreach (var subMenu in Model.Menus.Where(item => item.ParentId == menu.PostId))
+                                @foreach (var subMenu in menus.Where(item => item.ParentId == menu.PostId))
                                 {
                                     renderRow(subMenu, 0);
                                 }
