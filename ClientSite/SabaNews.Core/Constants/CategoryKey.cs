@@ -35,7 +35,13 @@ namespace SabaNews.Core.Constants
 
         public const string VideoSlug = "video";
 
-        public const string VNFootballSlug = "viet-nam-sabavn";
+        public const string VNFootballSlug = "viet-nam";
+
+        public const string ClubSlug = "giai-dau-cap-clb";
+
+        public const string CountrySlug = "doi-tuyen";
+
+        public const string AreaSlug = "khu-vuc";
 
         public const string Prefix = "category-";
 

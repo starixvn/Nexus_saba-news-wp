@@ -57,34 +57,34 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <div class="heading-footer-list"><a href="/">Trang Chủ</a></div>
-                            <div class="heading-footer-list"><a href="/">Tin nóng</a></div>
-                            <div class="heading-footer-list"><a href="/">Kết quả</a></div>
-                            <div class="heading-footer-list"><a href="/">Trực tiếp</a></div>
-                            <div class="heading-footer-list"><a href="/">Hậu trường</a></div>
-                            <div class="heading-footer-list"><a href="/">Chuyển nhượng</a></div>
+                            <div class="heading-footer-list"><a href="">Trang Chủ</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.NewPostSlug + CategoryKey.Suffix })">Tin mới nhất</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.GuessSlug + CategoryKey.Suffix })">Nhận định</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.BackstageSlug + CategoryKey.Suffix })">Hậu trường</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.TransferSlug + CategoryKey.Suffix })">Chuyển nhượng</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.VideoSlug + CategoryKey.Suffix })">Video</a></div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <div class="heading-footer-list"><a href="/">bóng đá việt nam</a></div>
-                            <div class="heading-footer-list"><a href="/">Bóng đá Anh</a></div>
-                            <div class="heading-footer-list"><a href="/">bóng đá tbn</a></div>
-                            <div class="heading-footer-list"><a href="/">bóng đá italia</a></div>
-                            <div class="heading-footer-list"><a href="/">bóng đá đức</a></div>
+                            <div class="heading-footer-list"><a href="/">LTĐ hôm nay</a></div>
+                            <div class="heading-footer-list"><a href="/lich-thi-dau/bong-da/truc-tiep">Trực tiếp</a></div>
+                            <div class="heading-footer-list"><a href="/tag/ket-qua-bong-da-hom-nay">Kết quả</a></div>
+                            <div class="heading-footer-list"><a href="/tag/diem-tin-bong-da-hom-nay">Tin nóng</a></div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <div class="heading-footer-list"><a href="/">bóng đá pháp</a></div>
-                            <div class="heading-footer-list"><a href="/">Giải đấu cấp CLB</a></div>
-                            <div class="heading-footer-list"><a href="/">bóng đá tbn</a></div>
-                            <div class="heading-footer-list"><a href="/">bóng đá italia</a></div>
-                            <div class="heading-footer-list"><a href="/">bóng đá đức</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.VNFootballSlug + CategoryKey.Suffix })">Bóng đá VN</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.England + CategoryKey.Suffix })">Anh</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.TBN + CategoryKey.Suffix })">TBN</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.Italia + CategoryKey.Suffix })">Ý</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.Germany + CategoryKey.Suffix })">Đức</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.France + CategoryKey.Suffix })">Pháp</a></div>
                         </div>
                     </div>
                 </div>
@@ -93,10 +93,10 @@
                 <div class="footer-item">
                     <div class="footer-item-main">
                         <div class="footer-item-block">
-                            <div class="heading-footer-list"><a href="/">Lịch thi đấu</a></div>
-                            <div class="heading-footer-list"><a href="/">Lịch thi đấu</a></div>
-                            <div class="heading-footer-list"><a href="/">Lịch thi đấu</a></div>
-                            <div class="heading-footer-list"><a href="/">Video</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.ClubSlug + CategoryKey.Suffix })">Giải đấu cấp CLB</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.CountrySlug + CategoryKey.Suffix })">Đội tuyển</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.AreaSlug + CategoryKey.Suffix })">Bóng đá khu vực</a></div>
+                            <div class="heading-footer-list"><a href="@Url.Action("Category", "Home", new { slug = CategoryKey.OtherPostSlug + CategoryKey.Suffix })">Thể thao</a></div>
                         </div>
                     </div>
                 </div>
