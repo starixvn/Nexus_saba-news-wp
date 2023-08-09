@@ -289,7 +289,7 @@
     position: relative;
     margin-top: auto;
     @include tableMobile {
-        padding: 2rem 0 2rem;
+        padding: 0 0 2rem;
     }
     .container{
         max-width: 113.2rem;
@@ -305,6 +305,7 @@
         grid-template-columns: 55% 45%;
         @include Mobile{
             grid-template-columns: 50% 50%;
+            display: none;
         }
         &-group{
             // width: 50%;
@@ -371,14 +372,6 @@
             &.show-pc-pl{
                 padding-left: 8rem;
             }
-            &.show-mb{
-                @include Mobile{
-                    padding: 1.2rem;
-                    margin-top: 1.2rem;
-                    border-top: 1px solid #676767;
-                    border-bottom: none;
-                }
-            }
             ul{
                 list-style: none;
                 padding-left: 0;
@@ -431,6 +424,11 @@
         color: #fff;
         margin-bottom: 1.2rem;
         white-space: nowrap;
+        @include Mobile{
+            padding-top: 1.2rem;
+            margin-bottom: 1rem;
+            border-top: 1px solid #676767;
+        }
     }
     .follow{
         display: inline-flex;
@@ -439,6 +437,9 @@
             font-size: 2.4rem;
             margin-right: 1.6rem;
             color: #fff;
+            @include Mobile{
+                font-size: 3.2rem;
+            }
             &:last-child{
                 margin-right: 0;
             }
@@ -456,7 +457,9 @@
             flex-wrap: wrap;
         }
         @include Mobile{
-            padding: 2rem 1.2rem 0 1.2rem;
+            padding: 1.2rem 0;
+            margin: 0 1.2rem;
+            border-top: none;
         }
         .footer-info-main{
             ul{
@@ -501,6 +504,7 @@
                 line-height: 2.4rem;
                 @include Mobile{
                     flex-wrap: wrap;
+                    margin-bottom: 1.2rem;
                 }
                 .copy-right-info{
                     margin-right: 2.4rem;
@@ -584,8 +588,8 @@
     }
 }
 .show-mb{
-    display: none;
+    display: none !important;
     @include Mobile{
-        display: block;
+        display: block !important;
     }
 }
