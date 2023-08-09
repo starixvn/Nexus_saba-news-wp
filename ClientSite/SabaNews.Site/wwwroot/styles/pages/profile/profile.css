@@ -2905,10 +2905,7 @@ button {
 }
 @media (max-width: 767px) {
   .ads-insite {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    margin-left: -1.2rem;
-    margin-right: -1.2rem;
+    margin: 2rem -1.2rem;
   }
 }
 .ads-insite.show-pc {
