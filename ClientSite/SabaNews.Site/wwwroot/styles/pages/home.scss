@@ -344,7 +344,7 @@
     .block-columns-border{
         display: flex;
         justify-content: flex-start;
-        margin: 0 -2rem;
+        margin: 3.2rem -2rem;
         @include Mobile{
             flex-wrap: wrap;
             margin: 2rem -2rem;
