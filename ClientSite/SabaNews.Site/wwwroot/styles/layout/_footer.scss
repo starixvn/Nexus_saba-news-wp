@@ -297,63 +297,28 @@
             padding: 0;
         }
     }
-    &-list{
-        // display: flex;
-        // justify-content: space-between;
-        display: grid;
-        justify-content: space-between;
-        grid-template-columns: 55% 45%;
-        @include Mobile{
-            grid-template-columns: 50% 50%;
-            display: none;
-        }
-        &-group{
-            // width: 50%;
-            display: flex;
-            border-right: 1px solid #676767;
-            @include Mobile{
-                display: unset;
-                padding: 0 1.2rem;
-            }
-            &:first-child{
-                .footer-item{
-                    &:first-child{
-                        justify-content: flex-start;
-                        width: 30%;
-                    }
-                }
-            }
-            &:last-child{
-                border-right: none;
-                .footer-item {
-                    width: 40%;
-                }
-            }
-        }
-    }
     &-item{
-        border-right: 1px solid #676767;
-        width: 33.3%;
         display: flex;
-        justify-content: center;
-        @include tableMobile{
-            padding: 0 1.2rem;
-        }
+        justify-content: space-between;
         @include Mobile{
-            border-right: none;
-            width: 100%;
-            display: unset;
-            padding: 0;
+            display: none;
         }
         &-block{
             margin-bottom: 1.2rem;
+            border-right: 1px solid #676767;
+            width: 18rem;
+            &:last-child{
+                border-right: none;
+            }
             @include Mobile{
+                border-right: none;
                 border-bottom: 1px solid #676767;
                 padding-bottom: 1.2rem;
             }
             .heading-footer-list{
                 line-height: 1;
                 margin-bottom: 1rem;
+                width: 13rem;
                 &:last-child{
                     margin-bottom: 0;
                     @include Mobile{
@@ -368,9 +333,6 @@
                     line-height: 1.8rem;
                     text-transform: uppercase;
                 }
-            }
-            &.show-pc-pl{
-                padding-left: 8rem;
             }
             ul{
                 list-style: none;
