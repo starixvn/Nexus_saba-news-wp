@@ -4,6 +4,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Category;
     using SabaNews.Livescore.Services;
@@ -30,7 +31,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var menus = await dataControlService.GetMenuData();
+            var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var cates = await categoryService.GetCateLivescoreAsync();
             var leagues = await leagueService.GetLeaguesAsync();
             var model = new CateLivescoreManageViewModel

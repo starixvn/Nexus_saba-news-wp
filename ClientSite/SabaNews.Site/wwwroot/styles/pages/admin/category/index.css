@@ -133,10 +133,10 @@ body {
   background: #d5e6ff;
   font-weight: bold;
 }
-.table-admin .league-level2 .league-name {
+.table-admin .league-name {
   position: relative;
 }
-.table-admin .league-level2 .league-name::after {
+.table-admin .league-name.has-child::after {
   position: absolute;
   content: "";
   top: 2rem;
@@ -145,7 +145,7 @@ body {
   border-color: #888 transparent transparent transparent;
   border-width: 6px 6px 0 6px;
 }
-.table-admin .league-level2 .league-name.active::after {
+.table-admin .league-name.active::after {
   border-width: 0 6px 6px 6px;
   border-color: transparent transparent #888 transparent;
 }
@@ -162,4 +162,8 @@ body {
 
 .modal-title .title {
   text-decoration: none !important;
+}
+
+.pl50 {
+  padding-left: 5rem !important;
 }

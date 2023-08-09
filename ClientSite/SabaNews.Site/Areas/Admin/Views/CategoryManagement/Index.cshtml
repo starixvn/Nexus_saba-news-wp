@@ -47,16 +47,21 @@
                     </thead>
                     <tbody>
                         @{
-                            @* var football = Model.Menus.FirstOrDefault(item => item.CateSlug == Constants.FootballSlug); *@
                             var count = 0;
-                            @* renderRow(football, 0, true); *@
                             foreach (var menu in menus.Where(item => item.ParentId == 0))
                             {
                                 count++;
-                                renderRow(menu, count, true);
-                                @foreach (var subMenu in menus.Where(item => item.ParentId == menu.PostId))
+                                var subMenus = menus.Where(item => item.ParentId == menu.PostId).ToList();
+                                renderRow(menu, subMenus, count, true);
+                                @foreach (var subMenu in subMenus)
                                 {
-                                    renderRow(subMenu, 0);
+                                    var subMenus1 = menus.Where(item => item.ParentId == subMenu.PostId).ToList();
+                                    renderRow(subMenu, subMenus1, 0);
+                                    @foreach (var sub in subMenus1)
+                                    {
+                                        var subMenus2 = menus.Where(item => item.ParentId == sub.PostId).ToList();
+                                        renderRow(sub, subMenus2, -1);
+                                    }
                                 }
                             }
                         }
@@ -103,20 +108,20 @@
         return (league, cate, display);
     }
 
-    void renderRow(Menu menu, int count, bool isParent = false)
+    void renderRow(Menu menu, List<Menu> subMenus, int count, bool isParent = false)
     {
         var (league, cate, display) = GetLeagueData(Model.Cates.ToList(), menu.CateId);
         var isFoolball = menu.CateSlug == Constants.FootballSlug;
         var parent = Model.Menus.FirstOrDefault(item => item.PostId == menu.ParentId);
-        <tr class="@(isFoolball ? "league-level1":"") @(count != 0 ? "league-level2":"") @(isParent ? "" : "child parent-" + parent?.CateId)"  data-id=@menu.CateId>
+        <tr class=" @(count > 0 ? "league-level2":"") @(isParent ? "" : "child parent-" + parent?.CateId)"  data-id=@menu.CateId>
             @if(isFoolball)
             {
                 <td class="text-left" colspan="2">@menu.MenuTitle</td>
             }
             else
             {
-                <td class="text-center">@(count != 0 ? count : "" )</td>
-                <td class="text-left @(count != 0 ? "league-name":"")">@menu.MenuTitle</td>
+                <td class="text-center">@(count > 0 ? count : "" )</td>
+                <td class="text-left league-name @(subMenus.Count > 0 ? "has-child": "") @(count == -1 ? "pl50" : "")" >@menu.MenuTitle</td>
             }
             <td class="text-center">
                 <select class="form-control input-custom league-select" style="width:100%">
