@@ -3391,6 +3391,7 @@ button {
   flex-wrap: wrap;
   overflow: hidden;
   height: 2.9rem;
+  width: calc(100% - 3rem);
 }
 .sub-category.parent-sub .list-dropdown-category {
   position: absolute;

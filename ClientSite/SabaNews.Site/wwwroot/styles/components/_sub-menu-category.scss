@@ -108,6 +108,7 @@
             flex-wrap: wrap;
             overflow: hidden;
             height: 2.9rem;
+            width: calc(100% - 3rem);
         }
         .list-dropdown-category{
             position: absolute;
