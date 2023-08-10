@@ -11,32 +11,28 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_category_detail`(
 			- 20220720@Hank: init
             - 20230519@Hank: migrate rank math to yoast plugin
             - 20230606@Hank: select league
+            - 20230810@Hank: select currentSeasonId
     */
 )
 BEGIN
-	DECLARE count  INT;
 	DECLARE cateId INT;
-    DECLARE cateName VARCHAR(200);
-    DECLARE cateParentName VARCHAR(200);
-    DECLARE cateParentId INT; 
+    DECLARE seasonId BIGINT;
+    DECLARE leagueId BIGINT;
     
-    SELECT t.term_id, wtt.parent INTO cateId, cateParentId 
+    SELECT t.term_id INTO cateId 
     FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND wtt.taxonomy = "category" WHERE t.slug = slug;
     
-    IF(cateParentId != 0 AND cateParentId != 175) THEN
-		SELECT IF(wtt.parent = 175, cateParentId, wtt.parent) INTO cateParentId 
-		FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND wtt.taxonomy = "category" WHERE t.term_id = cateParentId;
-    END IF;
+    SELECT l.LeagueId, l.CurrentSeasonId INTO leagueId, seasonId 
+    FROM wp_term_livescore tl 
+    INNER JOIN livescore_league l ON l.LeagueId = tl.LeagueId
+    WHERE tl.TermId = CateId AND tl.LeagueId > 0 AND tl.Status = 1;
     
-    SELECT t.term_id, t.name INTO cateParentId, cateParentName FROM wp_terms as t where t.term_id = cateParentId;
-    
-	SELECT  t.name as Title , t.term_id as CateId, t.slug as Slug, cateParentId, cateParentName
+	SELECT  t.name as Title , t.term_id as CateId, t.slug as Slug
 		,yi.title as SEOTitle, yi.description as description
         ,yi.open_graph_title as OgTitle, yi.open_graph_description as OgDescription, yi.open_graph_image as OgImage
-        ,tl.LeagueId, tl.SeasonId
+        ,leagueId, seasonId
     FROM wp_terms t 
     INNER JOIN wp_term_taxonomy wt ON  t.term_id = wt.term_id AND wt.taxonomy = "category"
-    LEFT JOIN wp_term_livescore tl ON tl.TermId = wt.term_id AND tl.LeagueId > 0 AND tl.Status = 1
     LEFT JOIN wp_yoast_indexable yi ON yi.object_id = t.term_id AND yi.object_type = "term" AND yi.object_sub_type = "category"
     WHERE t.slug = slug;
 END
