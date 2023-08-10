@@ -1120,9 +1120,14 @@
     }
 
     .group-column-popup{
-        max-width: 130rem;
         padding: 0 1rem;
         margin: 0 auto;
+        @media (min-width : 1280px){
+            max-width: 113rem;
+        }
+        @media (min-width : 1400px){
+            max-width: 130rem;
+        }
     }
     &-header{
         list-style: none;

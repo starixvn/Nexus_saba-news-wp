@@ -1642,9 +1642,18 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .menu-popup .group-column-popup {
-  max-width: 130rem;
   padding: 0 1rem;
   margin: 0 auto;
+}
+@media (min-width: 1280px) {
+  .menu-popup .group-column-popup {
+    max-width: 113rem;
+  }
+}
+@media (min-width: 1400px) {
+  .menu-popup .group-column-popup {
+    max-width: 130rem;
+  }
 }
 .menu-popup-header {
   list-style: none;
