@@ -108,6 +108,11 @@ body {
 }
 @media (min-width: 1280px) {
   .container {
+    max-width: 113rem;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
     max-width: 130rem;
   }
 }

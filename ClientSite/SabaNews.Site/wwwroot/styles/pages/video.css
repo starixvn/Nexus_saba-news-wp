@@ -2232,6 +2232,11 @@ button {
 }
 @media (min-width: 1280px) {
   .container, .base-container {
+    max-width: 113rem;
+  }
+}
+@media (min-width: 1400px) {
+  .container, .base-container {
     max-width: 130rem;
   }
 }

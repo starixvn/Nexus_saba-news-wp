@@ -2237,6 +2237,11 @@ button {
 }
 @media (min-width: 1280px) {
   .container, .base-container {
+    max-width: 113rem;
+  }
+}
+@media (min-width: 1400px) {
+  .container, .base-container {
     max-width: 130rem;
   }
 }
@@ -3861,14 +3866,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-html {
-  overflow-x: unset;
-}
-
-body {
-  overflow-x: hidden;
 }
 
 img {
