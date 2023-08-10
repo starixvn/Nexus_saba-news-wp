@@ -39,7 +39,7 @@
 
                 parentName = currentSlug.MenuTitle;
 
-        public static (MenuItems, string) GetMenuActive(List<Menu> menus, string cateSlug) {
+        public static MenuCategoryModel GetMenuActive(List<Menu> menus, string cateSlug) {
             var listCate = new List<MenuInfo>();
             var cate = menus.LastOrDefault(item => item.CateSlug == cateSlug);
             if(cate != null)
@@ -47,6 +47,8 @@
                 listCate.Add(new MenuInfo { PostId = cate.PostId, CateSlug = cate.CateSlug  });
             }
             var currentCate = menus.LastOrDefault(item => item.PostId == cate?.ParentId);
+            var parentName = currentCate != null ? currentCate.MenuTitle : "";
+            var currentName = cate != null ? cate.MenuTitle : "";
             while(currentCate != null  || listCate.Count > 3)
             {
                 listCate.Add(new MenuInfo { PostId = currentCate.PostId, CateSlug = currentCate.CateSlug  });
@@ -59,7 +61,13 @@
                 Item2 = listCate.Count >= 2 ? listCate[listCate.Count - 2].PostId : 0,
                 Item3 = listCate.Count >= 3 ? listCate[listCate.Count - 3].PostId : 0
             };
-            return (menuItems, activeMenu);
+            var result = new MenuCategoryModel
+            {
+                MenuItems = menuItems,
+                ActiveMenu = activeMenu,
+                CurrentName = !string.IsNullOrEmpty(parentName) ? parentName : currentName,
+            };
+            return result;
 
         }
 

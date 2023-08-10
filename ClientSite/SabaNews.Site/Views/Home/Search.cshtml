@@ -37,19 +37,11 @@
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory, Slugs = Model.Slugs }))
 <section class="main">
     <div class="base-container medium-container">
-        <h1 class="block__title title-new-page"><a>@Model.HeadTitle</a></h1>
+        <h1 class="block__title title-new-page"><a>@Model.Header.Title</a></h1>
     </div>
     <div class="container medium-container">
         <div class="block block-main block-category">
             <div id="category-grid" class="block__content">
-                @* <div class="skeleton skeleton-horizontal skeleton-horizontal-highlight">
-                    <a class="skeleton-horizontal__image"></a>
-                    <div class="text-skeleton">
-                        <a class="skeleton-horizontal__title"></a>
-                        <p class="skeleton-horizontal__description text-description"></p>
-                        <p class="skeleton-horizontal__datetime"></p>
-                    </div>
-                </div> *@
                 <div class="card-horizontal card-horizontal-highlight">
                     <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Uri })" class="card-horizontal__image thumb thumb-56 hover-image">
                         <picture>
@@ -118,14 +110,6 @@
                         {
                             <div class="ads-insite show-mobile banner-mobile-center"></div>
                         }
-                        @* <div class="skeleton skeleton-horizontal">
-                            <a class="skeleton-horizontal__image"></a>
-                            <div class="text-skeleton">
-                                <a class="skeleton-horizontal__title"></a>
-                                <p class="skeleton-horizontal__description text-description"></p>
-                                <p class="skeleton-horizontal__datetime"></p>
-                            </div>
-                        </div> *@
                     }
                 }
             </div>
