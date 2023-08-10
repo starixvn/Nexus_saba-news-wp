@@ -153,6 +153,7 @@
         ScrollItem();
         LoadBannerContent();
         LoadSameCategoryPost();
+        getScrollTop();
     }
 
     return {
