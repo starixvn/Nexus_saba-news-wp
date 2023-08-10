@@ -39,7 +39,7 @@
             var expectedMenu = fixture.Create<IEnumerable<Menu>>();
             var expectedCate = fixture.Create<IList<CateLivescore>>();
             var expectedLeagues = fixture.Create<IList<League>>();
-            dataControlService.GetMenuData().Returns(expectedMenu);
+            dataControlService.GetMenuData(Arg.Do<string>(x => x = type)).Returns(expectedMenu);
             categoryService.GetCateLivescoreAsync().Returns(expectedCate);
             leagueService.GetLeaguesAsync().Returns(expectedLeagues);
 
