@@ -593,24 +593,6 @@
                         }
                     }
 
-                    // &:nth-last-child(2) {
-                    //     a {
-                    //         border: none;
-                    //     }
-                    //     @include tableMobile{
-                    //         &::after{
-                    //             display: none;
-                    //         }
-                    //     }
-                    // }
-                    // &:nth-last-child(1){
-                    //     @include tableMobile{
-                    //         &::after{
-                    //             display: none;
-                    //         }
-                    //     }
-                    // }
-
                     .item {
                         text-decoration: none;
                         display: inline-block;
@@ -638,7 +620,34 @@
                     .hide-popup{
                         opacity: 0.5;
                     }
-
+                    &:nth-last-child(2),&:nth-last-child(3) {
+                        ul{
+                            @media (min-width : 1280px){
+                                left: -100px;
+                            }
+                            @media (min-width : 1400px){
+                                left: -25px;
+                            }
+                            li{
+                                &.has-sub{
+                                    ul{
+                                        left: -100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:nth-last-child(4){
+                        ul{
+                            li{
+                                &.has-sub{
+                                    ul{
+                                        left: -100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     .active {
                         color: $color-main-title;
 
@@ -1292,7 +1301,7 @@
             top: 69px;
             bottom: 0;
             position: fixed;
-            z-index: 8;
+            z-index: 10;
         }
 
         .header .child-mobile-menu {
@@ -1300,7 +1309,7 @@
         }
         .header{
             position: fixed;
-            z-index: 9;
+            z-index: 99;
         }
         .child-mobile-menu {
             position: relative;
