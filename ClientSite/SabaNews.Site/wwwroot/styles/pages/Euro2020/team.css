@@ -1193,21 +1193,27 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .top-header .group-menu .nav-menu .main-menu-pc .menu-item .hide-popup, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item .hide-popup {
   opacity: 0.5;
 }
-@media (min-width: 1280px) {
-  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul {
-    left: -100px;
-  }
+.top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
+  left: auto;
+  right: -40px;
 }
-@media (min-width: 1400px) {
-  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul {
+@media (min-width: 1500px) {
+  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
+    right: auto;
     left: -25px;
   }
 }
-.top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul li.has-sub ul {
+.top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul li.has-sub ul {
   left: -100%;
 }
-.top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul li.has-sub ul {
-  left: -100%;
+.top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
+  left: -100px;
+}
+@media (min-width: 1500px) {
+  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
+    right: auto;
+    left: -25px;
+  }
 }
 .top-header .group-menu .nav-menu .main-menu-pc .menu-item .active, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item .active {
   color: #F12F19;

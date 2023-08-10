@@ -620,12 +620,12 @@
                     .hide-popup{
                         opacity: 0.5;
                     }
-                    &:nth-last-child(2),&:nth-last-child(3) {
+                    &:nth-last-child(2),&:nth-last-child(3),&:nth-last-child(4) {
                         ul{
-                            @media (min-width : 1280px){
-                                left: -100px;
-                            }
-                            @media (min-width : 1400px){
+                            left: auto;
+                            right: -40px;
+                            @media (min-width : 1500px){
+                                right: auto;
                                 left: -25px;
                             }
                             li{
@@ -639,12 +639,10 @@
                     }
                     &:nth-last-child(4){
                         ul{
-                            li{
-                                &.has-sub{
-                                    ul{
-                                        left: -100%;
-                                    }
-                                }
+                            left: -100px;
+                            @media (min-width : 1500px){
+                                right: auto;
+                                left: -25px;
                             }
                         }
                     }
