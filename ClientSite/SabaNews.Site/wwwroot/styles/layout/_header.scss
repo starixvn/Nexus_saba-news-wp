@@ -628,6 +628,10 @@
                                 right: auto;
                                 left: -25px;
                             }
+                            @include tableMobile{
+                                right: 0;
+                                left: auto;
+                            }
                             li{
                                 &.has-sub{
                                     ul{
@@ -643,6 +647,10 @@
                             @media (min-width : 1500px){
                                 right: auto;
                                 left: -25px;
+                            }
+                            @include tableMobile{
+                                right: auto;
+                                left: 0;
                             }
                         }
                     }
@@ -822,20 +830,12 @@
                 @extend .main-menu-pc;
                 display: none;
                 @include tableMobile{
-                    display: flex;
-                }
-            }
-
-            .active-main-menu {
-                display: flex;
-                @include tableMobile{
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     gap: 0 1.2rem;
                     align-items: flex-start;
                 }
             }
-
             .active-arrow {
                 i {
                     &:before {

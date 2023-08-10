@@ -1138,6 +1138,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     left: -25px;
   }
 }
+@media screen and (max-width: 1024px) {
+  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
+    right: 0;
+    left: auto;
+  }
+}
 .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(2) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(2) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(3) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(3) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul li.has-sub ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul li.has-sub ul {
   left: -100%;
 }
@@ -1148,6 +1154,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
     right: auto;
     left: -25px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .top-header .group-menu .nav-menu .main-menu-pc .menu-item:nth-last-child(4) ul, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item:nth-last-child(4) ul {
+    right: auto;
+    left: 0;
   }
 }
 .top-header .group-menu .nav-menu .main-menu-pc .menu-item .active, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item .active {
@@ -1314,14 +1326,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu .main-menu-mobile {
-    display: flex;
-  }
-}
-.top-header .group-menu .nav-menu .active-main-menu {
-  display: flex;
-}
-@media screen and (max-width: 1024px) {
-  .top-header .group-menu .nav-menu .active-main-menu {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0 1.2rem;
