@@ -938,8 +938,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .menu-select select option {
   color: #4F4F4F;
   font-weight: 400;
-  padding: 0 15px;
-  font-size: 15px;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
 }
 @media screen and (max-width: 1024px) {
   .menu-select.single-select-menu {
