@@ -23,7 +23,6 @@
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
-        private readonly IUserService userService;
         private readonly IStatisticService statisticService;
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
@@ -31,7 +30,6 @@
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
-            IUserService userService,
             IStatisticService statisticService,
             IPollService pollService,
             IDataControlService dataControlService)
@@ -39,7 +37,6 @@
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
-            this.userService = userService;
             this.statisticService = statisticService;
             this.pollService = pollService;
             this.dataControlService = dataControlService;
@@ -48,7 +45,32 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
-            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
+            var postId = 0;
+            if(slug.Contains(".html"))
+            {
+                slug = slug.Replace(".html","");
+                var arrSlug = slug.Split("-");
+                if(!int.TryParse(arrSlug.Last(), out postId))
+                {
+                    return View(Constants.EmptyBlogView);
+                }
+                slug = slug.Replace("-" + postId, "");
+
+            }
+            else
+            {
+                var summary = await postService.GetPostDetailSummaryAsync(slug);
+                if(summary == null)
+                {
+                    return View(Constants.EmptyBlogView);
+                }
+                else
+                {
+                    return RedirectToAction("Single", "Post", new { slug = summary.Uri });
+                }
+
+            }
+            var post = await postService.GetPostDetailAsync(postId, slug, Constants.postType);
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
@@ -57,9 +79,8 @@
             var isLogin = sessionService.User != null;
             if (isLogin)
             {
-                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
-                savePost = user?.HandleSavePosts.Find(val => val.PostID == post.ID);
-            } 
+                savePost = sessionService.User.HandleSavePosts.Find(val => val.PostID == post.ID);
+            }
             var matchId = PostHelper.GetMatchInfoFromContent(post.PostContent);
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
@@ -81,6 +102,7 @@
 
             return View(model);
         }
+
 
         [Route("kich-hoat-tai-khoan-saba-sports")]
         public IActionResult ActiveAccount()

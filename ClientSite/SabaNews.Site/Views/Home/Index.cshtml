@@ -76,7 +76,7 @@
                                     {
                                         continue;
                                     }
-                                    <h3 class="card-hightlight-item"><a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a></h3>
+                                    <h3 class="card-hightlight-item"><a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a></h3>
                                 }
                             }
                         </div>
@@ -84,11 +84,11 @@
                             @{
                                 var firstPost = Model.NewPosts[0];
                                 string firstImgUrl = firstPost.FeatureImage;
-                                <a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})" class="box-vertical-image hover-image">
+                                <a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})" class="box-vertical-image hover-image">
                                     <img src="@Url.Content(firstImgUrl)" class="img-res" alt="@firstPost.PostTitle" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h3 class="heading-hight-light"><a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})">@firstPost.PostTitle</a></h3>
+                                    <h3 class="heading-hight-light"><a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})">@firstPost.PostTitle</a></h3>
                                     <p>@firstPost.PostExcerpt</p>
                                 </div>
                             }
@@ -102,12 +102,12 @@
                                     if (newPostIndex < 5 && newPostIndex > 1)
                                     {
                                         <div class="box-vertical">
-                                            <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Slug })" class="box-vertical-image hover-image">
+                                            <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })" class="box-vertical-image hover-image">
                                                 <img src="@Url.Content(item.FeatureImage)" alt="@item.PostTitle" class="img-res" loading="lazy" />
                                             </a>
                                             <div class="box-vertical-content">
                                                 <h4 class="heading-box-content">
-                                                    <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Slug})">@item.PostTitle</a>
+                                                    <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri})">@item.PostTitle</a>
                                                 </h4>
                                             </div>
                                         </div>
@@ -143,12 +143,12 @@
                         @foreach (var post in Model.GuessPosts)
                         {
                             <div class="box-vertical swiper-slide scroll-snap-items">
-                                <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Slug  })"
+                                <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri  })"
                                     class="box-vertical-image hover-image">
                                     <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
+                                    <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri  })">@post.PostTitle</a>
                                     </h4>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                                             <div style="display:none;" class="play_video"></div>
                                             <div class="box-vertical-content">
                                                 <h4>
-                                                    <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
+                                                    <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
                                                 </h4>
                                             </div>
                                         </div>
@@ -207,7 +207,7 @@
                                         </a>
                                         <div class="box-horizontal-content">
                                             <h5>
-                                                <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
+                                                <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
                                             </h5>
                                         </div>
                                     </div>
@@ -243,7 +243,7 @@
                                                         if(LeaguePostsIndex <= 1){
                                                             continue;
                                                         }
-                                                        <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></h4>
+                                                        <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                                     }
                                                 }
                                             </div>
@@ -262,11 +262,11 @@
                                         <a title="@Model.FootballNewCategory[1].Category" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[1].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[1].Category</a>
                                     </h2>
                                     <div class="box-vertical">
-                                        <a title="@Model.LeaguePosts[1][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })" class="box-vertical-image hover-image">
+                                        <a title="@Model.LeaguePosts[1][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Uri })" class="box-vertical-image hover-image">
                                             <img src="@Url.Content(Model.LeaguePosts[1][0].FeatureImage)" alt="@Model.LeaguePosts[1][0].PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
-                                            <h4 class="heading-box-content"><a title="@Model.LeaguePosts[1][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Slug })">@Model.LeaguePosts[1][0].PostTitle</a></h4>
+                                            <h4 class="heading-box-content"><a title="@Model.LeaguePosts[1][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[1][0].Uri })">@Model.LeaguePosts[1][0].PostTitle</a></h4>
                                             <div class="list-event-title">
                                                 @{
                                                     var LeaguePostsCenterIndex = 0;
@@ -275,7 +275,7 @@
                                                         if(LeaguePostsCenterIndex <= 1){
                                                             continue;
                                                         }
-                                                        <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></h4>
+                                                        <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                                     }
                                                 }
                                             </div>
@@ -294,11 +294,11 @@
                                         <a title="@Model.LeaguePosts[2][0].PostTitle" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[2].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[2].Category</a>
                                     </h2>
                                     <div class="box-vertical">
-                                        <a title="@Model.LeaguePosts[2][0].PostTitle"  href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })" class="box-vertical-image hover-image">
+                                        <a title="@Model.LeaguePosts[2][0].PostTitle"  href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Uri })" class="box-vertical-image hover-image">
                                             <img src="@Url.Content(Model.LeaguePosts[2][0].FeatureImage)" alt="@Model.LeaguePosts[2][0].PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
-                                            <h4 class="heading-box-content"><a title="@Model.LeaguePosts[2][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Slug })">@Model.LeaguePosts[2][0].PostTitle</a></h4>
+                                            <h4 class="heading-box-content"><a title="@Model.LeaguePosts[2][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[2][0].Uri })">@Model.LeaguePosts[2][0].PostTitle</a></h4>
                                             <div class="list-event-title">
                                                 @{
                                                     var LeaguePostsLeftIndex = 0;
@@ -307,7 +307,7 @@
                                                         if(LeaguePostsLeftIndex <= 1){
                                                             continue;
                                                         }
-                                                        <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></h4>
+                                                        <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                                     }
                                                 }
                                             </div>
@@ -331,11 +331,11 @@
                         <div class="block-columns-border">
                             <div class="block-event-item">
                                 <div class="box-vertical">
-                                    <a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })" class="box-vertical-image hover-image">
+                                    <a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Uri })" class="box-vertical-image hover-image">
                                         <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res" loading="lazy" />
                                     </a>
                                     <div class="box-vertical-content">
-                                        <h4><a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug })">@Model.BackstagePosts[0].PostTitle</a></h4>
+                                        <h4><a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Uri })">@Model.BackstagePosts[0].PostTitle</a></h4>
                                         <p>@Model.BackstagePosts[0].PostExcerpt</p>
                                     </div>
                                 </div>
@@ -350,12 +350,12 @@
                                             continue;
                                         }
                                         <div class="box-horizontal">
-                                            <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="box-horizontal-image hover-none-16-9">
+                                            <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })" class="box-horizontal-image hover-none-16-9">
                                                 <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                             </a>
                                             <div class="box-horizontal-content">
                                                 <h4 class="heading-box-content">
-                                                    <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a>
+                                                    <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a>
                                                 </h4>
                                             </div>
                                         </div>
@@ -374,11 +374,11 @@
                                         continue;
                                     }
                                     <div class="box-vertical">
-                                        <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="box-vertical-image hover-image">
+                                        <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })" class="box-vertical-image hover-image">
                                             <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
-                                            <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></h4>
+                                            <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                         </div>
                                     </div>
                                 }
@@ -395,11 +395,11 @@
                                 <a title="Chuyển nhượng" href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug + CategoryKey.Suffix  })">CHUYỂN NHƯỢNG</a>
                             </h2>
                             <div class="box-vertical">
-                                <a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })" class="box-vertical-image hover-image">
+                                <a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Uri })" class="box-vertical-image hover-image">
                                     <img src="@Url.Content(Model.TransferPosts[0].FeatureImage)" alt="@Model.TransferPosts[0].PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h4 class="heading-box-content"><a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Slug })">@Model.TransferPosts[0].PostTitle</a></h4>
+                                    <h4 class="heading-box-content"><a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Uri })">@Model.TransferPosts[0].PostTitle</a></h4>
                                     <div class="list-event-title">
                                         @{
                                             var TransferPostIndex = 0;
@@ -410,7 +410,7 @@
                                                 {
                                                     continue;
                                                 }
-                                                <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></h4>
+                                                <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                             }
                                         }
                                     </div>
@@ -425,11 +425,11 @@
                                 <a title="@ViewResources.OtherPosts" href="@Url.Action("Category", "Home", new { slug = Constants.OtherPostSlug + CategoryKey.Suffix  })">@ViewResources.OtherPosts</a>
                             </h2>
                             <div class="box-vertical">
-                                <a title="@Model.OtherPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="box-vertical-image hover-image">
+                                <a title="@Model.OtherPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })" class="box-vertical-image hover-image">
                                     <img src="@Url.Content(Model.OtherPosts[0].FeatureImage)" alt="@Model.OtherPosts[0].PostTitle" class="img-res" loading="lazy" />
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })">@Model.OtherPosts[0].PostTitle</a></h4>
+                                    <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })">@Model.OtherPosts[0].PostTitle</a></h4>
                                     <div class="list-event-title">
                                         @{
                                             var OtherPostIndex = 0;
@@ -440,7 +440,7 @@
                                                 {
                                                     continue;
                                                 }
-                                                <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Slug })">@post.PostTitle</a></h4>
+                                                <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                             }
                                         }
                                     </div>

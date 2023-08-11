@@ -74,5 +74,13 @@
 
             return FeatureImage;
         }
+
+        public string Uri
+        {
+            get
+            {
+                return $"{Slug}-{ID}.html";
+            }
+        }
     }
 }

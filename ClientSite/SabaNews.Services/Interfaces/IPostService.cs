@@ -27,6 +27,8 @@
 
         Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
 
+        Task<Post> GetPostDetailAsync(long Id, string slug, string postType);
+
         Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria);
 
         Task<IEnumerable<Post>> GetPostByTagAsync(GetPostsByTagCriteria criteria);
@@ -70,5 +72,6 @@
         Task<IList<Post>> GetSitemapPostsByDateAsync(DateTime date);
 
         Task<IList<Category>> GetAllTagAsync();
+        Task<Post> GetPostDetailSummaryAsync(string slug);
     }
 }

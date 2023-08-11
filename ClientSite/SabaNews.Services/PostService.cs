@@ -120,6 +120,18 @@
             return post;
         }
 
+        public async Task<Post> GetPostDetailAsync(long Id, string slug, string postType)
+        {
+            var criteria = new GetPostDetailByIdSlugCriteria
+            {
+                PostId = Id,
+                Slug = slug,
+                PostType = postType
+            };
+            var post = await baseService.GetDataEntityAsync<Post>(criteria);
+            return post;
+        }
+
         public async Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria)
         {
             if (string.IsNullOrEmpty(criteria._Keyword))
@@ -241,6 +253,12 @@
         {
             var result = await baseService.GetDataAsync<Post>(criteria);
             return FormatData(result).ToList();
+        }
+
+        public async Task<Post> GetPostDetailSummaryAsync(string slug)
+        {
+            var criteria = new GetPostDetailSummaryCriteria { Slug = slug };
+            return await baseService.GetDataEntityAsync<Post>(criteria);
         }
 
         public static IList<Subjects> HandleSubjects(string categoriesSlug)
