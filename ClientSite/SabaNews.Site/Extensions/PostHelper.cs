@@ -54,13 +54,7 @@
                 listCate.Add(new MenuInfo { PostId = currentCate.PostId, CateSlug = currentCate.CateSlug  });
                 currentCate = menus.LastOrDefault(item => item.PostId == currentCate.ParentId);
             }
-            var activeMenu = listCate.Count >= 1 ? listCate[listCate.Count - 1].CateSlug : null;
-            var menuItems = new MenuItems
-            {
-                Item1 = listCate.Count >= 1 ? listCate[listCate.Count - 1].PostId : 0,
-                Item2 = listCate.Count >= 2 ? listCate[listCate.Count - 2].PostId : 0,
-                Item3 = listCate.Count >= 3 ? listCate[listCate.Count - 3].PostId : 0
-            };
+            var (menuItems, activeMenu) = GetMenuItems(listCate);
             var result = new MenuCategoryModel
             {
                 MenuItems = menuItems,
@@ -69,6 +63,18 @@
             };
             return result;
 
+        }
+
+        public static (MenuItems, string) GetMenuItems(List<MenuInfo> listCate)
+        {
+            var activeMenu = listCate.Count >= 1 ? listCate[listCate.Count - 1].CateSlug : null;
+            var menuItems = new MenuItems
+            {
+                Item1 = listCate.Count >= 1 ? listCate[listCate.Count - 1].PostId : 0,
+                Item2 = listCate.Count >= 2 ? listCate[listCate.Count - 2].PostId : 0,
+                Item3 = listCate.Count >= 3 ? listCate[listCate.Count - 3].PostId : 0
+            };
+            return (menuItems, activeMenu);
         }
 
         public static string GetTopCateParent(IList<CategoryGeneral> cates)
