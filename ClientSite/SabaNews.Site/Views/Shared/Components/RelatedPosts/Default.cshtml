@@ -12,7 +12,7 @@
     {
         string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width768) : post.FeatureImage;
         <div class="post card-horizontal card-horizontal-highlight">
-            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image hover-image">
+            <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="card-horizontal__image hover-image">
                 <picture>
                     <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
                     <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">
@@ -20,12 +20,12 @@
                 </picture>
             </a>
             <div class="card-horizontal__content">
-                <h4><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h4>
+                <h4><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a></h4>
                 <p class="datetime">
                     <span>@post.PostTime</span>
                     @if (post.CommentCount > 0)
                     {
-                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
+                        <a href="@Url.Action("Single", "Post", new { slug = post.Uri  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
                     }
                 </p>
                 <p class="description">@post.PostExcerpt</p>

@@ -25,12 +25,12 @@ export class TodayPost extends PureComponent {
                     todayFixturePosts.map((post, index) => {
                         return (
                             <div className="post card-horizontal" key={index}>
-                                <a href={`/${post.slug}`} className="card-horizontal__image hover-image">
+                                <a href={`/${post.uri}`} className="card-horizontal__image hover-image">
                                     <img src={post.featureImage} alt="" className="img-res img-block" />
                                 </a>
                                 <div className="card-horizontal__content">
                                     <h3>
-                                        <a href={`/${post.slug}`} className="title">
+                                        <a href={`/${post.uri}`} className="title">
                                             {post.postTitle}
                                         </a>
                                     </h3>

@@ -120,13 +120,11 @@
             return post;
         }
 
-        public async Task<Post> GetPostDetailAsync(long Id, string slug, string postType)
+        public async Task<Post> GetPostDetailAsync(long Id)
         {
-            var criteria = new GetPostDetailByIdSlugCriteria
+            var criteria = new GetPostDetailByIdCriteria
             {
-                PostId = Id,
-                Slug = slug,
-                PostType = postType
+                PostId = Id
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             return post;

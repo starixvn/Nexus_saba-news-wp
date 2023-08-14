@@ -8,7 +8,7 @@ export const LastestNews = ({posts}) => {
             <div className="livescore-recent-post__content">
                 {
                     posts.map((post, index) => {
-                        const link = Site.resolveClientUrl(post.slug);
+                        const link = Site.resolveClientUrl(post.uri);
                         return (
                             <div className="livescore-recent-post__item" key={index}>
                                 <div className="img-item">

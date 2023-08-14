@@ -31,7 +31,7 @@
 }
 
 @{
-    var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Post", new { slug = @Model.SinglePost.Slug });
+    var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Post", new { slug = @Model.SinglePost.Uri });
     var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
     var cateSlug = ViewData["cateSlug"].ToString().Trim();
     if (cateSlug.Contains("euro-2020"))

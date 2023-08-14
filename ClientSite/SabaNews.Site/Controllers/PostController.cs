@@ -58,6 +58,7 @@
             else
             {
                 var summary = await postService.GetPostDetailSummaryAsync(slug);
+                return View(Constants.EmptyBlogView);
                 if(summary == null)
                 {
                     return View(Constants.EmptyBlogView);
@@ -68,10 +69,14 @@
                 }
 
             }
-            var post = await postService.GetPostDetailAsync(postId, slug, Constants.postType);
+            var post = await postService.GetPostDetailAsync(postId);
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
+            }
+            if(post.Slug != slug)
+            {
+                return RedirectToAction("Single", "Post", new { slug = post.Uri });
             }
             SavePost savePost = null;
             var isLogin = sessionService.User != null;

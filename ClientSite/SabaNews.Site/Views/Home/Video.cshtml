@@ -103,7 +103,7 @@
                             </div>
                             <div style="display:none;" class="play_video"></div>
                             <div class="content-box">
-                                <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="heading">@Model.Posts[0].PostTitle</a></h4>
+                                <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Uri })" class="heading">@Model.Posts[0].PostTitle</a></h4>
                             </div>
                         </div>
                     </div>
@@ -123,20 +123,20 @@
                             }
                         }
                         <div class="card-vertical card-vertical-highlight">
-                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb">
+                            <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="card-vertical__image thumb">
                                 <picture>
                                     <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
                                     <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
                                     <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
                                 </picture>
                             </a>
-                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a>
+                            <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="card-vertical__title text-description">@post.PostTitle</a>
                             <p class="card-vertical__datetime">
                                 <span>
                                     @post.PostTime
                                     @if (post.CommentCount > 0)
                                     {
-                                        <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
+                                        <a href="@Url.Action("Single", "Post", new { slug =  post.Uri})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
                                     }
                                 </span>
                             </p>

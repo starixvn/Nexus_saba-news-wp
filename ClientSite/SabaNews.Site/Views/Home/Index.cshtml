@@ -230,11 +230,11 @@
                                         <a title="@Model.FootballNewCategory[0].Category" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[0].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[0].Category</a>
                                     </h2>
                                     <div class="box-vertical">
-                                        <a title="@Model.LeaguePosts[0][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })" class="box-vertical-image hover-image">
+                                        <a title="@Model.LeaguePosts[0][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Uri })" class="box-vertical-image hover-image">
                                             <img src="@Url.Content(Model.LeaguePosts[0][0].FeatureImage)" alt="@Model.LeaguePosts[0][0].PostTitle" class="img-res" loading="lazy" />
                                         </a>
                                         <div class="box-vertical-content">
-                                            <h4 class="heading-box-content"><a title="@Model.LeaguePosts[0][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Slug })">@Model.LeaguePosts[0][0].PostTitle</a></h4>
+                                            <h4 class="heading-box-content"><a title="@Model.LeaguePosts[0][0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.LeaguePosts[0][0].Uri })">@Model.LeaguePosts[0][0].PostTitle</a></h4>
                                             <div class="list-event-title">
                                                 @{
                                                     var LeaguePostsIndex = 0;

@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="play_video"></div>
                                 <div class="content-box">
-                                    <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="heading">@Model.Posts[0].PostTitle</a></h4>
+                                    <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Uri })" class="heading">@Model.Posts[0].PostTitle</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -51,20 +51,20 @@
                     @for (int i = 1; i < Model.Posts.Length; i++)
                     {
                         <div class="card-vertical card-vertical-highlight">
-                            <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__image">
+                            <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Uri })" class="card-vertical__image">
                                 <picture>
                                     <source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
                                     <source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
                                     <img loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
                                 </picture>
                             </a>
-                            <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
+                            <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Uri })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
                             <p class="card-vertical__datetime">
                                 <span>
                                     @Model.Posts[i].PostTime
                                     @if (Model.Posts[i].CommentCount > 0)
                                     {
-                                        <a href="@Url.Action("Single", "Post", new { slug =  Model.Posts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Posts[i].CommentCount</i></a>
+                                        <a href="@Url.Action("Single", "Post", new { slug =  Model.Posts[i].Uri})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Posts[i].CommentCount</i></a>
                                     }
                                 </span>
                             </p>

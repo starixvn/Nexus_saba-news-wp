@@ -39,7 +39,7 @@
                         <div class="card-vertical card-highlight">
                             @if (Model.HotNews.Length > 0)
                             {
-                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Slug})" class="card-vertical__image">
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Uri})" class="card-vertical__image">
                                     @{
                                         short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
                                         string firstImgUrl = Model.HotNews[0].GetImageBySize(imgSize);
@@ -51,7 +51,7 @@
                                     </picture>
                                 </a>
                                 <div class="card-content">
-                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Slug})" class="card__title">@Model.HotNews[0].PostTitle</a>
+                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Uri})" class="card__title">@Model.HotNews[0].PostTitle</a>
                                     <p class="card__description text-description">@Model.HotNews[0].PostExcerpt</p>
                                     <p class="card__datetime">@Model.HotNews[0].PostTime</p>
                                 </div>
@@ -64,7 +64,7 @@
 
                             string featuredImg = Model.HotNews[i].GetImageBySize(ImageWidth.Width300);
                             <div class="card-@card">
-                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[i].Slug})" class="card-@(card)__image">
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[i].Uri})" class="card-@(card)__image">
                                     <picture>
                                         <source srcset="@featuredImg" type="image/webp" class="img-res">
                                         <source srcset="@featuredImg" type="image/jpeg" class="img-res">
@@ -72,7 +72,7 @@
                                     </picture>
                                 </a>
                                 <div class="card-horizontal__content">
-                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[i].Slug})" class="title">@Model.HotNews[i].PostTitle</a>
+                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[i].Uri})" class="title">@Model.HotNews[i].PostTitle</a>
                                     <p class="datetime">@Model.HotNews[i].PostTime</p>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                             }
                                         </div>
                                         <div class="content-box">
-                                            <h3 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
+                                            <h3 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="heading">@post.PostTitle</a></h3>
                                         </div>
                                     </div>}
                             </div>
@@ -159,7 +159,7 @@
                                         </div>
                                         <div class="play_video"></div>
                                         <div class="content-box">
-                                            <h3 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
+                                            <h3 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="heading">@post.PostTitle</a></h3>
                                         </div>
                                     </div>}
                             </div>
@@ -184,12 +184,12 @@
                                     }
                                 </a>
                                 <div class="card-horizontal__content">
-                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" data-id="@post.ID" class="title">@post.PostTitle</a>
+                                    <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" data-id="@post.ID" class="title">@post.PostTitle</a>
                                     <p class="datetime">
                                         @post.PostTime
                                         @if (post.CommentCount > 0)
                                         {
-                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Uri})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
                                         }
                                     </p>
                                 </div>
