@@ -48,13 +48,11 @@
             var postId = 0;
             if(slug.Contains(".html"))
             {
-                slug = slug.Replace(".html","");
-                var arrSlug = slug.Split("-");
-                if(!int.TryParse(arrSlug.Last(), out postId))
+                (slug, postId) = GetPostInfoFromSlug(slug);
+                if(postId == 0)
                 {
                     return View(Constants.EmptyBlogView);
                 }
-                slug = slug.Replace("-" + postId, "");
 
             }
             else
@@ -101,6 +99,19 @@
             };
 
             return View(model);
+        }
+
+        private static (string, int) GetPostInfoFromSlug(string slug)
+        {
+            var postId = 0;
+            slug = slug.Replace(".html","");
+            var arrSlug = slug.Split("-");
+            if(!int.TryParse(arrSlug.Last(), out postId))
+            {
+                return (slug, postId);
+            }
+            slug = slug.Replace("-" + postId, "");
+            return (slug, postId);
         }
 
 
