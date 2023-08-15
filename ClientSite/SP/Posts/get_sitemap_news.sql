@@ -11,7 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_sitemap_news`(
 					- 20230811@Hank: change ModifiedDate
     */
 )
-get_sitemap_news:BEGIN
+BEGIN
     SELECT p.post_name As Slug
           ,p.post_title AS Title
           ,p.post_date as ModifiedDate
