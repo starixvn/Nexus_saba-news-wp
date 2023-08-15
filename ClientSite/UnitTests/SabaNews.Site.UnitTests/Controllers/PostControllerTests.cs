@@ -33,11 +33,11 @@
         private IPostService postService;
         private IConfiguration configuration;
         private ISessionService sessionService;
-        private IUserService userService;
         private IStatisticService statisticService;
         private IPollService pollService;
         private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
+
 
         [Fact]
         public async Task Single_WhenPostIsNull_ReturnExpectedViewResult()
@@ -78,7 +78,6 @@
             expectedUser.SavedPosts = null;
             postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
 
             //Act
             var result = await controller.Single(slug);
@@ -111,7 +110,6 @@
             expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
             postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
 
             //Act
             var result = await controller.Single(slug);
@@ -150,7 +148,6 @@
             
             postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
 
             //Act
             var result = await controller.Single(slug);
@@ -185,7 +182,6 @@
             
             postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
 
             //Act
             var result = await controller.Single(slug);
@@ -221,7 +217,6 @@
             expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
             postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
 
             //Act
             var result = await controller.Single(slug);
@@ -497,11 +492,10 @@
             pollService = Substitute.For<IPollService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
-            userService = Substitute.For<IUserService>();
             sessionService = Substitute.For<ISessionService>();
             statisticService = Substitute.For<IStatisticService>();
             dataControlService = Substitute.For<IDataControlService>(); 
-            var controller = new PostController(postService, configuration, sessionService, userService, statisticService, pollService, dataControlService);
+            var controller = new PostController(postService, configuration, sessionService, statisticService, pollService, dataControlService);
 
             return controller;
         }
