@@ -38,17 +38,13 @@
         private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
 
-
         [Fact]
-        public async Task Single_WhenPostIsNull_ReturnExpectedViewResult()
+        public async Task Single_WhenSlugContainHtmlAndNotHaveId_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
-            var slug = fixture.Create<string>();
+            var slug = "bai-viet.html";
             var postType = fixture.Create<string>();
-            Post expected = null;
-
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
 
             //Act
             var result = await controller.Single(slug);
@@ -59,24 +55,106 @@
         }
 
         [Fact]
+        public async Task Single_WhenSlugNotContainHtmlAndPostIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = "bai-viet.html";
+            var postType = fixture.Create<string>();
+            Post expected = null;
+
+            postService.GetPostDetailSummaryAsync(Arg.Do<string>(x => x = slug)).Returns(expected);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task Single_WhenPostSlugIsNotSame_RedirectExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
+            var postType = fixture.Create<string>();
+            Post expected = fixture.Create<Post>();
+            expected.Slug = "test";
+
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Post", redirectResult.ControllerName);
+            Assert.Equal("Single", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task Single_WhenSlugNotContainHtmlAndPostHaveData_RedirectExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = "bai-viet-123";
+            var postType = fixture.Create<string>();
+            Post expected = fixture.Create<Post>();
+
+            postService.GetPostDetailSummaryAsync(Arg.Do<string>(x => x = slug)).Returns(expected);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Post", redirectResult.ControllerName);
+            Assert.Equal("Single", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task Single_WhenPostIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
+            Post expected = null;
+
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+        
+
+        [Fact]
         public async Task Single_WhenAuthencated_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            var slug = fixture.Create<string>();
-            var postType = fixture.Create<string>();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
             var param = fixture.Create<GetRecentPostsParam>();
             Post expected = fixture.Create<Post>();
+            expected.Slug = "bai-viet";
             var expectedCateInfos = new List<CategoryGeneral>()
             {
                 new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
                 new CategoryGeneral { Id = 2, Slug = "bong-da" }
             };
             var expectedUser = fixture.Create<UserSession>();
-            sessionService.User = fixture.Create<UserSession>();
-            expectedUser.SavedPosts = null;
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            sessionService.User = expectedUser;
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
 
             //Act
@@ -95,20 +173,19 @@
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            var slug = fixture.Create<string>();
-            var postType = fixture.Create<string>();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
             var param = fixture.Create<GetRecentPostsParam>();
             Post expected = fixture.Create<Post>();
+            expected.Slug = "bai-viet";
             var expectedCateInfos = new List<CategoryGeneral>()
             {
                 new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
                 new CategoryGeneral { Id = 2, Slug = "video" }
             };
-            var expectedUser = fixture.Create<UserSession>();
-            sessionService.User = fixture.Create<UserSession>();
+            sessionService.User = null;
             expected.Type = Constants.VideoPostType;
-            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
 
             //Act
@@ -130,10 +207,11 @@
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            var slug = fixture.Create<string>();
-            var postType = fixture.Create<string>();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
             var param = fixture.Create<GetRecentPostsParam>();
             Post expected = fixture.Create<Post>();
+            expected.Slug = "bai-viet";
             expected.CatesName = cateSlug;
             expected.CategoriesSlug = cateSlug;
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
@@ -143,10 +221,10 @@
                 new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
                 new CategoryGeneral { Id = 2, Slug = cateSlug }
             };
-            sessionService.User = fixture.Create<UserSession>();
+            sessionService.User = null;
             expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
             
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
 
             //Act
@@ -165,10 +243,11 @@
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            var slug = fixture.Create<string>();
-            var postType = fixture.Create<string>();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
             var param = fixture.Create<GetRecentPostsParam>();
             Post expected = fixture.Create<Post>();
+            expected.Slug = "bai-viet";
             expected.CatesName = "schedule,transfer";
             expected.CategoriesSlug = $"{ Constants.MatchScheduleSlug }, { Constants.TransferSlug}";
             var expectedCateInfos = new List<CategoryGeneral>()
@@ -177,10 +256,10 @@
                 new CategoryGeneral { Id = 2, Slug = Constants.MatchScheduleSlug }
             };
             var expectedUser = fixture.Create<UserSession>();
-            sessionService.User = fixture.Create<UserSession>();
+            sessionService.User = null;
             expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
             
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
 
             //Act
@@ -199,10 +278,11 @@
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            var slug = fixture.Create<string>();
-            var postType = fixture.Create<string>();
+            var slug = "bai-viet-123.html";
+            var postId = fixture.Create<long>();
             var param = fixture.Create<GetRecentPostsParam>();
             Post expected = fixture.Create<Post>();
+            expected.Slug = "bai-viet";
             expected.CatesName = "bong-da";
             expected.CategoriesSlug = "bong-da";
             var expectedCateInfos = new List<CategoryGeneral>()
@@ -211,11 +291,11 @@
                 new CategoryGeneral { Id = 1, Slug = "bong-da" }
             };
             var expectedUser = fixture.Create<UserSession>();
-            sessionService.User = fixture.Create<UserSession>();
+            sessionService.User = null;
             expected.CatesName = $"{ Constants.Football }, { Constants.Video}";
             expected.CategoriesSlug = $"{ Constants.FootballSlug }, { Constants.VideoSlug}";
             expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
 
             //Act

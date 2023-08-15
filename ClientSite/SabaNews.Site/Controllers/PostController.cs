@@ -12,7 +12,6 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
     using SabaNews.Criteria.Posts;
-    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
