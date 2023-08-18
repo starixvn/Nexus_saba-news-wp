@@ -9,10 +9,11 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_sitemap_news`(
 		Creator: Hank@20210203
         Revisions:	- 20210203@Hank: init
 					- 20230811@Hank: change ModifiedDate
+                    - 20230811@Hank: select postId
     */
 )
 BEGIN
-    SELECT p.post_name As Slug
+    SELECT p.ID, p.post_name As Slug
           ,p.post_title AS Title
           ,p.post_date as ModifiedDate
           ,GROUP_CONCAT(t.name separator ', ') AS Tags
@@ -23,7 +24,7 @@ BEGIN
 	WHERE p.post_type ="post" and post_name <> '' 
 		and p.post_date >= DATE_SUB(NOW(), INTERVAL 2 DAY)
 		and p.post_status = 'publish'
-	GROUP BY p.post_name, p.post_type, p.post_title, p.post_date
+	GROUP BY p.ID, p.post_name, p.post_title, p.post_date
     ORDER BY p.post_date DESC;
 END
 //
