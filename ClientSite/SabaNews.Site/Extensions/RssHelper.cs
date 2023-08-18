@@ -35,16 +35,16 @@
             foreach(var item in RssData.Posts)
             {
                 var image = $"<img src=\"{item.FeatureImage}\" alt=\"{item.PostTitle}\" />";
-                var description = new XCData($"<a href=\"{domain}{item.Slug}\">{image}</a>{item.PostExcerpt}");
+                var description = new XCData($"<a href=\"{domain}{item.Uri}\">{image}</a>{item.PostExcerpt}");
                 var itemElement = new XElement("item",
                     new XElement("title", new XCData(item.PostTitle)),
                     new XElement("description", description),
                     new XElement(xmlns_doc + "creator", item.Author),
-                    new XElement("link", $"{domain}{item.Slug}"),
+                    new XElement("link", $"{domain}{item.Uri}"),
                     new XElement("pubDate", DateTimeExtensions.ToDateGMTSEAsia(item.PostDateGMT)),
-                    new XElement("guid", $"{domain}{item.Slug}"),
+                    new XElement("guid", $"{domain}{item.Uri}"),
                     new XElement(xmlns_atom + "link",
-                        new XAttribute("href", $"{domain}{item.Slug}"),
+                        new XAttribute("href", $"{domain}{item.Uri}"),
                         new XAttribute("rel", "self"), new XAttribute("type","application/rss+xml")));
                 channel.Add(itemElement);
             }

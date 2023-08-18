@@ -72,7 +72,7 @@
 
             foreach (var sitemapNode in sitemapNodes)
             {
-                XElement urlElement = RenderPostSitemap(sitemapNode.Slug, sitemapNode.PostDate, domain, false);
+                XElement urlElement = RenderPostSitemap(sitemapNode.Uri, sitemapNode.PostDate, domain, false);
                 root.Add(urlElement);
             }
 
@@ -131,7 +131,7 @@
                     new XElement(xmlns_news + "keywords", sitemapNode.Tags));
                 XElement urlE = new(
                     xmlns + "url",
-                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Slug}")),
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Uri}")),
                     newsElement);
                 root.Add(urlE);
             }

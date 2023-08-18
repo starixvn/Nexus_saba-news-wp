@@ -57,7 +57,6 @@
             else
             {
                 var summary = await postService.GetPostDetailSummaryAsync(slug);
-                // return View(Constants.EmptyBlogView);
                 if(summary == null)
                 {
                     return View(Constants.EmptyBlogView);
