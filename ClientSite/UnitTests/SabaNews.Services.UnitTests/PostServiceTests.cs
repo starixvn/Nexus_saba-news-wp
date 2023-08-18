@@ -630,6 +630,40 @@
         }
 
         [Fact]
+        public async Task GetPostDetailSummaryAsync_WhenCalled_ReturnExpectedPost()
+        {
+            //Arrange
+            var service = GetPostService();
+            var slug = fixture.Create<string>();
+            var criteria = fixture.Create<GetPostDetailSummaryCriteria>();
+            var expected = fixture.Create<Post>();
+            baseService.GetDataEntityAsync<Post>(Arg.Do<GetPostDetailSummaryCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPostDetailSummaryAsync(slug);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetPostDetailAsync_WhenCalled_ReturnExpectedPost()
+        {
+            //Arrange
+            var service = GetPostService();
+            var id = fixture.Create<long>();
+            var criteria = fixture.Create<GetPostDetailByIdCriteria>();
+            var expected = fixture.Create<Post>();
+            baseService.GetDataEntityAsync<Post>(Arg.Do<GetPostDetailByIdCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPostDetailAsync(id);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public void PostFunction_WhenCalled_ReturnExpectedData()
         {
             //Arrange
