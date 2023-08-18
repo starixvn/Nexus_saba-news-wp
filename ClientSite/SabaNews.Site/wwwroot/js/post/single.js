@@ -72,7 +72,7 @@
             success: function (res) {
                 $("body").removeClass("overflow-section");
                 GeneralBannerHtml(".banner-left", res.desktopLeftUrl, res.desktopLeftNavigationUrl, 910, 150, "Banner left");
-                    GeneralBannerHtml(".banner-right", res.desktopRightUrl, res.desktopRightNavigationUrl, 300, 600, "Banner right");
+                    GeneralBannerHtml(".banner-right", res.desktopRightUrl, res.desktopRightNavigationUrl, 350, 490, "Banner right");
                     GeneralBannerHtml(".banner-desktop-top", res.desktopTopUrl, res.desktopTopNavigationUrl, 320, 70, "Banner top");
                     GeneralBannerHtml(".banner-desktop-center", res.desktopCenterUrl, res.desktopCenterNavigationUrl, "100%", "100%", "Banner center");
                     GeneralBannerHtml(".banner-mobile-top", res.mobileTopUrl, res.mobileTopNavigationUrl, 375, 240, "Banner top");

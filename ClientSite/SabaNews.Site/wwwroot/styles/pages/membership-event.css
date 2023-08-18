@@ -2410,7 +2410,7 @@ button {
 
 .main .detail-container {
   display: grid;
-  grid-template-columns: 5% 63% 35rem;
+  grid-template-columns: 5% 62% 37rem;
   grid-template-rows: unset;
   grid-gap: 0;
   align-items: start;
@@ -2688,7 +2688,7 @@ button {
   min-height: 11.6rem;
 }
 .show-pc.banner-right {
-  min-height: 60rem;
+  min-height: 46rem;
 }
 
 .show-mobile {

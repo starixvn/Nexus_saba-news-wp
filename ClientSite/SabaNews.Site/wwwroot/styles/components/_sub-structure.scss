@@ -16,7 +16,7 @@
 }
 
 .main .detail-container {
-    @include grid(5% 63% 35rem, unset, 0);
+    @include grid(5% 62% 37rem, unset, 0);
     align-items : start;
 
     @include tableMobile {

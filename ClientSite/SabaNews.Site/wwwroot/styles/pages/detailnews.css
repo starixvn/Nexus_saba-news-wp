@@ -2958,7 +2958,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .main .detail-container {
   display: grid;
-  grid-template-columns: 5% 63% 35rem;
+  grid-template-columns: 5% 62% 37rem;
   grid-template-rows: unset;
   grid-gap: 0;
   align-items: start;
@@ -3360,7 +3360,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   min-height: 11.6rem;
 }
 .show-pc.banner-right {
-  min-height: 60rem;
+  min-height: 46rem;
 }
 
 .show-mobile {
@@ -4253,11 +4253,11 @@ img {
 }
 
 .wp-block-table {
-  overflow: auto;
   border: 1px solid #DADADA;
   margin: 1rem 0;
   border-radius: 3px;
   text-align: center;
+  overflow: auto;
 }
 .wp-block-table .wp-element-caption {
   border-top: 1px solid #5267A5;
