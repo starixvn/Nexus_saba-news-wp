@@ -1688,12 +1688,19 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-bottom: 0;
   color: #595959;
   cursor: pointer;
+  display: inline;
+}
+.menu-popup-content .content-menu .block-menu-list li.more:hover {
+  text-decoration: underline;
 }
 .menu-popup-content .content-menu .block-menu-list li a {
   text-decoration: none;
   font-size: 1.4rem;
   font-weight: 500;
   color: #333;
+}
+.menu-popup-content .content-menu .block-menu-list li a:hover {
+  text-decoration: underline;
 }
 .menu-popup-content .content-menu .block-menu-title {
   margin-bottom: 1rem;
@@ -1704,6 +1711,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-size: 1.4rem;
   font-weight: 600;
   color: #E13C29;
+}
+.menu-popup-content .content-menu .block-menu-title a:hover {
+  text-decoration: underline;
 }
 .menu-popup-content .slide-bar-menu {
   padding: 1.6rem 0 0 1rem;
@@ -1738,6 +1748,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-size: 1.4rem;
   font-weight: 500;
   color: #333;
+}
+.box-slidebar-list li a:hover, .keywork-list li a:hover {
+  text-decoration: underline;
 }
 
 .keywork {
