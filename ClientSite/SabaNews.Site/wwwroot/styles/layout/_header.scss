@@ -1178,11 +1178,15 @@
 
             .block-menu{
                 display: grid;
-                grid-template-columns: repeat(auto-fit, 15.5rem);
-                gap: 1.9rem;
+                grid-template-columns: repeat(auto-fit, 14.5%);
+                gap: 1.6rem;
                 margin-bottom: 1.2rem;
                 padding-bottom: 1.2rem;
                 border-bottom: 1px solid #E4E4E4;
+                @include creen1391px{
+                    grid-template-columns: repeat(auto-fit, 15.5rem);
+                    gap: 1.9rem;
+                }
                 &:first-child, &:last-child{
                     margin-bottom: 0;
                     padding-bottom: 0;
