@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using SabaNews.Core.Models;
+
 namespace SabaNews.Core.Constants
 {
     public static class CategoryKey
@@ -26,5 +29,10 @@ namespace SabaNews.Core.Constants
 
         public const int ShowLivescore = 1;
         public const int HideLivescore = 0;
+
+        public static readonly IReadOnlyList<CateSlugRedirect> CateRedirectList = new List<CateSlugRedirect>
+        {
+            new CateSlugRedirect { OldSlug = "viet-nam-sabavn", NewSlug = "bong-da-viet-nam-sabavn" }
+        };
     }
 }

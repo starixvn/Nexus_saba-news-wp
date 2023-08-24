@@ -134,6 +134,7 @@
         [Route("rss/{cate}")]
         public async Task<ContentResult> CategoryRSS(string cate)
         {
+            var rss = "";
             var slug = cate.Replace(".rss", "");
             RSSCategoryModel model;
             var cacheConfig = configuration.GetSection(RssCacheKey).Get<RssCacheConfig>();
@@ -155,7 +156,9 @@
             {
                 model = await GetDataCategory(slug);
             }
-            string rss = RssHelper.GetRSSDocument(model, domain);
+            if(model != null) {
+                rss = RssHelper.GetRSSDocument(model, domain);
+            }
             return Content(rss, xmlType, Encoding.UTF8);
         }
 
@@ -179,7 +182,14 @@
             {
                 posts = await postService.GetRSSCategoryBySlugAsync(slug);
                 category = await postService.GetCateDetailAsync(slug);
-                category.Url  = slug + CategoryKey.Suffix;
+                if(category != null)
+                {
+                    category.Url = slug + CategoryKey.Suffix;
+                }
+                else
+                {
+                    return null;
+                }
             }
             var model = new RSSCategoryModel
             {

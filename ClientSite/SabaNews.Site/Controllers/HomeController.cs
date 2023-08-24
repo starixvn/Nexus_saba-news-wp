@@ -76,6 +76,12 @@
             return View(view, viewModel);
         }
 
+        private CateSlugRedirect RedirectCategorySlug(string slug)
+        {
+            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
+            return cateRedirect;
+        }
+
         [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
         public ActionResult OldCategories(string slug1 = null, string slug2 = null, string slug3 = null)
         {
@@ -281,6 +287,8 @@
         {
             return Redirect("/lich-thi-dau/bong-da");
         }
+
+       
 
         [Route("policy")]
         public ActionResult Policy()

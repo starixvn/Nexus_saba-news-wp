@@ -180,10 +180,9 @@
             var controller = GetController();
             var cate = "cate.rss";
             var expectedPost = fixture.Create<List<Post>>();
-            var expectedCategory = fixture.Create<Category>();
+            Category expectedCategory = null;
             var expectedParentCate = new List<CategoryGeneral>();
             expectedParentCate.Add(new CategoryGeneral { Slug = "tin-the-thao" });
-            expectedCategory.Url = "cate-sabavn";
             postService.GetRSSCategoryBySlugAsync(Arg.Do<string>(x => x = cate)).Returns(expectedPost);
             postService.GetCateDetailAsync(Arg.Do<string>(x => x = cate)).Returns(expectedCategory);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = cate)).Returns(expectedParentCate);
@@ -192,7 +191,7 @@
                 Posts = expectedPost,
                 Category = expectedCategory
             };
-            var expectedSitemap = RssHelper.GetRSSDocument(model, "");
+            var expectedSitemap = "";
             //Act
             var actual = await controller.CategoryRSS(cate);
 
