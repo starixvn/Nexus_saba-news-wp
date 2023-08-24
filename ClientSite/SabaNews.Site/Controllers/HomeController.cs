@@ -60,13 +60,13 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
-            var redirect = RedirectCategorySlug(slug);
-            if(redirect != null)
-            {
-                return Redirect(redirect.NewSlug);
-            }
+            var redirectLink = RedirectCategorySlug(slug);
             slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
+            if (viewModel == null && redirectLink != "")
+            {
+                return Redirect(redirectLink);
+            }
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
@@ -81,10 +81,23 @@
             return View(view, viewModel);
         }
 
-        private CateSlugRedirect RedirectCategorySlug(string slug)
+        private string RedirectCategorySlug(string slug)
         {
-            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
-            return cateRedirect;
+            var redirectLink = "";
+            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.NewSlug == slug);
+            if(cateRedirect == null)
+            {
+                cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
+                if(cateRedirect != null)
+                {
+                    redirectLink = cateRedirect.NewSlug;
+                }
+            }
+            else
+            {
+                redirectLink = cateRedirect.OldSlug;
+            }
+            return redirectLink;
         }
 
         [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
