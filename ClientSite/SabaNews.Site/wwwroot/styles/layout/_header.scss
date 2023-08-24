@@ -1149,11 +1149,11 @@
             font-weight: 600;
         }
         .close-popup{
-            a{
-                text-decoration: none;
+            i{
                 font-size: 2.4rem;
                 display: block;
                 color: $color-title;
+                cursor: pointer;
             }
         }
     }

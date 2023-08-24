@@ -1628,11 +1628,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-size: 1.8rem;
   font-weight: 600;
 }
-.menu-popup-header .close-popup a {
-  text-decoration: none;
+.menu-popup-header .close-popup i {
   font-size: 2.4rem;
   display: block;
   color: #333;
+  cursor: pointer;
 }
 .menu-popup-content {
   display: grid;
