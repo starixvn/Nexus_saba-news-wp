@@ -60,6 +60,11 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
+            var redirect = RedirectCategorySlug(slug);
+            if(redirect != null)
+            {
+                return Redirect(redirect.NewSlug);
+            }
             slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
