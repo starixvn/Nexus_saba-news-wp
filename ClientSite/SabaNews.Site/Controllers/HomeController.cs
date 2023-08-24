@@ -84,18 +84,10 @@
         private string RedirectCategorySlug(string slug)
         {
             var redirectLink = "";
-            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.NewSlug == slug);
-            if(cateRedirect == null)
+            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
+            if(cateRedirect != null)
             {
-                cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
-                if(cateRedirect != null)
-                {
-                    redirectLink = cateRedirect.NewSlug;
-                }
-            }
-            else
-            {
-                redirectLink = cateRedirect.OldSlug;
+                redirectLink = cateRedirect.NewSlug;
             }
             return redirectLink;
         }
