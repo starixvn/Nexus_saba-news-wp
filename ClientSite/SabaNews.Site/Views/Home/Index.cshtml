@@ -420,7 +420,17 @@
                                 <a title="Xem thêm" href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug + CategoryKey.Suffix  })">Xem Thêm</a>
                             </div>
                         </div>
-                        @if(Model.OtherPosts != null && Model.OtherPosts.Length > 0)
+                        @{
+                            var OtherPostIndex = 0;
+                            foreach (var post in Model.OtherPosts)
+                            {
+                                OtherPostIndex++;
+                                if(OtherPostIndex > 1) {
+                                    break;
+                                }
+                            }
+                        }
+                        @if(OtherPostIndex > 0)
                         {
                              <div class="block-event-item item-league">
                             <h2 class="block__title">
@@ -434,7 +444,7 @@
                                     <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })">@Model.OtherPosts[0].PostTitle</a></h4>
                                     <div class="list-event-title">
                                         @{
-                                            var OtherPostIndex = 0;
+                                            OtherPostIndex = 0;
                                             foreach (var post in Model.OtherPosts)
                                             {
                                                 OtherPostIndex++;
@@ -453,7 +463,6 @@
                             </div>
                         </div>
                         }
-                       
                     </div>
                 </div>
                 <div class="columns columns-right">
