@@ -420,7 +420,9 @@
                                 <a title="Xem thêm" href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug + CategoryKey.Suffix  })">Xem Thêm</a>
                             </div>
                         </div>
-                        <div class="block-event-item item-league">
+                        @if(Model.OtherPosts.Length > 0)
+                        {
+                             <div class="block-event-item item-league">
                             <h2 class="block__title">
                                 <a title="@ViewResources.OtherPosts" href="@Url.Action("Category", "Home", new { slug = Constants.OtherPostSlug + CategoryKey.Suffix  })">@ViewResources.OtherPosts</a>
                             </h2>
@@ -450,6 +452,8 @@
                                 </div>
                             </div>
                         </div>
+                        }
+                       
                     </div>
                 </div>
                 <div class="columns columns-right">

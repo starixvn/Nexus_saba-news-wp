@@ -30,13 +30,7 @@
                                 <label>Slug</label>
                             </td>
                             <td>
-                                @foreach (var item in Model)
-                                {
-                                    if (item.Slug == slugSelected)
-                                    {
-                                        <input type="text" disabled value="@item.Slug" class="form-control txt-countryVn txt-countryEn" id="editSlug" name="Slug" />
-                                    }
-                                }
+                                <input type="text" disabled value="@slugSelected" class="form-control txt-countryVn txt-countryEn" id="editSlug" name="Slug" />
                             </td>
                         </tr>
                         <tr>
@@ -44,13 +38,7 @@
                                 <label>Category Name</label>
                             </td>
                             <td>
-                                @foreach (var item in Model)
-                                {
-                                    if (item.Slug == slugSelected)
-                                    {
-                                        <input type="text" value="@(categoryName ?? item.MenuTitle)" class="form-control border txt-countryVn txt-countryEn" id="editCategoryName" name="CategoryName" />
-                                    }
-                                }
+                                <input type="text" value="@categoryName" class="form-control border txt-countryVn txt-countryEn" id="editCategoryName" name="CategoryName" />
                             </td>
                         </tr>
                     </tbody>
