@@ -93,6 +93,11 @@ body {
     background: #F5F6F7;
     border: 1px solid #E9E9E9;
     border-radius: 3px;
+    .heading-about-livescore{
+        font-size: 1.4rem;
+        font-style: bold;
+        margin-bottom: .8rem;
+    }
     .about-livescore-text {
         margin-bottom: 1rem;
         &:last-child{

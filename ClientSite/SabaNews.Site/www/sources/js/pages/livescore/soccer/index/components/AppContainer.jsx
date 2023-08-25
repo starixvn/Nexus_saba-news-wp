@@ -136,7 +136,7 @@ export class AppContainer extends Component {
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <div className="block__title"><h1><a>Lịch thi đấu bóng đá hôm nay</a></h1></div>
+                        <div className="block__title"><h1><a> { window.isLivePage ? "Trực tiếp bóng đá hôm nay " : "Lịch thi đấu bóng đá hôm nay" }</a></h1></div>
                         <div className="document-text">
                             *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ mang tính chất tham khảo.
                         </div>
@@ -150,34 +150,67 @@ export class AppContainer extends Component {
                         {
                             matches !== null && <MatchGrid matches={matches} />
                         }
-                        <div className="about-livescore">
-                            <div className="about-livescore-text">
-                                SABAVN, một chuyên trang thể thao hàng đầu tại Việt Nam, cam kết mang đến cho quý độc giả những thông tin mới nhất về lịch thi đấu 
-                                bóng đá hôm nay và rạng sáng mai của hàng trăm giải đấu bóng đá trên khắp thế giới. Chúng tôi hiểu rằng LTĐ bóng đá là món ăn tinh 
-                                thần không thể thiếu đối với người Việt.
+                        { window.isLivePage ? (
+                            <div className="about-livescore">
+                                <h3 className="heading-about-livescore">Xem TRỰC TIẾP BÓNG ĐÁ HÔM NAY nhanh nhất trên SABAVN</h3>
+                                <div className="about-livescore-text">
+                                    Website XEM trực tiếp bóng đá hôm nay, cập nhật link xem trực tiếp bóng đá các trận đấu nhanh nhất trên Internet. Người xem có thể xem được diễn biến tất cả các trận đấu mà không cần cài đặt app hay ứng dụng xem TV nào.
+                                </div>
+                                <div className="about-livescore-text">
+                                    Chuyên trang 'TRỰC TIẾP BÓNG ĐÁ' được thiết kế hiện đại, giúp bạn có trải nghiệm tiện ích nhất. Chỉ cần 1 cú click, bạn có thể dễ dàng tìm kiếm link xem, thành tích đối đầu, đội hình ra sân và các thông số chi tiết của trận đấu.
+                                </div>
+                                <h3 className="heading-about-livescore">VÌ SAO NÊN XEM TRỰC TIẾP BÓNG ĐÁ TRÊN SABAVN</h3>
+                                <div className="about-livescore-text">
+                                    TẤT CẢ link xem trực tiếp đều được SABAVN cập nhật 2 và liên tục 2 TIẾNG/1 lần trước khi trận đấu diễn ra. Ngoài ra, website sẽ cung cấp đầy đủ chỉ số thông kê của 2 đội bóng : đội hình, lịch sử đối đầu, diễn biến trận đấu, số lượng thẻ đỏ, thẻ vàn, phạt góc v.v…..
+                                </div>
+                                <div className="about-livescore-text">
+                                    Lịch xem bóng đá trực tuyến và phát sóng trực tiếp các trận đấu của ĐTVN, các giải EURO 2024, VL World Cup 2026, V League, Ngoại hạng Anh, C1, C2, …. đều được cung cấp đầy đủ và chính xác.
+                                </div>
+                                <h3 className="heading-about-livescore">HƯỚNG DẪN XEM TRỰC TIẾP BÓNG ĐÁ TRÊN SABAVN</h3>
+                                <div className="about-livescore-text">
+                                    Bạn có thể xem bóng đá trực tiếp tại SABAVN mà không cần tạo tài khoản. Tuy nhiên, để tận hưởng dịch vụ một cách trọn vẹn nhất. Bạn có thể làm đăng ký làm thành viên của kênh SABAVN qua các bước cực kỳ đơn giản sau:
+                                </div>
+                                <div className="about-livescore-text">
+                                    Bước 1: Người dùng phải cần có điện thoại thông minh, dễ dàng kết nối Internet như máy tính bàn, laptop, máy tính bảng…<br />
+                                    Bước 2: Người dùng truy cập trình duyệt web rồi gõ ” SABAVN” để tìm kiếm <br />
+                                    Bước 3: Khi website SABAVN.COM hiện ra thì bạn có thể thoải mái truy cập các thông tin hay các trận đấu bóng mà bạn muốn xem.<br />
+                                    Ngoài ra bạn có thể đăng kí thành viên để lựa chọn thêm các giải đấu mà bạn quan tâm. SABAVN sẽ gửi thông tin cho bạn khi có các trận TRỰC TIẾP MỚI NHẤT.
+                                </div>
+                                <div className="about-livescore-text">
+                                    Các bạn hãy nhanh tay truy cập SABAVN.COM kênh xem trực tiếp bóng đá hot nhất hiện này để hòa mình vào không khí bóng đá sôi động, hình ảnh chân thực, sắc nét. Sự ủng hộ và đồng hành của các bạn sẽ luôn là động lực to lớn để kênh của chúng tôi ngày càng phát triển mạnh mẽ và có cơ hội để người dùng trải niệm những dịch vụ tuyệt vời nhất mà kênh của chúng tôi đem lại. Sự hài lòng của các bạn là món quà vô giá đối với chúng tôi.
+                                </div>
                             </div>
-                            <div className="about-livescore-text">
-                                Tại SABAVN.com, quý độc giả sẽ tìm thấy lịch thi đấu bóng đá hôm nay của các giải đấu hàng đầu trên toàn cầu như 
-                                Ngoại hạng Anh, FA Cup, C1, C2, C3, La Liga, Serie A, Cup Liên đoàn, Bundesliga, UEFA Nations League, cùng nhiều giải giao hữu quan trọng khác.
+                        )  :  (
+                            <div className="about-livescore">
+                                <div className="about-livescore-text">
+                                    SABAVN, một chuyên trang thể thao hàng đầu tại Việt Nam, cam kết mang đến cho quý độc giả những thông tin mới nhất về lịch thi đấu 
+                                    bóng đá hôm nay và rạng sáng mai của hàng trăm giải đấu bóng đá trên khắp thế giới. Chúng tôi hiểu rằng LTĐ bóng đá là món ăn tinh 
+                                    thần không thể thiếu đối với người Việt.
+                                </div>
+                                <div className="about-livescore-text">
+                                    Tại SABAVN.com, quý độc giả sẽ tìm thấy lịch thi đấu bóng đá hôm nay của các giải đấu hàng đầu trên toàn cầu như 
+                                    Ngoại hạng Anh, FA Cup, C1, C2, C3, La Liga, Serie A, Cup Liên đoàn, Bundesliga, UEFA Nations League, cùng nhiều giải giao hữu quan trọng khác.
+                                </div>
+                                <div className="about-livescore-text">
+                                    Chúng tôi cũng cung cấp lịch thi đấu bóng đá theo ngày của AFF Cup, K.League, J.League, U22 Đông Nam Á, SEA Games, Asiad; LTĐ Olympic, Asian Cup,
+                                    U23 Châu Á, V-League, Cup Quốc gia, Thai League.
+                                </div>
+                                <div className="about-livescore-text">
+                                    Ngoài ra, SABAVN còn đem đến cho độc giả lịch thi đấu bóng đá chi tiết
+                                    theo từng vòng đấu, lượt trận của các đội bóng lớn như MU, Man City, Real Madrid, AC Milan, Chelsea, Barcelona, Arsenal, Liverpool, Dortmund, Bayern Munich.
+                                </div>
+                                <div className="about-livescore-text">
+                                    Bạn sẽ tìm thấy lịch bóng đá hôm nay của Juventus, PSG, Tottenham, và cả lịch thi đấu U19 Việt Nam, U23 Việt Nam, ĐT Việt Nam, lịch trực tiếp bóng đá V-League của HAGL, 
+                                    Hà Nội, SLNA, Thanh Hóa, Công An Hà Nội tại SABAVN.com.
+                                </div>
+                                <div className="about-livescore-text">
+                                    SABAVN không chỉ cập nhật lịch trực tiếp và lịch phát sóng bóng đá hôm nay trên các 
+                                    kênh nổi tiếng như K+1, K+PM, K+NS, K+PC, On Sports, FOX Sports, VTV6, VTC3, THVL2, VTC Now, Thể Thao TV, Bóng Đá TV, SCTV, TTTT, mà còn liên tục cập nhật trên 
+                                    các nền tảng mạng xã hội như Youtube, Facebook của Next Media, VFF Channel, Thethao360...
+                                </div>
                             </div>
-                            <div className="about-livescore-text">
-                                Chúng tôi cũng cung cấp lịch thi đấu bóng đá theo ngày của AFF Cup, K.League, J.League, U22 Đông Nam Á, SEA Games, Asiad; LTĐ Olympic, Asian Cup,
-                                U23 Châu Á, V-League, Cup Quốc gia, Thai League.
-                            </div>
-                            <div className="about-livescore-text">
-                                Ngoài ra, SABAVN còn đem đến cho độc giả lịch thi đấu bóng đá chi tiết
-                                theo từng vòng đấu, lượt trận của các đội bóng lớn như MU, Man City, Real Madrid, AC Milan, Chelsea, Barcelona, Arsenal, Liverpool, Dortmund, Bayern Munich.
-                            </div>
-                            <div className="about-livescore-text">
-                                Bạn sẽ tìm thấy lịch bóng đá hôm nay của Juventus, PSG, Tottenham, và cả lịch thi đấu U19 Việt Nam, U23 Việt Nam, ĐT Việt Nam, lịch trực tiếp bóng đá V-League của HAGL, 
-                                Hà Nội, SLNA, Thanh Hóa, Công An Hà Nội tại SABAVN.com.
-                            </div>
-                            <div className="about-livescore-text">
-                                SABAVN không chỉ cập nhật lịch trực tiếp và lịch phát sóng bóng đá hôm nay trên các 
-                                kênh nổi tiếng như K+1, K+PM, K+NS, K+PC, On Sports, FOX Sports, VTV6, VTC3, THVL2, VTC Now, Thể Thao TV, Bóng Đá TV, SCTV, TTTT, mà còn liên tục cập nhật trên 
-                                các nền tảng mạng xã hội như Youtube, Facebook của Next Media, VFF Channel, Thethao360...
-                            </div>
-                        </div>
+                        ) }
+                        
                         <TodayPost />
                     </div>
                     <div className="livescore-soccer-extension">
