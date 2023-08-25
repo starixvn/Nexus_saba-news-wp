@@ -87,7 +87,7 @@
             {
                 <div class="group-sub-category">
                     <div class="sub-category">
-                        <h1 class="heading-category"><a>@Model.HeadTitle</a></h1>
+                        <h1 class="heading-category"><a>@Model.PageTitle</a></h1>
                         @foreach (var menu in Model.GetSubMenu(slug1))
                         {
                             <h2 class="sub-item @(slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
