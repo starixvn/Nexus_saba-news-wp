@@ -77,7 +77,7 @@
             viewModel.Menus = menus;
             viewModel.Slugs = slugs;
             viewModel.Category.Url = $"{domain}{slug}{CategoryKey.Suffix}";
-            viewModel.PageTitle = string.IsNullOrEmpty(parentName) ? viewModel.HeadTitle: parentName;
+            viewModel.PageTitle = string.IsNullOrEmpty(parentName) ? viewModel.Category.Title: parentName;
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
             return View(view, viewModel);
         }
