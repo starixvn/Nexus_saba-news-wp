@@ -100,24 +100,24 @@
 
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
-            if (IsUsingCache)
-            {
-                var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
+            // if (IsUsingCache)
+            // {
+            //     var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
 
-                if (result == null)
-                {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
+            //     if (result == null)
+            //     {
+            //         logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
 
-                    result = await fetchDataService.GetMenuData();
-                    await cacheWrapperService.SetAsync(CacheKey.Menu, result,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
-                        });
-                }
+            //         result = await fetchDataService.GetMenuData();
+            //         await cacheWrapperService.SetAsync(CacheKey.Menu, result,
+            //             new CacheItemOptions
+            //             {
+            //                 RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
+            //             });
+            //     }
 
-                return result;
-            }
+            //     return result;
+            // }
 
             return await fetchDataService.GetMenuData();
         }

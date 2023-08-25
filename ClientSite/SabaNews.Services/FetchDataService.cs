@@ -63,13 +63,18 @@
             var guessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetNineItems);
             var backstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            if(!otherPosts.Any())
+            {
+                otherPosts = await postService.GetPostsBySlugAsync(Constants.NewOtherPostSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            }
 
             var (footballNewUrls,leaguePosts) = await GetFootballNews();
 
             var viewModel = new PostViewModel
             {
-                NewPosts = (newPosts).ToArray(),
+                 NewPosts = (newPosts).ToArray(),
                 LeaguePosts = leaguePosts,
                 OtherPosts = (otherPosts).ToArray(),
                 VideoPosts = (videoPosts).ToArray(),

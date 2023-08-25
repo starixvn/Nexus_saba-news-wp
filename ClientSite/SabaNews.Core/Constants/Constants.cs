@@ -21,6 +21,7 @@
         public const string FootballOutside = "bong-da-quoc-te";
         public const string FootballInside = "bong-da-trong-nuoc";
         public const string OtherPostSlug = "cac-mon-khac";
+        public const string NewOtherPostSlug = "the-thao";
         public const string CollectionSlug = "tong-hop";
         public const string MembershipEventSlug = "membership-event";
         public const string BasketballVideoSlug = "video-bong-ro";
