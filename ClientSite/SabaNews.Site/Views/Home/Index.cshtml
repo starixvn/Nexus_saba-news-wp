@@ -420,7 +420,7 @@
                                 <a title="Xem thêm" href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug + CategoryKey.Suffix  })">Xem Thêm</a>
                             </div>
                         </div>
-                        @if(Model.OtherPosts.Length > 0)
+                        @if(Model.OtherPosts != null && Model.OtherPosts.Length > 0)
                         {
                              <div class="block-event-item item-league">
                             <h2 class="block__title">
