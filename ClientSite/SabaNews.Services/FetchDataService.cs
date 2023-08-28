@@ -74,13 +74,13 @@
 
             var viewModel = new PostViewModel
             {
-                 NewPosts = (newPosts).ToArray(),
+                 NewPosts = newPosts,
                 LeaguePosts = leaguePosts,
-                OtherPosts = (otherPosts).ToArray(),
-                VideoPosts = (videoPosts).ToArray(),
-                GuessPosts = (guessPosts).ToArray(),
-                BackstagePosts = (backstagePosts).ToArray(),
-                TransferPosts = (transferPosts).ToArray(),
+                OtherPosts = otherPosts,
+                VideoPosts = videoPosts,
+                GuessPosts = guessPosts,
+                BackstagePosts = backstagePosts,
+                TransferPosts = transferPosts,
                 Category = category,
                 FootballNewCategory = footballNewUrls
             };
