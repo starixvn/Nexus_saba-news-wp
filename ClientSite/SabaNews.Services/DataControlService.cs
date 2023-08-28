@@ -72,52 +72,52 @@
 
         public async Task<BlogViewModel> GetCategoryViewModel(string slug)
         {
-            // if (IsUsingCache)
-            // {
-            //     var cacheKey = CacheKey.CategoryViewModel + "-" + slug;
-            //     var result = await cacheWrapperService.GetAsync<BlogViewModel>(cacheKey);
+            if (IsUsingCache)
+            {
+                var cacheKey = CacheKey.CategoryViewModel + "-" + slug;
+                var result = await cacheWrapperService.GetAsync<BlogViewModel>(cacheKey);
 
-            //     if (result == null)
-            //     {
-            //         logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from DB---------");
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from DB---------");
 
-            //         result = await fetchDataService.GetCategoryViewModel(slug);
-            //         if (result != null)
-            //         {
-            //             await cacheWrapperService.SetAsync(cacheKey, result,
-            //                 new CacheItemOptions
-            //                 {
-            //                     RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSubCategoryTimeoutMinutes)
-            //                 });
-            //         }
-            //     }
+                    result = await fetchDataService.GetCategoryViewModel(slug);
+                    if (result != null)
+                    {
+                        await cacheWrapperService.SetAsync(cacheKey, result,
+                            new CacheItemOptions
+                            {
+                                RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSubCategoryTimeoutMinutes)
+                            });
+                    }
+                }
 
-            //     return result;
-            // }
+                return result;
+            }
 
             return await fetchDataService.GetCategoryViewModel(slug);
         }
 
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
-            // if (IsUsingCache)
-            // {
-            //     var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
 
-            //     if (result == null)
-            //     {
-            //         logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
 
-            //         result = await fetchDataService.GetMenuData();
-            //         await cacheWrapperService.SetAsync(CacheKey.Menu, result,
-            //             new CacheItemOptions
-            //             {
-            //                 RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
-            //             });
-            //     }
+                    result = await fetchDataService.GetMenuData();
+                    await cacheWrapperService.SetAsync(CacheKey.Menu, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
+                        });
+                }
 
-            //     return result;
-            // }
+                return result;
+            }
 
             return await fetchDataService.GetMenuData();
         }

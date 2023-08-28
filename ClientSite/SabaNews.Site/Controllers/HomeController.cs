@@ -61,12 +61,12 @@
         public async Task<IActionResult> Category(string slug)
         {
             var redirectLink = RedirectCategorySlug(slug);
-            slug = slug.Replace(CategoryKey.Suffix, "");
-            var viewModel = await dataControlService.GetCategoryViewModel(slug);
-            if (viewModel == null && redirectLink != "")
+             if (redirectLink != "")
             {
                 return Redirect(redirectLink);
             }
+            slug = slug.Replace(CategoryKey.Suffix, "");
+            var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);

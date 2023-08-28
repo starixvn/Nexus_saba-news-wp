@@ -58,17 +58,12 @@
                 End = Constants.GetElevenItems
             };
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
-            var otherPosts = await postService.GetPostsBySlugAsync(Constants.OtherPostSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            var otherPosts = await postService.GetPostsBySlugAsync(Constants.NewOtherPostSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var videoPosts = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var guessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetNineItems);
             var backstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetEightItems);
-            
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
-            if(!otherPosts.Any())
-            {
-                otherPosts = await postService.GetPostsBySlugAsync(Constants.NewOtherPostSlug, Constants.FromFirstItem, Constants.GetEightItems);
-            }
 
             var (footballNewUrls,leaguePosts) = await GetFootballNews();
 
