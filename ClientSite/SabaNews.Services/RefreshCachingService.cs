@@ -101,9 +101,7 @@
                     CategoryKey.TransferSlug,
                     CategoryKey.OtherPostSlug,
                     CategoryKey.VideoSlug,
-                    CategoryKey.VNFootballSlug,
-                    CategoryKey.CountrySlug,
-                    CategoryKey.AreaSlug
+                    CategoryKey.VNFootballSlug
                 };
                 foreach (var slug in listCategoryCaching)
                 {

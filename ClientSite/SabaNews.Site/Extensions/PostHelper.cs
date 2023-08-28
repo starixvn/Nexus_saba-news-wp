@@ -37,8 +37,6 @@
             return cates;
         }
 
-                parentName = currentSlug.MenuTitle;
-
         public static MenuCategoryModel GetMenuActive(List<Menu> menus, string cateSlug) {
             var listCate = new List<MenuInfo>();
             var cate = menus.LastOrDefault(item => item.CateSlug == cateSlug);

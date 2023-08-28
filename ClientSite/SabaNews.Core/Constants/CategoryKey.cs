@@ -31,11 +31,11 @@ namespace SabaNews.Core.Constants
 
         public const string TransferSlug = "chuyen-nhuong";
 
-        public const string OtherPostSlug = "cac-mon-khac";
+        public const string OtherPostSlug = "the-thao";
 
         public const string VideoSlug = "video";
 
-        public const string VNFootballSlug = "viet-nam";
+        public const string VNFootballSlug = "bong-da-viet-nam";
 
         public const string ClubSlug = "giai-dau-cap-clb";
 
