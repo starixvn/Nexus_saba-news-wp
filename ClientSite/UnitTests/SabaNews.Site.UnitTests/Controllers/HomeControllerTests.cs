@@ -65,6 +65,22 @@
         }
 
         [Fact]
+        public async Task Category_WhenOldSlug_RedirectToNewSlug()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContext(controller);
+            string slug = "viet-nam" + CategoryKey.Suffix;
+
+            //Act
+            var result = await controller.Category(slug);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal(CategoryKey.VNFootballSlug + CategoryKey.Suffix, redirectResult.Url);
+        }
+
+        [Fact]
         public async Task Category_WhenDataIsNull_ReturnExpectedViewResult()
         {
             // Arrange

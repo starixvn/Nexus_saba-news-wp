@@ -82,7 +82,7 @@
             return View(view, viewModel);
         }
 
-        private string RedirectCategorySlug(string slug)
+        private static string RedirectCategorySlug(string slug)
         {
             var redirectLink = "";
             var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
