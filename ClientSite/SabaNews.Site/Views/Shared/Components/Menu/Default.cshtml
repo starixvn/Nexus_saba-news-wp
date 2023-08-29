@@ -295,17 +295,17 @@
         }
         arrayActiveMenu = arrayActiveMenu.Where(item => item > 0).ToArray();
     }
-    <ul class="main-child-menu @arrayActiveMenu.Length @(arrayActiveMenu.Length > 0 ? "multilv-menu-mobile" : "")">
+    <ul class="main-child-menu  @(arrayActiveMenu.Length > 0 ? "multilv-menu-mobile" : "")">
         <li class="menu-item">
             <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
         @foreach (var activeMenu in arrayActiveMenu)
         {
             if (activeMenu == 0) break;
-            var menu = Model.Menus.FirstOrDefault(item => item.PostId == activeMenu);
+            var menu = Model.DetailMenu.FirstOrDefault(item => item.PostId == activeMenu && item.PostId != Model.PopularKeyword?.PostId);
             if (menu == null) break;
             count++;
-            var coMenu = Model.Menus.Where(item => item.ParentId == menu.ParentId);
+            var coMenu = Model.DetailMenu.Where(item => item.ParentId == menu.ParentId && item.PostId != Model.PopularKeyword?.PostId);
             var active = count == arrayActiveMenu.Length ? "active" : "";
             <li>
                 <div class="menu-select @active">
@@ -322,7 +322,7 @@
         }
         @if (arrayActiveMenu.Length == 0)
         {
-            @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
+            @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0))
             {
                 if (menu.CateId != Constants.Home)
                 {
