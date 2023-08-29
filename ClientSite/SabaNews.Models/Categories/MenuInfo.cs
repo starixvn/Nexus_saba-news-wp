@@ -6,6 +6,8 @@ namespace SabaNews.Models.Categories
 
         public string CateSlug { get; set; }
 
+        public string Name { get; set; }
+
 
     }
 }

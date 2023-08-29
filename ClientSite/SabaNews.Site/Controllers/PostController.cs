@@ -96,7 +96,7 @@
                 IsLogin = isLogin,
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}-{post.ID}.html",
-                IsVideo = PostHelper.CheckIsVideo(cateParents),
+                IsVideo = PostHelper.IsVideo(cateParents),
                 CateInfo = cateInfo,
                 MatchId = matchId
             };

@@ -11,6 +11,7 @@
     {
         public IEnumerable<Post> Posts { get; set; }
         public Category Category { get; set; }
+        public IList<CategoryGeneral> CateParents { get; set; }
         public HeaderViewModel Header { get; set; }
         public PagingModel Paging { get; set; }
         public IEnumerable<Menu> Menus { get; set; }

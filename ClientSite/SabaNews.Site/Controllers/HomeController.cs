@@ -71,8 +71,8 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
-            var menuCategory = PostHelper.GetMenuActive(menus.ToList(), slug);
+            var menus = await dataControlService.GetMenuData();
+            var menuCategory = PostHelper.GetMenuActive(menus.ToList(), viewModel.CateParents, slug);
             viewModel.Header.ActiveCategory = menuCategory.ActiveMenu ?? slug;
             viewModel.Menus = menus;
             viewModel.MenuItems = menuCategory.MenuItems;

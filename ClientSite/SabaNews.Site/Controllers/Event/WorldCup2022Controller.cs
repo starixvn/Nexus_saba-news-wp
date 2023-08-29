@@ -687,7 +687,7 @@
                 IsLogin = isUserLogin,
                 SavePost = savePostWC,
                 AbsoluteUrl = $"{domain}{slug}",
-                IsVideo = PostHelper.CheckIsVideo(cateParentsWC),
+                IsVideo = PostHelper.IsVideo(cateParentsWC),
                 CateInfo = cateInfoWC
             };
             return viewModel;

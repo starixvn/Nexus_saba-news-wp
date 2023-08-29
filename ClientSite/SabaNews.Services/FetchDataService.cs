@@ -146,6 +146,7 @@
             {
                 Posts = posts.ToList(),
                 Category = cate,
+                CateParents = cateParents,
                 Header = header,
                 Paging = paging,
                 Slug = slug,
