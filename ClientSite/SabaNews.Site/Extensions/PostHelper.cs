@@ -62,20 +62,13 @@
             {
                 listCate = GetParentMenuForCate(menus, cateSlug);
             }
-            var (menuItems, activeMenu, currentName) = GetMenuItems(listCate);
-            var result = new MenuCategoryModel
-            {
-                MenuItems = menuItems,
-                ActiveMenu = activeMenu,
-                CurrentName = currentName,
-            };
-            return result;
+            return GetMenuItems(listCate);
 
         }
 
-        public static (MenuItems, string, string) GetMenuItems(List<MenuInfo> listCate)
+        public static MenuCategoryModel GetMenuItems(List<MenuInfo> listCate)
         {
-            string currentName = listCate.Count > 0 ? listCate.First().Name : "";
+            var currentName = listCate.Count > 0 ? listCate.First().Name : "";
             var activeMenu = listCate.Count >= 1 ? listCate[0].CateSlug : null;
             var menuItems = new MenuItems
             {
@@ -83,7 +76,13 @@
                 Item2 = listCate.Count >= 2 ? listCate[1].PostId : 0,
                 Item3 = listCate.Count >= 3 ? listCate[2].PostId : 0
             };
-            return (menuItems, activeMenu, currentName);
+            var result = new MenuCategoryModel
+            {
+                MenuItems = menuItems,
+                ActiveMenu = activeMenu,
+                CurrentName = currentName,
+            };
+            return result;
         }
 
         public static List<MenuInfo> GetSubMenuForCate(List<Menu> menus, Menu parentCate, string cateSlug)
