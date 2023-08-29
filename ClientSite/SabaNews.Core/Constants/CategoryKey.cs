@@ -7,21 +7,21 @@ namespace SabaNews.Core.Constants
     {
         public const string Football = "bong-da";
 
-        public const string Vietnam = "viet-nam";
+        public const string Vietnam = "bong-da-viet-nam";
 
-        public const string Europe = "cup-chau-au";
+        public const string Europe = "giai-dau-cap-clb";
 
-        public const string England = "anh";
+        public const string England = "bong-da-anh";
 
-        public const string TBN = "tay-ban-nha";
+        public const string TBN = "bong-da-tbn";
 
-        public const string Italia = "italia";
+        public const string Italia = "bong-da-italia";
 
-        public const string France = "phap";
+        public const string France = "bong-da-phap";
 
-        public const string Germany = "duc";
+        public const string Germany = "bong-da-duc";
 
-        public const string International = "quoc-te";
+        public const string International = "doi-tuyen";
 
         public const string Prefix = "category-";
 
