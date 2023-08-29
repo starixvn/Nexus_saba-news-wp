@@ -161,10 +161,10 @@ export class AppContainer extends Component {
                                 </div>
                                 <h3 className="heading-about-livescore">VÌ SAO NÊN XEM TRỰC TIẾP BÓNG ĐÁ TRÊN SABAVN</h3>
                                 <div className="about-livescore-text">
-                                    TẤT CẢ link xem trực tiếp đều được SABAVN cập nhật 2 và liên tục 2 TIẾNG/1 lần trước khi trận đấu diễn ra. Ngoài ra, website sẽ cung cấp đầy đủ chỉ số thông kê của 2 đội bóng : đội hình, lịch sử đối đầu, diễn biến trận đấu, số lượng thẻ đỏ, thẻ vàn, phạt góc v.v…..
+                                    TẤT CẢ link xem trực tiếp đều được SABAVN cập nhật 24h và liên tục 2 TIẾNG/1 lần trước khi trận đấu diễn ra. Ngoài ra, website sẽ cung cấp đầy đủ chỉ số thống kê của 2 đội bóng : đội hình, lịch sử đối đầu, diễn biến trận đấu, số lượng thẻ đỏ, thẻ vàn, phạt góc v.v…..
                                 </div>
                                 <div className="about-livescore-text">
-                                    Lịch xem bóng đá trực tuyến và phát sóng trực tiếp các trận đấu của ĐTVN, các giải EURO 2024, VL World Cup 2026, V League, Ngoại hạng Anh, C1, C2, …. đều được cung cấp đầy đủ và chính xác.
+                                    Lịch xem bóng đá trực tuyến và phát sóng trực tiếp các trận đấu của ĐTVN, các giải EURO 2024, VL World Cup 2026, V League, Ngoại hạng Anh, C1, C2, …. đều được cung cấp đầy đủ và chính xác
                                 </div>
                                 <h3 className="heading-about-livescore">HƯỚNG DẪN XEM TRỰC TIẾP BÓNG ĐÁ TRÊN SABAVN</h3>
                                 <div className="about-livescore-text">
@@ -172,12 +172,12 @@ export class AppContainer extends Component {
                                 </div>
                                 <div className="about-livescore-text">
                                     Bước 1: Người dùng phải cần có điện thoại thông minh, dễ dàng kết nối Internet như máy tính bàn, laptop, máy tính bảng…<br />
-                                    Bước 2: Người dùng truy cập trình duyệt web rồi gõ ” SABAVN” để tìm kiếm <br />
+                                    Bước 2: Người dùng truy cập trình duyệt web rồi gõ ” SABAVN” để tìm kiếm  <br />
                                     Bước 3: Khi website SABAVN.COM hiện ra thì bạn có thể thoải mái truy cập các thông tin hay các trận đấu bóng mà bạn muốn xem.<br />
-                                    Ngoài ra bạn có thể đăng kí thành viên để lựa chọn thêm các giải đấu mà bạn quan tâm. SABAVN sẽ gửi thông tin cho bạn khi có các trận TRỰC TIẾP MỚI NHẤT.
+                                    Ngoài ra bạn có thể đăng ký thành viên để lựa chọn thêm các giải đấu mà bạn quan tâm. SABAVN sẽ gửi thông tin cho bạn khi có các trận TRỰC TIẾP MỚI NHẤT.
                                 </div>
                                 <div className="about-livescore-text">
-                                    Các bạn hãy nhanh tay truy cập SABAVN.COM kênh xem trực tiếp bóng đá hot nhất hiện này để hòa mình vào không khí bóng đá sôi động, hình ảnh chân thực, sắc nét. Sự ủng hộ và đồng hành của các bạn sẽ luôn là động lực to lớn để kênh của chúng tôi ngày càng phát triển mạnh mẽ và có cơ hội để người dùng trải niệm những dịch vụ tuyệt vời nhất mà kênh của chúng tôi đem lại. Sự hài lòng của các bạn là món quà vô giá đối với chúng tôi.
+                                    Các bạn hãy nhanh tay truy cập SABAVN.COM kênh xem trực tiếp bóng đá hot nhất hiện này để hòa mình vào không khí bóng đá sôi động, hình ảnh chân thực, sắc nét. Sự ủng hộ và đồng hành của các bạn sẽ luôn là động lực to lớn để kênh của chúng tôi ngày càng phát triển mạnh mẽ và có cơ hội để người dùng trải nghiệm những dịch vụ tuyệt vời nhất mà kênh của chúng tôi đem lại. Sự hài lòng của các bạn là món quà vô giá đối với chúng tôi.
                                 </div>
                             </div>
                         )  :  (
