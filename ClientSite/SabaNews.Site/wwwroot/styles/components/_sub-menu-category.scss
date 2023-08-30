@@ -149,6 +149,12 @@
                         color: #E13C29;
                     }
                 }
+                &.active{
+                    a{
+                        background: #E8EAEF;
+                        color: #E13C29;
+                    }
+                }
             }
             &.toggle-show{
                 display: block;

@@ -123,6 +123,7 @@
 
     function DetectRowsInElement () {
         const cards = document.querySelector('.group-parent-sub');
+        var link = window.location.pathname;
         let row = 0;
         [...cards.children].forEach((el) => {
             var wappedCate = "";
@@ -147,6 +148,9 @@
             if (!elmClass !== 'button-dropdown-category' && elmClass !== 'icon-button-dot') {
                 $('.list-dropdown-category').removeClass('toggle-show');
             }
+        });
+        $('.list-dropdown-category').find('a').each(function() {
+            $(this).parent().toggleClass('active', $(this).attr('href') == link);
         });
     }
     function init() {
