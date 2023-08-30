@@ -37,7 +37,7 @@
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory, Slugs = Model.Slugs }))
 <section class="main">
     <div class="base-container medium-container">
-        <h1 class="block__title title-new-page"><a>@Model.Header.Title</a></h1>
+        <h1 class="block__title title-new-page"><a class="none-cusor">@Model.Header.Title</a></h1>
     </div>
     <div class="container medium-container">
         <div class="block block-main block-category">
