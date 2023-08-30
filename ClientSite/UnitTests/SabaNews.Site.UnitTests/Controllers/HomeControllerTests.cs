@@ -124,20 +124,24 @@
         }
 
         [Fact]
-        public async Task Category_WhenIsPostAndIsSubCate_ReturnExpectedViewResult()
+        public async Task Category_WhenIsPostAndIsSubCommentaryCate_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
+            var menuName = "Menu";
             string slug = "dt-viet-nam" + CategoryKey.Suffix;
+            var cateParents = new List<CategoryGeneral>();
+            cateParents.Add(new CategoryGeneral {  Slug = CategoryKey.GuessSlug});
             var expectedViewModel = fixture.Create<BlogViewModel>();
             expectedViewModel.IsVideo = false;
+            expectedViewModel.CateParents = cateParents;
             var expectedMenu = new List<Menu>();
-            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "bong-da", ParentId = 0  });
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = CategoryKey.GuessSlug, ParentId = 0  });
             expectedMenu.Add(new Menu{ PostId = 2, CateSlug = "viet-nam", ParentId = 1  });
             expectedMenu.Add(new Menu{ PostId = 3, CateSlug = "dt-viet-nam", ParentId = 2  });
             var menuItems = new MenuItems { Item1 = 1, Item2 = 2, Item3 = 3};
-            dataControlService.GetMenuData().Returns(expectedMenu);
+            dataControlService.GetMenuData(Arg.Do<string>(x => menuName = x)).Returns(expectedMenu);
             dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
 
             //Act
@@ -153,18 +157,23 @@
         }
 
         [Fact]
-        public async Task Category_WhenIsVideo_ReturnExpectedViewResult()
+        public async Task Category_WhenIsPostAndIsSubVideoCate_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            string slug = Constants.VideoSlug + CategoryKey.Suffix;
+            var menuName = "Menu";
+            string slug = "video-viet-nam" + CategoryKey.Suffix;
+            var cateParents = new List<CategoryGeneral>();
+            cateParents.Add(new CategoryGeneral {  Slug = CategoryKey.VideoSlug});
             var expectedViewModel = fixture.Create<BlogViewModel>();
             expectedViewModel.IsVideo = true;
+            expectedViewModel.CateParents = cateParents;
             var expectedMenu = new List<Menu>();
-            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = "video", ParentId = 0  });
-            expectedMenu.Add(new Menu{ PostId = 2, CateSlug = "viet-nam-video", ParentId = 1  });
-            dataControlService.GetMenuData().Returns(expectedMenu);
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = CategoryKey.VideoSlug, ParentId = 0  });
+            expectedMenu.Add(new Menu{ PostId = 3, CateSlug = "video-viet-nam", ParentId = 1  });
+            var menuItems = new MenuItems { Item1 = 1, Item2 = 2, Item3 = 3};
+            dataControlService.GetMenuData(Arg.Do<string>(x => menuName = x)).Returns(expectedMenu);
             dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
 
             //Act
@@ -173,11 +182,42 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
-            Assert.Equal(Constants.VideoView, viewResult.ViewName);
+           Assert.Equal(Constants.VideoView, viewResult.ViewName);
             Assert.Equal(1, viewModel.MenuItems.Item1);
-            Assert.Equal(0, viewModel.MenuItems.Item2);
+            Assert.Equal(3, viewModel.MenuItems.Item2);
             Assert.Equal(0, viewModel.MenuItems.Item3);
         }
+
+        [Fact]
+        public async Task Category_WhenIsPostAndSubNormalCate_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContext(controller);
+            var menuName = "Menu";
+            string slug = "dt-viet-nam" + CategoryKey.Suffix;
+            var expectedViewModel = fixture.Create<BlogViewModel>();
+            expectedViewModel.IsVideo = false;
+            var expectedMenu = new List<Menu>();
+            expectedMenu.Add(new Menu{ PostId = 1, CateSlug = CategoryKey.VNFootballSlug, ParentId = 0  });
+            expectedMenu.Add(new Menu{ PostId = 3, CateSlug = "viet-nam", ParentId = 1  });
+            expectedMenu.Add(new Menu{ PostId = 4, CateSlug = "dt-viet-nam", ParentId = 3  });
+            var menuItems = new MenuItems { Item1 = 1, Item2 = 3, Item3 = 4};
+            dataControlService.GetMenuData(Arg.Do<string>(x => menuName = x)).Returns(expectedMenu);
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
+
+            //Act
+            var result = await controller.Category(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Equal(Constants.CategoryView, viewResult.ViewName);
+            Assert.Equal(menuItems.Item1, viewModel.MenuItems.Item1);
+            Assert.Equal(menuItems.Item2, viewModel.MenuItems.Item2);
+            Assert.Equal(menuItems.Item3, viewModel.MenuItems.Item3);
+        }
+
 
         [Theory]
         [InlineData("slug1", "slug2", "slug3")]
