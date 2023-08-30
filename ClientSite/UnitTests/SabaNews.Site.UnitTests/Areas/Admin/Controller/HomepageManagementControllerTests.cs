@@ -32,7 +32,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         private ISessionService sessionService;
         private readonly IFixture fixture = new Fixture();
         private IPostService postService;
-        private IConfiguration configuration;
+        private IDataControlService dataControlService;
         private readonly Option option = new()
         {
             OptionId = 0,
@@ -346,11 +346,11 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         {
             // Arrange
             var controller = GetController();
-            var menuName = configuration.GetValue<string>("MenuName");
+            var menuName = "menu";
             var menus = new Fixture().Create<IEnumerable<Menu>>();
             optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
 
-            postService.GetMenuAsync(menuName).Returns(menus);
+            dataControlService.GetMenuData(menuName).Returns(menus);
             //Act
             var result = await controller.EditCategory(1);
 
@@ -364,9 +364,9 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         {
             // Arrange
             var controller = GetController();
-            var menuName = configuration.GetValue<string>("MenuName");
+            var menuName = "Menu name";
             var menus = new Fixture().Create<IEnumerable<Menu>>();
-            postService.GetMenuAsync(menuName).Returns(menus);
+            dataControlService.GetMenuData(menuName).Returns(menus);
             //Act
             var result = await controller.GetSlugs(menus.First().Slug);
 
@@ -380,7 +380,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         {
             // Arrange
             var controller = GetController();
-            var menuName = configuration.GetValue<string>("MenuName");
+            var menuName = "MenuName";
             var menus = new Fixture().Create<IEnumerable<Menu>>();
             var cateParents = new Fixture().Create<IList<CategoryGeneral>>();
             var cmd = new Fixture().Create<CommandResult>();
@@ -391,7 +391,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             footballNewsCategories[0] = categoryUpdate;
             sessionService.User.Returns(new UserSession{ Id = 1 });
             optionService.GetOptionAsync(OptionKey.FootballNewsCategories).Returns(option);
-            postService.GetMenuAsync(menuName).Returns(menus);
+            dataControlService.GetMenuData(menuName).Returns(menus);
             postService.GetCateParentsAsync(menus.First().Slug).Returns(cateParents);
             optionService.UpdateOptionAsync(OptionKey.FootballNewsCategories, JsonConvert.SerializeObject(footballNewsCategories)).Returns(cmd);
 
@@ -408,9 +408,9 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             leagueService = Substitute.For<ILeagueService>();
             optionService = Substitute.For<IOptionService>();
             postService = Substitute.For<IPostService>();
-            configuration = Substitute.For<IConfiguration>();
+            dataControlService = Substitute.For<IDataControlService>();
             sessionService = Substitute.For<ISessionService>();
-            var controller = new HomepageManagementController(optionService, leagueService, postService, configuration, sessionService);
+            var controller = new HomepageManagementController(optionService, leagueService, postService, dataControlService, sessionService);
 
             return controller;
         }
