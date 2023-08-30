@@ -1985,6 +1985,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block__title a.none-bg, .heading-category a.none-bg {
   background-color: transparent !important;
 }
+.block__title a.none-cusor, .heading-category a.none-cusor {
+  cursor: default;
+}
 
 .heading-category {
   margin-bottom: 2.4rem;
