@@ -163,7 +163,7 @@
                                 @foreach (var first in parentDetailMenus.Take(firstColumItemNumber))
                                 {
                                     <li class="menu-item">
-                                        <a href="getMenuLink(first)" class="item" title="@first.MenuTitle">@first.MenuTitle</a>
+                                        <a href="@getMenuLink(first)" class="item" title="@first.MenuTitle">@first.MenuTitle</a>
                                     </li>
                                 }
                                 <li class="right-header-section search-input">
