@@ -24,19 +24,19 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         private readonly IOptionService optionService;
         private readonly ILeagueService leagueService;
         private readonly IPostService postService;
-        private readonly IConfiguration configuration;
+        private readonly IDataControlService dataControlService;
         private readonly ISessionService sessionService;
         public HomepageManagementController(IOptionService optionService,
             ILeagueService leagueService,
             IPostService postService,
-            IConfiguration configuration,
+            IDataControlService dataControlService,
             ISessionService sessionService
             )
         {
             this.optionService = optionService;
             this.leagueService = leagueService;
             this.postService = postService;
-            this.configuration = configuration;
+            this.dataControlService = dataControlService;
             this.sessionService = sessionService;
         }
         public ActionResult Fixture()
@@ -187,8 +187,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         [HttpGet]
         public async Task<ActionResult> EditCategory(int count)
         {
-            var menuName = configuration.GetValue<string>("MenuName");
-            var menus = await postService.GetMenuAsync(menuName);
+            var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
 
             var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);
             var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
@@ -201,8 +200,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> EditCategory(string category, int count, string categoryName)
         {
-            var menuName = configuration.GetValue<string>("MenuName");
-            var menus = await postService.GetMenuAsync(menuName);
+            var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var slug = menus.Where(x => x.Slug == category).ToList();
             var cateParents = await postService.GetCateParentsAsync(slug.First().Slug);
 
@@ -227,8 +225,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
         public async Task<ActionResult> GetSlugs(string category)
         {
-            var menuName = configuration.GetValue<string>("MenuName");
-            var menus = await postService.GetMenuAsync(menuName);
+            var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var slug = menus.Where(x => x.Slug == category).ToList();
             return Json(slug[0]);
         }
