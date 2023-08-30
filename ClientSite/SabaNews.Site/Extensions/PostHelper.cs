@@ -43,8 +43,8 @@
         }
 
         public static MenuCategoryModel GetMenuActive(List<Menu> menus, IList<CategoryGeneral> cateParent, string cateSlug) {
-            var listCate = new List<MenuInfo>();
-            var parentSlug = "";
+            List<MenuInfo> listCate;
+            string parentSlug;
             if(IsVideo(cateParent))
             {
                 parentSlug = CategoryKey.VideoSlug;
@@ -52,6 +52,10 @@
             else if(IsCommentary(cateParent))
             {
                 parentSlug = CategoryKey.GuessSlug;
+            }
+            else
+            {
+                parentSlug = "";
             }
             if(parentSlug != "" && cateSlug != parentSlug)
             {
@@ -98,7 +102,6 @@
                 if(menu.CateSlug == cateSlug)
                 {
                     listCate.Add(new MenuInfo { PostId = menu.PostId, CateSlug = menu.CateSlug, Name = menu.MenuTitle  });
-                    break;
                 }
                 foreach(var submenu in menus.Where(item => item.ParentId == menu.PostId))
                 {
@@ -106,11 +109,10 @@
                     {
                         listCate.Add(new MenuInfo { PostId = menu.PostId, CateSlug = menu.CateSlug, Name = menu.MenuTitle  });
                         listCate.Add(new MenuInfo { PostId = submenu.PostId, CateSlug = submenu.CateSlug, Name = submenu.MenuTitle  });
-                        break;
                     }
                 }
             }
-            if(listCate.Count() == 1)
+            if(listCate.Count == 1)
             {
                 return new List<MenuInfo>();
             }
