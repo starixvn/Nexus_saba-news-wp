@@ -44,7 +44,23 @@
 
         public static MenuCategoryModel GetMenuActive(List<Menu> menus, IList<CategoryGeneral> cateParent, string cateSlug) {
             List<MenuInfo> listCate;
-            string parentSlug;
+            string parentSlug = GetParentSlug(cateParent, cateSlug);
+            if(parentSlug != "" && cateSlug != parentSlug)
+            {
+                var parentCate = menus.FirstOrDefault(item => item.CateSlug == parentSlug && item.ParentId == 0);
+                listCate = GetSubMenuForCate(menus, parentCate, cateSlug);
+            }
+            else
+            {
+                listCate = GetParentMenuForCate(menus, cateSlug);
+            }
+            return GetMenuItems(listCate);
+
+        }
+
+        private static string GetParentSlug(IList<CategoryGeneral> cateParent, string cateSlug)
+        {
+             string parentSlug;
             if(IsVideo(cateParent))
             {
                 parentSlug = CategoryKey.VideoSlug;
@@ -57,17 +73,7 @@
             {
                 parentSlug = "";
             }
-            if(parentSlug != "" && cateSlug != parentSlug)
-            {
-                var parentCate = menus.FirstOrDefault(item => item.CateSlug == parentSlug && item.ParentId == 0);
-                listCate = GetSubMenuForCate(menus, parentCate, cateSlug);
-            }
-            else
-            {
-                listCate = GetParentMenuForCate(menus, cateSlug);
-            }
-            return GetMenuItems(listCate);
-
+            return parentSlug;
         }
 
         public static MenuCategoryModel GetMenuItems(List<MenuInfo> listCate)

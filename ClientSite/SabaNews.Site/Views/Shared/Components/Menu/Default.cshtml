@@ -112,6 +112,7 @@
 @{
     var popularKeywords = Model.DetailMenu.Where(item => item.ParentId == Model.PopularKeyword?.PostId);
     var parentDetailMenus = Model.DetailMenu.Where(item => item.ParentId == 0 && item.PostId != Model.PopularKeyword?.PostId);
+    const int firstColumItemNumber = 5;
 }
 <div class="top-header">
     <div class="container padding-mobile-none">
@@ -147,11 +148,10 @@
                 @* Mobile popup menu *@
                 <div class="main-menu-mobile">
                     @{
-                        const int defaultIndex = 5;
-                        var mobileIndex = defaultIndex;
-                        var half = (parentDetailMenus.Count() + defaultIndex + 2) / 2;
+                        var mobileIndex = firstColumItemNumber;
+                        var half = (parentDetailMenus.Count() + firstColumItemNumber + 2) / 2;
                         <ul>
-                        @foreach (var menu in parentDetailMenus)
+                        @foreach (var menu in parentDetailMenus.Skip(firstColumItemNumber))
                         {
                             var link = getMenuLink(menu);
                             var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
@@ -159,22 +159,13 @@
                             @if(mobileIndex == half) {
                                 @:</ul><ul>
                             }
-                            @if(mobileIndex == defaultIndex + 1 ){
-                                <li class="menu-item">
-                                    <a href="/tag/diem-tin-bong-da-hom-nay" class="item" title="Tin nóng">Tin nóng</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="/tag/ket-qua-bong-da-hom-nay" class="item" title="Kết quả">Kết quả</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="/lich-thi-dau/bong-da/truc-tiep" class="item" title="Trực tiếp">Trực tiếp</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="/hau-truong-sabavn" class="item" title="Hậu trường">Hậu trường</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="/chuyen-nhuong-sabavn" class="item" title="Chuyển nhượng">Chuyển nhượng</a>
-                                </li>
+                            @if(mobileIndex == firstColumItemNumber + 1 ){
+                                @foreach (var first in parentDetailMenus.Take(firstColumItemNumber))
+                                {
+                                    <li class="menu-item">
+                                        <a href="getMenuLink(first)" class="item" title="@first.MenuTitle">@first.MenuTitle</a>
+                                    </li>
+                                }
                                 <li class="right-header-section search-input">
                                     <form action="/Search" method="post" id="search">
                                         <input class="keyword-input search-box" id="search-keyword" type="text" placeholder="Tìm kiếm...">
@@ -184,7 +175,7 @@
                                     </form>
                                 </li>
                             }
-                            <li class="menu-item" @defaultIndex @mobileIndex @half>
+                            <li class="menu-item" >
                                 <a href="@link" class="item">@menu.MenuTitle</a>
                                 @if(subMenus.Count() > 0){
                                     <ul>
@@ -227,7 +218,7 @@
                         <div class="block-menu">
                             @{
                                 int indexItem = 1;
-                                @foreach (var menu in parentDetailMenus)
+                                @foreach (var menu in parentDetailMenus.Skip(firstColumItemNumber))
                                 {
                                     var link = getMenuLink(menu);
                                     var subMenus = Model.DetailMenu.Where(item => item.ParentId == menu.PostId);
@@ -238,13 +229,12 @@
                                     @if(indexItem == 2)
                                     {
                                         indexItem++;
-                                        <div class="block-menu-item">
+                                         <div class="block-menu-item">
                                             <ul class="block-menu-list">
-                                                <div class="block-menu-title"><a href="/tag/diem-tin-bong-da-hom-nay" title="Trang chủ">Tin nóng</a></div>
-                                                <div class="block-menu-title"><a href="/tag/ket-qua-bong-da-hom-nay" title="Kết quả">Kết quả</a></div>
-                                                <div class="block-menu-title"><a href="/lich-thi-dau/bong-da/truc-tiep" title="Trực tiếp">Trực tiếp</a></div>
-                                                <div class="block-menu-title"><a href="/hau-truong-sabavn" title="Hậu trường">Hậu trường</a></div>
-                                                <div class="block-menu-title"><a href="/chuyen-nhuong-sabavn" title="Chuyển nhượng">Chuyển nhượng</a></div>
+                                                @foreach (var first in parentDetailMenus.Take(firstColumItemNumber))
+                                                {
+                                                    <div class="block-menu-title"><a href="@getMenuLink(first)" title="@first.MenuTitle">@first.MenuTitle</a></div>
+                                                }
                                             </ul>
                                         </div>
                                     }
@@ -322,7 +312,7 @@
         }
         @if (arrayActiveMenu.Length == 0)
         {
-            @foreach (var menu in Model.DetailMenu.Where(item => item.ParentId == 0))
+            @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
             {
                 if (menu.CateId != Constants.Home)
                 {

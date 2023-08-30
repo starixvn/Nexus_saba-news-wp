@@ -168,11 +168,6 @@
         {
             var slug = cateSlug;
             var name = cateName;
-            if (cateSlug == Constants.CollectionSlug || (cateSlug.Contains(Constants.BasketballSlug)
-                && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
-            {
-                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts };
-            }
             var listCateSlug = cateSlug.Split(',');
             var listCateName = cateName.Split(',');
             var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
