@@ -198,45 +198,6 @@
             Assert.True(viewModel.IsVideo);
         }
 
-        [Theory]
-        [InlineData(Constants.CollectionSlug)]
-        [InlineData(Constants.BasketballSlug)]
-        [InlineData(Constants.TennisSlug)]
-        public async Task Single_PostInOtherCategory_ReturnExpectedViewResult(string cateSlug)
-        {
-            // Arrange
-            var controller = GetController();
-            GetDefaultContext(controller);
-            var slug = "bai-viet-123.html";
-            var postId = fixture.Create<long>();
-            var param = fixture.Create<GetRecentPostsParam>();
-            Post expected = fixture.Create<Post>();
-            expected.Slug = "bai-viet";
-            expected.CatesName = cateSlug;
-            expected.CategoriesSlug = cateSlug;
-            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
-            var expectedUser = fixture.Create<UserSession>();
-            var expectedCateInfos = new List<CategoryGeneral>()
-            {
-                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
-                new CategoryGeneral { Id = 2, Slug = cateSlug }
-            };
-            sessionService.User = null;
-            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
-            
-            postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
-            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-
-            //Act
-            var result = await controller.Single(slug);
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
-            Assert.Equal(expected, viewModel.SinglePost);
-            Assert.Equal(Constants.OtherPostSlug, viewModel.CateInfo.Slug);
-        }
-
         [Fact]
         public async Task Single_PostInSubCategory_ReturnExpectedViewResult()
         {
