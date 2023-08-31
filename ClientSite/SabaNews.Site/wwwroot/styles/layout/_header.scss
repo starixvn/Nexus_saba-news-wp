@@ -420,6 +420,12 @@
 .menu-select {
     display: flex;
     align-items: center;
+    &.show-on-mobile{
+        display: none;
+        @include tableMobile{
+            display: flex;
+        }
+    }
     select {
         border: none;
         -webkit-appearance: none;
