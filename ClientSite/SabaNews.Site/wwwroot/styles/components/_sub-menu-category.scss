@@ -3,6 +3,13 @@
     .heading-category{
         margin-bottom: 0;
     }
+    &.show-on-pc{
+        display: block;
+        @include tableMobile{
+            display: none;
+        }
+    }
+    
 }
 
 .sub-category {
@@ -15,6 +22,13 @@
         white-space: nowrap;
         &::-webkit-scrollbar {
             display: none;
+        }
+    }
+
+    &.show-on-mobile{
+        display: none;
+        @include tableMobile{
+            display: flex;
         }
     }
 

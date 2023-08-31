@@ -3323,6 +3323,14 @@ button {
 .group-sub-category .heading-category {
   margin-bottom: 0;
 }
+.group-sub-category.show-on-pc {
+  display: block;
+}
+@media screen and (max-width: 1024px) {
+  .group-sub-category.show-on-pc {
+    display: none;
+  }
+}
 
 .sub-category {
   display: flex;
@@ -3337,6 +3345,14 @@ button {
   }
   .sub-category::-webkit-scrollbar {
     display: none;
+  }
+}
+.sub-category.show-on-mobile {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .sub-category.show-on-mobile {
+    display: flex;
   }
 }
 .sub-category .sub-item {

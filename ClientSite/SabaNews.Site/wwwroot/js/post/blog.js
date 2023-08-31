@@ -125,6 +125,9 @@
         const cards = document.querySelector('.group-parent-sub');
         var link = window.location.pathname;
         let row = 0;
+        if(cards == null){
+            return
+        }
         [...cards.children].forEach((el) => {
             var wappedCate = "";
             if (!el.previousElementSibling || el.offsetLeft < el.previousElementSibling.offsetLeft) {
