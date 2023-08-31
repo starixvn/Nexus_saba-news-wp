@@ -60,7 +60,11 @@
 
         private static string GetParentSlug(IList<CategoryGeneral> cateParent)
         {
-             string parentSlug;
+            string parentSlug = "";
+            if(cateParent == null)
+            {
+                return "";
+            }
             if(IsVideo(cateParent))
             {
                 parentSlug = CategoryKey.VideoSlug;
