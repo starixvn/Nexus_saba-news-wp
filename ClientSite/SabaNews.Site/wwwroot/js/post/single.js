@@ -146,6 +146,21 @@
             }
         }
     }
+    function GetGuessSidebar() {
+        if($('#guess-section').length === 0) {
+            return false;
+        }
+        var slug = $('#guess-section').data('slug');
+        var limitItem = $('#guess-section').data('limit');
+        $.ajax({
+            type: 'POST',
+            url: '/api/GetGuessSidebar',
+            data: {slug, limitItem },
+            success: function(res) {
+                $('#guess-section').html(res);
+            }
+        })
+    }
 
     function init() {
         UpdatePostView();
@@ -154,6 +169,7 @@
         LoadBannerContent();
         LoadSameCategoryPost();
         getScrollTop();
+        GetGuessSidebar();
     }
 
     return {
