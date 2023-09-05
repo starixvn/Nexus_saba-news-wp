@@ -27,6 +27,7 @@
     using Microsoft.AspNetCore.Mvc.Routing;
     using SabaNews.Criteria.Posts;
     using System.Linq;
+    using SabaNews.Livescore.Models.Match;
 
     public class PostControllerTests : Controller
     {
@@ -525,6 +526,41 @@
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             Assert.Equal(expectedRecentPosts, okResult.Value);
+        }
+
+        [Fact]
+        public async Task GetGuessSidebar_WhenCalled_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var slug = fixture.Create<string>();
+            dataControlService.GetCategoryPostsAsync(Arg.Do<string>(x => x = slug)).Returns(expected);
+            // Act
+            var result = await controller.GetGuessSidebar(slug, 10);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+        }
+
+        [Fact]
+        public async Task GetTodayMatches_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expectedMatches = fixture.Create<IList<Match>>();
+
+            dataControlService.GetTodayMatches().Returns(expectedMatches);
+
+            //Act
+            var result = await controller.GetTodayMatches();
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(expectedMatches, actual);
         }
 
         #region Helpers

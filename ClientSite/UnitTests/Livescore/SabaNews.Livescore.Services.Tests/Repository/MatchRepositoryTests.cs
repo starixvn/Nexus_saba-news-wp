@@ -156,6 +156,26 @@
             await objectDb.Received(1).QueryMultipleAsync(Arg.Any<ICriteria>());
         }
 
+        [Fact]
+        public async Task GetTodayMatchesAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var criteria = FakeCriteria();
+            var repository = new MatchRepository();
+
+            var matches = fixture.Create<IList<Match>>();
+
+            objectDb.QueryAsync(Arg.Any<Func<Match, League, Team, Team, Match>>(),
+                splitOn: Arg.Is("LeagueId, HomeTeamId, AwayTeamId"),
+                Arg.Is(criteria)
+                ).Returns(matches);
+            //Actual
+            var actual = await repository.GetTodayMatchesAsync(criteria);
+
+            //Assert
+
+            Assert.Equal(matches, actual);
+        }
+
         private ICriteria FakeCriteria()
         {
             var criteria = Substitute.For<ICriteria>();
