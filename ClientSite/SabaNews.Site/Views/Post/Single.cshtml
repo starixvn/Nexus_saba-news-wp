@@ -1,5 +1,6 @@
 ﻿@section Metadata {
-    <meta name="description" content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : "&nbsp;" )' />
+    <meta name="description"
+        content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : "&nbsp;" )' />
     <meta property="og:url" content='@Model.AbsoluteUrl' />
     <meta property="og:description" content="&nbsp;" />
     <meta property="og:title" content='@Model.SinglePost.SeoTitle' />
@@ -117,17 +118,17 @@
         <div class="block block-main block-detail">
             @* @if (Model.IsVideo)
             {
-                <div class="skeleton skeleton-vertical">
-                    <a class="skeleton-vertical__image"></a>
-                    <a class="skeleton-vertical__title"></a>
-                </div>
+            <div class="skeleton skeleton-vertical">
+            <a class="skeleton-vertical__image"></a>
+            <a class="skeleton-vertical__title"></a>
+            </div>
             }
             else
             {
-                <div class="skeleton skeleton-vertical">
-                    <a class="skeleton-vertical__title" style="margin-bottom:0.8rem"></a>
-                    <a class="skeleton-vertical__image"></a>
-                </div>
+            <div class="skeleton skeleton-vertical">
+            <a class="skeleton-vertical__title" style="margin-bottom:0.8rem"></a>
+            <a class="skeleton-vertical__image"></a>
+            </div>
             } *@
 
             <div class="card-vertical card-vertical-highlight">
@@ -159,7 +160,7 @@
                     <a href="https://news.google.com/publications/CAAqBwgKMPjblwswqoWvAw?hl=vi&gl=VN&ceid=VN%3Avi"
                         class="google-news">
                         <span>Theo dõi <b>SABAVN</b> trên</span>
-                        <img src="~/images/google-news-text.svg" alt="google-news-text" width="91" height="16"/>
+                        <img src="~/images/google-news-text.svg" alt="google-news-text" width="91" height="16" />
                     </a>
                 </div>
                 @if (!Model.IsVideo)
