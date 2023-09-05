@@ -11,7 +11,8 @@
         public const string RefreshWorldCupCaching = "RefreshWorldCupCaching";
         public const string RefreshFixtureHomepageCaching = "RefreshHomepageFixtureCaching";
         public const string RefreshHomepageStandingCaching = "RefreshHomepageStandingCaching";
-        public const string RefreshVideoCaching = "RefreshVideoCaching";
+        public const string RefreshCategoryPostsCaching = "RefreshCategoryPostsCaching";
         public const string RefreshRecentPostsCaching = "RefreshRecentPostsCaching";
+        public const string RefreshTodayMatchesCaching = "RefreshTodayMatchesCaching";
     }
 }

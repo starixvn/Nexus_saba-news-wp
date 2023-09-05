@@ -783,7 +783,7 @@
             // Arrange
             var controller = GetController();
             var expected = fixture.Create<IEnumerable<Post>>();
-            dataControlService.GetVideo().Returns(expected);
+            dataControlService.GetCategoryPostsAsync(Arg.Do<string>(x => x = CategoryKey.VideoSlug)).Returns(expected);
             // Act
             var result = await controller.GetVideo();
 
@@ -799,10 +799,10 @@
             // Arrange
             var controller = GetController();
             var expected = fixture.Create<IEnumerable<Post>>();
-            var param = fixture.Create<GetPostsByCateSlugPagingCriteria>();
-            postService.GetPostsByCateSlugPagingAsync(Arg.Do<GetPostsByCateSlugPagingCriteria>(x => x = param)).Returns(expected);
+            var slug = fixture.Create<string>();
+            dataControlService.GetCategoryPostsAsync(Arg.Do<string>(x => x = slug)).Returns(expected);
             // Act
-            var result = await controller.GetCategorySidebar("slug", 10);
+            var result = await controller.GetCategorySidebar(slug, 10);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);

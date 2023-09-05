@@ -10,7 +10,7 @@
     using System.Threading.Tasks;
     using Xunit;
 
-    public class RefreshVideoCachingWorkerTests
+    public class RefreshCategoryPostsCachingWorkerTests
     {
         private IRefreshCachingService refreshCachingService;
 
@@ -24,11 +24,11 @@
             await worker.ExecuteJobAsync();
 
             //Assert
-            await refreshCachingService.Received().UpdateVideoCaching();
+            await refreshCachingService.Received().UpdateCategoryPostCaching();
         }
 
         #region Helpers
-        private RefreshVideoCachingWorker GetWorker()
+        private RefreshCategoryPostsCachingWorker GetWorker()
         {
             var settings = Substitute.For<IOptionsSnapshot<List<JobSettings>>>();
             var jobSettings = new List<JobSettings>
@@ -36,14 +36,14 @@
                 new JobSettings
                 {
                     IsEnabled = true,
-                    JobName = "RefreshVideoCaching",
+                    JobName = "RefreshCategoryPostsCaching",
                     TimeIntervalMinutes = 20
                 }
             };
             settings.Value.Returns(jobSettings);
             refreshCachingService = Substitute.For<IRefreshCachingService>();
             ILogServiceProvider logService = Substitute.For<ILogServiceProvider>();
-            var service = new RefreshVideoCachingWorker(refreshCachingService, settings, logService);
+            var service = new RefreshCategoryPostsCachingWorker(refreshCachingService, settings, logService);
 
             return service;
         }

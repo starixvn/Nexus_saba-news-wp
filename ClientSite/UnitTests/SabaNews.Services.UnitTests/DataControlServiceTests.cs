@@ -507,21 +507,21 @@ namespace SabaNews.Services.UnitTests
         }
 
         [Fact]
-        public async Task GetVideo_WhenCacheHaveData_ReturnExpectedData()
+        public async Task GetCategoryPostsAsync_WhenCacheHaveData_ReturnExpectedData()
         {
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Post>>();
             cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
-            var actual = await service.GetVideo();
+            var actual = await service.GetCategoryPostsAsync(key);
 
             //Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public async Task GetVideo_WhenCacheReturnNull_ReturnExpectedData()
+        public async Task GetCategoryPostsAsync_WhenCacheReturnNull_ReturnExpectedData()
         {
             var service = GetDataControlService(true);
             var key = fixture.Create<string>();
@@ -533,7 +533,7 @@ namespace SabaNews.Services.UnitTests
             postService.GetPostsBySlugAsync(Arg.Do<string>(x => key = x), Arg.Do<int>(x => start = x), Arg.Do<int>(x => end = x)).Returns(expected);
 
             //Act
-            var actual = await service.GetVideo();
+            var actual = await service.GetCategoryPostsAsync(key);
 
             //Assert
             Assert.Equal(expected, actual);
@@ -542,7 +542,7 @@ namespace SabaNews.Services.UnitTests
         }
 
         [Fact]
-        public async Task GetVideo_WhenNotUsingCache_ReturnExpectedData()
+        public async Task GetCategoryPostsAsync_WhenNotUsingCache_ReturnExpectedData()
         {
             var service = GetDataControlService(false);
             var key = fixture.Create<string>();
@@ -552,7 +552,7 @@ namespace SabaNews.Services.UnitTests
             postService.GetPostsBySlugAsync(Arg.Do<string>(x => key = x), Arg.Do<int>(x => start = x), Arg.Do<int>(x => end = x)).Returns(expected);
 
             //Act
-            var actual = await service.GetVideo();
+            var actual = await service.GetCategoryPostsAsync(key);
 
             //Assert
             Assert.Equal(expected, actual);
@@ -604,6 +604,54 @@ namespace SabaNews.Services.UnitTests
 
             //Act
             var actual = await service.GetRecentPostsAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetTodayMatches_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IList<Match>>();
+            cacheWrapperService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetTodayMatches();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetTodayMatches_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            IList<Match> expectedFromCache = null;
+            var expected = fixture.Create<IList<Match>>();
+            cacheWrapperService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetTodayMatches().Returns(expected);
+
+            //Act
+            var actual = await service.GetTodayMatches();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<Match>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetTodayMatches_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IList<Match>>();
+            fetchDataService.GetTodayMatches().Returns(expected);
+
+            //Act
+            var actual = await service.GetTodayMatches();
 
             //Assert
             Assert.Equal(expected, actual);

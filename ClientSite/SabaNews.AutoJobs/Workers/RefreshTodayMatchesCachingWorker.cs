@@ -10,21 +10,21 @@ namespace SabaNews.AutoJobs.Workers
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class RefreshVideoCachingWorker : BaseWorker
+    public class RefreshTodayMatchesCachingWorker : BaseWorker
     {
         private readonly IRefreshCachingService refreshCachingService;
 
-        public RefreshVideoCachingWorker(IRefreshCachingService refreshCachingService,
+        public RefreshTodayMatchesCachingWorker(IRefreshCachingService refreshCachingService,
             IOptions<List<JobSettings>> jobSettings,
             ILogServiceProvider logService) : base(logService)
         {
             this.refreshCachingService = refreshCachingService;
-            jobSetting = JobSettingHelper.GetJobConfig(jobSettings.Value, JobNames.RefreshVideoCaching);
+            jobSetting = JobSettingHelper.GetJobConfig(jobSettings.Value, JobNames.RefreshTodayMatchesCaching);
         }
 
         public override async Task ExecuteJobAsync()
         {
-            await refreshCachingService.UpdateVideoCaching();
+            await refreshCachingService.UpdateTodayMatchesCaching();
         }
     }
 }

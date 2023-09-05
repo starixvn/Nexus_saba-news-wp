@@ -275,21 +275,30 @@
             logService.WriteLogFileInfo(string.Format("Done UpdateHomepageStandingCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
 
-        public async Task UpdateVideoCaching()
+        public async Task UpdateCategoryPostCaching()
         {
             var startTime = DateTime.Now;
-            logService.WriteLogFileInfo("Start UpdateVideoCaching");
+            logService.WriteLogFileInfo("Start UpdateCategoryPostCaching");
 
             try
             {
-                var result = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
-                logService.WriteLogFileInfo(string.Format("After GetVideoData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheWrapperService.SetAsync(CacheKey.Video,
+                var listCategoryCaching = new List<string>
+                {
+                    CategoryKey.VideoSlug,
+                    CategoryKey.GuessSlug
+                };
+                foreach (var slug in listCategoryCaching)
+                {
+                    var key = CacheKey.CategoryPosts + "-" + slug;
+                    var result = await postService.GetPostsBySlugAsync(slug, Constants.FromFirstItem, Constants.GetTenItems);
+                    logService.WriteLogFileInfo(string.Format("After Get {0} - {1}", key, DateTime.Now.Subtract(startTime).Milliseconds));
+                    await cacheWrapperService.SetAsync(key,
                         result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheVideoTimeoutMinutes)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheCategoryPostTimeoutMinutes)
                         });
+                }
             }
             catch (Exception ex)
             {
@@ -297,7 +306,7 @@
                 logService.WriteLogFileInfo(ex.ToString());
             }
 
-            logService.WriteLogFileInfo(string.Format("Done UpdateVideoCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+            logService.WriteLogFileInfo(string.Format("Done UpdateCategoryPostCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
 
         public async Task UpdateRecentPostsCaching()
@@ -323,6 +332,31 @@
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateRecentPostCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+        }
+
+        public async Task UpdateTodayMatchesCaching()
+        {
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateTodayMatchesCaching");
+
+            try
+            {
+                var result = await fetchDataService.GetTodayMatches();
+                logService.WriteLogFileInfo(string.Format("After GetTodayMatches - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheWrapperService.SetAsync(CacheKey.TodayMatches,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheTodayMatchesTimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateTodayMatchesCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
     }
 }

@@ -11,6 +11,9 @@
         public static DateTime ConvertToGMT(this DateTime dateTime)
             => dateTime.AddHours(-ClientTimezone);
 
+        public static DateTime ConvertToClient(this DateTime dateTime)
+            => dateTime.AddHours(ClientTimezone);
+        
         public static DateTime ToStartOfDay(this DateTime date) => new(date.Year, date.Month, date.Day);
 
         public static DateTime ToEndOfDay(this DateTime date)

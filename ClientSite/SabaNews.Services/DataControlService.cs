@@ -280,28 +280,29 @@
             return await fetchDataService.GetHomepageStanding();
         }
 
-        public async Task<IEnumerable<Post>> GetVideo()
+        public async Task<IEnumerable<Post>> GetCategoryPostsAsync(string slug)
         {
             if (IsUsingCache)
             {
-                var result = await cacheWrapperService.GetAsync<IEnumerable<Post>>(CacheKey.Video);
+                var cacheKey = CacheKey.CategoryPosts + "-" + slug;
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Post>>(cacheKey);
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Video data from DB---------");
-
-                    result = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
-                    await cacheWrapperService.SetAsync(CacheKey.Video, result,
+                    logServiceProvider.WriteLogFileInfo($"-------Get {cacheKey} data from DB---------");
+    
+                    result = await postService.GetPostsBySlugAsync(slug, Constants.FromFirstItem, Constants.GetTenItems);
+                    await cacheWrapperService.SetAsync(cacheKey, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheVideoTimeoutMinutes)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheCategoryPostTimeoutMinutes)
                         });
                 }
 
                 return result;
             }
 
-            return await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            return await postService.GetPostsBySlugAsync(slug, Constants.FromFirstItem, Constants.GetTenItems);
         }
 
         public async Task<IEnumerable<Post>> GetRecentPostsAsync()
@@ -315,7 +316,7 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get recent posts data from DB---------");
 
                     result = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
-                    await cacheWrapperService.SetAsync(CacheKey.Video, result,
+                    await cacheWrapperService.SetAsync(CacheKey.RecentPost, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRecentPostTimeoutMinutes)
@@ -326,6 +327,29 @@
             }
 
             return await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
+        }
+
+        public async Task<IList<Match>> GetTodayMatches()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<IList<Match>>(CacheKey.TodayMatches);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get today matches from DB---------");
+                    result = await fetchDataService.GetTodayMatches();
+                    await cacheWrapperService.SetAsync(CacheKey.TodayMatches, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheTodayMatchesTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetTodayMatches();
         }
     }
 }

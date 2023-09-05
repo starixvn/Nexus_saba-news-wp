@@ -63,6 +63,10 @@
     <Function Name="Livescore">
         <Setting Key="Livescore_Match_GetBySeason" SpName="Livescore_Match_GetBySeason" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_League_GetLeagueAndSeasonStandings" SpName="Livescore_League_GetLeagueAndSeasonStandings" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_GetTodayHotLeague" SpName="Livescore_Match_GetTodayHotLeague" DbName="sabasports" Plain="0">
+            <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
+            <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
+        </Setting>
     </Function>
     <Function Name="Options">
         <Setting Key="Options_GetKey" SpName="Options_GetKey" DbName="sabasports" Plain="0" />

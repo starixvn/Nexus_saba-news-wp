@@ -246,6 +246,25 @@
             return Ok(posts);
         }
 
+         [HttpPost]
+        [Route("api/GetGuessSidebar")]
+        public async Task<IActionResult> GetGuessSidebar(string slug, int limitItem)
+        {
+
+            var posts = await dataControlService.GetCategoryPostsAsync(slug);
+            posts = posts.Take(limitItem);
+            ViewBag.Slug = slug;
+            return PartialView("_GuessSidebar", posts);
+        }
+
+        [HttpPost]
+        [Route("api/GetTodayMatches")]
+        public async Task<IActionResult> GetTodayMatches()
+        {
+            var matches = await dataControlService.GetTodayMatches();
+            return Json(matches);
+        }
+
         public string GetClientIP()
         {
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();

@@ -22,8 +22,10 @@
 
         Task UpdateHomepageStandingCaching();
 
-        Task UpdateVideoCaching();
+        Task UpdateCategoryPostCaching();
 
         Task UpdateRecentPostsCaching();
+
+        Task UpdateTodayMatchesCaching();
     }
 }

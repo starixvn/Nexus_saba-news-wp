@@ -26,6 +26,9 @@
         Task<(League, IList<Match>)> GetWCFixtureData();
 
         Task<List<MatchLeagueModel>> GetHomepageFixture();
+        
         Task<List<StandingLeagueModel>> GetHomepageStanding();
+
+        Task<IList<Match>> GetTodayMatches();
     }
 }

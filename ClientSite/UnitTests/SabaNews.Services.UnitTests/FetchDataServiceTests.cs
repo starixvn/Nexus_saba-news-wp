@@ -277,6 +277,23 @@
         }
 
         [Fact]
+        public async Task GetTodayMatches_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+            var criteria = fixture.Create<GetMatchBySeasonCriteria>();
+
+            var expected = fixture.Create<IList<Match>>();
+            matchService.GetTodayMatchesAsync().Returns(expected);
+
+            //Act
+            var actual = await service.GetTodayMatches();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public async Task GetHomepageFixture_WhenCalled_ReturnExpectedData()
         {
             //Arrange

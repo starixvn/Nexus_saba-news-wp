@@ -219,6 +219,11 @@
             return await matchService.GetMatchBySeasonAsync(criteria);
         }
 
+        public async Task<IList<Match>> GetTodayMatches()
+        {
+            return await matchService.GetTodayMatchesAsync();
+        }
+
         public async Task<List<MatchLeagueModel>> GetHomepageFixture()
         {
             var option = await optionService.GetOptionAsync(OptionKey.HompageFixture);

@@ -1,8 +1,10 @@
 ﻿namespace SabaNews.Livescore.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Extensions;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
@@ -182,6 +184,17 @@
         public async Task<CommandResult> UpdateMatchAsync(UpdateMatchCommand cmd)
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
+        }
+
+        public async Task<IList<Match>> GetTodayMatchesAsync()
+        {
+            var today = DateTime.UtcNow.ConvertToClient();
+            var criteria = new GetHotLeagueMatchTodayCriteria
+            {
+                FromTime = today.ToStartOfDay().ConvertToGMT(),
+                ToTime = today.ToEndOfDay().ConvertToGMT()
+            };
+            return await matchRepository.GetTodayMatchesAsync(criteria);
         }
     }
 }

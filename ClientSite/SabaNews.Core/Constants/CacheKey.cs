@@ -28,5 +28,7 @@
         public const string HomePageStanding = "HomePageStanding";
         public const string Video = "VideoCache";
         public const string RecentPost = "RecentPost";
+        public const string CategoryPosts = "CategoryPosts";
+        public const string TodayMatches = "TodayMatches";
     }
 }

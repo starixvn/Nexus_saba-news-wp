@@ -39,8 +39,10 @@
 
         Task<List<StandingLeagueModel>> GetHomepageStandingData();
 
-        Task<IEnumerable<Post>> GetVideo();
+        Task<IEnumerable<Post>> GetCategoryPostsAsync(string slug);
 
         Task<IEnumerable<Post>> GetRecentPostsAsync();
+
+        Task<IList<Match>> GetTodayMatches();
     }
 }

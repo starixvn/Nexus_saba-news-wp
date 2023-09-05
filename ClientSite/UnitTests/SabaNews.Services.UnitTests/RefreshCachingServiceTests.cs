@@ -5,6 +5,7 @@
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
@@ -394,7 +395,7 @@
         }
 
         [Fact]
-        public async Task UpdateVideoCaching_WhenCalled_CallExpectedFunction()
+        public async Task UpdateCategoryPostCaching_WhenCalled_CallExpectedFunction()
         {
             //Arrange
             var service = GetRefreshCachingService();
@@ -409,7 +410,7 @@
 
 
             //Act
-            await service.UpdateVideoCaching();
+            await service.UpdateCategoryPostCaching();
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
@@ -417,7 +418,7 @@
         }
 
         [Fact]
-        public async Task UpdateVideoCaching_WhenCalled_ThrowException()
+        public async Task UpdateCategoryPostCaching_WhenCalled_ThrowException()
         {
             //Arrange
             var service = GetRefreshCachingService();
@@ -432,7 +433,7 @@
 
 
             //Act
-            await service.UpdateVideoCaching();
+            await service.UpdateCategoryPostCaching();
 
             //Assert
             await logService.Received().WriteExceptionSentryErrorAsync(exception);
@@ -480,6 +481,49 @@
             await logService.Received().WriteExceptionSentryErrorAsync(exception);
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
         }
+
+        [Fact]
+        public async Task UpdateTodayMatchesCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<IList<Match>>();
+            var param = fixture.Create<GetRecentPostsParam>();
+
+            fetchDataService.GetTodayMatches().Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateTodayMatchesCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateTodayMatchesCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+            var param = fixture.Create<GetRecentPostsParam>();
+
+            fetchDataService.When(x => x.GetTodayMatches()).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateTodayMatchesCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+        
 
 
         #region Helpers

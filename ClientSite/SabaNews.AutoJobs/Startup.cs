@@ -131,8 +131,9 @@
             services.AddHostedService<RefreshWorldCupCachingWorker>();
             services.AddHostedService<RefreshHomepageFixtureWorker>();
             services.AddHostedService<RefreshHomepageStandingWorker>();
-            services.AddHostedService<RefreshVideoCachingWorker>();
+            services.AddHostedService<RefreshCategoryPostsCachingWorker>();
             services.AddHostedService<RefreshRecentPostsCachingWorker>();
+            services.AddHostedService<RefreshTodayMatchesCachingWorker>();
         }
     }
 }

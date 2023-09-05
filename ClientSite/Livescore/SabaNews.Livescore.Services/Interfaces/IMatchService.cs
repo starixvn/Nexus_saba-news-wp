@@ -38,6 +38,8 @@
 
         Task<CommandResult> UpdateMatchAsync(UpdateMatchCommand cmd);
 
+        Task<IList<Match>> GetTodayMatchesAsync();
+
 
     }
 }
