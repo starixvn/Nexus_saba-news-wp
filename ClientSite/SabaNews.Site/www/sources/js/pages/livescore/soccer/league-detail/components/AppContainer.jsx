@@ -110,7 +110,8 @@ export class AppContainer extends Component {
         this.setState({ selectedTab: key, selectedFixtureTab, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${Site.toSlug(leagueName)}/${params.seasonId}/${params.date}/${params.leagueId}/${key}`);
+        const date = params.seasonId !== 0 ? "" : "/" + params.date;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${Site.toSlug(leagueName)}/${params.seasonId}${date}/${params.leagueId}/${key}`);
         this.props.navigate(url);
     };
 

@@ -125,6 +125,60 @@
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
+            if(seasonId != 0)
+            {
+                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}");
+            }
+            var (isRedirect, tab) = GetRedirectTab(selectedTab);
+            if(isRedirect)
+            {
+                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{tab}");
+            }
+            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
+            if(leagueDetail == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var model = new GetMatchBySeasonParams
+            {
+                LeagueId = leagueId,
+                SeasonId = seasonId,
+                Date = date,
+                SelectedTab = selectedTab,
+                LeagueName = league,
+                League = leagueDetail
+            };
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}";
+            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
+        }
+
+        [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{leagueId:long}/{selectedTab?}")]
+        public async Task<IActionResult> LeagueDetailForSeason(string league, long seasonId, long leagueId, string selectedTab)
+        {
+            var (isRedirect, tab) = GetRedirectTab(selectedTab);
+            if(isRedirect)
+            {
+                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{tab}");
+            }
+            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
+            if(leagueDetail == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var model = new GetMatchBySeasonParams
+            {
+                LeagueId = leagueId,
+                SeasonId = seasonId,
+                SelectedTab = selectedTab,
+                LeagueName = league,
+                League = leagueDetail
+            };
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}";
+            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
+        }
+
+        private static (bool, string) GetRedirectTab(string selectedTab)
+        {
             string tab;
             var isRedirect = true;
             switch(selectedTab)
@@ -147,26 +201,7 @@
                     isRedirect = false;
                     break;
             }
-            if(isRedirect)
-            {
-                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{tab}");
-            }
-            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
-            if(leagueDetail == null)
-            {
-                return View(Constants.EmptyBlogView);
-            }
-            var model = new GetMatchBySeasonParams
-            {
-                LeagueId = leagueId,
-                SeasonId = seasonId,
-                Date = date,
-                SelectedTab = selectedTab,
-                LeagueName = league,
-                League = leagueDetail
-            };
-            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}";
-            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
+            return (isRedirect, tab);
         }
 
         [Route("lich-thi-dau/bong-da/tran-dau-quan-tam")]

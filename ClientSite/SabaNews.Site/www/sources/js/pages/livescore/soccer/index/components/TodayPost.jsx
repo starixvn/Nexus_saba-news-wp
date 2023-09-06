@@ -19,7 +19,7 @@ export class TodayPost extends PureComponent {
         return (
             <div className="livescore-news">
                 <div className="block__title">
-                    <h2><a href="/tag/lich-thi-dau-hom-nay">Tin lịch thi đấu bóng đá</a></h2>
+                    <h2><a href="/tag/lich-thi-dau-hom-nay">Trực tiếp bóng đá hôm nay</a></h2>
                 </div>
                 {
                     todayFixturePosts.map((post, index) => {

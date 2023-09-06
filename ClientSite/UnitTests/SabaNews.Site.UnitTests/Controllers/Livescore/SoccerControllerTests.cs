@@ -271,6 +271,50 @@
         }
 
         [Fact]
+        public async Task LeagueDetailForSeason_WhenLeagueIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var league = fixture.Create<string>();
+            var seasonId = fixture.Create<long>();
+            var leagueId = fixture.Create<long>();
+            var selectedTab = "lich-thi-dau";
+            League expectedLeague = null;
+            leagueService.GetLeagueByIdAsync(leagueId).Returns(expectedLeague);
+            // Act
+            var result = await controller.LeagueDetailForSeason(league, seasonId, leagueId, selectedTab);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task LeagueDetailForSeason_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var league = fixture.Create<string>();
+            var seasonId = fixture.Create<long>();
+            var date = fixture.Create<DateTime>();
+            var leagueId = fixture.Create<long>();
+            var selectedTab = "lich-thi-dau";
+            var expectedLeague = fixture.Create<League>();
+            
+            leagueService.GetLeagueByIdAsync(leagueId).Returns(expectedLeague);
+            // Act
+            var result = await controller.LeagueDetailForSeason(league, seasonId, leagueId, selectedTab);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<GetMatchBySeasonParams>(viewResult.Model);
+            Assert.Equal("~/Views/Livescore/Soccer/LeagueDetail.cshtml", viewResult.ViewName);
+            Assert.Equal(leagueId, viewModel.LeagueId);
+            Assert.Equal(seasonId, viewModel.SeasonId);
+            Assert.Equal(selectedTab, viewModel.SelectedTab);
+        }
+
+        [Fact]
         public void FavouriteMatch_WhenCalled_ReturnExpectedViewResult()
         {
             // Arrange

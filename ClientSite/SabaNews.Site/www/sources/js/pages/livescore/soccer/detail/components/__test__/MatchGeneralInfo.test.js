@@ -738,7 +738,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/123/2022-06-01/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/123/12036');
         });
 
         it('calls correctly when ctrlKey = true', () => {
@@ -756,7 +756,7 @@ describe('MatchGeneralInfo', () => {
             instance.handleClickLeague(event, league);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/123/2022-06-01/12036', '_blank');
+            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/123/12036', '_blank');
         });
 
         it('calls correctly when ctrlKey = false', () => {
@@ -776,7 +776,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/123/2022-06-01/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/123/12036');
         });
     });
 

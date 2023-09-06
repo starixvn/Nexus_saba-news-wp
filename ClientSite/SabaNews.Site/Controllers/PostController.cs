@@ -238,7 +238,7 @@
         {
             var criteria = new GetPostsByTagCriteria
             {
-                _Tag = Constants.TodayFixtureTag,
+                _Tag = Constants.TodayLiveFixtureTag,
                 _Start = Constants.FromFirstItem,
                 _End = Constants.GetFiveItems
             };

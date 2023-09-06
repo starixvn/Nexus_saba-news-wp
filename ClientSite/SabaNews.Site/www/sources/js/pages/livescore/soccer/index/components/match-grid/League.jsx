@@ -48,7 +48,10 @@ export class League extends PureComponent {
         }
         const seasonId = league.season ? league.season.seasonId : 0;
         const leagueNameParam = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueNameParam}/${seasonId}/${selectedDate}/${league.leagueId}`);
+        let url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueNameParam}/${seasonId}/${league.leagueId}`);
+        if(seasonId === 0) {
+            url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueNameParam}/${seasonId}/${selectedDate}/${league.leagueId}`);
+        }
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

@@ -338,7 +338,10 @@ export default class CommonFunctions {
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const currentSeasonId = league.currentSeasonId ? league.currentSeasonId : 0;
         seasonId = seasonId ? seasonId : currentSeasonId;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        let url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${league.leagueId}`);
+        if(seasonId === 0) {
+            url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        }
         return url;
     }
 

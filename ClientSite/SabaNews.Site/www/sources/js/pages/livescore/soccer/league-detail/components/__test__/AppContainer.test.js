@@ -177,7 +177,12 @@ describe('AppContainer', () => {
 
         it('updates correctly state when selectedTab = tong-hop', () => {
             // Arrange
-            // Arrange
+            window.getMatchByStageParams = {
+                selectedTab: '',
+                leagueId: 1,
+                seasonId: 0,
+                date: '2022-05-25'
+            };
             const props = {
                 ...defaultProps,
                 league: {season: {year: '2022'}}
@@ -196,7 +201,7 @@ describe('AppContainer', () => {
                 selectedStandingsTab: false,
                 selectedFixtureTab: true
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/tong-hop');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/0/2022-05-25/1/tong-hop');
         });
 
         it('updates correctly state when selectedTab = lich-thi-dau', () => {
@@ -220,7 +225,7 @@ describe('AppContainer', () => {
                 selectedStandingsTab: false,
                 selectedFixtureTab: true
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/lich-thi-dau');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/1/lich-thi-dau');
         });
 
         it('updates correctly state when selectedTab = ket-qua', () => {
@@ -243,7 +248,7 @@ describe('AppContainer', () => {
                 selectedStandingsTab: false,
                 selectedFixtureTab: false
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/ket-qua');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/1/ket-qua');
         });
 
         it('updates correctly state when selectedTab = bang-xep-hang', () => {
@@ -262,7 +267,7 @@ describe('AppContainer', () => {
                 selectedStandingsTab: true,
                 selectedFixtureTab: false
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1/bang-xep-hang');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/1/bang-xep-hang');
         });
     });
 

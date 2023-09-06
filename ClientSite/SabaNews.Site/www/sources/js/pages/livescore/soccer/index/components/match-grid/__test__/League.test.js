@@ -298,7 +298,7 @@ describe('League', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/1/2022-05-25/1');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/1/1');
         });
 
         it('calls correctly functions when ctrlKey = true', () => {
