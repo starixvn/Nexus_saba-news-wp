@@ -20,8 +20,8 @@ export class AppContainer extends Component {
         return (
             <>
                 <SignalR/>
-                <Fixture data={liveMatches} title="LTĐ Trực Tiếp" url={liveUrl}/>
-                <Fixture data={todayMatches} title="LTĐ Hôm Nay" url={todayUrl}/>
+                <Fixture data={liveMatches} title="LTĐ Trực Tiếp" url={liveUrl} isLiveTitle={true}/>
+                <Fixture data={todayMatches} title="LTĐ Hôm Nay" url={todayUrl} isLiveTitle={false}/>
             </>
         );
     }

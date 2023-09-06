@@ -51,7 +51,8 @@ export default class Fixture extends PureComponent {
 
 
     render() {
-        const { data, title } = this.props;
+        const { title , isLiveTitle } = this.props;
+        const data = []
         const group = this.groupMatches(data);
         return (
             <div className="livescore-post-detail">
@@ -60,11 +61,12 @@ export default class Fixture extends PureComponent {
                     data === null && <SkeletonGrid />
                 }
                 {
-                    data !== null && data?.length > 0 && <div className="livescore-soccer-main">
+                    <div className="livescore-soccer-main">
                     {
+                        data !== null && data?.length > 0 ? 
                         group.map(item => {
                             return <Grid key={item.key} league={item.league} matches={item.matches} />
-                        })
+                        }) : <p className="none-data">{ isLiveTitle ? "Không có trận đấu nào đang diễn ra" : "Không có trận đấu nào diễn ra ngày hôm nay"}</p>
                     }
                 </div>
                 }
