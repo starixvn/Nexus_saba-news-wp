@@ -51,8 +51,7 @@ export default class Fixture extends PureComponent {
 
 
     render() {
-        const { title , isLiveTitle } = this.props;
-        const data = []
+        const { title , isLiveTitle , data } = this.props;
         const group = this.groupMatches(data);
         return (
             <div className="livescore-post-detail">
