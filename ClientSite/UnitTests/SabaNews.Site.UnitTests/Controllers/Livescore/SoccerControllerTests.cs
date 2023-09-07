@@ -177,6 +177,25 @@
             Assert.Equal(expected, viewModel.Match);
         }
 
+        public async void LeagueDetail_WhenHaveSeason_RedirectCorrectUrl(string selectedTab)
+        {
+            // Arrange
+            var league = fixture.Create<string>();
+            var seasonId = fixture.Create<long>();
+            var date = fixture.Create<DateTime>();
+            var leagueId = fixture.Create<long>();
+            var controller = GetController();
+            var tab = "tong-hop";
+            var rediectUrl = $"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{tab}";
+
+            // Act
+            var result = await controller.LeagueDetail(league, seasonId, date, leagueId, selectedTab);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal(rediectUrl, redirectResult.Url);
+        }
+
 
         [Theory]
         [InlineData(null)]
@@ -188,7 +207,7 @@
         {
             // Arrange
             var league = fixture.Create<string>();
-            var seasonId = fixture.Create<long>();
+            var seasonId = 0;
             var date = fixture.Create<DateTime>();
             var leagueId = fixture.Create<long>();
             var controller = GetController();
@@ -228,7 +247,7 @@
             // Arrange
             var controller = GetController();
             var league = fixture.Create<string>();
-            var seasonId = fixture.Create<long>();
+            var seasonId =0;
             var date = fixture.Create<DateTime>();
             var leagueId = fixture.Create<long>();
             var selectedTab = "lich-thi-dau";
@@ -250,7 +269,7 @@
             // Arrange
             var controller = GetController();
             var league = fixture.Create<string>();
-            var seasonId = fixture.Create<long>();
+            var seasonId = 0;
             var date = fixture.Create<DateTime>();
             var leagueId = fixture.Create<long>();
             var selectedTab = "lich-thi-dau";
