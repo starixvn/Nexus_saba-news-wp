@@ -125,6 +125,7 @@
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
+            var dateFormat = "yyyy-MM-dd";
             if(seasonId != 0)
             {
                 return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}");
@@ -132,7 +133,7 @@
             var (isRedirect, tab) = GetRedirectTab(selectedTab);
             if(isRedirect)
             {
-                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{tab}");
+                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString(dateFormat)}/{leagueId}/{tab}");
             }
             var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
             if(leagueDetail == null)
@@ -148,7 +149,7 @@
                 LeagueName = league,
                 League = leagueDetail
             };
-            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}";
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString(dateFormat)}/{leagueId}/{selectedTab}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
