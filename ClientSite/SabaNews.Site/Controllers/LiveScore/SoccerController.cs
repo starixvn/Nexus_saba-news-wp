@@ -155,6 +155,10 @@
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetailForSeason(string league, long seasonId, long leagueId, string selectedTab)
         {
+            if(seasonId == 0)
+            {
+                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTime.Now.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
+            }
             var (isRedirect, tab) = GetRedirectTab(selectedTab);
             if(isRedirect)
             {
