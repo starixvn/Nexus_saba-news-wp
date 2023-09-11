@@ -16,7 +16,6 @@ export class SignalR extends Component {
         const options = {
             transport: HttpTransportType.WebSockets,
             logMessageContent: false,
-            skipNegotiation: true,
             logger: LogLevel.None
         };
 
