@@ -125,7 +125,7 @@
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
-            var dateFormat = "yyyy-MM-dd";
+            const string dateFormat = "yyyy-MM-dd";
             if(seasonId != 0)
             {
                 return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}");

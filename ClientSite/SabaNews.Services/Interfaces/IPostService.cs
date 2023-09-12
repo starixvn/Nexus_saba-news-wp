@@ -74,7 +74,7 @@
         Task<IList<Category>> GetAllTagAsync();
         Task<Post> GetPostDetailSummaryAsync(string slug);
 
-        Task<IList<Post>> GetPostsByIdsAsync(string Ids, int limitItems);
+        Task<IList<Post>> GetPostsByIdsAsync(string ids, int limitItems);
 
         Task<List<int>> GetStickyPostsAsync();
 
