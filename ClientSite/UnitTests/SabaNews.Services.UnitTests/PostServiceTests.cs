@@ -898,6 +898,7 @@
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
         public async Task GetAllTagAsync_WhenCalled_ReturnExpectedPosts()
         {
             //Arrange
@@ -911,6 +912,69 @@
 
             //Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetPostsByIdsAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var ids = fixture.Create<string>();
+            var limit = 5;
+            var criteria = fixture.Create<GetPostsByJsonIdsCriteria>();
+            var expected = fixture.Create<IList<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetPostsByJsonIdsCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPostsByIdsAsync(ids, limit);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetStickyPostsAsync_WhenHaveOptionValue_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var ids = fixture.Create<string>();
+            var expectedResult = new List<int>{ 7334, 7332 };
+            var expected = new ArrayList();
+            expected.Add(7334);
+            expected.Add(7332);
+            var expectedOption = new Option
+            {
+                OptionName = OptionKey.StickyPost,
+                OptionValue = "a:2:{i:0;i:7334;i:1;i:7332;}"
+            };
+            optionService.GetOptionAsync(Arg.Do<string>(x => x = OptionKey.StickyPost)).Returns(expectedOption);
+            serializerService.UnserializerToArrayList(Arg.Do<string>(x => expectedOption.OptionValue = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetStickyPostsAsync();
+
+            //Assert
+            Assert.Equal(expectedResult, actual);
+        }
+
+        [Fact]
+        public async Task GetStickyPostsAsync_WhenOptionIsNULL_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var ids = fixture.Create<string>();
+            var expectedResult = new List<int>{  };
+            var expected = new ArrayList();
+            Option expectedOption = null;
+            string optionValue = null;
+            optionService.GetOptionAsync(Arg.Do<string>(x => x = OptionKey.StickyPost)).Returns(expectedOption);
+            serializerService.UnserializerToArrayList(Arg.Do<string>(x => optionValue = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetStickyPostsAsync();
+
+            //Assert
+            Assert.Equal(expectedResult, actual);
         }
 
 

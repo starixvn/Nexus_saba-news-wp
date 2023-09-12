@@ -2,6 +2,7 @@
 {
     using AutoFixture;
     using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
@@ -385,8 +386,10 @@
 
             var paramGetRecent = new Fixture().Create<GetRecentPostsParam>();
             var post = new Fixture().Create<IEnumerable<Post>>();
+            var stickyPosts = new Fixture().Create<IList<Post>>();
             var category = new Fixture().Create<Category>();
-
+            var stickyIds = new List<int>{ 1223, 456 };
+            var ids = JsonConvert.SerializeObject(stickyIds);
             postService.GetRecentPostsAsync(paramGetRecent).Returns(post);
             postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems).Returns(post);
             postService.GetPostsBySlugAsync(Constants.OtherPostSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
@@ -396,7 +399,8 @@
             postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
             postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFourItems).Returns(post);
             postService.GetPageDetailBySlugAsync(Constants.HomeSlug).Returns(category);
-
+            postService.GetStickyPostsAsync().Returns(stickyIds);
+            postService.GetPostsByIdsAsync(ids, Constants.GetFourItems).Returns(stickyPosts);
             var postLeft = new Fixture().Create<IEnumerable<Post>>();
             var postCenter = new Fixture().Create<IEnumerable<Post>>();
             var postRight = new Fixture().Create<IEnumerable<Post>>();

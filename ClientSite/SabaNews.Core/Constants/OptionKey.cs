@@ -9,5 +9,7 @@
         public const string FootballNewsCategories = "football_news_categories";
 
         public const string YoastSEOSetting = "wpseo_titles";
+
+        public const string StickyPost = "sticky_posts";
     }
 }

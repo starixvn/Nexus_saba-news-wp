@@ -80,19 +80,22 @@
                                 }
                             }
                         </div>
-                        <div class="box-vertical box-vertical-hightlight">
-                            @{
-                                var firstPost = Model.NewPosts[0];
-                                string firstImgUrl = firstPost.FeatureImage;
-                                <a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})" class="box-vertical-image hover-image">
-                                    <img src="@Url.Content(firstImgUrl)" class="img-res" alt="@firstPost.PostTitle" loading="lazy" />
-                                </a>
-                                <div class="box-vertical-content">
-                                    <h3 class="heading-hight-light"><a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})">@firstPost.PostTitle</a></h3>
-                                    <p>@firstPost.PostExcerpt</p>
-                                </div>
-                            }
-                        </div>
+                        @if(Model.NewPosts.Count > 0)
+                        {
+                            <div class="box-vertical box-vertical-hightlight">
+                                @{
+                                    var firstPost = Model.NewPosts[0];
+                                    string firstImgUrl = firstPost.FeatureImage;
+                                    <a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})" class="box-vertical-image hover-image">
+                                        <img src="@Url.Content(firstImgUrl)" class="img-res" alt="@firstPost.PostTitle" loading="lazy" />
+                                    </a>
+                                    <div class="box-vertical-content">
+                                        <h3 class="heading-hight-light"><a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})">@firstPost.PostTitle</a></h3>
+                                        <p>@firstPost.PostExcerpt</p>
+                                    </div>
+                                }
+                            </div>
+                        }
                         <div class="block-news-hot-child">
                             @{
                                 newPostIndex = 0;

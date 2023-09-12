@@ -106,6 +106,23 @@
             // Assert.Equal(new List<ImageInfo>(), actual);
         }
 
+        [Fact]
+        public void UnserializerToArrayList_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var service = GetSerializerService();
+            var arrayList = new ArrayList();
+            arrayList.Add(7334);
+            arrayList.Add(7332);
+            string metadata = "a:2:{i:0;i:7334;i:1;i:7332;}";
+            //Act
+            var actual = service.UnserializerToArrayList(metadata);
+
+            // Assert
+
+            Assert.Equal(arrayList, actual);
+        }
+
         #region Helpers
 
         private SerializerService GetSerializerService()

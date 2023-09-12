@@ -57,19 +57,28 @@
                 Start = Constants.FromFirstItem,
                 End = Constants.GetElevenItems
             };
+            IList<Post> stickyPosts = new List<Post>();
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
             var otherPosts = await postService.GetPostsBySlugAsync(Constants.NewOtherPostSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var videoPosts = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var guessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetNineItems);
             var backstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            var stickyPostIds = await postService.GetStickyPostsAsync();
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            if(stickyPostIds.Any())
+            {
+                var ids = JsonConvert.SerializeObject(stickyPostIds);
+                stickyPosts = await postService.GetPostsByIdsAsync(ids, Constants.GetFourItems);
+                newPosts = newPosts.Where(n => stickyPosts.All(s => s.ID != n.ID)).ToList();
+                newPosts.Concat(stickyPosts);
+            }
 
             var (footballNewUrls,leaguePosts) = await GetFootballNews();
 
             var viewModel = new PostViewModel
             {
-                 NewPosts = newPosts,
+                NewPosts = newPosts,
                 LeaguePosts = leaguePosts,
                 OtherPosts = otherPosts,
                 VideoPosts = videoPosts,
@@ -77,7 +86,8 @@
                 BackstagePosts = backstagePosts,
                 TransferPosts = transferPosts,
                 Category = category,
-                FootballNewCategory = footballNewUrls
+                FootballNewCategory = footballNewUrls,
+                StickyPosts = stickyPosts
             };
 
             return viewModel;

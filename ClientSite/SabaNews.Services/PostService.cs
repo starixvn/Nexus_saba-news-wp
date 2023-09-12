@@ -421,6 +421,26 @@
             return result.ToList();
         }
 
+        public async Task<IList<Post>> GetPostsByIdsAsync(string ids, int limitItems)
+        {
+            var criteria = new GetPostsByJsonIdsCriteria
+            {
+                Ids = ids,
+                LimitItem = limitItems
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+
+            return posts.ToList();
+        }
+
+        public async Task<List<int>> GetStickyPostsAsync()
+        {
+            var setting =  await optionService.GetOptionAsync(OptionKey.StickyPost);
+            var hashObject = serializerService.UnserializerToArrayList(setting?.OptionValue);
+            var ids = hashObject.Cast<int>().ToList();
+            return ids;
+        }
+
         private static List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories)
         {
             var cateList = new List<SitemapModel>();

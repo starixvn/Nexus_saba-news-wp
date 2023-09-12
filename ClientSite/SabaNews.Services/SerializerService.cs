@@ -9,6 +9,8 @@
     public interface ISerializerService
     {
         Hashtable Unserializer(string metadata);
+
+        ArrayList UnserializerToArrayList(string metadata);
     }
 
     public class SerializerService : ISerializerService
@@ -55,8 +57,30 @@
             }
         }
 
+        public ArrayList UnserializerToArrayList(string metadata)
+        {
+            ArrayList results = new ArrayList();
+            if (string.IsNullOrWhiteSpace(metadata))
+            {
+                return results;
+            }
 
-        private object DeserializeString(string str)
+            try
+            {
+                pos = 0;
+                var decryptedData = DeserializeString(metadata);
+
+                results = (ArrayList)decryptedData;
+                return results;
+            }
+            catch
+            {
+                return results;
+            }
+        }
+
+
+        public object DeserializeString(string str)
         {
             if (str == null || str.Length <= pos)
             {
