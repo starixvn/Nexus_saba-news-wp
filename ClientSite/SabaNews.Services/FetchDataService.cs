@@ -71,7 +71,7 @@
                 var ids = JsonConvert.SerializeObject(stickyPostIds);
                 stickyPosts = await postService.GetPostsByIdsAsync(ids, Constants.GetFourItems);
                 newPosts = newPosts.Where(n => stickyPosts.All(s => s.ID != n.ID)).ToList();
-                newPosts.Concat(stickyPosts);
+                newPosts = stickyPosts.Concat(newPosts).ToList();
             }
 
             var (footballNewUrls,leaguePosts) = await GetFootballNews();
