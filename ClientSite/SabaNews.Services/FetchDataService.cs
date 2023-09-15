@@ -68,7 +68,7 @@
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
             if(stickyPostIds.Any())
             {
-                var ids = JsonConvert.SerializeObject(stickyPostIds);
+                var ids = string.Join(",", stickyPostIds);
                 stickyPosts = await postService.GetPostsByIdsAsync(ids, Constants.GetFourItems);
                 newPosts = newPosts.Where(n => stickyPosts.All(s => s.ID != n.ID)).ToList();
                 newPosts = stickyPosts.Concat(newPosts).Take(Constants.GetElevenItems).ToList();
