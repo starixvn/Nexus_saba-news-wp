@@ -739,7 +739,7 @@ body {
 }
 .livescore-post-detail .group-duel .live .soccer-match-stage span, .livescore-post-detail .group-duel .live.live-intermission .soccer-match-stage span {
   color: #E13C29;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 .livescore-post-detail .group-duel .live .soccer-match-stage span::before, .livescore-post-detail .group-duel .live.live-intermission .soccer-match-stage span::before {
   left: -10px;

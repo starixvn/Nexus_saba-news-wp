@@ -4383,13 +4383,13 @@ img {
   left: 0;
 }
 
-.ul1, .content ul {
+.ul1, .content ol, .content ul {
   margin-left: 2rem;
 }
-.ul1 li, .content ul li {
+.ul1 li, .content ol li, .content ul li {
   margin-bottom: 0;
 }
-.ul1 li a, .content ul li a {
+.ul1 li a, .content ol li a, .content ul li a {
   color: #0066CC;
 }
 

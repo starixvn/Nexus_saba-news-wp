@@ -523,7 +523,10 @@ img {
 .content{
     ul {
         @extend .ul1;
-    }   
+    } 
+    ol {
+        @extend .ul1;
+    }     
 }
 
 .content .p1 {
