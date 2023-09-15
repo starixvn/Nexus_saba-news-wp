@@ -5,7 +5,7 @@ DELIMITER //
 
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_jsonIds`(
-	ids JSON,
+	ids TEXT,
     limitItem INT
     /*
 		Creator: Hank@20230911
