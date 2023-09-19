@@ -60,7 +60,7 @@
                 {
                     await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
 
-                    await SyncMatchDetais(matches);
+                    await SyncMatchDetais(matches, lastUpdatedTime);
                 }
             }
         }
@@ -84,8 +84,11 @@
             await syncMatchService.SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(startTime, endTime, lastUpdatedTime);
         }
 
-        private async Task SyncMatchDetais(List<MatchResponse> matches)
+        private async Task SyncMatchDetais(List<MatchResponse> matches, DateTime lastUpdatedTime)
         {
+            var today = DateTime.UtcNow;
+            var lastday = lastUpdatedTime.AddDays(-1);
+            var incidents = matches.Where(m => m.GameStartTime <= today && m.GameStartTime > lastday).Select(i => i.MatchId).ToArray();
             var matchIds = matches.Select(m => m.MatchId).ToArray();
 
             await SyncMatchDetailByIdsAsync(matchIds);
@@ -93,7 +96,7 @@
             var syncLineupMatchIds = matches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
 
             await SyncLinupAsync(syncLineupMatchIds);
-            await SyncIncidents(matchIds);
+            await SyncIncidents(incidents);
         }
 
         public async Task SyncMatchDetailByIdsAsync(long[] matchIds)

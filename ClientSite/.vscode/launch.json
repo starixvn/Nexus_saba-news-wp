@@ -51,7 +51,8 @@
             "presentation": {
                 "group": "ionide",
                 "hidden": false
-            }
+            },
+            "requireExactSource": false
         }
     ]
 }
