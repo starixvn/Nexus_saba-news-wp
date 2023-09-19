@@ -130,6 +130,17 @@
                 var match = JsonConvert.DeserializeObject<MqttLiveMatch>(json);
                 await HandleMatchDetailResponse(match);
             }
+             if (topic.StartsWith("/tlive"))
+            {
+                var incidents = JsonConvert.DeserializeObject<MqttTextLiveIncidents>(json);
+                await HandleTextLiveResponse(incidents.MatchId);
+            }
+        }
+
+        private async Task HandleTextLiveResponse(long matchId)
+        {
+            var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
+            await syncMatchService.SyncMatchIncidentAsync(matchId, incidents);
         }
 
         private async Task HandleMatchDetailResponse(MqttLiveMatch match)
