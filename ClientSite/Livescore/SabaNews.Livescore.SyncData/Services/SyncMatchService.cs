@@ -210,11 +210,10 @@
             }
         }
 
-        private async Task SyncIncidents(long[] matchIds)
+        public async Task SyncIncidents(long[] matchIds)
         {
             foreach (var matchId in matchIds)
             {
-                
                 var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
                 await SyncMatchIncidentAsync(matchId, incidents);
             }

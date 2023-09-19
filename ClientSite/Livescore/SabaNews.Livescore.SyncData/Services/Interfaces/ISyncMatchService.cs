@@ -27,5 +27,6 @@
 
         Task<DateTime> GetMatchLastUpdatedTimeInDateRangeAsync(DateTime? startTime, DateTime? endTime, bool isExcludeLiveMatch = false);
         Task SyncIncidentByUpdatedTimeAsync();
+        Task SyncIncidents(long[] matchIds);
     }
 }

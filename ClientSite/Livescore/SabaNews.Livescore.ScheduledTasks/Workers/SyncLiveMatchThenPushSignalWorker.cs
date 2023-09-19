@@ -65,7 +65,9 @@
 
                 await pushSignalService.PushMatchListAsync(liveMatchList);
 
+                var liveMatchIds = liveMatchList?.Select(m => m.MatchId).ToArray();
                 await SyncMatchLineUpAsync(matchIds);
+                await syncMatchService.SyncIncidents(liveMatchIds);
 
                 await GetMatchDetailThenPushSignalToHubAsync(matchIds);
             }
