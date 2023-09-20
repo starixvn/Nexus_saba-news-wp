@@ -68,7 +68,10 @@
 
                 var liveMatchIds = liveMatchList?.Where(val => val.Status != MatchConstants.NotStarted).Select(m => m.MatchId).ToArray();
                 await SyncMatchLineUpAsync(matchIds);
-                await syncMatchService.SyncIncidents(liveMatchIds);
+                if(appSettings.IsSyncIncident)
+                {
+                    await syncMatchService.SyncIncidents(liveMatchIds);
+                }
 
                 await GetMatchDetailThenPushSignalToHubAsync(matchIds);
             }

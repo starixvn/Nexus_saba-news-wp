@@ -86,9 +86,6 @@
 
         private async Task SyncMatchDetais(List<MatchResponse> matches, DateTime lastUpdatedTime)
         {
-            var current = DateTime.UtcNow;
-            var lastday = lastUpdatedTime.AddDays(-1);
-            var syncIncidentMatchIds = matches.Where(m => m.GameStartTime <= current && m.GameStartTime > lastday).Select(i => i.MatchId).ToArray();
             var matchIds = matches.Select(m => m.MatchId).ToArray();
 
             await SyncMatchDetailByIdsAsync(matchIds);
@@ -96,7 +93,13 @@
             var syncLineupMatchIds = matches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
 
             await SyncLinupAsync(syncLineupMatchIds);
-            await syncMatchService.SyncIncidents(syncIncidentMatchIds);
+            if(appSettings.IsSyncIncident)
+            {
+                var current = DateTime.UtcNow;
+                var lastday = lastUpdatedTime.AddDays(-1);
+                var syncIncidentMatchIds = matches.Where(m => m.GameStartTime <= current && m.GameStartTime > lastday).Select(i => i.MatchId).ToArray();
+                await syncMatchService.SyncIncidents(syncIncidentMatchIds);
+            }
         }
 
         public async Task SyncMatchDetailByIdsAsync(long[] matchIds)
