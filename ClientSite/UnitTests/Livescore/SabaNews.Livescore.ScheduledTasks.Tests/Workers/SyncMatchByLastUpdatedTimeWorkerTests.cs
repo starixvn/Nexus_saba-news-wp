@@ -41,7 +41,11 @@
         public async Task DoWorkAsync_WhenUpdatedTimeNotStuck_CallExpectedService()
         {
             var matchResponse = fixture.Create<List<MatchResponse>>();
+            var lastUpdatedTime = fixture.Create<DateTime>();
+            var current = DateTime.UtcNow;
+            var lastday = lastUpdatedTime.AddDays(-1);
             fetchMatchService.FetchMatchListAsync(Arg.Any<SyncMatchParams>()).Returns(matchResponse);
+            syncMatchService.GetMatchLastUpdatedTimeAsync().Returns(lastUpdatedTime);
 
             //actual
             await worker.DoWorkAsync();
@@ -50,7 +54,7 @@
             await syncMatchService.Received().SyncMatchByLastUpdatedTimeAsync(Arg.Is(matchResponse));
             await fetchMatchService.Received().FetchMatchDetailAsync(Arg.Is<SyncMatchParams>(x => x.MatchIds.Length == matchResponse.Count));
             await fetchMatchService.Received().FetchMatchLineupAsync(Arg.Is<long[]>(x => x.Length == matchResponse.Count(m => m.IsLineUp)));
-            await fetchMatchService.Received().FetchMatchIncidentAsync(Arg.Is((short)1), Arg.Any<long>());
+            await syncMatchService.Received().SyncIncidents(Arg.Is<long[]>(x => x.Length == matchResponse.Count(m => m.GameStartTime <= current && m.GameStartTime > lastday)));
         }
 
         [Fact]
