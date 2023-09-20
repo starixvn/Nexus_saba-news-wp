@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Constants.Livescore;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
@@ -65,7 +66,7 @@
 
                 await pushSignalService.PushMatchListAsync(liveMatchList);
 
-                var liveMatchIds = liveMatchList?.Select(m => m.MatchId).ToArray();
+                var liveMatchIds = liveMatchList?.Where(val => val.Status != MatchConstants.NotStarted).Select(m => m.MatchId).ToArray();
                 await SyncMatchLineUpAsync(matchIds);
                 await syncMatchService.SyncIncidents(liveMatchIds);
 
