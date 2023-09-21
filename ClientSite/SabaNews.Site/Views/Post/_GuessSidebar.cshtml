@@ -12,7 +12,7 @@
                     <div class="post card-vertical">
                         @if(postIndex == 1){
                             string featureImg = post.FeatureImage;
-                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb thumb-65">
+                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image hover-image thumb thumb-65">
                                 <picture>
                                     <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
                                     <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">

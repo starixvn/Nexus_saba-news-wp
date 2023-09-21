@@ -1,24 +1,3 @@
-.card-horizontal__image,.card-vertical__image{
-    overflow: hidden;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    &:hover{
-        img{
-            transition: all 0.5s ease;
-            transform: rotate(0.01deg) scale(1.01); 
-        }
-    }
-    img{
-        transition: all 0.5s ease;
-        width: 100%;
-        display: block;
-        transform: rotate(0.01deg) scale(1); 
-    }
-    source{
-        width: 100%;
-        height: auto;
-    }
-}
-
 .wp-block-image {
     figcaption {
         text-align: center;
