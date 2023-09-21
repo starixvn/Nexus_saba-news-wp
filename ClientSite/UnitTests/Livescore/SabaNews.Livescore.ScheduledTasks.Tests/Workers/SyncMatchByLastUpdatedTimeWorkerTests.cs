@@ -33,6 +33,7 @@
             logService = Substitute.For<ILogServiceProvider>();
             fixture = new Fixture();
             appSettings = fixture.Create<AppSettings>();
+            appSettings.IsSyncIncident = true;
             jobSettings = fixture.Create<List<ScheduledTaskSettings>>();
             worker = new SyncMatchByLastUpdatedTimeWorker(syncMatchService, fetchMatchService, appSettings, jobSettings, logService);
         }
@@ -44,6 +45,7 @@
             var lastUpdatedTime = fixture.Create<DateTime>();
             var current = DateTime.UtcNow;
             var lastday = lastUpdatedTime.AddDays(-1);
+            matchResponse.First().IsLineUp = true;
             fetchMatchService.FetchMatchListAsync(Arg.Any<SyncMatchParams>()).Returns(matchResponse);
             syncMatchService.GetMatchLastUpdatedTimeAsync().Returns(lastUpdatedTime);
 
