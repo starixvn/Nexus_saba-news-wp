@@ -28,6 +28,17 @@
             return await httpClient.ExecutePostAsync<List<LeagueListResponse>>(ApiPath.GetLeagueListApiPath, param);
         }
 
+        public async Task<List<LeagueListResponse>> FetchLeagueListAsync(long?[] leagueIds)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { ApiParams.SportId, 1 },
+                { ApiParams.LeagueId, leagueIds },
+                { ApiParams.RowLimit, 1000 },
+            };
+            return await httpClient.ExecutePostAsync<List<LeagueListResponse>>(ApiPath.GetLeagueListApiPath, param);
+        }
+
         private static class ApiPath
         {
             internal const string GetLeagueListApiPath = "/league/list";

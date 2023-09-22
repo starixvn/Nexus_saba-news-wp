@@ -72,6 +72,28 @@
             }
         }
 
+        public async Task SyncLeagueSeasonByIdsAsync(long?[] leagueIds)
+        {
+            var param = new FetchLeagueListParams
+            {
+                SportId = (short)SportType.Soccer,
+                LeagueIds = leagueIds,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<LeagueListResponse> leagues = await fetchLeagueService.FetchLeagueListAsync(param);
+            if(leagues.Any())
+            {
+                var test = leagues.Where(l => l.CurSeasonId == null || l.CurSeasonId == 0);
+                var leagueSeasonData = leagues.Where(l => l.CurSeasonId != null && l.CurSeasonId != 0).Select(i => new { i.LeagueId, i.CurSeasonId, i.Seasons }).ToArray();
+                var json = JsonConvert.SerializeObject(leagueSeasonData);
+                var command = new ImportLeagueSeasonCommand
+                {
+                    LeagueListJson = json
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
         protected internal virtual async Task<DateTime?> GetLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime?>(new GetLeagueLastUpdatedTimeCriteria());
 

@@ -18,15 +18,18 @@
         private readonly AppSettings appSettings;
         private readonly IBaseService baseService;
         private readonly IFetchSeasonService fetchSeasonService;
+        private readonly ISyncLeagueService syncLeagueService;
 
         public SyncSeasonService(
             AppSettings appSettings,
             IBaseService baseService,
-            IFetchSeasonService fetchSeasonService)
+            IFetchSeasonService fetchSeasonService,
+            ISyncLeagueService syncLeagueService)
         {
             this.appSettings = appSettings;
             this.baseService = baseService;
             this.fetchSeasonService = fetchSeasonService;
+            this.syncLeagueService = syncLeagueService;
         }
 
         public async Task SyncSeasonListByLastUpdatedTimeAsync()
@@ -46,6 +49,17 @@
                     SeasonListJson = json
                 };
                 await baseService.ExecuteNonQueryAsync(command);
+
+                var leagueIds = seasons.Where(s => s.LeagueId != null && s.IsCurrent).Select(i => i.LeagueId).ToArray();
+                await SyncLeagueSeason(leagueIds);
+            }
+        }
+
+        private async Task SyncLeagueSeason(long?[] leagueIds)
+        {
+            if (leagueIds is not null && leagueIds.Any())
+            {
+                await syncLeagueService.SyncLeagueSeasonByIdsAsync(leagueIds);
             }
         }
 

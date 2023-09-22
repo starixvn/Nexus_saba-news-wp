@@ -7,5 +7,7 @@
         Task SyncLeagueListByLastUpdatedTimeAsync();
 
         Task SyncLeagueListGreaterThanLeagueIdAsync();
+
+        Task SyncLeagueSeasonByIdsAsync(long?[] leagueIds);
     }
 }
