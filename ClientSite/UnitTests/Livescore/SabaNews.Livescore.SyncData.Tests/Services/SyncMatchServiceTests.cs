@@ -166,6 +166,7 @@
         public async Task SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync_WhenHasMatch_WillCallAnotherAPI()
         {
             var matches = fixture.Create<List<MatchResponse>>();
+            matches.First().IsLineUp = true;
             fetch.FetchMatchListAsync(Arg.Any<SyncMatchParams>()).Returns(matches);
 
             var details = fixture.Create<List<MatchDetailResponse>>();
@@ -180,7 +181,7 @@
             await fetch.Received(1).FetchMatchListAsync(Arg.Any<SyncMatchParams>());
             await fetch.Received(1).FetchMatchDetailAsync(Arg.Any<SyncMatchParams>());
             var isLineUpMatches = matches.Where(x => x.IsLineUp).ToList();
-            await fetch.Received(isLineUpMatches.Count).FetchMatchLineupAsync(Arg.Any<long[]>());
+            await fetch.Received().FetchMatchLineupAsync(Arg.Is<long[]>(x => x.Length == matches.Count(m => m.IsLineUp)));
             await fetch.Received(matches.Count).FetchMatchIncidentAsync(1, Arg.Any<long>());
         }
 

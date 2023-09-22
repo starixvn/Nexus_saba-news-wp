@@ -62,5 +62,24 @@
             await syncService.SyncLeagueListGreaterThanLeagueIdAsync();
             await baseService.Received(1).ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
         }
+
+        [Fact]
+        public async Task SyncLeagueSeasonByIdsAsync_WhenAPI_HaveNoData_DoNotCallBaseServiceExecuteNonQuery()
+        {
+            var leagueIds = fixture.Create<long?[]>();
+            fetchLeagueService.FetchLeagueListAsync(Arg.Any<FetchLeagueListParams>()).Returns(new List<LeagueListResponse>());
+            await syncService.SyncLeagueSeasonByIdsAsync(leagueIds);
+            await baseService.DidNotReceive().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
+        }
+
+        [Fact]
+        public async Task SyncLeagueSeasonByIdsAsync_WhenAPI_HasData_DoCallBaseServiceExecuteNonQuery()
+        {
+            var leagueIds = fixture.Create<long?[]>();
+            var leagues = fixture.Create<List<LeagueListResponse>>();
+            fetchLeagueService.FetchLeagueListAsync(Arg.Any<FetchLeagueListParams>()).Returns(leagues);
+            await syncService.SyncLeagueSeasonByIdsAsync(leagueIds);
+            await baseService.Received(1).ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
+        }
     }
 }

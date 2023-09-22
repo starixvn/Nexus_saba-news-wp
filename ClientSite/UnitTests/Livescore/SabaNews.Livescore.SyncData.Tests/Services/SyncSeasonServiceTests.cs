@@ -22,15 +22,17 @@
         private readonly AppSettings appSettings;
         private readonly Fixture fixture;
         private readonly SyncSeasonService sync;
+        private readonly ISyncLeagueService syncLeagueService;
 
         public SyncSeasonServiceTests()
         {
             baseService = Substitute.For<IBaseService>();
             fetch = Substitute.For<IFetchSeasonService>();
+            syncLeagueService = Substitute.For<ISyncLeagueService>();
             fixture = new Fixture();
             appSettings = fixture.Create<AppSettings>();
             appSettings.MinDateSyncLivescoreData = DateTime.Now.AddDays(-100);
-            sync = new SyncSeasonService(appSettings, baseService, fetch);
+            sync = new SyncSeasonService(appSettings, baseService, fetch, syncLeagueService);
         }
 
         [Fact]
@@ -48,6 +50,7 @@
             fetch.FetchSeasonListAsync(Arg.Any<FetchSeasonListParams>()).Returns(seasons);
             await sync.SyncSeasonListByLastUpdatedTimeAsync();
             await baseService.Received().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
+            await syncLeagueService.Received().SyncLeagueSeasonByIdsAsync(Arg.Any<long?[]>());
         }
 
         [Fact]
