@@ -41,7 +41,7 @@
             var mailConfigsKey = email.IsSendEDM ? MailConfigsForBroadcast : MailConfigsForTransactional;
             MailConfigs mailConfigs = configuration.GetSection(mailConfigsKey).Get<MailConfigs>();
             
-            if (email == null || !IsValidEmail(email.ReceiverEmail) || !mailConfigs.Enabled)
+            if (!IsValidEmail(email.ReceiverEmail) || !mailConfigs.Enabled)
             {
                 return new CommandResult { Message = Message.InvalidEmail };
             }

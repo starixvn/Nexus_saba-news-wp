@@ -57,6 +57,7 @@
             string title;
             string description;
             var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
+            var eventDateFormat = eventDate?.ToString("dd/MM");
             if(eventDate == null || eventDate?.Date == today.Date)
             {
                 var dateFormat = today.ToString("dd/MM");
@@ -65,15 +66,13 @@
             }
             else if(eventDate > today)
             {
-                var dateFormat = eventDate?.ToString("dd/MM");
-                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + dateFormat;
-                description = $"Lịch thi đấu bóng đá ngày {dateFormat} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {dateFormat} liên tục trên SABA VN.";
+                title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + eventDateFormat;
+                description = $"Lịch thi đấu bóng đá ngày {eventDateFormat} mới nhất. Cập nhật lịch thi đấu và trực tiếp bóng đá ngày {eventDateFormat} liên tục trên SABA VN.";
             }
             else
             {
-                var dateFormat = eventDate?.ToString("dd/MM");
-                title = "Kết quả bóng đá, tỷ số bóng đá ngày " + dateFormat;
-                description = $"Xem kết quả bóng đá ngày {dateFormat} chính xác nhất. Cập nhật tỷ số trận đấu ngày {dateFormat} đầy đủ và trực quan nhất cho độc giả trên SABA VN.";
+                title = "Kết quả bóng đá, tỷ số bóng đá ngày " + eventDateFormat;
+                description = $"Xem kết quả bóng đá ngày {eventDateFormat} chính xác nhất. Cập nhật tỷ số trận đấu ngày {eventDateFormat} đầy đủ và trực quan nhất cho độc giả trên SABA VN.";
             }
             var pageDetail = new Category
             {

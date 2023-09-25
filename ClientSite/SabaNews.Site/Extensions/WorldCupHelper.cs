@@ -334,7 +334,7 @@
                 {
                     statusStage = WorldCup2022.OnStartedStage;
                 }
-                else if (checkNowEnd <= NinetyMinsToSecond && checkNowEnd > ThirtyMinsToSecond)
+                else if (checkNowEnd > ThirtyMinsToSecond)
                 {
                     statusStage = WorldCup2022.BeforeEndStage;
                 }
