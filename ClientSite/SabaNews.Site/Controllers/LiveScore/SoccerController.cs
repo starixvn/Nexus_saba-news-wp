@@ -57,8 +57,9 @@
             string title;
             string description;
             var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
-            var eventDateFormat = eventDate?.ToString("dd/MM");
-            if(eventDate == null || eventDate?.Date == today.Date)
+            var selectedDate = eventDate ?? today;
+            var eventDateFormat = selectedDate.ToString("dd/MM");
+            if(selectedDate.Date == today.Date)
             {
                 var dateFormat = today.ToString("dd/MM");
                 title = "Lịch thi đấu và kết quả bóng đá hôm nay " + dateFormat;

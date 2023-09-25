@@ -44,7 +44,7 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
-            var postId = 0;
+            int postId;
             if(slug.Contains(".html"))
             {
                 (slug, postId) = GetPostInfoFromSlug(slug);
