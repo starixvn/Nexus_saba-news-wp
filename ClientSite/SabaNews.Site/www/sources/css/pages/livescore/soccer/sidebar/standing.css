@@ -223,7 +223,7 @@ body {
   justify-content: flex-start;
 }
 .table-custom-body .table-custom-row .wld-wrapper > div {
-  margin-right: 4px;
+  margin-right: 0.4rem;
 }
 .table-custom-body .table-custom-row .wld-wrapper .wld {
   border-radius: 3px;
