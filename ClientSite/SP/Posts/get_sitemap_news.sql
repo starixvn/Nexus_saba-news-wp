@@ -10,6 +10,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_sitemap_news`(
         Revisions:	- 20210203@Hank: init
 					- 20230811@Hank: change ModifiedDate
                     - 20230811@Hank: select postId
+                    - 20230926@Hank: limit 300 post
     */
 )
 BEGIN
@@ -21,11 +22,11 @@ BEGIN
     INNER JOIN wp_term_relationships as t_r ON t_r.object_id = p.ID
 	INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id AND taxonomy = 'post_tag'
 	INNER JOIN wp_terms as t ON t_t.term_id = t.term_id
-	WHERE p.post_type ="post" and post_name <> '' 
-		and p.post_date >= DATE_SUB(NOW(), INTERVAL 2 DAY)
+	WHERE p.post_type ="post" and post_name <> ''
 		and p.post_status = 'publish'
 	GROUP BY p.ID, p.post_name, p.post_title, p.post_date
-    ORDER BY p.post_date DESC;
+    ORDER BY p.post_date DESC
+    LIMIT 300;
 END
 //
 DELIMITER ;	
