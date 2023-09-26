@@ -609,7 +609,7 @@ body {
 }
 .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:after {
   left: auto;
-  right: 42%;
+  right: 41%;
   top: -7px;
   transform: translate(50%, -50%);
 }
