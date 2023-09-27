@@ -136,6 +136,7 @@
         {
             var rss = "";
             var slug = cate.Replace(".rss", "");
+            var atomLink = "rss/" + cate;
             RSSCategoryModel model;
             var cacheConfig = configuration.GetSection(RssCacheKey).Get<RssCacheConfig>();
             if(cacheConfig.Enabled)
@@ -157,7 +158,7 @@
                 model = await GetDataCategory(slug);
             }
             if(model != null) {
-                rss = RssHelper.GetRSSDocument(model, domain);
+                rss = RssHelper.GetRSSDocument(model, domain, atomLink);
             }
             return Content(rss, xmlType, Encoding.UTF8);
         }

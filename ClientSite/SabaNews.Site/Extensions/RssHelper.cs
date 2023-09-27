@@ -9,7 +9,7 @@
     {
         private static readonly XNamespace xmlns_atom = "http://www.w3.org/2005/Atom";
         private static readonly XNamespace xmlns_doc = "http://purl.org/dc/elements/1.1";
-        public static string GetRSSDocument(RSSCategoryModel RssData, string domain)
+        public static string GetRSSDocument(RSSCategoryModel RssData, string domain, string atomLink)
         {
             XElement root = new("rss", new XAttribute("version", "2.0"), new XAttribute(XNamespace.Xmlns + "atom", xmlns_atom), new XAttribute(XNamespace.Xmlns + "dc", xmlns_doc));
 
@@ -29,7 +29,7 @@
                     new XElement("title", RssData.Category.Title),
                     new XElement("link", $"{domain}{RssData.Category.Url}")),
                 new XElement(xmlns_atom + "link",
-                    new XAttribute("href", $"{domain}{RssData.Category.Url}"),
+                    new XAttribute("href", $"{domain}{atomLink}"),
                     new XAttribute("rel", "self"), new XAttribute("type","application/rss+xml")));
 
             foreach(var item in RssData.Posts)
