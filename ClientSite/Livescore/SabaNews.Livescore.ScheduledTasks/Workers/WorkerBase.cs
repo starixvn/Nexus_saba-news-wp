@@ -35,7 +35,6 @@
                 while (!stoppingToken.IsCancellationRequested)
                 {
                     await RunJobAsync();
-
                     await Task.Delay(TimeSpan.FromMinutes(jobSetting.Interval), stoppingToken);
                 }
 
