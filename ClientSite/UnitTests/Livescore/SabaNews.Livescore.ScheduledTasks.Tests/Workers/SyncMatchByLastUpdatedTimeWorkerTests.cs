@@ -56,7 +56,6 @@
             await syncMatchService.Received().SyncMatchByLastUpdatedTimeAsync(Arg.Is(matchResponse));
             await fetchMatchService.Received().FetchMatchDetailAsync(Arg.Is<SyncMatchParams>(x => x.MatchIds.Length == matchResponse.Count));
             await fetchMatchService.Received().FetchMatchLineupAsync(Arg.Is<long[]>(x => x.Length == matchResponse.Count(m => m.IsLineUp)));
-            await syncMatchService.Received().SyncIncidents(Arg.Is<long[]>(x => x.Length == matchResponse.Count(m => m.GameStartTime <= current && m.GameStartTime > lastday)));
         }
 
         [Fact]

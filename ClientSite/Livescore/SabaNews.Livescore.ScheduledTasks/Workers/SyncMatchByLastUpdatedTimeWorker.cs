@@ -60,7 +60,7 @@
                 {
                     await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
 
-                    await SyncMatchDetais(matches, lastUpdatedTime);
+                    await SyncMatchDetais(matches);
                 }
             }
         }
@@ -84,7 +84,7 @@
             await syncMatchService.SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(startTime, endTime, lastUpdatedTime);
         }
 
-        private async Task SyncMatchDetais(List<MatchResponse> matches, DateTime lastUpdatedTime)
+        private async Task SyncMatchDetais(List<MatchResponse> matches)
         {
             var matchIds = matches.Select(m => m.MatchId).ToArray();
 

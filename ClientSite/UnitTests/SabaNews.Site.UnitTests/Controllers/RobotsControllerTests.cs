@@ -219,7 +219,7 @@
                 Posts = expectedPost,
                 Category = expectedCategory
             };
-            var expectedSitemap = RssHelper.GetRSSDocument(expectedModel, "");
+            var expectedSitemap = RssHelper.GetRSSDocument(expectedModel, "", cate);
             //Act
             var actual = await controller.CategoryRSS(cate);
 
@@ -247,7 +247,7 @@
                 Category = expectedCategory
             };
             cacheService.GetAsync<RSSCategoryModel>(Arg.Do<string>(x => x = key)).Returns(expectedModel);
-            var expectedSitemap = RssHelper.GetRSSDocument(expectedModel, "");
+            var expectedSitemap = RssHelper.GetRSSDocument(expectedModel, "", "rss/" + cate);
             //Act
             var actual = await controller.CategoryRSS(cate);
 
