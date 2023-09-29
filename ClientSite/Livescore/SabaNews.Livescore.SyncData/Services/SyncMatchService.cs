@@ -145,10 +145,7 @@
             int SyncMinutes = appSettings.SyncIncidentMinutes;
             var lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetIncidentLastUpdatedTimeCriteria());
             var now = DateTime.UtcNow;
-            if (lastUpdatedTime == null)
-            {
-                lastUpdatedTime = now.AddMinutes(-SyncMinutes);
-            }
+            lastUpdatedTime ??= now.AddMinutes(-SyncMinutes);
             
             var updatedMatches = await fetchMatchService.FetchMatchIncidentUpdateTimeAsync((int)SportType.Soccer, lastUpdatedTime);
             await SyncIncidents(updatedMatches.ToArray());
