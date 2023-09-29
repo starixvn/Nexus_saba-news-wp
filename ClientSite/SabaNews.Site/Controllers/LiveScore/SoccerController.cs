@@ -395,6 +395,10 @@
         [HttpPost]
         public async Task<IActionResult> GetMatchGeneralInfo([FromBody] GetMatchByIdCriteria criteria)
         {
+            if(criteria == null)
+            {
+                return Json(null);
+            }
             var match = await matchService.GetMatchByIdAsync(criteria);
             var incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = criteria.MatchId });
             return Json(new { match, incidents });
