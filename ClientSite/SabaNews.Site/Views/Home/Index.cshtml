@@ -231,37 +231,37 @@
                             foreach(var leagues in Model.LeaguePosts)
                             {
                                 i++;
-                                <div class="block-event-item item-league">
-                                    <h2 class="block__title">
-                                        <a title="@Model.FootballNewCategory[i].Category" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[i].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[i].Category</a>
-                                    </h2>
-                                    @if(leagues.Count > 0)
-                                    {
-                                        <div class="box-vertical">
-                                            <a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })" class="box-vertical-image hover-image">
-                                                <img src="@Url.Content(leagues[0].FeatureImage)" alt="@leagues[0].PostTitle" class="img-res" loading="lazy" />
-                                            </a>
-                                            <div class="box-vertical-content">
-                                                <h4 class="heading-box-content"><a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })">@leagues[0].PostTitle</a></h4>
-                                                <div class="list-event-title">
-                                                    @{
-                                                        var LeaguePostsIndex = 0;
-                                                        foreach(var post in leagues){
-                                                            LeaguePostsIndex++;
-                                                            if(LeaguePostsIndex <= 1){
-                                                                continue;
+                                @if(leagues.Count > 0)
+                                {
+                                    <div class="block-event-item item-league">
+                                        <h2 class="block__title">
+                                            <a title="@Model.FootballNewCategory[i].Category" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[i].Slug + CategoryKey.Suffix })">@Model.FootballNewCategory[i].Category</a>
+                                        </h2>
+                                            <div class="box-vertical">
+                                                <a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })" class="box-vertical-image hover-image">
+                                                    <img src="@Url.Content(leagues[0].FeatureImage)" alt="@leagues[0].PostTitle" class="img-res" loading="lazy" />
+                                                </a>
+                                                <div class="box-vertical-content">
+                                                    <h4 class="heading-box-content"><a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })">@leagues[0].PostTitle</a></h4>
+                                                    <div class="list-event-title">
+                                                        @{
+                                                            var LeaguePostsIndex = 0;
+                                                            foreach(var post in leagues){
+                                                                LeaguePostsIndex++;
+                                                                if(LeaguePostsIndex <= 1){
+                                                                    continue;
+                                                                }
+                                                                <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                                             }
-                                                            <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
                                                         }
-                                                    }
+                                                    </div>
                                                 </div>
                                             </div>
+                                        <div class="view-more-block">
+                                            <a title="Xem thêm" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[i].Slug + CategoryKey.Suffix })">Xem Thêm</a>
                                         </div>
-                                    }
-                                    <div class="view-more-block">
-                                        <a title="Xem thêm" href="@Url.Action("Category", "Home", new { slug = @Model.FootballNewCategory[i].Slug + CategoryKey.Suffix })">Xem Thêm</a>
                                     </div>
-                                </div>
+                                }
                             }
                         }
                     </div>
