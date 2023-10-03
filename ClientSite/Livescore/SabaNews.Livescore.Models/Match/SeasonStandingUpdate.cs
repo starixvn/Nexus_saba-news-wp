@@ -2,10 +2,6 @@
 {
     public class SeasonStandingUpdate
     {
-        public long StageId { get; set; }
-        public string StageNameEN { get; set; }
-        public string StageNameVN { get; set; }
-        public short OrderIndex { get; set; }
 
         public long TeamId { get; set; }
         public string TeamNameEN { get; set; }
@@ -13,6 +9,12 @@
         public string TeamNameVN { get; set; }
         public string Icon { get; set; }
         public string IconVN { get; set; }
+
+        public long StageId { get; set; }
+        public string StageNameEN { get; set; }
+        public string StageNameVN { get; set; }
+        public short OrderIndex { get; set; }
+
         public string GroupName { get; set; }
         public string GroupNameCustom { get; set; }
         public short Position { get; set; }

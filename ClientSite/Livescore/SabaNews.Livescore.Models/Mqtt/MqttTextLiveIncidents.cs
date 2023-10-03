@@ -31,13 +31,13 @@
         public int HomeScore { get; set; }
         public int AwayScore { get; set; }
         public long PlayerId { get; set; }
-        public string PlayerName { get; set; }
-        public long AssistId { get; set; }
-        public string AssistName { get; set; }
         public long InPlayerId { get; set; }
         public string InPlayerName { get; set; }
         public long OutPlayerId { get; set; }
         public string OutPlayerName { get; set; }
+        public string PlayerName { get; set; }
+        public long AssistId { get; set; }
+        public string AssistName { get; set; }
         public int VarReason { get; set; }
         public int VarResult { get; set; }
         public int ReasonType { get; set; }
