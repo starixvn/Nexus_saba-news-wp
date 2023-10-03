@@ -1,4 +1,20 @@
 include:
-  - project: ci/core-cicd
-    ref: main
-    file: nexcel.gitlab-ci.yml
+   - project: 'ci/repos-ci/nexus_saba_sports_saba_news_site'
+    ref: master
+    file: 'gitlab-ci.yml'
+
+  - project: 'ci/repos-ci/nexus_saba_sports_saba_news_auto_jobs'
+    ref: master
+    file: 'gitlab-ci-mixing.yml'
+
+  - project: 'ci/repos-ci/nexus_saba_sports_livescore_auto_jobs'
+    ref: master
+    file: 'gitlab-ci-mixing.yml'
+    
+  - project: 'ci/repos-ci/nexus_saba_sports_saba_news_wp'
+    ref: master
+    file: 'gitlab-ci-mixing.yml'
+    
+  - project: 'ci/repos-ci/nexus_saba_sports_saba_news_upload'
+    ref: master
+    file: 'gitlab-ci-mixing.yml'
