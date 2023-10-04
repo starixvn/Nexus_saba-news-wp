@@ -192,13 +192,13 @@ var all = (function ($) {
             e.preventDefault();
             var input = $(this).parent().find('.keyword-input');
             var form = $(this).parent();
-            var keyword = input.val();
-            if ($.trim(keyword) === '') {
+            var keyword = $.trim(input.val());
+            keyword = keyword.replaceAll('"','');
+            if (keyword === '') {
                 input.focus();
             } else {
                 form.trigger("reset");
-                form.attr('action', '/Search/' + keyword);
-                form.submit();
+                window.location.href = '/Search/' + keyword
             }
         });
     }
