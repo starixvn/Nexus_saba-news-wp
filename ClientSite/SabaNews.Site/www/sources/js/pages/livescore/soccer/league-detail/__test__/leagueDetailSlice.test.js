@@ -4,7 +4,8 @@
     setMatches,
     setLiveMatches,
     setSeasonStandings,
-    setLeagues
+    setLeagues,
+    setIsCurrentSeason
 } from '../leagueDetailSlice';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
@@ -25,7 +26,8 @@ describe('leagueDetailSlice', () => {
             preMatches: null,
             postMatches: null,
             seasonStandings: [],
-            leagues: []
+            leagues: [],
+            isCurrentSeason: true
         });
     });
 
@@ -205,6 +207,20 @@ describe('leagueDetailSlice', () => {
                             leagueNameVN: 'Ngoại hạng Anh'
                         }
                     ]
+                });
+            });
+        });
+        describe('setIsCurrentSeason', () => {
+            it('updates state correctly', () => {
+                expect(
+                    leagueDetailSlice({
+                        isCurrentSeason: false
+                    }, {
+                        type: setIsCurrentSeason.type,
+                        payload: true
+                    })
+                ).toEqual({
+                    isCurrentSeason: true
                 });
             });
         });

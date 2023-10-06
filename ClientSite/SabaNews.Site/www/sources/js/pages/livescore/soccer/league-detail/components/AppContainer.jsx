@@ -76,7 +76,7 @@ export class AppContainer extends Component {
 
     handleSelectTab = key => {
         let { selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
-        const { league } = this.props;
+        const { league, isCurrentSeason } = this.props;
         const leagueName = CommonFunctions.getLeagueName(league);
         switch (key) {
             case 'tong-hop':
@@ -110,14 +110,24 @@ export class AppContainer extends Component {
         this.setState({ selectedTab: key, selectedFixtureTab, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
-        const date = params.seasonId !== 0 ? "" : "/" + params.date;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${Site.toSlug(leagueName)}/${params.seasonId}${date}/${params.leagueId}/${key}`);
+        const season = this.getSeasonParam(isCurrentSeason, params);
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${Site.toSlug(leagueName)}${season}/${params.leagueId}/${key}`);
         this.props.navigate(url);
+    };
+
+    getSeasonParam = (isCurrentSeason, params) => {
+        if(isCurrentSeason) {
+            return "";
+        }
+        if(params.seasonId !== 0) {
+            return '/' + params.seasonId;
+        }
+        return `/${params.seasonId}/${params.date}`;
     };
 
     renderSkeletonGrid = (tab, match) => {
         return tab && match === null && <SkeletonGrid  />
-    }
+    };
 
     renderTabs = () => {
         const { selectedTab, selectedFixtureTab, selectedResultsTab, selectedStandingsTab } = this.state;
@@ -172,7 +182,6 @@ export class AppContainer extends Component {
 
     render() {
         const { favLeagues, league, leagues } = this.props;
-
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
@@ -205,8 +214,8 @@ const AppContainerWithNavigation = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { favLeagues, league, stages, preMatches, postMatches, leagues } = state;
-    return { favLeagues, league, stages, preMatches, postMatches, leagues };
+    const { favLeagues, league, stages, preMatches, postMatches, leagues, isCurrentSeason } = state;
+    return { favLeagues, league, stages, preMatches, postMatches, leagues, isCurrentSeason };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

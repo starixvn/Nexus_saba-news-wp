@@ -17,7 +17,8 @@ describe('AppContainer', () => {
         getMatchesBySeason: jest.fn(),
         getLeagues: jest.fn(),
         navigate: jest.fn(),
-        setFavLeagues: jest.fn()
+        setFavLeagues: jest.fn(),
+        isCurrentSeason: true
     };
 
     beforeEach(() => {
@@ -175,7 +176,7 @@ describe('AppContainer', () => {
             jest.clearAllMocks();
         });
 
-        it('updates correctly state when selectedTab = tong-hop', () => {
+        it('updates correctly state when selectedTab = tong-hop & isCurrentSeason = false', () => {
             // Arrange
             window.getMatchByStageParams = {
                 selectedTab: '',
@@ -185,7 +186,8 @@ describe('AppContainer', () => {
             };
             const props = {
                 ...defaultProps,
-                league: {season: {year: '2022'}}
+                league: {season: {year: '2022'}},
+                isCurrentSeason: false
             };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
@@ -204,12 +206,13 @@ describe('AppContainer', () => {
             expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/0/2022-05-25/1/tong-hop');
         });
 
-        it('updates correctly state when selectedTab = lich-thi-dau', () => {
+        it('updates correctly state when selectedTab = lich-thi-dau & isCurrentSeason = false', () => {
             // Arrange
             // Arrange
             const props = {
                 ...defaultProps,
-                league: {season: {year: '2022'}}
+                league: {season: {year: '2022'}},
+                isCurrentSeason: false
             };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
@@ -228,7 +231,7 @@ describe('AppContainer', () => {
             expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/1/lich-thi-dau');
         });
 
-        it('updates correctly state when selectedTab = ket-qua', () => {
+        it('updates correctly state when selectedTab = ket-qua & isCurrentSeason = true', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -248,10 +251,10 @@ describe('AppContainer', () => {
                 selectedStandingsTab: false,
                 selectedFixtureTab: false
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/1/ket-qua');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/ket-qua');
         });
 
-        it('updates correctly state when selectedTab = bang-xep-hang', () => {
+        it('updates correctly state when selectedTab = bang-xep-hang & isCurrentSeason = true', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
@@ -267,7 +270,7 @@ describe('AppContainer', () => {
                 selectedStandingsTab: true,
                 selectedFixtureTab: false
             });
-            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/1/bang-xep-hang');
+            expect(defaultProps.navigate).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/bang-xep-hang');
         });
     });
 

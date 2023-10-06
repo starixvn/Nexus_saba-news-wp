@@ -147,7 +147,8 @@
                 Date = date,
                 SelectedTab = selectedTab,
                 LeagueName = league,
-                League = leagueDetail
+                League = leagueDetail,
+                IsCurrentSeason = false
             };
             ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString(dateFormat)}/{leagueId}/{selectedTab}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
@@ -176,9 +177,31 @@
                 SeasonId = seasonId,
                 SelectedTab = selectedTab,
                 LeagueName = league,
-                League = leagueDetail
+                League = leagueDetail,
+                IsCurrentSeason = false
             };
             ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}";
+            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
+        }
+
+        [Route("lich-thi-dau/bong-da/{league}/{leagueId:long}/{selectedTab?}")]
+        public async Task<IActionResult> LeagueDetail(string league, long leagueId, string selectedTab)
+        {
+            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
+            if(leagueDetail == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var model = new GetMatchBySeasonParams
+            {
+                LeagueId = leagueId,
+                SelectedTab = selectedTab,
+                LeagueName = league,
+                League = leagueDetail,
+                SeasonId = leagueDetail.CurrentSeasonId ?? 0,
+                IsCurrentSeason = true
+            };
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{leagueId}/{selectedTab}";
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
@@ -301,6 +324,9 @@
             if (criteria.SeasonId == 0)
             {
                 const byte TotalMonths = 6;
+                if(model.Date == DateTime.MinValue) {
+                    model.Date = DateTime.UtcNow;
+                }
                 criteria.FromTime = model.Date.AddMonths(-TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
                 criteria.ToTime = model.Date.AddMonths(TotalMonths).ToEndOfDay().ConvertToUTC(model.Timezone);
             }
@@ -308,6 +334,7 @@
             (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
             return Json(new { league, matches });
         }
+
 
         [HttpPost]
         public async Task<IActionResult> GetSeasonStandings([FromBody] GetSeasonStandingsCriteria criteria)

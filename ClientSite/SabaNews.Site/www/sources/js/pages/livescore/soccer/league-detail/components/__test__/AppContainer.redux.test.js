@@ -29,7 +29,8 @@ describe('connect ', () => {
             league: null,
             stages: [],
             preMatches: [],
-            postMatches: []
+            postMatches: [],
+            isCurrentSeason: true
         };
         const state = {
             anotherState: 123,
@@ -38,7 +39,8 @@ describe('connect ', () => {
             league: null,
             stages: [],
             preMatches: [],
-            postMatches: []
+            postMatches: [],
+            isCurrentSeason: true
         };
 
         // Act

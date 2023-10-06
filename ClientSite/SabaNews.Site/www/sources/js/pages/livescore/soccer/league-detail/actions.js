@@ -7,7 +7,8 @@ import {
     setMatches,
     setLiveMatches,
     setSeasonStandings,
-    setLeagues
+    setLeagues,
+    setIsCurrentSeason
 } from './leagueDetailSlice';
 
 const getFavLeagues = () => async dispatch => {
@@ -26,10 +27,13 @@ const getFavLeagues = () => async dispatch => {
 
 const getMatchesBySeason = params => async dispatch => {
     const url = Site.resolveClientUrl('soccer/getMatchesBySeason');
+    const isCurrentSeason = params.isCurrentSeason.toLowerCase() === 'true';
+    params.isCurrentSeason = isCurrentSeason;
     await DataService.postDataAsync(url, params).then(response => {
         const { league, matches } = response.data;
         dispatch(setLeague(league));
         dispatch(setMatches(matches));
+        dispatch(setIsCurrentSeason(isCurrentSeason));
     }).catch(Site.handleAxiosError);
 };
 
@@ -54,6 +58,7 @@ export const ActionCreators = {
     setLiveMatches,
     setSeasonStandings,
     setLeagues,
+    setIsCurrentSeason,
     getFavLeagues,
     getMatchesBySeason,
     getSeasonStandings,

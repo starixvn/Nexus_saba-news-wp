@@ -49,7 +49,7 @@ describe('Grid', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('url/standings');
+            expect(window.location).toEqual('url/bang-xep-hang');
         });
 
         it('calls correctly functions when ctrlKey = false', () => {
@@ -72,7 +72,7 @@ describe('Grid', () => {
             container.find('.view-more-block').simulate('click', event, league);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('url/standings', '_blank');
+            expect(window.open).toHaveBeenCalledWith('url/bang-xep-hang', '_blank');
         });
     });
 

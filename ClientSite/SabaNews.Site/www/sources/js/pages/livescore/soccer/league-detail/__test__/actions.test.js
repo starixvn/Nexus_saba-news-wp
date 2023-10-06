@@ -58,7 +58,8 @@ describe('actionCreators', () => {
             // Arrange
             const expectedParams = {
                 leagueId: 1,
-                seasonId: 1
+                seasonId: 1,
+                isCurrentSeason: "True"
             };
             const response = {
                 data: {
@@ -78,7 +79,8 @@ describe('actionCreators', () => {
             DataService.postDataAsync = jest.fn(() => promise);
             const expectedActions = [
                 { type: ActionCreators.setLeague.type, payload: response.data.league },
-                { type: ActionCreators.setMatches.type, payload: response.data.matches }
+                { type: ActionCreators.setMatches.type, payload: response.data.matches },
+                { type: ActionCreators.setIsCurrentSeason.type, payload: true }
             ];
             const store = mockStore({
                 majorLeagues: [],
