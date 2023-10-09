@@ -154,6 +154,12 @@
             return await matchRepository.GetTodayMatchesAsync(criteria);
         }
 
+        public async Task<IList<MatchSitemap>> GetMatchSitemapAsync()
+        {
+            var matches = await baseService.GetDataAsync<MatchSitemap>(new GetMatchSitemapCriteria {});
+            return matches.ToList();
+        }
+
         private List<Match> ProcessFloatMatches(IEnumerable<FloatMatchModel> floatMatches)
         {
             var matches = new List<Match>();

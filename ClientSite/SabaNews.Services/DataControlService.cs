@@ -351,5 +351,28 @@
 
             return await fetchDataService.GetTodayMatches();
         }
+
+        public async Task<IList<League>> GetLeagues()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<IList<League>>(CacheKey.Leagues);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get all leagues from DB---------");
+                    result = await fetchDataService.GetLeaguesAsync();
+                    await cacheWrapperService.SetAsync(CacheKey.Leagues, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheLeaguesTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetLeaguesAsync();
+        }
     }
 }

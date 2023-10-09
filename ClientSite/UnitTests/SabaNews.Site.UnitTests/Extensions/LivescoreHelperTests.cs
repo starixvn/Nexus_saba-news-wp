@@ -125,7 +125,7 @@
         {
             // Arrange
             var league = new League { LeagueFullNameEN = "Full nameEN", LeagueNameEN = "name EN" };
-            string leagueName = string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
+            string leagueName = !string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
             leagueName = !string.IsNullOrEmpty(league.LeagueNameVN) ? league.LeagueNameVN : leagueName;
 
             //Act

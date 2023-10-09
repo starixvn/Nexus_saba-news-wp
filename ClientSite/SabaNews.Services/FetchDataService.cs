@@ -272,6 +272,11 @@
             return result;
         }
 
+        public async Task<IList<League>> GetLeaguesAsync()
+        {
+            return await leagueService.GetLeaguesAsync();
+        }
+
         public async Task<(List<FootballNewsHomePage> ,List<IEnumerable<Post>>)> GetFootballNews()
         {
             var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);

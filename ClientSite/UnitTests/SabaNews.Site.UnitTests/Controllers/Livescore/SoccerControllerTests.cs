@@ -22,16 +22,17 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
+    using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers.Livescore;
     using Xunit;
 
     public class SoccerControllerTests
     {
-        private IPostService postService;
         private ILeagueService leagueService;
         private IMatchService matchService;
         private ICacheWrapperService cacheService;
         private IConfiguration configuration;
+        private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
 
         #region Index
@@ -111,26 +112,6 @@
         #endregion
 
         #region Live
-
-        [Fact]
-        public void Live_DescriptionIsNullOrWhiteSpace_ReturnExpectedViewResult()
-        {
-            // Arrange
-            var pageDetail = new Category
-            {
-                Title = "title"
-            };
-            var controller = GetController();
-            postService.GetPageDetailBySlugAsync("lich-thi-dau").Returns(pageDetail);
-
-            // Act
-            var result = controller.Live();
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-
-            Assert.Equal("~/Views/Livescore/Soccer/Live.cshtml", viewResult.ViewName);
-        }
 
         #endregion
 
@@ -887,7 +868,7 @@
             // Arrange
             var leagues = fixture.Create<IList<League>>();
             var controller = GetController();
-            leagueService.GetLeaguesAsync().Returns(leagues);
+            dataControlService.GetLeagues().Returns(leagues);
 
             // Act
             var result = await controller.GetLeagues();
@@ -931,11 +912,11 @@
             options.Value.Returns(cacheConfigs);
 
             cacheService = Substitute.For<ICacheWrapperService>();
-            postService = Substitute.For<IPostService>();
+            dataControlService = Substitute.For<IDataControlService>();
             leagueService = Substitute.For<ILeagueService>();
             matchService = Substitute.For<IMatchService>();
             configuration = Substitute.For<IConfiguration>() ;
-            return new SoccerController(options, cacheService, postService, leagueService, matchService, configuration);
+            return new SoccerController(options, cacheService, leagueService, matchService, configuration, dataControlService);
         }
 
         #endregion

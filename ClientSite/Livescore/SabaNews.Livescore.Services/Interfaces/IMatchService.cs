@@ -42,6 +42,8 @@
 
         Task<IList<Match>> GetTodayMatchesAsync();
 
+        Task<IList<MatchSitemap>> GetMatchSitemapAsync();
+
 
     }
 }

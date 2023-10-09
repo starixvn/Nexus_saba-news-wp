@@ -30,5 +30,6 @@
         public const string RecentPost = "RecentPost";
         public const string CategoryPosts = "CategoryPosts";
         public const string TodayMatches = "TodayMatches";
+        public const string Leagues = "Leagues";
     }
 }

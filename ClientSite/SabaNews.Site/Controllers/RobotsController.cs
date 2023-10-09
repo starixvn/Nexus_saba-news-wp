@@ -10,6 +10,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Services;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
     using SabaNews.Models.RSS;
@@ -23,6 +24,7 @@
         private readonly IPostService postService;
         private readonly ICacheWrapperService cacheService;
         private readonly IConfiguration configuration;
+        private readonly IMatchService matchService;
 
         private const string RssCacheKey = "RSSCacheConfig";
         private const string articleDaySlug = "article-day-";
@@ -35,12 +37,14 @@
             IDataControlService dataControlService,
             IConfiguration configuration,
             IPostService postService,
-            ICacheWrapperService cacheService)
+            ICacheWrapperService cacheService,
+            IMatchService matchService)
         {
             this.dataControlService = dataControlService;
             this.postService = postService;
             this.configuration = configuration;
             this.cacheService = cacheService;
+            this.matchService = matchService;
             domain = configuration.GetValue<string>("BaseUrl");
         }
 
@@ -118,6 +122,23 @@
             string sitemap = SitemapHelper.GetSitemapNews(data, domain);
             return Content(sitemap, xmlType, Encoding.UTF8);
         }
+
+        [Route("sitemap/league.xml")]
+        public async Task<ContentResult> SitemapLeagues()
+        {
+            var leagues = await dataControlService.GetLeagues();
+            var sitemap = SitemapHelper.GetSitemapLeague(leagues, domain);
+            return Content(sitemap, xmlType, Encoding.UTF8);
+        }
+
+        [Route("sitemap/match.xml")]
+        public async Task<ContentResult> SitemapMatches()
+        {
+            var matches = await matchService.GetMatchSitemapAsync();
+            var sitemap = SitemapHelper.GetSitemapMatch(matches, domain);
+            return Content(sitemap, xmlType, Encoding.UTF8);
+        }
+
 
         [Route("rss.html")]
         public async Task<IActionResult> RSS()

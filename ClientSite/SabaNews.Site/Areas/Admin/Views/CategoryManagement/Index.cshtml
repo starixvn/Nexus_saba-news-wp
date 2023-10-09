@@ -102,7 +102,7 @@
             leagueId = cate.LeagueId;
             if(cate.LeagueId != 0)
             {
-                league = GetLeagueName(cate.LeagueNameEN, cate.LeagueFullNameEN, cate.LeagueNameVN);
+                league = GetGeneralName(cate.LeagueNameEN, cate.LeagueFullNameEN, cate.LeagueNameVN);
             }
         }
         return (league, cate, display);

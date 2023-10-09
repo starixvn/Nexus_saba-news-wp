@@ -2,8 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text;
+    using System.Text.RegularExpressions;
     using System.Xml.Linq;
     using SabaNews.Core.Constants;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
 
@@ -140,6 +144,41 @@
             return document.ToString();
         }
 
+        public static string GetSitemapLeague(IList<League> leagues, string domain)
+        {
+            XElement root = new(xmlns + urlset);
+            foreach (var league in leagues)
+            {
+                var leagueName = LivescoreHelper.GetLeagueName(league);
+                leagueName = GetSlug(leagueName);
+                var url = $"lich-thi-dau/bong-da/{leagueName}/{league.LeagueId}";
+                XElement urlElement = RenderLivescoreSitemap(url, domain);
+                root.Add(urlElement);
+            }
+
+            XDocument document = new(root);
+            return document.ToString();
+        }
+
+        public static string GetSitemapMatch(IList<MatchSitemap> matches, string domain)
+        {
+            XElement root = new(xmlns + urlset);
+            foreach (var match in matches)
+            {
+                var leagueName = LivescoreHelper.GetGeneralName(match.LeagueNameEN, match.LeagueFullNameEN, match.LeagueNameVN);
+                var homeName = LivescoreHelper.GetGeneralName(match.HomeTeamNameEN, match.HomeTeamFullNameEN, match.HomeTeamNameVN);
+                var awayName = LivescoreHelper.GetGeneralName(match.AwayTeamNameEN, match.AwayTeamFullNameEN, match.AwayTeamNameVN);
+                var matchName = $"{homeName} vs {awayName}";
+                leagueName = GetSlug(leagueName);
+                var url = $"lich-thi-dau/bong-da/{GetSlug(leagueName)}/{GetSlug(matchName)}/{match.MatchId}";
+                XElement urlElement = RenderLivescoreSitemap(url, domain);
+                root.Add(urlElement);
+            }
+
+            XDocument document = new(root);
+            return document.ToString();
+        }
+
         private static XElement RenderPostSitemap(string url, DateTime datetime, string domain, bool isSitemap = true)
         {
             var root = isSitemap ? "sitemap" : "url";
@@ -161,6 +200,54 @@
                     new XElement(xmlns + "changefreq", "daily"),
                     new XElement(xmlns + "priority", 0.1));
             return urlElement;
+        }
+
+        private static XElement RenderLivescoreSitemap(string url, string domain)
+        {
+            XElement urlElement = new(
+                    xmlns + "url",
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{url}")),
+                    new XElement(xmlns + "changefreq", "daily"),
+                    new XElement(xmlns + "priority", 0.8));
+            return urlElement;
+        }
+
+        private static string ToUrlSlug(string value)
+        {
+
+            //First to lower case
+            value = value.ToLowerInvariant();
+
+            //Remove all accents
+            var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
+            value = Encoding.ASCII.GetString(bytes);
+
+            //Replace spaces
+            value = Regex.Replace(value, @"\s", "-", RegexOptions.Compiled);
+
+            //Remove invalid chars
+            value = Regex.Replace(value, @"[^a-z0-9\s-_]", "",RegexOptions.Compiled);
+
+            //Trim dashes from end
+            value = value.Trim('-', '_');
+
+            //Replace double occurences of - or _
+            value = Regex.Replace(value, @"([-_]){2,}", "$1", RegexOptions.Compiled);
+
+            return value ;
+        }
+        public static string GetSlug(string text)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string slug = text.Normalize(NormalizationForm.FormD).Trim().ToLower();
+            
+            slug = regex.Replace(slug, String.Empty)
+            .Replace('\u0111', 'd').Replace('\u0110', 'D')
+            .Replace(",", "").Replace(".", "").Replace("!", "")
+            .Replace("(", "").Replace(")", "").Replace(";", "-")
+            .Replace("/", "").Replace("%", "ptram").Replace("&", "va")
+            .Replace("?", "").Replace('"', '-').Replace(' ', '-');
+            return slug;
         }
     }
 }

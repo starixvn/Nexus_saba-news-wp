@@ -419,6 +419,22 @@
             Assert.IsAssignableFrom<PostViewModel>(actual);
         }
 
+        [Fact]
+        public async Task GetLeaguesAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+
+            var expected = fixture.Create<IList<League>>();
+            leagueService.GetLeaguesAsync().Returns(expected);
+
+            //Act
+            var actual = await service.GetLeaguesAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
         #region Helpers
         private FetchDataService GetFetchDataService()
         {

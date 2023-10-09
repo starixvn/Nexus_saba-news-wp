@@ -197,6 +197,7 @@
         public const int CacheRecentPostTimeoutMinutes = 30;
         public const int CacheCategoryPostTimeoutMinutes = 30;
         public const int CacheTodayMatchesTimeoutMinutes = 30;
+        public const int CacheLeaguesTimeoutMinutes = 30;
 
         public const string TokenAPIGetData = "U0FCQSBTUE9SVFMgaMOyYSB2w6BvIGN14buZYyBjaMahaSE=";
         public const string TodayLiveFixtureTag = "truc-tiep-bong-da-hom-nay";

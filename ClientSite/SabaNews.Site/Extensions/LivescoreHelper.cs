@@ -1,17 +1,10 @@
 ﻿namespace SabaNews.Site.Extensions
 {
-    using Microsoft.AspNetCore.Mvc;
-    using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
-    using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
-    using SabaNews.Core.Constants;
     using SabaNews.Core.Constants.Livescore;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
-    using SabaNews.Models.Event.WorldCup;
-    using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
 
     public static class LivescoreHelper
@@ -44,16 +37,16 @@
 
         public static string GetLeagueName(League league)
         {
-            string leagueName = string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
+            string leagueName = !string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
             leagueName = !string.IsNullOrEmpty(league.LeagueNameVN) ? league.LeagueNameVN : leagueName;
             return leagueName;
         }
 
-        public static string GetLeagueName(string leagueEN, string leagueFullEN, string leagueVN)
+        public static string GetGeneralName(string nameEN, string nameFullEN, string nameVN)
         {
-            string leagueName = string.IsNullOrEmpty(leagueEN) ? leagueEN : leagueFullEN;
-            leagueName = !string.IsNullOrEmpty(leagueVN) ? leagueVN : leagueName;
-            return leagueName;
+            string name = !string.IsNullOrEmpty(nameEN) ? nameEN : nameFullEN;
+            name = !string.IsNullOrEmpty(nameVN) ? nameVN : name;
+            return name;
         }
 
 
@@ -174,6 +167,7 @@
             }
             return result;
         }
+
 
         
 

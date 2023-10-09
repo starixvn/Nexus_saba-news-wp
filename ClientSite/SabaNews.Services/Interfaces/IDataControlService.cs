@@ -44,5 +44,7 @@
         Task<IEnumerable<Post>> GetRecentPostsAsync();
 
         Task<IList<Match>> GetTodayMatches();
+
+        Task<IList<League>> GetLeagues();
     }
 }

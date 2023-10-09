@@ -23,31 +23,32 @@
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
+    using SabaNews.Services.Interfaces;
 
     public class SoccerController : Controller
     {
         private readonly LivescoreMainPageCacheConfig cacheConfigs;
         private readonly ICacheWrapperService cacheService;
-        private readonly IPostService postService;
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
         private readonly IConfiguration configuration;
+        private readonly IDataControlService dataControlService;
         private readonly string domain;
 
         public SoccerController(
             IOptionsSnapshot<LivescoreMainPageCacheConfig> cacheConfigs,
             ICacheWrapperService cacheService,
-            IPostService postService,
             ILeagueService leagueService,
             IMatchService matchService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IDataControlService dataControlService)
         {
             this.cacheConfigs = cacheConfigs.Value;
             this.cacheService = cacheService;
-            this.postService = postService;
             this.leagueService = leagueService;
             this.matchService = matchService;
             this.configuration = configuration;
+            this.dataControlService = dataControlService;
             domain = configuration.GetValue<string>("BaseUrl");
         }
 
@@ -415,7 +416,7 @@
         [HttpPost]
         public async Task<IActionResult> GetLeagues()
         {
-            var leagues = await leagueService.GetLeaguesAsync();
+            var leagues = await dataControlService.GetLeagues();
             return Json(leagues);
         }
 

@@ -9,6 +9,9 @@
     using Sabanews.Controllers;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services;
     using SabaNews.Models;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
@@ -28,6 +31,7 @@
         private IConfiguration configuration;
         private  IPostService postService;
         private  ICacheWrapperService cacheService;
+        private  IMatchService matchService;
         private readonly IFixture fixture = new Fixture();
 
         private const string RssCacheKey = "RSSCacheConfig";
@@ -158,6 +162,39 @@
         }
 
         [Fact]
+        public async Task SitemapLeagues_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IList<League>>();
+            dataControlService.GetLeagues().Returns(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapLeague(expected, "");
+            //Act
+            var actual = await controller.SitemapLeagues();
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
+
+        [Fact]
+        public async Task SitemapMatches_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<IList<MatchSitemap>>();
+            matchService.GetMatchSitemapAsync().Returns(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapMatch(expected, "");
+            //Act
+            var actual = await controller.SitemapMatches();
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
+        [Fact]
         public async Task RSS_WhenCalled_ReturnExpectedViewData()
         {
             // Arrange
@@ -269,7 +306,8 @@
             dataControlService = Substitute.For<IDataControlService>();
             postService = Substitute.For<IPostService>();
             cacheService = Substitute.For<ICacheWrapperService>();
-            var controller = new RobotsController(dataControlService, configuration, postService, cacheService);
+            matchService = Substitute.For<IMatchService>();
+            var controller = new RobotsController(dataControlService, configuration, postService, cacheService, matchService);
 
             return controller;
         }

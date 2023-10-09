@@ -657,6 +657,54 @@ namespace SabaNews.Services.UnitTests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task GetLeagues_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IList<League>>();
+            cacheWrapperService.GetAsync<IList<League>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetLeagues();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagues_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            IList<League> expectedFromCache = null;
+            var expected = fixture.Create<IList<League>>();
+            cacheWrapperService.GetAsync<IList<League>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetLeaguesAsync().Returns(expected);
+
+            //Act
+            var actual = await service.GetLeagues();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<League>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetLeagues_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IList<League>>();
+            fetchDataService.GetLeaguesAsync().Returns(expected);
+
+            //Act
+            var actual = await service.GetLeagues();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
 
 
         #region Helpers

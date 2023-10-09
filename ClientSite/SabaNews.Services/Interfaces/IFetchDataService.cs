@@ -30,5 +30,6 @@
         Task<List<StandingLeagueModel>> GetHomepageStanding();
 
         Task<IList<Match>> GetTodayMatches();
+        Task<IList<League>> GetLeaguesAsync();
     }
 }
