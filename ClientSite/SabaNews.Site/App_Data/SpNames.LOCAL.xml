@@ -250,5 +250,6 @@
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
+        <Setting Key="Livescore_Match_GetSitemap" SpName="Livescore_Match_GetSitemap" DbName="sabasports" Plain="0"></Setting>
 	</Function>
 </Functions>
