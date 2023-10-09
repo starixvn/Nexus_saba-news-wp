@@ -42,7 +42,7 @@
         {
             returnUrl ??= Constants.HomepageUrl;
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            if (result == null)
+            if (result == null || result.Principal == null)
             {
                 return Redirect(returnUrl);
             }
