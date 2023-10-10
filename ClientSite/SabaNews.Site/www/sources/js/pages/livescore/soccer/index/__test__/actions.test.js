@@ -172,4 +172,26 @@ describe('actionCreators', () => {
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
+
+    describe('getTodayFixturePosts', () => {
+        it('should call setLeagues when get major leagues have been done', async () => {
+            // Arrange
+            const response = {
+                data: {'desktop': 'desktopUrl', 'mobile': 'mobileUrl'}
+            };
+            const promise = Promise.resolve(response);
+            DataService.postDataAsync = jest.fn(() => promise);
+            const expectedActions = [{ type: ActionCreators.setTodayFixturePosts.type, payload: response.data }];
+            const store = mockStore({
+                banner: []
+            });
+
+            // Act
+            await store.dispatch(ActionCreators.getTodayFixturePosts());
+
+            // Assert
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('api/post/today-fixture');
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
 });

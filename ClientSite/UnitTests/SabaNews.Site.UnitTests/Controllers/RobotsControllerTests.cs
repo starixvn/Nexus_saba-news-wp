@@ -183,7 +183,7 @@
         {
             // Arrange
             var controller = GetController();
-            var expected = fixture.Create<IList<MatchSitemap>>();
+            var expected = fixture.Create<List<MatchSitemap>>();
             matchService.GetMatchSitemapAsync().Returns(expected);
             var expectedSitemap = SitemapHelper.GetSitemapMatch(expected, "");
             //Act

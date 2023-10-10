@@ -7,7 +7,8 @@
     setLiveMatches,
     setFlagToggleFavLeagueIcon,
     setLeagues,
-    setBanner
+    setBanner,
+    setTodayFixturePosts
 } from '../soccerMatchSlice';
 
 describe('soccerMatchSlice', () => {
@@ -387,6 +388,20 @@ describe('soccerMatchSlice', () => {
                     })
                 ).toEqual({
                     flagToggleFavLeagueIcon: true
+                });
+            })
+        });
+        describe('setTodayFixturePosts', () => {
+            it('should update state correctly', () => {
+                expect(
+                    soccerMatchSlice({
+                        todayFixturePosts: []
+                    }, {
+                        type: setTodayFixturePosts.type,
+                        payload: [{postId: 1}, {postId: 2}]
+                    })
+                ).toEqual({
+                    todayFixturePosts: [{postId: 1}, {postId: 2}]
                 });
             })
         });

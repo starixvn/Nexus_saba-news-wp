@@ -279,7 +279,7 @@ describe('AppContainer', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
-            instance.setState({ selectedTab: 'lich-thi-dau' });
+            instance.setState({ selectedTab: 'lich-thi-dau', selectedFixtureTab: false });
 
             // Act
             const result = shallow(instance.renderTabs());
