@@ -238,9 +238,12 @@
         }
         public static string GetSlug(string text)
         {
+            if(string.IsNullOrEmpty(text))
+            {
+                return "";
+            }
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
             string slug = text.Normalize(NormalizationForm.FormD).Trim().ToLower();
-            
             slug = regex.Replace(slug, String.Empty)
             .Replace('\u0111', 'd').Replace('\u0110', 'D')
             .Replace(",", "").Replace(".", "").Replace("!", "")
