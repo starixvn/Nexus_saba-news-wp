@@ -17,6 +17,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
             - 2022008100@Hank: add TeamNameVN & IconVN,  select season, data custom
             - 20221227@Hank: select league IconVN
             - 20230804@Hank: check duplicate stageId
+            - 20231006@Hank: check season is 0
+            
     */
 )
 BEGIN    
@@ -26,28 +28,16 @@ BEGIN
     CREATE TEMPORARY TABLE tmp_MatchIds (MatchId BIGINT PRIMARY KEY);
     
     SET _hasStandings = IF (EXISTS (SELECT 1 FROM livescore_season_standings ss WHERE ss.SeasonId = seasonId AND ss.StageId > 0), 1, 0);
-    
-    IF(SeasonId = 0) THEN
-		INSERT INTO tmp_MatchIds (MatchId)
-		SELECT m.MatchId
-		FROM livescore_match m
-		WHERE m.LeagueId = leagueId
-			AND m.SeasonId IS NULL
-			AND m.CombinedId IS NULL
-			AND m.Status IS NOT NULL
-			AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
-			AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
-    ELSE 
-		INSERT INTO tmp_MatchIds (MatchId)
-		SELECT m.MatchId
-		FROM livescore_match m
-		WHERE m.LeagueId = leagueId
-			AND m.SeasonId = seasonId
-			AND m.CombinedId IS NULL
-			AND m.Status IS NOT NULL
-			AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
-			AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
-    END IF;
+
+	INSERT INTO tmp_MatchIds (MatchId)
+	SELECT m.MatchId
+	FROM livescore_match m
+	WHERE m.LeagueId = leagueId
+		AND m.SeasonId = seasonId
+		AND m.CombinedId IS NULL
+		AND m.Status IS NOT NULL
+		AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
+		AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
     
 	
     SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, _hasStandings AS HasSeasonStandings, l.Icon, l.IconVN, l.CurrentStageId
@@ -87,6 +77,8 @@ BEGIN
 		,CASE WHEN h.TeamNameVN IS NOT NULL THEN h.TeamNameVN
 			WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
+            
+	DROP TEMPORARY TABLE IF EXISTS tmp_MatchIds;
             
 	
 END
