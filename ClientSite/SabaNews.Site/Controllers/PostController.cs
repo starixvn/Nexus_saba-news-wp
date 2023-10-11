@@ -63,7 +63,7 @@
                 }
                 else
                 {
-                    return RedirectToAction("Single", "Post", new { slug = summary.Uri });
+                    return RedirectToActionPermanent("Single", "Post", new { slug = summary.Uri });
                 }
 
             }
@@ -74,7 +74,7 @@
             }
             if(post.Slug != slug)
             {
-                return RedirectToAction("Single", "Post", new { slug = post.Uri });
+                return RedirectToActionPermanent("Single", "Post", new { slug = post.Uri });
             }
             SavePost savePost = null;
             var isLogin = sessionService.User != null;

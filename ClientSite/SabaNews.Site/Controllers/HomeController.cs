@@ -63,7 +63,7 @@
             var redirectLink = RedirectCategorySlug(slug);
              if (redirectLink != "")
             {
-                return Redirect(redirectLink);
+                return RedirectPermanent(redirectLink);
             }
             slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
@@ -113,25 +113,25 @@
             {
                 slug = Constants.NewPostSlug;
             }
-            return RedirectToAction("Category", "Home", new { slug = slug + CategoryKey.Suffix });
+            return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix });
         }
 
         [Route("/tin-the-thao/{slug?}/page/{page}")]
         [Route("/tin-the-thao/page/{page}")]
         public IActionResult OldCategory(string slug = null, int page = 1)
         {
-            if (slug == Constants.NewPostSlug)
+            if (slug == null)
             {
-                slug = null;
+                slug = Constants.NewPostSlug;
             }
-            return RedirectToAction("Category", "Home", new { slug });
+            return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix });
         }
 
         [Route("/video/{slug?}")]
         [Route("/video/page/{page}")]
         public IActionResult OldVideo(int page = 1)
         {
-            return RedirectToAction("Category", "Home", new { slug = Constants.VideoSlug + CategoryKey.Suffix });
+            return RedirectToActionPermanent("Category", "Home", new { slug = Constants.VideoSlug + CategoryKey.Suffix });
         }
 
 
@@ -173,7 +173,7 @@
         public IActionResult OldSearch(string keyword = "")
         {
             keyword = WebUtility.UrlEncode(keyword);
-            return RedirectToAction("Search", "Home", new { keyword });
+            return RedirectToActionPermanent("Search", "Home", new { keyword });
 
         }
 
@@ -225,7 +225,7 @@
         [Route("tag/{tagname}/page/{page}")]
         public IActionResult OldTag(string tagname, int page = 1)
         {
-            return RedirectToAction("Tag", "Home", new { tagname });
+            return RedirectToActionPermanent("Tag", "Home", new { tagname });
         }
 
         [Route("author/{authorId}")]
@@ -296,7 +296,7 @@
         [Route("lich-thi-dau")]
         public ActionResult RedirectLivescorePage()
         {
-            return Redirect("/lich-thi-dau/bong-da");
+            return RedirectPermanent("/lich-thi-dau/bong-da");
         }
 
        

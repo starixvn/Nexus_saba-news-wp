@@ -128,12 +128,12 @@
             const string dateFormat = "yyyy-MM-dd";
             if(seasonId != 0)
             {
-                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}");
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{selectedTab}");
             }
             var (isRedirect, tab) = GetRedirectTab(selectedTab);
             if(isRedirect)
             {
-                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString(dateFormat)}/{leagueId}/{tab}");
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{date.ToString(dateFormat)}/{leagueId}/{tab}");
             }
             var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
             if(leagueDetail == null)
@@ -158,12 +158,12 @@
         {
             if(seasonId == 0)
             {
-                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTime.Now.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTime.Now.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
             }
             var (isRedirect, tab) = GetRedirectTab(selectedTab);
             if(isRedirect)
             {
-                return Redirect($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{tab}");
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{leagueId}/{tab}");
             }
             var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
             if(leagueDetail == null)
