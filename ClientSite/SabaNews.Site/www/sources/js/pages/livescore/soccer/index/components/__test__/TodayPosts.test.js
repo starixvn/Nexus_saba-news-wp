@@ -1,36 +1,60 @@
 ﻿import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { SearchBar } from '../SearchBar';
+import { TodayPost } from '../TodayPost';
 
 describe('TodayPosts', () => {
     let defaultProps = {
-        searchKey: '',
-        setSearchKey: jest.fn()
+        todayFixturePosts: null,
+        getTodayFixturePosts: jest.fn()
     };
 
     afterEach(() => {
         jest.clearAllMocks();
     });
 
-    it('renders correctly', () => {
-        // Act
-        const container = shallow(<SearchBar {...defaultProps} />);
-
-        // Assert
-        expect(toJson(container)).toMatchSnapshot();
-    });
-
-    describe('onChange', () => {
+    describe('componentDidMount', () => {
         it('calls correctly functions', () => {
             // Arrange
-            const container = shallow(<SearchBar {...defaultProps} />);
+            window.addEventListener = jest.fn();
+
+            const container = shallow(<TodayPost {...defaultProps} />);
+            const instance = container.instance();
 
             // Act
-            container.find('#livescore-soccer-searchbox').simulate('change', { target: { value: 'key' } });
+            instance.componentDidMount();
 
             // Assert
-            expect(defaultProps.setSearchKey).toHaveBeenCalledWith('key');
+            expect(defaultProps.getTodayFixturePosts).toHaveBeenCalledTimes(2);
         });
     });
+
+    describe('renders', () => {
+        it('return null when data is null', () => {
+            // Act
+            const container = shallow(<TodayPost {...defaultProps} />);
+            const instance = container.instance();
+            const result = instance.render();
+
+            // Assert
+            expect(result).toEqual(null);
+        });
+
+        it('render correctly when have data', () => {
+            //Assign
+            const props = {
+                ...defaultProps,
+                todayFixturePosts: [{postId: 1}, {postId: 2}]
+            }
+            // Act
+            const container = shallow(<TodayPost {...props} />);
+            const instance = container.instance();
+            const result = instance.render();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+    });
+
+
 });
