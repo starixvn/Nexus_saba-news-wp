@@ -34,6 +34,10 @@
             root.Add(urlElement);
             urlElement = RenderPostSitemap("sitemap-news.xml", DateTime.UtcNow, domain);
             root.Add(urlElement);
+             urlElement = RenderPostSitemap("sitemap/match.xml", DateTime.UtcNow, domain);
+            root.Add(urlElement);
+             urlElement = RenderPostSitemap("sitemap/league.xml", DateTime.UtcNow, domain);
+            root.Add(urlElement);
             while (currentDate >= firstDateOfYear)
             {
                 urlElement = RenderPostSitemap($"sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}.xml", currentDate, domain);
