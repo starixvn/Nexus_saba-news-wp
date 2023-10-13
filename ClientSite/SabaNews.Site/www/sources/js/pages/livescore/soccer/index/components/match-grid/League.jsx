@@ -46,8 +46,7 @@ export class League extends PureComponent {
         if(className.includes('icon-fav-league')) {
             return;
         }
-        const leagueNameParam = Site.toSlug(CommonFunctions.getLeagueName(league));
-        let url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueNameParam}/${league.leagueId}`);
+        const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

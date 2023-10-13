@@ -43,8 +43,7 @@ export default class MatchGrid extends PureComponent {
     };
 
     handleClickLeague = (event, league) => {
-        const seasonId = league.season ? league.season.seasonId : 0;
-        const url = CommonFunctions.getLeaguePageUrl(league, seasonId);
+        const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

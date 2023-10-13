@@ -155,7 +155,7 @@
             {
                 var leagueName = LivescoreHelper.GetLeagueName(league);
                 leagueName = GetSlug(leagueName);
-                var url = $"lich-thi-dau/bong-da/{leagueName}/{league.LeagueId}";
+                var url = $"lich-thi-dau/bong-da/{leagueName}/{league.LeagueId}/tong-hop";
                 XElement urlElement = RenderLivescoreSitemap(url, domain);
                 root.Add(urlElement);
             }

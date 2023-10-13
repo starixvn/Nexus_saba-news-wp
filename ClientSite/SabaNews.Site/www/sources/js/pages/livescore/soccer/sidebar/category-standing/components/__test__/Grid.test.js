@@ -41,7 +41,7 @@ describe('Grid', () => {
             }
             window.open = jest.fn();
             const league = { leagueId: 12036, leagueNameVN: 'Euro'};
-            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('url');
+            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('url/bang-xep-hang');
             const container = shallow(<Grid {...props} />);
 
             // Act
@@ -65,7 +65,7 @@ describe('Grid', () => {
             }
             window.open = jest.fn();
             const league = { leagueId: 12036, leagueNameVN: 'Euro'};
-            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('url');
+            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('url/bang-xep-hang');
             const container = shallow(<Grid {...props} />);
 
             // Act

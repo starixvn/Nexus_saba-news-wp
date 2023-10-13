@@ -188,6 +188,10 @@
         [Route("lich-thi-dau/bong-da/{league}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetail(string league, long leagueId, string selectedTab)
         {
+            if(selectedTab == null)
+            {
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{leagueId}/tong-hop");
+            }
             var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
             if(leagueDetail == null)
             {

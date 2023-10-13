@@ -720,7 +720,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/12036/tong-hop');
         });
 
         it('redirect correctly when league has season', () => {
@@ -738,7 +738,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/12036/tong-hop');
         });
 
         it('calls correctly when ctrlKey = true', () => {
@@ -756,7 +756,7 @@ describe('MatchGeneralInfo', () => {
             instance.handleClickLeague(event, league);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/12036', '_blank');
+            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/12036/tong-hop', '_blank');
         });
 
         it('calls correctly when ctrlKey = false', () => {
@@ -776,7 +776,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/12036/tong-hop');
         });
     });
 

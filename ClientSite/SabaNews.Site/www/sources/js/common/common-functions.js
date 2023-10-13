@@ -333,9 +333,9 @@ export default class CommonFunctions {
         }
     }
 
-    static getLeaguePageUrl(league) {
+    static getLeaguePageUrl(league, tab = 'tong-hop') {
         const leagueName = Site.toSlug(this.getLeagueName(league));
-        let url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${league.leagueId}`);
+        let url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${league.leagueId}/${tab}`);
         return url;
     }
 

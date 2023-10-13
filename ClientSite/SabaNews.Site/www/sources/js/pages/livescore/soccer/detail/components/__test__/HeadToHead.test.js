@@ -116,7 +116,7 @@ describe('HeadToHead', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/12036');
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/12036/tong-hop');
         });
 
         it('redirect correctly when league has season', () => {
@@ -134,7 +134,7 @@ describe('HeadToHead', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/12036');
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/12036/tong-hop');
         });
 
         it('calls correctly when ctrlKey = true', () => {
@@ -152,7 +152,7 @@ describe('HeadToHead', () => {
             instance.handleClickLeague(event, league);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da/euro/12036', '_blank');
+            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da/euro/12036/tong-hop', '_blank');
         });
 
         it('calls correctly when ctrlKey = false', () => {
@@ -172,7 +172,7 @@ describe('HeadToHead', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/12036');
+            expect(window.location).toEqual('/lich-thi-dau/bong-da/euro/12036/tong-hop');
         });
     });
 

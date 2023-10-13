@@ -10,7 +10,7 @@ export default class Grid extends PureComponent {
 
 
     handleClickStanding = (event, league) => {
-        const url = `${CommonFunctions.getLeaguePageUrl(league)}/bang-xep-hang`;
+        const url = CommonFunctions.getLeaguePageUrl(league, 'bang-xep-hang');
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

@@ -274,7 +274,7 @@ describe('League', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/1');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/1/tong-hop');
         });
 
         it('calls correctly functions when season != null', () => {
@@ -298,7 +298,7 @@ describe('League', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/1');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/1/tong-hop');
         });
 
         it('calls correctly functions when ctrlKey = true', () => {
@@ -314,7 +314,7 @@ describe('League', () => {
             container.find('div.soccer-match-grid-item-header').simulate('click', event);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1', '_blank');
+            expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/1/tong-hop', '_blank');
         });
     });
 });

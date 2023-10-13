@@ -61,7 +61,10 @@
 @section Metadata {
     <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
     <meta name="description" content='@description' />
-    <link rel="canonical" href="@ViewBag.Link" />
+    @if(Model.IsCurrentSeason)
+    {
+        <link rel="canonical" href="@ViewBag.Link" />
+    }
 }
 @section Title{
     @title
