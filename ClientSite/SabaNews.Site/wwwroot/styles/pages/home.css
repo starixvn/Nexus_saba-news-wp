@@ -1560,6 +1560,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .languages-box .flag-in {
   background: url(../../images/flag/icon-in.svg) no-repeat;
 }
+.languages-box .flag-ind {
+  background: url(../../images/flag/icon-ind.svg) no-repeat;
+}
+.languages-box .flag-th {
+  background: url(../../images/flag/icon-th.svg) no-repeat;
+}
 .languages-box .language-select {
   cursor: pointer;
   display: flex;

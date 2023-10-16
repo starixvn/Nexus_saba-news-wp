@@ -1070,7 +1070,7 @@
         position: relative;
     }
 
-    $langs: vn, cn, en, in;
+    $langs: vn, cn, en, in , ind, th;
 
     @each $lang in $langs {
         .flag-#{$lang} {
