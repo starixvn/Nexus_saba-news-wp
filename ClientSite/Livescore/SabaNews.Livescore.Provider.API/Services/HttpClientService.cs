@@ -61,7 +61,7 @@
                 {
                     await AddLogSendRequestonDB($"{config.Endpoint}{endPoint}", JsonConvert.SerializeObject(content), config.IsWriteResponse ? jsonResult : "{}");
                 }
-                var message = $"Response -- API: {endPoint} - Params: {JsonConvert.SerializeObject(data)} - Code: {response.IsSuccessStatusCode}";
+                var message = $"Response -- API: {endPoint} - Params: {JsonConvert.SerializeObject(data)} - Code: {response.StatusCode},{response.IsSuccessStatusCode}";
                 var result = HandleDataResponse<T>(jsonResult, message);
 
                 return result;
