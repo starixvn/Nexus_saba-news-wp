@@ -61,8 +61,8 @@
                 {
                     await AddLogSendRequestonDB($"{config.Endpoint}{endPoint}", JsonConvert.SerializeObject(content), config.IsWriteResponse ? jsonResult : "{}");
                 }
-
-                var result = HandleDataResponse<T>(jsonResult);
+                var message = $"Response -- API: {endPoint} - Params: {JsonConvert.SerializeObject(data)} - Code: {response.IsSuccessStatusCode}";
+                var result = HandleDataResponse<T>(jsonResult, message);
 
                 return result;
             }
@@ -120,7 +120,7 @@
             }
         }
 
-        private T HandleDataResponse<T>(string json)
+        private T HandleDataResponse<T>(string json, string message)
         {
             if (string.IsNullOrWhiteSpace(json))
             {
@@ -135,7 +135,7 @@
                 return result;
             }
 
-            logService.WriteMessageSentryErrorAsync(json);
+            logService.WriteMessageSentryErrorAsync($"{message} - {json}");
             return default;
         }
 
