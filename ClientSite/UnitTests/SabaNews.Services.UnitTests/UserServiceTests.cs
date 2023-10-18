@@ -244,7 +244,7 @@
             baseService = Substitute.For<IBaseService>();
             logService = Substitute.For<ILogService>();
             sessionService = Substitute.For<ISessionService>();
-            var service = new UserService(baseService, logService, sessionService);
+            var service = new UserService(baseService);
 
             return service;
         }

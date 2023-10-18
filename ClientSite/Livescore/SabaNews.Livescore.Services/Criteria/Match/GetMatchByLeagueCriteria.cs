@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Livescore.Services.Criteria.Match
 {
-    using System;
     using Fanex.Data.Repository;
 
     public class GetMatchByLeagueCriteria : CriteriaBase

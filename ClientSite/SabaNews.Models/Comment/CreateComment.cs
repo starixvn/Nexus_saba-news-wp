@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Models.Comment
+﻿namespace SabaNews.Models.Comment
 {
+    using System;
+
     public class CreateComment
     {
         public long CommentPostID { get; set; }

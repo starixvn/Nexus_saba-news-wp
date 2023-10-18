@@ -174,7 +174,7 @@
             leagueService = Substitute.For<ILeagueService>();
             excelService = Substitute.For<IExportExcelService>();
             worldcupService = Substitute.For<IWorldCupService>();
-            var controller = new MinigameWorldCup2022Controller(excelService, leagueService, worldcupService);
+            var controller = new MinigameWorldCup2022Controller(excelService, worldcupService);
 
             return controller;
         }

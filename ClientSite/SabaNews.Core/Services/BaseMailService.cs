@@ -2,7 +2,6 @@
 {
     using MailKit.Net.Smtp;
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Logging;
     using MimeKit;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -20,18 +19,15 @@
 
     public class BaseMailService : IBaseMailService
     {
-        private readonly ILogger logger;
         private readonly ILogServiceProvider logService;
         private readonly IConfiguration configuration;
         private const string MailConfigsForBroadcast = "MailConfigsForBroadcast";
         private const string MailConfigsForTransactional = "MailConfigsForTransactional";
 
         public BaseMailService(
-            ILogger<BaseMailService> logger,
             IConfiguration configuration,
             ILogServiceProvider logService)
         {
-            this.logger = logger;
             this.configuration = configuration;
             this.logService = logService;
         }

@@ -1,14 +1,9 @@
-﻿using SabaNews.Core.Models;
-using SabaNews.Livescore.Models.Match;
-using SabaNews.Models.Posts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Models.ViewModel.Event.WorldCup
+﻿namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
+    using SabaNews.Core.Models;
+    using SabaNews.Livescore.Models.Match;
+    using System.Collections.Generic;
+
     public class MinigameStageViewModel
     {
         public HeaderViewModel Header { get; set; }

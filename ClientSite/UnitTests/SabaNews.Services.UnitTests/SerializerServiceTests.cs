@@ -128,7 +128,7 @@
         private SerializerService GetSerializerService()
         {
             logService = Substitute.For<ILogger>();
-            var service = new SerializerService(logService);
+            var service = new SerializerService();
 
             return service;
         }

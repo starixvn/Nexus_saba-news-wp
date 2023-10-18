@@ -1,15 +1,11 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
-    using DeviceDetectorNET.Class.Device;
     using LiteDB;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Event.WorldCup;
     using SabaNews.Livescore.Models.Match;
-    using SabaNews.Livescore.Services;
-    using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -18,23 +14,18 @@
     using SabaNews.Site.Extensions;
     using System;
     using System.Collections.Generic;
-    using System.Drawing.Printing;
-    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
     public class MinigameWorldCup2022Controller : AdminController
     {
-        private readonly ILeagueService leagueService;
         private readonly IExportExcelService excelService;
         private readonly IWorldCupService worldcupService;
         public MinigameWorldCup2022Controller(
             IExportExcelService excelService, 
-            ILeagueService leagueService,
             IWorldCupService worldcupService)
         {
             this.excelService = excelService;
-            this.leagueService = leagueService;
             this.worldcupService = worldcupService;
         }
         public IActionResult MinigameWorldCup2022()

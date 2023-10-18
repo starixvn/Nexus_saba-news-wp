@@ -403,7 +403,7 @@
             baseService = Substitute.For<IBaseService>();
             authService = Substitute.For<IAuthService>();
             sessionService = Substitute.For<ISessionService>();
-            var controller = new AuthController(baseService, authService, sessionService);
+            var controller = new AuthController(authService, sessionService);
 
             return controller;
         }

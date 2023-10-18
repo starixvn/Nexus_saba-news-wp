@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Core.Constants
 {
     using SabaNews.Core.Models;
-    using System;
     using System.Collections.Generic;
 
     public static class WorldCup2022

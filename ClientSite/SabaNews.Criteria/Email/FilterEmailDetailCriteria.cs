@@ -1,12 +1,7 @@
-﻿using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Criteria.Email
+﻿namespace SabaNews.Criteria.Email
 {
+    using Fanex.Data.Repository;
+
     public class FilterEmailDetailCriteria : CriteriaBase
     {
         public int EmailID { get; set; }

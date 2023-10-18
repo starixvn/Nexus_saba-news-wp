@@ -1,7 +1,5 @@
 ﻿namespace SabaNews.Livescore.Models.League
 {
-    using Microsoft.AspNetCore.Http;
-
 
     public class StandingUpdateModel
     {

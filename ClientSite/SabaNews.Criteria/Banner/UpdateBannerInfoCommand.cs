@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SabaNews.Criteria.Banner
+﻿namespace SabaNews.Criteria.Banner
 {
     public class UpdateBannerInfoCommand : BaseNonQueryCommand
     {

@@ -13,7 +13,6 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
     using System.Web;
 
@@ -21,7 +20,6 @@
     {
         private readonly IUserService userService;
         private readonly ISessionService sessionService;
-        private readonly IPathService pathService;
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
         private readonly IAuthService authService;
@@ -32,7 +30,6 @@
         public EmailController(
             IUserService userService,
             ISessionService sessionService,
-            IPathService pathService,
             IEmailService emailService,
             IConfiguration configuration,
             IAuthService authService,
@@ -40,7 +37,6 @@
         {
             this.userService = userService;
             this.sessionService = sessionService;
-            this.pathService = pathService;
             this.emailService = emailService;
             this.configuration = configuration;
             this.authService = authService;

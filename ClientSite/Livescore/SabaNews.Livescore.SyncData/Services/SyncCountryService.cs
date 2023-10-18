@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Livescore.SyncData.Services
 {
     using Newtonsoft.Json;
-    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Models.Country;
     using SabaNews.Livescore.Provider.API.Services;
@@ -13,16 +12,13 @@
 
     public class SyncCountryService : ISyncCountryService
     {
-        private readonly AppSettings appSettings;
         private readonly IBaseService baseService;
         private readonly IFetchCountryService fetchCountryService;
 
         public SyncCountryService(
-            AppSettings appSettings,
             IBaseService baseService,
             IFetchCountryService fetchCountryService)
         {
-            this.appSettings = appSettings;
             this.baseService = baseService;
             this.fetchCountryService = fetchCountryService;
         }

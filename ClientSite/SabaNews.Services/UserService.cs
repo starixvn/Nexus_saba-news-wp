@@ -7,24 +7,17 @@
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
 
     public class UserService : IUserService
     {
         private readonly IBaseService baseService;
-        private readonly ILogService logService;
-        private readonly ISessionService sessionService;
 
         public UserService(
-            IBaseService baseService, 
-            ILogService logService,
-            ISessionService sessionService)
+            IBaseService baseService)
         {
             this.baseService = baseService;
-            this.logService = logService;
-            this.sessionService = sessionService;
         }
         public async Task<CommandResult> UpdateUserSavePostAsync(int userID, string listPosts)
         {

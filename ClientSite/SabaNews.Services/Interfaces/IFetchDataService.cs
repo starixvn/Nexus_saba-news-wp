@@ -6,7 +6,6 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Home;
-    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;

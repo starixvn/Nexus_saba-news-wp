@@ -5,7 +5,6 @@ namespace SabaNews.Site.Views.Shared.Components.Header
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Models;
-    using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
 
     public class HeaderViewComponent : ViewComponent

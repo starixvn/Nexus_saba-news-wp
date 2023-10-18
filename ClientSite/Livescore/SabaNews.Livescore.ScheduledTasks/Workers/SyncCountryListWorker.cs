@@ -4,7 +4,6 @@
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
     using SabaNews.Livescore.ScheduledTasks.Models;
-    using SabaNews.Livescore.SyncData.Services;
     using SabaNews.Livescore.SyncData.Services.Interfaces;
     using System.Collections.Generic;
     using System.Threading.Tasks;

@@ -22,7 +22,6 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
-    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
 
     public class SoccerController : Controller
@@ -31,7 +30,6 @@
         private readonly ICacheWrapperService cacheService;
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
-        private readonly IConfiguration configuration;
         private readonly IDataControlService dataControlService;
         private readonly string domain;
 
@@ -47,7 +45,6 @@
             this.cacheService = cacheService;
             this.leagueService = leagueService;
             this.matchService = matchService;
-            this.configuration = configuration;
             this.dataControlService = dataControlService;
             domain = configuration.GetValue<string>("BaseUrl");
         }

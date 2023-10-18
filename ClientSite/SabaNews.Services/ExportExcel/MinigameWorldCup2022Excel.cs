@@ -3,7 +3,6 @@
     using OfficeOpenXml;
     using OfficeOpenXml.Style;
     using SabaNews.Core.Helper;
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;
 

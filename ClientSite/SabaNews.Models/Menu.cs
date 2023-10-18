@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace SabaNews.Models
+﻿namespace SabaNews.Models
 {
     public class Menu
     {

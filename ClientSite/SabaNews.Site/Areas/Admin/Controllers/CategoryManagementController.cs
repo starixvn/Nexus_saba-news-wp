@@ -1,9 +1,7 @@
 namespace SabaNews.Site.Areas.Admin.Controllers
 {
-    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Category;

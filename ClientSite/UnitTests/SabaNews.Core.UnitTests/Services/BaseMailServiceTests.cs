@@ -108,7 +108,7 @@
             logger = Substitute.For<ILogger<BaseMailService>>();
             logService = Substitute.For<ILogServiceProvider>();
 
-            var service = new BaseMailService(logger, configuration, logService);
+            var service = new BaseMailService(configuration, logService);
 
             return service;
         }

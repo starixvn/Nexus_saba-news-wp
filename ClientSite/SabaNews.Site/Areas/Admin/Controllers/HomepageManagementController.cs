@@ -1,8 +1,6 @@
 namespace SabaNews.Site.Areas.Admin.Controllers
 {
-    using DeviceDetectorNET;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;

@@ -1,8 +1,7 @@
-﻿using SabaNews.Core.Constants;
-using System;
-
-namespace SabaNews.Models.Email
+﻿namespace SabaNews.Models.Email
 {
+    using System;
+
     public class EmailModel
     {
         public int Id { get; set; }

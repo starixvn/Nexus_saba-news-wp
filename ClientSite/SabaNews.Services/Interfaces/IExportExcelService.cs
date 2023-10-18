@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.ViewModel.User;
     using System.Collections.Generic;

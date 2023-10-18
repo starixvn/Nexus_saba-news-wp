@@ -7,7 +7,6 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.ViewModel.Event.WorldCup;
-    using SabaNews.Models.ViewModel.User;
     using System;
     using System.Collections.Generic;
     using System.Linq;

@@ -26,7 +26,7 @@
             fetchCountryService = Substitute.For<IFetchCountryService>();
             fixture = new Fixture();
             appSettings = fixture.Create<AppSettings>();
-            syncService = new SyncCountryService(appSettings, baseService, fetchCountryService);
+            syncService = new SyncCountryService(baseService, fetchCountryService);
         }
 
         [Fact]

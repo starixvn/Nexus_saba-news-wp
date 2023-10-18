@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
     using SabaNews.Core.Models;
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models.Event.WorldCup;
     using System.Collections.Generic;

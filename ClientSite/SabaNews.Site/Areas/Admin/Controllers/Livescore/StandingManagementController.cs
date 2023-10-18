@@ -8,7 +8,6 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Livescore.MatchManagement;
     using SabaNews.Models.Livescore.StandingManagement;
-    using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
     using System.Linq;
     using System.Threading.Tasks;
@@ -16,19 +15,13 @@
     public class StandingManagementController : AdminController
     {
         private readonly ILeagueService leagueService;
-        private readonly IMatchService matchService;
-        private readonly IFileService fileService;
         private const long DefaultLeagueId = WorldCup2022.LeagueIdWorldCup2022;
         private const long DefaultSeasonId = WorldCup2022.SeasonIdWorldCup2022;
        
         public StandingManagementController(
-            ILeagueService leagueService,
-            IMatchService matchService,
-            IFileService fileService)
+            ILeagueService leagueService)
         {
             this.leagueService = leagueService;
-            this.matchService = matchService;
-            this.fileService = fileService;
         }
         public async Task<IActionResult> Index()
         {

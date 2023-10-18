@@ -34,7 +34,7 @@
         private bool IsBackdoorIPs(HttpContext context)
         {
             var currentIP = GetClientIPAddress(context);
-            bool IsBackdoorIPs = umSettings.WhiteListIPs.Any(ip =>
+            bool IsBackdoorIPs = umSettings.WhiteListIPs.Exists(ip =>
                 currentIP.Contains(ip, StringComparison.OrdinalIgnoreCase));
 
             return IsBackdoorIPs;
@@ -43,7 +43,7 @@
         private bool IsWhiteListUrl(HttpContext context)
         {
             var currentPath = context.Request.Path.Value;
-            bool isWhiteListUrl = umSettings.WhiteListUrls.Any(url => currentPath.Contains(url, StringComparison.OrdinalIgnoreCase));
+            bool isWhiteListUrl = umSettings.WhiteListUrls.Exists(url => currentPath.Contains(url, StringComparison.OrdinalIgnoreCase));
             logServiceProvider.WriteLogFileInfo($"IP {GetClientIPAddress(context)}; Current url: {currentPath}; IsWhiteList: {isWhiteListUrl}");
             return isWhiteListUrl;
         }

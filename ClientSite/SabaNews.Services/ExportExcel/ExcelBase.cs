@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Services.ExportExcel
 {
     using OfficeOpenXml;
-    using OfficeOpenXml.Style;
     using System.IO;
 
     public abstract class ExcelBase

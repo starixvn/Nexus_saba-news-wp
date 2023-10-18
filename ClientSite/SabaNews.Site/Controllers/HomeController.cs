@@ -23,7 +23,6 @@
     {
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
-        private readonly IConfiguration configuration;
         private readonly IUserService userService;
         private readonly string domain;
 
@@ -35,7 +34,6 @@
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
-            this.configuration = configuration;
             this.userService = userService;
             domain = configuration.GetValue<string>("BaseUrl");
         }

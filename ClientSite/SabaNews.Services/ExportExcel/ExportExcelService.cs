@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Services.ExportExcel
 {
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;

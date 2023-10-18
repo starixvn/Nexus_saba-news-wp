@@ -41,7 +41,7 @@
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
             List<SeasonListResponse> seasons = await fetchSeasonService.FetchSeasonListAsync(param);
-            if (seasons is not null && seasons.Any(x => x.SportId == (short)SportType.Soccer))
+            if (seasons is not null && seasons.Exists(x => x.SportId == (short)SportType.Soccer))
             {
                 var json = JsonConvert.SerializeObject(seasons.Where(x => x.SportId == (short)SportType.Soccer).ToList());
                 var command = new ImportSeasonCommand
@@ -72,7 +72,7 @@
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
             List<StageListResponse> stages = await fetchSeasonService.FetchStageListAsync(param);
-            if (stages is not null && stages.Any(x => x.SportId == (short)SportType.Soccer))
+            if (stages is not null && stages.Exists(x => x.SportId == (short)SportType.Soccer))
             {
                 var json = JsonConvert.SerializeObject(stages.Where(x => x.SportId == (short)SportType.Soccer).ToList());
                 var command = new ImportStageCommand

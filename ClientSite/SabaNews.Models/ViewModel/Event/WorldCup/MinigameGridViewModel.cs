@@ -1,10 +1,9 @@
-﻿using SabaNews.Core.Models;
-using SabaNews.Livescore.Models.League;
-using SabaNews.Models.Event.WorldCup;
-using System.Collections.Generic;
-
-namespace SabaNews.Models.ViewModel.Event.WorldCup
+﻿namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
+    using SabaNews.Core.Models;
+    using SabaNews.Models.Event.WorldCup;
+    using System.Collections.Generic;
+
     public class MinigameGridViewModel
     {
         public IList<UserMinigameModel> MiniGames { get; set; }

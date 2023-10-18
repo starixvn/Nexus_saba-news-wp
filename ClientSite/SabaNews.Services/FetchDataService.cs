@@ -1,9 +1,6 @@
 ﻿namespace SabaNews.Services
 {
     using Microsoft.Extensions.Configuration;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;

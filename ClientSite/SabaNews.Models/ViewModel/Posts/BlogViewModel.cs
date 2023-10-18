@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Models.ViewModel.Posts
 {
-    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;

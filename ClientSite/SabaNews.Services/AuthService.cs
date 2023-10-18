@@ -156,7 +156,5 @@
             };
             return await mailService.SendMailAsync(email);
         }
-
-      
     }
 }

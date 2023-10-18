@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Data.Repository;
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
 
     public interface IMatchRepository

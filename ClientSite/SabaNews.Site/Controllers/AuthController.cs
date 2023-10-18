@@ -11,21 +11,17 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Models.Auth;
-    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
 
     public class AuthController : Controller
     {
-        private readonly IBaseService baseService;
         private readonly IAuthService authService;
         private readonly ISessionService sessionService;
 
         public AuthController(
-            IBaseService baseService,
             IAuthService authService,
             ISessionService sessionService)
         {
-            this.baseService = baseService;
             this.authService = authService;
             this.sessionService = sessionService;
         }

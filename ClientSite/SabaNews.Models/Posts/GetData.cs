@@ -1,8 +1,7 @@
-﻿using SabaNews.Models.Posts;
-using System;
-
-namespace SabaNews.Models.Posts
+﻿namespace SabaNews.Models.Posts
 {
+    using System;
+
     public class GetData
     {
         public int PostId { get; set; }

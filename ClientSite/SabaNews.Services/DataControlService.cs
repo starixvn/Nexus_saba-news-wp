@@ -6,8 +6,6 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
-    using SabaNews.Livescore.Services;
-    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
     using SabaNews.Models.Home;
@@ -27,7 +25,6 @@
         private readonly IPostService postService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly IBannerService bannerService;
-        private readonly IMatchService matchService;
         private readonly bool IsUsingCache;
 
         public DataControlService(IFetchDataService fetchDataService,
@@ -35,15 +32,13 @@
             ICacheWrapperService cacheWrapperService,
             IPostService postService,
             ILogServiceProvider logServiceProvider,
-            IBannerService bannerService,
-            IMatchService matchService)
+            IBannerService bannerService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheWrapperService = cacheWrapperService;
             this.postService = postService;
             this.logServiceProvider = logServiceProvider;
             this.bannerService = bannerService;
-            this.matchService = matchService;
             IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
         }
 

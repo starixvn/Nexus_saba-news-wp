@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Models.Email
 {
     using System;
-    using SabaNews.Core.Constants;
 
     public class EmailDetailModel
     {

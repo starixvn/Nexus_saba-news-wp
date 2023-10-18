@@ -724,7 +724,7 @@ namespace SabaNews.Services.UnitTests
             bannerService = Substitute.For<IBannerService>();
             matchService = Substitute.For<IMatchService>();
 
-            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService, matchService);
+            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService);
 
             return service;
         }

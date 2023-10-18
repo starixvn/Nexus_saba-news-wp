@@ -2,7 +2,6 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Event.WorldCup;
-    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Event.WorldCup;

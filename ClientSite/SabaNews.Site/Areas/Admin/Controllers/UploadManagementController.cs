@@ -15,14 +15,12 @@
     public class UploadManagementController : AdminController
     {
         private readonly IPathService pathService;
-        private readonly IConfiguration configuration;
         private readonly string baseUrl;
         public UploadManagementController(
             IPathService pathService,
             IConfiguration configuration)
         {
             this.pathService = pathService;
-            this.configuration = configuration;
             baseUrl = configuration.GetValue<string>("BaseUrl");
         }
         [HttpPost]

@@ -197,7 +197,7 @@
             leagueService = Substitute.For<ILeagueService>();
             matchService = Substitute.For<IMatchService>();
             fileService = Substitute.For<IFileService>();
-            var controller = new StandingManagementController(leagueService, matchService, fileService);
+            var controller = new StandingManagementController(leagueService);
 
             return controller;
         }

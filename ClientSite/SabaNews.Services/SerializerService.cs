@@ -15,7 +15,6 @@
 
     public class SerializerService : ISerializerService
     {
-        private readonly ILogger logService;
         private int pos;
         private readonly Encoding stringEncoding;
         private readonly NumberFormatInfo nfi;
@@ -24,7 +23,7 @@
         private const short FourCharacters = 4;
         private const short SixCharacters = 6;
 
-        public SerializerService(ILogger logService)
+        public SerializerService()
         {
             nfi = new NumberFormatInfo
             {
@@ -32,7 +31,6 @@
                 NumberDecimalSeparator = "."
             };
             stringEncoding = new UTF8Encoding();
-            this.logService = logService;
         }
 
         public Hashtable Unserializer(string metadata)
