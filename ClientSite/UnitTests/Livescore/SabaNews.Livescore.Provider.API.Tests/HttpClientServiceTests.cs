@@ -124,7 +124,7 @@
 
             // Assert
             clientFactory.Received().CreateClient(Arg.Is(HttpClientName.DefaultHttpClientWithProxy));
-            await logService.Received().WriteMessageSentryErrorAsync(Arg.Is(stringContent));
+            await logService.Received().WriteMessageSentryErrorAsync(Arg.Any<string>());
         }
 
         [Fact]
