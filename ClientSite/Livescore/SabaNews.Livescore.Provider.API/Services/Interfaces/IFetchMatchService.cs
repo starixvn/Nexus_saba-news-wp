@@ -23,5 +23,7 @@
         Task<List<DeletedMatch>> FetchDeletedMatchAsync();
 
         Task<List<long>> FetchMatchIncidentUpdateTimeAsync(short sportId, DateTime? lastUpdatedTime);
+
+        Task<IDictionary<string, MatchIncidentResponse>> FetchMultipleMatchIncidentsAsync(short sportId, long[] MatchIds);
     }
 }

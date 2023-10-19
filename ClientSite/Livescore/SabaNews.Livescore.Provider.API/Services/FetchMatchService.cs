@@ -116,6 +116,18 @@
             return new List<long>();
         }
 
+        public async Task<IDictionary<string, MatchIncidentResponse>> FetchMultipleMatchIncidentsAsync(short sportId, long[] MatchIds)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { ApiParams.SportId, sportId },
+                { ApiParams.MatchId, MatchIds },
+            };
+            var incidents = await httpClient.ExecutePostAsync<Dictionary<string, MatchIncidentResponse>>(ApiPath.GetMultipleIncidentApiPath, param);
+
+            return incidents;
+        }
+
         public async Task<List<MatchDetailResponse>> FetchLiveMatchListAsync(SyncMatchParams paramModel)
         {
             var param = new Dictionary<string, object>
@@ -141,6 +153,7 @@
             internal const string GetMatchDetailApiPath = "/match/detail";
             internal const string GetMatchLineupApiPath = "/lineup/list";
             internal const string GetMatchIncidentApiPath = "/match/textlive";
+            internal const string GetMultipleIncidentApiPath = "/football/match/textlives";
             internal const string GetMatchCommentaryApiPath = "/match/textlive_en";
             internal const string GetLiveMatchApiPath = "/match/lives";
             internal const string GetDeletedMatchApiPath = "/match/deleted_list";

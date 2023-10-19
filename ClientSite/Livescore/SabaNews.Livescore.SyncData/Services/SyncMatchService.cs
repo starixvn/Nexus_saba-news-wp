@@ -174,7 +174,6 @@
             var syncLineupMatchIds = matches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
 
             await SyncLinupAsync(syncLineupMatchIds);
-            await SyncIncidents(matchIds);
         }
 
         private async Task SyncMatchDetailByIdsAsync(long[] matchIds)
@@ -201,11 +200,34 @@
 
         public async Task SyncIncidents(long[] matchIds)
         {
+            const int limitFetchIncidents = 20;
+            var batchMatchIds  = new List<long>();
+            var count = 0;
             foreach (var matchId in matchIds)
             {
-                var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
-                await SyncMatchIncidentAsync(matchId, incidents);
+                count++;
+                batchMatchIds.Add(matchId);
+                if(batchMatchIds.Count == limitFetchIncidents || count == matchIds.Length)
+                {
+                    var dictionary = await fetchMatchService.FetchMultipleMatchIncidentsAsync((int)SportType.Soccer, batchMatchIds.ToArray());
+                    await SyncMatchIncident(dictionary);
+                    batchMatchIds = new List<long>();
+                }
             }
         }
+
+        private async Task SyncMatchIncident(IDictionary<string,  MatchIncidentResponse> dictionary)
+        {
+            foreach (KeyValuePair<string,  MatchIncidentResponse> entry in dictionary)
+            {
+                _ = long.TryParse(entry.Key, out long matchId);
+                var value = entry.Value;
+                if(value is not null && value.Incidents.Count > 0 )
+                {
+                    await SyncMatchIncidentAsync(matchId, value.Incidents);
+                }
+            }
+        }
+
     }
 }
