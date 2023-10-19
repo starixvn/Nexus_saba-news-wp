@@ -54,7 +54,7 @@
         {
             string title;
             string description;
-            var today = DateTimeUtilize.ConvertToClientDatetime(DateTime.UtcNow.Date);
+            var today = DateTimeUtilize.ConvertToClientDatetime(DateTimeOffset.UtcNow.Date);
             var selectedDate = eventDate ?? today;
             var eventDateFormat = selectedDate.ToString("dd/MM");
             if(selectedDate.Date == today.Date)
@@ -157,7 +157,7 @@
         {
             if(seasonId == 0)
             {
-                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTime.Now.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTimeOffset.Now.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
             }
             var (isRedirect, tab) = GetRedirectTab(selectedTab);
             if(isRedirect)
@@ -263,7 +263,7 @@
                 {
                     matches = await matchService.GetMatchByDateAsync(criteria);
 
-                    var today = DateTime.UtcNow.Date;
+                    var today = DateTimeOffset.UtcNow.Date;
                     byte timeout = 1;
                     if (criteria.EventDate.Date < today.AddDays(-cacheConfigs.DateRange)
                         || criteria.EventDate.Date > today.AddDays(cacheConfigs.DateRange))
