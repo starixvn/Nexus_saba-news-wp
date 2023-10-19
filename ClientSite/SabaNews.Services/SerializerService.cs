@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Services
 {
-    using Fanex.Logging;
     using System;
     using System.Collections;
     using System.Globalization;

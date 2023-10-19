@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
-    using LiteDB;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
