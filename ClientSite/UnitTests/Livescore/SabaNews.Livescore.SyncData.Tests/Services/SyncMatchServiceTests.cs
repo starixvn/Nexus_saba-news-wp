@@ -182,7 +182,6 @@
             await fetch.Received(1).FetchMatchDetailAsync(Arg.Any<SyncMatchParams>());
             var isLineUpMatches = matches.Where(x => x.IsLineUp).ToList();
             await fetch.Received().FetchMatchLineupAsync(Arg.Is<long[]>(x => x.Length == matches.Count(m => m.IsLineUp)));
-            await fetch.Received(matches.Count).FetchMatchIncidentAsync(1, Arg.Any<long>());
         }
 
         [Fact]
@@ -206,6 +205,18 @@
             fetch.FetchMatchIncidentUpdateTimeAsync(Arg.Any<short>(), Arg.Any<DateTime?>()).Returns(expectedMatches);
 
             await sync.SyncIncidentByUpdatedTimeAsync();
+            await baseService.Received().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
+        }
+
+
+        [Fact]
+        public async Task SyncIncidents_WhenCalled_ReturnExpectedResult()
+        {
+            var param = fixture.Create<long[]>();
+            var expected = fixture.Create<IDictionary<string, MatchIncidentResponse>>();
+            fetch.FetchMultipleMatchIncidentsAsync(Arg.Any<short>(), Arg.Any<long[]>()).Returns(expected);
+
+            await sync.SyncIncidents(param);
             await baseService.Received().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
         }
     }
