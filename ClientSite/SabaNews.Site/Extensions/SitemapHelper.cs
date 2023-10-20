@@ -6,6 +6,7 @@
     using System.Text.RegularExpressions;
     using System.Xml.Linq;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
@@ -21,29 +22,30 @@
         private const int firstYear = 2020;
         private const string urlset = "urlset";
         private const string sitemapIndex = "sitemapindex";
+        private const string datetimeFormat = "yyyy-MM-ddTHH:mm:sszzz";
 
         public static string GetSitemapForDayAndYear(string domain)
         {
             XElement root = new(xmlns + sitemapIndex);
-            var currentDate = DateTime.Now;
-            var firstDateOfYear = new DateTime(DateTime.Now.Year, 1, 1);
+            var currentDate = DateTimeUtilize.Now();
+            var firstDateOfYear = DateTimeUtilize.DateTime(currentDate.Year, 1, 1);
 
-            XElement urlElement = RenderPostSitemap("sitemap/categories.xml", DateTime.UtcNow, domain);
+            XElement urlElement = RenderPostSitemap("sitemap/categories.xml", DateTimeUtilize.UtcNow(), domain);
             root.Add(urlElement);
-            urlElement = RenderPostSitemap("sitemap/tag.xml", DateTime.UtcNow, domain);
+            urlElement = RenderPostSitemap("sitemap/tag.xml", DateTimeUtilize.UtcNow(), domain);
             root.Add(urlElement);
-            urlElement = RenderPostSitemap("sitemap-news.xml", DateTime.UtcNow, domain);
+            urlElement = RenderPostSitemap("sitemap-news.xml", DateTimeUtilize.UtcNow(), domain);
             root.Add(urlElement);
-             urlElement = RenderPostSitemap("sitemap/match.xml", DateTime.UtcNow, domain);
+             urlElement = RenderPostSitemap("sitemap/match.xml", DateTimeUtilize.UtcNow(), domain);
             root.Add(urlElement);
-             urlElement = RenderPostSitemap("sitemap/league.xml", DateTime.UtcNow, domain);
+             urlElement = RenderPostSitemap("sitemap/league.xml", DateTimeUtilize.UtcNow(), domain);
             root.Add(urlElement);
             while (currentDate >= firstDateOfYear)
             {
                 urlElement = RenderPostSitemap($"sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}.xml", currentDate, domain);
                 root.Add(urlElement);
                 currentDate = currentDate.AddDays(-1);
-                currentDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
+                currentDate = DateTimeUtilize.DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
             }
             var currentYear = DateTime.Now.AddYears(-1).Year;
             while (currentYear >= firstYear)
@@ -60,14 +62,14 @@
         public static string GetSitemapForYear(int year, string domain)
         {
             XElement root = new(xmlns + urlset);
-            var currentDate = new DateTime(year, 12, 31, 23, 59, 59);
-            var firstDateOfYear = new DateTime(year, 1, 1);
+            var currentDate = DateTimeUtilize.DateTime(year, 12, 31, 23, 59, 59);
+            var firstDateOfYear = DateTimeUtilize.DateTime(year, 1, 1);
             while (currentDate >= firstDateOfYear)
             {
                 XElement urlElement = RenderPostSitemap($"sitemap/article-day-{currentDate.ToString("yyyy-MM-dd")}.xml", currentDate, domain);
                 root.Add(urlElement);
                 currentDate = currentDate.AddDays(-1);
-                currentDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
+                currentDate = DateTimeUtilize.DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
             }
 
             XDocument document = new(root);
@@ -183,7 +185,7 @@
             return document.ToString();
         }
 
-        private static XElement RenderPostSitemap(string url, DateTime datetime, string domain, bool isSitemap = true)
+        private static XElement RenderPostSitemap(string url, DateTimeOffset datetime, string domain, bool isSitemap = true)
         {
             var root = isSitemap ? "sitemap" : "url";
             XElement urlElement = new(

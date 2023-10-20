@@ -19,6 +19,12 @@
             return time.Add(timeSpan._timeSpan).ToString("dd MMM yyyy HH:mm:ssss");
         }
 
+        public static string ChangeTimeZoneToClient(DateTimeOffset time, string format)
+        {
+            var timeSpan = new DateTimeUtilize();
+            return time.Add(timeSpan._timeSpan).ToString(format);
+        }
+
         public static string FormatDateTime(DateTime time, string Format)
         {
             var timeSpan = new DateTimeUtilize();
@@ -36,6 +42,16 @@
             var timeSpan = new DateTimeUtilize();
             return time.Add(timeSpan._timeSpan);
         }
+
+        public static DateTimeOffset DateTime(int year, int month, int day, int hour = 0, int minute = 0, int second = 0)
+        {
+            return new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.FromHours(7));
+        }
+
+        public static DateTimeOffset UtcNow() => DateTimeOffset.UtcNow;
+
+        public static DateTimeOffset Now() => DateTimeOffset.Now;
+
 
     }
 }

@@ -8,7 +8,7 @@
         {
             if (unixTimeStamp > 0)
             {
-                DateTime dtDateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                DateTime dtDateTime = DateTime.UnixEpoch;
                 dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
                 return dtDateTime;
             }

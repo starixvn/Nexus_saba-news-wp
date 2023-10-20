@@ -10,6 +10,13 @@
 
         public static string ToDateGMTSEAsia(this DateTime date) =>  new DateTimeOffset(TimeZoneInfo.ConvertTime(
                             date == DateTime.MinValue ? DateTime.Now : date , SEAsiaTimeZone), timeSpan).ToString("yyyy-MM-ddTHH:mm:sszzz");
-        
+
+        public static string ToDateGMTSEAsia(this DateTimeOffset date)
+        {
+            DateTime time = date.UtcDateTime;
+            return new DateTimeOffset(TimeZoneInfo.ConvertTime(time, SEAsiaTimeZone), timeSpan).ToString("yyyy-MM-ddTHH:mm:sszzz");
+        }
+
+
     }
 }
