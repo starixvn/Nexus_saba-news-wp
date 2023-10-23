@@ -220,7 +220,7 @@
 
         public async Task<IList<GetData>> GetPostlist(GetDataViewModel getData)
         {
-            DateTime dateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            DateTime dateTime = DateTime.UnixEpoch;
             dateTime = dateTime.AddSeconds(getData.LastTimestamp).ToLocalTime();
             var criteria = new GetPostlistCriteria { _ToDate = dateTime, _Category = getData.Category, _Subject = getData.Subject };
             var result = await baseService.GetDataAsync<GetData>(criteria);
@@ -302,12 +302,9 @@
         public static bool CheckVideo(string categoriesSlug)
         {
             string[] categories = categoriesSlug.Split(new []{ "," }, StringSplitOptions.None);
-            foreach (var item in categories)
+            foreach (var item in categories.Where(cate => cate.Contains(Constants.VideoSlug)))
             {
-                if (item.Contains(Constants.VideoSlug))
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
@@ -501,6 +498,7 @@
 
         private static Category ReplaceStringFromVarSeo(Category cate)
         {
+            var now = DateTimeUtilize.UtcNow();
             const string dateFormat = "dd/MM/yyyy";
             if (cate == null)
             {
@@ -510,25 +508,25 @@
             {
                 var result = Regex.Replace(cate.SEOTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 result =  Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.SEOTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+                cate.SEOTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(now, dateFormat), RegexOptions.IgnoreCase);
             }
             if (cate.Description != null)
             {
                 var result = Regex.Replace(cate.Description, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.Description = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+                cate.Description = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(now, dateFormat), RegexOptions.IgnoreCase);
             }
             if (cate.OgDescription != null)
             {
                 var result = Regex.Replace(cate.OgDescription, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.OgDescription = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+                cate.OgDescription = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(now, dateFormat), RegexOptions.IgnoreCase);
             }
             if (cate.OgTitle != null)
             {
                 var result = Regex.Replace(cate.OgTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
-                cate.OgTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
+                cate.OgTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(now, dateFormat), RegexOptions.IgnoreCase);
             }
 
             return cate;

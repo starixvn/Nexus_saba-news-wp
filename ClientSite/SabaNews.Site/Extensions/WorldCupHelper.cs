@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Extensions
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models.Event.WorldCup;
     using System;
@@ -318,8 +319,8 @@
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTimeOffset.UtcNow.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
-            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1]) - DateTimeOffset.UnixEpoch;
+            var timeSpanNow = (DateTimeUtilize.UtcNow().AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
+            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1], CultureInfo.InvariantCulture) - DateTimeOffset.UnixEpoch;
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;
             if (checkNow > 0)
@@ -328,7 +329,7 @@
             }
             else
             {
-                var timeSpanEnd = (matches[indexMatches[numStage - 1]].StartTime.AddHours(MGTPlus) - new DateTime(1970, 1, 1, 0, 0, 0));
+                var timeSpanEnd = (matches[indexMatches[numStage - 1]].StartTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
                 var checkNowEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
                 if (checkNowEnd > NinetyMinsToSecond)
                 {
@@ -352,8 +353,8 @@
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTime.UtcNow.AddHours(MGTPlus) - new DateTime(1970, 1, 1, 0, 0, 0));
-            var timeStartStage = DateTime.Parse(startStages[numStage - 1]) - new DateTime(1970, 1, 1, 0, 0, 0);
+            var timeSpanNow = (DateTimeUtilize.UtcNow().AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
+            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1], CultureInfo.InvariantCulture) - DateTimeOffset.UnixEpoch;
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             if (checkNow > 0)
             {

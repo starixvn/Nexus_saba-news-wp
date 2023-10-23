@@ -152,6 +152,31 @@
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
+        [Route("lich-thi-dau/bong-da/{league}/{leagueId:long}/{selectedTab?}")]
+        public async Task<IActionResult> LeagueDetail(string league, long leagueId, string selectedTab)
+        {
+            if(selectedTab == null)
+            {
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{leagueId}/tong-hop");
+            }
+            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
+            if(leagueDetail == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var model = new GetMatchBySeasonParams
+            {
+                LeagueId = leagueId,
+                SelectedTab = selectedTab,
+                LeagueName = league,
+                League = leagueDetail,
+                SeasonId = leagueDetail.CurrentSeasonId ?? 0,
+                IsCurrentSeason = true
+            };
+            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{leagueId}/{selectedTab}";
+            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
+        }
+
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{leagueId:long}/{selectedTab?}")]
         public async Task<IActionResult> LeagueDetailForSeason(string league, long seasonId, long leagueId, string selectedTab)
         {
@@ -182,30 +207,6 @@
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
-        [Route("lich-thi-dau/bong-da/{league}/{leagueId:long}/{selectedTab?}")]
-        public async Task<IActionResult> LeagueDetail(string league, long leagueId, string selectedTab)
-        {
-            if(selectedTab == null)
-            {
-                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{leagueId}/tong-hop");
-            }
-            var leagueDetail = await leagueService.GetLeagueByIdAsync(leagueId);
-            if(leagueDetail == null)
-            {
-                return View(Constants.EmptyBlogView);
-            }
-            var model = new GetMatchBySeasonParams
-            {
-                LeagueId = leagueId,
-                SelectedTab = selectedTab,
-                LeagueName = league,
-                League = leagueDetail,
-                SeasonId = leagueDetail.CurrentSeasonId ?? 0,
-                IsCurrentSeason = true
-            };
-            ViewBag.Link = $"{domain}lich-thi-dau/bong-da/{league}/{leagueId}/{selectedTab}";
-            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
-        }
 
         private static (bool, string) GetRedirectTab(string selectedTab)
         {

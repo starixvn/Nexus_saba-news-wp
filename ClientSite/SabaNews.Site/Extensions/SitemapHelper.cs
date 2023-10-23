@@ -47,7 +47,7 @@
                 currentDate = currentDate.AddDays(-1);
                 currentDate = DateTimeUtilize.DateTime(currentDate.Year, currentDate.Month, currentDate.Day, lastHoursOfDay, lastMinute, lastSecond);
             }
-            var currentYear = DateTime.Now.AddYears(-1).Year;
+            var currentYear = DateTimeUtilize.Now().AddYears(-1).Year;
             while (currentYear >= firstYear)
             {
                 urlElement = RenderPostSitemap($"sitemap/article-year-{currentYear}.xml", currentDate, domain);
@@ -202,7 +202,7 @@
             XElement urlElement = new(
                     xmlns + "url",
                     new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{url}")),
-                    new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTime.UtcNow)),
+                    new XElement(xmlns + "lastmod", DateTimeExtensions.ToDateGMTSEAsia(DateTimeUtilize.UtcNow())),
                     new XElement(xmlns + "changefreq", "daily"),
                     new XElement(xmlns + "priority", 0.1));
             return urlElement;

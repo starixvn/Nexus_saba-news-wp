@@ -55,7 +55,7 @@
             worksheet.Cells[rowIndex, colIndex++].Value = user.UserName;
             worksheet.Cells[rowIndex, colIndex++].Value = user.Email;
             worksheet.Cells[rowIndex, colIndex++].Value = user.Point;
-            worksheet.Cells[rowIndex, colIndex].Value = DateTimeUtilize.FormatDateTime(user.UpdatedDate, "dd/MM/yyyy HH:mm:ssss");
+            worksheet.Cells[rowIndex, colIndex].Value = user.UpdatedDate.ToString("dd/MM/yyyy HH:mm:ssss");
             worksheet.Cells[rowIndex, ColIndexCount].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             worksheet.Cells[rowIndex, ColUsername].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
             worksheet.Cells[rowIndex, ColEmail].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;

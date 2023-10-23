@@ -25,7 +25,7 @@
             return time.Add(timeSpan._timeSpan).ToString(format);
         }
 
-        public static string FormatDateTime(DateTime time, string Format)
+        public static string FormatDateTime(DateTimeOffset time, string Format)
         {
             var timeSpan = new DateTimeUtilize();
             return time.Add(timeSpan._timeSpan).ToString(Format, new CultureInfo("vi"));
@@ -51,7 +51,6 @@
         public static DateTimeOffset UtcNow() => DateTimeOffset.UtcNow;
 
         public static DateTimeOffset Now() => DateTimeOffset.Now;
-
 
     }
 }

@@ -12,6 +12,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
@@ -91,7 +92,7 @@
                 var newSavePost = new SavePost
                 {
                     PostID = postID,
-                    Date = DateTime.Now.ToString("yyyy-MM-dd")
+                    Date = DateTimeUtilize.Now().ToString("yyyy-MM-dd")
                 };
                 listSavePosts.Add(newSavePost);
             }
@@ -118,7 +119,7 @@
             var savedPosts = user.HandleSavePosts;
             var listPostID = string.Join(",", savedPosts.ConvertAll(val => val.PostID));
             var posts = await postService.GetSavedPostsByUserID(listPostID);
-            var haveSavedToday = savedPosts.Find(val => val.Date == DateTime.Now.ToString("yyyy-MM-dd"));
+            var haveSavedToday = savedPosts.Find(val => val.Date == DateTimeUtilize.Now().ToString("yyyy-MM-dd"));
             var model = new SavedPostViewModel
             {
                 Posts = posts,
@@ -194,7 +195,7 @@
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             filename = pathService.EnsureCorrectFilename(filename);
-            filename = DateTime.Now.Millisecond + filename ;
+            filename = DateTimeUtilize.Now().Millisecond + filename ;
             var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + filename);
             using (FileStream output = System.IO.File.Create(filePath))
                 await file.CopyToAsync(output);

@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Extensions
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Models.RSS;
     using System;
     using System.Xml.Linq;
@@ -19,8 +20,8 @@
                 new XElement("link", $"{domain}{RssData.Category.Url}"),
                 new XElement("description", RssData.Category.Description),
                 new XElement("language", "vi-vn"),
-                new XElement("pubDate", DateTimeExtensions.ToDateGMTSEAsia(DateTime.Now)),
-                new XElement("lastBuildDate", DateTimeExtensions.ToDateGMTSEAsia(DateTime.Now)),
+                new XElement("pubDate", DateTimeExtensions.ToDateGMTSEAsia(DateTimeUtilize.Now())),
+                new XElement("lastBuildDate", DateTimeExtensions.ToDateGMTSEAsia(DateTimeUtilize.Now())),
                 new XElement("doc", $"{domain}rss.html"),
                 new XElement("managingEditor", Constants.SiteMail),
                 new XElement("webMaster", Constants.SiteMail),

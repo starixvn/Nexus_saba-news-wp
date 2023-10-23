@@ -26,7 +26,7 @@
         public void FormatDateTime_ReturnAsExpected()
         {
             // Arrange
-            var date = DateTime.UtcNow;
+            var date = DateTimeOffset.UtcNow;
             var format = "dd MMM yyyy";
             var expected = date.Add(new TimeSpan(7, 0, 0)).ToString(format, new CultureInfo("vi"));
 
