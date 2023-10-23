@@ -9,6 +9,6 @@ namespace SabaNews.Models.Home
         public long SeasonId { get; set; }
         public string Year { get; set; }
         public int Order { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
     }
 }

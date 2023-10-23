@@ -31,7 +31,7 @@
             return time.Add(timeSpan._timeSpan).ToString(Format, new CultureInfo("vi"));
         }
 
-        public static DateTime TransformDatetimeToGMT(DateTime time)
+        public static DateTimeOffset TransformDatetimeToGMT(DateTimeOffset time)
         {
             var timeSpan = new DateTimeUtilize();
             return time.Subtract(timeSpan._timeSpan);
@@ -45,7 +45,16 @@
 
         public static DateTimeOffset DateTime(int year, int month, int day, int hour = 0, int minute = 0, int second = 0)
         {
-            return new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.FromHours(7));
+            return new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.FromHours(Constants.ServerTimeZone));
+        }
+
+        public static DateTimeOffset ToStartOfDays( DateTimeOffset date) => new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(Constants.ServerTimeZone));
+
+        public static DateTimeOffset ToEndOfDay(DateTimeOffset date)
+        {
+            const byte Hour = 23;
+            const byte Minute = 59;
+            return new(date.Year, date.Month, date.Day, Hour, Minute, Minute, TimeSpan.FromHours(Constants.ServerTimeZone));
         }
 
         public static DateTimeOffset UtcNow() => DateTimeOffset.UtcNow;

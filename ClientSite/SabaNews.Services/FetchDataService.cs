@@ -245,7 +245,7 @@
                 };
                 if (item.SeasonId == 0)
                 {
-                    var currentDate = DateTime.UtcNow;
+                    var currentDate = DateTimeUtilize.UtcNow();
                     const byte TotalMonths = 1;
                     criteria.FromTime = currentDate.AddMonths(-TotalMonths).ToStartOfDay();
                     criteria.ToTime = currentDate.AddMonths(TotalMonths).ToEndOfDay();

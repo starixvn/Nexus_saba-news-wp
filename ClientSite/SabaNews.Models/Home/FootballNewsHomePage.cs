@@ -9,6 +9,6 @@ namespace SabaNews.Models.Home
         public int Id { get; set; }
         public string Slug { get; set; }
         public string Url { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
     }
 }

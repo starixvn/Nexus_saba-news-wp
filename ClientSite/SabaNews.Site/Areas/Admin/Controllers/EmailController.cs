@@ -4,6 +4,7 @@
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
@@ -22,7 +23,6 @@
         private readonly ISessionService sessionService;
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
-        private readonly IAuthService authService;
         private readonly ILogService logService;
         private const string SendMailTemplate = "EmailTemplates//SendEDM.html";
         private const string verifySendEmailLink = "VerifySendEmailLink?{token}";
@@ -32,14 +32,12 @@
             ISessionService sessionService,
             IEmailService emailService,
             IConfiguration configuration,
-            IAuthService authService,
             ILogService logService)
         {
             this.userService = userService;
             this.sessionService = sessionService;
             this.emailService = emailService;
             this.configuration = configuration;
-            this.authService = authService;
             this.logService = logService;
             baseUrl = configuration.GetValue<string>("BaseUrl");
         }
@@ -50,8 +48,8 @@
             var adminUsers = users.Where(item => !string.IsNullOrWhiteSpace(item.Metadata) && item.Metadata.Contains(Role.Administrator)).ToList();
             var model = new EmailFilterViewModel
             {
-                FromDate = DateTime.Now.AddMonths(-6),
-                ToDate = DateTime.Now,
+                FromDate = DateTimeUtilize.Now().AddMonths(-6),
+                ToDate = DateTimeUtilize.Now(),
                 Users = adminUsers
             };
             return View(model);

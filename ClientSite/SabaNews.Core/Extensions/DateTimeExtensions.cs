@@ -22,5 +22,14 @@
             const byte Minute = 59;
             return new(date.Year, date.Month, date.Day, Hour, Minute, Minute);
         }
+
+        public static DateTimeOffset ToStartOfDay(this DateTimeOffset date) => new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(ClientTimezone));
+
+        public static DateTimeOffset ToEndOfDay(this DateTimeOffset date)
+        {
+            const byte Hour = 23;
+            const byte Minute = 59;
+            return new(date.Year, date.Month, date.Day, Hour, Minute, Minute, TimeSpan.FromHours(ClientTimezone));
+        }
     }
 }

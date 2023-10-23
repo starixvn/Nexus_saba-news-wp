@@ -5,7 +5,7 @@
 
     public class GetMembershipEventDataCriteria : CriteriaBase
     {
-        public DateTime ToDate {get;set;}
+        public DateTimeOffset ToDate {get;set;}
 
         public int Start { get; set; }
 

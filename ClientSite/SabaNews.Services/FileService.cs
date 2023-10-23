@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Services.Interfaces;
     using System;
@@ -36,7 +37,7 @@
                 }
                 string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                 filename = pathService.EnsureCorrectFilename(filename);
-                filename = DateTime.Now.Millisecond + filename;
+                filename = DateTimeUtilize.Now().Millisecond + filename;
                 var filePath = pathService.MapAbsoluteRootPath("/" + dirFolder + filename);
                 if (File.Exists(filePath))
                 {

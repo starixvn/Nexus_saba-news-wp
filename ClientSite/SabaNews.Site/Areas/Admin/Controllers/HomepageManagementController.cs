@@ -97,7 +97,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                     LeagueId = model.LeagueId,
                     SeasonId = model.SeasonId,
                     Order = model.Order,
-                    CreatedDate = DateTime.UtcNow
+                    CreatedDate = DateTimeUtilize.UtcNow()
 
                 });
                 listFixture = listDataAdd;
@@ -110,7 +110,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                     LeagueId = model.LeagueId,
                     SeasonId = model.SeasonId,
                     Order = model.Order,
-                    CreatedDate = DateTime.UtcNow
+                    CreatedDate = DateTimeUtilize.UtcNow()
                 });
             }
             listFixture = listFixture.OrderBy(item => item.Order).ToList();
@@ -199,17 +199,17 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         public async Task<ActionResult> EditCategory(string category, int count, string categoryName)
         {
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
-            var slug = menus.Where(x => x.Slug == category).ToList();
-            var cateParents = await postService.GetCateParentsAsync(slug.First().Slug);
+            var slug = menus.FirstOrDefault(x => x.Slug == category);
+            var cateParents = await postService.GetCateParentsAsync(slug.Slug);
 
             var option = await optionService.GetOptionAsync(OptionKey.FootballNewsCategories);
             var footballNewsCategories = Helper.ParseJsonToList<FootballNewsHomePage>(option?.OptionValue);
 
             var categoryUpdate = new FootballNewsHomePage
             {
-                Category = categoryName ?? slug.First().MenuTitle,
-                Slug = slug.First().Slug,
-                CreatedDate = DateTime.UtcNow,
+                Category = categoryName ?? slug.MenuTitle,
+                Slug = slug.Slug,
+                CreatedDate = DateTimeUtilize.UtcNow(),
                 Url = PostHelper.GetCategoryLink(cateParents)
 
             };

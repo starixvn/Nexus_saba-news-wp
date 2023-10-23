@@ -31,7 +31,7 @@
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(DateTimeUtilize.DateTime(2022, 2, 28))
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel
@@ -55,7 +55,7 @@
                 Start = Constants.FromFirstItem,
                 End = Constants.GetFiveItems,
                 ResultNumber = resultNumber,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(DateTimeUtilize.DateTime(2022, 2, 28))
             };
             var users = await userSerive.GetMembershipEventResultAsync(criteria);
             ViewBag.ResultNumber = resultNumber;
