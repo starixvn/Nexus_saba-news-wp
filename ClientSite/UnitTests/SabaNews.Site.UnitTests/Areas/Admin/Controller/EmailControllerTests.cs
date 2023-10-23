@@ -774,7 +774,7 @@
             emailService = Substitute.For<IEmailService>();
             authService = Substitute.For<IAuthService>();
             logService = Substitute.For<ILogService>();
-            var controller = new EmailController(userService, sessionService, emailService, configuration, authService, logService);
+            var controller = new EmailController(userService, sessionService, emailService, configuration, logService);
 
             return controller;
         }

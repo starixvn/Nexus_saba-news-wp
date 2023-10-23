@@ -8,7 +8,7 @@
 
         public string LuckyNumber { get; set; }
 
-        public DateTime JoinDate { get; set; }
+        public DateTimeOffset JoinDate { get; set; }
 
         public override string GetSettingKey() => "user_membership_event_create_data";
 

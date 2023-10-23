@@ -344,7 +344,7 @@
             }
             if (param.Page == Constants.SecondPage && param.FirstPagePosts != null)
             {
-                posts = posts.Where(item => param.FirstPagePosts.All(id => id != item.ID));
+                posts = posts.Where(item => param.FirstPagePosts.TrueForAll(id => id != item.ID));
             }
             var view = param.IsVideo ? "~/Views/Home/_VideoGridView.cshtml" : "~/Views/Home/_CategoryGridView.cshtml";
             ViewBag.CurrentPage = param.Page;

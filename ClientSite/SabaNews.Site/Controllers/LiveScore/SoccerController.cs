@@ -54,7 +54,7 @@
         {
             string title;
             string description;
-            var today = DateTimeUtilize.ConvertToClientDatetime(DateTimeOffset.UtcNow.Date);
+            var today = DateTimeUtilize.ConvertToClientDatetime(DateTimeUtilize.UtcNow().Date);
             var selectedDate = eventDate ?? today;
             var eventDateFormat = selectedDate.ToString("dd/MM");
             if(selectedDate.Date == today.Date)
@@ -182,7 +182,7 @@
         {
             if(seasonId == 0)
             {
-                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTimeOffset.Now.ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
+                return RedirectPermanent($"/lich-thi-dau/bong-da/{league}/{seasonId}/{DateTimeUtilize.Now().ToString("yyyy-MM-dd")}/{leagueId}/{selectedTab}");
             }
             var (isRedirect, tab) = GetRedirectTab(selectedTab);
             if(isRedirect)
@@ -264,7 +264,7 @@
                 {
                     matches = await matchService.GetMatchByDateAsync(criteria);
 
-                    var today = DateTimeOffset.UtcNow.Date;
+                    var today = DateTimeUtilize.UtcNow().Date;
                     byte timeout = 1;
                     if (criteria.EventDate.Date < today.AddDays(-cacheConfigs.DateRange)
                         || criteria.EventDate.Date > today.AddDays(cacheConfigs.DateRange))
@@ -327,9 +327,6 @@
             if (criteria.SeasonId == 0)
             {
                 const byte TotalMonths = 6;
-                if(model.Date == DateTime.MinValue) {
-                    model.Date = DateTime.UtcNow;
-                }
                 criteria.FromTime = model.Date.AddMonths(-TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
                 criteria.ToTime = model.Date.AddMonths(TotalMonths).ToEndOfDay().ConvertToUTC(model.Timezone);
             }

@@ -5,8 +5,10 @@
     public static class DateTimeExtensions
     {
         const int ClientTimezone = 7;
-        public static DateTime ConvertToUTC(this DateTime dateTime, float timezone)
+
+        public static DateTimeOffset ConvertToUTC(this DateTimeOffset dateTime, float timezone)
             => dateTime.AddHours(timezone > 0 ? -timezone : Math.Abs(timezone));
+
 
         public static DateTime ConvertToGMT(this DateTime dateTime)
             => dateTime.AddHours(-ClientTimezone);

@@ -69,7 +69,7 @@
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(DateTimeUtilize.DateTime(2022, 2, 28))
             };
             var users = await userService.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel
@@ -99,7 +99,7 @@
             {
                 LuckyNumber = luckyNumber,
                 UserId = sessionService.User.Id,
-                JoinDate = DateTime.UtcNow
+                JoinDate = DateTimeUtilize.UtcNow()
             };
             result = await userService.CreateUserMembershipEventDataAsync(command);
             return Json(result);
