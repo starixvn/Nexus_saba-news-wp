@@ -7,13 +7,13 @@
     public class GetMatchByDateCriteria : CriteriaBase
     {
         [SpParam(Ignored = true)]
-        public DateTimeOffset EventDate { get; set; }
+        public DateTime EventDate { get; set; }
 
         [SpParam(Ignored = true)]
         public float Timezone { get; set; }
 
-        public DateTimeOffset FromTime { get; set; }
-        public DateTimeOffset ToTime { get; set; }
+        public DateTime FromTime { get; set; }
+        public DateTime ToTime { get; set; }
 
         public short SportId { get; set; }
 

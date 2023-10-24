@@ -6,6 +6,9 @@
     {
         const int ClientTimezone = 7;
 
+        public static DateTime ConvertToUTC(this DateTime dateTime, float timezone)
+            => dateTime.AddHours(timezone > 0 ? -timezone : Math.Abs(timezone));
+
         public static DateTimeOffset ConvertToUTC(this DateTimeOffset dateTime, float timezone)
             => dateTime.AddHours(timezone > 0 ? -timezone : Math.Abs(timezone));
 

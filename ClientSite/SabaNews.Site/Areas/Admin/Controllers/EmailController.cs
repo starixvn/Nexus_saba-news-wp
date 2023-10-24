@@ -63,8 +63,8 @@
             var criteria = new GetEmailsCriteria 
             {
                 Search = search, 
-                FromDate = param.FromDate,
-                ToDate = param.ToDate,
+                FromDate = param.FromDate.DateTime,
+                ToDate = param.ToDate.DateTime,
                 Status = param.Status,
                 CreatedBy = param.CreatedBy,
                 End = perPage,

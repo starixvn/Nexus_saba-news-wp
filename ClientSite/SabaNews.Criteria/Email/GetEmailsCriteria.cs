@@ -11,9 +11,9 @@
 
         public int End { get; set; }
 
-        public DateTimeOffset FromDate { get; set; }
+        public DateTime FromDate { get; set; }
 
-        public DateTimeOffset ToDate { get; set; }
+        public DateTime ToDate { get; set; }
 
         public int Status { get; set; }
 
