@@ -47,7 +47,7 @@
             string parentSlug = GetParentSlug(cateParent);
             if(parentSlug != "" && cateSlug != parentSlug)
             {
-                var parentCate = menus.FirstOrDefault(item => item.CateSlug == parentSlug && item.ParentId == 0);
+                var parentCate = menus.Find(item => item.CateSlug == parentSlug && item.ParentId == 0);
                 listCate = GetSubMenuForCate(menus, parentCate, cateSlug);
             }
             else
@@ -82,7 +82,7 @@
 
         public static MenuCategoryModel GetMenuItems(List<MenuInfo> listCate)
         {
-            var currentName = listCate.Count > 0 ? listCate.First().Name : "";
+            var currentName = listCate.Count > 0 ? listCate[0].Name : "";
             var activeMenu = listCate.Count >= 1 ? listCate[0].CateSlug : null;
             var menuItems = new MenuItems
             {

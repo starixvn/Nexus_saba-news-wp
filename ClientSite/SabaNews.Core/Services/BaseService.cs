@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Data.Repository;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Repositories;
 
@@ -27,9 +28,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var startime = DateTime.UtcNow;
+                var startime = DateTimeUtilize.UtcNow();
                 var result = await dynamicRepository.FetchAsync<T>(criteria);
-                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTimeUtilize.UtcNow().Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -40,9 +41,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var startime = DateTime.UtcNow;
+                var startime = DateTimeUtilize.UtcNow();
                 var result = await dynamicRepository.GetAsync<T>(criteria);
-                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTimeUtilize.UtcNow().Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -53,9 +54,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var startime = DateTime.UtcNow;
+                var startime = DateTimeUtilize.UtcNow();
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond>(criteria);
-                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria,  DateTimeUtilize.UtcNow().Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -66,9 +67,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var startime = DateTime.UtcNow;
+                var startime =  DateTimeUtilize.UtcNow();
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond, TThird>(criteria);
-                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria,  DateTimeUtilize.UtcNow().Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -80,9 +81,9 @@
             var commandResult = new CommandResult();
             if (command != null && command.IsValid())
             {
-                var startime = DateTime.UtcNow;
+                var startime =  DateTimeUtilize.UtcNow();
                 commandResult = await baseRepository.ExecuteNonQueryAsync(command);
-                logServiceProvider.WriteLogFileTrackingSP(command, DateTime.UtcNow.Subtract(startime).Milliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(command,  DateTimeUtilize.UtcNow().Subtract(startime).Milliseconds);
             }
 
             return commandResult;

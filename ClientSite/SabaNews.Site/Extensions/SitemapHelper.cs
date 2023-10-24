@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Xml.Linq;
@@ -95,13 +96,10 @@
             XElement root = new(xmlns + urlset);
             XElement urlElement = RenderCategorySitemap("", domain);
             root.Add(urlElement);
-            foreach (var menu in menus)
+            foreach (var menu in menus.Where(item => !string.IsNullOrEmpty(item.CateSlug)))
             {
-                if (!string.IsNullOrEmpty(menu.CateSlug))
-                {
-                    urlElement = RenderCategorySitemap($"{menu.CateSlug}{CategoryKey.Suffix}", domain);
-                    root.Add(urlElement);
-                }
+                urlElement = RenderCategorySitemap($"{menu.CateSlug}{CategoryKey.Suffix}", domain);
+                root.Add(urlElement);
             }
 
             XDocument document = new(root);

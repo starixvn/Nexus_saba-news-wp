@@ -549,7 +549,7 @@
         public async Task GetMatchesBySeason_SeasonIdEquals0_ReturnExpectedJsonResult()
         {
             // Arrange
-            var date = new DateTime(2022, 5, 25);
+            var date = new DateTimeOffset(2022, 5, 25, 0, 0, 0, TimeSpan.FromHours(Constants.ServerTimeZone));
             var fromTime = date.AddMonths(-6).AddHours(-7);
             var toTime = date.AddDays(1).AddSeconds(-1).AddMonths(6).AddHours(-7);
             var league = fixture.Create<League>();

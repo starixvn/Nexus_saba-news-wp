@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Comment;
@@ -88,8 +89,8 @@
                 CommentAuthor = sessionService.User.Name,
                 CommentAuthorEmail = sessionService.User.Email,
                 CommentAuthorIP = remoteIpAddress,
-                CommentDate = DateTime.Now,
-                CommentDateGMT = DateTime.UtcNow,
+                CommentDate = DateTimeUtilize.Now(),
+                CommentDateGMT = DateTimeUtilize.UtcNow(),
                 CommentContent = commentContent,
                 CommentAgent = Request.Headers["User-Agent"].ToString(),
                 CommentParent = parent,

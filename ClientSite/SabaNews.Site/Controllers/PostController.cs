@@ -109,7 +109,7 @@
             var postId = 0;
             slug = slug.Replace(".html","");
             var arrSlug = slug.Split("-");
-            if(!int.TryParse(arrSlug.Last(), out postId))
+            if(!int.TryParse(arrSlug[arrSlug.Count() - 1], out postId))
             {
                 return (slug, postId);
             }

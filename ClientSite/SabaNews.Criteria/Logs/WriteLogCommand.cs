@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Criteria.Logs
 {
     using System;
+    using SabaNews.Core.Helper;
 
     public class WriteLogCommand : BaseNonQueryCommand
     {
@@ -12,7 +13,7 @@
 
         public string OldData { get; set; }
 
-        public DateTime LogDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset LogDate { get; set; } = DateTimeUtilize.UtcNow();
 
         public override string GetSettingKey() => "log_writelog";
 

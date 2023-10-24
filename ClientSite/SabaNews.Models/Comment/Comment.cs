@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Models.Comment
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using System;
 
     public class Comment
@@ -10,8 +11,8 @@
         public string CommentAuthor { get; set; }
         public string CommentAuthorEmail { get; set; }
         public string CommentAuthorIP { get; set; }
-        public DateTime CommentDate { get; set; }
-        public DateTime CommentDateGMT { get; set; }
+        public DateTimeOffset CommentDate { get; set; }
+        public DateTimeOffset CommentDateGMT { get; set; }
         public string CommentContent { get; set; }
         public long CommentParent { get; set; }
         public long UserID { get; set; }
@@ -25,7 +26,7 @@
         {
             get
             {
-                var timeSpan = DateTime.UtcNow - CommentDateGMT;
+                var timeSpan = DateTimeUtilize.UtcNow().DateTime - CommentDateGMT.DateTime;
 
                 if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
                 {

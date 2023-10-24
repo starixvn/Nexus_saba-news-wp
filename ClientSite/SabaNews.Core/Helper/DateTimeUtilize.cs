@@ -13,7 +13,7 @@
             _timeSpan = new TimeSpan(Constants.ServerTimeZone, 0, 0);
         }
 
-        public static string ChangeTimeZoneToClient(DateTime time)
+        public static string ChangeTimeZoneToClient(DateTimeOffset time)
         {
             var timeSpan = new DateTimeUtilize();
             return time.Add(timeSpan._timeSpan).ToString("dd MMM yyyy HH:mm:ssss");
@@ -46,6 +46,18 @@
         public static DateTimeOffset DateTime(int year, int month, int day, int hour = 0, int minute = 0, int second = 0)
         {
             return new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.FromHours(Constants.ServerTimeZone));
+        }
+
+        public static DateTime? UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            if (unixTimeStamp > 0)
+            {
+                DateTime dtDateTime = System.DateTime.UnixEpoch;
+                dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
+                return dtDateTime;
+            }
+
+            return default;
         }
 
         #pragma warning disable S6354

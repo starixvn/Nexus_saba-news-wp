@@ -11,6 +11,7 @@
     using Newtonsoft.Json;
     using NLog;
     using NLog.Web;
+    using SabaNews.Core.Helper;
 
     public class LogServiceProvider : ILogServiceProvider
     {
@@ -78,7 +79,7 @@
         {
             var param = JsonConvert.SerializeObject(criteria);
             w.Write("\r\nDate time: ");
-            w.Write($"{Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)}");
+            w.Write($"{DateTimeUtilize.ChangeTimeZoneToClient(DateTimeUtilize.UtcNow())}");
             w.Write($" --- SP name: {criteria.GetSettingKey()} --- Runtime: {runtime} ms");
             w.Write($" --- Params: {param}");
             w.Write("\r\n-------------------------------");
