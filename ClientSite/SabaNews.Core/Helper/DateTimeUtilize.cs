@@ -48,10 +48,11 @@
             return new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.FromHours(Constants.ServerTimeZone));
         }
 
-
+        #pragma warning disable S6354
         public static DateTimeOffset UtcNow() => DateTimeOffset.UtcNow;
 
         public static DateTimeOffset Now() => DateTimeOffset.Now;
+        #pragma warning restore S6354
 
     }
 }
