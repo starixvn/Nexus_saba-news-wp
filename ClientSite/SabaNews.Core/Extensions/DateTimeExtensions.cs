@@ -21,14 +21,14 @@
         
         public static DateTime ToStartOfDay(this DateTime date) => new(date.Year, date.Month, date.Day);
 
+        public static DateTimeOffset ToStartOfDay(this DateTimeOffset date) => new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(ClientTimezone));
+
         public static DateTime ToEndOfDay(this DateTime date)
         {
             const byte Hour = 23;
             const byte Minute = 59;
             return new(date.Year, date.Month, date.Day, Hour, Minute, Minute);
         }
-
-        public static DateTimeOffset ToStartOfDay(this DateTimeOffset date) => new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(ClientTimezone));
 
         public static DateTimeOffset ToEndOfDay(this DateTimeOffset date)
         {

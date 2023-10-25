@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Text;
     using Microsoft.AspNetCore.Authorization;
-   
+    using SabaNews.Core.Helper;
 
     public class WhoamiController : Controller
     {
@@ -16,7 +16,7 @@
             stringContent.Append($"Web name: {HttpContext.Request.Host.Host}{Environment.NewLine}"
                 + $"Port: {HttpContext.Connection.LocalPort}{Environment.NewLine}"
                 + $"Server IP: {HttpContext.Connection.LocalIpAddress}{Environment.NewLine}"
-                + $"Server Time: {DateTime.Now}{Environment.NewLine}"
+                + $"Server Time: {DateTimeUtilize.Now()}{Environment.NewLine}"
                 + $"Client IP: {HttpContext.Connection.RemoteIpAddress}{Environment.NewLine}"
                 + $"Request Scheme: {HttpContext.Request.Scheme}{Environment.NewLine}"
                 + $"Request Path: {HttpContext.Request.Path}{Environment.NewLine}{Environment.NewLine}"

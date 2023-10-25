@@ -24,6 +24,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using SabaNews.Core.Extensions;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Services;
@@ -131,7 +132,7 @@
 
             CoreDI.RegisterService(services);
             services.ResolveLivescoreServiceDI();
-            services.AddSingleton(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
+            services.AddSingleton(HtmlEncoder.Create(allowedRanges: UnicodeRanges.All ));
 
             var umSettings = Configuration.GetSection(UMSettings.SettingKey).Get<UMSettings>();
             services.AddSingleton(umSettings);
@@ -202,7 +203,7 @@
                     if (!string.IsNullOrEmpty(context.Context.Request.Query["v"]))
                     {
                         context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=31536000" });
-                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddYears(1).ToString("R") }); // Format RFC1123
+                        context.Context.Response.Headers.Add("Expires", new[] { DateTimeUtilize.UtcNow().AddYears(1).ToString("R") }); // Format RFC1123
                     }
                 }
             });

@@ -629,12 +629,6 @@
             var groupNames = new List<string>();
             foreach (var item in seasonStandings)
             {
-                if (groupNames.Count == 0)
-                {
-                    groupNames.Add(item.GroupName);
-                    continue;
-                }
-
                 var check = groupNames.Where(x => x == item.GroupName).ToList();
                 if (check.Count == 0)
                 {

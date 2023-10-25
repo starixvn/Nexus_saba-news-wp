@@ -9,7 +9,6 @@
     using SabaNews.Models.Livescore.MatchManagement;
     using SabaNews.Models.Livescore.StandingManagement;
     using SabaNews.Site.Extensions;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class StandingManagementController : AdminController

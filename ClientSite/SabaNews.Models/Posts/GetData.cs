@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Models.Posts
 {
     using System;
+    using System.Globalization;
 
     public class GetData
     {
@@ -8,11 +9,11 @@
         public string Title { get; set; }
         public string PublishDate{ get ; set; }
         public string Image { get; set; }
-        public int Timestamp { get => (int)(DateTime.Parse(PublishDate) - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds; }
+        public int Timestamp { get => (int)(DateTime.Parse(PublishDate, CultureInfo.InvariantCulture) - DateTime.UnixEpoch.ToLocalTime()).TotalSeconds; }
         public int Category { get; set; }
         public void FormatDate()
         {
-            PublishDate = DateTime.Parse(PublishDate).ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+            PublishDate = DateTime.Parse(PublishDate, CultureInfo.InvariantCulture).ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
         }
     }
 }

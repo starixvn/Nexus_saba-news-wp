@@ -52,7 +52,7 @@
         {
             if (unixTimeStamp > 0)
             {
-                DateTime dtDateTime = System.DateTime.UnixEpoch;
+                DateTime dtDateTime = System.DateTimeOffset.UnixEpoch.DateTime;
                 dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
                 return dtDateTime;
             }
