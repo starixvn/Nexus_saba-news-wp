@@ -210,7 +210,10 @@
                 if(batchMatchIds.Count == limitFetchIncidents || count == matchIds.Length)
                 {
                     var dictionary = await fetchMatchService.FetchMultipleMatchIncidentsAsync((int)SportType.Soccer, batchMatchIds.ToArray());
-                    await SyncMatchIncident(dictionary);
+                    if(dictionary != null)
+                    {
+                        await SyncMatchIncident(dictionary);
+                    }
                     batchMatchIds = new List<long>();
                 }
             }
