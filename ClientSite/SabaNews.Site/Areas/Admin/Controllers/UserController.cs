@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
     using SabaNews.Models.ViewModel.User;
@@ -18,10 +19,10 @@
         }
         public ActionResult Index()
         {
-            DateTime now = DateTime.Now;
-            UserFilterViewModel viewModel = new()
+            var now = DateTimeUtilize.Now();
+            var viewModel = new UserFilterViewModel
             {
-                FromDate = new DateTime(now.Year, now.Month, 1),
+                FromDate = DateTimeUtilize.DateTime(now.Year, now.Month, 1),
                 ToDate = now
             };
             return View(viewModel);
@@ -33,8 +34,8 @@
             var search = param.Search ??= "";
             var criteria = new GetUserReportCriteria
             {
-                FromDate = param.FromDate,
-                ToDate = param.ToDate,
+                FromDate = param.FromDate.DateTime,
+                ToDate = param.ToDate.DateTime,
                 Search = search,
                 DateSort = param.DateSort,
                 Start = (param.Page - 1) * param.PageSize,

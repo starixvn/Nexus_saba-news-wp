@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Models.Posts
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -37,7 +38,7 @@
         {
             get
             {
-                var timeSpan = DateTime.UtcNow - PostDateGMT;
+                var timeSpan = DateTimeUtilize.UtcNow().DateTime - PostDateGMT;
 
                 if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
                 {

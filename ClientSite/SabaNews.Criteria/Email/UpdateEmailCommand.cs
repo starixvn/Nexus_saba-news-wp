@@ -12,7 +12,7 @@
 
         public string EmbeddedLink { get; set; }
 
-        public DateTime SendDate { get; set; }
+        public DateTimeOffset SendDate { get; set; }
 
         public int CreatedBy { get; set; }
 

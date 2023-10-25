@@ -16,7 +16,7 @@ namespace SabaNews.Criteria.Email
 
         public string EmailContent { get; set; }
 
-        public DateTime SendTime { get; set; }
+        public DateTimeOffset SendTime { get; set; }
 
         public int Status { get; set; }
 

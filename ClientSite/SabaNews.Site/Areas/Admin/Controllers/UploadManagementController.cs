@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
     using System;
@@ -28,7 +29,7 @@
         {
             string filename = ContentDispositionHeaderValue.Parse(upload.ContentDisposition).FileName.Trim('"');
             filename = pathService.EnsureCorrectFilename(filename);
-            filename = DateTime.Now.Millisecond + filename;
+            filename = DateTimeUtilize.Now().Millisecond + filename;
             string error = "";
             try
             {

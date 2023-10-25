@@ -68,7 +68,7 @@
             {
                 Start = Constants.FromFirstItem,
                 End = Constants.Total,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(DateTimeUtilize.DateTime(2022, 2, 28))
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
             var bytes = excelService.ExportMembershipEvent(users);

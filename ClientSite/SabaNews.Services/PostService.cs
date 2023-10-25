@@ -220,7 +220,7 @@
 
         public async Task<IList<GetData>> GetPostlist(GetDataViewModel getData)
         {
-            DateTime dateTime = DateTime.UnixEpoch;
+            DateTime dateTime = DateTimeOffset.UnixEpoch.DateTime;
             dateTime = dateTime.AddSeconds(getData.LastTimestamp).ToLocalTime();
             var criteria = new GetPostlistCriteria { _ToDate = dateTime, _Category = getData.Category, _Subject = getData.Subject };
             var result = await baseService.GetDataAsync<GetData>(criteria);

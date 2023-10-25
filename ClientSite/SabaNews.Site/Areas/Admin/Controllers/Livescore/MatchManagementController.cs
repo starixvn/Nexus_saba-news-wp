@@ -111,7 +111,7 @@
                 awayIconVN = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : awayIconVN;
             }
             DateTime? startTime;
-            if (model.StartTime == DateTime.MinValue)
+            if (model.StartTime == DateTimeOffset.MinValue.DateTime)
             {
                 startTime = null;
             }

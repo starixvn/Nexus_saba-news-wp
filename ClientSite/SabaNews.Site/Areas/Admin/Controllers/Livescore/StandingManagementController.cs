@@ -59,7 +59,7 @@
             var criteriaGroup = new GetLeagueSeasonStandingCriteria { SeasonId = seasonId, LeagueId = leagueId };
             var standings = await leagueService.GetLeagueSeasonStanding(criteriaGroup);
             var groupStanding = LivescoreHelper.GroupStandingsByGroupName(standings);
-            var group = groupStanding.FirstOrDefault(item => item.GroupName == (standing.GroupNameCustom ?? standing.GroupName));
+            var group = groupStanding.Find(item => item.GroupName == (standing.GroupNameCustom ?? standing.GroupName));
             var model = new StandingUpdateViewModel
             {
                 Standing = standing,

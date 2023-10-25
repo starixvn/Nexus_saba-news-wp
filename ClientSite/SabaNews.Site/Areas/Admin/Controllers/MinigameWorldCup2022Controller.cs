@@ -13,6 +13,7 @@
     using SabaNews.Site.Extensions;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -67,7 +68,7 @@
 
         public async Task<ActionResult> GetCountUserGrid(string dateSearch)
         {
-            var search = DateTime.Parse(dateSearch);
+            var search = DateTime.Parse(dateSearch, CultureInfo.InvariantCulture);
             var miniGames = await worldcupService.GetMinigameAllUsersAsync();
             var users = miniGames.Where(item => item.CreatedDate.AddHours(7).Date == search.Date
                                             || item.UpdatedDate.AddHours(7).Date == search.Date).ToList();

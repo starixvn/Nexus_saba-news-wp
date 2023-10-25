@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services
 {
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
@@ -33,10 +34,10 @@
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
                 EmbeddedLink = model.EmbeddedLink,
-                SendDate = DateTime.UtcNow,
+                SendDate = DateTimeUtilize.UtcNow(),
                 CreatedBy = model.CreatedBy,
                 Status = model.Status,
-                CreatedDate = DateTime.UtcNow,
+                CreatedDate = DateTimeUtilize.UtcNow(),
                 Users  = model.Users
             };
             var result =  await baseService.ExecuteNonQueryAsync(command);
@@ -54,7 +55,7 @@
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
                 EmailAddress = model.EmailAddress,
-                SendTime = DateTime.UtcNow,
+                SendTime = DateTimeUtilize.UtcNow(),
                 Status = model.Status,
             };
             return await baseService.ExecuteNonQueryAsync(command);
@@ -110,7 +111,7 @@
                 EmbeddedLink = model.EmbeddedLink,
                 Status = model.Status,
                 CreatedBy = model.CreatedBy,
-                SendDate = DateTime.UtcNow,
+                SendDate = DateTimeUtilize.UtcNow(),
                 Users = model.Users
             };
             return await baseService.ExecuteNonQueryAsync(command);
