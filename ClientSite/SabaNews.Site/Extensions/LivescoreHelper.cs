@@ -69,13 +69,9 @@
         public static List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = new List<string>();
-            foreach (var item in seasonStandings)
+            foreach (var item in seasonStandings.Where(standing => !groupNames.Any(x => x == standing.GroupName)))
             {
-                var check = groupNames.Where(x => x == item.GroupName).ToList();
-                if (check.Count == 0)
-                {
-                    groupNames.Add(item.GroupName);
-                }
+                groupNames.Add(item.GroupName);
             }
             return groupNames;
         }

@@ -53,7 +53,7 @@
 
             await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
 
-            var removedFromLiveMatches = prevLiveMatches.Where(id => matchIds.All(i => i != id));
+            var removedFromLiveMatches = prevLiveMatches.Where(id => matchIds.ToList().TrueForAll(i => i != id));
             var notExistedMatches = await liveMatchService.GetNotExistedMatchAsyc();
 
             await SyncMatchInfoAdditionalAsync(removedFromLiveMatches.Concat(notExistedMatches));

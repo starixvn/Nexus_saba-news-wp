@@ -9,7 +9,6 @@
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json.Linq;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -326,7 +325,7 @@
             };
             if (criteria.SeasonId == 0)
             {
-                if(model.Date == DateTime.MinValue) {
+                if(model.Date == DateTimeOffset.MinValue.DateTime) {
                     model.Date = DateTimeUtilize.UtcNow().DateTime;
                 }
                 const byte TotalMonths = 6;

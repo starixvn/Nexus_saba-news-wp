@@ -14,7 +14,6 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Models.Livescore.MatchManagement;
     using System.Globalization;
-    using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.League;
 

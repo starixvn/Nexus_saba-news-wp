@@ -24,19 +24,16 @@
         private readonly ILogServiceProvider logger;
         private readonly IMqttClientOptions options;
         private readonly ILiveMatchService liveMatchService;
-        private readonly ISyncMatchService syncMatchService;
         private readonly string[] subscribedTopics;
 
         public MqttClientService(ILogServiceProvider logger,
             IMqttClientOptions options,
             MqttSettings settings,
-            ILiveMatchService liveMatchService,
-            ISyncMatchService syncMatchService)
+            ILiveMatchService liveMatchService)
         {
             this.options = options;
             this.logger = logger;
             this.liveMatchService = liveMatchService;
-            this.syncMatchService = syncMatchService;
             subscribedTopics = settings.SubscribedTopics;
             mqttClient = new MqttFactory().CreateMqttClient();
             ConfigureMqttClient();

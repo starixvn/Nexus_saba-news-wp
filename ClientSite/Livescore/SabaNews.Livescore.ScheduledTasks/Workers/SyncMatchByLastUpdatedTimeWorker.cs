@@ -78,7 +78,7 @@
 
         private async Task SyncMatchInPastAsync()
         {
-            var endTime = DateTime.UtcNow.Date.AddSeconds(-1);
+            var endTime = DateTimeUtilize.UtcNow().Date.AddSeconds(-1);
             var startTime = endTime.AddDays(appSettings.NumOfDayPastToSyncMatch);
 
             var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime, isExcludeLiveMatch: true);
