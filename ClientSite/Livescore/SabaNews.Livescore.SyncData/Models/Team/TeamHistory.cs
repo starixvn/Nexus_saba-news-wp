@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Livescore.SyncData.Models.Team
 {
-    internal class TeamHistory
+    public class TeamHistory
     {
         public long MatchId { get; set; }
         public long ReferenceMatchId { get; set; }

@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal class MatchScoreInput
+    public class MatchScoreInput
     {
         public long MatchId { get; set; }
         public int HomeTotalScore { get; set; }

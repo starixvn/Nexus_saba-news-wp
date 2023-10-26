@@ -54,7 +54,7 @@
         {
             string title;
             string description;
-            var today = DateTimeUtilize.ConvertToClientDatetime(DateTimeUtilize.UtcNow().Date);
+            var today = DateTimeUtilize.UtcNow().ConvertToClient();
             var selectedDate = eventDate ?? today;
             var eventDateFormat = selectedDate.ToString("dd/MM");
             if(selectedDate.Date == today.Date)
@@ -326,6 +326,9 @@
             };
             if (criteria.SeasonId == 0)
             {
+                if(model.Date == DateTime.MinValue) {
+                    model.Date = DateTimeUtilize.UtcNow().DateTime;
+                }
                 const byte TotalMonths = 6;
                 criteria.FromTime = model.Date.AddMonths(-TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
                 criteria.ToTime = model.Date.AddMonths(TotalMonths).ToEndOfDay().ConvertToUTC(model.Timezone);

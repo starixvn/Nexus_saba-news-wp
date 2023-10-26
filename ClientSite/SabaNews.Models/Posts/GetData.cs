@@ -9,7 +9,7 @@
         public string Title { get; set; }
         public string PublishDate{ get ; set; }
         public string Image { get; set; }
-        public int Timestamp { get => (int)(DateTime.Parse(PublishDate, CultureInfo.InvariantCulture) - DateTime.UnixEpoch.ToLocalTime()).TotalSeconds; }
+        public int Timestamp { get => (int)(DateTime.Parse(PublishDate, CultureInfo.InvariantCulture) - DateTimeOffset.UnixEpoch.ToLocalTime()).TotalSeconds; }
         public int Category { get; set; }
         public void FormatDate()
         {

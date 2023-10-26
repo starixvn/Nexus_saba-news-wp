@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
@@ -29,7 +30,7 @@
 
         public override async Task DoWorkAsync()
         {
-            var endTime = DateTime.UtcNow.Date.AddSeconds(-1);
+            var endTime = DateTimeUtilize.UtcNow().Date.AddSeconds(-1);
             var startTime = endTime.AddDays(appSettings.NumOfDayPastToSyncMatch);
 
             var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime, true);

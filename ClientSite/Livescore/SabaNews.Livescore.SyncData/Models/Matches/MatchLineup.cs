@@ -1,13 +1,13 @@
 ﻿namespace SabaNews.Livescore.SyncData.Models.Matches
 {
-    internal class MatchLineup
+    public class MatchLineup
     {
         public long MatchId { get; set; }
         public string HomeFormation { get; set; }
         public string AwayFormation { get; set; }
     }
 
-    internal class PlayerLineup
+    public class PlayerLineup
     {
         public long MatchId { get; set; }
         public long PlayerId { get; set; }

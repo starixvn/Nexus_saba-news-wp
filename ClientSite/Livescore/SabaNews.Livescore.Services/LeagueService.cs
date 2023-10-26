@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.Services
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
@@ -75,6 +76,7 @@
         {
             var leagueItem = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + league.LeagueId.ToString() + "]") });
             var leaguesExtra = await GetLeaguesAsync();
+            var test = GetLeaguePriority(leaguesExtra);
             if(league.Priority > GetLeaguePriority(leaguesExtra) - 1)
             {
                 league.Priority = GetLeaguePriority(leaguesExtra) - 1;
@@ -138,7 +140,7 @@
                 LeagueId = leagueId,
                 Priority = GetLeaguePriority(leagues),
                 IsMajor = false,
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTimeUtilize.UtcNow().DateTime
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }
@@ -151,12 +153,9 @@
         public static int GetLeaguePriority(IList<League> leagues)
         {
             int priority = 0;
-            foreach(var item in leagues)
+            foreach(var item in leagues.Where(val => val.Priority > priority))
             {
-                if(item.Priority > priority)
-                {
-                    priority = item.Priority;
-                }
+                priority = item.Priority;
             }
             return priority + 1;
         }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
@@ -67,7 +68,7 @@
 
         private async Task SyncMatchFutureAsync()
         {
-            var startTime = DateTime.UtcNow.Date;
+            var startTime = DateTimeUtilize.UtcNow().Date;
             var endTime = startTime.AddDays(appSettings.NumOfDayFutureToSyncMatch + 1).AddSeconds(-1);
 
             var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime);

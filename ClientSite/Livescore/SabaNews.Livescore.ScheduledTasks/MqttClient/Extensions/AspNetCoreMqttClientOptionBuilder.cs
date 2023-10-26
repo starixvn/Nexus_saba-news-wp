@@ -3,7 +3,7 @@
     using System;
     using MQTTnet.Client.Options;
 
-    internal class AspNetCoreMqttClientOptionBuilder : MqttClientOptionsBuilder
+    public class AspNetCoreMqttClientOptionBuilder : MqttClientOptionsBuilder
     {
         public IServiceProvider ServiceProvider { get; }
 

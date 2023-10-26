@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Livescore.SyncData.Models.Matches
 {
-    internal class MatchTeamStatistic
+    public class MatchTeamStatistic
     {
         public bool IsHomeTeam { get; set; }
         public long MatchId { get; set; }

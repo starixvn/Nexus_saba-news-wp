@@ -7,8 +7,8 @@
     {
         public long LeagueId { get; set; }
         public long SeasonId { get; set; }
-        public DateTimeOffset? FromTime { get; set; }
-        public DateTimeOffset? ToTime { get; set; }
+        public DateTime? FromTime { get; set; }
+        public DateTime? ToTime { get; set; }
 
         public override string GetSettingKey() => "Livescore_Match_GetBySeason";
 

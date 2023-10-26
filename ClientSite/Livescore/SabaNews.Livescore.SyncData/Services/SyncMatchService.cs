@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
@@ -143,7 +144,7 @@
         {
             int SyncMinutes = appSettings.SyncIncidentMinutes;
             var lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetIncidentLastUpdatedTimeCriteria());
-            var now = DateTime.UtcNow;
+            var now = DateTimeUtilize.UtcNow().DateTime;
             lastUpdatedTime ??= now.AddMinutes(-SyncMinutes);
             
             var updatedMatches = await fetchMatchService.FetchMatchIncidentUpdateTimeAsync((int)SportType.Soccer, lastUpdatedTime);

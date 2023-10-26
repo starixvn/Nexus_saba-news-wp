@@ -69,7 +69,7 @@
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(DateTimeUtilize.DateTime(2022, 2, 28))
+                ToDate = DateTimeUtilize.DateTime(2022, 2, 28).ConvertToGMT()
             };
             var users = await userService.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel

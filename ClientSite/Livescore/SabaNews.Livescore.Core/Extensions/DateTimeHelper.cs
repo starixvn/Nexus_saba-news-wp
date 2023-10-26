@@ -8,7 +8,7 @@
         {
             if (unixTimeStamp > 0)
             {
-                DateTime dtDateTime = DateTime.UnixEpoch;
+                DateTime dtDateTime = DateTimeOffset.UnixEpoch.DateTime;
                 dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
                 return dtDateTime;
             }

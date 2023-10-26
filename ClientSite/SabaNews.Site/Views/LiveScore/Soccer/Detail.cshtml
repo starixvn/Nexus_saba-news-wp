@@ -31,7 +31,7 @@
 @{
     var isLiveMatch = IsLiveMatch(Model.Match.Status);
     var isPreMatch = IsPreMatch(Model.Match.Status);
-    var startTime = SabaNews.Core.Helper.DateTimeUtilize.ConvertToClientDatetime(Model.Match.StartTime);
+    var startTime = SabaNews.Core.Helper.DateTimeUtilize.ConvertToClient(Model.Match.StartTime);
     var dateShow = startTime.ToString("dd/MM/yyyy");
     var homeTeamName = GetTeamName(Model.Match.HomeTeam);
     var awayTeamName = GetTeamName(Model.Match.AwayTeam);

@@ -8,7 +8,7 @@
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Services;
 
-    internal static class MqttServiceCollectionExtension
+    public static class MqttServiceCollectionExtension
     {
         public static IServiceCollection AddMqttClientHostedService(this IServiceCollection services, IConfiguration configuration)
         {

@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
@@ -95,7 +96,8 @@
                 lastUpdatedTime = appSettings.MinDateSyncLivescoreData;
             }
 
-            var today = DateTime.Now;
+            var today = DateTimeUtilize.Now();
+            
             const byte TotalDaysOfWeek = 7;
             for (var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(TotalDaysOfWeek))
             {

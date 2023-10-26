@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Services;
@@ -49,7 +50,7 @@
 
         private async Task<IEnumerable<MatchToGetH2H>> GetMatchToSyncHeadToHead()
         {
-            var fromDate = DateTime.UtcNow.AddDays(-1).Date;
+            var fromDate = DateTimeUtilize.UtcNow().AddDays(-1).Date;
             var toDate = fromDate.AddDays(appSettings.HeadToHeadMaxFutureDays + 1).AddSeconds(-1);
 
             var matches = await synch2hService.GetMatchToSyncHeadToHeadByDateRange(fromDate, toDate, appSettings.SyncHeadToHeadRowLimit);
