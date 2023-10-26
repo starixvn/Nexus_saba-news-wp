@@ -76,7 +76,6 @@
         {
             var leagueItem = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + league.LeagueId.ToString() + "]") });
             var leaguesExtra = await GetLeaguesAsync();
-            var test = GetLeaguePriority(leaguesExtra);
             if(league.Priority > GetLeaguePriority(leaguesExtra) - 1)
             {
                 league.Priority = GetLeaguePriority(leaguesExtra) - 1;

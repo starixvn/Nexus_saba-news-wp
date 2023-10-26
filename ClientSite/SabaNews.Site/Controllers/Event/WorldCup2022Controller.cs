@@ -627,7 +627,7 @@
         public List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = new List<string>();
-            foreach (var item in seasonStandings.Where(standing => !groupNames.Any(x => x == standing.GroupName)))
+            foreach (var item in seasonStandings.Where(standing => !groupNames.Exists(x => x == standing.GroupName)))
             {
                 groupNames.Add(item.GroupName);
             }

@@ -16,7 +16,6 @@
     using SabaNews.Livescore.Models.Mqtt;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
     using SabaNews.Livescore.Services.Interfaces;
-    using SabaNews.Livescore.SyncData.Services;
 
     public class MqttClientService : IMqttClientService
     {
