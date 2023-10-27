@@ -146,8 +146,6 @@
             }
             el.classList.add(`${row > 1 ? 'wrapped' : 'no-wrapped'}`);
             $('.wrapped').hide();
-            $('.list-dropdown-category').find('a').each(function() {
-            })
         });
         $('.button-dropdown-category').click(function () {
             $('.list-dropdown-category').toggleClass('toggle-show');
@@ -159,14 +157,14 @@
                 $('.list-dropdown-category').removeClass('toggle-show');
             }
         });
-        $('.list-dropdown-category').find('a').each(function() {
+        $('.list-dropdown-category').find('a').each(function () {
             $(this).parent().toggleClass('active', $(this).attr('href') == link);
             var active = $(this).parent().hasClass('active');
             if(active){
                 $(this).parent().replaceWith('<h1 class ="heading-submenu active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
             }
         });
-        $('.group-parent-sub').find('a').each(function() {
+        $('.group-parent-sub').find('a').each(function () {
             var active = $(this).parent().hasClass('active');
             if(active){
                 $(this).parent().replaceWith('<h1 class ="sub-item active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
