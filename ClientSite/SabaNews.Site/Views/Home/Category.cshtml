@@ -106,7 +106,7 @@
                     @foreach (var menu in subMenu)
                     {
                         var link = @getMenuLink(menu);
-                        <h2 class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
+                        <h1 class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h1>
                     }
                 </div>
             }
@@ -116,17 +116,17 @@
                     <div class="group-parent-sub">
                         @foreach (var menu in Model.GetSubMenu(item1))
                         {
-                            <h2 class="sub-item @(item2 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>
+                            <h1 class="sub-item @(item2 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h1>
                         }
                     </div>
                     <span class="button-dropdown-category"><i class="icon-button-dot"></i></span>
-                    <ul class="list-dropdown-category">
-                    </ul>
+                    <div class="list-dropdown-category">
+                    </div>
                 </div>
                 <div class="sub-category">
                     @foreach (var menu in Model.GetSubMenu(item2))
                     {
-                        <h2 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>
+                        <h1 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h1>
                     }
                 </div>
             </div>

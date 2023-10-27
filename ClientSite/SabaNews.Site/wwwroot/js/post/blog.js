@@ -135,7 +135,7 @@
             }
             if(row > 1){
                 var cate = $(el).find("a");
-                wappedCate = '<li><a href="'+ cate.attr("href") +'">'+ cate.text() +'</a></li>';
+                wappedCate = '<h1 class="heading-submenu"><a href="'+ cate.attr("href") +'">'+ cate.text() +'</a></h1>';
                 $('.list-dropdown-category').append(wappedCate);
                 $('.button-dropdown-category').show();
             }
