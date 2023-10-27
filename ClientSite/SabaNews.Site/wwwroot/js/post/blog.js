@@ -130,17 +130,24 @@
         }
         [...cards.children].forEach((el) => {
             var wappedCate = "";
+            var cate = $(el).find("a");
+            var detectHeading = $(el).hasClass('active');
+            var headingCategory = $('.heading-category');
             if (!el.previousElementSibling || el.offsetLeft < el.previousElementSibling.offsetLeft) {
                 row++;
             }
+            if(detectHeading){
+                headingCategory.replaceWith( ('<h2 class ="heading-category count-wrap"><a href="'+ headingCategory.find('a').attr("href") +'">'+ headingCategory.text() +'</a></h2>'));
+            }
             if(row > 1){
-                var cate = $(el).find("a");
-                wappedCate = '<h1 class="heading-submenu"><a href="'+ cate.attr("href") +'">'+ cate.text() +'</a></h1>';
+                wappedCate = '<h2 class="heading-submenu"><a href="'+ cate.attr("href") +'">'+ cate.text() +'</a></h2>';
                 $('.list-dropdown-category').append(wappedCate);
                 $('.button-dropdown-category').show();
             }
             el.classList.add(`${row > 1 ? 'wrapped' : 'no-wrapped'}`);
-             $('.wrapped').hide();
+            $('.wrapped').hide();
+            $('.list-dropdown-category').find('a').each(function() {
+            })
         });
         $('.button-dropdown-category').click(function () {
             $('.list-dropdown-category').toggleClass('toggle-show');
@@ -154,6 +161,16 @@
         });
         $('.list-dropdown-category').find('a').each(function() {
             $(this).parent().toggleClass('active', $(this).attr('href') == link);
+            var active = $(this).parent().hasClass('active');
+            if(active){
+                $(this).parent().replaceWith('<h1 class ="heading-submenu active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
+            }
+        });
+        $('.group-parent-sub').find('a').each(function() {
+            var active = $(this).parent().hasClass('active');
+            if(active){
+                $(this).parent().replaceWith('<h1 class ="sub-item active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
+            }
         });
     }
     function init() {
