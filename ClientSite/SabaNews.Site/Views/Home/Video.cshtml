@@ -75,7 +75,7 @@
                 <div class="sub-category parent-sub">
                     <h1 class="heading-category count-wrap"><a href="@Url.Action("Category", "Home", new { slug = Model.Header.ActiveCategory + CategoryKey.Suffix })">Video</a></h1>
                     <div class="group-parent-sub">
-                            @foreach (var menu in Model.GetSubMenu(item1))
+                        @foreach (var menu in Model.GetSubMenu(item1))
                         {
                             <h2 class="sub-item @item2 @menu.PostId @(item2 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
                         }
@@ -84,7 +84,7 @@
                     <div class="list-dropdown-category">
                     </div>
                 </div>
-                <div class="sub-category">
+                <div class="sub-category child-sub">
                     @foreach (var menu in Model.GetSubMenu(item2))
                     {
                         <h2 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>

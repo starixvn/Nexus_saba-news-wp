@@ -123,7 +123,7 @@
                     <div class="list-dropdown-category">
                     </div>
                 </div>
-                <div class="sub-category">
+                <div class="sub-category child-sub">
                     @foreach (var menu in Model.GetSubMenu(item2))
                     {
                         <h2 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>

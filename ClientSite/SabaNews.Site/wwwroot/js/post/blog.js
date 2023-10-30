@@ -124,6 +124,7 @@
     function DetectRowsInElement () {
         const cards = document.querySelector('.group-parent-sub');
         var link = window.location.pathname;
+        var headingCategory = $('.heading-category');
         let row = 0;
         if(cards == null){
             return
@@ -132,7 +133,6 @@
             var wappedCate = "";
             var cate = $(el).find("a");
             var detectHeading = $(el).hasClass('active');
-            var headingCategory = $('.heading-category');
             if(detectHeading){
                 headingCategory.replaceWith( ('<h2 class ="heading-category count-wrap"><a href="'+ headingCategory.find('a').attr("href") +'">'+ headingCategory.text() +'</a></h2>'));
             }
@@ -157,18 +157,38 @@
                 $('.list-dropdown-category').removeClass('toggle-show');
             }
         });
+
+        function childCategory () {
+            $('.child-sub').find('.sub-item a').each(function () {
+                var className = $(this).parent().attr('class');
+                var active = $(this).parent().hasClass('active');
+                if(active){
+                    $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
+                }else{
+                    $(this).parent().replaceWith('<h2 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h2>')
+                }
+            });
+        }
+
+        $('.sub-category').find('.sub-item a').each(function (){
+            $(this).parent().toggleClass('active', $(this).attr('href') == window.location.pathname);
+            var active = $(this).parent().hasClass('active');
+            var noWrapped = $(this).parent().hasClass('no-wrapped');
+            var count = $('.child-sub').children().length;
+            var className = $(this).parent().attr('class');
+            if(active && noWrapped){
+                $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
+            }else if(count > 0){
+                childCategory();
+            }
+              
+        });
         $('.list-dropdown-category').find('a').each(function () {
             $(this).parent().toggleClass('active', $(this).attr('href') == link);
             var active = $(this).parent().hasClass('active');
+            var className = $(this).parent().attr('class');
             if(active){
-                $(this).parent().replaceWith('<h1 class ="heading-submenu active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
-            }
-        });
-        $('.group-parent-sub').find('a').each(function () {
-            var active = $(this).parent().hasClass('active');
-            var noWrapped = $(this).parent().hasClass('no-wrapped');
-            if(active && noWrapped){
-                $(this).parent().replaceWith('<h1 class ="sub-item active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
+                $(this).parent().replaceWith('<h1 class ="' + className +'"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
             }
         });
     }
