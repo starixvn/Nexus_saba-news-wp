@@ -158,20 +158,7 @@
             }
         });
 
-        function childCategory () {
-            $('.child-sub').find('.sub-item a').each(function () {
-                var className = $(this).parent().attr('class');
-                var active = $(this).parent().hasClass('active');
-                if(active){
-                    $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
-                }else{
-                    $(this).parent().replaceWith('<h2 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h2>')
-                }
-            });
-        }
-
         $('.sub-category').find('.sub-item a').each(function (){
-            $(this).parent().toggleClass('active', $(this).attr('href') == window.location.pathname);
             var active = $(this).parent().hasClass('active');
             var noWrapped = $(this).parent().hasClass('no-wrapped');
             var count = $('.child-sub').children().length;
@@ -179,9 +166,20 @@
             if(active && noWrapped){
                 $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
             }else if(count > 0){
-                childCategory();
-            }
-              
+                $('.child-sub').find('.sub-item a').each(function () {
+                    var className = $(this).parent().attr('class');
+                    var active = $(this).parent().hasClass('active');
+                    if(active){
+                        $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>');
+                        $('.group-parent-sub').find('.sub-item a').each(function() {
+                            var className = $(this).parent().attr('class');
+                            $(this).parent().replaceWith('<h2 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h2>')
+                        });
+                    }else{
+                        $(this).parent().replaceWith('<h2 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h2>')
+                    }
+                });
+            }  
         });
         $('.list-dropdown-category').find('a').each(function () {
             $(this).parent().toggleClass('active', $(this).attr('href') == link);
