@@ -133,11 +133,11 @@
             var cate = $(el).find("a");
             var detectHeading = $(el).hasClass('active');
             var headingCategory = $('.heading-category');
-            if (!el.previousElementSibling || el.offsetLeft < el.previousElementSibling.offsetLeft) {
-                row++;
-            }
             if(detectHeading){
                 headingCategory.replaceWith( ('<h2 class ="heading-category count-wrap"><a href="'+ headingCategory.find('a').attr("href") +'">'+ headingCategory.text() +'</a></h2>'));
+            }
+            if (!el.previousElementSibling || el.offsetLeft < el.previousElementSibling.offsetLeft) {
+                row++;
             }
             if(row > 1){
                 wappedCate = '<h2 class="heading-submenu"><a href="'+ cate.attr("href") +'">'+ cate.text() +'</a></h2>';
@@ -166,7 +166,8 @@
         });
         $('.group-parent-sub').find('a').each(function () {
             var active = $(this).parent().hasClass('active');
-            if(active){
+            var noWrapped = $(this).parent().hasClass('no-wrapped');
+            if(active && noWrapped){
                 $(this).parent().replaceWith('<h1 class ="sub-item active"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
             }
         });
