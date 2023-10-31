@@ -7,6 +7,8 @@
     using SabaNews.Core.Models;
     using System;
     using System.IO;
+    using System.Net.Security;
+    using System.Security.Cryptography.X509Certificates;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
@@ -56,7 +58,7 @@
             using var mailclient = new SmtpClient();
             try
             {
-                mailclient.ServerCertificateValidationCallback += (_, _, _, _) => true;
+                mailclient.ServerCertificateValidationCallback = ValidateRemoteCertificate;
                 mailclient.CheckCertificateRevocation = false;
                 mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
                 if (mailConfigs.IsAuthenticate)
@@ -94,5 +96,17 @@
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
             return regex.IsMatch(email);
         }
+
+        private bool ValidateRemoteCertificate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors policyErrors)
+    {
+        if(policyErrors == SslPolicyErrors.RemoteCertificateChainErrors)
+        {
+            foreach(var cs in chain.ChainStatus)
+            {
+                Console.WriteLine(cs.StatusInformation);//validation errors here
+            }
+        }
+        return policyErrors == SslPolicyErrors.None;
+    }
     }
 }
