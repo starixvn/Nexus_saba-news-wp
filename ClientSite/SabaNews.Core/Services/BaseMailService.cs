@@ -98,8 +98,8 @@
         }
 
         private bool ValidateRemoteCertificate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors policyErrors)
-    {
-        return true;
-    }
+        {
+            return policyErrors == SslPolicyErrors.None;
+        }
     }
 }
