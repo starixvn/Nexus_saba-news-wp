@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Text;
     using System.Threading.Tasks;
     using Fanex.Caching;
@@ -78,7 +79,7 @@
             if(slug.Contains(articleDaySlug))
             {
                 var dateSlug = slug.Replace(articleDaySlug, "").Replace(xmlSuffix, "");
-                if(DateTime.TryParse(dateSlug, out DateTime date))
+                if(DateTime.TryParse(dateSlug, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
                 {
                     var posts = await postService.GetSitemapPostsByDateAsync(date);
                     sitemap = SitemapHelper.GetSitemapDocument(posts, domain);

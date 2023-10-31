@@ -474,6 +474,7 @@
             var images = new List<ImageInfo>();
             if (sizeHash != null)
             {
+                #pragma warning disable S3267
                 foreach (Hashtable item in sizeHash.Values)
                 {
                     if (IsValidKeys(item))
@@ -487,6 +488,7 @@
                         });
                     }
                 }
+                #pragma warning restore S3267
             }
             return images;
         }
