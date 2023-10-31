@@ -99,14 +99,7 @@
 
         private bool ValidateRemoteCertificate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors policyErrors)
     {
-        if(policyErrors == SslPolicyErrors.RemoteCertificateChainErrors)
-        {
-            foreach(var cs in chain.ChainStatus)
-            {
-                Console.WriteLine(cs.StatusInformation);//validation errors here
-            }
-        }
-        return policyErrors == SslPolicyErrors.None;
+        return true;
     }
     }
 }
