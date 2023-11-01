@@ -19,7 +19,7 @@
         private readonly Logger infoLogger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IConfiguration configuration;
-        private const int LowPerformanceRuntime = 500;
+        private const int LowPerformanceRuntime = 2000;
 
         public LogServiceProvider(
             Fanex.Logging.ILogger logger,
