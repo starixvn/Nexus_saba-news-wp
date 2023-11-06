@@ -99,6 +99,7 @@
             var today = DateTimeUtilize.Now();
             
             const byte TotalDaysOfWeek = 7;
+            //only get update standing data into 7 days per call api
             for (var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(TotalDaysOfWeek))
             {
                 IList<UpdatedSeasonIdListResponse> updatedSeasonIds = await GetSeasonStandingsAsync(date);
