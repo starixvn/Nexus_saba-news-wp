@@ -404,7 +404,7 @@
         [HttpPost]
         public async Task<IActionResult> GetFavLeagues([FromBody] FavLeagueModel model)
         {
-            if(model.LeagueIds != null && !ValidateJson(model.LeagueIds))
+            if(model == null || (model.LeagueIds != null && !ValidateJson(model.LeagueIds)))
             {
                 return Json(null);
             }
