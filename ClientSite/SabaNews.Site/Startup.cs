@@ -19,6 +19,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.HttpOverrides;
+    using Microsoft.AspNetCore.ResponseCompression;
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -117,7 +118,6 @@
                 options.IdleTimeout = TimeSpan.FromMinutes(int.Parse(Configuration.GetSection("Authentication:SessionTimeOut").Value));
                 options.Cookie.IsEssential = true;
             });
-
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
 
             services.Configure<MailConfigs>(options => Configuration.GetSection("MailConfigs").Bind(options));
@@ -126,7 +126,22 @@
                 options.ConstraintMap.Add("categoryslug", typeof(CategoryConstraint));
             });
 
-            services.AddResponseCompression();
+            services.AddResponseCompression( options => {
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "text/javascript"}
+                );
+            });
+            services.AddWebOptimizer(pipeline => {
+                pipeline.AddCssBundle("/minify/styles/test.min.css", "/styles/vendor/icomoon/style.css", "/styles/pages/home.css");
+                pipeline.AddJavaScriptBundle("/minify/js/test.min.js", 
+                    "/lib/jquery/dist/jquery.min.js",
+                    "/lib/bootstrap/dist/js/bootstrap-modal.min.js",
+                    "/js/common.js",
+                    "/js/site.js",
+                    "/js/all.js",
+                    "/js/auth/auth.js",
+                    "/js/post/load-component.js");
+            });
             services.AddResponseCaching();
             services.AddSingleton(Configuration);
 
@@ -195,6 +210,7 @@
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.All
             });
             app.UseResponseCompression();
+            app.UseWebOptimizer();
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = context =>
