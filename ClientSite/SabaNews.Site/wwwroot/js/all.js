@@ -1,5 +1,4 @@
 var all = (function ($) {
-    console.log(999);
     function LoadMenuHeaderMobile () {
         //button show menu mobile 
         $('.button-mobile').click(function () {
