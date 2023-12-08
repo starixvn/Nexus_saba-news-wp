@@ -413,7 +413,7 @@
                     "/lib/jquery/dist/jquery.min.js",
                     "/js/admin/statistic/post-view-statistic.js"
                 );
-                pipeline.AddJavaScriptBundle("/minify/js/admin_statistic_view_detail.js", 
+                pipeline.AddJavaScriptBundle("/minify/js/admin_statistic_view_detail.min.js", 
                     "/lib/jquery/dist/jquery.min.js",
                     "/js/admin/statistic/view-statistic-details.js"
                 );
