@@ -294,6 +294,7 @@ var all = (function ($) {
         Modal();
         getFavouriteMatchCount();
         MenuPopupHeaderPC();
+        toggleChangeDomainPopup();
     }
 
     return {
