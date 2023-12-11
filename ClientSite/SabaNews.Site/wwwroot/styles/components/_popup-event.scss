@@ -1,101 +1,5 @@
 ﻿.event-modal-home {
-    .modal {
-        background: none !important;
-
-        &.show {
-            max-width: 55rem;
-            top: 12rem;
-            transform: translate(50%,0);
-
-            @include tableMobile {
-                max-width: 35rem;
-            }
-        }
-
-        .modal-body {
-            padding: 0 !important;
-            position: relative;
-
-            .img-pc {
-                display: block;
-
-                @include Mobile {
-                    display: none;
-                }
-            }
-
-            .img-mobile {
-                display: none;
-                text-align: center;
-
-                img {
-                    width: 100%;
-                }
-
-                @include Mobile {
-                    display: block;
-                    padding: 0 1rem;
-                }
-            }
-
-            .control-event {
-                display: flex;
-                align-items: center;
-                position: absolute;
-                bottom: 0;
-                left: 5%;
-                transform: translate(50%,-50%);
-
-                @include Mobile {
-                    bottom: 37%;
-                    right: 50%;
-                    left: auto;
-                }
-
-
-
-                p {
-                    font-size: 1.6rem;
-                    color: #FDE9B2;
-                    line-height: 2.8rem;
-                    margin-left: .7rem;
-                    position: relative;
-                    cursor: pointer;
-                }
-            }
-        }
-
-        .close-login {
-            top: -30px !important;
-            right: -30px !important;
-            background: none !important;
-            width: 3rem;
-            height: 3rem;
-            background: rgba(255, 255, 255, 0.2) !important;
-
-            @include Mobile {
-                top: -35px !important;
-                right: 0 !important;
-            }
-
-            span {
-                color: #FDE9B2;
-                font-size: 2.4rem;
-                color: #fff;
-            }
-        }
-    }
-}
-
-.event-txt {
-    a {
-        color: #0066CC !important;
-    }
-}
-
-
-.modal-body {
-
+    padding: 1rem 1rem 2rem !important;
     .custom-checkbox-container {
         display: block;
         position: relative;
@@ -108,16 +12,12 @@
         font-size: 1.4rem;
         color: #2F2F2F;
         line-height: 2.2rem;
-        position: absolute;
-        bottom: 50px;
-        right: 50%;
-        transform: translate(50%,-50%);
         font-weight: 700;
-
-        @include Mobile {
-            bottom: 25px;
-            right: 50%;
-            left: auto;
+        max-width: 17rem;
+        margin: 0 auto;
+        @include tableMobile{
+            max-width: unset;
+            margin: unset;
         }
     }
 
@@ -165,4 +65,94 @@
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
+    .modal {
+        background: none !important;
+
+        &.show {
+            max-width: 82rem;
+            top: 12rem;
+            transform: translate(50%,0);
+            background: #fff !important;
+            border-radius: 5px;
+            @include tableMobile {
+                max-width: 35rem;
+            }
+        }
+        .event-modal-home{
+            padding: 1rem;
+        }
+
+        .modal-body {
+            padding: 0 !important;
+            position: relative;
+            .img-event{
+                display: block;
+                margin-bottom: 2rem;
+                img{
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+                &.img-pc {
+                    display: block; 
+                    @include Mobile {
+                        display: none;
+                    }
+                }
+                &.img-mobile {
+                    display: none;
+                    @include Mobile {
+                        display: block;
+                    }
+                }
+            }
+            .control-event {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                bottom: 0;
+                left: 5%;
+                transform: translate(50%,-50%);
+
+                @include Mobile {
+                    bottom: 37%;
+                    right: 50%;
+                    left: auto;
+                }
+
+
+
+                p {
+                    font-size: 1.6rem;
+                    color: #FDE9B2;
+                    line-height: 2.8rem;
+                    margin-left: .7rem;
+                    position: relative;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .close-login {
+            top: 20px !important;
+            right: 20px !important;
+            background: none !important;
+            width: 3rem;
+            height: 3rem;
+            background: #fff !important;
+            border-radius: 5px;
+            span {
+                font-size: 2.4rem;
+                color: #E13C29;
+            }
+        }
+    }
 }
+
+.event-txt {
+    a {
+        color: #0066CC !important;
+    }
+}
+
+
