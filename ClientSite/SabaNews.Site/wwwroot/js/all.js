@@ -1,6 +1,5 @@
 var all = (function ($) {
     function LoadMenuHeaderMobile () {
-        console.log(123);
         //button show menu mobile 
         $('.button-mobile').click(function () {
             if ($(window).innerWidth() <= 1024) {
