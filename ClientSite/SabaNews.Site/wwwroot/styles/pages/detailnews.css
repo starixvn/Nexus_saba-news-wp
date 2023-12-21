@@ -4604,3 +4604,7 @@ table.has-fixed-layout {
   display: block;
   min-height: 22.2rem;
 }
+
+.has-text-align-right {
+  text-align: right;
+}
