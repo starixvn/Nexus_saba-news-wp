@@ -413,7 +413,7 @@ function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrid
 	);
 	if($type != "image/webp")
 	{
-		sleep(10);
+		sleep(60);
 	}
 	// This should never be set as it would then overwrite an existing attachment.
 	unset( $attachment['ID'] );
