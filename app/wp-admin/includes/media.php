@@ -430,13 +430,13 @@ function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrid
 		if($type != "image/webp")
 		{
 			sleep(10);
-			wp_update_post(
-				array(
-					'ID'             => $attachment_id,
-					'post_status' => 'inherit',
-				)
-			);
 		}
+		wp_update_post(
+			array(
+				'ID'             => $attachment_id,
+				'post_status' => 'inherit',
+			)
+		);
 	}
 
 	return $attachment_id;
