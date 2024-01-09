@@ -400,6 +400,7 @@ function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrid
 	}
 
 	// Construct the attachment array.
+	$post_status = $type == 'image/webp' ? '' : 'auto-draft';
 	$attachment = array_merge(
 		array(
 			'post_mime_type' => $type,
@@ -408,7 +409,7 @@ function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrid
 			'post_title'     => $title,
 			'post_content'   => $content,
 			'post_excerpt'   => $excerpt,
-			'post_status' => 'auto-draft'
+			'post_status' 	 => $post_status
 		),
 		$post_data
 	);
@@ -430,13 +431,13 @@ function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrid
 		if($type != "image/webp")
 		{
 			sleep(10);
+			wp_update_post(
+				array(
+					'ID'             => $attachment_id,
+					'post_status' => 'inherit',
+				)
+			);
 		}
-		wp_update_post(
-			array(
-				'ID'             => $attachment_id,
-				'post_status' => 'inherit',
-			)
-		);
 	}
 
 	return $attachment_id;
