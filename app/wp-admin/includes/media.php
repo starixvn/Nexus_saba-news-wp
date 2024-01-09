@@ -408,6 +408,7 @@ function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrid
 			'post_title'     => $title,
 			'post_content'   => $content,
 			'post_excerpt'   => $excerpt,
+			'post_status' => 'draft'
 		),
 		$post_data
 	);
