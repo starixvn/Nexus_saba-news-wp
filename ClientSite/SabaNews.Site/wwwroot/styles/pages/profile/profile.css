@@ -3069,7 +3069,13 @@ button {
 }
 
 .event-modal-home {
-  padding: 1rem 1rem 2rem !important;
+  padding: 0 !important;
+}
+.event-modal-home .modal-warning {
+  padding: 1rem 1rem 0 1rem;
+}
+.event-modal-home .wraper-checkbox {
+  padding: 2rem 1rem 2rem 1rem;
 }
 .event-modal-home .custom-checkbox-container {
   display: block;
@@ -3156,7 +3162,6 @@ button {
 }
 .event-modal-home .modal .modal-body .img-event {
   display: block;
-  margin-bottom: 2rem;
 }
 .event-modal-home .modal .modal-body .img-event img {
   width: 100%;

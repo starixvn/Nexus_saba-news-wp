@@ -1,5 +1,11 @@
 ﻿.event-modal-home {
-    padding: 1rem 1rem 2rem !important;
+    padding: 0 !important;
+    .modal-warning {
+        padding: 1rem 1rem 0 1rem;
+    }
+    .wraper-checkbox{
+        padding: 2rem 1rem 2rem 1rem;
+    }
     .custom-checkbox-container {
         display: block;
         position: relative;
@@ -87,7 +93,6 @@
             position: relative;
             .img-event{
                 display: block;
-                margin-bottom: 2rem;
                 img{
                     width: 100%;
                     height: auto;
