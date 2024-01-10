@@ -261,7 +261,7 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var hidePopupEvent = localStorage.getItem('sabasports-hide-popup-event');
+        var hidePopupEvent = localStorage.getItem('ec-hide-popup-event');
         if (hidePopupEvent !== "1") {
             setTimeout(function () {
                 $('#ChangeDomainModal').modal('show');
@@ -272,10 +272,10 @@ var all = (function ($) {
     
         $('#isHidePopupChangeDomain').on('change', function () {
             if ($(this).is(':checked')) {
-                localStorage.setItem("sabasports-hide-popup-event", "1");
+                localStorage.setItem("ec-hide-popup-event", "1");
                 $('#ChangeDomainModal').modal('hide');
             } else {
-                localStorage.setItem("sabasports-hide-popup-event", "0");
+                localStorage.setItem("ec-hide-popup-event", "0");
     
             }
         });
