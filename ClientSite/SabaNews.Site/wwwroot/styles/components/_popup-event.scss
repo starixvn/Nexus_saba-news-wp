@@ -80,6 +80,9 @@
             transform: translate(50%,0);
             background: #fff !important;
             border-radius: 5px;
+            @media (max-width : 1440px){
+                max-width: 52rem;
+            }
             @include tableMobile {
                 max-width: 35rem;
             }
