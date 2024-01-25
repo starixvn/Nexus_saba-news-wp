@@ -71,7 +71,7 @@
 
             if (eventArgs.Exception is not null)
             {
-                await logger.WriteExceptionSentryErrorAsync(eventArgs.Exception);
+                // await logger.WriteExceptionSentryErrorAsync(eventArgs.Exception);
                 logger.WriteLogFileInfo(eventArgs.Exception.Message);
             }
         }
