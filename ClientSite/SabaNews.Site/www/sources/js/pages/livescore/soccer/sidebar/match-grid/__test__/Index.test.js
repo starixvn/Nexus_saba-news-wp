@@ -84,12 +84,12 @@ describe('MatchGrid', () => {
                 {
                     matchId: 1,
                     status:50,
-                    endTime: '2023-09-01',
+                    startTime: '2023-09-01',
                 },
                 {
                     matchId: 2,
                     status:0,
-                    endTime: '2023-11-01',
+                    startTime: '2023-11-01',
                 }
             ]
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
@@ -101,7 +101,7 @@ describe('MatchGrid', () => {
             expect(result).toEqual([{
                 matchId: 2,
                 status:0,
-                endTime: '2023-11-01',
+                startTime: '2023-11-01',
             }]);
         })
     });

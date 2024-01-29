@@ -107,15 +107,15 @@ describe('leagueDetailSlice', () => {
                     }, {
                         type: setMatches.type,
                         payload: [
-                            { matchId: 1, status: 0, stage: { stageId: 1 }, endTime: '2022-05-20' },
-                            { matchId: 2, status: 0, stage: { stageId: 2 }, endTime: '2022-05-25' },
-                            { matchId: 3, status: 50, endTime: '2022-05-24' }
+                            { matchId: 1, status: 0, stage: { stageId: 1 }, startTime: '2022-05-20' },
+                            { matchId: 2, status: 0, stage: { stageId: 2 }, startTime: '2022-05-25' },
+                            { matchId: 3, status: 50, startTime: '2022-05-24' }
                         ]
                     })
                 ).toEqual({
                     stages: [{ stageId: 1 }, { stageId: 2 }],
-                    preMatches: [{ matchId: 2, status: 0, stage: { stageId: 2 }, endTime: '2022-05-25' }],
-                    postMatches: [{ matchId: 3, status: 50, endTime: '2022-05-24' }],
+                    preMatches: [{ matchId: 2, status: 0, stage: { stageId: 2 }, startTime: '2022-05-25' }],
+                    postMatches: [{ matchId: 3, status: 50, startTime: '2022-05-24' }],
                     seasonStandings: []
                 });
             });
