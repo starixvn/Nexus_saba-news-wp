@@ -34,10 +34,10 @@ export default class MatchGrid extends PureComponent {
         const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
         for (let i = 0; i < matches.length; i++) {
             const match = matches[i];
-            const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
-            if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(endTime).isSameOrAfter(today)) {
+            const startTime = dayjs(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
+            if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(startTime).isSameOrAfter(today)) {
                 preMatches.push(match);
-            }   
+            }
         }
         return preMatches;
     };

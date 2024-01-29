@@ -38,11 +38,10 @@ const favouriteMatchSlice = createSlice({
                 const match = matchesTmp[i];
                 const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
                 const startTime = dayjs(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
-                const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
 
                 if ((match.status === MatchStatus.NotStarted || match.status === MatchStatus.Delay
                     || match.status === MatchStatus.Postpone || match.status === MatchStatus.TBD)
-                    && (dayjs(startTime).isSameOrAfter(today) || dayjs(endTime).isSameOrAfter(today))) {
+                    && (dayjs(startTime).isSameOrAfter(today))) {
                     preMatches.push(match);
                 }
 

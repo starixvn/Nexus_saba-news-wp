@@ -32,12 +32,12 @@ const leagueDetailSlice = createSlice({
             for (let i = 0; i < totalItems; i++) {
                 const match = matches[i];
                 const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
-                const endTime = dayjs(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
+                const startTime = dayjs(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
                 if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
                     stages.push(match.stage);
                 }
 
-                if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(endTime).isSameOrAfter(today)) {
+                if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(startTime).isSameOrAfter(today)) {
                     preMatches.push(match);
                 }
 
