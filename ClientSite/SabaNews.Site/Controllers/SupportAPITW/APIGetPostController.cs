@@ -40,7 +40,7 @@
             {
                 if (cacheConfigs.Enabled)
                 {
-                    var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, getDataView.LastTimestamp, getDataView.Category, getDataView.Subject);
+                    var cacheKey = string.Format("{0}{1}{2}{3}{4}", CacheKey.GetPostList, getDataView.LastTimestamp, getDataView.Category, getDataView.Subject, getDataView.StartItem + " - " + getDataView.RowLimit);
                     posts = await cacheService.GetAsync<IList<GetData>>(cacheKey);
                     if (posts is null)
                     {
