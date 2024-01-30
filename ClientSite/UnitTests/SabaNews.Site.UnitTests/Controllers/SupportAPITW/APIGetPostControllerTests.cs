@@ -29,7 +29,7 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             var controller = GetController();
             var param = fixture.Create<GetDataViewModel>();
             var expectedPosts = fixture.Create<IList<GetData>>();
-            var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, param.LastTimestamp, param.Category, param.Subject);
+            var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, param.FromDate, param.Category, param.Subject);
 
             controller.ControllerContext = new ControllerContext
             {

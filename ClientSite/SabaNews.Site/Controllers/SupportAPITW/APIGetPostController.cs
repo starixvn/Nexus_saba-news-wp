@@ -35,8 +35,8 @@
         {
             var token = Request.Headers["Token"];
             IList<GetData> posts = new List<GetData>();
-
-            if (GetDataViewModel.IsValid(token))
+            var (isValid, errMess) = IsValid(token, getDataView.RowLimit);
+            if (isValid)
             {
                 if (cacheConfigs.Enabled)
                 {
@@ -57,8 +57,12 @@
                 {
                     posts = await postService.GetPostlist(getDataView);
                 }
+                return Json(posts);
             }
-            return Json(posts);
+            else
+            {
+                return Json(errMess);
+            }
         }
 
         [HttpGet]
@@ -67,7 +71,8 @@
         {
             var token = Request.Headers["Token"];
             var posts = new GetDetailContent();
-            if (GetDataViewModel.IsValid(token))
+            var (isValid, errMess) = IsValid(token, 0);
+            if (isValid)
             {
                 if (cacheConfigs.Enabled)
                 {
@@ -88,8 +93,26 @@
                 {
                     posts = await postService.GetPostDetailContent(getDataView);
                 }
+                return Json(posts);
             }
-            return Json(posts);
+            else
+            {
+                return Json(errMess);
+            }
+        }
+
+        private static (bool, string) IsValid(string token, int rowLimit) 
+        {
+            var isValid = false;
+            if(token == null || !token.Equals(Constants.TokenAPIGetData))
+            {
+                return (isValid, Constants.TokenIsValidMessage);
+            }
+            if(rowLimit > 1000)
+            {
+                return (isValid, Constants.RowLimitMessage);
+            }
+            return (true, "");
         }
     }
 }

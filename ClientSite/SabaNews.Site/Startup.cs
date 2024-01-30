@@ -490,9 +490,6 @@
                     "/lib/swipper/js/swiper-bundle.min.js",
                     "/js/event/worldcup2022/worldcup.js"
                 );
-
-                pipeline.MinifyCssFiles();
-                pipeline.MinifyJsFiles();
             });
         }
     }

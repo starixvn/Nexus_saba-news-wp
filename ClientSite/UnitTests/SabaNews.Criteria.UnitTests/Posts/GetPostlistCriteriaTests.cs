@@ -32,7 +32,7 @@ namespace SabaNews.Criteria.UnitTests.Posts
             // Arrange
             var criteria = new GetPostlistCriteria()
             {
-                _ToDate = DateTime.Now,
+                _fromDate = DateTime.Now,
                 _Category = 1,
                 _Subject = 1
             };

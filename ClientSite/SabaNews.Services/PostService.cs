@@ -222,7 +222,14 @@
         {
             DateTime dateTime = DateTimeOffset.UnixEpoch.DateTime;
             dateTime = dateTime.AddSeconds(getData.LastTimestamp).ToLocalTime();
-            var criteria = new GetPostlistCriteria { _ToDate = dateTime, _Category = getData.Category, _Subject = getData.Subject };
+            var criteria = new GetPostlistCriteria
+            {
+                _fromDate = dateTime,
+                _Category = getData.Category,
+                _Subject = getData.Subject,
+                _startItem = getData.StartItem,
+                _rowLimit = getData.RowLimit
+            };
             var result = await baseService.GetDataAsync<GetData>(criteria);
             result.ToList().ForEach(x => x.FormatDate());
             return result.ToList();
