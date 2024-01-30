@@ -12,7 +12,7 @@ namespace SabaNews.Models.ViewModel.Posts
         public int Subject { get; set; }
         public int LangKey { get; set; }
         public int StartItem  { get; set; } = 0;
-        public int RowLimit { get; set; } = 10;
+        public int RowLimit { get; set; } = Constants.ApiDefaultRowLimit;
 
         public static bool IsValid(string token) => token != null && token.Equals(Constants.TokenAPIGetData);
     }

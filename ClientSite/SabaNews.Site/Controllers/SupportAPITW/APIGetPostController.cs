@@ -108,7 +108,7 @@
             {
                 return (isValid, Constants.TokenIsValidMessage);
             }
-            if(rowLimit > 1000)
+            if(rowLimit > Constants.ApiRowLimit)
             {
                 return (isValid, Constants.RowLimitMessage);
             }
