@@ -96,7 +96,7 @@
         }
 
         [HttpGet]
-        [Route("api/post/deletedList")]
+        [Route("api/post/GetDeletedPost")]
         public async Task<IActionResult> GetDeletedList(ApiDeleteListModel model)
         {
             var token = Request.Headers["Token"];
@@ -128,7 +128,7 @@
             return Json(postIds);
         }
 
-        private static (bool, string) IsValid(string token, int rowLimit) 
+        private static (bool, string) IsValid(string token, int rowLimit)
         {
             var isValid = false;
             if(token == null || !token.Equals(Constants.TokenAPIGetData))
