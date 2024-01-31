@@ -16,5 +16,6 @@
         public int LikeCount { get; set; }
         public string UrlSlug { get; set; }
         public string SabaVideoContent { get; set; }
+        public string SabaVideoUrl { get; set; }
     }
 }

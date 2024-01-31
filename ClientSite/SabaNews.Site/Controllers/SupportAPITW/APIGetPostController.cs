@@ -12,6 +12,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Site.Extensions;
 
     public class APIGetPostController : Controller
     {
@@ -92,6 +93,7 @@
             {
                 posts = await postService.GetPostDetailContent(getDataView);
             }
+            posts.SabaVideoUrl = PostHelper.GetVideoLink(posts.SabaVideoContent);
             return Json(posts);
         }
 

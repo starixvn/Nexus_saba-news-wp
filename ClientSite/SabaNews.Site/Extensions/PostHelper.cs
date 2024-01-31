@@ -200,5 +200,17 @@
             return matchId;
         }
 
+        public static string GetVideoLink(string content)
+        {
+            var videoUrl = "";
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(content);
+            var matchNode = document.DocumentNode.SelectSingleNode("//iframe");
+            if(matchNode != null) {
+                videoUrl = matchNode.Attributes["src"].Value;
+            }
+            return videoUrl;
+        }
+
     }
 }
