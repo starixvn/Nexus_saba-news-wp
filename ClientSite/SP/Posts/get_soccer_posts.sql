@@ -12,17 +12,13 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_soccer_posts`(
     /*
 		Creator: Hank@20230130
         Revisions:
-			- 20230130@Hank: init
+			- 20240130@Hank: init
+            - 20240131@Hank: get soccer post except basketball
     */
 )
 BEGIN
-	DECLARE basketballCateId INT;
     DROP TEMPORARY TABLE IF EXISTS tmp_PostIds;
     CREATE TEMPORARY TABLE tmp_PostIds (PostId BIGINT PRIMARY KEY);
-    	
-	SELECT t.term_id INTO basketballCateId 
-    FROM wp_terms t INNER JOIN wp_term_taxonomy tt ON tt.term_id = t.term_id AND tt.taxonomy = "category"
-    WHERE t.slug = "bong-ro";
     
     INSERT INTO tmp_PostIds (PostId)
     SELECT p.id
@@ -32,8 +28,8 @@ BEGIN
 					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "post_format"
                     INNER JOIN wp_terms as t ON t.term_id = tt.term_id AND t.slug = "post-format-video")
 	AND ID NOT IN (SELECT tr.object_id from wp_term_relationships as tr 
-					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND (tt.term_id = basketballCateId OR tt.parent = basketballCateId)
-                    )
+					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+                    INNER JOIN wp_terms as t ON t.term_id = tt.parent AND (t.slug = "bong-ro" OR t.slug =  "the-thao" ))
 	ORDER BY p.post_date DESC
 	LIMIT _startItem, _rowLimit;
     
