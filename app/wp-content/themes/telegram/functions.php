@@ -351,3 +351,10 @@ function custom_post_type() {
 
 }
 add_action( 'init', 'custom_post_type', 0 );
+
+
+//remove action deletes trashed item auto
+function wpb_remove_schedule_delete() {
+    remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
+}
+add_action( 'init', 'wpb_remove_schedule_delete' );
