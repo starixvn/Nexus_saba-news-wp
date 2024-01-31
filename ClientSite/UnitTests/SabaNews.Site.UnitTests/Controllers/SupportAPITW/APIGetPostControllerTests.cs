@@ -29,8 +29,8 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             var controller = GetController();
             var param = fixture.Create<GetDataViewModel>();
             var expectedPosts = fixture.Create<IList<GetData>>();
-            var cacheKey = string.Format("{0}{1}{2}{3}", CacheKey.GetPostList, param.FromDate, param.Category, param.Subject);
-
+            var cacheKey = string.Format("{0}{1}{2}{3}{4}", CacheKey.GetPostList, param.LastTimestamp, param.Category, param.Subject, param.StartItem + " - " + param.RowLimit);
+            param.RowLimit = 100;
             controller.ControllerContext = new ControllerContext
             {
                 HttpContext = new DefaultHttpContext()
@@ -38,7 +38,7 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
 
             postService.GetPostlist(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
-            cacheService.GetAsync<IList<GetData>>(cacheKey).Returns(expectedPosts);
+            cacheService.GetAsync<IList<GetData>>(Arg.Do<string>(x => x = cacheKey)).Returns(expectedPosts);
             //Act
             var result = await controller.GetPostList(param);
 
@@ -64,7 +64,7 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
 
             postService.GetPostDetailContent(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
-            cacheService.GetAsync<GetDetailContent>(cacheKey).Returns(expectedPosts);
+            cacheService.GetAsync<GetDetailContent>(Arg.Do<string>(x => x = cacheKey)).Returns(expectedPosts);
             //Act
             var result = await controller.GetDetailContent(param);
 

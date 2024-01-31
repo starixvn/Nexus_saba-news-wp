@@ -36,33 +36,30 @@
             var token = Request.Headers["Token"];
             IList<GetData> posts = new List<GetData>();
             var (isValid, errMess) = IsValid(token, getDataView.RowLimit);
-            if (isValid)
-            {
-                if (cacheConfigs.Enabled)
-                {
-                    var cacheKey = string.Format("{0}{1}{2}{3}{4}", CacheKey.GetPostList, getDataView.LastTimestamp, getDataView.Category, getDataView.Subject, getDataView.StartItem + " - " + getDataView.RowLimit);
-                    posts = await cacheService.GetAsync<IList<GetData>>(cacheKey);
-                    if (posts is null)
-                    {
-                        posts = await postService.GetPostlist(getDataView);
-
-                        await cacheService.SetAsync(cacheKey, posts,
-                            new CacheItemOptions
-                            {
-                                RelativeExpiration = TimeSpan.FromMinutes(1)
-                            });
-                    }
-                }
-                else
-                {
-                    posts = await postService.GetPostlist(getDataView);
-                }
-                return Json(posts);
-            }
-            else
+            if(!isValid)
             {
                 return Json(errMess);
             }
+            if (cacheConfigs.Enabled)
+            {
+                var cacheKey = string.Format("{0}{1}{2}{3}{4}", CacheKey.GetPostList, getDataView.LastTimestamp, getDataView.Category, getDataView.Subject, getDataView.StartItem + " - " + getDataView.RowLimit);
+                posts = await cacheService.GetAsync<IList<GetData>>(cacheKey);
+                if (posts is null)
+                {
+                    posts = await postService.GetPostlist(getDataView);
+
+                    await cacheService.SetAsync(cacheKey, posts,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(1)
+                        });
+                }
+            }
+            else
+            {
+                posts = await postService.GetPostlist(getDataView);
+            }
+            return Json(posts);
         }
 
         [HttpGet]
@@ -72,33 +69,30 @@
             var token = Request.Headers["Token"];
             var posts = new GetDetailContent();
             var (isValid, errMess) = IsValid(token, 0);
-            if (isValid)
-            {
-                if (cacheConfigs.Enabled)
-                {
-                    var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, getDataView.PostId);
-                    posts = await cacheService.GetAsync<GetDetailContent>(cacheKey);
-                    if (posts is null)
-                    {
-                        posts = await postService.GetPostDetailContent(getDataView);
-
-                        await cacheService.SetAsync(cacheKey, posts,
-                            new CacheItemOptions
-                            {
-                                RelativeExpiration = TimeSpan.FromMinutes(1)
-                            });
-                    }
-                }
-                else
-                {
-                    posts = await postService.GetPostDetailContent(getDataView);
-                }
-                return Json(posts);
-            }
-            else
+            if(!isValid)
             {
                 return Json(errMess);
             }
+            if (cacheConfigs.Enabled)
+            {
+                var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, getDataView.PostId);
+                posts = await cacheService.GetAsync<GetDetailContent>(cacheKey);
+                if (posts is null)
+                {
+                    posts = await postService.GetPostDetailContent(getDataView);
+
+                    await cacheService.SetAsync(cacheKey, posts,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(1)
+                        });
+                }
+            }
+            else
+            {
+                posts = await postService.GetPostDetailContent(getDataView);
+            }
+            return Json(posts);
         }
 
         private static (bool, string) IsValid(string token, int rowLimit) 
