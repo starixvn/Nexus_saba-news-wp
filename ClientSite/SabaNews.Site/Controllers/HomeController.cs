@@ -21,6 +21,7 @@
 
     public class HomeController : Controller
     {
+        private readonly IPathService pathService;
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IUserService userService;
@@ -30,11 +31,13 @@
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
-            IUserService userService)
+            IUserService userService,
+             IPathService pathService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.userService = userService;
+            this.pathService = pathService;
             domain = configuration.GetValue<string>("BaseUrl");
         }
 
@@ -413,6 +416,27 @@
             posts = posts.Take(limitItem);
             ViewBag.Slug = slug;
             return PartialView("_CategorySidebar", posts);
+        }
+        [HttpPost]
+        [Route("api/CountBanner")]
+        public ActionResult UpdateBannerCount()
+        {
+            var count = 1;
+            var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + "banner/CountBanner.txt");
+            if (!System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Create(filePath).Dispose();
+            }
+            else
+            {
+                using (var sr = new System.IO.StreamReader(filePath))
+                {
+                    count = Int32.Parse(sr.ReadToEnd()) + 1;
+                }
+            }
+            using System.IO.StreamWriter w = System.IO.File.CreateText(filePath);
+            w.Write(count);
+            return Json(filePath);
         }
     }
 }

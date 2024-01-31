@@ -276,9 +276,23 @@ var all = (function ($) {
                 $('#ChangeDomainModal').modal('hide');
             } else {
                 localStorage.setItem("ec-hide-popup-event", "0");
-    
             }
         });
+    }
+
+    function CountBannerClick()
+    {
+        $(document).on('click', '.show-pc.banner-left', function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/api/CountBanner',
+                success: function(res)
+                {
+                    console.log(1);
+                }
+            })
+        })
     }
     
 
@@ -295,6 +309,7 @@ var all = (function ($) {
         getFavouriteMatchCount();
         MenuPopupHeaderPC();
         toggleChangeDomainPopup();
+        CountBannerClick();
     }
 
     return {
