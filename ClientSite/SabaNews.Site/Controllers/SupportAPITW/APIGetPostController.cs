@@ -95,6 +95,39 @@
             return Json(posts);
         }
 
+        [HttpGet]
+        [Route("api/post/deletedList")]
+        public async Task<IActionResult> GetDeletedList(ApiDeleteListModel model)
+        {
+            var token = Request.Headers["Token"];
+            var postIds = new List<long>();
+            var (isValid, errMess) = IsValid(token, 0);
+            if(!isValid)
+            {
+                return Json(errMess);
+            }
+            if (cacheConfigs.Enabled)
+            {
+                var cacheKey = CacheKey.GetPostDeletedList;
+                postIds = await cacheService.GetAsync<List<long>>(cacheKey);
+                if (postIds is null)
+                {
+                    postIds = await postService.GetDeletedList(model);
+
+                    await cacheService.SetAsync(cacheKey, postIds,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(1)
+                        });
+                }
+            }
+            else
+            {
+                postIds = await postService.GetDeletedList(model);
+            }
+            return Json(postIds);
+        }
+
         private static (bool, string) IsValid(string token, int rowLimit) 
         {
             var isValid = false;

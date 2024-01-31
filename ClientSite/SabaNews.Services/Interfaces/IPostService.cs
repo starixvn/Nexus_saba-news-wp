@@ -58,6 +58,7 @@
         Task<IEnumerable<Post>> GetPostsByCateSlugsPaging(GetPostsByCateSlugsPagingCriteria criteria);
         Task<IList<GetData>> GetPostlist(GetDataViewModel getData);
         Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData);
+        Task<List<long>> GetDeletedList(ApiDeleteListModel param);
 
         Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug);
 

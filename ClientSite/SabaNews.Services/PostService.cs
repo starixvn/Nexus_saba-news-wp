@@ -254,6 +254,18 @@
             return result;
         }
 
+        public async Task<List<long>> GetDeletedList(ApiDeleteListModel param)
+        {
+            DateTime dateTime = DateTimeOffset.UnixEpoch.DateTime;
+            dateTime = dateTime.AddSeconds(param.LastTimestamp).ToLocalTime();
+            var criteria = new GetPostDeletedListCriteria
+            {
+                FromDate = dateTime,
+            };
+            var result = await baseService.GetDataAsync<long>(criteria);
+            return result.ToList();
+        }
+
         public async Task<IEnumerable<Post>> GetPostsByAuthor(GetPostsByAuthorCriteria criteria)
         {
             var result = await baseService.GetDataAsync<Post>(criteria);

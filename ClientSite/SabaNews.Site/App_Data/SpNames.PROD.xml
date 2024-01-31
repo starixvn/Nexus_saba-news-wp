@@ -211,8 +211,6 @@
         <Setting Key="Livescore_League_Get" SpName="Livescore_League_Get_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_League_GetSeasonStandings" SpName="Livescore_League_GetSeasonStandings" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Top_Scorers_GetTop10" SpName="Livescore_Top_Scorers_GetTop10" DbName="sabasports" Plain="0"></Setting>
-        <Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />
-        <Setting Key="get_posts" SpName="get_posts" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Top_Scorers_Insert" SpName="Livescore_Top_Scorers_Insert" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Top_Scorers_Update" SpName="Livescore_Top_Scorers_Update" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_Top_Scorers_GetByRow" SpName="Livescore_Top_Scorers_GetByRow" DbName="sabasports" Plain="0"></Setting>
@@ -245,5 +243,10 @@
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
+    </Function>
+    <Function Name="Api">
+        <Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />
+		<Setting Key="get_posts" SpName="get_posts" DbName="sabasports" Plain="0" />
+        <Setting Key="post_get_deleted" SpName="post_get_deleted" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>
