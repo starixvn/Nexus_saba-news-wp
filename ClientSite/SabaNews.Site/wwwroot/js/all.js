@@ -282,8 +282,8 @@ var all = (function ($) {
 
     function CountBannerClick()
     {
-        $(document).on('click', '.show-pc.banner-left', function(e){
-            e.preventDefault();
+        $(document).on('click', '.show-pc.banner-left, .show-mobile.banner-mobile-top', function(e){
+            var src = $(this).find('img').attr('src');
             $.ajax({
                 type: 'POST',
                 url: '/api/CountBanner',

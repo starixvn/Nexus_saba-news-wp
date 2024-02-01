@@ -18,6 +18,7 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
+    using SabaNews.Core.Helper;
 
     public class HomeController : Controller
     {
@@ -32,7 +33,7 @@
             IDataControlService dataControlService,
             IConfiguration configuration,
             IUserService userService,
-             IPathService pathService)
+            IPathService pathService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
@@ -421,6 +422,12 @@
         [Route("api/CountBanner")]
         public ActionResult UpdateBannerCount()
         {
+            var now = DateTime.UtcNow;
+            var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
+            if(now > deadLine)
+            {
+                return Json(null);
+            }
             var count = 1;
             var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + "banner/CountBanner.txt");
             if (!System.IO.File.Exists(filePath))
