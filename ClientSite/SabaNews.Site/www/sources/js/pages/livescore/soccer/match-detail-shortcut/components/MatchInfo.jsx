@@ -172,7 +172,7 @@ export default class MatchInfo extends PureComponent {
         const isIntermission = match.status === MatchStatus.Intermission;
         var startDate =  DateTimeService.convertFromUTC(match.startTime);
         return (
-            <div className="duel-participant">
+            <div className="duel-participant post-detail">
                 <div className="league-and-time">
                     <ul className="league" onClick={event => this.handleClickLeague(event, match.league)}>
                         <li className="league-logo">
