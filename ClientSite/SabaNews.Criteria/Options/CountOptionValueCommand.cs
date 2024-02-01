@@ -1,7 +1,5 @@
 ﻿namespace SabaNews.Criteria.Options
 {
-    using Fanex.Data.Repository;
-
     public class CountOptionValueCommand : BaseNonQueryCommand
     {
         public string OptionKey { get; set; }

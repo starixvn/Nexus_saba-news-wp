@@ -1,5 +1,4 @@
-﻿using SabaNews.Core.Constants;
-
+﻿
 namespace SabaNews.Models.ViewModel.Posts
 {
     public class ApiDeleteListModel
