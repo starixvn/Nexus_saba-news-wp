@@ -50,6 +50,23 @@
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task CountOptionValueAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetOptionService();
+            var key = "key";
+            var cmd = fixture.Create<CountOptionValueCommand>();
+            var expected = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<CountOptionValueCommand>(x => cmd = x)).Returns(expected);
+
+            //Act
+            var actual = await service.CountOptionValueAsync(key);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
         #region Helpers
         private OptionService GetOptionService()
         {
