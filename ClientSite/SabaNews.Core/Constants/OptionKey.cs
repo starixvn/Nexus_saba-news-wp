@@ -11,5 +11,7 @@
         public const string YoastSEOSetting = "wpseo_titles";
 
         public const string StickyPost = "sticky_posts";
+
+        public const string BannerClickCount = "banner_click_count";
     }
 }

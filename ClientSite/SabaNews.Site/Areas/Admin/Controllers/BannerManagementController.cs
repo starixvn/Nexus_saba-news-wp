@@ -71,5 +71,11 @@
             var result = await optionService.UpdateOptionAsync(type, url, sessionService.User.Id);
             return Json(result);
         }
+
+         public async Task<IActionResult> TrackingBannerClick()
+        {
+            var option = await optionService.GetOptionAsync(OptionKey.BannerClickCount);
+            return Json(option?.OptionValue);
+        }
     }
 }

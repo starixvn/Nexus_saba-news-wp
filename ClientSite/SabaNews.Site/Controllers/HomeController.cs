@@ -18,23 +18,27 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
+    using SabaNews.Core.Helper;
 
     public class HomeController : Controller
     {
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IUserService userService;
+        private readonly IOptionService optionService;
         private readonly string domain;
 
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
-            IUserService userService)
+            IUserService userService,
+            IOptionService optionService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.userService = userService;
+            this.optionService = optionService;
             domain = configuration.GetValue<string>("BaseUrl");
         }
 
@@ -414,6 +418,18 @@
             ViewBag.Slug = slug;
             return PartialView("_CategorySidebar", posts);
         }
-        
+        [HttpPost]
+        [Route("api/CountBanner")]
+        public async Task<IActionResult> UpdateBannerCount()
+        {
+            var now = DateTimeUtilize.UtcNow();
+            var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
+            if(now.DateTime > deadLine.DateTime)
+            {
+                return Json(null);
+            }
+            var cmd = await optionService.CountOptionValueAsync(OptionKey.BannerClickCount);
+            return Json(cmd);
+        }
     }
 }

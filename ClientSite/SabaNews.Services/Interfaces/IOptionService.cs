@@ -8,5 +8,6 @@
     {
         Task<CommandResult> UpdateOptionAsync(string key, string value, long actorId = 0);
         Task<Option> GetOptionAsync(string Key);
+        Task<CommandResult> CountOptionValueAsync(string Key);
     }
 }

@@ -26,5 +26,12 @@
             var result = await baseService.GetDataEntityAsync<Option>(criteria);
             return result;
         }
+
+        public async Task<CommandResult> CountOptionValueAsync(string Key)
+        {
+            var cmd = new CountOptionValueCommand { OptionKey = Key };
+            var result = await baseService.ExecuteNonQueryAsync(cmd);
+            return result;
+        }
     }
 }

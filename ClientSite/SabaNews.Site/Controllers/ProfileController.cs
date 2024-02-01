@@ -263,32 +263,6 @@
             return Redirect(returnUrl);
         }
 
-        [HttpPost]
-        [Route("api/CountBanner")]
-        public ActionResult UpdateBannerCount()
-        {
-            var now = DateTimeUtilize.UtcNow();
-            var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
-            if(now.DateTime > deadLine.DateTime)
-            {
-                return Json(null);
-            }
-            var count = 1;
-            var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + "banner/CountBanner.txt");
-            if (!System.IO.File.Exists(filePath))
-            {
-                System.IO.File.Create(filePath).Dispose();
-            }
-            else
-            {
-                using (var sr = new System.IO.StreamReader(filePath))
-                {
-                    count = Int32.Parse(sr.ReadToEnd()) + 1;
-                }
-            }
-            using System.IO.StreamWriter w = System.IO.File.CreateText(filePath);
-            w.Write(count);
-            return Json(filePath);
-        }
+        
     }
 }

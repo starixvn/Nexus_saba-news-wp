@@ -4,7 +4,6 @@
     using SabaNews.Models;
     using SabaNews.Services.Interfaces;
     using System.IO;
-    using SabaNews.Core.Constants;
 
     public class LogController : AdminController
     {
@@ -24,17 +23,6 @@
                     Log = sr.ReadToEnd().Replace("\r\n", "<br>")
                 };
                 return View(model);
-            }
-            return Json(null);
-        }
-
-        public IActionResult TrackingCountBanner()
-        {
-            var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + "banner/CountBanner.txt");
-            if (System.IO.File.Exists(filePath))
-            {
-                using var sr = new StreamReader(filePath);
-                return Json(sr.ReadToEnd());
             }
             return Json(null);
         }
