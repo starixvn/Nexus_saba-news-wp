@@ -95,10 +95,11 @@
   }
 }
 #match-detail .duel-participant .flex-league {
-  align-items: flex-start;
+  align-items: flex-start !important;
 }
 #match-detail .duel-participant .flex-league .column-left ul {
   margin-bottom: 0.6rem;
+  margin-left: 0;
 }
 @media (max-width: 767px) {
   #match-detail .duel-participant .flex-league .column-left ul {
@@ -107,6 +108,9 @@
 }
 #match-detail .duel-participant .flex-league .column-left ul li span {
   line-height: 2.4rem;
+}
+#match-detail .duel-participant .flex-league .column-right ul {
+  margin-left: 0;
 }
 #match-detail .duel-participant .flex-league.live .soccer-match-stage span {
   font-size: 1.2rem;
@@ -364,6 +368,7 @@
 #match-detail .duel-participant .flex-league .column.away-team .participant-detail-group .name-player {
   margin-left: 0.6rem;
   max-width: 16rem;
+  line-height: 2.4rem;
 }
 @media (max-width: 767px) {
   #match-detail .duel-participant .flex-league .column.away-team .participant-detail-group .name-player {

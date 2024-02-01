@@ -24,6 +24,7 @@
             .column-left{
                 ul{
                     margin-bottom: .6rem;
+                    margin-left: 0;
                     @include Mobile{
                         margin-bottom: .4rem;
                     }
@@ -32,6 +33,11 @@
                             line-height: 2.4rem;
                         }
                     }
+                }
+            }
+            .column-right{
+                ul{
+                    margin-left: 0;
                 }
             }
             &.live{
@@ -249,7 +255,6 @@
                                 order: 1;
                                 margin-right: .6rem;
                                 max-width: 16rem;
-    
                                 @include Mobile {
                                     margin-right: .6rem;
                                     line-height: 1;
@@ -300,7 +305,7 @@
                             .name-player {
                                 margin-left: .6rem;
                                 max-width: 16rem;
-    
+                                line-height: 2.4rem;
                                 @include Mobile {
                                     margin-left: .6rem;
                                     line-height: 1;
