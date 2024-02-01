@@ -18,11 +18,9 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
-    using SabaNews.Core.Helper;
 
     public class HomeController : Controller
     {
-        private readonly IPathService pathService;
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IUserService userService;
@@ -32,13 +30,11 @@
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
-            IUserService userService,
-            IPathService pathService)
+            IUserService userService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.userService = userService;
-            this.pathService = pathService;
             domain = configuration.GetValue<string>("BaseUrl");
         }
 
@@ -418,32 +414,6 @@
             ViewBag.Slug = slug;
             return PartialView("_CategorySidebar", posts);
         }
-        [HttpPost]
-        [Route("api/CountBanner")]
-        public ActionResult UpdateBannerCount()
-        {
-            var now = DateTime.UtcNow;
-            var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
-            if(now > deadLine)
-            {
-                return Json(null);
-            }
-            var count = 1;
-            var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + "banner/CountBanner.txt");
-            if (!System.IO.File.Exists(filePath))
-            {
-                System.IO.File.Create(filePath).Dispose();
-            }
-            else
-            {
-                using (var sr = new System.IO.StreamReader(filePath))
-                {
-                    count = Int32.Parse(sr.ReadToEnd()) + 1;
-                }
-            }
-            using System.IO.StreamWriter w = System.IO.File.CreateText(filePath);
-            w.Write(count);
-            return Json(filePath);
-        }
+        
     }
 }
