@@ -27,6 +27,7 @@
         private IPostService postService;
         private IConfiguration configuration;
         private IUserService userService;
+        private IOptionService optionService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -817,7 +818,8 @@
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             userService = Substitute.For<IUserService>();
-            var controller = new HomeController(postService, dataControlService, configuration, userService);
+            optionService =  Substitute.For<IOptionService>();;
+            var controller = new HomeController(postService, dataControlService, configuration, userService, optionService);
 
             return controller;
         }
