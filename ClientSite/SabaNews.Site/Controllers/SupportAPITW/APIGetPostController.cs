@@ -93,7 +93,10 @@
             {
                 posts = await postService.GetPostDetailContent(getDataView);
             }
-            posts.SabaVideoUrl = PostHelper.GetVideoLink(posts.SabaVideoContent);
+            if(posts != null && posts.Category == Constants.ApiVideoCategory)
+            {
+                posts.SabaVideoUrl = PostHelper.GetVideoLink(posts.SabaVideoContent);
+            }
             return Json(posts);
         }
 

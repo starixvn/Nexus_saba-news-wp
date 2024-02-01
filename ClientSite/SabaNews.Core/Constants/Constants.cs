@@ -202,6 +202,8 @@
         public const string TokenAPIGetData = "U0FCQSBTUE9SVFMgaMOyYSB2w6BvIGN14buZYyBjaMahaSE=";
         public const int ApiRowLimit = 1000;
         public const int ApiDefaultRowLimit = 100;
+        public const int ApiVideoCategory = 4;
+        public const int ApiArticleCategory = 3;
         public const string TokenIsValidMessage = "Token is invalid";
         public const string RowLimitMessage = "RowLimit max is 1000";
         public const string TodayLiveFixtureTag = "truc-tiep-bong-da-hom-nay";

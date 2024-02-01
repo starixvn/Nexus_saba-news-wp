@@ -237,19 +237,24 @@
 
         public async Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData)
         {
-            var post = await baseService.GetDataAsync<Post>(new GetPostDetailContentCriteria { _postId = getData.PostId });
+           var post = await baseService.GetDataEntityAsync<Post>(new GetPostDetailContentCriteria { _postId = getData.PostId });
+            if(post == null)
+            {
+                return null;
+            }
+            var isVideo = CheckVideo(post.CategoriesSlug);
             var result = new GetDetailContent
             {
-                PostId = post.First().ID,
-                Title = post.First().PostTitle,
-                PublishDate = post.First().PostDateGMT.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                Subjects = post.First().CategoriesSlug != null ? HandleSubjects(post.First().CategoriesSlug) : null,
-                Content = CheckVideo(post.First().CategoriesSlug) ? null : post.First().PostContent,
-                SabaVideoContent = CheckVideo(post.First().CategoriesSlug) ? post.First().PostContent : null,
-                EditorId = post.First().EditorId,
-                Tags = post.First().Tags != null ? HandleTags(post.First().Tags) : null,
-                Category = CheckVideo(post.First().CategoriesSlug) ? Constants.GetFourItems : Constants.GetThreeItems,
-                UrlSlug = configuration.GetValue<string>("BaseUrl") + post.First().PostName
+                PostId = post.ID,
+                Title = post.PostTitle,
+                PublishDate = post.PostDateGMT.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                Subjects = post.CategoriesSlug != null ? HandleSubjects(post.CategoriesSlug) : null,
+                Content = isVideo ? null : post.PostContent,
+                SabaVideoContent = isVideo ? post.PostContent : null,
+                EditorId = post.EditorId,
+                Tags = post.Tags != null ? HandleTags(post.Tags) : null,
+                Category = isVideo ? Constants.ApiVideoCategory : Constants.ApiArticleCategory,
+                UrlSlug = $"{configuration.GetValue<string>("BaseUrl")}{post.PostName}-{post.ID}.html"
             };
             return result;
         }
