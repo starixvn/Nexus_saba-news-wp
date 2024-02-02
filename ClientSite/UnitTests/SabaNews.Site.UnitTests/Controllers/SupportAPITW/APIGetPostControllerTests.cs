@@ -54,7 +54,7 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             // Arrange
             var controller = GetController();
             var param = fixture.Create<GetDataViewModel>();
-            var expectedPosts = fixture.Create<GetDetailContent>();
+            var expectedPosts = fixture.Create<ApiPostDetailModel>();
             var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, param.PostId);
 
             controller.ControllerContext = new ControllerContext
@@ -64,13 +64,39 @@ namespace SabaNews.Site.UnitTests.Controllers.SupportAPITW
             controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
 
             postService.GetPostDetailContent(Arg.Do<GetDataViewModel>(x => param = x)).Returns(expectedPosts);
-            cacheService.GetAsync<GetDetailContent>(Arg.Do<string>(x => x = cacheKey)).Returns(expectedPosts);
+            cacheService.GetAsync<ApiPostDetailModel>(Arg.Do<string>(x => x = cacheKey)).Returns(expectedPosts);
             //Act
             var result = await controller.GetDetailContent(param);
 
             // Assert
             var okResult = Assert.IsType<JsonResult>(result);
-            var posts = Assert.IsAssignableFrom<GetDetailContent>(okResult.Value);
+            var posts = Assert.IsAssignableFrom<ApiPostDetailModel>(okResult.Value);
+            Assert.Equal(expectedPosts, posts);
+        }
+
+        [Fact]
+        public async Task GetDeletedList_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<ApiDeleteListModel>();
+            var expectedPosts = fixture.Create<List<long>>();
+            var cacheKey = CacheKey.GetPostDeletedList;
+
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Headers["Token"] = Constants.TokenAPIGetData;
+
+            postService.GetDeletedList(Arg.Do<ApiDeleteListModel>(x => param = x)).Returns(expectedPosts);
+            cacheService.GetAsync<List<long>>(Arg.Do<string>(x => x = cacheKey)).Returns(expectedPosts);
+            //Act
+            var result = await controller.GetDeletedList(param);
+
+            // Assert
+            var okResult = Assert.IsType<JsonResult>(result);
+            var posts = Assert.IsAssignableFrom<List<long>>(okResult.Value);
             Assert.Equal(expectedPosts, posts);
         }
 

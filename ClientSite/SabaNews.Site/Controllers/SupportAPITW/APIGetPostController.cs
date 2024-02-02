@@ -12,7 +12,6 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SabaNews.Site.Extensions;
 
     public class APIGetPostController : Controller
     {
@@ -68,7 +67,7 @@
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
-            var posts = new GetDetailContent();
+            var posts = new ApiPostDetailModel();
             var (isValid, errMess) = IsValid(token, 0);
             if(!isValid)
             {
@@ -77,7 +76,7 @@
             if (cacheConfigs.Enabled)
             {
                 var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, getDataView.PostId);
-                posts = await cacheService.GetAsync<GetDetailContent>(cacheKey);
+                posts = await cacheService.GetAsync<ApiPostDetailModel>(cacheKey);
                 if (posts is null)
                 {
                     posts = await postService.GetPostDetailContent(getDataView);
@@ -92,10 +91,6 @@
             else
             {
                 posts = await postService.GetPostDetailContent(getDataView);
-            }
-            if(posts != null && posts.Category == Constants.ApiVideoCategory)
-            {
-                posts.SabaVideoUrl = PostHelper.GetVideoLink(posts.SabaVideoContent);
             }
             return Json(posts);
         }

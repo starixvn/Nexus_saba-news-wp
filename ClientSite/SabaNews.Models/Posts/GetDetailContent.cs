@@ -3,7 +3,7 @@
     using SabaNews.Models.ViewModel.Posts;
     using System.Collections.Generic;
 
-    public class GetDetailContent
+    public class ApiPostDetailModel
     {
         public int PostId { get; set; }
         public string Title { get; set; }
@@ -16,6 +16,5 @@
         public int LikeCount { get; set; }
         public string UrlSlug { get; set; }
         public string SabaVideoContent { get; set; }
-        public string SabaVideoUrl { get; set; }
     }
 }

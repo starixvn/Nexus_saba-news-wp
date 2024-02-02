@@ -235,7 +235,7 @@
             return result.ToList();
         }
 
-        public async Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData)
+        public async Task<ApiPostDetailModel> GetPostDetailContent(GetDataViewModel getData)
         {
            var post = await baseService.GetDataEntityAsync<Post>(new GetPostDetailContentCriteria { _postId = getData.PostId });
             if(post == null)
@@ -243,7 +243,7 @@
                 return null;
             }
             var isVideo = CheckVideo(post.CategoriesSlug);
-            var result = new GetDetailContent
+            var result = new ApiPostDetailModel
             {
                 PostId = post.ID,
                 Title = post.PostTitle,
