@@ -37,7 +37,7 @@
         }
 
         if ($(window).innerWidth() > 1024) {
-            menuItems.click(function (e) {
+            $(document).on('click','#list-place a', function(e) {
                 var href = $(this).attr("href");
                 var offsetTop = href === "#" ? 0 : $(href).offset().top - 110;
                 if ($(window).scrollTop() > 120) {
@@ -49,7 +49,7 @@
                 e.preventDefault();
             });
         } else {
-            menuItems.click(function (e) {
+            $(document).on('click','#list-place a', function(e) {
                 var href = $(this).attr("href");
                 var offsetTop = href === "#" ? 0 : $(href).offset().top - 50;
                 if ($(window).scrollTop() > 0) {
@@ -162,6 +162,18 @@
         })
     }
 
+    function CreateTableOfContentArticle() {
+        var sectionTitle = $('.content').find('h3');
+        var html = '<ul id="list-place">';
+        sectionTitle.map((index, val)=> {
+            var section = "section-" + index;
+            $(val).attr('id', section);
+            html += `<li><a href="#${section}">${$(val).html()}</a></li>`;
+        })
+        html += '</ul>';
+        $('.content').find('h2').first().append(html);
+    }
+
     function init() {
         UpdatePostView();
         LoadBanner();
@@ -170,6 +182,7 @@
         LoadSameCategoryPost();
         getScrollTop();
         GetGuessSidebar();
+        CreateTableOfContentArticle();
     }
 
     return {

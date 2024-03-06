@@ -4389,6 +4389,10 @@ img {
   font-size: inherit;
 }
 
+.content #list-place li {
+  margin-bottom: 1rem;
+}
+
 .euro-detail-title {
   border: 1px solid #4DAEC6;
   color: #03647B;

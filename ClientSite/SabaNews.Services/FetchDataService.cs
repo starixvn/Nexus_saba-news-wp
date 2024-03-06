@@ -12,7 +12,6 @@
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
     using SabaNews.Models.Home;
-    using SabaNews.Models.Options;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -53,6 +52,12 @@
                 Start = Constants.FromFirstItem,
                 End = Constants.GetElevenItems
             };
+            var hotnewsCriteria = new GetPostsByTagCriteria
+            {
+                _Tag =  CategoryKey.HotNewsTag,
+                _Start = Constants.FromFirstItem,
+                _End = Constants.GetTenItems
+            };
             IList<Post> stickyPosts = new List<Post>();
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
             var otherPosts = await postService.GetPostsBySlugAsync(Constants.NewOtherPostSlug, Constants.FromFirstItem, Constants.GetEightItems);
@@ -62,6 +67,7 @@
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var stickyPostIds = await postService.GetStickyPostsAsync();
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            var hotNews = await postService.GetPostByTagAsync(hotnewsCriteria);
             if(stickyPostIds.Any())
             {
                 var ids = string.Join(",", stickyPostIds);

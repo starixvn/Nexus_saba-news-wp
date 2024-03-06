@@ -47,6 +47,8 @@ namespace SabaNews.Core.Constants
 
         public const string Suffix = "-sabavn";
 
+        public const string HotNewsTag = "diem-tin-bong-da-hom-nay";
+
         public const int ShowLivescore = 1;
         public const int HideLivescore = 0;
 
