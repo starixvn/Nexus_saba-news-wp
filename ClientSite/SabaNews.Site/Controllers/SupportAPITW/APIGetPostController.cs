@@ -106,25 +106,8 @@
             {
                 return Json(errMess);
             }
-            if (cacheConfigs.Enabled)
-            {
-                var cacheKey = CacheKey.GetPostDeletedList;
-                postIds = await cacheService.GetAsync<List<long>>(cacheKey);
-                if (postIds is null)
-                {
-                    postIds = await postService.GetDeletedList(model);
-
-                    await cacheService.SetAsync(cacheKey, postIds,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(1)
-                        });
-                }
-            }
-            else
-            {
-                postIds = await postService.GetDeletedList(model);
-            }
+           
+            postIds = await postService.GetDeletedList(model);
             return Json(postIds);
         }
 
