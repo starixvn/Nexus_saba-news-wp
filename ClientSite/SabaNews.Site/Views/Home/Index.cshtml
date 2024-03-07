@@ -67,19 +67,24 @@
         <div class="block">
             <div class="block-columns">
                 <div class="columns columns-left">
-                    <div class="box-vertical-content">
-                        @{
-                            int newPostIndex =  0;
-                            foreach (var item in Model.NewPosts)
-                            {
-                                newPostIndex++;
-                                if (newPostIndex >= 5)
+                    <div class="wraper-hot-news">
+                        <ul class="list-hot-news" id="row">
+                            @{
+                                int newPostIndex =  0;
+                                foreach (var item in Model.NewPosts)
                                 {
-                                    continue;
+                                    newPostIndex++;
+                                    if (newPostIndex >= 5)
+                                    {
+                                        continue;
+                                    }
+                                    <li class="hot-news-item">
+                                        <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a>
+                                    </li>
                                 }
-                                <h3 class="card-hightlight-item"><a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a></h3>
                             }
-                        }
+                            
+                        </ul>
                     </div>
                     <div class="block-news-hot">
                         <div class="card-hightlight-text">

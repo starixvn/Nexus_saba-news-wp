@@ -295,6 +295,20 @@ var all = (function ($) {
         })
     }
     
+    var toTop = 0;
+    function autoPlay(){
+        timer = setTimeout(function(){
+            var row = document.getElementById('row');
+            toTop = toTop - 36;
+            if (toTop === - 144){
+                toTop = 0;
+                clearTimeout(timer);
+                row.hover = clearTimeout(timer);
+            }
+            row.style.marginTop = toTop +'px';
+            autoPlay();
+        }, 3000);
+    }
 
     function init() {
         LoadMenuHeaderMobile();
@@ -310,6 +324,7 @@ var all = (function ($) {
         MenuPopupHeaderPC();
         toggleChangeDomainPopup();
         CountBannerClick();
+        autoPlay();
     }
 
     return {

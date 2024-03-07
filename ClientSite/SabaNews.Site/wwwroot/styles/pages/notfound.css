@@ -2119,6 +2119,30 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+.wraper-hot-news {
+  height: 3.6rem;
+  overflow: hidden;
+}
+.wraper-hot-news .list-hot-news {
+  list-style: none;
+  padding-left: 0;
+  transition: all ease 0.3s;
+}
+.wraper-hot-news .list-hot-news .hot-news-item {
+  color: #89888b;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+.wraper-hot-news .list-hot-news .hot-news-item a {
+  text-decoration: none;
+  color: #333;
+}
+
 .container, .base-container {
   width: 100%;
   padding: 0 1rem;

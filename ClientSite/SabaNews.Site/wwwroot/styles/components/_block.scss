@@ -158,3 +158,27 @@
         }
     }
 }
+
+.wraper-hot-news{
+    height: 3.6rem;
+    overflow: hidden;
+    .list-hot-news{
+        list-style: none;
+        padding-left: 0;
+        transition: all ease .3s;
+        .hot-news-item{
+            color: #89888b;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            height: 36px;
+            a{
+                text-decoration: none;
+                color: #333;
+            }
+        }
+    }
+}
