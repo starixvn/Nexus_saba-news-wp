@@ -303,7 +303,7 @@ var all = (function ($) {
             if (toTop === - 144){
                 toTop = 0;
                 clearTimeout(timer);
-                row.hover = clearTimeout(timer);
+                row.onmousemove = clearTimeout(timer);
             }
             row.style.marginTop = toTop +'px';
             autoPlay();
