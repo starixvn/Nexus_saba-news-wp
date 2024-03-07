@@ -67,31 +67,12 @@
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
-            var posts = new ApiPostDetailModel();
             var (isValid, errMess) = IsValid(token, 0);
             if(!isValid)
             {
                 return Json(errMess);
             }
-            if (cacheConfigs.Enabled)
-            {
-                var cacheKey = string.Format("{0}{1}", CacheKey.GetPostDetailContent, getDataView.PostId);
-                posts = await cacheService.GetAsync<ApiPostDetailModel>(cacheKey);
-                if (posts is null)
-                {
-                    posts = await postService.GetPostDetailContent(getDataView);
-
-                    await cacheService.SetAsync(cacheKey, posts,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(1)
-                        });
-                }
-            }
-            else
-            {
-                posts = await postService.GetPostDetailContent(getDataView);
-            }
+            var posts = await postService.GetPostDetailContent(getDataView);
             return Json(posts);
         }
 
@@ -100,14 +81,12 @@
         public async Task<IActionResult> GetDeletedList(ApiDeleteListModel model)
         {
             var token = Request.Headers["Token"];
-            var postIds = new List<long>();
             var (isValid, errMess) = IsValid(token, 0);
             if(!isValid)
             {
                 return Json(errMess);
             }
-           
-            postIds = await postService.GetDeletedList(model);
+            var postIds = await postService.GetDeletedList(model);
             return Json(postIds);
         }
 
