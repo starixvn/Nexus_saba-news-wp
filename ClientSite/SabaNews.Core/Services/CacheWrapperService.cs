@@ -35,5 +35,10 @@
         {
             await cacheService.SetAsync(key, JsonConvert.SerializeObject(data));
         }
+
+        public async Task Remove(string key)
+        {
+            await cacheService.RemoveAsync(key);
+        }
     }
 }

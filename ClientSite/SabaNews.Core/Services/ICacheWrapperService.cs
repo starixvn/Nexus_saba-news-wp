@@ -10,5 +10,7 @@
         Task SetAsync<T>(string key, T data, CacheItemOptions options);
 
         Task SetAsync<T>(string key, T data);
+
+        Task Remove(string key);
     }
 }

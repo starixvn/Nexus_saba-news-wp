@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+    using Fanex.Caching;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
@@ -22,23 +24,23 @@
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
-        private readonly IStatisticService statisticService;
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
+        private readonly ICacheWrapperService cacheService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
-            IStatisticService statisticService,
             IPollService pollService,
-            IDataControlService dataControlService)
+            IDataControlService dataControlService,
+            ICacheWrapperService cacheService)
         {
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
-            this.statisticService = statisticService;
             this.pollService = pollService;
             this.dataControlService = dataControlService;
+            this.cacheService = cacheService;
         }
 
         [Route("{slug}")]
@@ -127,6 +129,8 @@
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
         {
+            var IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
+            PollViewModel result;
             var clientIP = GetClientIP();
             var criteria = new GetPollCriteria
             {
@@ -134,8 +138,25 @@
                 ThemeId = themeId,
                 UserIp = clientIP
             };
-            var model = await pollService.GetPollAsync(criteria);
-            return PartialView("_Poll", model);
+            if(IsUsingCache)
+            {
+                var cacheKey = $"{CacheKey.PollData}-{questId}-{clientIP}";
+                result = await cacheService.GetAsync<PollViewModel>(cacheKey);
+                if(result == null)
+                {
+                    result = await pollService.GetPollAsync(criteria);
+                    await cacheService.SetAsync(cacheKey, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CachePollDataTimeoutMinutes)
+                        });
+                }
+            }
+            else
+            {
+                result = await pollService.GetPollAsync(criteria);
+            }
+            return PartialView("_Poll", result);
         }
 
         [HttpPost]
@@ -145,6 +166,7 @@
             var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
+                await cacheService.Remove($"{CacheKey.PollData}-{questId}-{clientIP}");
                 return await GetPollData(questId, themeId);
             }
             return Json(result);
@@ -193,13 +215,6 @@
             return Ok(viewVideoResult);
         }
 
-        [HttpGet]
-        [Route("api/post-view")]
-        public async Task<IActionResult> GetPostViewStatistic(DateTime fromDate, DateTime toDate)
-        {
-            var viewPostStatistic = await statisticService.GetPostViewStatistic(fromDate, toDate);
-            return Ok(viewPostStatistic);
-        }
 
         [HttpPost]
         [Route("api/post/related-posts")]
