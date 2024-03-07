@@ -13,5 +13,7 @@
         public const string StickyPost = "sticky_posts";
 
         public const string BannerClickCount = "banner_click_count";
+
+        public const string PollHomepage = "poll_homepage";
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
@@ -18,7 +19,7 @@
             this.baseService = baseService;
         }
 
-        public async Task<PollViewModel> GetPollAsync(GetPollCriteria criteria)
+        public async Task<PollViewModel> GetPollDetailAsync(GetPollDetailCriteria criteria)
         {
             var (polls, question) = await baseService.FetchMultipleAsync<PollModel, QuestionModel>(criteria);
             var result = new PollViewModel
@@ -29,6 +30,13 @@
                 TotalVotes = polls.Sum(item => item.Vote)
             };
             return result;
+        }
+
+
+        public async Task<IList<QuestionModel>> GetAllPollAsync()
+        {
+            var result = await baseService.GetDataAsync<QuestionModel>(new GetAllPollCriteria{});
+            return result.ToList();
         }
 
         public async Task<CommandResult> VotePollAsync(int questId, int answerId, string userIp)

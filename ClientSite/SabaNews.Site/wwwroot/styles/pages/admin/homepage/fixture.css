@@ -298,3 +298,10 @@ body {
 .modal-title .title {
   text-decoration: none !important;
 }
+
+.poll table {
+  border: none;
+}
+.poll table, .poll tr, .poll td {
+  border: none;
+}

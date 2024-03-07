@@ -9,6 +9,8 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Home;
+    using SabaNews.Models.Options;
+    using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
@@ -24,11 +26,13 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         private readonly IPostService postService;
         private readonly IDataControlService dataControlService;
         private readonly ISessionService sessionService;
+        private readonly IPollService pollService;
         public HomepageManagementController(IOptionService optionService,
             ILeagueService leagueService,
             IPostService postService,
             IDataControlService dataControlService,
-            ISessionService sessionService
+            ISessionService sessionService,
+            IPollService pollService
             )
         {
             this.optionService = optionService;
@@ -36,6 +40,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.sessionService = sessionService;
+            this.pollService = pollService;
         }
         public ActionResult Fixture()
         {
@@ -45,6 +50,26 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         public ActionResult Standing()
         {
             return View();
+        }
+
+        public async Task<ActionResult> Poll()
+        {
+            var polls = await pollService.GetAllPollAsync();
+            var currentQuestion = await optionService.GetOptionAsync(OptionKey.PollHomepage);
+            var currentQuestionName = polls.First().Question;
+            var questId = 0;
+            if(currentQuestion != null)
+            {
+                questId = Int32.Parse(currentQuestion.OptionValue);
+                currentQuestionName = polls.First(item => item.Id == questId).Question;
+            }
+            var viewModel = new PollAdminViewModel
+            {
+                Polls = polls,
+                SelectedQuestId = questId,
+                SelectedQuest = currentQuestionName
+            };
+            return View(viewModel);
         }
         [HttpPost]
         public async Task<ActionResult> GetLeagueGrid(bool isFixtureOption)
@@ -221,12 +246,19 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             return Json(cmdResult);
         }
 
+        public async Task<ActionResult> UpdatePoll(long pollId)
+        {
+            var result = await optionService.UpdateOptionAsync(OptionKey.PollHomepage, pollId.ToString());
+            return Json(result);
+        }
+
         public async Task<ActionResult> GetSlugs(string category)
         {
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var slug = menus.Where(x => x.Slug == category).ToList();
             return Json(slug[0]);
         }
+        
 
         private static string GetKeyOption(bool isFixtureOption)
         {

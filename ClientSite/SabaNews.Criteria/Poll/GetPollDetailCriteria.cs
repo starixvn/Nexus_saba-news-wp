@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class GetPollCriteria : CriteriaBase
+    public class GetPollDetailCriteria : CriteriaBase
     {
         public int QuestId { get; set; }
 

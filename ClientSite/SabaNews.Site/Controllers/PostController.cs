@@ -27,13 +27,15 @@
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
         private readonly ICacheWrapperService cacheService;
+        private readonly IOptionService optionService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
             IPollService pollService,
             IDataControlService dataControlService,
-            ICacheWrapperService cacheService)
+            ICacheWrapperService cacheService,
+            IOptionService optionService)
         {
             this.postService = postService;
             this.configuration = configuration;
@@ -41,6 +43,7 @@
             this.pollService = pollService;
             this.dataControlService = dataControlService;
             this.cacheService = cacheService;
+            this.optionService = optionService;
         }
 
         [Route("{slug}")]
@@ -132,7 +135,7 @@
             var IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
             PollViewModel result;
             var clientIP = GetClientIP();
-            var criteria = new GetPollCriteria
+            var criteria = new GetPollDetailCriteria
             {
                 QuestId = questId,
                 ThemeId = themeId,
@@ -144,7 +147,7 @@
                 result = await cacheService.GetAsync<PollViewModel>(cacheKey);
                 if(result == null)
                 {
-                    result = await pollService.GetPollAsync(criteria);
+                    result = await pollService.GetPollDetailAsync(criteria);
                     await cacheService.SetAsync(cacheKey, result,
                         new CacheItemOptions
                         {
@@ -154,7 +157,7 @@
             }
             else
             {
-                result = await pollService.GetPollAsync(criteria);
+                result = await pollService.GetPollDetailAsync(criteria);
             }
             return PartialView("_Poll", result);
         }
