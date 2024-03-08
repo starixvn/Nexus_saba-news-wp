@@ -176,6 +176,19 @@
         }
 
         [HttpPost]
+        [Route("api/post/get-home-poll")]
+        public async Task<IActionResult> GetHomePoll()
+        {
+            var option = await optionService.GetOptionAsync(OptionKey.PollHomepage);
+            if(option == null)
+            {
+                return Json(null);
+            }
+            var questionId = int.Parse(option.OptionValue);
+            return await GetPollData(questionId, 1);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> GetPostsSameCategory(string slug, long postId)
         {
             var criteria =  new GetPostsByCateSlugPagingCriteria

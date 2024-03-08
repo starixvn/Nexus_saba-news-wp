@@ -105,8 +105,7 @@ var home = (function ($) {
     function GetPollData() {
         $.ajax({
             type:'POST',
-            data: {questID: 7, themeId: 1},
-            url: "/Post/GetPollData",
+            url: "/api/post/get-home-poll",
             success: function(res) {
                 $('.home-poll').html(res);
             }
