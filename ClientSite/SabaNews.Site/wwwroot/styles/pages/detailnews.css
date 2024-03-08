@@ -4653,20 +4653,21 @@ table.has-fixed-layout {
   padding: 12px;
   margin: 12px 0;
 }
-.list-place .toc-heading {
+.list-place .toc-heading .toc-sub {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
-.list-place .toc-heading i {
-  margin-left: 4px;
+.list-place .toc-heading .toc-sub i {
+  margin-left: 5px;
+  margin-top: 5px;
 }
-.list-place .toc-heading p {
+.list-place .toc-heading .toc-sub p {
   color: #333;
   font-size: 15px;
   font-weight: 600;
   line-height: normal;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 .list-place ul {
   margin-left: 15px;
@@ -4677,7 +4678,7 @@ table.has-fixed-layout {
   line-height: 26px;
   margin-left: 13px;
   position: relative;
-  font-family: "Open Sans, sans-serif";
+  font-family: Open Sans, sans-serif;
 }
 .list-place ul li a {
   text-decoration: none;

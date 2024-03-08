@@ -798,18 +798,21 @@ table{
     padding: 12px;
     margin: 12px 0;
     .toc-heading{
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        i{
-            margin-left: 4px;
-        }
-        p{
-            color: #333;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: normal;
-            margin-bottom: 0;
+        .toc-sub{
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            i{
+                margin-left: 5px;
+                margin-top: 5px;
+            }
+            p{
+                color: #333;
+                font-size: 15px;
+                font-weight: 600;
+                line-height: normal;
+                margin-bottom: 0 !important;
+            }
         }
     }
     ul{
@@ -820,7 +823,7 @@ table{
             line-height: 26px;
             margin-left: 13px;
             position: relative;
-            font-family: "Open Sans, sans-serif";
+            font-family: Open Sans, sans-serif;
             a{
                 text-decoration: none;
                 color: #333;
