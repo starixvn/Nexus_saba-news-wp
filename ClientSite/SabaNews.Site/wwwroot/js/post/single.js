@@ -164,13 +164,16 @@
 
     function CreateTableOfContentArticle() {
         var sectionTitle = $('.content').find('h3');
-        var html = '<ul id="list-place">';
+        var html = '<div class="list-place">'
+              html += '<div class="toc-heading">';
+                html += '<p>Nội dung</p><i class="icon-chevron-right"/>'
+                html += '<ul>'
         sectionTitle.map((index, val)=> {
             var section = "section-" + index;
             $(val).attr('id', section);
             html += `<li><a href="#${section}">${$(val).html()}</a></li>`;
         })
-        html += '</ul>';
+        html += '</ul></div></div>';
         $('.content').find('h2').first().append(html);
     }
 
