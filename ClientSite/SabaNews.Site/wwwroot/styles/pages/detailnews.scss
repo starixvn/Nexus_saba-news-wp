@@ -792,4 +792,25 @@ table{
     text-align: right;
 }
 
+#list-place{
+    border-radius: 5px;
+    background: #EDEFF3;
+    padding: 12px;
+    margin: 12px 0;
+    ul{
+        margin-left: 15px;
+        li{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 26px;
+            padding-left: 15px;
+            position: relative;
+            a{
+                text-decoration: none;
+                color: #333;
+            }
+        }
+    }
+}
+
 
