@@ -431,5 +431,18 @@
             var cmd = await optionService.CountOptionValueAsync(OptionKey.BannerClickCount);
             return Json(cmd);
         }
+
+
+        [HttpPost]
+        [Route("api/get-home-poll")]
+        public async Task<IActionResult> GetPoll()
+        {
+            var option = await optionService.GetOptionAsync(OptionKey.PollHomepage);
+            if(option == null)
+            {
+                return Json(null);
+            }
+            return Json(option.OptionValue);
+        }
     }
 }

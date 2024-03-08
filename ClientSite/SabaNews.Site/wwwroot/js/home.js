@@ -102,10 +102,22 @@ var home = (function ($) {
             }
         });
     };
-    function GetPollData() {
+    function GetPollId() {
         $.ajax({
             type:'POST',
-            url: "/api/post/get-home-poll",
+            url: "/api/get-home-poll",
+            success: function(res) {
+                if(res !== null) {
+                    GetPollDetail(res);
+                }
+            }
+        })
+    };
+    function GetPollDetail(questId) {
+        $.ajax({
+            type:'POST',
+            data: {questId: questId, themeId: 1},
+            url: "/Post/GetPollData",
             success: function(res) {
                 $('.home-poll').html(res);
             }
@@ -164,7 +176,7 @@ var home = (function ($) {
     }
     function init() {
         HandleIframe();
-        GetPollData();
+        GetPollId();
         UpdatePollData();
     };
     return {
