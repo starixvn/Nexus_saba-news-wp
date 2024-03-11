@@ -828,6 +828,10 @@ table{
             a{
                 text-decoration: none;
                 color: #333;
+                transition: color .3s ease;
+                &:hover{
+                    color: #eb5342;
+                }
             }
         }
     }

@@ -160,12 +160,24 @@
 }
 
 .wraper-hot-news{
-    height: 3.6rem;
+    height: 3rem;
     overflow: hidden;
+    margin-bottom: 1.2rem;
+    display: flex;
+    background: #F5F6F6;
+    border-radius: 0 3px 3px ;
+    @include Mobile{
+        margin: 1.2rem 0;
+    }
+    .block__title{
+        border-bottom:  none;
+        margin-bottom: 0;
+    }
     .list-hot-news{
         list-style: none;
         padding-left: 0;
         transition: all ease .3s;
+        margin-left: 30px !important;
         .hot-news-item{
             color: #89888b;
             font-size: 14px;
@@ -174,10 +186,13 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            height: 36px;
+            height: 3rem;
             a{
                 text-decoration: none;
                 color: #333;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
         }
     }

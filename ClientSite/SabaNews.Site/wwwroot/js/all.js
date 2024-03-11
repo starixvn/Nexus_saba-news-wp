@@ -299,8 +299,8 @@ var all = (function ($) {
     function autoPlay(){
         timer = setTimeout(function(){
             var row = document.getElementById('row');
-            toTop = toTop - 36;
-            if (toTop === - 144){
+            toTop = toTop - 30;
+            if (toTop === - 120){
                 toTop = 0;
                 clearTimeout(timer);
             }
