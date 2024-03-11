@@ -70,6 +70,25 @@
         <div class="block">
             <div class="block-columns">
                 <div class="columns columns-left">
+                    <div class="wraper-hot-news">
+                        <div class="block__title">@ViewResources.RecentsPost</div>
+                        <ul class="list-hot-news" id="row">
+                            @{
+                                newPostIndex =  0;
+                                foreach (var item in Model.NewPosts)
+                                {
+                                    newPostIndex++;
+                                    if (newPostIndex >= 5)
+                                    {
+                                        continue;
+                                    }
+                                    <li class="hot-news-item">
+                                        <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
                     <div class="block-news-hot">
                         <div class="card-hightlight-text">
                             @{
