@@ -175,6 +175,15 @@
         })
         html += '</ul></div></div>';
         $('.content').find('h2').first().append(html);
+
+        $(document).on('click', '.icon-chevron-down', function(){
+            $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
+            $(this).parent().parent().find('ul').hide();
+        })
+        $(document).on('click', '.icon-chevron-up', function(){
+            $(this).removeClass('icon-chevron-up').addClass('icon-chevron-down');
+            $(this).parent().parent().find('ul').show();
+        })
     }
 
     function init() {
