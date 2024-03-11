@@ -178,11 +178,11 @@
 
         $(document).on('click', '.icon-chevron-down', function(){
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
-            $(this).parent().parent().find('ul').hide();
+            $(this).parent().parent().find('ul').slideToggle();
         })
         $(document).on('click', '.icon-chevron-up', function(){
             $(this).removeClass('icon-chevron-up').addClass('icon-chevron-down');
-            $(this).parent().parent().find('ul').show();
+            $(this).parent().parent().find('ul').slideToggle();
         })
     }
 
