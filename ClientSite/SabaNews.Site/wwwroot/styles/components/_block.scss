@@ -177,7 +177,10 @@
         list-style: none;
         padding-left: 0;
         transition: all ease .3s;
-        margin-left: 30px !important;
+        margin-left: 30px;
+        @include Mobile{
+            width: 160px;
+        }
         .hot-news-item{
             color: #89888b;
             font-size: 14px;
