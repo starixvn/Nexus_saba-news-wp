@@ -37,7 +37,7 @@
         }
 
         if ($(window).innerWidth() > 1024) {
-            $(document).on('click','#list-place a', function(e) {
+            $(document).on('click','#list-place a, .list-place a', function(e) {
                 var href = $(this).attr("href");
                 var offsetTop = href === "#" ? 0 : $(href).offset().top - 110;
                 if ($(window).scrollTop() > 120) {
@@ -49,7 +49,7 @@
                 e.preventDefault();
             });
         } else {
-            $(document).on('click','#list-place a', function(e) {
+            $(document).on('click','#list-place a, .list-place a', function(e) {
                 var href = $(this).attr("href");
                 var offsetTop = href === "#" ? 0 : $(href).offset().top - 50;
                 if ($(window).scrollTop() > 0) {
