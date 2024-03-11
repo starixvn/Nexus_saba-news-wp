@@ -171,7 +171,7 @@
         sectionTitle.map((index, val)=> {
             var section = "section-" + index;
             $(val).attr('id', section);
-            html += `<li><a href="#${section}">${$(val).html()}</a></li>`;
+            html += `<li><a href="#${section}">${$(val).text()}</a></li>`;
         })
         html += '</ul></div></div>';
         $('.content').find('h2').first().append(html);
