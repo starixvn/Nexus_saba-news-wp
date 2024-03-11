@@ -2516,6 +2516,10 @@ button {
   font-size: 1.4rem;
   line-height: 1;
   color: #333;
+  transition: color 0.3s ease;
+}
+.box-horizontal-content h5 a:hover, .box-horizontal-content .heading-box-content a:hover {
+  color: #eb5342;
 }
 .box-horizontal.box-video .box-horizontal-image {
   position: relative;
@@ -2670,6 +2674,10 @@ button {
 .box-vertical-content a {
   text-decoration: none;
   color: #333;
+  transition: color 0.3s ease;
+}
+.box-vertical-content a:hover {
+  color: #eb5342;
 }
 .box-vertical-content p {
   margin-top: 0.8rem;

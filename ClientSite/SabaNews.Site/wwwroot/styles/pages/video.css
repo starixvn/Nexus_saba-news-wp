@@ -2805,6 +2805,10 @@ button {
 .box-vertical-content a {
   text-decoration: none;
   color: #333;
+  transition: color 0.3s ease;
+}
+.box-vertical-content a:hover {
+  color: #eb5342;
 }
 .box-vertical-content p {
   margin-top: 0.8rem;

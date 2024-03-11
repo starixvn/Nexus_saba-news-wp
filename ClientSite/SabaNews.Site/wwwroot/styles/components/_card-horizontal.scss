@@ -95,6 +95,10 @@
                 font-size: 1.4rem;
                 line-height: 1;
                 color: #333;
+                transition: color .3s ease;
+                &:hover{
+                    color: #eb5342;
+                }
             }
         }
     }

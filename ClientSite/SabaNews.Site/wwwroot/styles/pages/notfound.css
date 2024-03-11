@@ -2370,6 +2370,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-size: 1.4rem;
   line-height: 1;
   color: #333;
+  transition: color 0.3s ease;
+}
+.box-horizontal-content h5 a:hover, .box-horizontal-content .heading-box-content a:hover {
+  color: #eb5342;
 }
 .box-horizontal.box-video .box-horizontal-image {
   position: relative;
