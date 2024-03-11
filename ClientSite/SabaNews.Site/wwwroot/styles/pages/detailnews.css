@@ -4661,6 +4661,7 @@ table.has-fixed-layout {
 .list-place .toc-heading .toc-sub i {
   margin-left: 5px;
   margin-top: 5px;
+  cursor: pointer;
 }
 .list-place .toc-heading .toc-sub p {
   color: #333;

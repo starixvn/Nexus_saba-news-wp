@@ -166,7 +166,7 @@
         var sectionTitle = $('.content').find('h3');
         var html = '<div class="list-place">'
               html += '<div class="toc-heading">';
-                html += '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-down"></i></div>'
+                html += '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>'
                 html += '<ul>'
         sectionTitle.map((index, val)=> {
             var section = "section-" + index;
