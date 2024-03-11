@@ -801,7 +801,6 @@ table{
         .toc-sub{
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
             i{
                 margin-left: 5px;
                 margin-top: 5px;
@@ -817,12 +816,13 @@ table{
         }
     }
     ul{
+        margin-top: 10px;
         margin-left: 15px;
+        list-style: inside;
         li{
             font-size: 14px;
             font-weight: 400;
             line-height: 26px;
-            margin-left: 13px;
             position: relative;
             font-family: Open Sans, sans-serif;
             a{
