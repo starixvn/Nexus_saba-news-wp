@@ -50,7 +50,7 @@
             var paramGetRecent = new GetRecentPostsParam
             {
                 Start = Constants.FromFirstItem,
-                End = Constants.GetElevenItems
+                End = Constants.GetTenItems
             };
             var hotnewsCriteria = new GetPostsByTagCriteria
             {
