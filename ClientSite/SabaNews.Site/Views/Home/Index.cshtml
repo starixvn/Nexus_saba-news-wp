@@ -70,7 +70,7 @@
         <div class="block">
             <div class="wraper-hot-news">
                 <div class="block__title">
-                    <a href="#">@ViewResources.RecentsPost</a>
+                    <a href="@Url.Action("Category", "Home", new { slug =   Constants.NewPostSlug + CategoryKey.Suffix })">@ViewResources.RecentsPost</a>
                 </div>
                 <ul class="list-hot-news" id="row">
                     @{
@@ -159,7 +159,7 @@
                 <div class="columns columns-right">
                     <div class="hotnews-block">
                         <div class="block__title">
-                            <a href="#">
+                            <a href="@Url.Action("Tag", "Home", new { tagname =   CategoryKey.HotNewsTag })">
                                 @ViewResources.HotNews
                             </a>
                         </div>
