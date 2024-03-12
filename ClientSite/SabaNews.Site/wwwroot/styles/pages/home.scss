@@ -533,6 +533,10 @@
                 font-weight: 600;
                 line-height: 2.6rem;
                 color: #333;
+                transition: color 0.3s ease;
+                &:hover{
+                    color : #eb5342;
+                }
             }
         }
     }

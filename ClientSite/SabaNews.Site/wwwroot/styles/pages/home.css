@@ -3808,4 +3808,8 @@ button {
   font-weight: 600;
   line-height: 2.6rem;
   color: #333;
+  transition: color 0.3s ease;
+}
+.hotnews-block .list-hotnews li a:hover {
+  color: #eb5342;
 }
