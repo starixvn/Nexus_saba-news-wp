@@ -3814,8 +3814,24 @@ button {
   color: #eb5342;
 }
 
-.home-nav .active {
-  color: red;
+.home-nav a {
+  background: #EAEAEA;
+  color: #868686;
+  font-weight: 700;
+}
+.home-nav a:last-child {
+  margin-left: 0.8rem;
+  z-index: 0;
+}
+.home-nav a::after {
+  background: #EAEAEA;
+}
+.home-nav a.active {
+  background: #F12F19;
+  color: #fff;
+}
+.home-nav a.active::after {
+  background: #F12F19;
 }
 
 .home-nav-content .tab {

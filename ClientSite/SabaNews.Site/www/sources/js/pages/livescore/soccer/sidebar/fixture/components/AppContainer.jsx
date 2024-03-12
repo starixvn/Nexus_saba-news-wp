@@ -36,14 +36,14 @@ export class AppContainer extends Component {
     };
 
 
-    handleClickFixture = event => {
-        const url = '/lich-thi-dau/bong-da';
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
-    };
+    // handleClickFixture = event => {
+    //     const url = '/lich-thi-dau/bong-da';
+    //     if (event.ctrlKey) {
+    //         window.open(url, '_blank');
+    //     } else {
+    //         window.location = url;
+    //     }
+    // };
 
 
     render() {
@@ -52,7 +52,6 @@ export class AppContainer extends Component {
             <>
                 <SignalR />
                 <div className="livescore-home">
-                    <div className="block__title" onClick={this.handleClickFixture}><h2><a>Lịch thi đấu</a></h2></div>
                     {
                         leagues === null && <SkeletonGrid />
                     }

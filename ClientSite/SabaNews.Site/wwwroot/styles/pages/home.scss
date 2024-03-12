@@ -543,8 +543,24 @@
 }
 
 .home-nav {
-    .active {
-        color:red;
+    a{
+       background: #EAEAEA; 
+       color: #868686;
+       font-weight: 700;
+       &:last-child{
+        margin-left: 0.8rem;
+        z-index: 0;
+       }
+       &::after{
+        background: #EAEAEA; 
+       }
+       &.active{
+        background: #F12F19;
+        color: #fff;
+        &::after{
+            background: #F12F19; 
+           }
+       }
     }
 }
 .home-nav-content {

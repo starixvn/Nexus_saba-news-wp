@@ -39,14 +39,14 @@ export default class Grid extends PureComponent {
         return currentStanding;
     };
 
-    handleClickStanding = (event, league) => {
-        const url = CommonFunctions.getLeaguePageUrl(league, 'bang-xep-hang');
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
-    };
+    // handleClickStanding = (event, league) => {
+    //     const url = CommonFunctions.getLeaguePageUrl(league, 'bang-xep-hang');
+    //     if (event.ctrlKey) {
+    //         window.open(url, '_blank');
+    //     } else {
+    //         window.location = url;
+    //     }
+    // };
 
 
     render() {
@@ -57,8 +57,7 @@ export default class Grid extends PureComponent {
             return null;
         }
         return (
-            <div>
-                <div className="block__title" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}> <h2><a>Bảng xếp hạng</a></h2> </div>
+            <>
                 <div className="livescore-soccer-main">
                     <div className="season-standings">
                         <div className="control-standing " >
@@ -83,7 +82,7 @@ export default class Grid extends PureComponent {
                 <div className="view-more-block" onClick={event => this.handleClickStanding(event, currentLeagueStanding.league)}>
                     <a>Xem Thêm</a>
                 </div>
-            </div>
+            </>
         );
     }
 }

@@ -5,10 +5,6 @@
 @import "../../../../components/container";
 @import '../../../../components/table-custom';
 #standing-homepage{
-    margin-top: 2.2rem;
-    @include Mobile{
-        margin-top: 3rem;
-    }
     .livescore-soccer-main{
         overflow: unset;
         max-height: 100%;
