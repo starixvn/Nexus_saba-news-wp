@@ -486,7 +486,7 @@
     width: 100%;
     padding: .5rem 0;
     background-color: $bg-nav;
-    box-shadow: (0px 4px 5px rgba(0, 0, 0, 0.16));
+    border-bottom: 1px solid #e5e5e5;
     position: sticky;
     top: 0;
     z-index: 99;
@@ -1343,6 +1343,9 @@
         .header{
             opacity: 0;
         }
+    }
+    .top-header{
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
     }
 }
 

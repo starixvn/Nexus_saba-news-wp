@@ -158,15 +158,21 @@
                 </div>
                 <div class="columns columns-right">
                     <div class="hotnews-block">
-                        <div class="block__title">@ViewResources.HotNews</div>
-                        <div class="card-hightlight-text">
+                        <div class="block__title">
+                            <a href="#">
+                                @ViewResources.HotNews
+                            </a>
+                        </div>
+                        <ul class="list-hotnews">
                             @{
                                 foreach (var item in Model.Hotnews)
                                 {
-                                    <h3 class="card-hightlight-item"><a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a></h3>
+                                    <li>
+                                        <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a>
+                                    </li>
                                 }
                             }
-                        </div>
+                        </ul>
                     </div>
                     <div id="fixture-homepage"></div>
                     <div id="standing-homepage"></div>

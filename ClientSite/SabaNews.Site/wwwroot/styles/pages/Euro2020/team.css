@@ -1041,7 +1041,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100%;
   padding: 0.5rem 0;
   background-color: #FFFDF9;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
+  border-bottom: 1px solid #e5e5e5;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -1883,6 +1883,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .active-fixed .header {
     opacity: 0;
   }
+}
+.active-fixed .top-header {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 .hidden-detail {
