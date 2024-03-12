@@ -163,6 +163,7 @@
     }
 
     function CreateTableOfContentArticle() {
+        console.log(1);
         var sectionTitle = $('.content').find('h3');
         var html = '<div class="list-place">'
               html += '<div class="toc-heading">';
