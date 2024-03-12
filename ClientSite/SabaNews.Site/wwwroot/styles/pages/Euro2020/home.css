@@ -3379,7 +3379,7 @@ button {
 }
 
 .swiper-button-prev, .swiper-button-next {
-  background-image: none;
+  background-image: none !important;
   background: #E13C29;
   display: flex;
   align-items: center;
@@ -3402,12 +3402,13 @@ button {
   border-radius: 0.3rem;
   opacity: 1;
   outline: none;
-  margin: 0 0.5rem !important;
+  margin: 0 0.3rem !important;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #A6ADBB;
-  width: 2rem;
+  background-color: #A6ADBB !important;
+  width: 2rem !important;
+  border-radius: 20px !important;
 }
 
 .swiper-container-horizontal > .swiper-pagination-bullets {
