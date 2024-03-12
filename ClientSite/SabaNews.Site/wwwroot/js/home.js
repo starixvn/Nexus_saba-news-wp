@@ -102,8 +102,18 @@ var home = {
             }
         });
     },
+    HandleLivescoreNav: function() {
+        $('.home-nav a').on('click', function() {
+            $('.home-nav a').removeClass('active');
+            $(this).addClass('active');
+            var id = $(this).data('id');
+            $('.home-nav-content .tab').removeClass('active');
+            $('.home-nav-content ' + id).addClass('active');
+        })
+    },
     init: function () {
         this.HandleIframe();
+        this.HandleLivescoreNav();
     }
 }
 

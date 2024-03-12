@@ -3813,3 +3813,14 @@ button {
 .hotnews-block .list-hotnews li a:hover {
   color: #eb5342;
 }
+
+.home-nav .active {
+  color: red;
+}
+
+.home-nav-content .tab {
+  display: none;
+}
+.home-nav-content .tab.active {
+  display: block;
+}

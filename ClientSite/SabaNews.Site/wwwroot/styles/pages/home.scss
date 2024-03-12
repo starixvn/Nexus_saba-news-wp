@@ -541,3 +541,17 @@
         }
     }
 }
+
+.home-nav {
+    .active {
+        color:red;
+    }
+}
+.home-nav-content {
+    .tab {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
