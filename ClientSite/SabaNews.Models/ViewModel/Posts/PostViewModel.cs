@@ -15,6 +15,7 @@
         public IEnumerable<Post> GuessPosts { get; set; }
         public IEnumerable<Post> BackstagePosts { get; set; }
         public IEnumerable<Post> TransferPosts { get; set; }
+        public IEnumerable<Post> Hotnews { get; set; }
         public IList<Post> StickyPosts { get; set; }
         public Category Category { get; set; }
         public string Url { get; set; }

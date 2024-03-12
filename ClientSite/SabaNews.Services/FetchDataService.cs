@@ -56,7 +56,7 @@
             {
                 _Tag =  CategoryKey.HotNewsTag,
                 _Start = Constants.FromFirstItem,
-                _End = Constants.GetTenItems
+                _End = Constants.GetFiveItems
             };
             IList<Post> stickyPosts = new List<Post>();
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
@@ -89,7 +89,8 @@
                 TransferPosts = transferPosts,
                 Category = category,
                 FootballNewCategory = footballNewUrls,
-                StickyPosts = stickyPosts
+                StickyPosts = stickyPosts,
+                Hotnews = hotNews
             };
 
             return viewModel;

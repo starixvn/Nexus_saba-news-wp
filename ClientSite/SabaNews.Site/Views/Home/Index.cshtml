@@ -68,7 +68,7 @@
 <section class="main">
     <div class="container">
         <div class="block">
-            @* <div class="wraper-hot-news">
+            <div class="wraper-hot-news">
                 <div class="block__title">
                     <a href="#">@ViewResources.RecentsPost</a>
                 </div>
@@ -88,7 +88,7 @@
                         }
                     }
                 </ul>
-            </div> *@
+            </div>
             <div class="block-columns">
                 <div class="columns columns-left">
                     <div class="block-news-hot">
@@ -157,6 +157,17 @@
 
                 </div>
                 <div class="columns columns-right">
+                    <div class="hotnews-block">
+                        <div class="block__title">@ViewResources.HotNews</div>
+                        <div class="card-hightlight-text">
+                            @{
+                                foreach (var item in Model.Hotnews)
+                                {
+                                    <h3 class="card-hightlight-item"><a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a></h3>
+                                }
+                            }
+                        </div>
+                    </div>
                     <div id="fixture-homepage"></div>
                     <div id="standing-homepage"></div>
                 </div>
