@@ -247,3 +247,23 @@ body {
         border: none;
     }
 }
+.select-poll {
+    width: 50rem;
+
+    select {
+        width: 100%;
+    }
+}
+
+.select2-selection--single {
+    border: none !important;
+    height: 40px !important;
+    align-items: center !important;
+    display: flex !important;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1) !important;
+
+    b {
+        margin-left: -7px !important;
+        margin-top: 3px !important;
+    }
+}

@@ -5,13 +5,22 @@ var pollAdmin = (function ($) {
         $('.poll-list').select2();
         $('.poll-list').on('change', function(){
             var question = $(this).find(':selected').data('question');
-            $(this).parent().parent().find('.poll-question').html(question);
+            $('.poll-question').html(question);
+            $(this).parent().parent().find('.poll-id').val($(this).val());
         })
+
+        $('.poll-id').on('change', function() {
+            var id = $(this).val();
+            $('.poll-list').val(id).change();
+        });
 
         $('.btn-save-poll').on('click', function() {
             var pollId = $('.poll-list').find(':selected').val();
             var self = $(this);
             self.prop('disabled', true);
+            if(pollId <= 0) {
+                return null;
+            }
             $.ajax({
                 type: 'POST',
                 data:{ pollId },

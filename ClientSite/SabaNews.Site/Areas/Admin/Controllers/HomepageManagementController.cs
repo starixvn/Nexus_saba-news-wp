@@ -56,7 +56,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         {
             var polls = await pollService.GetAllPollAsync();
             var currentQuestion = await optionService.GetOptionAsync(OptionKey.PollHomepage);
-            var currentQuestionName = polls.First().Question;
+            var currentQuestionName = "-------";
             var questId = 0;
             if(currentQuestion != null)
             {
