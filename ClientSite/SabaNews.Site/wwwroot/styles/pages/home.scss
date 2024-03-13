@@ -418,6 +418,7 @@
         }
         .block-columns-border{
             margin-bottom: 2rem;
+            margin-top: 0;
         }
         .block-behind-vertical{
             @include grid-auto(unset , 4,  1fr , 2rem );
@@ -430,6 +431,7 @@
             @include Mobile {
                 display: block;
                 border-top : none;
+                padding-top: 0;
             }
             .heading-box-content{
                 a{

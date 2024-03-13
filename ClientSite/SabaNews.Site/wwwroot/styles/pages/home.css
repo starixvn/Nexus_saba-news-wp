@@ -3688,6 +3688,7 @@ button {
 }
 .main .block-behind .block-columns-border {
   margin-bottom: 2rem;
+  margin-top: 0;
 }
 .main .block-behind .block-behind-vertical {
   display: grid;
@@ -3707,6 +3708,7 @@ button {
   .main .block-behind .block-behind-vertical {
     display: block;
     border-top: none;
+    padding-top: 0;
   }
 }
 .main .block-behind .block-behind-vertical .heading-box-content a {
