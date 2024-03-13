@@ -39,14 +39,14 @@ export default class Grid extends PureComponent {
         return currentStanding;
     };
 
-    // handleClickStanding = (event, league) => {
-    //     const url = CommonFunctions.getLeaguePageUrl(league, 'bang-xep-hang');
-    //     if (event.ctrlKey) {
-    //         window.open(url, '_blank');
-    //     } else {
-    //         window.location = url;
-    //     }
-    // };
+    handleClickStanding = (event, league) => {
+        const url = CommonFunctions.getLeaguePageUrl(league, 'bang-xep-hang');
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
 
 
     render() {

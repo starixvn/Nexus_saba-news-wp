@@ -36,14 +36,14 @@ export class AppContainer extends Component {
     };
 
 
-    // handleClickFixture = event => {
-    //     const url = '/lich-thi-dau/bong-da';
-    //     if (event.ctrlKey) {
-    //         window.open(url, '_blank');
-    //     } else {
-    //         window.location = url;
-    //     }
-    // };
+    handleClickFixture = event => {
+        const url = '/lich-thi-dau/bong-da';
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
 
 
     render() {
