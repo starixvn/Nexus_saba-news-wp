@@ -3334,10 +3334,10 @@ button {
   content: "";
   display: block;
   position: absolute;
-  left: 6px;
-  top: 0;
-  width: 0.8rem;
-  height: 1.2rem;
+  left: 7px;
+  top: 4px;
+  width: 0.6rem;
+  height: 1rem;
 }
 .radio-border {
   width: 2rem;
@@ -3345,14 +3345,16 @@ button {
   border-radius: 50%;
   position: absolute;
   left: 0;
+  top: 0;
   border: 2px solid #84878F;
 }
 .radio-input:checked + .radio-label .radio-border {
-  border: 2px solid #294579 !important;
-  background: #294579 !important;
+  border: 2px solid #267FD2 !important;
+  background: #267FD2 !important;
 }
 .radio-input:checked + .radio-label {
-  color: #294579;
+  color: #333;
+  font-weight: 700;
 }
 .radio-input:checked + .radio-label:after {
   border: solid white;
@@ -3449,7 +3451,7 @@ button {
   align-items: center;
 }
 .list-result .result-element .top-result span {
-  color: #294579;
+  color: #267FD2;
   font-weight: bold;
   font-size: 1.4rem;
   line-height: 1.6rem;
@@ -3465,7 +3467,7 @@ button {
 .list-result .result-element .bar-inner {
   width: 0;
   height: 0.4rem;
-  background: #294579;
+  background: #267FD2;
   border-radius: 4px 0 0 4px;
 }
 

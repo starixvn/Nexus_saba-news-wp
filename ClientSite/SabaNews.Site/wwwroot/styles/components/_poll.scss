@@ -42,10 +42,10 @@
             content: "";
             display: block;
             position: absolute;
-            left: 6px;
-            top: 0;
-            width: .8rem;
-            height: 1.2rem;
+            left: 7px;
+            top: 4px;
+            width: 0.6rem;
+            height: 1rem;
         }
     }
 
@@ -55,16 +55,18 @@
         border-radius: 50%;
         position: absolute;
         left: 0;
+        top: 0;
         border: 2px solid #84878F;
     }
 
     &-input:checked + &-label .radio-border {
-        border: 2px solid #294579 !important;
-        background: #294579 !important;
+        border: 2px solid #267FD2 !important;
+        background: #267FD2 !important;
     }
 
     &-input:checked + &-label {
-        color: #294579;
+        color: #333;
+        font-weight: 700;
     }
 
     &-input:checked + &-label:after {
@@ -171,7 +173,7 @@
             justify-content: space-between;
             align-items: center;
             span {
-                color: #294579;
+                color: #267FD2;
                 font-weight: bold;
                 font-size: 1.4rem;
                 line-height: 1.6rem;
@@ -190,7 +192,7 @@
         .bar-inner {
             width: 0;
             height: .4rem;
-            background: #294579;
+            background: #267FD2;
             border-radius: 4px 0 0 4px;
         }
     }
