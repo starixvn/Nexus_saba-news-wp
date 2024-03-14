@@ -19,6 +19,9 @@
         line-height: 1.9rem;
         .round-name{
             cursor: pointer;
+            &:hover{
+                color: #eb5342;
+            }
         }
     }
     .livescore-soccer-main{

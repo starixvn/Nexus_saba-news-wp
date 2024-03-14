@@ -485,6 +485,9 @@ body {
   color: #333;
   cursor: pointer;
 }
+.control-standing span .name-match:hover {
+  color: #eb5342;
+}
 .control-standing .mobile-match {
   display: none;
 }

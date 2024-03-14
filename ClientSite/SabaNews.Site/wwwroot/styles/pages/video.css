@@ -2603,20 +2603,20 @@ button {
 }
 
 .swiper-button-prev {
-  left: 0;
-  border-radius: 3px 0px 0px 3px;
+  left: 0 !important;
+  border-radius: 0px 3px 3px 0px !important;
   transform: translateX(-50px);
 }
 
 .swiper-button-next {
-  right: 0;
-  border-radius: 0px 3px 3px 0px;
+  right: 0 !important;
+  border-radius: 3px 0px 0px 3px !important;
   transform: translateX(50px);
 }
 
 .swiper-button-prev, .swiper-button-next {
   background-image: none !important;
-  background: #E13C29;
+  background: rgba(225, 60, 41, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2625,6 +2625,9 @@ button {
   margin-top: 0;
   top: 40%;
   transition: all ease-in-out 0.3s;
+}
+.swiper-button-prev:hover, .swiper-button-next:hover {
+  background: #E13C29;
 }
 .swiper-button-prev .icon-slide::before, .swiper-button-next .icon-slide::before {
   font-size: 3.2rem;

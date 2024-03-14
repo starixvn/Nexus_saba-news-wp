@@ -652,6 +652,9 @@ body {
 .livescore-home .livescore-name-team .round-name {
   cursor: pointer;
 }
+.livescore-home .livescore-name-team .round-name:hover {
+  color: #eb5342;
+}
 .livescore-home .livescore-soccer-main {
   background: #F5F3EF;
   border: 1px solid #DADADA;

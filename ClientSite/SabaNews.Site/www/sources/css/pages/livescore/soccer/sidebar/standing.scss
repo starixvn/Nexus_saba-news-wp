@@ -191,6 +191,11 @@
         line-height: 1.9rem;
         color: #333;
         cursor: pointer;
+        .name-match{
+            &:hover{
+                color: #eb5342;
+            }
+        }
     }
     .mobile-match{
         display:none;

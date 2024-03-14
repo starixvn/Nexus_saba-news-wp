@@ -551,14 +551,14 @@
        font-weight: 700;
        &:last-child{
         margin-left: 0.8rem;
-        z-index: 0;
        }
        &::after{
         background: #EAEAEA; 
        }
-       &.active{
+       &.active,&:hover{
         background: #F12F19;
         color: #fff;
+        z-index: 99;
         &::after{
             background: #F12F19; 
            }
