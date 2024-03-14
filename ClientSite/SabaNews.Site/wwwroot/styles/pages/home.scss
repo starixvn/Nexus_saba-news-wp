@@ -580,7 +580,7 @@
     }
 }
 
-.standing-fixture-mobile{
+.standing-fixture-mobile,.livescore-home .block__title{
     display: none;
     @include Mobile{
         display: block;
