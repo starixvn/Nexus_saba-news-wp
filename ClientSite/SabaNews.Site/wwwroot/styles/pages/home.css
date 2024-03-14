@@ -3820,29 +3820,45 @@ button {
   color: #eb5342;
 }
 
-.home-nav a {
+.standing-fixture-pc {
+  display: block;
+}
+@media (max-width: 767px) {
+  .standing-fixture-pc {
+    display: none;
+  }
+}
+.standing-fixture-pc .home-nav a {
   background: #EAEAEA;
   color: #868686;
   font-weight: 700;
 }
-.home-nav a:last-child {
+.standing-fixture-pc .home-nav a:last-child {
   margin-left: 0.8rem;
 }
-.home-nav a::after {
+.standing-fixture-pc .home-nav a::after {
   background: #EAEAEA;
 }
-.home-nav a.active, .home-nav a:hover {
+.standing-fixture-pc .home-nav a.active, .standing-fixture-pc .home-nav a:hover {
   background: #F12F19;
   color: #fff;
   z-index: 99;
 }
-.home-nav a.active::after, .home-nav a:hover::after {
+.standing-fixture-pc .home-nav a.active::after, .standing-fixture-pc .home-nav a:hover::after {
   background: #F12F19;
 }
-
-.home-nav-content .tab {
+.standing-fixture-pc .home-nav-content .tab {
   display: none;
 }
-.home-nav-content .tab.active {
+.standing-fixture-pc .home-nav-content .tab.active {
   display: block;
+}
+
+.standing-fixture-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .standing-fixture-mobile {
+    display: block;
+  }
 }
