@@ -41,9 +41,11 @@ export default class MobileGrid extends PureComponent {
         const { isShowList } = this.state;
         return (
             <>
-                <span onClick={this.toggleListLeague} ref={this.wrapperRef} className="pc-match">
-                    <span className="name-match">{CommonFunctions.getLeagueName(currentLeagueStanding.league)}</span>
-                    <i className="icon-chevron-down" />
+                <span ref={this.wrapperRef} className="pc-match" >
+                    <span className="league-name" onClick={event => this.props.handleClickStanding(event, currentLeagueStanding.league)}>
+                        {CommonFunctions.getLeagueName(currentLeagueStanding.league)}
+                    </span>
+                    <i onClick={this.toggleListLeague} className="icon-chevron-down" />
                 </span>
                 {
                     isShowList &&

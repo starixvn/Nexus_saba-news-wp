@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import CommonFunctions from '@jsroot/common/common-functions';
-import MobileGrid from '../MobileGrid';
+import PCGrid from '../PCGrid';
 
 describe('MobileGrid', () => {
     const defaultProps = {

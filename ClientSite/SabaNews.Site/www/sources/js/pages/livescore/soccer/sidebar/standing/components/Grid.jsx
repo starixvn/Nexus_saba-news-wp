@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import StandingGrid from '../../standing-grid/Index';
-import MobileGrid from './MobileGrid';
+import PCGrid from './PCGrid';
 
 export default class Grid extends PureComponent {
     constructor(props) {
@@ -62,7 +62,11 @@ export default class Grid extends PureComponent {
                     <div className="season-standings">
                         <div className="control-standing " >
                             <div className="parent-dropdown">
-                                <MobileGrid standings={standings} currentLeagueStanding={currentLeagueStanding} handleSelectLeague={this.handleSelectLeague} />
+                                <PCGrid
+                                    standings={standings} 
+                                    currentLeagueStanding={currentLeagueStanding}
+                                    handleClickStanding={this.handleClickStanding}
+                                    handleSelectLeague={this.handleSelectLeague} />
                                 <span className="mobile-match">
                                     {CommonFunctions.getLeagueName(currentLeagueStanding.league)}
                                     <i className="icon-chevron-down" />

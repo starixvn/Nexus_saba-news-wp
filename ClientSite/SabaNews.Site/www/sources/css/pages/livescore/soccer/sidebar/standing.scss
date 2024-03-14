@@ -208,6 +208,11 @@
         @include tableMobile{
             display: none;
         }
+        .league-name {
+            &:hover {
+                color: #E13C29;
+            }
+        }
     }
 }
 
