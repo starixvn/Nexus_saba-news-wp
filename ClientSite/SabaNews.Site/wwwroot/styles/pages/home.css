@@ -3828,23 +3828,23 @@ button {
     display: none;
   }
 }
-.standing-fixture-pc .home-nav a {
+.standing-fixture-pc.home-nav a {
   background: #EAEAEA;
   color: #868686;
   font-weight: 700;
 }
-.standing-fixture-pc .home-nav a:last-child {
+.standing-fixture-pc.home-nav a:last-child {
   margin-left: 0.8rem;
 }
-.standing-fixture-pc .home-nav a::after {
+.standing-fixture-pc.home-nav a::after {
   background: #EAEAEA;
 }
-.standing-fixture-pc .home-nav a.active, .standing-fixture-pc .home-nav a:hover {
+.standing-fixture-pc.home-nav a.active, .standing-fixture-pc.home-nav a:hover {
   background: #F12F19;
   color: #fff;
   z-index: 99;
 }
-.standing-fixture-pc .home-nav a.active::after, .standing-fixture-pc .home-nav a:hover::after {
+.standing-fixture-pc.home-nav a.active::after, .standing-fixture-pc.home-nav a:hover::after {
   background: #F12F19;
 }
 .standing-fixture-pc .home-nav-content .tab {

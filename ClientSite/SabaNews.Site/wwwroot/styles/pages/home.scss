@@ -548,7 +548,7 @@
     @include Mobile{
         display: none;
     }
-    .home-nav {
+    &.home-nav {
         a{
            background: #EAEAEA; 
            color: #868686;
