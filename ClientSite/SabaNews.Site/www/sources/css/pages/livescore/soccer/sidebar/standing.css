@@ -504,6 +504,9 @@ body {
     display: none;
   }
 }
+.control-standing .pc-match .league-name:hover {
+  color: #E13C29;
+}
 
 .table-custom {
   border-radius: 3px;

@@ -978,7 +978,7 @@
 
 .button-mobile{
     @include tableMobile {
-        position: relative;
+        position: absolute;
     }
 }
 
