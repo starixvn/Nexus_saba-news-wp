@@ -3847,10 +3847,11 @@ button {
 .standing-fixture-pc.home-nav a.active::after, .standing-fixture-pc.home-nav a:hover::after {
   background: #F12F19;
 }
-.standing-fixture-pc .home-nav-content .tab {
+
+.home-nav-content .tab {
   display: none;
 }
-.standing-fixture-pc .home-nav-content .tab.active {
+.home-nav-content .tab.active {
   display: block;
 }
 

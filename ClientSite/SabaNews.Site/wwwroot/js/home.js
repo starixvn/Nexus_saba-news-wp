@@ -104,10 +104,10 @@ var home = {
     },
     HandleLivescoreNav: function() {
         $(window).scroll(function () {
-            if($(window).innerWidth() <= 500) {
-                $('.home-nav-content').addClass('standing-fixture-mobile')
+            if($(window).innerWidth() <= 768) {
+                $('.home-nav-content').addClass('standing-fixture-mobile').removeClass('home-nav-content');
             } else {
-                $('.home-nav-content').removeClass('standing-fixture-mobile')
+                $('.standing-fixture-mobile').addClass('home-nav-content').removeClass('standing-fixture-mobile')
             }
         });
         $('.home-nav a').on('click', function() {

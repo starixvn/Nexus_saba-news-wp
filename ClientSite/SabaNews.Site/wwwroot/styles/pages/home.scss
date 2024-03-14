@@ -569,12 +569,13 @@
            }
         }
     }
-    .home-nav-content {
-        .tab {
-            display: none;
-            &.active {
-                display: block;
-            }
+}
+    
+.home-nav-content {
+    .tab {
+        display: none;
+        &.active {
+            display: block;
         }
     }
 }
