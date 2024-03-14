@@ -103,6 +103,13 @@ var home = {
         });
     },
     HandleLivescoreNav: function() {
+        $(window).scroll(function () {
+            if($(window).innerWidth() <= 500) {
+                $('.home-nav-content').addClass('standing-fixture-mobile')
+            } else {
+                $('.home-nav-content').removeClass('standing-fixture-mobile')
+            }
+        });
         $('.home-nav a').on('click', function() {
             $('.home-nav a').removeClass('active');
             $(this).addClass('active');
