@@ -306,7 +306,7 @@ var all = (function ($) {
             }
             row.style.marginTop = toTop +'px';
             autoPlay();
-        }, 3000);
+        }, 4500);
     }
 
     function init() {
