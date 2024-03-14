@@ -165,6 +165,7 @@ var home = (function ($) {
         });
 
         $(document).on('click', '.poll-element', function () {
+            $('.vote-answer').removeClass('disabled');
             $(this).find(".radio-input").prop('checked', true);
         })
 
@@ -172,6 +173,7 @@ var home = (function ($) {
         $(document).on('change', '.radio-input', function () {
             $('.poll-element').removeClass('active');
             $(this).parent().addClass('active');
+            $('.vote-answer').removeClass('disabled');
         });
     }
     function init() {
