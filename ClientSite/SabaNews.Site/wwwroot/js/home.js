@@ -176,10 +176,43 @@ var home = (function ($) {
             $('.vote-answer').removeClass('disabled');
         });
     }
+
+    function HandleLivescoreNav() {
+        $(window).scroll(function () {
+            if($(window).innerWidth() <= 768) {
+                $('.home-nav-content').addClass('standing-fixture-mobile').removeClass('home-nav-content');
+            } else {
+                $('.standing-fixture-mobile').addClass('home-nav-content').removeClass('standing-fixture-mobile')
+            }
+        });
+        $('.home-nav a').on('click', function() {
+            $('.home-nav a').removeClass('active');
+            $(this).addClass('active');
+            var id = $(this).data('id');
+            $('.home-nav-content .tab').removeClass('active');
+            $('.home-nav-content ' + id).addClass('active');
+        })
+    }
+    var toTop = 0;
+    
+    function HandleSlideLastestNews(){
+        timer = setTimeout(function(){
+            var row = document.getElementById('row');
+            toTop = toTop - 30;
+            if (toTop === - 150){
+                toTop = 0;
+                clearTimeout(timer);
+            }
+            row.style.marginTop = toTop +'px';
+            HandleSlideLastestNews();
+        }, 4500);
+    }
     function init() {
         HandleIframe();
         GetPollId();
         UpdatePollData();
+        HandleLivescoreNav();
+        HandleSlideLastestNews();
     };
     return {
         init
