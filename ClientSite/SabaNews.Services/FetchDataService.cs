@@ -56,7 +56,7 @@
             {
                 _Tag =  CategoryKey.HotNewsTag,
                 _Start = Constants.FromFirstItem,
-                _End = Constants.GetFiveItems
+                _End = Constants.GetFourItems
             };
             IList<Post> stickyPosts = new List<Post>();
             var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
