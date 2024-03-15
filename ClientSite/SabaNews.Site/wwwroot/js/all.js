@@ -300,7 +300,7 @@ var all = (function ($) {
         timer = setTimeout(function(){
             var row = document.getElementById('row');
             toTop = toTop - 30;
-            if (toTop === - 120){
+            if (toTop === - 150){
                 toTop = 0;
                 clearTimeout(timer);
             }
