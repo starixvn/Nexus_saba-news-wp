@@ -662,6 +662,8 @@ body {
   border-radius: 3px;
   max-height: 44.4rem;
   min-width: 33rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .livescore-home .livescore-soccer-main::-webkit-scrollbar {
   width: 0.6rem;
