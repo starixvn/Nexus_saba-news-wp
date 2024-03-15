@@ -2263,7 +2263,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block-columns .columns-left {
-  width: 91rem;
+  width: 71%;
 }
 @media screen and (max-width: 1024px) {
   .block-columns .columns-left {

@@ -660,7 +660,6 @@ body {
   background: #F5F3EF;
   border: 1px solid #DADADA;
   border-radius: 3px;
-  overflow: overlay;
   max-height: 44.4rem;
   min-width: 33rem;
 }
