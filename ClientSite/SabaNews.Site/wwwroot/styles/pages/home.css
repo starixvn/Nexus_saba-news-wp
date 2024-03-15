@@ -3848,7 +3848,7 @@ button {
 .standing-fixture-pc.home-nav a.active, .standing-fixture-pc.home-nav a:hover {
   background: #F12F19;
   color: #fff;
-  z-index: 99;
+  z-index: 88;
 }
 .standing-fixture-pc.home-nav a.active::after, .standing-fixture-pc.home-nav a:hover::after {
   background: #F12F19;
