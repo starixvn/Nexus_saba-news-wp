@@ -14,7 +14,7 @@ namespace SabaNews.Criteria.UnitTests.Poll
         public void GetSettingKey_WhenCalled_ReturnExpectedSettingKey()
         {
             // Arrange
-            var criteria = new GetPollCriteria();
+            var criteria = new GetPollDetailCriteria();
             var expected = "poll_get";
 
             // Act
@@ -30,7 +30,7 @@ namespace SabaNews.Criteria.UnitTests.Poll
         public void IsValid_WhenCalled_ReturnFalse(int questId, int themeId)
         {
             // Arrange
-            var criteria = new GetPollCriteria()
+            var criteria = new GetPollDetailCriteria()
             {
                 QuestId = questId,
                 ThemeId = themeId,
@@ -49,7 +49,7 @@ namespace SabaNews.Criteria.UnitTests.Poll
         public void IsValid_WhenCalled_ReturnTrue()
         {
             // Arrange
-            var criteria = new GetPollCriteria()
+            var criteria = new GetPollDetailCriteria()
             {
                 QuestId = 1,
                 ThemeId = 1,
