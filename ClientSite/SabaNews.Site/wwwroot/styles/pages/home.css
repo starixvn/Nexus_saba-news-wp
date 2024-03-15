@@ -3471,6 +3471,14 @@ button {
   border-radius: 4px 0 0 4px;
 }
 
+.hide-poll {
+  display: none;
+}
+
+.show-poll {
+  display: block;
+}
+
 .main {
   padding-top: 0.6rem;
 }

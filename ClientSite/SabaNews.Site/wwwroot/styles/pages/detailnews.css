@@ -3637,6 +3637,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 4px 0 0 4px;
 }
 
+.hide-poll {
+  display: none;
+}
+
+.show-poll {
+  display: block;
+}
+
 .ads-insite {
   margin-top: 2rem;
   text-align: center;
