@@ -2145,6 +2145,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-columns .columns-right {
   width: 35rem;
 }
+@media (max-width: 1399px) {
+  .block-columns .columns-right {
+    width: 33rem;
+  }
+}
 @media screen and (max-width: 1024px) {
   .block-columns .columns-right {
     width: 100%;
@@ -2204,12 +2209,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .wraper-hot-news .block__title, .wraper-hot-news .heading-category {
   border-bottom: none;
   margin-bottom: 0;
+  width: 17rem;
 }
 .wraper-hot-news .list-hot-news {
   list-style: none;
   padding-left: 0;
   transition: all ease 0.6s;
-  margin-left: 30px;
+  width: 80%;
 }
 @media (max-width: 767px) {
   .wraper-hot-news .list-hot-news {
