@@ -27,15 +27,13 @@
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
         private readonly ICacheWrapperService cacheService;
-        private readonly IOptionService optionService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
             IPollService pollService,
             IDataControlService dataControlService,
-            ICacheWrapperService cacheService,
-            IOptionService optionService)
+            ICacheWrapperService cacheService)
         {
             this.postService = postService;
             this.configuration = configuration;
@@ -43,7 +41,6 @@
             this.pollService = pollService;
             this.dataControlService = dataControlService;
             this.cacheService = cacheService;
-            this.optionService = optionService;
         }
 
         [Route("{slug}")]

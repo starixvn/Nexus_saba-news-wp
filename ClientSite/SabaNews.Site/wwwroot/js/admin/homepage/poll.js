@@ -27,7 +27,7 @@ var pollAdmin = (function ($) {
                 url: "/Admin/HomepageManagement/UpdatePoll",
                 success: function(res) {
                     if (res.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Update Poll successfully!');
+                        GetSuccessPopup('#NoticeModal', 'Poll was successfully changed!');
                         setTimeout(function () {
                             $('#NoticeModal').modal('hide');
                             GetDataGrid();

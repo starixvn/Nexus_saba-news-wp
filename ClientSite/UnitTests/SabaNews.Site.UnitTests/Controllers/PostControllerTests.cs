@@ -34,9 +34,9 @@
         private IPostService postService;
         private IConfiguration configuration;
         private ISessionService sessionService;
-        private IStatisticService statisticService;
         private IPollService pollService;
         private IDataControlService dataControlService;
+        private ICacheWrapperService cacheService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -284,11 +284,11 @@
             controller.ControllerContext.HttpContext.Request.Headers["x-forwarded-for"] = fixture.Create<string>();
             var questId = fixture.Create<int>();
             var themeId = fixture.Create<int>();
-            var criteria = fixture.Create<GetPollCriteria>();
+            var criteria = fixture.Create<GetPollDetailCriteria>();
             var expected = fixture.Create<PollViewModel>();
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
            
-            pollService.GetPollAsync(Arg.Do<GetPollCriteria>(x => criteria = x)).Returns(expected);
+            pollService.GetPollDetailAsync(Arg.Do<GetPollDetailCriteria>(x => criteria = x)).Returns(expected);
 
             //Act
             var result = await controller.GetPollData(questId, themeId);
@@ -305,7 +305,7 @@
         public async Task VotePoll_WhenVoteSuccessful_ReturnExpectedData()
         {
             // Arrange
-            var controller = GetController();
+            var controller = GetController(false);
             controller.ControllerContext = new ControllerContext
             {
                 HttpContext = new DefaultHttpContext()
@@ -316,7 +316,7 @@
             var answerId = fixture.Create<int>();
             var themeId = fixture.Create<int>();
             var clientIp = fixture.Create<string>();
-            var criteria = fixture.Create<GetPollCriteria>();
+            var criteria = fixture.Create<GetPollDetailCriteria>();
             var expected = new CommandResult { Code = 0 };
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
@@ -366,7 +366,6 @@
             var answerId = fixture.Create<int>();
             var themeId = fixture.Create<int>();
             var clientIp = fixture.Create<string>();
-            var criteria = fixture.Create<GetPollCriteria>();
             var expected = new CommandResult { Code = 1 };
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
@@ -387,7 +386,6 @@
             // Arrange
             var controller = GetController();
             var postId = fixture.Create<int>();
-            var criteria = fixture.Create<GetPollCriteria>();
             var expected = fixture.Create<CommandResult>();
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
@@ -402,34 +400,12 @@
         }
 
         [Fact]
-        public async Task GetPostViewStatistic_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var fromDate = fixture.Create<DateTime>();
-            var toDate = fixture.Create<DateTime>();
-            var criteria = fixture.Create<GetPollCriteria>();
-            var expected = fixture.Create<IEnumerable<PostStatisticInfo>>();
-            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
-
-            statisticService.GetPostViewStatistic(Arg.Do<DateTime>(x => fromDate = x), Arg.Do<DateTime>(x => fromDate = x)).Returns(expected);
-
-            //Act
-            var result = await controller.GetPostViewStatistic(fromDate, toDate);
-
-            // Assert
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(expected, okResult.Value);
-        }
-
-        [Fact]
         public async Task UpdatePostView_WhenCalled_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
             var postId = fixture.Create<int>();
             var isVideo = false;
-            var criteria = fixture.Create<GetPollCriteria>();
             var expected = fixture.Create<CommandResult>();
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
@@ -565,14 +541,19 @@
 
         #region Helpers
         private PostController GetController(bool enabledCache = true)
-        {            
+        {   var inMemorySettings = new Dictionary<string, string> {
+                {"IsEnabledUseFanexCaching", $"{enabledCache}"}
+            };
+            configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
             pollService = Substitute.For<IPollService>();
             postService = Substitute.For<IPostService>();
-            configuration = Substitute.For<IConfiguration>();
             sessionService = Substitute.For<ISessionService>();
-            statisticService = Substitute.For<IStatisticService>();
             dataControlService = Substitute.For<IDataControlService>(); 
-            var controller = new PostController(postService, configuration, sessionService, statisticService, pollService, dataControlService);
+            cacheService = Substitute.For<ICacheWrapperService>(); 
+             
+            var controller = new PostController(postService, configuration, sessionService, pollService, dataControlService, cacheService);
 
             return controller;
         }

@@ -60,7 +60,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var questId = 0;
             if(currentQuestion != null)
             {
-                questId = Int32.Parse(currentQuestion.OptionValue);
+                questId = int.Parse(currentQuestion.OptionValue);
                 currentQuestionName = polls.First(item => item.Id == questId).Question;
             }
             var viewModel = new PollAdminViewModel

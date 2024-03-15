@@ -18,23 +18,39 @@
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
-        public async Task GetPollAsync_WhenCalled_ReturnExpectedPollViewModel()
+        public async Task GetPollDetailAsync_WhenCalled_ReturnExpectedPollViewModel()
         {
             //Arrange
             var service = GetPollService();
-            var param = fixture.Create<GetPollCriteria>();
+            var param = fixture.Create<GetPollDetailCriteria>();
             
             var polls = fixture.Create<IEnumerable<PollModel>>();
             var questions = fixture.Create<IEnumerable<QuestionModel>>();
             var expected = new ValueTuple<IEnumerable<PollModel>, IEnumerable<QuestionModel>>(polls, questions);
-            baseService.FetchMultipleAsync<PollModel, QuestionModel>(Arg.Do<GetPollCriteria>(x => param = x)).Returns(expected);
+            baseService.FetchMultipleAsync<PollModel, QuestionModel>(Arg.Do<GetPollDetailCriteria>(x => param = x)).Returns(expected);
 
             //Act
-            var actual = await service.GetPollAsync(param);
+            var actual = await service.GetPollDetailAsync(param);
 
             //Assert
             Assert.Equal(expected.Item1, actual.Polls);
             Assert.Equal(expected.Item2.FirstOrDefault(), actual.Question);
+        }
+
+        [Fact]
+        public async Task GetAllPollAsync_WhenCalled_ReturnExpectedPollViewModel()
+        {
+            //Arrange
+            var service = GetPollService();
+            var criteria = fixture.Create<GetAllPollCriteria>();
+            var polls = fixture.Create<IEnumerable<QuestionModel>>();
+            baseService.GetDataAsync<QuestionModel>(Arg.Do<GetAllPollCriteria>(x => criteria = x)).Returns(polls);
+
+            //Act
+            var actual = await service.GetAllPollAsync();
+
+            //Assert
+            Assert.Equal(polls, actual);
         }
 
         [Fact]

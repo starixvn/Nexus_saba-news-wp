@@ -24,6 +24,8 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
     using Newtonsoft.Json;
     using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
     using SabaNews.Core.Services;
+    using SabaNews.Models.Poll;
+    using SabaNews.Models.ViewModel.Poll;
 
     public class HomepageManagementControllerTests : AdminController
     {
@@ -33,6 +35,7 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
         private readonly IFixture fixture = new Fixture();
         private IPostService postService;
         private IDataControlService dataControlService;
+        private IPollService pollService;
         private readonly Option option = new()
         {
             OptionId = 0,
@@ -64,6 +67,50 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
 
             // Assert
             Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
+        public async Task  Poll_WhenOptionValueIsNull_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            Option option = null;
+            var expectedPolls = fixture.Create<IList<QuestionModel>>();
+            optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
+            pollService.GetAllPollAsync().Returns(expectedPolls);
+
+            //Act
+            var result = await controller.Poll();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<PollAdminViewModel>(viewResult.Model);
+            Assert.Equal(0, viewModel.SelectedQuestId);
+            Assert.Equal("-------", viewModel.SelectedQuest);
+        }
+
+        [Fact]
+        public async Task  Poll_WhenHaveOptionValue_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            Option option = new Option{
+                OptionId = 1,
+                OptionValue = "1"
+            };
+            var expectedPolls = fixture.Create<IList<QuestionModel>>();
+            expectedPolls.Add(new QuestionModel {Id = 1, Question = "Who is win?"});
+            optionService.GetOptionAsync(Arg.Do<string>(x => x = "key")).Returns(option);
+            pollService.GetAllPollAsync().Returns(expectedPolls);
+
+            //Act
+            var result = await controller.Poll();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<PollAdminViewModel>(viewResult.Model);
+            Assert.Equal(1, viewModel.SelectedQuestId);
+            Assert.Equal("Who is win?", viewModel.SelectedQuest);
         }
 
         [Fact]
@@ -410,7 +457,8 @@ namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
             postService = Substitute.For<IPostService>();
             dataControlService = Substitute.For<IDataControlService>();
             sessionService = Substitute.For<ISessionService>();
-            var controller = new HomepageManagementController(optionService, leagueService, postService, dataControlService, sessionService);
+            pollService = Substitute.For<IPollService>();
+            var controller = new HomepageManagementController(optionService, leagueService, postService, dataControlService, sessionService, pollService);
 
             return controller;
         }
