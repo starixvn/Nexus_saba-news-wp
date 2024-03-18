@@ -1,4 +1,7 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isNested="0"></info>*/
+update sabasports.livescore_league
+set Icon = replace(Icon, 'apimanager.ydssp.com', 'sports-cdn.world-media.cn')
+where Icon like '%apimanager.ydssp.com%';
 
 update sabasports.livescore_league
 set Icon = replace(Icon, 'abjing.com', 'world-media.cn')
