@@ -174,8 +174,11 @@
             html += `<li><a href="#${section}">${$(val).text()}</a></li>`;
         })
         html += '</ul></div></div>';
-        $('.content').find('h2').first().append(html);
+        if(sectionTitle.length > 0) {
+            $('.content').children(":first").append(html);
 
+        }
+        
         $(document).on('click', '.icon-chevron-down', function(){
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
             $(this).parent().parent().find('ul').slideToggle(300);
