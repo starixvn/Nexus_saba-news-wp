@@ -123,6 +123,26 @@ html, body {
 .content p {
   margin-bottom: 1rem;
 }
+.content h2 {
+  font-size: 2.1rem;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .content h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+  }
+}
+.content h3 {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .content h3 {
+    font-size: 1.7rem;
+    margin: 0.5rem 0;
+  }
+}
 .content li {
   margin-bottom: 1rem;
 }
