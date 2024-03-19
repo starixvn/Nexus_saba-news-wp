@@ -163,22 +163,28 @@
     }
 
     function CreateTableOfContentArticle() {
-        var sectionTitle = $('.content').find('h3');
+        var sectionTitle = $('.content').find('h2');
         var html = '<div class="list-place">'
               html += '<div class="toc-heading">';
                 html += '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>'
                 html += '<ul>'
+        var excerpt = $('.content').children(":first");
+        var listCount = 0;
         sectionTitle.map((index, val)=> {
+            var text = $(val).text();
+            if(excerpt.text() == text) {
+                return false;
+            }
+            listCount++;
             var section = "section-" + index;
             $(val).attr('id', section);
-            html += `<li><a href="#${section}">${$(val).text()}</a></li>`;
+            html += `<li><a href="#${section}">${text}</a></li>`;
         })
         html += '</ul></div></div>';
-        if(sectionTitle.length > 0) {
+        if(listCount > 0) {
             $('.content').children(":first").append(html);
 
         }
-        
         $(document).on('click', '.icon-chevron-down', function(){
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
             $(this).parent().parent().find('ul').slideToggle(300);
