@@ -47,11 +47,8 @@
 
 
 .show-pc{
-    &.banner-left{
-        min-height: 11.6rem;
-    }
     &.banner-right{
-        min-height: 46rem;
+        margin-bottom: 2rem;
     }
 }
 .show-mobile{
