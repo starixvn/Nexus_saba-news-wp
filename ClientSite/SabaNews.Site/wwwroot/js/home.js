@@ -102,25 +102,8 @@ var home = {
             }
         });
     },
-    HandleLivescoreNav: function() {
-        $(window).scroll(function () {
-            if($(window).innerWidth() <= 768) {
-                $('.home-nav-content').addClass('standing-fixture-mobile').removeClass('home-nav-content');
-            } else {
-                $('.standing-fixture-mobile').addClass('home-nav-content').removeClass('standing-fixture-mobile')
-            }
-        });
-        $('.home-nav a').on('click', function() {
-            $('.home-nav a').removeClass('active');
-            $(this).addClass('active');
-            var id = $(this).data('id');
-            $('.home-nav-content .tab').removeClass('active');
-            $('.home-nav-content ' + id).addClass('active');
-        })
-    },
     init: function () {
         this.HandleIframe();
-        this.HandleLivescoreNav();
     }
 }
 

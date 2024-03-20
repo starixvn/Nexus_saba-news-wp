@@ -25,6 +25,8 @@
 
         Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(PostParam postParam);
 
+        Task<IEnumerable<Post>> GetMostViewPostsAsync(GetMostViewPostsCriteria criteria);
+
         Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
 
         Task<Post> GetPostDetailAsync(long Id);

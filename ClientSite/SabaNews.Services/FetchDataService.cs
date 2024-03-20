@@ -67,7 +67,7 @@
             var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var stickyPostIds = await postService.GetStickyPostsAsync();
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
-            var hotNews = await postService.GetPostByTagAsync(hotnewsCriteria);
+            var hotNews = await postService.GetMostViewPostsAsync(new GetMostViewPostsCriteria { StartRow = Constants.FromFirstItem, RowLimit = Constants.GetFourItems });
             if(stickyPostIds.Any())
             {
                 var ids = string.Join(",", stickyPostIds);

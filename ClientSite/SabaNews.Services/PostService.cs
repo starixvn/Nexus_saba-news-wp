@@ -96,6 +96,13 @@
             return FormatData(posts).ToList();
         }
 
+        public async Task<IEnumerable<Post>> GetMostViewPostsAsync(GetMostViewPostsCriteria criteria)
+        {
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+
+            return posts.ToList();
+        }
+
         public async Task<Post> GetPostDetailBySlugAsync(string slug, string postType)
         {
             var criteria = new GetPostDetailBySlugCriteria
@@ -349,10 +356,8 @@
                 {
                     var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                     var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
-                    post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
+                    post.PostExcerpt = subTitle != -1 ? excerpt[..subTitle] : excerpt;
                 }
-                var metadata = serializerService.Unserializer(post.Metadata);
-                post.Images = GetListImageFromMetadata(metadata, post.FeatureImage);
             }
             return posts;
         }

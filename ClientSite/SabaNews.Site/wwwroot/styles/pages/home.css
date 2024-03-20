@@ -3837,12 +3837,3 @@ button {
 .home-nav-content .tab.active {
   display: block;
 }
-
-.standing-fixture-mobile, .livescore-home .block__title, .livescore-home .heading-category {
-  display: none;
-}
-@media (max-width: 767px) {
-  .standing-fixture-mobile, .livescore-home .block__title, .livescore-home .heading-category {
-    display: block;
-  }
-}
