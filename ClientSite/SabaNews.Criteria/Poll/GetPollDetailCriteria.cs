@@ -10,8 +10,6 @@
 
         public string UserIp { get; set; }
 
-        public int IsVoted { get; set; }
-
         public override string GetSettingKey() => "poll_get";
 
         public override bool IsValid() => QuestId > 0 && ThemeId > 0;

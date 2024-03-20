@@ -9,6 +9,8 @@
         
         public QuestionModel Question { get; set; }
 
+        public PollUserModel UserVote { get; set; }
+
         public string ClassName { get; set; }
 
         public bool IsUserVoted { get; set; } 

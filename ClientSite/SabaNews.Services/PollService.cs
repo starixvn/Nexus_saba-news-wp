@@ -21,12 +21,13 @@
 
         public async Task<PollViewModel> GetPollDetailAsync(GetPollDetailCriteria criteria)
         {
-            var (polls, question) = await baseService.FetchMultipleAsync<PollModel, QuestionModel>(criteria);
+            var (polls, question, user) = await baseService.FetchMultipleAsync<PollModel, QuestionModel, PollUserModel>(criteria);
             var result = new PollViewModel
             {
                 Polls = polls,
                 Question = question.FirstOrDefault(),
-                IsUserVoted = criteria.IsVoted == 1,
+                UserVote = user.FirstOrDefault(),
+                IsUserVoted = user.Any(),
                 TotalVotes = polls.Sum(item => item.Vote)
             };
             return result;

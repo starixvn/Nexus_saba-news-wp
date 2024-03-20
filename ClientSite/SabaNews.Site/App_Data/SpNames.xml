@@ -155,8 +155,8 @@
         <Setting Key="email_detail_remove" SpName="email_detail_remove" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Poll">
-        <Setting Key="poll_get" SpName="poll_get" DbName="sabasports" Plain="0" />
-        <Setting Key="poll_vote" SpName="poll_vote" DbName="sabasports" Plain="0" />
+        <Setting Key="poll_get" SpName="poll_get_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="poll_vote" SpName="poll_vote_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="poll_get_all" SpName="poll_get_all" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="User">

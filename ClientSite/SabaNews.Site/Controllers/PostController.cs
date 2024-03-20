@@ -140,7 +140,7 @@
             };
             if(IsUsingCache)
             {
-                var cacheKey = $"{CacheKey.PollData}-{questId}-{clientIP}";
+                var cacheKey = $"{CacheKey.PollData}-{questId}";
                 result = await cacheService.GetAsync<PollViewModel>(cacheKey);
                 if(result == null)
                 {
@@ -166,7 +166,7 @@
             var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
-                await cacheService.Remove($"{CacheKey.PollData}-{questId}-{clientIP}");
+                await cacheService.Remove($"{CacheKey.PollData}-{questId}");
                 return await GetPollData(questId, themeId);
             }
             return Json(result);
