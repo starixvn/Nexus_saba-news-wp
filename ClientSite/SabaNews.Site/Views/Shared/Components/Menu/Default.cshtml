@@ -133,11 +133,12 @@
                     {
                         var slug = menu.CateSlug;
                         var link = getMenuLink(menu);
+                        var lastestNewClass = menu.CateSlug == CategoryKey.NewPostSlug ? "hide" : "";
                         if (menu.CateId != Constants.Home)
                         {
                             var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                             var lv2Menus = Model.Menus.Where(item => item.ParentId == menu.PostId);
-                            <li class="menu-item">
+                            <li class="menu-item @lastestNewClass">
                                 <a href="@link" class="item @activeMenu"  title="@menu.MenuTitle">@menu.MenuTitle</a>
                                 @{RenderSubMenu(Model.Menus, menu.PostId);}
                             </li>
