@@ -145,7 +145,7 @@
     .columns-left{
         border-right : 1px solid #E5E5E5;
         padding-right: 2rem;
-        width: 96rem;
+        width: 100%;
         @include Mobile{
             padding-right: 0;
             border-right: none;
@@ -154,7 +154,7 @@
         }
     }
     .columns-right{
-        width: auto;
+        min-width: 30rem;
         @include Mobile{
             order: 1;
             width: 100%;

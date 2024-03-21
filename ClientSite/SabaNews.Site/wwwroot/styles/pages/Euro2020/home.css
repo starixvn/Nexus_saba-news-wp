@@ -2276,7 +2276,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-last-page .columns-left {
   border-right: 1px solid #E5E5E5;
   padding-right: 2rem;
-  width: 96rem;
+  width: 100%;
 }
 @media (max-width: 767px) {
   .block-last-page .columns-left {
@@ -2287,7 +2287,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .block-last-page .columns-right {
-  width: auto;
+  min-width: 30rem;
 }
 @media (max-width: 767px) {
   .block-last-page .columns-right {
