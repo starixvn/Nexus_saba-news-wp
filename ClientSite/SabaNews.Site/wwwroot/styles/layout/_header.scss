@@ -597,6 +597,9 @@
                             }
                         }
                     }
+                    &.hide{
+                        display: none;
+                    }
 
                     .item {
                         text-decoration: none;

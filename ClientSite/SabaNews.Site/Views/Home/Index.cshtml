@@ -157,23 +157,6 @@
 
                 </div>
                 <div class="columns columns-right">
-                    <div class="hotnews-block">
-                        <div class="block__title">
-                            <a href="@Url.Action("Tag", "Home", new { tagname =   CategoryKey.HotNewsTag })">
-                                @ViewResources.HotNews
-                            </a>
-                        </div>
-                        <ul class="list-hotnews">
-                            @{
-                                foreach (var item in Model.Hotnews)
-                                {
-                                    <li>
-                                        <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
                     <div class="home-nav-content">
                         <div id="fixture-homepage"></div>
                         <div id="standing-homepage"></div>
@@ -456,6 +439,23 @@
                     </div>
                 </div>
                 <div class="columns columns-right">
+                    <div class="hotnews-block">
+                        <div class="block__title">
+                            <a href="@Url.Action("Tag", "Home", new { tagname =   CategoryKey.HotNewsTag })">
+                                @ViewResources.HotNews
+                            </a>
+                        </div>
+                        <ul class="list-hotnews">
+                            @{
+                                foreach (var item in Model.Hotnews)
+                                {
+                                    <li>
+                                        <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })">@item.PostTitle</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
                     <div class="ads-insite show-pc banner-right">
                     </div>
                     <div class="ads-insite show-mobile banner-mobile-center">

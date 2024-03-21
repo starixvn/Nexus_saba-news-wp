@@ -1149,6 +1149,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     display: none;
   }
 }
+.top-header .group-menu .nav-menu .main-menu-pc .menu-item.hide, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item.hide {
+  display: none;
+}
 .top-header .group-menu .nav-menu .main-menu-pc .menu-item .item, .top-header .group-menu .nav-menu .main-menu-mobile .menu-item .item {
   text-decoration: none;
   display: inline-block;
