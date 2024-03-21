@@ -109,36 +109,86 @@ html, body {
 }
 
 .content {
-  line-height: 3.2rem;
+  line-height: 3rem;
   margin: 0;
   font-size: 1.8rem;
 }
 @media (max-width: 767px) {
   .content {
-    font-size: 1.6rem;
     line-height: 2.8rem;
   }
 }
 .content p {
   margin-bottom: 1rem;
 }
+.content h1 {
+  font-size: 2.8rem;
+  line-height: normal;
+  color: #0C0C20;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .content h1 {
+    font-size: 2.4rem;
+    margin: 0.5rem 0;
+  }
+}
 .content h2 {
-  font-size: 2.1rem;
+  font-size: 2.4rem;
+  line-height: normal;
+  color: #0C0C20;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
   .content h2 {
-    font-size: 2rem;
+    font-size: 2.1rem;
     margin: 0.5rem 0;
   }
 }
 .content h3 {
-  font-size: 1.8rem;
+  font-size: 2.1rem;
+  line-height: normal;
+  color: #0C0C20;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
   .content h3 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+  }
+}
+.content h4 {
+  font-size: 1.8rem;
+  line-height: normal;
+  color: #0C0C20;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .content h4 {
+    font-size: 1.6rem;
+    margin: 0.5rem 0;
+  }
+}
+.content h5 {
+  font-size: 1.6rem;
+  line-height: normal;
+  color: #0C0C20;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .content h5 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+}
+.content h6 {
+  font-size: 1.3rem;
+  line-height: normal;
+  color: #0C0C20;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .content h6 {
     margin: 0.5rem 0;
   }
 }
@@ -149,6 +199,9 @@ html, body {
   .content li {
     margin-bottom: 0.5rem;
   }
+}
+.content a {
+  color: #06C;
 }
 
 .text-center {
