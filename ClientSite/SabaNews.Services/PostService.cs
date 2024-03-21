@@ -350,14 +350,11 @@
 
         private IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
-            foreach (var post in posts)
+            foreach (var post in posts.Where(item => string.IsNullOrEmpty(item.PostExcerpt)))
             {
-                if (string.IsNullOrEmpty(post.PostExcerpt))
-                {
-                    var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                    var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
-                    post.PostExcerpt = subTitle != -1 ? excerpt[..subTitle] : excerpt;
-                }
+                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
+                post.PostExcerpt = subTitle != -1 ? excerpt[..subTitle] : excerpt;
             }
             return posts;
         }
