@@ -3496,6 +3496,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 3px;
   padding: 0.2rem 0.8rem;
   margin-bottom: 1rem;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  line-height: normal;
 }
 .poll-element.active {
   border: 1px solid #294579;
@@ -3573,7 +3577,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: flex;
   justify-content: space-between;
 }
-.poll-section .poll-content .poll-action .btn-vote {
+.poll-section .poll-content .poll-action .btn-vote, .poll-section .poll-content .poll-action .btn-vote-retry {
   background: #F12F19;
   border-radius: 3px;
   padding: 1rem 2rem;
