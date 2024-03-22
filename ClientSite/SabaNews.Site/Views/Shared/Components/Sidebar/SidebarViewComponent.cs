@@ -24,8 +24,10 @@
         public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0, int limitItem = 0)
         {
             IEnumerable<Post> posts;
+            bool isMostViewPosts;
             if (string.IsNullOrWhiteSpace(cateSlug))
             {
+                isMostViewPosts = false;
                 var end = limitItem == 0 ? Constants.GetFourItems : limitItem;
                 posts = await dataControlService.GetRecentPostsAsync();
                 posts = posts.Take(end).ToList();
@@ -33,6 +35,7 @@
             }
             else
             {
+                isMostViewPosts = true;
                 var postParam = new PostParam
                 {
                     Slug = cateSlug,
@@ -46,6 +49,7 @@
             var Model = new SideBarViewModel
             {
                 Posts = posts,
+                IsMostViewPosts = isMostViewPosts
             };
 
             return View(Model);
