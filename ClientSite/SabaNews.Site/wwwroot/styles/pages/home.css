@@ -3837,6 +3837,9 @@ button {
   }
 }
 
+.hotnews-block .block__title a, .hotnews-block .heading-category a {
+  cursor: context-menu;
+}
 .hotnews-block .list-hotnews {
   list-style: none;
   padding-left: 0;

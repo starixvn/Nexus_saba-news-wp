@@ -520,6 +520,11 @@
 }
 
 .hotnews-block{
+    .block__title{
+        a{
+            cursor: context-menu;
+        }
+    }
     .list-hotnews{
         list-style: none;
         padding-left: 0;
