@@ -2035,6 +2035,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   cursor: default;
 }
 
+.block-first-hot {
+  margin-bottom: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-first-hot {
+    margin-bottom: 3rem;
+  }
+}
+
 .heading-category {
   margin-bottom: 2.4rem;
   margin-right: 3rem;
