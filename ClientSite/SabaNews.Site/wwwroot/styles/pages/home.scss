@@ -43,6 +43,9 @@
             }
         }
     }
+    #standing-homepage{
+        margin-bottom: 0;
+    }
     .block-news-hot{
         @include grid-auto (unset, 3 , 1fr , 2rem);
         margin-bottom: 2rem;

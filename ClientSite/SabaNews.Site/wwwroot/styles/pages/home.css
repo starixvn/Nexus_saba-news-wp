@@ -3305,6 +3305,9 @@ button {
 .main #fixture-homepage .block__title a, .main #fixture-homepage .heading-category a, .main #standing-homepage .block__title a, .main #standing-homepage .heading-category a {
   cursor: pointer;
 }
+.main #standing-homepage {
+  margin-bottom: 0;
+}
 .main .block-news-hot {
   display: grid;
   grid-template-rows: unset;
