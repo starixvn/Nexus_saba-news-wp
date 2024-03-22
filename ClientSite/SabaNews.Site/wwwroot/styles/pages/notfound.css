@@ -2209,6 +2209,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   overflow: hidden;
 }
 
+.hotnews-title a {
+  cursor: context-menu;
+}
+
 .container, .base-container {
   width: 100%;
   padding: 0 1rem;
