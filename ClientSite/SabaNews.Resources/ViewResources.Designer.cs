@@ -1634,6 +1634,15 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("MobileUrl", resourceCulture);
             }
         }
+
+         /// <summary>
+        ///   Looks up a localized string similar to Xem nhiều nhất.
+        /// </summary>
+        public static string MostViewTitle {
+            get {
+                return ResourceManager.GetString("MostViewTitle", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Tài khoản của tôi.

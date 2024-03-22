@@ -753,6 +753,9 @@
   <data name="MobileUrl" xml:space="preserve">
     <value>Mobile Url</value>
   </data>
+  <data name="MostViewTitle" xml:space="preserve">
+    <value>Xem nhiều nhất</value>
+  </data>
   <data name="NavigateWhenClickIntoDesktopTopBanner" xml:space="preserve">
     <value>Navigate when click into desktop top banner</value>
   </data>
