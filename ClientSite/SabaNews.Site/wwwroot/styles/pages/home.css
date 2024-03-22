@@ -3287,6 +3287,7 @@ button {
 }
 .main #fixture-homepage, .main #standing-homepage {
   border: none;
+  margin-bottom: 2rem;
 }
 @media screen and (max-width: 1024px) {
   .main #fixture-homepage, .main #standing-homepage {

@@ -32,6 +32,7 @@
     }
     #fixture-homepage,#standing-homepage{
         border: none;
+        margin-bottom: 2rem;
         @include tableMobile{
             width: 100%;
         }
