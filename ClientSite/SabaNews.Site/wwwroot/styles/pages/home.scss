@@ -268,13 +268,15 @@
         }
         .block-child-video{
             max-height: 41rem;
-            overflow: overlay;
             padding-right: 1rem;
+            overflow-y: overlay;
             @include Mobile{
                 max-height: unset;
                 padding-right: 0;
                 margin: 1.2rem -1.2rem 0;
                 @include grid-auto(1fr , 3,  1fr , 0 );
+                overflow-x: auto;
+                overflow-y: hidden;
             }
             &::-webkit-scrollbar {
                 width: .6rem;

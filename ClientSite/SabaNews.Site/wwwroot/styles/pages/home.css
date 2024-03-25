@@ -3578,8 +3578,8 @@ button {
 }
 .main .block-video .block-child-video {
   max-height: 41rem;
-  overflow: overlay;
   padding-right: 1rem;
+  overflow-y: overlay;
 }
 @media (max-width: 767px) {
   .main .block-video .block-child-video {
@@ -3590,6 +3590,8 @@ button {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
 .main .block-video .block-child-video::-webkit-scrollbar {
