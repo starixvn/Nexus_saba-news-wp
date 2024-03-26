@@ -20,6 +20,7 @@
         public Category Category { get; set; }
         public string Url { get; set; }
         public string RSSUrl { get; set; }
+        public string PollKey { get; set; }
         public HeaderViewModel Header { get; set; }
         public BannerModel Banner { get; set; }
         public List<FootballNewsHomePage> FootballNewCategory { get; set; }

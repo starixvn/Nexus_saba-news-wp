@@ -103,15 +103,11 @@ var home = (function ($) {
         });
     };
     function GetPollId() {
-        $.ajax({
-            type:'POST',
-            url: "/api/get-home-poll",
-            success: function(res) {
-                if(res !== null) {
-                    GetPollDetail(res);
-                }
-            }
-        })
+        var pollKey = $('.home-poll').data('id');
+        if(pollKey <= 0) {
+            return false;
+        }
+        GetPollDetail(pollKey);
     };
     function GetPollDetail(questId) {
         $.ajax({

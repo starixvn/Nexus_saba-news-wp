@@ -68,6 +68,7 @@
             var stickyPostIds = await postService.GetStickyPostsAsync();
             var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
             var hotNews = await postService.GetMostViewPostsAsync(new GetMostViewPostsCriteria { StartRow = Constants.FromFirstItem, RowLimit = Constants.GetFourItems });
+            var pollOption = await optionService.GetOptionAsync(OptionKey.PollHomepage);
             if(stickyPostIds.Any())
             {
                 var ids = string.Join(",", stickyPostIds);
@@ -90,7 +91,8 @@
                 Category = category,
                 FootballNewCategory = footballNewUrls,
                 StickyPosts = stickyPosts,
-                Hotnews = hotNews
+                Hotnews = hotNews,
+                PollKey = pollOption?.OptionValue
             };
 
             return viewModel;
