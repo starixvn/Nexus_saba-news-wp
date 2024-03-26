@@ -71,12 +71,13 @@
         });
 
         $(document).on('click', '.poll-element', function () {
+            $('.poll-element').removeClass('checked');
             $(this).find(".radio-input").prop('checked', true);
         })
 
 
         $(document).on('change', '.radio-input', function () {
-            $('.poll-element').removeClass('active');
+            $('.poll-element').removeClass('active').removeClass('checked');
             $(this).parent().addClass('active');
         });
     }
