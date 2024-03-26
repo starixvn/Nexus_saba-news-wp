@@ -16,7 +16,7 @@
         {
             var voted = Model.UserVote?.Answer == poll.AnswerName ? "checked" : "";
             i++;
-            <div class="poll-element @Model.UserVote?.Answer">
+            <div class="poll-element @Model.UserVote?.Answer @voted">
                 <input type=radio id="poll-radio-@poll.AnswerName" class="radio-input" name="poll-radio-@Model.Question.Id" value="@poll.AnswerName" @voted>
                 <label for="poll-radio-@poll.AnswerName" class="radio-label"> <span class="radio-border"></span> @poll.Answer </label>
             </div>
