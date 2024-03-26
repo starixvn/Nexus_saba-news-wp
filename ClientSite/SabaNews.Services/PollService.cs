@@ -14,18 +14,15 @@
     public class PollService : IPollService
     {
         private readonly IBaseService baseService;
-        private readonly ILogServiceProvider logServiceProvider;
 
-        public PollService(IBaseService baseService, ILogServiceProvider logServiceProvider)
+        public PollService(IBaseService baseService)
         {
             this.baseService = baseService;
-            this.logServiceProvider = logServiceProvider;
         }
 
         public async Task<PollViewModel> GetPollDetailAsync(GetPollDetailCriteria criteria)
         {
             var (polls, question, user) = await baseService.FetchMultipleAsync<PollModel, QuestionModel, PollUserModel>(criteria);
-            logServiceProvider.WriteLogFileInfo($"get poll data: {JsonConvert.SerializeObject(criteria)} - user: {JsonConvert.SerializeObject(user.FirstOrDefault())}" );
             var result = new PollViewModel
             {
                 Polls = polls,
