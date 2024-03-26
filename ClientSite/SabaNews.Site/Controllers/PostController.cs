@@ -148,7 +148,6 @@
             var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
-                await cacheService.Remove($"{CacheKey.PollData}-{questId}");
                 return await GetPollData(questId, themeId);
             }
             return Json(result);
