@@ -25,7 +25,7 @@
         public async Task<PollViewModel> GetPollDetailAsync(GetPollDetailCriteria criteria)
         {
             var (polls, question, user) = await baseService.FetchMultipleAsync<PollModel, QuestionModel, PollUserModel>(criteria);
-            logServiceProvider.WriteLogFileInfo($"get poll data: {JsonConvert.SerializeObject(criteria)}" );
+            logServiceProvider.WriteLogFileInfo($"get poll data: {JsonConvert.SerializeObject(criteria)} - user: {JsonConvert.SerializeObject(user.FirstOrDefault())}" );
             var result = new PollViewModel
             {
                 Polls = polls,
