@@ -35,7 +35,6 @@ namespace SabaNews.Criteria.UnitTests.Poll
                 QuestId = questId,
                 ThemeId = themeId,
                 UserIp = "IP",
-                IsVoted = 1
             };
 
             // Act
@@ -54,7 +53,6 @@ namespace SabaNews.Criteria.UnitTests.Poll
                 QuestId = 1,
                 ThemeId = 1,
                 UserIp = "IP",
-                IsVoted = 1
             };
 
             // Act
