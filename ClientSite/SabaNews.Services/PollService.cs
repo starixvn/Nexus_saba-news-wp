@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
@@ -13,15 +14,18 @@
     public class PollService : IPollService
     {
         private readonly IBaseService baseService;
+        private readonly ILogServiceProvider logServiceProvider;
 
-        public PollService(IBaseService baseService)
+        public PollService(IBaseService baseService, ILogServiceProvider logServiceProvider)
         {
             this.baseService = baseService;
+            this.logServiceProvider = logServiceProvider;
         }
 
         public async Task<PollViewModel> GetPollDetailAsync(GetPollDetailCriteria criteria)
         {
             var (polls, question, user) = await baseService.FetchMultipleAsync<PollModel, QuestionModel, PollUserModel>(criteria);
+            logServiceProvider.WriteLogFileInfo($"get poll data: {JsonConvert.SerializeObject(criteria)}" );
             var result = new PollViewModel
             {
                 Polls = polls,
