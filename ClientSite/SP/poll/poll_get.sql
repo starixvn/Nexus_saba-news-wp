@@ -23,9 +23,9 @@ BEGIN
     FROM wp_polls_question p
     WHERE p.id = QuestID;
     
-    SELECT Id, question_id as QuestionId, user_ip as UserIP, answers as Answer
-    FROM wp_polls_users 
-    WHERE question_id = QuestID AND user_ip = UserIP LIMIT 0,1;
+    SELECT u.Id, u.question_id as QuestionId, u.user_ip as UserIP, u.answers as Answer
+    FROM wp_polls_users u
+    WHERE u.question_id = QuestID AND u.user_ip = UserIP LIMIT 0,1;
 END
 
 //
