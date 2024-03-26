@@ -129,7 +129,6 @@
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
         {
-            var IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
             PollViewModel result;
             var clientIP = GetClientIP();
             var criteria = new GetPollDetailCriteria
@@ -138,24 +137,7 @@
                 ThemeId = themeId,
                 UserIp = clientIP
             };
-            if(IsUsingCache)
-            {
-                var cacheKey = $"{CacheKey.PollData}-{questId}";
-                result = await cacheService.GetAsync<PollViewModel>(cacheKey);
-                if(result == null)
-                {
-                    result = await pollService.GetPollDetailAsync(criteria);
-                    await cacheService.SetAsync(cacheKey, result,
-                        new CacheItemOptions
-                        {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CachePollDataTimeoutMinutes)
-                        });
-                }
-            }
-            else
-            {
-                result = await pollService.GetPollDetailAsync(criteria);
-            }
+            result = await pollService.GetPollDetailAsync(criteria);
             return PartialView("_Poll", result);
         }
 
