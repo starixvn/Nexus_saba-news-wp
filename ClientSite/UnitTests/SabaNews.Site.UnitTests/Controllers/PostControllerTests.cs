@@ -36,7 +36,6 @@
         private ISessionService sessionService;
         private IPollService pollService;
         private IDataControlService dataControlService;
-        private ICacheWrapperService cacheService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -551,9 +550,8 @@
             postService = Substitute.For<IPostService>();
             sessionService = Substitute.For<ISessionService>();
             dataControlService = Substitute.For<IDataControlService>(); 
-            cacheService = Substitute.For<ICacheWrapperService>(); 
              
-            var controller = new PostController(postService, configuration, sessionService, pollService, dataControlService, cacheService);
+            var controller = new PostController(postService, configuration, sessionService, pollService, dataControlService);
 
             return controller;
         }
