@@ -114,10 +114,10 @@
     function LoadBannerContent() {
         var html = $('.banner-content').html();
         var firstParagrapthContent = $('.content').find('p:not([class]');
-        if (firstParagrapthContent.eq(0).html() !== '') {
-            firstParagrapthContent.eq(0).after(html);
-        } else {
+        if (firstParagrapthContent.eq(1).html() !== '') {
             firstParagrapthContent.eq(1).after(html);
+        } else {
+            firstParagrapthContent.eq(2).after(html);
         }
     }
 
@@ -165,8 +165,8 @@
     function CreateTableOfContentArticle() {
         var $content = $('.content');
         var $sectionTitles = $content.find('h2, h3');
-        var html = '<div class="list-place">' +
-            '<div class="toc-heading">' +
+        // var html = '<div class="list-place">' +
+        var html = '<div class="toc-heading">' +
             '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>' +
             '<div class="list-title">';
         var $excerpt = $content.children(":first");
@@ -188,10 +188,10 @@
             html += `<${tagTitle} class="toc-heading ${titleClass}-toc-heading"><a href="#${section}">${text}</a></${tagTitle}>`;
         });
 
-        html += '</div></div>';
+        html += '</div>';
 
         if (listCount > 0) {
-            $excerpt.append(html);
+            $('.list-place').append(html);
         }
         $(document).on('click', '.icon-chevron-down', function () {
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');

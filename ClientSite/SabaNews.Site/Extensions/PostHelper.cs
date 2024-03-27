@@ -188,7 +188,7 @@
             return stories;
         }
 
-        public static string GetMatchInfoFromContent(string postContent)
+        public static (string, string) GetInfoFromContent(string postContent)
         {
             string matchId = null;
             HtmlDocument document = new HtmlDocument();
@@ -197,7 +197,20 @@
             if(matchNode != null) {
                 matchId = matchNode.Attributes["data-id"].Value;
             }
-            return matchId;
+            var customContent = CustomizeContent(document);
+            return (matchId, customContent) ;
+        }
+
+        public static string CustomizeContent(HtmlDocument document)
+        {
+            var title = document.DocumentNode.SelectNodes("//h2");
+            var subTitle = document.DocumentNode.SelectNodes("//h3");
+            var total = (title?.Count ?? 0) + (subTitle?.Count ?? 0);
+            var tocHtml = $"<div class=\"list-place\" min-height=\"{total * 26 + 40}px\"></div>";
+            var tocNode = HtmlNode.CreateNode(tocHtml);
+            var firstNode = document.DocumentNode.Descendants().First(item => item.NodeType == HtmlNodeType.Element);
+            firstNode.AppendChild(tocNode);
+            return document.DocumentNode.InnerHtml;
         }
 
         public static string GetVideoLink(string content)

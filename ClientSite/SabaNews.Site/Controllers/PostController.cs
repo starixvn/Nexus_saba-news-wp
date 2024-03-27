@@ -79,7 +79,7 @@
             {
                 savePost = sessionService.User.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
-            var matchId = PostHelper.GetMatchInfoFromContent(post.PostContent);
+            var (matchId, customContent) = PostHelper.GetInfoFromContent(post.PostContent);
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
@@ -87,6 +87,7 @@
             var domain = configuration.GetValue<string>("BaseUrl");
             post.SeoTitle = string.IsNullOrEmpty(post.SeoTitle) ? post.PostTitle : Helper.ReplaceStringFromVarSeo(post.SeoTitle, post.PostTitle);
             post.SeoDescription = string.IsNullOrEmpty(post.SeoDescription) ? post.PostExcerpt : Helper.ReplaceStringFromVarSeo(post.SeoDescription, post.PostTitle);
+            post.PostContent = customContent;
             var model = new SingleViewModel
             {
                 SinglePost = post,
