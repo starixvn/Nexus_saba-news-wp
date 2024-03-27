@@ -163,11 +163,11 @@
     }
 
     function CreateTableOfContentArticle() {
-        var sectionTitle = $('.content').find('h2');
+        var sectionTitle = $('.content').find('h2, h3');
         var html = '<div class="list-place">'
               html += '<div class="toc-heading">';
                 html += '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>'
-                html += '<ul>'
+                html += '<div class="list-title">'
         var excerpt = $('.content').children(":first");
         var listCount = 0;
         sectionTitle.map((index, val)=> {
@@ -176,11 +176,13 @@
                 return false;
             }
             listCount++;
+            var tagTitle = $(val).prop("tagName");
             var section = "section-" + index;
+            var titleClass = tagTitle == "H2" ? "title" : "sub-title";
             $(val).attr('id', section);
-            html += `<li><a href="#${section}">${text}</a></li>`;
+            html += `<div class="${titleClass}"><a href="#${section}">${text}</a></div>`;
         })
-        html += '</ul></div></div>';
+        html += '</div></div>';
         if(listCount > 0) {
             $('.content').children(":first").append(html);
 
