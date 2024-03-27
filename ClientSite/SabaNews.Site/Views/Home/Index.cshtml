@@ -3,7 +3,117 @@
 @{
     bool isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
 }
+@section Schema {
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "SABA Sports",
+        "url": "https://www.sabavn.com/",
+        "logo": "https://www.sabavn.com/images/sabasports.svg",
+        "description": "SABAVN.com cung cấp tin tức bóng đá và thông tin thể thao, bao gồm cập nhật trực tiếp, nhận định, video nổi bật, và thông tin hậu trường từ thế giới bóng đá và các môn thể thao khác.",
+        "sameAs": [
+            "https://www.facebook.com/sabasportsvietnam",
+            "https://twitter.com/sabavnsports",
+            "https://www.linkedin.com/company/sabasports/",
+            "https://www.tiktok.com/@@sabasportsvietnam",
+            "https://www.pinterest.com/sabasportsvietnam/",
+            "https://sabasports.tumblr.com/",
+            "https://www.youtube.com/SABASportsVietnam",
+            "https://sites.google.com/view/sabavn/",
+            "https://sabasportsvietnam.blogspot.com/"
+        ],
+        "subjectOf": [
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/c1-champions-league-sabavn",
+                "name": "Champions League"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/bong-da-anh-sabavn",
+                "name": "Bóng đá Anh"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/bong-da-viet-nam-sabavn",
+                "name": "Bóng đá Việt Nam"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/nhan-dinh-bong-da-sabavn",
+                "name": "Nhận định bóng đá"
+            },
+            {
+                @@type": "WebPage",
+                "url": "https://www.sabavn.com/lich-thi-dau/bong-da",
+                "name": "Lịch thi đấu bóng đá, Trực tiếp bóng đá"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/hau-truong-sabavn",
+                "name": "Hậu trường thể thao"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/chuyen-nhuong-sabavn",
+                "name": "Tin tức chuyển nhượng"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/bong-da-tbn-sabavn",
+                "name": "Bóng đá Tây Ban Nha"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/bong-ro-sabavn",
+                "name": "Bóng rổ"
+            },
+            {
+                "@@type": "WebPage",
+                "url": "https://www.sabavn.com/euro-sabavn",
+                "name": "Euro 2024"
+            }
+        ]
+    }
+    </script>
 
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "LocalBusiness",
+        "name": "SABA Sports",
+        "@@id": "https://www.sabavn.com/",
+        "url": "https://www.sabavn.com/",
+        "logo": "https://www.sabavn.com/images/sabasports.svg",
+        "image": "https://www.sabavn.com/images/sabasports.svg",
+        "description": "Cung cấp thông tin và phân tích chuyên sâu về bóng đá và các sự kiện thể thao tại cửa hàng của chúng tôi ở Hà Nội.",
+        "telephone": "0977928358",
+        "address": {
+            "@@type": "PostalAddress",
+            "streetAddress": "21 P. Thái Hà, Trung Liệt",
+            "addressLocality": "Đống Đa",
+            "addressRegion": "Hà Nội",
+            "postalCode": "100000",
+            "addressCountry": "VN"
+        },
+        "openingHoursSpecification": {
+            "@@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+        }
+    }
+    </script>
+}
 @section Metadata {
     <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
     <meta name="description" content='@Model.Header.Description' />

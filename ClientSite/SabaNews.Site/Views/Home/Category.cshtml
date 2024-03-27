@@ -1,5 +1,38 @@
 @using static SabaNews.Site.Extensions.DeviceHelper;
 @using SabaNews.Core.Constants;
+@section Schema {
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "WebPage",
+        "id": "@Model.Category.Url",
+        "url": "@Model.Category.Url",
+        "name": "@Model.Category.OgTitle",
+        "description": "@Model.Category.OgDescription",
+        "publisher": {
+            "@@type": "Organization",
+            "name": "SABAVN Sports",
+            "logo": {
+            "@@type": "ImageObject",
+            "url": "https://www.sabavn.com/images/sabasports.svg"
+            }
+        },
+        "inLanguage": "vi-VN",
+        "isPartOf": {
+            "@@type": "Website",
+            "name": "SABAVN.com",
+            "url": "https://www.sabavn.com/"
+        },
+        "about": {
+            "@@type": "Event",
+            "name": "UEFA Euro 2024",
+            "startDate": "2024-06-14", 
+            "endDate": "2024-07-14", 
+            "description": "Thông tin về UEFA Euro 2024, giải đấu bóng đá quốc tế lớn nhất châu Âu với sự tham gia của các đội tuyển hàng đầu."
+        }
+    }
+</script>
+}
 @{
     var isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
     var item1 = Model.MenuItems != null ? Model.MenuItems.Item1 : null;
