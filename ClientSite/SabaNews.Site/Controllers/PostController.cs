@@ -1,9 +1,7 @@
 ﻿namespace SabaNews.Site.Controllers
 {
-    using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using Fanex.Caching;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -26,21 +24,18 @@
         private readonly ISessionService sessionService;
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
-        private readonly ICacheWrapperService cacheService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
             IPollService pollService,
-            IDataControlService dataControlService,
-            ICacheWrapperService cacheService)
+            IDataControlService dataControlService)
         {
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.pollService = pollService;
             this.dataControlService = dataControlService;
-            this.cacheService = cacheService;
         }
 
         [Route("{slug}")]
