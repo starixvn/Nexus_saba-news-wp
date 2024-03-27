@@ -4734,7 +4734,6 @@ table.has-fixed-layout {
   position: relative;
   padding-left: 1.5rem;
   font-family: Open Sans, sans-serif;
-  display: inline-block;
 }
 @media (max-width: 767px) {
   .list-place .list-title .toc-heading {
@@ -4752,7 +4751,7 @@ table.has-fixed-layout {
 .list-place .list-title .toc-heading:hover::before {
   color: #eb5342;
 }
-.list-place .list-title .h2-toc-heading::before {
+.list-place .list-title .h2-toc-heading a::before {
   content: "\a";
   width: 0.6rem;
   height: 0.6rem;
@@ -4762,13 +4761,13 @@ table.has-fixed-layout {
   left: 0;
   top: 10px;
 }
-.list-place .list-title .h2-toc-heading:hover::before {
+.list-place .list-title .h2-toc-heading a:hover::before {
   background: #eb5342;
 }
 .list-place .list-title .h3-toc-heading {
   margin: 0 0 0.6rem 1.7rem;
 }
-.list-place .list-title .h3-toc-heading::before {
+.list-place .list-title .h3-toc-heading a::before {
   content: "—";
   display: inline-block;
   color: #333;
@@ -4777,6 +4776,6 @@ table.has-fixed-layout {
   top: 0;
   font-size: 0.9rem;
 }
-.list-place .list-title .h3-toc-heading:hover::before {
+.list-place .list-title .h3-toc-heading a:hover::before {
   color: #eb5342;
 }
