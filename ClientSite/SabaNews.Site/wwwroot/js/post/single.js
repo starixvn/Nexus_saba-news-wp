@@ -37,7 +37,7 @@
         }
 
         if ($(window).innerWidth() > 1024) {
-            $(document).on('click','#list-place a, .list-place a', function(e) {
+            $(document).on('click', '#list-place a, .list-place a', function (e) {
                 var href = $(this).attr("href");
                 var offsetTop = href === "#" ? 0 : $(href).offset().top - 110;
                 if ($(window).scrollTop() > 120) {
@@ -49,7 +49,7 @@
                 e.preventDefault();
             });
         } else {
-            $(document).on('click','#list-place a, .list-place a', function(e) {
+            $(document).on('click', '#list-place a, .list-place a', function (e) {
                 var href = $(this).attr("href");
                 var offsetTop = href === "#" ? 0 : $(href).offset().top - 50;
                 if ($(window).scrollTop() > 0) {
@@ -72,13 +72,13 @@
             success: function (res) {
                 $("body").removeClass("overflow-section");
                 GeneralBannerHtml(".banner-left", res.desktopLeftUrl, res.desktopLeftNavigationUrl, 910, 150, "Banner left");
-                    GeneralBannerHtml(".banner-right", res.desktopRightUrl, res.desktopRightNavigationUrl, 350, 490, "Banner right");
-                    GeneralBannerHtml(".banner-desktop-top", res.desktopTopUrl, res.desktopTopNavigationUrl, 320, 70, "Banner top");
-                    GeneralBannerHtml(".banner-desktop-center", res.desktopCenterUrl, res.desktopCenterNavigationUrl, "100%", "100%", "Banner center");
-                    GeneralBannerHtml(".banner-mobile-top", res.mobileTopUrl, res.mobileTopNavigationUrl, 375, 240, "Banner top");
-                    GeneralBannerHtml(".banner-mobile-center", res.mobileCenterUrl, res.mobileCenterNavigationUrl, 375, 240, "Banner center");
-                    GeneralBannerHtml(".banner-mobile-bottom", res.mobileBottomUrl, res.mobileBottomNavigationUrl, 375, 240 , "Banner bottom");
-                    GeneralBannerHtml(".banner-post-mobile-top", res.postMobileTopUrl, res.postMobileTopNavigationUrl, "100%", "100%", "Banner top", true);
+                GeneralBannerHtml(".banner-right", res.desktopRightUrl, res.desktopRightNavigationUrl, 350, 490, "Banner right");
+                GeneralBannerHtml(".banner-desktop-top", res.desktopTopUrl, res.desktopTopNavigationUrl, 320, 70, "Banner top");
+                GeneralBannerHtml(".banner-desktop-center", res.desktopCenterUrl, res.desktopCenterNavigationUrl, "100%", "100%", "Banner center");
+                GeneralBannerHtml(".banner-mobile-top", res.mobileTopUrl, res.mobileTopNavigationUrl, 375, 240, "Banner top");
+                GeneralBannerHtml(".banner-mobile-center", res.mobileCenterUrl, res.mobileCenterNavigationUrl, 375, 240, "Banner center");
+                GeneralBannerHtml(".banner-mobile-bottom", res.mobileBottomUrl, res.mobileBottomNavigationUrl, 375, 240, "Banner bottom");
+                GeneralBannerHtml(".banner-post-mobile-top", res.postMobileTopUrl, res.postMobileTopNavigationUrl, "100%", "100%", "Banner top", true);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus + ': ' + errorThrown);
@@ -91,18 +91,18 @@
         if (src !== "") {
             link = link === "" ? "javascript:;" : link;
             html += '<a href="' + link + '">';
-            html += '<img loading="lazy" width="' + width + '" height="' + height + '" alt="'+ alt +'" src="' + src + '"  class="img-res">';
+            html += '<img loading="lazy" width="' + width + '" height="' + height + '" alt="' + alt + '" src="' + src + '"  class="img-res">';
             html += '</a>';
             $(bannerType).html(html);
         } else {
-            $(bannerType).css("min-height" ,"unset");
+            $(bannerType).css("min-height", "unset");
         }
-        if(isIntercroller && src !== "") {
+        if (isIntercroller && src !== "") {
             var interscrollerHtml = '';
             interscrollerHtml += '<div id="ir__wrap" class="show-mobile">';
             interscrollerHtml += '<div class="ir__slot">';
             interscrollerHtml += '<div class="ir__box">';
-            interscrollerHtml += '<div class="ir__media banner-post-mobile-top">'+ html +'</div>';
+            interscrollerHtml += '<div class="ir__media banner-post-mobile-top">' + html + '</div>';
             interscrollerHtml += '</div>';
             interscrollerHtml += '</div>';
             interscrollerHtml += '</div>';
@@ -114,7 +114,7 @@
     function LoadBannerContent() {
         var html = $('.banner-content').html();
         var firstParagrapthContent = $('.content').find('p:not([class]');
-        if(firstParagrapthContent.eq(0).html() !== '') {
+        if (firstParagrapthContent.eq(0).html() !== '') {
             firstParagrapthContent.eq(0).after(html);
         } else {
             firstParagrapthContent.eq(1).after(html);
@@ -122,14 +122,14 @@
     }
 
     function LoadSameCategoryPost() {
-        if($('.same-category-post').length == 0) {
+        if ($('.same-category-post').length == 0) {
             return false;
         }
         $.ajax({
             type: 'POST',
             url: '/Post/GetPostsSameCategory',
-            data: {slug: window.cateSlug, postId: window.postId},
-            success: function(res) {
+            data: { slug: window.cateSlug, postId: window.postId },
+            success: function (res) {
                 $('.same-category-post').html(res);
             }
         });
@@ -147,7 +147,7 @@
         }
     }
     function GetGuessSidebar() {
-        if($('#guess-section').length === 0) {
+        if ($('#guess-section').length === 0) {
             return false;
         }
         var slug = $('#guess-section').data('slug');
@@ -155,43 +155,49 @@
         $.ajax({
             type: 'POST',
             url: '/api/GetGuessSidebar',
-            data: {slug, limitItem },
-            success: function(res) {
+            data: { slug, limitItem },
+            success: function (res) {
                 $('#guess-section').html(res);
             }
         })
     }
 
     function CreateTableOfContentArticle() {
-        var sectionTitle = $('.content').find('h2, h3');
-        var html = '<div class="list-place">'
-              html += '<div class="toc-heading">';
-                html += '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>'
-                html += '<div class="list-title">'
-        var excerpt = $('.content').children(":first");
+        var $content = $('.content');
+        var $sectionTitles = $content.find('h2, h3');
+        var html = '<div class="list-place">' +
+            '<div class="toc-heading">' +
+            '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>' +
+            '<div class="list-title">';
+        var $excerpt = $content.children(":first");
         var listCount = 0;
-        sectionTitle.map((index, val)=> {
-            var text = $(val).text();
-            if(excerpt.text() == text) {
-                return false;
+
+        $sectionTitles.each(function (index, element) {
+            var $val = $(element);
+            var text = $val.text();
+
+            if ($excerpt.text() === text) {
+                return;
             }
+
             listCount++;
-            var tagTitle = $(val).prop("tagName");
+            var tagTitle = $val.prop("tagName");
             var section = "section-" + index;
             var titleClass = tagTitle === "H2" ? "h2" : "h3";
-            $(val).attr('id', section);
+            $val.attr('id', section);
             html += `<${tagTitle} class="toc-heading ${titleClass}-toc-heading"><a href="#${section}">${text}</a></${tagTitle}>`;
-        })
-        html += '</div></div>';
-        if(listCount > 0) {
-            $('.content').children(":first").append(html);
+        });
 
+        html += '</div></div>';
+
+        if (listCount > 0) {
+            $excerpt.append(html);
         }
-        $(document).on('click', '.icon-chevron-down', function(){
+        $(document).on('click', '.icon-chevron-down', function () {
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
             $(this).parent().parent().find('.list-title').slideToggle(300);
         })
-        $(document).on('click', '.icon-chevron-up', function(){
+        $(document).on('click', '.icon-chevron-up', function () {
             $(this).removeClass('icon-chevron-up').addClass('icon-chevron-down');
             $(this).parent().parent().find('.list-title').slideToggle(300);
         })
