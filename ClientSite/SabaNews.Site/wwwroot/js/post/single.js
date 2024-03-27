@@ -200,6 +200,7 @@
         $(document).on('click', '.icon-chevron-up', function () {
             $(this).removeClass('icon-chevron-up').addClass('icon-chevron-down');
             $(this).parent().parent().find('.list-title').slideToggle(300);
+            $('.list-place').css('min-height' , 'auto');
         })
     }
 
