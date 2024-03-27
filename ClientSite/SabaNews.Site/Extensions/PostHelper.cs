@@ -206,7 +206,7 @@
             var title = document.DocumentNode.SelectNodes("//h2");
             var subTitle = document.DocumentNode.SelectNodes("//h3");
             var total = (title?.Count ?? 0) + (subTitle?.Count ?? 0);
-            var tocHtml = $"<div class=\"list-place\" style=\"min-height:{total * 26 + 62}px;\"></div>";
+            var tocHtml = $"<div class=\"list-place\" style=\"min-height:{total * 26 + 60}px;\"></div>";
             var tocNode = HtmlNode.CreateNode(tocHtml);
             var firstNode = document.DocumentNode.Descendants().First(item => item.NodeType == HtmlNodeType.Element);
             firstNode.AppendChild(tocNode);
