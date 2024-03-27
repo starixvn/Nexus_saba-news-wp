@@ -4735,6 +4735,9 @@ table.has-fixed-layout {
   padding-left: 1.5rem;
   font-family: Open Sans, sans-serif;
 }
+.list-place .list-title .toc-heading:last-child {
+  margin-bottom: 0;
+}
 @media (max-width: 767px) {
   .list-place .list-title .toc-heading {
     font-size: 1.5rem;
