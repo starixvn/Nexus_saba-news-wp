@@ -178,9 +178,9 @@
             listCount++;
             var tagTitle = $(val).prop("tagName");
             var section = "section-" + index;
-            var titleClass = tagTitle == "H2" ? "title" : "sub-title";
+            var titleClass = tagTitle === "H2" ? "h2" : "h3";
             $(val).attr('id', section);
-            html += `<div class="${titleClass}"><a href="#${section}">${text}</a></div>`;
+            html += `<${tagTitle} class="toc-heading ${titleClass}-toc-heading"><a href="#${section}">${text}</a></${tagTitle}>`;
         })
         html += '</div></div>';
         if(listCount > 0) {
@@ -189,11 +189,11 @@
         }
         $(document).on('click', '.icon-chevron-down', function(){
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
-            $(this).parent().parent().find('ul').slideToggle(300);
+            $(this).parent().parent().find('.list-title').slideToggle(300);
         })
         $(document).on('click', '.icon-chevron-up', function(){
             $(this).removeClass('icon-chevron-up').addClass('icon-chevron-down');
-            $(this).parent().parent().find('ul').slideToggle(300);
+            $(this).parent().parent().find('.list-title').slideToggle(300);
         })
     }
 

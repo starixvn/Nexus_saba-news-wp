@@ -792,41 +792,88 @@ table{
 .list-place{
     border-radius: 5px;
     background: #EDEFF3;
-    padding: 12px;
-    margin: 12px 0;
+    padding: 1.2rem;
+    margin: 1.2rem 0;
     .toc-heading{
         .toc-sub{
             display: flex;
             align-items: center;
             i{
-                margin-left: 5px;
-                margin-top: 5px;
+                margin-left: .5rem;
+                margin-top: .5rem;
                 cursor: pointer;
+                font-size: 2rem;
             }
             p{
                 color: #333;
-                font-size: 15px;
+                font-size: 2.1rem;
                 font-weight: 600;
                 line-height: normal;
                 margin-bottom: 0 !important;
+                @include Mobile{
+                    font-size: 1.6rem;
+                }
             }
         }
     }
-    ul{
-        margin-top: 10px;
-        margin-left: 15px;
-        list-style: inside;
-        li{
-            font-size: 14px;
+    .list-title{
+        margin-top: 1rem;
+        .toc-heading{
+            font-size: 1.6rem;
             font-weight: 400;
-            line-height: 26px;
+            line-height: 2.6rem;
+            margin-bottom: .6rem;
+            margin-top: 0;
             position: relative;
+            padding-left: 1.5rem;
             font-family: Open Sans, sans-serif;
+            @include Mobile{
+                font-size: 1.5rem;
+            }
             a{
                 text-decoration: none;
                 color: #333;
                 transition: color .3s ease;
                 &:hover{
+                    color: #eb5342;
+                }
+            }
+            &:hover{
+                &::before{
+                    color: #eb5342;
+                }
+            }
+        }
+        .h2-toc-heading{
+           &::before{
+                content:"\A";
+                width: .6rem;
+                height:.6rem;
+                border-radius:50%;
+                background: #333;
+                position: absolute;
+                left: 0;
+                top: 10px;
+            }
+            &:hover{
+                &::before{
+                    background: #eb5342;
+                }
+            }
+        }
+        .h3-toc-heading{
+            margin: 0 0 .6rem 1.7rem;
+            &::before{
+                content: '\2014';
+                display:inline-block;
+                color: #333;
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-size: .9rem;
+            }
+            &:hover{
+                &::before{
                     color: #eb5342;
                 }
             }

@@ -4697,42 +4697,85 @@ table.has-fixed-layout {
 .list-place {
   border-radius: 5px;
   background: #EDEFF3;
-  padding: 12px;
-  margin: 12px 0;
+  padding: 1.2rem;
+  margin: 1.2rem 0;
 }
 .list-place .toc-heading .toc-sub {
   display: flex;
   align-items: center;
 }
 .list-place .toc-heading .toc-sub i {
-  margin-left: 5px;
-  margin-top: 5px;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
   cursor: pointer;
+  font-size: 2rem;
 }
 .list-place .toc-heading .toc-sub p {
   color: #333;
-  font-size: 15px;
+  font-size: 2.1rem;
   font-weight: 600;
   line-height: normal;
   margin-bottom: 0 !important;
 }
-.list-place ul {
-  margin-top: 10px;
-  margin-left: 15px;
-  list-style: inside;
+@media (max-width: 767px) {
+  .list-place .toc-heading .toc-sub p {
+    font-size: 1.6rem;
+  }
 }
-.list-place ul li {
-  font-size: 14px;
+.list-place .list-title {
+  margin-top: 1rem;
+}
+.list-place .list-title .toc-heading {
+  font-size: 1.6rem;
   font-weight: 400;
-  line-height: 26px;
+  line-height: 2.6rem;
+  margin-bottom: 0.6rem;
+  margin-top: 0;
   position: relative;
+  padding-left: 1.5rem;
   font-family: Open Sans, sans-serif;
 }
-.list-place ul li a {
+@media (max-width: 767px) {
+  .list-place .list-title .toc-heading {
+    font-size: 1.5rem;
+  }
+}
+.list-place .list-title .toc-heading a {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
 }
-.list-place ul li a:hover {
+.list-place .list-title .toc-heading a:hover {
+  color: #eb5342;
+}
+.list-place .list-title .toc-heading:hover::before {
+  color: #eb5342;
+}
+.list-place .list-title .h2-toc-heading::before {
+  content: "\a";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: #333;
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+.list-place .list-title .h2-toc-heading:hover::before {
+  background: #eb5342;
+}
+.list-place .list-title .h3-toc-heading {
+  margin: 0 0 0.6rem 1.7rem;
+}
+.list-place .list-title .h3-toc-heading::before {
+  content: "—";
+  display: inline-block;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.9rem;
+}
+.list-place .list-title .h3-toc-heading:hover::before {
   color: #eb5342;
 }
