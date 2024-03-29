@@ -1,4 +1,5 @@
 ﻿@import '../abstracts/mixins';
+@import '../abstracts/variables';
 .pollevent {
     width: 100%;
     margin: 2.5rem auto;
@@ -23,7 +24,7 @@
             }
             &.checked{
                 .radio-label{
-                    color: #333;
+                    color: #222;
                     font-weight: 700;
                     .radio-border{
                         border: 2px solid #267FD2 !important;
@@ -106,7 +107,7 @@
     }
 
     &-input:checked + &-label {
-        color: #333;
+        color: #222;
         font-weight: 700;
     }
 
@@ -127,7 +128,7 @@
     overflow: hidden;
     .poll-content {
         .poll-question {
-            color: #4F4F4F;
+            color: #222;
             line-height: 2.4rem;
             font-size: 1.5rem;
             font-weight: 600;
@@ -178,7 +179,7 @@
                 p {
                     margin-bottom: 1rem;
                     line-height: 1;
-                    color: #4F4F4F;
+                    color: #222;
                     margin-right: .5rem;
                     font-weight: 600;
                 }
@@ -215,7 +216,7 @@
             justify-content: space-between;
             align-items: center;
             span {
-                color: #333;
+                color: #222;
                 font-weight: 600;
                 font-size: 1.4rem;
                 line-height: 1.6rem;

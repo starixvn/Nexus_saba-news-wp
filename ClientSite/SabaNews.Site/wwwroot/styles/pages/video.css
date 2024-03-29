@@ -124,7 +124,7 @@ html, body {
 .content h1 {
   font-size: 2.8rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
@@ -1775,7 +1775,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-slidebar-title, .keywork-title {
   font-size: 1.4rem;
-  color: #333;
+  color: #222;
   font-weight: 700;
   margin-bottom: 1rem;
   text-transform: uppercase;

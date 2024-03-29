@@ -645,7 +645,7 @@ body {
   display: block;
   background: #F5F3EF;
   padding: 1rem 1.2rem;
-  color: #333333;
+  color: #222;
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 1.9rem;
@@ -705,7 +705,7 @@ body {
   cursor: pointer;
 }
 .livescore-home .livescore-soccer-main .wc-bg-overflow .live-score-nav li.active {
-  color: #333333;
+  color: #222;
 }
 .livescore-home .livescore-soccer-main.ff-scroll {
   overflow: auto;
@@ -718,7 +718,7 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   line-height: 1.6rem;
-  color: #333333;
+  color: #222;
 }
 .group-duel .duel-participant {
   display: flex;
@@ -757,12 +757,14 @@ body {
 }
 .group-duel .column-left .team-name {
   text-align: right;
+  color: #222;
 }
 .group-duel .column-right .team-logo {
   margin-right: 0.6rem;
 }
 .group-duel .column-right .team-name {
   text-align: left;
+  color: #222;
 }
 .group-duel .result-league {
   margin: 0 2rem;

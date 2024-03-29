@@ -209,7 +209,7 @@ body {
   align-items: center;
 }
 .table-custom-body .table-custom-row span {
-  color: #2F2F2F;
+  color: #222;
 }
 .table-custom-body .table-custom-row .table-bold {
   font-weight: 700;
@@ -466,7 +466,7 @@ body {
 @media screen and (max-width: 1024px) {
   .control-standing select {
     display: inline-block;
-    color: #333;
+    color: #222;
     position: absolute;
     top: 2px;
     right: -22px;
@@ -482,7 +482,7 @@ body {
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 1.9rem;
-  color: #333;
+  color: #222;
   cursor: pointer;
 }
 .control-standing span .name-match:hover {
@@ -517,7 +517,7 @@ body {
 }
 .table-custom-header .table-custom-cell {
   font-weight: 600;
-  color: #333;
+  color: #222;
 }
 .table-custom-body {
   max-height: 35.9rem;
@@ -545,7 +545,7 @@ body {
 .table-custom-cell {
   font-size: 1.3rem !important;
   line-height: 1.9rem !important;
-  color: #333;
+  color: #222;
 }
 .table-custom-cell.cell-rank {
   width: 5rem !important;

@@ -14,7 +14,7 @@
         display: block;
         background: #F5F3EF;
         padding: 1rem 1.2rem;
-        color: #333333;
+        color: $color-222;
         font-weight: 700;
         font-size: 1.4rem;
         line-height: 1.9rem;
@@ -70,7 +70,7 @@
                     text-decoration: none;
                     cursor: pointer;
                     &.active{
-                        color: #333333;
+                        color: $color-222;
                     }
                 }
             }
@@ -89,7 +89,7 @@
         font-weight: 600;
         font-size: 1.2rem;
         line-height: 1.6rem;
-        color: #333333;
+        color: $color-222;
     }
     .duel-participant{
         display: flex;
@@ -136,6 +136,7 @@
                 }
                 &-name{
                     text-align: right;
+                    color: $color-222;
                 }
             }
         }
@@ -146,6 +147,7 @@
                 }
                 &-name{
                     text-align: left;
+                    color: $color-222;
                 }
             }
         }

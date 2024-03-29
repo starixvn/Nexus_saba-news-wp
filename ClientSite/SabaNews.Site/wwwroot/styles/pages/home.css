@@ -129,7 +129,7 @@ html, body {
 .content h1 {
   font-size: 2.8rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
@@ -1780,7 +1780,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-slidebar-title, .keywork-title {
   font-size: 1.4rem;
-  color: #333;
+  color: #222;
   font-weight: 700;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -3295,6 +3295,10 @@ button {
   }
 }
 
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .pollevent {
   width: 100%;
   margin: 2.5rem auto;
@@ -3320,7 +3324,7 @@ button {
   box-shadow: 0px 2px 4px 0px rgba(51, 51, 51, 0.25);
 }
 .pollevent .choose-poll .poll-element.checked .radio-label {
-  color: #333;
+  color: #222;
   font-weight: 700;
 }
 .pollevent .choose-poll .poll-element.checked .radio-label .radio-border {
@@ -3394,7 +3398,7 @@ button {
   background: #267FD2 !important;
 }
 .radio-input:checked + .radio-label {
-  color: #333;
+  color: #222;
   font-weight: 700;
 }
 .radio-input:checked + .radio-label:after {
@@ -3413,7 +3417,7 @@ button {
   overflow: hidden;
 }
 .poll-section .poll-content .poll-question {
-  color: #4F4F4F;
+  color: #222;
   line-height: 2.4rem;
   font-size: 1.5rem;
   font-weight: 600;
@@ -3460,7 +3464,7 @@ button {
 .poll-section .poll-content .total-result .total-count p, .poll-section .poll-content .total-result .total-date p {
   margin-bottom: 1rem;
   line-height: 1;
-  color: #4F4F4F;
+  color: #222;
   margin-right: 0.5rem;
   font-weight: 600;
 }
@@ -3493,7 +3497,7 @@ button {
   align-items: center;
 }
 .list-result .result-element .top-result span {
-  color: #333;
+  color: #222;
   font-weight: 600;
   font-size: 1.4rem;
   line-height: 1.6rem;

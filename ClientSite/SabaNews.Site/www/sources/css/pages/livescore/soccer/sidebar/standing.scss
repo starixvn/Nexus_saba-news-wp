@@ -173,7 +173,7 @@
         display: none;
         @include tableMobile{
             display: inline-block;
-            color: #333;
+            color: $color-222;
             position: absolute;
             top: 2px;
             right: -22px;
@@ -189,7 +189,7 @@
         font-weight: 700;
         font-size: 1.4rem;
         line-height: 1.9rem;
-        color: #333;
+        color:  $color-222;
         cursor: pointer;
         .name-match{
             &:hover{
@@ -223,7 +223,7 @@
         background: #F5F3EF;
         .table-custom-cell{
             font-weight: 600;
-            color: #333;
+            color: $color-222;
         }
     }
     &-body{
@@ -252,7 +252,7 @@
     &-cell{
         font-size: 1.3rem !important;
         line-height: 1.9rem !important;
-        color: #333;
+        color: $color-222;
         &.cell-rank{
             width: 5rem !important;
         }

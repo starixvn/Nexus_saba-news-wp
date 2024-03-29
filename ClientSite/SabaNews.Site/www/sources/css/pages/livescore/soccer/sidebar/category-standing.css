@@ -209,7 +209,7 @@ body {
   align-items: center;
 }
 .table-custom-body .table-custom-row span {
-  color: #2F2F2F;
+  color: #222;
 }
 .table-custom-body .table-custom-row .table-bold {
   font-weight: 700;
