@@ -344,7 +344,7 @@ body {
 }
 .sidebar-standing .live-score-nav li {
   background: #CFD4DC;
-  color: #333;
+  color: #222;
   font-weight: 600;
   font-size: 1.4rem;
   line-height: 1.9rem;
@@ -474,7 +474,7 @@ body {
 @media screen and (max-width: 1024px) {
   .control-standing select {
     display: inline-block;
-    color: #333;
+    color: #222;
     position: absolute;
     top: 2px;
     right: -22px;
@@ -490,7 +490,7 @@ body {
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 1.9rem;
-  color: #333;
+  color: #222;
   cursor: pointer;
 }
 .control-standing .mobile-match {
@@ -519,7 +519,7 @@ body {
 }
 .table-custom-header .table-custom-cell {
   font-weight: 600;
-  color: #333;
+  color: #222;
 }
 .table-custom-body {
   max-height: 25rem;
@@ -547,7 +547,7 @@ body {
 .table-custom-cell {
   font-size: 1.3rem !important;
   line-height: 1.9rem !important;
-  color: #333;
+  color: #222;
 }
 .table-custom-cell.cell-rank {
   width: 5rem !important;
