@@ -46,7 +46,7 @@
   padding-bottom: 2rem;
   border-bottom: 1px solid #e5e5e5;
   text-align: center;
-  color: #333;
+  color: #222;
   font-size: 1.8rem;
   font-weight: 700;
 }
@@ -57,7 +57,7 @@
 .auth-form .modal-auth .headig-modal {
   text-align: center;
   font-size: 1.6rem;
-  color: #333;
+  color: #222;
   margin-bottom: 2rem;
 }
 @media (max-width: 767px) {
@@ -71,7 +71,7 @@
   right: -1.6rem;
   z-index: 999999;
   cursor: pointer;
-  color: #4F4F4F;
+  color: #222;
   width: 3.2rem;
   height: 3.2rem;
   background: #fff;
@@ -197,7 +197,7 @@
   background: transparent;
   border-radius: 3px;
   font-size: 1.5rem;
-  color: #333;
+  color: #222;
   padding: 0 1.5rem;
   outline: none;
 }

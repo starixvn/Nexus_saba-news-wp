@@ -29,7 +29,7 @@ html {
 body {
   font-size: 1.4rem;
   font-family: Open Sans, sans-serif;
-  color: #4F4F4F;
+  color: #222;
   line-height: 2.2rem;
   background-color: #FFFDF9;
   display: flex;
@@ -690,7 +690,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .header .header-controls .header-auth-provider .auth-input .item {
   font-weight: 600;
   line-height: 1.7rem;
-  color: #4F4F4F;
+  color: #222;
   text-decoration: none;
   padding-right: 0.4rem;
 }
@@ -842,7 +842,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .header .header-controls .header-auth-provider .notification-auth .bell .number-bell {
   text-decoration: none;
-  background: #4F4F4F;
+  background: #222;
   width: 2rem;
   height: 1.4rem;
   font-size: 1rem;
@@ -969,7 +969,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-size: 0;
 }
 .menu-select select option {
-  color: #4F4F4F;
+  color: #222;
   font-weight: 400;
   padding: 0 1.5rem;
   font-size: 1.5rem;
@@ -1558,7 +1558,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .languages-box .languages-list .lang-item {
   text-decoration: none;
-  color: #4F4F4F;
+  color: #222;
   display: block;
   padding: 6px 8px;
 }
@@ -1613,7 +1613,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #4F4F4F;
+  border-top: 5px solid #222;
   content: "";
   margin-left: 0.4rem;
   display: inline-block;
@@ -1669,7 +1669,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   justify-content: space-between;
   padding: 1.2rem 0;
   border-bottom: 1px solid #E4E4E4;
-  color: #333;
+  color: #222;
 }
 .menu-popup-header .all-category {
   font-size: 1.8rem;
@@ -1678,7 +1678,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .menu-popup-header .close-popup i {
   font-size: 2.4rem;
   display: block;
-  color: #333;
+  color: #222;
   cursor: pointer;
 }
 .menu-popup-content {
@@ -1745,7 +1745,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   text-decoration: none;
   font-size: 1.4rem;
   font-weight: 500;
-  color: #333;
+  color: #222;
 }
 .menu-popup-content .content-menu .block-menu-list li a:hover {
   text-decoration: underline;
@@ -1795,7 +1795,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   text-decoration: none;
   font-size: 1.4rem;
   font-weight: 500;
-  color: #333;
+  color: #222;
 }
 .box-slidebar-list li a:hover, .keywork-list li a:hover {
   text-decoration: underline;
@@ -2886,7 +2886,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .card-vertical__title {
-  color: #333;
+  color: #222;
   font-weight: bold;
   font-size: 1.6rem;
   letter-spacing: -0.02rem;
@@ -2972,7 +2972,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-vertical-content a {
   text-decoration: none;
-  color: #333;
+  color: #222;
   transition: color 0.3s ease;
 }
 .box-vertical-content a:hover {
@@ -2983,6 +2983,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-bottom: 0;
   font-size: 1.4rem;
   font-weight: 500;
+  color: #222;
 }
 .box-vertical-content .heading-box-content {
   font-weight: 700;

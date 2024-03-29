@@ -39,7 +39,7 @@
             font-weight: bold;
             font-size: $font-size-title;
             text-decoration: none;
-            color: $color-text;
+            color: $color-title;
             transition: color .3s ease;
             display: initial;
 
@@ -60,7 +60,7 @@
         .description {
             line-height: 1.9rem;
             margin: .3rem 0;
-
+            color: $color-title;
             @include tableMobile {
                 display: none;
             }
@@ -94,7 +94,7 @@
                 font-weight: 700;
                 font-size: 1.4rem;
                 line-height: 1;
-                color: #333;
+                color: #222;
                 transition: color .3s ease;
                 &:hover{
                     color: #eb5342;

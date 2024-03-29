@@ -237,7 +237,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  color: #4F4F4F;
+  color: #222;
   width: 3rem;
   height: 3rem;
   text-align: center;
@@ -250,7 +250,7 @@
   border: 1px solid #BDBDBD;
   border-radius: 3px;
   font-size: 1.5rem;
-  color: #4F4F4F;
+  color: #222;
   padding: 0 1.5rem;
   outline: none;
   background-color: #fff !important;

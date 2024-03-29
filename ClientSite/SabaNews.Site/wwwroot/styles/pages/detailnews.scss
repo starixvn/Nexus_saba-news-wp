@@ -743,7 +743,7 @@ table{
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    color : #333;
+    color : $color-title;
     font-size: 1.4rem;
     thead{
         tr{
@@ -805,7 +805,7 @@ table{
                 font-size: 2rem;
             }
             p{
-                color: #333;
+                color: $color-title;
                 font-size: 1.5rem;
                 font-weight: 600;
                 line-height: normal;
@@ -835,7 +835,7 @@ table{
             }
             a{
                 text-decoration: none;
-                color: #333;
+                color: $color-title;
                 transition: color .3s ease;
                 &:hover{
                     color: #eb5342;
@@ -854,7 +854,7 @@ table{
                     width: .6rem;
                     height:.6rem;
                     border-radius:50%;
-                    background: #333;
+                    background: $color-title;
                     position: absolute;
                     left: 0;
                     top: 10px;
@@ -872,7 +872,7 @@ table{
                 &::before{
                     content: '\2014';
                     display:inline-block;
-                    color: #333;
+                    color: $color-title;
                     position: absolute;
                     left: 0;
                     top: 0;
