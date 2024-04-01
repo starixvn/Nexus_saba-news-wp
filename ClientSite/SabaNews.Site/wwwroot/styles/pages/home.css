@@ -141,7 +141,7 @@ html, body {
 .content h2 {
   font-size: 2.4rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
@@ -153,7 +153,7 @@ html, body {
 .content h3 {
   font-size: 2.1rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
@@ -165,7 +165,7 @@ html, body {
 .content h4 {
   font-size: 1.8rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
@@ -177,7 +177,7 @@ html, body {
 .content h5 {
   font-size: 1.6rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {
@@ -189,7 +189,7 @@ html, body {
 .content h6 {
   font-size: 1.3rem;
   line-height: normal;
-  color: #0C0C20;
+  color: #222;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1024px) {

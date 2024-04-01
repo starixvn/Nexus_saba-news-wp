@@ -128,13 +128,13 @@ html,body{
         @include tableMobile {
             font-size: 2.4rem;
             margin: .5rem 0;
-        }
+        } 
     }
 
     h2 {
         font-size: 2.4rem;
         line-height: normal; 
-        color: #0C0C20;
+        color: $color-title;
         margin: 1rem 0;
 
         @include tableMobile {
@@ -146,7 +146,7 @@ html,body{
     h3 {
         font-size: 2.1rem;
         line-height: normal; 
-        color: #0C0C20;
+        color: $color-title;
         margin: 1rem 0;
 
         @include tableMobile {
@@ -158,7 +158,7 @@ html,body{
     h4 {
         font-size: 1.8rem;
         line-height: normal; 
-        color: #0C0C20;
+        color: $color-title;
         margin: 1rem 0;
 
         @include tableMobile {
@@ -170,7 +170,7 @@ html,body{
     h5 {
         font-size: 1.6rem;
         line-height: normal; 
-        color: #0C0C20;
+        color: $color-title;
         margin: 1rem 0;
 
         @include tableMobile {
@@ -182,7 +182,7 @@ html,body{
     h6 {
         font-size: 1.3rem;
         line-height: normal; 
-        color: #0C0C20;
+        color: $color-title;
         margin: 1rem 0;
 
         @include tableMobile {
