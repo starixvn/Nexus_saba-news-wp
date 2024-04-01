@@ -4663,37 +4663,71 @@ img {
     left: 0;
   }
 }
-
-table {
+.wp-block-table table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   color: #222;
   font-size: 1.4rem;
+  min-width: 65rem;
 }
-table thead tr th {
+.wp-block-table table thead tr th {
   background: #DADADA;
   padding: 0.5rem 0.8rem;
   border-left: 1px solid #F5F3EF;
   font-weight: 700;
 }
-table thead tr th:first-child {
+.wp-block-table table thead tr th:first-child {
   border-left: none;
 }
-table tbody tr td {
+.wp-block-table table tbody tr td {
   padding: 0.5rem 0.8rem;
   border: 1px solid #dadada;
   border-bottom: none;
   border-right: none;
 }
-table tbody tr td:first-child {
+.wp-block-table table tbody tr td:first-child {
   border-left: none;
 }
-table tbody tr:nth-child(even) {
+.wp-block-table table tbody tr:nth-child(even) {
   background: #F5F3EF;
 }
-table.has-fixed-layout {
+
+.wp-merge-table {
+  border: 1px solid #DADADA;
+  margin: 1rem 0;
+  border-radius: 3px;
+  text-align: center;
+  overflow: auto;
+}
+.wp-merge-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #222;
+  font-size: 1.4rem;
   min-width: 65rem;
+}
+.wp-merge-table table tbody tr td {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #dadada;
+  border-bottom: none;
+  border-left: none;
+}
+.wp-merge-table table tbody tr td:last-child {
+  border-right: none;
+}
+.wp-merge-table table tbody tr:nth-child(even) {
+  background: #F5F3EF;
+}
+.wp-merge-table table tbody tr:first-child td {
+  border-top: none;
+  background: #DADADA;
+  border-right: 1px solid #F5F3EF;
+  font-weight: 700;
+}
+.wp-merge-table table tbody tr:first-child td:last-child {
+  border-right: none;
 }
 
 #match-detail {

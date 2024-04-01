@@ -737,47 +737,89 @@ img {
             left: 0;
         }
     }
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        color : $color-title;
+        font-size: 1.4rem;
+        min-width: 65rem;
+        thead{
+            tr{
+                th{
+                    background: #DADADA;
+                    padding: .5rem .8rem;
+                    border-left: 1px solid #F5F3EF;
+                    font-weight: 700;
+                    &:first-child{
+                        border-left: none;
+                    }
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    padding: .5rem .8rem;
+                    border: 1px solid #dadada;
+                    border-bottom: none;
+                    border-right: none;
+                    &:first-child{
+                        border-left: none;
+                    }
+                }
+                &:nth-child(even){
+                    background: #F5F3EF;;
+                }
+            }
+        }
+    }
 }
 
-table{
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    color : $color-title;
-    font-size: 1.4rem;
-    thead{
-        tr{
-            th{
-                background: #DADADA;
-                padding: .5rem .8rem;
-                border-left: 1px solid #F5F3EF;
-                font-weight: 700;
-                &:first-child{
-                    border-left: none;
-                }
-            }
-        }
-    }
-    tbody{
-        tr{
-            td{
-                padding: .5rem .8rem;
-                border: 1px solid #dadada;
-                border-bottom: none;
-                border-right: none;
-                &:first-child{
-                    border-left: none;
-                }
-            }
-            &:nth-child(even){
-                background: #F5F3EF;;
-            }
-        }
-    }
-    &.has-fixed-layout{
+.wp-merge-table{
+    border: 1px solid #DADADA;
+    margin: 1rem 0;
+    border-radius: 3px;
+    text-align: center;
+    overflow: auto;
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        color : $color-title;
+        font-size: 1.4rem;
         min-width: 65rem;
+        tbody{
+            tr{
+                td{
+                    padding: .5rem .8rem;
+                    border: 1px solid #dadada;
+                    border-bottom: none;
+                    border-left: none;
+                    &:last-child{
+                        border-right: none;
+                    }
+                }
+                &:nth-child(even){
+                    background: #F5F3EF;;
+                }
+                &:first-child{
+                    td{
+                        border-top: none;
+                        background: #DADADA;
+                        border-right: 1px solid #F5F3EF;
+                        font-weight: 700;
+                        &:last-child{
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+
 
 
 #match-detail{
