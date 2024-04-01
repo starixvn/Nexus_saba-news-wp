@@ -208,8 +208,8 @@
             var total = (title?.Count ?? 0) + (subTitle?.Count ?? 0);
             var tocHtml = $"<div class=\"list-place\" style=\"min-height:{total * 26 + 60}px;\"></div>";
             var tocNode = HtmlNode.CreateNode(tocHtml);
-            var firstNode = document.DocumentNode.Descendants().First(item => item.NodeType == HtmlNodeType.Element);
-            firstNode.AppendChild(tocNode);
+            var firstNode = document.DocumentNode.Descendants().FirstOrDefault(item => item.NodeType == HtmlNodeType.Element);
+            firstNode?.AppendChild(tocNode);
             return document.DocumentNode.InnerHtml;
         }
 
