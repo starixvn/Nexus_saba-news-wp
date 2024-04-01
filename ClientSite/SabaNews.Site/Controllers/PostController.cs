@@ -134,6 +134,10 @@
                 UserIp = clientIP
             };
             result = await pollService.GetPollDetailAsync(criteria);
+            if(result.Question == null)
+            {
+                return Json(null);
+            }
             return PartialView("_Poll", result);
         }
 
