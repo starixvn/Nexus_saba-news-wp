@@ -782,6 +782,10 @@ img {
     border-radius: 3px;
     text-align: center;
     overflow: auto;
+    border-right: none;
+    @include Mobile{
+        border-right: 1px solid #DADADA;
+    }
     table{
         width: 100%;
         border-collapse: separate;
@@ -789,6 +793,7 @@ img {
         color : $color-title;
         font-size: 1.4rem;
         min-width: 65rem;
+        border-right: 1px solid #dadada;
         tbody{
             tr{
                 td{
@@ -796,9 +801,6 @@ img {
                     border: 1px solid #dadada;
                     border-bottom: none;
                     border-left: none;
-                    &:last-child{
-                        border-right: none;
-                    }
                 }
                 &:nth-child(even){
                     background: #F5F3EF;;
@@ -807,11 +809,8 @@ img {
                     td{
                         border-top: none;
                         background: #DADADA;
-                        border-right: 1px solid #F5F3EF;
+                        border-right: 1px solid #dadada;
                         font-weight: 700;
-                        &:last-child{
-                            border-right: none;
-                        }
                     }
                 }
                 &:last-child{

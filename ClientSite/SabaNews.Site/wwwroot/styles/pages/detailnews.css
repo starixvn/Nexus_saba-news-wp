@@ -4699,6 +4699,12 @@ img {
   border-radius: 3px;
   text-align: center;
   overflow: auto;
+  border-right: none;
+}
+@media (max-width: 767px) {
+  .wp-merge-table {
+    border-right: 1px solid #DADADA;
+  }
 }
 .wp-merge-table table {
   width: 100%;
@@ -4707,6 +4713,7 @@ img {
   color: #222;
   font-size: 1.4rem;
   min-width: 65rem;
+  border-right: 1px solid #dadada;
 }
 .wp-merge-table table tbody tr td {
   padding: 0.5rem 0.8rem;
@@ -4714,20 +4721,14 @@ img {
   border-bottom: none;
   border-left: none;
 }
-.wp-merge-table table tbody tr td:last-child {
-  border-right: none;
-}
 .wp-merge-table table tbody tr:nth-child(even) {
   background: #F5F3EF;
 }
 .wp-merge-table table tbody tr:first-child td {
   border-top: none;
   background: #DADADA;
-  border-right: 1px solid #F5F3EF;
+  border-right: 1px solid #dadada;
   font-weight: 700;
-}
-.wp-merge-table table tbody tr:first-child td:last-child {
-  border-right: none;
 }
 .wp-merge-table table tbody tr:last-child {
   background: #e5e7ed;
