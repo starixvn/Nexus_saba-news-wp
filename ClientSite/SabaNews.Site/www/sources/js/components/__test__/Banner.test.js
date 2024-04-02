@@ -20,7 +20,7 @@ describe('Banner', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                banner: {desktopTopUrl: 'url', desktopTopNavigationUrl: 'link'},
+                banner: {desktopTopUrl: 'url', desktopTopNavigationUrl: 'link', class: 'banner-top'},
                 type: BannerType.DesktopTop
             };
             const container = shallow(<Banner {...props} />);
@@ -28,14 +28,14 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link', width:320, height: 70});
+            expect(result).toEqual({src: 'url', link: 'link', width:320, height: 70, class: 'banner-top'});
         });
 
         it('return correctly banner data when type is DesktopLeft', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                banner: {desktopLeftUrl: 'url', desktopLeftNavigationUrl: 'link'},
+                banner: {desktopLeftUrl: 'url', desktopLeftNavigationUrl: 'link', class: 'banner-left'},
                 type: BannerType.DesktopLeft
             };
             const container = shallow(<Banner {...props} />);
@@ -43,14 +43,14 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link', width:910, height: 150});
+            expect(result).toEqual({src: 'url', link: 'link', width:910, height: 150, class: 'banner-left'});
         });
 
         it('return correctly banner data when type is DesktopRight', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                banner: {desktopRightUrl: 'url', desktopRightNavigationUrl: 'link'},
+                banner: {desktopRightUrl: 'url', desktopRightNavigationUrl: 'link', class: 'banner-right'},
                 type: BannerType.DesktopRight
             };
             const container = shallow(<Banner {...props} />);
@@ -58,14 +58,14 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link', width:300, height: 600});
+            expect(result).toEqual({src: 'url', link: 'link', width:300, height: 600, class: 'banner-right'});
         });
 
         it('return correctly banner data when type is MobileTop', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                banner: {mobileTopUrl: 'url', mobileTopNavigationUrl: 'link'},
+                banner: {mobileTopUrl: 'url', mobileTopNavigationUrl: 'link', class: 'banner-mobile-top'},
                 type: BannerType.MobileTop
             };
             const container = shallow(<Banner {...props} />);
@@ -73,14 +73,14 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240});
+            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240, class: 'banner-mobile-top'});
         });
 
         it('return correctly banner data when type is MobileCenter', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                banner: {mobileCenterUrl: 'url', mobileCenterNavigationUrl: 'link'},
+                banner: {mobileCenterUrl: 'url', mobileCenterNavigationUrl: 'link', class: 'banner-mobile-center'},
                 type: BannerType.MobileCenter
             };
             const container = shallow(<Banner {...props} />);
@@ -88,7 +88,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240});
+            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240, class: 'banner-mobile-center'});
         });
 
         it('return correctly banner data when type is MobileBottom', () => {
@@ -103,7 +103,7 @@ describe('Banner', () => {
             // Act
             const result = instance.getBannerData();
             // Assert
-            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240});
+            expect(result).toEqual({src: 'url', link: 'link', width:375, height: 240, class: 'banner-mobile-bottom'});
         });
 
         it('return correctly banner data when type is others', () => {
