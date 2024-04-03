@@ -4730,11 +4730,14 @@ img {
   border-right: 1px solid #f5f3ef;
   font-weight: 700;
 }
+.wp-merge-table table tbody tr:first-child td:last-child {
+  border-right: 1px solid #dadada;
+}
 .wp-merge-table table tbody tr:last-child {
   background: #e5e7ed;
+  border-top: 1px solid #5267a5;
 }
 .wp-merge-table table tbody tr:last-child td {
-  border-top: 1px solid #5267a5;
   font-weight: 600;
   font-size: 1.4rem;
   color: #5267a5;
