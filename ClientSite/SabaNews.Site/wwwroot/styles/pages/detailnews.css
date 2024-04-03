@@ -4727,7 +4727,7 @@ img {
 .wp-merge-table table tbody tr:first-child td {
   border-top: none;
   background: #DADADA;
-  border-right: 1px solid #dadada;
+  border-right: 1px solid #f5f3ef;
   font-weight: 700;
 }
 .wp-merge-table table tbody tr:last-child {
