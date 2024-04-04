@@ -26,10 +26,10 @@
                 "@@type": "ImageObject",
                 "url": "https://www.sabavn.com/images/sabasports.svg"
                 }
-            },
+            }
             @if(Model.SinglePost.CustomSchema != "")
             {
-                @Html.Raw(Model.SinglePost.CustomSchema)
+                @Html.Raw($",{Model.SinglePost.CustomSchema}")
             }
         }
         </script>
@@ -56,17 +56,14 @@
                 "url": "https://www.sabavn.com/images/sabasports.svg"
                 }
             },
-            "image": "@Model.SinglePost.FeatureImage",
+            "image": "@Model.SinglePost.FeatureImage"
             @if(Model.SinglePost.CustomSchema != "")
             {
-                @Model.SinglePost.CustomSchema
+                @Html.Raw($",{Model.SinglePost.CustomSchema}")
             }
         }
         </script>
     }
-    <script>
-        @Html.Raw(Model.SinglePost.CustomSchema)
-    </script>
 }
 @section Metadata {
     <meta name="description"
