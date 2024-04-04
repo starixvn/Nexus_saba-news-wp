@@ -1,4 +1,73 @@
 ﻿@using SabaNews.Core.Constants;
+@section Schema {
+    @if(Model.SinglePost.SchemaType == "NewsArticle")
+    {
+        <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "NewsArticle",
+             "mainEntityOfPage": {
+                "@@type": "WebPage",
+                "@@id": "@Model.AbsoluteUrl"
+            },
+            "headline": "@Model.SinglePost.SeoTitle",
+            "description": "@Model.SinglePost.SeoDescription",
+            "image": "@Model.SinglePost.FeatureImage",
+            "datePublished": "@Model.SinglePost.PostDate.ToString("yyyy-MM-ddTHH:mm:sszzz")",
+            "dateModified": "@Html.Raw(Model.SinglePost.PostDate.ToString("yyyy-MM-ddTHH:mm:sszzz"))",
+            "author": {
+                "@@type": "Person",
+                "name": "@Model.SinglePost.Author"
+            },
+            "publisher": {
+                "@@type": "Organization",
+                "name": "SABA Sports",
+                "logo": {
+                "@@type": "ImageObject",
+                "url": "https://www.sabavn.com/images/sabasports.svg"
+                }
+            },
+            @if(Model.SinglePost.CustomSchema != "")
+            {
+                @Html.Raw(Model.SinglePost.CustomSchema)
+            }
+        }
+        </script>
+    }
+    else
+    {
+        <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "Article",
+            "headline": "@Model.SinglePost.SeoTitle",
+            "description": "@Model.SinglePost.SeoDescription",
+            "author": {
+                "@@type": "Person",
+                "name": "@Model.SinglePost.Author"
+            },
+            "datePublished": "@Html.Raw(Model.SinglePost.PostDate.ToString("yyyy-MM-ddTHH:mm:sszzz"))",
+            "dateModified": "@Html.Raw(Model.SinglePost.PostDate.ToString("yyyy-MM-ddTHH:mm:sszzz"))",
+            "publisher": {
+                "@@type": "Organization",
+                "name": "SABA Sports",
+                "logo": {
+                "@@type": "ImageObject",
+                "url": "https://www.sabavn.com/images/sabasports.svg"
+                }
+            },
+            "image": "@Model.SinglePost.FeatureImage",
+            @if(Model.SinglePost.CustomSchema != "")
+            {
+                @Model.SinglePost.CustomSchema
+            }
+        }
+        </script>
+    }
+    <script>
+        @Html.Raw(Model.SinglePost.CustomSchema)
+    </script>
+}
 @section Metadata {
     <meta name="description"
         content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : "&nbsp;" )' />

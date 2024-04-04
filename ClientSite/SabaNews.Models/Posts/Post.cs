@@ -32,6 +32,8 @@
         public string Author { get; set; }
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }
+        public string SchemaType { get; set; }
+        public string CustomSchema { get; set; }
         public IEnumerable<ImageInfo> Images { get; set; }
 
         public string PostTime
