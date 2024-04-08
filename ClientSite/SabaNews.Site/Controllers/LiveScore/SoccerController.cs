@@ -51,6 +51,11 @@
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
         public IActionResult Index(DateTime? eventDate)
         {
+            var route = Request.Path.Value;
+            if(route.EndsWith("/"))
+            {
+                return RedirectPermanent(route[..^1]);
+            }
             string title;
             string description;
             var today = DateTimeUtilize.UtcNow().ConvertToClient();
