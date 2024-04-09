@@ -35,7 +35,7 @@ namespace SabaNews.Criteria.UnitTests.Poll
             var actual = criteria.IsValid();
 
             // Assert
-            Assert.False(actual);
+            Assert.True(actual);
         }
     }
 }

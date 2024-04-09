@@ -26,8 +26,9 @@
             
             var polls = fixture.Create<IEnumerable<PollModel>>();
             var questions = fixture.Create<IEnumerable<QuestionModel>>();
-            var expected = new ValueTuple<IEnumerable<PollModel>, IEnumerable<QuestionModel>>(polls, questions);
-            baseService.FetchMultipleAsync<PollModel, QuestionModel>(Arg.Do<GetPollDetailCriteria>(x => param = x)).Returns(expected);
+            var user = fixture.Create<IEnumerable<PollUserModel>>();
+            var expected = new ValueTuple<IEnumerable<PollModel>, IEnumerable<QuestionModel>, IEnumerable<PollUserModel>>(polls, questions, user);
+            baseService.FetchMultipleAsync<PollModel, QuestionModel, PollUserModel>(Arg.Do<GetPollDetailCriteria>(x => param = x)).Returns(expected);
 
             //Act
             var actual = await service.GetPollDetailAsync(param);

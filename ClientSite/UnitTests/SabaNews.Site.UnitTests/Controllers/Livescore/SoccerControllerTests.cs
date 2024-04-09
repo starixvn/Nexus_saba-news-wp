@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using AutoFixture;
     using Fanex.Caching;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
@@ -40,13 +41,18 @@
         [Fact]
         public void Index_EventDateIsNull_ReturnExpectedViewResult()
         {
-            var today = DateTime.UtcNow.Date.ConvertToClient();
             // Arrange
+            var today = DateTime.UtcNow.Date.ConvertToClient();
             var pageDetail = new Category
             {
                 Title = "Lịch thi đấu và kết quả bóng đá hôm nay " + today.ToString("dd/MM")
             };
             var controller = GetController();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Path = $"/{fixture.Create<string>()}";
 
             // Act
             var result =  controller.Index(null);
@@ -72,6 +78,11 @@
                 Description = "description"
             };
             var controller = GetController();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Path = $"/{fixture.Create<string>()}";
 
             // Act
             var result = controller.Index(eventDate);
@@ -95,6 +106,11 @@
                 Title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + eventDate.ToString("dd/MM")
             };
             var controller = GetController();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Path = $"/{fixture.Create<string>()}";
 
             // Act
             var result =  controller.Index(eventDate);
@@ -107,6 +123,31 @@
             Assert.Equal(eventDate, viewResult.ViewData["EventDate"]);
             Assert.Equal("~/Views/Livescore/Soccer/Index.cshtml", viewResult.ViewName);
             Assert.Equal(pageDetail.Title, viewModel.Category.Title);
+        }
+
+        [Fact]
+        public void Index_PathEndwithSlash_RedirectCorrectUrl()
+        {
+            var eventDate = DateTime.UtcNow.AddDays(2);
+            // Arrange
+            var pageDetail = new Category
+            {
+                Title = "Lịch thi đấu bóng đá, trực tiếp bóng đá ngày " + eventDate.ToString("dd/MM")
+            };
+            var path = $"/{fixture.Create<string>()}/";
+            var controller = GetController();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Path = $"/{path}/";
+
+            // Act
+            var result =  controller.Index(eventDate);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal($"/{path}", redirectResult.Url);
         }
 
         #endregion

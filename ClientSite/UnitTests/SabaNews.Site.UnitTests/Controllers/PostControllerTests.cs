@@ -319,6 +319,11 @@
             var expected = new CommandResult { Code = 0 };
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
+            var criteriaPoll = fixture.Create<GetPollDetailCriteria>();
+            var expectedPoll = fixture.Create<PollViewModel>();
+           
+            pollService.GetPollDetailAsync(Arg.Do<GetPollDetailCriteria>(x => criteria = x)).Returns(expectedPoll);
+
             pollService.VotePollAsync(Arg.Do<int>(x => questId = x), Arg.Do<int>(x => answerId = x), Arg.Do<string>(x => clientIp = x)).Returns(expected);
 
             //Act
