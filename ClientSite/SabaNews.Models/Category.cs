@@ -15,6 +15,7 @@
         public string Url { get; set; }
         public int? CateParentId { get; set; }
         public string CateParentName { get; set; }
+        public string CustomSchema { get; set; }
         public long LeagueId { get; set; }
         public long SeasonId { get; set; }
     }

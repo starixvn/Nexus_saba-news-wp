@@ -22,7 +22,10 @@
             "@@type": "Website",
             "name": "SABAVN.com",
             "url": "https://www.sabavn.com/"
-        }
+        }@if(!string.IsNullOrEmpty(Model.Category.CustomSchema))
+            {
+                @Html.Raw($",{Model.Category.CustomSchema}")
+            }
     }
 </script>
 }
