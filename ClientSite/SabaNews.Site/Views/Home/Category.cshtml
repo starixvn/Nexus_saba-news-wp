@@ -1,34 +1,5 @@
 @using static SabaNews.Site.Extensions.DeviceHelper;
 @using SabaNews.Core.Constants;
-@section Schema {
-    <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "WebPage",
-        "id": "@Model.Category.Url",
-        "url": "@Model.Category.Url",
-        "name": "@Model.Category.OgTitle",
-        "description": "@Model.Category.OgDescription",
-        "publisher": {
-            "@@type": "Organization",
-            "name": "SABAVN Sports",
-            "logo": {
-            "@@type": "ImageObject",
-            "url": "https://www.sabavn.com/images/sabasports.svg"
-            }
-        },
-        "inLanguage": "vi-VN",
-        "isPartOf": {
-            "@@type": "Website",
-            "name": "SABAVN.com",
-            "url": "https://www.sabavn.com/"
-        }@if(!string.IsNullOrEmpty(Model.Category.CustomSchema))
-            {
-                @Html.Raw($",{Model.Category.CustomSchema}")
-            }
-    }
-</script>
-}
 @{
     var isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
     var item1 = Model.MenuItems != null ? Model.MenuItems.Item1 : null;

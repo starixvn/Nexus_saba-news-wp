@@ -52,7 +52,7 @@
         public IActionResult Index(DateTime? eventDate)
         {
             var route = Request.Path.Value;
-            if(route.EndsWith("/"))
+            if(route.EndsWith('/'))
             {
                 return RedirectPermanent(route[..^1]);
             }
