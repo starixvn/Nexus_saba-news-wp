@@ -209,6 +209,16 @@
             "wwwroot/styles/pages/event/worldcup2022/story-post-detail.css"
         ]
     },
+
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2024_home.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/Euro2024/home.css",
+            "wwwroot/lib/swipper/css/swiper.min.css"
+        ]
+    },
+
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",

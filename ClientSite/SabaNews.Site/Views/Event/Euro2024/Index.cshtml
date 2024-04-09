@@ -1,0 +1,83 @@
+@section Metadata {
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Header.Description' />
+    <meta property="og:title" content='@Model.Header.Title' />
+}
+
+@section Title {
+    @Model.Header.Title
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/euro2024_home.min.css" asp-append-version="true">
+}
+
+@section Scripts {
+    <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+    <script src="~/js/event/euro2024/home.js" asp-append-version="true"></script>
+}
+
+@(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
+
+<div class="page-euro-2024 page-home">
+    <div class="block block-hot-news">
+        <div class="block-heading">
+            <h2 class="block-heading-text">
+                <a href="#">
+                    Tin mới nhất
+                </a>
+            </h2>
+            <a href="#" class="view-more">Xem chi tiết</a>
+        </div>
+        <div class="block-columns">
+            <div class="block-columns-2">
+                @if(Model.LastestNews.Count > 0){
+
+                    <div class="swiper-hot-news">
+                        @{
+                            int firstBlockIndex = 0;
+                            @foreach (var post in Model.LastestNews) {
+                                {
+                                    firstBlockIndex++;
+                                    if(firstBlockIndex >= 6)
+                                    {
+                                        continue;
+                                    }
+                                }
+                                <div class="block-items">
+                                    <div class="block-items-img">
+                                        <a href="#" class="hover-image">
+                                            <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                        </a>
+                                    </div>
+                                    <h2 class="block-items-heading">
+                                        <a href="#">@post.PostTitle</a>
+                                    </h2>
+                                    <div class="block-heading-description">
+                                        @post.PostExcerpt
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+                @if(Model.LastestNews.Count > 0){
+                    <div class="block-child">
+                        @{
+                            int lastBlockIndex = 0;
+                            @foreach (var post in Model.LastestNews){
+                                {
+                                    lastBlockIndex++;
+                                    if(lastBlockIndex <= 5) {
+                                        continue;
+                                    }
+                                }
+                                <h3 class="block-child-text"><a href="#">@post.PostTitle</a></h3>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+.block{
+    &-heading{
+        &-text{
+            a{
+                text-decoration: none;
+            }
+        }
+        .view-more{
+            color: red;
+        }
+    }
+    &-items{
+        &-img{
+            overflow: hidden;
+            border-radius: 5px;
+        }
+    }
+    &-columns{
+        &-2{
+            display: grid;
+            grid-template-rows: unset;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 2rem;
+        }
+    }
+}
