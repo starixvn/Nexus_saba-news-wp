@@ -172,9 +172,9 @@
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/lastestnews.min.css",
+        "outputFileName": "wwwroot/minify/styles/euro-lastestnews.min.css",
         "inputFiles": [
-            "wwwroot/styles/pages/event/worldcup2022/lastestnews.css"
+            "wwwroot/styles/pages/event/Euro2024/lastestnews.css"
         ]
     },
     {
@@ -216,6 +216,13 @@
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/event/Euro2024/home.css",
             "wwwroot/lib/swipper/css/swiper.min.css"
+        ]
+    },
+
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2024-post-detail.min.css",
+        "inputFiles": [
+            "wwwroot/styles/pages/event/Euro2024/postdetail-euro.css"
         ]
     },
 

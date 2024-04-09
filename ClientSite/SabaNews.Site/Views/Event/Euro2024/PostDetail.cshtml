@@ -1,0 +1,27 @@
+@section Metadata {
+    <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt : "&nbsp;" )' />
+    <meta property="og:url" content='@Model.AbsoluteUrl' />
+    <meta property="og:description" content="&nbsp;" />
+    <meta property="og:title" content='@Model.SinglePost.PostTitle' />
+    <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
+    <link rel="canonical" href="@Model.AbsoluteUrl" />
+    <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
+}
+@section Title{
+    @("Euro 2024: " + Model.SinglePost.PostTitle)
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/euro2024-post-detail.min.css" asp-append-version="true">
+}
+
+@section Scripts {
+    <script src="~/js/event/euro2024/single.js" asp-append-version="true"></script>
+}
+
+
+@(await Component.InvokeAsync("HeaderEuro2024"))
+
+<div class="detail-pages euro2024-detail-pages">
+    Detail
+</div>
