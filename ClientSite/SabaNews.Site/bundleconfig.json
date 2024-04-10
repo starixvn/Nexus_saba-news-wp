@@ -247,8 +247,7 @@
     {
         "outputFileName": "wwwroot/minify/js/swiper.min.js",
         "inputFiles": [
-            "wwwroot/lib/swipper/js/swiper.min.js",
-            "wwwroot/js/swiper.js"
+            "wwwroot/lib/swipper/js/swiper.min.js"
         ],
         "minify": {
             "enabled": true,

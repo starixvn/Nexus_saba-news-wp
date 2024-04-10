@@ -11,7 +11,7 @@ namespace SabaNews.Core.Constants
         public const string Homepage = "Trang chủ";
         public const string TitleHomepage = "Euro 2024: Tin tức, Lịch thi đấu, Kết quả, Bảng xếp hạng - SABA Sports";
 
-        public const string HomepageSlug = "euro-2024";
+        public const string HomepageSlug = "world-cup-2022";
         public const string LastestNews = "Tin mới nhất";
         public const string TitleLastestNews = "Tin mới nhất Euro 2024 hôm nay - SABA Sports";
 

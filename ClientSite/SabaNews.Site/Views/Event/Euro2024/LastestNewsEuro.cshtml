@@ -65,19 +65,20 @@
                 <h2>@(Model.Header.Title == WorldCup2022.TitleLastestNews ? WorldCup2022.LastestNews : WorldCup2022.Commentary)</h2>
             </div>
         </div>
+        <div>@Model.Posts.Count</div>
 
-        @* @if (Model.Posts.Count > 0)
+        @if (Model.Posts.Count > 0)
         {
             <div class="container">
                 <div class="pages-main-hot">
                     <div class="page-items-hot">
                         <div class="post-items post-hot">
                             <div class="hover-image">
-                                <a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = Model.Posts[0].Slug })>
+                                <a href=@Url.Action("PostDetailEuro", "Euro2024", new { slug = Model.Posts[0].Slug })>
                                     <img src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle" asp-append-version="true" loading="lazy" class="img-res lazy" />
                                 </a>
                                 <div class="title-hot">
-                                    <h3><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a></h3>
+                                    <h3><a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a></h3>
                                    
                                     @if (!isMobile)
                                     {
@@ -134,9 +135,9 @@
                     </div>
                 </div>
             </div>
-        } *@
+        }
 
-        @* <div class="page-main page-grid">
+        <div class="page-main page-grid">
             <div class="page-main-items">
                 <div id="news-grid" class="news-grid">
                     @{
@@ -188,6 +189,6 @@
                     </div>
                 }
             </div>
-        </div> *@
+        </div>
     </div>
 </section>

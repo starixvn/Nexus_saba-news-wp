@@ -13,13 +13,14 @@
 }
 
 @section Scripts {
-    <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+    <script src="~/lib/swipper/js/swiper-bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/event/euro2024/home.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
 
 <div class="page-euro-2024 page-home">
+    @* hot-news *@
     <div class="block block-hot-news">
         <div class="block-heading">
             <h2 class="block-heading-text">
@@ -29,59 +30,189 @@
             </h2>
             <a href="@Url.Action("LastestNews", "Euro2024")" class="view-more">Xem chi tiết</a>
         </div>
-        <div class="block-columns">
-            <div class="block-columns-2">
-                @if(Model.LastestNews.Count > 0){
+        <div class="block-body">
+            <div class="block-columns">
+                <div class="block-columns-2">
+                    @if(Model.LastestNews.Count > 0){
 
-                    <div class="swiper swiper-hot-news">
-                        <div class="swiper-wrapper">
-                            @{
-                                int firstBlockIndex = 0;
-                                @foreach (var post in Model.LastestNews) {
-                                    {
-                                        firstBlockIndex++;
-                                        if(firstBlockIndex >= 6)
+                        <div class="swiper swiper-hot-news">
+                            <div class="swiper-wrapper">
+                                @{
+                                    int firstBlockIndex = 0;
+                                    @foreach (var post in Model.LastestNews) {
                                         {
+                                            firstBlockIndex++;
+                                            if(firstBlockIndex >= 6)
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        <div class="swiper-slide block-items block-items-vertical">
+                                            <div class="block-items-img">
+                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })" class="hover-image">
+                                                    <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                                </a>
+                                            </div>
+                                            <h2 class="block-items-heading">
+                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                            </h2>
+                                            <div class="block-heading-description">
+                                                @post.PostExcerpt
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                            <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
+                            <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    }
+                    @if(Model.LastestNews.Count > 0){
+                        <div class="block-child">
+                            @{
+                                int lastBlockIndex = 0;
+                                @foreach (var post in Model.LastestNews){
+                                    {
+                                        lastBlockIndex++;
+                                        if(lastBlockIndex <= 5) {
                                             continue;
                                         }
                                     }
-                                    <div class="swiper-slide block-items">
-                                        <div class="block-items-img">
-                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })" class="hover-image">
-                                                <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
-                                            </a>
-                                        </div>
-                                        <h2 class="block-items-heading">
-                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
-                                        </h2>
-                                        <div class="block-heading-description">
-                                            @post.PostExcerpt
-                                        </div>
-                                    </div>
+                                    <h3 class="block-child-text"><a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a></h3>
                                 }
                             }
                         </div>
-                        <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
-                        <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
-                        <div class="swiper-pagination"></div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @* standing *@
+    <div class="block block-standing">
+        <div class="block-heading">
+            <h2 class="block-heading-text">
+                <a href="@Url.Action("Standing", "Euro2024")">
+                    Bảng xếp hạng
+                </a>
+            </h2>
+        </div>
+        <div class="block-body">
+            <div id="home-standing"></div>
+        </div>
+    </div>
+    @* guess *@
+    <div class="block block-guess">
+        <div class="block-heading">
+            <h2 class="block-heading-text">
+                <a href="@Url.Action("CommentaryNews", "Euro2024")">
+                    Nhận định dự đoán
+                </a>
+            </h2>
+            <a href="@Url.Action("CommentaryNews", "Euro2024")" class="view-more">Xem chi tiết</a>
+        </div>
+        <div class="block-body">
+            @if(Model.Commentary.Count > 0){
+                var firstPost = Model.Commentary[0];
+                <div class="block-items block-items-horizontal">
+                    <div class="block-items-img">
+                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })" class="hover-image">
+                            <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" loading="lazy" />
+                        </a>
                     </div>
-                }
-                @if(Model.LastestNews.Count > 0){
-                    <div class="block-child">
+                    <h4 class="block-items-heading">
+                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">@firstPost.PostTitle</a>
+                    </h4>
+                    <div class="block-heading-description">
+                        @firstPost.PostExcerpt
+                    </div>
+                </div>
+
+                <div class="swiper swiper-guess">
+                    <div class="swiper-wrapper">
                         @{
-                            int lastBlockIndex = 0;
-                            @foreach (var post in Model.LastestNews){
+                            int lastestPostIndex = 0;
+                            @foreach( var post in  Model.Commentary)
+                            {
                                 {
-                                    lastBlockIndex++;
-                                    if(lastBlockIndex <= 5) {
+                                    lastestPostIndex++;
+                                    @if(lastestPostIndex <= 1)
+                                    {
                                         continue;
                                     }
                                 }
-                                <h3 class="block-child-text"><a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a></h3>
+                                <div class="swiper-slide block-items block-items-vertical">
+                                    <div class="block-items-img">
+                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })" class="hover-image">
+                                            <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                        </a>
+                                    </div>
+                                    <h4 class="block-items-heading">
+                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                    </h4>
+                                </div>
                             }
                         }
                     </div>
-                }
+                    <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
+                    <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="block block-video">
+        <div class="block-heading">
+            <h2 class="block-heading-text">
+                <a href="">
+                    Video
+                </a>
+            </h2>
+        </div>
+        <div class="block-body">
+            <div class="group-video">
+                <div class="box-vertical">
+                    @{
+                        var numVideos = 0;
+                        foreach (var post in Model.Videos)
+                        {
+                            numVideos++;
+                            var display = numVideos == 1 ? "block" : "none";
+                            <div style="display:@display;" class="box-play-video" id="slide-@post.ID">
+                                <input type="hidden" name="iframe_value" value="@post.PostContent" />
+                                <div class="block-items block-items-horizontal">
+                                    <div class="block-items-img">
+                                        <a title="@post.PostTitle" class="hover-image">
+                                            <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                                            <div class="btn-play-video" post-id="@post.ID">
+                                                <span class="icon-play"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div style="display:none;" class="play_video"></div>
+                                    <h4 class="block-items-heading">
+                                        <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="block-child-video scroll-snap slide-video">
+                    @foreach (var post in Model.Videos)
+                    {
+                        <div class="block-items block-items-vertical">
+                            <div class="block-items-img">
+                                <a title="@post.PostTitle" href="javascript:;" data-id="@post.ID" class="hover-image">
+                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                                </a>
+                            </div>
+                            <h4 class="block-items-heading">
+                                <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
+                            </h4>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>
