@@ -16,8 +16,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_id`(
     */
 )
 GetPostDetailByIdSlug:BEGIN
-	DECLARE tags VARCHAR(250);
-    DECLARE tagsSlug VARCHAR(250);
+	DECLARE tags VARCHAR(600);
+    DECLARE tagsSlug VARCHAR(600);
     DECLARE cate_name VARCHAR(250);
     DECLARE cate_id VARCHAR(250);
     DECLARE categoriesSlug VARCHAR(250);
