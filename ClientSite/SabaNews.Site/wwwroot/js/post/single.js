@@ -165,7 +165,6 @@
     function CreateTableOfContentArticle() {
         var $content = $('.content');
         var $sectionTitles = $content.find('h2, h3');
-        // var html = '<div class="list-place">' +
         var html = '<div class="toc-heading">' +
             '<div class="toc-sub"><p>Nội dung</p><i class="icon-chevron-up"></i></div>' +
             '<div class="list-title">';
@@ -185,7 +184,7 @@
             var section = "section-" + index;
             var titleClass = tagTitle === "H2" ? "h2" : "h3";
             $val.attr('id', section);
-            html += `<${tagTitle} class="toc-heading ${titleClass}-toc-heading"><a href="#${section}">${text}</a></${tagTitle}>`;
+            html += `<div class="toc-heading ${titleClass}-toc-heading"><a href="#${section}">${text}</a></div>`;
         });
 
         html += '</div>';
