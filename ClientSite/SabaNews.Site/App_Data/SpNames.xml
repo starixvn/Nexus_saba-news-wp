@@ -65,7 +65,7 @@
         <Setting Key="get_posts_by_cate_slug_paging" SpName="get_posts_by_cate_slug_paging" DbName="sabasports" Plain="0" />
         <Setting Key="posts_sitemap_get_by_date" SpName="posts_sitemap_get_by_date" DbName="sabasports" Plain="0" />
         <Setting Key="tag_get_all" SpName="tag_get_all" DbName="sabasports" Plain="0" />
-        <Setting Key="post_get_by_id" SpName="post_get_by_id_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="post_get_by_id" SpName="post_get_by_id" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_detail_summary" SpName="post_get_detail_summary" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_by_jsonIds" SpName="post_get_by_jsonIds" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_mostView" SpName="post_get_mostView" DbName="sabasports" Plain="0" />

@@ -17,6 +17,7 @@
         public string PostExcerpt { get; set; }
         public DateTime PostDate { get; set; }
         public DateTime PostDateGMT { get; set; }
+        public DateTime PostDateModified { get; set; }
         public string FeatureImage { get; set; }
         public string Tags { get; set; }
         public string TagsSlug { get; set; }

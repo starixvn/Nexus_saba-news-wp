@@ -12,6 +12,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_category_detail`(
             - 20230519@Hank: migrate rank math to yoast plugin
             - 20230606@Hank: select league
             - 20230810@Hank: select currentSeasonId
+            - 20240408@Hank: select custom schema.org
     */
 )
 BEGIN
@@ -30,9 +31,11 @@ BEGIN
 	SELECT  t.name as Title , t.term_id as CateId, t.slug as Slug
 		,yi.title as SEOTitle, yi.description as description
         ,yi.open_graph_title as OgTitle, yi.open_graph_description as OgDescription, yi.open_graph_image as OgImage
+        ,tm.meta_value as CustomSchema
         ,leagueId, seasonId
     FROM wp_terms t 
     INNER JOIN wp_term_taxonomy wt ON  t.term_id = wt.term_id AND wt.taxonomy = "category"
+    LEFT JOIN wp_termmeta tm ON t.term_id = tm.term_id AND tm.meta_key = "saswp_custom_schema_field"
     LEFT JOIN wp_yoast_indexable yi ON yi.object_id = t.term_id AND yi.object_type = "term" AND yi.object_sub_type = "category"
     WHERE t.slug = slug;
 END
