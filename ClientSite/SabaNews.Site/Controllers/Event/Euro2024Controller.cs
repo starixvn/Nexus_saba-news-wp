@@ -156,6 +156,31 @@ namespace SabaNews.Site.Controllers.Event
             return View("~/Views/Event/Euro2024/LastestNewsEuro.cshtml", viewModel);
         }
 
+        [Route("euro-2024/video")]
+        public async Task<IActionResult> Video()
+        {
+            var header = new HeaderViewModel
+            {
+                Title = Euro2024.TitleVideo,
+                Description = Euro2024.TitleVideo,
+                Slug = Euro2024.UrlVideoSlug
+            };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+            var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            var viewModel = new VideoViewModel
+            {
+                Header = header,
+                Videos = videos,
+                Paging = new PagingModel
+                {
+                    PageSize = Constants.GetTwelveItems,
+                    CurrentPage = Constants.FirstPage,
+                    TotalPages = (int)Math.Ceiling((cateSlugCriteria.TotalItems - 1) / (double)Constants.GetTwelveItems)
+                }
+            };
+            return View("~/Views/Event/Euro2024/Video.cshtml", viewModel);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> GetHomepageStandings([FromBody] GetLeagueSeasonStandingCriteria criteria)

@@ -225,6 +225,12 @@
             "wwwroot/styles/pages/event/Euro2024/postdetail-euro.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2024-video.min.css",
+        "inputFiles": [
+            "wwwroot/styles/pages/event/Euro2024/video.css"
+        ]
+    },
 
     /*==================================================== Javascript ================================================*/
     {
