@@ -134,6 +134,7 @@
             services.AddHostedService<RefreshCategoryPostsCachingWorker>();
             services.AddHostedService<RefreshRecentPostsCachingWorker>();
             services.AddHostedService<RefreshTodayMatchesCachingWorker>();
+            services.AddHostedService<RefreshEuro2024HomepageCachingWorker>();
         }
     }
 }

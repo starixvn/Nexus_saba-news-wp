@@ -14,5 +14,6 @@
         public const string RefreshCategoryPostsCaching = "RefreshCategoryPostsCaching";
         public const string RefreshRecentPostsCaching = "RefreshRecentPostsCaching";
         public const string RefreshTodayMatchesCaching = "RefreshTodayMatchesCaching";
+        public const string RefreshEuro2024HomepageCaching = "RefreshEuro2024HomepageCaching";
     }
 }

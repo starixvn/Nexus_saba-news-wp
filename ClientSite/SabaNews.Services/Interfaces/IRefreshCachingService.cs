@@ -27,5 +27,7 @@
         Task UpdateRecentPostsCaching();
 
         Task UpdateTodayMatchesCaching();
+        
+        Task UpdateEuro2024HomepageCaching();
     }
 }

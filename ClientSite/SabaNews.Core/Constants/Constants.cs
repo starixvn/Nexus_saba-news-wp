@@ -192,6 +192,7 @@
         public const int CacheRSSTimeoutMinutes = 30;
         public const int CacheBannerTimeoutMinutes = 30;
         public const int CacheWorldCupTimeoutMinutes = 30;
+        public const int CacheEuro2024TimeoutMinutes = 30;
         public const int CacheHompageFixtureTimeoutMinutes = 30;
         public const int CacheVideoTimeoutMinutes = 30;
         public const int CacheRecentPostTimeoutMinutes = 30;

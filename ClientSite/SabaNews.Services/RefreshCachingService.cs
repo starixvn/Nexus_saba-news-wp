@@ -359,5 +359,29 @@
 
             logService.WriteLogFileInfo(string.Format("Done UpdateTodayMatchesCaching - {0}", DateTimeUtilize.UtcNow().Subtract(startTime).Milliseconds));
         }
+        public async Task UpdateEuro2024HomepageCaching()
+        {
+            var startTime = DateTimeUtilize.UtcNow();
+            logService.WriteLogFileInfo("Start UpdateEuro2024HomepageCaching");
+
+            try
+            {
+                var result = await fetchDataService.GetEuro2024ViewModel();
+                logService.WriteLogFileInfo(string.Format("After GetEuro2024ViewModel - {0}", DateTimeUtilize.UtcNow().Subtract(startTime).Milliseconds));
+                await cacheWrapperService.SetAsync(CacheKey.Euro2024,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheEuro2024TimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateEuro2024HomepageCaching - {0}", DateTimeUtilize.UtcNow().Subtract(startTime).Milliseconds));
+        }
     }
 }

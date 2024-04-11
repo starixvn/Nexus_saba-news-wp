@@ -11,6 +11,7 @@
     using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -368,6 +369,30 @@
             }
 
             return await fetchDataService.GetLeaguesAsync();
+        }
+
+        public async Task<Euro2024ViewModel> GetEuro2024PageViewModel()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<Euro2024ViewModel>(CacheKey.Euro2024);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get world cup data from DB---------");
+
+                    result = await fetchDataService.GetEuro2024ViewModel();
+                    await cacheWrapperService.SetAsync(CacheKey.Euro2024, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheWorldCupTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetEuro2024ViewModel();
         }
     }
 }

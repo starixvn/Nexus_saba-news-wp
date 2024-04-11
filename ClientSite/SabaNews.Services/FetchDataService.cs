@@ -14,6 +14,7 @@
     using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -248,6 +249,25 @@
         {
             var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
             return await matchService.GetMatchBySeasonAsync(criteria);
+        }
+
+        public async Task<Euro2024ViewModel> GetEuro2024ViewModel()
+        {
+            var lastestNews = await postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetTwelveItems);
+            var commentary = await postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetTwelveItems);
+            var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            var storyPost = await postService.GetPostsBySlugAsync(WorldCup2022.StoryPostSlug, Constants.FromFirstItem, Constants.GetFourItems, Constants.storyPostType);
+            var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
+            
+            var Model = new Euro2024ViewModel
+            {
+                LastestNews = lastestNews,
+                Commentary = commentary,
+                Videos = videos,
+                StoryPost = storyPost,
+                Category = cate,
+            };
+            return Model;
         }
 
         public async Task<IList<Match>> GetTodayMatches()

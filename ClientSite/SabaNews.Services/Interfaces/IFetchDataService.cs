@@ -7,6 +7,7 @@
     using SabaNews.Models;
     using SabaNews.Models.Home;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
 
@@ -30,5 +31,6 @@
 
         Task<IList<Match>> GetTodayMatches();
         Task<IList<League>> GetLeaguesAsync();
+        Task<Euro2024ViewModel> GetEuro2024ViewModel();
     }
 }

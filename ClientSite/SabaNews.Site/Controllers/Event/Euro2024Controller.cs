@@ -51,7 +51,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("/euro-2024")]
         public async Task<IActionResult> Index ()
         {
-            var model = await dataControlService.GetWorldCupPageViewModel();
+            var model = await dataControlService.GetEuro2024PageViewModel();
             var header = new HeaderViewModel
             {
                 HeadTitle = model.Category.Title,
