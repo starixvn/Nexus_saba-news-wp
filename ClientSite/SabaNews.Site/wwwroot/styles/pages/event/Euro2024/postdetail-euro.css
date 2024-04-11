@@ -216,6 +216,7 @@ html, body {
   overflow: hidden;
   border-radius: 5px;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+  position: relative;
 }
 .hover-image img {
   width: 100%;

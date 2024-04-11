@@ -9,7 +9,7 @@
 }
 
 @section Styles{
-    <link rel="stylesheet" href="~/minify/styles/euro2024_home.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/euro2024-home.min.css" asp-append-version="true">
 }
 
 @section Scripts {
@@ -48,8 +48,8 @@
                                             }
                                         }
                                         <div class="swiper-slide block-items block-items-vertical">
-                                            <div class="block-items-img">
-                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })" class="hover-image">
+                                            <div class="block-items-img hover-image">
+                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
                                                     <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                                 </a>
                                             </div>
@@ -115,8 +115,8 @@
             @if(Model.Commentary.Count > 0){
                 var firstPost = Model.Commentary[0];
                 <div class="block-items block-items-horizontal">
-                    <div class="block-items-img">
-                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })" class="hover-image">
+                    <div class="block-items-img hover-image">
+                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">
                             <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" loading="lazy" />
                         </a>
                     </div>
@@ -142,8 +142,8 @@
                                     }
                                 }
                                 <div class="swiper-slide block-items block-items-vertical">
-                                    <div class="block-items-img">
-                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })" class="hover-image">
+                                    <div class="block-items-img hover-image">
+                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
                                             <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                         </a>
                                     </div>
@@ -174,24 +174,24 @@
                 <div class="box-vertical">
                     @{
                         var numVideos = 0;
-                        foreach (var post in Model.Videos)
+                        foreach (var video in Model.Videos)
                         {
                             numVideos++;
                             var display = numVideos == 1 ? "block" : "none";
-                            <div style="display:@display;" class="box-play-video" id="slide-@post.ID">
-                                <input type="hidden" name="iframe_value" value="@post.PostContent" />
+                            <div style="display:@display;" class="box-play-video" id="slide-@video.ID">
+                                <input type="hidden" name="iframe_value" value="@video.PostContent" />
                                 <div class="block-items block-items-horizontal">
-                                    <div class="block-items-img">
-                                        <a title="@post.PostTitle" class="hover-image">
-                                            <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
-                                            <div class="btn-play-video" post-id="@post.ID">
+                                    <div class="block-items-img hover-image">
+                                        <a title="@video.PostTitle">
+                                            <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
+                                            <div class="btn-play-video" post-id="@video.ID">
                                                 <span class="icon-play"></span>
                                             </div>
                                         </a>
                                     </div>
                                     <div style="display:none;" class="play_video"></div>
                                     <h4 class="block-items-heading">
-                                        <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
+                                        <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
                                     </h4>
                                 </div>
                             </div>
@@ -199,16 +199,16 @@
                     }
                 </div>
                 <div class="block-child-video scroll-snap slide-video">
-                    @foreach (var post in Model.Videos)
+                    @foreach (var video in Model.Videos)
                     {
                         <div class="block-items block-items-vertical">
-                            <div class="block-items-img">
-                                <a title="@post.PostTitle" href="javascript:;" data-id="@post.ID" class="hover-image">
-                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res" loading="lazy" />
+                            <div class="block-items-img hover-image">
+                                <a title="@video.PostTitle" href="javascript:;" data-id="@video.ID">
+                                    <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
                                 </a>
                             </div>
                             <h4 class="block-items-heading">
-                                <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
+                                <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
                             </h4>
                         </div>
                     }
