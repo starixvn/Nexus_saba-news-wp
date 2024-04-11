@@ -33,3 +33,30 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <div id="app-container"></div>
 @await Html.PartialAsync(ViewResources.SidebarBannerView)
+
+@section Schema {
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "WebPage",
+        "id": "@ViewBag.Link",
+        "url": "@ViewBag.Link",
+        "name": "Trận đấu quan tâm",
+        "description": "Xem bóng đá trực tiếp trận đấu trên SABA VN, link xem TRỰC TIẾP BÓNG ĐÁ mới nhất cho điện thoại, máy tính mới nhất.",
+        "publisher": {
+            "@@type": "Organization",
+            "name": "SABAVN Sports",
+            "logo": {
+            "@@type": "ImageObject",
+            "url": "https://www.sabavn.com/images/sabasports.svg"
+            }
+        },
+        "inLanguage": "vi-VN",
+        "isPartOf": {
+            "@@type": "Website",
+            "name": "SABAVN.com",
+            "url": "https://www.sabavn.com/"
+        }
+    }
+    </script>
+}

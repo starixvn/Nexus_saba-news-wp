@@ -70,5 +70,34 @@
     @title
 }
 @(await Component.InvokeAsync("Menu", new { CategorySlug = "home-page" }))
+
 <div id="app-container"></div>
+
 @await Html.PartialAsync(ViewResources.SidebarBannerView)
+
+@section Schema {
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "WebPage",
+        "id": "@ViewBag.Link",
+        "url": "@ViewBag.Link",
+        "name": "@title",
+        "description": "@description",
+        "publisher": {
+            "@@type": "Organization",
+            "name": "SABAVN Sports",
+            "logo": {
+            "@@type": "ImageObject",
+            "url": "https://www.sabavn.com/images/sabasports.svg"
+            }
+        },
+        "inLanguage": "vi-VN",
+        "isPartOf": {
+            "@@type": "Website",
+            "name": "SABAVN.com",
+            "url": "https://www.sabavn.com/"
+        }
+    }
+    </script>
+}

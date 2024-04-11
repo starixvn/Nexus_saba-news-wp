@@ -77,13 +77,14 @@
                 title = "Kết quả bóng đá, tỷ số bóng đá ngày " + eventDateFormat;
                 description = $"Xem kết quả bóng đá ngày {eventDateFormat} chính xác nhất. Cập nhật tỷ số trận đấu ngày {eventDateFormat} đầy đủ và trực quan nhất cho độc giả trên SABA VN.";
             }
+            var url  = $"{domain}lich-thi-dau/bong-da/{eventDate?.ToString("yyyy-MM-dd")}";
             var pageDetail = new Category
             {
                 Title = title,
                 OgTitle = title,
                 Description = description,
                 OgDescription = description,
-                Url = $"{domain}lich-thi-dau/bong-da/{eventDate?.ToString("yyyy-MM-dd")}"
+                Url = url.TrimEnd('/')
             };
             var model = new PageViewModel
             {
@@ -104,8 +105,8 @@
         [Route("lich-thi-dau/bong-da/truc-tiep")]
         public IActionResult Live()
         {
-            var url = new Category { Url = $"{domain}lich-thi-dau/bong-da/truc-tiep" };
-            return View("~/Views/Livescore/Soccer/Live.cshtml", url);
+            var viewModel = new Category { Url = $"{domain}lich-thi-dau/bong-da/truc-tiep" };
+            return View("~/Views/Livescore/Soccer/Live.cshtml", viewModel);
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
