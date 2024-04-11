@@ -71,10 +71,8 @@ namespace SabaNews.Core.Constants
         public const string IconStanding = "icon-minigame_standing";
 
         public const long LeagueId = 12015;
-        public const long SeasonId = 10810;
-        public const long LeagueIdAFFCup = 14844;
-        public const long SeasonIdAFFCup = 11277;
-        public const long GroupStageId = 30537;
+        public const long SeasonId = 11334;
+        public const long GroupStageId = 35455;
 
         public const string TimestampMinigameStage01Start = "11/16/2022, 8:00:00 AM";
         public const string TimestampMinigameStage02Start = "11/22/2022, 8:00:00 AM";
