@@ -49,5 +49,6 @@
         Task<IList<League>> GetLeagues();
 
         Task<Euro2024ViewModel> GetEuro2024PageViewModel();
+        Task<MatchLeague> GetMatchBySeasonAsync(long leagueId, long seasonId);
     }
 }

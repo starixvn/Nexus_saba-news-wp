@@ -70,8 +70,8 @@ namespace SabaNews.Core.Constants
         public const string IconWinner = "icon-minigame_list_user";
         public const string IconStanding = "icon-minigame_standing";
 
-        public const long LeagueIdWorldCup2022 = 14638;
-        public const long SeasonIdWorldCup2022 = 10810;
+        public const long LeagueId = 12015;
+        public const long SeasonId = 10810;
         public const long LeagueIdAFFCup = 14844;
         public const long SeasonIdAFFCup = 11277;
         public const long GroupStageId = 30537;

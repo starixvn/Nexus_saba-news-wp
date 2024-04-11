@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services
 {
     using Microsoft.Extensions.Configuration;
+    using NLog.LayoutRenderers;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
@@ -249,6 +250,18 @@
         {
             var criteria = new GetMatchBySeasonCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
             return await matchService.GetMatchBySeasonAsync(criteria);
+        }
+
+        public async Task<MatchLeague> GetMatchBySeasonAsync(long leagueId, long seasonId)
+        {
+            var criteria = new GetMatchBySeasonCriteria { LeagueId = leagueId, SeasonId = seasonId };
+            var (league, matches) =  await matchService.GetMatchBySeasonAsync(criteria);
+            var result = new MatchLeague
+            {
+                League = league,
+                Matches = matches
+            };
+            return result;
         }
 
         public async Task<Euro2024ViewModel> GetEuro2024ViewModel()

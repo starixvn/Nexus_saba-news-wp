@@ -30,8 +30,6 @@ namespace SabaNews.Site.Controllers.Event
         private readonly IUserService userService;
         private readonly ILeagueService leagueService;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
-        private const long LeagueIdWC = Euro2024.LeagueIdWorldCup2022;
-        private const long SeasonIdWC = Euro2024.SeasonIdWorldCup2022;
         public Euro2024Controller(
             IDataControlService dataControlService,
             IPostService postService,
@@ -109,9 +107,9 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/bang-xep-hang")]
         public async Task<IActionResult> Standing()
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
-            var league = await leagueService.GetLeagueByIdAsync(Euro2024.LeagueIdWorldCup2022);
+            var league = await leagueService.GetLeagueByIdAsync(Euro2024.LeagueId);
             var isKnockout = league.CurrentStageId > Euro2024.GroupStageId;
             var header = new HeaderViewModel
             {
@@ -278,6 +276,13 @@ namespace SabaNews.Site.Controllers.Event
                 }
             }
             return null;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetFixture()
+        {
+            var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
+            return Json(new { data.League, data.Matches });
         }
     }
 }

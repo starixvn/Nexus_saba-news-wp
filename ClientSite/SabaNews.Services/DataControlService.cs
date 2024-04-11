@@ -371,6 +371,30 @@
             return await fetchDataService.GetLeaguesAsync();
         }
 
+        public async Task<MatchLeague> GetMatchBySeasonAsync(long leagueId, long seasonId)
+        {
+            if (IsUsingCache)
+            {
+                var key = $"{CacheKey.GetMatchBySeason}-{leagueId}-{seasonId}";
+                var result = await cacheWrapperService.GetAsync<MatchLeague>(key);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get MatchBySeasonAsync({leagueId},{seasonId}) from DB---------");
+                    result = await fetchDataService.GetMatchBySeasonAsync(leagueId, seasonId);
+                    await cacheWrapperService.SetAsync(key, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheGetMatchBySeasonTimeout)
+                        });
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetMatchBySeasonAsync(leagueId, seasonId);
+        }
+
         public async Task<Euro2024ViewModel> GetEuro2024PageViewModel()
         {
             if (IsUsingCache)

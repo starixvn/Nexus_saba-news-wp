@@ -30,7 +30,11 @@
         Task<List<StandingLeagueModel>> GetHomepageStanding();
 
         Task<IList<Match>> GetTodayMatches();
+
         Task<IList<League>> GetLeaguesAsync();
+
         Task<Euro2024ViewModel> GetEuro2024ViewModel();
+
+        Task<MatchLeague> GetMatchBySeasonAsync(long leagueId, long seasonId);
     }
 }
