@@ -191,6 +191,8 @@
 
         if (listCount > 0) {
             $('.list-place').append(html);
+        } else {
+            $('.list-place').hide();
         }
         $(document).on('click', '.icon-chevron-down', function () {
             $(this).removeClass('icon-chevron-down').addClass('icon-chevron-up');
