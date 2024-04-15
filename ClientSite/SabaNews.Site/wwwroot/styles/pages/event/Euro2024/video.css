@@ -230,6 +230,14 @@ html, body {
 
 .block-heading-text a {
   text-decoration: none;
+  color: #143CDB;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-bottom: 0.6rem;
+  display: inline-block;
+  border-bottom: 4px solid #FAAA00;
 }
 .block-heading .view-more {
   color: red;
@@ -242,7 +250,7 @@ html, body {
   display: grid;
   grid-template-rows: unset;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
+  grid-gap: 2.2rem;
 }
 .block .play_video {
   overflow: hidden;

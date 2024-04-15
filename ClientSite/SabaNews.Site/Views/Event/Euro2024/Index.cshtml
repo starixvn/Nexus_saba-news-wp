@@ -44,69 +44,128 @@
     </div>
     @* hot-news *@
     <div class="block block-hot-news">
-        <div class="block-heading">
-            <h2 class="block-heading-text">
-                <a href="@Url.Action("LastestNews", "Euro2024")">
-                    Tin mới nhất
-                </a>
-            </h2>
-            <a href="@Url.Action("LastestNews", "Euro2024")" class="view-more">Xem chi tiết</a>
-        </div>
-        <div class="block-body">
-            <div class="block-columns">
-                <div class="block-columns-2">
-                    @if(Model.LastestNews.Count > 0){
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="block-heading-text">
+                    <a href="@Url.Action("LastestNews", "Euro2024")">
+                        Tin mới nhất
+                    </a>
+                </h2>
+                <a href="@Url.Action("LastestNews", "Euro2024")" class="view-more">Xem chi tiết</a>
+            </div>
+            <div class="block-body">
+                @* <div class="block-columns">
+                    <div class="block-columns-2">
+                        @if(Model.LastestNews.Count > 0){
 
-                        <div class="swiper swiper-hot-news">
-                            <div class="swiper-wrapper">
-                                @{
-                                    int firstBlockIndex = 0;
-                                    @foreach (var post in Model.LastestNews) {
-                                        {
-                                            firstBlockIndex++;
-                                            if(firstBlockIndex >= 6)
+                            <div class="swiper swiper-hot-news">
+                                <div class="swiper-wrapper">
+                                    @{
+                                        int firstBlockIndex = 0;
+                                        @foreach (var post in Model.LastestNews) {
                                             {
+                                                firstBlockIndex++;
+                                                if(firstBlockIndex >= 6)
+                                                {
+                                                    continue;
+                                                }
+                                            }
+                                            <div class="swiper-slide block-items block-items-vertical block-items-vertical-hot">
+                                                <div class="block-items-img hover-image">
+                                                    <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                                        <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                                    </a>
+                                                </div>
+                                                <h2 class="block-items-heading">
+                                                    <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                                </h2>
+                                                <div class="block-heading-description">
+                                                    @post.PostExcerpt
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
+                                <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        }
+                        @if(Model.LastestNews.Count > 0){
+                            <div class="block-child">
+                                @{
+                                    int lastBlockIndex = 0;
+                                    @foreach (var post in Model.LastestNews){
+                                        {
+                                            lastBlockIndex++;
+                                            if(lastBlockIndex <= 5) {
                                                 continue;
                                             }
                                         }
-                                        <div class="swiper-slide block-items block-items-vertical">
-                                            <div class="block-items-img hover-image">
-                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
-                                                    <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
-                                                </a>
-                                            </div>
-                                            <h2 class="block-items-heading">
-                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
-                                            </h2>
-                                            <div class="block-heading-description">
-                                                @post.PostExcerpt
-                                            </div>
-                                        </div>
+                                        <h3 class="block-child-text"><a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a></h3>
                                     }
                                 }
                             </div>
-                            <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
-                            <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    }
-                    @if(Model.LastestNews.Count > 0){
-                        <div class="block-child">
-                            @{
-                                int lastBlockIndex = 0;
-                                @foreach (var post in Model.LastestNews){
+                        }
+                    </div>
+                </div> *@
+
+                @if (Model.LastestNews.Count > 0)
+                {
+                    <div class="gird-hot-news">
+                        @{
+                            int lastestPostIamgeIndex = 0;
+                            
+                            foreach (var post in Model.LastestNews)
+                            {
+                                var hotnews = lastestPostIamgeIndex == 0 ? "block-items-vertical-hot" : "";
+                                {
+                                    lastestPostIamgeIndex++;
+                                    if (lastestPostIamgeIndex >= 5)
                                     {
-                                        lastBlockIndex++;
-                                        if(lastBlockIndex <= 5) {
+                                        continue;
+                                    }
+                                }
+                                <div class="block-items block-items-vertical block-items-@lastestPostIamgeIndex @hotnews">
+                                    <div class="block-items-img hover-image"> 
+                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                            <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                        </a>
+                                    </div>
+                                    <h2 class="block-items-heading">
+                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                    </h2>
+                                    @{
+                                        if(lastestPostIamgeIndex == 1)
+                                        {
+                                            <div class="block-heading-description">
+                                                @post.PostExcerpt
+                                            </div>
+                                        }  
+                                    }
+                                </div>
+                                
+                            }
+                        }
+
+                        @{
+                            int lastestPostTextIndex = 0;
+                            <div class="block-child">
+                                @foreach (var post in Model.LastestNews)
+                                {
+                                    {
+                                        lastestPostTextIndex++;
+                                        if (lastestPostTextIndex <= 5)
+                                        {
                                             continue;
                                         }
                                     }
                                     <h3 class="block-child-text"><a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a></h3>
                                 }
-                            }
-                        </div>
-                    }
-                </div>
+                            </div>
+                        }
+                    </div>
+                }
             </div>
         </div>
     </div>

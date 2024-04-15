@@ -3,6 +3,14 @@
         &-text{
             a{
                 text-decoration: none;
+                color: #143CDB;
+                font-size: 2.4rem;
+                font-weight: 700;
+                line-height: normal;
+                text-transform: uppercase;
+                padding-bottom: .6rem;
+                display: inline-block;
+                border-bottom: 4px solid #FAAA00;
             }
         }
         .view-more{
@@ -20,7 +28,7 @@
             display: grid;
             grid-template-rows: unset;
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: 2rem;
+            grid-gap: 2.2rem;
         }
     }
 
