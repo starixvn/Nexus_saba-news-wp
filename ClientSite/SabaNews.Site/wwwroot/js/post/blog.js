@@ -14,12 +14,6 @@
     }).get();
 
     function GetDataGrid(page) {
-        if (page > paging.totalPages) {
-            isLoadData = false;
-            $('.lds-ellipsis').hide();
-            return false;
-        }
-
         var url = '/api/post/category-posts';
         var data = { slug, page, pageSize, type, isVideo, firstPagePosts };
         if (type === "Search" || type === "Tag" || type === "Author") {
@@ -37,7 +31,7 @@
             } else {
                 $('.ajax-load').hide();
                 $('#category-grid').append(data);
-                if (page === 3 && page < paging.totalPages) {
+                if (page === 3 ) {
                     const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
                     if (isVideo) {
                         $('.block-main').append(loadMoreHtml);

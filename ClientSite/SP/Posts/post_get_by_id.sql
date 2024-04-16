@@ -12,7 +12,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_id`(
         Revisions:	
 			- 20230818@Hank: init
             - 20240410@Hank: select custom schema.org
-
+            - 20240410@Hank: select videoview
     */
 )
 GetPostDetailByIdSlug:BEGIN
@@ -46,11 +46,12 @@ GetPostDetailByIdSlug:BEGIN
 	SELECT p.ID, p.post_title as  PostTitle, p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_modified as PostDateModified,
 	p.post_content as PostContent ,p.post_excerpt as PostExcerpt, p.post_name as Slug, pp.guid as FeatureImage, p.comment_count as CommentCount, 
     tags as Tags, tagsSlug as TagsSlug, cate_name as CatesName, cate_id as Categories, categoriesSlug, p.post_author as AuthorId, u.display_name as Author,
-    yi.title as SeoTitle, yi.description as SeoDescription, yi.schema_article_type as SchemaType, custom.meta_value as CustomSchema
+    yi.title as SeoTitle, yi.description as SeoDescription, yi.schema_article_type as SchemaType, custom.meta_value as CustomSchema, views.meta_value as VideoViews
     FROM wp_posts p
     LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
 	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment"
     LEFT JOIN wp_postmeta as custom ON custom.post_id = p.ID and custom.meta_key = "saswp_custom_schema_field"
+    LEFT JOIN wp_postmeta as views ON views.post_id = p.ID AND views.meta_key = "trx_addons_video_views_count"
     LEFT JOIN wp_users as u ON u.ID = p.post_author
     LEFT JOIN wp_yoast_indexable yi ON yi.object_id = p.ID AND yi.object_type = "post" 
     WHERE p.ID = postId AND p.post_status = 'publish';

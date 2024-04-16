@@ -71,6 +71,24 @@
         }
 
         [Fact]
+        public async Task GetVideoPostsBySlugAsync_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var param = fixture.Create<GetVideoPostsBySlugCriteria>();
+            var criteria = fixture.Create<GetVideoPostsBySlugCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetVideoPostsBySlugCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetVideoPostsBySlugAsync(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+            Assert.Equal(param, criteria);
+        }
+
+        [Fact]
         public async Task GetPostsByCateSlugPagingAsync_WhenCalled_ReturnExpectedPosts()
         {
             //Arrange

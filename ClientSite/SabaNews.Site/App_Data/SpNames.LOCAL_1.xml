@@ -69,6 +69,7 @@
         <Setting Key="post_get_detail_summary" SpName="post_get_detail_summary" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_by_jsonIds" SpName="post_get_by_jsonIds" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_mostView" SpName="post_get_mostView" DbName="sabasports" Plain="0" />
+        <Setting Key="post_video_get_by_slug" SpName="post_video_get_by_slug" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Category">
         <Setting Key="cate_get_livescore" SpName="cate_get_livescore" DbName="sabasports" Plain="0" />

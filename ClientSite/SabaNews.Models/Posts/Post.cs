@@ -36,6 +36,7 @@
         public string SchemaType { get; set; }
         public string CustomSchema { get; set; }
         public IEnumerable<ImageInfo> Images { get; set; }
+        public int VideoViews { get; set; }
 
         public string PostTime
         {

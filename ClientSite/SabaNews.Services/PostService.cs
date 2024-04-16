@@ -58,6 +58,12 @@
             return FormatData(posts).ToList();
         }
 
+        public async Task<IEnumerable<Post>> GetVideoPostsBySlugAsync(GetVideoPostsBySlugCriteria criteria)
+        {
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts).ToList();
+        }
+
         public async Task<IEnumerable<Post>> GetPostsByCateSlugPagingAsync(GetPostsByCateSlugPagingCriteria criteria)
         {
             var posts = await baseService.GetDataAsync<Post>(criteria);

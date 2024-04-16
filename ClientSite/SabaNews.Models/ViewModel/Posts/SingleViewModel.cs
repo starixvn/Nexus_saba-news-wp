@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Models.ViewModel.Posts
 {
     using SabaNews.Core.Models;
+    using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
     using System.Collections.Generic;
 
@@ -10,6 +11,7 @@
         public IEnumerable<Post> RelatedPosts { get; set; }
         public IEnumerable<Post> RecentPosts { get; set; }
         public ViewData ViewData { get; set; }
+        public IList<CategoryGeneral> CateParents { get; set; }
         public bool IsLogin { get; set; }
         public SavePost SavePost { get; set; }
         public string AbsoluteUrl { get; set; }

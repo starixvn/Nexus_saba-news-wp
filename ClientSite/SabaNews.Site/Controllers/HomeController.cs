@@ -63,7 +63,7 @@
         public async Task<IActionResult> Category(string slug)
         {
             var redirectLink = RedirectCategorySlug(slug);
-             if (redirectLink != "")
+            if (redirectLink != "")
             {
                 return RedirectPermanent(redirectLink);
             }

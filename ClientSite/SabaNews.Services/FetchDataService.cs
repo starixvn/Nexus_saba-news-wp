@@ -108,7 +108,14 @@
             }
             const int start = Constants.FromFirstItem;
             IEnumerable<Post> posts;
-            int totalItems;
+            var totalItems = 0;
+            var cate = await postService.GetCateDetailAsync(slug);
+            if(cate == null)
+            {
+                return null;
+            }
+            var cateParents = await postService.GetCateParentsAsync(slug);
+            var IsVideo = cateParents.Any(cate => cate.Slug == Constants.VideoSlug);
             if (slug == Constants.NewPostSlug)
             {
                 var paramGetRecent = new GetRecentPostsParam
@@ -118,6 +125,17 @@
                 };
                 posts = await postService.GetRecentPostsAsync(paramGetRecent);
                 totalItems = Constants.MaxTotalPost;
+            }
+            else if(IsVideo)
+            {
+                var criteriaVideo = new GetVideoPostsBySlugCriteria
+                {
+                    CateSlug = slug,
+                    StartItem = start,
+                    LimitRows = pageSize
+
+                };
+                posts = await postService.GetVideoPostsBySlugAsync(criteriaVideo);
             }
             else
             {
@@ -135,9 +153,7 @@
             {
                 return null;
             }
-            var cate = await postService.GetCateDetailAsync(slug);
-            var cateParents = await postService.GetCateParentsAsync(slug);
-            var IsVideo = cateParents.Any(cate => cate.Slug == Constants.VideoSlug);
+           
             var title = cate.SEOTitle ??= cate.Title;
             pageSize = slug == Constants.VideoSlug ? Constants.PageSizeVideo : Constants.Perpage;
             var header = new HeaderViewModel

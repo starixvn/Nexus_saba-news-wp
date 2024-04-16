@@ -1,31 +1,38 @@
 ﻿@using static SabaNews.Site.Extensions.DeviceHelper;
 @using SabaNews.Core.Constants;
+@{
+    var schemaVideo = "";
+    var count = 0;
+    @foreach(var post in Model.Posts)
+    {
+        count++;
+        schemaVideo += "{";
+        schemaVideo +="\"@type\":\"VideoObject\",";
+        schemaVideo += $"\"name\":\"{post.PostTitle}\",";
+        schemaVideo += $"\"description\":\"{post.PostExcerpt}\",";
+        schemaVideo += $"\"embedUrl\":\"{SabaNews.Site.Extensions.PostHelper.GetVideoLink(post.PostContent)}\",";
+        schemaVideo += $"\"thumbnailUrl\":\"{post.FeatureImage}\",";
+        schemaVideo += $"\"uploadDate\":\"{post.PostDate.ToString("yyyy-MM-ddTHH:mm:sszzz")}\",";
+        schemaVideo += $"\"interactionStatistic\": {{ \"@type\": \"InteractionCounter\", \"interactionType\": \"https://schema.org/WatchAction\", \"userInteractionCount\":{post.VideoViews} }}";
+        schemaVideo += string.IsNullOrEmpty(post.CustomSchema) ? "" : $",{post.CustomSchema.TrimEnd(',')}";
+        schemaVideo += "}";
+        if(count <  Model.Posts.Count)
+        {
+            schemaVideo += ",\n";
+        }
+    }
+    schemaVideo = schemaVideo.TrimEnd(',');
+}
 @section Schema {
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
-        "@@type": "WebPage",
-        "id": "@Model.Category.Url",
-        "url": "@Model.Category.Url",
+        "@@type": "CollectionPage",
         "name": "@Model.Header.Title",
         "description": "@Model.Header.Description",
-        "publisher": {
-            "@@type": "Organization",
-            "name": "SABAVN Sports",
-            "logo": {
-            "@@type": "ImageObject",
-            "url": "https://www.sabavn.com/images/sabasports.svg"
-            }
-        },
-        "inLanguage": "vi-VN",
-        "isPartOf": {
-            "@@type": "Website",
-            "name": "SABAVN.com",
-            "url": "https://www.sabavn.com/"
-        }@if(!string.IsNullOrEmpty(Model.Category.CustomSchema))
-            {
-                @Html.Raw($",{Model.Category.CustomSchema}")
-            }
+        "hasPart": [
+            @Html.Raw(schemaVideo)
+        ]
     }
 </script>
 }
