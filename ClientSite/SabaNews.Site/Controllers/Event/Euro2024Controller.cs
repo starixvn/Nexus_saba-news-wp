@@ -184,8 +184,8 @@ namespace SabaNews.Site.Controllers.Event
         public async Task<IActionResult> GetHomepageStandings()
         {
             var standings = await dataControlService.GetLeagueSeasonStandingAsync(Euro2024.LeagueId, Euro2024.SeasonId);
-
-            var groups = GroupStandingsByGroupName(standings);
+            var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
+            var groups = GroupStandingsByGroupName(groupsStageStanding);
             return PartialView("~/Views/Event/Euro2024/_HomepageStanding.cshtml", groups);
         }
 

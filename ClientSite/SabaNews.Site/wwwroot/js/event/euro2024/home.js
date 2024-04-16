@@ -44,6 +44,7 @@ var euro2024_home = (function ($) {
 
     function HandleMenuTab () {
         $('.nav-tab-js a').click(function() {
+            console.log(123);
             $('.nav-tab-js li').removeClass('active');
             $(this).parent().addClass('active');
             let currentTab = $(this).attr('data-id');
