@@ -1762,6 +1762,9 @@ html, body {
   }
 }
 
+.block-heading {
+  margin-bottom: 1.6rem;
+}
 .block-heading-text a {
   text-decoration: none;
   color: #143CDB;
@@ -1878,6 +1881,84 @@ html, body {
 .img-res {
   max-width: 100%;
   height: auto;
+}
+
+.block-items-vertical .block-items-heading {
+  margin-top: 1.2rem;
+}
+.block-items-vertical .block-items-heading a {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none;
+  color: #2F2F2F;
+  transition: all 0.2s ease-in-out;
+}
+.block-items-vertical .block-items-heading a:hover {
+  color: #143CDB;
+}
+.block-items-vertical-hot {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.block-items-vertical-hot .hover-image {
+  height: 45rem;
+  max-height: 45rem;
+}
+.block-items-vertical-hot .group-title-hot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(20, 60, 219, 0) 0%, rgba(6, 18, 63, 0.76) 36%, #02050F 84.5%, #143CDB 100%);
+  min-height: 15rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+}
+.block-items-vertical-hot .group-title-hot .block-items-heading {
+  margin-bottom: 0.6rem;
+}
+.block-items-vertical-hot .group-title-hot .block-items-heading a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: normal;
+}
+.block-items-vertical-hot .group-title-hot .block-heading-description {
+  color: #fff;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 600;
+}
+
+.block-child {
+  border-radius: 5px;
+  border: 1px solid #E8E8E8;
+  background: #F5F6F6;
+  padding: 1.6rem;
+}
+.block-child-text {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid #E2E2E2;
+}
+.block-child-text:last-child {
+  border-bottom: none;
+}
+.block-child-text a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: normal;
+  transition: all 0.2s ease-in-out;
+}
+.block-child-text a:hover {
+  color: #143CDB;
 }
 
 .swiper {
@@ -2050,6 +2131,9 @@ html, body {
     display: block;
   }
 }
+.block-hot-news {
+  padding: 2.4rem 0;
+}
 .block-hot-news .gird-hot-news {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -2121,7 +2205,7 @@ html, body {
     grid-row: 5/6;
   }
 }
-.block-hot-news .gird-hot-news .block-items-vertical-hot .hover-image {
-  height: 45rem;
-  max-height: 45rem;
+.block-hot-news .gird-hot-news .block-items-2 .hover-image, .block-hot-news .gird-hot-news .block-items-3 .hover-image, .block-hot-news .gird-hot-news .block-items-4 .hover-image {
+  max-height: 23.4rem;
+  height: 23.4rem;
 }

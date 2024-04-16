@@ -51,7 +51,7 @@
                         Tin mới nhất
                     </a>
                 </h2>
-                <a href="@Url.Action("LastestNews", "Euro2024")" class="view-more">Xem chi tiết</a>
+                @* <a href="@Url.Action("LastestNews", "Euro2024")" class="view-more">Xem chi tiết</a> *@
             </div>
             <div class="block-body">
                 @* <div class="block-columns">
@@ -132,17 +132,19 @@
                                             <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                         </a>
                                     </div>
-                                    <h2 class="block-items-heading">
-                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
-                                    </h2>
-                                    @{
-                                        if(lastestPostIamgeIndex == 1)
-                                        {
-                                            <div class="block-heading-description">
-                                                @post.PostExcerpt
-                                            </div>
-                                        }  
-                                    }
+                                    <div class="group-title-hot">
+                                        <h2 class="block-items-heading">
+                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                        </h2>
+                                        @{
+                                            if(lastestPostIamgeIndex == 1)
+                                            {
+                                                <div class="block-heading-description">
+                                                    @post.PostExcerpt
+                                                </div>
+                                            }  
+                                        }
+                                    </div>
                                 </div>
                                 
                             }
@@ -172,11 +174,13 @@
     @* standing *@
     <div class="block block-standing">
         <div class="block-heading">
-            <h2 class="block-heading-text">
-                <a href="@Url.Action("Standing", "Euro2024")">
-                    Bảng xếp hạng
-                </a>
-            </h2>
+            <div class="container">
+                <h2 class="block-heading-text">
+                    <a href="@Url.Action("Standing", "Euro2024")">
+                        Bảng xếp hạng
+                    </a>
+                </h2>
+            </div>
         </div>
         <div class="block-body">
             <div id="home-standing"></div>

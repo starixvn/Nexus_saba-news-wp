@@ -851,6 +851,10 @@ body {
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
+    display: grid;
+    grid-template-columns: unset;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
   }
 }
 .wc-date-bar .group-match-item {
