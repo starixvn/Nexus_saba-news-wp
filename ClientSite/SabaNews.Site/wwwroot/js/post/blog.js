@@ -26,20 +26,22 @@
             data: data
         }).done(function (data) {
             if (!data) {
-                isLoadData = false;
-                $('.lds-ellipsis').hide();
+                InterruptLoadingScroll();
             } else {
                 $('.ajax-load').hide();
                 $('#category-grid').append(data);
-                if (page === 3 ) {
+                var numberPagingPost = $('#category-grid').find('.paging-' + page).length;
+                if(numberPagingPost < pageSize)
+                {
+                    InterruptLoadingScroll()
+                } else if (page === 3 ) {
                     const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
                     if (isVideo) {
                         $('.block-main').append(loadMoreHtml);
                     } else {
                         $('#category-grid').append(loadMoreHtml);
                     }
-                    isLoadData = false;
-                    $('.lds-ellipsis').hide();
+                    InterruptLoadingScroll();
                 }
             }
             $('.banner-category-scroll').html($('.banner-scroll').html());
@@ -48,6 +50,12 @@
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             console.log('server not responding...');
         });
+    }
+
+    function InterruptLoadingScroll()
+    {
+        isLoadData = false;
+        $('.lds-ellipsis').hide();
     }
 
     function GeneralBannerHtml(src, link) {

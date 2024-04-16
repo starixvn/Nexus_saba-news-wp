@@ -33,7 +33,7 @@
                 continue;
             }
         }
-        <div class="post card-horizontal @postIndex @ViewBag.CurrentPage">
+        <div class="post card-horizontal paging-@ViewBag.CurrentPage">
             <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="card-horizontal__image thumb thumb-52 hover-image">
                 <picture>
                     <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
