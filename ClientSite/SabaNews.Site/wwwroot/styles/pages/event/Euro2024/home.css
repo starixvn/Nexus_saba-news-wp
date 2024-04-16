@@ -1954,12 +1954,14 @@ html, body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 2rem;
+  justify-content: flex-end;
+  padding: 0 2rem 2rem;
+  width: 100%;
 }
 @media screen and (max-width: 1024px) {
   .block-items-vertical-hot .group-title-hot {
     min-height: 11rem;
+    padding: 0 1.2rem 2rem;
   }
 }
 .block-items-vertical-hot .group-title-hot .block-items-heading {
@@ -2185,6 +2187,8 @@ html, body {
   font-size: 1.6rem;
   font-weight: 700;
   line-height: normal;
+  width: 100%;
+  text-align: center;
 }
 
 .wc-on-mobile {
@@ -2543,7 +2547,7 @@ html, body {
 .block-standing .grid-bxh {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2.2rem;
+  grid-gap: 2rem;
   position: relative;
 }
 .block-standing .grid-bxh-items {
@@ -2589,4 +2593,39 @@ html, body {
 }
 .block-standing .table-on-mobile a {
   text-decoration: none;
+}
+
+.block-guess .main-guess {
+  border-radius: 5px;
+  border: 2px solid #E5DEC1;
+  background: #FFF7D7;
+  padding: 2.4rem;
+}
+.block-guess .main-guess .news-and-poll {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #E4D9D0;
+}
+.block-guess .main-guess .news-and-poll .block-items-vertical-hot {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+.block-guess .main-guess .news-and-poll .block-items-vertical-hot .hover-image {
+  height: 50.8rem;
+  max-height: 50.8rem;
+}
+.block-guess .main-guess .news-and-poll .poll {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  border-radius: 5px;
+  border: 2px solid #E0DABF;
+  background: #FFFDF4;
+  padding: 2rem;
+}
+.block-guess .main-guess .swiper .hover-image {
+  height: 17rem;
+  max-height: 17rem;
 }

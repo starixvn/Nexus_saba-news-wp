@@ -188,61 +188,73 @@
     </div>
     @* guess *@
     <div class="block block-guess">
-        <div class="block-heading">
-            <h2 class="block-heading-text">
-                <a href="@Url.Action("CommentaryNews", "Euro2024")">
-                    Nhận định dự đoán
-                </a>
-            </h2>
-            <a href="@Url.Action("CommentaryNews", "Euro2024")" class="view-more">Xem chi tiết</a>
-        </div>
-        <div class="block-body">
-            @if(Model.Commentary.Count > 0){
-                var firstPost = Model.Commentary[0];
-                <div class="block-items block-items-horizontal">
-                    <div class="block-items-img hover-image">
-                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">
-                            <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" loading="lazy" />
+        <div class="container">
+            <div class="main-guess">
+                <div class="block-heading">
+                    <h2 class="block-heading-text">
+                        <a href="@Url.Action("CommentaryNews", "Euro2024")">
+                            Nhận định dự đoán
                         </a>
-                    </div>
-                    <h4 class="block-items-heading">
-                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">@firstPost.PostTitle</a>
-                    </h4>
-                    <div class="block-heading-description">
-                        @firstPost.PostExcerpt
-                    </div>
+                    </h2>
+                    @* <a href="@Url.Action("CommentaryNews", "Euro2024")" class="view-more">Xem chi tiết</a> *@
                 </div>
-
-                <div class="swiper swiper-guess">
-                    <div class="swiper-wrapper">
-                        @{
-                            int lastestPostIndex = 0;
-                            @foreach( var post in  Model.Commentary)
-                            {
-                                {
-                                    lastestPostIndex++;
-                                    @if(lastestPostIndex <= 1)
-                                    {
-                                        continue;
-                                    }
-                                }
-                                <div class="swiper-slide block-items block-items-vertical">
-                                    <div class="block-items-img hover-image">
-                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
-                                            <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
-                                        </a>
-                                    </div>
+                <div class="block-body">
+                    @if(Model.Commentary.Count > 0){
+                        var firstPost = Model.Commentary[0];
+                        <div class="news-and-poll">
+                            <div class="block-items block-items-vertical block-items-vertical-hot">
+                                <div class="block-items-img hover-image">
+                                    <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">
+                                        <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" loading="lazy" />
+                                    </a>
+                                </div>
+                                <div class="group-title-hot">    
                                     <h4 class="block-items-heading">
-                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">@firstPost.PostTitle</a>
                                     </h4>
                                 </div>
-                            }
-                        }
-                    </div>
-                    <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
-                    <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
+                            </div>
+                            <div class="poll">
+                                <div class="group-poll-title">
+                                    <span class="poll-left">Bình</span>
+                                    <span class="poll-right">Chọn</span>
+                                </div>
+                                <p class="poll-slogan">CLB nào sẽ vô địch EURO 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper swiper-guess">
+                            <div class="swiper-wrapper">
+                                @{
+                                    int lastestPostIndex = 0;
+                                    @foreach( var post in  Model.Commentary)
+                                    {
+                                        {
+                                            lastestPostIndex++;
+                                            @if(lastestPostIndex <= 1)
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        <div class="swiper-slide block-items block-items-vertical">
+                                            <div class="block-items-img hover-image">
+                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                                    <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                                </a>
+                                            </div>
+                                            <h4 class="block-items-heading">
+                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                            </h4>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                            <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
+                            <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
         </div>
     </div>
 

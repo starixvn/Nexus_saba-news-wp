@@ -30,7 +30,7 @@ var euro2024_home = (function ($) {
         });
 
         var guesSwiper = new Swiper('.swiper-guess', {
-            slidesPerView: 5.5,
+            slidesPerView: 4.5,
             spaceBetween: 20,
             loop: false,
             speed: 300,
@@ -43,12 +43,10 @@ var euro2024_home = (function ($) {
     }
 
     function HandleMenuTab () {
-        $('.nav-tab-js a').click(function() {
-            console.log(123);
+        $(document).on('click', '.nav-tab-js .nav-tab-item', function(){
             $('.nav-tab-js li').removeClass('active');
             $(this).parent().addClass('active');
             let currentTab = $(this).attr('data-id');
-            console.log(currentTab)
             $('.tab-content .wc-table-body').hide();
             $(currentTab).show();
             return false;
