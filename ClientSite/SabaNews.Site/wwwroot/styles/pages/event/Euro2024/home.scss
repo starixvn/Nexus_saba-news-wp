@@ -7,11 +7,11 @@
 @import './components/button';
 @import './components/hover-img-item';
 @import './components/items-block';
+@import './components/table';
 @import './components/swiper';
 
 
 .block-hot-news{
-    padding: 2.4rem 0;
     .gird-hot-news{
         display: grid;
         grid-template-columns: repeat(6, 1fr);
@@ -35,7 +35,7 @@
 
             @include Mobile {
                 grid-column: 1/4;
-                grid-row: 2/3;
+                grid-row: 5/6;
             }
         }
         .block-items{
@@ -74,7 +74,7 @@
     
                 @include Mobile {
                     grid-column: 1/4;
-                    grid-row: 5/6;
+                    grid-row: 2/3;
                 }
             }
             &-2,&-3,&-4{
@@ -83,6 +83,77 @@
                     height: 23.4rem;
                 }
             }
+        }
+    }
+}
+
+.block-standing{
+    background: url('../../../../images/euro2024/standing.png') no-repeat center #0c1d6b ;
+    background-size: cover;
+    .block-heading-text{
+        margin-bottom: 2.4rem;
+        a{
+            color: $white-color;
+        }
+    }
+    .grid-bxh{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2.2rem;
+        position: relative;
+        &-items{
+            text-decoration: none;
+            color: $white-color;
+            .wc-table{
+                &-2{
+                    &::after{
+                        background: #00BA5E;
+                    }
+                }
+                &-3{
+                    &::after{
+                        background: #FE0000;
+                    }
+                }
+                &-4{
+                    &::after{
+                        background: #FFC800;
+                    }
+                }
+                &-5{
+                    &::after{
+                        background: #Fff;
+                    }
+                    .wc-table-cell{
+                        color: #000;
+                    }
+                }
+                &-6{
+                    &::after{
+                        background: #1E1E2A;
+                    }
+                }
+            }
+        }
+    }
+    .show-pc{
+        display: grid;
+        @include Mobile{
+            display: none;
+        }
+    }
+    
+    .show-mb{
+        display: none;
+        @include Mobile{
+            display: block;
+        }
+    }
+
+    .table-on-mobile{
+        color: $white-color;
+        a{
+            text-decoration: none;
         }
     }
 }

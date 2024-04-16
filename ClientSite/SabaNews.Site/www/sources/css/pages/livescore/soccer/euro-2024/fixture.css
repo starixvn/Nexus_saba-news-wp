@@ -916,6 +916,7 @@ body {
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-logo {
   margin-right: 1rem;
+  border-radius: 100px;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-name {
   font-size: 1.3rem;

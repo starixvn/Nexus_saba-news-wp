@@ -8,46 +8,110 @@
 }
 
 <div class="container">
-    <div class="grid-bxh scroll-snap">
-        @foreach (var group in Model)
-        {
-            var groupName = $"Bảng {group.GroupName[0]}";
-            <a href="@Url.Action("Standing", "Euro2024")" class="scroll-snap-items">
-                <div class="wc-table">
-                    <div class="name-bxh title-items">@groupName</div>
-                    <div class="wc-table-header">
-                        <div class="wc-table-cell cell-participant"></div>
-                        <div class="wc-table-cell cell-rank">Trận</div>
-                        <div class="wc-table-cell cell-rank">+/-</div>
-                        <div class="wc-table-cell cell-rank">Điểm</div>
-                    </div>
+    <div class="grid-bxh show-pc">
+        @{
+            int indexTable = 0;
+            @foreach (var group in Model)
+            {
+                indexTable++;
+                var groupName = $"Bảng {group.GroupName[0]}";
+                <a href="@Url.Action("Standing", "Euro2024")" class="grid-bxh-items grid-bxh-items">
+                    <div class="wc-table wc-table-@indexTable">
+                        <div class="wc-table-header">
+                            <div class="wc-table-cell cell-participant name-group">@groupName</div>
+                            <div class="wc-table-cell cell-rank">Trận</div>
+                            <div class="wc-table-cell cell-rank">+/-</div>
+                            <div class="wc-table-cell cell-rank">Điểm</div>
+                        </div>
 
-                    <div class="wc-table-body">
-                        @foreach (var standing in group.Standings)
-                        {
-                            var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
-                            var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                            <div class="wc-table-row">
-                                <div class="wc-table-cell cell-participant">
-                                    <ul class="team">
-                                        <li class="team-logo"><img src=@(string.IsNullOrEmpty(standing.IconVN) ? icon : standing.IconVN) alt="Alternate Text" /></li>
-                                        <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
-                                    </ul>
+                        <div class="wc-table-body">
+                            @foreach (var standing in group.Standings)
+                            {
+                                var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                                var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                                <div class="wc-table-row">
+                                    <div class="wc-table-cell cell-participant">
+                                        <ul class="team">
+                                            <li class="team-logo"><img src=@(string.IsNullOrEmpty(standing.IconVN) ? icon : standing.IconVN) alt="Alternate Text" /></li>
+                                            <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
+                                        </ul>
+                                    </div>
+                                    <div class="wc-table-cell cell-rank">@standing.Total</div>
+                                    <div class="wc-table-cell cell-rank">@standing.GoalDiff</div>
+                                    <div class="wc-table-cell cell-rank">@standing.Points</div>
                                 </div>
-                                <div class="wc-table-cell cell-rank">@standing.Total</div>
-                                <div class="wc-table-cell cell-rank">@standing.GoalDiff</div>
-                                <div class="wc-table-cell cell-rank">@standing.Points</div>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            }
         }
     </div>
-    @* <div class="img-section">
-        <img src="~/images/worldcup/section-2-items.svg" alt="Alternate Text" />
+
+    <div class="wc-on-mobile show-mb">
+        <a href="#">
+            <div class="wc-table">
+                <div class="group-button">
+                    <div class="name">Bảng</div>
+                    <ul class="list-button nav-tab-js">
+                        <li><a data-id="#tab1">A</a></li>
+                        <li><a data-id="#tab2">B</a></li>
+                    </ul>
+                </div>
+                <div class="wc-table-header">
+                    <div class="wc-table-cell cell-participant"></div>
+                    <div class="wc-table-cell cell-rank">Trận</div>
+                    <div class="wc-table-cell cell-rank">+/-</div>
+                    <div class="wc-table-cell cell-rank">Điểm</div>
+                </div>
+                <div class="tab-content">
+                    <div class="wc-table-body" id="tab1">
+                        <div class="wc-table-row">
+                            <div class="wc-table-cell cell-participant">
+                                <ul class="team">
+                                    <li class="team-logo">dsds</li>
+                                </ul>
+                            </div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                        </div>
+                        <div class="wc-table-row">
+                            <div class="wc-table-cell cell-participant">
+                                <ul class="team">
+                                    <li class="team-logo">dsds</li>
+                                </ul>
+                            </div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                        </div>
+                    </div>
+                    <div class="wc-table-body" id="tab2">
+                        <div class="wc-table-row">
+                            <div class="wc-table-cell cell-participant">
+                                <ul class="team">
+                                    <li class="team-logo">dsdadsdasdsasdas</li>
+                                    áddsaasadsasd
+                                </ul>
+                            </div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                        </div>
+                        <div class="wc-table-row">
+                            <div class="wc-table-cell cell-participant">
+                                <ul class="team">
+                                    <li class="team-logo">dsds</li>
+                                </ul>
+                            </div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                            <div class="wc-table-cell cell-rank">sss</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
-    <div class="view-more">
-        <a href="@Url.Action("Standing", "WorldCup2022")">Xem thêm <i class="icon-next-wc"></i></a>
-    </div> *@
 </div>

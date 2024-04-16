@@ -1,6 +1,9 @@
 .block-items-vertical{
     .block-items-heading{
         margin-top: 1.2rem;
+        @include tableMobile{
+            margin-top: .5rem;
+        }
         a{
             font-size: 2rem;
             font-weight: 700;
@@ -11,6 +14,9 @@
             &:hover{
                 color: $primary-bg;
             }
+            @include tableMobile{
+                font-size: 1.6rem;
+            }
         }
     }
     &-hot{
@@ -20,6 +26,10 @@
         .hover-image{
             height: 45rem;
             max-height: 45rem;
+            @include Mobile{
+                height: 21rem;
+                max-height: 21rem;
+            }
         }
         .group-title-hot{
             position: absolute;
@@ -32,6 +42,9 @@
             flex-direction: column;
             justify-content: center;
             padding: 0 2rem;
+            @include tableMobile{
+                min-height: 11rem;
+            }
             .block-items-heading{
                 margin-bottom: .6rem;
                 a{
@@ -40,6 +53,9 @@
                     font-size: 2.4rem;
                     font-weight: 700;
                     line-height: normal;
+                    @include Mobile{
+                        font-size: 1.6rem;
+                    }
                 }
             }
             .block-heading-description{
@@ -47,6 +63,9 @@
                 font-size: 14px;
                 line-height: normal;
                 font-weight: 600;
+                @include tableMobile{
+                    display: none;
+                }
             }
         }
     }

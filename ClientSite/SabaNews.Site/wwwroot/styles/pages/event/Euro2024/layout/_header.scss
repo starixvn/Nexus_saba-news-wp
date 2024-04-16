@@ -1305,15 +1305,15 @@
 
 .main-child-menu {
     background: $primary-bg !important;
-    border-top: 1px solid #601E33 !important;
-    border-bottom: 1px solid #601E33 !important;
+    border-top: 1px solid $white-color !important;
+    border-bottom: 1px solid $white-color !important;
 
     li {
         a {
-            color: $primary-bg !important;
+            color: $white-color !important;
 
             &.active {
-                color: $white-color !important;
+                color: #FAAA00 !important;
             }
         }
     }
@@ -1445,6 +1445,9 @@
 
                 &::placeholder {
                     color: $primary-bg !important;
+                    @include tableMobile{
+                        color: $white-color !important;
+                    }
                 }
             }
 
@@ -1482,7 +1485,7 @@
 
 .child-mobile-menu {
     .icon-arrow {
-        background: url('../../../../../images/worldcup/arrow.svg') no-repeat;
+        background: url('../../../../../images/euro2024/arrow.svg') no-repeat;
         right: 0;
         width : 3rem;
     }

@@ -196,8 +196,26 @@ html, body {
   height: 100vh;
 }
 
+.block {
+  padding: 2.4rem 0;
+}
+@media screen and (max-width: 1024px) {
+  .block {
+    padding: 2rem 0;
+  }
+}
 .block-heading {
   margin-bottom: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-heading {
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .block-heading-text {
+    text-align: center;
+  }
 }
 .block-heading-text a {
   text-decoration: none;

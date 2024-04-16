@@ -42,6 +42,18 @@ var euro2024_home = (function ($) {
         });
     }
 
+    function HandleMenuTab () {
+        $('.nav-tab-js a').click(function() {
+            $('.nav-tab-js li').removeClass('active');
+            $(this).parent().addClass('active');
+            let currentTab = $(this).attr('data-id');
+            console.log(currentTab)
+            $('.tab-content .wc-table-body').hide();
+            $(currentTab).show();
+            return false;
+        });
+    }
+
     function HandleIframe() {
         //Desktop & Mobile
         $('.match-schedule iframe').css('width', '100%');
@@ -146,6 +158,7 @@ var euro2024_home = (function ($) {
         HandleSlider();
         getStanding();
         HandleIframe();
+        HandleMenuTab();
     }
 
     return {
