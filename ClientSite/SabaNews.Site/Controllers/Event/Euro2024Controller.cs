@@ -181,9 +181,9 @@ namespace SabaNews.Site.Controllers.Event
 
 
         [HttpPost]
-        public async Task<IActionResult> GetHomepageStandings([FromBody] GetLeagueSeasonStandingCriteria criteria)
+        public async Task<IActionResult> GetHomepageStandings()
         {
-            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(criteria);
+            var standings = await dataControlService.GetLeagueSeasonStandingAsync(Euro2024.LeagueId, Euro2024.SeasonId);
 
             var groups = GroupStandingsByGroupName(standings);
             return PartialView("~/Views/Event/Euro2024/_HomepageStanding.cshtml", groups);

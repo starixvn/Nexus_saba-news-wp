@@ -264,6 +264,13 @@
             return result;
         }
 
+        public async Task<IList<SeasonStandings>> GetLeagueSeasonStandingAsync(long leagueId, long seasonId)
+        {
+            var criteria = new GetLeagueSeasonStandingCriteria { LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId };
+            return await leagueService.GetLeagueSeasonStanding(criteria);
+        }
+
+
         public async Task<Euro2024ViewModel> GetEuro2024ViewModel()
         {
             var lastestNews = await postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetTwelveItems);

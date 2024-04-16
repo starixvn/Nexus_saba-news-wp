@@ -35,5 +35,6 @@
         public const string PollData = "PollData";
         public const string Euro2024 = "Euro2024";
         public const string GetMatchBySeason = "GetMatchBySeason";
+        public const string GetLeagueSeasonStanding = "GetLeagueSeasonStanding";
     }
 }
