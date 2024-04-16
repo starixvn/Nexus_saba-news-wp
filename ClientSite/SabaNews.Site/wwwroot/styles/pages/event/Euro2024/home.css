@@ -2095,6 +2095,7 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #fff;
 }
 @media screen and (max-width: 1024px) {
   .wc-table .team-name {
@@ -2130,6 +2131,9 @@ html, body {
 }
 .wc-table .wc-table-row.show:nth-child(3) {
   border-bottom: none !important;
+}
+.wc-table .wc-table-row .cell-rank {
+  color: #fff !important;
 }
 .wc-table .btn-next-standing, .wc-table .btn-back-standing {
   cursor: pointer;
