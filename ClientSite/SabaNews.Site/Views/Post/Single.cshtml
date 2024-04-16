@@ -170,12 +170,6 @@
 
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
-    <ul>
-        @foreach(var cate in Model.CateParents)
-        {
-            <li><a>@cate.Name</a></li>
-        }
-    </ul>
     <div class="container detail-container">
         <div class="main-social fixed-social">
             <div class="button-detail-page">
