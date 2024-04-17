@@ -300,7 +300,7 @@ namespace SabaNews.Site.Controllers.Event
             var topScorersCriteria = new GetTop10ScorersCriteria { LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId };
             var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
             ViewBag.More = more;
-            return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);
+            return PartialView("~/Views/Event/Euro2024/_TopScorers.cshtml", topScorers);
         }
 
 

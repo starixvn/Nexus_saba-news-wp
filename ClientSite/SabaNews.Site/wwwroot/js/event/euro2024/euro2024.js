@@ -1,5 +1,9 @@
 var euro2024 = (function ($) {
     function GetPollDetail() {
+        if($('.euro-poll').length == 0)
+        {
+            return false;
+        }
         $.ajax({
             type:'POST',
             url: "/Euro2024/GetPollData",
@@ -55,9 +59,24 @@ var euro2024 = (function ($) {
             $(this).find(".radio-input").prop('checked', true);
         })
     }
+
+    function GetTopScorerData()
+    {
+        if($('.euro-top-scorer').length == 0)
+        {
+            return false;
+        }
+        $.ajax({
+            url: '/Euro2024/GetTopScorers',
+            type: 'POST',
+        }).done(function (data) {
+            $('.euro-top-scorer').html(data);
+        })
+    }
     function init() {
         GetPollDetail();
         UpdatePollData();
+        GetTopScorerData();
     }
 
     return {
