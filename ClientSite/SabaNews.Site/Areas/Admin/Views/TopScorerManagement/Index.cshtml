@@ -1,4 +1,5 @@
 ﻿@using SabaNews.Resources
+@using static SabaNews.Site.Extensions.LivescoreHelper
 @{
     Layout = "_AdminLayout";
 }
@@ -21,6 +22,25 @@
 <section class="page-content">
     <div class="form-horizontal filter">
         <div class="form-input">
+            <p class="label-admin">@ViewResources.LeagueName</p>
+            <select class="custom-input list-input league-select">
+                @foreach (var league in Model.Leagues)
+                {
+                    var selected = league.LeagueId == Model.LeagueId ? "selected" : "";
+                    <option @selected value="@league.LeagueId" data-season="@league.CurrentSeasonId" data-name="@GetLeagueName(league)">@GetLeagueName(league)</option>
+                }
+            </select>
+        </div>
+        <div class="form-input">
+            <p class="label-admin">Season</p>
+            <div id="seasonFilter">
+                <select class="custom-input list-input" name="season">
+                    <option value="0">0</option>
+                </select>
+            </div>
+
+        </div>
+        <div>
             <p class="label-admin">@ViewResources.SearchLabel</p>
             <input type="text" class="custom-input list-input" id="search" name="searchPlayer" placeholder="Enter Player Name..." />
         </div>
@@ -84,6 +104,10 @@
 </section>
 
 @section Scripts {
+    <script>
+        window.leagueId = '@Model.LeagueId';
+        window.seasonId = '@Model.SeasonId';
+    </script>
     <script src="~/js/admin/topscorers/topscorers.js" asp-append-version="true"></script>
     <script src="~/js/select2.min.js" asp-append-version="true"></script>
 }

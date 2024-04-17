@@ -229,17 +229,8 @@
 </div>
 <div class="child-mobile-menu">
     <ul class="main-child-menu">
-        <li class="menu-item">
-            <a href=@($"/{Euro2024.HomepageSlug}/{Euro2024.UrlMinigameSlug}") class="item @(Model.CateSlug == Euro2024.UrlMinigameSlug ? "active": "")">
-                @WorldCup2022.Minigame
-            </a>
-        </li>
         @foreach (var menu in menus)
         {
-            if (menu.Slug == "" || menu.Slug == Euro2024.UrlMinigameSlug)
-            {
-                continue;
-            }
             var active = menu.Slug == Model.CateSlug ? "active" : "";
             <li class="menu-item">
                 <a href=@($"/{Euro2024.HomepageSlug}/{menu.Slug}") class="item @active">

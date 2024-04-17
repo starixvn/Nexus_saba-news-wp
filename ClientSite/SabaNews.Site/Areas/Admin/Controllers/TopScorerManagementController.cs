@@ -1,13 +1,14 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
+    using DeviceDetectorNET.Class.Device;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Models.Livescore.MatchManagement;
     using SabaNews.Models.ViewModel.Event.WorldCup;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -20,14 +21,21 @@
         {
             this.leagueService = leagueService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var leagues = await leagueService.GetLeaguesAsync();
+            var model = new MatchManageModel
+            {
+                Leagues = leagues,
+                LeagueId = Euro2024.LeagueId,
+                SeasonId = Euro2024.SeasonId
+            };
+            return View(model);
         }
 
-        public async Task<ActionResult> GetTopScorersData(string search)
+        public async Task<ActionResult> GetTopScorersData(string search, long leagueId, long seasonId)
         {
-            var topScorers = await leagueService.GetAllTopScorersAsync();
+            var topScorers = await leagueService.GetAllTopScorersAsync(leagueId, seasonId);
 
             if(search != null) { 
                 topScorers = topScorers.Where(x => (x.PlayerNameEN != null && x.PlayerNameEN.Contains(search))
@@ -38,11 +46,13 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> AddPlayer()
+        public async Task<ActionResult> AddPlayer(long leagueId, long seasonId)
         {
-            var topScorers = await leagueService.GetAllTopScorersAsync();
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
-            IList<SeasonStandings> teams = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var topScorers = await leagueService.GetAllTopScorersAsync(leagueId, seasonId);
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = leagueId, SeasonId = seasonId };
+            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var stage = standings.Max(x => x.StageId);
+            var teams = standings.Where(val => val.StageId == stage).ToList();
             var player = await leagueService.GetPlayerByIdTeamAsync(teams[0].TeamId);
             if (topScorers.Any()) {
                 ViewBag.TopTotal = topScorers[topScorers.Count - 1].Top + 1;
@@ -66,21 +76,21 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetPlayerByTeamId(long teamId)
+        public async Task<ActionResult> GetPlayerByTeamId(long teamId, long leagueId, long seasonId)
         {
             var player = await leagueService.GetPlayerByIdTeamAsync(teamId);
-            var topScorers = await leagueService.GetAllTopScorersAsync();
+            var topScorers = await leagueService.GetAllTopScorersAsync(leagueId, seasonId);
             player = player.Where(x => !topScorers.Any(y => y.PlayerId == x.PlayerId)).ToList();
             return Json(player);
         }
 
         [HttpGet]
-        public async Task<ActionResult> UpdateTopScorers(int rowNum, int teamId)
+        public async Task<ActionResult> UpdateTopScorers(TopScorerUpdateModel param)
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = param.LeagueId, SeasonId = param.SeasonId };
             IList<SeasonStandings> teams = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
-            var players = await leagueService.GetPlayerByIdTeamAsync(teamId);
-            var playUpdate = await leagueService.GetTopScorersByRowNumAsync(rowNum);
+            var players = await leagueService.GetPlayerByIdTeamAsync(param.TeamId);
+            var playUpdate = await leagueService.GetTopScorersByRowNumAsync(param.RowNum, param.LeagueId, param.SeasonId);
             
             var model = new PlayerViewModel
             {

@@ -1,10 +1,14 @@
 ﻿var adminManagementTopScorers = (function ($) {
+    var leagueId = window.leagueId;
+    var seasonId = window.seasonId;
+
     function GetDataTopScorersGrid() {
+        console.log(leagueId, seasonId);
         var search = document.getElementById("search").value;
         $.ajax({
             url: "/Admin/TopScorerManagement/GetTopScorersData",
             type: 'POST',
-            data: { search },
+            data: { search, leagueId, seasonId },
             success: function (res) {
                 $('.data-grid').html(res);
                 $('.btn-Edit').on('click', function () {
@@ -12,6 +16,7 @@
                     $.ajax({
                         type: 'GET',
                         url: url,
+                        data: {leagueId, seasonId},
                         success: function (html) {
                             $('#EditPlayerContent .title').html('Edit Player');
                             $('#EditPlayerContent .modal-body').html(html);
@@ -47,7 +52,7 @@
                                 $.ajax({
                                     type: 'POST',
                                     url: url,
-                                    data: { Top, Goals, Assists, TeamId, PlayerId, RowNum },
+                                    data: { leagueId, seasonId, Top, Goals, Assists, TeamId, PlayerId, RowNum },
                                     success: function (response) {
                                         if (response.isSuccessful) {
                                             $('#EditPlayerContent').modal('hide');
@@ -71,6 +76,13 @@
     }
 
     function initFilterBtn() {
+        $('.league-select').on('change', function () {
+            leagueId = $(this).val();
+            seasonId = $(this).find('option:selected').data('season');
+            GetSeason(leagueId, seasonId);
+            GetDataTopScorersGrid()
+        });
+
         $("#search").keyup(function () {
             GetDataTopScorersGrid();
         });
@@ -79,6 +91,7 @@
             $.ajax({
                 type: 'Get',
                 url: '/Admin/TopScorerManagement/AddPlayer',
+                data: {leagueId, seasonId},
                 success: function (html) {
                     $('#AddPlayerContent .title').html('Add Player');
                     $('#AddPlayerContent .modal-body').html(html);
@@ -88,9 +101,9 @@
                     $("#TeamFullNameENAdd").on("change", function () {
                         var teamId = document.getElementById("TeamFullNameENAdd").value;
                         $.ajax({
-                            type: 'Get',
+                            type: 'GET',
                             url: '/Admin/TopScorerManagement/GetPlayerByTeamId',
-                            data: { teamId},
+                            data: { leagueId, seasonId, teamId},
                             success: function (data) {
                                 $("#PlayerFullNameENAdd").empty();
                                 data.forEach(function (obj) {
@@ -114,7 +127,7 @@
                         $.ajax({
                             type: 'POST',
                             url: url,
-                            data: { Top, Goals, Assists, TeamId, PlayerId },
+                            data: { leagueId, seasonId, Top, Goals, Assists, TeamId, PlayerId },
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $('#AddPlayerContent').modal('hide');
@@ -135,7 +148,20 @@
         });
     }
 
+    function GetSeason(leagueId, season = 0) {
+        $.ajax({
+            url: "/Admin/MatchManagement/GetSeason",
+            type: 'POST',
+            data: { leagueId, season },
+            success: function (res) {
+                $('#seasonFilter').html(res);
+            }
+        });
+    }
+
     function init() {
+        $('.league-select').select2();
+        GetSeason(leagueId);
         GetDataTopScorersGrid();
         initFilterBtn();
     }

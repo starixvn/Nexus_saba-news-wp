@@ -22,11 +22,10 @@
         Task<CommandResult> UpdateLeaguesAsync(UpdateLeagueCriteria updateLeague);
         Task<IList<SeasonStandings>> GetLeagueSeasonStanding(GetLeagueSeasonStandingCriteria criteria);
         Task<(League, IList<SeasonStandings>)> GetLeagueAndSeasonStandingAsync(GetLeagueAndSeasonStandingsCriteria criteria);
-        Task<IList<Team>> GetAllTeamAsync();
         Task<IList<Player>> GetPlayerByIdTeamAsync(long teamId);
         Task<IList<TopScorers>> GetTop10ScorersAsync(GetTop10ScorersCriteria top10ScorersCriteria);
-        Task<IList<TopScorers>> GetAllTopScorersAsync();
-        Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum);
+        Task<IList<TopScorers>> GetAllTopScorersAsync(long leagueId, long seasonId);
+        Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum, long leagueId, long seasonId);
         Task<CommandResult> InsertTopScorerAsync(TopScorers topScorers);
         Task<CommandResult> UpdateTopScorerAsync(TopScorers topScorers);
         Task<IList<Season>> GetSeasonByLeagueIdAsync(long leagueId);

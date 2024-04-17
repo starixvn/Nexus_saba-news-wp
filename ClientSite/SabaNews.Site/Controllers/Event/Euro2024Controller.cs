@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SabaNews.Core.Constants;
+using SabaNews.Core.Helper;
 using SabaNews.Core.Models;
 using SabaNews.Core.Services;
+using SabaNews.Criteria.Poll;
 using SabaNews.Criteria.Posts;
 using SabaNews.Livescore.Models.Match;
 using SabaNews.Livescore.Services;
@@ -14,6 +16,7 @@ using SabaNews.Livescore.Services.Criteria.League;
 using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel;
 using SabaNews.Models.ViewModel.Event.WorldCup;
+using SabaNews.Models.ViewModel.Poll;
 using SabaNews.Models.ViewModel.Posts;
 using SabaNews.Services;
 using SabaNews.Services.Interfaces;
@@ -29,6 +32,8 @@ namespace SabaNews.Site.Controllers.Event
         private readonly ISessionService sessionService;
         private readonly IUserService userService;
         private readonly ILeagueService leagueService;
+        private readonly IOptionService optionService;
+        private readonly IPollService pollService;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -36,7 +41,8 @@ namespace SabaNews.Site.Controllers.Event
             ISessionService sessionService,
             IConfiguration configuration,
             IUserService userService,
-            ILeagueService leagueService
+            ILeagueService leagueService,
+            PollService pollService
         )
         {
             this.dataControlService = dataControlService;
@@ -45,6 +51,7 @@ namespace SabaNews.Site.Controllers.Event
             this.sessionService = sessionService;
             this.userService = userService;
             this.leagueService = leagueService;
+            this.pollService = pollService;
         }
         [Route("/euro-2024")]
         public async Task<IActionResult> Index ()
@@ -283,6 +290,52 @@ namespace SabaNews.Site.Controllers.Event
         {
             var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
             return Json(new { data.League, data.Matches });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetTopScorers(bool more)
+        {
+            var topScorersCriteria = new GetTop10ScorersCriteria { LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId };
+            var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
+            ViewBag.More = more;
+            return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GetPollData(int questId, int themeId)
+        {
+            var pollOption = await optionService.GetOptionAsync(Euro2024.PollKey);
+            if(pollOption == null)
+            {
+                return null;
+            }
+            PollViewModel result;
+            var clientIP = Helper.GetClientIP(HttpContext);
+            var criteria = new GetPollDetailCriteria
+            {
+                QuestId = int.Parse(pollOption.OptionValue),
+                ThemeId = Euro2024.PollTheme,
+                UserIp = clientIP
+            };
+            result = await pollService.GetPollDetailAsync(criteria);
+            if(result.Question == null)
+            {
+                return Json(null);
+            }
+            return PartialView("_PollEuro2024", result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId)
+        {
+            var clientIP = Helper.GetClientIP(HttpContext);
+            var result = await pollService.VotePollAsync(questId, answerId, clientIP);
+            if (result.IsSuccessful)
+            {
+                return await GetPollData(questId, themeId);
+            }
+            return Json(result);
         }
     }
 }

@@ -43,12 +43,6 @@ namespace SabaNews.Core.Constants
 
         public const string VideoGuessSlug = "video-du-doan-world-cup-2022";
 
-        public const string Minigame = "Minigame";
-        public const string TitleMinigame = "Sự kiện World Cup 2022 - DỰ ĐOÁN HAY QUÀ LIỀN TAY";
-
-        public const string MinigameSlug = "minigame-world-cup-2022";
-        public const string UrlMinigameSlug = "su-kien-du-doan-sung-nhan-qua-khung";
-        public const string TitleMinigameSlug = "Sự kiện World Cup 2022 - DỰ ĐOÁN HAY QUÀ LIỀN TAY";
 
         public const string StoryPost = "Story post";
         public const string TitleStoryPost = "Stories World Cup 2022 - SABA Sports";
@@ -60,39 +54,18 @@ namespace SabaNews.Core.Constants
         public const string OverviewPageSlug = "danh-sach-san-thi-dau-vong-chung-ket-euro-2020";
         public const string OverviewRoute = "tong-quan";
 
-        public const string LockStage = "Chưa diễn ra";
-        public const string BeforeStartedStage = "Sắp diễn ra";
-        public const string OnStartedStage = "Đang diễn ra";
-        public const string BeforeEndStage = "Sắp kết thúc";
-        public const string OnEndStage = "Đã kết thúc";
-
-        public const string IconLock = "icon-icon_lock";
-        public const string IconWinner = "icon-minigame_list_user";
-        public const string IconStanding = "icon-minigame_standing";
 
         public const long LeagueId = 12015;
         public const long SeasonId = 11334;
         public const long GroupStageId = 35455;
 
-        public const string TimestampMinigameStage01Start = "11/16/2022, 8:00:00 AM";
-        public const string TimestampMinigameStage02Start = "11/22/2022, 8:00:00 AM";
-        public const string TimestampMinigameStage03Start = "11/26/2022, 8:00:00 AM";
-        public const string TimestampMinigameStage04Start = "11/30/2022, 8:00:00 AM";
-
         public const long ThirdPlace = 30541;
         public const long FinalStage = 30542;
         public const long SemifinalsStage = 30540;
         public const long QuarterfinalsStage = 30539;
-
-        public const int MinigameScoreOthers = 10;
-        public const int MinigameScoreQuarterfinal = 12;
-        public const int MinigameScoreSemifinal = 15;
-        public const int MinigameScoreFinal = 15;
-
-        public const byte MinigameStage1 = 1;
-        public const byte MinigameStage2 = 2;
-        public const byte MinigameStage3 = 3;
-        public const byte MinigameStage4 = 4;
+        
+        public const string PollKey = "poll_euro_2024";
+        public const int PollTheme = 1;
 
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
@@ -102,8 +75,7 @@ namespace SabaNews.Core.Constants
             new CateInfo { Name = Fixture, Slug = UrlFixtureSlug },
             new CateInfo { Name = Standing, Slug = UrlStandingSlug },
             new CateInfo { Name = Commentary, Slug = UrlCommentarySlug },
-            new CateInfo { Name = Video, Slug = UrlVideoSlug },
-            new CateInfo { Name = Minigame, Slug = UrlMinigameSlug }
+            new CateInfo { Name = Video, Slug = UrlVideoSlug }
         };
 
         public static readonly IReadOnlyList<CateInfo> Cates = new List<CateInfo>

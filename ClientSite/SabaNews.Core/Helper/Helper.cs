@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Core.Helper
 {
+    using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using System;
@@ -60,6 +61,13 @@
             result = Regex.Replace(result, WordpressVariable.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTimeUtilize.UtcNow(), dateFormat), RegexOptions.IgnoreCase);
 
             return result;
+        }
+
+        public static string GetClientIP(HttpContext context)
+        {
+            var clientIP = context.Request.Headers["x-forwarded-for"].ToString();
+            clientIP = !string.IsNullOrWhiteSpace(clientIP) ? clientIP.Split(',')[0] : context.Connection.RemoteIpAddress.ToString();
+            return clientIP;
         }
     }
 }
