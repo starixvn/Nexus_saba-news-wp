@@ -41,8 +41,9 @@ namespace SabaNews.Site.Controllers.Event
             ISessionService sessionService,
             IConfiguration configuration,
             IUserService userService,
+            IPollService pollService,
             ILeagueService leagueService,
-            PollService pollService
+            IOptionService optionService
         )
         {
             this.dataControlService = dataControlService;
@@ -50,8 +51,9 @@ namespace SabaNews.Site.Controllers.Event
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.userService = userService;
-            this.leagueService = leagueService;
             this.pollService = pollService;
+            this.leagueService = leagueService;
+            this.optionService = optionService;
         }
         [Route("/euro-2024")]
         public async Task<IActionResult> Index ()
@@ -303,7 +305,7 @@ namespace SabaNews.Site.Controllers.Event
 
 
         [HttpPost]
-        public async Task<IActionResult> GetPollData(int questId, int themeId)
+        public async Task<IActionResult> GetPollData()
         {
             var pollOption = await optionService.GetOptionAsync(Euro2024.PollKey);
             if(pollOption == null)
@@ -323,7 +325,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Json(null);
             }
-            return PartialView("_PollEuro2024", result);
+            return PartialView("~/Views/Event/Euro2024/_PollEuro2024.cshtml", result);
         }
 
         [HttpPost]
@@ -333,7 +335,7 @@ namespace SabaNews.Site.Controllers.Event
             var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
-                return await GetPollData(questId, themeId);
+                return await GetPollData();
             }
             return Json(result);
         }

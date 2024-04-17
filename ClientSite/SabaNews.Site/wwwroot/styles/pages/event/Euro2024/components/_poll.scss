@@ -184,7 +184,7 @@
             cursor: pointer;
             border: none;
             outline: none;
-            &:disabled{
+            &.disabled {
                 opacity: .8;
                 cursor: not-allowed;
             }

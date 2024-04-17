@@ -2971,7 +2971,7 @@ html, body {
   border: none;
   outline: none;
 }
-.poll-content .poll-action .btn-vote:disabled, .poll-content .poll-action .btn-vote-retry:disabled {
+.poll-content .poll-action .btn-vote.disabled, .poll-content .poll-action .btn-vote-retry.disabled {
   opacity: 0.8;
   cursor: not-allowed;
 }

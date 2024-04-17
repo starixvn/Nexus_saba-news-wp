@@ -32,6 +32,7 @@
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script src="~/lib/swipper/js/swiper-bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/event/euro2024/euro2024.js" asp-append-version="true"></script>
     <script src="~/js/event/euro2024/home.js" asp-append-version="true"></script>
 }
 
@@ -231,34 +232,7 @@
                                     </h4>
                                 </div>
                             </div>
-                            <div class="poll">
-                                <div class="group-poll-title">
-                                    <span class="poll-left">Bình</span>
-                                    <span class="poll-right">Chọn</span>
-                                </div>
-                                <div class="poll-content">
-                                    <p class="poll-slogan">CLB nào sẽ vô địch EURO 2024</p>
-                                    <div class="choose-poll">
-                                        <div class="poll-element">
-                                            <input type=radio id="poll-radio-1" class="radio-input"
-                                                name="poll-radio-1" value="poll-radio-1">
-                                            <label for="poll-radio-1" class="radio-label"> <span class="radio-border"></span>
-                                                poll-radio-1 </label>
-                                        </div>
-
-                                        <div class="poll-element">
-                                            <input type=radio id="poll-radio-2" class="radio-input"
-                                                name="poll-radio-2" value="poll-radio-2">
-                                            <label for="poll-radio-2" class="radio-label"> <span class="radio-border"></span>
-                                                poll-radio-2 </label>
-                                        </div>
-                                    </div>
-                                    <div class="poll-action">
-                                        <button class="btn-vote vote-answer disabled">Bình Chọn</button>
-                                        <button class="btn-result view-result">Xem kết quả</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="euro-poll"></div>
                         </div>
 
                         <div class="swiper swiper-guess">

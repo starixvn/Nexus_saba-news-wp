@@ -4,10 +4,13 @@
 }
 
 
-<div class="poll-main-div-@Model.Question.Id poll-section @(Model.IsUserVoted ? "hide-poll": "show-poll")">
-    <div class="poll-name">Thăm dò</div>
+<div class="poll poll-main @(Model.IsUserVoted ? "hide-poll": "show-poll")">
+    <div class="group-poll-title">
+        <span class="poll-left">Bình</span>
+        <span class="poll-right">Chọn</span>
+    </div>
     <div class="poll-content">
-        <div class="poll-question">@Model.Question.Question</div>
+        <p class="poll-slogan">@Model.Question.Question</p>
         @{
             var i = 0;
         }
@@ -35,7 +38,7 @@
 
 
 
-<div class="poll-result-@Model.Question.Id poll-section @(Model.IsUserVoted ? "show-poll" : "hide-poll")">
+<div class="poll-result poll-section @(Model.IsUserVoted ? "show-poll" : "hide-poll")">
     <div class="poll-name">@ViewResources.VoteResult</div>
     <div class="poll-content">
         <div class="poll-question">@Model.Question.Question</div>
