@@ -1,6 +1,6 @@
 .block-items-vertical{
     .block-items-heading{
-        margin-top: .8rem;
+        margin-top: 1rem;
         @include tableMobile{
             margin-top: .5rem;
         }
@@ -47,27 +47,27 @@
                 min-height: 11rem;
                 padding: 1.2rem;
             }
-            .block-items-heading{
-                margin-bottom: .6rem;
-                a{
-                    text-decoration: none;
-                    color: $white-color;
-                    font-size: 2.2rem;
-                    font-weight: 700;
-                    line-height: normal;
-                    @include Mobile{
-                        font-size: 1.6rem;
-                    }
+        }
+        .block-items-heading{
+            margin-bottom: .6rem;
+            a{
+                text-decoration: none;
+                color: $white-color;
+                font-size: 2.2rem;
+                font-weight: 700;
+                line-height: normal;
+                @include Mobile{
+                    font-size: 1.6rem;
                 }
             }
-            .block-heading-description{
-                color: $white-color;
-                font-size: 14px;
-                line-height: normal;
-                font-weight: 600;
-                @include tableMobile{
-                    display: none;
-                }
+        }
+        .block-heading-description{
+            color: $white-color;
+            font-size: 14px;
+            line-height: normal;
+            font-weight: 600;
+            @include tableMobile{
+                display: none;
             }
         }
     }

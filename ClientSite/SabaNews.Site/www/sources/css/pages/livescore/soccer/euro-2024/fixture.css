@@ -239,45 +239,6 @@ body {
   padding: 0 1rem;
 }
 
-.container {
-  width: 100%;
-  padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media screen and (max-width: 1024px) {
-  .container {
-    padding: 0 1.2rem;
-  }
-}
-@media (min-width: 1280px) {
-  .container {
-    max-width: 113rem;
-  }
-}
-@media (min-width: 1400px) {
-  .container {
-    max-width: 130rem;
-  }
-}
-
-.livescore-container {
-  width: 100%;
-  padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media screen and (max-width: 1024px) {
-  .livescore-container {
-    padding: 0 1.2rem;
-  }
-}
-@media (min-width: 1280px) {
-  .livescore-container {
-    max-width: 104rem;
-  }
-}
-
 .live .soccer-match-stage span {
   color: #E13C29 !important;
   font-size: 1.3rem;

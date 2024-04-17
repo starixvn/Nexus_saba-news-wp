@@ -41,6 +41,18 @@ var euro2024_home = (function ($) {
                 prevEl: '.btn-prev',
             },
         });
+
+        var guesSwiper = new Swiper('.swiper-video', {
+            slidesPerView: 3.5,
+            spaceBetween: 16,
+            loop: false,
+            speed: 300,
+            grabCursor: true,
+            navigation: {
+                nextEl: '.btn-next',
+                prevEl: '.btn-prev',
+            },
+        });
     }
 
     function HandleMenuTab () {

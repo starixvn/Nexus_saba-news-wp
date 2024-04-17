@@ -270,57 +270,78 @@
         </div>
     </div>
 
-    <div class="block block-video">
-        <div class="block-heading">
-            <h2 class="block-heading-text">
-                <a href="@Url.Action("Video", "Euro2024")">
-                    Video
-                </a>
-            </h2>
-        </div>
-        <div class="block-body">
-            <div class="group-video">
-                <div class="box-vertical">
-                    @{
-                        var numVideos = 0;
-                        foreach (var video in Model.Videos)
-                        {
-                            numVideos++;
-                            var display = numVideos == 1 ? "block" : "none";
-                            <div style="display:@display;" class="box-play-video" id="slide-@video.ID">
-                                <input type="hidden" name="iframe_value" value="@video.PostContent" />
-                                <div class="block-items block-items-horizontal">
-                                    <div class="block-items-img hover-image">
-                                        <a title="@video.PostTitle">
-                                            <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
-                                            <div class="btn-play-video" post-id="@video.ID">
-                                                <span class="icon-play"></span>
+    <div class="block block-videos-and-kingsocer">
+        <div class="container">
+            <div class="block-group">
+                <div class="block-video">
+                    <div class="block-heading">
+                        <h2 class="block-heading-text">
+                            <a href="@Url.Action("Video", "Euro2024")">
+                                Video
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="block-body">
+                        <div class="group-video">
+                            <div class="box-vertical">
+                                @{
+                                    var numVideos = 0;
+                                    foreach (var video in Model.Videos)
+                                    {
+                                        numVideos++;
+                                        var display = numVideos == 1 ? "block" : "none";
+                                        <div style="display:@display;" class="box-play-video" id="slide-@video.ID">
+                                            <input type="hidden" name="iframe_value" value="@video.PostContent" />
+                                            <div class="block-items block-items-vertical block-items-vertical-hot">
+                                                <div class="block-items-img hover-image">
+                                                    <a title="@video.PostTitle">
+                                                        <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
+                                                        <div class="btn-play-video" post-id="@video.ID">
+                                                            <span class="icon-play"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div style="display:none;" class="play_video"></div>
+                                                <h4 class="block-items-heading">
+                                                    <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
+                                                </h4>
                                             </div>
-                                        </a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                            <div class="block-child-video slide-video">
+                                <div class="swiper swiper-video">
+                                    <div class="swiper-wrapper">
+                                        @foreach (var video in Model.Videos)
+                                        {
+                                            <div class="swiper-slide block-items block-items-vertical">
+                                                <div class="block-items-img hover-image">
+                                                    <a title="@video.PostTitle" href="javascript:;" data-id="@video.ID" class="img-slider">
+                                                        <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
+                                                    </a>
+                                                </div>
+                                                <h4 class="block-items-heading">
+                                                    <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
+                                                </h4>
+                                            </div>
+                                        }
                                     </div>
-                                    <div style="display:none;" class="play_video"></div>
-                                    <h4 class="block-items-heading">
-                                        <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
-                                    </h4>
+                                    <div class="swiper-button swiper-button-next btn-next"><i class="icon-slide icon-chevron-right"></i></div>
+                                    <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-slide icon-chevron-left"></i></div>
                                 </div>
                             </div>
-                        }
-                    }
-                </div>
-                <div class="block-child-video scroll-snap slide-video">
-                    @foreach (var video in Model.Videos)
-                    {
-                        <div class="block-items block-items-vertical">
-                            <div class="block-items-img hover-image">
-                                <a title="@video.PostTitle" href="javascript:;" data-id="@video.ID" class="img-slider">
-                                    <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
-                                </a>
-                            </div>
-                            <h4 class="block-items-heading">
-                                <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
-                            </h4>
                         </div>
-                    }
+                    </div>
+                </div>
+                <div class="block-kingsocer">
+                    <div class="block-heading">
+                        <h2 class="block-heading-text">
+                            <a href="#">
+                                Vua phá lưới
+                            </a>
+                        </h2>
+                    </div>
                 </div>
             </div>
         </div>

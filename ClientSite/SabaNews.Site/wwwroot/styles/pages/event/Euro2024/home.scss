@@ -251,12 +251,74 @@
         }
         .scroll-snap{
             grid-template-columns: repeat(12, 1fr);
+            display: none;
             &-items{
                 width: 32rem;
                 .hover-image{
                     height: 18rem;
                     max-height: 18rem;
                 }
+            }
+        }
+    }
+}
+
+.block-videos-and-kingsocer{
+    background: url('../../../../images/euro2024/bg_video.png') no-repeat center;
+    padding: 2.4rem 0;
+    background-size: cover;
+    .block-group{
+        display: flex;
+        gap: 2.4rem;
+        @include Mobile {
+            display: unset;
+        }
+        .block-video,.block-kingsocer{
+            border-radius: 5px;
+            border: 2px solid $primary-bg;
+            background: #FFFDF9;
+            padding: 2rem;
+        }
+        .group-video{
+            .block-items-vertical{
+                &-hot{
+                    margin-bottom: 1rem;
+                    padding-bottom: 1rem;
+                    border-bottom: 1px solid #CFCFCF;
+                    border-radius: none;
+                    .hover-image{
+                        height: 43.7rem;
+                        max-height: 43.7rem;
+                    }
+                    .block-items-heading{
+                        a{
+                            color: $text-color;
+                            &:hover{
+                                color: $primary-bg;
+                            }
+                        }
+                    }
+                }
+            }
+            .block-child-video{
+                .hover-image{
+                    height: 13rem;
+                    max-height: 13rem;
+                }
+            }
+        }
+        .block-video{
+            width: 100%;
+            max-width: 76.5rem;
+            @include Mobile{
+                margin-bottom: 2rem;
+            }
+        }
+        .block-kingsocer{
+            min-width: 39.2rem;
+            @include Mobile {
+                min-width: auto;
+                width: 100%;
             }
         }
     }
