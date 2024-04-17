@@ -9,8 +9,10 @@
     <div class="wc-table wc-table-king-soccer" id="Hidden1">
         <div class="wc-table-header">
             <div class="wc-table-cell cell-participant">TOP 10</div>
-            <div class="wc-table-cell cell-rank">Bàn thắng</div>
-            <div class="wc-table-cell cell-rank">Kiến tạo</div>
+            <div class="wc-table-cell cell-rank show-on-pc">Bàn thắng</div>
+            <div class="wc-table-cell cell-rank show-on-pc">Kiến tạo</div>
+            <div class="wc-table-cell cell-rank show-on-mobile">BT</div>
+            <div class="wc-table-cell cell-rank show-on-mobile">KT</div>
         </div>
 
         <div class="wc-table-body top-scorer-table">
@@ -24,8 +26,11 @@
                         <ul class="team">
                             <li class="number">@item.Top </li>
                             <li class="team-logo"><img src="@(item.TeamLogoVN ?? oriLogo)" /></li>
-                            <li class="team-name">@teamName</li>
-                            <li class="team-name" tabindex="0" data-toggle="tooltip" title="@playerName">@playerName </li>
+                            <li class="team-name">
+                                <span class="player-name" tabindex="0" data-toggle="tooltip" title="@playerName">@playerName </span>
+                                <span class="team">@teamName</span>
+                            </li>
+
                         </ul>
                     </div>
 

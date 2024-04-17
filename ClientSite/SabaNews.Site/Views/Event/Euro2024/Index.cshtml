@@ -312,14 +312,18 @@
                             </div>
                             <div class="block-child-video slide-video">
                                 <div class="swiper swiper-video">
-                                    <div class="swiper-wrapper">
+                                    <div class="swiper-wrapper scroll-snap">
                                         @foreach (var video in Model.Videos)
                                         {
-                                            <div class="swiper-slide block-items block-items-vertical">
+                                            <div class="swiper-slide scroll-snap-items block-items block-items-vertical">
                                                 <div class="block-items-img hover-image">
                                                     <a title="@video.PostTitle" href="javascript:;" data-id="@video.ID" class="img-slider">
                                                         <img src="@Url.Content(video.FeatureImage)" alt="@video.PostTitle" class="img-res" loading="lazy" />
                                                     </a>
+                                                    <span class="icons-child-video">
+                                                        <img src="~/images/euro2024/child-icon-video.svg" alt="child-icon-video">
+                                                        Video
+                                                    </span>
                                                 </div>
                                                 <h4 class="block-items-heading">
                                                     <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
@@ -339,9 +343,75 @@
                         <h2 class="block-heading-text">
                             <a href="#">
                                 Vua phá lưới
-                                <div class="euro-top-scorer"></div>
                             </a>
                         </h2>
+                    </div>
+                    <div class="block-body">
+                        <div class="euro-top-scorer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block block-all">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="block-heading-text">
+                    <a href="#">
+                        Tổng quan
+                    </a>
+                </h2>
+            </div>
+            <div class="block-body">
+                <div class="gird-main">
+                    <div class="gird-main-items">
+                        <a href="#" class="gird-main-items-img hover-image">
+                            <img src="~/images/euro2024/block-all-1.png" alt="item">
+                        </a>
+                        <a href="#" class="gird-main-items-title">
+                            Nước chủ nhà
+                        </a>
+                    </div>
+                    <div class="gird-main-items">
+                        <a href="#" class="gird-main-items-img hover-image">
+                            <img src="~/images/euro2024/block-all-2.png" alt="item">
+                        </a>
+                        <a href="#" class="gird-main-items-title">
+                           sân vận động
+                        </a>
+                    </div>
+                    <div class="gird-main-items">
+                        <a href="#" class="gird-main-items-img hover-image">
+                            <img src="~/images/euro2024/block-all-3.png" alt="item">
+                        </a>
+                        <a href="#" class="gird-main-items-title">
+                           bóng thi đấu
+                        </a>
+                    </div>
+                    <div class="gird-main-items">
+                        <a href="#" class="gird-main-items-img hover-image">
+                            <img src="~/images/euro2024/block-all-4.png" alt="item">
+                        </a>
+                        <a href="#" class="gird-main-items-title">
+                           linh vật
+                        </a>
+                    </div>
+                    <div class="gird-main-items">
+                        <a href="#" class="gird-main-items-img hover-image">
+                            <img src="~/images/euro2024/block-all-5.png" alt="item">
+                        </a>
+                        <a href="#" class="gird-main-items-title">
+                           Đội tuyển
+                        </a>
+                    </div>
+                    <div class="gird-main-items">
+                        <a href="#" class="gird-main-items-img hover-image">
+                            <img src="~/images/euro2024/block-all-6.png" alt="item">
+                        </a>
+                        <a href="#" class="gird-main-items-title">
+                           kỷ lục
+                        </a>
                     </div>
                 </div>
             </div>

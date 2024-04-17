@@ -231,6 +231,8 @@
                 border: 2px solid #E0DABF;
                 background: #FFFDF4;
                 padding: 2rem;
+            }
+            .euro-poll{
                 @include Mobile{
                     margin-top: 2rem;
                 }
@@ -252,6 +254,7 @@
         .scroll-snap{
             grid-template-columns: repeat(12, 1fr);
             display: none;
+            margin: 0 -1.2rem;
             &-items{
                 width: 32rem;
                 .hover-image{
@@ -270,6 +273,7 @@
     .block-group{
         display: flex;
         gap: 2.4rem;
+        align-items: flex-start;
         @include Mobile {
             display: unset;
         }
@@ -285,10 +289,14 @@
                     margin-bottom: 1rem;
                     padding-bottom: 1rem;
                     border-bottom: 1px solid #CFCFCF;
-                    border-radius: none;
+                    border-radius: 0;
                     .hover-image{
                         height: 43.7rem;
                         max-height: 43.7rem;
+                        @include Mobile{
+                            height: 20.5rem;
+                            max-height: 20.5rem;
+                        }
                     }
                     .block-items-heading{
                         a{
@@ -301,24 +309,115 @@
                 }
             }
             .block-child-video{
+                @include Mobile{
+                    margin: 0 -1.2rem;
+                }
                 .hover-image{
                     height: 13rem;
                     max-height: 13rem;
+                    .icons-child-video{
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        background: rgba(0, 0, 0, 0.50);
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        line-height: 1.8rem;
+                        color: $white-color;
+                        display: flex;
+                        align-items: center;
+                        padding: .2rem;
+                        border-radius: 3px;
+                        height: 1.6rem;
+                        img{
+                            margin-right: .2rem;
+                        }
+                    }
+                }
+                .swiper-slide{
+                    @include Mobile{
+                        width: 20rem;
+                    }
+                }
+                .swiper-button{
+                    @include Mobile{
+                        display: none !important;
+                    }
                 }
             }
         }
         .block-video{
-            width: 100%;
+            width: 63%;
             max-width: 76.5rem;
             @include Mobile{
                 margin-bottom: 2rem;
+                padding: 0;
+                border: none;
+                width: 100%;
             }
+            
         }
         .block-kingsocer{
             min-width: 39.2rem;
+            width: 36%;
             @include Mobile {
                 min-width: auto;
                 width: 100%;
+                padding: 2rem 1rem;
+            }
+        }
+    }
+}
+
+
+.block-all{
+    background-image:  url('../../../../images/euro2024/bg-all.png') , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-bottom: 40rem;
+    @include Mobile{
+        padding-bottom: 11rem;
+        background-size: 100%;
+    }
+    .block-heading-text{
+        a{
+            color: $white-color;
+        }
+    }
+    .gird-main{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        @include Mobile{
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1.2rem;
+        }
+        &-items{
+            overflow: hidden;
+            border-radius: 5px;
+            &-title{
+                display: block;
+                color: #0A1651;
+                text-align: center;
+                font-size: 1.6rem;
+                font-weight: 700;
+                line-height: normal;
+                text-transform: uppercase;
+                background: #FFCA00;
+                padding: .9rem 0;
+                text-decoration: none;
+            }
+            &-img{
+                display: block;
+                img{
+                    display: block;
+                }
+                &.hover-image{
+                    border-radius: 0;
+                    @include Mobile{
+                        height: 20rem;
+                    }
+                }
             }
         }
     }

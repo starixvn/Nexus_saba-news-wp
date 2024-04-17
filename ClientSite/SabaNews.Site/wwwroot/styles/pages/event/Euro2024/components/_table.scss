@@ -222,18 +222,22 @@
 .king-soccer {
     .wc-table {
         color: $white-color;
-        border-radius: 5px;
         overflow: hidden;
-        background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-
+        background: transparent;
+        &::after{
+            display: none;
+        }
         .wc-table-header {
             border-bottom: none;
-            background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+            background: $primary-bg;
             box-shadow: none;
-            height: 5rem;
-            padding: 1rem 2rem;
-            font-weight: 700;
-            font-size: 1.4rem;
+            height: 4rem;
+            padding: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: .8rem;
+            border-radius: 5px;
         }
 
         .wc-table-body {
@@ -241,25 +245,61 @@
         }
 
         .wc-table-row {
-            margin: 0 2rem;
-            border-bottom: 1px solid #7E3547;
-            padding: .8rem 0;
-
-            @include tableMobile {
-                margin: 0 1.2rem;
+            border-bottom: none;
+            padding: .6rem 1rem;
+            background: #F2F2F2;
+            margin: 0 0 .8rem;
+            border-radius: 5px;
+            @include Mobile{
+                padding: .2rem 1rem;
             }
-
+            &:last-child{
+                margin-bottom: 0;
+            }
             &.hide {
                 display: none;
+            }
+            .cell-rank{
+                color: $color-title !important;
             }
         }
 
         .cell-rank {
             width: 8rem;
-            font-weight: 700;
-
+            font-weight: 600;
             @include tableMobile {
-                width: 7rem;
+                width: 3rem;
+            }
+        }
+
+        .show-on-mobile{
+            display: none;
+            @include Mobile{
+                display: block;
+            }
+        }
+
+        .show-on-pc{
+            display: block;
+            @include Mobile{
+                display: none;
+            }
+        }
+        .team,.team-name{
+            color: $color-title;
+        }
+        .player-name{
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: normal;
+            @include Mobile{
+                font-size: 1.4rem;
+            }
+        }
+        .team{
+            font-size: 1.3rem;
+            @include Mobile{
+                font-size: 1.2rem;
             }
         }
     }
