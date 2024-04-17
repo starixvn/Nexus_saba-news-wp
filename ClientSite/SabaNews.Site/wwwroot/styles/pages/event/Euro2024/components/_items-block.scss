@@ -1,11 +1,11 @@
 .block-items-vertical{
     .block-items-heading{
-        margin-top: 1.2rem;
+        margin-top: .8rem;
         @include tableMobile{
             margin-top: .5rem;
         }
         a{
-            font-size: 2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             line-height: normal;
             text-decoration: none;
@@ -45,14 +45,14 @@
             width: 100%;
             @include tableMobile{
                 min-height: 11rem;
-                padding: 0 1.2rem 2rem;
+                padding: 1.2rem;
             }
             .block-items-heading{
                 margin-bottom: .6rem;
                 a{
                     text-decoration: none;
                     color: $white-color;
-                    font-size: 2.4rem;
+                    font-size: 2.2rem;
                     font-weight: 700;
                     line-height: normal;
                     @include Mobile{

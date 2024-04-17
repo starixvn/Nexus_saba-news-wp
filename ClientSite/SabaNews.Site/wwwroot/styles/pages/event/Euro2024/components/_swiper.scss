@@ -78,22 +78,22 @@
 
 .swiper-button-prev, .swiper-button-next {
     background-image: none !important;
-    background: rgba(225, 60, 41, 0.50);
+    background: #FAAA00;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 26px;
     height: 50px;
-    margin-top: 0;
-    top: 40%;
+    margin-top: 0 !important;
+    top: 25% !important;
     transition: all ease-in-out .3s;
     &:hover{
-        background: #E13C29;
+        background: #FAAA00;
     }
     .icon-slide {
         &::before {
-            font-size: 3.2rem;
-            color: #fff;
+            font-size: 2.4rem;
+            color: #061039;
         }
     }
 }
@@ -161,6 +161,7 @@
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
     opacity: .5;
     cursor: no-drop;
+    pointer-events: unset;
 }
 
 @media screen and (max-device-width: 767px) {

@@ -29,6 +29,7 @@ var euro2024_home = (function ($) {
             }
         });
 
+        
         var guesSwiper = new Swiper('.swiper-guess', {
             slidesPerView: 4.5,
             spaceBetween: 20,

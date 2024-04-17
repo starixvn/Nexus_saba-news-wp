@@ -187,7 +187,6 @@
         scroll-snap-stop: always;
         grid-template-columns: unset;
         grid-auto-flow: column;
-        grid-gap: 0 !important;
         &::-webkit-scrollbar {
             display: none;
         }

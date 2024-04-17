@@ -201,6 +201,23 @@
                 <div class="block-body">
                     @if(Model.Commentary.Count > 0){
                         var firstPost = Model.Commentary[0];
+                        <div class="scroll-snap">
+                            @foreach( var post in  Model.Commentary)
+                            {
+                                <div class="scroll-snap-items">
+                                    <div class="block-items block-items-vertical">
+                                        <div class="block-items-img hover-image">
+                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                                <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
+                                            </a>
+                                        </div>
+                                        <h4 class="block-items-heading">
+                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            }
+                        </div> 
                         <div class="news-and-poll">
                             <div class="block-items block-items-vertical block-items-vertical-hot">
                                 <div class="block-items-img hover-image">
@@ -219,7 +236,28 @@
                                     <span class="poll-left">Bình</span>
                                     <span class="poll-right">Chọn</span>
                                 </div>
-                                <p class="poll-slogan">CLB nào sẽ vô địch EURO 2024</p>
+                                <div class="poll-content">
+                                    <p class="poll-slogan">CLB nào sẽ vô địch EURO 2024</p>
+                                    <div class="choose-poll">
+                                        <div class="poll-element">
+                                            <input type=radio id="poll-radio-1" class="radio-input"
+                                                name="poll-radio-1" value="poll-radio-1">
+                                            <label for="poll-radio-1" class="radio-label"> <span class="radio-border"></span>
+                                                poll-radio-1 </label>
+                                        </div>
+
+                                        <div class="poll-element">
+                                            <input type=radio id="poll-radio-2" class="radio-input"
+                                                name="poll-radio-2" value="poll-radio-2">
+                                            <label for="poll-radio-2" class="radio-label"> <span class="radio-border"></span>
+                                                poll-radio-2 </label>
+                                        </div>
+                                    </div>
+                                    <div class="poll-action">
+                                        <button class="btn-vote vote-answer disabled">Bình Chọn</button>
+                                        <button class="btn-result view-result">Xem kết quả</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -249,8 +287,8 @@
                                     }
                                 }
                             </div>
-                            <div class="swiper-button swiper-button-next btn-next"><i class="icon-chevron-right"></i></div>
-                            <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-chevron-left"></i></div>
+                            <div class="swiper-button swiper-button-next btn-next"><i class="icon-slide icon-chevron-right"></i></div>
+                            <div class="swiper-button swiper-button-prev btn-prev"><i class="icon-slide icon-chevron-left"></i></div>
                         </div>
                     }
                 </div>
