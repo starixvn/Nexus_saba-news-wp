@@ -466,6 +466,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: sticky;
   top: 0;
   z-index: 99;
+  border-bottom: none;
 }
 @media screen and (max-width: 1024px) {
   .top-header {
@@ -2334,7 +2335,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100%;
   padding-top: 56.25%;
 }
-.video-hot iframe, .video-hot .hover-image {
+.video-hot .play_video, .video-hot .hover-image {
   position: absolute;
   top: 0;
   left: 0;

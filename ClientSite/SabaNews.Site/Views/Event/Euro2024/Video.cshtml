@@ -19,8 +19,9 @@
 }
 
 @section Styles{
-    @* <link rel="stylesheet" href="~/minify/styles/euro-lastestnews.min.css" asp-append-version="true"> *@
+    <link rel="stylesheet" href="~/lib/swipper/css/swiper.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/euro2024-video.min.css" asp-append-version="true">
+    
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/fixture.chunk.css" asp-append-version="true" />
     </environment>
@@ -59,19 +60,26 @@
 <section class="euro-video">
     <div id="euro-fixture"></div>
     <div class="euro-page-main">
-        @if (Model.Videos.Count > 0)
-        {
-            <div class="post swiper-wrapper page-items-hot">
-                <div class="swiper-slide post-items post-hot video-hot">
-                    <div class="img-item hover-image">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="block-heading-text">
+                    @(Model.Header.Title == Euro2024.TitleLastestNews ? Euro2024.LastestNews : Euro2024.Commentary)
+                </h2>
+            </div>
+            @if (Model.Videos.Count > 0)
+            {
+                <div class="block-items block-items-vertical block-items-vertical-hot">
+                    <div class="block-items-img hover-image"> 
                         <input type="hidden" name="iframe_value" value="@Model.Videos[0].PostContent" />
                         <picture>
                             <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/webp">
                             <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/jpeg">
                             <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Videos[0].FeatureImage)" alt="@Model.Videos[0].PostTitle">
                         </picture>
-                        <div class="title-hot">
-                            <h3><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = Model.Videos[0].Slug })">@Model.Videos[0].PostTitle</a></h3>
+                        <div class="group-title-hot">
+                            <h2 class="block-items-heading">
+                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = Model.Videos[0].Slug })">@Model.Videos[0].PostTitle</a>
+                            </h2>
                             <p class="date-time"> @Model.Videos[0].PostTime</p>
                         </div>
                         <div class="btn-play-video" post-id="@Model.Videos[0].ID">
@@ -80,7 +88,46 @@
                     </div>
                     <div style="display: none;" class="play_video"></div>
                 </div>
+            }
+
+            <div class="nav-tabs-event">
+                <a id="btn-showall" class="active">Tất cả</a>
+                <a id="btn-showhighlight">Highlights</a>
+                <a id="btn-showguess">Dự đoán</a>
             </div>
-        }
+            <div class="page-main">
+                <div class="video-grid">
+                    @{
+                        int postIndex = 0;
+                        foreach (var post in Model.Videos)
+                        {
+                            {
+                                postIndex++;
+                                if (postIndex <= 1)
+                                {
+                                    continue;
+                                }
+                            }
+                            <div class="block-items block-items-vertical">
+                                <div class="block-items-img hover-image"> 
+                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy">
+                                    </a>
+                                    <div class="btn-play-video" post-id="@Model.Videos[0].ID" data-url ="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">
+                                        <span class="icon-play play-orthers" data-url ="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })"></span>
+                                    </div>
+                                </div>
+                                <div class="group-title-hot">
+                                    <h2 class="block-items-heading">
+                                        <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
+                                    </h2>
+                                    <p class="date-time"> @post.PostTime</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </section>

@@ -480,6 +480,7 @@
     position: sticky;
     top: 0;
     z-index: 99;
+    border-bottom: none;
 
     @include tableMobile {
         display: none;

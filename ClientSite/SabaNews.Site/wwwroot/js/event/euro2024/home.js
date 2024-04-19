@@ -67,7 +67,7 @@ var euro2024_home = (function ($) {
             return false;
         });
     }
-
+    
     function HandleIframe() {
         //Desktop & Mobile
         $('.match-schedule iframe').css('width', '100%');

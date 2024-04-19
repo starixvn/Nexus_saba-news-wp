@@ -1,6 +1,23 @@
 .block-items-vertical{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    .hover-image{
+        padding-top: 56.25%;
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            max-height: 100%;
+            height: 100%;
+            width: 100%;
+        }
+    }
     .block-items-heading{
         margin-top: 1rem;
+        display: block;
         @include tableMobile{
             margin-top: .5rem;
         }
@@ -20,16 +37,10 @@
         }
     }
     &-hot{
-        position: relative;
-        overflow: hidden;
-        border-radius: 5px;
-        .hover-image{
-            height: 45rem;
-            max-height: 45rem;
-            @include Mobile{
-                height: 21rem;
-                max-height: 21rem;
-            }
+        .date-time{
+            text-align: left;
+            color: $white-color;
+            width: 100%;
         }
         .group-title-hot{
             position: absolute;
@@ -50,6 +61,8 @@
         }
         .block-items-heading{
             margin-bottom: .6rem;
+            width: 100%;
+            text-align: left;
             a{
                 text-decoration: none;
                 color: $white-color;
@@ -158,5 +171,19 @@
         @include Mobile{
             display: none;
         }
+    }
+}
+
+.play_video{
+    padding-top: 56.5%;
+    iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        max-height: 100%;
+        height: 100%;
+        width: 100%;
     }
 }
