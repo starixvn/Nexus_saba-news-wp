@@ -23,32 +23,34 @@
 
 @(await Component.InvokeAsync("HeaderEuro2024"))
 
-<div class="detail-pages euro2024-detail-pages">
-    <div class="block block-main">
-        <div class="post-euro-detail">
-            @if (Model.IsVideo)
-            {
-                <div class="block-items block-items-vertical block-items-video">
-                    <div class="block-items-img hover-image">
-                        <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
-                        <a>
-                            <img src=@Url.Content(Model.SinglePost.FeatureImage) alt=@Model.SinglePost.PostTitle class="img-res" loading="lazy" />
-                        </a>
-                        <div class="btn-play-video" post-id="@Model.SinglePost.ID">
-                            <span class="icon-play"></span>
+<div class="euro-page-main">
+    <div class="detail-pages euro2024-detail-pages">
+        <div class="block block-main">
+            <div class="post-euro-detail">
+                @if (Model.IsVideo)
+                {
+                    <div class="block-items block-items-vertical block-items-video">
+                        <div class="block-items-img hover-image">
+                            <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
+                            <a>
+                                <img src=@Url.Content(Model.SinglePost.FeatureImage) alt=@Model.SinglePost.PostTitle class="img-res" loading="lazy" />
+                            </a>
+                            <div class="btn-play-video" post-id="@Model.SinglePost.ID">
+                                <span class="icon-play"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
-            <div style="display: none;" class="single play_video"></div>
-            <h1 class="block-items-heading">@Model.SinglePost.PostTitle</h1>
-            <p class="block-items-datetime">@Model.SinglePost.PostTimeFormatSingle</p>
-            @if (!Model.IsVideo)
-            {
-                <div class="content">
-                    @Html.Raw(Model.SinglePost.PostContent)
-                </div>
-            }
+                }
+                <div style="display: none;" class="single play_video"></div>
+                <h1 class="block-items-heading">@Model.SinglePost.PostTitle</h1>
+                <p class="block-items-datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                @if (!Model.IsVideo)
+                {
+                    <div class="content">
+                        @Html.Raw(Model.SinglePost.PostContent)
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>

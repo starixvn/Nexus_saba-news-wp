@@ -175,7 +175,8 @@
         "outputFileName": "wwwroot/minify/styles/euro-lastestnews.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/event/Euro2024/lastestnews.css"
+            "wwwroot/styles/pages/event/Euro2024/lastestnews.css",
+            "wwwroot/lib/swipper/css/swiper.min.css"
         ]
     },
     {
@@ -231,6 +232,7 @@
         "outputFileName": "wwwroot/minify/styles/euro2024-video.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/lib/swipper/css/swiper.min.css",
             "wwwroot/styles/pages/event/Euro2024/video.css"
         ]
     },

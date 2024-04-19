@@ -3,31 +3,6 @@
     @include tableMobile{
         padding: 2rem 0;
     }
-    &-heading{
-        margin-bottom: 1.6rem;
-        @include tableMobile{
-            margin-bottom: 2rem;
-        }
-        &-text{
-            @include tableMobile{
-                text-align: center;
-            }
-            a{
-                text-decoration: none;
-                color: #143CDB;
-                font-size: 2.4rem;
-                font-weight: 700;
-                line-height: normal;
-                text-transform: uppercase;
-                padding-bottom: .6rem;
-                display: inline-block;
-                border-bottom: 4px solid #FAAA00;
-            }
-        }
-        .view-more{
-            color: red;
-        }
-    }
     &-items{
         &-img{
             overflow: hidden;
@@ -75,5 +50,47 @@
                 justify-content: center;
             }
         }
+    }
+}
+
+.block-heading{
+    margin-bottom: 1.6rem;
+    @include tableMobile{
+        margin-bottom: 2rem;
+    }
+    &-text{
+        @include tableMobile{
+            text-align: center;
+        }
+        color: #143CDB;
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        padding-bottom: .6rem;
+        border-bottom: 4px solid $primary-color;
+        display: inline-block;
+        a{
+            text-decoration: none;
+            color: #143CDB;
+        }
+    }
+    .view-more{
+        color: red;
+    }
+}
+
+
+.euro-page-main{
+    padding: 3rem 0;
+    @include tableMobile{
+        padding: 2rem 0;
+    }
+}
+
+.sticky-box{
+    margin-bottom: 3rem;
+    &:last-child{
+        margin-bottom: 0;
     }
 }

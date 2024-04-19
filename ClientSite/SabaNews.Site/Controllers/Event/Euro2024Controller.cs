@@ -34,6 +34,8 @@ namespace SabaNews.Site.Controllers.Event
         private readonly ILeagueService leagueService;
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
+        private const long LeagueIdEuro = Euro2024.SeasonIdEuro2024;
+        private const long SeasonIdEuro = Euro2024.SeasonIdEuro2024;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -87,7 +89,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/tin-moi-nhat")]
         public async Task<IActionResult> LastestNews ()
         {
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = CategorySlugEuro, _Start = 0, _End = Constants.GetTenItems };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.HomepageSlug, _Start = 0, _End = Constants.GetTenItems };
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
 
             var header = new HeaderViewModel
@@ -327,6 +329,16 @@ namespace SabaNews.Site.Controllers.Event
             }
             return PartialView("~/Views/Event/Euro2024/_PollEuro2024.cshtml", result);
         }
+
+
+        public async Task<IActionResult> GetStandings()
+        {
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdEuro, SeasonId = SeasonIdEuro };
+            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            ViewBag.Total = GroupStandingsByGroupName(standings).Count;
+            return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroupName(standings));
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId)

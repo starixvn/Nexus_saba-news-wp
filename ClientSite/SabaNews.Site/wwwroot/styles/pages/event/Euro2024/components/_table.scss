@@ -274,14 +274,14 @@
 
         .show-on-mobile{
             display: none;
-            @include Mobile{
+            @include tableMobile{
                 display: block;
             }
         }
 
         .show-on-pc{
             display: block;
-            @include Mobile{
+            @include tableMobile{
                 display: none;
             }
         }

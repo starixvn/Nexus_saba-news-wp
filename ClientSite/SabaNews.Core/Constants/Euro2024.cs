@@ -8,7 +8,7 @@ namespace SabaNews.Core.Constants
         public const string Homepage = "Trang chủ";
         public const string TitleHomepage = "Euro 2024: Tin tức, Lịch thi đấu, Kết quả, Bảng xếp hạng - SABA Sports";
 
-        public const string HomepageSlug = "world-cup-2022";
+        public const string HomepageSlug = "euro-2024";
         public const string LastestNews = "Tin mới nhất";
         public const string TitleLastestNews = "Tin mới nhất Euro 2024 hôm nay - SABA Sports";
 
@@ -58,6 +58,11 @@ namespace SabaNews.Core.Constants
         public const long LeagueId = 12015;
         public const long SeasonId = 11334;
         public const long GroupStageId = 35455;
+
+        public const long LeagueIdEuro2024 = 14638;
+        public const long SeasonIdEuro2024 = 10810;
+        public const long LeagueIdAFFCup = 14844;
+        public const long SeasonIdAFFCup = 11277;
 
         public const long ThirdPlace = 30541;
         public const long FinalStage = 30542;

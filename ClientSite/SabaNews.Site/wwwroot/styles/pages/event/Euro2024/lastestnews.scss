@@ -1,5 +1,149 @@
 @import './abstracts/variables';
 @import './abstracts/mixins';
 @import './base/base';
+@import './layout/header';
+@import './layout/footer';
+@import './components/container';
 @import './components/block';
 @import './components/hover-img-item';
+@import './components/items-block';
+@import './components/table';
+
+.block-heading{
+    text-align: center;
+}
+
+.ishow-pc{
+    display: block;
+    @include Mobile{
+        display: none;
+    }
+}
+
+.ishow-mobile{
+    display: none;
+    @include Mobile{
+        display: block;
+    }
+}
+
+.block-items-horizontal{
+    border-bottom: 1px solid #E2E2E2;
+    &:last-child{
+        border-bottom: none;
+    }
+}
+
+
+
+.pages-main-hot {
+    display: grid;
+    grid-template-columns: 55rem auto;
+    grid-gap: 2rem;
+    margin-bottom: 2rem;
+    @include tableMobile{
+        grid-template-columns: 35rem auto;
+    }
+    @include Mobile{
+        display: unset;
+    }
+
+    .page-items-hot {
+       
+        .block-items-vertical-hot{
+            @include Mobile{
+                margin-bottom: 2rem;
+            }
+            .hover-image{
+                max-height: 40rem;
+                height: 40rem;
+                @include Mobile{
+                    max-height: 25rem;
+                    height: 25rem;
+                }
+            }
+        }
+
+        .post-hot {
+            .hover-image {
+                height: 40rem;
+
+                @include tableMobile {
+                    height: 30rem;
+                }
+
+                @include Mobile {
+                    height: 40rem;
+                }
+            }
+        }
+    }
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: auto 37.7rem;
+    grid-gap: 0;
+    padding-top: 2rem;
+    border-top: 1px solid #E2E2E2;
+    @include tableMobile{
+        grid-template-columns: auto 30rem;
+    }
+    @include Mobile{
+        display: inline-block;
+    }
+    .page-items-right{
+        border-left: 1px solid #E2E2E2;
+        padding-left: 2rem;
+        position: sticky;
+        top: 9rem;
+        align-self: stretch;
+        @include tableMobile{
+            top: 5.7rem;
+        }
+        @include Mobile{
+            padding-left: 0;
+            border-left: none;
+            position: unset;
+        }
+    }
+    .page-items-left {
+        padding-right: 2rem;
+        @include Mobile{
+            padding-right: 0;
+        }
+    }
+}
+
+
+
+.view-more {
+    margin-bottom: 3rem;
+
+    @include tableMobile {
+        margin-right: 1.2rem;
+    }
+}
+
+.sticky-position{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 9rem;
+}
+
+.load-more-page {
+    text-align: center;
+    button {
+        border: 1px solid #EF4300;
+        background: #EF4300;
+        width: 13.5rem;
+        height: 4.2rem;
+        margin: 0.4rem auto;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+}

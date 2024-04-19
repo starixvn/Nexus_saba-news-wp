@@ -78,7 +78,7 @@
 
 .swiper-button-prev, .swiper-button-next {
     background-image: none !important;
-    background: #FAAA00;
+    background: $primary-color ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,7 +88,7 @@
     top: 25% !important;
     transition: all ease-in-out .3s;
     &:hover{
-        background: #FAAA00;
+        background: $primary-color ;
     }
     .icon-slide {
         &::before {

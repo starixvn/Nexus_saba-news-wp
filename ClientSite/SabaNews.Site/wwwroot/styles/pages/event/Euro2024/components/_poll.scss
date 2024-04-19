@@ -58,8 +58,8 @@
                     color: #222;
                     font-weight: 700;
                     .radio-border{
-                        border: 2px solid #267FD2 !important;
-                        background: #267FD2 !important;
+                        border: 2px solid $primary-bg !important;
+                        background: $primary-bg !important;
                     }
                     &::after{
                         border: solid white;
@@ -128,8 +128,8 @@
     }
 
     &-input:checked + &-label .radio-border {
-        border: 2px solid #143CDB !important;
-        background: #143CDB !important;
+        border: 2px solid $primary-bg !important;
+        background: $primary-bg !important;
     }
 
     &-input:checked + &-label {
