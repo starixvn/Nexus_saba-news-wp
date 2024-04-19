@@ -220,7 +220,13 @@
             "wwwroot/lib/swipper/css/swiper.min.css"
         ]
     },
-
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2024-standing-detail.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/Euro2024/standing-euro.css"
+        ]
+    },
     {
         "outputFileName": "wwwroot/minify/styles/euro2024-post-detail.min.css",
         "inputFiles": [
