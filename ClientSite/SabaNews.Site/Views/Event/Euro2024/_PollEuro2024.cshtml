@@ -37,11 +37,13 @@
 </div>
 
 
-
-<div class="poll-result poll-section @(Model.IsUserVoted ? "show-poll" : "hide-poll")">
-    <div class="poll-name">@ViewResources.VoteResult</div>
+<div class="poll poll-result poll-main @(Model.IsUserVoted ? "show-poll" : "hide-poll")">
+    <div class="group-poll-title">
+        <span class="poll-left">Bình</span>
+        <span class="poll-right">Chọn</span>
+    </div>
     <div class="poll-content">
-        <div class="poll-question">@Model.Question.Question</div>
+        <p class="poll-slogan">@Model.Question.Question</p>
         @foreach (var poll in Model.Polls)
         {
             colorIndex++;

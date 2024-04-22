@@ -71,6 +71,15 @@ namespace SabaNews.Site.Controllers.Event
             model.Header = header;
             return View("~/Views/Event/Euro2024/Index.cshtml", model);
         }
+
+
+        [HttpPost]
+        [Route("euro2024/related-posts")]
+        public IActionResult GetRelatedPostsEuro(string cateSlug, int postID)
+        {
+            return ViewComponent("RelatedPostsEuro", new { cateSlug, postID });
+        }
+
         [Route("/euro-2024/{slug}")]
         public async Task<IActionResult> PostDetailEuro (string slug)
         {
