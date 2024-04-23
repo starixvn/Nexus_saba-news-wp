@@ -87,7 +87,6 @@
         }).done(function (data) {
             $('#news-grid').html(data);
             var numNews = parseInt(window.loading);
-            console.log(numNews);
             if (numNews > 11) {
                 $('.lds-ellipsis').show();
             } else {
@@ -109,29 +108,32 @@
 
     function HandleBtn() {
         $(document).on('click', '#btn-showall', function () {
-            if (slug != 'video-world-cup-2022') {
+            var activeSlug = $(this).data('slug');
+            if (slug != activeSlug) {
                 $('#btn-showhighlight').removeClass("active");
                 $('#btn-showguess').removeClass("active");
                 $("#btn-showall").addClass("active");
-                slug = 'video-world-cup-2022';
+                slug = activeSlug;
                 dataInit();
             }
         });
         $(document).on('click', '#btn-showhighlight', function () {
-            if (slug != 'video-highlights-world-cup-2022') {
+            var activeSlug = $(this).data('slug');
+            if (slug != activeSlug) {
                 $('#btn-showhighlight').addClass("active");
                 $('#btn-showguess').removeClass("active");
                 $("#btn-showall").removeClass("active");
-                slug = 'video-highlights-world-cup-2022';
+                slug = activeSlug;
                 dataInit();
             }
         });
         $(document).on('click', '#btn-showguess', function () {
-            if (slug != 'video-du-doan-world-cup-2022') {
+            var activeSlug = $(this).data('slug');
+            if (slug != activeSlug) {
                 $('#btn-showhighlight').removeClass("active");
                 $('#btn-showguess').addClass("active");
                 $("#btn-showall").removeClass("active");
-                slug = 'video-du-doan-world-cup-2022';
+                slug = activeSlug;
                 dataInit();
             }
         });

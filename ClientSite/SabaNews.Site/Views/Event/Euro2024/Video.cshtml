@@ -54,6 +54,7 @@
         window.type = '@Model.Header.Controller';
     </script>
     <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+    <script src="~/js/event/euro2024/scroll.js" asp-append-version="true"></script>
     <script src="~/js/event/euro2024/video.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderEuro2024", new { cateSlug = Model.Header.Slug }))
@@ -91,9 +92,9 @@
             }
 
             <div class="nav-tabs-event">
-                <a id="btn-showall" class="active">Tất cả</a>
-                <a id="btn-showhighlight">Highlights</a>
-                <a id="btn-showguess">Dự đoán</a>
+                <a id="btn-showall" data-slug="@Euro2024.Video" class="active">Tất cả</a>
+                <a id="btn-showhighlight" data-slug="@Euro2024.VideoHighlightSlug">Highlights</a>
+                <a id="btn-showguess" data-slug="@Euro2024.VideoGuessSlug">Dự đoán</a>
             </div>
             <div class="page-main">
                 <div class="video-grid">

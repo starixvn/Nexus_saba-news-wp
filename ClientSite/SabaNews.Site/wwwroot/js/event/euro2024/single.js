@@ -48,28 +48,29 @@ var euro2024_single = (function ($) {
         })
     }
 
-    function LoadRelatedWorldCupPosts() {
+    function LoadRelatedPosts() {
         var block = $("body").find(".related-posts");
-        if (block.length > 0) {
-            var postID = block.data("postid");
-            var cateSlug = block.data("cateslug");
-            $.ajax({
-                url: "/euro2024/related-posts",
-                type: "POST",
-                data: { postID, cateSlug },
-                success: function (res) {
-                    block.html(res);
-                    console.log(res)
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
+        if(block.length === 0) {
+            return false;
         }
+        var postID = block.data("postid");
+        var cateSlug = block.data("cateslug");
+        $.ajax({
+            url: "/euro2024/related-posts",
+            type: "POST",
+            data: { postID, cateSlug },
+            success: function (res) {
+                block.html(res);
+                console.log(res)
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus + ': ' + errorThrown);
+            }
+        });
     }
     function init() {
         getStandings();
-        LoadRelatedWorldCupPosts();
+        LoadRelatedPosts();
     }
 
     return {

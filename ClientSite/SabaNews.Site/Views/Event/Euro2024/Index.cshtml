@@ -129,13 +129,13 @@
                                 }
                                 <div class="block-items block-items-vertical block-items-@lastestPostIamgeIndex @hotnews">
                                     <div class="block-items-img hover-image"> 
-                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                        <a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">
                                             <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                         </a>
                                     </div>
                                     <div class="group-title-hot">
                                         <h2 class="block-items-heading">
-                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                            <a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">@post.PostTitle</a>
                                         </h2>
                                         @{
                                             if(lastestPostIamgeIndex == 1)
@@ -163,7 +163,7 @@
                                             continue;
                                         }
                                     }
-                                    <h3 class="block-child-text"><a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a></h3>
+                                    <h3 class="block-child-text"><a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">@post.PostTitle</a></h3>
                                 }
                             </div>
                         }
@@ -209,12 +209,12 @@
                                 <div class="scroll-snap-items">
                                     <div class="block-items block-items-vertical">
                                         <div class="block-items-img hover-image">
-                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                            <a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">
                                                 <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                             </a>
                                         </div>
                                         <h4 class="block-items-heading">
-                                            <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                            <a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">@post.PostTitle</a>
                                         </h4>
                                     </div>
                                 </div>
@@ -223,13 +223,13 @@
                         <div class="news-and-poll">
                             <div class="block-items block-items-vertical block-items-vertical-hot">
                                 <div class="block-items-img hover-image">
-                                    <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">
+                                    <a href="@Url.Action("Article", "Euro2024", new { slug = @firstPost.Uri })">
                                         <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" loading="lazy" />
                                     </a>
                                 </div>
                                 <div class="group-title-hot">    
                                     <h4 class="block-items-heading">
-                                        <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @firstPost.Slug })">@firstPost.PostTitle</a>
+                                        <a href="@Url.Action("Article", "Euro2024", new { slug = @firstPost.Uri })">@firstPost.PostTitle</a>
                                     </h4>
                                 </div>
                             </div>
@@ -251,12 +251,12 @@
                                         }
                                         <div class="swiper-slide block-items block-items-vertical">
                                             <div class="block-items-img hover-image">
-                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">
+                                                <a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">
                                                     <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" loading="lazy" />
                                                 </a>
                                             </div>
                                             <h4 class="block-items-heading">
-                                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = @post.Slug })">@post.PostTitle</a>
+                                                <a href="@Url.Action("Article", "Euro2024", new { slug = @post.Uri })">@post.PostTitle</a>
                                             </h4>
                                         </div>
                                     }
@@ -304,7 +304,7 @@
                                                 </div>
                                                 <div style="display:none;" class="play_video"></div>
                                                 <h4 class="block-items-heading">
-                                                    <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
+                                                    <a title="@video.PostTitle" href="@Url.Action("Article", "Euro2024", new { slug = video.Uri })">@video.PostTitle</a>
                                                 </h4>
                                             </div>
                                         </div>
@@ -327,7 +327,7 @@
                                                     </span>
                                                 </div>
                                                 <h4 class="block-items-heading">
-                                                    <a title="@video.PostTitle" href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = video.Slug })">@video.PostTitle</a>
+                                                    <a title="@video.PostTitle" href="@Url.Action("Article", "Euro2024", new { slug = video.Uri })">@video.PostTitle</a>
                                                 </h4>
                                             </div>
                                         }

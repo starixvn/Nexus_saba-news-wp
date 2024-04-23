@@ -73,24 +73,57 @@ namespace SabaNews.Site.Controllers.Event
 
         [HttpPost]
         [Route("euro2024/related-posts")]
-        public IActionResult GetRelatedPostsEuro(string cateSlug, int postID)
+        public async Task<IActionResult> GetRelatedPosts(string cateSlug, int postID)
         {
-            return ViewComponent("RelatedPostsEuro", new { cateSlug, postID });
+             var criteria = new GetPostsByCateSlugCriteria
+            {
+                _CategorySlug = cateSlug,
+                _Start = Constants.FromFirstItem,
+                _End = Constants.GetElevenItems,
+            };
+               
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            return PartialView("~/Views/Event/Euro2024/_RelatedPosts.cshtml", posts);
         }
 
         [Route("/euro-2024/{slug}")]
         public async Task<IActionResult> Article (string slug)
         {
-            var postDetail = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-            if (postDetail == null)
+            if(!slug.Contains(".html"))
             {
                 return View(Constants.EmptyBlogView);
             }
+            (slug, var postId) = GetPostInfoFromSlug(slug);
+
+            var post = await postService.GetPostDetailAsync(postId);
+            if (post == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            if(post.Slug != slug)
+            {
+                return RedirectToActionPermanent("Article", "Euro2024", new { slug = post.Uri });
+            }
+
+            var postDetail = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
+
             var cateInfoWC = GetCateInfoEuro(postDetail.CatesName, postDetail.CategoriesSlug);
 
             var viewModel = await GetViewModelPostDetail(postDetail, cateInfoWC, slug);
 
             return View("~/Views/Event/Euro2024/Article.cshtml", viewModel);
+        }
+
+        private static (string, int) GetPostInfoFromSlug(string slug)
+        {
+            slug = slug.Replace(".html", "");
+            var arrSlug = slug.Split("-");
+            if(!int.TryParse(arrSlug[^1], out int postId))
+            {
+                return (slug, postId);
+            }
+            slug = slug.Replace("-" + postId, "");
+            return (slug, postId);
         }
 
         [Route("euro-2024/tin-moi-nhat")]
@@ -314,12 +347,12 @@ namespace SabaNews.Site.Controllers.Event
                 var start = (param.Page - 1) * pageSize;
                 var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize + 1 };
                 var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-                videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
-                if (videos.Count() > pageSize)
-                {
-                    var idlast = videos.Last().ID;
-                    videos = videos.Where(x => x.ID != idlast).ToList();
-                }
+                // videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
+                // if (videos.Count() > pageSize)
+                // {
+                //     var idlast = videos.Last().ID;
+                //     videos = videos.Where(x => x.ID != idlast).ToList();
+                // }
                 return PartialView("~/Views/Event/Euro2024/_VideoGridView.cshtml", videos);
             }
         }
