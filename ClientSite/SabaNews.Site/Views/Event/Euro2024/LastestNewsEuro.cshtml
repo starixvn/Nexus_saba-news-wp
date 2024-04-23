@@ -50,6 +50,7 @@
         window.isVideo = false;
         window.type = '@Model.Header.Controller';
     </script>
+    <script src="~/js/event/euro2024/scroll.js" asp-append-version="true"></script>
     <script src="~/js/event/euro2024/lastestnews.js" asp-append-version="true"></script>
     <script src="~/js/event/euro2024/euro2024.js" asp-append-version="true"></script>
 }
@@ -86,7 +87,7 @@
                     </div>
                     <div class="page-hot-right">
                         @{
-                            int postIndexhot = 0;
+                            var postIndexhot = 0;
 
                             foreach (var post in Model.Posts)
                             {
@@ -124,9 +125,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        continue;
                                     }
-                                    break;
                                 }
                             }
                         }
@@ -137,9 +136,14 @@
                 <div class="page-items-left">
                     <div id="news-grid" class="news-grid">
                         @{
-                            int postIndex = 0;
+                            var index = 0;
                             foreach (var post in Model.Posts)
                             {
+                                index++;
+                                if (index <= 4)
+                                {
+                                    continue;
+                                }
                                 <div class="block-items block-items-horizontal">
                                     <div class="block-items-img hover-image"> 
                                         <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52">
@@ -162,6 +166,11 @@
                             }
                         }
                     </div>
+                    <div class="loading-page">
+                        <div class="lds-ellipsis">
+                            <div></div><div></div><div></div><div></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="page-items-right">
                     <div class="sticky-position">
@@ -173,58 +182,7 @@
                             </div>
                         }
                     </div>
-                </div> 
-                @* <div class="page-main-items">
-                    <div id="news-grid" class="news-grid">
-                        @{
-                            int postIndex = 0;
-                            foreach (var post in Model.Posts)
-                            {
-                                {
-                                    postIndex++;
-                                    if (postIndex <= 4)
-                                    {
-                                        continue;
-                                    }
-                                }
-
-                                <div class="post card-horizontal">
-                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52">
-                                        <picture>
-                                            <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-                                            <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
-                                        </picture>
-                                    </a>
-                                    <div class="card-horizontal__content">
-                                        <a class="title" href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
-                                        <p class="description">@Html.Raw(post.PostExcerpt)</p>
-                                        <p class="datetime">
-                                            <span>@post.PostTime</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            }
-                        }
-                    </div>
-                    @if (Model.Paging.TotalPages > 1)
-                    {
-                        <div class="loading-page">
-                            <div class="lds-ellipsis">
-                                <div></div><div></div><div></div><div></div>
-                            </div>
-                        </div>
-                    }
                 </div>
-                <div class="page-items-right">
-                    @if (isDesktop)
-                    {
-                        <div class="sticky-position">
-                            <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
-                            <div id="topScorersWC" data-more="true" class="page-items-box"></div>
-                        </div>
-                    }
-                </div> *@
             </div>
         </div>
     </div>

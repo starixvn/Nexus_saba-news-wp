@@ -30,13 +30,13 @@ namespace SabaNews.Core.Constants
         public const string Commentary = "Nhận định";
         public const string TitleCommentary = "Nhận định World Cup 2022 hôm nay - SABA Sports";
 
-        public const string CommentarySlug = "nhan-dinh-world-cup-2022";
+        public const string CommentarySlug = "nhan-dinh-euro-2024";
         public const string UrlCommentarySlug = "nhan-dinh";
 
         public const string Video = "Video";
         public const string TitleVideo = "Video World Cup 2022 hôm nay - SABA Sports";
 
-        public const string VideoSlug = "video-world-cup-2022";
+        public const string VideoSlug = "video-euro-2024";
         public const string UrlVideoSlug = "video";
 
         public const string VideoHighlightSlug = "video-highlights-world-cup-2022";

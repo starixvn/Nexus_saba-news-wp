@@ -34,8 +34,6 @@ namespace SabaNews.Site.Controllers.Event
         private readonly ILeagueService leagueService;
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
-        private const long LeagueIdEuro = Euro2024.SeasonIdEuro2024;
-        private const long SeasonIdEuro = Euro2024.SeasonIdEuro2024;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -98,7 +96,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/tin-moi-nhat")]
         public async Task<IActionResult> LastestNews ()
         {
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.HomepageSlug, _Start = 0, _End = Constants.GetTenItems };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.HomepageSlug, _Start = Constants.FromFirstItem, _End = Constants.GetTenItems };
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
 
             var header = new HeaderViewModel
@@ -298,6 +296,34 @@ namespace SabaNews.Site.Controllers.Event
             return null;
         }
 
+        public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
+        {
+            int pageSize = param.PageSize;
+            if (!param.IsVideo)
+            {
+                var start = (param.Page - 1) * pageSize;
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize };
+                var posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+                ViewBag.CurrentPage = param.Page;
+                return PartialView("~/Views/Event/Euro2024/_NewsGridView.cshtml", posts);
+            }
+            else
+            {
+                var outstandingCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.VideoSlug, _Start = (param.Page - 1) * pageSize, _End = 1 };
+                var videosOutstanding = await postService.GetPostsByCateSlugAsync(outstandingCriteria);
+                var start = (param.Page - 1) * pageSize;
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize + 1 };
+                var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+                videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
+                if (videos.Count() > pageSize)
+                {
+                    var idlast = videos.Last().ID;
+                    videos = videos.Where(x => x.ID != idlast).ToList();
+                }
+                return PartialView("~/Views/Event/Euro2024/_VideoGridView.cshtml", videos);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetFixture()
         {
@@ -342,10 +368,11 @@ namespace SabaNews.Site.Controllers.Event
 
         public async Task<IActionResult> GetStandings()
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdEuro, SeasonId = SeasonIdEuro };
-            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId };
+            var standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
             ViewBag.Total = GroupStandingsByGroupName(standings).Count;
-            return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroupName(standings));
+            return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroupName(groupsStageStanding));
         }
 
 

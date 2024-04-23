@@ -24,7 +24,6 @@ var euro2024_lastestnews = (function ($) {
             total = $(".btn-next-standing").data('total');
             isMobile = $(".euro-top-standing").data('ismobile');
             showStandings();
-           
             $('.btn-back-standing').on('click', function () {
                 numRow--;
                 if (numRow >= 1) {

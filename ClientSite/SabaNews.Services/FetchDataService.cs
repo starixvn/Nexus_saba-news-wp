@@ -273,18 +273,16 @@
 
         public async Task<Euro2024ViewModel> GetEuro2024ViewModel()
         {
-            var lastestNews = await postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetTwelveItems);
-            var commentary = await postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetTwelveItems);
-            var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
-            var storyPost = await postService.GetPostsBySlugAsync(WorldCup2022.StoryPostSlug, Constants.FromFirstItem, Constants.GetFourItems, Constants.storyPostType);
-            var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
+            var lastestNews = await postService.GetPostsBySlugAsync(Euro2024.HomepageSlug, Constants.FromFirstItem, Constants.GetTwelveItems);
+            var commentary = await postService.GetPostsBySlugAsync(Euro2024.CommentarySlug, Constants.FromFirstItem, Constants.GetTwelveItems);
+            var videos = await postService.GetPostsBySlugAsync(Euro2024.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            var cate = await postService.GetCateDetailAsync(Euro2024.HomepageSlug);
             
             var Model = new Euro2024ViewModel
             {
                 LastestNews = lastestNews,
                 Commentary = commentary,
                 Videos = videos,
-                StoryPost = storyPost,
                 Category = cate,
             };
             return Model;

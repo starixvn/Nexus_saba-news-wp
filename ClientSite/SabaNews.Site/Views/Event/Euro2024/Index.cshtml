@@ -200,7 +200,8 @@
                     @* <a href="@Url.Action("CommentaryNews", "Euro2024")" class="view-more">Xem chi tiết</a> *@
                 </div>
                 <div class="block-body">
-                    @if(Model.Commentary.Count > 0){
+                    @if(Model.Commentary.Count > 0)
+                    {
                         var firstPost = Model.Commentary[0];
                         <div class="scroll-snap">
                             @foreach( var post in  Model.Commentary)

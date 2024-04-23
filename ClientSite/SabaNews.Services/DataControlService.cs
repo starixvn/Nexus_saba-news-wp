@@ -427,7 +427,7 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get world cup data from DB---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get euro 2024 data from DB---------");
 
                     result = await fetchDataService.GetEuro2024ViewModel();
                     await cacheWrapperService.SetAsync(CacheKey.Euro2024, result,
