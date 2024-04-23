@@ -111,29 +111,30 @@
             <ul class="main-menu">
                 @{
                     var menus = Euro2024.Menus;
-                }
-                @foreach (var menu in menus)
-                {
-                    var active = menu.Slug == Model.CateSlug ? "active" : "";
-                    var link = $"/{Euro2024.HomepageSlug}/{menu.Slug}";
-                    @if (menu.Slug == "")
+                    @foreach (var menu in menus)
                     {
-                        <li class="menu-item euro-logo">
-                            <a href=@link class="item">
-                                <img src="~/images/euro2024/logo.svg" alt="saba-sports" asp-append-version="true">
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="menu-item">
-                            <a href=@link class="item @active">
-                                @menu.Name
-                            </a>
-                        </li>
-                    }
+                        var active = menu.Slug == Model.CateSlug ? "active" : "";
+                        var link = $"/{Euro2024.HomepageSlug}/{menu.Slug}";
+                        @if (menu.Slug == "")
+                        {
+                            <li class="menu-item euro-logo">
+                                <a href=@link class="item">
+                                    <img src="~/images/euro2024/logo.svg" alt="saba-sports" asp-append-version="true">
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a href=@link class="item @active">
+                                    @menu.Name
+                                </a>
+                            </li>
+                        }
 
+                    }
                 }
+                
                 <li class="right-header-section search-input hidden-pc">
                     <form action="/Search" method="post">
                         <input class="keyword-input search-box"  type="text" placeholder="Tìm kiếm...">

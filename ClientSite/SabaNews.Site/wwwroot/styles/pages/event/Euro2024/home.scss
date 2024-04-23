@@ -440,6 +440,9 @@
                 background: #FFCA00;
                 padding: .9rem 0;
                 text-decoration: none;
+                @include Mobile{
+                    padding: 1.4rem 0;
+                }
             }
             &-img{
                 display: block;
