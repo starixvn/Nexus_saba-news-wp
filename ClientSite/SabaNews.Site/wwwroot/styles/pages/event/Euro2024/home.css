@@ -3127,10 +3127,18 @@ html, body {
   grid-column: 5/7;
   grid-row: 1/2;
 }
+@media screen and (max-width: 1024px) {
+  .block-hot-news .gird-hot-news .block-child {
+    max-height: 40rem;
+    overflow: auto;
+  }
+}
 @media (max-width: 767px) {
   .block-hot-news .gird-hot-news .block-child {
     grid-column: 1/4;
     grid-row: 5/6;
+    max-height: 100%;
+    overflow: unset;
   }
 }
 .block-hot-news .gird-hot-news .block-items-1 {

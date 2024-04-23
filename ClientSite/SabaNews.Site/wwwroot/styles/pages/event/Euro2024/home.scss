@@ -35,10 +35,15 @@
         .block-child {
             grid-column: 5/7;
             grid-row: 1/2;
-
+            @include tableMobile{
+                max-height: 40rem;
+                overflow: auto;
+            }
             @include Mobile {
                 grid-column: 1/4;
                 grid-row: 5/6;
+                max-height: 100%;
+                overflow: unset;
             }
         }
         .block-items{
