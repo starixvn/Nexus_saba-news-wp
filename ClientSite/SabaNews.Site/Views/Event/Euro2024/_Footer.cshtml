@@ -1,12 +1,14 @@
+﻿@using SabaNews.Core.Constants;
+
 <section class="footer-event">
     <div class="container">
         <div class="footer-event-top">
-            <ul class="footer-event-menu">
-                <li><a href="#">Tin mới nhất</a></li>
-                <li><a href="#">Lịch thi đấu</a></li>
-                <li><a href="#">Bảng xếp hạng</a></li>
-                <li><a href="#">Nhận định</a></li>
-                <li><a href="#">Video</a></li>
+             <ul class="footer-event-menu">
+                @foreach(var menu in Euro2024.Menus)
+                {
+                    var link = $"/{Euro2024.HomepageSlug}/{menu.Slug}";
+                    <li><a href="@link">@menu.Name</a></li>
+                }
             </ul>
             <div class="footer-event-social">
                 <p class="text-follow">Theo dõi SABA Sports trên</p>
