@@ -2044,10 +2044,28 @@ html, body {
 }
 
 .sticky-box {
-  margin-bottom: 3rem;
+  margin-bottom: 1.2rem;
 }
 .sticky-box:last-child {
   margin-bottom: 0;
+}
+
+.bg-block {
+  border-radius: 5px;
+  background: #1031B2;
+  padding: 2rem;
+}
+.bg-block .block-heading {
+  text-align: left;
+}
+.bg-block .block-heading-text {
+  color: #fff;
+}
+.bg-block .block-items-heading, .bg-block .block-heading-description {
+  color: #fff !important;
+}
+.bg-block .block-items-heading a, .bg-block .block-heading-description a {
+  color: #fff !important;
 }
 
 .btn-play-video {
@@ -2170,7 +2188,6 @@ html, body {
   background: linear-gradient(180deg, rgba(20, 60, 219, 0) 0%, rgba(6, 18, 63, 0.76) 36%, #02050F 84.5%, #143CDB 100%);
   min-height: 15rem;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: flex-end;
   padding: 0 2rem 2rem;
@@ -2240,7 +2257,7 @@ html, body {
 .block-items-horizontal {
   display: grid;
   position: relative;
-  grid-template-columns: 21rem 1fr;
+  grid-template-columns: 32rem 1fr;
   grid-gap: 1.2rem;
   padding-bottom: 1.2rem;
   margin-bottom: 1.2rem;
@@ -2272,12 +2289,12 @@ html, body {
   }
 }
 .block-items-horizontal .hover-image {
-  height: 12rem;
-  max-height: 12rem;
+  height: 18.2rem;
+  max-height: 18.2rem;
 }
 .block-items-horizontal-hot {
   display: grid;
-  grid-template-columns: 14rem 1fr;
+  grid-template-columns: 20rem 1fr;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   grid-gap: 0.6rem 1.2rem;
@@ -2288,8 +2305,8 @@ html, body {
   letter-spacing: -0.02rem;
 }
 .block-items-horizontal-hot .hover-image {
-  height: 8rem;
-  max-height: 8rem;
+  height: 11.3rem;
+  max-height: 11.3rem;
 }
 .block-items-horizontal .block-heading-description {
   color: #2F2F2F;

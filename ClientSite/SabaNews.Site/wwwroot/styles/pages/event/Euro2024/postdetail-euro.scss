@@ -914,4 +914,7 @@ img {
 .related-posts{
     border-top: 1px solid #dadacb;
     padding-top: 2rem;
+    .block-heading{
+        text-align: left;
+    }
 }

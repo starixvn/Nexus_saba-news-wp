@@ -49,7 +49,6 @@
             background: linear-gradient(180deg, rgba(20, 60, 219, 0.00) 0%, rgba(6, 18, 63, 0.76) 36%, #02050F 84.5%, #143CDB 100%);
             min-height: 15rem;
             display: flex;
-            align-items: center;
             flex-direction: column;
             justify-content: flex-end;
             padding: 0 2rem 2rem;
@@ -116,7 +115,7 @@
 .block-items-horizontal{
     display: grid;
     position: relative;
-    grid-template-columns: 21rem 1fr;
+    grid-template-columns: 32rem 1fr;
     grid-gap: 1.2rem;
     padding-bottom: 1.2rem;
     margin-bottom: 1.2rem;
@@ -143,12 +142,12 @@
         }
     }
     .hover-image{
-        height: 12rem;
-        max-height: 12rem;
+        height: 18.2rem;
+        max-height: 18.2rem;
     }
     &-hot{
         display: grid;
-        grid-template-columns: 14rem 1fr;
+        grid-template-columns: 20rem 1fr;
         padding-bottom: 1rem;
         margin-bottom: 1rem;
         grid-gap: .6rem 1.2rem;
@@ -158,8 +157,8 @@
             letter-spacing: -.02rem;
         }
         .hover-image{
-            height: 8rem;
-            max-height: 8rem;
+            height: 11.3rem;
+            max-height: 11.3rem;
         }
     }
 

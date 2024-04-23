@@ -92,8 +92,26 @@
 }
 
 .sticky-box{
-    margin-bottom: 3rem;
+    margin-bottom: 1.2rem;
     &:last-child{
         margin-bottom: 0;
+    }
+}
+
+.bg-block{
+    border-radius: 5px;
+    background: #1031B2;
+    padding: 2rem;
+    .block-heading{
+        text-align: left;
+        &-text{
+            color: $white-color;
+        }
+    }
+    .block-items-heading,.block-heading-description{
+        color: $white-color !important;
+        a{
+            color: $white-color !important;
+        }
     }
 }

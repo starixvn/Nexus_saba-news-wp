@@ -1012,3 +1012,6 @@ img {
   border-top: 1px solid #dadacb;
   padding-top: 2rem;
 }
+.related-posts .block-heading {
+  text-align: left;
+}
