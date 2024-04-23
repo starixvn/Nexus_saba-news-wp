@@ -172,11 +172,9 @@
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/euro-lastestnews.min.css",
+        "outputFileName": "wwwroot/minify/styles/lastestnews.min.css",
         "inputFiles": [
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/event/Euro2024/lastestnews.css",
-            "wwwroot/lib/swipper/css/swiper.min.css"
+            "wwwroot/styles/pages/event/worldcup2022/lastestnews.css"
         ]
     },
     {
@@ -211,7 +209,6 @@
             "wwwroot/styles/pages/event/worldcup2022/story-post-detail.css"
         ]
     },
-
     {
         "outputFileName": "wwwroot/minify/styles/euro2024-home.min.css",
         "inputFiles": [
@@ -242,7 +239,6 @@
             "wwwroot/styles/pages/event/Euro2024/video.css"
         ]
     },
-
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
@@ -264,7 +260,8 @@
     {
         "outputFileName": "wwwroot/minify/js/swiper.min.js",
         "inputFiles": [
-            "wwwroot/lib/swipper/js/swiper.min.js"
+            "wwwroot/lib/swipper/js/swiper.min.js",
+            "wwwroot/js/swiper.js"
         ],
         "minify": {
             "enabled": true,
@@ -588,36 +585,5 @@
             "renameLocals": true
         },
         "sourceMap": false
-    },
-
-    /*==================== Euro 2024 ==============*/
-
-    {
-        "outputFileName": "wwwroot/minify/js/postdetail-euro-2024.min.js",
-        "inputFiles": [
-            "wwwroot/js/event/euro2024/euro2024.js",
-            "wwwroot/js/event/euro2024/single.js",
-            "wwwroot/js/comment.js"
-        ],
-        "minify": {
-            "enabled": true,
-            "renameLocals": true
-        },
-        "sourceMap": false
-    },
-    {
-        "outputFileName": "wwwroot/minify/js/euro-2024-home.min.js",
-        "inputFiles": [
-            "wwwroot/lib/swipper/js/swiper-bundle.min.js",
-            "wwwroot/js/event/euro2024/euro2024.js",
-            "wwwroot/js/event/euro2024/home.js"
-        ],
-        "minify": {
-            "enabled": true,
-            "renameLocals": true
-        },
-        "sourceMap": false
     }
-
-
 ]
