@@ -81,7 +81,7 @@ namespace SabaNews.Site.Controllers.Event
         }
 
         [Route("/euro-2024/{slug}")]
-        public async Task<IActionResult> PostDetailEuro (string slug)
+        public async Task<IActionResult> Article (string slug)
         {
             var postDetail = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
             if (postDetail == null)
@@ -92,7 +92,7 @@ namespace SabaNews.Site.Controllers.Event
 
             var viewModel = await GetViewModelPostDetail(postDetail, cateInfoWC, slug);
 
-            return View("~/Views/Event/Euro2024/PostDetail.cshtml", viewModel);
+            return View("~/Views/Event/Euro2024/Article.cshtml", viewModel);
         }
 
         [Route("euro-2024/tin-moi-nhat")]
