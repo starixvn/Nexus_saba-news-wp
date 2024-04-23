@@ -1838,6 +1838,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin-bottom: 2rem;
   }
 }
+@media (max-width: 767px) {
+  .block-heading {
+    text-align: center;
+  }
+}
 .block-heading-text {
   color: #143CDB;
   font-size: 2.4rem;

@@ -1838,6 +1838,11 @@ html, body {
     margin-bottom: 2rem;
   }
 }
+@media (max-width: 767px) {
+  .block-heading {
+    text-align: center;
+  }
+}
 .block-heading-text {
   color: #143CDB;
   font-size: 2.4rem;
@@ -3042,6 +3047,9 @@ html, body {
 .block-standing {
   background: url("../../../../images/euro2024/standing.png") no-repeat center #0c1d6b;
   background-size: cover;
+}
+.block-standing .block-heading {
+  margin-bottom: 0;
 }
 .block-standing .block-heading-text {
   margin-bottom: 2.4rem;

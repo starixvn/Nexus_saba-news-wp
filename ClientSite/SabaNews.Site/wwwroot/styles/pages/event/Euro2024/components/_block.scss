@@ -58,6 +58,9 @@
     @include tableMobile{
         margin-bottom: 2rem;
     }
+    @include Mobile{
+        text-align: center;
+    }
     &-text{
         @include tableMobile{
             text-align: center;

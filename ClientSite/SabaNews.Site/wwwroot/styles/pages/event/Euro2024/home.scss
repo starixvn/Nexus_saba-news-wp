@@ -127,6 +127,9 @@
 .block-standing{
     background: url('../../../../images/euro2024/standing.png') no-repeat center #0c1d6b ;
     background-size: cover;
+    .block-heading{
+        margin-bottom: 0;
+    }
     .block-heading-text{
         margin-bottom: 2.4rem;
         a{
