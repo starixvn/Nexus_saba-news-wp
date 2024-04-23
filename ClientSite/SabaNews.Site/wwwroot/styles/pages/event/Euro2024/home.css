@@ -2317,6 +2317,12 @@ html, body {
   width: 100%;
   text-align: center;
 }
+.wc-table .group-button .list-button li.active {
+  background: #FAAA00;
+}
+.wc-table .group-button .list-button li.active a {
+  color: #000;
+}
 
 .wc-on-mobile {
   color: #fff;
@@ -3215,6 +3221,11 @@ html, body {
   border: 2px solid #143CDB;
   background: #FFFDF9;
   padding: 2rem;
+}
+@media (max-width: 767px) {
+  .block-videos-and-kingsocer .block-group .block-video, .block-videos-and-kingsocer .block-group .block-kingsocer {
+    background: transparent;
+  }
 }
 .block-videos-and-kingsocer .block-group .group-video .block-items-vertical-hot {
   margin-bottom: 1rem;

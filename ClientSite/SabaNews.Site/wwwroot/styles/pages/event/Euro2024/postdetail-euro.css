@@ -2285,6 +2285,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100%;
   text-align: center;
 }
+.wc-table .group-button .list-button li.active {
+  background: #FAAA00;
+}
+.wc-table .group-button .list-button li.active a {
+  color: #000;
+}
 
 .wc-on-mobile {
   color: #fff;

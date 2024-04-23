@@ -303,6 +303,9 @@
             border: 2px solid $primary-bg;
             background: #FFFDF9;
             padding: 2rem;
+            @include Mobile{
+                background: transparent;
+            }
         }
         .group-video{
             .block-items-vertical{

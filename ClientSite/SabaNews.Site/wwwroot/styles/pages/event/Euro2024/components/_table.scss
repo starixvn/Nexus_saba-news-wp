@@ -176,6 +176,12 @@
                     width: 100%;
                     text-align: center;
                 }
+                &.active{
+                    background: $primary-color;
+                    a{
+                        color: #000;
+                    }
+                }
             }
         }
     }

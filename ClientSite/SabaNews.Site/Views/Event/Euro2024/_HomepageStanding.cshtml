@@ -53,9 +53,14 @@
             <div class="group-button">
                 <div class="name">Bảng</div>
                 <ul class="list-button nav-tab-js">
-                    @foreach (var group in Model)
-                    {
-                        <li><a data-id="#tab-@group.GroupName[0]" class="nav-tab-item">@group.GroupName[0]</a></li>
+                    @{
+                        int index = 0;
+                        @foreach (var group in Model)
+                        {
+                            index++;
+                            var active = index == 1 ? "active" : "";
+                            <li class="@active" ><a data-id="#tab-@group.GroupName[0]" class="nav-tab-item">@group.GroupName[0]</a></li>
+                        }
                     }
                 </ul>
             </div>
