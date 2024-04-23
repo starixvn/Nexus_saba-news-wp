@@ -219,7 +219,7 @@
         .news-and-poll{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 2rem;
+            grid-gap: 0 2rem;
             margin-bottom: 1.6rem;
             padding-bottom: 1.6rem;
             border-bottom: 1px solid #E4D9D0;
@@ -295,7 +295,6 @@
     .block-group{
         display: flex;
         gap: 2.4rem;
-        align-items: flex-start;
         @include Mobile {
             display: unset;
         }
