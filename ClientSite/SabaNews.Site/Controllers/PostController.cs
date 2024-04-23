@@ -96,8 +96,7 @@
                 AbsoluteUrl = $"{domain}{slug}-{post.ID}.html",
                 IsVideo = PostHelper.IsVideo(cateParents),
                 CateInfo = cateInfo,
-                MatchId = matchId,
-                CateParents = cateParents
+                MatchId = matchId
             };
 
             return View(model);
