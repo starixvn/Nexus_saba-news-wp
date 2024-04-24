@@ -78,29 +78,18 @@
         }
 
         [Fact]
-        public async Task GetAllTeamAsync_WhenCalled_ReturnExpectedResult()
-        {
-            //Arrange
-            var service = GetService();
-            var fixture = new Fixture();
-            var teams = fixture.Create<IList<Team>>();
-            baseService.GetDataAsync<Team>(Arg.Any<GetAllTeamCriteria>()).Returns(teams);
-            //Act
-            var actual = await service.GetAllTeamAsync();
-            //Assert
-            Assert.Equal(teams, actual);
-        }
-
-        [Fact]
         public async Task GetAllTopScorersAsync_WhenCalled_ReturnExpectedResult()
         {
             //Arrange
             var service = GetService();
             var fixture = new Fixture();
             var topScorers = fixture.Create<IList<TopScorers>>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+
             baseService.GetDataAsync<TopScorers>(Arg.Any<GetAllTopScorersCriteria>()).Returns(topScorers);
             //Act
-            var actual = await service.GetAllTopScorersAsync();
+            var actual = await service.GetAllTopScorersAsync(leagueId, seasonId);
             //Assert
             Assert.Equal(topScorers, actual);
         }

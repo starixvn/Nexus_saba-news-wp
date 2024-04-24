@@ -3,7 +3,6 @@
 @using DeviceDetectorNET;
 @using SabaNews.Site.Extensions
 @{
-    var standingNum = 1;
     var total = ViewBag.Total != null ? ViewBag.Total : 0;
     var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
     detector.Parse();
