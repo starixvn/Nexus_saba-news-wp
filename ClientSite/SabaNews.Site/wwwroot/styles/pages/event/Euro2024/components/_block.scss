@@ -85,16 +85,16 @@
 
 
 .euro-page-main{
-    padding: 3rem 0;
-    @include tableMobile{
-        padding: 2rem 0;
+    padding: 2rem 0;
+    @include Mobile{
+        padding: 0 0 2rem 0;
     }
 }
 
 .sticky-box{
     margin-bottom: 1.2rem;
-    &:last-child{
-        margin-bottom: 0;
+    @include Mobile{
+        margin-bottom: 2rem;
     }
 }
 
@@ -102,8 +102,16 @@
     border-radius: 5px;
     background: #1031B2;
     padding: 2rem;
+    @include Mobile{
+        border-radius: 0;
+        padding: 2rem 1.2rem;
+        margin: 0 -1.2rem;
+    }
     .block-heading{
         text-align: left;
+        @include Mobile{
+            text-align: center;
+        }
         &-text{
             color: $white-color;
         }

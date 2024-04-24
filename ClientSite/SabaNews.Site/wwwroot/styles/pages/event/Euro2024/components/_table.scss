@@ -104,7 +104,7 @@
         align-items: center;
         padding: 1.5rem 0;
         margin: 0 2.4rem;
-        border-bottom: 1px solid $white-color;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.50);
         @include Mobile{
             margin: 0 1.2rem;
         }
@@ -166,6 +166,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                cursor: pointer;
                 a{
                     text-decoration: none;
                     color: $white-color;
@@ -226,6 +227,14 @@
 }
 
 .king-soccer {
+    @include tableMobile{
+        max-height: 20rem;
+        overflow: auto;
+    }
+    @include Mobile{
+        max-height: 100%;
+        overflow: unset;
+    }
     .wc-table {
         color: $white-color;
         overflow: hidden;

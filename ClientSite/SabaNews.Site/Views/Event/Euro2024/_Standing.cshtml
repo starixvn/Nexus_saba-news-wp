@@ -1,6 +1,7 @@
 @using SabaNews.Resources
 @using static SabaNews.Site.Extensions.LivescoreHelper
 @using DeviceDetectorNET;
+@using SabaNews.Site.Extensions
 @{
     var standingNum = 1;
     var total = ViewBag.Total != null ? ViewBag.Total : 0;
@@ -17,8 +18,56 @@
         </a>
     </h2>
 </div>
-<div class="king-soccer scroll-snap">
-    @foreach (var group in Model)
+<div class="wc-on-mobile show-mb">
+    <div class="wc-table">
+        <div class="group-button">
+            <div class="name">Bảng</div>
+            <ul class="list-button nav-tab-js">
+                @{
+                    int index = 0;
+                    @foreach (var group in Model)
+                    {
+                        index++;
+                        var active = index == 1 ? "active" : "";
+                        <li class="@active" ><a data-id="#tab-@group.GroupName[0]" class="nav-tab-item">@group.GroupName[0]</a></li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="wc-table-header">
+            <div class="wc-table-cell cell-participant"></div>
+            <div class="wc-table-cell cell-rank">Trận</div>
+            <div class="wc-table-cell cell-rank">+/-</div>
+            <div class="wc-table-cell cell-rank">Điểm</div>
+        </div>
+        <div class="tab-content">
+            @foreach (var group in Model)
+            {
+                <div class="wc-table-body" id="tab-@group.GroupName[0]">
+
+                    @foreach(var standing in group.Standings)
+                    {
+                        var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                        var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                        <div class="wc-table-row">
+                            <div class="wc-table-cell cell-participant">
+                                <ul class="team">
+                                    <li class="team-logo"><img src=@(string.IsNullOrEmpty(standing.IconVN) ? icon : standing.IconVN) alt="Alternate Text" /></li>
+                                    <li class="team-name">@teamName</li>
+                                </ul>
+                            </div>
+                            <div class="wc-table-cell cell-rank">@standing.Total</div>
+                            <div class="wc-table-cell cell-rank">@standing.GoalDiff</div>
+                            <div class="wc-table-cell cell-rank">@standing.Points</div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@*<div class="king-soccer scroll-snap">
+ @foreach (var group in Model)
     {
         var count = 0;
         <div class="wc-table wc-table-king-soccer scroll-snap-items" id="standing-@standingNum">
@@ -54,5 +103,6 @@
             </div>
         </div>
         standingNum++;
-    }
+    } 
 </div>
+*@

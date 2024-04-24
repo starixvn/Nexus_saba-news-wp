@@ -98,12 +98,6 @@
                                         {
                                             continue;
                                         }
-                                        @* if (postIndexhot == 4 && isMobile)
-                                        {
-                                            <div class="banner-mobile banner-mobile-center"></div>
-                                            <div id="standingWC" data-isMobile="@isMobile"></div>
-                                            <div id="topScorersWC" data-more="true"></div>
-                                        } *@
                                         if (postIndexhot <= 4)
                                         {
                                             <div class="block-items block-items-horizontal block-items-horizontal-hot">
@@ -134,6 +128,9 @@
                     </div>
                 }
             </div>
+            <div class="ishow-mobile">
+                <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
+            </div>
             <div class="page-grid">
                 <div class="page-items-left">
                     <div id="news-grid" class="news-grid">
@@ -142,6 +139,12 @@
                             foreach (var post in Model.Posts)
                             {
                                 index++;
+                                if (index == 9 && isMobile)
+                                {
+                                    <div class="ishow-mobile">
+                                        <div class="euro-top-scorer sticky-box"></div>
+                                    </div>
+                                }
                                 if (index <= 4)
                                 {
                                     continue;
@@ -175,14 +178,11 @@
                     </div>
                 </div>
                 <div class="page-items-right">
-                    <div class="sticky-position">
-                        @if (isDesktop)
-                        {
-                            <div class="sticky-position">
-                                <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
-                                <div class="euro-top-scorer sticky-box"></div>
-                            </div>
-                        }
+                    <div class="sticky-position ishow-pc">
+                        <div class="sticky-position">
+                            <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
+                            <div class="euro-top-scorer sticky-box"></div>
+                        </div>
                     </div>
                 </div>
             </div>

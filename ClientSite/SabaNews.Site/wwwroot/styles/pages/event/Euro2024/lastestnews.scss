@@ -9,10 +9,6 @@
 @import './components/items-block';
 @import './components/table';
 
-.block-heading{
-    text-align: center;
-}
-
 .ishow-pc{
     display: block;
     @include Mobile{
@@ -50,8 +46,8 @@
                 max-height: 40rem;
                 height: 40rem;
                 @include Mobile{
-                    max-height: 25rem;
-                    height: 25rem;
+                    max-height: 20.5rem;
+                    height: 20.5rem;
                 }
             }
             .group-title-hot{
@@ -63,6 +59,11 @@
                     color: $color-title;
                     a{
                         color: $color-title;
+                    }
+                }
+                .block-heading-description{
+                    @include Mobile{
+                        display: block !important;
                     }
                 }
             }
@@ -89,12 +90,12 @@
     grid-template-columns: auto 37.7rem;
     grid-gap: 0;
     padding-top: 2rem;
-    border-top: 1px solid #E2E2E2;
     @include tableMobile{
         grid-template-columns: auto 30rem;
     }
     @include Mobile{
         display: inline-block;
+        padding-top: 0;
     }
     .page-items-right{
         border-left: 1px solid #E2E2E2;
@@ -133,6 +134,9 @@
     position: -webkit-sticky;
     position: sticky;
     top: 9rem;
+    @include tableMobile{
+        top: 5rem;
+    }
 }
 
 .load-more-page {
@@ -162,5 +166,19 @@
 .news-grid{
     .block-items-horizontal{
         padding-bottom: 0;
+    }
+}
+.wc-table::after{
+    border-bottom: none;
+}
+
+.euro-top-standing{
+    @include Mobile{
+        margin-top: 2rem;
+    }
+}
+.euro-top-scorer{
+    @include Mobile{
+        margin: 2rem 0;
     }
 }
