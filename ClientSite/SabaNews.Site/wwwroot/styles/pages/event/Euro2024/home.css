@@ -2525,6 +2525,11 @@ html, body {
   height: 2.6rem;
   overflow: hidden;
 }
+@media (max-width: 767px) {
+  .wc-table .team-logo {
+    margin-right: 1rem;
+  }
+}
 .wc-table .team-logo img {
   width: 3.6rem;
   height: 2.4rem;
