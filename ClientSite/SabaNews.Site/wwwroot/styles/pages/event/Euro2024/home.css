@@ -2051,6 +2051,18 @@ html, body {
     margin-bottom: 2rem;
   }
 }
+.sticky-box .block-heading {
+  text-align: left;
+}
+.sticky-box.euro-top-scorer {
+  padding: 1.6rem 1.2rem;
+  border-radius: 5px;
+  border: 2px solid #143CDB;
+  background: #FFFDF9;
+}
+.sticky-box .wc-table::after {
+  border-bottom: none;
+}
 
 .bg-block {
   border-radius: 5px;

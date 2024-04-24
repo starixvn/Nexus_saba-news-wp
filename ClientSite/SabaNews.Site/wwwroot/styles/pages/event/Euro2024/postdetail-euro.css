@@ -2035,19 +2035,33 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .euro-page-main {
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .euro-page-main {
-    padding: 2rem 0;
+    padding: 0 0 2rem 0;
   }
 }
 
 .sticky-box {
   margin-bottom: 1.2rem;
 }
-.sticky-box:last-child {
-  margin-bottom: 0;
+@media (max-width: 767px) {
+  .sticky-box {
+    margin-bottom: 2rem;
+  }
+}
+.sticky-box .block-heading {
+  text-align: left;
+}
+.sticky-box.euro-top-scorer {
+  padding: 1.6rem 1.2rem;
+  border-radius: 5px;
+  border: 2px solid #143CDB;
+  background: #FFFDF9;
+}
+.sticky-box .wc-table::after {
+  border-bottom: none;
 }
 
 .bg-block {
@@ -2055,8 +2069,20 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background: #1031B2;
   padding: 2rem;
 }
+@media (max-width: 767px) {
+  .bg-block {
+    border-radius: 0;
+    padding: 2rem 1.2rem;
+    margin: 0 -1.2rem;
+  }
+}
 .bg-block .block-heading {
   text-align: left;
+}
+@media (max-width: 767px) {
+  .bg-block .block-heading {
+    text-align: center;
+  }
 }
 .bg-block .block-heading-text {
   color: #fff;
@@ -2230,6 +2256,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding-bottom: 1.2rem;
   margin-bottom: 1.2rem;
 }
+@media screen and (max-width: 1024px) {
+  .block-items-horizontal {
+    grid-template-columns: 15rem 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .block-items-horizontal {
+    display: block;
+  }
+}
 .block-items-horizontal .block-items-heading {
   color: #2F2F2F;
   font-size: 1.6rem;
@@ -2260,12 +2296,32 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   height: 18.2rem;
   max-height: 18.2rem;
 }
+@media screen and (max-width: 1024px) {
+  .block-items-horizontal .hover-image {
+    height: 20.5rem;
+    max-height: 20.5rem;
+  }
+}
 .block-items-horizontal-hot {
   display: grid;
   grid-template-columns: 20rem 1fr;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   grid-gap: 0.6rem 1.2rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-items-horizontal-hot {
+    grid-template-columns: 15rem 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .block-items-horizontal-hot {
+    display: block;
+  }
+  .block-items-horizontal-hot:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 }
 .block-items-horizontal-hot .block-items-heading {
   grid-column: 1/3;
@@ -2275,6 +2331,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .block-items-horizontal-hot .hover-image {
   height: 11.3rem;
   max-height: 11.3rem;
+}
+@media (max-width: 767px) {
+  .block-items-horizontal-hot .hover-image {
+    height: 20.5rem;
+    max-height: 20.5rem;
+  }
 }
 .block-items-horizontal .block-heading-description {
   color: #2F2F2F;
@@ -2406,7 +2468,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   align-items: center;
   padding: 1.5rem 0;
   margin: 0 2.4rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 @media (max-width: 767px) {
   .wc-table .wc-table-row {
@@ -2464,6 +2526,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .wc-table .group-button .list-button li a {
   text-decoration: none;
@@ -2505,6 +2568,18 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.8rem 0 !important;
 }
 
+@media screen and (max-width: 1024px) {
+  .king-soccer {
+    max-height: 20rem;
+    overflow: auto;
+  }
+}
+@media (max-width: 767px) {
+  .king-soccer {
+    max-height: 100%;
+    overflow: unset;
+  }
+}
 .king-soccer .wc-table {
   color: #fff;
   overflow: hidden;
@@ -3147,10 +3222,6 @@ img {
   .detail-container {
     display: inherit;
   }
-}
-
-.block-heading {
-  text-align: center;
 }
 
 .block-list {
@@ -3879,10 +3950,6 @@ img {
   color: #eb5342;
 }
 
-.related-posts {
-  border-top: 1px solid #dadacb;
-  padding-top: 2rem;
-}
-.related-posts .block-heading {
+.block-related .block-heading {
   text-align: left;
 }

@@ -81,10 +81,6 @@ img {
         display: inherit;
     }
 }
-.block-heading{
-    text-align: center;
-}
-
 .block-list {
     margin: 4rem 0;
 
@@ -911,9 +907,7 @@ img {
     }
 }
 
-.related-posts{
-    border-top: 1px solid #dadacb;
-    padding-top: 2rem;
+.block-related{
     .block-heading{
         text-align: left;
     }

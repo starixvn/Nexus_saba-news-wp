@@ -96,6 +96,18 @@
     @include Mobile{
         margin-bottom: 2rem;
     }
+    .block-heading{
+        text-align: left;
+    }
+    &.euro-top-scorer{
+        padding: 1.6rem 1.2rem;
+        border-radius: 5px;
+        border: 2px solid $primary-bg;
+        background: #FFFDF9;
+    }
+    .wc-table::after{
+        border-bottom: none;
+    }
 }
 
 .bg-block{
