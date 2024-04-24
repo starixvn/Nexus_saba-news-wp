@@ -1,12 +1,4 @@
 var euro2024_single = (function ($) {
-    function getStandings() {
-        $.ajax({
-            url: '/Euro2024/GetStandings',
-            type: 'GET'
-        }).done(function (data) {
-            $('.euro-top-standing').html(data);
-        })
-    }
 
     function LoadRelatedPosts() {
         var block = $("body").find(".euro-related-posts");
@@ -28,21 +20,8 @@ var euro2024_single = (function ($) {
         });
     }
 
-    function HandleMenuTab () {
-        $(document).on('click', '.nav-tab-js .nav-tab-item', function(){
-            $('.nav-tab-js li').removeClass('active');
-            $(this).parent().addClass('active');
-            let currentTab = $(this).attr('data-id');
-            $('.tab-content .wc-table-body').hide();
-            $(currentTab).show();
-            return false;
-        });
-    }
-
     function init() {
-        getStandings();
         LoadRelatedPosts();
-        HandleMenuTab();
     }
 
     return {

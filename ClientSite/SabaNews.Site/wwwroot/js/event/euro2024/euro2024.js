@@ -73,10 +73,37 @@ var euro2024 = (function ($) {
             $('.euro-top-scorer').html(data);
         })
     }
+
+    function getStandings() {
+        if($('.euro-top-standing').length === 0) {
+            return false;
+        }
+        $.ajax({
+            url: '/Euro2024/GetStandings',
+            type: 'GET',
+            beforeSend: function() {
+            },
+        }).done(function (data) {
+            $('.euro-top-standing').html(data);
+        })
+    }
+    function HandleStandingTab () {
+        $(document).on('click', '.nav-tab-js li', function(){
+            console.log( $(this).attr('data-id'));
+            $('.nav-tab-js li').removeClass('active');
+            $(this).addClass('active');
+            let currentTab = $(this).attr('data-id');
+            $('.tab-content .wc-table-body').hide();
+            $('.' + currentTab).show();
+            return false;
+        });
+    }
     function init() {
         GetPollDetail();
         UpdatePollData();
         GetTopScorerData();
+        getStandings();
+        HandleStandingTab();
     }
 
     return {
