@@ -18,11 +18,13 @@
                         <img src=@Url.Content(featureImg) alt="@post.PostTitle" class="img-res" loading="lazy" />
                     </a>
                 </div>
-                <h4 class="block-items-heading">
-                    <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">@post.PostTitle</a>
-                </h4>
-                <div class="block-heading-description">
-                    @post.PostExcerpt
+                <div class="block-items-group">
+                    <h4 class="block-items-heading">
+                        <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">@post.PostTitle</a>
+                    </h4>
+                    <div class="block-heading-description">
+                        @post.PostExcerpt
+                    </div>
                 </div>
             </div>
         }
