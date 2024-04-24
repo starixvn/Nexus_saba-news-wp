@@ -231,7 +231,7 @@
                     <div id="topScorersWC" class="page-items-box"></div>
                 } *@
                 @* @await Html.PartialAsync("~/Views/Event/Euro2024/Component/_RelatedPostsEuro.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID }) *@
-                <div class="euro-related-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateSlug"></div>
+                <div class="euro-related-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug"></div>
             </div>
             <div class="page-items-right">
                 <div class="sticky-position">

@@ -29,7 +29,7 @@
                     {
                         index++;
                         var active = index == 1 ? "active" : "";
-                        <li class="@active" ><a data-id="#tab-@group.GroupName[0]" class="nav-tab-item">@group.GroupName[0]</a></li>
+                        <li class="@active" data-id="tab-@group.GroupName[0]" ><a class="nav-tab-item">@group.GroupName[0]</a></li>
                     }
                 }
             </ul>
@@ -43,7 +43,7 @@
         <div class="tab-content">
             @foreach (var group in Model)
             {
-                <div class="wc-table-body" id="tab-@group.GroupName[0]">
+                <div class="wc-table-body tab-@group.GroupName[0]">
 
                     @foreach(var standing in group.Standings)
                     {
