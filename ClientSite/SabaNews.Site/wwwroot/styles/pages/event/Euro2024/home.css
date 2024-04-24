@@ -1117,7 +1117,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item {
   color: #fff;
-  padding-bottom: 0.6rem;
+  position: relative;
 }
 @media (max-width: 767px) {
   .top-header .group-menu .nav-menu .main-menu .menu-item .item {
@@ -1126,12 +1126,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
   color: #fff;
-  border-bottom: 2px solid #FAAA00;
 }
-@media (max-width: 767px) {
-  .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
-    border-bottom: none;
-  }
+.top-header .group-menu .nav-menu .main-menu .menu-item .item.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #FAAA00;
+  position: absolute;
+  bottom: -6px;
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
   color: #FAAA00;
@@ -2360,6 +2363,7 @@ html, body {
   line-height: normal;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  margin-bottom: 0.8rem;
 }
 @media screen and (max-width: 1024px) {
   .block-items-horizontal .block-items-heading {
@@ -2714,7 +2718,7 @@ html, body {
 }
 @media screen and (max-width: 1024px) {
   .king-soccer .wc-table .cell-rank {
-    width: 3rem;
+    width: 5rem;
   }
 }
 .king-soccer .wc-table .show-on-mobile {
@@ -3657,6 +3661,7 @@ html, body {
   background-repeat: no-repeat;
   background-position: bottom;
   padding-bottom: 40rem;
+  background-size: 100%;
 }
 @media (max-width: 767px) {
   .block-all {

@@ -1317,7 +1317,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item {
   color: #fff;
-  padding-bottom: 0.6rem;
+  position: relative;
 }
 @media (max-width: 767px) {
   .top-header .group-menu .nav-menu .main-menu .menu-item .item {
@@ -1326,12 +1326,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
   color: #fff;
-  border-bottom: 2px solid #FAAA00;
 }
-@media (max-width: 767px) {
-  .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
-    border-bottom: none;
-  }
+.top-header .group-menu .nav-menu .main-menu .menu-item .item.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #FAAA00;
+  position: absolute;
+  bottom: -6px;
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
   color: #FAAA00;

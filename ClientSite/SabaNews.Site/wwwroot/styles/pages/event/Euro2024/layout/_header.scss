@@ -1221,15 +1221,20 @@
 
                     .item {
                         color: $white-color;
-                        padding-bottom: .6rem;
+                        position: relative;
                         @include Mobile{
                             padding: 1.5rem 0;
                         }
                         &.active {
                             color: $white-color;
-                            border-bottom: 2px solid $primary-color;
-                            @include Mobile{
-                                border-bottom: none;
+                            &::after{
+                                content: "";
+                                display: block;
+                                height: 2px;
+                                width: 100%;
+                                background: $primary-color;
+                                position: absolute;
+                                bottom: -6px;
                             }
                         }
 
