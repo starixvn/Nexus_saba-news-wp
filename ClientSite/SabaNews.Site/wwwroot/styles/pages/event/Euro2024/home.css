@@ -2054,7 +2054,7 @@ html, body {
 .sticky-box .block-heading {
   text-align: left;
 }
-.sticky-box.euro-top-scorer {
+.sticky-box .border-top-scorer {
   padding: 1.6rem 1.2rem;
   border-radius: 5px;
   border: 2px solid #143CDB;

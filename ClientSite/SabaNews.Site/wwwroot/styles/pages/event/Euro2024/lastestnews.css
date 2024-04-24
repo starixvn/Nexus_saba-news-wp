@@ -2054,7 +2054,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .sticky-box .block-heading {
   text-align: left;
 }
-.sticky-box.euro-top-scorer {
+.sticky-box .border-top-scorer {
   padding: 1.6rem 1.2rem;
   border-radius: 5px;
   border: 2px solid #143CDB;
