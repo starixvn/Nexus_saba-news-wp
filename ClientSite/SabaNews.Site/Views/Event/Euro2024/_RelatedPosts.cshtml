@@ -1,9 +1,4 @@
 ﻿@using SabaNews.Core.Constants;
-@using static SabaNews.Site.Extensions.DeviceHelper;
-
-@{
-    bool isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
-}
 
 <div class="block-related">
     <div class="block-heading">
@@ -19,12 +14,12 @@
             string featureImg =  post.FeatureImage;
             <div class="block-items block-items-horizontal">
                 <div class="block-items-img hover-image">
-                    <a href="@Url.Action("Single", "Post", new { slug = post.Uri })">
+                    <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">
                         <img src=@Url.Content(featureImg) alt="@post.PostTitle" class="img-res" loading="lazy" />
                     </a>
                 </div>
                 <h4 class="block-items-heading">
-                    <a href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
+                    <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">@post.PostTitle</a>
                 </h4>
                 <div class="block-heading-description">
                     @post.PostExcerpt
@@ -33,31 +28,3 @@
         }
     </div>
 </div>
-@* 
-<div class="block__content">
-    <h3 class="block__title"><a>@ViewResources.RelatedPosts</a></h3>
-    @foreach (var post in Model)
-    {
-        string featureImg =  post.FeatureImage;
-        <div class="post card-horizontal card-horizontal-highlight">
-            <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="card-horizontal__image hover-image">
-                <picture>
-                    <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
-                    <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">
-                    <img loading="lazy" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block">
-                </picture>
-            </a>
-            <div class="card-horizontal__content">
-                <h4><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a></h4>
-                <p class="datetime">
-                    <span>@post.PostTime</span>
-                    @if (post.CommentCount > 0)
-                    {
-                        <a href="@Url.Action("Single", "Post", new { slug = post.Uri  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
-                    }
-                </p>
-                <p class="description">@post.PostExcerpt</p>
-            </div>
-        </div>
-    }
-</div> *@

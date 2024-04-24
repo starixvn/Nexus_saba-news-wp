@@ -611,6 +611,31 @@
         "sourceMap": false
     },
     {
+        "outputFileName": "wwwroot/minify/js/euro-2024-lastestnews.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/euro2024/euro2024.js",
+            "wwwroot/js/event/euro2024/scroll.js",
+            "wwwroot/js/event/euro2024/lastestnews.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/euro-2024-video.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/euro2024/euro2024.js",
+            "wwwroot/js/event/euro2024/video.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
         "outputFileName": "wwwroot/minify/js/euro-2024-article.min.js",
         "inputFiles": [
             "wwwroot/js/event/euro2024/euro2024.js",

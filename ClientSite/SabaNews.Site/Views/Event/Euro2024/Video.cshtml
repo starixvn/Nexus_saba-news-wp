@@ -21,7 +21,6 @@
 @section Styles{
     <link rel="stylesheet" href="~/lib/swipper/css/swiper.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/euro2024-video.min.css" asp-append-version="true">
-    
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/fixture.chunk.css" asp-append-version="true" />
     </environment>
@@ -31,18 +30,6 @@
 }
 
 @section Scripts{
-    <environment include="Development">
-        <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
-    </environment>
     <script>
         window.slug = '@WorldCup2022.VideoSlug';
         window.paging = {
@@ -53,9 +40,23 @@
         window.isVideo = true;
         window.type = '@Model.Header.Controller';
     </script>
-    <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
-    <script src="~/js/event/euro2024/scroll.js" asp-append-version="true"></script>
-    <script src="~/js/event/euro2024/video.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
+        <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+        <script src="~/js/event/euro2024/scroll.js" asp-append-version="true"></script>
+        <script src="~/js/event/euro2024/video.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
+        <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+        <script src="~/minify/js/euro-2024-video.min.js" asp-append-version="true"></script>
+    </environment>
 }
 @(await Component.InvokeAsync("HeaderEuro2024", new { cateSlug = Model.Header.Slug }))
 <section class="euro-video">
@@ -79,7 +80,7 @@
                         </picture>
                         <div class="group-title-hot">
                             <h2 class="block-items-heading">
-                                <a href="@Url.Action("PostDetailEuro", "Euro2024", new { slug = Model.Videos[0].Slug })">@Model.Videos[0].PostTitle</a>
+                                <a href="@Url.Action("Article", "Euro2024", new { slug = Model.Videos[0].Uri })">@Model.Videos[0].PostTitle</a>
                             </h2>
                             <p class="date-time"> @Model.Videos[0].PostTime</p>
                         </div>
@@ -111,16 +112,16 @@
                             }
                             <div class="block-items block-items-vertical">
                                 <div class="block-items-img hover-image"> 
-                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">
+                                    <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">
                                         <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy">
                                     </a>
-                                    <div class="btn-play-video" post-id="@Model.Videos[0].ID" data-url ="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">
-                                        <span class="icon-play play-orthers" data-url ="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })"></span>
+                                    <div class="btn-play-video" post-id="@Model.Videos[0].ID" data-url ="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">
+                                        <span class="icon-play play-orthers" data-url ="@Url.Action("Article", "Euro2024", new { slug = post.Uri })"></span>
                                     </div>
                                 </div>
                                 <div class="group-title-hot">
                                     <h2 class="block-items-heading">
-                                        <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
+                                        <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">@post.PostTitle</a>
                                     </h2>
                                     <p class="date-time"> @post.PostTime</p>
                                 </div>

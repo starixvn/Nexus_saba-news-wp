@@ -71,21 +71,6 @@ namespace SabaNews.Site.Controllers.Event
         }
 
 
-        [HttpPost]
-        [Route("euro2024/related-posts")]
-        public async Task<IActionResult> GetRelatedPosts(string cateSlug, int postID)
-        {
-             var criteria = new GetPostsByCateSlugCriteria
-            {
-                _CategorySlug = cateSlug,
-                _Start = Constants.FromFirstItem,
-                _End = Constants.GetElevenItems,
-            };
-               
-            var posts = await postService.GetPostsByCateSlugAsync(criteria);
-            return PartialView("~/Views/Event/Euro2024/_RelatedPosts.cshtml", posts);
-        }
-
         [Route("/euro-2024/{slug}")]
         public async Task<IActionResult> Article (string slug)
         {
@@ -93,10 +78,11 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return View(Constants.EmptyBlogView);
             }
+
             (slug, var postId) = GetPostInfoFromSlug(slug);
 
             var post = await postService.GetPostDetailAsync(postId);
-            if (post == null)
+            if (post == null )
             {
                 return View(Constants.EmptyBlogView);
             }
@@ -107,9 +93,9 @@ namespace SabaNews.Site.Controllers.Event
 
             var postDetail = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
 
-            var cateInfoWC = GetCateInfoEuro(postDetail.CatesName, postDetail.CategoriesSlug);
+            var cateInfo = GetEventCateInfo( postDetail.CategoriesSlug);
 
-            var viewModel = await GetViewModelPostDetail(postDetail, cateInfoWC, slug);
+            var viewModel = await GetViewModelPostDetail(postDetail, cateInfo, slug);
 
             return View("~/Views/Event/Euro2024/Article.cshtml", viewModel);
         }
@@ -230,6 +216,20 @@ namespace SabaNews.Site.Controllers.Event
             return View("~/Views/Event/Euro2024/Video.cshtml", viewModel);
         }
 
+        [HttpPost]
+        [Route("euro2024/related-posts")]
+        public async Task<IActionResult> GetRelatedPosts(string cateSlug, int postID)
+        {
+             var criteria = new GetPostsByCateSlugCriteria
+            {
+                _CategorySlug = cateSlug,
+                _Start = Constants.FromFirstItem,
+                _End = Constants.GetElevenItems,
+            };
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            return PartialView("~/Views/Event/Euro2024/_RelatedPosts.cshtml", posts);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> GetHomepageStandings()
@@ -266,67 +266,34 @@ namespace SabaNews.Site.Controllers.Event
             return groupNames;
         }
 
-        private async Task<SingleViewModel> GetViewModelPostDetail(Post postWC, CateInfo cateInfoWC, string slug)
+        private async Task<SingleViewModel> GetViewModelPostDetail(Post post, CateInfo cateInfo, string slug)
         {
-            SavePost savePostWC = null;
+            SavePost savePost = null;
             var isUserLogin = sessionService.User != null;
             if (isUserLogin)
             {
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
-                savePostWC = user.HandleSavePosts.Find(val => val.PostID == postWC.ID);
+                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
-            var cateParentsWC = await postService.GetCateParentsAsync(cateInfoWC.Slug);
-            cateInfoWC.Url ??= PostHelper.GetCategoryLink(cateParentsWC);
+            var cateParents= await postService.GetCateParentsAsync(cateInfo.Slug);
             var domain = configuration.GetValue<string>(Constants.BaseUrl);
             var viewModel = new SingleViewModel
             {
-                SinglePost = postWC,
+                SinglePost = post,
                 IsLogin = isUserLogin,
-                SavePost = savePostWC,
+                SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",
-                IsVideo = PostHelper.IsVideo(cateParentsWC),
-                CateInfo = cateInfoWC
+                IsVideo = PostHelper.IsVideo(cateParents),
+                CateInfo = cateInfo
             };
             return viewModel;
         }
 
-        private static CateInfo GetCateInfoEuro(string cateName, string cateSlugWC)
+        private static CateInfo GetEventCateInfo(string cateSlugs)
         {
-            var slugWC = cateSlugWC;
-            var cateNameWC = cateName;
-            var cateEventWC = GetEventEuroInfo(cateSlugWC);
-            if (cateEventWC != null)
-            {
-                return cateEventWC;
-            }
-            if (cateSlugWC.Contains(Constants.CollectionSlug) || (cateSlugWC.Contains(Constants.BasketballSlug)
-                && !cateSlugWC.Contains(Constants.BasketballVideoSlug)) || cateSlugWC.Contains(Constants.TennisSlug))
-            {
-                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts };
-            }
-
-            var listCateSlugWC = cateSlugWC.Split(',');
-            var listCateNameWC = cateName.Split(',');
-            var subCateSlugWC = listCateSlugWC.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-            var subCateNameWC = listCateNameWC.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-            slugWC = subCateSlugWC.Count > 0 ? subCateSlugWC[0] : listCateSlugWC[0];
-            cateNameWC = subCateNameWC.Count > 0 ? subCateNameWC[0] : listCateNameWC[0];
-            return new CateInfo { Slug = slugWC.Trim(), Name = cateNameWC.Trim() };
-        }
-
-        private static CateInfo GetEventEuroInfo(string cateSlugWC)
-        {
-            var cateEventWC = PostHelper.GetEventCates();
-            var listCateSlugWC = cateSlugWC.Split(',');
-            foreach (var slug in listCateSlugWC)
-            {
-                var cate = cateEventWC.Find(item => item.Slug == slug.Trim());
-                if (cate != null)
-                {
-                    return cate;
-                }
-            }
-            return null;
+            var cateEvent = Euro2024.CateSlugs;
+            var foundCate = cateEvent.FirstOrDefault(cate => cateSlugs.Split(',').Contains(cate.Slug));
+            return foundCate ?? Euro2024.CateSlugs.ElementAtOrDefault(1);
         }
 
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)

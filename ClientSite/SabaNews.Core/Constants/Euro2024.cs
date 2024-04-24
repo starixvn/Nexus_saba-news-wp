@@ -75,20 +75,20 @@ namespace SabaNews.Core.Constants
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {
-            new CateInfo { Name = Homepage, Slug = "" },
-            new CateInfo { Name = LastestNews, Slug = UrlLastestNewsSlug },
-            new CateInfo { Name = Fixture, Slug = UrlFixtureSlug },
-            new CateInfo { Name = Standing, Slug = UrlStandingSlug },
-            new CateInfo { Name = Commentary, Slug = UrlCommentarySlug },
-            new CateInfo { Name = Video, Slug = UrlVideoSlug }
+            new() { Name = Homepage, Slug = "" },
+            new() { Name = LastestNews, Slug = UrlLastestNewsSlug },
+            new() { Name = Fixture, Slug = UrlFixtureSlug },
+            new() { Name = Standing, Slug = UrlStandingSlug },
+            new() { Name = Commentary, Slug = UrlCommentarySlug },
+            new() { Name = Video, Slug = UrlVideoSlug }
         };
 
-        public static readonly IReadOnlyList<CateInfo> Cates = new List<CateInfo>
+        public static readonly IReadOnlyList<CateInfo> CateSlugs = new List<CateInfo>
         {
-            new CateInfo { Name = Homepage, Slug = HomepageSlug, Url = $"/{HomepageSlug}" },
-            new CateInfo { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{UrlLastestNewsSlug}" },
-            new CateInfo { Name = Commentary, Slug = CommentarySlug, Url = $"/{HomepageSlug}/{UrlCommentarySlug}" },
-            new CateInfo { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{UrlVideoSlug}" }
+            new() { Name = Homepage, Slug = HomepageSlug, Url = $"/{HomepageSlug}" },
+            new() { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{UrlLastestNewsSlug}" },
+            new() { Name = Commentary, Slug = CommentarySlug, Url = $"/{HomepageSlug}/{UrlCommentarySlug}" },
+            new() { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{UrlVideoSlug}" }
         };
     }
 }

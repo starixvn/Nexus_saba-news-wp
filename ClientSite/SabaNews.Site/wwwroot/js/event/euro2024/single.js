@@ -49,7 +49,7 @@ var euro2024_single = (function ($) {
     }
 
     function LoadRelatedPosts() {
-        var block = $("body").find(".related-posts");
+        var block = $("body").find(".euro-related-posts");
         if(block.length === 0) {
             return false;
         }
@@ -61,7 +61,6 @@ var euro2024_single = (function ($) {
             data: { postID, cateSlug },
             success: function (res) {
                 block.html(res);
-                console.log(res)
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus + ': ' + errorThrown);
