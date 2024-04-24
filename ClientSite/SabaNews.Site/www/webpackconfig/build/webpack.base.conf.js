@@ -35,6 +35,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/match-detail-shortcut`]: pathConfig.scriptPaths.livescore_soccer_match_detail_shortcut,
             [`${jsPath}/pages/livescore/soccer/post-detail-matches`]: pathConfig.scriptPaths.livescore_soccer_post_detail_fixture,
             [`${jsPath}/pages/livescore/soccer/euro-2024/fixture`]: pathConfig.scriptPaths.livescore_soccer_euro2024_fixture,
+            [`${jsPath}/pages/livescore/soccer/euro-2024/match-detail`]: pathConfig.scriptPaths.livescore_soccer_euro2024_match_detail,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
@@ -57,6 +58,7 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/match-detail-shortcut`]: pathConfig.cssPaths.livescore_soccer_match_detail_shortcut,
             [`${cssPath}/pages/livescore/soccer/post-detail`]: pathConfig.cssPaths.livescore_soccer_post_detail_fixture,
             [`${cssPath}/pages/livescore/soccer/euro-2024/fixture`]: pathConfig.cssPaths.livescore_soccer_euro2024_fixture,
+            [`${cssPath}/pages/livescore/soccer/euro-2024/match-detail`]: pathConfig.cssPaths.livescore_soccer_euro2024_match_detail,
         },
         output: {
             path: pathConfig.projectRoot,

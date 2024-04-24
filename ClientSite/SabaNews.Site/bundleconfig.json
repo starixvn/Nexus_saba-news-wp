@@ -247,6 +247,13 @@
             "wwwroot/styles/pages/event/Euro2024/video.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2024-match-detail.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/Euro2024/match-detail.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",

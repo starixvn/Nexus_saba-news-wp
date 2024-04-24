@@ -216,6 +216,22 @@ namespace SabaNews.Site.Controllers.Event
             return View("~/Views/Event/Euro2024/Video.cshtml", viewModel);
         }
 
+        [Route("euro-2024/{match}/{matchId:long}")]
+        public ActionResult MatchDetail(long matchId)
+        {
+            var model = new MatchDetailViewModel
+            {
+                Header = new HeaderViewModel
+                {
+                    Title = Euro2024.TitleFixture,
+                    Description = Euro2024.TitleFixture,
+                    Slug = Euro2024.FixtureSlug
+                },
+                MatchId = matchId
+            };
+            return View("~/Views/Event/Euro2024/MatchDetail.cshtml", model);
+        }
+
         [HttpPost]
         [Route("euro2024/related-posts")]
         public async Task<IActionResult> GetRelatedPosts(string cateSlug, int postID)
