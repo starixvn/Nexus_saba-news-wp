@@ -326,9 +326,12 @@
             var fixture = new Fixture();
             var topScorers = fixture.Create<IList<TopScorers>>();
             var rowNum = fixture.Create<int>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            
             baseService.GetDataAsync<TopScorers>(Arg.Any<GetTopScorersByRowNumCriteria>()).Returns(topScorers);
             //Act
-            var actual = await service.GetTopScorersByRowNumAsync(rowNum);
+            var actual = await service.GetTopScorersByRowNumAsync(rowNum, leagueId, seasonId);
             //Assert
             Assert.Equal(topScorers, actual);
         }
