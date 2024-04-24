@@ -5,16 +5,12 @@
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
-    using SabaNews.Criteria.User;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
-    using SabaNews.Models.ViewModel.Event.WorldCup;
-    using SabaNews.Models.ViewModel.User;
     using SabaNews.Site.Areas.Admin.Controllers;
-    using SabaNews.Site.Areas.Admin.Controllers.Livescore;
     using System.Collections.Generic;
     using System.Linq;
     using System.Numerics;
@@ -26,13 +22,13 @@
         private ILeagueService leagueService;
 
         [Fact]
-        public void TopScorerManagement_WhenCalled_ReturnExpectedView()
+        public async Task TopScorerManagement_WhenCalled_ReturnExpectedView()
         {
             // Arrange
             var controller = GetController();
 
             //Act
-            var result = controller.Index();
+            var result = await controller.Index();
 
             // Assert
             Assert.IsType<ViewResult>(result);
@@ -44,10 +40,12 @@
             // Arrange
             var controller = GetController();
             var search = new Fixture().Create<string>();
+            var leagueId = new Fixture().Create<long>();
+            var seasonId = new Fixture().Create<long>();
             var expected = new Fixture().Create<IList<TopScorers>>();
-            leagueService.GetAllTopScorersAsync().Returns(expected);
+            leagueService.GetAllTopScorersAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
             //Act
-            var result = await controller.GetTopScorersData(search);
+            var result = await controller.GetTopScorersData(search, leagueId, seasonId);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
@@ -64,13 +62,16 @@
             var topScorers = new Fixture().Create<IList<TopScorers>>();
             var teams = new Fixture().Create<IList<SeasonStandings>>();
             var player = new Fixture().Create<IList<Player>>();
+            
+            var leagueId = new Fixture().Create<long>();
+            var seasonId = new Fixture().Create<long>();
 
-            leagueService.GetAllTopScorersAsync().Returns(topScorers);
+            leagueService.GetAllTopScorersAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(topScorers);
             leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => standingsCriteria = x)).Returns(teams);
             leagueService.GetPlayerByIdTeamAsync(teams[0].TeamId).Returns(player);
 
             //Act
-            var result = await controller.AddPlayer();
+            var result = await controller.AddPlayer(leagueId, seasonId);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
@@ -103,12 +104,15 @@
             var players = new Fixture().Create<IList<Player>>();
             var topScorers = new Fixture().Create<IList<TopScorers>>();
 
+            var leagueId = new Fixture().Create<long>();
+            var seasonId = new Fixture().Create<long>();
+
             players = players.Where(x => !topScorers.Any(y => y.PlayerId == x.PlayerId)).ToList();
 
             leagueService.GetPlayerByIdTeamAsync(teamId).Returns(players);
-            leagueService.GetAllTopScorersAsync().Returns(topScorers);
+            leagueService.GetAllTopScorersAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(topScorers);
             //Act
-            var result = await controller.GetPlayerByTeamId(teamId);
+            var result = await controller.GetPlayerByTeamId(teamId, leagueId, seasonId);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
@@ -124,6 +128,10 @@
             var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
             var players = new Fixture().Create<IList<Player>>();
             var playUpdate = new Fixture().Create<IList<TopScorers>>();
+            var model = new Fixture().Create<TopScorerUpdateModel>();
+
+            var leagueId = new Fixture().Create<long>();
+            var seasonId = new Fixture().Create<long>();
 
             var teams = new Fixture().Create<IList<SeasonStandings>>();
             var teamId = new Fixture().Create<int>();
@@ -131,10 +139,10 @@
 
             leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => standingsCriteria = x)).Returns(teams);
             leagueService.GetPlayerByIdTeamAsync(teamId).Returns(players);
-            leagueService.GetTopScorersByRowNumAsync(rowNum).Returns(playUpdate);
+            leagueService.GetTopScorersByRowNumAsync(rowNum, leagueId,  seasonId).Returns(playUpdate);
 
             //Act
-            var result = await controller.UpdateTopScorers(rowNum, teamId);
+            var result = await controller.UpdateTopScorers(model);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
