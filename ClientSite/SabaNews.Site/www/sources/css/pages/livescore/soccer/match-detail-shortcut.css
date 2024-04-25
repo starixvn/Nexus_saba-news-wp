@@ -147,7 +147,8 @@
   margin-right: 0.6rem;
 }
 #match-detail .league-and-time .league-logo img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #match-detail .league-and-time .league-name, #match-detail .league-and-time p {
   color: #333333;
@@ -281,7 +282,8 @@
 }
 #match-detail .duel-participant .flex-league .column .team-logo img {
   max-width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
   margin: 0 auto;
   image-rendering: -webkit-optimize-contrast;
@@ -674,4 +676,4 @@
 }
 #match-detail .soccer-team-status {
   margin-bottom: 0 !important;
-}
+}/*# sourceMappingURL=match-detail-shortcut.css.map */

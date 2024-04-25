@@ -186,7 +186,9 @@ body {
 .table-custom-header {
   display: flex;
   height: 4rem;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   align-items: center;
 }
 .table-custom-header .table-custom-cell {
@@ -553,4 +555,4 @@ body {
 .table-custom-cell.cell-participant {
   flex: 1 0 12.5rem !important;
   width: 9.5rem !important;
-}
+}/*# sourceMappingURL=standing.css.map */

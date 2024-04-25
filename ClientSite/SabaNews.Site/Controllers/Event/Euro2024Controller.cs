@@ -157,7 +157,7 @@ namespace SabaNews.Site.Controllers.Event
             var viewModel = new StandingDetailViewModel
             {
                 Header = header,
-                StandingsViewModel = GroupStandingsByGroup(standings),
+                StandingsViewModel = GroupStandingsByGroup(standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList()),
                 IsKnockoutStage = isKnockout
             };
             return View("~/Views/Event/Euro2024/DetailStanding.cshtml" , viewModel);

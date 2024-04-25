@@ -218,7 +218,8 @@ body {
 .livescore-soccer-extension .leagues-item .leagues-name .logo {
   height: 3rem;
   width: 3rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-right: 0.8rem;
 }
 .livescore-soccer-extension .leagues-item .leagues-name .text {
@@ -807,8 +808,6 @@ body {
 @media screen and (max-width: 1024px) {
   .wc-date-bar {
     margin: 0;
-    -webkit-scroll-snap-type: x mandatory;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
@@ -922,8 +921,6 @@ body {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
-    -webkit-scroll-snap-type: x mandatory;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
@@ -988,4 +985,4 @@ body {
 #euro-fixture .wc-date-bar .group-match-item .soccer-match-item {
   border: none;
   background: #091B61;
-}
+}/*# sourceMappingURL=fixture.css.map */

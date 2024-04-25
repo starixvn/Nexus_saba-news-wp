@@ -1,6 +1,5 @@
 .statistic {
   width: 27.6rem;
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -13,7 +12,6 @@
   }
 }
 .statistic-sticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -324,7 +322,8 @@
 .minigame-table .table-row .team-choose .minigame-team img {
   width: 3.9rem;
   height: 2.6rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 @media (max-width: 767px) {
   .minigame-table .table-row .team-choose .minigame-team img {
@@ -600,4 +599,4 @@
 .minigame-table-body::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 0;
-}
+}/*# sourceMappingURL=minigame-detail-stage.css.map */

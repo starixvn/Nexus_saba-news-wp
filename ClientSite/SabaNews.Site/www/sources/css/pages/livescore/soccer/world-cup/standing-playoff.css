@@ -704,7 +704,9 @@ body {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 21rem;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   padding-bottom: 1rem;
 }
 @media screen and (max-width: 1024px) {
@@ -1080,7 +1082,8 @@ body {
   color: #fff;
 }
 .wc-date-control-next {
-  clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  -webkit-clip-path: polygon(0 50%, 100% 100%, 100% 0);
+          clip-path: polygon(0 50%, 100% 100%, 100% 0);
   justify-content: flex-end;
   right: -100px;
   cursor: pointer;
@@ -1091,7 +1094,8 @@ body {
   }
 }
 .wc-date-control-prev {
-  clip-path: polygon(100% 45%, 0% 100%, 0 0);
+  -webkit-clip-path: polygon(100% 45%, 0% 100%, 0 0);
+          clip-path: polygon(100% 45%, 0% 100%, 0 0);
   left: -100px;
   cursor: pointer;
 }
@@ -1133,8 +1137,6 @@ body {
 @media screen and (max-width: 1024px) {
   .wc-date-bar {
     margin: 0;
-    -webkit-scroll-snap-type: x mandatory;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     overflow-x: auto;
@@ -1243,8 +1245,6 @@ body {
   .scroll-snap {
     overflow-x: auto;
     overflow-y: hidden;
-    -webkit-scroll-snap-type: x mandatory;
-    -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     scroll-snap-stop: always;
     grid-template-columns: unset;
@@ -1309,7 +1309,8 @@ body {
   border: none;
   color: #561020;
   position: relative;
-  clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
+  -webkit-clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
+          clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
 }
 @media screen and (max-width: 1024px) {
   .wc-playoffs-showmb .draw-container .draw-wrapper .draw__bracket .bracket {
@@ -1330,7 +1331,8 @@ body {
   right: 1px;
   bottom: 0.7px;
   background: #FFFFF8;
-  clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
+  -webkit-clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
+          clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
   z-index: -1;
   border-color: #631628;
 }
@@ -1434,7 +1436,8 @@ body {
   background: #631628;
   border: none;
   color: #561020;
-  clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+  -webkit-clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+          clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
   padding: 0.8rem 2rem;
   position: relative;
 }
@@ -1451,7 +1454,8 @@ body {
   right: 1px;
   bottom: 0.7px;
   background: #FFFFF8;
-  clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+  -webkit-clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+          clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
 }
 .wc-playoffs-showpc .flex-play-offs .draw-container .draw-wrapper .draw__bracket .bracket__participant {
   font-size: 1.4rem;
@@ -1510,7 +1514,9 @@ body {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 19rem;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .wc-playoffs-showpc .wc-result .draw__round {
   display: grid;
@@ -1534,7 +1540,8 @@ body {
   background: linear-gradient(180deg, #67182B 0%, #470817 100%);
   border-radius: 3px;
   padding: 0.8rem 2rem;
-  clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+  -webkit-clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+          clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
   cursor: pointer;
   color: #561020;
   grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem/max-content 1fr max-content;
@@ -1551,7 +1558,8 @@ body {
   right: 1px;
   bottom: 0.7px;
   background: #FFFFF8;
-  clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+  -webkit-clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+          clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
   z-index: -1;
 }
 .wc-playoffs-showpc .wc-result .draw__bracket .bracket.bracket--highlighted {
@@ -1712,4 +1720,4 @@ body {
 
 .win .bracket__name {
   font-weight: 600;
-}
+}/*# sourceMappingURL=standing-playoff.css.map */
