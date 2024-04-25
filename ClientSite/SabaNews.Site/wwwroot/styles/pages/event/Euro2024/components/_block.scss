@@ -92,10 +92,7 @@
 }
 
 .sticky-box{
-    margin-bottom: 1.2rem;
-    @include Mobile{
-        margin-bottom: 2rem;
-    }
+    margin-bottom: 2rem;
     .block-heading{
         text-align: left;
         @include Mobile{

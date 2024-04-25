@@ -2134,12 +2134,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .sticky-box {
-  margin-bottom: 1.2rem;
-}
-@media (max-width: 767px) {
-  .sticky-box {
-    margin-bottom: 2rem;
-  }
+  margin-bottom: 2rem;
 }
 .sticky-box .block-heading {
   text-align: left;

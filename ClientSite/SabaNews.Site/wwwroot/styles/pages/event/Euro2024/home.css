@@ -2102,12 +2102,7 @@ html, body {
 }
 
 .sticky-box {
-  margin-bottom: 1.2rem;
-}
-@media (max-width: 767px) {
-  .sticky-box {
-    margin-bottom: 2rem;
-  }
+  margin-bottom: 2rem;
 }
 .sticky-box .block-heading {
   text-align: left;
