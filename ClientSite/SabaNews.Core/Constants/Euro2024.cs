@@ -43,7 +43,6 @@ namespace SabaNews.Core.Constants
 
         public const string VideoGuessSlug = "video-du-doan-world-cup-2022";
 
-
         public const string Overview = "Tổng quan";
         public const string OverviewPageSlug = "danh-sach-san-thi-dau-vong-chung-ket-euro-2020";
         public const string OverviewRoute = "tong-quan";
