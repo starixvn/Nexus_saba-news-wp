@@ -194,13 +194,14 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/video")]
         public async Task<IActionResult> Video()
         {
+            var pageSize = Constants.GetSixItems;
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleVideo,
                 Description = Euro2024.TitleVideo,
                 Slug = Euro2024.UrlVideoSlug
             };
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.VideoSlug, _Start = 0, _End = pageSize + 1 };
             var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
             var viewModel = new VideoViewModel
             {
@@ -208,7 +209,7 @@ namespace SabaNews.Site.Controllers.Event
                 Videos = videos,
                 Paging = new PagingModel
                 {
-                    PageSize = Constants.GetTwelveItems,
+                    PageSize = pageSize,
                     CurrentPage = Constants.FirstPage,
                     TotalPages = (int)Math.Ceiling((cateSlugCriteria.TotalItems - 1) / (double)Constants.GetTwelveItems)
                 }
@@ -315,27 +316,20 @@ namespace SabaNews.Site.Controllers.Event
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
         {
             int pageSize = param.PageSize;
+            ViewBag.CurrentPage = param.Page;
             if (!param.IsVideo)
             {
                 var start = (param.Page - 1) * pageSize;
                 var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize };
                 var posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-                ViewBag.CurrentPage = param.Page;
+                
                 return PartialView("~/Views/Event/Euro2024/_NewsGridView.cshtml", posts);
             }
             else
             {
-                var outstandingCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.VideoSlug, _Start = (param.Page - 1) * pageSize, _End = 1 };
-                var videosOutstanding = await postService.GetPostsByCateSlugAsync(outstandingCriteria);
-                var start = (param.Page - 1) * pageSize;
-                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize + 1 };
+                var start = (param.Page - 1) * pageSize + (param.Page == 2 ? Constants.GetFirstItem : 0);
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize };
                 var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-                // videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
-                // if (videos.Count() > pageSize)
-                // {
-                //     var idlast = videos.Last().ID;
-                //     videos = videos.Where(x => x.ID != idlast).ToList();
-                // }
                 return PartialView("~/Views/Event/Euro2024/_VideoGridView.cshtml", videos);
             }
         }

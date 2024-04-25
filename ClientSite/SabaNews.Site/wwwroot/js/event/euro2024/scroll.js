@@ -69,31 +69,11 @@
         });
     }
 
-    function GetVideo() {
-        $.ajax({
-            url: '/WorldCup2022/GetNewsGrid',
-            type: 'POST',
-            data: { slug, page, pageSize, isVideo }
-        }).done(function (data) {
-            $('#news-grid').html(data);
-            var numNews = parseInt(window.loading);
-            if (numNews > 11) {
-                $('.lds-ellipsis').show();
-            } else {
-                $('.lds-ellipsis').hide();
-            }
-
-        })
-            .fail(function (jqXHR, ajaxOptions, thrownError) {
-                console.log('server not responding...');
-            });
-    }
 
     function dataInit() {
         page = 1;
         isLoadData = true;
         currentscrollHeight = 0;
-        GetVideo();
     }
 
     function HandleBtn() {

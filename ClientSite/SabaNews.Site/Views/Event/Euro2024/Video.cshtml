@@ -18,20 +18,22 @@
     var a = Model;
 }
 
-@section Styles{
+@section Styles {
     <link rel="stylesheet" href="~/lib/swipper/css/swiper.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/euro2024-video.min.css" asp-append-version="true">
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/fixture.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/fixture.chunk.css"
+            asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/euro-2024/fixture.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/euro-2024/fixture.chunk.css"
+            asp-append-version="true" />
     </environment>
 }
 
-@section Scripts{
+@section Scripts {
     <script>
-        window.slug = '@WorldCup2022.VideoSlug';
+        window.slug = '@Euro2024.VideoSlug';
         window.paging = {
             page: '@Model.Paging.CurrentPage',
             pageSize: '@Model.Paging.PageSize',
@@ -74,12 +76,13 @@
                     @if (Model.Videos.Count > 0)
                     {
                         <div class="block-items block-items-vertical block-items-vertical-hot">
-                            <div class="block-items-img hover-image"> 
+                            <div class="block-items-img hover-image">
                                 <input type="hidden" name="iframe_value" value="@Model.Videos[0].PostContent" />
                                 <picture>
                                     <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/webp">
                                     <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/jpeg">
-                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Videos[0].FeatureImage)" alt="@Model.Videos[0].PostTitle">
+                                    <img asp-append-version="true" loading="lazy"
+                                        src="@Url.Content(Model.Videos[0].FeatureImage)" alt="@Model.Videos[0].PostTitle">
                                 </picture>
                                 <div class="btn-play-video" post-id="@Model.Videos[0].ID">
                                     <span class="icon-play"></span>
@@ -87,7 +90,8 @@
                             </div>
                             <div class="group-title-hot">
                                 <h2 class="block-items-heading">
-                                    <a href="@Url.Action("Article", "Euro2024", new { slug = Model.Videos[0].Uri })">@Model.Videos[0].PostTitle</a>
+                                    <a
+                                        href="@Url.Action("Article", "Euro2024", new { slug = Model.Videos[0].Uri })">@Model.Videos[0].PostTitle</a>
                                 </h2>
                                 <p class="block-heading-description"> @Model.Videos[0].PostExcerpt</p>
                             </div>
@@ -95,7 +99,7 @@
                         </div>
                     }
                     <div class="page-main">
-                        <div class="video-grid">
+                        <div class="video-grid" id="news-grid">
                             @{
                                 int postIndex = 0;
                                 foreach (var post in Model.Videos)
@@ -107,16 +111,18 @@
                                             continue;
                                         }
                                     }
-                                    if(postIndex == 6 && isMobile)
+                                    if (postIndex == 6 && isMobile)
                                     {
-                                         <div class="ishow-mobile">
+                                        <div class="ishow-mobile">
                                             <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
                                         </div>
                                     }
                                     <div class="block-items block-items-vertical">
-                                        <div class="block-items-img hover-image"> 
+                                        <div class="block-items-img hover-image">
                                             <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">
-                                                <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy">
+                                                <img asp-append-version="true" loading="lazy"
+                                                    src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle"
+                                                    class="img-res lazy">
                                             </a>
                                             <span class="icons-child-video">
                                                 <img src="~/images/euro2024/child-icon-video.svg" alt="child-icon-video">
@@ -125,18 +131,27 @@
                                         </div>
                                         <div class="group-title-hot">
                                             <h2 class="block-items-heading">
-                                                <a href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">@post.PostTitle</a>
+                                                <a
+                                                    href="@Url.Action("Article", "Euro2024", new { slug = post.Uri })">@post.PostTitle</a>
                                             </h2>
                                         </div>
                                     </div>
-                                    if(postIndex == 10 && isMobile)
+                                    if (postIndex == 10 && isMobile)
                                     {
-                                         <div class="ishow-mobile">
+                                        <div class="ishow-mobile">
                                             <div class="euro-top-scorer sticky-box"></div>
                                         </div>
                                     }
                                 }
                             }
+                        </div>
+                        <div class="loading-page" id="loading-page">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
