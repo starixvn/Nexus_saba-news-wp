@@ -100,16 +100,8 @@
     .page-items-right{
         border-left: 1px solid #E2E2E2;
         padding-left: 2rem;
-        position: sticky;
-        top: 9rem;
-        align-self: stretch;
-        @include tableMobile{
-            top: 5.7rem;
-        }
         @include Mobile{
-            padding-left: 0;
             border-left: none;
-            position: unset;
         }
     }
     .page-items-left {
@@ -130,14 +122,7 @@
     }
 }
 
-.sticky-position{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 9rem;
-    @include tableMobile{
-        top: 5rem;
-    }
-}
+
 
 .load-more-page {
     text-align: center;

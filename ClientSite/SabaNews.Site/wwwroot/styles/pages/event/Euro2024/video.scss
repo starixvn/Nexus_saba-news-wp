@@ -3,21 +3,82 @@
 @import './base/base';
 @import './layout/header';
 @import './layout/footer';
-// @import './components/button';
-// @import './components/container';
-// @import './components/block';
-// @import './components/hover-img-item';
-// @import './components/items-block';
-// @import './components/nav-tabs-event';
+@import './components/button';
+@import './components/container';
+@import './components/block';
+@import './components/hover-img-item';
+@import './components/items-block';
+@import './components/nav-tabs-event';
+@import './components/table';
 
-.block-items-vertical-hot{
-    .block-items-heading{
-        text-align: left;
+.ishow-pc{
+    display: block;
+    @include Mobile{
+        display: none;
     }
 }
+
+.ishow-mobile{
+    display: none;
+    @include Mobile{
+        display: block;
+    }
+}
+.euro-page-main{
+    @include Mobile{
+        padding-top: 2rem;
+    }
+}
+
+.block-items-vertical-hot{
+    @include Mobile{
+        margin: 0 -1.2rem;
+        border-radius: 0;
+    }
+    .group-title-hot{
+        position: unset;
+        min-height: auto;
+        padding: 0;
+        background: transparent;
+        .block-items-heading{
+            text-align: left;
+            a{
+                color: $color-title;
+            }
+        }
+    }
+}
+
+
+.page-grid {
+    display: grid;
+    grid-template-columns: auto 37.7rem;
+    grid-gap: 0;
+    @include tableMobile{
+        grid-template-columns: auto 30rem;
+    }
+    @include Mobile{
+        display: inline-block;
+    }
+    .page-items-right{
+        border-left: 1px solid #E2E2E2;
+        padding-left: 2rem;
+        @include Mobile{
+            border-left: none;
+        }
+    }
+    .page-items-left {
+        padding-right: 2rem;
+        @include Mobile{
+            padding-right: 0;
+        }
+    }
+}
+
+
 .video-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
     margin: 2rem 0;
     @include tableMobile{
@@ -25,5 +86,35 @@
     }
     @include Mobile{
         grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+    }
+    .block-items-vertical{
+        @include Mobile{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1rem;
+            .hover-image{
+                width: 14rem;
+                height: 9rem;
+            }
+            .group-title-hot{
+                grid-column: 2 / 4;
+                .block-items-heading{
+                    a{
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}
+.euro-top-standing{
+    @include Mobile{
+        margin: .8rem 0;
+    }
+}
+.euro-top-scorer{
+    @include Mobile{
+        margin: .8rem 0;
     }
 }

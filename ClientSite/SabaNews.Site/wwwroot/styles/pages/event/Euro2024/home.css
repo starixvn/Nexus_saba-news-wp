@@ -2112,6 +2112,12 @@ html, body {
 .sticky-box .block-heading {
   text-align: left;
 }
+@media (max-width: 767px) {
+  .sticky-box .block-heading {
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+}
 .sticky-box .border-top-scorer {
   padding: 1.6rem 1.2rem;
   border-radius: 5px;
@@ -2150,6 +2156,17 @@ html, body {
 }
 .bg-block .block-items-heading a, .bg-block .block-heading-description a {
   color: #fff !important;
+}
+
+.sticky-position {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 9rem;
+}
+@media screen and (max-width: 1024px) {
+  .sticky-position {
+    top: 5rem;
+  }
 }
 
 .btn-play-video {
@@ -2252,6 +2269,7 @@ html, body {
 }
 .block-items-vertical .hover-image .icons-child-video img {
   margin-right: 0.2rem;
+  position: unset;
 }
 .block-items-vertical .block-items-heading {
   margin-top: 1rem;
