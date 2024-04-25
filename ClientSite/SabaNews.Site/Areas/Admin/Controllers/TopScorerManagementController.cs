@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
-    using DeviceDetectorNET.Class.Device;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Livescore.Models.League;

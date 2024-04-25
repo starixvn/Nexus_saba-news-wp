@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Services
 {
     using Microsoft.Extensions.Configuration;
-    using NLog.LayoutRenderers;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;

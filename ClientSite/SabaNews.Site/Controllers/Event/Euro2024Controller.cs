@@ -157,7 +157,7 @@ namespace SabaNews.Site.Controllers.Event
             var viewModel = new StandingDetailViewModel
             {
                 Header = header,
-                StandingsViewModel = GroupStandingsByGroupName(standings),
+                StandingsViewModel = GroupStandingsByGroup(standings),
                 IsKnockoutStage = isKnockout
             };
             return View("~/Views/Event/Euro2024/DetailStanding.cshtml" , viewModel);
@@ -252,13 +252,13 @@ namespace SabaNews.Site.Controllers.Event
         {
             var standings = await dataControlService.GetLeagueSeasonStandingAsync(Euro2024.LeagueId, Euro2024.SeasonId);
             var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
-            var groups = GroupStandingsByGroupName(groupsStageStanding);
+            var groups = GroupStandingsByGroup(groupsStageStanding);
             return PartialView("~/Views/Event/Euro2024/_HomepageStanding.cshtml", groups);
         }
 
-        public List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
+        public List<StandingViewModel> GroupStandingsByGroup(IList<SeasonStandings> seasonStandings)
         {
-            var groupNames = GetGroupNames(seasonStandings);
+            var groupNames = GetGroups(seasonStandings);
             var standingsViewModels = new List<StandingViewModel>();
 
             for (int i = 0; i < groupNames.Count; i++)
@@ -272,7 +272,7 @@ namespace SabaNews.Site.Controllers.Event
             return standingsViewModels;
         }
 
-        public List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
+        public List<string> GetGroups(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = new List<string>();
             foreach (var item in seasonStandings.Where(standing => !groupNames.Exists(x => x == standing.GroupName)))
@@ -387,8 +387,8 @@ namespace SabaNews.Site.Controllers.Event
             var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId };
             var standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
-            ViewBag.Total = GroupStandingsByGroupName(standings).Count;
-            return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroupName(groupsStageStanding));
+            ViewBag.Total = GroupStandingsByGroup(standings).Count;
+            return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroup(groupsStageStanding));
         }
 
 

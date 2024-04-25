@@ -1,15 +1,9 @@
 namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Helper;
-    using SabaNews.Core.Models;
-    using SabaNews.Criteria.User;
     using SabaNews.Models.ViewModel.Poll;
-    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
-    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
