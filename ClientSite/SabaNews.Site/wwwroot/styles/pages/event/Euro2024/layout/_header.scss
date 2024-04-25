@@ -1235,6 +1235,9 @@
                                 background: $primary-color;
                                 position: absolute;
                                 bottom: -6px;
+                                @include tableMobile{
+                                    bottom: 5px;
+                                }
                             }
                         }
 

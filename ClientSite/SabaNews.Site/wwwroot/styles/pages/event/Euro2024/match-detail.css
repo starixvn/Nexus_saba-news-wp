@@ -1336,6 +1336,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: absolute;
   bottom: -6px;
 }
+@media screen and (max-width: 1024px) {
+  .top-header .group-menu .nav-menu .main-menu .menu-item .item.active::after {
+    bottom: 5px;
+  }
+}
 .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
   color: #FAAA00;
 }

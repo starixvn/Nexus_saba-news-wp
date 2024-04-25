@@ -1,5 +1,6 @@
 .statistic {
   width: 27.6rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -12,6 +13,7 @@
   }
 }
 .statistic-sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 7rem;
 }
@@ -195,4 +197,4 @@
     top: -3px;
     right: 0 !important;
   }
-}/*# sourceMappingURL=minigame-detail.css.map */
+}
