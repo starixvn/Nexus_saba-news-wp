@@ -1575,10 +1575,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .auth-provider .avatar-user {
   width: 3rem;
   height: 3rem;
-  background: #8A2745 !important;
-  border: 1px solid #A2435F;
+  background: #FFC800 !important;
+  border: 1px solid #FFC800;
   font-weight: bold;
-  color: #143CDB !important;
+  color: #000000 !important;
   border-radius: 50%;
   margin: 0 0.5rem 0 0;
   display: flex;
@@ -1594,13 +1594,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .auth-provider .auth-displayname {
   position: relative;
   padding-right: 0.8rem;
-  color: #143CDB;
+  color: #fff;
   font-weight: 700;
+  display: none;
 }
 .auth-provider .auth-displayname:after {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #143CDB;
+  border-top: 5px solid #fff;
   position: absolute;
   top: 10px;
   right: -5px;
@@ -1609,7 +1610,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (min-width: 1391px) {
   .auth-provider .auth-displayname:after {
-    display: block;
+    display: none;
   }
 }
 .auth-provider .auth-displayname .display-user {
@@ -1628,8 +1629,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .box-auth {
   display: none;
-  background: linear-gradient(180deg, #67182B 0%, #470817 100%) !important;
-  border: 1px solid #9A576C !important;
+  background: #091B61 !important;
+  border: 1px solid #0E2A99 !important;
   border-radius: 5px !important;
   list-style: none !important;
   padding: 1.6rem 1.6rem 0 !important;
@@ -1652,7 +1653,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #fff !important;
 }
 .box-auth .info-user {
-  border-bottom: 1px solid #9A576C !important;
+  border-bottom: 1px solid #0E2A99 !important;
 }
 .box-auth .info-user .item {
   padding: 1rem 0;

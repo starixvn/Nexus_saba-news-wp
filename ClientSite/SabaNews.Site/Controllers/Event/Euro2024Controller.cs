@@ -403,5 +403,17 @@ namespace SabaNews.Site.Controllers.Event
             }
             return Json(result);
         }
+
+        [Route("euro-2024/lich-thi-dau")]
+        public IActionResult Fixture()
+        {
+            var header = new HeaderViewModel
+            {
+                Title = Euro2024.TitleFixture,
+                Description = Euro2024.TitleFixture,
+                Slug = Euro2024.UrlFixtureSlug
+            };
+            return View("~/Views/Event/Euro2024/Fixture.cshtml", header);
+        }
     }
 }

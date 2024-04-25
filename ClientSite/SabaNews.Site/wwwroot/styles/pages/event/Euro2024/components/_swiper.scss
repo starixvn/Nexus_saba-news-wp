@@ -67,18 +67,18 @@
 }
 .swiper-button-prev{
     left: 0 !important;
-    border-radius: 0px 3px 3px 0px !important;
+    border-radius: 0px 5px 5px 0px !important;
     transform: translateX(-50px);
 }
 .swiper-button-next{
     right: 0 !important;
-    border-radius: 3px 0px 0px 3px !important;
+    border-radius: 5px 0px 0px 5px !important;
     transform: translateX(50px);
 }
 
 .swiper-button-prev, .swiper-button-next {
     background-image: none !important;
-    background: $primary-color ;
+    background: rgba($color: $primary-color, $alpha: .5) ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -159,9 +159,12 @@
 }
 
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
-    opacity: .5;
-    cursor: no-drop;
-    pointer-events: unset;
+    opacity: .5 !important;
+    cursor: no-drop !important;
+    pointer-events: unset !important;
+    &:hover{
+        background: rgba($color: $primary-color, $alpha: .5) !important;
+    }
 }
 
 @media screen and (max-device-width: 767px) {

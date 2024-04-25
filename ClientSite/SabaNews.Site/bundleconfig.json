@@ -256,6 +256,14 @@
             "wwwroot/styles/pages/event/Euro2024/match-detail.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2024-full-fixture.min.css",
+        "inputFiles": [
+            "wwwroot/lib/swipper/css/swiper.min.css",
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/Euro2024/full-fixture.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
