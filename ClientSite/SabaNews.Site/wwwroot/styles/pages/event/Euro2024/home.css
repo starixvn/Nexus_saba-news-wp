@@ -2235,6 +2235,24 @@ html, body {
   height: 100%;
   width: 100%;
 }
+.block-items-vertical .hover-image .icons-child-video {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.8rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: 3px;
+  height: 1.6rem;
+}
+.block-items-vertical .hover-image .icons-child-video img {
+  margin-right: 0.2rem;
+}
 .block-items-vertical .block-items-heading {
   margin-top: 1rem;
   display: block;
@@ -3597,24 +3615,6 @@ html, body {
 .block-videos-and-kingsocer .block-group .group-video .block-child-video .hover-image {
   height: 13rem;
   max-height: 13rem;
-}
-.block-videos-and-kingsocer .block-group .group-video .block-child-video .hover-image .icons-child-video {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.8rem;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 0.2rem;
-  border-radius: 3px;
-  height: 1.6rem;
-}
-.block-videos-and-kingsocer .block-group .group-video .block-child-video .hover-image .icons-child-video img {
-  margin-right: 0.2rem;
 }
 @media (max-width: 767px) {
   .block-videos-and-kingsocer .block-group .group-video .block-child-video .swiper-slide {
