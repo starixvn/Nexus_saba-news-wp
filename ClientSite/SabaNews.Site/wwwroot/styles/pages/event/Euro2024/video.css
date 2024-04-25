@@ -2868,12 +2868,20 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin: 0 -1.2rem;
     border-radius: 0;
   }
+  .block-items-vertical-hot .hover-image {
+    border-radius: 0;
+  }
 }
 .block-items-vertical-hot .group-title-hot {
   position: unset;
   min-height: auto;
   padding: 0;
   background: transparent;
+}
+@media (max-width: 767px) {
+  .block-items-vertical-hot .group-title-hot {
+    padding: 0 1.2rem;
+  }
 }
 .block-items-vertical-hot .group-title-hot .block-items-heading {
   text-align: left;

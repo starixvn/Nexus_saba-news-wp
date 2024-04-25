@@ -34,12 +34,18 @@
     @include Mobile{
         margin: 0 -1.2rem;
         border-radius: 0;
+        .hover-image{
+            border-radius: 0;
+        }
     }
     .group-title-hot{
         position: unset;
         min-height: auto;
         padding: 0;
         background: transparent;
+        @include Mobile{
+            padding: 0 1.2rem;
+        }
         .block-items-heading{
             text-align: left;
             a{
