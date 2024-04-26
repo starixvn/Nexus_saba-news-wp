@@ -2432,7 +2432,8 @@ html, body {
 }
 @media screen and (max-width: 1024px) {
   .block-items-horizontal .block-items-heading {
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0;
   }
 }
 .block-items-horizontal .block-items-heading:hover {
@@ -2463,7 +2464,7 @@ html, body {
   grid-template-columns: 20rem 1fr;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  grid-gap: 0.6rem 1.2rem;
+  grid-gap: 0 1.2rem;
 }
 .block-items-horizontal-hot:last-child {
   margin-bottom: 0;

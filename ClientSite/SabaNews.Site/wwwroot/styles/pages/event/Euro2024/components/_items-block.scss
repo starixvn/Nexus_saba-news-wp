@@ -146,7 +146,8 @@
     }
     .block-items-heading{
         @include tableMobile{
-            margin-top: .5rem;
+            margin-top: .6rem;
+            margin-bottom: 0;
         }
         color: $text-color;
         font-size: 1.6rem;
@@ -180,7 +181,7 @@
         grid-template-columns: 20rem 1fr;
         padding-bottom: 1rem;
         margin-bottom: 1rem;
-        grid-gap: .6rem 1.2rem;
+        grid-gap: 0 1.2rem;
         &:last-child{
             margin-bottom: 0;
             padding-bottom: 0;
