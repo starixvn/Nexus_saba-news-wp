@@ -2569,8 +2569,14 @@ html, body {
   font-weight: 700;
   line-height: normal;
 }
+.wc-table .wc-table-header .cell-rank {
+  font-weight: 700;
+}
 .wc-table .wc-table-body {
   font-size: 1.3rem;
+}
+.wc-table .wc-table-body .cell-rank {
+  font-weight: 600;
 }
 .wc-table .cell-participant {
   align-self: center;
@@ -2616,6 +2622,7 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
+  font-weight: 600;
 }
 @media screen and (max-width: 1024px) {
   .wc-table .team-name {
@@ -2773,7 +2780,7 @@ html, body {
 }
 .king-soccer .wc-table .wc-table-row {
   border-bottom: none;
-  padding: 0.6rem 1rem;
+  padding: 0.2rem 1rem;
   background: #F2F2F2;
   margin: 0 0 0.8rem;
   border-radius: 5px;
@@ -2819,6 +2826,7 @@ html, body {
 }
 .king-soccer .wc-table .team, .king-soccer .wc-table .team-name {
   color: #222;
+  font-weight: 400;
 }
 .king-soccer .wc-table .player-name {
   font-size: 1.5rem;

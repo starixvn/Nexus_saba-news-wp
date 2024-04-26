@@ -33,10 +33,16 @@
             font-weight: 700;
             line-height: normal;
         }
+        .cell-rank{
+            font-weight: 700;
+        }
     }
 
     .wc-table-body {
         font-size: 1.3rem;
+        .cell-rank{
+            font-weight: 600;
+        }
     }
 
     .cell-participant {
@@ -82,6 +88,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             color: $white-color;
+            font-weight: 600;
             @include tableMobile {
                 width: 11rem;
             }
@@ -259,7 +266,7 @@
         }
         .wc-table-row {
             border-bottom: none;
-            padding: .6rem 1rem;
+            padding: .2rem 1rem;
             background: #F2F2F2;
             margin: 0 0 .8rem;
             border-radius: 5px;
@@ -300,6 +307,7 @@
         }
         .team,.team-name{
             color: $color-title;
+            font-weight: 400;
         }
         .player-name{
             font-size: 1.5rem;
