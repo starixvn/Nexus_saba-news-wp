@@ -105,6 +105,9 @@
             .group-title-hot{
                 grid-column: 2 / 4;
                 .block-items-heading{
+                    @include Mobile{
+                        margin-top: 0;
+                    }
                     a{
                         font-size: 1.4rem;
                     }

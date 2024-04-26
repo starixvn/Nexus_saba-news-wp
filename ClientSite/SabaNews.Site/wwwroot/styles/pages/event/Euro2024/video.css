@@ -2999,6 +2999,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .video-grid .block-items-vertical .group-title-hot {
     grid-column: 2/4;
   }
+}
+@media (max-width: 767px) and (max-width: 767px) {
+  .video-grid .block-items-vertical .group-title-hot .block-items-heading {
+    margin-top: 0;
+  }
+}
+@media (max-width: 767px) {
   .video-grid .block-items-vertical .group-title-hot .block-items-heading a {
     font-size: 1.4rem;
   }
