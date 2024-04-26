@@ -652,7 +652,8 @@
         "outputFileName": "wwwroot/minify/js/euro-2024-video.min.js",
         "inputFiles": [
             "wwwroot/js/event/euro2024/euro2024.js",
-            "wwwroot/js/event/euro2024/video.js"
+            "wwwroot/js/event/euro2024/video.js",
+            "wwwroot/js/event/euro2024/scroll.js"
         ],
         "minify": {
             "enabled": true,
