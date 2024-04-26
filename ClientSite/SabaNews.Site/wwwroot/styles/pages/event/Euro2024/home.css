@@ -3796,3 +3796,12 @@ html, body {
     height: 20rem;
   }
 }
+
+#home-standing {
+  min-height: 59.4rem;
+}
+@media (max-width: 767px) {
+  #home-standing {
+    min-height: 33rem;
+  }
+}

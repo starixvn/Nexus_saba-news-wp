@@ -447,3 +447,10 @@
         }
     }
 }
+
+#home-standing{
+    min-height: 59.4rem;
+    @include Mobile{
+        min-height: 33rem;
+    }
+}
