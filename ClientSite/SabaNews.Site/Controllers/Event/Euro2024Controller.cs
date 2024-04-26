@@ -199,7 +199,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/video")]
         public async Task<IActionResult> Video()
         {
-            var pageSize = Constants.GetSixItems;
+            var pageSize = Constants.GetTwelveItems;
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleVideo,
