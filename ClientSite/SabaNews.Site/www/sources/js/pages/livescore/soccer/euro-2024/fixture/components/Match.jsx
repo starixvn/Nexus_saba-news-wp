@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchStatus, MatchResult, WorldCup } from '@jsroot/common/constants';
+import { MatchStatus, MatchResult } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
