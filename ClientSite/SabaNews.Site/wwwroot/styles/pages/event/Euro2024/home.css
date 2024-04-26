@@ -2465,6 +2465,10 @@ html, body {
   margin-bottom: 1rem;
   grid-gap: 0.6rem 1.2rem;
 }
+.block-items-horizontal-hot:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 @media screen and (max-width: 1024px) {
   .block-items-horizontal-hot {
     grid-template-columns: 15rem 1fr;
@@ -2494,11 +2498,14 @@ html, body {
     max-height: 20.5rem;
   }
 }
+.block-items-horizontal-hot .block-heading-description {
+  font-weight: 600;
+}
 .block-items-horizontal .block-heading-description {
   color: #2F2F2F;
   font-size: 1.4rem;
   line-height: normal;
-  font-weight: 600;
+  font-weight: 400;
 }
 @media (max-width: 767px) {
   .block-items-horizontal .block-heading-description {
