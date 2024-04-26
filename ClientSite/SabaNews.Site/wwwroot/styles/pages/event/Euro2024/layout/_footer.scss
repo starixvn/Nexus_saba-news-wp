@@ -4,6 +4,7 @@
     background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
     border-top: 4px solid #F12F19;
     padding: 3.2rem 0;
+    margin-top: auto;
     @include Mobile{
         padding: 2rem 0;
     }
