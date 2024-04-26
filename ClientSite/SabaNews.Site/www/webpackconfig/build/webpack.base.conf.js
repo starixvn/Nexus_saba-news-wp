@@ -62,7 +62,7 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/euro-2024/fixture`]: pathConfig.cssPaths.livescore_soccer_euro2024_fixture,
             [`${cssPath}/pages/livescore/soccer/euro-2024/match-detail`]: pathConfig.cssPaths.livescore_soccer_euro2024_match_detail,
             [`${cssPath}/pages/livescore/soccer/euro-2024/standing`]: pathConfig.cssPaths.livescore_soccer_euro2024_standing,
-            [`${cssPath}/pages/livescore/soccer/euro-2024/match-detail`]: pathConfig.cssPaths.livescore_soccer_euro2024_full_fixture,
+            [`${cssPath}/pages/livescore/soccer/euro-2024/full-fixture`]: pathConfig.cssPaths.livescore_soccer_euro2024_full_fixture,
 
         },
         output: {

@@ -2004,6 +2004,55 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+.btn-play-video {
+  height: 8rem;
+  width: 8rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(50%, -50%);
+  right: 50%;
+  top: 50%;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .btn-play-video {
+    height: 4.6rem;
+    width: 4.6rem;
+  }
+}
+.btn-play-video span {
+  font-size: 4.6rem;
+  color: #fff;
+}
+@media screen and (max-width: 1024px) {
+  .btn-play-video span {
+    font-size: 2rem;
+  }
+}
+
+.load-more-page {
+  text-align: center;
+}
+.load-more-page button {
+  border: 1px solid #143CDB;
+  background: #143CDB;
+  width: 13.5rem;
+  height: 4.2rem;
+  margin: 0.4rem auto;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 .container, .base-container {
   width: 100%;
   padding: 0 1rem;
