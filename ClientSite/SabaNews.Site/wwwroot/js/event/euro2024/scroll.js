@@ -51,7 +51,7 @@
         $(window).on("scroll", function () {
             const scrollHeight = $(document).height();
             const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
-            const isBottom = scrollHeight - $('.footer').innerHeight() < scrollPos;
+            const isBottom = scrollHeight - $('.footer-event').innerHeight() < scrollPos;
             if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
                 page++;
                 GetDataGrid(page);

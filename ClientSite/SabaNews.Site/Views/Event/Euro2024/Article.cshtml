@@ -1,4 +1,7 @@
 @using DeviceDetectorNET
+@{
+    Layout = "_LayoutEuro2024";
+}
 @section Metadata {
     <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt : "&nbsp;" )' />
     <meta property="og:url" content='@Model.AbsoluteUrl' />
@@ -248,7 +251,6 @@
     </div>
 </div>
 
-@await Html.PartialAsync("~/Views/Event/Euro2024/_Footer.cshtml")
 <script>
     var checkScroll = function () {
         var el = document.querySelector('#comment');

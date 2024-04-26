@@ -1,6 +1,9 @@
 @using SabaNews.Core.Constants
 @using DeviceDetectorNET;
 @using static SabaNews.Site.Extensions.LivescoreHelper
+@{
+    Layout = "_LayoutEuro2024";
+}
 @section Title {
     @Model.Header.Title
 }
@@ -186,5 +189,3 @@
         </div>
     </div>
 </section>
-
-@await Html.PartialAsync("~/Views/Event/Euro2024/_Footer.cshtml")
