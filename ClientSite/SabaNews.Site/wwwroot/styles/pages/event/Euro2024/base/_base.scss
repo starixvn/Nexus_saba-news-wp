@@ -200,3 +200,11 @@ html,body{
 .footer{
     display: none;
 }
+
+#euro-fixture{
+    min-height: 13rem;
+    background: #061140;
+    @include tableMobile{
+        min-height: 10.6rem;
+    }
+}

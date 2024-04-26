@@ -1222,6 +1222,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .right-header-section.hidden-pc {
     display: block;
     top: 8px;
+    left: 0;
   }
 }
 .right-header-section.hidden-mb {
@@ -1991,6 +1992,16 @@ html, body {
 
 .footer {
   display: none;
+}
+
+#euro-fixture {
+  min-height: 13rem;
+  background: #061140;
+}
+@media screen and (max-width: 1024px) {
+  #euro-fixture {
+    min-height: 10.6rem;
+  }
 }
 
 .container, .base-container {
