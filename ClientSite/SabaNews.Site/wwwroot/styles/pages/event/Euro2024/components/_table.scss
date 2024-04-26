@@ -64,7 +64,7 @@
         align-items: center;
         font-size: 1.4rem;
         &-logo {
-            margin-right: 1.6rem;
+            margin-right: 1.7rem;
             border: 1px solid $white-color;
             background: $white-color;
             border-radius: 100px;
@@ -83,7 +83,7 @@
         }
 
         &-name {
-            width: 11rem;
+            width: 9rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -322,6 +322,9 @@
             @include Mobile{
                 font-size: 1.2rem;
             }
+        }
+        .team-logo{
+            margin-right: 1rem;
         }
     }
 }
