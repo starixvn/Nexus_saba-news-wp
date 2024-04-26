@@ -27,7 +27,8 @@ const cssPaths = {
     livescore_soccer_euro2024_fixture: ['./www/sources/css/pages/livescore/soccer/euro-2024/fixture.scss'],
     livescore_soccer_euro2024_match_detail: ['./www/sources/css/pages/livescore/soccer/euro-2024/match-detail.scss'],
     livescore_soccer_euro2024_standing: ['./www/sources/css/pages/livescore/soccer/euro-2024/standing.scss'],
-    livescore_soccer_euro2024_full_fixture : ['./www/sources/css/pages/livescore/soccer/euro-2024/full-fixture.scss']
+    livescore_soccer_euro2024_full_fixture : ['./www/sources/css/pages/livescore/soccer/euro-2024/full-fixture.scss'],
+    livescore_soccer_euro2024_team_detail : ['./www/sources/css/pages/livescore/soccer/euro-2024/team-detail.scss']
 };
 
 const scriptPaths = {
@@ -56,8 +57,8 @@ const scriptPaths = {
     livescore_soccer_euro2024_fixture: ['./www/sources/js/pages/livescore/soccer/euro-2024/fixture/index.jsx'],
     livescore_soccer_euro2024_match_detail: ['./www/sources/js/pages/livescore/soccer/euro-2024/match-detail/index.jsx'],
     livescore_soccer_euro2024_standing: ['./www/sources/js/pages/livescore/soccer/euro-2024/standing/index.jsx'],
-
     livescore_soccer_euro2024_full_fixture: ['./www/sources/js/pages/livescore/soccer/euro-2024/full-fixture/index.jsx'],
+    livescore_soccer_euro2024_team_detail: ['./www/sources/js/pages/livescore/soccer/euro-2024/team-detail/index.jsx'],
 };
 
 module.exports = {

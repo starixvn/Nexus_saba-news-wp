@@ -44,6 +44,7 @@
 
         Task<IList<MatchSitemap>> GetMatchSitemapAsync();
 
+        Task<IList<Match>> GetMatchByTeamSeasonAsync(GetMatchByTeamSeasonCriteria criteria);
 
     }
 }

@@ -13,8 +13,10 @@ using SabaNews.Criteria.Posts;
 using SabaNews.Livescore.Models.Match;
 using SabaNews.Livescore.Services;
 using SabaNews.Livescore.Services.Criteria.League;
+using SabaNews.Livescore.Services.Criteria.Match;
 using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel;
+using SabaNews.Models.ViewModel.Event.Euro2024;
 using SabaNews.Models.ViewModel.Event.WorldCup;
 using SabaNews.Models.ViewModel.Poll;
 using SabaNews.Models.ViewModel.Posts;
@@ -34,6 +36,7 @@ namespace SabaNews.Site.Controllers.Event
         private readonly ILeagueService leagueService;
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
+        private readonly IMatchService matchService;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -43,7 +46,8 @@ namespace SabaNews.Site.Controllers.Event
             IUserService userService,
             IPollService pollService,
             ILeagueService leagueService,
-            IOptionService optionService
+            IOptionService optionService,
+            IMatchService matchService
         )
         {
             this.dataControlService = dataControlService;
@@ -54,6 +58,7 @@ namespace SabaNews.Site.Controllers.Event
             this.pollService = pollService;
             this.leagueService = leagueService;
             this.optionService = optionService;
+            this.matchService = matchService;
         }
         [Route("/euro-2024")]
         public async Task<IActionResult> Index ()
@@ -231,6 +236,32 @@ namespace SabaNews.Site.Controllers.Event
                 MatchId = matchId
             };
             return View("~/Views/Event/Euro2024/MatchDetail.cshtml", model);
+        }
+
+        [Route("euro-2024/doi-tuyen")]
+        public async Task<IActionResult> Team()
+        {
+            var standings = await dataControlService.GetLeagueSeasonStandingAsync(Euro2024.LeagueId, Euro2024.SeasonId);
+            var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
+            var model = new TeamViewModel
+            {
+                Header = new HeaderViewModel
+                {
+                    Title = Euro2024.TitleFixture,
+                    Description = Euro2024.TitleFixture,
+                    Slug = Euro2024.FixtureSlug
+                },
+                Standings = groupsStageStanding
+            };
+            return View("~/Views/Event/Euro2024/Team.cshtml", model);
+        }
+
+        [Route("euro-2024/{teamName}/{teamId}")]
+        public async Task<IActionResult> TeamDetail(long teamId)
+        {
+            var matches = await matchService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = teamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId});
+            
+            return View("~/Views/Event/Euro2024/TeamDetail.cshtml", matches);
         }
 
         [HttpPost]
