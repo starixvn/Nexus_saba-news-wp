@@ -31,7 +31,7 @@ export default class Match extends PureComponent {
     };
 
     onClick = event => {
-        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, 'euro-2024');
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

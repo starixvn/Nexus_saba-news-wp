@@ -232,6 +232,10 @@
     <ul class="main-child-menu">
         @foreach (var menu in menus)
         {
+            if(menu.Slug == "")
+            {
+                continue;
+            }
             var active = menu.Slug == Model.CateSlug ? "active" : "";
             <li class="menu-item">
                 <a href=@($"/{Euro2024.HomepageSlug}/{menu.Slug}") class="item @active">
