@@ -4,5 +4,16 @@
 @import './layout/header';
 @import './layout/footer';
 @import './components/container';
-// @import './components/block';
-// @import './components/table';
+@import './components/block';
+@import './components/table';
+@import './components/nav-tabs-event';
+
+.block-heading{
+    text-align: center;
+}
+
+.king-soccer{
+    .name-bxh{
+        color: $color-content;
+    }
+}

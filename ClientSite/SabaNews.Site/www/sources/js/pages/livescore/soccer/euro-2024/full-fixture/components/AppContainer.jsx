@@ -106,7 +106,7 @@ export class AppContainer extends Component {
         }
         const stages = this.groupMatchesByStage(matches, league);
         return (
-            <div className="livescore-soccer">
+            <div className="container">
                 <SignalR  />
                 <div className="livescore-soccer-main" >
                     <Grid stages={stages}/>

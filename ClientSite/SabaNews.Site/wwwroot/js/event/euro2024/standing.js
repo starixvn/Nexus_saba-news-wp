@@ -11,23 +11,23 @@ var euro2024Standing = (function ($) {
             $('#btn-detail-standing').removeClass("active");
             $("#btn-knock-out").addClass("active");
             $('#detail-standing').hide();
-            $('#knock-out').show();
+            $('#knock-out-main').show();
         } else {
             $('#detail-standing').show();
-            $('#knock-out').hide();
+            $('#knock-out-main').hide();
         }
         
         $('#btn-detail-standing').on('click', function () {
             $('#btn-detail-standing').addClass("active");
             $("#btn-knock-out").removeClass("active");
             $('#detail-standing').show();
-            $('#knock-out').hide();
+            $('#knock-out-main').hide();
         });
         $('#btn-knock-out').on('click', function () {
             $('#btn-detail-standing').removeClass("active");
             $("#btn-knock-out").addClass("active");
             $('#detail-standing').hide();
-            $('#knock-out').show();
+            $('#knock-out-main').show();
         });
     }
 

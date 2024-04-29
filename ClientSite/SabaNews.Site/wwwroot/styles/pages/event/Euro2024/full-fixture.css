@@ -2230,3 +2230,36 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     top: 5rem;
   }
 }
+
+.live-score-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #143CDB;
+  max-width: 76rem;
+  margin: 2rem auto;
+}
+.live-score-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.live-score-nav a, .live-score-nav .nav-item {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1.6rem;
+  color: #444;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: normal;
+}
+.live-score-nav a.active, .live-score-nav .nav-item.active {
+  background: #143CDB;
+  border-radius: 5px 5px 0px 0px;
+  color: #fff;
+}
+
+.block-heading {
+  text-align: center;
+}
