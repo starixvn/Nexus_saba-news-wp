@@ -381,6 +381,7 @@
             {
                 return Ok(false);
             }
+            ViewBag.CurrentPage = param.Page;
             return PartialView("~/Views/Home/_CategoryGridView.cshtml", posts);
         }
 
