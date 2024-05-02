@@ -80,17 +80,17 @@
             var service = GetFetchDataService();
             var slug = Constants.VideoSlug;
             var page = fixture.Create<int>();
-            var criteria = fixture.Create<GetPostsByCateSlugCriteria>();
+            var criteria = fixture.Create<GetVideoPostsBySlugCriteria>();
 
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
             var category = fixture.Create<Category>();
             var expectedCateInfos = new List<CategoryGeneral>()
             {
-                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
-                new CategoryGeneral { Id = 2, Slug = "video" }
+                new() { Id = 1, Slug = "tin-the-thao" },
+                new() { Id = 2, Slug = "video" }
             };
-            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => criteria = x)).Returns(posts);
+            postService.GetVideoPostsBySlugAsync(Arg.Do<GetVideoPostsBySlugCriteria>(x => criteria = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
             //Act
@@ -115,8 +115,8 @@
             var posts = fixture.Create<IEnumerable<Post>>();
             var expectedCateInfos = new List<CategoryGeneral>()
             {
-                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
-                new CategoryGeneral { Id = 2, Slug = "bong-da" }
+                new() { Id = 1, Slug = "tin-the-thao" },
+                new() { Id = 2, Slug = "bong-da" }
             };
             var category = new Category { CateId = 1, Description = "description", Title = "title" };
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => paramGetRecent = x)).Returns(posts);
@@ -433,6 +433,69 @@
 
             //Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagueSeasonStandingAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var criteria = fixture.Create<GetLeagueSeasonStandingCriteria>();
+
+            var expected = fixture.Create<IList<SeasonStandings>>();
+            leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetLeagueSeasonStandingAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchBySeasonAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var criteria = fixture.Create<GetMatchBySeasonCriteria>();
+
+            var expected = fixture.Create<(League, IList<Match>)>();
+            matchService.GetMatchBySeasonAsync(Arg.Do<GetMatchBySeasonCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetMatchBySeasonAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected.Item1, actual.League);
+            Assert.Equal(expected.Item2, actual.Matches);
+        }
+
+        [Fact]
+        public async Task GetEuro2024ViewModel_WhenCalled_ReturnExpectedPostViewModel()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+            var slug = fixture.Create<string>();
+            var first = fixture.Create<int>();
+            var end = fixture.Create<int>();
+
+            var posts = fixture.Create<IEnumerable<Post>>();
+            var category = fixture.Create<Category>();
+            postService.GetPostsBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => first = x), Arg.Do<int>(x => end = x)).Returns(posts);
+            postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
+
+            //Act
+            var actual = await service.GetEuro2024ViewModel();
+
+            //Assert
+            Assert.Equal(posts, actual.LastestNews);
+            Assert.Equal(posts, actual.Commentary);
+            Assert.Equal(posts, actual.Videos);
+            Assert.Equal(category, actual.Category);
         }
 
         #region Helpers

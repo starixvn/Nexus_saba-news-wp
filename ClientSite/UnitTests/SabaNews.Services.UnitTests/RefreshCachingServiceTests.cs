@@ -11,6 +11,8 @@
     using SabaNews.Models.Banner;
     using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -510,7 +512,6 @@
             var service = GetRefreshCachingService();
             var logMessage = fixture.Create<string>();
             var exception = fixture.Create<Exception>();
-            var param = fixture.Create<GetRecentPostsParam>();
 
             fetchDataService.When(x => x.GetTodayMatches()).Throw(exception);
             logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
@@ -523,6 +524,48 @@
             await logService.Received().WriteExceptionSentryErrorAsync(exception);
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
         }
+
+        [Fact]
+        public async Task UpdateEuro2024HomepageCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+
+            fetchDataService.When(x => x.GetEuro2024ViewModel()).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateEuro2024HomepageCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
+        [Fact]
+        public async Task UpdateEuro2024HomepageCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<Euro2024ViewModel>();
+
+            fetchDataService.GetEuro2024ViewModel().Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateEuro2024HomepageCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        
         
 
 

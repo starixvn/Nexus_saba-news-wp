@@ -14,6 +14,7 @@ using SabaNews.Models.Banner;
 using SabaNews.Models.Home;
 using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel;
+using SabaNews.Models.ViewModel.Event.Euro2024;
 using SabaNews.Models.ViewModel.Event.WorldCup;
 using SabaNews.Models.ViewModel.Posts;
 using SabaNews.Services.Interfaces;
@@ -700,6 +701,169 @@ namespace SabaNews.Services.UnitTests
 
             //Act
             var actual = await service.GetLeagues();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchBySeasonAsync_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var expected = fixture.Create<MatchLeague>();
+
+            cacheWrapperService.GetAsync<MatchLeague>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetMatchBySeasonAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchBySeasonAsync_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            MatchLeague expectedFromCache = null;
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var expected = fixture.Create<MatchLeague>();
+
+            cacheWrapperService.GetAsync<MatchLeague>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetMatchBySeasonAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<MatchLeague>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetMatchBySeasonAsync_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var expected = fixture.Create<MatchLeague>();
+            fetchDataService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetMatchBySeasonAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagueSeasonStandingAsync_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var expected = fixture.Create<IList<SeasonStandings>>();
+
+            cacheWrapperService.GetAsync<IList<SeasonStandings>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetLeagueSeasonStandingAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagueSeasonStandingAsync_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            IList<SeasonStandings> expectedFromCache = null;
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var expected = fixture.Create<IList<SeasonStandings>>();
+
+            cacheWrapperService.GetAsync<IList<SeasonStandings>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetLeagueSeasonStandingAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetLeagueSeasonStandingAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<SeasonStandings>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetLeagueSeasonStandingAsync_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var expected = fixture.Create<IList<SeasonStandings>>();
+            fetchDataService.GetLeagueSeasonStandingAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetLeagueSeasonStandingAsync(leagueId, seasonId);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+
+        [Fact]
+        public async Task GetEuro2024PageViewModel_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<Euro2024ViewModel>();
+
+            cacheWrapperService.GetAsync<Euro2024ViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetEuro2024PageViewModel();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetEuro2024PageViewModel_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            Euro2024ViewModel expectedFromCache = null;
+            var expected = fixture.Create<Euro2024ViewModel>();
+
+            cacheWrapperService.GetAsync<Euro2024ViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetEuro2024ViewModel().Returns(expected);
+
+            //Act
+            var actual = await service.GetEuro2024PageViewModel();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<Euro2024ViewModel>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetEuro2024PageViewModel_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<Euro2024ViewModel>();
+            fetchDataService.GetEuro2024ViewModel().Returns(expected);
+
+            //Act
+            var actual = await service.GetEuro2024PageViewModel();
 
             //Assert
             Assert.Equal(expected, actual);

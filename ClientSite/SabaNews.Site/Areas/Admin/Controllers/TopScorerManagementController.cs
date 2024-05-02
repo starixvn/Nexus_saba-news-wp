@@ -90,7 +90,6 @@
             IList<SeasonStandings> teams = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var players = await leagueService.GetPlayerByIdTeamAsync(param.TeamId);
             var playUpdate = await leagueService.GetTopScorersByRowNumAsync(param.RowNum, param.LeagueId, param.SeasonId);
-            
             var model = new PlayerViewModel
             {
                 TopScorers = playUpdate[0],
