@@ -514,6 +514,7 @@
             // Arrange
             var controller = GetController();
             var standings = new Fixture().Create<IList<SeasonStandings>>();
+            standings[0].StageId = Euro2024.GroupStageId;
             var standingsCriteria = new Fixture().Create<GetLeagueSeasonStandingCriteria>();
             leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => standingsCriteria = x)).Returns(standings);
             var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();

@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import LangHelper from '@jsroot/common/langHelper';
 
-export class MatchSummary extends Component {
+export class Summary extends Component {
     checkIncidentMainTimeEventType = type => {
         return type === IncidentStatus.End
             || type === IncidentStatus.ExtraTimeEnd
@@ -240,4 +240,4 @@ const mapStateToProps = state => {
     return { match };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MatchSummary);
+export default connect(mapStateToProps, mapDispatchToProps)(Summary);

@@ -1,18 +1,18 @@
-import standingPlayoffSlice, {
+import standingSlice, {
     setMatches,
     setLeague,
     setLiveMatches,
     setSelectedStageId
-} from '../standingPlayoffSlice';
+} from '../standingSlice';
 
 
-describe('standingPlayoffSlice', () => {
+describe('standingSlice', () => {
     afterAll(() => {
         jest.clearAllMocks();
     });
 
     it('initial state correctly', () => {
-        expect(standingPlayoffSlice(undefined, {})).toEqual({
+        expect(standingSlice(undefined, {})).toEqual({
             matches: null,
             stages: [],
             league: null
@@ -23,7 +23,7 @@ describe('standingPlayoffSlice', () => {
         describe('setMatches', () => {
             it('updates state correctly', () => {
                 expect(
-                    standingPlayoffSlice({
+                    standingSlice({
                         matches: [],
                         stages: []
                     }, {
@@ -48,7 +48,7 @@ describe('standingPlayoffSlice', () => {
         describe('setLeague', () => {
             it('updates state correctly', () => {
                 expect(
-                    standingPlayoffSlice({
+                    standingSlice({
                         league: null
                     }, {
                         type: setLeague.type,

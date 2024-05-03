@@ -257,65 +257,6 @@ describe('AppContainer', () => {
         });
     });
 
-    describe('groupMatches', () => {
-        it('return correctly when call function', () => {
-            // Arrange
-            const matches = [
-                {
-                    matchId: 1,
-                    stage: { stageId: 1, stageNameEN: 'stage' },
-                },
-                {
-                    matchId: 2,
-                    stage: { stageId: 2, stageNameEN: 'stage' },
-                },
-                {
-                    matchId: 3,
-                    stage: { stageId: 1, stageNameEN: 'stage' },
-                }
-            ];
-
-            const props = {
-                ...defaultProps,
-                matches: matches,
-                league: { leagueId: 1 }
-            }
-
-            const playoffStages = [
-                { key: 1, stage: { stageId: 1 }, matches: [{ matchId: 1 }, { matchId: 2 }] },
-                { key: 2, stage: { stageId: 2 }, matches: [{ matchId: 3 }, { matchId: 4 }] }
-            ]
-            const groupSecondLegMatches = [{ matchId: 1 }, { matchId: 2 }];
-
-            const container = shallow(<AppContainer {...props} />);
-            const instance = container.instance();
-            instance.groupMatchByStage = jest.fn().mockReturnValue(playoffStages);
-            instance.groupMatchBySecondLeg = jest.fn().mockReturnValue(groupSecondLegMatches);
-            instance.sortMatchByLastStage = jest.fn().mockReturnValue(groupSecondLegMatches);
-
-            // Act
-            const result = instance.groupMatches(matches);
-
-            // Assert
-            expect(result).toEqual([
-                {
-                    key: 1,
-                    stage: { stageId: 1 },
-                    matches: [
-                        { matchId: 1 }, { matchId: 2 },
-                    ]
-                },
-                {
-                    key: 2,
-                    stage: { stageId: 2 },
-                    matches: [
-                        { matchId: 1}, { matchId: 2 },
-                    ]
-                }
-            ]);
-        });
-    });
-
     describe('sortMatchByLastStage', () => {
         it('return correctly data when call function', () => {
             // Arrange

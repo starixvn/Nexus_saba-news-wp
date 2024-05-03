@@ -8,7 +8,7 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
 
-export default class MatchGeneralInfo extends PureComponent {
+export default class GeneralInfo extends PureComponent {
     constructor(props) {
         super(props);
     }
