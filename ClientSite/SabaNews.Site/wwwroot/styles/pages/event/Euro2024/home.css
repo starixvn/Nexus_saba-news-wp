@@ -3504,6 +3504,9 @@ html, body {
 .block-standing .grid-bxh-items .wc-table-4::after {
   background: #FFC800;
 }
+.block-standing .grid-bxh-items .wc-table-4 .wc-table-cell {
+  color: #000;
+}
 .block-standing .grid-bxh-items .wc-table-5::after {
   background: #Fff;
 }
