@@ -2534,10 +2534,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .live-score-nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid #143CDB;
-  max-width: 76rem;
   margin: 2rem auto;
 }
 .live-score-nav ul {
@@ -2549,7 +2547,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .live-score-nav a, .live-score-nav .nav-item {
   display: inline-block;
   text-decoration: none;
-  padding: 0.5rem 1.6rem;
+  padding: 0.5rem 2.4rem;
   color: #444;
   font-size: 1.6rem;
   font-weight: 600;
@@ -2557,7 +2555,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .live-score-nav a.active, .live-score-nav .nav-item.active {
   background: #143CDB;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px;
   color: #fff;
 }
 

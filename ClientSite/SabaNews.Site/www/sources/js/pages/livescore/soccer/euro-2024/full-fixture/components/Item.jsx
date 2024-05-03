@@ -46,13 +46,13 @@ export default class Item extends PureComponent {
             case MatchStatus.Cancel:
             case MatchStatus.TBD:
                 return (
-                    <ul className="wc-round-score">
+                    <ul className="euro-round-score">
                         <li className="total-score"> VS </li>
                     </ul>
                 );
             default:
                 return (
-                    <ul className="wc-round-score">
+                    <ul className="euro-round-score">
                         <li className="total-score">
                             <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
                             <span> - </span>
@@ -76,37 +76,48 @@ export default class Item extends PureComponent {
         const matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
         return (
             <>
-                <div className="group-match-item" onClick={this.onClick}>
-                    <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
-                    >
-                        <div className="soccer-match-date-result">
-                            <div className="group-live-icon">
-                                {/* <i className="icon-livescore icon-wc-live" /> */}
-                                <MatchStage match={match} />
-                            </div>
-                        </div>
-                        <div className="soccer-match-team">
-                            <div className="group-team">
-                                <div className="soccer-team home-team">
-                                    <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, true)}
-                                    </ul>
-                                    <TeamScore match={match} isHomeTeam />
-                                    <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
+                <div className="soccer-match-grid-items" onClick={this.onClick}>
+                    <div className="group-match-item" onClick={this.onClick}>
+                        <div className={`euro-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
+                        >
+                            <div className="euro-match-team">
+                                <div className="euro-match-team-home">
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                    <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                 </div>
-
-                                {this.getScores(match)}
-
-                                <div className="soccer-team away-team">
+                                <div className="euro-match-team-away">
                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                     <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
-                                    <ul className="soccer-team-status">
-                                        {this.getTeamStatus(match, false)}
-                                    </ul>
-                                    <TeamScore match={match} />
                                 </div>
                             </div>
+                            {/* <div className="soccer-match-date-result">
+                                <div className="group-live-icon">
+                                    <MatchStage match={match} />
+                                </div>
+                            </div>
+                            <div className="soccer-match-team">
+                                <div className="group-team">
+                                    <div className="soccer-team home-team">
+                                        <ul className="soccer-team-status">
+                                            {this.getTeamStatus(match, true)}
+                                        </ul>
+                                        <TeamScore match={match} isHomeTeam />
+                                        <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
+                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                    </div>
+
+                                    {this.getScores(match)}
+
+                                    <div className="soccer-team away-team">
+                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                                        <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
+                                        <ul className="soccer-team-status">
+                                            {this.getTeamStatus(match, false)}
+                                        </ul>
+                                        <TeamScore match={match} />
+                                    </div>
+                                </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

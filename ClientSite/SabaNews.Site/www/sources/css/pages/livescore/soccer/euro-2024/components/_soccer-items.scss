@@ -1,0 +1,27 @@
+.soccer-match-grid-main{
+    margin-bottom: 2rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.soccer-match-grid-body{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
+
+.soccer-match-grid-items{
+    border-radius: 5px;
+    border: 1px solid #DADADA;
+    background: #FFFDF9;
+    padding: 1.2rem;
+}
+
+.soccer-match-grid-date{
+    color: $color-222;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: .8rem;
+}
