@@ -315,5 +315,11 @@
 
             return await baseService.ExecuteNonQueryAsync(cmd);
         }
+
+        public async Task<IList<TeamStage>> GetTeamByStage(long leagueId, long seasonId, long stageId)
+        {
+            var teams = await baseService.GetDataAsync<TeamStage>(new GetAllLeaguesCriteria());
+            return teams.ToList();
+        }
     }
 }

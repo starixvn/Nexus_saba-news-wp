@@ -36,7 +36,6 @@
         private IPostService postService;
         private IConfiguration configuration;
         private ISessionService sessionService;
-        private IUserService userService;
         private ILeagueService leagueService;
         private IOptionService optionService;
         private IPollService pollService;
@@ -242,7 +241,6 @@
             sessionService.User = expectedUser;
             postService.GetPostDetailAsync(Arg.Do<long>(x => x = postId)).Returns(expected);
             postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
-            userService.GetUserByIdAsync(Arg.Do<int>(x => x = 1)).Returns(expectedUser);
             //Act
             var result = await controller.Article(slug);
 
@@ -539,12 +537,11 @@
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             sessionService = Substitute.For<ISessionService>();
-            userService = Substitute.For<IUserService>();
             leagueService = Substitute.For<ILeagueService>();
             optionService = Substitute.For<IOptionService>();
             pollService = Substitute.For<IPollService>();
             matchService = Substitute.For<IMatchService>();
-            var controller = new Euro2024Controller(dataControlService, postService, sessionService, configuration, userService, pollService, leagueService, optionService, matchService);
+            var controller = new Euro2024Controller(dataControlService, postService, sessionService, configuration, pollService, leagueService, optionService, matchService);
 
             return controller;
         }

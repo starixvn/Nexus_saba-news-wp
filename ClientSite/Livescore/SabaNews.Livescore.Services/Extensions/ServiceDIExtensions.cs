@@ -11,6 +11,7 @@
             services.AddScoped<IMatchRepository, MatchRepository>();
             services.AddScoped<ILeagueService, LeagueService>();
             services.AddScoped<IMatchService, MatchService>();
+            services.AddScoped<ITeamService, TeamService>();
             services.AddScoped<IPushSignalService, PushSignalService>();
         }
     }

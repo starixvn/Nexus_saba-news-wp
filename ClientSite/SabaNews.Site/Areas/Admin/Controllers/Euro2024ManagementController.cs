@@ -2,6 +2,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Livescore.Services;
     using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Services.Interfaces;
     using System.Linq;
@@ -11,11 +12,13 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     {
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
+        private readonly ITeamService teamService;
 
-        public Euro2024ManagementController(IOptionService optionService, IPollService pollService)
+        public Euro2024ManagementController(IOptionService optionService, IPollService pollService, ITeamService teamService)
         {
             this.optionService = optionService;
             this.pollService = pollService;
+            this.teamService = teamService;
         }
         public async Task<ActionResult> Poll()
         {
@@ -35,6 +38,18 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 SelectedQuest = currentQuestionName
             };
             return View(viewModel);
+        }
+
+        public async Task<ActionResult> Team()
+        {
+            var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
+            return View(teams);
+        }
+
+        public async Task<ActionResult> PlayerTeam(long teamId)
+        {
+            var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
+            return View(teams);
         }
 
         public async Task<ActionResult> UpdatePoll(long pollId)

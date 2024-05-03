@@ -1,0 +1,100 @@
+﻿@using SabaNews.Resources
+@using static SabaNews.Site.Extensions.LivescoreHelper
+@{
+    Layout = "_AdminLayout";
+}
+
+@section TopHeader {
+    @ViewResources.TopScorersManagement
+}
+
+@section Title {
+    @ViewResources.TopScorersManagement
+}
+@section ActiveMenu {
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.TopScorersManagement" />
+}
+@section Styles {
+    <link rel="stylesheet" href="~/styles/pages/admin/topscorers/topscorers.css" asp-append-version="true">
+}
+
+<section class="page-content">
+    <div class="content">
+        <div class="add-player">
+            <button href="javascript:;" class="label label-blue btn-link btn_player"><img
+                    src="~/images/icon/icon-plus.png" class="icon-add-player" />@ViewResources.AddPlayer</button>
+        </div>
+        <div class="data-grid" id="data-grid">
+            <div class="table-admin">
+                <table class="data-grid">
+                    <thead>
+                        <tr>
+                            <th width="5%">#</th>
+                            <th width="13%">Team Name</th>
+                            <th width="13%">Logo</th>
+                            <th>@ViewResources.Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var count = 0;
+                            foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td class="text-center">@count</td>
+                                    <td class="text-left">@GetGeneralName(item.TeamNameVN, item.TeamNameEN, item.TeamFullNameEN)</td>
+                                    <td class="text-center"><img src="@(item.IconVN ?? GetTeamIcon(item.Icon))" width="100"></td>
+                                    <td class="text-center">
+                                        <i class="icon icon-edit-admin btn-Edit" title="Edit"
+                                            data-url=""></i>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="NoticeModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title title-success">
+                    <h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
+
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal"
+                        aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-edit-center" id="EditPlayerContent" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title"></h2>
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body ck-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/admin/topscorers/topscorers.js" asp-append-version="true"></script>
+}

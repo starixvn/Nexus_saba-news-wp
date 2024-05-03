@@ -257,6 +257,7 @@
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
+        <Setting Key="Livescore_Team_GetByStage" SpName="Livescore_Team_GetByStage" DbName="sabasports" Plain="0"></Setting>
     </Function>
     <Function Name="Api">
         <Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />

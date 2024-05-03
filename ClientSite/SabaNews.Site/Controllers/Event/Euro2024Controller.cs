@@ -32,7 +32,6 @@ namespace SabaNews.Site.Controllers.Event
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
-        private readonly IUserService userService;
         private readonly ILeagueService leagueService;
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
@@ -43,7 +42,6 @@ namespace SabaNews.Site.Controllers.Event
             IPostService postService,
             ISessionService sessionService,
             IConfiguration configuration,
-            IUserService userService,
             IPollService pollService,
             ILeagueService leagueService,
             IOptionService optionService,
@@ -54,7 +52,6 @@ namespace SabaNews.Site.Controllers.Event
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
-            this.userService = userService;
             this.pollService = pollService;
             this.leagueService = leagueService;
             this.optionService = optionService;
@@ -330,8 +327,7 @@ namespace SabaNews.Site.Controllers.Event
             var isUserLogin = sessionService.User != null;
             if (isUserLogin)
             {
-                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
-                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+                savePost = sessionService.User.HandleSavePosts?.Find(val => val.PostID == post.ID);
             }
             var cateParents= await postService.GetCateParentsAsync(cateInfo.Slug);
             var domain = configuration.GetValue<string>(Constants.BaseUrl);
