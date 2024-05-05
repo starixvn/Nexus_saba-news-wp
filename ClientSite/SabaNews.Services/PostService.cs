@@ -43,7 +43,7 @@
         {
             var criteria = new GetPostsBySlugCriteria
             {
-                CategorySlug = slug.Trim(),
+                CategorySlug = slug?.Trim(),
                 Start = start,
                 End = end,
                 PostType = postType
