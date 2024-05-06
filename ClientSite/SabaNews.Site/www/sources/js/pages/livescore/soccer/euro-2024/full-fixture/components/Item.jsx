@@ -92,9 +92,9 @@ export default class Item extends PureComponent {
                             </div>
                             <div className="euro-result">
                                 {this.getScores(match)}
-                                {/* <div className="group-live-icon">
+                                <div className="group-live-icon">
                                     <MatchStage match={match} />
-                                </div> */}
+                                </div>
                             </div>
 
 

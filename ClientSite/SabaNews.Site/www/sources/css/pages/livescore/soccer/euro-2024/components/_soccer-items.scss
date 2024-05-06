@@ -27,14 +27,15 @@
     &::after{
         content: '';
         display: block;
-        width: 15rem;
+        width: 100%;
+        max-width: 23rem;
         height: 100%;
         background: #143CDB;
         position: absolute;
-        right: 0;
+        left: 0;
         top: 0;
         z-index: 0;
-        clip-path: polygon(5% 0%, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(0 0, 95% 0%, 100% 100%, 0% 100%);
     }
 }
 
@@ -51,11 +52,19 @@
     align-items: center;
     .euro-result{
         min-width: 15rem;
-        position: relative;
-        z-index: 1;
+    }
+    .group-live-icon{
+        display: none;
+    }
+    &.live,&.live-intermission{
+        .group-live-icon{
+            display: block;
+        }
     }
 }
 .euro-match-team{
+    position: relative;
+    z-index: 1;
     &-home{
         margin-bottom: 1.2rem;
     }
@@ -74,6 +83,7 @@
             font-size: 1.8rem;
             font-weight: 600;
             line-height: normal;
+            color: $white;
         }
     }
 }
@@ -82,18 +92,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: $color-222;
     .total-score {
         padding-right: 1.2rem;
-        border-right: 1px solid #fff;
-        color: #FFF;
+        border-right: 1px solid $color-222;
+        color: $color-222;
         font-size: 2.2rem;
         font-weight: 700;
         line-height: normal;
     }
     .haft-score {
         padding-left: 1.8rem;
-        color: #FFF;
+        color: $color-222;
         font-size: 1.4rem;
         font-weight: 600;
         line-height: normal;
