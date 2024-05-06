@@ -24,7 +24,7 @@
     {
         private  IOptionService optionService;
         private  IPollService pollService;
-
+        private  ITeamService teamService;
         private readonly IFixture fixture = new Fixture();
 
 
@@ -78,7 +78,8 @@
         {
             optionService = Substitute.For<IOptionService>();
             pollService = Substitute.For<IPollService>();
-            var controller = new Euro2024ManagementController(optionService, pollService);
+            teamService = Substitute.For<ITeamService>();
+            var controller = new Euro2024ManagementController(optionService, pollService, teamService);
 
             return controller;
         }
