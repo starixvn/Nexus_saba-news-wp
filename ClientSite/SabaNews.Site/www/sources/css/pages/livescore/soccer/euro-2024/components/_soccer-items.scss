@@ -9,13 +9,33 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
+    @include tableMobile{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include Mobile{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .soccer-match-grid-items{
     border-radius: 5px;
     border: 1px solid #DADADA;
     background: #FFFDF9;
-    padding: 1.2rem;
+    padding: 1.2rem 0 1.2rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+    &::after{
+        content: '';
+        display: block;
+        width: 15rem;
+        height: 100%;
+        background: #143CDB;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 0;
+        clip-path: polygon(5% 0%, 100% 0, 100% 100%, 0% 100%);
+    }
 }
 
 .soccer-match-grid-date{
@@ -24,4 +44,61 @@
     font-weight: 600;
     line-height: normal;
     margin-bottom: .8rem;
+}
+.euro-match-item  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .euro-result{
+        min-width: 15rem;
+        position: relative;
+        z-index: 1;
+    }
+}
+.euro-match-team{
+    &-home{
+        margin-bottom: 1.2rem;
+    }
+    &-home,&-away{
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        img{
+            width: 3.6rem;
+            height: 3.6rem;
+            object-fit: cover;
+            border-radius: 50px;
+        }
+        .soccer-team-name{
+            color: $color-222;
+            font-size: 1.8rem;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+}
+
+.euro-round-score{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    .total-score {
+        padding-right: 1.2rem;
+        border-right: 1px solid #fff;
+        color: #FFF;
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .haft-score {
+        padding-left: 1.8rem;
+        color: #FFF;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: normal;
+        .end-round {
+            margin-top: .9rem;
+        }
+    }
 }

@@ -46,25 +46,25 @@ export default class Item extends PureComponent {
             case MatchStatus.Cancel:
             case MatchStatus.TBD:
                 return (
-                    <ul className="euro-round-score">
-                        <li className="total-score"> VS </li>
-                    </ul>
+                    <div className="euro-round-score">
+                        <div className="total-score"> VS </div>
+                    </div>
                 );
             default:
                 return (
-                    <ul className="euro-round-score">
-                        <li className="total-score">
-                            <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
-                            <span> - </span>
-                            <span>{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</span>
-                        </li>
-                        <li className="haft-score">
+                    <div className="euro-round-score">
+                        <div className="total-score">
+                            <div className="number">{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</div>
+                            <div className="number">{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</div>
+                        </div>
+                        <div className="haft-score">
                             <span>  HT: </span>
                             <span>{match.homeTeamHalfScore}</span>
                             <span> - </span>
                             <span>{match.awayTeamHalfScore}</span>
-                        </li>
-                    </ul>
+                            <div className="end-round">Kết thúc</div>
+                        </div>
+                    </div>
                 );
         }
     };
@@ -90,6 +90,15 @@ export default class Item extends PureComponent {
                                     <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                 </div>
                             </div>
+                            <div className="euro-result">
+                                {this.getScores(match)}
+                                {/* <div className="group-live-icon">
+                                    <MatchStage match={match} />
+                                </div> */}
+                            </div>
+
+
+
                             {/* <div className="soccer-match-date-result">
                                 <div className="group-live-icon">
                                     <MatchStage match={match} />
