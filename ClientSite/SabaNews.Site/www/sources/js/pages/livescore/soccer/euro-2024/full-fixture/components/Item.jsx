@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
-import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus, WorldCup, MatchResult } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';

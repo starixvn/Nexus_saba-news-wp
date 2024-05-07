@@ -8,12 +8,79 @@
 @import './components/table';
 @import './components/nav-tabs-event';
 
-.block-heading{
-    text-align: center;
-}
+// .euro-page-main{
+//     padding-top: 2rem;
+// }
 
-.king-soccer{
-    .name-bxh{
-        color: $color-content;
-    }
-}
+// .block-heading{
+//     text-align: center;
+// }
+// .live-score-nav{
+//     justify-content: center;
+// }
+
+// .king-soccer{
+//     .name-bxh{
+//         color: $color-content;
+//     }
+// }
+// .wc-table{
+//     margin-bottom: 2rem;
+//     background: transparent;
+//     &::after{
+//         display: none;
+//     }
+//     .cell-rank{
+//         width: 100%;
+//     }
+//     .cell-participant{
+//         flex: 1 0 30rem;
+//     }
+//     .wc-table-header {
+//         border-radius: 5px 5px 0 0;
+//         .cell-rank,.cell-participant{
+//             color: $white-color;
+//             font-weight: 700;
+//         }
+//     }
+//     .wc-table-body{
+//         background: #09154E;
+//     }
+//     &-1{
+//         .wc-table-header{
+//             background: $primary-bg;
+//         }
+//     }
+//     &-2{
+//         .wc-table-header{
+//             background: #00BA5E;
+//         }
+//     }
+//     &-3{
+//         .wc-table-header{
+//             background: #FE0000;
+//         }
+//     }
+//     &-4{
+//         .wc-table-header{
+//             background: #FFC800;
+//         }
+//         .wc-table-cell{
+//             color: #000 !important;
+//         }
+//     }
+//     &-5{
+//         .wc-table-header{
+//             background: #Fff;
+//             border: 1px solid #000;
+//         }
+//         .wc-table-cell{
+//             color: #000 !important;
+//         }
+//     }
+//     &-6{
+//         .wc-table-header{
+//             background: #1E1E2A;
+//         }
+//     }
+// }
