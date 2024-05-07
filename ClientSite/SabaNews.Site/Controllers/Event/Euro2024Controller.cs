@@ -375,7 +375,8 @@ namespace SabaNews.Site.Controllers.Event
         public async Task<IActionResult> GetFixture()
         {
             var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
-            return Json(new { data.League, data.Matches });
+            var matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage);
+            return Json(new { data.League, matches });
         }
 
         [HttpPost]

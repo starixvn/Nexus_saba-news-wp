@@ -52,15 +52,11 @@ namespace SabaNews.Core.Constants
         public const long SeasonId = 11334;
         public const long GroupStageId = 35455;
 
-        public const long LeagueIdEuro2024 = 14638;
-        public const long SeasonIdEuro2024 = 10810;
-        public const long LeagueIdAFFCup = 14844;
-        public const long SeasonIdAFFCup = 11277;
-
-        public const long ThirdPlace = 30541;
-        public const long FinalStage = 30542;
-        public const long SemifinalsStage = 30540;
-        public const long QuarterfinalsStage = 30539;
+        public const long EightTeamStage  = 35537;
+        public const long QuarterfinalsStage = 35539;
+        public const long SemifinalsStage = 35538;
+        public const long FinalStage = 35540;
+        
         
         public const string PollKey = "poll_euro_2024";
         public const int PollTheme = 1;
