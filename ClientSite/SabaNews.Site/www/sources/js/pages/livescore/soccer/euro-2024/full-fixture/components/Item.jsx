@@ -63,7 +63,7 @@ export default class Item extends PureComponent {
                         </div>
                         <div className="haft-score">
                             {
-                                isLiveMatch || isIntermission === true ? <div className="group-live-icon">
+                                isLiveMatch || isIntermission ? <div className="group-live-icon">
                                     <MatchStage match={match} />
                                 </div> : (
                                     <>
