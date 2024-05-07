@@ -39,8 +39,8 @@ export default class Item extends PureComponent {
     };
 
     getScores = match => {
-        const isLiveMatch = true;
-        const isIntermission = true;
+        const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
+        const isIntermission = match.status === MatchStatus.Intermission;
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
