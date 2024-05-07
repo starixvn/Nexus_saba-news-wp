@@ -988,6 +988,11 @@ body {
   position: relative;
   overflow: hidden;
 }
+@media (max-width: 767px) {
+  .soccer-match-grid-items {
+    padding: 0.8rem 0 0.8rem 0.8rem;
+  }
+}
 .soccer-match-grid-items::after {
   content: "";
   display: block;
@@ -1048,6 +1053,11 @@ body {
 }
 .euro-match-team-home {
   margin-bottom: 1.2rem;
+}
+@media (max-width: 767px) {
+  .euro-match-team-home {
+    margin-bottom: 0.4rem;
+  }
 }
 .euro-match-team-home, .euro-match-team-away {
   display: flex;

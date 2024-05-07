@@ -25,6 +25,9 @@
     padding: 1.2rem 0 1.2rem 1.2rem;
     position: relative;
     overflow: hidden;
+    @include Mobile{
+        padding: .8rem 0 .8rem .8rem;
+    }
     &::after{
         content: '';
         display: block;
@@ -91,6 +94,9 @@
     z-index: 1;
     &-home{
         margin-bottom: 1.2rem;
+        @include Mobile{
+            margin-bottom: .4rem;
+        }
     }
     &-home,&-away{
         display: flex;
