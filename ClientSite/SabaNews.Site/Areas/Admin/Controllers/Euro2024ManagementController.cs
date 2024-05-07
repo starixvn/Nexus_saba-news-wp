@@ -3,6 +3,8 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.Team;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Services.Interfaces;
     using System.Linq;
@@ -13,12 +15,14 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
         private readonly ITeamService teamService;
+        private readonly IFileService fileService;
 
-        public Euro2024ManagementController(IOptionService optionService, IPollService pollService, ITeamService teamService)
+        public Euro2024ManagementController(IOptionService optionService, IPollService pollService, ITeamService teamService, IFileService fileService)
         {
             this.optionService = optionService;
             this.pollService = pollService;
             this.teamService = teamService;
+            this.fileService = fileService;
         }
         public async Task<ActionResult> Poll()
         {
@@ -45,12 +49,43 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
             return View(teams);
         }
+        
 
-        public async Task<ActionResult> PlayerTeam(long teamId)
+        public IActionResult TeamPlayer(long teamId)
         {
-            var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
-            return View(teams);
+            return View(teamId);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> GetPlayerGrid(long teamId)
+        {
+            var teams = await teamService.GetTeamPlayerById(teamId);
+            return PartialView("_TeamPlayerGrid", teams);
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreatePlayer(CreatTeamModel param)
+        {
+            var icon = "";
+            if (param.Icon != null)
+            {
+                var uploadResult = await fileService.UploadFileAsync(param.Icon, UploadDir.PlayerUploadFolder);
+                icon = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : icon;
+            }
+            var cmd = new CreateTeamPlayerCommand
+            {
+                TeamId = param.TeamId,
+                PlayerName = param.PlayerName,
+                PlayerFullName = param.PlayerFullName,
+                Birthday = param.Birthday,
+                ShirtNumber = param.ShirtNumber,
+                Club = param.Club,
+                Position = param.Position,
+                Icon = icon
+            };
+            var result = await teamService.CreatePlayerAsync(cmd);
+            return Json(result);
+        }
+
 
         public async Task<ActionResult> UpdatePoll(long pollId)
         {

@@ -6,5 +6,6 @@
 
         public const string MatchTeamUploadFolder = "/uploads/team/";
         public const string LeagueUploadFolder = "/uploads/league/";
+        public const string PlayerUploadFolder = "/uploads/player/";
     }
 }

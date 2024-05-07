@@ -38,6 +38,15 @@
             new MatchStatus { Id = TBD, Name = "TBD" },
         };
 
+        public static readonly IReadOnlyList<KeyValue> ListPlayerPosition = new List<KeyValue>
+        {
+            new() { Id = 1, Name = "Manager" },
+            new() { Id = 2, Name = "Goalkeeper" },
+            new() { Id = 3, Name = "Defender" },
+            new() { Id = 4, Name = "Midfielder" },
+            new() { Id = 5, Name = "Striker" },
+        };
+
         public static readonly IReadOnlyList<int> ListLiveMatchStatus = new List<int> { FirstHalf, Intermission, SecondHalf, ExtraTime, PenaltyShootout };
 
         public static readonly IReadOnlyList<int> ListPreMatchStatus = new List<int> { NotStarted, Postpone, Cancel, TBD, Delay };

@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Services
 {
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services.Criteria.Team;
@@ -20,6 +21,18 @@
             var criteria = new GetTeamByStageCriteria { SeasonId = seasonId, StageId = stageId };
             var leagues = await baseService.GetDataAsync<TeamStage>(criteria);
             return leagues.ToList();
+        }
+
+        public async Task<IList<PlayerCustom>> GetTeamPlayerById(long teamId)
+        {
+            var criteria = new GetTeamPlayerByIdCriteria { TeamId = teamId };
+            var players = await baseService.GetDataAsync<PlayerCustom>(criteria);
+            return players.ToList();
+        }
+
+        public async Task<CommandResult> CreatePlayerAsync(CreateTeamPlayerCommand cmd)
+        {
+            return await baseService.ExecuteNonQueryAsync(cmd);
         }
     }
 }

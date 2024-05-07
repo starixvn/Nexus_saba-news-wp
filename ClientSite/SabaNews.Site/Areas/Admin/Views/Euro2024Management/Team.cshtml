@@ -46,8 +46,7 @@
                                     <td class="text-left">@GetGeneralName(item.TeamNameVN, item.TeamNameEN, item.TeamFullNameEN)</td>
                                     <td class="text-center"><img src="@(item.IconVN ?? GetTeamIcon(item.Icon))" width="100"></td>
                                     <td class="text-center">
-                                        <i class="icon icon-edit-admin btn-Edit" title="Edit"
-                                            data-url=""></i>
+                                        <a href="@Url.Action("TeamPlayer", "euro2024Management", new { teamId = item.TeamId})"><i class="icon icon-edit-admin btn-Edit" title="Edit"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -74,6 +73,7 @@
                 <div class="modal-body">
 
                 </div>
+            </div>
             </div>
         </div>
     </div>
