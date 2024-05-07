@@ -1,7 +1,10 @@
 ﻿@import "./dot_live";
 
 .soccer-match-grid {
-    margin-top: .8rem;
+    margin-top: 2.4rem;
+    @include Mobile{
+        margin-top: 2rem;
+    }
     &-item {
         background: $primary-bg;
         border: 1px solid $border-color;

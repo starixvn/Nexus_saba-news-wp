@@ -305,6 +305,7 @@
     background-size: cover;
     .block-group{
         display: flex;
+        align-items: flex-start;
         gap: 2.4rem;
         @include Mobile {
             display: unset;

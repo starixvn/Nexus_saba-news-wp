@@ -8,25 +8,38 @@
 @import './components/table';
 @import './components/nav-tabs-event';
 
-// .euro-page-main{
-//     padding-top: 2rem;
-// }
+.euro-page-main{
+    padding-top: 2rem;
+}
 
-// .block-heading{
-//     text-align: center;
-// }
-// .live-score-nav{
-//     justify-content: center;
-// }
+.block-heading{
+    text-align: center;
+}
+.live-score-nav{
+    justify-content: center;
+}
 
 // .king-soccer{
 //     .name-bxh{
 //         color: $color-content;
 //     }
 // }
+// #detail-standing{
+//     display: flex;
+//     flex-direction: column;
+//     gap: 2rem;
+// }
+// .scroll-sticky{
+//     @include Mobile{
+//         overflow-x: auto;
+//         border-radius: 5px;
+//     }
+// }
 // .wc-table{
-//     margin-bottom: 2rem;
 //     background: transparent;
+//     @include Mobile{
+//         width: 85rem;
+//     }
 //     &::after{
 //         display: none;
 //     }
@@ -35,6 +48,9 @@
 //     }
 //     .cell-participant{
 //         flex: 1 0 30rem;
+//         @include Mobile{
+//             flex: 1 0 20rem;
+//         }
 //     }
 //     .wc-table-header {
 //         border-radius: 5px 5px 0 0;

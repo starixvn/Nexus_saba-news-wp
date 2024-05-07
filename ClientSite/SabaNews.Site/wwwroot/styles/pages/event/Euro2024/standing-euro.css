@@ -2561,3 +2561,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 5px;
   color: #fff;
 }
+
+.euro-page-main {
+  padding-top: 2rem;
+}
+
+.block-heading {
+  text-align: center;
+}
+
+.live-score-nav {
+  justify-content: center;
+}

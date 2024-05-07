@@ -3643,6 +3643,7 @@ html, body {
 }
 .block-videos-and-kingsocer .block-group {
   display: flex;
+  align-items: flex-start;
   gap: 2.4rem;
 }
 @media (max-width: 767px) {

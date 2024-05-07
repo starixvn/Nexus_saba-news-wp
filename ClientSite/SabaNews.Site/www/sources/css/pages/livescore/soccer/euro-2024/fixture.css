@@ -291,7 +291,12 @@ body {
   }
 }
 .soccer-match-grid {
-  margin-top: 0.8rem;
+  margin-top: 2.4rem;
+}
+@media (max-width: 767px) {
+  .soccer-match-grid {
+    margin-top: 2rem;
+  }
 }
 .soccer-match-grid-item {
   background: #FFFDF9;
