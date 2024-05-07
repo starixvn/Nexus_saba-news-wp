@@ -39,6 +39,8 @@ export default class Item extends PureComponent {
     };
 
     getScores = match => {
+        const isLiveMatch = true;
+        const isIntermission = true;
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
@@ -47,7 +49,9 @@ export default class Item extends PureComponent {
             case MatchStatus.TBD:
                 return (
                     <div className="euro-round-score">
-                        <div className="total-score"> VS </div>
+                        <div className="total-score" style={{ borderRight : 'none' , paddingRight : 0 }}>
+                            <div className="date-time">19:30 </div>
+                        </div>
                     </div>
                 );
             default:
@@ -58,11 +62,19 @@ export default class Item extends PureComponent {
                             <div className="number">{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</div>
                         </div>
                         <div className="haft-score">
-                            <span>  HT: </span>
-                            <span>{match.homeTeamHalfScore}</span>
-                            <span> - </span>
-                            <span>{match.awayTeamHalfScore}</span>
-                            <div className="end-round">Kết thúc</div>
+                            {
+                                isLiveMatch || isIntermission === true ? <div className="group-live-icon">
+                                    <MatchStage match={match} />
+                                </div> : (
+                                    <>
+                                        <span>  HT: </span>
+                                        <span>{match.homeTeamHalfScore}</span>
+                                        <span> - </span>
+                                        <span>{match.awayTeamHalfScore}</span>
+                                        <div className="end-round">Kết thúc</div>
+                                    </>
+                                )
+                            }
                         </div>
                     </div>
                 );
@@ -74,11 +86,12 @@ export default class Item extends PureComponent {
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         const matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
+        console.log(isLiveMatch, isIntermission)
         return (
             <>
                 <div className="soccer-match-grid-items" onClick={this.onClick}>
                     <div className="group-match-item" onClick={this.onClick}>
-                        <div className={`euro-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
+                        <div className={`euro-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live live-intermission' : ''}`}
                         >
                             <div className="euro-match-team">
                                 <div className="euro-match-team-home">
@@ -92,9 +105,6 @@ export default class Item extends PureComponent {
                             </div>
                             <div className="euro-result">
                                 {this.getScores(match)}
-                                <div className="group-live-icon">
-                                    <MatchStage match={match} />
-                                </div>
                             </div>
 
 

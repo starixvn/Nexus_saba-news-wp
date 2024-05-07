@@ -14,6 +14,7 @@
     }
     @include Mobile{
         grid-template-columns: repeat(1, 1fr);
+        grid-gap: .8rem;
     }
 }
 
@@ -27,8 +28,7 @@
     &::after{
         content: '';
         display: block;
-        width: 100%;
-        max-width: 23rem;
+        width: calc(100% - 15rem);
         height: 100%;
         background: #143CDB;
         position: absolute;
@@ -53,12 +53,36 @@
     .euro-result{
         min-width: 15rem;
     }
-    .group-live-icon{
-        display: none;
-    }
     &.live,&.live-intermission{
         .group-live-icon{
             display: block;
+            width: 6.5rem;
+            text-align: center;
+            .soccer-match-stage{
+                span{
+                    &::before,&::after{
+                        z-index: 99;
+                    }
+                }
+            }
+        }
+    }
+    &.live-intermission{
+        .soccer-match-stage{
+            margin-top: 1.2rem;
+            span{
+                padding-top: .8rem;
+                &::before{
+                    top: 0;
+                    left: 50%;
+                    transform: translate(50%, 0);
+                }
+                &::after{
+                    top: -4px;
+                    left: 48%;
+                    transform: translate(50%, 0);
+                }
+            }
         }
     }
 }
@@ -77,13 +101,21 @@
             height: 3.6rem;
             object-fit: cover;
             border-radius: 50px;
+            border: 1px solid $white;
+            background: $white;
+            @include Mobile{
+                width: 3rem;
+                height: 3rem;
+            }
         }
         .soccer-team-name{
-            color: $color-222;
             font-size: 1.8rem;
             font-weight: 600;
             line-height: normal;
             color: $white;
+            @include Mobile{
+                font-size: 1.6rem;
+            }
         }
     }
 }
@@ -95,11 +127,20 @@
     color: $color-222;
     .total-score {
         padding-right: 1.2rem;
-        border-right: 1px solid $color-222;
+        border-right: 1px solid #DADADA;
         color: $color-222;
         font-size: 2.2rem;
         font-weight: 700;
         line-height: normal;
+        .date-time{
+            font-weight: 600;
+            @include Mobile{
+                font-size: 2rem;
+            }
+        }
+        @include Mobile{
+            font-size: 2rem;
+        }
     }
     .haft-score {
         padding-left: 1.8rem;
