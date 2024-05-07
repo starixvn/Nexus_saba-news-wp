@@ -1,8 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchStatus, WorldCup, MatchResult } from '@jsroot/common/constants';
+import { MatchStatus, MatchResult } from '@jsroot/common/constants';
+import { Euro } from '../../euro-constants';
 import CommonFunctions from '@jsroot/common/common-functions';
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class Item extends PureComponent {
     constructor(props) {
@@ -10,7 +12,7 @@ export default class Item extends PureComponent {
     }
 
     onClick = event => {
-        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, Euro.MatchDetailUrl);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -40,6 +42,7 @@ export default class Item extends PureComponent {
     getScores = match => {
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
@@ -49,7 +52,7 @@ export default class Item extends PureComponent {
                 return (
                     <div className="euro-round-score">
                         <div className="total-score" style={{ borderRight : 'none' , paddingRight : 0 }}>
-                            <div className="date-time">19:30 </div>
+                            <div className="date-time">{startTime.format('HH:mm')} </div>
                         </div>
                     </div>
                 );
@@ -85,7 +88,6 @@ export default class Item extends PureComponent {
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         const matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
-        console.log(isLiveMatch, isIntermission)
         return (
             <>
                 <div className="soccer-match-grid-items" onClick={this.onClick}>
