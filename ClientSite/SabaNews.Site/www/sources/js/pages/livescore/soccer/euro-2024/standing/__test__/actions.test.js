@@ -19,10 +19,6 @@ describe('actionCreators', () => {
     describe('getMatches', () => {
         it('should call setMatches when get matches have been done', async () => {
             // Arrange
-            const expectedParams = {
-                leagueId: WorldCup.leagueId,
-                seasonId: WorldCup.seasonId
-            };
             const response = {
                 data: {
                     league: {
@@ -51,10 +47,10 @@ describe('actionCreators', () => {
             });
 
             // Act
-            await store.dispatch(ActionCreators.getMatches(expectedParams));
+            await store.dispatch(ActionCreators.getMatches());
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getMatchesBySeason', expectedParams);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('euro2024/getFixture');
             expect(store.getActions()).toEqual(expectedActions);
         });
     });

@@ -173,7 +173,7 @@ describe('AppContainer', () => {
                 ...defaultProps,
                 stages: [
                     { stageId: 1, stageNameEN: 'stage1', mode: 1, orderIndex: 0 }, { stageId: 2, stageNameEN: 'stage2', mode: 1, orderIndex: 1 },
-                    { stageId: 3, stageNameEN: 'third place', mode: 2, orderIndex: 2 }, { stageId: 30539, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }
+                    { stageId: 3, stageNameEN: 'third place', mode: 2, orderIndex: 2 }, { stageId: 35537, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }
                 ]
             }
             const container = shallow(<AppContainer {...props} />);
@@ -183,7 +183,7 @@ describe('AppContainer', () => {
             const result = instance.getPlayoffStages();
 
             // Assert
-            expect(result).toEqual([{ stageId: 30539, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }]);
+            expect(result).toEqual([{ stageId: 35537, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }]);
         });
     });
 
@@ -565,14 +565,14 @@ describe('AppContainer', () => {
         it('return correctly data', () => {
              // Arrange
             const groups = [
-                {key: 30538, matches:[{matchId: 55225419}, {matchId: 55225418}, {matchId: 55225422}, {matchId: 55225423}, {matchId: 55225420}, {matchId: 55225421}, {matchId: 55225424}, {matchId: 55225426}]},
-                {key: 30539, matches: [{matchId: 55225428}, {matchId: 55225430}, {matchId: 55225427}, {matchId: 55225429}]},
-                {key: 30540, matches: [{matchId: 55225431}, {matchId: 56772779}]}
+                {key: 35537, matches:[{matchId: 59159341}, {matchId: 59159342}, {matchId: 59159343}, {matchId: 59159344}, {matchId: 59159345}, {matchId: 59159346}, {matchId: 59159347}, {matchId: 59159348}]},
+                {key: 35539, matches: [{matchId: 59159349}, {matchId: 59159350}, {matchId: 59159351}, {matchId: 59159352}]},
+                {key: 35538, matches: [{matchId: 59159353}, {matchId: 59159354}]}
             ];
             const expected = [
-                {key: 30538, matches:[{matchId: 55225418}, {matchId: 55225419}, {matchId: 55225422}, {matchId: 55225423}, {matchId: 55225420}, {matchId: 55225421}, {matchId: 55225424}, {matchId: 55225426}]},
-                {key: 30539, matches: [{matchId: 55225428}, {matchId: 55225427}, {matchId: 55225430}, {matchId: 55225429}]},
-                {key: 30540, matches: [{matchId: 55225431}, {matchId: 56772779}]}
+                {key: 35537, matches:[{matchId: 59159344}, {matchId: 59159342}, {matchId: 59159346}, {matchId: 59159345}, {matchId: 59159343}, {matchId: 59159341}, {matchId: 59159347}, {matchId: 59159348}]},
+                {key: 35539, matches: [{matchId: 59159349}, {matchId: 59159350}, {matchId: 59159352}, {matchId: 59159351}]},
+                {key: 35538, matches: [{matchId: 59159353}, {matchId: 59159354}]}
             ]
              const container = shallow(<AppContainer {...defaultProps} />);
              const instance = container.instance();
