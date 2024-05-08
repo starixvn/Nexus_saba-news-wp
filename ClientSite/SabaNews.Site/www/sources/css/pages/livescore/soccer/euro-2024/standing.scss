@@ -3,7 +3,7 @@
 @import '../../../../base/base';
 @import '../../../../components/container';
 @import '../../../../components/soccer-item';
-@import '../../../../components/play-offs';
+@import './components/play-offs';
 @import './components/date-bar';
 
 
@@ -20,12 +20,6 @@
         display: none;
     }
 }
-
-.play-offs{
-    background:  #eeeee4 !important;
-    border: none;
-}
-
 .wc-playoffs-showmb{
     .draw-container {
       padding: 0 0.8rem;

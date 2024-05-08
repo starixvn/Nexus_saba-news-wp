@@ -639,8 +639,6 @@ body {
 }
 
 .play-offs {
-  background: #FFFDF9;
-  border: 1px solid #DADADA;
   border-radius: 3px;
   border-top: none;
 }
@@ -1295,11 +1293,6 @@ body {
   .draw-show-pc {
     display: none;
   }
-}
-
-.play-offs {
-  background: #eeeee4 !important;
-  border: none;
 }
 
 .wc-playoffs-showmb .draw-container {
