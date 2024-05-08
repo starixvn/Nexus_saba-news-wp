@@ -9,6 +9,7 @@ import SignalR from './SignalR';
 import dayjs from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import _ from 'dayjs/locale/vi';
+import SkeletonGrid from './SkeletonGird';
 dayjs.extend(updateLocale);
 dayjs.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
@@ -102,7 +103,7 @@ export class AppContainer extends Component {
     render() {
         const { league, matches } = this.props;
         if(!matches || matches.length === 0) {
-            return null;
+            return <SkeletonGrid />;
         }
         const stages = this.groupMatchesByStage(matches, league);
         return (

@@ -96,6 +96,7 @@
 
 #euro2024-full-fixture{
     padding-bottom: 6.3rem;
+    min-height: 100vh;
     @include Mobile{
         padding-bottom: 2rem;
     }

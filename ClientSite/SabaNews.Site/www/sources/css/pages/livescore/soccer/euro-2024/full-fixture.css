@@ -1212,6 +1212,7 @@ body {
 
 #euro2024-full-fixture {
   padding-bottom: 6.3rem;
+  min-height: 100vh;
 }
 @media (max-width: 767px) {
   #euro2024-full-fixture {
