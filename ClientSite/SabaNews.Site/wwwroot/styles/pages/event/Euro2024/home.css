@@ -1830,7 +1830,7 @@ body {
 }
 
 html, body {
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .img-res {
