@@ -22,8 +22,8 @@
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
         private readonly IFileService fileService;
-        private const long DefaultLeagueId = WorldCup2022.LeagueIdWorldCup2022;
-        private const long DefaultSeasonId = WorldCup2022.SeasonIdWorldCup2022;
+        private const long DefaultLeagueId = Euro2024.LeagueId;
+        private const long DefaultSeasonId = Euro2024.SeasonId;
         private const string SortDesc = "desc";
         private const string SortAsc = "asc";
         public MatchManagementController(
