@@ -7,9 +7,8 @@ const SkeletonGrid = () => {
             <div className="live-score-nav nav nav-tabs">
                 {
                     [1,2,3,4].map((_, index) => (
-                        <a key={index} className="nav-item nav-link" style={{ background : '#fff' , border : '1px solid #DADADA' , marginRight : '10px' , borderRadius : '5px' }}>
-                            <Skeleton  width={70}/>
-                        </a>
+                        <Skeleton key={index} width={130} height={27} className="nav-item nav-link" style={{ marginRight : '10px' , borderRadius : '5px' }}>
+                        </Skeleton>
                     ))
                 }
             </div>
