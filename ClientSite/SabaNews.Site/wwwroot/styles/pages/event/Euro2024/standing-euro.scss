@@ -10,93 +10,140 @@
 
 .euro-page-main{
     padding-top: 2rem;
+    background: url('../../../../images/euro2024/standing.png') no-repeat top , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background-size: 100%;
 }
 
 .block-heading{
     text-align: center;
+    &-text{
+        color: $white-color;
+    }
 }
 .live-score-nav{
     justify-content: center;
+    ul{
+        li{
+            a{
+                color: $white-color;
+                &.active{
+                    background: $primary-color;
+                    color: #000;
+                }
+            }
+        }
+    }
 }
 
-// .king-soccer{
-//     .name-bxh{
-//         color: $color-content;
-//     }
-// }
-// #detail-standing{
-//     display: flex;
-//     flex-direction: column;
-//     gap: 2rem;
-// }
-// .scroll-sticky{
-//     @include Mobile{
-//         overflow-x: auto;
-//         border-radius: 5px;
-//     }
-// }
-// .wc-table{
-//     background: transparent;
-//     @include Mobile{
-//         width: 85rem;
-//     }
-//     &::after{
-//         display: none;
-//     }
-//     .cell-rank{
-//         width: 100%;
-//     }
-//     .cell-participant{
-//         flex: 1 0 30rem;
-//         @include Mobile{
-//             flex: 1 0 20rem;
-//         }
-//     }
-//     .wc-table-header {
-//         border-radius: 5px 5px 0 0;
-//         .cell-rank,.cell-participant{
-//             color: $white-color;
-//             font-weight: 700;
-//         }
-//     }
-//     .wc-table-body{
-//         background: #09154E;
-//     }
-//     &-1{
-//         .wc-table-header{
-//             background: $primary-bg;
-//         }
-//     }
-//     &-2{
-//         .wc-table-header{
-//             background: #00BA5E;
-//         }
-//     }
-//     &-3{
-//         .wc-table-header{
-//             background: #FE0000;
-//         }
-//     }
-//     &-4{
-//         .wc-table-header{
-//             background: #FFC800;
-//         }
-//         .wc-table-cell{
-//             color: #000 !important;
-//         }
-//     }
-//     &-5{
-//         .wc-table-header{
-//             background: #Fff;
-//             border: 1px solid #000;
-//         }
-//         .wc-table-cell{
-//             color: #000 !important;
-//         }
-//     }
-//     &-6{
-//         .wc-table-header{
-//             background: #1E1E2A;
-//         }
-//     }
-// }
+.king-soccer{
+    .name-bxh{
+        color: $color-content;
+    }
+}
+#detail-standing{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.scroll-sticky{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 80rem;
+}
+.wc-table{
+    background: transparent;
+    &::after{
+        display: none;
+    }
+    .cell-rank{
+        width: 6rem;
+        font-size: 1.6rem;
+    }
+    .width-cell{
+        width: 9rem;
+    }
+    .cell-participant{
+        flex: 1 0 20rem;
+        @include Mobile{
+            flex: 1 0 20rem;
+        }
+    }
+    .wc-table-header {
+        padding: 0 1.2rem;
+        height: 4rem;
+        border-bottom: 1px solid $white-color;
+        .cell-rank,.cell-participant{
+            color: $white-color;
+            font-weight: 600;
+        }
+        .standing-table-name{
+            font-weight: 700;
+            font-size: 2rem;
+        }
+    }
+    .team-logo {
+        margin-right: 1.2rem;
+        img{
+            width: 2.6rem;
+            height: 2.6rem;
+        }
+    }
+    .wc-table-row{
+        padding: 1.2rem 0;
+        margin: 0 1.2rem;
+    }
+    .wc-table-body{
+        background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    }
+    .team{
+        font-size: 1.6rem;
+        &-name{
+            width: auto;
+        }
+    }
+    &-1{
+        .wc-table-header{
+            background: $primary-bg;
+        }
+    }
+    &-2{
+        .wc-table-header{
+            background: #00BA5E;
+        }
+    }
+    &-3{
+        .wc-table-header{
+            background: #FE0000;
+        }
+    }
+    &-4{
+        .wc-table-header{
+            background: #FFC800;
+        }
+        .wc-table-cell{
+            color: #000 !important;
+        }
+    }
+    &-5{
+        .wc-table-header{
+            background: #Fff;
+        }
+        .wc-table-cell{
+            color: #000 !important;
+        }
+    }
+    &-6{
+        .wc-table-header{
+            background: #1E1E2A;
+        }
+    }
+}
+
+.back-to-top{
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    .icon-chevron-right{
+        &::before{
+            color: $white-color;
+        }
+    }
+}

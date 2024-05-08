@@ -93,3 +93,10 @@
         font-size: 1.4rem;
     }
 }
+
+#euro2024-full-fixture{
+    padding-bottom: 6.3rem;
+    @include Mobile{
+        padding-bottom: 2rem;
+    }
+}
