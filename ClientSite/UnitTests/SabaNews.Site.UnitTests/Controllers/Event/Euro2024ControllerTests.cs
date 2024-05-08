@@ -406,6 +406,8 @@
             var leagueId = fixture.Create<long>();
             var seasonId = fixture.Create<long>();
             var expected = fixture.Create<MatchLeague>();
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             var expectedJson = Json(new { expected.League, expected.Matches });
 
             dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
@@ -415,10 +417,10 @@
 
             // Assert
             var viewResult = Assert.IsType<JsonResult>(result);
-            var actualLeague = Assert.IsAssignableFrom<League>(viewResult.Value.GetType().GetProperty("League").GetValue(viewResult.Value));
-            var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("Matches").GetValue(viewResult.Value));
+            var actualLeague = Assert.IsAssignableFrom<League>(viewResult.Value.GetType().GetProperty("league").GetValue(viewResult.Value));
+            var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("matches").GetValue(viewResult.Value));
             Assert.Equal(expected.League, actualLeague);
-            Assert.Equal(expected.Matches, actualMatches);
+            Assert.Equal(expectMatch, actualMatches);
         }
 
         [Fact]
