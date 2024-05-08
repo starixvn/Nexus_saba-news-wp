@@ -9,9 +9,9 @@
     ThirdPlace: 30541,
     MatchDetailUrl: 'euro-2024',
     Title: 'Euro 2024:',
-    EightTeamMatches: [55225418, 55225419, 55225422, 55225423, 55225420, 55225421, 55225424, 55225426],
-    QuaterFinalMatches: [55225428, 55225427, 55225430, 55225429],
-    SemiFinalMatches: [55225431, 56772779],
+    EightTeamMatches: [59159344, 59159342, 59159346, 59159345, 59159343, 59159341, 59159347, 59159348],
+    QuaterFinalMatches: [59159349, 59159350, 59159352, 59159351],
+    SemiFinalMatches: [59159353, 59159354],
 };
 
 

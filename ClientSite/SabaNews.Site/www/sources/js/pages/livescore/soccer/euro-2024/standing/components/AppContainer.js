@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { Width1024, WorldCup, MatchStatus } from '@jsroot/common/constants';
+import { Width1024, MatchStatus } from '@jsroot/common/constants';
+import { Euro } from '../../euro-constants';
 import Grid from './Grid';
 import Item from './Item';
 import Site from '@jsroot/common/site';
@@ -40,7 +41,7 @@ export class AppContainer extends Component {
     getPlayoffStages = () => {
         const { stages } = this.props;
         const playoffStages = stages.filter(item =>
-            item.stageId >= WorldCup.EightTeamStage &&
+            item.stageId >= Euro.EightTeamStage &&
             !item.stageNameEN.toLowerCase().includes('place')
         );
         return playoffStages;
@@ -179,28 +180,28 @@ export class AppContainer extends Component {
 
     sortMatches = groups => {
         groups.map(stage => {
-            if(stage.key === WorldCup.EightTeamStage) {
+            if(stage.key === Euro.EightTeamStage) {
                 const matches = stage.matches;
                 const tmpMatches = [];
-                WorldCup.EightTeamMatches.map(item => {
+                Euro.EightTeamMatches.map(item => {
                     const match = matches.find(m => m.matchId === item);
                     tmpMatches.push(match);
                 });
                 stage.matches = tmpMatches;
             }
-            if(stage.key === WorldCup.QuarterfinalsStage) {
+            if(stage.key === Euro.QuarterfinalsStage) {
                 const matches = stage.matches;
                 const tmpMatches = [];
-                WorldCup.QuaterFinalMatches.map(item => {
+                Euro.QuaterFinalMatches.map(item => {
                     const match = matches.find(m => m.matchId === item);
                     tmpMatches.push(match);
                 });
                 stage.matches = tmpMatches;
             }
-            if(stage.key === WorldCup.SemifinalsStage) {
+            if(stage.key === Euro.SemifinalsStage) {
                 const matches = stage.matches;
                 const tmpMatches = [];
-                WorldCup.SemiFinalMatches.map(item => {
+                Euro.SemiFinalMatches.map(item => {
                     const match = matches.find(m => m.matchId === item);
                     tmpMatches.push(match);
                 });
