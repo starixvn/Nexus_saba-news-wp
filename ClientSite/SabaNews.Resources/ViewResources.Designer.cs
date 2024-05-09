@@ -932,6 +932,15 @@ namespace SabaNews.Resources {
                 return ResourceManager.GetString("ExpiredLink", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Minigame World Cup.
+        /// </summary>
+        public static string Euro2024Management {
+            get {
+                return ResourceManager.GetString("Euro2024Management", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Facebook.

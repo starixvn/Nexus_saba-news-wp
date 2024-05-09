@@ -5,14 +5,14 @@
 }
 
 @section TopHeader {
-    @ViewResources.TopScorersManagement
+    @ViewResources.Euro2024Management
 }
 
 @section Title {
-    @ViewResources.TopScorersManagement
+    @ViewResources.Euro2024Management
 }
 @section ActiveMenu {
-    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.TopScorersManagement" />
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.Euro2024Management" />
 }
 @section Styles {
     <link rel="stylesheet" href="~/styles/pages/admin/euro-2024/team.css" asp-append-version="true">
@@ -45,8 +45,8 @@
 
                 </div>
             </div>
-            </div>
         </div>
+    </div>
     </div>
 
     <div class="modal " id="CreatePlayerModel" style="display:none">
@@ -65,42 +65,45 @@
                             <div class="form-input">
                                 <span class="left-section">Player Name</span>
                                 <div class="right-section">
-                                    <input class="form-control input-custom "  type="text" name="player-name" id="addLeagueId" />
+                                    <input class="form-control input-custom " type="text" name="player-name"
+                                        id="addLeagueId" />
                                 </div>
                             </div>
                             <div class="form-input">
                                 <span class="left-section">Player Full Name</span>
                                 <div class="right-section">
-                                    <input class="form-control input-custom" type="text" name="player-full-name"  />
+                                    <input class="form-control input-custom" type="text" name="player-full-name" />
                                     <p class="error-input player-full-name-error"></p>
                                 </div>
                             </div>
                             <div class="form-input">
                                 <span class="left-section">Birthday</span>
                                 <div class="right-section">
-                                    <input class="form-control input-custom" type="date" name="birthday"  />
+                                    <input class="form-control input-custom" type="date" name="birthday" />
                                     <p class="error-input birthday-error"></p>
                                 </div>
                             </div>
                             <div class="form-input">
                                 <span class="left-section">Shirt Number</span>
                                 <div class="right-section">
-                                    <input class="form-control input-custom input-number" type="text" name="shirt-number"  />
+                                    <input class="form-control input-custom input-number" type="text"
+                                        name="shirt-number" />
                                     <p class="error-input shirt-number-error"></p>
                                 </div>
                             </div>
                             <div class="form-input">
                                 <span class="left-section">Club</span>
                                 <div class="right-section">
-                                    <input class="form-control input-custom" type="text" name="club"  />
+                                    <input class="form-control input-custom" type="text" name="club" />
                                     <p class="error-input club-error"></p>
                                 </div>
                             </div>
                             <div class="form-input">
                                 <span class="left-section">Position</span>
                                 <div class="right-section">
-                                    <select class="form-control input-custom position-select"  style="width:100%">
-                                        @foreach (var postition in SabaNews.Core.Constants.Livescore.MatchConstants.ListPlayerPosition)
+                                    <select class="form-control input-custom position-select" style="width:100%">
+                                        @foreach (var postition in
+                                        SabaNews.Core.Constants.Livescore.MatchConstants.ListPlayerPosition)
                                         {
                                             <option value="@postition.Id">@postition.Name</option>
                                         }
@@ -114,8 +117,9 @@
                                     <div class="form-group-input form-group-input-left">
                                         <div class="admin-text-logo">
                                             <div class="input-upload">
-                                                <input type="file" class="input-file photo addPlayerIcon" >
-                                                <div class="txt-img"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                                                <input type="file" class="input-file photo addPlayerIcon">
+                                                <div class="txt-img"><i class="icon-upload"></i>
+                                                    <span>@ViewResources.UploadNewImage</span></div>
                                                 <div class="img-upload">
                                                     <p class="error photo-error" style="display:none"></p>
                                                 </div>
@@ -124,15 +128,18 @@
                                     </div>
                                     <div class="form-group-input form-group-input-right">
                                         <div class="admin-text-logo admin-text-logo-data-img">
-                                            <button type="button" class="cancel-upload icon-close" style="display:flex"></button>
-                                            <img src="/css/images/logo-dummy.png" id="iconLeague" alt="Alternate Text" class="review_photo" style="display:flex" />
+                                            <button type="button" class="cancel-upload icon-close"
+                                                style="display:flex"></button>
+                                            <img src="/css/images/logo-dummy.png" id="iconLeague" alt="Alternate Text"
+                                                class="review_photo" style="display:flex" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-btn">
-                                <button class="btn-custom-admin btn-save-create" type="button" >Save</button>
-                                <button class="btn-custom-admin btn-cancel" type="button" data-dismiss="modal">Cancel</button>
+                                <button class="btn-custom-admin btn-save-create" type="button">Save</button>
+                                <button class="btn-custom-admin btn-cancel" type="button"
+                                    data-dismiss="modal">Cancel</button>
                             </div>
                         </form>
                     </div>

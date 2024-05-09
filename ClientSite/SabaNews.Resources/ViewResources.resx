@@ -219,6 +219,9 @@
   <data name="ExpiredLink" xml:space="preserve">
     <value>Link đã hết hạn</value>
   </data>
+  <data name="Euro2024Management" xml:space="preserve">
+    <value>Euro 2024 Management</value>
+  </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
   </data>

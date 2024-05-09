@@ -143,14 +143,6 @@ body {
   text-decoration: underline;
 }
 
-#gender input {
-  min-height: inherit;
-}
-
-#gender input {
-  width: auto;
-}
-
 #submit,
 #reset {
   display: inline-block;

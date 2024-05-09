@@ -4,26 +4,26 @@
 }
 
 @section TopHeader {
-    @ViewResources.HomepageManagement
+    Euro 2024 Poll
 }
 
 @section Title {
-    @ViewResources.HomepageManagement
+    Euro 2024 Poll
 }
 @section ActiveMenu {
-    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.HomepageManagement" />
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.Euro2024Management" />
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/styles/pages/admin/euro2024/poll.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/styles/pages/admin/euro-2024/poll.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/pages/jquery-ui.css" asp-append-version="true">
 }
 
 <section class="page-content">
     <div class="form-horizontal navigation">
-        <p id="btn_major_league" class="label label-blue item-navigation"><a
-                href="@Url.Action("Poll", "Euro20244")">Poll</a></p>
+        <p class="label label-blue item-navigation active">Poll</p>
+        <p class="label label-blue item-navigation"> <a href="@Url.Action("Team", "Euro2024Management")">Team</a></p>
     </div>
 
     <div class="content">
