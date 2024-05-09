@@ -54,7 +54,8 @@ export default class Item extends PureComponent {
         return className;
     };
 
-    renderBody = match => {
+    renderBody = (match, index , finalMatch , placeMatch) => {
+        console.log(match)
         let matchResult = MatchResult.Draw;
         if (match.matchId) {
             const checkMatch = match.secondLeg ? match.secondLeg : match;
@@ -63,6 +64,9 @@ export default class Item extends PureComponent {
         return (
             <div className={`bracket ${match.matchId ? '' : 'bracket--eventless'}`} onClick={event => this.handleClick(event, match)}
                 title={match.matchId ? 'Nhấp để xem danh sách trận đấu' : ''}>
+                {
+                    index === 0 && !finalMatch && !placeMatch &&<div className="header-round">{CommonFunctions.getStageName(match.stage)}</div>
+                }
                 <div className="group-playoff group-playoff-home">
                     <div className="clip-skew"></div>
                     {/* <div className="notfound-name">Nhất bảng A</div> */}
@@ -105,10 +109,10 @@ export default class Item extends PureComponent {
         );
     };
     render() {
-        const { match, positionClass, index } = this.props;
+        const { match, positionClass, index  ,finalMatch , placeMatch } = this.props;
         return (
             <div className={`draw__bracket ${positionClass} ${match.isDraw === false ? 'no-border' : ''}`} style={{ zIndex: -index }}>
-                {this.renderBody(match)}
+                {this.renderBody(match , index , finalMatch , placeMatch)}
             </div>
         );
     }

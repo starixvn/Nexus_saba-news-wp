@@ -255,8 +255,8 @@ export class AppContainer extends Component {
                                     <div className="draw">
                                         <div className="draw__round draw__round--result">
                                             <div className="draw__brackets">
-                                                {finalMatch && <Item match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
-                                                {placeMatch && <Item match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
+                                                {finalMatch && <Item finalMatch={finalMatch} match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
+                                                {placeMatch && <Item placeMatch={placeMatch} match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
                                             </div>
                                         </div>
                                     </div>
@@ -268,8 +268,8 @@ export class AppContainer extends Component {
                                     <div className="draw">
                                         <div className="draw__round draw__round--result">
                                             <div className="draw__brackets">
-                                                {finalMatch && <Item match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
-                                                {placeMatch && <Item match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
+                                                {finalMatch && <Item finalMatch={finalMatch} match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
+                                                {placeMatch && <Item placeMatch={placeMatch} match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
                                             </div>
                                         </div>
                                     </div>

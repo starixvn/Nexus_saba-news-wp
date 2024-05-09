@@ -8,6 +8,9 @@
 
 .play-offs{
   padding-top: 15rem;
+  @media (max-width : 1500px) {
+    padding-top: 10rem;
+  }
   @include Mobile{
     padding-top: 0;
   }
@@ -88,6 +91,9 @@
     margin-right: auto;
     padding: 0 1.2rem;
     margin-bottom: 10rem;
+    @media (max-width : 1500px) {
+      transform: scale(.8);
+    }
     .draw-container{
         .draw-wrapper{
             display: unset;
@@ -106,6 +112,7 @@
                   background: transparent;
                   border: none;
                   grid-gap: 1rem;
+                  position: relative;
                 }
                 &__brackets{
                   grid-gap: 5rem 0;
@@ -198,6 +205,14 @@
                       &::after{
                         left: -20px !important;
                       }
+                      &::before{
+                        content: '';
+                        border-top: 1px solid #d9d9d9;
+                        width: 32%;
+                        position: absolute;
+                        right: -70px;
+                        top: 50%;
+                      }
                     }
                   }
                 }
@@ -209,7 +224,7 @@
         grid-template-columns: 65rem 65rem;
         align-items: center;
         justify-content: center;
-        grid-gap: 10rem;
+        grid-gap: 14rem;
         position: relative;
         &::-webkit-scrollbar {
             width: 0.6rem;
@@ -404,5 +419,17 @@
   }
 }
 
+.header-round {
+  position: absolute;
+  top: -35px;
+  color: #FAAA00;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  @include tableMobile{
+    display: none;
+  }
+}
 
 

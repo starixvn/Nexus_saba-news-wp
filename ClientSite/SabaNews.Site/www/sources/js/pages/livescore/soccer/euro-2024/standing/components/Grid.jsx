@@ -50,7 +50,6 @@ export default class Grid extends PureComponent {
                         }
                         return (
                             <div className={`draw__round ${first} ${last}`}  key={item.key}>
-                                {/* <div>Vòng 1/8</div> */}
                                 <div className="draw__header">
                                     {
                                         activeIndex > 0 &&
