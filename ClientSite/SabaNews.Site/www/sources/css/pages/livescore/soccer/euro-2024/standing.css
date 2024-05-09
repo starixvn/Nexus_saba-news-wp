@@ -1595,6 +1595,8 @@ body {
 @media screen and (max-width: 1024px) {
   .draw__round .group-playoff {
     max-width: 100%;
+    max-width: 26rem;
+    margin: 0 auto;
   }
 }
 .draw__round .group-playoff .clip-skew {
@@ -1653,6 +1655,9 @@ body {
   border-right: 1px solid #fff !important;
   border-left: none !important;
   left: auto !important;
+}
+.wc-flip-x .bracket__result {
+  border-bottom-left-radius: 5px;
 }
 
 .win .bracket__name {
