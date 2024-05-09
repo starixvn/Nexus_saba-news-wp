@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchResult, MatchStatus, WorldCup  } from '@jsroot/common/constants';
+import { MatchResult, MatchStatus } from '@jsroot/common/constants';
+import { Euro } from '../../euro-constants';
 
 export default class Item extends PureComponent {
     constructor(props) {
@@ -28,7 +29,7 @@ export default class Item extends PureComponent {
     };
 
     handleClick = (event, match) => {
-        const url = CommonFunctions.getMatchDetailPageUrl(match, WorldCup.MatchDetailUrl);
+        const url = CommonFunctions.getMatchDetailPageUrl(match, Euro.MatchDetailUrl);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -36,18 +37,18 @@ export default class Item extends PureComponent {
         }
     };
 
-    getTeamName = team =>  team ? CommonFunctions.getTeamName(team) : '';
+    getTeamName = team => team ? CommonFunctions.getTeamName(team) : '';
 
     getResultClass = (matchResult, isHome) => {
         const { match } = this.props;
         let className = '';
-        if(isHome && matchResult === MatchResult.Win) {
+        if (isHome && matchResult === MatchResult.Win) {
             className = 'win';
         }
-        if(!isHome && matchResult === MatchResult.Lose) {
+        if (!isHome && matchResult === MatchResult.Lose) {
             className = 'win';
         }
-        if(match.status !== MatchStatus.Finished) {
+        if (match.status !== MatchStatus.Finished) {
             className = '';
         }
         return className;
@@ -55,7 +56,7 @@ export default class Item extends PureComponent {
 
     renderBody = match => {
         let matchResult = MatchResult.Draw;
-        if(match.matchId) {
+        if (match.matchId) {
             const checkMatch = match.secondLeg ? match.secondLeg : match;
             matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, checkMatch);
         }
@@ -86,9 +87,9 @@ export default class Item extends PureComponent {
         );
     };
     render() {
-        const { match, positionClass, index} = this.props;
+        const { match, positionClass, index } = this.props;
         return (
-            <div className={`draw__bracket ${positionClass} ${match.isDraw === false ? 'no-border' : ''}`} style={{zIndex: -index}}>
+            <div className={`draw__bracket ${positionClass} ${match.isDraw === false ? 'no-border' : ''}`} style={{ zIndex: -index }}>
                 {this.renderBody(match)}
             </div>
         );
