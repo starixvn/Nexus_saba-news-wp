@@ -246,29 +246,34 @@ export class AppContainer extends Component {
                                     <Grid matches={prevMatchStages} isMobile={isMobile} />
                                 </div>
                             </div>
-                            <div className="wc-result">
-                                {
-                                    finalMatch &&
-                                    <ul className="wc-result-header">
-                                        <li><img src={Site.resolveClientUrl(`images/worldcup/cup.png`)} /></li>
-                                        <li>{LangHelper.getResource('FinalStage')}</li>
+                            <div className="euro-result">
+                                <div className="end-round">
+                                    <ul className="euro-result-header">
+                                        <li className="logo-result"><img src={Site.resolveClientUrl(`images/euro2024/cup.png`)} /></li>
+                                        <li className="uppercase-title">{LangHelper.getResource('FinalStage')}</li>
                                     </ul>
-                                }
-                                <div className="draw">
-                                    <div className="draw__round draw__round--result">
-                                        <div className="draw__brackets">
-                                            {finalMatch && <Item match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
-                                            {placeMatch && <Item match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
+                                    <div className="draw">
+                                        <div className="draw__round draw__round--result">
+                                            <div className="draw__brackets">
+                                                {finalMatch && <Item match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
+                                                {placeMatch && <Item match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                {
-                                    placeMatch &&
-                                    <ul className="wc-result-footer">
+                                <div className="third-round">
+                                    <ul className="euro-result-header">
                                         <li>{LangHelper.getResource('ThirdPlace')}</li>
                                     </ul>
-                                }
-
+                                    <div className="draw">
+                                        <div className="draw__round draw__round--result">
+                                            <div className="draw__brackets">
+                                                {finalMatch && <Item match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
+                                                {placeMatch && <Item match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="draw-container wc-flip-x">
                                 <div className="draw-wrapper">

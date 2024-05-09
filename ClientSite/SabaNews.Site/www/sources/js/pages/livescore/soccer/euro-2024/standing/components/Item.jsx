@@ -63,25 +63,43 @@ export default class Item extends PureComponent {
         return (
             <div className={`bracket ${match.matchId ? '' : 'bracket--eventless'}`} onClick={event => this.handleClick(event, match)}
                 title={match.matchId ? 'Nhấp để xem danh sách trận đấu' : ''}>
-                {
-                    match.homeTeam &&
-                    <TeamIcon className="bracket__image bracket__image--home" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
-                }
-                <div className={`bracket__participant bracket__participant--home ${this.getResultClass(matchResult, true)}`}>
-                    <span className="bracket__name ">{this.getTeamName(match.homeTeam)}</span>
+                <div className="group-playoff group-playoff-home">
+                    <div className="clip-skew"></div>
+                    {/* <div className="notfound-name">Nhất bảng A</div> */}
+                    <div className="name-and-logo">
+                        {
+                            match.homeTeam &&
+                            <TeamIcon className="bracket__image bracket__image--home" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                        }
+                        <div className={`bracket__participant bracket__participant--home ${this.getResultClass(matchResult, true)}`}>
+                            <span className="bracket__name ">{this.getTeamName(match.homeTeam)}</span>
+                        </div>
+                    </div>
+                    <div className="bracket__result bracket__result--home">
+                       
+                        <span>
+                             {10 || this.getScore(match, true)}
+                        </span>
+                    </div>
                 </div>
-                <div className="bracket__result bracket__result--home">
-                    {this.getScore(match, true)}
-                </div>
-                {
-                    match.awayTeam &&
-                    <TeamIcon className="bracket__image bracket__image--away" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
-                }
-                <div className={`bracket__participant bracket__participant--away ${this.getResultClass(matchResult, false)}`}>
-                    <span className="bracket__name bracket__name--advancing">{this.getTeamName(match.awayTeam)}</span>
-                </div>
-                <div className="bracket__result bracket__result--away">
-                    {this.getScore(match, false)}
+                <div className="group-playoff group-playoff-away">
+                    <div className="clip-skew"></div>
+                    {/* <div className="notfound-name">Nhất bảng A</div> */}
+                    <div className="name-and-logo">
+                        {
+                            match.awayTeam &&
+                            <TeamIcon className="bracket__image bracket__image--away" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                        }
+                        <div className={`bracket__participant bracket__participant--away ${this.getResultClass(matchResult, false)}`}>
+                            <span className="bracket__name bracket__name--advancing">{this.getTeamName(match.awayTeam)}</span>
+                        </div>
+                    </div>
+                    <div className="bracket__result bracket__result--away">
+                        
+                        <span>
+                            { 10 ||  this.getScore(match, false)}
+                        </span>
+                    </div>
                 </div>
             </div>
         );

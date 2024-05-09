@@ -2616,12 +2616,22 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   justify-content: center;
   border-bottom: 1px solid #fff;
 }
+@media (max-width: 767px) {
+  .wc-table .standing-table-name {
+    height: 4.7rem;
+  }
+}
 .wc-table::after {
   display: none;
 }
 .wc-table .cell-rank {
   width: 6rem;
   font-size: 1.6rem;
+}
+@media (max-width: 767px) {
+  .wc-table .cell-rank {
+    font-size: 1.4rem;
+  }
 }
 .wc-table .width-cell {
   width: 9rem;
