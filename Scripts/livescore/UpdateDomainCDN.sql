@@ -15,3 +15,12 @@ SET
         'cdn.sabavn.com')
 WHERE
     guid like '%vncdn.sabasports.com%' AND post_type = "attachment";
+	
+
+UPDATE sabasports.wp_postmeta
+SET 
+    meta_value = REPLACE(meta_value,
+        'vncdn.sabasports.com',
+        'cdn.sabavn.com')
+WHERE
+    meta_value like '%vncdn.sabasports.com%';
