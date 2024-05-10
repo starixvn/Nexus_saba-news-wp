@@ -65,10 +65,17 @@
     &.live,&.live-intermission{
         .group-live-icon{
             display: block;
-            width: 6.5rem;
+            width: 7.5rem;
             text-align: center;
+            @include Mobile{
+                width: 7rem;
+            }
             .soccer-match-stage{
                 span{
+                    font-size: 1.5rem;
+                    @include Mobile{
+                        font-size: 1.4rem;
+                    }
                     &::before,&::after{
                         z-index: 99;
                     }
