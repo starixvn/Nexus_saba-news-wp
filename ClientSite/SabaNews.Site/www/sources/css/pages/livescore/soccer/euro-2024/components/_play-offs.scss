@@ -202,7 +202,11 @@
             display: grid;
             align-items: center;
             position: relative;
-  
+            @include Mobile{
+              width: 100%;
+              max-width: 26rem;
+              margin: auto;
+            }
             &:after {
               content: "";
               width: calc(100% + 2rem);
@@ -212,11 +216,6 @@
               z-index: -1;
               border-right: 1px solid #d9d9d9;
               border-color: #d9d9d9;
-  
-              @include tableMobile {
-                width: calc(100% + 2.4rem);
-                right: -8px;
-              }
             }
   
             &--even {
@@ -231,19 +230,15 @@
                   background-color: #d9d9d9;
                   position: absolute;
                   height: 1px;
-                  width: 8px;
-                  right: -16px;
                   left: auto;
-                  top: -6px;
+                  top: -20px;
+                  width: calc(100% - 45px);
+                  right: -100%;
                 }
               }
             }
   
             &--odd {
-              @include tableMobile {
-                margin-bottom: -0.4rem;
-              }
-  
               &:after {
                 border-top: 1px solid #d9d9d9;
                 top: 50%;

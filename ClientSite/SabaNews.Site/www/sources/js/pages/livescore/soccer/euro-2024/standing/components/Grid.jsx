@@ -51,15 +51,9 @@ export default class Grid extends PureComponent {
                         return (
                             <div className={`draw__round ${first} ${last}`}  key={item.key}>
                                 <div className="draw__header">
-                                    {
-                                        activeIndex > 0 &&
-                                        <i className="draw__arrow draw__arrow--previous icon-livescore icon-chevron-left" onClick={() => this.handleActiveTab(false)}/>
-                                    }
+                                    <i className="draw__arrow draw__arrow--previous icon-livescore icon-chevron-left" onClick={() => this.handleActiveTab(false)}/>
                                     <div className="draw__label">{CommonFunctions.getStageName(item.stage)}</div>
-                                    {
-                                        activeIndex < matches.length - 1 &&
-                                        <i className="draw__arrow draw__arrow--next icon-livescore icon-chevron-right" onClick={() => this.handleActiveTab(true)} />
-                                    }
+                                    <i className="draw__arrow draw__arrow--next icon-livescore icon-chevron-right" onClick={() => this.handleActiveTab(true)} />
                                 </div>
                                 <div className="draw__brackets">
                                     {
