@@ -861,6 +861,18 @@ body {
     height: 1px;
     left: auto;
     top: -20px;
+    width: calc(100% + 25px);
+    right: -100%;
+  }
+}
+@media (max-width: 767px) {
+  .play-offs .draw-container .draw-wrapper .draw__bracket--even:before {
+    content: "";
+    background-color: #d9d9d9;
+    position: absolute;
+    height: 1px;
+    left: auto;
+    top: -20px;
     width: calc(100% - 45px);
     right: -100%;
   }
@@ -1404,8 +1416,8 @@ body {
 }
 @media screen and (max-width: 1024px) {
   .wc-playoffs-showmb .draw-container .draw-wrapper .draw__bracket .bracket::before {
-    width: 4rem;
-    left: 0;
+    width: calc(100% + 40px);
+    left: -100%;
   }
 }
 @media (max-width: 767px) {
@@ -1642,8 +1654,12 @@ body {
 }
 @media screen and (max-width: 1024px) {
   .draw__round--last .draw__bracket::before {
-    width: calc(100% - 29px);
-    right: -100%;
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .draw__round--last .draw__bracket .group-playoff-home::before, .draw__round--last .draw__bracket .group-playoff-away::before {
+    display: none;
   }
 }
 

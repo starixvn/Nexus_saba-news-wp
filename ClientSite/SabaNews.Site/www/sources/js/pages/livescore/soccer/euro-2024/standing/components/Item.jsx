@@ -55,7 +55,6 @@ export default class Item extends PureComponent {
     };
 
     renderBody = (match, index , finalMatch , placeMatch) => {
-        console.log(match)
         let matchResult = MatchResult.Draw;
         if (match.matchId) {
             const checkMatch = match.secondLeg ? match.secondLeg : match;
