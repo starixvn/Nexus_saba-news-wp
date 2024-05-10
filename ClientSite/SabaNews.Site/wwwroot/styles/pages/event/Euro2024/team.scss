@@ -3,27 +3,19 @@
 @import './base/base';
 @import './layout/header';
 @import './layout/footer';
-@import './components/button';
 @import './components/container';
 @import './components/block';
-@import './components/hover-img-item';
-@import './components/items-block';
-@import './components/nav-tabs-event';
 
-.block-items-vertical-hot{
-    .block-items-heading{
-        text-align: left;
-    }
+
+.euro-page-main{
+    padding-top: 2rem;
+    background: url('../../../../images/euro2024/standing.png') no-repeat top , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background-size: 100%;
+    min-height: 100vh;
 }
-.video-grid{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
-    margin: 2rem 0;
-    @include tableMobile{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @include Mobile{
-        grid-template-columns: repeat(1, 1fr);
+.block-heading{
+    text-align: center;
+    .block-heading-text{
+        color: $white-color;
     }
 }

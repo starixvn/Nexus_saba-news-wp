@@ -1,5 +1,5 @@
 ﻿@using static SabaNews.Site.Extensions.LivescoreHelper
-
+@using SabaNews.Core.Constants;
 @{
     Layout = "_LayoutEuro2024";
 }
@@ -41,22 +41,32 @@
     <script src="~/minify/js/worldcup2022-match.min.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderEuro2024", new { cateSlug = Model.Header.Slug }))
+
+
+
 <section class="euro-team">
     @await Html.PartialAsync(ViewResources.SidebarBannerView)
     <div id="euro-fixture"></div>
-    <div class="tab-content">
-        <div class="wc-table-row">
-            @foreach (var team in Model.Standings)
-            {
-                var icon = GetTeamIcon(team.Icon);
-                var teamName = GetStandingTeamName(team);
-                <div class="wc-table-cell cell-participant">
-                    <ul class="team">
-                        <li class="team-logo"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></li>
-                        <li class="team-name">@teamName</li>
-                    </ul>
-                </div>
-            }
+    <div class="euro-page-main">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="block-heading-text">
+                    @Euro2024.Video
+                </h2>
+            </div>
+            <div class="main-team">
+                @foreach (var team in Model.Standings)
+                {
+                    var icon = GetTeamIcon(team.Icon);
+                    var teamName = GetStandingTeamName(team);
+                    <div class="wc-table-cell cell-participant">
+                        <ul class="team">
+                            <li class="team-logo"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></li>
+                            <li class="team-name">@teamName</li>
+                        </ul>
+                    </div>
+                }
             </div>
         </div>
+    </div>
 </section>
