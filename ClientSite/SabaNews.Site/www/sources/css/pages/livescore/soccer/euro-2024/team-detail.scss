@@ -1,0 +1,9 @@
+@import '~react-loading-skeleton/dist/skeleton.css';
+@import "../../../../abstracts/variables";
+@import "../../../../abstracts/mixins";
+@import "../../../../base/base";
+@import "../../../../components/soccer-item";
+
+.group-match-item .soccer-match-item .soccer-match-team .group-team .home-team{
+    border-bottom: none !important;
+}

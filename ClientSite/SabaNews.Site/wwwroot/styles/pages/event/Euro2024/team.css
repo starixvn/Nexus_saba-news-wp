@@ -2184,7 +2184,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .euro-page-main {
   padding-top: 2rem;
-  background: url("../../../../images/euro2024/standing.png") no-repeat top, linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   background-size: 100%;
   min-height: 100vh;
 }
@@ -2194,4 +2194,36 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .block-heading .block-heading-text {
   color: #fff;
+}
+
+.main-team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-gap: 4rem;
+  padding-top: 5rem;
+  justify-content: center;
+  max-width: 108rem;
+  margin: 1.4rem auto;
+}
+.main-team .team {
+  text-align: center;
+  color: #fff;
+}
+.main-team .team-logo {
+  border-radius: 50px;
+  overflow: hidden;
+  background: #fff;
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+}
+.main-team .team-logo img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}
+.main-team .team-name {
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
 }

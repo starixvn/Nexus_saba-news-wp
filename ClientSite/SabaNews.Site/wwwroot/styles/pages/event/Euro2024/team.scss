@@ -9,7 +9,7 @@
 
 .euro-page-main{
     padding-top: 2rem;
-    background: url('../../../../images/euro2024/standing.png') no-repeat top , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
     background-size: 100%;
     min-height: 100vh;
 }
@@ -20,33 +20,35 @@
     }
 }
 
-// .main-team{
-//     display: grid;
-//     grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
-//     grid-gap: 7rem;
-//     padding-top: 4rem;
-//     justify-content: center;
-//     .team{
-//         text-align: center;
-//         color: $white-color;
-//         &-logo{
-//            border-radius: 50px;
-//            overflow: hidden;
-//            background: $white-color;
-//            width: 7rem;
-//             height: 7rem;
-//             margin: 0 auto;
-//            img{
-//                 width: 7rem;
-//                 height: 7rem;
-//                 object-fit: cover;
-//            }
-//         }
-//         &-name{
-//             margin-top: 1.2rem;
-//             font-size: 1.4rem;
-//             font-weight: 600;
-//         }
-//     }
-// }
+.main-team{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-gap: 4rem;
+    padding-top: 5rem;
+    justify-content: center;
+    max-width: 108rem;
+    margin: 1.4rem auto;
+    .team{
+        text-align: center;
+        color: $white-color;
+        &-logo{
+           border-radius: 50px;
+           overflow: hidden;
+           background: $white-color;
+           width: 6rem;
+            height: 6rem;
+            margin: 0 auto;
+           img{
+                width: 6rem;
+                height: 6rem;
+                object-fit: cover;
+           }
+        }
+        &-name{
+            margin-top: 1.2rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+    }
+}
 
