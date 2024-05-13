@@ -17,6 +17,10 @@ describe('Item', () => {
         jest.clearAllMocks();
     });
 
+    beforeEach(() => {
+        CommonFunctions.getStageName = jest.fn().mockReturnValue('Stage');
+    })
+
     describe('getScore', () => {
         it('return correctly when match finished', () => {
             // Arrange
@@ -298,6 +302,7 @@ describe('Item', () => {
                 ctrlKey: false
             };
             CommonFunctions.getMatchResult = jest.fn().mockReturnValue(1);
+            
             const container = shallow(<Item {...props} />);
             const instance = container.instance();
             instance.renderBody = jest.fn().mockReturnValue('render body');

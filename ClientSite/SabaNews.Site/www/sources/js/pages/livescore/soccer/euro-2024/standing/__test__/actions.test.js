@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import { ActionCreators } from '../actions';
-import { WorldCup } from '@jsroot/common/constants';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 

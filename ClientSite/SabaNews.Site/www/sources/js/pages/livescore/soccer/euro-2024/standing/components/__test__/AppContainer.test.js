@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { AppContainer } from '../AppContainer';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 
 
@@ -16,6 +17,8 @@ describe('AppContainer', () => {
     afterEach(() => {
         jest.clearAllMocks();
     });
+
+   
 
 
     describe('constructor', () => {

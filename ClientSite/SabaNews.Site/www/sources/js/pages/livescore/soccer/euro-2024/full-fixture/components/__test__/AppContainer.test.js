@@ -18,6 +18,8 @@ describe('AppContainer', () => {
         jest.clearAllMocks();
     });
 
+    
+
     describe('componentDidMount', () => {
         it('calls correctly functions', () => {
             // Arrange
@@ -107,7 +109,7 @@ describe('AppContainer', () => {
             const result = instance.render();
 
             // Assert
-            expect(result).toEqual(null);
+            expect(result).toMatchSnapshot();
         });
 
         it('render empty when matches is empty', () => {
@@ -123,7 +125,7 @@ describe('AppContainer', () => {
             const result = instance.render();
 
             // Assert
-            expect(result).toEqual(null);
+            expect(result).toMatchSnapshot();
         });
 
         it('render correctly when have matches data', () => {
