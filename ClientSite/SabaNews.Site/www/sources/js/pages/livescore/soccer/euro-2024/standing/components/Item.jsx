@@ -98,7 +98,6 @@ export default class Item extends PureComponent {
                         </div>
                     </div>
                     <div className="bracket__result bracket__result--away">
-                        
                         <span>
                             { 10 ||  this.getScore(match, false)}
                         </span>

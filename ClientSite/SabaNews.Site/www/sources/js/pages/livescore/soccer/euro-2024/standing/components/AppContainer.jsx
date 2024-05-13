@@ -261,7 +261,7 @@ export class AppContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="third-round">
+                                {/* <div className="third-round">
                                     <ul className="euro-result-header">
                                         <li>{LangHelper.getResource('ThirdPlace')}</li>
                                     </ul>
@@ -273,7 +273,7 @@ export class AppContainer extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="draw-container wc-flip-x">
                                 <div className="draw-wrapper">
