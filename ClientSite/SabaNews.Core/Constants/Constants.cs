@@ -200,7 +200,7 @@
         public const int CacheTodayMatchesTimeoutMinutes = 30;
         public const int CacheLeaguesTimeoutMinutes = 30;
         public const int CachePollDataTimeoutMinutes = 5;
-        public const int CacheGetMatchBySeasonTimeout = 2;
+        public const int CacheGetMatchBySeasonTimeout = 1;
         public const int GetLeagueSeasonStandingTimeout = 2;
 
         public const string TokenAPIGetData = "U0FCQSBTUE9SVFMgaMOyYSB2w6BvIGN14buZYyBjaMahaSE=";
