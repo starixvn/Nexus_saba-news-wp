@@ -78,12 +78,15 @@ export default class Item extends PureComponent {
                             <span className="bracket__name ">{this.getTeamName(match.homeTeam)}</span>
                         </div>
                     </div>
-                    <div className="bracket__result bracket__result--home">
-                       
-                        <span>
-                             {10 || this.getScore(match, true)}
-                        </span>
-                    </div>
+                    {
+                        match.status == MatchStatus.Finished &&
+                        <div className="bracket__result bracket__result--home">
+                            <span>
+                                {this.getScore(match, true)}
+                            </span>
+                        </div>
+                    }
+                    
                 </div>
                 <div className="group-playoff group-playoff-away">
                     <div className="clip-skew"></div>
@@ -97,11 +100,15 @@ export default class Item extends PureComponent {
                             <span className="bracket__name bracket__name--advancing">{this.getTeamName(match.awayTeam)}</span>
                         </div>
                     </div>
-                    <div className="bracket__result bracket__result--away">
-                        <span>
-                            { 10 ||  this.getScore(match, false)}
-                        </span>
-                    </div>
+                    {
+                        match.status == MatchStatus.Finished &&
+                        <div className="bracket__result bracket__result--away">
+                            <span>
+                                { this.getScore(match, false)}
+                            </span>
+                        </div>
+
+                    }
                 </div>
             </div>
         );

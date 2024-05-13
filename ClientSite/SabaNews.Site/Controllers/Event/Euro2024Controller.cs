@@ -252,8 +252,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/doi-tuyen")]
         public async Task<IActionResult> Team()
         {
-            var standings = await dataControlService.GetLeagueSeasonStandingAsync(Euro2024.LeagueId, Euro2024.SeasonId);
-            var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
+            var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
             var model = new TeamViewModel
             {
                 Header = new HeaderViewModel
@@ -262,13 +261,13 @@ namespace SabaNews.Site.Controllers.Event
                     Description = Euro2024.TitleFixture,
                     Slug = Euro2024.FixtureSlug
                 },
-                Standings = groupsStageStanding
+                Teams = teams
             };
             return View("~/Views/Event/Euro2024/Team.cshtml", model);
         }
 
         [Route("euro-2024/doi-tuyen/{teamName}/{teamId}")]
-        public async Task<IActionResult> TeamDetail(long teamId)
+        public ActionResult TeamDetail(long teamId)
         {
             var model = new TeamDetailViewModel
             {

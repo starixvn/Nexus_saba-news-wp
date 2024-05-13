@@ -51,16 +51,16 @@
         <div class="container">
             <div class="block-heading">
                 <h2 class="block-heading-text">
-                    @Euro2024.Video
+                    Đội Tuyển
                 </h2>
             </div>
             <div class="main-team">
-                @foreach (var team in Model.Standings)
+                @foreach (var team in Model.Teams)
                 {
                     var icon = GetTeamIcon(team.Icon);
-                    var teamName = GetStandingTeamName(team);
+                    var teamName = GetGeneralName(team.TeamNameVN, team.TeamNameEN, team.TeamFullNameEN);
                     <div class="team">
-                        <div class="team-logo"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></div>
+                        <div class="team-logo"><a href="@Url.Action("TeamDetail", "Euro2024", new { teamName = teamName, teamId = team.TeamId })"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></a></div>
                         <div class="team-name">@teamName</div>
                     </div>
                 }
