@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using NLog.LayoutRenderers;
 using SabaNews.Core.Constants;
 using SabaNews.Core.Helper;
 using SabaNews.Core.Models;

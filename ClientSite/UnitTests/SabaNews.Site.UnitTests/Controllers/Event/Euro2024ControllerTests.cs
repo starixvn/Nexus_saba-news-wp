@@ -29,6 +29,8 @@
     using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Models.Options;
     using System.Net;
+    using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Livescore.Models.Team;
 
     public class Euro2024ControllerTests : Controller
     {
@@ -299,6 +301,93 @@
 
 
 
+        }
+
+        [Fact]
+        public async Task Team_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var seasonId = fixture.Create<long>();
+            var stageId = fixture.Create<long>();
+
+            var expectedTeam = fixture.Create<IList<TeamStage>>();
+
+            teamService.GetTeamByStage(Arg.Do<long>(x => seasonId = x), Arg.Do<long>(x => stageId = x)).Returns(expectedTeam);
+
+            //Act
+            var result = await controller.Team();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var dataResult = Assert.IsType<TeamViewModel>(viewResult.Model);
+            Assert.Equal("~/Views/Event/Euro2024/Team.cshtml", viewResult.ViewName);
+            Assert.Equal(expectedTeam, dataResult.Teams);
+
+
+
+        }
+
+        [Fact]
+        public void TeamDetail_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.TeamDetail(10);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/TeamDetail.cshtml", viewResult.ViewName);
+
+
+
+        }
+
+        [Fact]
+        public async Task GetTeamDetailData_WhenParamIsNull_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            GetTeamDataModel model = null;
+
+
+            //Act
+            var result = await controller.GetTeamDetailData(model);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
+
+        [Fact]
+        public async Task GetTeamDetailData_WhenParamHaveData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var model = fixture.Create<GetTeamDataModel>();
+            var teamId = fixture.Create<long>();
+            var getMatchCriteria = fixture.Create<GetMatchByTeamSeasonCriteria>();
+            var expectedMatches = fixture.Create<IList<Match>>();
+            var expectedPlayers = fixture.Create<IList<PlayerCustom>>();
+
+            matchService.GetMatchByTeamSeasonAsync(Arg.Do<GetMatchByTeamSeasonCriteria>(x => getMatchCriteria = x)).Returns(expectedMatches);
+            teamService.GetTeamPlayerById(Arg.Do<long>(x => teamId = x)).Returns(expectedPlayers);
+
+            var matches = expectedMatches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            //Act
+            var result = await controller.GetTeamDetailData(model);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("matches").GetValue(viewResult.Value));
+            var actualPlayers = Assert.IsAssignableFrom<IList<PlayerCustom>>(viewResult.Value.GetType().GetProperty("players").GetValue(viewResult.Value));
+            Assert.Equal(expectedPlayers, actualPlayers);
+            Assert.Equal(matches, actualMatches);
+            
         }
 
         [Fact]
