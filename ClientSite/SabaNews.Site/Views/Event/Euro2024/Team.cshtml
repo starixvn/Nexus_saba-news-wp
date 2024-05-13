@@ -59,11 +59,9 @@
                 {
                     var icon = GetTeamIcon(team.Icon);
                     var teamName = GetStandingTeamName(team);
-                    <div class="wc-table-cell cell-participant">
-                        <ul class="team">
-                            <li class="team-logo"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></li>
-                            <li class="team-name">@teamName</li>
-                        </ul>
+                    <div class="team">
+                        <div class="team-logo"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></div>
+                        <div class="team-name">@teamName</div>
                     </div>
                 }
             </div>
