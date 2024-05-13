@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using NLog.LayoutRenderers;
 using SabaNews.Core.Constants;
 using SabaNews.Core.Helper;
 using SabaNews.Core.Models;
@@ -36,6 +37,7 @@ namespace SabaNews.Site.Controllers.Event
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
         private readonly IMatchService matchService;
+        private readonly ITeamService teamService;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -45,7 +47,8 @@ namespace SabaNews.Site.Controllers.Event
             IPollService pollService,
             ILeagueService leagueService,
             IOptionService optionService,
-            IMatchService matchService
+            IMatchService matchService,
+            ITeamService teamService
         )
         {
             this.dataControlService = dataControlService;
@@ -56,6 +59,7 @@ namespace SabaNews.Site.Controllers.Event
             this.leagueService = leagueService;
             this.optionService = optionService;
             this.matchService = matchService;
+            this.teamService = teamService;
         }
         [Route("/euro-2024")]
         public async Task<IActionResult> Index ()
@@ -263,14 +267,35 @@ namespace SabaNews.Site.Controllers.Event
             return View("~/Views/Event/Euro2024/Team.cshtml", model);
         }
 
-        [Route("euro-2024/{teamName}/{teamId}")]
+        [Route("euro-2024/doi-tuyen/{teamName}/{teamId}")]
         public async Task<IActionResult> TeamDetail(long teamId)
         {
-            var matches = await matchService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = teamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId});
-            
-            return View("~/Views/Event/Euro2024/TeamDetail.cshtml", matches);
+            var model = new TeamDetailViewModel
+            {
+                TeamId = teamId,
+                Header = new HeaderViewModel
+                {
+                    Title = Euro2024.TitleFixture,
+                    Description = Euro2024.TitleFixture,
+                    Slug = Euro2024.FixtureSlug
+                }
+            };
+            return View("~/Views/Event/Euro2024/TeamDetail.cshtml", model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GetTeamDetailData([FromBody] GetTeamDataModel model)
+        {
+            if(model == null)
+            {
+                return Json(null);
+            }
+            var players = await teamService.GetTeamPlayerById(model.TeamId);
+            var matches = await matchService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = model.TeamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId});
+            matches = matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            var team = matches.FirstOrDefault(m => m.HomeTeam.TeamId == model.TeamId);
+            return Json(new { matches, players, team });
+        }
         [HttpPost]
         [Route("euro2024/related-posts")]
         public async Task<IActionResult> GetRelatedPosts(string cateSlug, int postID)
