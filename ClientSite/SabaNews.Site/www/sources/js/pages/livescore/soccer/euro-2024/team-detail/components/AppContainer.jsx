@@ -4,41 +4,43 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import LiveScore from './LiveScore';
 import Players from './Players';
+import CommonFunctions from '@jsroot/common/common-functions';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 
 
 const tabs = [
     {
-        id : 1,
-        slug : 'lich-thi-dau',
-        name : 'Lịch thi đấu'
+        id: 1,
+        slug: 'lich-thi-dau',
+        name: 'Lịch thi đấu'
     },
     {
-        id : 2,
-        slug : 'ket-qua',
-        name : 'Kết quả'
+        id: 2,
+        slug: 'ket-qua',
+        name: 'Kết quả'
     },
     {
-        id : 3,
-        slug : 'cau-thu',
-        name : 'Cầu Thủ'
+        id: 3,
+        slug: 'cau-thu',
+        name: 'Cầu Thủ'
     },
     {
-        id : 4,
-        slug : 'tieu-su',
-        name : 'Tiểu sử'
+        id: 4,
+        slug: 'tieu-su',
+        name: 'Tiểu sử'
     }
-];  
+];
 export class AppContainer extends Component {
     constructor(props) {
-        super(props); 
+        super(props);
         this.state = {
             active: 1
         },
-        this.handleSelectTab = this
-            .handleSelectTab
-            .bind(this);
+            this.handleSelectTab = this
+                .handleSelectTab
+                .bind(this);
     }
-    
+
 
     componentDidMount() {
         this.props.getTeamData(window.teamId);
@@ -46,46 +48,50 @@ export class AppContainer extends Component {
 
     handleSelectTab = key => {
         this.setState({
-            active : key
+            active: key
         })
         this.renderContent(key);
     }
 
-    renderContent = () =>  {
-        const { preMatches, postMatches, players, team } = this.props;
+    renderContent = () => {
+        const { preMatches, postMatches, players } = this.props;
         switch (this.state.active) {
             case 1:
-                return(
-                    preMatches !== null  && <LiveScore matches={preMatches}/>
+                return (
+                    <LiveScore matches={preMatches} />
                 )
             case 2:
                 return (
-                    <div>Kết quả</div>
+                    <LiveScore matches={postMatches} />
                 )
             case 3:
                 return (
-                    players && <Players data={players}/>
+                    <Players data={players} />
                 )
             case 4:
-                return(
+                return (
                     <div>Tiểu Sử</div>
                 )
-            default : 
-                return(
-                    <LiveScore matches={groups}/>
+            default:
+                return (
+                    <LiveScore matches={groups} />
                 )
         }
     }
 
     render() {
+        const { team } = this.props;
+        if(team === null) {
+            return null;
+        }
         return (
             <div className="block-info-team">
                 <div className="container">
                     <div className="info-main-team">
                         <div className="team-header">
                             <div className="name-team-detail">
-                                <div className="team-detail-logo">logo</div>
-                                <div className="team-detail-name">ABC</div>
+                                <div className="team-detail-logo"><TeamIcon src={team.icon} /></div>
+                                <div className="team-detail-name">{CommonFunctions.getTeamName(team)}</div>
                             </div>
                             <div className="team-menu-tabs">
                                 <ul className="nav-team">
@@ -96,13 +102,12 @@ export class AppContainer extends Component {
                                             </li>
                                         ))
                                     }
-                                    
                                 </ul>
                             </div>
                         </div>
                         <div className="team-body">
                             {this.renderContent()}
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,7 +118,7 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { preMatches, postMatches , players, team } = state;
+    const { preMatches, postMatches, players, team } = state;
     return { preMatches, postMatches, players, team };
 };
 

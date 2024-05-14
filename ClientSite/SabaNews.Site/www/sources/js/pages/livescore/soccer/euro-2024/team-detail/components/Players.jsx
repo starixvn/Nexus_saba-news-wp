@@ -2,7 +2,6 @@ import React from 'react';
 import DateTimeService from '@jsroot/common/dateTimeService';
 const Players = ({ data }) => {
     if(!data) return null
-    console.log(data)
     return (
         <div className="player-group">
             <div className="player-title">

@@ -3,8 +3,7 @@ import DataService from '@jsroot/common/dataService';
 
 import {
     setMatches,
-    setPlayers,
-    setTeam
+    setPlayers
 } from './teamDetailSlice';
 
 const getTeamData = teamId => async dispatch => {
@@ -14,13 +13,11 @@ const getTeamData = teamId => async dispatch => {
         const { matches, players, team } = response.data;
         dispatch(setMatches(matches));
         dispatch(setPlayers(players));
-        dispatch(setTeam(team));
     }).catch(Site.handleAxiosError);
 };
 
 export const ActionCreators = {
     setMatches,
     setPlayers,
-    setTeam,
     getTeamData
 };

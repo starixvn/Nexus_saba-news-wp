@@ -4,7 +4,6 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import TeamScore from './TeamScore';
 const Match = ({ matches }) => {
-    // console.log(matches)
     const {key, childs} = matches;
     return (
         <div className="group-match-item">

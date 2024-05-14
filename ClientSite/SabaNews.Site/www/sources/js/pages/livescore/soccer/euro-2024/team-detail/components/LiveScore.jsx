@@ -9,7 +9,6 @@ export default class LiveScore extends PureComponent {
     }
     render () {
         const { matches } =  this.props;
-        console.log(matches)
         return (
             <>
                 {

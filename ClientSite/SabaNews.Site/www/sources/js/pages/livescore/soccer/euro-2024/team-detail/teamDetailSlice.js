@@ -36,16 +36,16 @@ const teamDetailSlice = createSlice({
                     postMatches.push(match);
                 }
             }
-
+            var matchTeam = matches.find(m => m.homeTeam.teamId == window.teamId || m.awayTeam.teamId == window.teamId);
+            if(matchTeam != null) {
+                state.team = matchTeam.homeTeam.teamId == window.teamId ? matchTeam.homeTeam : matchTeam.awayTeam;
+            }
             state.stages = stages;
             state.preMatches = preMatches;
             state.postMatches = postMatches;
         },
         setPlayers: (state, action) => {
             state.players = action.payload;
-        },
-        setTeam: (state, action) => {
-            state.team = action.payload;
         }
     }
 });
@@ -54,8 +54,7 @@ const { actions, reducer } = teamDetailSlice;
 
 export const {
     setMatches,
-    setPlayers,
-    setTeam
+    setPlayers
 } = actions;
 
 export default reducer;
