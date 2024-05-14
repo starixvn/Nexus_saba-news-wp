@@ -30,7 +30,19 @@
             return players.ToList();
         }
 
+        public async Task<PlayerCustom> GetPlayerById(long playerId)
+        {
+            var criteria = new GetPlayerByIdCriteria { PlayerId = playerId };
+            var players = await baseService.GetDataEntityAsync<PlayerCustom>(criteria);
+            return players;
+        }
+
         public async Task<CommandResult> CreatePlayerAsync(CreateTeamPlayerCommand cmd)
+        {
+            return await baseService.ExecuteNonQueryAsync(cmd);
+        }
+
+        public async Task<CommandResult> UpdatePlayerAsync(UpdateTeamPlayerCommand cmd)
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
         }

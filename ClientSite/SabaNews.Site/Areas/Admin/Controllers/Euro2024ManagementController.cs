@@ -86,6 +86,42 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             return Json(result);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> EditPlayer(long playerId)
+        {
+           var player = await teamService.GetPlayerById(playerId);
+           if(player == null)
+           {
+                return Json(null);
+           }
+            return PartialView("_EditTeamPlayerGrid", player);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditPlayer(UpdateTeamModel param)
+        {
+            var player = await teamService.GetPlayerById(param.PlayerId);
+            var icon = param.IsDeletedIcon ? null : player.Icon;
+            if (param.Icon != null)
+            {
+                var uploadResult = await fileService.UploadFileAsync(param.Icon, UploadDir.PlayerUploadFolder);
+                icon = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : icon;
+            }
+            var cmd = new UpdateTeamPlayerCommand
+            {
+                PlayerId = param.PlayerId,
+                PlayerName = param.PlayerName,
+                PlayerFullName = param.PlayerFullName,
+                Birthday = param.Birthday,
+                ShirtNumber = param.ShirtNumber,
+                Club = param.Club,
+                Position = param.Position,
+                Icon = icon
+            };
+            var result = await teamService.UpdatePlayerAsync(cmd);
+            return Json(result);
+        }
+
 
         public async Task<ActionResult> UpdatePoll(long pollId)
         {

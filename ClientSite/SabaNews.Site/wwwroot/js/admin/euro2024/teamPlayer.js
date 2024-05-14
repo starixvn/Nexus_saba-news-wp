@@ -9,15 +9,15 @@ var adminEuro2024TeamPlayer = (function ($) {
             success: function (res) {
                 $('.data-grid').html(res);
                 $('.btn-Edit').on('click', function () {
-                    var url = $(this).data('url');
+                    var playerId = $(this).data('playerid');
+                    console.log(playerId);
                     $.ajax({
                         type: 'GET',
-                        url: url,
-                        data: {leagueId, seasonId},
+                        url: "/Admin/Euro2024Management/EditPlayer",
+                        data: {playerId},
                         success: function (html) {
-                            $('#EditPlayerContent .title').html('Edit Player');
-                            $('#EditPlayerContent .modal-body').html(html);
-                            $('#EditPlayerContent').modal('show');
+                            $('#EditPlayerModel .modal-body').html(html);
+                            $('#EditPlayerModel').modal('show');
 
                             $("#TeamFullNameEN").on("change", function () {
                                 var teamId = document.getElementById("TeamFullNameEN").value;
@@ -34,29 +34,40 @@ var adminEuro2024TeamPlayer = (function ($) {
                                 })
                             });
 
-                            $("#TeamFullNameEN").select2();
-                            $("#PlayerFullNameEN").select2();
+                            $('.btn-save-edit').on('click', function () {
+                                var self = $(this);
+                                self.prop("disabled", true);
+                                var playerId = $(this).data('id');
 
-                            $('#btn-save').on('click', function () {
-                                document.getElementById("btn-save").style.display = "none";
-                                var url = $(this).data('url');
-                                var RowNum = $(this).data('row');
-                                var Top = document.getElementById("editTop").value;
-                                var Goals = document.getElementById("editGoals").value;
-                                var Assists = document.getElementById("editAssist").value;
-                                var TeamId = document.getElementById("TeamFullNameEN").value;
-                                var PlayerId = document.getElementById("PlayerFullNameEN").value;
+                                let icon = $('#icon')[0].files[0];
+                                let currentIcon = $('#icon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                                let isDeletedIcon = currentIcon == '';
+
+                                let formData = new FormData();
+                                formData.append('playerId', playerId)
+                                formData.append('teamId', teamId);
+                                formData.append('playerName', $('#updatePlayer input[name=player-name]').val());
+                                formData.append('playerFullName', $('#updatePlayer input[name=player-full-name]').val());
+                                formData.append('birthday', $('#updatePlayer input[name=birthday]').val());
+                                formData.append('shirtNumber', $('#updatePlayer input[name=shirt-number]').val());
+                                formData.append('club', $('#updatePlayer input[name=club]').val());
+                                formData.append('position', $('#updatePlayer .position-select').val());
+                                formData.append('icon', icon);
+                                formData.append('isDeletedIcon', isDeletedIcon);
                                 $.ajax({
                                     type: 'POST',
-                                    url: url,
-                                    data: { leagueId, seasonId, Top, Goals, Assists, TeamId, PlayerId, RowNum },
+                                    url: "/Admin/Euro2024Management/EditPlayer",
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
                                     success: function (response) {
+                                        self.prop("disabled", false);
                                         if (response.isSuccessful) {
-                                            $('#EditPlayerContent').modal('hide');
+                                            $('#EditPlayerModel').modal('hide');
                                             GetSuccessPopup('#NoticeModal', 'Update Player successfully!');
                                             setTimeout(function () {
                                                 $('#NoticeModal').modal('hide');
-                                                GetDataTopScorersGrid();
+                                                GetDataGrid();
                                             }, 1000);
                                         } else {
                                             document.getElementById("btn-save").style.display = "inline-block";
@@ -94,7 +105,6 @@ var adminEuro2024TeamPlayer = (function ($) {
                 contentType: false,
                 success: function(response)
                 {
-                    console.log(response);
                     if (response.isSuccessful) {
                         $('#CreatePlayerModel').modal('hide');
                         GetSuccessPopup('#NoticeModal', 'Add player successfully!');
@@ -113,7 +123,7 @@ var adminEuro2024TeamPlayer = (function ($) {
     }
 
     function HandlePhoto() {
-        $('.photo').on('change', function (e) {
+        $(document).on('change','.photo', function (e) {
             let form = $(this).parent();
             let files = $(this)[0].files[0];
             let isValid = ValidatePhoto(files, $(this));
@@ -130,6 +140,12 @@ var adminEuro2024TeamPlayer = (function ($) {
                 ChangePhotoHanlder(form);
             };
         });
+
+        $(document).on('click','.cancel-upload', function () {
+            var form = $(this).parent();
+            CancelUploadHandler(form);
+            $(this).hide();
+        });
     }
 
     function ChangePhotoHanlder(form) {
@@ -138,6 +154,15 @@ var adminEuro2024TeamPlayer = (function ($) {
         review.find('.review_photo').show();
         $(form).find('.photo-error').hide();
 
+    }
+
+    function CancelUploadHandler(form) {
+        var input = $(form).parent().parent();
+        console.log(input.find('.photo'));
+        form.find('.review_photo').attr('src', '');
+        form.find('.review_photo').hide();
+        form.find('.cancel-upload').hide();
+        input.find('.photo').val('');
     }
 
     function ValidatePhoto(files, self) {

@@ -9,8 +9,9 @@ namespace SabaNews.Livescore.Services
     public interface ITeamService
     {
         Task<IList<TeamStage>> GetTeamByStage(long seasonId, long stageId);
-
         Task<IList<PlayerCustom>> GetTeamPlayerById(long teamId);
         Task<CommandResult> CreatePlayerAsync(CreateTeamPlayerCommand cmd);
+        Task<PlayerCustom> GetPlayerById(long playerId);
+        Task<CommandResult> UpdatePlayerAsync(UpdateTeamPlayerCommand cmd);
     }
 }
