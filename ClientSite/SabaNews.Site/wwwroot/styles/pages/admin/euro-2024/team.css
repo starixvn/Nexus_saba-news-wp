@@ -415,3 +415,9 @@
 .navigation .active {
   border-bottom: 3px solid navy;
 }
+
+.btn-cancel {
+  border: 1px solid #E13C29;
+  background: #FCE6E4;
+  color: #E13C29;
+}
