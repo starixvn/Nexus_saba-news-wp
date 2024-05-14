@@ -36,7 +36,7 @@ export class AppContainer extends Component {
         this.state = {
             active: 1
         },
-            this.handleSelectTab = this
+        this.handleSelectTab = this
                 .handleSelectTab
                 .bind(this);
     }
@@ -50,9 +50,14 @@ export class AppContainer extends Component {
         this.setState({
             active: key
         })
-        this.renderContent(key);
     }
 
+    onChange = event => {
+        this.setState({
+            active: parseInt(event.target.value)
+        })
+        
+    };
     renderContent = () => {
         const { preMatches, postMatches, players } = this.props;
         switch (this.state.active) {
@@ -74,7 +79,7 @@ export class AppContainer extends Component {
                 )
             default:
                 return (
-                    <LiveScore matches={groups} />
+                    <LiveScore matches={preMatches} />
                 )
         }
     }
@@ -84,6 +89,7 @@ export class AppContainer extends Component {
         if(team === null) {
             return null;
         }
+        console.log(this.state.active)
         return (
             <div className="block-info-team">
                 <div className="container">
@@ -94,6 +100,17 @@ export class AppContainer extends Component {
                                 <div className="team-detail-name">{CommonFunctions.getTeamName(team)}</div>
                             </div>
                             <div className="team-menu-tabs">
+
+                                <div className="nav-select-mb">
+                                    {/* <div className="name-round">{item.name}</div> */}
+                                    <select onChange={this.onChange} value={this.state.active}>
+                                        {
+                                            tabs.map(item =>
+                                                <option value={item.id} key={item.id} >{item.name}</option>)
+                                        }
+                                    </select>
+                                </div>
+
                                 <ul className="nav-team">
                                     {
                                         tabs.map(item => (
