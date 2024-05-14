@@ -3,7 +3,31 @@
 @import "../../../../abstracts/mixins";
 @import "../../../../base/base";
 @import "../../../../components/soccer-item";
+@import './components/nav-team';
+@import './components/player';
 
 .group-match-item .soccer-match-item .soccer-match-team .group-team .home-team{
     border-bottom: none !important;
+}
+
+.info-main-team{
+    border-radius: 5px;
+    border: 1px solid #D7D7D7;
+    background: #FFFDF9;
+    max-width: 80rem;
+    margin: 2.8rem auto;
+}
+
+.team-header{
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #D7D7D7;
+}
+.team-body{
+    padding: 1.6rem;
+}
+.soccer-match-grid{
+    margin-top: 0;
 }

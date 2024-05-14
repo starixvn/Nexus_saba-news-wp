@@ -2,105 +2,108 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import CommonFunctions from '@jsroot/common/common-functions';
-import { MatchStatus } from '@jsroot/common/constants';
 import LiveScore from './LiveScore';
+import Players from './Players';
 
+
+const tabs = [
+    {
+        id : 1,
+        slug : 'lich-thi-dau',
+        name : 'Lịch thi đấu'
+    },
+    {
+        id : 2,
+        slug : 'ket-qua',
+        name : 'Kết quả'
+    },
+    {
+        id : 3,
+        slug : 'cau-thu',
+        name : 'Cầu Thủ'
+    },
+    {
+        id : 4,
+        slug : 'tieu-su',
+        name : 'Tiểu sử'
+    }
+];  
 export class AppContainer extends Component {
     constructor(props) {
-        super(props);
+        super(props); 
+        this.state = {
+            active: 1
+        },
+        this.handleSelectTab = this
+            .handleSelectTab
+            .bind(this);
     }
+    
 
     componentDidMount() {
         this.props.getTeamData(window.teamId);
     }
-    groupMatchesByStageAndRound = matches => {
-        const totalItems = matches?.length;
-        const tempMatches = [];
-        for (let i = 0; i < totalItems; i++) {
-            const match = { ...matches[i] };
-            const stage = match.stage;
-            const key = stage ? stage.stageId : 0;
-            const item = {
-                key,
-                stage,
-                matches: [match]
-            };
 
-            if (tempMatches.length === 0) {
-                tempMatches.push(item);
-            } else {
-                const index = tempMatches.findIndex(x => x.key === key);
-                if (index === -1) {
-                    tempMatches.push(item);
-                } else {
-                    tempMatches[index].matches.push(match);
-                }
-            }
+    handleSelectTab = key => {
+        this.setState({
+            active : key
+        })
+        this.renderContent(key);
+    }
+
+    renderContent = () =>  {
+        const { preMatches, postMatches, players, team } = this.props;
+        switch (this.state.active) {
+            case 1:
+                return(
+                    preMatches !== null  && <LiveScore matches={preMatches}/>
+                )
+            case 2:
+                return (
+                    <div>Kết quả</div>
+                )
+            case 3:
+                return (
+                    players && <Players data={players}/>
+                )
+            case 4:
+                return(
+                    <div>Tiểu Sử</div>
+                )
+            default : 
+                return(
+                    <LiveScore matches={groups}/>
+                )
         }
-
-        return tempMatches;
-    };
-
-    groupMatches = matches => {
-        const tempMatches = this.groupMatchesByStageAndRound(matches);
-        const totalItems = tempMatches.length;
-        const result = [];
-        tempMatches.forEach((item, index) => {
-            let isFinished = false;
-            const stageMatches = item.matches;
-            const lastMatch = stageMatches[stageMatches.length - 1];
-            if(lastMatch.status === MatchStatus.Finished) {
-                isFinished = true;
-            }
-            tempMatches[index] = {...item, isFinished};
-        });
-        for (let i = 0; i < totalItems; i++) {
-            const item = tempMatches[i];
-            let text;
-            if (!item.stage) {
-                text = '';
-            }  else {
-                text = CommonFunctions.getStageName(item.stage);
-            }
-
-            result.push({
-                key: i,
-                text,
-                isFinished : item.isFinished,
-                childs: CommonFunctions.groupMatchesByDate(item.matches)
-            });
-        }
-
-
-        return result;
-    };
+    }
 
     render() {
-        const { matches, players, team } = this.props;
-        const groups = this.groupMatches(matches);
-        console.log(groups)
         return (
             <div className="block-info-team">
                 <div className="container">
-                    <Tabs
-                        defaultActiveKey="livescore"
-                        >
-                        <Tab eventKey="livescore" title="livescore">
-                            <LiveScore matches={groups}/>
-                        </Tab>
-                        <Tab eventKey="result" title="result">
-                            result
-                        </Tab>
-                        <Tab eventKey="player" title="player">
-                            player
-                        </Tab>
-                        <Tab eventKey="history" title="history">
-                            Tiểu sử
-                        </Tab>
-                    </Tabs>
+                    <div className="info-main-team">
+                        <div className="team-header">
+                            <div className="name-team-detail">
+                                <div className="team-detail-logo">logo</div>
+                                <div className="team-detail-name">ABC</div>
+                            </div>
+                            <div className="team-menu-tabs">
+                                <ul className="nav-team">
+                                    {
+                                        tabs.map(item => (
+                                            <li key={item.id} onClick={() => this.handleSelectTab(item.id)} className={`nav-team-item ${this.state.active === item.id ? 'active' : ''}`}>
+                                                {item.name}
+                                            </li>
+                                        ))
+                                    }
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="team-body">
+                            {this.renderContent()}
+                        </div> 
+                    </div>
                 </div>
             </div>
         )
@@ -110,8 +113,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { matches, players, team } = state;
-    return { matches, players, team };
+    const { preMatches, postMatches , players, team } = state;
+    return { preMatches, postMatches, players, team };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
