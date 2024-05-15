@@ -6,6 +6,7 @@ import LiveScore from './LiveScore';
 import Players from './Players';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
+import TeamHistory from './TeamHistory';
 
 
 const tabs = [
@@ -41,8 +42,6 @@ export class AppContainer extends Component {
                 .handleSelectTab
                 .bind(this);
     }
-
-
     componentDidMount() {
         this.props.getTeamData(window.teamId);
     }
@@ -52,7 +51,6 @@ export class AppContainer extends Component {
             active: key
         })
     }
-
     onChange = event => {
         const titleNav = tabs.find(item => item.id === parseInt(event.target.value))
         this.setState({
@@ -90,34 +88,19 @@ export class AppContainer extends Component {
     renderContent = () => {
         const { preMatches, postMatches, players , profile } = this.props;
         const player = this.groupPlayers(players);
-        console.log(postMatches)
         switch (this.state.active) {
             case 1:
-                return (
-                    preMatches.length ? <LiveScore matches={preMatches} /> : <div>Đang cập nhật dữ liệu</div>
-                )
+                return  preMatches.length ? <LiveScore matches={preMatches} /> : <div>Đang cập nhật dữ liệu</div>
             case 2:
-                return (
-                    postMatches.length ? <LiveScore matches={postMatches} /> : <div>Đang cập nhật dữ liệu</div>
-                )
+                return postMatches.length ? <LiveScore matches={postMatches} /> : <div>Đang cập nhật dữ liệu</div>
             case 3:
-                return (
-                    player.length ? <Players data={player} /> : <div>Đang cập nhật dữ liệu</div>
-                    
-                )
+                return player.length ? <Players data={player} /> : <div>Đang cập nhật dữ liệu</div>
             case 4:
-                return (
-                    profile ? <div>Tiểu Sử</div> : <div>Đang cập nhật dữ liệu</div>
-                )
+                return profile ? <TeamHistory data={profile}/> : <div>Đang cập nhật dữ liệu</div>
             default:
-                return (
-                    <LiveScore matches={preMatches} />
-                )
+                return <LiveScore matches={preMatches} />
         }
     }
-
-
-
     render() {
         const { team  } = this.props;
         if(team === null) {
