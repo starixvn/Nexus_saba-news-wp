@@ -88,25 +88,26 @@ export class AppContainer extends Component {
         }
     }
     renderContent = () => {
-        const { preMatches, postMatches, players } = this.props;
-        const group = this.groupPlayers(players);
+        const { preMatches, postMatches, players , profile } = this.props;
+        const player = this.groupPlayers(players);
+        console.log(postMatches)
         switch (this.state.active) {
             case 1:
                 return (
-                    <LiveScore matches={preMatches} />
+                    preMatches.length ? <LiveScore matches={preMatches} /> : <div>Đang cập nhật dữ liệu</div>
                 )
             case 2:
                 return (
-                    <LiveScore matches={postMatches} />
+                    postMatches.length ? <LiveScore matches={postMatches} /> : <div>Đang cập nhật dữ liệu</div>
                 )
             case 3:
                 return (
-                    <Players data={group} />
+                    player.length ? <Players data={player} /> : <div>Đang cập nhật dữ liệu</div>
                     
                 )
             case 4:
                 return (
-                    <div>Tiểu Sử</div>
+                    profile ? <div>Tiểu Sử</div> : <div>Đang cập nhật dữ liệu</div>
                 )
             default:
                 return (
@@ -118,7 +119,7 @@ export class AppContainer extends Component {
 
 
     render() {
-        const { team, profile } = this.props;
+        const { team  } = this.props;
         if(team === null) {
             return null;
         }
