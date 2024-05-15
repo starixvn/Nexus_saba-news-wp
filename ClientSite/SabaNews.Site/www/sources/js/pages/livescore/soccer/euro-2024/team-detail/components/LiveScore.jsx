@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
+import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from './TeamScore';
 export default class LiveScore extends PureComponent {
     constructor(props) {
@@ -22,19 +23,23 @@ export default class LiveScore extends PureComponent {
                                             <div className="soccer-match-item">
                                                 <div className="group-team">
                                                     <div className="home-team">
-                                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.homeTeam)} alt={CommonFunctions.getTeamName(item.homeTeam)} />
                                                         <div className="soccer-team-name">
                                                             {CommonFunctions.getTeamName(item.homeTeam)}
                                                         </div>
+                                                        <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.homeTeam)} alt={CommonFunctions.getTeamName(item.homeTeam)} />
                                                         <TeamScore match={matches} isHomeTeam />
                                                     </div>
+                                                    <MatchStage match={matches} />
                                                     <div className="soccer-team away-team">
+                                                    <   TeamScore match={matches} />
                                                         <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.awayTeam)} alt={CommonFunctions.getTeamName(item.awayTeam)}/>
                                                         <div className="soccer-team-name">
                                                             {CommonFunctions.getTeamName(item.awayTeam)}
-                                                            <TeamScore match={matches} />
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div className="soccer-match-star-icon">
+                                                    <i className="icon-live-right"></i>
                                                 </div>
                                             </div>
                                         </div>

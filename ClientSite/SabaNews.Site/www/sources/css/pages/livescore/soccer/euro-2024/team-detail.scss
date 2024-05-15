@@ -14,8 +14,54 @@
     border-radius: 5px;
     border: 1px solid #D7D7D7;
     background: #FFFDF9;
-    max-width: 80rem;
+    max-width: 96rem;
     margin: 2.8rem auto;
+    .group-team {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        gap: 3rem;
+    }
+    .soccer-match-stage{
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #222;
+    }
+    .soccer-team-name{
+        font-size: 1.4rem;
+        color: #222;
+        font-weight: 600;   
+    }
+    .home-team,.away-team {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+    }
+    .soccer-team-logo{
+        width: 3.6rem;
+        height: 3.6rem;
+        object-fit: cover;
+        border-radius: 50px;
+    }
+    .soccer-team-result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .total-score{
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+        }
+        .half-score{
+            font-size: 1.4rem;
+            color: #757575;
+            font-weight: 400;
+        }
+    }
+    .soccer-match-item{
+        padding: .9rem 1.4rem;
+    }
 }
 
 .team-header{
