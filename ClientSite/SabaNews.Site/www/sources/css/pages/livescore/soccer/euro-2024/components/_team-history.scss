@@ -1,9 +1,4 @@
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
+
 .format-image-detail {
     background: #f0eeea;
 }
@@ -92,7 +87,7 @@ img {
         text-align: left;
     }
 
-    date {
+    .date {
         width: 23rem;
     }
 
@@ -162,7 +157,13 @@ img {
     } 
     ol {
         @extend .ul1;
-    }     
+    }    
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    } 
 }
 
 .content .p1 {

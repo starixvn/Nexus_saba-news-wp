@@ -729,13 +729,6 @@ body {
   margin-bottom: 0;
 }
 
-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 .format-image-detail {
   background: #f0eeea;
 }
@@ -806,7 +799,7 @@ img {
 .detail-content-table .place {
   text-align: left;
 }
-.detail-content-table date {
+.detail-content-table .date {
   width: 23rem;
 }
 .detail-content-table .tab-success {
@@ -855,6 +848,13 @@ img {
 }
 .ul1 li a, .content ol li a, .content ul li a {
   color: #0066CC;
+}
+
+.content img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .content .p1 {
@@ -1336,4 +1336,10 @@ img {
 
 .team-history-image {
   margin: 1rem 0;
+}
+.team-history-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
