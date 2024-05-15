@@ -79,5 +79,34 @@ namespace SabaNews.Core.Constants
             new() { Name = Commentary, Slug = CommentarySlug, Url = $"/{HomepageSlug}/{UrlCommentarySlug}" },
             new() { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{UrlVideoSlug}" }
         };
+
+        public static readonly IReadOnlyList<KeyValue> TeamProfiles = new List<KeyValue>
+        {
+            new() { Id = 33172, Name = "doi-tuyen-bong-da-albania" },
+            new() { Id = 35611, Name = "doi-tuyen-bong-da-anh" },
+            new() { Id = 33152, Name = "doi-tuyen-bong-da-quoc-gia-ao-tai-euro" },
+            new() { Id = 33151, Name = "doi-tuyen-bong-da-ba-lan" },
+            new() { Id = 33157, Name = "doi-tuyen-bong-da-bi" },
+            new() { Id = 33169, Name = "doi-tuyen-bong-da-bo-dao-nha" },
+            new() { Id = 33149, Name = "doi-tuyen-bong-da-quoc-gia-croatia-tai-euro" },
+            new() { Id = 33163, Name = "doi-tuyen-bong-da-ch-sec" },
+            new() { Id = 33124, Name = "doi-tuyen-bong-da-dan-mach" },
+            new() { Id = 33144, Name = "doi-tuyen-bong-da-duc-tu-thang-tram-qua-khu-den-euro-2024" },
+            new() { Id = 33587, Name = "doi-tuyen-bong-da-georgia" },
+            new() { Id = 33155, Name = "doi-tuyen-bong-da-ha-lan" },
+            new() { Id = 33136, Name = "doi-tuyen-bong-da-hungary" },
+            new() { Id = 33734, Name = "doi-tuyen-bong-da-italy" },
+            new() { Id = 45378, Name = "doi-tuyen-bong-da-phap" },
+            new() { Id = 36617, Name = "doi-tuyen-bong-da-romania" },
+            new() { Id = 33154, Name = "doi-tuyen-bong-da-scotland" },
+            new() { Id = 33168, Name = "doi-tuyen-bong-da-serbia" },
+            new() { Id = 33148, Name = "doi-tuyen-bong-da-slovakia" },
+            new() { Id = 33150, Name = "doi-tuyen-bong-da-slovenia" },
+            new() { Id = 33125, Name = "doi-tuyen-bong-da-tay-ban-nha" },
+            new() { Id = 33122, Name = "doi-tuyen-bong-da-thuy-si" },
+            new() { Id = 33171, Name = "doi-tuyen-bong-da-tho-nhi-ky" },
+            new() { Id = 33166, Name = "doi-tuyen-bong-da-ukraine" },
+
+        };
     }
 }

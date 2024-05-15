@@ -1,5 +1,6 @@
 ﻿@using static SabaNews.Site.Extensions.LivescoreHelper
 @using SabaNews.Core.Constants;
+@using SabaNews.Core.Helper;
 @{
     Layout = "_LayoutEuro2024";
 }
@@ -58,9 +59,9 @@
                 @foreach (var team in Model.Teams)
                 {
                     var icon = GetTeamIcon(team.Icon);
-                    var teamName = GetGeneralName(team.TeamNameVN, team.TeamNameEN, team.TeamFullNameEN);
+                    var teamName = GetGeneralName(team.TeamNameEN, team.TeamFullNameEN, team.TeamNameVN);
                     <div class="team">
-                        <div class="team-logo"><a href="@Url.Action("TeamDetail", "Euro2024", new { teamName = teamName, teamId = team.TeamId })"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></a></div>
+                        <div class="team-logo"><a href="@Url.Action("TeamDetail", "Euro2024", new { teamName = Helper.GetSlug(teamName), teamId = team.TeamId })"><img src=@(string.IsNullOrEmpty(team.IconVN) ? icon : team.IconVN) alt="Alternate Text" /></a></div>
                         <div class="team-name">@teamName</div>
                     </div>
                 }

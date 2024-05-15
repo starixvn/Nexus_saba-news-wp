@@ -64,7 +64,8 @@
             UploadResult result;
             try
             {
-                var filename = url.Split('/').Last();
+                var pathList = url.Split('/');
+                var filename = pathList[^1];
                 var filePath = pathService.MapAbsoluteRootPath("/" + dirFolder + filename);
                 if (File.Exists(filePath))
                 {

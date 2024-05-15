@@ -10,6 +10,7 @@ const teamDetailSlice = createSlice({
         stages: [],
         players: null,
         team: null,
+        profile: null,
         preMatches: null,
         postMatches: null
     },
@@ -46,6 +47,9 @@ const teamDetailSlice = createSlice({
         },
         setPlayers: (state, action) => {
             state.players = action.payload;
+        },
+        setProfile: (state, action) => {
+            state.profile = action.payload;
         }
     }
 });
@@ -54,7 +58,8 @@ const { actions, reducer } = teamDetailSlice;
 
 export const {
     setMatches,
-    setPlayers
+    setPlayers,
+    setProfile
 } = actions;
 
 export default reducer;

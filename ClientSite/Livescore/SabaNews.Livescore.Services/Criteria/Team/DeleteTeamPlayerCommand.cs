@@ -1,6 +1,5 @@
 namespace SabaNews.Livescore.Services.Criteria.Team
 {
-    using System;
     using SabaNews.Core.Models;
 
     public class DeleteTeamPlayerCommand : BaseNonQueryCommand

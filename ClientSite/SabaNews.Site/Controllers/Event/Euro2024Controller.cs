@@ -288,11 +288,16 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Json(null);
             }
+            var teamProfile = Euro2024.TeamProfiles.FirstOrDefault(t => t.Id == model.TeamId);
+            if(teamProfile == null)
+            {
+                return Json(null);
+            }
+            var profile = await postService.GetPostDetailBySlugAsync(teamProfile.Name, Constants.postType);
             var players = await teamService.GetTeamPlayerById(model.TeamId);
             var matches = await matchService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = model.TeamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId});
             matches = matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
-            var team = matches.FirstOrDefault(m => m.HomeTeam.TeamId == model.TeamId);
-            return Json(new { matches, players, team });
+            return Json(new { matches, players, profile });
         }
         [HttpPost]
         [Route("euro2024/related-posts")]

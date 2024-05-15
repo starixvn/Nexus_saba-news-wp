@@ -118,7 +118,7 @@ export class AppContainer extends Component {
 
 
     render() {
-        const { team } = this.props;
+        const { team, profile } = this.props;
         if(team === null) {
             return null;
         }
@@ -168,8 +168,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { preMatches, postMatches, players, team } = state;
-    return { preMatches, postMatches, players, team };
+    const { preMatches, postMatches, players, team, profile } = state;
+    return { preMatches, postMatches, players, team, profile };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

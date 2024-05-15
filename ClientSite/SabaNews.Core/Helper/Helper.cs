@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using System.Text.RegularExpressions;
 
     public static class Helper
@@ -68,6 +69,23 @@
             var clientIP = context.Request.Headers["x-forwarded-for"].ToString();
             clientIP = !string.IsNullOrWhiteSpace(clientIP) ? clientIP.Split(',')[0] : context.Connection.RemoteIpAddress.ToString();
             return clientIP;
+        }
+
+         public static string GetSlug(string text)
+        {
+            if(string.IsNullOrEmpty(text))
+            {
+                return "";
+            }
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string slug = text.Normalize(NormalizationForm.FormD).Trim().ToLower();
+            slug = regex.Replace(slug, String.Empty)
+            .Replace('\u0111', 'd').Replace('\u0110', 'D')
+            .Replace(",", "").Replace(".", "").Replace("!", "")
+            .Replace("(", "").Replace(")", "").Replace(";", "-")
+            .Replace("/", "").Replace("%", "ptram").Replace("&", "va")
+            .Replace("?", "").Replace('"', '-').Replace(' ', '-');
+            return slug;
         }
     }
 }
