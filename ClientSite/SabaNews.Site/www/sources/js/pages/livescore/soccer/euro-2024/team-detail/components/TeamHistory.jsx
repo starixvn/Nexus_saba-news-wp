@@ -4,7 +4,6 @@ const TeamHistory = ({ data }) => {
     return (
         <div className="team-history">
             <div className="team-history-titlte">{data.postTitle}</div>
-            <div className="team-history-description">{data.postExcerpt}</div>
             <div className="team-history-image">
                 <img src={data.featureImage} alt={data.postTitle} />
             </div>
