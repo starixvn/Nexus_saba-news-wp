@@ -60,12 +60,36 @@ export class AppContainer extends Component {
             titleNav : titleNav.name
         });
     };
-
-
-
-
+    groupPlayers  = players => {
+        const positions  = ['Huấn luyện viên' , 'Thủ môn' , 'Hộ vệ', 'Trung vệ','Hank CTO']
+        if(players){
+            const totalItems = players.length;
+            const tempPlayer = [];
+            for (let i = 0; i < totalItems; i++) {
+                const player = players[i];
+                const positionId  = player.position
+                const item = {
+                    position : positions[positionId - 1],
+                    positionId,
+                    players : [player]
+                }
+                if (tempPlayer.length === 0){
+                    tempPlayer.push(item)
+                }else{
+                    const index = tempPlayer.findIndex(x => x.positionId === positionId);
+                    if (index === - 1) {
+                        tempPlayer.push(item);
+                    } else {
+                        tempPlayer[index].players.push(player);
+                    }
+                }
+            }
+            return  tempPlayer;
+        }
+    }
     renderContent = () => {
         const { preMatches, postMatches, players } = this.props;
+        const group = this.groupPlayers(players);
         switch (this.state.active) {
             case 1:
                 return (
@@ -77,7 +101,8 @@ export class AppContainer extends Component {
                 )
             case 3:
                 return (
-                    <Players data={players} />
+                    <Players data={group} />
+                    
                 )
             case 4:
                 return (
@@ -89,6 +114,8 @@ export class AppContainer extends Component {
                 )
         }
     }
+
+
 
     render() {
         const { team } = this.props;
