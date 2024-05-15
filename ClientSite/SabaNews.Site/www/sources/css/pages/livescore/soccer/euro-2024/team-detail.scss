@@ -27,6 +27,7 @@
         font-size: 1.6rem;
         font-weight: 600;
         color: #222;
+        margin-right: 0 !important;
     }
     .soccer-team-name{
         font-size: 1.4rem;
@@ -37,6 +38,13 @@
         display: flex;
         align-items: center;
         gap: 1.6rem;
+        width: 17rem;
+    }
+    .home-team{
+        justify-content: flex-end;
+    }
+    .away-team{
+        justify-content: flex-start;
     }
     .soccer-team-logo{
         width: 3.6rem;

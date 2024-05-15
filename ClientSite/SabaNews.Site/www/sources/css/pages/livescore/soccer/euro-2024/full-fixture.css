@@ -1242,3 +1242,7 @@ body {
     padding-bottom: 2rem;
   }
 }
+
+.soccer-match-grid-items {
+  cursor: pointer;
+}

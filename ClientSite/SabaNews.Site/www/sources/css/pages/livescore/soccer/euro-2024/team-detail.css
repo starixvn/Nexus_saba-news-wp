@@ -606,6 +606,11 @@ body {
   display: flex;
   gap: 1.2rem;
 }
+@media (max-width: 767px) {
+  .team-menu-tabs .nav-team {
+    display: none;
+  }
+}
 .team-menu-tabs .nav-team li {
   padding: 0.5rem 1.6rem;
   color: #222;
@@ -620,6 +625,15 @@ body {
   background: #FAAA00;
   border: none;
   color: #000000;
+}
+
+.nav-select-mb {
+  display: none;
+}
+@media (max-width: 767px) {
+  .nav-select-mb {
+    display: block;
+  }
 }
 
 .player-group .player-title {
@@ -722,8 +736,62 @@ body {
   border-radius: 5px;
   border: 1px solid #D7D7D7;
   background: #FFFDF9;
-  max-width: 80rem;
+  max-width: 96rem;
   margin: 2.8rem auto;
+}
+.info-main-team .group-team {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 3rem;
+}
+.info-main-team .soccer-match-stage {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #222;
+  margin-right: 0 !important;
+}
+.info-main-team .soccer-team-name {
+  font-size: 1.4rem;
+  color: #222;
+  font-weight: 600;
+}
+.info-main-team .home-team, .info-main-team .away-team {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  width: 17rem;
+}
+.info-main-team .home-team {
+  justify-content: flex-end;
+}
+.info-main-team .away-team {
+  justify-content: flex-start;
+}
+.info-main-team .soccer-team-logo {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.info-main-team .soccer-team-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-main-team .soccer-team-result .total-score {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+.info-main-team .soccer-team-result .half-score {
+  font-size: 1.4rem;
+  color: #757575;
+  font-weight: 400;
+}
+.info-main-team .soccer-match-item {
+  padding: 0.9rem 1.4rem;
 }
 
 .team-header {
@@ -740,4 +808,58 @@ body {
 
 .soccer-match-grid {
   margin-top: 0;
+}
+
+.name-team-detail {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.name-team-detail .team-detail-logo {
+  background: #fff;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.name-team-detail .team-detail-logo img {
+  width: 4.8rem;
+  height: 4.8rem;
+  display: block;
+  object-fit: cover;
+}
+.name-team-detail .team-detail-name {
+  color: #222;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.soccer-match-grid {
+  margin-bottom: 1.2rem;
+}
+.soccer-match-grid:last-child {
+  margin-bottom: 0;
+}
+
+.soccer-match-grid-item, .soccer-match-item {
+  border-radius: 3px;
+  margin-bottom: 0;
+}
+
+.soccer-match-grid-item-header {
+  background: #143CDB;
+  border: 1px solid #143CDB;
+  color: #FFF;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+}
+
+.player-group {
+  margin-bottom: 1.6rem;
+}
+.player-group:last-child {
+  margin-bottom: 0;
 }

@@ -18,11 +18,11 @@
     .gird-hot-news{
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 45rem auto;
+        grid-template-rows: auto;
         grid-gap: 2rem;
         @include tableMobile {
             grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: 30rem 25rem;
+            grid-template-rows: auto;
         }
     
         @include Mobile {
@@ -54,6 +54,9 @@
                 @include Mobile {
                     grid-column: 1/4;
                     grid-row: 1/2;
+                }
+                .hover-image{
+                    height: 100%;
                 }
             }
             &-2 {

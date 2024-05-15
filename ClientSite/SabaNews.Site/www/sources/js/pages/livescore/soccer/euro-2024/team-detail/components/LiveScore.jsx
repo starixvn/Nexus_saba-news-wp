@@ -22,7 +22,7 @@ export default class LiveScore extends PureComponent {
                                         <div className="group-match-item">
                                             <div className="soccer-match-item">
                                                 <div className="group-team">
-                                                    <div className="home-team">
+                                                    <div className="soccer-team home-team">
                                                         <div className="soccer-team-name">
                                                             {CommonFunctions.getTeamName(item.homeTeam)}
                                                         </div>
