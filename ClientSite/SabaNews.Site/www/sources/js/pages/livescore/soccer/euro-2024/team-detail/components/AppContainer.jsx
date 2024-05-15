@@ -34,7 +34,8 @@ export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: 1
+            active: 1,
+            titleNav : tabs[0].name
         },
         this.handleSelectTab = this
                 .handleSelectTab
@@ -53,11 +54,16 @@ export class AppContainer extends Component {
     }
 
     onChange = event => {
+        const titleNav = tabs.find(item => item.id === parseInt(event.target.value))
         this.setState({
-            active: parseInt(event.target.value)
-        })
-        
+            active: parseInt(event.target.value),
+            titleNav : titleNav.name
+        });
     };
+
+
+
+
     renderContent = () => {
         const { preMatches, postMatches, players } = this.props;
         switch (this.state.active) {
@@ -89,7 +95,6 @@ export class AppContainer extends Component {
         if(team === null) {
             return null;
         }
-        console.log(this.state.active)
         return (
             <div className="block-info-team">
                 <div className="container">
@@ -102,11 +107,12 @@ export class AppContainer extends Component {
                             <div className="team-menu-tabs">
 
                                 <div className="nav-select-mb">
-                                    {/* <div className="name-round">{item.name}</div> */}
+                                    <div className="name-round">{this.state.titleNav}</div>
                                     <select onChange={this.onChange} value={this.state.active}>
                                         {
-                                            tabs.map(item =>
-                                                <option value={item.id} key={item.id} >{item.name}</option>)
+                                            tabs.map(item => (
+                                                <option value={item.id} key={item.id} >{item.name}</option>
+                                            ))
                                         }
                                     </select>
                                 </div>
