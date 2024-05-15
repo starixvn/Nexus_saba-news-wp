@@ -44,12 +44,12 @@ Euro 2024 Team
                                 count++;
                                 <tr>
                                     <td class="text-center">@count</td>
-                                    <td class="text-left">@GetGeneralName(item.TeamNameVN, item.TeamNameEN, item.TeamFullNameEN)
+                                    <td class="text-left">@GetGeneralName(item.TeamNameEN, item.TeamFullNameEN, item.TeamNameVN)
                                     </td>
                                     <td class="text-center"><img src="@(item.IconVN ?? GetTeamIcon(item.Icon))" width="50">
                                     </td>
                                     <td class="text-center">
-                                        <a href="@Url.Action("TeamPlayer", "euro2024Management", new { teamId = item.TeamId})"><i
+                                        <a href="@Url.Action("TeamPlayer", "Euro2024Management", new { teamId = item.TeamId})"><i
                                                 class="icon icon-edit-admin btn-Edit" title="Edit"></i></a>
                                     </td>
                                 </tr>
