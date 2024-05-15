@@ -8,7 +8,7 @@ const TeamHistory = ({ data }) => {
             <div className="team-history-image">
                 <img src={data.featureImage} alt={data.postTitle} />
             </div>
-            <div className="team-history-content" dangerouslySetInnerHTML={{ __html : data.postContent}}></div>
+            <div className="team-history-content content" dangerouslySetInnerHTML={{ __html : data.postContent}}></div>
         </div>
     );
 };
