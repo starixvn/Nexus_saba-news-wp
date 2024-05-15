@@ -8,79 +8,91 @@ var adminEuro2024TeamPlayer = (function ($) {
             data: { teamId },
             success: function (res) {
                 $('.data-grid').html(res);
-                $('.btn-Edit').on('click', function () {
-                    var playerId = $(this).data('playerid');
-                    console.log(playerId);
-                    $.ajax({
-                        type: 'GET',
-                        url: "/Admin/Euro2024Management/EditPlayer",
-                        data: {playerId},
-                        success: function (html) {
-                            $('#EditPlayerModel .modal-body').html(html);
-                            $('#EditPlayerModel').modal('show');
+                HandleEditPlayer();
 
-                            $("#TeamFullNameEN").on("change", function () {
-                                var teamId = document.getElementById("TeamFullNameEN").value;
-                                $.ajax({
-                                    type: 'Get',
-                                    url: '/Admin/TopScorerManagement/GetPlayerByTeamId',
-                                    data: { teamId },
-                                    success: function (data) {
-                                        $("#PlayerFullNameEN").empty();
-                                        data.forEach(function (obj) {
-                                            $('#PlayerFullNameEN').append($('<option></option>').val(obj.playerId).html(obj.fullNameEN));
-                                        })
-                                    }
-                                })
-                            });
-
-                            $('.btn-save-edit').on('click', function () {
-                                var self = $(this);
-                                self.prop("disabled", true);
-                                var playerId = $(this).data('id');
-
-                                let icon = $('#icon')[0].files[0];
-                                let currentIcon = $('#icon').parent().parent().parent().parent().find('.review_photo').attr('src');
-                                let isDeletedIcon = currentIcon == '';
-
-                                let formData = new FormData();
-                                formData.append('playerId', playerId)
-                                formData.append('teamId', teamId);
-                                formData.append('playerName', $('#updatePlayer input[name=player-name]').val());
-                                formData.append('playerFullName', $('#updatePlayer input[name=player-full-name]').val());
-                                formData.append('birthday', $('#updatePlayer input[name=birthday]').val());
-                                formData.append('shirtNumber', $('#updatePlayer input[name=shirt-number]').val());
-                                formData.append('club', $('#updatePlayer input[name=club]').val());
-                                formData.append('position', $('#updatePlayer .position-select').val());
-                                formData.append('icon', icon);
-                                formData.append('isDeletedIcon', isDeletedIcon);
-                                $.ajax({
-                                    type: 'POST',
-                                    url: "/Admin/Euro2024Management/EditPlayer",
-                                    data: formData,
-                                    processData: false,
-                                    contentType: false,
-                                    success: function (response) {
-                                        self.prop("disabled", false);
-                                        if (response.isSuccessful) {
-                                            $('#EditPlayerModel').modal('hide');
-                                            GetSuccessPopup('#NoticeModal', 'Update Player successfully!');
-                                            setTimeout(function () {
-                                                $('#NoticeModal').modal('hide');
-                                                GetDataGrid();
-                                            }, 1000);
-                                        } else {
-                                            document.getElementById("btn-save").style.display = "inline-block";
-                                            GetErrorPopup('#NoticeModal', 'An error occurred while add player, please try again');
-                                        }
-                                    }
-                                })
-                            });
-                        }
-                    });
-                });
+                HandleDeletePlayer();
             }
         });
+    }
+
+    function HandleEditPlayer() {
+        $('.btn-Edit').on('click', function () {
+            var playerId = $(this).data('playerid');
+            $.ajax({
+                type: 'GET',
+                url: "/Admin/Euro2024Management/EditPlayer",
+                data: {playerId},
+                success: function (html) {
+                    $('#EditPlayerModel .modal-body').html(html);
+                    $('#EditPlayerModel').modal('show');
+
+                    $('.btn-save-edit').on('click', function () {
+                        var self = $(this);
+                        self.prop("disabled", true);
+                        var playerId = $(this).data('id');
+
+                        let icon = $('#icon')[0].files[0];
+                        let currentIcon = $('#icon').parent().parent().parent().parent().find('.review_photo').attr('src');
+                        let isDeletedIcon = currentIcon == '';
+
+                        let formData = new FormData();
+                        formData.append('playerId', playerId)
+                        formData.append('teamId', teamId);
+                        formData.append('playerName', $('#updatePlayer input[name=player-name]').val());
+                        formData.append('playerFullName', $('#updatePlayer input[name=player-full-name]').val());
+                        formData.append('birthday', $('#updatePlayer input[name=birthday]').val());
+                        formData.append('shirtNumber', $('#updatePlayer input[name=shirt-number]').val());
+                        formData.append('club', $('#updatePlayer input[name=club]').val());
+                        formData.append('position', $('#updatePlayer .position-select').val());
+                        formData.append('icon', icon);
+                        formData.append('isDeletedIcon', isDeletedIcon);
+                        $.ajax({
+                            type: 'POST',
+                            url: "/Admin/Euro2024Management/EditPlayer",
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (response) {
+                                self.prop("disabled", false);
+                                if (response.isSuccessful) {
+                                    $('#EditPlayerModel').modal('hide');
+                                    GetSuccessPopup('#NoticeModal', 'Update Player successfully!');
+                                    setTimeout(function () {
+                                        $('#NoticeModal').modal('hide');
+                                        GetDataGrid();
+                                    }, 1000);
+                                } else {
+                                    document.getElementById("btn-save").style.display = "inline-block";
+                                    GetErrorPopup('#NoticeModal', 'An error occurred while add player, please try again');
+                                }
+                            }
+                        })
+                    });
+                }
+            });
+        });
+    }
+
+    function HandleDeletePlayer() {
+        $('.btn-delete').on('click', function() {
+            var playerId = $(this).data('playerid');
+            $.ajax({
+                type: 'POST',
+                data: {playerId},
+                url: '/Admin/Euro2024Management/DeletePlayer',
+                success: function(res) {
+                    if (res.isSuccessful) {
+                        GetSuccessPopup('#NoticeModal', 'Delete Player successfully!');
+                        setTimeout(function () {
+                            $('#NoticeModal').modal('hide');
+                            GetDataGrid();
+                        }, 1000);
+                    } else {
+                        GetErrorPopup('#NoticeModal', 'An error occurred while add player, please try again');
+                    }
+                }
+            })
+        })
     }
 
     function HandleCreatePlayer() {

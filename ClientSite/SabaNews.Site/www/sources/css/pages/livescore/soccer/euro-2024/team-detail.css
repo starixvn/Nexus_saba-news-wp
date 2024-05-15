@@ -637,6 +637,9 @@ body {
   border-radius: 0px 0px 5px 5px;
   border: 1px solid #DADADA;
   background: #FFFDF9;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23.7rem, 1fr));
+  gap: 1.2rem;
 }
 .player-group .player-items {
   border-radius: 5px;
@@ -647,12 +650,15 @@ body {
 .player-group .player-header {
   background: #143CDB;
   border: 1px solid #143CDB;
+  border-radius: 0 0 5px 5px;
   min-height: 7rem;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  color: #FFF;
+  padding: 1.2rem;
 }
 .player-group .player-header .avatar {
   position: absolute;
@@ -665,9 +671,47 @@ body {
   top: 12px;
   border-radius: 50px;
   border: 2px solid #fff;
+  overflow: hidden;
+}
+.player-group .player-header .avatar img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+.player-group .player-header .number {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.player-group .player-header .name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
 }
 .player-group .player-body {
   padding: 1.2rem;
+  margin-top: 1rem;
+  color: #222;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: lowercase;
+}
+.player-group .player-body div {
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+.player-group .player-body div:last-child {
+  margin-bottom: 0;
 }
 
 .group-match-item .soccer-match-item .soccer-match-team .group-team .home-team {

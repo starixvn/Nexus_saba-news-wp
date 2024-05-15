@@ -24,6 +24,7 @@
             <button href="javascript:;" class="label label-blue btn-link btn-create-player"><img
                     src="~/images/icon/icon-plus.png" class="icon-add-player" />@ViewResources.AddPlayer</button>
         </div>
+        
         <div class="data-grid" id="data-grid">
         </div>
     </div>
@@ -47,6 +48,27 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <div class="modal confirm" id="ConfirmModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title">@ViewResources.Confirmation</h2>
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+                <div class="button-confirm">
+                    <button class="btn-custom-outline confirm-action">Yes</button>
+                    <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal " id="CreatePlayerModel" style="display:none">

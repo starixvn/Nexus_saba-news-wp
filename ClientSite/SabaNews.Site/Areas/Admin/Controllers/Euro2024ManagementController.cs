@@ -105,6 +105,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             if (param.Icon != null)
             {
                 var uploadResult = await fileService.UploadFileAsync(param.Icon, UploadDir.PlayerUploadFolder);
+                fileService.DeleteFile(player.Icon, UploadDir.PlayerUploadFolder);
                 icon = uploadResult.IsSuccessful ? uploadResult.AbsoluteUrl : icon;
             }
             var cmd = new UpdateTeamPlayerCommand
@@ -119,6 +120,18 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 Icon = icon
             };
             var result = await teamService.UpdatePlayerAsync(cmd);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeletePlayer(long playerId)
+        {
+            var player = await teamService.GetPlayerById(playerId);
+            if(!string.IsNullOrEmpty(player.Icon))
+            {
+                fileService.DeleteFile(player.Icon, UploadDir.PlayerUploadFolder);
+            }
+            var result = await teamService.DeletePlayerAsync(playerId);
             return Json(result);
         }
 

@@ -262,6 +262,7 @@
         <Setting Key="Livescore_PlayerCustom_Create" SpName="Livescore_PlayerCustom_Create" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_PlayerCustom_GetById" SpName="Livescore_PlayerCustom_GetById" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="Livescore_PlayerCustom_Update" SpName="Livescore_PlayerCustom_Update" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="Livescore_PlayerCustom_Delete" SpName="Livescore_PlayerCustom_Delete" DbName="sabasports" Plain="0"></Setting>
     </Function>
     <Function Name="Api">
         <Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />

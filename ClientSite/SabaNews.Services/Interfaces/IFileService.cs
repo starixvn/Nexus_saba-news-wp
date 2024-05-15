@@ -7,5 +7,6 @@
     public interface IFileService
     {
         Task<UploadResult> UploadFileAsync(IFormFile file, string dirFolder);
+        UploadResult DeleteFile(string url, string dirFolder);
     }
 }

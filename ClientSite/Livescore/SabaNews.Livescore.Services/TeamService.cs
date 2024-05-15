@@ -46,5 +46,10 @@
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
         }
+
+        public async Task<CommandResult> DeletePlayerAsync(long playerId)
+        {
+            return await baseService.ExecuteNonQueryAsync(new DeleteTeamPlayerCommand { PlayerId = playerId });
+        }
     }
 }

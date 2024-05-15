@@ -8,6 +8,7 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.IO;
+    using System.Linq;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
@@ -50,6 +51,26 @@
                 string url = string.Concat(baseUrl, linkPhoto);
                 result = new UploadResult { Code = Constants.SuccessCode, AbsoluteUrl = url, Url = linkPhoto };
 
+            }
+            catch (Exception e)
+            {
+                result = new UploadResult { Message = e.Message };
+            }
+            return result;
+        }
+
+        public UploadResult DeleteFile(string url, string dirFolder)
+        {
+            UploadResult result;
+            try
+            {
+                var filename = url.Split('/').Last();
+                var filePath = pathService.MapAbsoluteRootPath("/" + dirFolder + filename);
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+                result = new UploadResult { Code = Constants.SuccessCode };
             }
             catch (Exception e)
             {

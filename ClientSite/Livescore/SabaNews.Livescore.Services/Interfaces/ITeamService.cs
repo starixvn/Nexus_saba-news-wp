@@ -13,5 +13,6 @@ namespace SabaNews.Livescore.Services
         Task<CommandResult> CreatePlayerAsync(CreateTeamPlayerCommand cmd);
         Task<PlayerCustom> GetPlayerById(long playerId);
         Task<CommandResult> UpdatePlayerAsync(UpdateTeamPlayerCommand cmd);
+        Task<CommandResult> DeletePlayerAsync(long playerId);
     }
 }

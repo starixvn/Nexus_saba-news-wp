@@ -46,7 +46,7 @@ Euro 2024 Team
                                     <td class="text-center">@count</td>
                                     <td class="text-left">@GetGeneralName(item.TeamNameVN, item.TeamNameEN, item.TeamFullNameEN)
                                     </td>
-                                    <td class="text-center"><img src="@(item.IconVN ?? GetTeamIcon(item.Icon))" width="100">
+                                    <td class="text-center"><img src="@(item.IconVN ?? GetTeamIcon(item.Icon))" width="50">
                                     </td>
                                     <td class="text-center">
                                         <a href="@Url.Action("TeamPlayer", "euro2024Management", new { teamId = item.TeamId})"><i
