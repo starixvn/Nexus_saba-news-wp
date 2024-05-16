@@ -14,19 +14,19 @@ namespace SabaNews.Core.Constants
         public const string LastestNews = "Tin mới nhất";
         public const string LastestNewsTitle = "Tin tức mới nhất về Euro 2024 | SABA Sports";
         public const string LastestNewsDescription = "Tin tức Euro 2024 mới nhất. SABAVN cập nhật liên tục về các trận đấu, các đội tuyển, cầu thủ và những thông tin hấp dẫn khác của Euro 2024.";
-        public const string LastestNewsSlug = "tin-tuc-world-cup-2022";
+        public const string LastestNewsSlug = "euro-2024";
         public const string UrlLastestNewsSlug = "tin-moi-nhat";
 
         public const string Fixture = "Lịch thi đấu";
         public const string FixtureDescription = "Lịch thi đấu Euro 2024 mới nhất hôm nay. Xem lịch thi đấu bóng đá Euro 2024 đêm nay, LTĐ Euro 2024 rạng sáng mai.";
         public const string FixtureTitle = "LLịch thi đấu Euro 2024 chính xác nhất";
-        public const string FixtureSlug = "lich-thi-dau-world-cup-2022";
+        public const string FixtureSlug = "lich-thi-dau";
         public const string UrlFixtureSlug = "lich-thi-dau";
 
         public const string Standing = "Bảng xếp hạng";
         public const string StandingTitle = "Bảng xếp hạng vòng chung kết Euro 2024 mới nhất hôm nay";
         public const string StandingDescription = "Xem bảng xếp hạng Euro 2024 nhanh và chính xác nhất, theo dõi tỷ số, thống kê, đội hình, diễn biến các trận đấu trên SABA Sports.";
-        public const string StandingSlug = "bang-xep-hang-world-cup-2022";
+        public const string StandingSlug = "bang-xep-hang";
         public const string UrlStandingSlug = "bang-xep-hang";
 
         public const string Commentary = "Nhận định";

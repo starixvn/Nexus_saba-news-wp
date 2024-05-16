@@ -20,6 +20,26 @@ var euro2024_single = (function ($) {
         });
     }
 
+    function LoadMostViewPosts() {
+        var block = $("body").find(".euro-most-view-posts");
+        if(block.length === 0) {
+            return false;
+        }
+        var postID = block.data("postid");
+        var cateSlug = block.data("cateslug");
+        $.ajax({
+            url: "/euro2024/most-view-posts",
+            type: "POST",
+            data: { postID, cateSlug },
+            success: function (res) {
+                block.html(res);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus + ': ' + errorThrown);
+            }
+        });
+    }
+
     function UpdatePostView() {
         $(window).on("load", function () {
             var postId = $("#postID").val();
@@ -142,6 +162,7 @@ var euro2024_single = (function ($) {
 
     function init() {
         LoadRelatedPosts();
+        LoadMostViewPosts();
         UpdatePostView();
         ScrollItem();
         getScrollTop();

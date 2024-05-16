@@ -299,6 +299,7 @@ namespace SabaNews.Site.Controllers.Event
             matches = matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             return Json(new { matches, players, profile });
         }
+
         [HttpPost]
         [Route("euro2024/related-posts")]
         public async Task<IActionResult> GetRelatedPosts(string cateSlug, int postID)
@@ -311,6 +312,21 @@ namespace SabaNews.Site.Controllers.Event
             };
             var posts = await postService.GetPostsByCateSlugAsync(criteria);
             return PartialView("~/Views/Event/Euro2024/_RelatedPosts.cshtml", posts);
+        }
+
+        [HttpPost]
+        [Route("euro2024/most-view-posts")]
+        public async Task<IActionResult> GetMostViewPost(string cateSlug, int postID)
+        {
+             var postParam = new PostParam
+            {
+                Slug = cateSlug,
+                Start = Constants.FromFirstItem,
+                End =  Constants.GetFourItems,
+                PostID = postID
+            };
+            var posts = await postService.GetTopPostsByCateSlugAsync(postParam);
+            return PartialView("~/Views/Event/Euro2024/_MostViewPosts.cshtml", posts);
         }
 
 

@@ -251,19 +251,14 @@
                 <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
                 <div class="comment-post" id="comment">
                 </div>
-                @* @if (isMobile)
-                {
-                    <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
-                    <div id="topScorersWC" class="page-items-box"></div>
-                }
-                @await Html.PartialAsync("~/Views/Event/Euro2024/Component/_RelatedPostsEuro.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID })
-                <div class="euro-related-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug"></div> *@
+                <div class="euro-related-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug"></div>
             </div>
             <div class="page-items-right">
                 <div class="sticky-position">
                     @if (isDesktop)
                     {
                         <div class="sticky-position">
+                            <div class="euro-most-view-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug" ></div>
                             <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
                             <div class="euro-top-scorer sticky-box"></div>
                         </div>
