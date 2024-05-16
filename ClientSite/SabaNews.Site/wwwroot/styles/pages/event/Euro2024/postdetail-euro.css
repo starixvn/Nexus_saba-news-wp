@@ -3421,6 +3421,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   top: 9rem;
 }
 
+@media (max-width: 767px) {
+  .euro-page-main {
+    padding-top: 2rem;
+  }
+}
+
 .format-image-detail {
   background: #f0eeea;
 }
@@ -3467,6 +3473,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin: 1.2rem 0 1rem 0;
   font-size: 1.2rem;
   color: #828282;
+}
+@media (max-width: 767px) {
+  .post-euro-detail .block-items-datetime {
+    margin: 0.6rem 0;
+  }
 }
 
 img {
@@ -3657,7 +3668,6 @@ img {
 
 @media screen and (max-width: 1024px) {
   .fixed-social {
-    background: #48041a !important;
     box-shadow: none !important;
   }
   .fixed-social .icon-social:before {
@@ -4226,8 +4236,38 @@ img {
   color: #eb5342;
 }
 
-.block-related .block-heading {
-  text-align: left;
+.block-related {
+  margin-bottom: 2rem;
+}
+.block-related .block-items-vertical {
+  margin-bottom: 1rem;
+}
+.block-related .block-items-vertical .block-items-heading a {
+  color: #2F2F2F;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: normal;
+}
+.block-related .block-items-date {
+  color: #828282;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+.block-related .block-items-text {
+  padding: 1rem 0;
+  border-top: 1px solid #DADACB;
+}
+.block-related .block-items-text:last-child {
+  border-bottom: 1px solid #DADACB;
+}
+.block-related .block-items-text .block-items-group .block-items-heading {
+  text-decoration: none;
+  color: #2F2F2F;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
 }
 
 .hide {
@@ -4247,11 +4287,28 @@ img {
 .block-heading-text, .king-soccer-header-text {
   font-size: 1.6rem;
 }
+@media screen and (max-width: 1024px) {
+  .block-heading-text, .king-soccer-header-text {
+    font-size: 2.4rem;
+  }
+}
 
 .block-items-horizontal {
   grid-template-columns: 24rem 1fr;
 }
+@media screen and (max-width: 1024px) {
+  .block-items-horizontal {
+    display: grid;
+    grid-template-columns: 16.5rem 1fr;
+  }
+}
 .block-items-horizontal .hover-image {
   height: 15rem;
   max-height: 15rem;
+}
+@media screen and (max-width: 1024px) {
+  .block-items-horizontal .hover-image {
+    height: 9.3rem;
+    max-height: 9.3rem;
+  }
 }

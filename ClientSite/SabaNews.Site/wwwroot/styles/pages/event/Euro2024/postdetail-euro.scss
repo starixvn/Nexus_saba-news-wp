@@ -19,6 +19,12 @@
     top: 9rem;
 }
 
+.euro-page-main{
+    @include Mobile{
+        padding-top: 2rem;
+    }
+}
+
 .format-image-detail {
     background: #f0eeea;
 }
@@ -59,6 +65,9 @@
         margin: 1.2rem 0 1rem 0;
         font-size: 1.2rem;
         color: #828282;
+        @include Mobile{
+            margin: .6rem 0;
+        }
     }
 }
 img {
@@ -261,7 +270,6 @@ img {
 
 .fixed-social {
     @include tableMobile {
-        background: #48041a !important;
         box-shadow: none !important;
 
         .icon-social {
@@ -913,11 +921,45 @@ img {
     }
 }
 
-.block-related {
-    .block-heading {
-        text-align: left;
+
+.block-related{
+    margin-bottom: 2rem;
+    .block-items-vertical{
+        margin-bottom: 1rem;
+        .block-items-heading{
+            a{
+                color: #2F2F2F;
+                font-size: 1.6rem;
+                font-weight: 700;
+                line-height: normal;
+            }
+        }
+    }
+    .block-items-date{
+        color: #828282;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 2.4rem;
+    }
+    .block-items-text{
+        padding: 1rem 0;
+        border-top: 1px solid #DADACB;
+        &:last-child{
+            border-bottom: 1px solid #DADACB;
+        }
+        .block-items-group{
+            .block-items-heading{
+                text-decoration: none;
+                color: #2F2F2F;
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: normal;
+                display: block;
+            }
+        }
     }
 }
+
 
 .hide {
     display: none;
@@ -932,12 +974,23 @@ img {
 }
 .block-heading-text,.king-soccer-header-text{
     font-size: 1.6rem;
+    @include tableMobile{
+        font-size: 2.4rem;
+    }
 }
 
 .block-items-horizontal{
     grid-template-columns: 24rem 1fr;
+    @include tableMobile{
+        display: grid;
+        grid-template-columns: 16.5rem 1fr;
+    }
     .hover-image{
         height: 15rem;
         max-height: 15rem;
+        @include tableMobile{
+            height: 9.3rem;
+            max-height : 9.3rem;
+        }
     }
 }
