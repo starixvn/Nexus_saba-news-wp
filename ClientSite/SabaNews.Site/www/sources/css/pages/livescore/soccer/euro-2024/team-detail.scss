@@ -17,18 +17,34 @@
     background: #FFFDF9;
     max-width: 96rem;
     margin: 2.8rem auto;
+    @include Mobile{
+        padding: 0;
+        border: none;
+    }
     .group-team {
         display: flex;
         justify-content: center;
         width: 100%;
         align-items: center;
         gap: 3rem;
+        @include Mobile{
+            display: grid;
+            gap: 0;
+            grid-template-columns: repeat(4, 25%);
+            grid-template-rows: repeat(2, 1fr);
+        }
     }
     .soccer-match-stage{
         font-size: 1.6rem;
         font-weight: 600;
         color: #222;
         margin-right: 0 !important;
+        @include Mobile{
+            grid-column: 4 / 5;
+            grid-row: 1 / 3;
+            width: auto !important;
+            padding: .6rem !important;
+        }
     }
     .soccer-team-name{
         font-size: 1.4rem;
@@ -40,12 +56,47 @@
         align-items: center;
         gap: 1.6rem;
         width: 17rem;
+        position: relative;
+        @include Mobile{
+            width: 100%;
+        }
     }
     .home-team{
         justify-content: flex-end;
+        @include Mobile{
+            justify-content: flex-start;
+            grid-column: 1 / 4;
+            grid-row: 1 / 2;
+            padding-bottom: .6rem;
+            &::after{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: #E8E8E8;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+        }
+        .soccer-team-logo{
+            @include Mobile{
+                order: 1;
+            }
+        }
+        .soccer-team-name{
+            @include Mobile{
+                order: 2;
+            }
+        }
     }
     .away-team{
         justify-content: flex-start;
+        @include Mobile{
+            grid-column: 1 / 4;
+            grid-row: 2 / 3;
+            padding-top: .6rem;
+        }
     }
     .soccer-team-logo{
         width: 3.6rem;
@@ -57,10 +108,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        @include Mobile{
+            flex-direction: row;
+            gap: .4rem;
+            order: 3;
+            position: absolute;
+            right: 0;
+        }
         .total-score{
             font-size: 2rem;
             font-weight: 700;
             color: #222;
+            @include Mobile{
+                font-size: 1.4rem;
+            }
         }
         .half-score{
             font-size: 1.4rem;
@@ -70,6 +131,9 @@
     }
     .soccer-match-item{
         padding: .9rem 1.4rem;
+        @include Mobile{
+            padding: 1rem 0 1rem 1rem;
+        }
     }
 }
 
@@ -79,9 +143,16 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #D7D7D7;
+    @include Mobile{
+        display: block;
+        padding: 1rem 0;
+    }
 }
 .team-body{
     padding: 1.6rem;
+    @include Mobile{
+        padding: 1rem 0;
+    }
 }
 .soccer-match-grid{
     margin-top: 0;
@@ -90,6 +161,9 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+    @include Mobile{
+        margin-bottom: 1rem;
+    }
     .team-detail-logo{
         background: #fff;
         border-radius: 50px;

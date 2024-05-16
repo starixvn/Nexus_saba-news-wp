@@ -2211,6 +2211,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   max-width: 108rem;
   margin: 1.4rem auto;
 }
+@media (max-width: 767px) {
+  .main-team {
+    grid-gap: 2.4rem;
+    padding-top: 1rem;
+  }
+}
 .main-team .team {
   text-align: center;
   color: #fff;

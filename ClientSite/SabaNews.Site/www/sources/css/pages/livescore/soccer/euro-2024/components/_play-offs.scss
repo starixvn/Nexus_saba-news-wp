@@ -285,6 +285,10 @@
                 height: 2.6rem;
                 border-radius: 50px;
                 object-fit: cover;
+                @include Mobile{
+                  width: 3.2rem;
+                  height: 3.2rem;
+                }
                 &--home {
                   grid-area: homeImage;
                 }
@@ -299,8 +303,11 @@
                 display: flex;
                 overflow: hidden;
                 font-weight: 600;
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 color: #222;
+                @include Mobile{
+                  font-size: 1.8rem;
+                }
   
                 &.win {
                   font-weight: 700;

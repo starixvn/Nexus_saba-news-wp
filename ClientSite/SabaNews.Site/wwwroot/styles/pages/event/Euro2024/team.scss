@@ -28,6 +28,10 @@
     justify-content: center;
     max-width: 108rem;
     margin: 1.4rem auto;
+    @include Mobile{
+        grid-gap: 2.4rem;
+        padding-top: 1rem;
+    }
     .team{
         text-align: center;
         color: $white-color;

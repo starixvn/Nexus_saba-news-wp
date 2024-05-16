@@ -1,12 +1,12 @@
 .team-menu-tabs{
-
     .nav-team{
         list-style: none;
         padding-left: 0;
         display: flex;
         gap: 1.2rem;
         @include Mobile{
-            display: none;
+            justify-content: flex-start;
+            gap: .5rem;
         }
         li{
             padding: .5rem 1.6rem;
@@ -16,6 +16,10 @@
             line-height: normal;
             border-radius: 5px;
             border: 1px solid #D2D2D2;
+            @include Mobile{
+                font-size: 1.3rem;
+                white-space: nowrap;
+            }
             cursor: pointer;
             &.active{
                 background: #FAAA00;
@@ -23,12 +27,5 @@
                 color: #000000;
             }
         }
-    }
-}
-
-.nav-select-mb{
-    display: none;
-    @include Mobile{
-        display: block;
     }
 }

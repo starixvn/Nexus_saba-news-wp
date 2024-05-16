@@ -51,13 +51,13 @@ export class AppContainer extends Component {
             active: key
         })
     }
-    onChange = event => {
-        const titleNav = tabs.find(item => item.id === parseInt(event.target.value))
-        this.setState({
-            active: parseInt(event.target.value),
-            titleNav : titleNav.name
-        });
-    };
+    // onChange = event => {
+    //     const titleNav = tabs.find(item => item.id === parseInt(event.target.value))
+    //     this.setState({
+    //         active: parseInt(event.target.value),
+    //         titleNav : titleNav.name
+    //     });
+    // };
     groupPlayers  = players => {
         const positions  = ['Huấn luyện viên' , 'Thủ môn' , 'Hộ vệ', 'Trung vệ','Hank CTO']
         if(players){
@@ -117,7 +117,7 @@ export class AppContainer extends Component {
                             </div>
                             <div className="team-menu-tabs">
 
-                                <div className="nav-select-mb">
+                                {/* <div className="nav-select-mb">
                                     <div className="name-round">{this.state.titleNav}</div>
                                     <select onChange={this.onChange} value={this.state.active}>
                                         {
@@ -126,7 +126,7 @@ export class AppContainer extends Component {
                                             ))
                                         }
                                     </select>
-                                </div>
+                                </div> */}
 
                                 <ul className="nav-team">
                                     {

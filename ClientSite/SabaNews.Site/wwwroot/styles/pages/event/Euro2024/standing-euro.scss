@@ -49,7 +49,7 @@
 .scroll-sticky{
     width: 100%;
     margin: 0 auto;
-    max-width: 80rem;
+    max-width: 104.4rem;
 }
 .wc-table{
     background: transparent;
@@ -70,7 +70,7 @@
         display: none;
     }
     .cell-rank{
-        width: 6rem;
+        width: 10%;
         font-size: 1.6rem;
         @include Mobile{
             font-size: 1.4rem;

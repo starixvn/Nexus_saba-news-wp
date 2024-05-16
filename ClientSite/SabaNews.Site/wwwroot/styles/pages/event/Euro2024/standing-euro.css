@@ -2685,7 +2685,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .scroll-sticky {
   width: 100%;
   margin: 0 auto;
-  max-width: 80rem;
+  max-width: 104.4rem;
 }
 
 .wc-table {
@@ -2710,7 +2710,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: none;
 }
 .wc-table .cell-rank {
-  width: 6rem;
+  width: 10%;
   font-size: 1.6rem;
 }
 @media (max-width: 767px) {

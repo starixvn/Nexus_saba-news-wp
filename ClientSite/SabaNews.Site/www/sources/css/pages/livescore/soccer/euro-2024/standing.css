@@ -908,6 +908,12 @@ body {
   border-radius: 50px;
   object-fit: cover;
 }
+@media (max-width: 767px) {
+  .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__image {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
 .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__image--home {
   grid-area: homeImage;
 }
@@ -919,8 +925,13 @@ body {
   display: flex;
   overflow: hidden;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #222;
+}
+@media (max-width: 767px) {
+  .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__participant {
+    font-size: 1.8rem;
+  }
 }
 .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__participant.win {
   font-weight: 700;
@@ -1723,7 +1734,7 @@ body {
 }
 .euro-result .group-playoff .bracket__name {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #222;
 }
 .euro-result .group-playoff .bracket__result {

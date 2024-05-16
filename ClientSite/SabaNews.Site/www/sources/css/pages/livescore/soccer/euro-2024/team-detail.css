@@ -607,11 +607,6 @@ body {
   display: flex;
   gap: 1.2rem;
 }
-@media (max-width: 767px) {
-  .team-menu-tabs .nav-team {
-    display: none;
-  }
-}
 .team-menu-tabs .nav-team li {
   padding: 0.5rem 1.6rem;
   color: #222;
@@ -626,15 +621,6 @@ body {
   background: #FAAA00;
   border: none;
   color: #000000;
-}
-
-.nav-select-mb {
-  display: none;
-}
-@media (max-width: 767px) {
-  .nav-select-mb {
-    display: block;
-  }
 }
 
 .player-group .player-title {
