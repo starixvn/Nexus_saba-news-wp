@@ -5,7 +5,7 @@
         display: flex;
         gap: 1.2rem;
         @include Mobile{
-            justify-content: flex-start;
+            justify-content: center;
             gap: .5rem;
         }
         li{
@@ -19,6 +19,7 @@
             @include Mobile{
                 font-size: 1.3rem;
                 white-space: nowrap;
+                padding: .5rem 1rem;
             }
             cursor: pointer;
             &.active{
