@@ -25,18 +25,32 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/euro2024-post-detail.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/lib/swipper/css/swiper.min.css" asp-append-version="true">
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/fixture.chunk.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/euro-2024/fixture.chunk.css" asp-append-version="true" />
     </environment>
+
+    @if (!string.IsNullOrEmpty(Model.MatchId))
+    {
+        <environment include="Development">
+            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/match-detail-shortcut.chunk.css"  asp-append-version="true" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/match-detail-shortcut.chunk.css" asp-append-version="true" />
+        </environment>
+    }
 }
 
 
 
 @section Scripts {
+    <script>
+        window.cateSlug = '@Model.CateInfo.Slug';
+        window.postId = '@Model.SinglePost.ID';
+        window.matchId = '@Model.MatchId';
+    </script>
     <environment include="Development">
         <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
@@ -54,7 +68,16 @@
         <script src="~/minify/js/euro-2024-article.min.js" asp-append-version="true"></script>
     </environment>
 
-    
+    @if (!string.IsNullOrEmpty(Model.MatchId))
+    {
+        <environment include="Development">
+            <script src="~/js/dev/pages/livescore/soccer/match-detail-shortcut.chunk.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/js/pro/pages/livescore/soccer/match-detail-shortcut.chunk.js" asp-append-version="true"></script>
+        </environment>
+    }
+
 }
 
 

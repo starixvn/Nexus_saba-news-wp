@@ -195,7 +195,7 @@
             document.LoadHtml(postContent);
             var matchNode = document.DocumentNode.SelectSingleNode("//div[contains(@id, 'match-detail')]");
             if(matchNode != null) {
-                matchId = matchNode.Attributes["data-id"].Value;
+                matchId = matchNode.Attributes["data-id"]?.Value;
             }
             var customContent = CustomizeContent(document);
             return (matchId, customContent) ;

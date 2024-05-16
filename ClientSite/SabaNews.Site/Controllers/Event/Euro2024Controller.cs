@@ -359,6 +359,8 @@ namespace SabaNews.Site.Controllers.Event
             }
             var cateParents= await postService.GetCateParentsAsync(cateInfo.Slug);
             var domain = configuration.GetValue<string>(Constants.BaseUrl);
+            var (matchId, customContent) = PostHelper.GetInfoFromContent(post.PostContent);
+            post.PostContent = customContent;
             var viewModel = new SingleViewModel
             {
                 SinglePost = post,
@@ -366,7 +368,8 @@ namespace SabaNews.Site.Controllers.Event
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",
                 IsVideo = PostHelper.IsVideo(cateParents),
-                CateInfo = cateInfo
+                CateInfo = cateInfo,
+                MatchId = matchId
             };
             return viewModel;
         }
