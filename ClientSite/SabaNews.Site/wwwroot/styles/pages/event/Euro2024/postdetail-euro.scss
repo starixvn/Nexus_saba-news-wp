@@ -70,7 +70,7 @@ img {
 
 .detail-container {
     display: grid;
-    grid-template-columns: 5% 63% 37.7rem;
+    grid-template-columns: 5% 63% 37rem;
     grid-template-rows: unset;
     grid-gap: 0;
     align-items: start;
@@ -494,7 +494,8 @@ img {
     } 
     ol {
         @extend .ul1;
-    }     
+    }
+    color: #4F4F4F;     
 }
 
 .content .p1 {
@@ -505,6 +506,10 @@ img {
 
 .content #list-place li {
     margin-bottom: 1rem;
+}
+
+.content p{
+    color: #333;
 }
 
 
@@ -916,4 +921,23 @@ img {
 
 .hide {
     display: none;
+}
+
+.block-items-heading{
+    color: #222;
+    font-size: 3.2rem;
+    @include Mobile{
+        font-size: 2.4rem;
+    }
+}
+.block-heading-text,.king-soccer-header-text{
+    font-size: 1.6rem;
+}
+
+.block-items-horizontal{
+    grid-template-columns: 24rem 1fr;
+    .hover-image{
+        height: 15rem;
+        max-height: 15rem;
+    }
 }

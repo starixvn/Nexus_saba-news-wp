@@ -3477,7 +3477,7 @@ img {
 
 .detail-container {
   display: grid;
-  grid-template-columns: 5% 63% 37.7rem;
+  grid-template-columns: 5% 63% 37rem;
   grid-template-rows: unset;
   grid-gap: 0;
   align-items: start;
@@ -3844,6 +3844,9 @@ img {
   color: #0066CC;
 }
 
+.content {
+  color: #4F4F4F;
+}
 .content .p1 {
   margin-top: 1.2rem;
   margin-bottom: 0;
@@ -3851,6 +3854,10 @@ img {
 
 .content #list-place li {
   margin-bottom: 1rem;
+}
+
+.content p {
+  color: #333;
 }
 
 .euro-detail-title {
@@ -4225,4 +4232,26 @@ img {
 
 .hide {
   display: none;
+}
+
+.block-items-heading {
+  color: #222;
+  font-size: 3.2rem;
+}
+@media (max-width: 767px) {
+  .block-items-heading {
+    font-size: 2.4rem;
+  }
+}
+
+.block-heading-text, .king-soccer-header-text {
+  font-size: 1.6rem;
+}
+
+.block-items-horizontal {
+  grid-template-columns: 24rem 1fr;
+}
+.block-items-horizontal .hover-image {
+  height: 15rem;
+  max-height: 15rem;
 }
