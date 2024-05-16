@@ -275,14 +275,12 @@
             var lastestNews = await postService.GetPostsBySlugAsync(Euro2024.HomepageSlug, Constants.FromFirstItem, Constants.GetTwelveItems);
             var commentary = await postService.GetPostsBySlugAsync(Euro2024.CommentarySlug, Constants.FromFirstItem, Constants.GetTwelveItems);
             var videos = await postService.GetPostsBySlugAsync(Euro2024.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
-            var cate = await postService.GetCateDetailAsync(Euro2024.HomepageSlug);
             
             var Model = new Euro2024ViewModel
             {
                 LastestNews = lastestNews,
                 Commentary = commentary,
-                Videos = videos,
-                Category = cate,
+                Videos = videos
             };
             return Model;
         }

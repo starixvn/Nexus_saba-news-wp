@@ -66,9 +66,9 @@ namespace SabaNews.Site.Controllers.Event
             var model = await dataControlService.GetEuro2024PageViewModel();
             var header = new HeaderViewModel
             {
-                HeadTitle = model.Category.Title,
-                Title = Euro2024.TitleHomepage,
-                Description = model.Category.Description,
+                HeadTitle = Euro2024.HomepageTitle,
+                Title = Euro2024.HomepageTitle,
+                Description = Euro2024.HomepageDescription,
                 Slug = Euro2024.HomepageSlug
             };
             model.Header = header;
@@ -83,8 +83,8 @@ namespace SabaNews.Site.Controllers.Event
 
             var header = new HeaderViewModel
             {
-                Title = Euro2024.TitleLastestNews,
-                Description = Euro2024.TitleLastestNews,
+                Title = Euro2024.LastestNewsTitle,
+                Description = Euro2024.LastestNewsDescription,
                 Slug = Euro2024.UrlLastestNewsSlug
             };
 
@@ -111,8 +111,8 @@ namespace SabaNews.Site.Controllers.Event
 
             var header = new HeaderViewModel
             {
-                Title = Euro2024.TitleCommentary,
-                Description = Euro2024.TitleCommentary,
+                Title = Euro2024.CommentaryTitle,
+                Description = Euro2024.CommentaryDescription,
                 Slug = Euro2024.UrlCommentarySlug
             };
 
@@ -137,8 +137,8 @@ namespace SabaNews.Site.Controllers.Event
             var pageSize = Constants.GetTwelveItems;
             var header = new HeaderViewModel
             {
-                Title = Euro2024.TitleVideo,
-                Description = Euro2024.TitleVideo,
+                Title = Euro2024.VideoTitle,
+                Description = Euro2024.VideoDescription,
                 Slug = Euro2024.UrlVideoSlug
             };
             var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = Euro2024.VideoSlug, _Start = 0, _End = pageSize + 1 };
@@ -167,8 +167,8 @@ namespace SabaNews.Site.Controllers.Event
             var isKnockout = league.CurrentStageId > Euro2024.GroupStageId;
             var header = new HeaderViewModel
             {
-                Title = Euro2024.TitleStanding,
-                Description = Euro2024.TitleStanding,
+                Title = Euro2024.StandingTitle,
+                Description = Euro2024.StandingDescription,
                 Slug = Euro2024.UrlStandingSlug
             };
             var viewModel = new StandingDetailViewModel
@@ -185,8 +185,8 @@ namespace SabaNews.Site.Controllers.Event
         {
             var header = new HeaderViewModel
             {
-                Title = Euro2024.TitleFixture,
-                Description = Euro2024.TitleFixture,
+                Title = Euro2024.FixtureTitle,
+                Description = Euro2024.FixtureDescription,
                 Slug = Euro2024.UrlFixtureSlug
             };
             return View("~/Views/Event/Euro2024/Fixture.cshtml", header);
@@ -239,8 +239,8 @@ namespace SabaNews.Site.Controllers.Event
             {
                 Header = new HeaderViewModel
                 {
-                    Title = Euro2024.TitleFixture,
-                    Description = Euro2024.TitleFixture,
+                    Title = Euro2024.TeamTitle,
+                    Description = Euro2024.TeamDescription,
                     Slug = Euro2024.FixtureSlug
                 },
                 MatchId = matchId
@@ -256,8 +256,8 @@ namespace SabaNews.Site.Controllers.Event
             {
                 Header = new HeaderViewModel
                 {
-                    Title = Euro2024.TitleFixture,
-                    Description = Euro2024.TitleFixture,
+                    Title = Euro2024.TeamTitle,
+                    Description = Euro2024.TeamDescription,
                     Slug = Euro2024.FixtureSlug
                 },
                 Teams = teams
@@ -273,8 +273,8 @@ namespace SabaNews.Site.Controllers.Event
                 TeamId = teamId,
                 Header = new HeaderViewModel
                 {
-                    Title = Euro2024.TitleFixture,
-                    Description = Euro2024.TitleFixture,
+                    Title = Euro2024.TeamTitle,
+                    Description = Euro2024.TeamDescription,
                     Slug = Euro2024.FixtureSlug
                 }
             };

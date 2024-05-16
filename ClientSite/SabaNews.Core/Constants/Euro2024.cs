@@ -5,47 +5,46 @@ namespace SabaNews.Core.Constants
 {
     public class Euro2024
     {
+        public const string HomepageSlug = "euro-2024";
         public const string Homepage = "Trang chủ";
-        public const string TitleHomepage = "Euro 2024: Tin tức, Lịch thi đấu, Kết quả, Bảng xếp hạng - SABA Sports";
+        public const string HomepageTitle = "Euro 2024 - Tin tức, lịch thi đấu, kết quả, BXH mới nhất";
+        public const string HomepageDescription = "Cập nhật thông tin bóng đá Euro 2024 mới nhất hôm nay, lịch thi đấu, kết quả, bảng xếp hạng, highlights, nhận định, link xem trực tiếp Euro 2024.";
+
+
+        public const string LastestNews = "Tin mới nhất";
+        public const string LastestNewsTitle = "Tin tức mới nhất về Euro 2024 | SABA Sports";
+        public const string LastestNewsDescription = "Tin tức Euro 2024 mới nhất. SABAVN cập nhật liên tục về các trận đấu, các đội tuyển, cầu thủ và những thông tin hấp dẫn khác của Euro 2024.";
+        public const string LastestNewsSlug = "tin-tuc-world-cup-2022";
+        public const string UrlLastestNewsSlug = "tin-moi-nhat";
 
         public const string Fixture = "Lịch thi đấu";
-        public const string TitleFixture = "Lịch thi đấu World Cup 2022 - SABA Sports";
-
+        public const string FixtureDescription = "Lịch thi đấu Euro 2024 mới nhất hôm nay. Xem lịch thi đấu bóng đá Euro 2024 đêm nay, LTĐ Euro 2024 rạng sáng mai.";
+        public const string FixtureTitle = "LLịch thi đấu Euro 2024 chính xác nhất";
         public const string FixtureSlug = "lich-thi-dau-world-cup-2022";
         public const string UrlFixtureSlug = "lich-thi-dau";
 
         public const string Standing = "Bảng xếp hạng";
-        public const string TitleStanding = "Bảng xếp hạng World Cup 2022 - SABA Sports";
-
+        public const string StandingTitle = "Bảng xếp hạng vòng chung kết Euro 2024 mới nhất hôm nay";
+        public const string StandingDescription = "Xem bảng xếp hạng Euro 2024 nhanh và chính xác nhất, theo dõi tỷ số, thống kê, đội hình, diễn biến các trận đấu trên SABA Sports.";
         public const string StandingSlug = "bang-xep-hang-world-cup-2022";
         public const string UrlStandingSlug = "bang-xep-hang";
 
-        public const string HomepageSlug = "euro-2024";
-        public const string LastestNews = "Tin mới nhất";
-        public const string TitleLastestNews = "Tin mới nhất Euro 2024 hôm nay - SABA Sports";
-
-        public const string LastestNewsSlug = "tin-tuc-world-cup-2022";
-        public const string UrlLastestNewsSlug = "tin-moi-nhat";
-
         public const string Commentary = "Nhận định";
-        public const string TitleCommentary = "Nhận định World Cup 2022 hôm nay - SABA Sports";
-
+        public const string CommentaryTitle = "Nhận định bóng đá, dự đoán tỷ số bóng đá Euro 2024";
+        public const string CommentaryDescription = "Nhận định Euro 2024 hôm nay - Cập nhật tỷ lệ, thông tin trận đấu, chuyên gia nhận định và dự đoán tỷ số bóng đá chính xác nhất.";
         public const string CommentarySlug = "nhan-dinh-euro-2024";
         public const string UrlCommentarySlug = "nhan-dinh";
 
         public const string Video = "Video";
-        public const string TitleVideo = "Video World Cup 2022 hôm nay - SABA Sports";
-
+        public const string VideoTitle = "Video clip bàn thắng, highlights các trận đấu Euro 2024";
+        public const string VideoDescription = "Video Euro 2024 mới nhất. Tổng hợp clip bàn thắng và highlights đáng chú ý trong các trận đấu thuộc Euro 2024.";
         public const string VideoSlug = "video-euro-2024";
         public const string UrlVideoSlug = "video";
 
-        public const string VideoHighlightSlug = "video-highlights-world-cup-2022";
+        public const string Team = "Đội tuyển";
+        public const string TeamTitle = "Thông tin đầy đủ về các đội tuyển tham gia Euro 2024";
+        public const string TeamDescription = "Thông tin đội tuyển Euro chi tiết, danh sách cầu thủ, huấn luyện viên, đội hình 24 đội tuyển thi đấu tại vòng chung kết Euro 2024.";
 
-        public const string VideoGuessSlug = "video-du-doan-world-cup-2022";
-
-        public const string Overview = "Tổng quan";
-        public const string OverviewPageSlug = "danh-sach-san-thi-dau-vong-chung-ket-euro-2020";
-        public const string OverviewRoute = "tong-quan";
 
 
         public const long LeagueId = 12015;
