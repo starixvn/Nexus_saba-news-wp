@@ -100,14 +100,20 @@
             margin-bottom: 1.2rem;
         }
     }
+    .king-soccer-header{
+        padding: 1rem 2rem;
+    }
     .border-top-scorer{
-        padding: 1.6rem 1.2rem;
-        border-radius: 5px;
-        border: 2px solid $primary-bg;
-        background: #FFFDF9;
+        padding: 1.2rem !important;
     }
     .wc-table::after{
         border-bottom: none;
+    }
+    .wc-table-row{
+        padding: .6rem 1rem !important;
+    }
+    .number{
+        margin-right: .6rem !important;
     }
 }
 

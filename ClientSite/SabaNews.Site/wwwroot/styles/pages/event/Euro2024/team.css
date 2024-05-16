@@ -2131,14 +2131,20 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin-bottom: 1.2rem;
   }
 }
+.sticky-box .king-soccer-header {
+  padding: 1rem 2rem;
+}
 .sticky-box .border-top-scorer {
-  padding: 1.6rem 1.2rem;
-  border-radius: 5px;
-  border: 2px solid #143CDB;
-  background: #FFFDF9;
+  padding: 1.2rem !important;
 }
 .sticky-box .wc-table::after {
   border-bottom: none;
+}
+.sticky-box .wc-table-row {
+  padding: 0.6rem 1rem !important;
+}
+.sticky-box .number {
+  margin-right: 0.6rem !important;
 }
 
 .bg-block {

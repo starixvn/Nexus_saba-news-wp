@@ -306,14 +306,18 @@
     background: url('../../../../images/euro2024/bg_video.png') no-repeat center;
     padding: 2.4rem 0;
     background-size: cover;
+    @include tableMobile{
+        padding: 2rem 0;
+    }
     .block-group{
         display: flex;
         align-items: flex-start;
         gap: 2.4rem;
+        justify-content: space-between;
         @include Mobile {
             display: unset;
         }
-        .block-video,.block-kingsocer{
+        .block-video{
             border-radius: 5px;
             border: 2px solid $primary-bg;
             background: #FFFDF9;
@@ -321,7 +325,8 @@
             @include Mobile{
                 background: transparent;
             }
-        }
+        }   
+
         .group-video{
             .block-items-vertical{
                 &-hot{
@@ -368,13 +373,12 @@
             }
         }
         .block-video{
-            width: 63%;
+            width: 56%;
             max-width: 76.5rem;
             @include tableMobile{
-                width: 56%;
+                width: 50%;
             }
             @include Mobile{
-                margin-bottom: 2rem;
                 padding: 0;
                 border: none;
                 width: 100%;
@@ -382,16 +386,11 @@
             
         }
         .block-kingsocer{
-            min-width: 39.2rem;
-            width: 36%;
-            @include tableMobile{
-                min-width: 30rem;
-                width: 30%;
-            }
+            max-width: 49.2rem;
+            width: 50%;
             @include Mobile {
                 min-width: auto;
                 width: 100%;
-                padding: 2rem 1rem;
             }
         }
     }

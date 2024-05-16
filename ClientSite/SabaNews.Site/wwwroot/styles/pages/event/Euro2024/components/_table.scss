@@ -53,7 +53,7 @@
         align-items: center;
 
         @include tableMobile {
-            flex: 1 0 17rem;
+            flex: 1 0 16rem;
         }
     }
 
@@ -254,7 +254,7 @@
         }
         .wc-table-header {
             border-bottom: none;
-            background: $primary-bg;
+            background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
             box-shadow: none;
             height: 4rem;
             padding: 1rem;
@@ -263,15 +263,21 @@
             line-height: normal;
             margin-bottom: .8rem;
             border-radius: 5px;
+            .cell-rank{
+                font-size: 1.5rem;
+                @include Mobile{
+                    font-size: 1.4rem !important;
+                }
+            }
         }
         .wc-table-row {
             border-bottom: none;
-            padding: .2rem 1rem;
+            padding: .6rem 2rem;
             background: #F2F2F2;
             margin: 0 0 .8rem;
             border-radius: 5px;
             @include Mobile{
-                padding: .2rem 1rem;
+                padding: .3rem 1rem;
             }
             &:last-child{
                 margin-bottom: 0;
@@ -288,7 +294,7 @@
             width: 8rem;
             font-weight: 600;
             @include tableMobile {
-                width: 5rem;
+                width: 7rem;
             }
         }
 
@@ -325,6 +331,65 @@
         }
         .team-logo{
             margin-right: 1rem;
+            width: 3rem;
+            height: 3rem;
+            @include Mobile{
+                width: 2.4rem;
+                height: 2.4rem;
+            }
+            img{
+                width: 3rem;
+                height: 3rem;
+                @include Mobile{
+                    width: 2.4rem;
+                    height: 2.4rem;
+                }
+            }
+        }
+        .number{
+            font-size: 1.4rem;
+            margin-right: 1.6rem;
+            width: 1.2rem;
+            @include Mobile{
+                margin-right: .6rem;
+            }
+        }
+    }
+}
+
+
+
+.euro-top-scorer{
+    border-radius: 5px;
+    border: 2px solid $primary-bg;
+    background: #FFFDF9;
+    overflow: hidden;
+    @include Mobile{
+        background: transparent;
+    }
+    .border-top-scorer{
+        padding: 2rem;
+        @include Mobile{
+            padding: 1.2rem;
+        }
+    }
+}
+
+.king-soccer-header{
+    padding: 1.6rem 2rem;
+    background: #143CDB;
+    border: 1px solid #143cdb;
+    @include Mobile{
+        padding: 1rem 1.2rem;
+    }
+    &-text{
+        color: #FFF;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        @include Mobile{
+            font-size: 1.6rem;
         }
     }
 }

@@ -94,7 +94,7 @@
         grid-template-columns: auto 30rem;
     }
     @include Mobile{
-        display: inline-block;
+        display: block;
         padding-top: 0;
     }
     .page-items-right{
