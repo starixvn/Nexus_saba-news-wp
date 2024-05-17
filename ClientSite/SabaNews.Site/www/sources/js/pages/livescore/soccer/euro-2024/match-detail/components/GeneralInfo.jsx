@@ -9,6 +9,7 @@ import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
 import FunctionBar from './FunctionBar';
 
+
 export default class GeneralInfo extends PureComponent {
     constructor(props) {
         super(props);
@@ -284,7 +285,6 @@ export default class GeneralInfo extends PureComponent {
                         </div>
                     }
                 </div>
-                <FunctionBar />
             </>
         );
     };
@@ -300,6 +300,7 @@ export default class GeneralInfo extends PureComponent {
                     <div className="sticky-header-scroll">
                         {this.renderBody()}
                     </div>
+                    <FunctionBar />
                 </div>
             </Fragment>
         );

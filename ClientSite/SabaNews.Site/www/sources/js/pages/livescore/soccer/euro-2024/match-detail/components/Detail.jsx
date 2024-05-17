@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Summary from './Summary';
 import Lineups from './Lineups';
+import FunctionBar from './FunctionBar';
 import Statistics from './Statistics';
 import queryString from 'query-string';
 
@@ -31,6 +32,7 @@ export class Detail extends PureComponent {
     render() {
         return (
             <div className="details">
+                <FunctionBar />
                 <Summary />
                 <Statistics />
                 <Lineups />

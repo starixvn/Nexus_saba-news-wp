@@ -388,8 +388,6 @@ export class Lineups extends Component {
         awayLineup = awayLineup.reverse();
         return (
             <div className="line-up-map">
-                <h2 className="title-custom">Đội hình</h2>
-
                 <div className="line-up-map-main">
                     <div className="line-up-map-head">
                         <div className="team">
@@ -537,40 +535,43 @@ export class Lineups extends Component {
         const awaySubPlayers = lineup.away.filter(player => player.position === 0).sort((a, b) => (a.playerNumber - b.playerNumber));
 
         return (
-            <div id="doi-hinh">
-                {this.renderPitchView()}
-                <div className="line-up-main">
-                    <div className="line-up-team">
-                        {this.renderListPlayer(LangHelper.getResource('LineupPlayer'), homePlayers, awayPlayers)}
-                    </div>
-                    <div className="line-up-team">
-                        {this.renderListPlayer(LangHelper.getResource('LineupSubtitudePlayer'), homeSubPlayers, awaySubPlayers)}
-                    </div>
-                    {this.renderSubstitution()}
-                    {
-                        (lineup.generalInfo.homeCoach || lineup.generalInfo.awayCoach) &&
-                        <div className="line-up-change-men block-line-up perent-men">
-                            <div className="block-line-up-main">
-                                <div className="block-line-up-title">Huấn luyện viên</div>
-                                <div className="block-line-up-body">
-                                    <div className="line-up">
-                                        <div className="line-up-table">
-                                            <div className="table-paticipant home-team">
-                                                <ul className="list-paticipant">
-                                                    <li className="name-player">{lineup.generalInfo.homeCoach}</li>
-                                                </ul>
-                                            </div>
-                                            <div className="table-paticipant away-team">
-                                                <ul className="list-paticipant">
-                                                    <li className="name-player">{lineup.generalInfo.awayCoach}</li>
-                                                </ul>
+            <div className="line-up-group" id="doi-hinh">
+                <h2 className="title-custom">Đội hình</h2>
+                <div className="line-up-group-spacing">
+                    {this.renderPitchView()}
+                    <div className="line-up-main">
+                        <div className="line-up-team">
+                            {this.renderListPlayer(LangHelper.getResource('LineupPlayer'), homePlayers, awayPlayers)}
+                        </div>
+                        <div className="line-up-team">
+                            {this.renderListPlayer(LangHelper.getResource('LineupSubtitudePlayer'), homeSubPlayers, awaySubPlayers)}
+                        </div>
+                        {this.renderSubstitution()}
+                        {
+                            (lineup.generalInfo.homeCoach || lineup.generalInfo.awayCoach) &&
+                            <div className="line-up-change-men block-line-up perent-men">
+                                <div className="block-line-up-main">
+                                    <div className="block-line-up-title">Huấn luyện viên</div>
+                                    <div className="block-line-up-body">
+                                        <div className="line-up">
+                                            <div className="line-up-table">
+                                                <div className="table-paticipant home-team">
+                                                    <ul className="list-paticipant">
+                                                        <li className="name-player">{lineup.generalInfo.homeCoach}</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="table-paticipant away-team">
+                                                    <ul className="list-paticipant">
+                                                        <li className="name-player">{lineup.generalInfo.awayCoach}</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         );

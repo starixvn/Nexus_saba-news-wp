@@ -11,6 +11,7 @@
 @import '../../../../components/head-to-head';
 @import '../../../../components/tile-custom';
 @import '../../../../components/dot_live';
+@import './components/nav-team';
 
 //wc
 .document-text{
@@ -36,6 +37,9 @@
     display: block;
     max-width: 70.5rem;
     margin: 0 auto;
+    @include tableMobile{
+        max-width: 100%;
+    }
     .icon-live-start, .icon-favourite-outline {
         font-size: 2rem;
         cursor: pointer;
@@ -77,10 +81,16 @@
             line-height: normal;
             font-size: 2rem;
             font-weight: 700;
+            @include Mobile{
+                font-size: 1.6rem;
+            }
         }
         .start-date{
             font-size: 1.6rem;
             font-weight: 600;
+            @include Mobile{
+                font-size: 1.4rem;
+            }
         }
     }
 }
@@ -155,6 +165,30 @@
     }
 }
 
+.duel-participant {
+    .flex-league {
+        .column {
+            .team {
+                &-logo {
+                    width: 3.6rem;
+                    height: 3.6rem;
+                    @include Mobile{
+                        width: 2.4rem;
+                        height: 2.4rem;
+                    }
+                    img{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .detail-fixed {
     position: fixed;
     top: 7.7rem;
@@ -169,6 +203,7 @@
         left: 0;
         width: 100% !important;
         max-width: 100% !important;
+        padding-top: .6rem;
     }
 
 
@@ -201,7 +236,6 @@
         .livescore-league-header-detail {
             @include tableMobile {
                 margin-bottom: .5rem;
-                margin-left: 1.2rem;
             }
         }
 
@@ -327,6 +361,8 @@
                 .column {
                     .team {
                         &-logo {
+                            width: 2.4rem;
+                            height: 2.4rem;
                             @include Mobile {
                                 margin-bottom: 0;
                             }
@@ -364,9 +400,13 @@
 .sticky-header-scroll{
     border: 2px solid #143CDB;
     border-radius: 5px;
+    @include tableMobile{
+        margin: 0 1.2rem;
+    }
 }
 .duel-participant .flex-league .column-center.result-league .detail-score-wrapper{
     background: transparent;
+    padding: 0;
 }
 .duel-participant .flex-league .column-center.result-league .detail-score-wrapper span{
     color: #222;
@@ -375,4 +415,79 @@
     font-size: 1.6rem;
     font-weight: 700;
     color: #222;
+    @include Mobile{
+        font-size: 1.2rem;
+    }
 }
+.duel-participant .flex-league .column-center{
+    margin: 0 2rem;
+}
+.block-line-up .block-line-up-main{
+    border: 2px solid #143CDB;
+    border-radius: 5px;
+    background: #143CDB;
+    overflow: hidden;
+}
+.block-line-up-title{
+    color: #fff !important;
+}
+.line-up-group{
+    border-radius: 3px;
+    border: 2px solid #143CDB;
+    background: #FFFDF9;
+    margin-top: 1.6rem;
+    .title-custom{
+        margin-top: 0;
+    }
+    .block-line-up-main{
+        border: 1px solid #C8C8B0;
+    }
+    // .block-line-up-body{
+    //     background: #FAFAED;
+    // }
+    // .line-up-table{
+    //     background: transparent;
+    // }
+}
+.line-up-map-main{
+    margin-top: 0;
+}
+.line-up-group-spacing{
+    padding: 1.6rem 1.2rem;
+}
+
+.title-custom{
+    background: #143CDB;
+    border: none;
+    color: #fff;
+    border-radius: 0;
+}
+
+.team-menu-tabs{
+    padding: 1.6rem 0 .4rem 0;
+    .nav-team{
+        @include Mobile{
+            gap: 1.2rem;
+            li{
+                font-size: 1.6rem;
+                padding: .5rem 1.6rem;
+            }
+        }
+    }
+}
+.active-scroll{
+    .team-menu-tabs{
+        padding: 1.6rem 0 1rem 0;
+        border-bottom: 2px solid #143CDB;
+        @include tableMobile{
+            margin: 0 1.2rem;
+        }
+    }
+}
+
+.euro-page-main{
+    @include Mobile{
+        padding-top: .6rem;
+    }
+}
+

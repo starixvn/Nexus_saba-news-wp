@@ -3,6 +3,7 @@
         list-style: none;
         padding-left: 0;
         display: flex;
+        justify-content: center;
         gap: 1.2rem;
         @include Mobile{
             justify-content: center;

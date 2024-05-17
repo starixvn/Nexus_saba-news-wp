@@ -134,22 +134,16 @@ export class FunctionBar extends Component {
         const isTabEnable = this.checkTabEnable(tabStatus);
         return (
             <Fragment>
-                <div className="detail-function-bar">
-                    <ul>
-                        <li>
-                            <a onClick={() => this.scrollToTab('dien-bien')}
-                                className={`${this.getActiveTabClass(activeTab, 'dien-bien')} ${!tabStatus.enableTabSummary ? 'disabled' : ''}`}
-                            >Diễn biến</a>
+                <div className="team-menu-tabs">
+                    <ul className="nav-team">
+                        <li onClick={() => this.scrollToTab('dien-bien')} className={`${this.getActiveTabClass(activeTab, 'dien-bien')} ${!tabStatus.enableTabSummary ? 'disabled' : 'nav-team-item'}`}>
+                            Diễn biến
                         </li>
-                        <li>
-                            <a onClick={() => this.scrollToTab('thong-ke')}
-                                className={`${this.getActiveTabClass(activeTab, 'thong-ke')} ${!tabStatus.enableTabStatistics ? 'disabled' : ''}`}
-                            >Thống kê</a>
+                        <li onClick={() => this.scrollToTab('thong-ke')} className={`${this.getActiveTabClass(activeTab, 'thong-ke')} ${!tabStatus.enableTabStatistics ? 'disabled' : 'nav-team-item'}`}>
+                            Thống kê
                         </li>
-                        <li>
-                            <a onClick={() => this.scrollToTab('doi-hinh')}
-                                className={`${this.getActiveTabClass(activeTab, 'doi-hinh')} ${!tabStatus.enableTabLineups ? 'disabled' : ''}`}
-                            >Đội hình</a>
+                        <li onClick={() => this.scrollToTab('doi-hinh')} className={`${this.getActiveTabClass(activeTab, 'doi-hinh')} ${!tabStatus.enableTabLineups ? 'disabled' : 'nav-team-item'}`}>
+                            Đội hình
                         </li>
                     </ul>
                 </div>
