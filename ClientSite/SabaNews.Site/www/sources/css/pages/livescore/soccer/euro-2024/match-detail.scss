@@ -391,7 +391,7 @@
 }
 .line-up-map-body{
     background: url('../../../../../images/image-map.jpg') no-repeat;
-    background-size: 100% 110vh;
+    background-size: 100% 100%;
 }
 
 .duel-participant{
@@ -427,9 +427,17 @@
     border-radius: 5px;
     background: #143CDB;
     overflow: hidden;
+    @include Mobile{
+        background: transparent;
+    }
 }
 .block-line-up-title{
     color: #fff !important;
+    @include Mobile{
+        border-bottom: none !important;
+        background: #143CDB;
+        border-radius: 5px;
+    }
 }
 .line-up-group{
     border-radius: 3px;
@@ -441,19 +449,31 @@
     }
     .block-line-up-main{
         border: 1px solid #C8C8B0;
+        @include Mobile{
+            border: none;
+        }
     }
-    // .block-line-up-body{
-    //     background: #FAFAED;
-    // }
-    // .line-up-table{
-    //     background: transparent;
-    // }
+    .block-line-up-body{
+        background: #FAFAED;
+        @include Mobile{
+            background: #FFFDF9;
+        }
+    }
+    .line-up-table{
+        background: transparent !important;
+        @include Mobile{
+            padding: .8rem 0 !important;
+        }
+    }
 }
 .line-up-map-main{
     margin-top: 0;
 }
 .line-up-group-spacing{
     padding: 1.6rem 1.2rem;
+    @include Mobile{
+        padding: .8rem;
+    }
 }
 
 .title-custom{
@@ -510,4 +530,17 @@
         }
     }
 }
-
+.line-up-main .line-up-team .line-up .line-up-table .table-paticipant .list-paticipant, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant .list-paticipant, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant .list-paticipant{
+    border-bottom: 1px solid #C8C8B0;
+}
+.line-up-main .line-up-team .line-up .line-up-table .table-paticipant .list-paticipant:last-child, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant .list-paticipant:last-child, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant .list-paticipant:last-child{
+    border-bottom: none;
+}
+.line-up-main .line-up-team .line-up .line-up-table .table-paticipant.home-team, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant.home-team, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant.home-team{
+    border-right: 1px solid #DADADA;
+}
+.statistices{
+    @include Mobile{
+        padding: 0 1.2rem 1.2rem;
+    }
+}
