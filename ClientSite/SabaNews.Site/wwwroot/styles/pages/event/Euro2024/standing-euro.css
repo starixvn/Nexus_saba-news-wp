@@ -2140,7 +2140,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .sticky-box .wc-table::after {
   border-bottom: none;
 }
-.sticky-box .wc-table-row {
+.sticky-box.euro-top-scorer .wc-table-row {
   padding: 0.6rem 1rem !important;
 }
 .sticky-box .number {
@@ -2387,9 +2387,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .wc-on-mobile .wc-table-header {
   padding-bottom: 0 !important;
 }
-.wc-on-mobile .wc-table-body .wc-table-row:first-child {
-  padding-top: 0;
-}
 .wc-on-mobile .tab-content .wc-table-body:not(:first-child) {
   display: none;
 }
@@ -2549,6 +2546,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border: 2px solid #143CDB;
   background: #FFFDF9;
   overflow: hidden;
+  min-height: 60rem;
 }
 @media (max-width: 767px) {
   .euro-top-scorer {

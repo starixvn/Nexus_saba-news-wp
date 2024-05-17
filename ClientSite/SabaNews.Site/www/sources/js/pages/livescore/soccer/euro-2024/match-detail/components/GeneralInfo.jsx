@@ -223,9 +223,6 @@ export default class GeneralInfo extends PureComponent {
         return (
             <>
                 {this.renderLeague(generalInfo)}
-                <div className="document-text">
-                    *Thông tin của Lịch Thi Đấu là do bên thứ ba cung cấp và chỉ mang tính chất tham khảo.
-                </div>
                 <div className="duel-participant">
                     {
                         <div className="flex-league first-league">

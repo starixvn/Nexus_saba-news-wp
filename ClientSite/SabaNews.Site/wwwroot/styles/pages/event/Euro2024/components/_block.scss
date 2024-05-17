@@ -109,8 +109,10 @@
     .wc-table::after{
         border-bottom: none;
     }
-    .wc-table-row{
-        padding: .6rem 1rem !important;
+    &.euro-top-scorer{
+        .wc-table-row{
+            padding: .6rem 1rem !important;
+        }
     }
     .number{
         margin-right: .6rem !important;

@@ -204,11 +204,11 @@
         padding-bottom: 0 !important;
     }
     .wc-table-body{
-        .wc-table-row{
-            &:first-child{
-                padding-top: 0;
-            }
-        }
+        // .wc-table-row{
+        //     &:first-child{
+        //         padding-top: 0;
+        //     }
+        // }
     }
 
     .tab-content{
@@ -364,6 +364,7 @@
     border: 2px solid $primary-bg;
     background: #FFFDF9;
     overflow: hidden;
+    min-height: 60rem;
     @include Mobile{
         background: transparent;
     }

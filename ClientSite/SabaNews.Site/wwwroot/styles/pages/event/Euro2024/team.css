@@ -2140,7 +2140,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .sticky-box .wc-table::after {
   border-bottom: none;
 }
-.sticky-box .wc-table-row {
+.sticky-box.euro-top-scorer .wc-table-row {
   padding: 0.6rem 1rem !important;
 }
 .sticky-box .number {
