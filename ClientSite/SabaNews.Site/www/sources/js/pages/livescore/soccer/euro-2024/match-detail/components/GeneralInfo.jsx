@@ -7,6 +7,7 @@ import MatchStage from '@jsroot/components/MatchStage';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
+import FunctionBar from './FunctionBar';
 
 export default class GeneralInfo extends PureComponent {
     constructor(props) {
@@ -283,6 +284,7 @@ export default class GeneralInfo extends PureComponent {
                         </div>
                     }
                 </div>
+                <FunctionBar />
             </>
         );
     };
