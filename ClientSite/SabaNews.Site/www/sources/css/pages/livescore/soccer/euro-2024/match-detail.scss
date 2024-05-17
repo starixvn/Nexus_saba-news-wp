@@ -491,3 +491,23 @@
     }
 }
 
+.head-top-team{
+    transform: skew(-15deg);
+    max-width: 19rem;
+    background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    border: none;
+    @include Mobile{
+        max-width: 16rem;
+    }
+    .time-event{
+        &-title{
+            transform: skew(15deg);
+            color: #fff;
+        }
+        &-score{
+            transform: skew(15deg);
+            color: #fff;
+        }
+    }
+}
+
