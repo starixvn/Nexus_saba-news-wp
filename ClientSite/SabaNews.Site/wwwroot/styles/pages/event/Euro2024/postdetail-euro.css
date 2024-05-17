@@ -4293,6 +4293,12 @@ img {
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .king-soccer-header-text {
+    font-size: 1.6rem;
+  }
+}
+
 .block-items-horizontal {
   grid-template-columns: 24rem 1fr;
 }

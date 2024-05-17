@@ -251,20 +251,29 @@
                 <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
                 <div class="comment-post" id="comment">
                 </div>
+                @if (isMobile)
+                {
+                    <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
+                    <div class="euro-top-scorer sticky-box"></div>
+                }
                 <div class="euro-related-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug"></div>
+                @if(isMobile)
+                {
+                    <div class="euro-most-view-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug" ></div>
+                }
             </div>
-            <div class="page-items-right">
-                <div class="sticky-position">
-                    @if (isDesktop)
-                    {
+            @if(isDesktop)
+            {
+                <div class="page-items-right">
+                    <div class="sticky-position">
                         <div class="sticky-position">
                             <div class="euro-most-view-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug" ></div>
                             <div data-ismobile="@isMobile" class="euro-top-standing sticky-box"></div>
                             <div class="euro-top-scorer sticky-box"></div>
                         </div>
-                    }
-                </div>
-            </div> 
+                    </div>
+                </div> 
+            }
         </div>
     </div>
 </div>

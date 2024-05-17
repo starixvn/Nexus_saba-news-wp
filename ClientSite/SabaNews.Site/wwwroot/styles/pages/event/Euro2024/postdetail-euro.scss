@@ -978,6 +978,11 @@ img {
         font-size: 2.4rem;
     }
 }
+.king-soccer-header-text{
+    @include tableMobile{
+        font-size: 1.6rem;
+    }
+}
 
 .block-items-horizontal{
     grid-template-columns: 24rem 1fr;
