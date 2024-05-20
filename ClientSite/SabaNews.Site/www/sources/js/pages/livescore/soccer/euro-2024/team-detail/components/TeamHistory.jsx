@@ -1,13 +1,15 @@
 import React from 'react';
 const TeamHistory = ({ data }) => {
-    console.log(data)
+    const onClick = () => {
+        window.location = `/euro-2024/${data.postName}${data.uri}`;
+    };
     return (
         <div className="team-history">
-            <div className="team-history-image">
+            <div className="team-history-image" onClick={onClick}>
                 <img src={data.featureImage} alt={data.postTitle} />
             </div>
             <div className="group-history">
-                <div className="team-history-titlte">{data.postTitle}</div>
+                <div className="team-history-titlte" onClick={onClick}>{data.postTitle}</div>
                 <div className="team-history-description">
                     {data.postExcerpt}
                 </div>
