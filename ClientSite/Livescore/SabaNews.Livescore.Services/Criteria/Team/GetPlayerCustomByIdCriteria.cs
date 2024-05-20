@@ -2,7 +2,7 @@ namespace SabaNews.Livescore.Services.Criteria.Team
 {
     using Fanex.Data.Repository;
 
-    public class GetPlayerByIdCriteria : CriteriaBase
+    public class GetPlayerCustomByIdCriteria : CriteriaBase
     {
         public long PlayerId { get; set; }
 

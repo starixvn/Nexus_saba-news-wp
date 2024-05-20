@@ -19,20 +19,20 @@
         public async Task<IList<TeamStage>> GetTeamByStage(long seasonId, long stageId)
         {
             var criteria = new GetTeamByStageCriteria { SeasonId = seasonId, StageId = stageId };
-            var leagues = await baseService.GetDataAsync<TeamStage>(criteria);
-            return leagues.ToList();
+            var teams = await baseService.GetDataAsync<TeamStage>(criteria);
+            return teams.ToList();
         }
 
         public async Task<IList<PlayerCustom>> GetTeamPlayerById(long teamId)
         {
-            var criteria = new GetTeamPlayerByIdCriteria { TeamId = teamId };
+            var criteria = new GetPlayerCustomByTeamIdCriteria { TeamId = teamId };
             var players = await baseService.GetDataAsync<PlayerCustom>(criteria);
             return players.ToList();
         }
 
         public async Task<PlayerCustom> GetPlayerById(long playerId)
         {
-            var criteria = new GetPlayerByIdCriteria { PlayerId = playerId };
+            var criteria = new GetPlayerCustomByIdCriteria { PlayerId = playerId };
             var players = await baseService.GetDataEntityAsync<PlayerCustom>(criteria);
             return players;
         }
