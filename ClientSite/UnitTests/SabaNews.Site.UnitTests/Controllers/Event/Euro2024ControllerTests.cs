@@ -368,12 +368,17 @@
             // Arrange
             var controller = GetController();
            
-            var model = fixture.Create<GetTeamDataModel>();
+            var model = new GetTeamDataModel { TeamId = 33172 };
             var teamId = fixture.Create<long>();
             var getMatchCriteria = fixture.Create<GetMatchByTeamSeasonCriteria>();
+            var profileSlug = fixture.Create<string>();
+
+            var expectedProfile = fixture.Create<Post>();
             var expectedMatches = fixture.Create<IList<Match>>();
             var expectedPlayers = fixture.Create<IList<PlayerCustom>>();
+            expectedMatches[0].Stage.StageId = Euro2024.GroupStageId;
 
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => profileSlug = x), Arg.Do<string>(x => profileSlug = x)).Returns(expectedProfile);
             matchService.GetMatchByTeamSeasonAsync(Arg.Do<GetMatchByTeamSeasonCriteria>(x => getMatchCriteria = x)).Returns(expectedMatches);
             teamService.GetTeamPlayerById(Arg.Do<long>(x => teamId = x)).Returns(expectedPlayers);
 
@@ -383,8 +388,8 @@
 
             // Assert
             var viewResult = Assert.IsType<JsonResult>(result);
-            var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("matches").GetValue(viewResult.Value));
             var actualPlayers = Assert.IsAssignableFrom<IList<PlayerCustom>>(viewResult.Value.GetType().GetProperty("players").GetValue(viewResult.Value));
+            var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("matches").GetValue(viewResult.Value));
             Assert.Equal(expectedPlayers, actualPlayers);
             Assert.Equal(matches, actualMatches);
             
