@@ -94,8 +94,8 @@
             var controller = GetController();
             var leagueId = fixture.Create<int>();
             var criteria = fixture.Create<GetMatchBySeasonFilterCriteria>();
-            var model = new MatchFilterModel 
-            { 
+            var model = new MatchFilterModel
+            {
                 DateSort = "asc",
                 SeasonId = 1,
                 LeagueId = 1,
@@ -104,12 +104,12 @@
                 Search = "team",
             };
             var expectedMatch = new List<SabaNews.Livescore.Models.Match.Match>();
-            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match 
-            { 
+            expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
+            {
                 MatchId = 1,
                 StartTime = DateTime.Parse("2022-10-10"),
-                HomeTeam =  new Team { TeamNameEN = "home team 1", TeamNameVN = "home team vn 1" }, 
-                AwayTeam = new Team { TeamNameEN = "away team 1" } 
+                HomeTeam = new Team { TeamNameEN = "home team 1", TeamNameVN = "home team vn 1" },
+                AwayTeam = new Team { TeamNameEN = "away team 1" }
             });
             expectedMatch.Add(new SabaNews.Livescore.Models.Match.Match
             {
@@ -212,7 +212,7 @@
             // Arrange
             var controller = GetController();
             var model = new MatchUpdateModel
-            { 
+            {
                 IsDeletedAwayIcon = true,
                 IsDeletedHomeIcon = true,
                 StartTime = DateTime.Now,
@@ -233,7 +233,7 @@
                 HomeTeamPenaltyScore = 4,
                 AwayTeamPenaltyScore = 4
             };
-           
+
             var cmd = fixture.Create<UpdateMatchCommand>();
             var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
             var expectedMatch = fixture.Create<MatchUpdate>();
@@ -334,7 +334,7 @@
                 HomeTeamPenaltyScore = 4,
                 AwayTeamPenaltyScore = 4
             };
-            
+
             var stream = new MemoryStream();
             var header = new HeaderDictionary();
             header.Add("Name", new string[1] { "Value" });
@@ -352,7 +352,7 @@
             var criteria = fixture.Create<GetMatchByIdUpdateCriteria>();
             var expectedMatch = fixture.Create<MatchUpdate>();
             var expectedUpdateResult = fixture.Create<CommandResult>();
-            var expectedUploadResult = new UploadResult {  Message = "error code" };
+            var expectedUploadResult = new UploadResult { Message = "error code" };
 
             matchService.GetMatchByIdUpdateAsync(Arg.Do<GetMatchByIdUpdateCriteria>(x => x = criteria)).Returns(expectedMatch);
             matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);

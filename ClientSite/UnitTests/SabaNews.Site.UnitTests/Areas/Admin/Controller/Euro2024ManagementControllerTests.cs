@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
 {
     using AutoFixture;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using NSubstitute;
     using SabaNews.Core.Constants;
@@ -10,12 +11,15 @@
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Livescore.Services.Criteria.Team;
     using SabaNews.Models.Options;
     using SabaNews.Models.Poll;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
     using Xunit;
@@ -71,6 +75,215 @@
             var viewModel = Assert.IsAssignableFrom<PollAdminViewModel>(viewResult.Model);
             Assert.Equal(1, viewModel.SelectedQuestId);
             Assert.Equal("Who is win?", viewModel.SelectedQuest);
+        }
+
+        [Fact]
+        public async Task  Team_WhenHaveOptionValue_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var seasonId = fixture.Create<long>();
+            var stageId = fixture.Create<long>();
+            
+            var teams = fixture.Create<IList<TeamStage>>();
+            teamService.GetTeamByStage(Arg.Do<long>(x => x = seasonId), Arg.Do<long>(x => x = stageId)).Returns(teams);
+
+            //Act
+            var result = await controller.Team();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IList<TeamStage>>(viewResult.Model);
+            Assert.Equal(teams, viewModel);
+        }
+
+        [Fact]
+        public void  TeamPlayer_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var teamId = fixture.Create<long>();
+
+            //Act
+            var result = controller.TeamPlayer(teamId);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<long>(viewResult.Model);
+            Assert.Equal(teamId, viewModel);
+        }
+
+        [Fact]
+        public async Task  GetPlayerGrid_WhenHaveOptionValue_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var teamId = fixture.Create<long>();
+            
+            var teams = fixture.Create<IList<PlayerCustom>>();
+            teamService.GetTeamPlayerById(Arg.Do<long>(x => x = teamId)).Returns(teams);
+
+            //Act
+            var result = await controller.GetPlayerGrid(teamId);
+
+            // Assert
+           var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IList<PlayerCustom>>(viewResult.Model);
+            Assert.Equal(teams, viewModel);
+        }
+
+        [Fact]
+        public async Task CreatePlayer_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var controller = GetController();
+            var model = new CreatTeamModel
+            {
+                TeamId = 1,
+                PlayerName = "name",
+                PlayerFullName = "home name",
+                ShirtNumber = "11"
+            };
+            var stream = new MemoryStream();
+            var header = new HeaderDictionary();
+            model.Icon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+            var cmd = fixture.Create<CreateTeamPlayerCommand>();
+            var expectedUpdateResult = fixture.Create<CommandResult>();
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
+
+            teamService.CreatePlayerAsync(Arg.Do<CreateTeamPlayerCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.Icon), Arg.Do<string>(x => x = UploadDir.PlayerUploadFolder)).Returns(expectedUploadResult);
+            //Act
+            var result = await controller.CreatePlayer(model);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedUpdateResult, jsonResult.Value);
+        }
+
+
+        [Fact]
+        public async Task  EditPlayer_WhenPlayerIsNotExisted_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var playerId = fixture.Create<long>();
+            
+            PlayerCustom player = null;
+            teamService.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(player);
+
+            //Act
+            var result = await controller.EditPlayer(playerId);
+
+            // Assert
+           var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task  EditPlayer_WhenPlayerIsExisted_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var playerId = fixture.Create<long>();
+            
+            var teams = fixture.Create<PlayerCustom>();
+            teamService.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(teams);
+
+            //Act
+            var result = await controller.EditPlayer(playerId);
+
+            // Assert
+           var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<PlayerCustom>(viewResult.Model);
+            Assert.Equal(teams, viewModel);
+        }
+
+
+        [Fact]
+        public async Task EditPlayer_WhenSaveData_ReturnExpectedData()
+        {
+            //Arrange
+            var controller = GetController();
+            var model = new UpdateTeamModel
+            {
+                IsDeletedIcon = true,
+                PlayerId = 1,
+                PlayerName = "name",
+                PlayerFullName = "home name",
+                ShirtNumber = "11"
+            };
+            var stream = new MemoryStream();
+            var header = new HeaderDictionary();
+            model.Icon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+
+            var player = fixture.Create<PlayerCustom>();
+            var cmd = fixture.Create<UpdateTeamPlayerCommand>();
+            var expectedUpdateResult = fixture.Create<CommandResult>();
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
+
+            
+            teamService.GetPlayerById(Arg.Do<long>(x => x = model.PlayerId)).Returns(player);
+            teamService.UpdatePlayerAsync(Arg.Do<UpdateTeamPlayerCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.Icon), Arg.Do<string>(x => x = UploadDir.PlayerUploadFolder)).Returns(expectedUploadResult);
+            //Act
+            var result = await controller.EditPlayer(model);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedUpdateResult, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task DeletePlayer_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var controller = GetController();
+            var playerId = fixture.Create<long>();
+
+            var player = fixture.Create<PlayerCustom>();
+            var cmd = fixture.Create<UpdateTeamPlayerCommand>();
+            var expectedUpdateResult = fixture.Create<CommandResult>();
+            var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
+
+            
+            teamService.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(player);
+            teamService.DeletePlayerAsync(Arg.Do<long>(x => x = playerId)).Returns(expectedUpdateResult);
+            fileService.DeleteFile(Arg.Do<string>(x => x = player.Icon), Arg.Do<string>(x => x = UploadDir.PlayerUploadFolder)).Returns(expectedUploadResult);
+            //Act
+            var result = await controller.DeletePlayer(playerId);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedUpdateResult, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task UpdatePool_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var controller = GetController();
+
+            var pollId = fixture.Create<long>();
+            var optionKey = fixture.Create<string>();
+            var expectedResult = fixture.Create<CommandResult>();
+
+            
+            optionService.UpdateOptionAsync(Arg.Do<string>(x => x = optionKey), Arg.Do<string>(x => x = pollId.ToString())).Returns(expectedResult);
+            //Act
+            var result = await controller.UpdatePoll(pollId);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedResult, jsonResult.Value);
         }
 
 
