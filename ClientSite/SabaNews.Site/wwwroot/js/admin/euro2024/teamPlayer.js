@@ -120,6 +120,7 @@ var adminEuro2024TeamPlayer = (function ($) {
                     if (response.isSuccessful) {
                         $('#CreatePlayerModel').modal('hide');
                         GetSuccessPopup('#NoticeModal', 'Add player successfully!');
+                        $('#updateMatch').trigger("reset");
                         setTimeout(function () {
                             $('#NoticeModal').modal('hide');
                             GetDataGrid();

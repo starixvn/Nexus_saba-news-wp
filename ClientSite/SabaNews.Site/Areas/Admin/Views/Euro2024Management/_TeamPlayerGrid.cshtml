@@ -20,6 +20,7 @@
                             foreach (var item in Model)
                             {
                                 count++;
+                                var position = SabaNews.Core.Constants.Livescore.MatchConstants.ListPlayerPosition.FirstOrDefault(p => p.Id == item.Position);
                                 <tr>
                                     <td class="text-center">@count</td>
                                     <td class="text-left">@item.PlayerName</td>
@@ -27,7 +28,7 @@
                                     <td class="text-center">@item.Birthday.ToString("dd-MM-yyyy")</td>
                                     <td class="text-center">@item.ShirtNumber</td>
                                     <td class="text-center">@item.ClubName</td>
-                                    <td class="text-center">@item.Position</td>
+                                    <td class="text-center">@position?.Name</td>
                                     <td class="text-center">
                                         <i class="icon icon-edit-admin btn-Edit" title="Edit"
                                             data-playerId="@item.PlayerId"></i>

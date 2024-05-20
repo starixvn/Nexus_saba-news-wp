@@ -42,6 +42,7 @@ namespace SabaNews.Core.Constants
         public const string UrlVideoSlug = "video";
 
         public const string Team = "Đội tuyển";
+        public const string TeamSlug = "doi-tuyen";
         public const string TeamTitle = "Thông tin đầy đủ về các đội tuyển tham gia Euro 2024";
         public const string TeamDescription = "Thông tin đội tuyển Euro chi tiết, danh sách cầu thủ, huấn luyện viên, đội hình 24 đội tuyển thi đấu tại vòng chung kết Euro 2024.";
 
@@ -67,6 +68,7 @@ namespace SabaNews.Core.Constants
             new() { Name = LastestNews, Slug = UrlLastestNewsSlug },
             new() { Name = Fixture, Slug = UrlFixtureSlug },
             new() { Name = Standing, Slug = UrlStandingSlug },
+            new() { Name = Team, Slug = TeamSlug },
             new() { Name = Commentary, Slug = UrlCommentarySlug },
             new() { Name = Video, Slug = UrlVideoSlug }
         };
