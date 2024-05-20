@@ -19,7 +19,7 @@ namespace SabaNews.Core.Constants
 
         public const string Fixture = "Lịch thi đấu";
         public const string FixtureDescription = "Lịch thi đấu Euro 2024 mới nhất hôm nay. Xem lịch thi đấu bóng đá Euro 2024 đêm nay, LTĐ Euro 2024 rạng sáng mai.";
-        public const string FixtureTitle = "LLịch thi đấu Euro 2024 chính xác nhất";
+        public const string FixtureTitle = "Lịch thi đấu Euro 2024 chính xác nhất";
         public const string FixtureSlug = "lich-thi-dau";
         public const string UrlFixtureSlug = "lich-thi-dau";
 

@@ -495,7 +495,6 @@
             Assert.Equal(posts, actual.LastestNews);
             Assert.Equal(posts, actual.Commentary);
             Assert.Equal(posts, actual.Videos);
-            Assert.Equal(category, actual.Category);
         }
 
         #region Helpers

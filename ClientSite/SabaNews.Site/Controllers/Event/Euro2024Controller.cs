@@ -83,6 +83,7 @@ namespace SabaNews.Site.Controllers.Event
 
             var header = new HeaderViewModel
             {
+                HeadTitle = Euro2024.LastestNews,
                 Title = Euro2024.LastestNewsTitle,
                 Description = Euro2024.LastestNewsDescription,
                 Slug = Euro2024.UrlLastestNewsSlug
@@ -111,6 +112,7 @@ namespace SabaNews.Site.Controllers.Event
 
             var header = new HeaderViewModel
             {
+                HeadTitle = Euro2024.Commentary,
                 Title = Euro2024.CommentaryTitle,
                 Description = Euro2024.CommentaryDescription,
                 Slug = Euro2024.UrlCommentarySlug
