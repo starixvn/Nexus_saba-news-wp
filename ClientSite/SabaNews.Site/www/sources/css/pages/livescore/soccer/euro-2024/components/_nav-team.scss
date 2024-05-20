@@ -17,6 +17,9 @@
             line-height: normal;
             border-radius: 5px;
             border: 1px solid #D2D2D2;
+            &.disabled{
+                cursor: not-allowed;
+            }
             @include Mobile{
                 font-size: 1.3rem;
                 white-space: nowrap;
