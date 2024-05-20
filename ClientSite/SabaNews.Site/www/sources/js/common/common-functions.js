@@ -341,7 +341,7 @@ export default class CommonFunctions {
 
     static getMatchDetailPageUrl(match, baseUrl = '') {
         const { matchId, league, homeTeam, awayTeam } = match;
-        const leagueName = Site.toSlug(this.getLeagueName(league));
+        const leagueName = league != null ? Site.toSlug(this.getLeagueName(league)) : "";
         const homeTeamName = Site.toSlug(this.getTeamName(homeTeam));
         const awayTeamName = Site.toSlug(this.getTeamName(awayTeam));
         baseUrl = baseUrl === '' ? `lich-thi-dau/bong-da/${leagueName}` : baseUrl;
