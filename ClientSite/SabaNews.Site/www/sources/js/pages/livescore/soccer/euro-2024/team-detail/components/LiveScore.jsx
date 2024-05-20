@@ -27,11 +27,11 @@ export default class LiveScore extends PureComponent {
                                                             {CommonFunctions.getTeamName(item.homeTeam)}
                                                         </div>
                                                         <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.homeTeam)} alt={CommonFunctions.getTeamName(item.homeTeam)} />
-                                                        <TeamScore match={matches} isHomeTeam />
+                                                        <TeamScore match={item} isHomeTeam />
                                                     </div>
                                                     <MatchStage match={item} />
                                                     <div className="soccer-team away-team">
-                                                    <   TeamScore match={matches} />
+                                                    <   TeamScore match={item} />
                                                         <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.awayTeam)} alt={CommonFunctions.getTeamName(item.awayTeam)}/>
                                                         <div className="soccer-team-name">
                                                             {CommonFunctions.getTeamName(item.awayTeam)}
