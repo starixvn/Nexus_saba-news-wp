@@ -68,9 +68,9 @@ namespace SabaNews.Core.Constants
             new() { Name = LastestNews, Slug = UrlLastestNewsSlug },
             new() { Name = Fixture, Slug = UrlFixtureSlug },
             new() { Name = Standing, Slug = UrlStandingSlug },
-            new() { Name = Team, Slug = TeamSlug },
             new() { Name = Commentary, Slug = UrlCommentarySlug },
-            new() { Name = Video, Slug = UrlVideoSlug }
+            new() { Name = Video, Slug = UrlVideoSlug },
+            new() { Name = Team, Slug = TeamSlug }
         };
 
         public static readonly IReadOnlyList<CateInfo> CateSlugs = new List<CateInfo>
