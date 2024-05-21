@@ -260,7 +260,7 @@ namespace SabaNews.Site.Controllers.Event
                 {
                     Title = Euro2024.TeamTitle,
                     Description = Euro2024.TeamDescription,
-                    Slug = Euro2024.FixtureSlug
+                    Slug = Euro2024.TeamSlug
                 },
                 Teams = teams
             };

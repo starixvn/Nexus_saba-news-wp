@@ -186,7 +186,7 @@ var adminEuro2024TeamPlayer = (function ($) {
             errorSection.show();
             return false;
         }
-        let type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
+        let type_reg = /^image\/(jpg|webp|png|jpeg|bmp|gif|ico)$/;
         let fsize = files.size,
             ftype = files.type,
             fname = files.name,
