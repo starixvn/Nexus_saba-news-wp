@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import LiveScore from './LiveScore';
+import MatchGrid from './MatchGrid';
 import Players from './Players';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
@@ -53,9 +53,9 @@ export class AppContainer extends Component {
     }
     groupPlayers  = players => {
         const positions  = ['Huấn luyện viên' , 'Thủ môn' , 'Hộ vệ', 'Trung vệ','Hank CTO']
+        const tempPlayer = [];
         if(players){
             const totalItems = players.length;
-            const tempPlayer = [];
             for (let i = 0; i < totalItems; i++) {
                 const player = players[i];
                 const positionId  = player.position
@@ -75,23 +75,23 @@ export class AppContainer extends Component {
                     }
                 }
             }
-            return  tempPlayer;
         }
+        return  tempPlayer;
     }
     renderContent = () => {
         const { preMatches, postMatches, players , profile } = this.props;
         const player = this.groupPlayers(players);
         switch (this.state.active) {
             case 1:
-                return  preMatches.length ? <LiveScore matches={preMatches} /> : <div>Đang cập nhật dữ liệu</div>
+                return  preMatches.length ? <MatchGrid matches={preMatches} /> : <div>Đang cập nhật dữ liệu</div>
             case 2:
-                return postMatches.length ? <LiveScore matches={postMatches} /> : <div>Đang cập nhật dữ liệu</div>
+                return postMatches.length ? <MatchGrid matches={postMatches} /> : <div>Đang cập nhật dữ liệu</div>
             case 3:
                 return player.length ? <Players data={player} /> : <div>Đang cập nhật dữ liệu</div>
             case 4:
                 return profile ? <TeamHistory data={profile}/> : <div>Đang cập nhật dữ liệu</div>
             default:
-                return <LiveScore matches={preMatches} />
+                return <MatchGrid matches={preMatches} />
         }
     }
     render() {

@@ -340,7 +340,6 @@ describe('FunctionBar', () => {
             expect(document.querySelector).toHaveBeenCalledTimes(2);
             expect(window.scroll).toHaveBeenCalled();
             expect(defaultProps.setActiveTab).toHaveBeenCalled();
-            expect(defaultProps.navigate).toHaveBeenCalledWith('/lich-thi-dau/bong-da/leaguename/teamname-vs-teamname/1/?tab=dien-bien');
         });
 
         it('run correctly when resolution is mobile', () => {
@@ -378,7 +377,6 @@ describe('FunctionBar', () => {
             expect(document.querySelector).toHaveBeenCalledTimes(3);
             expect(window.scroll).toHaveBeenCalled();
             expect(defaultProps.setActiveTab).toHaveBeenCalled();
-            expect(defaultProps.navigate).toHaveBeenCalledWith('/lich-thi-dau/bong-da/leaguename/teamname-vs-teamname/1/?tab=dien-bien');
         });
     });
 

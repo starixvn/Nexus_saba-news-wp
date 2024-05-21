@@ -6,7 +6,7 @@ import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from './TeamScore';
 import { Euro } from '../../euro-constants';
 
-export default class LiveScore extends PureComponent {
+export default class MatchGrid extends PureComponent {
     constructor(props) {
         super(props);
     }
