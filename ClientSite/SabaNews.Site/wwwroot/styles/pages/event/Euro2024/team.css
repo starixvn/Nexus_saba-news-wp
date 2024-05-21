@@ -2188,9 +2188,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+body {
+  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+}
+
 .euro-page-main {
   padding-top: 2rem;
-  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   background-size: 100%;
   padding-bottom: 10rem;
 }

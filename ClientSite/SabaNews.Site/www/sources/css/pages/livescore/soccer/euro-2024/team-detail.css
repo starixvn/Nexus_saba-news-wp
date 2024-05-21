@@ -805,6 +805,10 @@ body {
   transform: scale(1.02);
 }
 
+body {
+  background: #FFFDF9;
+}
+
 .group-match-item .soccer-match-item .soccer-match-team .group-team .home-team {
   border-bottom: none !important;
 }
