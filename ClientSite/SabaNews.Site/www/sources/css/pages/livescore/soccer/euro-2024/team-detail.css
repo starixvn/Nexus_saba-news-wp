@@ -623,6 +623,9 @@ body {
   border: 1px solid #D2D2D2;
   cursor: pointer;
 }
+.team-menu-tabs .nav-team li.disabled {
+  cursor: not-allowed;
+}
 @media (max-width: 767px) {
   .team-menu-tabs .nav-team li {
     font-size: 1.3rem;

@@ -2161,6 +2161,9 @@ span.number-position {
   border: 1px solid #D2D2D2;
   cursor: pointer;
 }
+.team-menu-tabs .nav-team li.disabled {
+  cursor: not-allowed;
+}
 @media (max-width: 767px) {
   .team-menu-tabs .nav-team li {
     font-size: 1.3rem;
@@ -2556,6 +2559,7 @@ span.number-position {
   border-radius: 5px;
   background: #143CDB;
   overflow: hidden;
+  border-top: none;
 }
 @media (max-width: 767px) {
   .block-line-up .block-line-up-main {
@@ -2570,7 +2574,6 @@ span.number-position {
   .block-line-up-title {
     border-bottom: none !important;
     background: #143CDB;
-    border-radius: 5px;
   }
 }
 
@@ -2584,7 +2587,7 @@ span.number-position {
   margin-top: 0;
 }
 .line-up-group .block-line-up-main {
-  border: 1px solid #C8C8B0;
+  border: 1px solid #DADADA;
 }
 @media (max-width: 767px) {
   .line-up-group .block-line-up-main {
@@ -2598,9 +2601,6 @@ span.number-position {
   .line-up-group .block-line-up-body {
     background: #FFFDF9;
   }
-}
-.line-up-group .line-up-table {
-  background: transparent !important;
 }
 @media (max-width: 767px) {
   .line-up-group .line-up-table {
@@ -2677,20 +2677,14 @@ span.number-position {
   color: #fff;
 }
 
-.line-up-main .line-up-team .line-up .line-up-table .table-paticipant .list-paticipant, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant .list-paticipant, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant .list-paticipant {
-  border-bottom: 1px solid #C8C8B0;
-}
-
-.line-up-main .line-up-team .line-up .line-up-table .table-paticipant .list-paticipant:last-child, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant .list-paticipant:last-child, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant .list-paticipant:last-child {
-  border-bottom: none;
-}
-
-.line-up-main .line-up-team .line-up .line-up-table .table-paticipant.home-team, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant.home-team, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant.home-team {
-  border-right: 1px solid #DADADA;
-}
-
 @media (max-width: 767px) {
   .statistices {
     padding: 0 1.2rem 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .line-up-change-men .block-line-up-title {
+    border-radius: 5px;
   }
 }

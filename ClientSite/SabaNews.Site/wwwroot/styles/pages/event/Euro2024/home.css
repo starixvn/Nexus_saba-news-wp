@@ -2188,7 +2188,7 @@ html, body {
   }
 }
 
-.btn-play-video {
+.btn-play-video, .euro-play-video {
   height: 8rem;
   width: 8rem;
   background-color: rgba(255, 255, 255, 0.2);
@@ -2205,17 +2205,17 @@ html, body {
   cursor: pointer;
 }
 @media screen and (max-width: 1024px) {
-  .btn-play-video {
+  .btn-play-video, .euro-play-video {
     height: 4.6rem;
     width: 4.6rem;
   }
 }
-.btn-play-video span {
+.btn-play-video span, .euro-play-video span {
   font-size: 4.6rem;
   color: #fff;
 }
 @media screen and (max-width: 1024px) {
-  .btn-play-video span {
+  .btn-play-video span, .euro-play-video span {
     font-size: 2rem;
   }
 }

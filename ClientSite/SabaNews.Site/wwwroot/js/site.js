@@ -2,7 +2,7 @@
     HandleIframe: function () {
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
-        $('.btn-play-video').on('click', function () {
+        $('.euro-play-video').on('click', function () {
             var slide = $(this).parent().parent();
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
