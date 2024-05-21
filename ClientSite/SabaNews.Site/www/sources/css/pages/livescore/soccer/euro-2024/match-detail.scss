@@ -427,6 +427,7 @@
     border-radius: 5px;
     background: #143CDB;
     overflow: hidden;
+    border-top: none;
     @include Mobile{
         background: transparent;
     }
@@ -436,7 +437,6 @@
     @include Mobile{
         border-bottom: none !important;
         background: #143CDB;
-        border-radius: 5px;
     }
 }
 .line-up-group{
@@ -448,7 +448,7 @@
         margin-top: 0;
     }
     .block-line-up-main{
-        border: 1px solid #C8C8B0;
+        border: 1px solid #DADADA;
         @include Mobile{
             border: none;
         }
@@ -460,7 +460,6 @@
         }
     }
     .line-up-table{
-        background: transparent !important;
         @include Mobile{
             padding: .8rem 0 !important;
         }
@@ -530,17 +529,17 @@
         }
     }
 }
-.line-up-main .line-up-team .line-up .line-up-table .table-paticipant .list-paticipant, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant .list-paticipant, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant .list-paticipant{
-    border-bottom: 1px solid #C8C8B0;
-}
-.line-up-main .line-up-team .line-up .line-up-table .table-paticipant .list-paticipant:last-child, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant .list-paticipant:last-child, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant .list-paticipant:last-child{
-    border-bottom: none;
-}
-.line-up-main .line-up-team .line-up .line-up-table .table-paticipant.home-team, .line-up-main .line-up-change-men .line-up .line-up-table .table-paticipant.home-team, .line-up-main .line-up-live .line-up .line-up-table .table-paticipant.home-team{
-    border-right: 1px solid #DADADA;
-}
 .statistices{
     @include Mobile{
         padding: 0 1.2rem 1.2rem;
+    }
+}
+
+
+.line-up-change-men{
+    .block-line-up-title{
+        @include Mobile{
+            border-radius: 5px;
+        }
     }
 }
