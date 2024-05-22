@@ -20,7 +20,7 @@ const SkeletonGrid = () => {
             <Fragment>
                 {
                     [1,2,3,4,5,6,7,8,9].map((_, index) => (
-                        <div className="soccer-match-grid-main">
+                        <div className="soccer-match-grid-main" key={index}>
                             <div className="soccer-match-grid-date">
                                 <Skeleton  width={155}/>
                             </div>

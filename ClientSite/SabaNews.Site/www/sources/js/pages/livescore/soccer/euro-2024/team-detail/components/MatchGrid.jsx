@@ -26,6 +26,20 @@ export default class MatchGrid extends PureComponent {
         const isIntermission = match.status === MatchStatus.Intermission;
         return `euro-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live live-intermission' : ''}`
     }
+
+    getTeamStatus = (match, isHomeTeam) => {
+        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+
+        if (match.status === MatchStatus.Finished) {
+            if (match[`${homeFieldName}PenaltyScore`]
+                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                return <li>PEN</li>;
+            }
+        }
+
+        return <></>;
+    };
     render() {
         const { matches } = this.props;
 
@@ -41,6 +55,9 @@ export default class MatchGrid extends PureComponent {
                                         <div className={`soccer-match-item ${this.GetLiveClass(item)}`}>
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
+                                                    <ul className="soccer-team-status">
+                                                        {this.getTeamStatus(item, true)}
+                                                    </ul>
                                                     <div className="soccer-team-name">
                                                         {CommonFunctions.getTeamName(item.homeTeam)}
                                                     </div>
@@ -54,6 +71,9 @@ export default class MatchGrid extends PureComponent {
                                                     <div className="soccer-team-name">
                                                         {CommonFunctions.getTeamName(item.awayTeam)}
                                                     </div>
+                                                    <ul className="soccer-team-status">
+                                                        {this.getTeamStatus(item, false)}
+                                                    </ul>
                                                 </div>
                                             </div>
                                             <div className="soccer-match-star-icon">
