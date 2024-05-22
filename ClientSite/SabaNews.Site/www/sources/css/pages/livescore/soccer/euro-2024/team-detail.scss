@@ -48,11 +48,20 @@ body{
             width: auto !important;
             padding: .6rem !important;
         }
+        span{
+            font-size: 2rem !important;
+            @include Mobile{
+                font-size : 1.1rem !important;
+            }
+        }
     }
     .soccer-team-name{
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: #222;
         font-weight: 600;   
+        @include Mobile{
+            font-size: 1.4rem;
+        }
     }
     .home-team,.away-team {
         display: flex;
