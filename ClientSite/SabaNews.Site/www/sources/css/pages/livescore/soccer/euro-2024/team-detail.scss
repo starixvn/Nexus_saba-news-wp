@@ -122,6 +122,10 @@ body{
         height: 3.6rem;
         object-fit: cover;
         border-radius: 50px;
+        @include tableMobile{
+            width: 2.4rem;
+            height: 2.4rem;
+        }
     }
     .soccer-team-result {
         display: flex;
@@ -303,6 +307,9 @@ body{
 
 .soccer-team-status{
     list-style: none;
+    @include tableMobile{
+        order: 3;
+    }
     li{
         text-transform: uppercase;
         background: #7297C1;

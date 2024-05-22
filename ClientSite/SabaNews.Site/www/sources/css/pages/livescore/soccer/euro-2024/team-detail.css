@@ -1160,6 +1160,12 @@ body {
   object-fit: cover;
   border-radius: 50px;
 }
+@media screen and (max-width: 1024px) {
+  .info-main-team .soccer-team-logo {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
 .info-main-team .soccer-team-result {
   display: flex;
   flex-direction: column;
@@ -1367,6 +1373,11 @@ body {
 
 .soccer-team-status {
   list-style: none;
+}
+@media screen and (max-width: 1024px) {
+  .soccer-team-status {
+    order: 3;
+  }
 }
 .soccer-team-status li {
   text-transform: uppercase;
