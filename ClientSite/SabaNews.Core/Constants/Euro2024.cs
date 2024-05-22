@@ -61,6 +61,13 @@ namespace SabaNews.Core.Constants
         public const string PollKey = "poll_euro_2024";
         public const int PollTheme = 1;
 
+        public const string HostUrl =  "ai-la-chu-nha-euro-2024-294271.html";
+        public const string StadiumUrl = "tat-tan-tat-ve-cac-san-van-dong-to-chuc-euro-2024-294265.html";
+        public const string BallUrl = "bong-thi-dau-euro-2024-294294.html";
+        public const string MascotUrl = "linh-vat-euro-2024-nguon-goc-va-y-nghia-289380.html";
+        public const string RecordUrl = "ky-luc-giai-bong-da-euro-294250.html";
+
+
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {

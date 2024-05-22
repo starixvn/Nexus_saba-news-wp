@@ -11,5 +11,6 @@ namespace SabaNews.Models.ViewModel.Event.Euro2024
         public IEnumerable<Post> Videos { get; set; }
         public HeaderViewModel Header { get; set; }
         public string OverviewPageUrl { get; set; }
+        public string Domain { get; set; }
     }
 }

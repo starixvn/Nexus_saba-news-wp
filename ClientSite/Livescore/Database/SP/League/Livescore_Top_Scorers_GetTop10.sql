@@ -12,10 +12,12 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_GetTop10`(
         Revisions:
 			- 20220809@Brian: init
             - 20221013@Hank: select Team IconVN
+            - 20240417@Hank: select Team Name
     */
 )
 BEGIN
-	SELECT t.LeagueId, t.SeasonId, t.PlayerId, t.TeamId, t.Goals, t.Assists, t.RowNum, t.Top, m.Icon AS TeamLogo, m.IconVN AS TeamLogoVN
+	SELECT t.LeagueId, t.SeasonId, t.PlayerId, t.TeamId, t.Goals, t.Assists, t.RowNum, t.Top
+    , m.Icon AS TeamLogo, m.IconVN AS TeamLogoVN, m.TeamNameEN, m.TeamFullNameEN, m.TeamNameVN
     , p.NameEN AS PlayerNameEN, p.FullNameEN AS PlayerFullNameEN
 	FROM livescore_top_scorers AS t 
 		INNER JOIN livescore_team AS m ON t.TeamId = m.TeamId
