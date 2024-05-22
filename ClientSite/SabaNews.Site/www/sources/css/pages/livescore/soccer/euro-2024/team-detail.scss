@@ -47,9 +47,14 @@ body{
             grid-row: 1 / 3;
             width: auto !important;
             padding: .6rem !important;
+            display: flex;
+            justify-content: center;
         }
         span{
             font-size: 2rem !important;
+            width: 9rem;
+            display: block;
+            line-height: normal !important;
             @include tableMobile{
                 font-size : 1.1rem !important;
             }
@@ -152,6 +157,42 @@ body{
         @include tableMobile{
             padding: 1rem 0 1rem 1rem;
         }
+        &.live{
+            .soccer-match-stage{
+                display: unset;
+                span{
+                    display:  unset;
+                    &::before{
+                        top: 10px;
+                        @include tableMobile{
+                            top: 5px;
+                        }
+                    }
+                    &::after{
+                        top: 6px;
+                        @include tableMobile{
+                            top: 1px;
+                        }
+                    }
+                }
+            }
+        }
+        &.live-intermission{
+            .soccer-match-stage{
+                display: flex;
+                span{
+                    display:  block;
+                    &::before{
+                        right: 47px;
+                        top: 0;
+                    }
+                    &::after{
+                        top: -7px;
+                        right: 40px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -229,10 +270,5 @@ body{
     margin-bottom: 1.6rem;
     &:last-child{
         margin-bottom: 0;
-    }
-}
-.group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:before{
-    @include tableMobile{
-        right: 31%;
     }
 }
