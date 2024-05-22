@@ -941,6 +941,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 2rem;
+  justify-content: center;
 }
 @media screen and (max-width: 1024px) {
   .info-main-team .soccer-team-result {
@@ -965,6 +967,10 @@ body {
   font-size: 1.4rem;
   color: #757575;
   font-weight: 400;
+}
+.info-main-team .soccer-team-result.opacity {
+  opacity: 0;
+  visibility: hidden;
 }
 .info-main-team .soccer-match-item {
   padding: 0.9rem 1.4rem;
@@ -1068,6 +1074,6 @@ body {
 
 @media screen and (max-width: 1024px) {
   .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:before {
-    right: 30%;
+    right: 31%;
   }
 }

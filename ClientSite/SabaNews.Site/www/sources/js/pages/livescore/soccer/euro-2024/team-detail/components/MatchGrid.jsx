@@ -47,9 +47,7 @@ export default class MatchGrid extends PureComponent {
                                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.homeTeam)} alt={CommonFunctions.getTeamName(item.homeTeam)} />
                                                     <TeamScore match={item} isHomeTeam />
                                                 </div>
-                                                <div className="group-live-icon">
-                                                    <MatchStage match={item} />
-                                                </div>
+                                                <MatchStage match={item} />
                                                 <div className="soccer-team away-team">
                                                     <TeamScore match={item} />
                                                     <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(item.awayTeam)} alt={CommonFunctions.getTeamName(item.awayTeam)} />

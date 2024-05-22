@@ -120,6 +120,8 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 2rem;
+        justify-content: center;
         @include tableMobile{
             flex-direction: row;
             gap: .4rem;
@@ -139,6 +141,10 @@ body{
             font-size: 1.4rem;
             color: #757575;
             font-weight: 400;
+        }
+        &.opacity{
+            opacity: 0;
+            visibility: hidden;
         }
     }
     .soccer-match-item{
@@ -227,6 +233,6 @@ body{
 }
 .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:before{
     @include tableMobile{
-        right: 30%;
+        right: 31%;
     }
 }

@@ -13,7 +13,8 @@ const TeamScore = ({ match, isHomeTeam }) => {
         case MatchStatus.Postpone:
         case MatchStatus.Cancel:
         case MatchStatus.TBD:
-            return <div className="soccer-team-result"></div>;
+            return <div className="soccer-team-result opacity"><span className="total-score">{totalScore}</span>
+                    <span className="half-score">{`(${halfScore})`}</span></div>;
 
         case MatchStatus.Finished:
             return (
