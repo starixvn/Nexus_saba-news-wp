@@ -865,6 +865,9 @@ body {
   text-align: left;
   margin-right: 0;
 }
+.wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .soccer-match-stage span {
+  font-size: 1.2rem;
+}
 .wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .wc-date {
   font-size: 1.2rem;
   font-weight: 700;
@@ -883,11 +886,13 @@ body {
   line-height: 1;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-logo {
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   border-radius: 100px;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-name {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   max-width: 100%;
   font-weight: 500;
   margin-right: 0.4rem;

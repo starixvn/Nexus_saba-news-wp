@@ -108,6 +108,9 @@
                 .soccer-match-stage{
                     text-align: left;
                     margin-right: 0;
+                    span{
+                        font-size: 1.2rem;
+                    }
                 }
                 .wc-date{
                     font-size: 1.2rem;
@@ -127,12 +130,14 @@
                     line-height: 1;
                 }
                 .soccer-team-logo{
-                    margin-right: 1rem;
+                    margin-right: .6rem;
                     border-radius: 100px;
+                    width: 2.4rem;
+                    height: 2.4rem;
                     
                 } 
                 .soccer-team-name{
-                    font-size: 1.3rem;
+                    font-size: 1.2rem;
                     max-width: 100%;
                     font-weight: 500;
                     margin-right: .4rem;

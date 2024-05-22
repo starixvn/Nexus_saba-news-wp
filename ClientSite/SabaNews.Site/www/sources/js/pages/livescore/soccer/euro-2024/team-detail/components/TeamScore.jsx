@@ -13,7 +13,7 @@ const TeamScore = ({ match, isHomeTeam }) => {
         case MatchStatus.Postpone:
         case MatchStatus.Cancel:
         case MatchStatus.TBD:
-            return <></>;
+            return <div className="soccer-team-result"></div>;
 
         case MatchStatus.Finished:
             return (
