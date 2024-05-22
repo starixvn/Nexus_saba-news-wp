@@ -2185,7 +2185,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .wc-table {
   border-radius: 5px;
-  background: #09154E;
+  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   border: 1px solid #fff;
   overflow: hidden;
   position: relative;
@@ -2682,7 +2682,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .wc-table {
-  background: transparent;
+  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
 }
 .wc-table .standing-table-name {
   font-weight: 700;
@@ -2748,9 +2748,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-}
-.wc-table .wc-table-body {
-  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
 }
 .wc-table .team {
   font-size: 1.6rem;

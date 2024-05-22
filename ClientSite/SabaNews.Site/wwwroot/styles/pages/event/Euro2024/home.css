@@ -2535,7 +2535,7 @@ html, body {
 
 .wc-table {
   border-radius: 5px;
-  background: #09154E;
+  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   border: 1px solid #fff;
   overflow: hidden;
   position: relative;
