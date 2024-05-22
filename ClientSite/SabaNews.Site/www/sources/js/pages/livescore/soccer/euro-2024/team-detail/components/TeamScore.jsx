@@ -20,7 +20,7 @@ const TeamScore = ({ match, isHomeTeam }) => {
             {
                 (totalScore || halfScore ) && <div className="soccer-team-result">
                     <span className="total-score">{totalScore}</span>
-                    <span className="half-score">{ halfScore ? `(${halfScore})` : '' }</span>
+                    <span className="half-score">{`(${halfScore})`}</span>
                 </div>
             }
         </>

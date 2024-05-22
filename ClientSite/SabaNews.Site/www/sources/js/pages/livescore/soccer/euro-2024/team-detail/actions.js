@@ -4,7 +4,8 @@ import DataService from '@jsroot/common/dataService';
 import {
     setMatches,
     setPlayers,
-    setProfile
+    setProfile,
+    setLiveMatches
 } from './teamDetailSlice';
 
 const getTeamData = teamId => async dispatch => {
@@ -22,5 +23,6 @@ export const ActionCreators = {
     setMatches,
     setPlayers,
     setProfile,
+    setLiveMatches,
     getTeamData
 };

@@ -7,6 +7,7 @@ import Players from './Players';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import TeamHistory from './TeamHistory';
+import SignalR from './SignalR';
 
 
 const tabs = [
@@ -101,6 +102,7 @@ export class AppContainer extends Component {
         }
         return (
             <div className="block-info-team">
+                <SignalR  />
                 <div className="container">
                     <div className="info-main-team">
                         <div className="team-header">

@@ -50,6 +50,21 @@ const teamDetailSlice = createSlice({
         },
         setProfile: (state, action) => {
             state.profile = action.payload;
+        },
+        setLiveMatches: (state, action) => {
+            const liveMatches = action.payload;
+            const totalItems = liveMatches.length;
+            for (let i = 0; i < totalItems; i++) {
+                let index = state.preMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                if (index >= 0) {
+                    state.preMatches[index] = liveMatches[i];
+                }
+
+                index = state.postMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                if (index >= 0) {
+                    state.postMatches[index] = liveMatches[i];
+                }
+            }
         }
     }
 });
@@ -59,7 +74,8 @@ const { actions, reducer } = teamDetailSlice;
 export const {
     setMatches,
     setPlayers,
-    setProfile
+    setProfile,
+    setLiveMatches
 } = actions;
 
 export default reducer;
