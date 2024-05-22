@@ -101,7 +101,7 @@
 
         @await Html.PartialAsync("_Footer.cshtml")
     </div>
-    <div class="auth-form event-modal-home">
+    @* <div class="auth-form event-modal-home">
         <div class="modal" id="ChangeDomainModal" style="display:none">
             <div class="modal-content modal-auth event-modal-home">
                 <div class="modal-warning">
@@ -123,7 +123,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> *@
 
     <div id="auth-form"></div>
     <input type="hidden" id="RootUrl" value="@Url.Content("~/")" />
