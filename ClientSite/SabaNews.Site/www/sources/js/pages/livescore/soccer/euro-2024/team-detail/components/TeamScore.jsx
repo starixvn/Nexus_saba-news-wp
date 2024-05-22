@@ -13,29 +13,25 @@ const TeamScore = ({ match, isHomeTeam }) => {
         case MatchStatus.Postpone:
         case MatchStatus.Cancel:
         case MatchStatus.TBD:
-            return  <></>;
+            return <></>;
 
         case MatchStatus.Finished:
-            return  <>
-            {
-                (totalScore || halfScore ) && <div className="soccer-team-result">
+            return (
+                <div className="soccer-team-result">
                     <span className="total-score">{totalScore}</span>
                     <span className="half-score">{`(${halfScore})`}</span>
                 </div>
-            }
-        </>
+            )
 
         default:
-            return <>
-                {
-                    (totalScore || halfScore ) &&  <div className="soccer-team-result">
-                        <ChangeHighlight showAfter={100} hideAfter={1000}>
-                            <span ref={React.createRef()} className="total-score">{totalScore}</span>
-                        </ChangeHighlight>
-                        <span className="half-score">{ halfScore ? `(${halfScore})` : '' }</span>
-                    </div>
-                }
-            </>
+            return (
+                <div className="soccer-team-result">
+                    <ChangeHighlight showAfter={100} hideAfter={1000}>
+                        <span ref={React.createRef()} className="total-score">{totalScore}</span>
+                    </ChangeHighlight>
+                    <span className="half-score">{halfScore ? `(${halfScore})` : ''}</span>
+                </div>
+            )
     }
 };
 
