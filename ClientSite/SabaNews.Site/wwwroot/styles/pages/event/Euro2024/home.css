@@ -2793,7 +2793,7 @@ html, body {
 }
 .king-soccer .wc-table .wc-table-row {
   border-bottom: none;
-  padding: 0.6rem 2rem;
+  padding: 1.3rem 2rem;
   background: #F2F2F2;
   margin: 0 0 0.8rem;
   border-radius: 5px;
@@ -3796,7 +3796,7 @@ html, body {
   }
 }
 .block-videos-and-kingsocer .block-group .block-video {
-  width: 56%;
+  width: 60%;
   max-width: 76.5rem;
 }
 @media screen and (max-width: 1024px) {

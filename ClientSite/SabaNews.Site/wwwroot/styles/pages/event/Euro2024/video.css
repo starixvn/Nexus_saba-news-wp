@@ -2793,7 +2793,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .king-soccer .wc-table .wc-table-row {
   border-bottom: none;
-  padding: 0.6rem 2rem;
+  padding: 1.3rem 2rem;
   background: #F2F2F2;
   margin: 0 0 0.8rem;
   border-radius: 5px;
