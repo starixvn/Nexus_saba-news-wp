@@ -851,6 +851,7 @@ body {
   font-weight: 600;
   color: #222;
   margin-right: 0 !important;
+  width: 10rem !important;
 }
 @media screen and (max-width: 1024px) {
   .info-main-team .soccer-match-stage {
@@ -864,7 +865,7 @@ body {
 }
 .info-main-team .soccer-match-stage span {
   font-size: 2rem !important;
-  width: 9rem;
+  width: 10rem;
   display: block;
   line-height: normal !important;
 }
@@ -874,7 +875,7 @@ body {
   }
 }
 .info-main-team .soccer-team-name {
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #222;
   font-weight: 600;
 }
@@ -887,7 +888,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1.6rem;
-  width: 20rem;
+  width: 25rem;
   position: relative;
 }
 @media screen and (max-width: 1024px) {
@@ -990,21 +991,36 @@ body {
 }
 .info-main-team .soccer-match-item.live .soccer-match-stage span {
   display: unset;
+  font-size: 1.5rem !important;
+}
+@media screen and (max-width: 1024px) {
+  .info-main-team .soccer-match-item.live .soccer-match-stage span {
+    font-size: 1.3rem !important;
+    width: 7rem !important;
+  }
 }
 .info-main-team .soccer-match-item.live .soccer-match-stage span::before {
-  top: 10px;
+  top: 6px;
+  width: 1rem;
+  height: 1rem;
 }
 @media screen and (max-width: 1024px) {
   .info-main-team .soccer-match-item.live .soccer-match-stage span::before {
-    top: 5px;
+    top: 6px;
+    width: 0.6rem;
+    height: 0.6rem;
   }
 }
 .info-main-team .soccer-match-item.live .soccer-match-stage span::after {
-  top: 6px;
+  top: 4px;
+  opacity: 0.9;
+  left: -17px;
 }
 @media screen and (max-width: 1024px) {
   .info-main-team .soccer-match-item.live .soccer-match-stage span::after {
-    top: 1px;
+    top: 2px;
+    left: -19px;
+    opacity: 0.7;
   }
 }
 .info-main-team .soccer-match-item.live-intermission .soccer-match-stage {
@@ -1012,14 +1028,33 @@ body {
 }
 .info-main-team .soccer-match-item.live-intermission .soccer-match-stage span {
   display: block;
+  font-size: 1.3rem !important;
+}
+@media screen and (max-width: 1024px) {
+  .info-main-team .soccer-match-item.live-intermission .soccer-match-stage span {
+    font-size: 1.1rem !important;
+  }
 }
 .info-main-team .soccer-match-item.live-intermission .soccer-match-stage span::before {
   right: 47px;
   top: 0;
 }
+@media screen and (max-width: 1024px) {
+  .info-main-team .soccer-match-item.live-intermission .soccer-match-stage span::before {
+    right: 36px;
+    top: 0;
+  }
+}
 .info-main-team .soccer-match-item.live-intermission .soccer-match-stage span::after {
   top: -7px;
   right: 40px;
+  left: auto;
+}
+@media screen and (max-width: 1024px) {
+  .info-main-team .soccer-match-item.live-intermission .soccer-match-stage span::after {
+    top: -7px;
+    right: 29px;
+  }
 }
 
 .team-header {

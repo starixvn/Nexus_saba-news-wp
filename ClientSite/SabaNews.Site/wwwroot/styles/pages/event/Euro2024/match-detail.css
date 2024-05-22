@@ -2065,6 +2065,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     padding: 0 1.2rem;
   }
 }
+@media (max-width: 1399px) {
+  .container, .base-container {
+    max-width: 117rem;
+  }
+}
 @media (min-width: 1400px) {
   .container, .base-container {
     max-width: 117rem;

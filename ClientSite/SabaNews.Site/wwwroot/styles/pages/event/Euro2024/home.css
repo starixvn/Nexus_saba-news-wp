@@ -2016,6 +2016,11 @@ html, body {
     padding: 0 1.2rem;
   }
 }
+@media (max-width: 1399px) {
+  .container, .base-container {
+    max-width: 117rem;
+  }
+}
 @media (min-width: 1400px) {
   .container, .base-container {
     max-width: 117rem;
@@ -3390,10 +3395,10 @@ html, body {
   border: 1px solid #D1D1D1;
   box-sizing: border-box;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 0.6rem 1rem;
 }
 .list-result .result-element .top-result {
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3685,6 +3690,14 @@ html, body {
   border: 2px solid #E0DABF;
   background: #FFFDF4;
   padding: 2rem;
+  max-height: 50.8rem;
+  height: 50.8rem;
+}
+@media (max-width: 767px) {
+  .block-guess .main-guess .news-and-poll .poll {
+    max-height: 100%;
+    height: 100%;
+  }
 }
 @media (max-width: 767px) {
   .block-guess .main-guess .news-and-poll .euro-poll {
@@ -3729,7 +3742,6 @@ html, body {
 }
 .block-videos-and-kingsocer .block-group {
   display: flex;
-  align-items: flex-start;
   gap: 2.4rem;
   justify-content: space-between;
 }
@@ -3791,8 +3803,8 @@ html, body {
   }
 }
 .block-videos-and-kingsocer .block-group .block-video {
-  width: 60%;
-  max-width: 76.5rem;
+  width: 100%;
+  max-width: 71.3rem;
 }
 @media screen and (max-width: 1024px) {
   .block-videos-and-kingsocer .block-group .block-video {
@@ -3807,8 +3819,8 @@ html, body {
   }
 }
 .block-videos-and-kingsocer .block-group .block-kingsocer {
-  max-width: 49.2rem;
-  width: 50%;
+  max-width: 41.7rem;
+  width: 100%;
 }
 @media (max-width: 767px) {
   .block-videos-and-kingsocer .block-group .block-kingsocer {

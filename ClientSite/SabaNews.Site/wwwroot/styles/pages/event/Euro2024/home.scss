@@ -267,6 +267,12 @@
                 border: 2px solid #E0DABF;
                 background: #FFFDF4;
                 padding: 2rem;
+                max-height: 50.8rem;
+                height: 50.8rem;
+                @include Mobile{
+                    max-height: 100%;
+                    height: 100%;
+                }
             }
             .euro-poll{
                 @include Mobile{
@@ -311,7 +317,6 @@
     }
     .block-group{
         display: flex;
-        align-items: flex-start;
         gap: 2.4rem;
         justify-content: space-between;
         @include Mobile {
@@ -373,8 +378,8 @@
             }
         }
         .block-video{
-            width: 60%;
-            max-width: 76.5rem;
+            width: 100%;
+            max-width: 71.3rem;
             @include tableMobile{
                 width: 50%;
             }
@@ -386,8 +391,8 @@
             
         }
         .block-kingsocer{
-            max-width: 49.2rem;
-            width: 50%;
+            max-width: 41.7rem;
+            width: 100%;
             @include Mobile {
                 min-width: auto;
                 width: 100%;
