@@ -65,20 +65,19 @@
         font-size: 1.4rem;
         &-logo {
             margin-right: 1.7rem;
-            border: 1px solid $white-color;
-            background: $white-color;
-            border-radius: 100px;
-            width: 2.6rem;
-            height: 2.6rem;
-            overflow: hidden;
+            width: 3rem;
+            height: 3rem;
             @include Mobile{
                 margin-right: 1rem;
             }
 
             img {
-                width: 3.6rem;
-                height: 2.4rem;
+                width: 3rem;
+                height: 3rem;
                 object-fit: cover;
+                border: 1px solid $white-color;
+                background: $white-color;
+                border-radius: 100px;
             }
         }
 
@@ -340,6 +339,7 @@
             img{
                 width: 3rem;
                 height: 3rem;
+                border: none;
                 @include Mobile{
                     width: 2.4rem;
                     height: 2.4rem;

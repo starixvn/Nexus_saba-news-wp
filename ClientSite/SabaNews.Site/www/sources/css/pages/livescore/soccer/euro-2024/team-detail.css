@@ -1065,3 +1065,9 @@ body {
 .player-group:last-child {
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 1024px) {
+  .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:before {
+    right: 30%;
+  }
+}

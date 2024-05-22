@@ -2607,12 +2607,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .wc-table .team-logo {
   margin-right: 1.7rem;
-  border: 1px solid #fff;
-  background: #fff;
-  border-radius: 100px;
-  width: 2.6rem;
-  height: 2.6rem;
-  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
 }
 @media (max-width: 767px) {
   .wc-table .team-logo {
@@ -2620,9 +2616,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .wc-table .team-logo img {
-  width: 3.6rem;
-  height: 2.4rem;
+  width: 3rem;
+  height: 3rem;
   object-fit: cover;
+  border: 1px solid #fff;
+  background: #fff;
+  border-radius: 100px;
 }
 .wc-table .team-name {
   width: 9rem;
@@ -2873,6 +2872,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .king-soccer .wc-table .team-logo img {
   width: 3rem;
   height: 3rem;
+  border: none;
 }
 @media (max-width: 767px) {
   .king-soccer .wc-table .team-logo img {
