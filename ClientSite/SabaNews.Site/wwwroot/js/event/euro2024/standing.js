@@ -1,5 +1,6 @@
 var euro2024Standing = (function ($) {
     var isKnockout = window.isKnockout.toLowerCase();
+    $('#knock-out-main').hide();
     if (window.location.hash === '#knock-out') {
         isKnockout = 'true';
     } else if (window.location.hash === '#vong-bang') {

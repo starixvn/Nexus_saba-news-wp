@@ -444,7 +444,7 @@ namespace SabaNews.Site.Controllers.Event
             var pollOption = await optionService.GetOptionAsync(Euro2024.PollKey);
             if(pollOption == null)
             {
-                return null;
+                return Json(null);
             }
             PollViewModel result;
             var clientIP = Helper.GetClientIP(HttpContext);
