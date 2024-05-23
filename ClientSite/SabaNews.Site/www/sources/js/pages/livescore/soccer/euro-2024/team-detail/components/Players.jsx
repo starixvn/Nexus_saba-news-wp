@@ -16,7 +16,7 @@ const Players = ({ data }) => {
                                     <div key={item.playerId} className="player-items">
                                         <div className="player-header">
                                             <div className="number">{item.shirtNumber}</div>
-                                            <div className="name">{item.playerFullName}</div>
+                                            <div className="name">{item.playerName}</div>
                                             <div className="avatar">
                                                 {
                                                     item.icon && <img src={item.icon} alt={item.playerName} />
