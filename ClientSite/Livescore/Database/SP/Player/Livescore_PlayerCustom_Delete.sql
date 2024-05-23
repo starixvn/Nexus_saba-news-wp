@@ -8,7 +8,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_PlayerCustom_Delete`(
         Revisions:
 			- 20240514@Hank: init
     */
-	IN PlayerId LONG,
+	IN PlayerId INT,
     OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)
 )

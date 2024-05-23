@@ -1,7 +1,7 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isNested="0"></info>*/
 
 CREATE TABLE `livescore_team_player_custom` (
-   `PlayerId` bigint NOT NULL AUTO_INCREMENT,
+   `PlayerId` int NOT NULL AUTO_INCREMENT,
    `TeamId` bigint NOT NULL,
    `PlayerName` varchar(255) DEFAULT NULL,
    `PlayerFullName` varchar(255) DEFAULT NULL,

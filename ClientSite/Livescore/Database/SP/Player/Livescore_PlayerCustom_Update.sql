@@ -8,7 +8,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_PlayerCustom_Update`(
         Revisions:
 			- 20240507@Hank: init
     */
-    IN PlayerId LONG,
+    IN PlayerId INT,
     IN PlayerName VARCHAR(255), 
     IN PlayerFullName VARCHAR(255),
     IN Birthday DATE,

@@ -3,7 +3,7 @@ DROP PROCEDURE IF EXISTS Livescore_PlayerCustom_GetById;
 DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_PlayerCustom_GetById`(
-	IN playerId LONG
+	IN playerId INT
 	/*
 		Creator: Hank@20240514
         Revisions:
