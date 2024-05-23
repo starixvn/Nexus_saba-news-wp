@@ -233,7 +233,7 @@
         .news-and-poll{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 0 2rem;
+            grid-gap: 0 1.6rem;
             margin-bottom: 1.6rem;
             padding-bottom: 1.6rem;
             border-bottom: 1px solid #E4D9D0;
@@ -246,8 +246,8 @@
             .block-items-vertical-hot{
                 grid-column: 1/3;
                 grid-row: 1/3;
-                height: 50.8rem;
-                max-height: 50.8rem;
+                height: 43rem;
+                max-height: 43rem;
                 @include tableMobile{
                     height: 40rem;
                     max-height: 40rem;
@@ -267,8 +267,8 @@
                 border: 2px solid #E0DABF;
                 background: #FFFDF4;
                 padding: 2rem;
-                max-height: 50.8rem;
-                height: 50.8rem;
+                max-height: 43rem;
+                height: 43rem;
                 @include Mobile{
                     max-height: 100%;
                     height: 100%;
@@ -278,6 +278,9 @@
                 @include Mobile{
                     margin-top: 2rem;
                 }
+            }
+            .euro-poll{
+                min-width: 39.2rem;
             }
         }
         .swiper {
@@ -317,7 +320,7 @@
     }
     .block-group{
         display: flex;
-        gap: 2.4rem;
+        gap: 2rem;
         justify-content: space-between;
         @include Mobile {
             display: unset;
@@ -340,14 +343,15 @@
                     border-bottom: 1px solid #CFCFCF;
                     border-radius: 0;
                     .hover-image{
-                        height: 43.7rem;
-                        max-height: 43.7rem;
+                        height: 40.6rem;
+                        max-height: 40.6rem;
                         @include Mobile{
                             height: 20.5rem;
                             max-height: 20.5rem;
                         }
                     }
                     .block-items-heading{
+                        margin-bottom: 0;
                         a{
                             color: $text-color;
                             &:hover{
@@ -375,6 +379,12 @@
                         display: none !important;
                     }
                 }
+                .block-items-heading{
+                    line-height: 1.8rem;
+                    @include Mobile{
+                        line-height: normal;
+                    }
+                }
             }
         }
         .block-video{
@@ -393,9 +403,31 @@
         .block-kingsocer{
             max-width: 41.7rem;
             width: 100%;
+            border: 2px solid #143cdb;
+            border-radius: 5px;
             @include Mobile {
                 min-width: auto;
                 width: 100%;
+            }
+            .euro-top-scorer{
+                border: none;
+                border-radius: 0;
+            }
+            .team-logo{
+                width: 3rem;
+                height: 3rem;
+                @include Mobile{
+                    width: 2.4rem;
+                    height: 2.4rem;
+                }
+                img{
+                    width: 3rem;
+                    height: 3rem;
+                    @include Mobile{
+                        width: 2.4rem;
+                        height: 2.4rem;
+                    }
+                }
             }
         }
     }

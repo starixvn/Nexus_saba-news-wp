@@ -271,7 +271,7 @@
         }
         .wc-table-row {
             border-bottom: none;
-            padding: 1.3rem 2rem;
+            padding: .6rem 2rem;
             background: #F2F2F2;
             margin: 0 0 .8rem;
             border-radius: 5px;
@@ -330,15 +330,15 @@
         }
         .team-logo{
             margin-right: 1rem;
-            width: 3rem;
-            height: 3rem;
+            width: 2.4rem;
+            height: 2.4rem;
             @include Mobile{
                 width: 2.4rem;
                 height: 2.4rem;
             }
             img{
-                width: 3rem;
-                height: 3rem;
+                width: 2.4rem;
+                height: 2.4rem;
                 border: none;
                 @include Mobile{
                     width: 2.4rem;

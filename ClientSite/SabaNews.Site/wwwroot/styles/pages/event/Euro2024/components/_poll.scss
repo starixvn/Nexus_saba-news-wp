@@ -33,7 +33,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        margin-bottom: 1.2rem;
+        margin-bottom: .6rem;
     }
 
     @include Mobile {
@@ -172,7 +172,7 @@
         align-items: center;
         display: flex;
         justify-content: space-between;
-        margin-top: 1.2rem;
+        margin-top: .6rem;
         .btn-vote,.btn-vote-retry {
             background: $primary-bg;
             border-radius: 3px;
@@ -207,13 +207,13 @@
     }
 
     .total-result {
-        margin: 1.5rem 0 .5rem 0;
+        margin: 1rem 0 .5rem 0;
         font-size: 1.3rem;
         .total-count, .total-date {
             display: flex;
 
             p {
-                margin-bottom: 1rem;
+                margin-bottom: .6rem;
                 line-height: 1;
                 color: #222;
                 margin-right: .5rem;
@@ -234,10 +234,8 @@
 }
 
 .list-result {
-    margin-top: 1.2rem;
-
     .result-element {
-        margin-bottom: 1.2rem;
+        margin-bottom: .6rem;
         line-height: 1;
         background: #FFFDF9;
         border: 1px solid #D1D1D1;

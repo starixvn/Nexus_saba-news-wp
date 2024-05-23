@@ -2792,7 +2792,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .king-soccer .wc-table .wc-table-row {
   border-bottom: none;
-  padding: 1.3rem 2rem;
+  padding: 0.6rem 2rem;
   background: #F2F2F2;
   margin: 0 0 0.8rem;
   border-radius: 5px;
@@ -2860,8 +2860,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .king-soccer .wc-table .team-logo {
   margin-right: 1rem;
-  width: 3rem;
-  height: 3rem;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 @media (max-width: 767px) {
   .king-soccer .wc-table .team-logo {
@@ -2870,8 +2870,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .king-soccer .wc-table .team-logo img {
-  width: 3rem;
-  height: 3rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border: none;
 }
 @media (max-width: 767px) {
@@ -3104,4 +3104,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .euro-top-scorer {
     margin: 0.8rem 0;
   }
+}
+
+.king-soccer .team-name .team {
+  display: none;
 }

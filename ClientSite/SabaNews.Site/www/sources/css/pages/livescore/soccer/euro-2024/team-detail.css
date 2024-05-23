@@ -95,414 +95,209 @@ body {
   }
 }
 
-.live .soccer-match-stage span {
-  color: #E13C29 !important;
-  font-size: 1.3rem;
-  line-height: 1.5rem;
-  position: relative;
-  font-weight: 700;
-}
-.live .soccer-match-stage span:before {
-  content: "";
-  display: block;
-  width: 0.6rem;
-  height: 0.6rem;
-  background: #E13C29;
-  border-radius: 100%;
-  left: -15px;
-  top: 6px;
-  position: absolute;
+.soccer-match-grid-main {
+  margin-bottom: 3.2rem;
 }
 @media (max-width: 767px) {
-  .live .soccer-match-stage span:before {
-    top: 5px;
+  .soccer-match-grid-main {
+    margin-bottom: 2rem;
   }
 }
-.live .soccer-match-stage span:after {
-  content: "";
-  display: block;
-  width: 1.4rem;
-  height: 1.4rem;
-  background-color: #E13C29;
-  opacity: 0.7;
-  border-radius: 100%;
-  left: -19px;
-  top: 2px;
-  position: absolute;
-  animation: live 2s ease-in-out infinite;
+.soccer-match-grid-main:last-child {
+  margin-bottom: 0;
+}
+
+.soccer-match-grid-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.2rem;
+}
+@media screen and (max-width: 1024px) {
+  .soccer-match-grid-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 767px) {
-  .live .soccer-match-stage span:after {
-    top: 1px;
+  .soccer-match-grid-body {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0.8rem;
   }
 }
 
-@keyframes live {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1.5);
-    background-color: rgba(225, 60, 41, 0);
-  }
-}
-.soccer-match-grid {
-  margin-top: 2.4rem;
-}
-@media (max-width: 767px) {
-  .soccer-match-grid {
-    margin-top: 2rem;
-  }
-}
-.soccer-match-grid-item {
-  background: #FFFDF9;
-  border: 1px solid #DADADA;
-  box-sizing: border-box;
+.soccer-match-grid-items {
   border-radius: 5px;
-  margin-bottom: 0.8rem;
-  background-color: #e9e9e9;
+  border: 1px solid #DADADA;
+  background: #FFFDF9;
+  padding: 1.2rem 0 1.2rem 1.2rem;
+  position: relative;
   overflow: hidden;
 }
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item {
+@media (max-width: 767px) {
+  .soccer-match-grid-items {
+    padding: 0.8rem 0 0.8rem 0.8rem;
+  }
+}
+.soccer-match-grid-items::after {
+  content: "";
+  display: block;
+  width: calc(100% - 15rem);
+  height: 100%;
+  background: #143CDB;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  clip-path: polygon(0 0, 95% 0%, 100% 100%, 0% 100%);
+}
+
+.soccer-match-grid-date {
+  color: #222;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 767px) {
+  .soccer-match-grid-date {
     margin-bottom: 0.8rem;
   }
 }
-.soccer-match-grid-item .text-matched {
-  color: #3399FF;
-}
-.soccer-match-grid-item-header {
-  align-items: center;
-  border-bottom: 1px solid #DADADA;
-  display: grid;
-  grid-template-columns: 1fr 4.5rem;
-  grid-template-rows: unset;
-  grid-gap: 0;
-  grid-auto-flow: column;
-  padding: 0.4rem 2.2rem;
-  cursor: pointer;
-}
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header {
-    display: grid;
-    grid-template-columns: 1fr 3rem;
-    grid-template-rows: unset;
-    grid-gap: 0;
-    padding: 0.5rem 1.6rem;
-  }
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-star-icon {
-  cursor: pointer;
-  text-align: center;
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-league {
-  align-items: center;
+
+.euro-match-item {
   display: flex;
-  font-weight: 600;
+  justify-content: space-between;
+  align-items: center;
 }
-.soccer-match-grid-item-header .soccer-match-grid-item-league .icon-live-start, .soccer-match-grid-item-header .soccer-match-grid-item-league .icon-favourite-outline {
-  margin-right: 1.7rem;
-  font-size: 2.4rem;
+.euro-match-item .euro-result {
+  min-width: 15rem;
 }
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-league .icon-live-start, .soccer-match-grid-item-header .soccer-match-grid-item-league .icon-favourite-outline {
-    margin-right: 1.2rem;
-    font-size: 2rem;
-  }
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-league .icon-favourite-outline:hover:before {
-  color: #EF9123;
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-logo-team {
-  width: 2.4rem;
-  height: 1.8rem;
-  position: relative;
-  overflow: hidden;
-  margin-right: 1.2rem;
-}
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-logo-team {
-    margin-right: 0.6rem;
-    width: 2.4rem;
-    height: 1.8rem;
-  }
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-logo-team img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  image-rendering: -webkit-optimize-contrast;
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-name-team {
-  font-size: 1.4rem;
-  line-height: 2.4rem;
-  color: #324A75;
-  width: 85%;
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-name-team:hover {
-  color: #E13C29;
-}
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-name-team {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-    width: 75%;
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: 700;
-  }
-}
-@media screen and (device-aspect-ratio: 40/71) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-name-team {
-    font-size: 1.1rem;
-    width: 70%;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-name-team span.country-name {
-    order: 2;
-    width: 100%;
-    font-size: 1.1rem;
-    color: #60718E;
-    font-weight: 600;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-league .livescore-name-team span.round-name {
-    order: 1;
-    width: 21.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-.soccer-match-grid-item-header .soccer-match-grid-item-schedule, .soccer-match-grid-item-header .soccer-match-grid-item-result, .soccer-match-grid-item-header .soccer-match-grid-item-standings {
+.euro-match-item.live .group-live-icon, .euro-match-item.live-intermission .group-live-icon {
+  display: block;
+  width: 7.5rem;
   text-align: center;
-  cursor: pointer;
-  color: #0066CC;
-  font-weight: 700;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
 }
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-header .soccer-match-grid-item-schedule, .soccer-match-grid-item-header .soccer-match-grid-item-result, .soccer-match-grid-item-header .soccer-match-grid-item-standings {
-    display: none;
+@media (max-width: 767px) {
+  .euro-match-item.live .group-live-icon, .euro-match-item.live-intermission .group-live-icon {
+    width: 7rem;
   }
 }
-.soccer-match-grid-item-body {
-  padding: 0.8rem;
-  background: #FFFDF9;
+.euro-match-item.live .group-live-icon .soccer-match-stage span, .euro-match-item.live-intermission .group-live-icon .soccer-match-stage span {
+  font-size: 1.5rem;
 }
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-body {
-    padding: 0.6rem;
+@media (max-width: 767px) {
+  .euro-match-item.live .group-live-icon .soccer-match-stage span, .euro-match-item.live-intermission .group-live-icon .soccer-match-stage span {
+    font-size: 1.4rem;
   }
 }
-.soccer-match-grid-item-body .soccer-match-star-icon {
-  text-align: right;
-  position: absolute;
-  right: 13px;
+.euro-match-item.live .group-live-icon .soccer-match-stage span::before, .euro-match-item.live .group-live-icon .soccer-match-stage span::after, .euro-match-item.live-intermission .group-live-icon .soccer-match-stage span::before, .euro-match-item.live-intermission .group-live-icon .soccer-match-stage span::after {
+  z-index: 99;
 }
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-body .soccer-match-star-icon {
-    width: auto;
-    position: unset;
+.euro-match-item.live-intermission .soccer-match-stage {
+  margin-top: 1.2rem;
+}
+.euro-match-item.live-intermission .soccer-match-stage span {
+  padding-top: 0.8rem;
+}
+.euro-match-item.live-intermission .soccer-match-stage span::before {
+  top: 0;
+  left: 50%;
+  transform: translate(50%, 0);
+}
+.euro-match-item.live-intermission .soccer-match-stage span::after {
+  top: -4px;
+  left: 48%;
+  transform: translate(50%, 0);
+}
+
+.euro-match-team {
+  position: relative;
+  z-index: 1;
+}
+.euro-match-team-home {
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 767px) {
+  .euro-match-team-home {
+    margin-bottom: 0.4rem;
   }
 }
-.soccer-match-grid-item-body .soccer-match-star-icon .icon-live-right {
-  font-size: 1.2rem;
+.euro-match-team-home, .euro-match-team-away {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
-@media screen and (max-width: 1024px) {
-  .soccer-match-grid-item-body .soccer-match-star-icon .icon-live-right {
-    display: none;
+.euro-match-team-home img, .euro-match-team-away img {
+  width: 3.4rem;
+  height: 3.4rem;
+  object-fit: cover;
+  border-radius: 50px;
+  background: #fff;
+}
+@media (max-width: 767px) {
+  .euro-match-team-home img, .euro-match-team-away img {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+.euro-match-team-home .soccer-team-name, .euro-match-team-away .soccer-team-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: normal;
+  color: #fff;
+}
+@media (max-width: 767px) {
+  .euro-match-team-home .soccer-team-name, .euro-match-team-away .soccer-team-name {
+    font-size: 1.6rem;
   }
 }
 
-.group-match-item {
-  margin-bottom: 0.6rem;
-}
-.group-match-item:last-child {
-  margin-bottom: 0;
-}
-.group-match-item-slogan {
-  background: #D8E0ED;
-  border-radius: 3px;
-  font-weight: 600;
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-  padding: 0.6rem 1.2rem;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item-slogan {
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-    padding: 0.4rem 0.8rem;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item-slogan .livescore-name-team {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item-slogan .livescore-name-team span.country-name {
-    order: 2;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item-slogan .livescore-name-team span.round-name {
-    order: 1;
-    width: 21.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-.group-match-item .soccer-match-item {
+.euro-round-score {
   display: flex;
   align-items: center;
-  background: #F5F5F5;
-  border: 1px solid #EDEDED;
-  box-sizing: border-box;
-  border-radius: 5px;
-  padding: 0.6rem 1.4rem;
-  margin-top: 0.6rem;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  position: relative;
+  justify-content: center;
+  color: #222;
 }
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item {
-    justify-content: space-between;
-  }
+.euro-round-score .total-score {
+  padding-right: 1.2rem;
+  border-right: 1px solid #DADADA;
+  color: #222;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: normal;
 }
-.group-match-item .soccer-match-item:first-child {
-  margin-top: 0;
-}
-.group-match-item .soccer-match-item:hover {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-  background: #fff;
-}
-.group-match-item .soccer-match-item:hover .icon-favourite-outline:before {
-  color: #EF9123;
-}
-.group-match-item .soccer-match-item .icon-favourite-outline {
-  font-size: 2rem;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .icon-favourite-outline {
-    font-size: 1.8rem;
-  }
-}
-.group-match-item .soccer-match-item .icon-favourite-outline.disabled:before {
-  color: #E0E0E0;
-}
-.group-match-item .soccer-match-item .icon-livescore, .group-match-item .soccer-match-item .soccer-match-stage {
-  margin-right: 1.2rem;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .icon-livescore, .group-match-item .soccer-match-item .soccer-match-stage {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item {
-    padding: 0.6rem 1rem;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-stage {
-  width: 9rem;
-  text-align: center;
-}
-.group-match-item .soccer-match-item .soccer-match-team {
-  width: 66%;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .soccer-match-team {
-    width: 70%;
-  }
-}
-@media screen and (device-aspect-ratio: 40/71) {
-  .group-match-item .soccer-match-item .soccer-match-team {
-    width: 60%;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team {
-  display: flex;
-  align-items: center;
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-name {
-  font-size: 1.3rem;
-  line-height: 1.6rem;
+.euro-round-score .total-score .date-time {
   font-weight: 600;
-  padding-right: 1rem;
 }
 @media (max-width: 767px) {
-  .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-name {
-    max-width: 12.2rem;
-    font-size: 1.1rem;
-    line-height: 1.3rem;
-    padding-right: 0.3rem;
+  .euro-round-score .total-score .date-time {
+    font-size: 2rem;
   }
-}
-@media screen and (device-aspect-ratio: 40/71) {
-  .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-name {
-    font-size: 1rem;
-    max-width: 6rem;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-logo {
-  width: 2.2rem;
-  height: 2.2rem;
-  margin-right: 1.6rem;
-  image-rendering: -webkit-optimize-contrast;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-logo {
-    width: 2rem;
-    height: 2rem;
-    margin-right: 0.6rem;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-result {
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: center;
-}
-@media screen and (device-aspect-ratio: 40/71) {
-  .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-result {
-    font-size: 1.2rem;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-result .total-score {
-  font-weight: bold;
-  margin-right: 0.6rem;
-  width: 1.8rem;
-  display: block;
-  text-align: center;
-  border-radius: 3px;
 }
 @media (max-width: 767px) {
-  .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-result .total-score {
-    margin-right: 0.3rem;
+  .euro-round-score .total-score {
+    font-size: 2rem;
   }
 }
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-status {
+.euro-round-score .haft-score {
+  padding-left: 1.8rem;
+  color: #222;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: normal;
+}
+.euro-round-score .haft-score .end-round {
+  margin-top: 0.9rem;
+}
+
+.soccer-team-status {
   list-style: none;
-  padding-left: 0;
-  display: flex;
-  align-items: center;
 }
-.group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-status li {
+@media screen and (max-width: 1024px) {
+  .soccer-team-status {
+    order: 3;
+  }
+}
+.soccer-team-status li {
   text-transform: uppercase;
   background: #7297C1;
   border: 1px solid #ABC4E1;
@@ -511,93 +306,7 @@ body {
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.1rem;
-  padding: 0.3rem 0.5rem;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .soccer-match-team .group-team .soccer-team-status li {
-    font-size: 0.8rem;
-    line-height: 1;
-    padding: 0.1rem 0.3rem;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .home-team {
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid #E8E8E8;
-  position: relative;
-}
-.group-match-item .soccer-match-item .soccer-match-team .group-team .away-team {
-  padding-top: 0.6rem;
-  position: relative;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .soccer-match-stage {
-    order: 3;
-    width: 4.4rem;
-    line-height: 1;
-    text-align: center;
-  }
-}
-.group-match-item .soccer-match-item .soccer-match-stage span {
-  font-size: 1.3rem;
-  line-height: 1.4rem;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item .soccer-match-stage span {
-    font-size: 1.1rem;
-  }
-}
-@media (max-width: 767px) {
-  .group-match-item .soccer-match-item.live-intermission .soccer-match-stage {
-    margin-top: 1.2rem;
-  }
-}
-.group-match-item .soccer-match-item.live-intermission .soccer-match-stage span {
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-  padding-top: 0.5rem;
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span {
-    font-size: 0.9rem;
-    line-height: 1.5rem;
-  }
-}
-.group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:before {
-  left: auto;
-  right: 50%;
-  top: 0;
-  transform: translate(50%, -50%);
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:before {
-    right: 35%;
-  }
-}
-.group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:after {
-  left: auto;
-  right: 41%;
-  top: -7px;
-  transform: translate(50%, -50%);
-}
-@media screen and (max-width: 1024px) {
-  .group-match-item .soccer-match-item.live-intermission .soccer-match-stage span:after {
-    right: 13%;
-  }
-}
-
-.icon-live-right {
-  font-size: 1.2rem;
-  text-align: right;
-}
-@media screen and (device-aspect-ratio: 40/71) {
-  .icon-live-right {
-    font-size: 1.2rem;
-  }
-}
-
-.rc-highlight {
-  background-color: #FCDE9D !important;
-  color: #2F2F2F !important;
+  padding: 0.1rem 0.5rem;
 }
 
 .team-menu-tabs .nav-team {
@@ -704,6 +413,7 @@ body {
   max-height: 100%;
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 .player-group .player-header .number {
   font-size: 2rem;
