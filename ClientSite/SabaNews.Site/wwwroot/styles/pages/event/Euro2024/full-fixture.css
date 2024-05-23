@@ -2263,3 +2263,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 5px;
   color: #fff;
 }
+.live-score-nav a.disabled, .live-score-nav .nav-item.disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}

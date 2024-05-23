@@ -22,5 +22,9 @@
             border-radius: 5px;
             color: $white-color;
         }
+        &.disabled{
+            cursor: not-allowed;
+            opacity: .35;
+        }
     }
 }
