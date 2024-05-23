@@ -127,6 +127,9 @@
                     <li class="menu-item hiden-icon-mobile">
                         <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
                     </li>
+                     <li class="logo-event">
+                        <a href="/euro-2024"><img src="~/images/euro2024/logo-menu-home.svg" alt="logo-event" /></a>
+                    </li>
                     @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
                     {
                         var slug = menu.CateSlug;
