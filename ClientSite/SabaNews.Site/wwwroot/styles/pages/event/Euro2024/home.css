@@ -2348,6 +2348,7 @@ html, body {
   justify-content: flex-end;
   padding: 0 2rem 2rem;
   width: 100%;
+  border-radius: 0 0 5px 5px;
 }
 @media screen and (max-width: 1024px) {
   .block-items-vertical-hot .group-title-hot {
