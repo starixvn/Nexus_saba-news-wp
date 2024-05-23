@@ -1,3 +1,4 @@
+@using SabaNews.Core.Constants
 @{
     Layout = "_LayoutEuro2024";
 }
@@ -362,34 +363,34 @@
             <div class="block-body">
                 <div class="gird-main">
                     <div class="gird-main-items">
-                        <a href="#" class="gird-main-items-img hover-image">
+                        <a href="@(Model.Domain + Euro2024.HostUrl)" class="gird-main-items-img hover-image">
                             <img src="~/images/euro2024/block-all-1.png" alt="item">
                         </a>
-                        <a href="#" class="gird-main-items-title">
+                        <a href="@(Model.Domain + Euro2024.HostUrl)" class="gird-main-items-title">
                             Nước chủ nhà
                         </a>
                     </div>
                     <div class="gird-main-items">
-                        <a href="#" class="gird-main-items-img hover-image">
+                        <a href="@(Model.Domain + Euro2024.StadiumUrl)" class="gird-main-items-img hover-image">
                             <img src="~/images/euro2024/block-all-2.png" alt="item">
                         </a>
-                        <a href="#" class="gird-main-items-title">
+                        <a href="@(Model.Domain + Euro2024.StadiumUrl)" class="gird-main-items-title">
                            sân vận động
                         </a>
                     </div>
                     <div class="gird-main-items">
-                        <a href="#" class="gird-main-items-img hover-image">
+                        <a href="@(Model.Domain + Euro2024.BallUrl)" class="gird-main-items-img hover-image">
                             <img src="~/images/euro2024/block-all-3.png" alt="item">
                         </a>
-                        <a href="#" class="gird-main-items-title">
+                        <a href="@(Model.Domain + Euro2024.BallUrl)" class="gird-main-items-title">
                            bóng thi đấu
                         </a>
                     </div>
                     <div class="gird-main-items">
-                        <a href="#" class="gird-main-items-img hover-image">
+                        <a href="@(Model.Domain + Euro2024.MascotUrl)" class="gird-main-items-img hover-image">
                             <img src="~/images/euro2024/block-all-4.png" alt="item">
                         </a>
-                        <a href="#" class="gird-main-items-title">
+                        <a href="@(Model.Domain + Euro2024.MascotUrl)" class="gird-main-items-title">
                            linh vật
                         </a>
                     </div>
@@ -402,10 +403,10 @@
                         </a>
                     </div>
                     <div class="gird-main-items">
-                        <a href="#" class="gird-main-items-img hover-image">
+                        <a href="@(Model.Domain + Euro2024.RecordUrl)" class="gird-main-items-img hover-image">
                             <img src="~/images/euro2024/block-all-6.png" alt="item">
                         </a>
-                        <a href="#" class="gird-main-items-title">
+                        <a href="@(Model.Domain + Euro2024.RecordUrl)" class="gird-main-items-title">
                            kỷ lục
                         </a>
                     </div>

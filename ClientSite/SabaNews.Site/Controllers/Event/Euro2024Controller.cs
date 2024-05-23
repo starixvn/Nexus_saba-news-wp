@@ -72,7 +72,7 @@ namespace SabaNews.Site.Controllers.Event
                 Slug = Euro2024.HomepageSlug
             };
             model.Header = header;
-            model.Domain = configuration.GetValue<string>(Constants.BaseUrl);
+            model.Domain = configuration.GetValue<string>(Constants.BaseUrl) + Euro2024.HomepageSlug + "/";
             return View("~/Views/Event/Euro2024/Index.cshtml", model);
         }
 

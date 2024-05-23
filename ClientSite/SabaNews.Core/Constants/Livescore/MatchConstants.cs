@@ -40,7 +40,7 @@
 
         public static readonly IReadOnlyList<KeyValue> ListPlayerPosition = new List<KeyValue>
         {
-            new() { Id = 1, Name = "Manager" },
+            new() { Id = 1, Name = "Coach" },
             new() { Id = 2, Name = "Goalkeeper" },
             new() { Id = 3, Name = "Defender" },
             new() { Id = 4, Name = "Midfielder" },
