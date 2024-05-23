@@ -3706,6 +3706,11 @@ html, body {
   min-width: 39.2rem;
 }
 @media (max-width: 767px) {
+  .block-guess .main-guess .news-and-poll .euro-poll {
+    min-width: 100%;
+  }
+}
+@media (max-width: 767px) {
   .block-guess .main-guess .swiper {
     display: none;
   }
