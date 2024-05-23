@@ -30,7 +30,7 @@ const Players = ({ data }) => {
                                             </div>
                                             <div className="birthday">
                                                 <span>Ngày sinh</span>
-                                                <span>{DateTimeService.convertFromUTC(player.birthday).format('DD-MM-YYYY')}</span>
+                                                <span>{DateTimeService.convertFromUTC(player.birthday).format('DD/MM/YYYY')}</span>
                                             </div>
                                             <div className="club">
                                                 <span>Câu lạc bộ</span>

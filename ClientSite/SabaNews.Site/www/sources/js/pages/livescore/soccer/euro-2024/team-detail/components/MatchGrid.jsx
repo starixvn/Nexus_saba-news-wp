@@ -49,7 +49,7 @@ export default class MatchGrid extends PureComponent {
                     matches && matches.map(item => (
                         <div className="soccer-match-grid" key={item.matchId}>
                             <div className="soccer-match-grid-item" onClick={event => this.onClick(event, item)}>
-                                <div className="soccer-match-grid-item-header">{DateTimeService.convertFromUTC(item.startTime).format('DD-MM-YYYY')}</div>
+                                <div className="soccer-match-grid-item-header">{DateTimeService.convertFromUTC(item.startTime).format('DD/MM/YYYY')}</div>
                                 <div className="soccer-match-grid-item-body">
                                     <div className="group-match-item">
                                         <div className={`soccer-match-item ${this.GetLiveClass(item)}`}>
