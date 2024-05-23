@@ -32,7 +32,7 @@ var euro2024_home = (function ($) {
         
         var guesSwiper = new Swiper('.swiper-guess', {
             slidesPerView: 4.5,
-            spaceBetween: 20,
+            spaceBetween: 12,
             loop: false,
             speed: 300,
             grabCursor: true,
@@ -45,7 +45,7 @@ var euro2024_home = (function ($) {
         if ($(window).innerWidth() >= 500) {
             var guesSwiper = new Swiper('.swiper-video', {
                 slidesPerView: 3.5,
-                spaceBetween: 16,
+                spaceBetween: 12,
                 loop: false,
                 speed: 300,
                 grabCursor: true,
