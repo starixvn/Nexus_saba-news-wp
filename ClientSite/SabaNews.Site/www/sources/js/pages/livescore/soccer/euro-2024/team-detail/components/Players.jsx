@@ -12,29 +12,29 @@ const Players = ({ data }) => {
                         </div>
                         <div className="player-main">
                             {
-                                item.players.map(item => (
-                                    <div key={item.playerId} className="player-items">
+                                item.players.map(player => (
+                                    <div key={player.playerId} className="player-items">
                                         <div className="player-header">
-                                            <div className="number">{item.shirtNumber}</div>
-                                            <div className="name">{item.playerName}</div>
+                                            <div className="number">{player.shirtNumber}</div>
+                                            <div className="name">{player.playerName}</div>
                                             <div className="avatar">
                                                 {
-                                                    item.icon && <img src={item.icon} alt={item.playerName} />
+                                                    player.icon && <img src={player.icon} alt={player.playerName} />
                                                 }
                                             </div>
                                         </div>
                                         <div className="player-body">
                                             <div className="position">
                                                 <span>Vị trí</span>
-                                                <span>Hậu vệ</span>
+                                                <span>{item.position}</span>
                                             </div>
                                             <div className="birthday">
                                                 <span>Ngày sinh</span>
-                                                <span>{DateTimeService.convertFromUTC(item.birthday).format('DD-MM-YYYY')}</span>
+                                                <span>{DateTimeService.convertFromUTC(player.birthday).format('DD-MM-YYYY')}</span>
                                             </div>
                                             <div className="club">
                                                 <span>Câu lạc bộ</span>
-                                                <span>{item.clubName}</span>
+                                                <span>{player.clubName}</span>
                                             </div>
                                         </div>
                                     </div>

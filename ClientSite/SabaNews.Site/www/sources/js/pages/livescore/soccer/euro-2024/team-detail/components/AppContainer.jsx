@@ -53,7 +53,7 @@ export class AppContainer extends Component {
         })
     }
     groupPlayers  = players => {
-        const positions  = ['Huấn luyện viên' , 'Thủ môn' , 'Hộ vệ', 'Tiền vệ','Tiền đạo']
+        const positions  = ['Huấn luyện viên' , 'Thủ môn' , 'Hậu vệ', 'Tiền vệ','Tiền đạo']
         const tempPlayer = [];
         if(players){
             const totalItems = players.length;
