@@ -2146,6 +2146,14 @@ html, body {
 .sticky-box .number {
   margin-right: 0.6rem !important;
 }
+.sticky-box .block-heading-text, .sticky-box .king-soccer-header-text {
+  font-size: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .sticky-box .block-heading-text, .sticky-box .king-soccer-header-text {
+    font-size: 2.4rem;
+  }
+}
 
 .bg-block {
   border-radius: 5px;
@@ -2175,17 +2183,6 @@ html, body {
 }
 .bg-block .block-items-heading a, .bg-block .block-heading-description a {
   color: #fff !important;
-}
-
-.sticky-position {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 9rem;
-}
-@media screen and (max-width: 1024px) {
-  .sticky-position {
-    top: 5rem;
-  }
 }
 
 .btn-play-video, .euro-play-video {
@@ -2625,7 +2622,7 @@ html, body {
   border-radius: 100px;
 }
 .wc-table .team-name {
-  width: 9rem;
+  width: 11rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

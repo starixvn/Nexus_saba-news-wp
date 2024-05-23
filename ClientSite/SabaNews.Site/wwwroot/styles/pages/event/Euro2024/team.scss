@@ -9,12 +9,18 @@
 
 body{
     background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    @include tableMobile{
+        background: transparent;
+    }
 }
 
 .euro-page-main{
     padding-top: 2rem;
     background-size: 100%;
     padding-bottom: 10rem;
+    @include tableMobile{
+        background: linear-gradient(180deg, #0c1d6b 0%, #07113f 100%);
+    }
 }
 
 .block-heading{

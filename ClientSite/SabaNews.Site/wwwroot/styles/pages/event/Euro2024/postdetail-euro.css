@@ -2195,6 +2195,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .sticky-box .number {
   margin-right: 0.6rem !important;
 }
+.sticky-box .block-heading-text, .sticky-box .king-soccer-header-text {
+  font-size: 1.6rem;
+}
+@media screen and (max-width: 1024px) {
+  .sticky-box .block-heading-text, .sticky-box .king-soccer-header-text {
+    font-size: 2.4rem;
+  }
+}
 
 .bg-block {
   border-radius: 5px;
@@ -2224,17 +2232,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .bg-block .block-items-heading a, .bg-block .block-heading-description a {
   color: #fff !important;
-}
-
-.sticky-position {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 9rem;
-}
-@media screen and (max-width: 1024px) {
-  .sticky-position {
-    top: 5rem;
-  }
 }
 
 .hover-image {
@@ -2625,7 +2622,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 100px;
 }
 .wc-table .team-name {
-  width: 9rem;
+  width: 11rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3414,12 +3411,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #fff;
 }
 
-.page-items-right {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 9rem;
-}
-
 @media (max-width: 767px) {
   .euro-page-main {
     padding-top: 2rem;
@@ -3467,16 +3458,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .post-euro-detail .block-items-heading:hover {
   color: inherit;
-}
-.post-euro-detail .block-items-datetime {
-  margin: 1.2rem 0 1rem 0;
-  font-size: 1.2rem;
-  color: #828282;
-}
-@media (max-width: 767px) {
-  .post-euro-detail .block-items-datetime {
-    margin: 0.6rem 0;
-  }
 }
 
 img {
@@ -4320,4 +4301,27 @@ img {
 
 .king-soccer .team-name .team {
   display: none;
+}
+
+.group-author {
+  display: flex;
+  align-items: flex-end;
+  margin: 1.2rem 0 1rem 0;
+}
+@media (max-width: 767px) {
+  .group-author {
+    margin: 0.6rem 0;
+  }
+}
+.group-author a {
+  color: #555;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-right: 3px;
+  text-decoration: none;
+}
+.group-author .block-items-datetime {
+  font-size: 1.2rem;
+  color: #828282;
 }

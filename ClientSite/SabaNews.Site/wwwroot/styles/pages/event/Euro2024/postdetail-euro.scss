@@ -13,11 +13,11 @@
 @import './components/tag';
 @import './components/comments';
 
-.page-items-right{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 9rem;
-}
+// .page-items-right{
+//     position: -webkit-sticky;
+//     position: sticky;
+//     top: 9rem;
+// }
 
 .euro-page-main{
     @include Mobile{
@@ -59,14 +59,6 @@
         }
         &:hover{
             color: inherit;
-        }
-    }
-    .block-items-datetime{
-        margin: 1.2rem 0 1rem 0;
-        font-size: 1.2rem;
-        color: #828282;
-        @include Mobile{
-            margin: .6rem 0;
         }
     }
 }
@@ -1005,5 +997,27 @@ img {
         .team{
             display: none;
         }
+    }
+}
+
+.group-author{
+    display: flex;
+    align-items: flex-end;
+    margin: 1.2rem 0 1rem 0;
+    @include Mobile{
+        margin: .6rem 0;
+    }
+    a{
+        color: #555;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        margin-right: 3px;
+        text-decoration: none;
+    }
+
+    .block-items-datetime{
+        font-size: 1.2rem;
+        color: #828282;
     }
 }

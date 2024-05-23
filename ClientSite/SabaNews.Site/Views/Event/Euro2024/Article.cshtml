@@ -164,7 +164,13 @@
                     }
                     <div style="display: none;" class="single play_video"></div>
                     <h1 class="block-items-heading">@Model.SinglePost.PostTitle</h1>
-                    <p class="block-items-datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                    <div class="group-author">
+                        <div class="author-section" style="text-align:right">
+                            <a href="@Url.Action("Author", "Home", new { authorId = Model.SinglePost.AuthorId })">@Model.SinglePost.Author
+                            </a>
+                        </div>
+                        <span class="block-items-datetime"> - @Model.SinglePost.PostTimeFormatSingle</span>
+                    </div>
                     @if (!Model.IsVideo)
                     {
                         <div class="content">
