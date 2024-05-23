@@ -32,7 +32,7 @@ var euro2024Standing = (function ($) {
     }
 
     function init() {
-        handleBtn();
+        // handleBtn();
     }
 
     return {

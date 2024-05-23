@@ -34,12 +34,16 @@
 }
 
 @section Scripts{
+    <script>
+        window.isKnockout = '@Model.IsKnockoutStage'
+    </script>
     <environment include="Development">
         <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/pages/livescore/soccer/euro-2024/standing.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/event/euro2024/standing.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
@@ -47,11 +51,9 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/fixture.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/standing.chunk.js" asp-append-version="true"></script>
+        <script src="~/minify/js/euro-2024-standing.min.js" asp-append-version="true"></script>
     </environment>
-    <script>
-        window.isKnockout = '@Model.IsKnockoutStage'
-    </script>
-    <script src="~/js/event/euro2024/standing.js" asp-append-version="true"></script>
+
 }
 
 @(await Component.InvokeAsync("HeaderEuro2024", new { cateSlug = Model.Header.Slug }))

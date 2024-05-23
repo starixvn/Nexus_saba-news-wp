@@ -673,6 +673,17 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/euro-2024-standing.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/euro2024/standing.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 
 ]
