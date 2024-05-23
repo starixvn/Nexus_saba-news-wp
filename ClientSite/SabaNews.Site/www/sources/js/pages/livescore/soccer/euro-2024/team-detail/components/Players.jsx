@@ -19,7 +19,7 @@ const Players = ({ data }) => {
                                             <div className="name">{player.playerName}</div>
                                             <div className="avatar">
                                                 {
-                                                    player.icon ?  <img src={player.icon} alt={player.playerName} /> : <img src="/css/images/dum_avatar.png" alt="" />
+                                                    player.icon ?  <img src={player.icon} alt={player.playerName} /> : <img src="/css/images/dum_ava.png" alt="" />
                                                 }
                                             </div>
                                         </div>
