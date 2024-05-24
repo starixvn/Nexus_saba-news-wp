@@ -396,7 +396,7 @@ namespace SabaNews.Site.Controllers.Event
         private static CateInfo GetEventCateInfo(string cateSlugs)
         {
             var cateEvent = Euro2024.CateSlugs;
-            var foundCate = cateEvent.FirstOrDefault(cate => cateSlugs.Split(',').Contains(cate.Slug));
+            var foundCate = cateEvent.FirstOrDefault(cate => cateSlugs.Split(", ").Contains(cate.Slug));
             return foundCate ?? Euro2024.CateSlugs.ElementAtOrDefault(1);
         }
 
