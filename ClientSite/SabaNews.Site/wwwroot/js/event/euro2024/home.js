@@ -127,7 +127,7 @@ var euro2024_home = (function ($) {
             var slide = $('#slide-' + id);
             slide.show();
             slide.find('.block-items-img').hide();
-            $('.slide-video .card-item').removeClass("box-video");
+            $('.slide-video .block-items-img').removeClass("box-video");
             $(this).parent().addClass("box-video");
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
