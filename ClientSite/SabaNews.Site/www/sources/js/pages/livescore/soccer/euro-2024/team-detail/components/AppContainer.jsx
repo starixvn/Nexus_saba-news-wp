@@ -56,26 +56,18 @@ export class AppContainer extends Component {
         const positions  = ['Huấn luyện viên' , 'Thủ môn' , 'Hậu vệ', 'Tiền vệ','Tiền đạo']
         const tempPlayer = [];
         if(players){
-            const totalItems = players.length;
-            for (let i = 0; i < totalItems; i++) {
-                const player = players[i];
-                const positionId  = player.position
-                const item = {
-                    position : positions[positionId - 1],
-                    positionId,
-                    players : [player]
-                }
-                if (tempPlayer.length === 0){
-                    tempPlayer.push(item)
-                }else{
-                    const index = tempPlayer.findIndex(x => x.positionId === positionId);
-                    if (index === - 1) {
-                        tempPlayer.push(item);
-                    } else {
-                        tempPlayer[index].players.push(player);
+            positions.map((p, index) => {
+                var positionId = index + 1;
+                const listPlayer = players.filter(player => player.position == positionId);
+                if(listPlayer.length > 0) {
+                    const item = {
+                        position : p,
+                        positionId,
+                        players : [...listPlayer]
                     }
+                    tempPlayer.push(item);
                 }
-            }
+            });
         }
         return  tempPlayer;
     }
