@@ -99,7 +99,7 @@ export class AppContainer extends Component {
                     <div className="info-main-team">
                         <div className="team-header">
                             <div className="name-team-detail">
-                                <div className="team-detail-logo"><TeamIcon src={team.icon} /></div>
+                                <div className="team-detail-logo"><TeamIcon src={CommonFunctions.getTeamIcon(team)} /></div>
                                 <div className="team-detail-name">{CommonFunctions.getTeamName(team)}</div>
                             </div>
                             <div className="team-menu-tabs">

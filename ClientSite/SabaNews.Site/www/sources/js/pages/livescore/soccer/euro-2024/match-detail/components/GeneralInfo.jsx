@@ -155,6 +155,16 @@ export default class GeneralInfo extends PureComponent {
         }
     };
 
+    handleClickTeam = (event, team) => {
+        const teamName = Site.toSlug(CommonFunctions.getTeamName(team));
+        const url = Site.resolveClientUrl(`euro-2024/doi-tuyen/${teamName}/${team.teamId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     renderLeague = match => {
         const startTime = DateTimeService.convertFromUTC(match.startTime);
         const leagueName = this.getLeagueName(match);
@@ -247,7 +257,7 @@ export default class GeneralInfo extends PureComponent {
                     }
                     <div className="flex-league">
                         <div className="column column-left home-team">
-                            <ul className="team">
+                            <ul className="team" onClick={event => this.handleClickTeam(event, generalInfo.homeTeam)}>
                                 <li className="team-name">
                                     {CommonFunctions.getTeamName(generalInfo.homeTeam)}
                                 </li>
@@ -258,7 +268,7 @@ export default class GeneralInfo extends PureComponent {
                         </div>
                         <div className="column column-center result-league"> {this.getMatchScores()}</div>
                         <div className="column column-right away-team">
-                            <ul className="team">
+                            <ul className="team" onClick={event => this.handleClickTeam(event, generalInfo.awayTeam)}>
                                 <li className="team-logo">
                                     <TeamIcon src={CommonFunctions.getTeamIcon(generalInfo.awayTeam)} />
                                 </li>
