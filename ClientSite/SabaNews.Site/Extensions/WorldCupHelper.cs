@@ -319,8 +319,8 @@
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTimeUtilize.UtcNow().AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
-            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1], CultureInfo.InvariantCulture) - DateTimeOffset.UnixEpoch;
+            var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1], CultureInfo.InvariantCulture).DateTime - DateTime.UnixEpoch;
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;
             if (checkNow > 0)
@@ -329,7 +329,7 @@
             }
             else
             {
-                var timeSpanEnd = (matches[indexMatches[numStage - 1]].StartTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
+                var timeSpanEnd = matches[indexMatches[numStage - 1]].StartTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
                 var checkNowEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
                 if (checkNowEnd > NinetyMinsToSecond)
                 {
@@ -353,8 +353,8 @@
                 WorldCup2022.TimestampMinigameStage03Start,
                 WorldCup2022.TimestampMinigameStage04Start };
 
-            var timeSpanNow = (DateTimeUtilize.UtcNow().AddHours(MGTPlus) - DateTimeOffset.UnixEpoch);
-            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1], CultureInfo.InvariantCulture) - DateTimeOffset.UnixEpoch;
+            var timeSpanNow = DateTimeUtilize.UtcNow().AddHours(MGTPlus).DateTime - DateTimeOffset.UnixEpoch.DateTime;
+            var timeStartStage = DateTimeOffset.Parse(startStages[numStage - 1], CultureInfo.InvariantCulture).DateTime - DateTime.UnixEpoch;
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             if (checkNow > 0)
             {

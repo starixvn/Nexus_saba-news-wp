@@ -283,6 +283,35 @@ namespace SabaNews.Site.Controllers.Event
             };
             return View("~/Views/Event/Euro2024/TeamDetail.cshtml", model);
         }
+        
+        [Route("euro-2024/minigame")]
+        public async Task<IActionResult> Minigame()
+        {
+            var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
+            var matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            var header = new HeaderViewModel
+            {
+                Title = Euro2024.TitleMinigame,
+                Description = WorldCup2022.TitleMinigame,
+                Slug = WorldCup2022.UrlMinigameSlug
+            };
+            var isLogin = sessionService.User != null;
+            var model = new EuroMinigameViewModel
+            {
+                Header = header,
+                Matches = matches,
+                UserId = string.Empty,
+                IsLogin = isLogin,
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator),
+                BaseUrl = configuration.GetValue<string>(Constants.BaseUrl)
+            };
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
+                model.UserId = sessionService.User.Id.ToString();
+            }
+            return View("~/Views/Event/Euro2024/Minigame/Minigame.cshtml", model);
+        }
 
         [HttpPost]
         public async Task<IActionResult> GetTeamDetailData([FromBody] GetTeamDataModel model)
@@ -341,6 +370,8 @@ namespace SabaNews.Site.Controllers.Event
             var groups = GroupStandingsByGroup(groupsStageStanding);
             return PartialView("~/Views/Event/Euro2024/_HomepageStanding.cshtml", groups);
         }
+
+       
 
         public List<StandingViewModel> GroupStandingsByGroup(IList<SeasonStandings> seasonStandings)
         {
