@@ -297,6 +297,9 @@
         <li class="menu-item">
             <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
+        <li class="logo-event @(arrayActiveMenu.Length > 0 ? "hide-event-mobile" : "")">
+            <a href="/euro-2024"><img src="~/images/euro2024/logo-menu-home-mobile.svg" alt="logo-event" /></a>
+        </li>
         @foreach (var activeMenu in arrayActiveMenu)
         {
             if (activeMenu == 0) break;
