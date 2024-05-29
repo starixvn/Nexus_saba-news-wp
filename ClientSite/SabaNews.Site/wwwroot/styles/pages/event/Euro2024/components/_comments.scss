@@ -8,7 +8,7 @@
     .add_comment, .add_sub_comment {
         color: $white-color;
         padding: 1rem 4rem;
-        background: #f12f19;
+        background: #143CDB;
         border: none;
         margin-top: 1.2rem;
         font-weight: bold;
@@ -41,21 +41,24 @@
             border-radius: 3px;
             position: relative;
             padding: 1rem 0 1rem 0;
-            background-color: $white-color;
+            background-color: #F2F2F2;
 
             textarea {
                 resize: none;
                 font-weight: 400;
-                background: $white-color;
+                background: #F2F2F2;
                 border: none;
                 width: 100%;
-                height: 3rem;
+                height: 3.2rem;
                 color: $text-color;
                 overflow: hidden;
                 padding: .5rem 3.7rem 0 1.5rem;
-                font-family: $font-body;
+                font-size: 1.6rem;
+                font-family: Arial;
                 &::placeholder{
-                    color: $primary-bg;
+                    color: #9B9B9B;
+                    font-size: 1.6rem;
+                    font-style: italic;
                 }
             }
 
@@ -74,21 +77,21 @@
         color: #ccc;
         padding-bottom: 1rem;
         border-bottom: 1px solid $border-calendar;
-
+        margin-top: 2.4rem;
         a {
             position: relative;
             font-weight: 400;
             color: $text-color;
             margin-right: 2rem;
             text-decoration: none;
-
+            font-size: 1.6rem;
             &:after {
                 content: '';
                 width: 100%;
                 height: .1rem;
                 background: transparent;
                 position: absolute;
-                bottom: -1.4rem;
+                bottom: -12px;
                 left: 0;
             }
         }

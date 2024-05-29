@@ -2341,6 +2341,9 @@ span.number-position {
   width: 100%;
   height: 100%;
 }
+.duel-participant .flex-league .column:hover {
+  cursor: pointer;
+}
 
 .detail-fixed {
   position: fixed;

@@ -3151,23 +3151,17 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-direction: row;
 }
 .tag-post .tag-item {
-  background-color: #E8EAEF;
+  background: #DAE2ED;
   padding: 0.3rem 1.5rem;
   margin: 0 0.5rem 1rem 0;
   border-radius: 1.5rem;
   transition: background-color 0.3s ease;
 }
-.tag-post .tag-item:hover {
-  background-color: #143CDB;
-}
-.tag-post .tag-item:hover a {
-  color: #fff;
-}
 .tag-post .tag-item .tag {
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 2.4rem;
-  color: #143CDB;
+  color: #06C;
   display: block;
   font-weight: 500;
 }
@@ -3180,7 +3174,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .comment-post .add_comment, .comment-post .add_sub_comment {
   color: #fff;
   padding: 1rem 4rem;
-  background: #f12f19;
+  background: #143CDB;
   border: none;
   margin-top: 1.2rem;
   font-weight: bold;
@@ -3210,22 +3204,25 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 3px;
   position: relative;
   padding: 1rem 0 1rem 0;
-  background-color: #fff;
+  background-color: #F2F2F2;
 }
 .comment-post form .comment-content-box textarea {
   resize: none;
   font-weight: 400;
-  background: #fff;
+  background: #F2F2F2;
   border: none;
   width: 100%;
-  height: 3rem;
+  height: 3.2rem;
   color: #2F2F2F;
   overflow: hidden;
   padding: 0.5rem 3.7rem 0 1.5rem;
-  font-family: Open Sans, sans-serif;
+  font-size: 1.6rem;
+  font-family: Arial;
 }
 .comment-post form .comment-content-box textarea::placeholder {
-  color: #143CDB;
+  color: #9B9B9B;
+  font-size: 1.6rem;
+  font-style: italic;
 }
 .comment-post form .comment-content-box .note-text-count {
   font-weight: 400;
@@ -3239,6 +3236,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #ccc;
   padding-bottom: 1rem;
   border-bottom: 1px solid #E0E0E0;
+  margin-top: 2.4rem;
 }
 .comment-post .filter_comment a {
   position: relative;
@@ -3246,6 +3244,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #2F2F2F;
   margin-right: 2rem;
   text-decoration: none;
+  font-size: 1.6rem;
 }
 .comment-post .filter_comment a:after {
   content: "";
@@ -3253,7 +3252,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   height: 0.1rem;
   background: transparent;
   position: absolute;
-  bottom: -1.4rem;
+  bottom: -12px;
   left: 0;
 }
 .comment-post .filter_comment .active {
