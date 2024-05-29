@@ -2025,7 +2025,3 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     max-width: 117rem;
   }
 }
-
-body {
-  background: red;
-}
