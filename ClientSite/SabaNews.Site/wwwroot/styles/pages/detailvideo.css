@@ -943,6 +943,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .child-mobile-menu .multilv-menu-mobile li a {
   padding: 0;
 }
+@media screen and (max-width: 1024px) {
+  .child-mobile-menu .multilv-menu-mobile li.hide-event-mobile {
+    display: none;
+  }
+}
 
 .menu-select {
   display: flex;

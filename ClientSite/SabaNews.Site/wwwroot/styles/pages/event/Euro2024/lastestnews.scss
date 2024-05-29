@@ -150,3 +150,33 @@
     }
 }
 
+.wc-table{
+    .wc-table-header{
+        height: 4rem;
+        padding: 2rem 1.2rem;
+    }
+    .wc-table-row{
+        padding: 1.2rem 0;
+        margin: 0 1.2rem;
+    }
+}
+
+.king-soccer{
+    .wc-table-row{
+        padding: .6rem 1rem !important;
+    }
+    .number{
+        margin-right: .3rem !important;
+        @include tableMobile{
+            margin-right: 1rem !important;
+        }
+        @include Mobile{
+            margin-right: .3rem !important;
+        }
+    }
+    .wc-table-header{
+        height: 3.6rem !important;
+    }
+}
+
+

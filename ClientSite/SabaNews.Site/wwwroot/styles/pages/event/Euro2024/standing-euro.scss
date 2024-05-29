@@ -75,6 +75,11 @@
         @include Mobile{
             font-size: 1.4rem;
         }
+        &.hide-on-mobile{
+            @media (max-width : 500px){
+                display: none;
+            }
+        }
     }
     .width-cell{
         width: 9rem;

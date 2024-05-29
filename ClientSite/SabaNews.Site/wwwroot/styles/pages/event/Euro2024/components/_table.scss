@@ -91,6 +91,10 @@
             @include tableMobile {
                 width: 11rem;
             }
+            a{
+                text-decoration: none;
+                color: $white-color;
+            }
         }
     }
 
@@ -236,10 +240,6 @@
 }
 
 .king-soccer {
-    @include tableMobile{
-        max-height: 20rem;
-        overflow: auto;
-    }
     @include Mobile{
         max-height: 100%;
         overflow: unset;
@@ -349,7 +349,7 @@
         .number{
             font-size: 1.4rem;
             margin-right: 1.6rem;
-            width: 1.2rem;
+            width: 2rem;
             @include Mobile{
                 margin-right: .6rem;
             }

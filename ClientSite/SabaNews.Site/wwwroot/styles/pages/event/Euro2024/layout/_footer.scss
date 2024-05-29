@@ -68,6 +68,12 @@
                 line-height: normal;
                 color: $white-color;
                 text-decoration: none;
+                @include tableMobile{
+                    font-size: 1rem;
+                }
+                @include Mobile{
+                    font-size: 1.4rem;
+                }
                 &:hover{
                    color: $primary-color; 
                 }

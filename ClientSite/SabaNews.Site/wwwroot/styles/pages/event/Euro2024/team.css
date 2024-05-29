@@ -1865,6 +1865,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #fff;
   text-decoration: none;
 }
+@media screen and (max-width: 1024px) {
+  .footer-event-menu li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .footer-event-menu li a {
+    font-size: 1.4rem;
+  }
+}
 .footer-event-menu li a:hover {
   color: #FAAA00;
 }

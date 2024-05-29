@@ -1654,6 +1654,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #fff;
   text-decoration: none;
 }
+@media screen and (max-width: 1024px) {
+  .footer-event-menu li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .footer-event-menu li a {
+    font-size: 1.4rem;
+  }
+}
 .footer-event-menu li a:hover {
   color: #FAAA00;
 }
@@ -2634,6 +2644,10 @@ html, body {
     width: 11rem;
   }
 }
+.wc-table .team-name a {
+  text-decoration: none;
+  color: #fff;
+}
 .wc-table .number {
   margin-right: 0.6rem;
   width: 2rem;
@@ -2748,12 +2762,6 @@ html, body {
   padding: 0.8rem 0 !important;
 }
 
-@media screen and (max-width: 1024px) {
-  .king-soccer {
-    max-height: 20rem;
-    overflow: auto;
-  }
-}
 @media (max-width: 767px) {
   .king-soccer {
     max-height: 100%;
@@ -2881,7 +2889,7 @@ html, body {
 .king-soccer .wc-table .number {
   font-size: 1.4rem;
   margin-right: 1.6rem;
-  width: 1.2rem;
+  width: 2rem;
 }
 @media (max-width: 767px) {
   .king-soccer .wc-table .number {
@@ -3619,6 +3627,24 @@ html, body {
 .block-standing .table-on-mobile a {
   text-decoration: none;
 }
+@media screen and (max-width: 1024px) {
+  .block-standing .wc-table .wc-table-header {
+    height: 6rem;
+    padding: 2rem 1.2rem;
+  }
+}
+@media (max-width: 767px) {
+  .block-standing .wc-table .wc-table-header {
+    height: 4rem;
+    padding: 2rem 1.2rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .block-standing .wc-table .wc-table-row {
+    padding: 1.2rem 0;
+    margin: 0 1.2rem;
+  }
+}
 
 @media (max-width: 767px) {
   .block-guess {
@@ -3762,6 +3788,7 @@ html, body {
 @media (max-width: 767px) {
   .block-videos-and-kingsocer .block-group .block-video {
     background: transparent;
+    margin-bottom: 2rem;
   }
 }
 .block-videos-and-kingsocer .block-group .group-video .block-items-vertical-hot {
@@ -3838,10 +3865,16 @@ html, body {
   border: 2px solid #143cdb;
   border-radius: 5px;
 }
+@media screen and (max-width: 1024px) {
+  .block-videos-and-kingsocer .block-group .block-kingsocer {
+    max-width: 37rem;
+  }
+}
 @media (max-width: 767px) {
   .block-videos-and-kingsocer .block-group .block-kingsocer {
     min-width: auto;
     width: 100%;
+    max-width: 100%;
   }
 }
 .block-videos-and-kingsocer .block-group .block-kingsocer .euro-top-scorer {
@@ -3866,6 +3899,11 @@ html, body {
   .block-videos-and-kingsocer .block-group .block-kingsocer .team-logo img {
     width: 2.4rem;
     height: 2.4rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .block-videos-and-kingsocer .block-group .block-kingsocer .king-soccer {
+    max-height: 100%;
   }
 }
 

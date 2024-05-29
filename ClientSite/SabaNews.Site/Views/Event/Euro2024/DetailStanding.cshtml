@@ -1,4 +1,5 @@
 @using SabaNews.Core.Constants
+@using SabaNews.Core.Helper;
 @using DeviceDetectorNET;
 @using static SabaNews.Site.Extensions.LivescoreHelper
 @{
@@ -81,120 +82,68 @@
             <div class="pages-detail-standing">
                 <div id="detail-standing">
                     @{
-                        if (isDesktop){
-                            int indexTable = 0;
-                            @foreach (var standing in Model.StandingsViewModel)
-                            {
-                                indexTable++;
-                                <div class="scroll-sticky">
-                                    <div class="wc-table wc-table-@indexTable wc-table-king-soccer scroll-snap-items">
-                                        <div class="standing-table-name">
-                                            @ViewResources.Board @standing.GroupName.Substring(0, 1)
+                        int indexTable = 0;
+                        @foreach (var standing in Model.StandingsViewModel)
+                        {
+                            indexTable++;
+                            <div class="scroll-sticky">
+                                <div class="wc-table wc-table-@indexTable wc-table-king-soccer scroll-snap-items">
+                                    <div class="standing-table-name">
+                                        @ViewResources.Board @standing.GroupName.Substring(0, 1)
+                                    </div>
+                                    <div class="wc-table-header">
+                                        <div class="wc-table-cell cell-rank first-width">
+                                            #
                                         </div>
-                                        <div class="wc-table-header">
-                                            <div class="wc-table-cell cell-rank first-width">
-                                                #
-                                            </div>
-                                            <div class="wc-table-cell cell-rank cell-participant">
-                                                Đội
-                                            </div>
-                                            <div class="wc-table-cell cell-rank">Trận</div>
-                                            <div class="wc-table-cell cell-rank">Thắng</div>
-                                            <div class="wc-table-cell cell-rank">Hòa</div>
-                                            <div class="wc-table-cell cell-rank">Thua</div>
-                                            <div class="wc-table-cell cell-rank width-cell">Bàn thắng</div>
-                                            <div class="wc-table-cell cell-rank width-cell">Bàn thua</div>
-                                            <div class="wc-table-cell cell-rank">+/-</div>
-                                            <div class="wc-table-cell cell-rank">Điểm</div>
+                                        <div class="wc-table-cell cell-rank cell-participant">
+                                            Đội
                                         </div>
+                                        <div class="wc-table-cell cell-rank">Trận</div>
+                                        <div class="wc-table-cell cell-rank hide-on-mobile">Thắng</div>
+                                        <div class="wc-table-cell cell-rank hide-on-mobile">Hòa</div>
+                                        <div class="wc-table-cell cell-rank hide-on-mobile">Thua</div>
+                                        <div class="wc-table-cell cell-rank width-cell hide-on-mobile">Bàn thắng</div>
+                                        <div class="wc-table-cell cell-rank width-cell hide-on-mobile">Bàn thua</div>
+                                        <div class="wc-table-cell cell-rank">+/-</div>
+                                        <div class="wc-table-cell cell-rank">Điểm</div>
+                                    </div>
 
-                                        <div class="wc-table-body">
-                                            @{
-                                                int count = 0;
-                                                @foreach (var item in standing.Standings)
-                                                {
-                                                    var teamIcon = @GetTeamIcon(item.Icon);
-                                                    count++;
-                                                    <div class="wc-table-row">
-                                                        <div class="wc-table-cell cell-rank first-width">
-                                                            <span class="@(count <= 2 ? "first-width-number" : "")">
-                                                                @count
-                                                            </span>
-                                                        </div>
-                                                        <div class="wc-table-cell cell-participant">
-                                                            <ul class="team">
-                                                                <li class="team-logo">
-                                                                    <img src="@(string.IsNullOrEmpty(item.IconVN) ? teamIcon : item.IconVN)" />
-                                                                </li>
-                                                                <li class="team-name"> @GetStandingTeamName(item)</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="wc-table-cell cell-rank">@item.Total</div>
-                                                        <div class="wc-table-cell cell-rank">@item.Won</div>
-                                                        <div class="wc-table-cell cell-rank">@item.Draw</div>
-                                                        <div class="wc-table-cell cell-rank">@item.Loss</div>
-                                                        <div class="wc-table-cell cell-rank width-cell">@item.Goals</div>
-                                                        <div class="wc-table-cell cell-rank width-cell">@item.GoalsAgainst</div>
-                                                        <div class="wc-table-cell cell-rank">@item.GoalDiff</div>
-                                                        <div class="wc-table-cell cell-rank points-table">@item.Points</div>
+                                    <div class="wc-table-body">
+                                        @{
+                                            int count = 0;
+                                            @foreach (var item in standing.Standings)
+                                            {
+                                                var teamIcon = GetTeamIcon(item.Icon);
+                                                var teamName = GetStandingTeamName(item);
+                                                count++;
+                                                <div class="wc-table-row">
+                                                    <div class="wc-table-cell cell-rank first-width">
+                                                        <span class="@(count <= 2 ? "first-width-number" : "")">
+                                                            @count
+                                                        </span>
                                                     </div>
-                                                }
+                                                    <div class="wc-table-cell cell-participant">
+                                                        <ul class="team">
+                                                            <li class="team-logo">
+                                                                <a href="@Url.Action("TeamDetail", "Euro2024", new { teamName = Helper.GetSlug(teamName), teamId = item.TeamId })"><img src="@(string.IsNullOrEmpty(item.IconVN) ? teamIcon : item.IconVN)" /></a>
+                                                            </li>
+                                                            <li class="team-name"> <a href="@Url.Action("TeamDetail", "Euro2024", new { teamName = Helper.GetSlug(teamName), teamId = item.TeamId })">@teamName</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="wc-table-cell cell-rank">@item.Total</div>
+                                                    <div class="wc-table-cell cell-rank hide-on-mobile">@item.Won</div>
+                                                    <div class="wc-table-cell cell-rank hide-on-mobile">@item.Draw</div>
+                                                    <div class="wc-table-cell cell-rank hide-on-mobile">@item.Loss</div>
+                                                    <div class="wc-table-cell cell-rank width-cell hide-on-mobile">@item.Goals</div>
+                                                    <div class="wc-table-cell cell-rank width-cell hide-on-mobile">@item.GoalsAgainst</div>
+                                                    <div class="wc-table-cell cell-rank">@item.GoalDiff</div>
+                                                    <div class="wc-table-cell cell-rank points-table">@item.Points</div>
+                                                </div>
                                             }
-                                        </div>
+                                        }
                                     </div>
                                 </div>
-                            }
-                        }else{
-                            int indexTable = 0;
-                            @foreach (var standing in Model.StandingsViewModel)
-                            {
-                                indexTable++;
-                                <div class="scroll-sticky">
-                                    <div class="wc-table wc-table-@indexTable wc-table-king-soccer scroll-snap-items">
-                                        <div class="standing-table-name">
-                                            @ViewResources.Board @standing.GroupName.Substring(0, 1)
-                                        </div>
-                                        <div class="wc-table-header">
-                                            <div class="wc-table-cell cell-rank first-width">
-                                                #
-                                            </div>
-                                            <div class="wc-table-cell cell-rank cell-participant">
-                                                Đội
-                                            </div>
-                                            <div class="wc-table-cell cell-rank">Trận</div>
-                                            <div class="wc-table-cell cell-rank">+/-</div>
-                                            <div class="wc-table-cell cell-rank">Điểm</div>
-                                        </div>
-
-                                        <div class="wc-table-body">
-                                            @{
-                                                int count = 0;
-                                                @foreach (var item in standing.Standings)
-                                                {
-                                                    var teamIcon = @GetTeamIcon(item.Icon);
-                                                    count++;
-                                                    <div class="wc-table-row">
-                                                        <div class="wc-table-cell cell-rank first-width">
-                                                            <span class="@(count <= 2 ? "first-width-number" : "")">
-                                                                @count
-                                                            </span>
-                                                        </div>
-                                                        <div class="wc-table-cell cell-participant">
-                                                            <ul class="team">
-                                                                <li class="team-logo"><img src="@(string.IsNullOrEmpty(item.IconVN) ? teamIcon : item.IconVN)" /></li>
-                                                                <li class="team-name"> @GetStandingTeamName(item)</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="wc-table-cell cell-rank">@item.Total</div>
-                                                        <div class="wc-table-cell cell-rank">@item.GoalDiff</div>
-                                                        <div class="wc-table-cell cell-rank points-table">@item.Points</div>
-                                                    </div>
-                                                }
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                            </div>
                         }
                     }
                 </div>

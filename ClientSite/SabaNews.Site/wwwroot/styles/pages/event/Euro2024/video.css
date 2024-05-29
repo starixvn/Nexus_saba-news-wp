@@ -1865,6 +1865,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #fff;
   text-decoration: none;
 }
+@media screen and (max-width: 1024px) {
+  .footer-event-menu li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .footer-event-menu li a {
+    font-size: 1.4rem;
+  }
+}
 .footer-event-menu li a:hover {
   color: #FAAA00;
 }
@@ -2634,6 +2644,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 11rem;
   }
 }
+.wc-table .team-name a {
+  text-decoration: none;
+  color: #fff;
+}
 .wc-table .number {
   margin-right: 0.6rem;
   width: 2rem;
@@ -2748,12 +2762,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 0.8rem 0 !important;
 }
 
-@media screen and (max-width: 1024px) {
-  .king-soccer {
-    max-height: 20rem;
-    overflow: auto;
-  }
-}
 @media (max-width: 767px) {
   .king-soccer {
     max-height: 100%;
@@ -2881,7 +2889,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .king-soccer .wc-table .number {
   font-size: 1.4rem;
   margin-right: 1.6rem;
-  width: 1.2rem;
+  width: 2rem;
 }
 @media (max-width: 767px) {
   .king-soccer .wc-table .number {
@@ -3106,4 +3114,33 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .king-soccer .team-name .team {
   display: none;
+}
+
+.wc-table .wc-table-header {
+  height: 4rem;
+  padding: 2rem 1.2rem;
+}
+.wc-table .wc-table-row {
+  padding: 1.2rem 0;
+  margin: 0 1.2rem;
+}
+
+.king-soccer .wc-table-row {
+  padding: 0.6rem 1rem !important;
+}
+.king-soccer .number {
+  margin-right: 0.3rem !important;
+}
+@media screen and (max-width: 1024px) {
+  .king-soccer .number {
+    margin-right: 1rem !important;
+  }
+}
+@media (max-width: 767px) {
+  .king-soccer .number {
+    margin-right: 0.3rem !important;
+  }
+}
+.king-soccer .wc-table-header {
+  height: 3.6rem !important;
 }

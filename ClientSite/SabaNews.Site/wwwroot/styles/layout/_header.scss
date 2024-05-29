@@ -413,6 +413,11 @@
             a {
                 padding: 0;
             }
+            &.hide-event-mobile{
+                @include tableMobile{
+                    display: none;
+                }
+            }
         }
     }
 }
