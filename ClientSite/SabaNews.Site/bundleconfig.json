@@ -273,10 +273,10 @@
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/euro2024-countdown.min.css",
+        "outputFileName": "wwwroot/minify/styles/euro2024-minigame.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/event/Euro2024/countdown.css"
+            "wwwroot/styles/pages/event/Euro2024/minigame.css"
         ]
     },
     /*==================================================== Javascript ================================================*/
