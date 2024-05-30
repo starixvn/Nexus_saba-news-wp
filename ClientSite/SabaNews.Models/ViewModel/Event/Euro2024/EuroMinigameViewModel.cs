@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.Match;
-    using SabaNews.Models.Event.WorldCup;
+    using SabaNews.Models.Event.Minigame;
     using System.Collections.Generic;
 
     public class EuroMinigameViewModel
@@ -11,7 +11,7 @@
 
         public IList<Match> Matches { get; set; }
 
-        public IList<UserMinigameModel> Votes { get; set; }
+        public IList<MinigameModel> Votes { get; set; }
 
         public UserSession User { get; set; }
 

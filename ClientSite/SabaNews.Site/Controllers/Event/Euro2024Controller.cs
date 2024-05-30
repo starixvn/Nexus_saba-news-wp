@@ -8,6 +8,7 @@ using SabaNews.Core.Constants;
 using SabaNews.Core.Helper;
 using SabaNews.Core.Models;
 using SabaNews.Core.Services;
+using SabaNews.Criteria.Event.Minigame;
 using SabaNews.Criteria.Poll;
 using SabaNews.Criteria.Posts;
 using SabaNews.Livescore.Models.Match;
@@ -37,6 +38,7 @@ namespace SabaNews.Site.Controllers.Event
         private readonly IPollService pollService;
         private readonly IMatchService matchService;
         private readonly ITeamService teamService;
+        private readonly IMinigameService minigameService;
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -47,7 +49,8 @@ namespace SabaNews.Site.Controllers.Event
             ILeagueService leagueService,
             IOptionService optionService,
             IMatchService matchService,
-            ITeamService teamService
+            ITeamService teamService,
+            IMinigameService minigameService
         )
         {
             this.dataControlService = dataControlService;
@@ -59,6 +62,7 @@ namespace SabaNews.Site.Controllers.Event
             this.optionService = optionService;
             this.matchService = matchService;
             this.teamService = teamService;
+            this.minigameService = minigameService;
         }
         [Route("/euro-2024")]
         public async Task<IActionResult> Index ()
@@ -309,8 +313,18 @@ namespace SabaNews.Site.Controllers.Event
             {
                 model.User = sessionService.User;
                 model.UserId = sessionService.User.Id.ToString();
+                model.Votes = await minigameService.GetMinigameByUserAsync(sessionService.User.Id, Euro2024.LeagueId, Euro2024.SeasonId);
             }
             return View("~/Views/Event/Euro2024/Minigame/Minigame.cshtml", model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameByStage([FromBody] GetLeagueMinigameByStageCriteria criteria)
+        {
+            criteria.LeagueId = Euro2024.LeagueId;
+            criteria.SeasonId = Euro2024.SeasonId;
+            var miniGames = await minigameService.GetLeagueMinigameByStageAsync(criteria);
+            return Json(miniGames);
         }
 
         [HttpPost]
@@ -370,7 +384,6 @@ namespace SabaNews.Site.Controllers.Event
             var groups = GroupStandingsByGroup(groupsStageStanding);
             return PartialView("~/Views/Event/Euro2024/_HomepageStanding.cshtml", groups);
         }
-
        
 
         public List<StandingViewModel> GroupStandingsByGroup(IList<SeasonStandings> seasonStandings)

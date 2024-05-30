@@ -269,4 +269,11 @@
 		<Setting Key="get_posts" SpName="get_posts" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_deleted" SpName="post_get_deleted" DbName="sabasports" Plain="0" />
     </Function>
+    <Functions Name="Minigame">
+        <Setting Key="minigame_League_GetByUserStage" SpName="minigame_League_GetByUserStage" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="minigame_League_GetByUser" SpName="minigame_League_GetByUser" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="minigame_UpdateVote" SpName="minigame_UpdateVote" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="minigame_League_GetByStage" SpName="minigame_League_GetByStage" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="minigame_League_GetAllUsers" SpName="minigame_League_GetAllUsers" DbName="sabasports" Plain="0"></Setting>
+    </Functions>
 </Functions>

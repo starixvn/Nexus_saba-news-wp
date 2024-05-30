@@ -2,18 +2,14 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Criteria.Event.WorldCup;
-    using SabaNews.Livescore.Models.League;
-    using SabaNews.Livescore.Models.Match;
-    using SabaNews.Livescore.Models.Team;
-    using SabaNews.Livescore.Services.Criteria.Match;
-    using SabaNews.Models.Event.WorldCup;
+    using SabaNews.Criteria.Event.Minigame;
+    using SabaNews.Models.Event.Minigame;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class MinigameService : IWorldCupService
+    public class MinigameService : IMinigameService
     {
         private readonly IBaseService baseService;
 
@@ -22,16 +18,36 @@
             this.baseService = baseService;
         }
 
-        public async Task<IList<UserMinigameModel>> GetMinigameByUserStageAsync(GetMinigameByUserStageCriteria criteria)
+        public async Task<IList<MinigameModel>> GetLeagueMinigameByUserStageAsync(GetLeagueMinigameByUserStageCriteria criteria)
         {
-            var result = await baseService.GetDataAsync<UserMinigameModel>(criteria);
+            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
             return result.ToList();
         }
 
-        public async Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId)
+        public async Task<IList<MinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId)
         {
-            var result = await baseService.GetDataAsync<UserMinigameModel>(new GetMinigameByUserCriteria { UserId = userId });
+            var criteria = new GetLeagueMinigameByUserCriteria { UserId = userId, LeagueId = leagueId, SeasonId = seasonId };
+            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
             return result.ToList();
+        }
+
+        public async Task<IList<MinigameModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
+            return result.ToList();
+        }
+
+        public async Task<IList<MinigameModel>> GetLeagueMinigameAllUsersAsync(long leagueId, long seasonId)
+        {
+            var criteria = new GetLeagueMinigameAllUsersCriteria {  LeagueId = leagueId, SeasonId = seasonId };
+            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
+            return result.ToList();
+        }
+
+        public async Task<MinigameMatchVotedModel> GetMinigameVoteMatchAsync(GetMinigameVotedMatchCriteria criteria)
+        {
+            var result = await baseService.GetDataEntityAsync<MinigameMatchVotedModel>(criteria);
+            return result;
         }
 
         public async Task<CommandResult> UpdateMinigameVoteAsync(UpdateMinigameVoteCommand cmd)
@@ -39,93 +55,6 @@
             return await baseService.ExecuteNonQueryAsync(cmd);
         }
 
-        public async Task<MinigameMatchVote> GetMinigameVoteMatchAsync(GetMinigameVoteMatchCriteria criteria)
-        {
-            var result = await baseService.GetDataEntityAsync<MinigameMatchVote>(criteria);
-            return result;
-        }
 
-        public async Task<IList<UserMinigameModel>> GetMinigameUsersAsync(GetMinigameUsersByStageCriteria criteria)
-        {
-            var result = await baseService.GetDataAsync<UserMinigameModel>(criteria);
-            return result.ToList();
-        }
-
-        public async Task<IList<UserMinigameModel>> GetMinigameAllUsersAsync()
-        {
-            var result = await baseService.GetDataAsync<UserMinigameModel>(new GetMinigameListUserCriteria());
-            return result.ToList();
-        }
-
-        public async Task<IList<Match>> GetMatchWCBySeasonAsync(GetMatchBySeasonCriteria criteria)
-        {
-            (var leagues, var season, var floatMatches) = await baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(criteria);
-            var league = leagues.FirstOrDefault();
-            if (league != null)
-            {
-                league.Season = season.FirstOrDefault();
-            }
-
-            var matches = new List<Match>();
-            foreach (FloatMatchModel item in floatMatches)
-            {
-                var stage = item.StageId.HasValue
-                    ? new SeasonStage
-                    {
-                        StageNameEN = item.StageNameEN,
-                        StageNameVN = item.StageNameVN,
-                        StageId = item.StageId.Value,
-                        RoundCount = item.RoundCount,
-                        GroupCount = item.GroupCount,
-                        Mode = item.StageMode,
-                        OrderIndex = item.OrderIndex
-                    }
-                    : null;
-                matches.Add(new Match
-                {
-                    MatchId = item.MatchId,
-                    FootballStartTime = item.FootballStartTime,
-                    FootballAddStartTime = item.FootballAddStartTime,
-                    StartTime = item.StartTime,
-                    FootballNextHalfStartTime = item.FootballNextHalfStartTime,
-                    EndTime = item.EndTime,
-                    GroupNum = item.GroupNum,
-                    Status = item.Status,
-                    HomeTeamHalfScore = item.HomeTeamHalfScore,
-                    AwayTeamHalfScore = item.AwayTeamHalfScore,
-                    Round = item.Round,
-                    HomeTeamTotalScore = item.HomeTeamTotalScore,
-                    AwayTeamTotalScore = item.AwayTeamTotalScore,
-                    HomeTeamAggregateScore = item.HomeTeamAggregateScore,
-                    AwayTeamExtraScore = item.AwayTeamExtraScore,
-                    AwayTeamAggregateScore = item.AwayTeamAggregateScore,
-                    HomeTeamPenaltyScore = item.HomeTeamPenaltyScore,
-                    HomeTeamExtraScore = item.HomeTeamExtraScore,
-                    AwayTeamPenaltyScore = item.AwayTeamPenaltyScore,
-                    HomeTeam = new Team
-                    {
-                        TeamId = item.HomeTeamId,
-                        TeamFullNameEN = item.HomeTeamFullNameEN,
-                        TeamNameEN = item.HomeTeamNameEN,
-                        Icon = item.HomeTeamIcon,
-                        TeamNameVN = item.HomeTeamNameVN,
-                        IconVN = item.HomeTeamIconVN
-                    },
-                    AwayTeam = new Team
-                    {
-                        TeamId = item.AwayTeamId,
-                        TeamFullNameEN = item.AwayTeamFullNameEN,
-                        TeamNameEN = item.AwayTeamNameEN,
-                        Icon = item.AwayTeamIcon,
-                        TeamNameVN = item.AwayTeamNameVN,
-                        IconVN = item.AwayTeamIconVN
-                    },
-                    Stage = stage,
-                    IsSecondLeg = item.IsSecondLeg
-                });
-            }
-
-            return matches;
-        }
     }
 }

@@ -3,6 +3,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.Match;
+    using SabaNews.Models.Event.Minigame;
     using SabaNews.Models.Event.WorldCup;
     using System;
     using System.Collections.Generic;
@@ -220,10 +221,10 @@
             return standing;
         }
 
-        public static int GetCountVotesStage(IList<UserMinigameModel> votes, int numStage)
+        public static int GetCountVotesStage(IList<MinigameModel> votes, int numStage)
         {
             int num = 0;
-            foreach (UserMinigameModel vote in votes)
+            foreach (var vote in votes)
             {
                 if (vote.Stage == numStage)
                 {
