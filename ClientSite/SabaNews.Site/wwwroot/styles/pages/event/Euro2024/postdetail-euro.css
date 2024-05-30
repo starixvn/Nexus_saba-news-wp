@@ -2191,7 +2191,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .sticky-box .king-soccer-header {
-  padding: 1rem 2rem;
+  padding: 1rem 1.2rem;
 }
 .sticky-box .border-top-scorer {
   padding: 1.2rem !important;
@@ -3159,7 +3159,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-direction: row;
 }
 .tag-post .tag-item {
-  background: #DAE2ED;
+  background: #DAE2ED !important;
   padding: 0.3rem 1.5rem;
   margin: 0 0.5rem 1rem 0;
   border-radius: 1.5rem;
@@ -3169,7 +3169,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   text-decoration: none;
   font-size: 1.5rem;
   line-height: 2.4rem;
-  color: #06C;
+  color: #06C !important;
   display: block;
   font-weight: 500;
 }

@@ -2327,6 +2327,9 @@ span.number-position {
 .duel-participant .flex-league .column .team-logo {
   width: 3.6rem;
   height: 3.6rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: transparent;
+  border-radius: 100px;
 }
 @media (max-width: 767px) {
   .duel-participant .flex-league .column .team-logo {
@@ -2407,7 +2410,7 @@ span.number-position {
 }
 @media screen and (max-width: 1024px) {
   .detail-fixed .sticky-header-scroll .duel-participant {
-    margin: 0 1.2rem;
+    margin: 0;
   }
 }
 .detail-fixed .sticky-header-scroll .duel-participant .flex-league {
@@ -2499,6 +2502,9 @@ span.number-position {
 .detail-fixed .sticky-header-scroll .duel-participant .flex-league .column .team-logo {
   width: 2.4rem;
   height: 2.4rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: transparent;
+  border-radius: 100px;
 }
 @media (max-width: 767px) {
   .detail-fixed .sticky-header-scroll .duel-participant .flex-league .column .team-logo {
