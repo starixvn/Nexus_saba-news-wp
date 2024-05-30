@@ -1595,7 +1595,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 @media screen and (max-width: 1024px) {
-  .active-nav .show-on-menu {
+  .active-nav .show-on-menu, .hidden-detail .show-on-menu {
     display: block !important;
   }
 }

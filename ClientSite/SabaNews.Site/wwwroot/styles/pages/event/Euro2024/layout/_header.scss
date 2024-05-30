@@ -1770,7 +1770,7 @@
     }
 }
 
-.active-nav{
+.active-nav,.hidden-detail{
     .show-on-menu{
         @include tableMobile{
             display: block !important;
