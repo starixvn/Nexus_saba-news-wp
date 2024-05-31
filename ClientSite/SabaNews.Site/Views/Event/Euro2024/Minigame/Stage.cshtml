@@ -21,10 +21,7 @@
 }
 
 @section Styles{
-    <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
-
-    <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/euro2024-minigame.min.css" asp-append-version="true">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/minigame-stage.chunk.css" asp-append-version="true" />
@@ -52,8 +49,7 @@
     </environment>
     
 }
-
-    @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
+@(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-lastest-news">
     <ul class="header-nav-event">
         <li>
