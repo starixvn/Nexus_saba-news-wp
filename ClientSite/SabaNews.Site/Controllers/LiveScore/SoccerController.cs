@@ -257,6 +257,10 @@
         [HttpPost]
         public async Task<IActionResult> GetMatches([FromBody] GetMatchByDateCriteria criteria)
         {
+            if(criteria == null)
+            {
+                return Json(null);
+            }
             criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC(criteria.Timezone);
             criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC(criteria.Timezone);
             criteria.SportId = (short)SportType.Soccer;
