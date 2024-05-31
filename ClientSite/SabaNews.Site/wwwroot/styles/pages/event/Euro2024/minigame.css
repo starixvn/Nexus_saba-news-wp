@@ -787,6 +787,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     padding: 1.5rem 0;
     margin-right: 0;
     display: block;
+    font-size: 1.6rem;
   }
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
@@ -952,7 +953,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .active-nav .main-menu {
-    display: block;
+    display: flex;
   }
 }
 
@@ -990,15 +991,18 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 @media screen and (max-width: 1024px) {
   .search-input form input {
     border: none;
-    height: 3.6rem;
+    height: 4.2rem !important;
     width: 100%;
     font-weight: 400;
     font-size: 1.6rem;
     display: block;
     border-radius: 28px;
-    padding: 0 3.2rem 0 4rem;
-    background: #143CDB;
-    border: 1px solid #DADADA;
+    padding: 0.5rem 3.2rem 0.5rem 4.4rem;
+    background: #FFFDF9 !important;
+  }
+  .search-input form input::placeholder {
+    color: #828282 !important;
+    font-style: italic;
   }
 }
 .search-input form .btn-search {
@@ -1012,7 +1016,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .search-input form .btn-search {
-    top: 6px;
+    top: 10px;
     left: 12px;
     position: absolute;
   }
@@ -1195,11 +1199,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     z-index: 100;
     display: block;
     overflow: auto;
-    height: calc(100vh - 7rem);
-    top: 7rem;
+    height: calc(100vh - 5.5rem);
+    top: 5.5rem;
     bottom: 0;
     position: fixed;
-    z-index: 8;
+    z-index: 9999;
   }
   .hidden-body .header .child-mobile-menu {
     display: none;
@@ -1319,7 +1323,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     background-color: #143CDB;
     border-top: 1px solid #143CDB;
     border-bottom: 1px solid #143CDB;
-    margin-top: 5rem;
+    margin-top: 7.4rem;
+    padding: 0 2.2rem;
+    gap: 2.4rem;
   }
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item:after {
@@ -1331,7 +1337,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media (max-width: 767px) {
   .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-    padding: 1.5rem 0;
+    padding: 0;
   }
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
@@ -1348,7 +1354,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu .main-menu .menu-item .item.active::after {
-    bottom: 5px;
+    display: none;
   }
 }
 .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
@@ -1396,12 +1402,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .search-input form input::placeholder {
-    color: #143CDB !important;
+    color: #828282 !important;
   }
 }
 @media screen and (max-width: 1024px) {
   .search-input form i:before {
-    color: #fff !important;
+    color: #4F4F4F !important;
   }
 }
 .search-input form .btn-search {
@@ -1539,15 +1545,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  color: #143CDB;
+  color: #828282;
 }
 .show-on-pc .search-input form input::placeholder {
-  color: #143CDB !important;
-}
-@media screen and (max-width: 1024px) {
-  .show-on-pc .search-input form input::placeholder {
-    color: #fff !important;
-  }
+  color: #828282 !important;
+  font-style: italic;
 }
 .show-on-pc .search-input form .icon-search-hover {
   position: absolute;
@@ -1559,7 +1561,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   transition: all 0.3s ease-in-out;
 }
 .show-on-pc .search-input form .icon-search-hover::before {
-  color: #143CDB;
+  color: #fff;
 }
 .show-on-pc .search-input:hover form .search-hover {
   z-index: 9;
@@ -1567,6 +1569,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .show-on-pc .search-input:hover form input, .show-on-pc .search-input:hover form .icon-search-hover {
   visibility: visible;
   opacity: 1;
+}
+.show-on-pc .search-input:hover form .icon-search-hover::before {
+  color: #4F4F4F;
 }
 
 .child-mobile-menu .icon-arrow {
@@ -1780,6 +1785,31 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   transition: all ease-in-out 0.6s !important;
 }
 
+.show-on-menu {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .show-on-menu {
+    margin-top: 2.4rem;
+    padding-top: 2.4rem;
+    border-top: 1px solid #5779FF;
+    margin: 2.4rem 2.4rem;
+    padding-left: 0 !important;
+  }
+}
+.show-on-menu a {
+  color: #FFF !important;
+  font-size: 1.6rem !important;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@media screen and (max-width: 1024px) {
+  .active-nav .show-on-menu, .hidden-detail .show-on-menu {
+    display: block !important;
+  }
+}
+
 .footer-event {
   background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   border-top: 4px solid #F12F19;
@@ -1863,6 +1893,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   line-height: normal;
   color: #fff;
   text-decoration: none;
+}
+@media screen and (max-width: 1024px) {
+  .footer-event-menu li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .footer-event-menu li a {
+    font-size: 1.4rem;
+  }
 }
 .footer-event-menu li a:hover {
   color: #FAAA00;
