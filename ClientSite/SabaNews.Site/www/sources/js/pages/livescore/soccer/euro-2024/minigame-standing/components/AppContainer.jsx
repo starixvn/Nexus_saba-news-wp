@@ -11,17 +11,15 @@ export class AppContainer extends Component {
         super(props);
         this.state = {
             selectedStage: parseInt(window.CountStageActive, 10),
-            stages:[{name:LangHelper.getResource('Stage1'), value:1},
-            {name:LangHelper.getResource('Stage2'), value:2},
-            {name:LangHelper.getResource('Stage3'), value:3},
-            {name:LangHelper.getResource('Stage4'), value:4}]
+            stages: [{ name: LangHelper.getResource('Stage1'), value: 1 },
+            { name: LangHelper.getResource('Stage2'), value: 2 },
+            { name: LangHelper.getResource('Stage3'), value: 3 },
+            { name: LangHelper.getResource('Stage4'), value: 4 }]
         };
     }
 
     handleChange = event => {
-        this.setState({
-            selectedStage: event.target.value
-        });
+        this.setState({selectedStage: event.target.value});
         this.props.getVotes(parseInt(event.target.value, 10));
     };
 
@@ -32,11 +30,11 @@ export class AppContainer extends Component {
 
     render() {
         const { matches, votes } = this.props;
-        if(matches === null || votes === null) {
+        if (matches === null || votes === null) {
             return null;
         }
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
-        const countStageStanding = this.state.stages.filter( x => x.value <= parseInt(window.CountStageActive, 10));
+        const countStageStanding = this.state.stages.filter(x => x.value <= parseInt(window.CountStageActive, 10));
         return (
             <>
                 {
@@ -61,12 +59,12 @@ export class AppContainer extends Component {
                                 <select value={parseInt(this.state.selectedStage, 10)}
                                     onChange={this.handleChange} className="custom-select">
                                     {
-                                        countStageStanding.map( item =>
-                                        <option key={item.value} value={item.value}>{item.name}</option> )
+                                        countStageStanding.map(item =>
+                                            <option key={item.value} value={item.value}>{item.name}</option>)
                                     }
                                 </select>
                             </div>
-                            <Standing matches={showMatches} votes={votes} stagesSelected={parseInt(this.state.selectedStage, 10)}/>
+                            <Standing matches={showMatches} votes={votes} stagesSelected={parseInt(this.state.selectedStage, 10)} />
                         </div>
                         <div className="wave-standing-main"></div>
                         <div className="wave-standing-bg"></div>

@@ -40,7 +40,7 @@ export class Item extends PureComponent {
         const result = this.stage !== Euro.MinigameStage.Knockout || (this.stage === Euro.MinigameStage.Knockout
             && teams.includes(match.homeTeam.teamId)
             && teams.includes(match.awayTeam.teamId));
-        return !result;
+        return result;
     };
 
     handleVoteTeam = async teamId => {
@@ -49,26 +49,22 @@ export class Item extends PureComponent {
         if ((this.stage === Euro.MinigameStage.Knockout && teamId === 0) || (vote && vote.teamId === teamId)) {
             return;
         }
-        const url = Site.resolveClientUrl('Euro2024/GetMinigameVoteMatch');
-        await DataService.postDataAsync(url, { matchId: match.matchId }).then(response => {
-            const voteMatch = response.data;
-            const startTime = DateTimeService.convertFromUTC(voteMatch.startTime);
-            const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
-            const minutes = startTime.diff(currentTime, 'minutes');
-            if (voteMatch.status === MatchStatus.Finished
-                || CommonFunctions.isLiveMatch(voteMatch.status)
-                || minutes <= 30
-                || this.checkKnockoutMatch()) {
-                return;
-            }
-            const params = {
-                stage: this.stage,
-                teamId: teamId,
-                matchId: match.matchId
-            };
-            this.props.updateVote(params).then(() => {
-                this.props.getVotes();
-            });
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
+        const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
+        const minutes = startTime.diff(currentTime, 'minutes');
+        if (match.status === MatchStatus.Finished
+            || CommonFunctions.isLiveMatch(match.status)
+            || minutes <= 30
+            || !this.checkKnockoutMatch()) {
+            return;
+        }
+        const params = {
+            stage: this.stage,
+            teamId: teamId,
+            matchId: match.matchId
+        };
+        this.props.updateVote(params).then(() => {
+            this.props.getVotes();
         });
     };
 

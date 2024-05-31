@@ -123,7 +123,6 @@ export default class Standing extends PureComponent {
         const userId = window.User;
         const rank = this.checkRank(standings, userId);
         window.rank = rank;
-        console.log(standings);
         return (
             <>
                 {

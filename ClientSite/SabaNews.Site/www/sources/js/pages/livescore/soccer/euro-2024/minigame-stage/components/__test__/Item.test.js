@@ -96,7 +96,7 @@ describe('Item', () => {
             window.stage = 1;
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}, status: 50},
                 votes: [{matchId: 1, teamId: 2}]
             }
             const container = shallow(<Item {...props} />);
@@ -106,35 +106,15 @@ describe('Item', () => {
             const result = instance.checkKnockoutMatch();
 
             // Assert
-            expect(result).toEqual(false);
+            expect(result).toEqual(true);
         });
 
         it('return correctly when match is knockout match & team correct', () => {
             // Arrange
-            window.stage = 4;
+            window.stage = 2;
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
-                votes: [{matchId: 1, teamId: 2}],
-                teams: [1, 2, 3, 4]
-            }
-            const container = shallow(<Item {...props} />);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.checkKnockoutMatch();
-
-            // Assert
-            expect(result).toEqual(false);
-        });
-
-
-        it('return correctly when match is knockout match & team not correct', () => {
-            // Arrange
-            window.stage = 4;
-            const props = {
-                ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}, status: 0},
                 votes: [{matchId: 1, teamId: 2}],
                 teams: [1, 2, 3, 4]
             }
@@ -147,17 +127,37 @@ describe('Item', () => {
             // Assert
             expect(result).toEqual(true);
         });
+
+
+        it('return correctly when match is knockout match & team not correct', () => {
+            // Arrange
+            window.stage = 2;
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
+                votes: [{matchId: 1, teamId: 2}],
+                teams: [1, 2, 3, 4]
+            }
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkKnockoutMatch();
+
+            // Assert
+            expect(result).toEqual(false);
+        });
     });
 
 
     describe('handleVoteTeam', () => {
-        it('return correctly when stage = 4 & vote draw', () => {
+        it('return correctly when stage = 2 & vote draw', () => {
             // Arrange
-            window.stage = 4;
+            window.stage = 2;
             const props = {
                 ...defaultProps,
                 match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
-                vote: {matchId: 1, teamId: 0},
+                votes: [{matchId: 1, teamId: 0}],
                 teams: [1, 2, 3, 4]
             }
             const container = shallow(<Item {...props} />);
@@ -172,10 +172,11 @@ describe('Item', () => {
 
         it('return correctly when voted old team', () => {
             // Arrange
+            window.stage = 1;
             const props = {
                 ...defaultProps,
                 match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 6}},
-                vote: {matchId: 1, teamId: 1},
+                votes: [{matchId: 1, teamId: 1, stage: 1}],
                 teams: [1, 2, 3, 4]
             }
             const container = shallow(<Item {...props} />);
@@ -187,57 +188,38 @@ describe('Item', () => {
             // Assert
             expect(result).toEqual(Promise.resolve({}));
         });
+        it('return correctly when stage = 2 & vote teamId', () => {
+            // Arrange
+            window.stage = 2;
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId:2}, status:0, startTime:'2024-05-20 2:00:00'},
+                votes: [{matchId: 1, teamId: 1}],
+                teams: [1, 2, 3, 4]
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2024-05-19 2:00:00');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.handleVoteTeam(1);
+
+            // Assert
+            expect(props.updateVote).toHaveBeenCalled();
+        });
+        
 
         it('return correctly when match is finished', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
-                vote: {matchId: 1, teamId: 1},
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}, status: 50},
+                votes: [{matchId: 1, teamId: 1}],
                 teams: [1, 2, 3, 4]
-            }
-            const response = {
-                data: {
-                    matchId: 1,
-                    status: 50,
-                    startTime: '2022-10-10 8:00:00'
-                }
             }
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-10-11 2:00:00');
             const container = shallow(<Item {...props} />);
             const instance = container.instance();
-            const promise = Promise.resolve(response);
-            DataService.postDataAsync = jest.fn(() => promise);
-            instance.checkKnockoutMatch = jest.fn().mockReturnValue(true);
-
-
-            // Act
-            const result = instance.handleVoteTeam(2);
-
-            // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('/worldcup2022/GetMinigameVoteMatch', {matchId: 1});
-            expect(result).toEqual(Promise.resolve({}));
-        });
-
-        it('return correctly when match is not started', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
-                vote: {matchId: 1, teamId: 1},
-                teams: [1, 2, 3, 4]
-            }
-            const response = {
-                data: {
-                    matchId: 1,
-                    status: 0,
-                    startTime: '2022-10-10 8:00:00'
-                }
-            }
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-10-09 2:00:00');
-            const container = shallow(<Item {...props} />);
-            const instance = container.instance();
-            const promise = Promise.resolve(response);
             DataService.postDataAsync = jest.fn(() => promise);
             instance.checkKnockoutMatch = jest.fn().mockReturnValue(false);
 
@@ -246,8 +228,55 @@ describe('Item', () => {
             const result = instance.handleVoteTeam(2);
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('/worldcup2022/GetMinigameVoteMatch', {matchId: 1});
+            expect(result).toEqual(Promise.resolve({}));
         });
+
+        it('return correctly when match startTime < 30m', () => {
+            // Arrange
+            window.stage = 1;
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}, status: 0, startTime: '2024-05-20 7:00:00'},
+                votes: [{matchId: 1, teamId: 1}],
+                teams: [1, 2, 3, 4]
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2024-05-20 13:30:00');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+            DataService.postDataAsync = jest.fn(() => promise);
+            instance.checkKnockoutMatch = jest.fn().mockReturnValue(true);
+
+
+            // Act
+            const result = instance.handleVoteTeam(2);
+
+            // Assert
+            expect(result).toEqual(Promise.resolve({}));
+        });
+
+        it('return correctly when match is live', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}, status: 10},
+                votes: [{matchId: 1, teamId: 1}],
+                teams: [1, 2, 3, 4]
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-10-09 2:00:00');
+            const container = shallow(<Item {...props} />);
+            const instance = container.instance();
+            DataService.postDataAsync = jest.fn(() => promise);
+            instance.checkKnockoutMatch = jest.fn().mockReturnValue(false);
+
+
+            // Act
+            const result = instance.handleVoteTeam(2);
+
+            // Assert
+            expect(result).toEqual(Promise.resolve({}));
+            
+        });
+        
 
     });
 

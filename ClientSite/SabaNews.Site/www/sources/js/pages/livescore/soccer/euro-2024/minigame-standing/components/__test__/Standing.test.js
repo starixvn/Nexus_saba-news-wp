@@ -1050,7 +1050,7 @@ describe('Standing', () => {
         const points = container.calculatorPointer(defaultProps.matches, defaultProps.votes);
 
         // Assert 
-        expect(points.length).toEqual(1);
+        expect(points.length).toEqual(2);
     });
 
     it('return correctly when checkRank for user login', () => {

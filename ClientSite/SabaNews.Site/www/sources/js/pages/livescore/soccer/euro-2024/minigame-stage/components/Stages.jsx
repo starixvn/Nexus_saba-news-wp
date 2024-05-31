@@ -19,10 +19,10 @@ export class Stages extends PureComponent {
     initDefaultStage = () => {
         const { groupStages } = this.props;
         let currentStage = groupStages[groupStages.length - 1].key;
-        for(let i = 0; i < groupStages.length; i++) {
+        for (let i = 0; i < groupStages.length; i++) {
             const stageMatches = groupStages[i].matches;
             const lastMatch = stageMatches[stageMatches.length - 1];
-            if(lastMatch.status === MatchStatus.NotStarted) {
+            if (lastMatch.status === MatchStatus.NotStarted) {
                 currentStage = groupStages[i].key;
                 break;
             }
@@ -86,7 +86,7 @@ export class Stages extends PureComponent {
 
     render() {
         const { groupStages, votes } = this.props;
-        if(votes === null) {
+        if (votes === null) {
             return null;
         }
         const { selectedStageId, isMobile } = this.state;
@@ -98,7 +98,7 @@ export class Stages extends PureComponent {
                     <div className="statistic">
                         <div className="statistic-sticky">
                             <div className="statistic_stage">{`Giai đoạn ${window.stage}`}</div>
-                            <div className="statistic_round">{`Số trận đã dự đoán:`} <span className="number-big">{ this.getNumberVoted() }</span></div>
+                            <div className="statistic_round">{`Số trận đã dự đoán:`} <span className="number-big">{this.getNumberVoted()}</span></div>
                         </div>
                     </div>
                     <div className="statistic-main">
@@ -112,16 +112,16 @@ export class Stages extends PureComponent {
                                 {
                                     stages.map(group => {
                                         return (
-                                            <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                                {selectedStageId === group.key && <Grid matches={group.matches} startNum={this.getNumberMatch(group.matches)}/>}
+                                            <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)} key={group.key} className="season-standings">
+                                                {selectedStageId === group.key && <Grid matches={group.matches} startNum={this.getNumberMatch(group.matches)} />}
                                             </Tab>);
-                                        }
+                                    }
                                     )
                                 }
                             </Tabs>
                         }
                         {
-                            (stages.length > 1 && isMobile) &&<>
+                            (stages.length > 1 && isMobile) && <>
                                 <div className="nav-select-mb">
                                     <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
                                         {
@@ -130,7 +130,7 @@ export class Stages extends PureComponent {
                                     </select>
                                 </div>
                                 {
-                                    <Grid matches={currentStage.matches}  startNum={this.getNumberMatch(currentStage.matches)}/>
+                                    <Grid matches={currentStage.matches} startNum={this.getNumberMatch(currentStage.matches)} />
                                 }
                             </>
                         }

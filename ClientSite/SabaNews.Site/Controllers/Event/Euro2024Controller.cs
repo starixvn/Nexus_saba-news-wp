@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SabaNews.Core.Constants;
+using SabaNews.Core.Constants.Livescore;
 using SabaNews.Core.Helper;
 using SabaNews.Core.Models;
 using SabaNews.Core.Services;
@@ -368,9 +369,14 @@ namespace SabaNews.Site.Controllers.Event
         [HttpPost]
         public async Task<ActionResult> UpdateVoteMinigame([FromBody] UpdateMinigameVoteCommand criteria)
         {
-            if(sessionService.User == null)
+            if(sessionService.User == null || criteria == null)
             {
                 return Json(null);
+            }
+            var match = await minigameService.GetMinigameVoteMatchAsync(new GetMinigameVotedMatchCriteria { MatchId = criteria.MatchId });
+            if(LivescoreHelper.IsLiveMatch(match.Status) || match.Status == MatchConstants.Finished)
+            {
+                return Json(new CommandResult {});
             }
             criteria.UserId = sessionService.User.Id;
             var result = await minigameService.UpdateMinigameVoteAsync(criteria);

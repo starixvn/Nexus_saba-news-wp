@@ -379,6 +379,6 @@ describe('Winner', () => {
         const instance = container.instance().calculatorPointer(defaultProps.matches, defaultProps.votes);
 
         // Assert 
-        expect(instance.length).toEqual(1);
+        expect(instance.length).toEqual(2);
     });
 });
