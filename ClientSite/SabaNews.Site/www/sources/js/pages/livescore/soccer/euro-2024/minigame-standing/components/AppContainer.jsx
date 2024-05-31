@@ -37,7 +37,6 @@ export class AppContainer extends Component {
         }
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
         const countStageStanding = this.state.stages.filter( x => x.value <= parseInt(window.CountStageActive, 10));
-        console.log(votes, countStageStanding);
         return (
             <>
                 {

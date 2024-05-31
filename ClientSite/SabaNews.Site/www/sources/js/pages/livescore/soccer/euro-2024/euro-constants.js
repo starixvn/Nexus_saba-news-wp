@@ -12,6 +12,18 @@
     EightTeamMatches: [59159344, 59159342, 59159346, 59159345, 59159343, 59159341, 59159347, 59159348],
     QuaterFinalMatches: [59159349, 59159350, 59159352, 59159351],
     SemiFinalMatches: [59159353, 59159354],
+    MinigameUrl: 'euro-2024/minigame',
+    MinigameDetailUrl: 'euro-2024/minigame/chi-tiet',
+    MinigameStage: {
+        Group: 1,
+        Knockout: 2
+    },
+    MinigameScore: {
+        Final: 20,
+        Semifinal: 15,
+        Quarterfinal: 12,
+        Others: 10
+    }
 };
 
 

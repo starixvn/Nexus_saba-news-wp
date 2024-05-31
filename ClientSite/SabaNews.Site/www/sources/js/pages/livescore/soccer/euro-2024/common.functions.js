@@ -7,11 +7,11 @@ import dayjs from 'dayjs';
 export  const getMatchByEventStage = matches => {
     let tmpMatches = [];
     const stage = parseInt(window.stage, 10);
-    const groupStage = matches.filter(item => item.stage.stageId === WorldCup.GroupsStage);
+    
     if(stage === WorldCup.MinigameStage.Stage1) {
-        tmpMatches = groupStage.slice(0, 50);
+        tmpMatches = matches.filter(item => item.stage.stageId === Euro.GroupsStage);
     } else if (stage === WorldCup.MinigameStage.Stage2) {
-        tmpMatches = groupStage.slice(50);
+        tmpMatches = matches.filter(item => item.stage.stageId !== Euro.GroupsStage);
     }
     return tmpMatches;
 };
@@ -56,14 +56,14 @@ export const groupMatchesByStage = matches => {
 
 const getWinScore = stageId => {
     switch(stageId) {
-        case WorldCup.FinalStage:
-            return WorldCup.MinigameScore.Final;
-        case WorldCup.SemifinalsStage:
-            return WorldCup.MinigameScore.Semifinal;
-        case WorldCup.QuarterfinalsStage:
-            return WorldCup.MinigameScore.Quarterfinal;
+        case Euro.FinalStage:
+            return Euro.MinigameScore.Final;
+        case Euro.SemifinalsStage:
+            return Euro.MinigameScore.Semifinal;
+        case Euro.QuarterfinalsStage:
+            return Euro.MinigameScore.Quarterfinal;
         default:
-            return WorldCup.MinigameScore.Others;
+            return Euro.MinigameScore.Others;
     }
 }
 

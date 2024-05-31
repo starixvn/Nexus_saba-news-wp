@@ -68,7 +68,7 @@ namespace SabaNews.Core.Constants
         public const string RecordUrl = "ky-luc-giai-bong-da-euro-294250.html";
 
         public const string TimestampMinigameStage01Start = "5/16/2024, 8:00:00 AM";
-        public const string TimestampMinigameStage02Start = "6/22/2024, 8:00:00 AM";
+        public const string TimestampMinigameStage02Start = "5/22/2024, 8:00:00 AM";
         public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
         public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
 
@@ -91,10 +91,14 @@ namespace SabaNews.Core.Constants
         public const string TitleMinigameSlug = "Sự kiện World Cup 2022 - DỰ ĐOÁN HAY QUÀ LIỀN TAY";
 
         public const int maxCountStage = 2;
+        public const byte MinigameStage1 = 1;
+        public const byte MinigameStage2 = 2;
 
         public static readonly List<string> startStages = new() {
                 TimestampMinigameStage01Start,
                 TimestampMinigameStage02Start};
+        
+        public static readonly List<int> NumberMatch = new() {36, 15};
         public static readonly List<int> indexMatches = new() { 35, 50 };
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>

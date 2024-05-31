@@ -11,8 +11,12 @@
 
         public long TeamId { get; set; }
 
+        public long LeagueId { get; set; }
+
+        public long SeasonId { get; set; }
+
         public override string GetSettingKey() => "minigame_updateVote";
 
-        public override bool IsValid() => UserId > 0 && MatchId > 0 && Stage <= WorldCup2022.MinigameStage4 && Stage >= WorldCup2022.MinigameStage1;
+        public override bool IsValid() => UserId > 0 && MatchId > 0 && Stage <= Euro2024.MinigameStage2 && Stage >= Euro2024.MinigameStage1;
     }
 }

@@ -39,6 +39,7 @@ namespace SabaNews.Site.Controllers.Event
         private readonly IMatchService matchService;
         private readonly ITeamService teamService;
         private readonly IMinigameService minigameService;
+        private const string EuroController = "Euro2024";
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
             IDataControlService dataControlService,
@@ -291,8 +292,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/minigame")]
         public async Task<IActionResult> Minigame()
         {
-            var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
-            var matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            var matches = await GetEuroMatch();
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
@@ -318,13 +318,70 @@ namespace SabaNews.Site.Controllers.Event
             return View("~/Views/Event/Euro2024/Minigame/Minigame.cshtml", model);
         }
 
+        [Route("euro-2024/minigame/giai-doan/{stage}")]
+        public async Task<IActionResult> MinigameStage(byte stage)
+        {
+            if (sessionService.User == null
+                || stage < Euro2024.MinigameStage1
+                || stage > Euro2024.MinigameStage2
+                || !EuroHelper.CheckStartStage(stage)
+            )
+            {
+                return Redirect(Url.Action("Minigame", EuroController));
+            }
+            var matches = await GetEuroMatch();
+            var header = new HeaderViewModel
+            {
+                Title = Euro2024.TitleMinigame,
+                Description = Euro2024.TitleMinigame,
+                Slug = Euro2024.UrlMinigameSlug
+            };
+            var model = new MinigameStageViewModel
+            {
+                Header = header,
+                Matches = matches,
+                Stage = stage,
+                IsLogin = sessionService.User != null
+            };
+            return View("~/Views/Event/Euro2024/Minigame/Stage.cshtml", model);
+        }
+
         [HttpPost]
         public async Task<ActionResult> GetMinigameByStage([FromBody] GetLeagueMinigameByStageCriteria criteria)
         {
-            criteria.LeagueId = Euro2024.LeagueId;
-            criteria.SeasonId = Euro2024.SeasonId;
             var miniGames = await minigameService.GetLeagueMinigameByStageAsync(criteria);
             return Json(miniGames);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetLegueMinigameByUserStage([FromBody] GetLeagueMinigameByUserStageCriteria criteria)
+        {
+            if (sessionService.User == null)
+            {
+                return Json(null);
+            }
+            criteria.UserId = sessionService.User.Id;
+            var result = await minigameService.GetLeagueMinigameByUserStageAsync(criteria);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UpdateVoteMinigame([FromBody] UpdateMinigameVoteCommand criteria)
+        {
+            if(sessionService.User == null)
+            {
+                return Json(null);
+            }
+            criteria.UserId = sessionService.User.Id;
+            var result = await minigameService.UpdateMinigameVoteAsync(criteria);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameVoteMatch([FromBody] GetMinigameVotedMatchCriteria criteria)
+        {
+            var match = await minigameService.GetMinigameVoteMatchAsync(criteria);
+            return Json(match);
         }
 
         [HttpPost]
@@ -518,7 +575,7 @@ namespace SabaNews.Site.Controllers.Event
             return Json(result);
         }
 
-         public async Task<IActionResult> GetStandings()
+        public async Task<IActionResult> GetStandings()
         {
             var standings = await dataControlService.GetLeagueSeasonStandingAsync(Euro2024.LeagueId, Euro2024.SeasonId);
             var groupsStageStanding = standings.Where(standing => standing.StageId == Euro2024.GroupStageId).ToList();
@@ -526,6 +583,11 @@ namespace SabaNews.Site.Controllers.Event
             return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroup(groupsStageStanding));
         }
 
+        private async Task<IList<Match>> GetEuroMatch()
+        {
+            var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
+            return  data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+        }
 
         [Route("euro-2024/minigame")]
         public ActionResult MinigameCountdown()

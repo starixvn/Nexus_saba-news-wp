@@ -29,7 +29,8 @@ const cssPaths = {
     livescore_soccer_euro2024_standing: ['./www/sources/css/pages/livescore/soccer/euro-2024/standing.scss'],
     livescore_soccer_euro2024_full_fixture : ['./www/sources/css/pages/livescore/soccer/euro-2024/full-fixture.scss'],
     livescore_soccer_euro2024_team_detail : ['./www/sources/css/pages/livescore/soccer/euro-2024/team-detail.scss'],
-    livescore_soccer_euro2024_minigame_standing : ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-standing.scss']
+    livescore_soccer_euro2024_minigame_standing : ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-standing.scss'],
+    livescore_soccer_euro2024_minigame_stage : ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-stage.scss']
 };
 
 const scriptPaths = {
@@ -61,6 +62,7 @@ const scriptPaths = {
     livescore_soccer_euro2024_full_fixture: ['./www/sources/js/pages/livescore/soccer/euro-2024/full-fixture/index.jsx'],
     livescore_soccer_euro2024_team_detail: ['./www/sources/js/pages/livescore/soccer/euro-2024/team-detail/index.jsx'],
     livescore_soccer_euro2024_minigame_standing: ['./www/sources/js/pages/livescore/soccer/euro-2024/minigame-standing/index.jsx'],
+    livescore_soccer_euro2024_minigame_stage: ['./www/sources/js/pages/livescore/soccer/euro-2024/minigame-stage/index.jsx'],
 };
 
 module.exports = {

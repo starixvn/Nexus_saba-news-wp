@@ -1,6 +1,6 @@
 import Item from './Item';
 import { getVoteResult } from '../../common.functions';
-import { WorldCup, MobileMaxWidth } from '@jsroot/common/constants';
+import { MobileMaxWidth } from '@jsroot/common/constants';
 import { Euro } from '../../euro-constants';
 import dayjs from 'dayjs';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -98,10 +98,14 @@ export default class Standing extends PureComponent {
         const points = [];
         let users = [];
         votes.map(vote => {
-            let {createdDate, updatedDate} = vote;
+            const updatedDate = DateTimeService.convertFromUTC(vote.updatedDate)
             var key = vote.userId;
             var point = 0;
+
             const matchVote = matches.find(match => match.matchId === vote.matchId);
+            if(matchVote == null) {
+                return;
+            }
             const result = getVoteResult(matchVote, vote);
             point = result != null && result.status ? result.score : point;
             points.push(point);
@@ -110,21 +114,17 @@ export default class Standing extends PureComponent {
                 icon: vote.icon,
                 userName: vote.userName,
                 point: point,
-                createdDate:  DateTimeService.convertFromUTC(createdDate),
-                updatedDate:  DateTimeService.convertFromUTC(updatedDate)
+                updatedDate:  updatedDate
             }
             if(users.length === 0) {
                 users.push(user);
             } else {
-                const userIndex =  users.findIndex(x => x.userId === key);
+                const userIndex =  users.findIndex(x => x.id === key);
                 if(userIndex === -1) {
                     users.push(user)
                 } else {
-                    if(updatedDate > users[userIndex].updatedDate){
+                    if(users[userIndex].updatedDate < updatedDate){
                         users[userIndex].updatedDate = updatedDate;
-                    }
-                    if(createdDate > users[userIndex].createdDate){
-                        users[userIndex].createdDate = createdDate;
                     }
                     users[userIndex].point += point;
                 }

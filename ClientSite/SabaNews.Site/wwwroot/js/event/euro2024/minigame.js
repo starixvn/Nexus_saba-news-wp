@@ -54,7 +54,7 @@
             }
             else {
                 var stage = $(this).data("stage");
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/giai-doan/" + stage;
+                window.location = window.location.origin + "/euro-2024/minigame/giai-doan/" + stage;
             }
         });
 

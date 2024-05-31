@@ -315,7 +315,8 @@
             }
             else
             {
-                var timeSpanEnd = matches[Euro2024.indexMatches[numStage - 1]].StartTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+                var lastMatchStage = matches[Euro2024.indexMatches[numStage - 1]];
+                var timeSpanEnd = lastMatchStage.StartTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
                 var secondsUntilMatchEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
                 if (secondsUntilMatchEnd  > NinetyMinsToSecond)
                 {

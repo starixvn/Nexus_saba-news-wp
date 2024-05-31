@@ -1,6 +1,6 @@
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
-
+import { Euro } from '../euro-constants';
 import {
     setMatches,
     setLeague,
@@ -20,7 +20,9 @@ const getVotes = stage => async dispatch => {
     window.stage = stage;
     const url = Site.resolveClientUrl('Euro2024/GetMinigameByStage');
     var param = {
-        stage: stage
+        stage: stage,
+        leagueId: Euro.leagueId,
+        seasonId: Euro.seasonId
     };
     await DataService.postDataAsync(url, param).then(response => {
         dispatch(setVotes(response.data));

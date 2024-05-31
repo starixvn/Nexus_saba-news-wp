@@ -54,7 +54,7 @@
         <script src="~/js/dev/pages/livescore/soccer/euro-2024/minigame-standing.chunk.js" asp-append-version="true"></script>
         @* <script src="~/js/dev/pages/livescore/soccer/world-cup/minigame-winner.chunk.js" asp-append-version="true"></script> *@
     </environment>
-    <environment exclude="Development">v
+    <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
@@ -180,7 +180,7 @@
                                     }
                                     @if (Model.IsLogin && status != Euro2024.LockStage)
                                     {
-                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/16</li>
+                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/@Euro2024.NumberMatch[i]</li>
                                     }
                                     @if (status == Euro2024.LockStage)
                                     {
