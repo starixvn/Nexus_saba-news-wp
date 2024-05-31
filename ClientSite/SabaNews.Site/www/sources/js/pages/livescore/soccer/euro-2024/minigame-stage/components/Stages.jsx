@@ -76,7 +76,7 @@ export class Stages extends PureComponent {
         return stage;
     };
 
-    0 = matchStage => {
+    getNumberMatch = matchStage => {
         const { matches } = this.props;
         const firstMatch = matchStage[0];
         const index = matches.findIndex(item => item.matchId === firstMatch.matchId);

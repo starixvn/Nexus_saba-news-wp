@@ -62,71 +62,44 @@ export default class Standing extends PureComponent {
         });
     }
 
-    calculatorPointerDetail = (points, votes, matches, userId) => {
-        let pointWinner = 0;
-        votes.map((vote, index) => {
-            matches.map(match => {
-                if(userId === vote.userId && match.matchId === vote.matchId){
-                    pointWinner += points[index];
-                }
-            });
-        });
-        return pointWinner;
-    };
-
-    getMatchesByStageId = (matches, stageId) =>  matches.filter(m => m.stage.stageId === stageId);
-
-    getDetail = (matches, users, points, votes) => {
-        const matchesEightTeamStage = this.getMatchesByStageId(matches, Euro.EightTeamStage),
-        matchesQuarterfinalsStage = this.getMatchesByStageId(matches, Euro.QuarterfinalsStage),
-        matchesFinalStage = this.getMatchesByStageId(matches, Euro.FinalStage),
-        matchesSemifinalsStage = this.getMatchesByStageId(matches,Euro.SemifinalsStage),
-        detail = [];
-        users.map(user => {
-            detail.push({
-                pointEightTeamStage: this.calculatorPointerDetail(points, votes, matchesEightTeamStage, user.userId),
-                pointSemifinalsStage: this.calculatorPointerDetail(points, votes, matchesSemifinalsStage, user.userId),
-                pointQuarterfinalsStage: this.calculatorPointerDetail(points, votes, matchesQuarterfinalsStage, user.userId),
-                pointFinalStage: this.calculatorPointerDetail(points, votes, matchesFinalStage, user.userId)
-            });
-        });
-        return detail;
+    isKnockoutMatch = match => {
+        return match.stage.stageId !== Euro.GroupsStage;
     };
 
     calculatorPointer = (matches, votes) => {
-        let detail = [];
         const points = [];
         let users = [];
         votes.map(vote => {
             const updatedDate = DateTimeService.convertFromUTC(vote.updatedDate)
-            var key = vote.userId;
-            var point = 0;
-
             const matchVote = matches.find(match => match.matchId === vote.matchId);
-            if(matchVote == null) {
-                return;
-            }
+
+            if (!matchVote) return;
+
             const result = getVoteResult(matchVote, vote);
-            point = result != null && result.status ? result.score : point;
+            const point = result != null && result.status ? result.score : 0;
             points.push(point);
-            const user = {
-                id: vote.userId,
-                icon: vote.icon,
-                userName: vote.userName,
-                point: point,
-                updatedDate:  updatedDate
-            }
-            if(users.length === 0) {
-                users.push(user);
+
+            const userIndex =  users.findIndex(x => x.id === vote.userId);
+            var knockout = { stage: matchVote.stage.stageId, point: point };
+            var detail = this.isKnockoutMatch(matchVote) ? knockout : null;
+            if (userIndex === -1) {
+                const details = detail != null ? [detail] : [];
+                users.push({
+                    id: vote.userId,
+                    icon: vote.icon,
+                    userName: vote.userName,
+                    point: point,
+                    updatedDate: updatedDate,
+                    details
+                });
             } else {
-                const userIndex =  users.findIndex(x => x.id === key);
-                if(userIndex === -1) {
-                    users.push(user)
-                } else {
-                    if(users[userIndex].updatedDate < updatedDate){
-                        users[userIndex].updatedDate = updatedDate;
-                    }
-                    users[userIndex].point += point;
+                const user = users[userIndex];
+                user.point += point;
+                if (user.updatedDate < updatedDate) {
+                    user.updatedDate = updatedDate;
+                }
+                if(detail !== null) {
+                    user.details.push(knockout);
                 }
             }
         });
@@ -150,6 +123,7 @@ export default class Standing extends PureComponent {
         const userId = window.User;
         const rank = this.checkRank(standings, userId);
         window.rank = rank;
+        console.log(standings);
         return (
             <>
                 {

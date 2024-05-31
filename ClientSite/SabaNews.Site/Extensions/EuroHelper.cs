@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Extensions
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Constants.Livescore;
     using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models.Event.Minigame;
@@ -318,7 +319,11 @@
                 var lastMatchStage = matches[Euro2024.indexMatches[numStage - 1]];
                 var timeSpanEnd = lastMatchStage.StartTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
                 var secondsUntilMatchEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
-                if (secondsUntilMatchEnd  > NinetyMinsToSecond)
+                if(lastMatchStage.Status == MatchConstants.Finished)
+                {
+                    statusStage = Euro2024.OnEndStage;
+                }
+                else if (secondsUntilMatchEnd  > NinetyMinsToSecond)
                 {
                     statusStage = Euro2024.OnStartedStage;
                 }
@@ -326,7 +331,10 @@
                 {
                     statusStage = Euro2024.BeforeEndStage;
                 }
-                else { statusStage = Euro2024.OnEndStage; }
+                else
+                {
+                    statusStage = Euro2024.OnEndStage;
+                }
             }
 
             return statusStage;
@@ -344,5 +352,6 @@
             }
             return true;
         }
+
     }
 }
