@@ -27,11 +27,7 @@
 }
 
 @section Styles{
-    <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
-
-    <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/euro2024-minigame.min.css" asp-append-version="true">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/minigame-standing.chunk.css" asp-append-version="true" />
@@ -69,7 +65,10 @@
 }
 
 @(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
-<section class="worldcup-lastest-news ">
+
+
+
+<div class="event-minigame">
     <div class="wrapper-header">
         <div class="header-control">
             <ul>
@@ -82,7 +81,6 @@
         </div>
         <div class="wave-game"></div>
     </div>
-
     <ul class="header-nav-event">
         <li>
             <a href="javascript:;" class="btn-home">
@@ -139,15 +137,6 @@
                     Dự đoán đội chiến thắng trong mỗi trận đấu để nhận điểm và có cơ
                     hội giành được những giải thưởng hấp dẫn!
                 </h1>
-                <div class="dots-parent">
-                    <ul>
-                        <li class="dots-small"></li>
-                        <li class="dots-regular"></li>
-                        <li class="dots-parent-center"></li>
-                        <li class="dots-regular"></li>
-                        <li class="dots-small"></li>
-                    </ul>
-                </div>
             </div>
 
 
@@ -191,14 +180,9 @@
                                         <li class="font-weight-bold">@Euro2024.startStages[i]</li>
                                     }
                                 </ul>
-                                <img src="~/images/worldcup/minigame/bg-items.png" alt="Alternate Text" class="bg-items" />
                             </div>
                         }
                     }
-                </div>
-                <div class="sticky_icon">
-                    <img src="~/images/worldcup/minigame/bxh_stick_1.svg" alt="Alternate Text" class="right-top" />
-                    <img src="~/images/worldcup/minigame/icon_1.svg" alt="Alternate Text" class="left-bottom" />
                 </div>
             </div>
         </div>
@@ -206,10 +190,9 @@
     </div>
     <div id="minigame-standing"></div>
     <div id="minigame-winners"></div>
-</section>
+</div>
 
-
-<div class="auth-form  modal-game">
+<div class="euro-modal">
     <div class="modal is-login" id="joining" style="display:none">
         <div class="modal-content modal-auth">
             <div class="modal-warning">

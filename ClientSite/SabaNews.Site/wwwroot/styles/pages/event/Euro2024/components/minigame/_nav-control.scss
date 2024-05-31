@@ -1,106 +1,97 @@
 .header-nav-event {
-    width: 7.2rem;
-    background: #fde9b2;
-    border: 2px solid #b44414;
+    background: #E8E8D6;
+    border: 1px solid #E8E8D6;
+    border-radius: 5px;
+    width: 5.6rem;
+    left: 2rem;
+    top: 13.7rem;
+    z-index: 9999;
     position: fixed;
-    border-radius: 8px;
-    left: 4rem;
-    top: 16rem;
-    list-style: none;
     transition: all ease-in-out .3s;
-    z-index: 9;
+    list-style: none;
+    @include tableMobile {
+        transform: inherit;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border-radius: 0;
+        padding: 13px 25px 27px 25px;
 
-    @include Mobile {
-        left: 1.2rem;
-        top: 1.2rem;
-        width: 32.2rem;
-        transform: translateX(-200%);
-    }
+        &:hover {
+            width: 100% !important;
+        }
 
-    &.active {
-        transform: translateX(0);
+        &.active {
+            transform: translateY(100%);
+        }
     }
 
     li {
         a {
-            font-size: 1.6rem;
-            color: #B44414;
-            text-decoration: none;
-            font-size: 1.6rem;
-            line-height: 4rem;
-            display: flex;
-            padding: 2rem 1.6rem;
-            font-weight: bold;
+            padding: 1.8rem 1.2rem;
+            margin-left: .3rem;
             position: relative;
-
-
-            &::after {
-                content: "";
-                display: block;
-                position: absolute;
-                bottom: 0;
-                height: .1rem;
-                background-color: #B44414;
-                width: 56%;
-                transition: all ease-in-out .1s;
-
-                @include Mobile {
-                    width: 90%;
-                }
+            @include tableMobile {
+                padding: 0;
             }
 
-            &.active, &:hover {
-                color: #EC500E;
 
-                .icon {
-                    &:before {
-                        color: #EC500E;
-                    }
-                }
+            &:after {
+                display: none;
             }
 
             span {
-                margin-left: 1.4rem;
+                left: 45px;
+                margin-left: 0;
+                top: 21px;
+                font-weight: 700;
+                font-size: 1.6rem;
+                line-height: 1.9rem;
+                color: #958288;
+                width: 22rem;
                 opacity: 0;
                 visibility: hidden;
                 transition: all ease-in-out .1s;
                 position: absolute;
-                width: 20rem;
-                left: 5.5rem;
-
-                @include Mobile {
-                    opacity: 1;
-                    visibility: visible;
+                @include tableMobile {
+                    display: none;
                 }
             }
-        }
 
-        &:last-child {
-            a {
-                &::after {
-                    display: none;
+            .icon {
+                &:before {
+                    font-size: 2.4rem;
+                    color: #958288;
+                    transition: all ease-in-out .6s !important;
+                }
+            }
+
+            &.active, &:hover {
+                color: #833D55 !important;
+
+                .icon {
+                    &:before {
+                        color: #833D55 !important;
+                    }
+                }
+
+                span {
+                    color: #833D55 !important;
                 }
             }
         }
     }
 
     &:hover {
-        width: 28rem;
-        transition: all ease-in-out .3s;
+        width: 26.6rem;
 
-        li {
-            a {
-                &::after {
-                    width: 90%;
-                    transition: all ease-in-out .3s;
-                }
-            }
-
-            span {
-                opacity: 1;
-                visibility: visible;
-                transition: all ease-in-out .3s;
-            }
+        span {
+            opacity: 1;
+            visibility: visible;
+            transition: all ease-in-out .6s;
         }
     }
 }
