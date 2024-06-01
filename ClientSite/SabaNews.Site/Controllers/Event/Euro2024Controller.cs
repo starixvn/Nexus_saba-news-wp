@@ -337,7 +337,7 @@ namespace SabaNews.Site.Controllers.Event
                 Description = Euro2024.TitleMinigame,
                 Slug = Euro2024.UrlMinigameSlug
             };
-            var model = new MinigameStageViewModel
+            var model = new EuroMinigameStageViewModel
             {
                 Header = header,
                 Matches = matches,
@@ -345,6 +345,30 @@ namespace SabaNews.Site.Controllers.Event
                 IsLogin = sessionService.User != null
             };
             return View("~/Views/Event/Euro2024/Minigame/Stage.cshtml", model);
+        }
+
+        [Route("euro-2024/minigame/du-doan-cua-toi")]
+        public async Task<IActionResult> MinigameProfile()
+        {
+            if (sessionService.User == null)
+            {
+                return Redirect(Url.Action("Minigame", EuroController));
+            }
+            var header = new HeaderViewModel
+            {
+                Title = Euro2024.TitleMinigame,
+                Description = Euro2024.TitleMinigame,
+                Slug = Euro2024.UrlMinigameSlug
+            };
+            var matches = await GetEuroMatch();
+            var model = new EuroMinigameStageViewModel
+            {
+                Header = header,
+                Matches = matches,
+                User = sessionService.User,
+                IsLogin = sessionService.User != null
+            };
+            return View("~/Views/Event/Euro2024/Minigame/Profile.cshtml", model);
         }
 
         [HttpPost]
@@ -388,6 +412,17 @@ namespace SabaNews.Site.Controllers.Event
         {
             var match = await minigameService.GetMinigameVoteMatchAsync(criteria);
             return Json(match);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetMinigameByUser([FromBody] GetMinigameUserVoteModel model)
+        {
+            if (sessionService.User == null)
+            {
+                return Json(null);
+            }
+            var votes = await minigameService.GetMinigameByUserAsync(sessionService.User.Id, model.LeagueId, model.SeasonId);
+            return Json(votes);
         }
 
         [HttpPost]

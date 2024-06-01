@@ -42,6 +42,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-standing`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_standing,
             [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-winner`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_winner,
             [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-stage`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_stage,
+            [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-profile`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_profile,
             
 
             /*css*/
