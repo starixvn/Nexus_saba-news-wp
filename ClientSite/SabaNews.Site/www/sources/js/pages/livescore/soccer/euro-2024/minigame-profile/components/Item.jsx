@@ -63,6 +63,7 @@ export default class Item extends PureComponent {
     render() {
         const { stage } = this.props;
         const stageStatus = this.getStageStatus();
+        
         return (
 
             <div className="minigame-table-items">

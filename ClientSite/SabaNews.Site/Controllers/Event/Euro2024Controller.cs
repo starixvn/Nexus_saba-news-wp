@@ -354,6 +354,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Redirect(Url.Action("Minigame", EuroController));
             }
+           
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
@@ -369,6 +370,35 @@ namespace SabaNews.Site.Controllers.Event
                 IsLogin = sessionService.User != null
             };
             return View("~/Views/Event/Euro2024/Minigame/Profile.cshtml", model);
+        }
+
+        [Route("euro-2024/minigame/du-doan-cua-toi/giai-doan/{stage}")]
+        public async Task<IActionResult> MinigameProfileStage(int stage)
+        {
+            if (sessionService.User == null)
+            {
+                return Redirect(Url.Action("Minigame", EuroController));
+            }
+             if (stage < Euro2024.MinigameStage1 || stage > Euro2024.MinigameStage2 || !EuroHelper.CheckStartStage(stage)
+            )
+            {
+                return Redirect(Url.Action("MinigameProfile", EuroController));
+            }
+            var header = new HeaderViewModel
+            {
+                Title = Euro2024.TitleMinigame,
+                Description = Euro2024.TitleMinigame,
+                Slug = Euro2024.UrlMinigameSlug
+            };
+            var matches = await GetEuroMatch();
+            var model = new EuroMinigameStageViewModel
+            {
+                Header = header,
+                Matches = matches,
+                User = sessionService.User,
+                IsLogin = sessionService.User != null
+            };
+            return View("~/Views/Event/Euro2024/Minigame/ProfileStage.cshtml", model);
         }
 
         [HttpPost]

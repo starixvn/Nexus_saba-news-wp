@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Item from './Item';
 import { Euro } from '../../euro-constants';
-import { groupMatchesByStage } from '../../common.functions';
+import { groupMatchesByStage, getMatchesByStage } from '../../common.functions';
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
@@ -14,6 +14,8 @@ export default class Grid extends PureComponent {
     };
 
     render() {
+        const { matches } = this.props;
+        console.log(groupMatchesByStage(matches));
         return (
             <div className="wrapper-scroll">
                <div className="minigame-table">
@@ -24,12 +26,12 @@ export default class Grid extends PureComponent {
                         <div className="table-row table-row-time">Điểm</div>
                     </div>
                     <div className="minigame-table-body">
-                        <Item stage={Euro.MinigameStage.GroupsStage}
-                            votes={this.getVotesByStage(Euro.MinigameStage.GroupsStage)}
-                            matches={groupMatchesByStage(Euro.MinigameStage.GroupsStage)} />
-                        <Item stage={Euro.MinigameStage.KnockoutStage}
-                            votes={this.getVotesByStage(Euro.MinigameStage.KnockoutStage)}
-                            matches={groupMatchesByStage(Euro.MinigameStage.KnockoutStage)}/>
+                        <Item stage={Euro.MinigameStage.Group}
+                            votes={this.getVotesByStage(Euro.MinigameStage.Group)}
+                            matches={getMatchesByStage(matches, Euro.MinigameStage.Group)} />
+                        <Item stage={Euro.MinigameStage.Knockout}
+                            votes={this.getVotesByStage(Euro.MinigameStage.Knockout)}
+                            matches={getMatchesByStage(matches, Euro.MinigameStage.Knockout)}/>
                     </div>
                 </div>
             </div>

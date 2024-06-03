@@ -32,7 +32,8 @@ const cssPaths = {
     livescore_soccer_euro2024_minigame_standing: ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-standing.scss'],
     livescore_soccer_euro2024_minigame_winner: ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-winner.scss'],
     livescore_soccer_euro2024_minigame_stage: ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-stage.scss'],
-    livescore_soccer_euro2024_minigame_profile: ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-profile.scss']
+    livescore_soccer_euro2024_minigame_profile: ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-profile.scss'],
+    livescore_soccer_euro2024_minigame_profile_stage: ['./www/sources/css/pages/livescore/soccer/euro-2024/minigame-profile-stage.scss']
 };
 
 const scriptPaths = {
@@ -67,6 +68,7 @@ const scriptPaths = {
     livescore_soccer_euro2024_minigame_winner: ['./www/sources/js/pages/livescore/soccer/euro-2024/minigame-winner/index.jsx'],
     livescore_soccer_euro2024_minigame_stage: ['./www/sources/js/pages/livescore/soccer/euro-2024/minigame-stage/index.jsx'],
     livescore_soccer_euro2024_minigame_profile: ['./www/sources/js/pages/livescore/soccer/euro-2024/minigame-profile/index.jsx'],
+    livescore_soccer_euro2024_minigame_profile_stage: ['./www/sources/js/pages/livescore/soccer/euro-2024/minigame-profile-stage/index.jsx'],
 };
 
 module.exports = {

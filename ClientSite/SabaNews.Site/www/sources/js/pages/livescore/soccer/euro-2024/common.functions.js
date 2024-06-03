@@ -7,10 +7,9 @@ import dayjs from 'dayjs';
 export  const getMatchByEventStage = matches => {
     let tmpMatches = [];
     const stage = parseInt(window.stage, 10);
-    
-    if(stage === WorldCup.MinigameStage.Stage1) {
+    if(stage === Euro.MinigameStage.Group) {
         tmpMatches = matches.filter(item => item.stage.stageId === Euro.GroupsStage);
-    } else if (stage === WorldCup.MinigameStage.Stage2) {
+    } else if (stage === Euro.MinigameStage.Knockout) {
         tmpMatches = matches.filter(item => item.stage.stageId !== Euro.GroupsStage);
     }
     return tmpMatches;
@@ -18,9 +17,9 @@ export  const getMatchByEventStage = matches => {
 
 export  const getMatchesByStage = (matches, stage) => {
     let tmpMatches = [];
-    if(stage === WorldCup.MinigameStage.Stage1) {
+    if(stage === Euro.MinigameStage.Group) {
         tmpMatches = matches.filter(item => item.stage.stageId === Euro.GroupsStage);
-    } else if (stage === WorldCup.MinigameStage.Stage2) {
+    } else if (stage === Euro.MinigameStage.Knockout) {
         tmpMatches = matches.filter(item => item.stage.stageId !== Euro.GroupsStage);
     }
     return tmpMatches;
