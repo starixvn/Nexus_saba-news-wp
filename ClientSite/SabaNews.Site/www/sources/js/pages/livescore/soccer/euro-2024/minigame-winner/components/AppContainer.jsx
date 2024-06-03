@@ -52,50 +52,47 @@ export class AppContainer extends Component {
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
         return (
             <>
-                {
-                    countStageWinners.length > 0 && <div className="minigame-winner">
-                        <div className="wraper-minigame-table">
-                            <div className="minigame-title winner-title">
-                                <h1 className="text">
-                                    {LangHelper.getResource('WinnersMinigame')}
-                                </h1>
-                                <div className="dots-parent">
-                                    <ul className="dots">
-                                        <li className="dots-small"></li>
-                                        <li className="dots-regular"></li>
-                                        <li className="dots-parent-center"></li>
-                                        <li className="dots-regular"></li>
-                                        <li className="dots-small"></li>
-                                    </ul>
-                                    <span className="line line-left"></span>
-                                    <span className="line line-right"></span>
+                <div className="winner-minigame">
+                    {
+                        countStageWinners.length > 0 && <div className="minigame-winner minigame-section">
+                            <div className="wraper-minigame-table">
+                                <div className="block-heading">
+                                    <h2 className="block-heading-text">
+                                        {LangHelper.getResource('WinnersMinigame')}
+                                    </h2>
                                 </div>
+                                <div className="minigame-control">
+                                    {
+                                        !isMobile && countStageWinners.map( item =>
+                                            <button className= {parseInt(this.state.selectedStage, 10) === item.value ? 'buttonStage active'
+                                            : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
+                                        )
+                                    }
+                                    {
+                                        isMobile &&
+                                        <select value={parseInt(this.state.selectedStage, 10)}
+                                            onChange={this.handleChangeSelect} className="custom-select">
+                                            {
+                                                countStageWinners.map(index =>
+                                                <option key={index.value} value={index.value}>{index.name}</option>)
+                                            }
+                                        </select>
+                                    }
+                                </div>
+                                <Winner matches={showMatches} votes={votes} selectedStage={this.state.selectedStage} />
                             </div>
-                            <div className="minigame-control">
-                                {
-                                    !isMobile && countStageWinners.map( item =>
-                                        <button className= {parseInt(this.state.selectedStage, 10) === item.value ? 'buttonStage active'
-                                        : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
-                                    )
-                                }
-                                {
-                                    isMobile &&
-                                    <select value={parseInt(this.state.selectedStage, 10)}
-                                        onChange={this.handleChangeSelect} className="custom-select">
-                                        {
-                                            countStageWinners.map(index =>
-                                            <option key={index.value} value={index.value}>{index.name}</option>)
-                                        }
-                                    </select>
-                                }
+                            <div className="img-table">
+                                <img src="../../../../images/euro2024/minigame/item-table-2.png" alt="item" />
                             </div>
-                            <Winner matches={showMatches} votes={votes} selectedStage={this.state.selectedStage} />
                         </div>
-                        <div className="winner-icon">
-                            <img src="../../../../css/images/winner_sticker_4.svg" alt="" />
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
+                <div className="line-winner">
+                    <img src="../../../../images/euro2024/minigame/winner-line.png" alt="line" class="img-res"/>
+                </div>
+                <div className="effect-winner">
+                    <img src="../../../../images/euro2024/minigame/effect.png" alt="line"/>
+                </div>
             </>
         );
     }

@@ -1,4 +1,21 @@
 @import './../../../../abstracts/mixins';
 @import './components/minigame_control';
 @import './components/input-custom';
+@import './components/minigame-section';
+@import './components/minigame-table';
 
+.winner-minigame{
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #4C65DD;
+    background: #1830A1;
+    position: relative;
+    z-index: 9;
+    .img-table{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 0;
+    }
+}

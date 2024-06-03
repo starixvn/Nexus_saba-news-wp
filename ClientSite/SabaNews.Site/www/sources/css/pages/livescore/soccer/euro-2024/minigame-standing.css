@@ -1,3 +1,75 @@
+.minigame-control {
+  max-width: 100%;
+  margin: 1rem auto;
+  border-bottom: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 99;
+  gap: 1rem;
+}
+@media (max-width: 767px) {
+  .minigame-control {
+    border-bottom: none;
+  }
+}
+.minigame-control button {
+  display: block;
+  width: 11.3rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.8rem;
+  padding: 0.6rem 1.2rem;
+  background: #1830A1;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
+  color: #E8E8D6;
+  transition: background, color 0.3s ease-in-out;
+}
+.minigame-control button.active, .minigame-control button:hover {
+  background: #fff;
+  color: #143CDA;
+}
+
+.minigame-nav {
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #E8E8D6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .minigame-nav {
+    margin: 1.2rem 0;
+  }
+}
+.minigame-nav a {
+  display: block;
+  text-decoration: none;
+  margin-right: 1rem;
+  background: #6E1228;
+  border: 1px solid #E8E8D6;
+  border-radius: 5px 5px 0px 0px;
+  color: #E8E8D6;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+  padding: 0.6rem 1.2rem;
+  border-bottom: none;
+}
+.minigame-nav a:last-child {
+  margin-right: 0;
+}
+.minigame-nav a.active {
+  background: #E8E8D6;
+  border: 1px solid #E8E8D6;
+  color: #88172E;
+}
+
 .custom-search {
   position: relative;
 }
@@ -70,15 +142,133 @@
   padding: 3rem;
 }
 
+.minigame-table .minigame-table-header {
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #666;
+  background: #E6EAF8;
+  color: #222;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: normal;
+  height: 4.1rem;
+  display: flex;
+  align-items: center;
+  padding: 0 2.6rem;
+}
+.minigame-table .minigame-table-body {
+  border-radius: 0 0 5px 5px;
+  background: #FFFDF9;
+  overflow: hidden;
+}
+.minigame-table .minigame-table-items {
+  border-bottom: 1px solid #666;
+  padding: 0 2.6rem;
+  height: 5.2rem;
+  display: flex;
+  cursor: pointer;
+}
+.minigame-table .minigame-table-items:hover {
+  background: #CBD5FF;
+}
+.minigame-table .minigame-table-items:last-child {
+  border-bottom: none;
+}
+.minigame-table .minigame-table-items .minigame-table-flex {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.minigame-table .table-row {
+  color: #222;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: normal;
+}
+.minigame-table .table-row-index {
+  width: 6rem;
+  font-weight: 700;
+}
+.minigame-table .table-row-score {
+  width: 4.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+.minigame-table .table-row-time {
+  width: 20rem;
+  text-align: center;
+}
+.minigame-table .table-row-name {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.minigame-table-header .table-row-time {
+  font-weight: 700;
+}
+
+.table-dropdown-header {
+  font-weight: 700;
+}
+
+.wrapper-scroll {
+  position: relative;
+  z-index: 99;
+}
+
+.table-dropdown.detailStandings {
+  background: #E7EAF2;
+}
+
+.table-dropdown-round {
+  width: 20rem;
+  font-weight: 600;
+}
+.table-dropdown-score {
+  width: 4.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+.table-dropdown-name {
+  flex: 1 0 0;
+}
+.table-dropdown-time {
+  width: 20rem;
+}
+.table-dropdown-header, .table-dropdown-body {
+  padding: 0 2.4rem;
+  display: flex;
+  height: 3.6rem;
+  align-items: center;
+  border-bottom: 1px solid #C4C4C4;
+}
+
 .standing-minigame {
   max-width: 800px;
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid #4C65DD;
   background: #0C1C66;
+  position: relative;
+}
+.standing-minigame .img-table {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
 }
 
 .standing-me {
+  color: #FFF;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1.8rem;
+}
+
+.your-rating {
+  margin-bottom: 1.8rem;
   color: #FFF;
   font-size: 1.6rem;
   font-weight: 700;

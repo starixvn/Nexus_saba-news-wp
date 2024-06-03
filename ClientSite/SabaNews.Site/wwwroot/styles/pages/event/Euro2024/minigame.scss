@@ -99,8 +99,35 @@
 
 #minigame-standing{
     min-height: 99.7rem;
-    background: #0D2E83;
+    background: url('../../../../images/euro2024/minigame/bg-standing.png') #0D2E83;
+    background-repeat: no-repeat;
+    background-size: cover;
     .block-heading-text{
         color: #fff;
     }
+}
+
+#minigame-winners{
+    min-height: 99.7rem;
+    background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    .block-heading-text{
+        color: #fff;
+    }
+    .line-winner {
+        position: absolute;
+        bottom: 0;
+        img{
+            display: block;
+        }
+    }
+    .effect-winner {
+        position: absolute;
+        top: 0;
+        right: 50%;
+        transform: translate(50%, 0);
+        z-index: 0;
+    }    
 }

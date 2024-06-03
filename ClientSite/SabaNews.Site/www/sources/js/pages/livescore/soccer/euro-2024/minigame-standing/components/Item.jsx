@@ -80,38 +80,44 @@ export class Item extends PureComponent {
                     </div>
                 </div>
                 {
-                    stagesSelected === 4 &&
-                    <div className="table-dropdown detailStandings" style={{display:'none'}}>
-                        <div className="table-dropdown-header">
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round header-column">Vòng</div>
-                                <div className="table-dropdown-column score header-column">Điểm</div>
-                            </div>
-                        </div>
-                        <div className="table-dropdown-body">
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Vòng 1/8</div>
-                                <div className="table-dropdown-column score">{standing.detail.pointEightTeamStage}</div>
-                            </div>
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Tứ Kết</div>
-                                <div className="table-dropdown-column score">{standing.detail.pointQuarterfinalsStage}</div>
-                            </div>
-
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Bán Kết</div>
-                                <div className="table-dropdown-column score">{standing.detail.pointSemifinalsStage}</div>
-                            </div>
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Tranh Hạng 3</div>
-                                <div className="table-dropdown-column score">{standing.detail.pointThirdPlace}</div>
-                            </div>
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Chung Kết</div>
-                                <div className="table-dropdown-column score">{standing.detail.pointFinalStage}</div>
-                            </div>
-                        </div>
+                    stagesSelected === 4 && <div className="table-dropdown detailStandings">
+                    <div className="table-dropdown-header">
+                        <div className="table-dropdown-round">Vòng</div>
+                        <div className="table-dropdown-name"></div>
+                        <div className="table-dropdown-score">Điểm</div>
+                        <div className="table-dropdown-time"></div>
                     </div>
+                    <div className="table-dropdown-body">
+                        <div className="table-dropdown-round">Vòng 1/8</div>
+                        <div className="table-dropdown-name"></div>
+                        <div className="table-dropdown-score">{standing.detail.pointEightTeamStage}</div>
+                        <div className="table-dropdown-time"></div>
+                    </div>
+                    <div className="table-dropdown-body">
+                        <div className="table-dropdown-round">Tứ Kết</div>
+                        <div className="table-dropdown-name"></div>
+                        <div className="table-dropdown-score">{standing.detail.pointQuarterfinalsStage}</div>
+                        <div className="table-dropdown-time"></div>
+                    </div>
+                    <div className="table-dropdown-body">
+                        <div className="table-dropdown-round">Bán Kết</div>
+                        <div className="table-dropdown-name"></div>
+                        <div className="table-dropdown-score">{standing.detail.pointSemifinalsStage}</div>
+                        <div className="table-dropdown-time"></div>
+                    </div>
+                    <div className="table-dropdown-body">
+                        <div className="table-dropdown-round">Tranh Hạng 3</div>
+                        <div className="table-dropdown-name"></div>
+                        <div className="table-dropdown-score">{standing.detail.pointThirdPlace}</div>
+                        <div className="table-dropdown-time"></div>
+                    </div>
+                    <div className="table-dropdown-body">
+                        <div className="table-dropdown-round">Chung Kết</div>
+                        <div className="table-dropdown-name"></div>
+                        <div className="table-dropdown-score">{standing.detail.pointFinalStage}</div>
+                        <div className="table-dropdown-time"></div>
+                    </div>
+                </div>
                 }
             </>
         );

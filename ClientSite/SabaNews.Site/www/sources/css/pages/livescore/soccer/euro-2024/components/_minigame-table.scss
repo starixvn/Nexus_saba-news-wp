@@ -16,23 +16,23 @@
         border-radius: 0 0 5px 5px;
         background: #FFFDF9;
         overflow: hidden;
-        .minigame-table-items{
-            border-bottom: 1px solid #666;
-            padding: 0 2.6rem;
-            height: 5.2rem;
+    }
+    .minigame-table-items{
+        border-bottom: 1px solid #666;
+        padding: 0 2.6rem;
+        height: 5.2rem;
+        display: flex;
+        cursor: pointer;
+        &:hover{
+            background: #CBD5FF;
+        }
+        &:last-child{
+            border-bottom: none;
+        }
+        .minigame-table-flex {
             display: flex;
-            cursor: pointer;
-            &:hover{
-                background: #CBD5FF;
-            }
-            &:last-child{
-                border-bottom: none;
-            }
-            .minigame-table-flex {
-                display: flex;
-                align-items: center;
-                width: 100%;
-            }
+            align-items: center;
+            width: 100%;
         }
     }
     .table-row{
@@ -42,10 +42,12 @@
         line-height: normal;
         &-index{
             width: 6rem;
+            font-weight: 700;
         }
         &-score{
             width: 4.5rem;
             text-align: center;
+            font-weight: 700;
         }
         &-time{
             width: 20rem;
@@ -55,6 +57,52 @@
             flex : 1 0 0;
             display: flex;
             align-items: center;
+            font-weight: 700;
         }
+    }
+}
+
+.minigame-table-header{
+    .table-row-time{
+        font-weight: 700;
+    }
+}
+
+.table-dropdown-header{
+    font-weight: 700;
+}
+
+.wrapper-scroll{
+    position: relative;
+    z-index: 99;
+}
+
+.table-dropdown{
+    &.detailStandings{
+        background: #E7EAF2;
+    }
+}
+.table-dropdown{
+    &-round{
+        width: 20rem;
+        font-weight: 600;
+    }
+    &-score{
+        width: 4.5rem;
+        text-align: center;
+        font-weight: 600;
+    }
+    &-name{
+        flex: 1 0 0;
+    }
+    &-time{
+        width: 20rem;
+    }
+    &-header,&-body{
+        padding: 0 2.4rem;
+        display: flex;
+        height: 3.6rem;
+        align-items: center;
+        border-bottom: 1px solid #C4C4C4;
     }
 }

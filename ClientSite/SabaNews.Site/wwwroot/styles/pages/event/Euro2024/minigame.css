@@ -2184,6 +2184,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding: 3.8rem 3rem;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 .stage-items .line-stage {
   position: absolute;
@@ -2413,8 +2414,35 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 #minigame-standing {
   min-height: 99.7rem;
-  background: #0D2E83;
+  background: url("../../../../images/euro2024/minigame/bg-standing.png") #0D2E83;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #minigame-standing .block-heading-text {
   color: #fff;
+}
+
+#minigame-winners {
+  min-height: 99.7rem;
+  background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+#minigame-winners .block-heading-text {
+  color: #fff;
+}
+#minigame-winners .line-winner {
+  position: absolute;
+  bottom: 0;
+}
+#minigame-winners .line-winner img {
+  display: block;
+}
+#minigame-winners .effect-winner {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, 0);
+  z-index: 0;
 }

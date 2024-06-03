@@ -11,6 +11,14 @@
     border-radius: 10px;
     border: 1px solid #4C65DD;
     background: #0C1C66;
+    position: relative;
+    .img-table{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 0;
+    
+    }
 }
 
 .standing-me{
@@ -19,5 +27,12 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 1.8rem;
+}
+.your-rating{
+    margin-bottom: 1.8rem;
+    color: #FFF;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: normal;
 }
 
