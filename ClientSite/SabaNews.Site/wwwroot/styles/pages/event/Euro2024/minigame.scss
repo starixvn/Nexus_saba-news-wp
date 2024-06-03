@@ -5,4 +5,102 @@
 @import './layout/footer';
 @import './components/container';
 @import './components/minigame/modal';
+@import './components/minigame/block';
+@import './components/minigame/button';
+@import './components/minigame/stage';
 @import './components/minigame/nav-control';
+
+.wave-game{
+    background: linear-gradient(90deg, #09174D 0%, #061A6B 100%);
+    position: relative;
+    .line-header{
+        img{
+            display: block;
+        }
+    }
+    .line-header {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+    }    
+}
+
+.main-wave {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.header-control{
+    position: relative;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    ul{
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+    .btn-standing{
+        max-width: 22.5rem;
+        margin: 0 auto;
+    }
+}
+
+.section-stage{
+    background: url('../../../../images/euro2024/minigame/map.svg')  #010E46;
+    background-repeat: no-repeat;
+    background-position: top;
+    .wrapper-title-stage{
+        max-width: 74rem;
+        margin: 0 auto;
+        .minigame-title {
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.10);
+            gap: 2.4rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            .icon-gift{
+                width: 11rem;
+                img{
+                    display: block;
+                }
+            }
+            .text{
+                color: #FFC800;
+                font-size: 2.2rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 2.8rem;
+                width: 100%;
+                max-width: 56.6rem;
+            }
+        }
+    }
+}
+
+.main-stage{
+    max-width: 74rem;
+    margin: 0 auto;
+    .row-stage{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+#minigame-standing{
+    min-height: 99.7rem;
+    background: #0D2E83;
+    .block-heading-text{
+        color: #fff;
+    }
+}

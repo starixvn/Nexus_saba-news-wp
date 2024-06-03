@@ -1,14 +1,15 @@
 .header-nav-event {
-    background: #E8E8D6;
-    border: 1px solid #E8E8D6;
     border-radius: 5px;
+    border: 1px solid #4359AF;
+    background: #0D1E62;
     width: 5.6rem;
-    left: 2rem;
-    top: 13.7rem;
+    left: 4rem;
+    top: 12rem;
     z-index: 9999;
     position: fixed;
     transition: all ease-in-out .3s;
     list-style: none;
+    padding: 1.6rem;
     @include tableMobile {
         transform: inherit;
         bottom: 0;
@@ -30,27 +31,31 @@
     }
 
     li {
+        margin-bottom: 1.6rem;
+        @include tableMobile{
+            margin-bottom: 0;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
         a {
-            padding: 1.8rem 1.2rem;
-            margin-left: .3rem;
+            margin-left: 0;
             position: relative;
-            @include tableMobile {
-                padding: 0;
-            }
-
-
+            display: block;
+            text-decoration: none;
+            padding: 0;
             &:after {
                 display: none;
             }
 
             span {
-                left: 45px;
+                left: 35px;
                 margin-left: 0;
-                top: 21px;
+                top: 5px;
                 font-weight: 700;
                 font-size: 1.6rem;
                 line-height: 1.9rem;
-                color: #958288;
+                color: rgba(255, 255, 255, 0.75);
                 width: 22rem;
                 opacity: 0;
                 visibility: hidden;
@@ -64,22 +69,22 @@
             .icon {
                 &:before {
                     font-size: 2.4rem;
-                    color: #958288;
+                    color: rgba(255, 255, 255, 0.75);
                     transition: all ease-in-out .6s !important;
                 }
             }
 
             &.active, &:hover {
-                color: #833D55 !important;
+                color: #FFCA00!important;
 
                 .icon {
                     &:before {
-                        color: #833D55 !important;
+                        color: #FFCA00 !important;
                     }
                 }
 
                 span {
-                    color: #833D55 !important;
+                    color: #FFCA00 !important;
                 }
             }
         }

@@ -36,23 +36,16 @@ export class AppContainer extends Component {
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
         const countStageStanding = this.state.stages.filter(x => x.value <= parseInt(window.CountStageActive, 10));
         return (
-            <>
+           <div className="standing-minigame">
                 {
                     (countStageStanding.length > 1 || (countStageStanding.length === 1 && votes.length > 0)) &&
                     <div className="minigame-section minigame-standing">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title standing-title">
-                                <h1 className="text">
-                                    {LangHelper.getResource('StandingMinigame')}
-                                </h1>
-                                <div className="dots-parent">
-                                    <ul className="dots">
-                                        <li className="dots-small"></li>
-                                        <li className="dots-regular"></li>
-                                        <li className="dots-parent-center"></li>
-                                        <li className="dots-regular"></li>
-                                        <li className="dots-small"></li>
-                                    </ul>
+                                <div className="block-heading">
+                                    <h2 className="block-heading-text">
+                                        {LangHelper.getResource('StandingMinigame')}
+                                    </h2>
                                 </div>
                             </div>
                             <div className="minigame-standing-control">
@@ -66,14 +59,9 @@ export class AppContainer extends Component {
                             </div>
                             <Standing matches={showMatches} votes={votes} stagesSelected={parseInt(this.state.selectedStage, 10)} />
                         </div>
-                        <div className="wave-standing-main"></div>
-                        <div className="wave-standing-bg"></div>
-                        <div className="section-icon">
-                            <img src="../../../../css/images/icon_2.svg" alt="" />
-                        </div>
                     </div>
                 }
-            </>
+           </div>
         );
     }
 }

@@ -70,16 +70,30 @@
 
 <div class="event-minigame">
     <div class="wrapper-header">
-        <div class="header-control">
-            <ul>
-                <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
-                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
-            </ul>
-            <p class="btn-standing">
-                <a href="#minigame-standing">Bảng xếp hạng</a>
-            </p>
+        <div class="wave-game minigame-block">
+            <div class="main-wave">
+                <div class="left-wave">
+                    <img src="~/images/euro2024/minigame/result.png" alt="result" class="img-res"/>
+                </div>
+                <div class="right-wave">
+                    <div class="title-light">
+                        <img src="~/images/euro2024/minigame/title.png" alt="title" class="img-res" />
+                    </div>
+                    <div class="header-control">
+                        <ul>
+                            <li><a href="javascript:;" class="btn btn-event btn-event-success" id="btn-guide">Thể Lệ</a></li>
+                            <li><a href="#nhap-so-may-man" class="btn btn-event btn-event-success click-number-event">Tham Gia</a></li>
+                        </ul>
+                        <p class="btn-standing">
+                            <a href="#minigame-standing" class="btn btn-event btn-event-warning">Bảng xếp hạng</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="line-header">
+                <img src="~/images/euro2024/minigame/line.svg" alt="line" class="img-res"/>
+            </div>
         </div>
-        <div class="wave-game"></div>
     </div>
     <ul class="header-nav-event">
         <li>
@@ -130,13 +144,18 @@
             }
         }
     </ul>
-    <div id="stage-minigame" class="section-stage">
-        <div class="container-stage">
-            <div class="minigame-title">
-                <h1 class="text">
-                    Dự đoán đội chiến thắng trong mỗi trận đấu để nhận điểm và có cơ
-                    hội giành được những giải thưởng hấp dẫn!
-                </h1>
+    <div id="stage-minigame" class="section-stage minigame-block">
+        <div class="container">
+            <div class="wrapper-title-stage">
+                <div class="minigame-title">
+                    <div class="icon-gift">
+                        <img src="~/images/euro2024/minigame/gift.svg" alt="line" class="img-res"/>
+                    </div>
+                    <h1 class="text">
+                        Dự đoán đội chiến thắng trong mỗi trận đấu để nhận điểm và có cơ
+                        hội giành được những giải thưởng hấp dẫn!
+                    </h1>
+                </div>
             </div>
 
 
@@ -152,10 +171,11 @@
                             <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status == Euro2024.OnEndStage ? "end-stage" : "")
                                             @(status != Euro2024.LockStage && status != Euro2024.OnEndStage && status != Euro2024.BeforeStartedStage ?
                                         "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
-                                <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
+                                
                                 <div data-stage="@(i+1)" class="stage-round  @(status != Euro2024.LockStage && status != Euro2024.OnEndStage && status != Euro2024.BeforeStartedStage ?
                                         "stage-votes-round" : "") @(isActive ? "active" : "")">
-                                    <h2>Giai Đoạn @(i + 1)</h2>
+                                    <h2 class="btn-event @(isActive ? "btn-event-warning" : "btn-event-lock")">Giai Đoạn @(i + 1)</h2>
+                                    <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
                                 </div>
                                 <ul class="count-and-time">
                                     @if (status != Euro2024.LockStage)
@@ -172,7 +192,7 @@
                                     }
                                     @if (Model.IsLogin && status != Euro2024.LockStage)
                                     {
-                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/@Euro2024.NumberMatch[i]</li>
+                                        <li class="font-weight-bold hight-light">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/@Euro2024.NumberMatch[i]</li>
                                     }
                                     @if (status == Euro2024.LockStage)
                                     {
@@ -180,6 +200,9 @@
                                         <li class="font-weight-bold">@Euro2024.startStages[i]</li>
                                     }
                                 </ul>
+                                <div class="line-stage">
+                                    <img src="~/images/euro2024/minigame/line-stage.png" alt="line" class="img-res"/>
+                                </div>
                             </div>
                         }
                     }
@@ -188,8 +211,8 @@
         </div>
         <div class="bg-stage"></div>
     </div>
-    <div id="minigame-standing"></div>
-    <div id="minigame-winners"></div>
+    <div id="minigame-standing" class="minigame-block"></div>
+    <div id="minigame-winners" class="minigame-block"></div>
 </div>
 
 <div class="euro-modal">

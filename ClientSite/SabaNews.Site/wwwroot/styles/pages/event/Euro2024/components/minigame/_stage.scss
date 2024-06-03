@@ -1,0 +1,55 @@
+.stage-items{
+    border-radius: 10px;
+    background: #143CDA;
+    padding: 3.8rem 3rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    .line-stage{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        img{
+            display: block;
+        }
+    }
+    .stage-round {
+        position: relative;
+        z-index: 99;
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        .btn-event{
+            max-width: 20rem;
+        }
+        .icon-stage {
+            border-radius: 5px;
+            background: rgba($color: #EEEEE4, $alpha: .2);
+            width: 4.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            i{
+                &::before{
+                    color: #EEEEE4;
+                }
+            }
+        }
+    }
+    .count-and-time{
+        list-style: none;
+        li{
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: normal;
+            font-weight: 600;
+            color: #fff;
+            &.hight-light{
+                color: #FFCA00;
+                font-weight: 700;
+            }
+        }
+    }
+}

@@ -479,7 +479,7 @@
     box-shadow: (0px 4px 5px rgba(0, 0, 0, 0.16));
     position: sticky;
     top: 0;
-    z-index: 99;
+    z-index: 99999999;
 
     @include tableMobile {
         display: none;
