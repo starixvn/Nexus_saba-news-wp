@@ -5,6 +5,9 @@
     width: 100%;
     position: relative;
     overflow: hidden;
+    @include Mobile{
+        padding: 2.4rem 1.2rem;
+    }
     .line-stage{
         position: absolute;
         bottom: 0;
@@ -16,12 +19,13 @@
     }
     .stage-round {
         position: relative;
-        z-index: 99;
+        z-index: 9;
         display: flex;
         gap: 2rem;
         margin-bottom: 2rem;
         .btn-event{
-            max-width: 20rem;
+            min-width: 20rem;
+            text-transform: uppercase;
         }
         .icon-stage {
             border-radius: 5px;

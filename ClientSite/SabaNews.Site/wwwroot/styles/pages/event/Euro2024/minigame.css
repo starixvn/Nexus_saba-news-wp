@@ -2115,6 +2115,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .minigame-block {
   padding: 4rem 0;
 }
+@media (max-width: 767px) {
+  .minigame-block {
+    padding: 2rem 0;
+  }
+}
 
 .block-heading {
   margin-bottom: 1.6rem;
@@ -2163,6 +2168,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   border-radius: 5px;
   cursor: pointer;
 }
+@media (max-width: 767px) {
+  .btn-event {
+    padding: 0.7rem 2.4rem;
+    font-size: 1.6rem;
+  }
+}
 .btn-event-success {
   background: #07B856;
 }
@@ -2186,6 +2197,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: relative;
   overflow: hidden;
 }
+@media (max-width: 767px) {
+  .stage-items {
+    padding: 2.4rem 1.2rem;
+  }
+}
 .stage-items .line-stage {
   position: absolute;
   bottom: 0;
@@ -2197,13 +2213,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .stage-items .stage-round {
   position: relative;
-  z-index: 99;
+  z-index: 9;
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
 }
 .stage-items .stage-round .btn-event {
-  max-width: 20rem;
+  min-width: 20rem;
+  text-transform: uppercase;
 }
 .stage-items .stage-round .icon-stage {
   border-radius: 5px;
@@ -2331,9 +2348,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background: linear-gradient(90deg, #09174D 0%, #061A6B 100%);
   position: relative;
 }
-.wave-game .line-header img {
-  display: block;
-}
 .wave-game .line-header {
   display: block;
   position: absolute;
@@ -2341,12 +2355,37 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   right: 0;
   z-index: 0;
 }
+.wave-game .line-header img {
+  display: block;
+}
+@media (max-width: 767px) {
+  .wave-game .line-header {
+    display: none;
+  }
+}
 
 .main-wave {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: 5rem;
+}
+@media (max-width: 767px) {
+  .main-wave {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  .main-wave .left-wave {
+    max-width: 35rem;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 767px) {
+  .main-wave .right-wave {
+    max-width: 26rem;
+    margin: 0 auto;
+  }
 }
 
 .header-control {
@@ -2356,11 +2395,21 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-direction: column;
   gap: 3rem;
 }
+@media (max-width: 767px) {
+  .header-control {
+    gap: 2rem;
+  }
+}
 .header-control ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 2rem;
+}
+@media (max-width: 767px) {
+  .header-control ul {
+    gap: 2.4rem;
+  }
 }
 .header-control .btn-standing {
   max-width: 22.5rem;
@@ -2368,7 +2417,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .section-stage {
-  background: url("../../../../images/euro2024/minigame/map.svg") #010E46;
+  background: url("../../../../images/euro2024/minigame/map.png") #010E46;
   background-repeat: no-repeat;
   background-position: top;
 }
@@ -2386,8 +2435,19 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-bottom: 2rem;
   padding: 2rem;
 }
+@media (max-width: 767px) {
+  .section-stage .wrapper-title-stage .minigame-title {
+    gap: 1.2rem;
+    padding: 1.2rem;
+  }
+}
 .section-stage .wrapper-title-stage .minigame-title .icon-gift {
   width: 11rem;
+}
+@media (max-width: 767px) {
+  .section-stage .wrapper-title-stage .minigame-title .icon-gift {
+    width: 6.6rem;
+  }
 }
 .section-stage .wrapper-title-stage .minigame-title .icon-gift img {
   display: block;
@@ -2401,6 +2461,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   width: 100%;
   max-width: 56.6rem;
 }
+@media (max-width: 767px) {
+  .section-stage .wrapper-title-stage .minigame-title .text {
+    max-width: 24rem;
+    line-height: normal;
+    font-size: 1.6rem;
+  }
+}
 
 .main-stage {
   max-width: 74rem;
@@ -2410,6 +2477,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+@media (max-width: 767px) {
+  .main-stage .row-stage {
+    flex-direction: column;
+  }
 }
 
 #minigame-standing {
@@ -2421,6 +2493,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 #minigame-standing .block-heading-text {
   color: #fff;
 }
+@media (max-width: 767px) {
+  #minigame-standing {
+    min-height: inherit;
+  }
+}
 
 #minigame-winners {
   min-height: 99.7rem;
@@ -2428,6 +2505,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+@media (max-width: 767px) {
+  #minigame-winners {
+    min-height: 81rem;
+  }
 }
 #minigame-winners .block-heading-text {
   color: #fff;
@@ -2445,4 +2527,18 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   right: 50%;
   transform: translate(50%, 0);
   z-index: 0;
+}
+
+@media (max-width: 767px) {
+  .block-heading {
+    text-align: left !important;
+    position: relative;
+    z-index: 9;
+    margin-bottom: 1.6rem !important;
+  }
+}
+@media (max-width: 767px) {
+  .block-heading-text {
+    font-size: 2rem !important;
+  }
 }

@@ -87,8 +87,11 @@ export class AppContainer extends Component {
                         </div>
                     }
                 </div>
-                <div className="line-winner">
+                <div className="line-winner show-pc">
                     <img src="../../../../images/euro2024/minigame/winner-line.png" alt="line" class="img-res"/>
+                </div>
+                <div className="line-winner show-mobile">
+                    <img src="../../../../images/euro2024/minigame/winner-line-mobile.png" alt="line" class="img-res"/>
                 </div>
                 <div className="effect-winner">
                     <img src="../../../../images/euro2024/minigame/effect.png" alt="line"/>

@@ -8,6 +8,10 @@
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
+    @include Mobile{
+        padding: .7rem 2.4rem;
+        font-size: 1.6rem;
+    }
     &-success {
         background: #07B856;
     }

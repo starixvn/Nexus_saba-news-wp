@@ -403,6 +403,7 @@ body {
 @media (max-width: 767px) {
   .minigame-control {
     border-bottom: none;
+    justify-content: flex-start;
   }
 }
 .minigame-control button {

@@ -52,7 +52,10 @@
     padding: 0 .5rem;
     margin-bottom: 1.2rem;
     @include Mobile{
-        width: 14rem;
-        font-size: 1.2rem;
+        width: 20rem;
+        font-size: 1.6rem;
+        position: relative;
+        z-index: 9;
+        border: none;
     }
 }

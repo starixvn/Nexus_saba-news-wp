@@ -1,5 +1,8 @@
 .minigame-block{
     padding: 4rem 0;
+    @include Mobile{
+        padding: 2rem 0;
+    }
 }
 
 .block-heading{

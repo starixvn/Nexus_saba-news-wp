@@ -12,10 +12,36 @@
     background: #1830A1;
     position: relative;
     z-index: 9;
+    @include Mobile{
+        margin: 0 1.2rem;
+    }
     .img-table{
         position: absolute;
         top: 0;
         right: 0;
         z-index: 0;
+        @include Mobile{
+            text-align: right;
+        }
+        img{
+            @include Mobile{
+                width: 50%;
+            }
+        }
+    }
+}
+
+.line-winner{
+    &.show-pc{
+        display: block;
+        @include Mobile{
+            display: none;
+        }
+    }
+    &.show-mobile{
+        display: none;
+        @include Mobile{
+            display: block;
+        }
     }
 }

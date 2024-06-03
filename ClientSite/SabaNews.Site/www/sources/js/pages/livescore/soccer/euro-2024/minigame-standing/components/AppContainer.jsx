@@ -57,7 +57,6 @@ export class AppContainer extends Component {
                                     }
                                 </select>
                             </div>
-                            <div className="your-rating">Thứ hạng của bạn : 15</div>
                             <Standing matches={showMatches} votes={votes} stagesSelected={parseInt(this.state.selectedStage, 10)} />
                         </div>
                         <div className="img-table">

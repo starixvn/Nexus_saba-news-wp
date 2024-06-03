@@ -11,6 +11,13 @@
         display: flex;
         align-items: center;
         padding: 0 2.6rem;
+        @include Mobile{
+            height: 3.2rem;
+            padding: 0 1rem;
+            .table-row{
+                font-size: 1.3rem;
+            }
+        }
     }
     .minigame-table-body {
         border-radius: 0 0 5px 5px;
@@ -23,6 +30,10 @@
         height: 5.2rem;
         display: flex;
         cursor: pointer;
+        @include Mobile{
+            padding: 0 1rem;
+            height: 4rem;
+        }
         &:hover{
             background: #CBD5FF;
         }
@@ -40,9 +51,15 @@
         font-size: 1.4rem;
         font-weight: 600;
         line-height: normal;
+        @include Mobile{
+            font-size: 1.2rem;
+        }
         &-index{
             width: 6rem;
             font-weight: 700;
+            @include Mobile{
+                width: 2rem;
+            }
         }
         &-score{
             width: 4.5rem;
@@ -52,12 +69,21 @@
         &-time{
             width: 20rem;
             text-align: center;
+            @include Mobile{
+                width: 10rem;
+                font-size: 1.1rem;
+            }
         }
         &-name{
             flex : 1 0 0;
             display: flex;
             align-items: center;
             font-weight: 700;
+            .user-avatar{
+                @include Mobile{
+                    display: none;
+                }
+            }
         }
     }
 }
@@ -74,7 +100,8 @@
 
 .wrapper-scroll{
     position: relative;
-    z-index: 99;
+    z-index: 9;
+    min-height: 50.9rem;
 }
 
 .table-dropdown{
@@ -86,6 +113,9 @@
     &-round{
         width: 20rem;
         font-weight: 600;
+        @include Mobile {
+            width: 16rem;
+        }
     }
     &-score{
         width: 4.5rem;
@@ -97,6 +127,9 @@
     }
     &-time{
         width: 20rem;
+        @include Mobile {
+            width: 10rem;
+        }
     }
     &-header,&-body{
         padding: 0 2.4rem;
@@ -104,5 +137,15 @@
         height: 3.6rem;
         align-items: center;
         border-bottom: 1px solid #C4C4C4;
+        @include Mobile{
+            padding: 0 1rem;
+            font-size: 1.3rem;
+            height: 2.8rem;
+        }
+    }
+    &-header{
+       .table-dropdown-score,.table-dropdown-round{
+            font-weight: 700;
+       } 
     }
 }

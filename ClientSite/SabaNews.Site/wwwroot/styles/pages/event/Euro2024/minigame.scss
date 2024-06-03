@@ -13,17 +13,18 @@
 .wave-game{
     background: linear-gradient(90deg, #09174D 0%, #061A6B 100%);
     position: relative;
-    .line-header{
-        img{
-            display: block;
-        }
-    }
     .line-header {
         display: block;
         position: absolute;
         bottom: 0;
         right: 0;
         z-index: 0;
+        img{
+            display: block;
+        }
+        @include Mobile{
+            display: none;
+        }
     }    
 }
 
@@ -32,6 +33,21 @@
     align-items: flex-start;
     justify-content: center;
     gap: 5rem;
+    @include Mobile{
+        display: block;
+    }
+    .left-wave{
+        @include Mobile{
+            max-width: 35rem;
+            margin: 0 auto;
+        }
+    }
+    .right-wave{
+        @include Mobile{
+            max-width: 26rem;
+            margin: 0 auto;
+        }
+    }
 }
 
 .header-control{
@@ -40,11 +56,17 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    @include Mobile{
+        gap: 2rem;
+    }
     ul{
         list-style: none;
         display: flex;
         justify-content: center;
         gap: 2rem;
+        @include Mobile{
+            gap: 2.4rem;
+        }
     }
     .btn-standing{
         max-width: 22.5rem;
@@ -53,7 +75,7 @@
 }
 
 .section-stage{
-    background: url('../../../../images/euro2024/minigame/map.svg')  #010E46;
+    background: url('../../../../images/euro2024/minigame/map.png')  #010E46;
     background-repeat: no-repeat;
     background-position: top;
     .wrapper-title-stage{
@@ -68,8 +90,15 @@
             gap: 2.4rem;
             margin-bottom: 2rem;
             padding: 2rem;
+            @include Mobile{
+                gap: 1.2rem;
+                padding: 1.2rem;
+            }
             .icon-gift{
                 width: 11rem;
+                @include Mobile{
+                    width: 6.6rem;
+                }
                 img{
                     display: block;
                 }
@@ -82,6 +111,11 @@
                 line-height: 2.8rem;
                 width: 100%;
                 max-width: 56.6rem;
+                @include Mobile{
+                    max-width: 24rem;
+                    line-height: normal;
+                    font-size: 1.6rem;
+                }
             }
         }
     }
@@ -94,6 +128,9 @@
         display: flex;
         align-items: center;
         gap: 2rem;
+        @include Mobile{
+            flex-direction: column;
+        }
     }
 }
 
@@ -105,6 +142,9 @@
     .block-heading-text{
         color: #fff;
     }
+    @include Mobile{
+        min-height: inherit;
+    }
 }
 
 #minigame-winners{
@@ -113,6 +153,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    @include Mobile{
+        min-height: 81rem;
+    }
     .block-heading-text{
         color: #fff;
     }
@@ -130,4 +173,18 @@
         transform: translate(50%, 0);
         z-index: 0;
     }    
+}
+
+.block-heading{
+    @include Mobile{
+        text-align: left !important;
+        position: relative;
+        z-index: 9;
+        margin-bottom: 1.6rem !important;
+    }
+    &-text{
+        @include Mobile{
+            font-size: 2rem !important;
+        }
+    }
 }

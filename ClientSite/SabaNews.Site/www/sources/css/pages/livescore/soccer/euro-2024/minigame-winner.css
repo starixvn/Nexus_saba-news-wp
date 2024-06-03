@@ -12,6 +12,7 @@
 @media (max-width: 767px) {
   .minigame-control {
     border-bottom: none;
+    justify-content: flex-start;
   }
 }
 .minigame-control button {
@@ -133,13 +134,21 @@
 }
 @media (max-width: 767px) {
   .custom-select {
-    width: 14rem;
-    font-size: 1.2rem;
+    width: 20rem;
+    font-size: 1.6rem;
+    position: relative;
+    z-index: 9;
+    border: none;
   }
 }
 
 .minigame-section {
   padding: 3rem;
+}
+@media (max-width: 767px) {
+  .minigame-section {
+    padding: 2rem 1.2rem;
+  }
 }
 
 .minigame-table .minigame-table-header {
@@ -155,6 +164,15 @@
   align-items: center;
   padding: 0 2.6rem;
 }
+@media (max-width: 767px) {
+  .minigame-table .minigame-table-header {
+    height: 3.2rem;
+    padding: 0 1rem;
+  }
+  .minigame-table .minigame-table-header .table-row {
+    font-size: 1.3rem;
+  }
+}
 .minigame-table .minigame-table-body {
   border-radius: 0 0 5px 5px;
   background: #FFFDF9;
@@ -166,6 +184,12 @@
   height: 5.2rem;
   display: flex;
   cursor: pointer;
+}
+@media (max-width: 767px) {
+  .minigame-table .minigame-table-items {
+    padding: 0 1rem;
+    height: 4rem;
+  }
 }
 .minigame-table .minigame-table-items:hover {
   background: #CBD5FF;
@@ -184,9 +208,19 @@
   font-weight: 600;
   line-height: normal;
 }
+@media (max-width: 767px) {
+  .minigame-table .table-row {
+    font-size: 1.2rem;
+  }
+}
 .minigame-table .table-row-index {
   width: 6rem;
   font-weight: 700;
+}
+@media (max-width: 767px) {
+  .minigame-table .table-row-index {
+    width: 2rem;
+  }
 }
 .minigame-table .table-row-score {
   width: 4.5rem;
@@ -197,11 +231,22 @@
   width: 20rem;
   text-align: center;
 }
+@media (max-width: 767px) {
+  .minigame-table .table-row-time {
+    width: 10rem;
+    font-size: 1.1rem;
+  }
+}
 .minigame-table .table-row-name {
   flex: 1 0 0;
   display: flex;
   align-items: center;
   font-weight: 700;
+}
+@media (max-width: 767px) {
+  .minigame-table .table-row-name .user-avatar {
+    display: none;
+  }
 }
 
 .minigame-table-header .table-row-time {
@@ -214,7 +259,8 @@
 
 .wrapper-scroll {
   position: relative;
-  z-index: 99;
+  z-index: 9;
+  min-height: 50.9rem;
 }
 
 .table-dropdown.detailStandings {
@@ -224,6 +270,11 @@
 .table-dropdown-round {
   width: 20rem;
   font-weight: 600;
+}
+@media (max-width: 767px) {
+  .table-dropdown-round {
+    width: 16rem;
+  }
 }
 .table-dropdown-score {
   width: 4.5rem;
@@ -236,12 +287,27 @@
 .table-dropdown-time {
   width: 20rem;
 }
+@media (max-width: 767px) {
+  .table-dropdown-time {
+    width: 10rem;
+  }
+}
 .table-dropdown-header, .table-dropdown-body {
   padding: 0 2.4rem;
   display: flex;
   height: 3.6rem;
   align-items: center;
   border-bottom: 1px solid #C4C4C4;
+}
+@media (max-width: 767px) {
+  .table-dropdown-header, .table-dropdown-body {
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    height: 2.8rem;
+  }
+}
+.table-dropdown-header .table-dropdown-score, .table-dropdown-header .table-dropdown-round {
+  font-weight: 700;
 }
 
 .winner-minigame {
@@ -253,9 +319,41 @@
   position: relative;
   z-index: 9;
 }
+@media (max-width: 767px) {
+  .winner-minigame {
+    margin: 0 1.2rem;
+  }
+}
 .winner-minigame .img-table {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 0;
+}
+@media (max-width: 767px) {
+  .winner-minigame .img-table {
+    text-align: right;
+  }
+}
+@media (max-width: 767px) {
+  .winner-minigame .img-table img {
+    width: 50%;
+  }
+}
+
+.line-winner.show-pc {
+  display: block;
+}
+@media (max-width: 767px) {
+  .line-winner.show-pc {
+    display: none;
+  }
+}
+.line-winner.show-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .line-winner.show-mobile {
+    display: block;
+  }
 }

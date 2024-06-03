@@ -107,6 +107,11 @@
 .minigame-section {
   padding: 3rem;
 }
+@media (max-width: 767px) {
+  .minigame-section {
+    padding: 2rem 1.2rem;
+  }
+}
 
 .minigame-control {
   max-width: 100%;
@@ -122,6 +127,7 @@
 @media (max-width: 767px) {
   .minigame-control {
     border-bottom: none;
+    justify-content: flex-start;
   }
 }
 .minigame-control button {

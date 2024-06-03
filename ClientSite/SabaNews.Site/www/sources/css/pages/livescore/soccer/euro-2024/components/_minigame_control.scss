@@ -11,6 +11,7 @@
     gap: 1rem;
     @include Mobile{
         border-bottom:  none;
+        justify-content: flex-start;
     }
     button{
         display: block;
