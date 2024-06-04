@@ -134,6 +134,7 @@
 }
 
 #minigame-standing{
+    min-height: 76.2rem;
     background: url('../../../../images/euro2024/minigame/bg-standing.png') #0D2E83;
     background-repeat: no-repeat;
     background-size: cover;
@@ -142,7 +143,7 @@
         color: #fff;
     }
     @include Mobile{
-        min-height: inherit;
+        min-height: 61.7rem;
     }
 }
 
