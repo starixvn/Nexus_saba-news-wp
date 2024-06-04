@@ -112,7 +112,7 @@ export default class Standing extends PureComponent {
     };
 
     checkRank = (standings, userId ) =>{
-        const userIndex = standings.findIndex(s => s.userId = userId);
+        const userIndex = standings.findIndex(s => s.id == userId);
         const rank = userIndex >= 0 ? userIndex + 1 : 0
         return rank;
     };

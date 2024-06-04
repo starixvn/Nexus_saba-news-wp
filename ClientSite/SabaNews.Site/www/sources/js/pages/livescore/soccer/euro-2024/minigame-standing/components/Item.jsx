@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { ActionCreators } from '../actions';
+import { Euro } from '../../euro-constants';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -79,46 +80,8 @@ export class Item extends PureComponent {
                         </div>
                     </div>
                 </div>
-                {/* <div className="table-dropdown detailStandings">
-                    <div className="table-dropdown-header">
-                        <div className="table-dropdown-round">Vòng</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">Điểm</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                    <div className="table-dropdown-body">
-                        <div className="table-dropdown-round">Vòng 1/8</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">11</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                    <div className="table-dropdown-body">
-                        <div className="table-dropdown-round">Tứ Kết</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">11</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                    <div className="table-dropdown-body">
-                        <div className="table-dropdown-round">Bán Kết</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">11</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                    <div className="table-dropdown-body">
-                        <div className="table-dropdown-round">Tranh Hạng 3</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">11</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                    <div className="table-dropdown-body">
-                        <div className="table-dropdown-round">Chung Kết</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">11</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                </div> */}
                 {
-                    stagesSelected === 4 && <div className="table-dropdown detailStandings">
+                    stagesSelected === Euro.MinigameStage.Knockout && <div className="table-dropdown detailStandings">
                     <div className="table-dropdown-header">
                         <div className="table-dropdown-round">Vòng</div>
                         <div className="table-dropdown-name"></div>
