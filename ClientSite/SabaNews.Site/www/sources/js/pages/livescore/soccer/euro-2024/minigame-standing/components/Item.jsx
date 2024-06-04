@@ -10,8 +10,11 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (number, stagesSelected) =>{
+    handleClick = (standingLength, number, stagesSelected) =>{
         if(stagesSelected === Euro.MinigameStage.Knockout){
+            for(let num = 0; num < standingLength ; num ++){
+                document.getElementsByClassName('detailStandings')[num].style.display = 'none';
+            }
             const display = document.getElementsByClassName('detailStandings')[number].style.display;
             if(display === 'block'){
                 document.getElementsByClassName('detailStandings')[number].style.display = 'none';
@@ -44,13 +47,13 @@ export class Item extends PureComponent {
     getPlayoffPoint = (points, stage) => points.filter(p => p.stage === stage).reduce((total, p) => total + p.point, 0);
 
     render() {
-        const { standing, number, rank, stagesSelected } = this.props;
+        const { standing,standingLength, number, rank, stagesSelected } = this.props;
         const updatedDate = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
         const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/YYYY, HH:mm:ss');
         return (
             <>
                 <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${stagesSelected === Euro.MinigameStage.Knockout ? 'cursor-items' : ''}`}
-                onClick={() => this.handleClick(number, stagesSelected)}>
+                onClick={() => this.handleClick(standingLength, number, stagesSelected)}>
                     <div className="minigame-table-flex ">
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
