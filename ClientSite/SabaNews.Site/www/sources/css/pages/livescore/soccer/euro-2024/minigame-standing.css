@@ -348,6 +348,9 @@
 .table-dropdown-header .table-dropdown-score, .table-dropdown-header .table-dropdown-round {
   font-weight: 700;
 }
+.table-dropdown-body:last-child {
+  border-bottom: 1px solid #666;
+}
 
 .standing-minigame {
   max-width: 800px;
@@ -398,4 +401,8 @@
   font-size: 1.6rem;
   font-weight: 700;
   line-height: normal;
+}
+
+.detailStandings {
+  display: none;
 }

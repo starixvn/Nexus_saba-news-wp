@@ -348,6 +348,9 @@
 .table-dropdown-header .table-dropdown-score, .table-dropdown-header .table-dropdown-round {
   font-weight: 700;
 }
+.table-dropdown-body:last-child {
+  border-bottom: 1px solid #666;
+}
 
 .winner-minigame {
   max-width: 800px;
@@ -395,4 +398,8 @@
   .line-winner.show-mobile {
     display: block;
   }
+}
+
+.detailWinners {
+  display: none;
 }

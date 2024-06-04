@@ -181,4 +181,9 @@
             font-weight: 700;
        } 
     }
+    &-body{
+        &:last-child{
+            border-bottom : 1px solid #666;
+        }
+    }
 }
