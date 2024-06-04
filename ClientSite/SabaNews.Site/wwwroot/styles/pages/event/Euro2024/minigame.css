@@ -2185,7 +2185,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   background: rgba(0, 0, 0, 0.25);
   color: #fff;
   opacity: 0.35;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
   box-shadow: none;
 }
 
@@ -2231,6 +2231,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   align-items: center;
   justify-content: center;
   font-size: 3.2rem;
+  cursor: pointer;
 }
 .stage-items .stage-round .icon-stage i::before {
   color: #EEEEE4;
