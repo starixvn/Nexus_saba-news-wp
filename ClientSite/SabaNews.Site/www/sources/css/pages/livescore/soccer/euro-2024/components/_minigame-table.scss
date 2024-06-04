@@ -51,7 +51,7 @@
             padding: 0 1rem;
             height: 4rem;
         }
-        &:hover{
+        &:hover, &.active{
             background: #CBD5FF;
         }
         &:last-child{

@@ -212,7 +212,7 @@
     height: 4rem;
   }
 }
-.minigame-table .minigame-table-items:hover {
+.minigame-table .minigame-table-items:hover, .minigame-table .minigame-table-items.active {
   background: #CBD5FF;
 }
 .minigame-table .minigame-table-items:last-child {
