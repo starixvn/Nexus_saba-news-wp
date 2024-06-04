@@ -87,7 +87,7 @@
             width: 20rem;
             text-align: center;
             @include Mobile{
-                width: 10rem;
+                width: 7.4rem;
                 font-size: 1.1rem;
             }
         }
@@ -135,12 +135,13 @@
     position: relative;
     z-index: 9;
     min-height: 50.9rem;
+    @include Mobile{
+        min-height: 43rem;
+    }
 }
 
 .table-dropdown{
-    &.detailStandings{
-        background: #E7EAF2;
-    }
+    background: #E7EAF2;
 }
 .table-dropdown{
     &-round{
@@ -161,7 +162,7 @@
     &-time{
         width: 20rem;
         @include Mobile {
-            width: 10rem;
+            width: 7.4rem;
         }
     }
     &-header,&-body{

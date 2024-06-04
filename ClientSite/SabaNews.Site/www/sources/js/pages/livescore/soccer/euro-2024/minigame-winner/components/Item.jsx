@@ -93,12 +93,10 @@ export class Item extends PureComponent {
                     (number < 10 && selectedStage === Euro.MinigameStage.Knockout) &&
                     <div className="table-dropdown detailWinners" style={{ display: 'none' }}>
                         <div className="table-dropdown-header">
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round header-column">Vòng</div>
-                                <div className="table-dropdown-name"></div>
-                                <div className="table-dropdown-column score header-column">Điểm</div>
-                                <div className="table-dropdown-time"></div>
-                            </div>
+                            <div className="table-dropdown-column round header-column">Vòng</div>
+                            <div className="table-dropdown-name"></div>
+                            <div className="table-dropdown-column score header-column">Điểm</div>
+                            <div className="table-dropdown-time"></div>
                         </div>
                         <div className="table-dropdown-body">
                             <div className="table-dropdown-round">Vòng 1/8</div>

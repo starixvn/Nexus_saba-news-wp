@@ -254,7 +254,7 @@
 }
 @media (max-width: 767px) {
   .minigame-table .table-row-time {
-    width: 10rem;
+    width: 7.4rem;
     font-size: 1.1rem;
   }
 }
@@ -301,8 +301,13 @@
   z-index: 9;
   min-height: 50.9rem;
 }
+@media (max-width: 767px) {
+  .wrapper-scroll {
+    min-height: 43rem;
+  }
+}
 
-.table-dropdown.detailStandings {
+.table-dropdown {
   background: #E7EAF2;
 }
 
@@ -328,7 +333,7 @@
 }
 @media (max-width: 767px) {
   .table-dropdown-time {
-    width: 10rem;
+    width: 7.4rem;
   }
 }
 .table-dropdown-header, .table-dropdown-body {
