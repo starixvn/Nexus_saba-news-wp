@@ -287,6 +287,17 @@
     display: none;
   }
 }
+.minigame-table .table-row-name .user-name {
+  width: 33rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 767px) {
+  .minigame-table .table-row-name .user-name {
+    width: 18rem;
+  }
+}
 
 .minigame-table-header .table-row-time {
   font-weight: 700;

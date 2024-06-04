@@ -117,6 +117,15 @@
                     display: none;
                 }
             }
+            .user-name{
+                width: 33rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                @include Mobile{
+                    width: 18rem;
+                }
+            }
         }
     }
 }
