@@ -12,9 +12,7 @@ export class AppContainer extends Component {
         this.state = {
             selectedStage: parseInt(window.CountStageActive, 10),
             stages: [{ name: LangHelper.getResource('Stage1'), value: 1 },
-            { name: LangHelper.getResource('Stage2'), value: 2 },
-            { name: LangHelper.getResource('Stage3'), value: 3 },
-            { name: LangHelper.getResource('Stage4'), value: 4 }]
+            { name: LangHelper.getResource('Stage2'), value: 2 }]
         };
     }
 

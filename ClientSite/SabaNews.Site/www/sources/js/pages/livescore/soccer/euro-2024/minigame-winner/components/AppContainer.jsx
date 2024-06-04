@@ -13,9 +13,7 @@ export class AppContainer extends Component {
         this.state = {
             isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
             stages:[{name:LangHelper.getResource('Stage1'), value:1},
-            {name:LangHelper.getResource('Stage2'), value:2},
-            {name:LangHelper.getResource('Stage3'), value:3},
-            {name:LangHelper.getResource('Stage4'), value:4}],
+            {name:LangHelper.getResource('Stage2'), value:2}],
             selectedStage: parseInt(window.CountStageEnd, 10)
         };
     }
@@ -88,10 +86,10 @@ export class AppContainer extends Component {
                     }
                 </div>
                 <div className="line-winner show-pc">
-                    <img src="../../../../images/euro2024/minigame/winner-line.png" alt="line" class="img-res"/>
+                    <img src="../../../../images/euro2024/minigame/winner-line.png" alt="line" className="img-res"/>
                 </div>
                 <div className="line-winner show-mobile">
-                    <img src="../../../../images/euro2024/minigame/winner-line-mobile.png" alt="line" class="img-res"/>
+                    <img src="../../../../images/euro2024/minigame/winner-line-mobile.png" alt="line" className="img-res"/>
                 </div>
                 <div className="effect-winner">
                     <img src="../../../../images/euro2024/minigame/effect.png" alt="line"/>

@@ -10,13 +10,8 @@ export class Item extends PureComponent {
         super(props);
     }
 
-    handleClick = (standingLength, number, stagesSelected) =>{
-        if(stagesSelected === 4){
-            for(let num = 0; num < standingLength ; num ++){
-                if(num !== number){
-                    document.getElementsByClassName('detailStandings')[num].style.display = 'none';
-                }
-            }
+    handleClick = (number, stagesSelected) =>{
+        if(stagesSelected === Euro.MinigameStage.Knockout){
             const display = document.getElementsByClassName('detailStandings')[number].style.display;
             if(display === 'block'){
                 document.getElementsByClassName('detailStandings')[number].style.display = 'none';
@@ -46,14 +41,16 @@ export class Item extends PureComponent {
         return result;
     }
 
+    getPlayoffPoint = (points, stage) => points.filter(p => p.stage === stage).reduce((total, p) => total + p.point, 0);
+
     render() {
-        const { standing, number, standingLength, rank, stagesSelected } = this.props;
+        const { standing, number, rank, stagesSelected } = this.props;
         const updatedDate = standing.updatedDate != null ? standing.updatedDate : standing.createdDate;
         const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/YYYY, HH:mm:ss');
         return (
             <>
-                <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${stagesSelected === 4 ? 'cursor-items' : ''}`}
-                onClick={() => this.handleClick(standingLength, number, stagesSelected)}>
+                <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${stagesSelected === Euro.MinigameStage.Knockout ? 'cursor-items' : ''}`}
+                onClick={() => this.handleClick(number, stagesSelected)}>
                     <div className="minigame-table-flex ">
                         <div className="table-row table-row-index">{number + 1}</div>
                         <div className="table-row table-row-name table-user">
@@ -91,31 +88,25 @@ export class Item extends PureComponent {
                     <div className="table-dropdown-body">
                         <div className="table-dropdown-round">Vòng 1/8</div>
                         <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">{standing.detail.pointEightTeamStage}</div>
+                        <div className="table-dropdown-score">{this.getPlayoffPoint(standing.details, Euro.EightTeamStage)}</div>
                         <div className="table-dropdown-time"></div>
                     </div>
                     <div className="table-dropdown-body">
                         <div className="table-dropdown-round">Tứ Kết</div>
                         <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">{standing.detail.pointQuarterfinalsStage}</div>
+                        <div className="table-dropdown-score">{this.getPlayoffPoint(standing.details, Euro.QuarterfinalsStage)}</div>
                         <div className="table-dropdown-time"></div>
                     </div>
                     <div className="table-dropdown-body">
                         <div className="table-dropdown-round">Bán Kết</div>
                         <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">{standing.detail.pointSemifinalsStage}</div>
-                        <div className="table-dropdown-time"></div>
-                    </div>
-                    <div className="table-dropdown-body">
-                        <div className="table-dropdown-round">Tranh Hạng 3</div>
-                        <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">{standing.detail.pointThirdPlace}</div>
+                        <div className="table-dropdown-score">{this.getPlayoffPoint(standing.details, Euro.SemifinalsStage)}</div>
                         <div className="table-dropdown-time"></div>
                     </div>
                     <div className="table-dropdown-body">
                         <div className="table-dropdown-round">Chung Kết</div>
                         <div className="table-dropdown-name"></div>
-                        <div className="table-dropdown-score">{standing.detail.pointFinalStage}</div>
+                        <div className="table-dropdown-score">{this.getPlayoffPoint(standing.details, Euro.FinalStage)}</div>
                         <div className="table-dropdown-time"></div>
                     </div>
                 </div>

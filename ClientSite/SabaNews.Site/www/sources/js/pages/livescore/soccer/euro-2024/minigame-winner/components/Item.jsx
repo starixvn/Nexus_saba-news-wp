@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import { Euro } from '../../euro-constants';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -13,110 +14,110 @@ export class Item extends PureComponent {
         };
     }
 
-    handleClick = (winnerLength, number, selectedStage) =>{
-        if(selectedStage === 4){
-            for(let num = 0; num < winnerLength ; num ++){
-                if(num !== number){
-                    document.getElementsByClassName('detailWinners')[num].style.display = 'none';
-                }
-            }
+    handleClick = (number, selectedStage) => {
+        if (selectedStage === Euro.MinigameStage.Knockout) {
             const display = document.getElementsByClassName('detailWinners')[number].style.display;
-            if(display === 'block'){
+            if (display === 'block') {
                 document.getElementsByClassName('detailWinners')[number].style.display = 'none';
-            }else{
+            } else {
                 document.getElementsByClassName('detailWinners')[number].style.display = 'block';
             }
         }
     };
 
-    checkUploadLink(Winner){
+    checkUploadLink(Winner) {
         let result = false;
         const http = 'http://';
         const https = 'https://';
-        if(Winner.icon != null && (Winner.icon.toLowerCase().includes(https) || Winner.icon.toLowerCase().includes(http))){
+        if (Winner.icon != null && (Winner.icon.toLowerCase().includes(https) || Winner.icon.toLowerCase().includes(http))) {
             result = true;
         }
         return result;
     }
 
-    checkUploadImg(Winner){
+    checkUploadImg(Winner) {
         let result = false;
         const http = 'http://';
         const https = 'https://';
-        if(Winner.icon != null && !Winner.icon.toLowerCase().includes(https) && !Winner.icon.toLowerCase().includes(http)){
+        if (Winner.icon != null && !Winner.icon.toLowerCase().includes(https) && !Winner.icon.toLowerCase().includes(http)) {
             result = true;
         }
         return result;
     }
+
+    getPlayoffPoint = (points, stage) => points.filter(p => p.stage === stage).reduce((total, p) => total + p.point, 0);
 
     render() {
-        const { Winner, number, winnerLength, selectedStage } = this.props;
+        const { Winner, number, selectedStage } = this.props;
         const updatedDate = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
         const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/YYYY, HH:mm:ss');
         return (
             <>
                 {
                     number < 10 &&
-                        <div className= {`minigame-table-items ${selectedStage === 4 ? 'cursor-items' : ''}`}
-                        onClick={() => this.handleClick(winnerLength, number, selectedStage)}>
-                            <div className="minigame-table-flex ">
-                                <div className="table-row table-row-index">{number + 1}</div>
-                                <div className="table-row table-row-name table-user">
-                                    <div className="user-avatar">
-                                        {
-                                            Winner.icon === null && <span className="non-image">{Winner.userName.slice(0,1)}</span>
-                                        }
-                                        {
-                                            (this.checkUploadLink(Winner)) &&
-                                            <img src={Winner.icon} alt={Winner.userName.slice(0,1)} />
-                                        }
-                                        {
-                                            this.checkUploadImg(Winner) &&
-                                            <img src={'/uploads/' + Winner.icon}  alt={Winner.userName.slice(0,1)} />
-                                        }
-                                    </div>
-                                    <div className="user-name">
-                                        {Winner.userName}
-                                    </div>
+                    <div className={`minigame-table-items ${selectedStage === Euro.MinigameStage.Knockout ? 'cursor-items' : ''}`}
+                        onClick={() => this.handleClick(number, selectedStage)}>
+                        <div className="minigame-table-flex ">
+                            <div className="table-row table-row-index">{number + 1}</div>
+                            <div className="table-row table-row-name table-user">
+                                <div className="user-avatar">
+                                    {
+                                        Winner.icon === null && <span className="non-image">{Winner.userName.slice(0, 1)}</span>
+                                    }
+                                    {
+                                        (this.checkUploadLink(Winner)) &&
+                                        <img src={Winner.icon} alt={Winner.userName.slice(0, 1)} />
+                                    }
+                                    {
+                                        this.checkUploadImg(Winner) &&
+                                        <img src={'/uploads/' + Winner.icon} alt={Winner.userName.slice(0, 1)} />
+                                    }
                                 </div>
-                                <div className="table-row table-row-score">{Winner.point}</div>
-                                <div className="table-row table-row-time">
-                                    {dateShow}
+                                <div className="user-name">
+                                    {Winner.userName}
                                 </div>
                             </div>
+                            <div className="table-row table-row-score">{Winner.point}</div>
+                            <div className="table-row table-row-time">
+                                {dateShow}
+                            </div>
                         </div>
+                    </div>
                 }
                 {
-                    (number < 10 && selectedStage === 4) &&
-                    <div className="table-dropdown detailWinners" style={{display:'none'}}>
+                    (number < 10 && selectedStage === Euro.MinigameStage.Knockout) &&
+                    <div className="table-dropdown detailWinners" style={{ display: 'none' }}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-row">
                                 <div className="table-dropdown-column round header-column">Vòng</div>
+                                <div className="table-dropdown-name"></div>
                                 <div className="table-dropdown-column score header-column">Điểm</div>
+                                <div className="table-dropdown-time"></div>
                             </div>
                         </div>
                         <div className="table-dropdown-body">
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Vòng 1/8</div>
-                                <div className="table-dropdown-column score">{Winner.detail.pointEightTeamStage}</div>
-                            </div>
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Tứ Kết</div>
-                                <div className="table-dropdown-column score">{Winner.detail.pointQuarterfinalsStage}</div>
-                            </div>
-
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Bán Kết</div>
-                                <div className="table-dropdown-column score">{Winner.detail.pointSemifinalsStage}</div>
-                            </div>
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Tranh Hạng 3</div>
-                                <div className="table-dropdown-column score">{Winner.detail.pointThirdPlace}</div>
-                            </div>
-                            <div className="table-dropdown-row">
-                                <div className="table-dropdown-column round">Chung Kết</div>
-                                <div className="table-dropdown-column score">{Winner.detail.pointFinalStage}</div>
-                            </div>
+                            <div className="table-dropdown-round">Vòng 1/8</div>
+                            <div className="table-dropdown-name"></div>
+                            <div className="table-dropdown-score">{this.getPlayoffPoint(Winner.details, Euro.EightTeamStage)}</div>
+                            <div className="table-dropdown-time"></div>
+                        </div>
+                        <div className="table-dropdown-body">
+                            <div className="table-dropdown-round">Tứ Kết</div>
+                            <div className="table-dropdown-name"></div>
+                            <div className="table-dropdown-score">{this.getPlayoffPoint(Winner.details, Euro.QuarterfinalsStage)}</div>
+                            <div className="table-dropdown-time"></div>
+                        </div>
+                        <div className="table-dropdown-body">
+                            <div className="table-dropdown-round">Bán Kết</div>
+                            <div className="table-dropdown-name"></div>
+                            <div className="table-dropdown-score">{this.getPlayoffPoint(Winner.details, Euro.SemifinalsStage)}</div>
+                            <div className="table-dropdown-time"></div>
+                        </div>
+                        <div className="table-dropdown-body">
+                            <div className="table-dropdown-round">Chung Kết</div>
+                            <div className="table-dropdown-name"></div>
+                            <div className="table-dropdown-score">{this.getPlayoffPoint(Winner.details, Euro.FinalStage)}</div>
+                            <div className="table-dropdown-time"></div>
                         </div>
                     </div>
                 }
