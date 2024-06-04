@@ -2244,6 +2244,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   line-height: normal;
   font-weight: 600;
   color: #fff;
+  display: flex;
 }
 .stage-items .count-and-time li.hight-light {
   color: #FFCA00;
