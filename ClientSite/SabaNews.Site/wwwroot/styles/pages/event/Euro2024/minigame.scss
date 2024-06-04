@@ -126,7 +126,6 @@
     margin: 0 auto;
     .row-stage{
         display: flex;
-        align-items: center;
         gap: 2rem;
         @include Mobile{
             flex-direction: column;

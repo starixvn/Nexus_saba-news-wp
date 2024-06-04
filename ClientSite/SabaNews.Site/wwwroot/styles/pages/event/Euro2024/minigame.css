@@ -2200,6 +2200,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 @media (max-width: 767px) {
   .stage-items {
     padding: 2.4rem 1.2rem;
+    min-height: 15.2rem;
   }
 }
 .stage-items .line-stage {
@@ -2475,7 +2476,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .main-stage .row-stage {
   display: flex;
-  align-items: center;
   gap: 2rem;
 }
 @media (max-width: 767px) {

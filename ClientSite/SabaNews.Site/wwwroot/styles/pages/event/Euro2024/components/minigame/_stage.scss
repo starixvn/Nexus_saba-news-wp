@@ -7,6 +7,7 @@
     overflow: hidden;
     @include Mobile{
         padding: 2.4rem 1.2rem;
+        min-height: 15.2rem;
     }
     .line-stage{
         position: absolute;
