@@ -17,7 +17,9 @@ export class Item extends PureComponent {
     handleClick = (winnerLength, number, selectedStage) => {
         if (selectedStage == Euro.MinigameStage.Knockout) {
             for(let num = 0; num < winnerLength ; num ++){
-                document.getElementsByClassName('detailWinners')[num].style.display = 'none';
+                if(num !== number){
+                    document.getElementsByClassName('detailWinners')[num].style.display = 'none';
+                }
             }
             const display = document.getElementsByClassName('detailWinners')[number].style.display;
             if (display === 'block') {
