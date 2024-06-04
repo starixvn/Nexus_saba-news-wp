@@ -45,6 +45,10 @@
         window.User = '@Model.UserId';
         window.CountStageActive = '@countStageActive';
         window.CountStageEnd = '@countStageEnd';
+        window.timeStartStage = [
+            '@Euro2024.TimestampMinigameStage01Start',
+            '@Euro2024.TimestampMinigameStage02Start'
+        ];
     </script>
     <environment include="Development">
         <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
@@ -168,12 +172,9 @@
                             var icon = GetIconStage(status);
                             var isActive = CheckActive(status);
 
-                            <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status == Euro2024.OnEndStage ? "end-stage" : "")
-                                            @(status != Euro2024.LockStage && status != Euro2024.OnEndStage && status != Euro2024.BeforeStartedStage ?
-                                        "stage-votes" : "")" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
-                                
-                                <div data-stage="@(i+1)" class="stage-round  @(status != Euro2024.LockStage && status != Euro2024.OnEndStage && status != Euro2024.BeforeStartedStage ?
-                                        "stage-votes-round" : "") @(isActive ? "active" : "")">
+                            <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status == Euro2024.OnEndStage ? "end-stage" : "") 
+                                            @(isActive ? "stage-votes" : "")" data-status="@status" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
+                                <div data-stage="@(i+1)" class="stage-round  @(isActive ? "stage-votes-round active" : "") ">
                                     <h2 class="btn-event @(isActive ? "btn-event-warning" : "btn-event-lock")">Giai Đoạn @(i + 1)</h2>
                                     <a class="icon-stage @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
                                 </div>

@@ -237,28 +237,23 @@
 
         public static bool CheckActive(string status)
         {
-            bool result = true;
-            if (status == WorldCup2022.LockStage || status == WorldCup2022.OnEndStage)
-            {
-                result = false;
-            }
-            return result;
+            return status == Euro2024.OnStartedStage || status == Euro2024.BeforeEndStage;
         }
 
         public static string GetIconStage(string status)
         {
             string iconStage;
-            if (status == WorldCup2022.LockStage || status == WorldCup2022.BeforeStartedStage)
+            if (status == Euro2024.LockStage || status == Euro2024.BeforeStartedStage)
             {
-                iconStage = WorldCup2022.IconLock;
+                iconStage = Euro2024.IconLock;
             }
-            else if (status == WorldCup2022.OnEndStage)
+            else if (status == Euro2024.OnEndStage)
             {
-                iconStage = WorldCup2022.IconWinner;
+                iconStage = Euro2024.IconWinner;
             }
-            else if (status == WorldCup2022.OnStartedStage)
+            else if (status == Euro2024.OnStartedStage)
             {
-                iconStage = WorldCup2022.IconStanding;
+                iconStage = Euro2024.IconStanding;
             }
             else
             {
@@ -298,7 +293,7 @@
         public static string GetCountDownStage(string status, IList<Match> matches, int numStage)
         {
             const int SubtractMinutes = -30;
-            string statusStage = status.Contains(WorldCup2022.BeforeStartedStage) ?
+            string statusStage = status.Contains(Euro2024.BeforeStartedStage) ?
                 Euro2024.startStages[numStage] :
                 matches[Euro2024.indexMatches[numStage]].StartTime.AddHours(MGTPlus).AddMinutes(SubtractMinutes).ToString(CultureInfo.InvariantCulture);
             return statusStage;

@@ -1,12 +1,7 @@
 ﻿var euro2024_minigame = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
     var tab = window.location.hash;
-    const timeStartStage = [
-        "11/16/2022, 8:00:00 AM",
-        "11/22/2022, 8:00:00 AM",
-        "11/26/2022, 8:00:00 AM",
-        "11/30/2022, 8:00:00 AM"
-    ];
+    const timeStartStage = window.timeStartStage;
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
@@ -153,8 +148,9 @@
     }
 
     function countDownTime() {
-        for (let i = 0; i < 4; i++) {
-            var statusStage = getStatusStage(i);
+        for (let i = 0; i < 2; i++) {
+            var stageElemement = $('#boxStage' + (i + 1));
+            var statusStage = stageElemement.data('status');
             if (statusStage == "Sắp diễn ra" || statusStage == "Sắp kết thúc") {
                 let timeCountDown = $("#stage" + (i + 1).toString()).data('timecountdown');
                 let countDown = new Date(timeCountDown).getTime(),
@@ -201,35 +197,9 @@
             }, second);
     }
 
-    function getStatusStage(i) {
-        var timeSpanNow = new Date();
-        var checkNow = (new Date(timeStartStage[i]) - timeSpanNow) / 1000;
-        var statusStage;
-        if (checkNow > 0) {
-            if (checkNow > 3600) {
-                statusStage = "Chưa diễn ra";
-            }
-            else { statusStage = "Sắp diễn ra"; }
-        }
-        else {
-            var timeEnd = $("#boxStage" + (i + 1).toString()).data('timeendstage');
-            var timeSpanEnd = (new Date(timeEnd).getTime() / 1000);
-            var timeSpanNowSecond = timeSpanNow.getTime() / 1000;
-            var checkNowEnd = timeSpanEnd - timeSpanNowSecond;
-            if (checkNowEnd > 5400) {
-                statusStage = "Đang diễn ra";
-            }
-            else if (checkNowEnd <= 5400 && checkNowEnd > 1800) {
-                statusStage = "Sắp kết thúc";
-            }
-            else { statusStage = "Đã kết thúc"; }
-        }
-
-        return statusStage;
-    }
 
     function addClassBody() {
-        var statusStageOne = getStatusStage(0);
+        var statusStageOne = $('#boxStage1');
         if (statusStageOne == "Chưa diễn ra" || statusStageOne == "Sắp diễn ra") {
             document.body.classList.add('before-start-minigame')
         }
