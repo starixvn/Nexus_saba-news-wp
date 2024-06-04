@@ -279,10 +279,9 @@
         public static int GetCountStageEndMinigame(IList<Match> matches)
         {
             int result = 0;
-            const int FinishStatus = 50;
             for (int i = 0; i < Euro2024.maxCountStage; i++)
             {
-                if (matches[Euro2024.indexMatches[i]].Status == FinishStatus)
+                if (matches[Euro2024.indexMatches[i]].Status == MatchConstants.Finished)
                 {
                     result = i + 1;
                 }

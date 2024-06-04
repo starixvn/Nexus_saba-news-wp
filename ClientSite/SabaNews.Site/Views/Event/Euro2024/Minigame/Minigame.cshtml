@@ -172,8 +172,8 @@
                             var icon = GetIconStage(status);
                             var isActive = CheckActive(status);
 
-                            <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status == Euro2024.OnEndStage ? "end-stage" : "") 
-                                            @(isActive ? "stage-votes" : "")" data-status="@status" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
+                            <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status == Euro2024.OnEndStage ? "end-stage" : "") @(isActive ? "stage-votes" : "")" 
+                                    data-status="@status" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
                                 <div data-stage="@(i+1)" class="stage-round  @(isActive ? "stage-votes-round active" : "") ">
                                     <h2 class="btn-event @(isActive ? "btn-event-warning" : "btn-event-lock")">Giai Đoạn @(i + 1)</h2>
                                     <a class="icon-stage @(isActive ? "btn-event-warning" : "btn-event-lock") @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
@@ -183,7 +183,7 @@
                                     {
                                         <li id="stage@(i+1)" class="status-stage-time" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
                                             @status
-                                            @if (status != Euro2024.OnStartedStage && status != Euro2024.OnEndStage)
+                                            @if (status == Euro2024.BeforeStartedStage || status == Euro2024.BeforeEndStage)
                                             {
                                                 <span id="hours@(i+1)" style="margin-left : 5px"></span>
                                                 <span id="minutes@(i+1)"></span>
@@ -198,7 +198,7 @@
                                     @if (status == Euro2024.LockStage)
                                     {
                                         <li class="font-weight-bold">Thời gian bắt đầu</li>
-                                        <li class="font-weight-bold">@Euro2024.startStages[i]</li>
+                                        <li class="font-weight-bold">@DateTime.Parse(Euro2024.startStages[i]).ToString("dd/MM/yyyy HH:mm:ssss tt")</li>
                                     }
                                 </ul>
                                 <div class="line-stage">
@@ -212,8 +212,15 @@
         </div>
         <div class="bg-stage"></div>
     </div>
-    <div id="minigame-standing" class="minigame-block"></div>
-    <div id="minigame-winners" class="minigame-block"></div>
+    @if(countStageActive > 0)
+    {
+        <div id="minigame-standing" class="minigame-block"></div>
+    }
+    @if(countStageEnd > 0)
+    {
+        <div id="minigame-winners" class="minigame-block"></div>
+    }
+    
 </div>
 
 <div class="euro-modal">
