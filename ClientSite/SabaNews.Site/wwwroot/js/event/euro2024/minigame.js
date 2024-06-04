@@ -18,7 +18,7 @@
 
         $('.btn-standing').on('click', function () {
             $('html, body').animate({
-                scrollTop: 1400
+                scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
         });
 
@@ -55,13 +55,13 @@
 
         $('.icon-minigame_list_user').click(function () {
             $('html, body').animate({
-                scrollTop: $("#minigame-winners").offset().top
+                scrollTop: $("#minigame-winners").offset().top - 77
             }, 500);
         });
 
         $('.icon-minigame_standing').click(function () {
             $('html, body').animate({
-                scrollTop: 1400
+                scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
         });
 
@@ -116,7 +116,7 @@
             $('.header-nav-event li a').removeClass('active');
             $(this).addClass('active');
             $('html, body').animate({
-                scrollTop: 1400
+                scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
         })
 
