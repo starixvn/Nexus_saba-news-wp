@@ -151,6 +151,10 @@
   }
 }
 
+.minigame-table {
+  border-radius: 5px;
+  overflow: hidden;
+}
 .minigame-table .minigame-table-header {
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #666;
@@ -177,6 +181,23 @@
   border-radius: 0 0 5px 5px;
   background: #FFFDF9;
   overflow: hidden;
+  overflow-y: auto;
+  max-height: 51.9rem;
+}
+@media (max-width: 767px) {
+  .minigame-table .minigame-table-body {
+    max-height: 39.9rem;
+  }
+}
+.minigame-table .minigame-table-body::-webkit-scrollbar {
+  width: 0.6rem;
+}
+.minigame-table .minigame-table-body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.minigame-table .minigame-table-body::-webkit-scrollbar-track {
+  background: transparent;
 }
 .minigame-table .minigame-table-items {
   border-bottom: 1px solid #666;
