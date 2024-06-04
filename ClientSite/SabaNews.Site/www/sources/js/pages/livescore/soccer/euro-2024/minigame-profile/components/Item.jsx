@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
-import { getVoteResult, getMinigameStageStartTime } from '../../common.functions';
+import { getVoteResult } from '../../common.functions';
 import Site from '@jsroot/common/site';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import dayjs from 'dayjs';
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class Item extends PureComponent {
@@ -24,31 +22,12 @@ export default class Item extends PureComponent {
     };
 
     getStageStatus = () => {
-        const { matches, stage } = this.props;
-        const lastMatch = matches[matches.length - 1];
-        const startTime = getMinigameStageStartTime(stage);
-        const lastTime = DateTimeService.convertFromUTC(lastMatch.startTime);
-        const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
-        const startMinutes = startTime.diff(currentTime, 'minutes');
-        const lastMinutes = lastTime.diff(currentTime, 'minutes');
-        let status = '';
-        let isLock = true;
-        if(startMinutes > 60) {
-            status = LangHelper.getResource('NotStarted');
-        } else if(startMinutes <= 60 && startMinutes > 0) {
-            status = LangHelper.getResource('Upcomming');
-        } else if( startMinutes <= 0) {
-            isLock = false;
-            status = LangHelper.getResource('Inprogress');
+        const { status } = this.props;
+        let isActive = status.isActive;
+        if(status.status === LangHelper.getResource('Finish')) {
+            isActive = true;
         }
-        if(lastMinutes <= 30) {
-            isLock = false;
-            status = LangHelper.getResource('Finish');
-        } else if(lastMinutes <= 60) {
-            isLock = false;
-            status = LangHelper.getResource('Ending');
-        }
-        return {status, isLock};
+        return {status: status.status, isActive};
     };
 
     handleViewDetail = event => {
@@ -63,7 +42,6 @@ export default class Item extends PureComponent {
     render() {
         const { stage } = this.props;
         const stageStatus = this.getStageStatus();
-        
         return (
 
             <div className="minigame-table-items">
@@ -78,10 +56,10 @@ export default class Item extends PureComponent {
                     <div className="table-row table-row-time">
                         {this.getTotalScore()}
                         {
-                            stageStatus.isLock && <i className="icon-icon_lock view-minigame-detail" />
+                            !stageStatus.isActive && <i className="icon-icon_lock view-minigame-detail" />
                         }
                         {
-                            !stageStatus.isLock && <i className="icon-bxh_view view-minigame-detail" onClick={this.handleViewDetail} />
+                            stageStatus.isActive && <i className="icon-bxh_view view-minigame-detail" onClick={this.handleViewDetail} />
                         }
                     </div>
                 </div>

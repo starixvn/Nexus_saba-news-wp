@@ -7,8 +7,6 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import dayjs from 'dayjs';
-import Site from '@jsroot/common/site';
-import DataService from '@jsroot/common/dataService';
 import { EqualHeight, EqualHeightElement } from 'react-equal-height';
 import { Euro } from '../../euro-constants';
 

@@ -354,7 +354,6 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Redirect(Url.Action("Minigame", EuroController));
             }
-           
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
@@ -451,8 +450,11 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Json(null);
             }
+            var data = await dataControlService.GetMatchBySeasonAsync(model.LeagueId, model.SeasonId);
+            var matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             var votes = await minigameService.GetMinigameByUserAsync(sessionService.User.Id, model.LeagueId, model.SeasonId);
-            return Json(votes);
+            var statusStages = EuroHelper.GetMinigameStageStatus(matches);
+            return Json(new { league = data.League, matches, votes, statusStages });
         }
 
         [HttpPost]

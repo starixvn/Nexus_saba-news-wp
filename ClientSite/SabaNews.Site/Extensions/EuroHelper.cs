@@ -1,11 +1,13 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using Org.BouncyCastle.Crypto.Engines;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Constants.Livescore;
     using SabaNews.Core.Helper;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models.Event.Minigame;
     using SabaNews.Models.Event.WorldCup;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -345,6 +347,18 @@
                 return false;
             }
             return true;
+        }
+
+        public static List<GetMinigameStageStatusModel> GetMinigameStageStatus(IList<Match> matches)
+        {
+            var result = new List<GetMinigameStageStatusModel>();
+            for (int i = 1; i <= Euro2024.maxCountStage; i++)
+            {
+                var statusStage = GetStatusStage(matches, i);
+                var isActive = CheckActive(statusStage);
+                result.Add(new GetMinigameStageStatusModel { Stage = i, IsActive = isActive, Status = statusStage });
+            }
+            return result;
         }
 
     }

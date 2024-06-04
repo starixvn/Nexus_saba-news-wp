@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-const minigameDetailSlice = createSlice({
-    name: 'minigameDetailSlice',
+const minigameProfileSlice = createSlice({
+    name: 'minigameProfileSlice',
     initialState: {
         matches: null,
         stages: null,
         league: null,
-        votes: null
+        votes: null,
+        statusStages: null
     },
     reducers: {
         setMatches: (state, action) => {
@@ -27,16 +28,20 @@ const minigameDetailSlice = createSlice({
         },
         setVotes: (state, action) => {
             state.votes = action.payload;
+        },
+        setStatusStages: (state, action) => {
+            state.statusStages = action.payload;
         }
     }
 });
 
-const { actions, reducer } = minigameDetailSlice;
+const { actions, reducer } = minigameProfileSlice;
 
 export const {
     setMatches,
     setLeague,
-    setVotes
+    setVotes,
+    setStatusStages
 } = actions;
 
 export default reducer;

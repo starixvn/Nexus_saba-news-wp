@@ -68,7 +68,7 @@ namespace SabaNews.Core.Constants
         public const string RecordUrl = "ky-luc-giai-bong-da-euro-294250.html";
 
         public const string TimestampMinigameStage01Start = "06/04/2024, 11:30:00 AM";
-        public const string TimestampMinigameStage02Start = "06/04/2024, 11:30:00 AM";
+        public const string TimestampMinigameStage02Start = "06/04/2024, 03:33:00 PM";
         public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
         public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
 

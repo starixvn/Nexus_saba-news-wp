@@ -9,18 +9,17 @@ export class AppContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.getMatches();
-        this.props.getVotes();
+        this.props.getProfileData();
     }
 
     render() {
-        const { matches, votes } = this.props;
+        const { matches, votes, statusStages } = this.props;
         if(votes === null || matches === null) {
             return null;
         }
         return(
             <>
-                <Grid matches={matches} votes={votes} />
+                <Grid matches={matches} votes={votes}  statusStages={statusStages} />
             </>
         );
     }
@@ -29,8 +28,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { matches, votes } = state;
-    return { matches, votes };
+    const { matches, votes, statusStages } = state;
+    return { matches, votes, statusStages };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

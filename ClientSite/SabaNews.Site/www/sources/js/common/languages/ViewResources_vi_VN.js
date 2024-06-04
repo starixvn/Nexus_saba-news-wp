@@ -8,7 +8,7 @@
     ExtraTimeEnd: 'Kết thúc hiệp phụ',
     EmptyFavLeague: 'Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.',
     Ending: 'sắp kết thúc',
-    Finish: 'Kết thúc',
+    Finish: 'Đã kết thúc',
     FullTimeEnd: 'Kết thúc hiệp 2',
     FinalStage:'Chung kết',
     Fixture: 'Lịch thi đấu',

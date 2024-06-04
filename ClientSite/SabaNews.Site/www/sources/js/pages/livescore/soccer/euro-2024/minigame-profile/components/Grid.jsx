@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Item from './Item';
 import { Euro } from '../../euro-constants';
-import { groupMatchesByStage, getMatchesByStage } from '../../common.functions';
+import { getMatchesByStage } from '../../common.functions';
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
@@ -13,9 +13,13 @@ export default class Grid extends PureComponent {
         return votes.filter(item => item.stage === stage);
     };
 
+    getStatusByStage = stage => {
+        const { statusStages } = this.props;
+        return statusStages.find(s => s.stage === stage);
+    }
+
     render() {
-        const { matches } = this.props;
-        console.log(groupMatchesByStage(matches));
+        const { matches, statusStages } = this.props;
         return (
             <div className="wrapper-scroll">
                <div className="minigame-table">
@@ -27,9 +31,11 @@ export default class Grid extends PureComponent {
                     </div>
                     <div className="minigame-table-body">
                         <Item stage={Euro.MinigameStage.Group}
+                            status={this.getStatusByStage(Euro.MinigameStage.Group)}
                             votes={this.getVotesByStage(Euro.MinigameStage.Group)}
                             matches={getMatchesByStage(matches, Euro.MinigameStage.Group)} />
                         <Item stage={Euro.MinigameStage.Knockout}
+                            status={this.getStatusByStage(Euro.MinigameStage.Knockout)}
                             votes={this.getVotesByStage(Euro.MinigameStage.Knockout)}
                             matches={getMatchesByStage(matches, Euro.MinigameStage.Knockout)}/>
                     </div>
