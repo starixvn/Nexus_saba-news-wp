@@ -297,8 +297,8 @@ namespace SabaNews.Site.Controllers.Event
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
-                Description = WorldCup2022.TitleMinigame,
-                Slug = WorldCup2022.UrlMinigameSlug
+                Description = Euro2024.DescriptionMinigame,
+                Slug = Euro2024.Minigame
             };
             var isLogin = sessionService.User != null;
             var model = new EuroMinigameViewModel
@@ -334,8 +334,8 @@ namespace SabaNews.Site.Controllers.Event
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
-                Description = Euro2024.TitleMinigame,
-                Slug = Euro2024.UrlMinigameSlug
+                Description = Euro2024.DescriptionMinigame,
+                Slug = Euro2024.Minigame
             };
             var model = new EuroMinigameStageViewModel
             {
@@ -357,8 +357,8 @@ namespace SabaNews.Site.Controllers.Event
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
-                Description = Euro2024.TitleMinigame,
-                Slug = Euro2024.UrlMinigameSlug
+                Description = Euro2024.DescriptionMinigame,
+                Slug = Euro2024.Minigame
             };
             var matches = await GetEuroMatch();
             var model = new EuroMinigameStageViewModel
@@ -386,8 +386,8 @@ namespace SabaNews.Site.Controllers.Event
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
-                Description = Euro2024.TitleMinigame,
-                Slug = Euro2024.UrlMinigameSlug
+                Description = Euro2024.DescriptionMinigame,
+                Slug = Euro2024.Minigame
             };
             var matches = await GetEuroMatch();
             var model = new EuroMinigameStageViewModel

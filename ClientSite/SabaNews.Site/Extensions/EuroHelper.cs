@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Site.Extensions
 {
-    using Org.BouncyCastle.Crypto.Engines;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Constants.Livescore;
     using SabaNews.Core.Helper;
@@ -303,8 +302,8 @@
 
         public static string GetStatusStage(IList<Match> matches, int numStage)
         {
-            var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
-            var timeStartStage = DateTimeOffset.Parse(Euro2024.startStages[numStage - 1], CultureInfo.InvariantCulture).DateTime - DateTime.UnixEpoch;
+            var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch.DateTime;
+            var timeStartStage = DateTimeOffset.Parse(Euro2024.startStages[numStage - 1], CultureInfo.InvariantCulture).DateTime - DateTimeOffset.UnixEpoch.DateTime;
             var secondsUntilStageStart = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             string statusStage;
             if (secondsUntilStageStart > 0)
@@ -339,7 +338,7 @@
 
         public static bool IsVoted(DateTime startTime)
         {
-            var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+            var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch.DateTime;
             var timeSpanMatch = startTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
             var secondsUntilMatchStart = timeSpanMatch.TotalMinutes - timeSpanNow.TotalMinutes;
             return secondsUntilMatchStart > ThirtyMins;
@@ -349,7 +348,7 @@
         {
 
             var timeSpanNow = DateTimeUtilize.UtcNow().AddHours(MGTPlus).DateTime - DateTimeOffset.UnixEpoch.DateTime;
-            var timeStartStage = DateTimeOffset.Parse(Euro2024.startStages[numStage - 1], CultureInfo.InvariantCulture).DateTime - DateTime.UnixEpoch;
+            var timeStartStage = DateTimeOffset.Parse(Euro2024.startStages[numStage - 1], CultureInfo.InvariantCulture).DateTime - DateTimeOffset.UnixEpoch.DateTime;
             var checkNow = timeStartStage.TotalSeconds - timeSpanNow.TotalSeconds;
             if (checkNow > 0)
             {

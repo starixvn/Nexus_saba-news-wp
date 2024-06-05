@@ -14,6 +14,7 @@
     SemiFinalMatches: [59159353, 59159354],
     MinigameUrl: 'euro-2024/minigame',
     MinigameProfileUrl: 'euro-2024/minigame/du-doan-cua-toi',
+    MinigameProfileStageUrl: 'euro-2024/minigame/du-doan-cua-toi/giai-doan',
     MinigameStage: {
         Group: 1,
         Knockout: 2

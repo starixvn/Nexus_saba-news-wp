@@ -1,7 +1,6 @@
 ﻿var euro2024_minigame = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
     var tab = window.location.hash;
-    const timeStartStage = window.timeStartStage;
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
@@ -34,22 +33,32 @@
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });
 
-        $('.btn-nav-prediction').click(function () {
+        $('.btn-nav-prediction').click(function (event) {
             if (!isLogin) {
                 $('#joining').modal('show');
             }
             else {
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet";
+                var url = window.location.origin + "/euro-2024/minigame/du-doan-cua-toi";
+                if (event.ctrlKey) {
+                    window.open(url, '_blank');
+                } else {
+                    window.location = url;
+                }
             }
         });
 
-        $('.stage-votes-round').click(function () {
+        $('.stage-votes-round').click(function (event) {
             if (!isLogin) {
                 $('#joining').modal('show');
             }
             else {
                 var stage = $(this).data("stage");
-                window.location = window.location.origin + "/euro-2024/minigame/giai-doan/" + stage;
+                var url = window.location.origin + "/euro-2024/minigame/giai-doan/" + stage;
+                if (event.ctrlKey) {
+                    window.open(url, '_blank');
+                } else {
+                    window.location = url;
+                }
             }
         });
 

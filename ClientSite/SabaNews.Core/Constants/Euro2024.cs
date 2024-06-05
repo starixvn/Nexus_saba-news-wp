@@ -67,7 +67,7 @@ namespace SabaNews.Core.Constants
         public const string MascotUrl = "linh-vat-euro-2024-nguon-goc-va-y-nghia-289380.html";
         public const string RecordUrl = "ky-luc-giai-bong-da-euro-294250.html";
 
-        public const string TimestampMinigameStage01Start = "06/04/2024, 11:30:00 AM";
+        public const string TimestampMinigameStage01Start = "06/05/2024, 5:00:00 PM";
         public const string TimestampMinigameStage02Start = "06/04/2024, 03:33:00 PM";
         public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
         public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
@@ -83,12 +83,10 @@ namespace SabaNews.Core.Constants
         public const string IconWinner = "icon-minigame_list_user";
         public const string IconStanding = "icon-minigame_standing";
 
-        public const string Minigame = "Minigame";
-        public const string TitleMinigame = "Sự kiện World Cup 2022 - DỰ ĐOÁN HAY QUÀ LIỀN TAY";
+        public const string Minigame = "minigame";
+        public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
+        public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
 
-        public const string MinigameSlug = "minigame-world-cup-2022";
-        public const string UrlMinigameSlug = "su-kien-du-doan-sung-nhan-qua-khung";
-        public const string TitleMinigameSlug = "Sự kiện World Cup 2022 - DỰ ĐOÁN HAY QUÀ LIỀN TAY";
 
         public const int maxCountStage = 2;
         public const byte MinigameStage1 = 1;

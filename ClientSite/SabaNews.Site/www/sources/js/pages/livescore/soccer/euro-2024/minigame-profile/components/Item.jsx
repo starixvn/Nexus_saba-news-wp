@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { getVoteResult } from '../../common.functions';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
+import { Euro } from '../../euro-constants';
 
 export default class Item extends PureComponent {
     constructor(props) {
@@ -31,7 +32,7 @@ export default class Item extends PureComponent {
     };
 
     handleViewDetail = event => {
-        const url = Site.resolveClientUrl(`world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/${this.props.stage}`);
+        const url = Site.resolveClientUrl(`${Euro.MinigameProfileStageUrl}/${this.props.stage}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

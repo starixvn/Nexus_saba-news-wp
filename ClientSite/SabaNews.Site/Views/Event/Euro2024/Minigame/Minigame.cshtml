@@ -56,6 +56,7 @@
         <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/pages/livescore/soccer/euro-2024/minigame-standing.chunk.js" asp-append-version="true"></script>
         <script src="~/js/dev/pages/livescore/soccer/euro-2024/minigame-winner.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/event/euro2024/minigame.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
@@ -63,9 +64,10 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/minigame-standing.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/minigame-winner.chunk.js" asp-append-version="true"></script>
+         <script src="~/minify/js/euro-2024-minigame.min.js" asp-append-version="true"></script>
     </environment>
 
-    <script src="~/js/event/euro2024/minigame.js" asp-append-version="true"></script>
+   
 }
 
 @(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
@@ -122,7 +124,7 @@
             if (Model.IsLogin)
             {
                 <li>
-                    <a href=@Url.Action("MinigameProfile", "WorldCup2022") class="click-my-prediction">
+                    <a href=@Url.Action("MinigameProfile", "Euro2024") class="click-my-prediction">
                         <i class="icon icon-minigame_my_fav"></i>
                         <span>Dự Đoán Của Tôi</span>
                     </a>

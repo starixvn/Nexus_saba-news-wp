@@ -691,6 +691,17 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/euro-2024-minigame.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/euro2024/minigame.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 
 ]
