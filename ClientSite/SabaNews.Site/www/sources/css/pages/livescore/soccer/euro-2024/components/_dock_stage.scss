@@ -1,8 +1,8 @@
 .statistic{
-    width: 27.6rem;
+    width: 22rem;
     position: -webkit-sticky;
     position: sticky;
-    top: 7rem;
+    top: 9rem;
     @include tableMobile{
         position: unset;
         text-align: center;
@@ -12,32 +12,33 @@
     &-sticky{
         position: -webkit-sticky;
         position: sticky;
-        top: 7rem;
+        top: 9rem;
+        border: 1px solid #FFCA00;
+        border-radius: 5px;
     }
     &_stage{
         font-weight: 700;
-        font-size: 2.4rem;
+        font-size: 2rem;
         line-height: 2.8rem;
-        color: #E8E8D6;
+        color: #222;
         text-transform: uppercase;
-        padding-bottom: 1.4rem;
-        border-bottom: 2px solid;
-        @include tableMobile{
-            font-size: 2rem;
-            padding-bottom: 1rem;
-        }
+        padding: .4rem 0;
+        text-align: center;
+        background: #FFCA00;
     }
     &_round{
-        font-weight: 700;
+        font-weight: 600;
         font-size: 1.6rem;
         line-height: 2.8rem;
-        color: #E8E8D6;
-        margin-top: 1rem;
+        color: #FFCA00;
+        padding: .5rem 1rem;
+        text-align: center;
         @include tableMobile{
             font-size: 1.6rem;
         }
         .number-big{
             font-size: 2rem;
+            font-weight: 700;
             @include tableMobile{
                 font-size: 1.8rem;
             }

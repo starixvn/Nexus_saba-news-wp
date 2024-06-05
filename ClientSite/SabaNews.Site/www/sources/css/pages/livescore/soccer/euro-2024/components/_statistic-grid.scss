@@ -5,33 +5,25 @@
         margin-top: 2rem;
     }
     &-item{
-        background: rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(136, 60, 86, 0.5);
-        border-radius: 5px;
+        border-radius: 10px;
+        border: 1px solid #344699;
+        background: linear-gradient(0deg, #09154D 0%, #0C1C66 100%);
         margin-bottom: 1rem;
         transition: box-shadow .2s ease-in ;
         &.active{
-            .statistic-grid-item-header{
-                background: #E8E8D6;
-                .statistic-grid-item-fav, .statistic-grid-item-round{
-                    color: #5B0E21;
-                }
+            .statistic-grid-item-vote-round{
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                background: #FFCA00;
+                color: #222;
+            }
+            .statistic-grid-item-choose{
+                color: #FFCA00;
             }
             .finish{
                 .statistic-team{
                     &.active{
                         &:hover{
                             cursor: no-drop;
-                            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-                            background: #E8E8D6;
-                            .statistic-team-name{
-                                color: #833D55;
-                            }
-                            i{
-                                &::before{
-                                    color: #833D55;
-                                }
-                            }
                         }
                     }
                     
@@ -39,38 +31,40 @@
                 
             }
         }
-        &:hover{
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-        }
-        &-header{
-            background: rgba(0, 0, 0, 0.1);
-            transition: background .2s ease;
-            border-bottom: 1px solid rgba(136, 60, 86, 0.5);
-            border-radius: 5px 5px 0 0;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            height: 3.6rem;
-            align-items: center;
-            color: #E8E8D6;
-            @include tableMobile{
+        &-vote{
+            color: #fff;
+            width: 50%;
+            &-round{
+                font-weight: 700;
+                min-height: 2.8rem;
+                font-size: 1.5rem;
+                border-radius: 5px;
+                background: rgba($color: #fff, $alpha: .1);
+                display: flex;
+                align-items: center;
                 padding: 0 1rem;
+                margin-bottom: 1rem;
+            }
+            &-choose{
+                font-weight: 600;
+                font-size: 1.3rem;
             }
         }
         &-body{
-            padding: 1.8rem 1rem;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
             @include tableMobile{
                 padding: 1rem;
             }
             .team-main{
                 display: flex;
-                grid-gap: 4.4rem;
+                grid-gap: 1rem;
                 justify-content: center;
-                @include tableMobile{
-                    grid-gap: 2rem;
-                }
             }
             &.finish{
+                opacity: .5;
                 &:hover{
                     box-shadow: none;
                     cursor: no-drop;
@@ -78,16 +72,6 @@
                 .statistic-team{
                     &:hover{
                         cursor: no-drop;
-                        box-shadow: none;
-                        background: rgba(0, 0, 0, 0.1);
-                        .statistic-team-name{
-                            color: #E8E8D6;
-                        }
-                        i{
-                            &::before{
-                                color: #E8E8D6;
-                            }
-                        }
                     }
                 }
             }
@@ -113,53 +97,43 @@
     }
 
     .statistic-team{
-        background: rgba(0, 0, 0, 0.1);
-        border: 2px solid rgba($color: #E8E8D6, $alpha: .2);
+        background: rgba($color: #fff, $alpha: .1);
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 10rem;
+        width: 11rem;
+        min-height: 10rem;
         align-items: center;
-        padding: .3rem;
+        padding: .8rem .3rem 0 .3rem;
         cursor: pointer;
         transition: box-shadow , background .2s ease-in ;
         &.active{
-            background: #E8E8D6;
+            border: 2px solid #FFCA00;
+            background: rgba(255, 202, 0, 0.10);
+            box-shadow: 0px 2px 8px 0px rgba(255, 202, 0, 0.50);
             .statistic-team-name{
-                color: #833D55;
+                color: #FFCA00
             }
             i{
                 &::before{
-                    color: #833D55;
-                }
-            }
-        }
-        &:hover{
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-            background: #E8E8D6;
-            .statistic-team-name{
-                color: #833D55;
-            }
-            i{
-                &::before{
-                    color: #833D55;
+                    color: #FFCA00;
                 }
             }
         }
         &-logo{
-            width: 7.5rem;
-            height: 5rem;
+            width: 4.8rem;
+            height: 4.8rem;
             object-fit: contain;
             display: block;
             border-radius: 3px;
         }
         &-name{
-            color: #E8E8D6;
+            color: #fff;
             margin-top: 1.5rem;
             margin-bottom: .5rem;
             font-weight: 700;
             font-size: 1.3rem;
-            line-height: 1.9rem;
+            line-height: normal;
             text-align: center;
         }
         .icon-minigame_draw {
@@ -185,4 +159,8 @@
     @include tableMobile{
         display: block;
     }
+}
+
+.statistic-main{
+    width: 50%;
 }

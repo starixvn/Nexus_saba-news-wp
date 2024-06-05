@@ -104,14 +104,13 @@ export class Item extends PureComponent {
         const vote = this.checkVoteOption();
         return (
             <div className={`statistic-grid-item ${vote != null ? 'active' : ''}`} onClick={this.onClick}>
-                <div className="statistic-grid-item-header">
-                    <div className="statistic-grid-item-round">
-                        {`Trận ${number < 10 ? '0' + number : number}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
-                    </div>
-                    <div className="statistic-grid-item-fav show-pc">{this.getVoteTeam(vote)}</div>
-                </div>
-
                 <div className={`statistic-grid-item-body ${this.checkDisabledVote() ? 'finish' : ''}`}>
+                    <div className="statistic-grid-item-vote">
+                        <div className="statistic-grid-item-vote-round">
+                            {`Trận ${number < 10 ? '0' + number : number}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
+                        </div>
+                        <div className="statistic-grid-item-choose show-pc">{this.getVoteTeam(vote)}</div>
+                    </div>
                     <div className="team-main">
                         <EqualHeight>
                             <div className={`statistic-team statistic-team-home ${vote === 1 ? 'active' : ''}`} onClick={() => this.handleVoteTeam(match.homeTeam.teamId)}>
@@ -137,9 +136,9 @@ export class Item extends PureComponent {
                             </div>
                         </EqualHeight>
                     </div>
-                    {
+                    {/* {
                         vote !== null && <div className="statistic-grid-item-fav show-mb">{this.getVoteTeam(vote)}</div>
-                    }
+                    } */}
                 </div>
             </div>
         );

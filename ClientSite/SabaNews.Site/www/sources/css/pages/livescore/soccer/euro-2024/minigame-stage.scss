@@ -9,7 +9,10 @@
 
 
 body{
-    background-image: linear-gradient(119.36deg, #901831 0%, #310818 100%) !important;
+    background: url('../../../../../../images/euro2024/minigame/bg-standing.png') , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 
