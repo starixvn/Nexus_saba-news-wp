@@ -8,7 +8,8 @@ describe('Item', () => {
     const defaultProps = {
         matches: [],
         votes: [],
-        stage: 1
+        stage: 1,
+        status: {stage: 1, isActive: true, status: "Đang diễn ra"}
     };
 
     beforeAll(() => {
@@ -40,15 +41,15 @@ describe('Item', () => {
     });
 
     describe('getStageStatus', () => {
-        it('return correctly status when stage not started', () => {
+        it('return correctly status when stage "Đang diễn ra"', () => {
              // Arrange
              const props = {
                 ...defaultProps,
                 votes: [{matchId: 1, stage: 1}, {matchId: 2, stage: 2}],
                 matches: [{matchId: 1}, {matchId: 2}, {matchId : 3, startTime: '2022-11-30'}],
-                stage: 2
+                stage: 2,
+                status: { stage: 1, isActive: true, status: "Đang diễn ra" }
             }
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-11-21 7:00:00');
             const container = shallow(<Item {...props} />);
             const instance = container.instance();
 
@@ -56,18 +57,19 @@ describe('Item', () => {
             const result = instance.getStageStatus();
 
             // Assert
-            expect(result.status).toEqual(LangHelper.getResource("NotStarted"));
+            expect(result.status).toEqual(props.status.status);
+            expect(result.isActive).toEqual(props.status.isActive);
         });
 
-        it('return correctly status when stage Upcomming', () => {
+        it('return correctly status when stage "Đã kết thúc"', () => {
             // Arrange
             const props = {
                ...defaultProps,
                votes: [{matchId: 1, stage: 1}, {matchId: 2, stage: 2}],
                matches: [{matchId: 1}, {matchId: 2}, {matchId : 3, startTime: '2022-11-30'}],
-               stage: 2
+               stage: 2,
+               status: { stage: 1, isActive: false, status: LangHelper.getResource('Finish') }
            }
-           DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-11-22 7:15:00');
            const container = shallow(<Item {...props} />);
            const instance = container.instance();
 
@@ -75,65 +77,10 @@ describe('Item', () => {
            const result = instance.getStageStatus();
 
            // Assert
-           expect(result.status).toEqual(LangHelper.getResource("Upcomming"));
+           expect(result.status).toEqual(props.status.status);
+           expect(result.isActive).toEqual(true);
        });
 
-       it('return correctly status when stage Inprogress', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                votes: [{matchId: 1, stage: 1}, {matchId: 2, stage: 2}],
-                matches: [{matchId: 1}, {matchId: 2}, {matchId : 3, startTime: '2022-11-30'}],
-                stage: 2
-            }
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-11-22 8:15:00');
-            const container = shallow(<Item {...props} />);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.getStageStatus();
-
-            // Assert
-            expect(result.status).toEqual(LangHelper.getResource("Inprogress"));
-        });
-
-        it('return correctly status when stage Finish', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                votes: [{matchId: 1, stage: 1}, {matchId: 2, stage: 2}],
-                matches: [{matchId: 1}, {matchId: 2}, {matchId : 3, startTime: '2022-11-30 2:00:00'}],
-                stage: 2
-            }
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-11-30 8:45:00');
-            const container = shallow(<Item {...props} />);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.getStageStatus();
-
-            // Assert
-            expect(result.status).toEqual(LangHelper.getResource("Finish"));
-        });
-
-        it('return correctly status when stage Ending', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                votes: [{matchId: 1, stage: 1}, {matchId: 2, stage: 2}],
-                matches: [{matchId: 1}, {matchId: 2}, {matchId : 3, startTime: '2022-11-30 2:00:00'}],
-                stage: 2
-            }
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-11-30 8:00:00');
-            const container = shallow(<Item {...props} />);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.getStageStatus();
-
-            // Assert
-            expect(result.status).toEqual(LangHelper.getResource("Ending"));
-        });
     });
 
     describe('handleViewDetail', () => {

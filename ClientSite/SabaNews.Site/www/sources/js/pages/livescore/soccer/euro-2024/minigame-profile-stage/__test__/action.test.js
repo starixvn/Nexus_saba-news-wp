@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import { ActionCreators } from '../actions';
-import { WorldCup } from '@jsroot/common/constants';
+import { Euro } from '../../euro-constants';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
@@ -19,10 +19,6 @@ describe('actionCreators', () => {
     describe('getMatches', () => {
         it('should call setMatches when get matches have been done', async () => {
             // Arrange
-            const expectedParams = {
-                leagueId: WorldCup.leagueId,
-                seasonId: WorldCup.seasonId
-            };
             const response = {
                 data: {
                     league: {
@@ -51,10 +47,10 @@ describe('actionCreators', () => {
             });
 
             // Act
-            await store.dispatch(ActionCreators.getMatches(expectedParams));
+            await store.dispatch(ActionCreators.getMatches());
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getMatchesBySeason', expectedParams);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('Euro2024/GetFixture');
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
@@ -63,13 +59,18 @@ describe('actionCreators', () => {
         it('should call setMatches when get matches have been done', async () => {
             // Arrange
             window.stage = 1;
-            const params = {stage : 1};
             const response = {
                 data: [
                     {matchId: 1, userId: 1},
                     {matchId: 2, userId: 1}
                 ]
             };
+
+            var expectedParam = {
+                stage: 1,
+                leagueId: Euro.leagueId,
+                seasonId: Euro.seasonId
+            }
             const promise = Promise.resolve(response);
             DataService.postDataAsync = jest.fn(() => promise);
             const expectedActions = [
@@ -83,7 +84,7 @@ describe('actionCreators', () => {
             await store.dispatch(ActionCreators.getVotes());
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('worldcup2022/GetMinigameByUserStage', params);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('Euro2024/GetLegueMinigameByUserStage', expectedParam);
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
@@ -93,7 +94,9 @@ describe('actionCreators', () => {
             // Arrange
             const params = {
                 matchId: 1,
-                teamId: 0
+                teamId: 0,
+                leagueId: Euro.leagueId,
+                seasonId: Euro.seasonId
             }
             const response = {
                 data: {
@@ -114,7 +117,7 @@ describe('actionCreators', () => {
             await store.dispatch(ActionCreators.updateVote(params));
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('worldcup2022/UpdateMinigameVote', params);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('Euro2024/UpdateVoteMinigame', params);
             expect(store.getActions()).toEqual(expectedActions);
         });
 
@@ -122,7 +125,9 @@ describe('actionCreators', () => {
             // Arrange
             const params = {
                 matchId: 1,
-                teamId: 0
+                teamId: 0,
+                leagueId: Euro.leagueId,
+                seasonId: Euro.seasonId
             }
             const response = {
                 data: null

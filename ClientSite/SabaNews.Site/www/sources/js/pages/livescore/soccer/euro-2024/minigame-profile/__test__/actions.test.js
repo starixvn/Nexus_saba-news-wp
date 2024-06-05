@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import { ActionCreators } from '../actions';
-import { WorldCup } from '@jsroot/common/constants';
+import { Euro } from '../../euro-constants';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
@@ -16,12 +16,12 @@ describe('actionCreators', () => {
         jest.clearAllMocks();
     });
 
-    describe('getMatches', () => {
-        it('should call setMatches when get matches have been done', async () => {
+    describe('getProfileData', () => {
+        it('should call setData correct when called', async () => {
             // Arrange
             const expectedParams = {
-                leagueId: WorldCup.leagueId,
-                seasonId: WorldCup.seasonId
+                leagueId: Euro.leagueId,
+                seasonId: Euro.seasonId
             };
             const response = {
                 data: {
@@ -34,54 +34,33 @@ describe('actionCreators', () => {
                         matchId: 1,
                         homeTeam: { teamId: 1, teamNameEN: 'Arsenal' },
                         awayTeam: { teamId: 2, teamNameEN: 'Everton' }
-                    }]
+                    }],
+                    votes: [
+                        { userId: 1, matchId: 1, teamId: 0 }
+                    ],
+                    statusStages:[{stage: 1, status: "Đang diễn ra"},{stage: 1, status: "Đã kết thúc"}]
                 }
             };
             const promise = Promise.resolve(response);
             DataService.postDataAsync = jest.fn(() => promise);
             const expectedActions = [
+                { type: ActionCreators.setVotes.type, payload: response.data.votes },
+                { type: ActionCreators.setStatusStages.type, payload: response.data.statusStages },
                 { type: ActionCreators.setLeague.type, payload: response.data.league },
                 { type: ActionCreators.setMatches.type, payload: response.data.matches }
             ];
             const store = mockStore({
-                majorLeagues: [],
                 league: null,
-                preMatches: null,
-                postMatches: null
-            });
-
-            // Act
-            await store.dispatch(ActionCreators.getMatches(expectedParams));
-
-            // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getMatchesBySeason', expectedParams);
-            expect(store.getActions()).toEqual(expectedActions);
-        });
-    });
-
-    describe('getVotes', () => {
-        it('should call setMatches when get matches have been done', async () => {
-            // Arrange
-            const response = {
-                data: [
-                    {matchId: 1, userId: 1},
-                    {matchId: 2, userId: 1}
-                ]
-            };
-            const promise = Promise.resolve(response);
-            DataService.postDataAsync = jest.fn(() => promise);
-            const expectedActions = [
-                { type: ActionCreators.setVotes.type, payload: response.data },
-            ];
-            const store = mockStore({
+                matches: null,
                 votes: null,
+                statusStages: null
             });
 
             // Act
-            await store.dispatch(ActionCreators.getVotes());
+            await store.dispatch(ActionCreators.getProfileData(expectedParams));
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('worldcup2022/GetMinigameByUser');
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('Euro2024/GetMinigameByUser', expectedParams);
             expect(store.getActions()).toEqual(expectedActions);
         });
     });

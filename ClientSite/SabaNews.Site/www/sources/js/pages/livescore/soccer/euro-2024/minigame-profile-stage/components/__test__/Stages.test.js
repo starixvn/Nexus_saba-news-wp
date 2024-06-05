@@ -4,7 +4,7 @@ import { Stages }  from '../Stages';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import DataService from '@jsroot/common/dataService';
-
+import { Euro } from '../../../euro-constants';
 describe('Stages', () => {
     const defaultProps = {
         stages: [
@@ -265,7 +265,7 @@ describe('Stages', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet');
+            expect(window.location).toEqual('/' + Euro.MinigameProfileUrl);
         });
 
         it('calls correctly functions when ctrlKey = true', () => {
@@ -281,7 +281,7 @@ describe('Stages', () => {
             container.find('.stage-number li').at(1).simulate('click', event);
 
             // Assert
-            expect(window.open).toHaveBeenCalledWith('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet', '_blank');
+            expect(window.open).toHaveBeenCalledWith('/' + Euro.MinigameProfileUrl, '_blank');
         });
     });
 

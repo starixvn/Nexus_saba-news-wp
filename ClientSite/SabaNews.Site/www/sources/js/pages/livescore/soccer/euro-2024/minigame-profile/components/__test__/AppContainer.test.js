@@ -7,8 +7,7 @@ describe('AppContainer', () => {
     const defaultProps = {
         matches: null,
         votes: null,
-        getMatches: jest.fn(),
-        getVotes: jest.fn()
+        getProfileData: jest.fn(),
     };
 
     afterEach(() => {

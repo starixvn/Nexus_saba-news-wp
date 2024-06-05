@@ -43,6 +43,7 @@
         private IPollService pollService;
         private IMatchService matchService;
         private ITeamService teamService;
+        private IMinigameService minigameService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -641,7 +642,8 @@
             pollService = Substitute.For<IPollService>();
             matchService = Substitute.For<IMatchService>();
             teamService = Substitute.For<ITeamService>();
-            var controller = new Euro2024Controller(dataControlService, postService, sessionService, configuration, pollService, leagueService, optionService, matchService, teamService);
+            minigameService = Substitute.For<IMinigameService>();
+            var controller = new Euro2024Controller(dataControlService, postService, sessionService, configuration, pollService, leagueService, optionService, matchService, teamService, minigameService);
 
             return controller;
         }

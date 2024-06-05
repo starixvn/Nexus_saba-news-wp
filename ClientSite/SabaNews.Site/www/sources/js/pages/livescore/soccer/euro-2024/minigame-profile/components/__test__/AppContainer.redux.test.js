@@ -26,10 +26,12 @@ describe('connect ', () => {
         const expected = {
             matches:null,
             votes: null,
+            statusStages: null
         };
         const state = {
             matches:null,
             votes: null,
+            statusStages: null
         };
 
         // Act

@@ -1,18 +1,18 @@
-import minigameDetailStageSlice, {
+import minigameProfileStageSlice, {
     setMatches,
     setLeague,
     setVotes,
     setUpdateVote
-} from '../minigameDetailStageSlice';
+} from '../minigameProfileStageSlice';
 
 
-describe('minigameDetailStageSlice', () => {
+describe('minigameProfileStageSlice', () => {
     afterAll(() => {
         jest.clearAllMocks();
     });
 
     it('initial state correctly', () => {
-        expect(minigameDetailStageSlice(undefined, {})).toEqual({
+        expect(minigameProfileStageSlice(undefined, {})).toEqual({
             matches: null,
             stages: null,
             league: null,
@@ -26,7 +26,7 @@ describe('minigameDetailStageSlice', () => {
         describe('setMatches', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailStageSlice({
+                    minigameProfileStageSlice({
                         matches: [],
                         stages: [],
                         teams: []
@@ -54,7 +54,7 @@ describe('minigameDetailStageSlice', () => {
         describe('setLeague', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailStageSlice({
+                    minigameProfileStageSlice({
                         league: null
                     }, {
                         type: setLeague.type,
@@ -77,7 +77,7 @@ describe('minigameDetailStageSlice', () => {
         describe('setVotes', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailStageSlice({
+                    minigameProfileStageSlice({
                         votes: null
                     }, {
                         type: setVotes.type,
@@ -98,7 +98,7 @@ describe('minigameDetailStageSlice', () => {
         describe('setUpdateVote', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailStageSlice({
+                    minigameProfileStageSlice({
                         updateVoteResult: null
                     }, {
                         type: setUpdateVote.type,

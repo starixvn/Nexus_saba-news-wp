@@ -25,7 +25,7 @@ describe('Item', () => {
         it('return correctly when call function', () => {
             // Arrange           
             const defaultProps = {
-                Winner: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: null},
+                Winner: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: null, details:[{stage: 1, point: 10}]},
                 number: 0,
                 winnerLength: 1
             };
@@ -33,7 +33,7 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            instance.handleClick(defaultProps.winnerLength, defaultProps.number, 4);
+            instance.handleClick(defaultProps.winnerLength, defaultProps.number, 2);
 
             // Assert 
             expect(document.getElementsByClassName('detailWinners')[0].style.display).toEqual("block");
@@ -60,21 +60,15 @@ describe('Item', () => {
         });
     });
 
-    describe('show detail stage 4', () => {
+    describe('show detail stage 2', () => {
         it('return correctly when call function', () => {
             // Arrange           
             const defaultProps = {
                 Winner: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: null,
-                    detail:{
-                        pointThirdPlace: 0,
-                        pointEightTeamStage: 0,
-                        pointSemifinalsStage: 0,
-                        pointQuarterfinalsStage: 0,
-                        pointFinalStage: 0
-                }},
+                    details:[{stage: 1, point: 10},{stage: 2, point: 11}]},
                 number: 0,
                 winnerLength: 2,
-                selectedStage: 4
+                selectedStage: 2
             };
             const container = shallow(<Item {...defaultProps} />);
             const instance = container.instance();
@@ -91,20 +85,14 @@ describe('Item', () => {
         it('should call correct function when click detail show', () => {
             // Arrange           
             const defaultProps = {
-                Winner: {userName: 'test', icon: null, point: 0, createdDate: "", updatedDate: "",
-                    detail:{
-                        pointThirdPlace: 0,
-                        pointEightTeamStage: 0,
-                        pointSemifinalsStage: 0,
-                        pointQuarterfinalsStage: 0,
-                        pointFinalStage: 0
-                }},
+                Winner: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: null,
+                    details:[{stage: 1, point: 10},{stage: 2, point: 11}]},
                 number: 1,
                 winnerLength: 2,
-                selectedStage: 4,
+                selectedStage: 2,
                 handleClick: jest.fn()
             };
-            window.stage = 4;
+            window.stage = 2;
             const container = shallow(<Item {...defaultProps} />);
 
             // Act

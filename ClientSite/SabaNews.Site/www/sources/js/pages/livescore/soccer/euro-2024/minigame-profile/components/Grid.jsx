@@ -19,7 +19,7 @@ export default class Grid extends PureComponent {
     }
 
     render() {
-        const { matches, statusStages } = this.props;
+        const { matches } = this.props;
         return (
             <div className="wrapper-scroll">
                <div className="minigame-table">

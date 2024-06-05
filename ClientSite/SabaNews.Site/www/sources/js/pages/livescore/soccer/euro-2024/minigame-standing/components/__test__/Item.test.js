@@ -52,7 +52,7 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            instance.handleClick(defaultProps.standingLength, defaultProps.number, 4);
+            instance.handleClick(defaultProps.standingLength, defaultProps.number, 2);
 
             // Assert 
             expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("block");
@@ -73,8 +73,8 @@ describe('Item', () => {
             const instance = container.instance();
 
             // Act
-            instance.handleClick(defaultProps.standingLength, defaultProps.number, 4);
-            instance.handleClick(defaultProps.standingLength, defaultProps.number, 4);
+            instance.handleClick(defaultProps.standingLength, defaultProps.number, 2);
+            instance.handleClick(defaultProps.standingLength, defaultProps.number, 2);
 
             // Assert 
             expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("block");
@@ -82,28 +82,21 @@ describe('Item', () => {
         });
     });
 
-    describe('show detail stage 4', () => {
+    describe('show detail stage 2', () => {
         it('return correctly when call function', () => {
             // Arrange           
             const defaultProps = {
-                standing: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: "",
-                    detail:{
-                        pointThirdPlace: 0,
-                        pointEightTeamStage: 0,
-                        pointSemifinalsStage: 0,
-                        pointQuarterfinalsStage: 0,
-                        pointFinalStage: 0
-                }},
+                standing: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: null, details:[{stage: 1, point: 10},{stage: 2, point: 11}]},
                 number: 1,
                 standingLength: 2,
-                stagesSelected: 4,
+                stagesSelected: 2,
                 rank:2
             };
             const container = shallow(<Item {...defaultProps} />);
             const instance = container.instance();
 
             // Act
-            instance.handleClick(defaultProps.standingLength, defaultProps.number, 4);
+            instance.handleClick(defaultProps.standingLength, defaultProps.number, 2);
 
             // Assert 
             expect(document.getElementsByClassName('detailStandings')[0].style.display).toEqual("none");
@@ -113,17 +106,10 @@ describe('Item', () => {
         it('return correctly when call function', () => {
             // Arrange           
             const defaultProps = {
-                standing: {userName: 'test', icon: null, point: 0, createdDate: "", updatedDate: "",
-                    detail:{
-                        pointThirdPlace: 0,
-                        pointEightTeamStage: 0,
-                        pointSemifinalsStage: 0,
-                        pointQuarterfinalsStage: 0,
-                        pointFinalStage: 0
-                }},
+                standing: {userName: 'test', icon: '', point: 0, createdDate: "", updatedDate: null, details:[{stage: 1, point: 10},{stage: 2, point: 11}]},
                 number: 1,
                 standingLength: 2,
-                stagesSelected: 4,
+                stagesSelected: 2,
                 handleClick: jest.fn()
             };
             const container = shallow(<Item {...defaultProps} />);

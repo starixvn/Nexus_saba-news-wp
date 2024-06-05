@@ -10,7 +10,7 @@ describe('Item', () => {
         teams: [],
         match: {matchId: 1, homeTeam: {teamId: 1}, awayTeam: {teamId: 2}},
         result: null,
-        updateVote: jest.fn(),
+        updateVote:  jest.fn().mockImplementation(() => Promise.resolve()),
         getVotes: jest.fn()
     };
 
@@ -167,7 +167,7 @@ describe('Item', () => {
             const result = instance.handleVoteTeam(0);
 
             // Assert
-            expect(result).toEqual(Promise.resolve({}));
+            expect(result).toEqual(undefined);
         });
 
         it('return correctly when voted old team', () => {
@@ -186,7 +186,7 @@ describe('Item', () => {
             const result = instance.handleVoteTeam(1);
 
             // Assert
-            expect(result).toEqual(Promise.resolve({}));
+            expect(result).toEqual(undefined);
         });
         it('return correctly when stage = 2 & vote teamId', () => {
             // Arrange
@@ -228,7 +228,7 @@ describe('Item', () => {
             const result = instance.handleVoteTeam(2);
 
             // Assert
-            expect(result).toEqual(Promise.resolve({}));
+            expect(result).toEqual(undefined);
         });
 
         it('return correctly when match startTime < 30m', () => {
@@ -251,7 +251,7 @@ describe('Item', () => {
             const result = instance.handleVoteTeam(2);
 
             // Assert
-            expect(result).toEqual(Promise.resolve({}));
+            expect(result).toEqual(undefined);
         });
 
         it('return correctly when match is live', () => {
@@ -273,7 +273,7 @@ describe('Item', () => {
             const result = instance.handleVoteTeam(2);
 
             // Assert
-            expect(result).toEqual(Promise.resolve({}));
+            expect(result).toEqual(undefined);
             
         });
         
@@ -394,7 +394,7 @@ describe('Item', () => {
             expect(result).toEqual(true);
         });
 
-        it('disabled vote when knockout match is disabled', () => {
+        it('enable vote when knockout match is votable', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -410,10 +410,10 @@ describe('Item', () => {
             const result = instance.checkDisabledVote();
 
             // Assert
-            expect(result).toEqual(true);
+            expect(result).toEqual(false);
         });
 
-        it('return enable vote', () => {
+        it('return disabled vote when knockout match is unvotable', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -429,7 +429,7 @@ describe('Item', () => {
             const result = instance.checkDisabledVote();
 
             // Assert
-            expect(result).toEqual(false);
+            expect(result).toEqual(true);
         });
     });
 

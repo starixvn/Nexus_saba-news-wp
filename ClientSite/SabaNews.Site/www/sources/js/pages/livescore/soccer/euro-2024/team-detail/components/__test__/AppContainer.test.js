@@ -76,7 +76,7 @@ describe('AppContainer', () => {
             var expectedPlayers = [
                 { position: 'Huấn luyện viên', positionId: 1, players:[{playerId: 1, position: 1},{playerId: 2, position: 1}] },
                 { position: 'Thủ môn', positionId: 2, players:[{playerId: 3, position: 2}] },
-                { position: 'Hộ vệ', positionId: 3, players:[{playerId: 4, position: 3},{playerId: 5, position: 3}] }
+                { position: 'Hậu vệ', positionId: 3, players:[{playerId: 4, position: 3},{playerId: 5, position: 3}] }
             ]
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();

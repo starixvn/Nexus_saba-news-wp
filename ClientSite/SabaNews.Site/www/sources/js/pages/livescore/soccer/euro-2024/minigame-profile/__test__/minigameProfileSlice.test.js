@@ -1,21 +1,23 @@
-import minigameDetailSlice, {
+import minigameProfileSlice, {
     setMatches,
     setLeague,
-    setVotes
-} from '../minigameDetailSlice';
+    setVotes,
+    setStatusStages
+} from '../minigameProfileSlice';
 
 
-describe('minigameDetailSlice', () => {
+describe('minigameProfileSlice', () => {
     afterAll(() => {
         jest.clearAllMocks();
     });
 
     it('initial state correctly', () => {
-        expect(minigameDetailSlice(undefined, {})).toEqual({
+        expect(minigameProfileSlice(undefined, {})).toEqual({
             matches: null,
             stages: null,
             league: null,
             votes: null,
+            statusStages: null
         });
     });
 
@@ -23,7 +25,7 @@ describe('minigameDetailSlice', () => {
         describe('setMatches', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailSlice({
+                    minigameProfileSlice({
                         matches: [],
                         stages: []
                     }, {
@@ -49,7 +51,7 @@ describe('minigameDetailSlice', () => {
         describe('setLeague', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailSlice({
+                    minigameProfileSlice({
                         league: null
                     }, {
                         type: setLeague.type,
@@ -72,7 +74,7 @@ describe('minigameDetailSlice', () => {
         describe('setVotes', () => {
             it('updates state correctly', () => {
                 expect(
-                    minigameDetailSlice({
+                    minigameProfileSlice({
                         votes: null
                     }, {
                         type: setVotes.type,
@@ -85,6 +87,27 @@ describe('minigameDetailSlice', () => {
                     votes: [
                         { matchId: 1, userId: 1 },
                         { matchId: 1, userId: 2 }
+                    ]
+                });
+            });
+        });
+
+        describe('setStatusStages', () => {
+            it('updates state correctly', () => {
+                expect(
+                    minigameProfileSlice({
+                        statusStages: null
+                    }, {
+                        type: setStatusStages.type,
+                        payload: [
+                                { stage: 1, status: 'Đang diễn ra' },
+                                { stage: 1, status: 'Đã kết thúc'}
+                            ]
+                    })
+                ).toEqual({
+                    statusStages: [
+                        { stage: 1, status: 'Đang diễn ra' },
+                        { stage: 1, status: 'Đã kết thúc'}
                     ]
                 });
             });

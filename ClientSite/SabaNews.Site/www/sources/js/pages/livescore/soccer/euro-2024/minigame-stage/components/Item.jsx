@@ -41,7 +41,7 @@ export class Item extends PureComponent {
         return result;
     };
 
-    handleVoteTeam = async teamId => {
+    handleVoteTeam = teamId => {
         const { match, votes } = this.props;
         const vote = votes.find(item => item.matchId === match.matchId && item.stage === this.stage);
         if ((this.stage === Euro.MinigameStage.Knockout && teamId === 0) || (vote && vote.teamId === teamId)) {
