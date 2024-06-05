@@ -1,8 +1,8 @@
 .statistic {
-  width: 27.6rem;
+  width: 22rem;
   position: -webkit-sticky;
   position: sticky;
-  top: 7rem;
+  top: 9rem;
 }
 @media screen and (max-width: 1024px) {
   .statistic {
@@ -15,29 +15,27 @@
 .statistic-sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 7rem;
+  top: 9rem;
+  border: 1px solid #FFCA00;
+  border-radius: 5px;
 }
 .statistic_stage {
   font-weight: 700;
-  font-size: 2.4rem;
+  font-size: 2rem;
   line-height: 2.8rem;
-  color: #E8E8D6;
+  color: #222;
   text-transform: uppercase;
-  padding-bottom: 1.4rem;
-  border-bottom: 2px solid;
-}
-@media screen and (max-width: 1024px) {
-  .statistic_stage {
-    font-size: 2rem;
-    padding-bottom: 1rem;
-  }
+  padding: 0.4rem 0;
+  text-align: center;
+  background: #FFCA00;
 }
 .statistic_round {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.6rem;
   line-height: 2.8rem;
-  color: #E8E8D6;
-  margin-top: 1rem;
+  color: #FFCA00;
+  padding: 0.5rem 1rem;
+  text-align: center;
 }
 @media screen and (max-width: 1024px) {
   .statistic_round {
@@ -46,6 +44,7 @@
 }
 .statistic_round .number-big {
   font-size: 2rem;
+  font-weight: 700;
 }
 @media screen and (max-width: 1024px) {
   .statistic_round .number-big {

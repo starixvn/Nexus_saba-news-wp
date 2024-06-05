@@ -96,7 +96,7 @@ body {
 
 .minigame-stage-container {
   padding: 0 1.2rem;
-  max-width: 137rem;
+  max-width: 125rem;
   margin: 2rem auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -111,10 +111,10 @@ body {
 }
 
 .statistic {
-  width: 27.6rem;
+  width: 22rem;
   position: -webkit-sticky;
   position: sticky;
-  top: 7rem;
+  top: 9rem;
 }
 @media screen and (max-width: 1024px) {
   .statistic {
@@ -127,29 +127,27 @@ body {
 .statistic-sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 7rem;
+  top: 9rem;
+  border: 1px solid #FFCA00;
+  border-radius: 5px;
 }
 .statistic_stage {
   font-weight: 700;
-  font-size: 2.4rem;
+  font-size: 2rem;
   line-height: 2.8rem;
-  color: #E8E8D6;
+  color: #222;
   text-transform: uppercase;
-  padding-bottom: 1.4rem;
-  border-bottom: 2px solid;
-}
-@media screen and (max-width: 1024px) {
-  .statistic_stage {
-    font-size: 2rem;
-    padding-bottom: 1rem;
-  }
+  padding: 0.4rem 0;
+  text-align: center;
+  background: #FFCA00;
 }
 .statistic_round {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.6rem;
   line-height: 2.8rem;
-  color: #E8E8D6;
-  margin-top: 1rem;
+  color: #FFCA00;
+  padding: 0.5rem 1rem;
+  text-align: center;
 }
 @media screen and (max-width: 1024px) {
   .statistic_round {
@@ -158,6 +156,7 @@ body {
 }
 .statistic_round .number-big {
   font-size: 2rem;
+  font-weight: 700;
 }
 @media screen and (max-width: 1024px) {
   .statistic_round .number-big {
@@ -217,51 +216,47 @@ body {
   }
 }
 .statistic-grid-item {
-  background: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(136, 60, 86, 0.5);
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 1px solid #344699;
+  background: linear-gradient(0deg, #09154D 0%, #0C1C66 100%);
   margin-bottom: 1rem;
   transition: box-shadow 0.2s ease-in;
 }
-.statistic-grid-item.active .statistic-grid-item-header {
-  background: #E8E8D6;
+.statistic-grid-item.active .statistic-grid-item-vote-round {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: #FFCA00;
+  color: #222;
 }
-.statistic-grid-item.active .statistic-grid-item-header .statistic-grid-item-fav, .statistic-grid-item.active .statistic-grid-item-header .statistic-grid-item-round {
-  color: #5B0E21;
+.statistic-grid-item.active .statistic-grid-item-choose {
+  color: #FFCA00;
 }
 .statistic-grid-item.active .finish .statistic-team.active:hover {
   cursor: no-drop;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-  background: #E8E8D6;
 }
-.statistic-grid-item.active .finish .statistic-team.active:hover .statistic-team-name {
-  color: #833D55;
+.statistic-grid-item-vote {
+  color: #fff;
+  width: 50%;
 }
-.statistic-grid-item.active .finish .statistic-team.active:hover i::before {
-  color: #833D55;
-}
-.statistic-grid-item:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-}
-.statistic-grid-item-header {
-  background: rgba(0, 0, 0, 0.1);
-  transition: background 0.2s ease;
-  border-bottom: 1px solid rgba(136, 60, 86, 0.5);
-  border-radius: 5px 5px 0 0;
-  padding: 0 2rem;
+.statistic-grid-item-vote-round {
+  font-weight: 700;
+  min-height: 2.8rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
   display: flex;
-  justify-content: space-between;
-  height: 3.6rem;
   align-items: center;
-  color: #E8E8D6;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
 }
-@media screen and (max-width: 1024px) {
-  .statistic-grid-item-header {
-    padding: 0 1rem;
-  }
+.statistic-grid-item-vote-choose {
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 .statistic-grid-item-body {
-  padding: 1.8rem 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 }
 @media screen and (max-width: 1024px) {
   .statistic-grid-item-body {
@@ -270,13 +265,11 @@ body {
 }
 .statistic-grid-item-body .team-main {
   display: flex;
-  grid-gap: 4.4rem;
+  grid-gap: 1rem;
   justify-content: center;
 }
-@media screen and (max-width: 1024px) {
-  .statistic-grid-item-body .team-main {
-    grid-gap: 2rem;
-  }
+.statistic-grid-item-body.finish {
+  opacity: 0.5;
 }
 .statistic-grid-item-body.finish:hover {
   box-shadow: none;
@@ -284,14 +277,6 @@ body {
 }
 .statistic-grid-item-body.finish .statistic-team:hover {
   cursor: no-drop;
-  box-shadow: none;
-  background: rgba(0, 0, 0, 0.1);
-}
-.statistic-grid-item-body.finish .statistic-team:hover .statistic-team-name {
-  color: #E8E8D6;
-}
-.statistic-grid-item-body.finish .statistic-team:hover i::before {
-  color: #E8E8D6;
 }
 .statistic-grid-item-round {
   font-weight: 700;
@@ -315,50 +300,42 @@ body {
   }
 }
 .statistic-grid .statistic-team {
-  background: rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(232, 232, 214, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 10rem;
+  width: 11rem;
+  min-height: 10rem;
   align-items: center;
-  padding: 0.3rem;
+  padding: 0.8rem 0.3rem 0 0.3rem;
   cursor: pointer;
   transition: box-shadow, background 0.2s ease-in;
 }
 .statistic-grid .statistic-team.active {
-  background: #E8E8D6;
+  border: 2px solid #FFCA00;
+  background: rgba(255, 202, 0, 0.1);
+  box-shadow: 0px 2px 8px 0px rgba(255, 202, 0, 0.5);
 }
 .statistic-grid .statistic-team.active .statistic-team-name {
-  color: #833D55;
+  color: #FFCA00;
 }
 .statistic-grid .statistic-team.active i::before {
-  color: #833D55;
-}
-.statistic-grid .statistic-team:hover {
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-  background: #E8E8D6;
-}
-.statistic-grid .statistic-team:hover .statistic-team-name {
-  color: #833D55;
-}
-.statistic-grid .statistic-team:hover i::before {
-  color: #833D55;
+  color: #FFCA00;
 }
 .statistic-grid .statistic-team-logo {
-  width: 7.5rem;
-  height: 5rem;
+  width: 4.8rem;
+  height: 4.8rem;
   object-fit: contain;
   display: block;
   border-radius: 3px;
 }
 .statistic-grid .statistic-team-name {
-  color: #E8E8D6;
+  color: #fff;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
   font-size: 1.3rem;
-  line-height: 1.9rem;
+  line-height: normal;
   text-align: center;
 }
 .statistic-grid .statistic-team .icon-minigame_draw {
@@ -387,6 +364,10 @@ body {
   .show-mb {
     display: block;
   }
+}
+
+.statistic-main {
+  width: 50%;
 }
 
 .minigame-control {
@@ -463,5 +444,8 @@ body {
 }
 
 body {
-  background-image: linear-gradient(119.36deg, #901831 0%, #310818 100%) !important;
+  background: url("../../../../../../images/euro2024/minigame/bg-standing.png"), linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

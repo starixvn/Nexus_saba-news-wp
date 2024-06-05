@@ -2603,7 +2603,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media (max-width: 767px) {
   #minigame-winners {
-    min-height: 81rem;
+    min-height: 75rem;
   }
 }
 #minigame-winners .block-heading-text {
