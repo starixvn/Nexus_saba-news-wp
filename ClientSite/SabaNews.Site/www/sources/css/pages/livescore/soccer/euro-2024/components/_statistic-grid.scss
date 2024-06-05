@@ -2,7 +2,6 @@
     width: 70rem;
     @include tableMobile{
         width: 100%;
-        margin-top: 2rem;
     }
     &-item{
         border-radius: 10px;
@@ -34,6 +33,9 @@
         &-vote{
             color: #fff;
             width: 50%;
+            @include tableMobile{
+                width: 100%;
+            }
             &-round{
                 font-weight: 700;
                 min-height: 2.8rem;
@@ -57,11 +59,15 @@
             gap: 2rem;
             @include tableMobile{
                 padding: 1rem;
+                display: block;
             }
             .team-main{
                 display: flex;
                 grid-gap: 1rem;
                 justify-content: center;
+                @include tableMobile{
+                    margin-top: 1rem;
+                }
             }
             &.finish{
                 opacity: .5;
@@ -149,18 +155,22 @@
 
 .show-pc{
     display: block;
-    @include tableMobile{
+    @include Mobile{
         display: none;
     }
 }
 
 .show-mb{
     display: none;
-    @include tableMobile{
+    @include Mobile{
         display: block;
     }
 }
 
 .statistic-main{
     width: 50%;
+    @include tableMobile{
+        width: 100%;
+        grid-column: 2/4;
+    }
 }

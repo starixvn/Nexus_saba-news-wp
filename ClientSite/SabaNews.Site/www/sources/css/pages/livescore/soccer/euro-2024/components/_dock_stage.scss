@@ -6,8 +6,11 @@
     @include tableMobile{
         position: unset;
         text-align: center;
-        max-width: 22rem;
+        width: 100%;
         margin: 0 auto;
+    }
+    @include Mobile{
+        margin-bottom: 1rem;
     }
     &-sticky{
         position: -webkit-sticky;
@@ -15,6 +18,9 @@
         top: 9rem;
         border: 1px solid #FFCA00;
         border-radius: 5px;
+        @include tableMobile{
+            top: 5rem;
+        }
     }
     &_stage{
         font-weight: 700;

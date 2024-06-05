@@ -104,6 +104,14 @@ body {
 }
 @media screen and (max-width: 1024px) {
   .minigame-stage-container {
+    display: grid;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    grid-gap: 3rem;
+  }
+}
+@media (max-width: 767px) {
+  .minigame-stage-container {
     display: inherit;
     margin: 1rem auto;
     padding: 0 1rem;
@@ -120,8 +128,13 @@ body {
   .statistic {
     position: unset;
     text-align: center;
-    max-width: 22rem;
+    width: 100%;
     margin: 0 auto;
+  }
+}
+@media (max-width: 767px) {
+  .statistic {
+    margin-bottom: 1rem;
   }
 }
 .statistic-sticky {
@@ -130,6 +143,11 @@ body {
   top: 9rem;
   border: 1px solid #FFCA00;
   border-radius: 5px;
+}
+@media screen and (max-width: 1024px) {
+  .statistic-sticky {
+    top: 5rem;
+  }
 }
 .statistic_stage {
   font-weight: 700;
@@ -212,7 +230,6 @@ body {
 @media screen and (max-width: 1024px) {
   .statistic-grid {
     width: 100%;
-    margin-top: 2rem;
   }
 }
 .statistic-grid-item {
@@ -236,6 +253,11 @@ body {
 .statistic-grid-item-vote {
   color: #fff;
   width: 50%;
+}
+@media screen and (max-width: 1024px) {
+  .statistic-grid-item-vote {
+    width: 100%;
+  }
 }
 .statistic-grid-item-vote-round {
   font-weight: 700;
@@ -261,12 +283,18 @@ body {
 @media screen and (max-width: 1024px) {
   .statistic-grid-item-body {
     padding: 1rem;
+    display: block;
   }
 }
 .statistic-grid-item-body .team-main {
   display: flex;
   grid-gap: 1rem;
   justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .statistic-grid-item-body .team-main {
+    margin-top: 1rem;
+  }
 }
 .statistic-grid-item-body.finish {
   opacity: 0.5;
@@ -351,7 +379,7 @@ body {
 .show-pc {
   display: block;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .show-pc {
     display: none;
   }
@@ -360,7 +388,7 @@ body {
 .show-mb {
   display: none;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .show-mb {
     display: block;
   }
@@ -368,6 +396,12 @@ body {
 
 .statistic-main {
   width: 50%;
+}
+@media screen and (max-width: 1024px) {
+  .statistic-main {
+    width: 100%;
+    grid-column: 2/4;
+  }
 }
 
 .minigame-control {
