@@ -41,15 +41,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
     @include tableMobile{
         margin: 1.2rem 0;
     }
     a{
         display: block;
         text-decoration: none;
-        margin-right: 1rem;
-        background: #6E1228;
-        border: 1px solid #E8E8D6;
+        background: transparent;
+        border: 2px solid #E8E8D6;
         border-radius: 5px 5px 0px 0px;
         color: #E8E8D6;
         font-weight: 700;
@@ -57,13 +57,10 @@
         line-height: 2.8rem;
         padding: .6rem 1.2rem;
         border-bottom: none;
-        &:last-child{
-            margin-right: 0;
-        }
         &.active{
-            background: #E8E8D6;
-            border: 1px solid #E8E8D6;
-            color: #88172E;
+            background: #fff;
+            border: 2px solid #fff;
+            color: #143CDA;
         }
     }
 }
