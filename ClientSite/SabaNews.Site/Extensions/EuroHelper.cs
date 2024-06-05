@@ -17,6 +17,7 @@
     {
         const int MGTPlus = 7;
         const int ThirtyMinsToSecond = 1800;
+        const int ThirtyMins = 30;
         const int SixtyMinsToSecond = 3600;
         const int NinetyMinsToSecond = 5400;
 
@@ -334,6 +335,14 @@
             }
 
             return statusStage;
+        }
+
+        public static bool IsVoted(DateTime startTime)
+        {
+            var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+            var timeSpanMatch = startTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+            var secondsUntilMatchStart = timeSpanMatch.TotalMinutes - timeSpanNow.TotalMinutes;
+            return secondsUntilMatchStart > ThirtyMins;
         }
 
         public static bool CheckStartStage(int numStage)

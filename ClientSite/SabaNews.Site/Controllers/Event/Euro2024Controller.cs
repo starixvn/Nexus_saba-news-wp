@@ -428,7 +428,7 @@ namespace SabaNews.Site.Controllers.Event
                 return Json(null);
             }
             var match = await minigameService.GetMinigameVoteMatchAsync(new GetMinigameVotedMatchCriteria { MatchId = criteria.MatchId });
-            if(LivescoreHelper.IsLiveMatch(match.Status) || match.Status == MatchConstants.Finished)
+            if(LivescoreHelper.IsLiveMatch(match.Status) || match.Status == MatchConstants.Finished || !EuroHelper.IsVoted(match.StartTime))
             {
                 return Json(new CommandResult {});
             }
