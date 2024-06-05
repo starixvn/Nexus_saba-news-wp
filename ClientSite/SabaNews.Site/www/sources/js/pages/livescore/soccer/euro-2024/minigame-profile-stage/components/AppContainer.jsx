@@ -21,6 +21,7 @@ export class AppContainer extends Component {
             return null;
         }
         const stages = groupMatchesByStage(matches);
+        console.log(stages);
         return (
             <Stages groupStages={stages} />
         );

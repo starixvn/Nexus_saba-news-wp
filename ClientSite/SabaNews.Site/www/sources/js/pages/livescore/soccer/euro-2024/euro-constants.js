@@ -13,7 +13,7 @@
     QuaterFinalMatches: [59159349, 59159350, 59159352, 59159351],
     SemiFinalMatches: [59159353, 59159354],
     MinigameUrl: 'euro-2024/minigame',
-    MinigameDetailUrl: 'euro-2024/minigame/chi-tiet',
+    MinigameProfileUrl: 'euro-2024/minigame/du-doan-cua-toi',
     MinigameStage: {
         Group: 1,
         Knockout: 2

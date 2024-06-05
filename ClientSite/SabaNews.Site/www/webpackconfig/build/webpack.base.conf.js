@@ -43,6 +43,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-winner`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_winner,
             [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-stage`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_stage,
             [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-profile`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_profile,
+            [`${jsPath}/pages/livescore/soccer/euro-2024/minigame-profile-stage`]: pathConfig.scriptPaths.livescore_soccer_euro2024_minigame_profile_stage,
             
 
             /*css*/
@@ -73,6 +74,8 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/euro-2024/minigame-standing`]: pathConfig.cssPaths.livescore_soccer_euro2024_minigame_standing,
             [`${cssPath}/pages/livescore/soccer/euro-2024/minigame-winner`]: pathConfig.cssPaths.livescore_soccer_euro2024_minigame_winner,
             [`${cssPath}/pages/livescore/soccer/euro-2024/minigame-stage`]: pathConfig.cssPaths.livescore_soccer_euro2024_minigame_stage,
+            [`${cssPath}/pages/livescore/soccer/euro-2024/minigame-profile`]: pathConfig.cssPaths.livescore_soccer_euro2024_minigame_profile,
+            [`${cssPath}/pages/livescore/soccer/euro-2024/minigame-profile-stage`]: pathConfig.cssPaths.livescore_soccer_euro2024_minigame_profile_stage,
         },
         output: {
             path: pathConfig.projectRoot,

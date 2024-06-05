@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { Tabs, Tab } from 'react-bootstrap';
 import Grid from './Grid';
-import { WorldCup, MobileMaxWidth, MatchStatus } from '@jsroot/common/constants';
+import { MobileMaxWidth, MatchStatus } from '@jsroot/common/constants';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
+import { Euro } from '../../euro-constants';
 
 export class Stages extends PureComponent {
     constructor(props) {
@@ -59,7 +60,7 @@ export class Stages extends PureComponent {
     };
 
     handleClick = event => {
-        const url = Site.resolveClientUrl(WorldCup.MinigameDetailUrl);
+        const url = Site.resolveClientUrl(Euro.MinigameProfileUrl);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

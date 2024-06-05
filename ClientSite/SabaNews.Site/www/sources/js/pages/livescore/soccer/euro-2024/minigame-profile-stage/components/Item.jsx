@@ -4,12 +4,12 @@ import { MatchStatus } from '@jsroot/common/constants';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Site from '@jsroot/common/site';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { EqualHeight, EqualHeightElement } from 'react-equal-height';
 import dayjs from 'dayjs';
-import DataService from '@jsroot/common/dataService';
+import { Euro } from '../../euro-constants';
+
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -19,10 +19,10 @@ export class Item extends PureComponent {
 
     checkKnockoutMatch = () => {
         const { match, teams } = this.props;
-        const result = this.stage !== 4 || (this.stage === 4
+        const result = this.stage !== Euro.MinigameStage.Knockout || (this.stage === Euro.MinigameStage.Knockout
             && teams.includes(match.homeTeam.teamId)
             && teams.includes(match.awayTeam.teamId));
-        return !result;
+        return result;
     };
 
     checkVoteOption = () => {
@@ -41,28 +41,26 @@ export class Item extends PureComponent {
         return voteStatus;
     };
 
-    handleVote = async teamId => {
+    handleVote = teamId => {
         const { match, vote } = this.props;
-        if((this.stage === 4 && teamId === 0)
-        || (vote && vote.teamId === teamId)) {
+        if ((this.stage === Euro.MinigameStage.Knockout && teamId === 0) || (vote && vote.teamId === teamId)) {
             return;
         }
-        const urlVoteMatch = Site.resolveClientUrl('worldcup2022/GetMinigameVoteMatch');
-        await DataService.postDataAsync(urlVoteMatch, {matchId: match.matchId}).then(response => {
-            const voteMatch = response.data;
-            const startTimeVote = DateTimeService.convertFromUTC(voteMatch.startTime);
-            const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
-            const minutes = startTimeVote.diff(currentTime, 'minutes');
-            if(voteMatch.status === MatchStatus.Finished
-                || minutes <= 30 || this.checkKnockoutMatch()) {
-                return;
-            }
-            const params = {
-                teamId: teamId,
-                matchId: match.matchId,
-                stage: window.stage
-            };
-            this.props.updateVote(params);
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
+        const currentTime = dayjs(DateTimeService.getCurrentClientDateTime());
+        const minutes = startTime.diff(currentTime, 'minutes');
+        if (match.status === MatchStatus.Finished
+            || CommonFunctions.isLiveMatch(match.status)
+            || minutes <= 30
+            || !this.checkKnockoutMatch()) {
+            return;
+        }
+        const params = {
+            stage: this.stage,
+            teamId: teamId,
+            matchId: match.matchId
+        };
+        this.props.updateVote(params).then(() => {
             this.props.getVotes();
         });
     };
@@ -115,8 +113,9 @@ export class Item extends PureComponent {
         const minutes = startTime.diff(currentTime, 'minutes');
         let status = false;
         if (match.status === MatchStatus.Finished
+            || CommonFunctions.isLiveMatch(match.status)
             || minutes <= 30
-            || this.checkKnockoutMatch()) {
+            || !this.checkKnockoutMatch()) {
             status = true;
         }
         return status;

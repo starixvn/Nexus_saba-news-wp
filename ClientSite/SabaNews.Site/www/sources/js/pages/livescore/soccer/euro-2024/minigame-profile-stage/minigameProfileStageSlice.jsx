@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { WorldCup } from '@jsroot/common/constants';
-const minigameStageSlice = createSlice({
-    name: 'minigameDetailStageSlice',
+const minigameProfileStageSlice = createSlice({
+    name: 'minigameProfileStageSlice',
     initialState: {
         matches: null,
         stages: null,
@@ -33,12 +33,7 @@ const minigameStageSlice = createSlice({
             }
             state.stages = stages;
             state.matches = matches;
-<<<<<<< HEAD
             state.teams = groupTeams;
-            state.stages = stages;
-=======
-            state.teams = teams;
->>>>>>> 717acf1da (fix: code smells)
         },
         setUpdateVote: (state, action) => {
             state.updateVoteResult = action.payload;
@@ -46,7 +41,7 @@ const minigameStageSlice = createSlice({
     }
 });
 
-const { actions, reducer } = minigameStageSlice;
+const { actions, reducer } = minigameProfileStageSlice;
 
 export const {
     setMatches,

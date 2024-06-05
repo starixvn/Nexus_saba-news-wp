@@ -1,20 +1,16 @@
 import Site from '@jsroot/common/site';
-import { WorldCup } from '@jsroot/common/constants';
 import DataService from '@jsroot/common/dataService';
+import { Euro } from '../euro-constants';
 import {
     setMatches,
     setLeague,
     setVotes,
     setUpdateVote
-} from './minigameDetailStageSlice';
+} from './minigameProfileStageSlice';
 
 const getMatches = () => async dispatch => {
-    const url = Site.resolveClientUrl('soccer/getMatchesBySeason');
-    var param = {
-        leagueId: WorldCup.leagueId,
-        seasonId: WorldCup.seasonId
-    }
-    await DataService.postDataAsync(url, param).then(response => {
+    const url = Site.resolveClientUrl('Euro2024/GetFixture');
+    await DataService.postDataAsync(url).then(response => {
         const { league, matches } = response.data;
         dispatch(setLeague(league));
         dispatch(setMatches(matches));
@@ -22,20 +18,24 @@ const getMatches = () => async dispatch => {
 };
 
 const getVotes = () => async dispatch => {
-    const url = Site.resolveClientUrl('worldcup2022/GetMinigameByUserStage');
+    const url = Site.resolveClientUrl('Euro2024/GetLegueMinigameByUserStage');
     var param = {
-        stage: window.stage
-    };
+        stage: window.stage,
+        leagueId: Euro.leagueId,
+        seasonId: Euro.seasonId
+    }
     await DataService.postDataAsync(url, param).then(response => {
         dispatch(setVotes(response.data));
     }).catch(Site.handleAxiosError);
 };
 
 const updateVote = params => async dispatch => {
-    const url = Site.resolveClientUrl('worldcup2022/UpdateMinigameVote');
+    params.leagueId = Euro.leagueId;
+    params.seasonId = Euro.seasonId;
+    const url = Site.resolveClientUrl('Euro2024/UpdateVoteMinigame');
     await DataService.postDataAsync(url, params).then(response => {
         if(!response.data) {
-            const page = Site.resolveClientUrl(WorldCup.MinigameUrl);
+            const page = Site.resolveClientUrl(Euro.MinigameUrl);
             window.location = page;
         } else {
             dispatch(setUpdateVote(response.data));

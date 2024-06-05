@@ -372,7 +372,7 @@ namespace SabaNews.Site.Controllers.Event
         }
 
         [Route("euro-2024/minigame/du-doan-cua-toi/giai-doan/{stage}")]
-        public async Task<IActionResult> MinigameProfileStage(int stage)
+        public async Task<IActionResult> MinigameProfileStage(byte stage)
         {
             if (sessionService.User == null)
             {
@@ -395,7 +395,8 @@ namespace SabaNews.Site.Controllers.Event
                 Header = header,
                 Matches = matches,
                 User = sessionService.User,
-                IsLogin = sessionService.User != null
+                IsLogin = sessionService.User != null,
+                Stage = stage
             };
             return View("~/Views/Event/Euro2024/Minigame/ProfileStage.cshtml", model);
         }
