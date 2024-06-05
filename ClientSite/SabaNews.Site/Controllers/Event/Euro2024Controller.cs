@@ -37,7 +37,6 @@ namespace SabaNews.Site.Controllers.Event
         private readonly ILeagueService leagueService;
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
-        private readonly IMatchService matchService;
         private readonly ITeamService teamService;
         private readonly IMinigameService minigameService;
         private const string EuroController = "Euro2024";
@@ -50,7 +49,6 @@ namespace SabaNews.Site.Controllers.Event
             IPollService pollService,
             ILeagueService leagueService,
             IOptionService optionService,
-            IMatchService matchService,
             ITeamService teamService,
             IMinigameService minigameService
         )
@@ -62,7 +60,6 @@ namespace SabaNews.Site.Controllers.Event
             this.pollService = pollService;
             this.leagueService = leagueService;
             this.optionService = optionService;
-            this.matchService = matchService;
             this.teamService = teamService;
             this.minigameService = minigameService;
         }
@@ -304,7 +301,7 @@ namespace SabaNews.Site.Controllers.Event
             }
             var profile = await postService.GetPostDetailBySlugAsync(teamProfile.Name, Constants.postType);
             var players = await teamService.GetTeamPlayerById(model.TeamId);
-            var matches = await matchService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = model.TeamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId });
+            var matches = await teamService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = model.TeamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId });
             matches = matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             return Json(new { matches, players, profile });
         }

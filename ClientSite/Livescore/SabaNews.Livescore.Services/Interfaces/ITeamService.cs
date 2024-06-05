@@ -3,7 +3,9 @@ namespace SabaNews.Livescore.Services
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Services.Criteria.Team;
 
     public interface ITeamService
@@ -14,5 +16,6 @@ namespace SabaNews.Livescore.Services
         Task<PlayerCustom> GetPlayerById(long playerId);
         Task<CommandResult> UpdatePlayerAsync(UpdateTeamPlayerCommand cmd);
         Task<CommandResult> DeletePlayerAsync(long playerId);
+        Task<IList<Match>> GetMatchByTeamSeasonAsync(GetMatchByTeamSeasonCriteria criteria);
     }
 }

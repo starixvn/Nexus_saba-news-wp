@@ -8,6 +8,7 @@
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
+    using SabaNews.Livescore.Repositories;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Team;
     using System;
@@ -18,6 +19,7 @@
     public class TeamServiceTests
     {
         private IBaseService baseService;
+        private IMatchRepository matchRepository;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -123,8 +125,9 @@
         private TeamService GetService()
         {
             baseService = Substitute.For<IBaseService>();
+            matchRepository = Substitute.For<IMatchRepository>();
 
-            return new TeamService(baseService);
+            return new TeamService(baseService, matchRepository);
         }
     }
 }

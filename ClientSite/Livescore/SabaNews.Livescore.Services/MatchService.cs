@@ -159,10 +159,6 @@
             return matches.ToList();
         }
 
-        public async Task<IList<Match>> GetMatchByTeamSeasonAsync(GetMatchByTeamSeasonCriteria criteria)
-        {
-            return await matchRepository.GetMatchBySeasonFilterAsync(criteria);
-        }
 
         private List<Match> ProcessFloatMatches(IEnumerable<FloatMatchModel> floatMatches)
         {
