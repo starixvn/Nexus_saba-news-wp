@@ -6,6 +6,7 @@
 @import './components/dots-title';
 @import './components/statistic-grid';
 @import './components/minigame_control';
+@import './components/input-custom';
 
 
 body{
@@ -13,6 +14,17 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.nav-select-mb{
+    @include Mobile{
+        text-align: center;
+    }
+    .custom-select{
+        @include Mobile{
+            width: 22rem;
+        }
+    }
 }
 
 

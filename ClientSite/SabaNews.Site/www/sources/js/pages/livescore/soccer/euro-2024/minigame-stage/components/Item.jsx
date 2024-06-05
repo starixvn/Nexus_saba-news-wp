@@ -109,7 +109,7 @@ export class Item extends PureComponent {
                         <div className="statistic-grid-item-vote-round">
                             {`Trận ${number < 10 ? '0' + number : number}: ${CommonFunctions.getTeamName(match.homeTeam)} vs ${CommonFunctions.getTeamName(match.awayTeam)}`}
                         </div>
-                        <div className="statistic-grid-item-choose">{this.getVoteTeam(vote)}</div>
+                        <div className="statistic-grid-item-choose show-pc">{this.getVoteTeam(vote)}</div>
                     </div>
                     <div className="team-main">
                         <EqualHeight>
@@ -136,9 +136,9 @@ export class Item extends PureComponent {
                             </div>
                         </EqualHeight>
                     </div>
-                    {/* {
+                    {
                         vote !== null && <div className="statistic-grid-item-fav show-mb">{this.getVoteTeam(vote)}</div>
-                    } */}
+                    }
                 </div>
             </div>
         );

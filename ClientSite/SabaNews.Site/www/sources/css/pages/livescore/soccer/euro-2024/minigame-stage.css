@@ -128,7 +128,6 @@ body {
   .statistic {
     position: unset;
     text-align: center;
-    width: 100%;
     margin: 0 auto;
   }
 }
@@ -270,6 +269,14 @@ body {
   padding: 0 1rem;
   margin-bottom: 1rem;
 }
+@media (max-width: 767px) {
+  .statistic-grid-item-vote-round {
+    min-height: 3.2rem;
+    border-radius: 3px;
+    margin: -0.6rem;
+    font-size: 1.4rem;
+  }
+}
 .statistic-grid-item-vote-choose {
   font-weight: 600;
   font-size: 1.3rem;
@@ -296,6 +303,11 @@ body {
     margin-top: 1rem;
   }
 }
+@media (max-width: 767px) {
+  .statistic-grid-item-body .team-main {
+    margin-top: 1.6rem;
+  }
+}
 .statistic-grid-item-body.finish {
   opacity: 0.5;
 }
@@ -318,13 +330,13 @@ body {
 }
 .statistic-grid-item-fav {
   font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 2.8rem;
+  font-size: 1.3rem;
 }
 @media screen and (max-width: 1024px) {
   .statistic-grid-item-fav {
     margin-top: 1rem;
-    color: #E8E8D6;
+    color: #FFCA00;
+    line-height: normal;
   }
 }
 .statistic-grid .statistic-team {
@@ -338,6 +350,11 @@ body {
   padding: 0.8rem 0.3rem 0 0.3rem;
   cursor: pointer;
   transition: box-shadow, background 0.2s ease-in;
+}
+@media (max-width: 767px) {
+  .statistic-grid .statistic-team {
+    width: 33.3%;
+  }
 }
 .statistic-grid .statistic-team.active {
   border: 2px solid #FFCA00;
@@ -474,9 +491,91 @@ body {
   color: #143CDA;
 }
 
+.custom-search {
+  position: relative;
+}
+@media (max-width: 767px) {
+  .custom-search {
+    display: none;
+  }
+}
+.custom-search-input {
+  outline: none;
+  background: transparent;
+  width: 25rem;
+  height: 4rem;
+  border: 1px solid #833D55;
+  padding-left: 4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #833D55;
+}
+@media (max-width: 767px) {
+  .custom-search-input {
+    width: 17rem;
+    font-size: 1.2rem;
+  }
+}
+.custom-search-input::placeholder {
+  color: #833D55;
+  font-style: italic;
+}
+@media (max-width: 767px) {
+  .custom-search-input::placeholder {
+    font-size: 1.2rem;
+  }
+}
+.custom-search-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.custom-search-icon::before {
+  color: #833D55;
+  font-size: 2.4rem;
+}
+@media (max-width: 767px) {
+  .custom-search-icon::before {
+    font-size: 2rem;
+  }
+}
+
+.custom-select {
+  outline: none;
+  width: 25rem;
+  height: 4rem;
+  border-radius: 5px;
+  background: #FFF;
+  color: #143CDA;
+  font-weight: 700;
+  font-size: 1.6rem;
+  padding: 0 0.5rem;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 767px) {
+  .custom-select {
+    width: 20rem;
+    font-size: 1.6rem;
+    position: relative;
+    z-index: 9;
+    border: none;
+  }
+}
+
 body {
   background: url("../../../../../../images/euro2024/minigame/bg-standing.png"), linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+@media (max-width: 767px) {
+  .nav-select-mb {
+    text-align: center;
+  }
+}
+@media (max-width: 767px) {
+  .nav-select-mb .custom-select {
+    width: 22rem;
+  }
 }

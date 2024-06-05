@@ -46,6 +46,12 @@
                 align-items: center;
                 padding: 0 1rem;
                 margin-bottom: 1rem;
+                @include Mobile{
+                    min-height: 3.2rem;
+                    border-radius: 3px;
+                    margin: -.6rem;
+                    font-size: 1.4rem;
+                }
             }
             &-choose{
                 font-weight: 600;
@@ -67,6 +73,9 @@
                 justify-content: center;
                 @include tableMobile{
                     margin-top: 1rem;
+                }
+                @include Mobile{
+                    margin-top: 1.6rem;
                 }
             }
             &.finish{
@@ -93,11 +102,11 @@
         }
         &-fav{
             font-weight: 400;
-            font-size: 1.4rem;
-            line-height: 2.8rem;
+            font-size: 1.3rem;
             @include tableMobile{
                 margin-top: 1rem;
-                color: #E8E8D6;
+                color: #FFCA00;
+                line-height: normal;
             }
         }
     }
@@ -113,6 +122,9 @@
         padding: .8rem .3rem 0 .3rem;
         cursor: pointer;
         transition: box-shadow , background .2s ease-in ;
+        @include Mobile{
+            width: 33.3%;
+        }
         &.active{
             border: 2px solid #FFCA00;
             background: rgba(255, 202, 0, 0.10);
