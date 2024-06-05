@@ -411,9 +411,6 @@ body {
   }
 }
 
-.statistic-main {
-  width: 50%;
-}
 @media screen and (max-width: 1024px) {
   .statistic-main {
     width: 100%;
