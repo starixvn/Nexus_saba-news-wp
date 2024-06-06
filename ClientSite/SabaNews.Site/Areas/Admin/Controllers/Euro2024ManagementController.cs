@@ -2,7 +2,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
-    using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Team;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Poll;

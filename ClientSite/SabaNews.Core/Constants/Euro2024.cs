@@ -83,6 +83,7 @@ namespace SabaNews.Core.Constants
         public const string IconWinner = "icon-minigame_list_user";
         public const string IconStanding = "icon-minigame_standing";
 
+        public const string MinigameSlug = "minigame";
         public const string Minigame = "Minigame";
         public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
         public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
@@ -91,6 +92,11 @@ namespace SabaNews.Core.Constants
         public const int maxCountStage = 2;
         public const byte MinigameStage1 = 1;
         public const byte MinigameStage2 = 2;
+
+        public const int MinigameScoreOthers = 10;
+        public const int MinigameScoreQuarterfinal = 12;
+        public const int MinigameScoreSemifinal = 15;
+        public const int MinigameScoreFinal = 15;
 
         public static readonly List<string> startStages = new() {
                 TimestampMinigameStage01Start,
@@ -102,7 +108,7 @@ namespace SabaNews.Core.Constants
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {
             new() { Name = Homepage, Slug = "" },
-            new() { Name = Minigame, Slug = Minigame, Url = $"/{HomepageSlug}/{Minigame}" },
+            new() { Name = Minigame, Slug = MinigameSlug, Url = $"/{HomepageSlug}/{MinigameSlug}" },
             new() { Name = LastestNews, Slug = UrlLastestNewsSlug },
             new() { Name = Fixture, Slug = UrlFixtureSlug },
             new() { Name = Standing, Slug = UrlStandingSlug },

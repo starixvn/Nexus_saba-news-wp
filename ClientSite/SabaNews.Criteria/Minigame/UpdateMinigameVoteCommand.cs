@@ -2,6 +2,8 @@
 {
     using System;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
+
     public class UpdateMinigameVoteCommand : BaseNonQueryCommand
     {
         public long UserId { get; set; }
@@ -15,7 +17,7 @@
         public long LeagueId { get; set; }
 
         public long SeasonId { get; set; }
-        public DateTime UpdatedDate { get; set; } = DateTimeOffset.UtcNow.DateTime;
+        public DateTime UpdatedDate { get; set; } = DateTimeUtilize.UtcNow().DateTime;
 
         public override string GetSettingKey() => "minigame_updateVote";
 

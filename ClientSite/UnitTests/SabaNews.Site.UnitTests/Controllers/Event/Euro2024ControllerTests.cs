@@ -31,6 +31,10 @@
     using System.Net;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Models.Team;
+    using SabaNews.Criteria.Event.Minigame;
+    using SabaNews.Models.Event.Minigame;
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
+    using System;
 
     public class Euro2024ControllerTests : Controller
     {
@@ -627,6 +631,405 @@
             Assert.Equal(standingGroup.Count, standingResult.Count);
         }
 
+        [Fact]
+        public async Task Minigame_WhenCalled_WhenNotLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<MatchLeague>();
+            var cateSlugCriteria = fixture.Create<GetPostsByCateSlugCriteria>(); 
+            var leagueId =  fixture.Create<long>();
+            var seasonId =  fixture.Create<long>();
+            sessionService.User = null;
+
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var result = await controller.Minigame();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/Minigame/Minigame.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<EuroMinigameViewModel>(viewResult.Model);
+            Assert.Equal(expectMatch, newsResult.Matches);
+            Assert.False(newsResult.IsLogin);
+        }
+        
+
+        [Fact]
+        public async Task Minigame_WhenCalled_WhenLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<MatchLeague>();
+            var cateSlugCriteria = fixture.Create<GetPostsByCateSlugCriteria>(); 
+            var leagueId =  fixture.Create<long>();
+            var seasonId =  fixture.Create<long>();
+            sessionService.User = fixture.Create<UserSession>();
+
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var result = await controller.Minigame();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/Minigame/Minigame.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<EuroMinigameViewModel>(viewResult.Model);
+            Assert.Equal(expectMatch, newsResult.Matches);
+            Assert.Equal(sessionService.User, newsResult.User);
+            Assert.True(newsResult.IsLogin);
+        }
+
+        [Fact]
+        public async Task MinigameStage_WhenCalled_WhenNotLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = null;
+
+            //Act
+            var result = await controller.MinigameStage(1);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Euro2024", redirectResult.ControllerName);
+            Assert.Equal("Minigame", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task MinigameStage_WhenCalled_WhenWrongStage()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = null;
+
+
+            //Act
+            var result = await controller.MinigameStage(3);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Euro2024", redirectResult.ControllerName);
+            Assert.Equal("Minigame", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task MinigameStage_WhenCalled_WhenLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<MatchLeague>();
+            var leagueId =  fixture.Create<long>();
+            var seasonId =  fixture.Create<long>();
+
+            sessionService.User = fixture.Create<UserSession>();
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var result = await controller.MinigameStage(1);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/Minigame/Stage.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<EuroMinigameStageViewModel>(viewResult.Model);
+            Assert.Equal(expectMatch, newsResult.Matches);
+            Assert.True(newsResult.IsLogin);
+        }
+
+        [Fact]
+        public async Task MinigameProfile_WhenCalled_WhenLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<MatchLeague>();
+            var leagueId =  fixture.Create<long>();
+            var seasonId =  fixture.Create<long>();
+
+            sessionService.User = fixture.Create<UserSession>();
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var result = await controller.MinigameProfile();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/Minigame/Profile.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<EuroMinigameStageViewModel>(viewResult.Model);
+            Assert.Equal(expectMatch, newsResult.Matches);
+            Assert.True(newsResult.IsLogin);
+        }
+
+        [Fact]
+        public async Task MinigameProfile_WhenCalled_WhenNotLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = null;
+
+            //Act
+            var result = await controller.MinigameProfile();
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Euro2024", redirectResult.ControllerName);
+            Assert.Equal("Minigame", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenCalled_WhenLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<MatchLeague>();
+            var leagueId =  fixture.Create<long>();
+            var seasonId =  fixture.Create<long>();
+
+            sessionService.User = fixture.Create<UserSession>();
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+
+            //Act
+            var result = await controller.MinigameProfileStage(1);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/Minigame/ProfileStage.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<EuroMinigameStageViewModel>(viewResult.Model);
+            Assert.Equal(expectMatch, newsResult.Matches);
+            Assert.True(newsResult.IsLogin);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenCalled_WhenNotLogin()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = null;
+
+
+            //Act
+            var result = await controller.MinigameProfileStage(1);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Euro2024", redirectResult.ControllerName);
+            Assert.Equal("Minigame", redirectResult.ActionName);
+        }
+
+        [Fact]
+        public async Task MinigameProfileStage_WhenCalled_WhenWrongStage()
+        {
+            // Arrange
+            var controller = GetController();
+            sessionService.User = fixture.Create<UserSession>();
+
+
+            //Act
+            var result = await controller.MinigameProfileStage(3);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Euro2024", redirectResult.ControllerName);
+            Assert.Equal("MinigameProfile", redirectResult.ActionName);
+        }
+
+        
+
+        [Fact]
+        public async Task GetMinigameByStage_WhenParamHaveData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
+
+            var expectedData = fixture.Create<IList<MinigameModel>>();
+            
+
+            euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteria = x)).Returns(expectedData);
+
+            //Act
+            var result = await controller.GetMinigameByStage(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<MinigameModel>>(jsonResult.Value);
+            Assert.Equal(expectedData, actual);
+        }
+
+        [Fact]
+        public async Task GetLegueMinigameByUserStage_WhenParamHaveData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var criteria = fixture.Create<GetLeagueMinigameByUserStageCriteria>();
+
+            var expectedData = fixture.Create<IList<MinigameModel>>();
+            sessionService.User = fixture.Create<UserSession>();
+
+            euro2024Service.GetLeagueMinigameByUserStageAsync(Arg.Do<GetLeagueMinigameByUserStageCriteria>(x => criteria = x)).Returns(expectedData);
+
+            //Act
+            var result = await controller.GetLegueMinigameByUserStage(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<MinigameModel>>(jsonResult.Value);
+            Assert.Equal(expectedData, actual);
+        }
+
+        [Fact]
+        public async Task GetLegueMinigameByUserStage_WhenNotLogin_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            GetLeagueMinigameByUserStageCriteria model = null;
+            sessionService.User = null;
+
+            //Act
+            var result = await controller.GetLegueMinigameByUserStage(model);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
+
+
+        [Fact]
+        public async Task UpdateVoteMinigame_WhenParamHaveData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var cmd = fixture.Create<UpdateMinigameVoteCommand>();
+            var criteria = fixture.Create<GetMinigameVotedMatchCriteria>();
+            var matchStartDate = DateTime.Parse("2024-10-10 10:00:00");
+
+            var expectedMatch = new MinigameMatchVotedModel { MatchId = 1, Status = 0, StartTime = matchStartDate};
+            var expectedData = fixture.Create<CommandResult>();
+            sessionService.User = fixture.Create<UserSession>();
+
+            euro2024Service.GetMinigameVoteMatchAsync(Arg.Do<GetMinigameVotedMatchCriteria>(x => criteria = x)).Returns(expectedMatch);
+            euro2024Service.UpdateMinigameVoteAsync(Arg.Do<UpdateMinigameVoteCommand>(x => cmd = x)).Returns(expectedData);
+
+            //Act
+            var result = await controller.UpdateVoteMinigame(cmd);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(expectedData, actual);
+        }
+
+        [Fact]
+        public async Task UpdateVoteMinigame_WhenNotLogin_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            UpdateMinigameVoteCommand model = null;
+            sessionService.User = null;
+
+            //Act
+            var result = await controller.UpdateVoteMinigame(model);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
+
+        [Fact]
+        public async Task GetMinigameVoteMatch_WhenParamHaveData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var criteria = fixture.Create<GetMinigameVotedMatchCriteria>();
+
+            var expectedData = fixture.Create<MinigameMatchVotedModel>();
+            sessionService.User = fixture.Create<UserSession>();
+
+            euro2024Service.GetMinigameVoteMatchAsync(Arg.Do<GetMinigameVotedMatchCriteria>(x => criteria = x)).Returns(expectedData);
+
+            //Act
+            var result = await controller.GetMinigameVoteMatch(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<MinigameMatchVotedModel>(jsonResult.Value);
+            Assert.Equal(expectedData, actual);
+        }
+
+        [Fact]
+        public async Task GetMinigameByUser_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var model = fixture.Create<GetMinigameUserVoteModel>();
+            var leagueId = fixture.Create<long>();
+            var seasonId = fixture.Create<long>();
+            var userId = fixture.Create<long>();
+            sessionService.User = fixture.Create<UserSession>();
+
+            var expectedVotes = fixture.Create<IList<MinigameModel>>();
+            var expected = fixture.Create<MatchLeague>();
+            var match = expected.Matches.First();
+            match.Stage.StageId = Euro2024.GroupStageId;
+            expected.Matches.First().Stage.StageId = Euro2024.GroupStageId;
+            var matches = new List<Match>();
+            for(int i = 0; i < 64; i++) { expected.Matches.Add(match); }
+
+            var expectMatch = expected.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            var expectedJson = Json(new { expected.League, expected.Matches });
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expected);
+            euro2024Service.GetMinigameByUserAsync(Arg.Do<long>(x => userId = x), Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => seasonId = x)).Returns(expectedVotes);
+            //Act
+            var result = await controller.GetMinigameByUser(model);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            var actualLeague = Assert.IsAssignableFrom<League>(viewResult.Value.GetType().GetProperty("league").GetValue(viewResult.Value));
+            var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("matches").GetValue(viewResult.Value));
+            var actualVotes = Assert.IsAssignableFrom<IList<MinigameModel>>(viewResult.Value.GetType().GetProperty("votes").GetValue(viewResult.Value));
+            Assert.Equal(expected.League, actualLeague);
+            Assert.Equal(expectMatch, actualMatches);
+            Assert.Equal(expectedVotes, actualVotes);
+        }
+
+        [Fact]
+        public async Task GetMinigameByUser_WhenNotLogin_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            GetMinigameUserVoteModel model = null;
+            sessionService.User = null;
+
+            //Act
+            var result = await controller.GetMinigameByUser(model);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(viewResult.Value);
+        }
 
 
         #region Helpers

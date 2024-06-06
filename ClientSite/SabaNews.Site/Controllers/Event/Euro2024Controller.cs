@@ -529,7 +529,7 @@ namespace SabaNews.Site.Controllers.Event
                 || !EuroHelper.CheckStartStage(stage)
             )
             {
-                return Redirect(Url.Action("Minigame", EuroController));
+                return RedirectToActionPermanent("Minigame", EuroController);
             }
             var matches = await GetEuroMatch();
             var header = new HeaderViewModel
@@ -553,7 +553,7 @@ namespace SabaNews.Site.Controllers.Event
         {
             if (sessionService.User == null)
             {
-                return Redirect(Url.Action("Minigame", EuroController));
+                return RedirectToActionPermanent("Minigame", EuroController);
             }
             var header = new HeaderViewModel
             {
@@ -577,12 +577,12 @@ namespace SabaNews.Site.Controllers.Event
         {
             if (sessionService.User == null)
             {
-                return Redirect(Url.Action("Minigame", EuroController));
+                return RedirectToActionPermanent("Minigame", EuroController);
             }
             if (stage < Euro2024.MinigameStage1 || stage > Euro2024.MinigameStage2 || !EuroHelper.CheckStartStage(stage)
            )
             {
-                return Redirect(Url.Action("MinigameProfile", EuroController));
+                return RedirectToActionPermanent("MinigameProfile", EuroController);
             }
             var header = new HeaderViewModel
             {

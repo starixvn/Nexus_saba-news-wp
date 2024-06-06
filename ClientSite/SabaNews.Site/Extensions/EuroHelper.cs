@@ -20,7 +20,7 @@
         const int SixtyMinsToSecond = 3600;
         const int NinetyMinsToSecond = 5400;
 
-         public static string GetMatchNamePredict(Match match, IList<UserMinigameModel> votes)
+        public static string GetMatchNamePredict(Match match, IList<UserMinigameModel> votes)
         {
             var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
             string teamName = "";
