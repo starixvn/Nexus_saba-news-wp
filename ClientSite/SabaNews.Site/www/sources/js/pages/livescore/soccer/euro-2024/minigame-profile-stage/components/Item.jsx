@@ -144,7 +144,7 @@ export class Item extends PureComponent {
                                     </EqualHeightElement>
                                 </div>
                                 {
-                                    this.stage !== 4 &&
+                                    this.stage !== Euro.MinigameStage.Knockout &&
                                     <div className={`minigame-team ${voteStatus === 0 ? 'active' : ''}`} onClick={() => this.handleVote(0)} >
                                         <div className="group-bg-logo"><i className="icon-minigame_draw" /></div>
                                         <EqualHeightElement name="Name">

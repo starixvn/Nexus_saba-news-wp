@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Criteria.Event.Minigame
 {
+    using System;
     using SabaNews.Core.Constants;
     public class UpdateMinigameVoteCommand : BaseNonQueryCommand
     {
@@ -14,6 +15,7 @@
         public long LeagueId { get; set; }
 
         public long SeasonId { get; set; }
+        public DateTime UpdatedDate { get; set; } = DateTimeOffset.UtcNow.DateTime;
 
         public override string GetSettingKey() => "minigame_updateVote";
 

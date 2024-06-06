@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { WorldCup } from '@jsroot/common/constants';
+import { Euro } from '../euro-constants';
 const minigameProfileStageSlice = createSlice({
     name: 'minigameProfileStageSlice',
     initialState: {
@@ -22,7 +22,7 @@ const minigameProfileStageSlice = createSlice({
             const matches = action.payload,
                 totalItems = matches.length,
                 stages = [];
-            const groups = matches.filter(item => item.stage?.stageId === WorldCup.GroupsStage);
+            const groups = matches.filter(item => item.stage?.stageId === Euro.GroupsStage);
             let groupTeams = groups.map(item => item.homeTeam.teamId);
             groupTeams = [...new Set(groupTeams)];
             for (let i = 0; i < totalItems; i++) {
