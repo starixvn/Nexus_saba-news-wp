@@ -1174,31 +1174,6 @@
         padding: 0;
         height: auto;
     }
-
-    @include creen1199px {
-        &.scroll-height {
-            height: 5rem;
-
-            .wc-logo {
-                a {
-                    height: 5rem;
-                    clip-path: polygon(0 0,100% 0,80% 100%,20% 100%);
-                }
-
-                .logo-none-scroll {
-                    opacity: 0;
-                    visibility: hidden;
-                }
-
-                .logo-scroll-header {
-                    opacity: 1;
-                    visibility: visible;
-                }
-            }
-        }
-    }
-
-
     .group-menu {
         justify-content: center;
         width: 100%;
