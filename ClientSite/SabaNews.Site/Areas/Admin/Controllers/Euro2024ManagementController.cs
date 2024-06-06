@@ -14,14 +14,14 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     {
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
-        private readonly ITeamService teamService;
+        private readonly IEuro2024Service euro2024Service;
         private readonly IFileService fileService;
 
-        public Euro2024ManagementController(IOptionService optionService, IPollService pollService, ITeamService teamService, IFileService fileService)
+        public Euro2024ManagementController(IOptionService optionService, IPollService pollService, IEuro2024Service euro2024Service, IFileService fileService)
         {
             this.optionService = optionService;
             this.pollService = pollService;
-            this.teamService = teamService;
+            this.euro2024Service = euro2024Service;
             this.fileService = fileService;
         }
         public async Task<ActionResult> Poll()
@@ -46,7 +46,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
         public async Task<ActionResult> Team()
         {
-            var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
+            var teams = await euro2024Service.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
             return View(teams);
         }
         
@@ -59,7 +59,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> GetPlayerGrid(long teamId)
         {
-            var teams = await teamService.GetTeamPlayerById(teamId);
+            var teams = await euro2024Service.GetTeamPlayerById(teamId);
             return PartialView("_TeamPlayerGrid", teams);
         }
         [HttpPost]
@@ -82,14 +82,14 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 Position = param.Position,
                 Icon = icon
             };
-            var result = await teamService.CreatePlayerAsync(cmd);
+            var result = await euro2024Service.CreatePlayerAsync(cmd);
             return Json(result);
         }
 
         [HttpGet]
         public async Task<ActionResult> EditPlayer(long playerId)
         {
-           var player = await teamService.GetPlayerById(playerId);
+           var player = await euro2024Service.GetPlayerById(playerId);
            if(player == null)
            {
                 return Json(null);
@@ -100,7 +100,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> EditPlayer(UpdateTeamModel param)
         {
-            var player = await teamService.GetPlayerById(param.PlayerId);
+            var player = await euro2024Service.GetPlayerById(param.PlayerId);
             var icon = param.IsDeletedIcon ? null : player.Icon;
             if (param.Icon != null)
             {
@@ -119,19 +119,19 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 Position = param.Position,
                 Icon = icon
             };
-            var result = await teamService.UpdatePlayerAsync(cmd);
+            var result = await euro2024Service.UpdatePlayerAsync(cmd);
             return Json(result);
         }
 
         [HttpPost]
         public async Task<ActionResult> DeletePlayer(long playerId)
         {
-            var player = await teamService.GetPlayerById(playerId);
+            var player = await euro2024Service.GetPlayerById(playerId);
             if(!string.IsNullOrEmpty(player.Icon))
             {
                 fileService.DeleteFile(player.Icon, UploadDir.PlayerUploadFolder);
             }
-            var result = await teamService.DeletePlayerAsync(playerId);
+            var result = await euro2024Service.DeletePlayerAsync(playerId);
             return Json(result);
         }
 

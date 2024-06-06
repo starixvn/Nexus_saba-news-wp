@@ -37,8 +37,7 @@ namespace SabaNews.Site.Controllers.Event
         private readonly ILeagueService leagueService;
         private readonly IOptionService optionService;
         private readonly IPollService pollService;
-        private readonly ITeamService teamService;
-        private readonly IMinigameService minigameService;
+        private readonly IEuro2024Service euro2024Service;
         private const string EuroController = "Euro2024";
         private const string CategorySlugEuro = Euro2024.HomepageSlug;
         public Euro2024Controller(
@@ -49,8 +48,7 @@ namespace SabaNews.Site.Controllers.Event
             IPollService pollService,
             ILeagueService leagueService,
             IOptionService optionService,
-            ITeamService teamService,
-            IMinigameService minigameService
+            IEuro2024Service euro2024Service
         )
         {
             this.dataControlService = dataControlService;
@@ -60,8 +58,7 @@ namespace SabaNews.Site.Controllers.Event
             this.pollService = pollService;
             this.leagueService = leagueService;
             this.optionService = optionService;
-            this.teamService = teamService;
-            this.minigameService = minigameService;
+            this.euro2024Service = euro2024Service;
         }
         [Route("/euro-2024")]
         public async Task<IActionResult> Index()
@@ -257,7 +254,7 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/doi-tuyen")]
         public async Task<IActionResult> Team()
         {
-            var teams = await teamService.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
+            var teams = await euro2024Service.GetTeamByStage(Euro2024.SeasonId, Euro2024.GroupStageId);
             var model = new TeamViewModel
             {
                 Header = new HeaderViewModel
@@ -300,8 +297,8 @@ namespace SabaNews.Site.Controllers.Event
                 return Json(null);
             }
             var profile = await postService.GetPostDetailBySlugAsync(teamProfile.Name, Constants.postType);
-            var players = await teamService.GetTeamPlayerById(model.TeamId);
-            var matches = await teamService.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = model.TeamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId });
+            var players = await euro2024Service.GetTeamPlayerById(model.TeamId);
+            var matches = await euro2024Service.GetMatchByTeamSeasonAsync(new GetMatchByTeamSeasonCriteria { TeamId = model.TeamId, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId });
             matches = matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             return Json(new { matches, players, profile });
         }
@@ -518,7 +515,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 model.User = sessionService.User;
                 model.UserId = sessionService.User.Id.ToString();
-                model.Votes = await minigameService.GetMinigameByUserAsync(sessionService.User.Id, Euro2024.LeagueId, Euro2024.SeasonId);
+                model.Votes = await euro2024Service.GetMinigameByUserAsync(sessionService.User.Id, Euro2024.LeagueId, Euro2024.SeasonId);
             }
             return View("~/Views/Event/Euro2024/Minigame/Minigame.cshtml", model);
         }
@@ -608,7 +605,7 @@ namespace SabaNews.Site.Controllers.Event
         [HttpPost]
         public async Task<ActionResult> GetMinigameByStage([FromBody] GetLeagueMinigameByStageCriteria criteria)
         {
-            var miniGames = await minigameService.GetLeagueMinigameByStageAsync(criteria);
+            var miniGames = await euro2024Service.GetLeagueMinigameByStageAsync(criteria);
             return Json(miniGames);
         }
 
@@ -620,7 +617,7 @@ namespace SabaNews.Site.Controllers.Event
                 return Json(null);
             }
             criteria.UserId = sessionService.User.Id;
-            var result = await minigameService.GetLeagueMinigameByUserStageAsync(criteria);
+            var result = await euro2024Service.GetLeagueMinigameByUserStageAsync(criteria);
             return Json(result);
         }
 
@@ -631,20 +628,20 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Json(null);
             }
-            var match = await minigameService.GetMinigameVoteMatchAsync(new GetMinigameVotedMatchCriteria { MatchId = criteria.MatchId });
+            var match = await euro2024Service.GetMinigameVoteMatchAsync(new GetMinigameVotedMatchCriteria { MatchId = criteria.MatchId });
             if (LivescoreHelper.IsLiveMatch(match.Status) || match.Status == MatchConstants.Finished || !EuroHelper.IsVoted(match.StartTime))
             {
                 return Json(new CommandResult { });
             }
             criteria.UserId = sessionService.User.Id;
-            var result = await minigameService.UpdateMinigameVoteAsync(criteria);
+            var result = await euro2024Service.UpdateMinigameVoteAsync(criteria);
             return Json(result);
         }
 
         [HttpPost]
         public async Task<ActionResult> GetMinigameVoteMatch([FromBody] GetMinigameVotedMatchCriteria criteria)
         {
-            var match = await minigameService.GetMinigameVoteMatchAsync(criteria);
+            var match = await euro2024Service.GetMinigameVoteMatchAsync(criteria);
             return Json(match);
         }
 
@@ -657,7 +654,7 @@ namespace SabaNews.Site.Controllers.Event
             }
             var data = await dataControlService.GetMatchBySeasonAsync(model.LeagueId, model.SeasonId);
             var matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
-            var votes = await minigameService.GetMinigameByUserAsync(sessionService.User.Id, model.LeagueId, model.SeasonId);
+            var votes = await euro2024Service.GetMinigameByUserAsync(sessionService.User.Id, model.LeagueId, model.SeasonId);
             var statusStages = EuroHelper.GetMinigameStageStatus(matches);
             return Json(new { league = data.League, matches, votes, statusStages });
         }

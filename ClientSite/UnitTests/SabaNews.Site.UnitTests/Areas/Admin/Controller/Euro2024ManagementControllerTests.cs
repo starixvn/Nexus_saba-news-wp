@@ -28,7 +28,7 @@
     {
         private  IOptionService optionService;
         private  IPollService pollService;
-        private  ITeamService teamService;
+        private  IEuro2024Service euro2024Service;
         private  IFileService fileService;
         private readonly IFixture fixture = new Fixture();
 
@@ -86,7 +86,7 @@
             var stageId = fixture.Create<long>();
             
             var teams = fixture.Create<IList<TeamStage>>();
-            teamService.GetTeamByStage(Arg.Do<long>(x => x = seasonId), Arg.Do<long>(x => x = stageId)).Returns(teams);
+            euro2024Service.GetTeamByStage(Arg.Do<long>(x => x = seasonId), Arg.Do<long>(x => x = stageId)).Returns(teams);
 
             //Act
             var result = await controller.Team();
@@ -121,7 +121,7 @@
             var teamId = fixture.Create<long>();
             
             var teams = fixture.Create<IList<PlayerCustom>>();
-            teamService.GetTeamPlayerById(Arg.Do<long>(x => x = teamId)).Returns(teams);
+            euro2024Service.GetTeamPlayerById(Arg.Do<long>(x => x = teamId)).Returns(teams);
 
             //Act
             var result = await controller.GetPlayerGrid(teamId);
@@ -155,7 +155,7 @@
             var expectedUpdateResult = fixture.Create<CommandResult>();
             var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
 
-            teamService.CreatePlayerAsync(Arg.Do<CreateTeamPlayerCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            euro2024Service.CreatePlayerAsync(Arg.Do<CreateTeamPlayerCommand>(x => x = cmd)).Returns(expectedUpdateResult);
             fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.Icon), Arg.Do<string>(x => x = UploadDir.PlayerUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.CreatePlayer(model);
@@ -174,7 +174,7 @@
             var playerId = fixture.Create<long>();
             
             PlayerCustom player = null;
-            teamService.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(player);
+            euro2024Service.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(player);
 
             //Act
             var result = await controller.EditPlayer(playerId);
@@ -192,7 +192,7 @@
             var playerId = fixture.Create<long>();
             
             var teams = fixture.Create<PlayerCustom>();
-            teamService.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(teams);
+            euro2024Service.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(teams);
 
             //Act
             var result = await controller.EditPlayer(playerId);
@@ -231,8 +231,8 @@
             var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
 
             
-            teamService.GetPlayerById(Arg.Do<long>(x => x = model.PlayerId)).Returns(player);
-            teamService.UpdatePlayerAsync(Arg.Do<UpdateTeamPlayerCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            euro2024Service.GetPlayerById(Arg.Do<long>(x => x = model.PlayerId)).Returns(player);
+            euro2024Service.UpdatePlayerAsync(Arg.Do<UpdateTeamPlayerCommand>(x => x = cmd)).Returns(expectedUpdateResult);
             fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.Icon), Arg.Do<string>(x => x = UploadDir.PlayerUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.EditPlayer(model);
@@ -255,8 +255,8 @@
             var expectedUploadResult = new UploadResult { Code = Constants.SuccessCode, Message = "url", AbsoluteUrl = "url" };
 
             
-            teamService.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(player);
-            teamService.DeletePlayerAsync(Arg.Do<long>(x => x = playerId)).Returns(expectedUpdateResult);
+            euro2024Service.GetPlayerById(Arg.Do<long>(x => x = playerId)).Returns(player);
+            euro2024Service.DeletePlayerAsync(Arg.Do<long>(x => x = playerId)).Returns(expectedUpdateResult);
             fileService.DeleteFile(Arg.Do<string>(x => x = player.Icon), Arg.Do<string>(x => x = UploadDir.PlayerUploadFolder)).Returns(expectedUploadResult);
             //Act
             var result = await controller.DeletePlayer(playerId);
@@ -292,9 +292,9 @@
         {
             optionService = Substitute.For<IOptionService>();
             pollService = Substitute.For<IPollService>();
-            teamService = Substitute.For<ITeamService>();
+            euro2024Service = Substitute.For<IEuro2024Service>();
             fileService = Substitute.For<IFileService>();
-            var controller = new Euro2024ManagementController(optionService, pollService, teamService, fileService);
+            var controller = new Euro2024ManagementController(optionService, pollService, euro2024Service, fileService);
 
             return controller;
         }

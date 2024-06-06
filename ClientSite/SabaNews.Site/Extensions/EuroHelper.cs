@@ -16,7 +16,7 @@
     {
         const int MGTPlus = 7;
         const int ThirtyMinsToSecond = 1800;
-        const int ThirtyMins = 30;
+        const int ThirtyMins = 31;
         const int SixtyMinsToSecond = 3600;
         const int NinetyMinsToSecond = 5400;
 
@@ -313,7 +313,7 @@
             else
             {
                 var lastMatchStage = matches[Euro2024.indexMatches[numStage - 1]];
-                var timeSpanEnd = lastMatchStage.StartTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+                var timeSpanEnd = lastMatchStage.StartTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch.DateTime;
                 var secondsUntilMatchEnd = timeSpanEnd.TotalSeconds - timeSpanNow.TotalSeconds;
                 if(lastMatchStage.Status == MatchConstants.Finished)
                 {
@@ -339,7 +339,7 @@
         public static bool IsVoted(DateTime startTime)
         {
             var timeSpanNow = DateTimeUtilize.UtcNow().DateTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch.DateTime;
-            var timeSpanMatch = startTime.AddHours(MGTPlus) - DateTime.UnixEpoch;
+            var timeSpanMatch = startTime.AddHours(MGTPlus) - DateTimeOffset.UnixEpoch.DateTime;
             var secondsUntilMatchStart = timeSpanMatch.TotalMinutes - timeSpanNow.TotalMinutes;
             return secondsUntilMatchStart > ThirtyMins;
         }

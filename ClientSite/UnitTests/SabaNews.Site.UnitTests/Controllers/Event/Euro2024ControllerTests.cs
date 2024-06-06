@@ -42,8 +42,7 @@
         private IOptionService optionService;
         private IPollService pollService;
         private IMatchService matchService;
-        private ITeamService teamService;
-        private IMinigameService minigameService;
+        private IEuro2024Service euro2024Service;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -314,7 +313,7 @@
 
             var expectedTeam = fixture.Create<IList<TeamStage>>();
 
-            teamService.GetTeamByStage(Arg.Do<long>(x => seasonId = x), Arg.Do<long>(x => stageId = x)).Returns(expectedTeam);
+            euro2024Service.GetTeamByStage(Arg.Do<long>(x => seasonId = x), Arg.Do<long>(x => stageId = x)).Returns(expectedTeam);
 
             //Act
             var result = await controller.Team();
@@ -380,8 +379,8 @@
             expectedMatches[0].Stage.StageId = Euro2024.GroupStageId;
 
             postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => profileSlug = x), Arg.Do<string>(x => profileSlug = x)).Returns(expectedProfile);
-            matchService.GetMatchByTeamSeasonAsync(Arg.Do<GetMatchByTeamSeasonCriteria>(x => getMatchCriteria = x)).Returns(expectedMatches);
-            teamService.GetTeamPlayerById(Arg.Do<long>(x => teamId = x)).Returns(expectedPlayers);
+            euro2024Service.GetMatchByTeamSeasonAsync(Arg.Do<GetMatchByTeamSeasonCriteria>(x => getMatchCriteria = x)).Returns(expectedMatches);
+            euro2024Service.GetTeamPlayerById(Arg.Do<long>(x => teamId = x)).Returns(expectedPlayers);
 
             var matches = expectedMatches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             //Act
@@ -641,9 +640,8 @@
             optionService = Substitute.For<IOptionService>();
             pollService = Substitute.For<IPollService>();
             matchService = Substitute.For<IMatchService>();
-            teamService = Substitute.For<ITeamService>();
-            minigameService = Substitute.For<IMinigameService>();
-            var controller = new Euro2024Controller(dataControlService, postService, sessionService, configuration, pollService, leagueService, optionService, matchService, teamService, minigameService);
+            euro2024Service = Substitute.For<IEuro2024Service>();
+            var controller = new Euro2024Controller(dataControlService, postService, sessionService, configuration, pollService, leagueService, optionService, euro2024Service);
 
             return controller;
         }
