@@ -482,6 +482,21 @@ namespace SabaNews.Site.Controllers.Event
             return PartialView("~/Views/Event/Euro2024/_Standing.cshtml", GroupStandingsByGroup(groupsStageStanding));
         }
 
-        
+
+        [Route("euro-2024/minigame")]
+        public ActionResult MinigameCountdown()
+        {
+            var model = new MinigameStageViewModel
+            {
+                Header = new HeaderViewModel
+                {
+                    Title = Euro2024.TeamTitle,
+                    Description = Euro2024.TeamDescription,
+                    Slug = Euro2024.TeamSlug
+                }
+            };
+            return View("~/Views/Event/Euro2024/MinigameCountdown.cshtml", model);
+        }
+
     }
 }
