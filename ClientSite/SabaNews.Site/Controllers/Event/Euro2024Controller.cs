@@ -490,7 +490,6 @@ namespace SabaNews.Site.Controllers.Event
         }
 
 
-        /* ------------minigame------------- */
         [Route("euro-2024/minigame")]
         public async Task<IActionResult> Minigame()
         {
@@ -529,7 +528,7 @@ namespace SabaNews.Site.Controllers.Event
                 || !EuroHelper.CheckStartStage(stage)
             )
             {
-                return RedirectToActionPermanent("Minigame", EuroController);
+                return Redirect(Url.Action("Minigame", EuroController));
             }
             var matches = await GetEuroMatch();
             var header = new HeaderViewModel
@@ -553,7 +552,7 @@ namespace SabaNews.Site.Controllers.Event
         {
             if (sessionService.User == null)
             {
-                return RedirectToActionPermanent("Minigame", EuroController);
+                 return Redirect(Url.Action("Minigame", EuroController));
             }
             var header = new HeaderViewModel
             {
@@ -577,12 +576,12 @@ namespace SabaNews.Site.Controllers.Event
         {
             if (sessionService.User == null)
             {
-                return RedirectToActionPermanent("Minigame", EuroController);
+                return Redirect(Url.Action("Minigame", EuroController));
             }
             if (stage < Euro2024.MinigameStage1 || stage > Euro2024.MinigameStage2 || !EuroHelper.CheckStartStage(stage)
            )
             {
-                return RedirectToActionPermanent("MinigameProfile", EuroController);
+                return Redirect(Url.Action("Minigame", EuroController));
             }
             var header = new HeaderViewModel
             {
