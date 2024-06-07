@@ -105,6 +105,9 @@
                 border-radius: 5px;
                 position: relative;
                 overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 img{
                     position: absolute;
                     top: 0;
@@ -195,5 +198,23 @@
         &:last-child{
             border-bottom : 1px solid #666;
         }
+    }
+}
+
+.wraper-minigame-table{
+    border-radius: 10px;
+    border: 1px solid #4C65DD;
+    background: #1830A1;
+    padding: 3rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    .block-heading{
+        margin-bottom: 2rem;
+        &-text{
+            color: #fff;
+        }
+    }
+    .wrapper-scroll{
+        min-height: inherit;
     }
 }

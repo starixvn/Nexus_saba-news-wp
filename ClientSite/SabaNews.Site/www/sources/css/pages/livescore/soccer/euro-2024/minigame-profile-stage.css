@@ -73,16 +73,6 @@
   }
 }
 
-.auth-minigame {
-  max-width: 67rem;
-  margin: 0 auto;
-  padding: 0 0 1rem 0;
-}
-@media (max-width: 767px) {
-  .auth-minigame {
-    padding: 0 0 0.6rem 0;
-  }
-}
 .auth-minigame .avatar-user {
   width: 5rem;
   height: 5rem;
