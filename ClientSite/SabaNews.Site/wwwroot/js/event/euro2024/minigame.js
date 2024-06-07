@@ -48,7 +48,6 @@
         });
 
         $('.stage-votes-round').click(function (event) {
-            console.log(isLogin);
             if (!isLogin) {
                 $('#joining').modal('show');
             }
