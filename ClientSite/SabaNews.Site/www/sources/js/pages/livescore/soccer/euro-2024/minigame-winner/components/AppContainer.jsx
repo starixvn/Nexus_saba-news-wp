@@ -62,7 +62,7 @@ export class AppContainer extends Component {
                                 <div className="minigame-control">
                                     {
                                         !isMobile && countStageWinners.map( item =>
-                                            <button className= {parseInt(this.state.selectedStage, 10) === item.value ? 'buttonStage active'
+                                            <button key={item.value} className= {parseInt(this.state.selectedStage, 10) === item.value ? 'buttonStage active'
                                             : 'buttonStage'} onClick={() => this.handleChange(item.value)}>{item.name}</button>
                                         )
                                     }
