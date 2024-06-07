@@ -64,7 +64,7 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/minigame-standing.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/minigame-winner.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/event/euro2024/minigame.js" asp-append-version="true"></script>
+        <script src="~/minify/js/euro-2024-minigame.min.js" asp-append-version="true"></script>
     </environment>
 
    
@@ -200,7 +200,7 @@
                                     @if (status == Euro2024.LockStage)
                                     {
                                         <li class="font-weight-bold">Thời gian bắt đầu</li>
-                                        <li class="font-weight-bold">@DateTime.Parse(Euro2024.startStages[i]).ToString("dd/MM/yyyy HH:mm:ssss tt")</li>
+                                        <li class="font-weight-bold">@DateTime.Parse(Euro2024.startStages[i]).ToString("dd/MM/yyyy hh:mm:ssss tt")</li>
                                     }
                                 </ul>
                                 <div class="line-stage">

@@ -498,7 +498,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 Title = Euro2024.TitleMinigame,
                 Description = Euro2024.DescriptionMinigame,
-                Slug = Euro2024.Minigame
+                Slug = Euro2024.MinigameSlug
             };
             var isLogin = sessionService.User != null;
             var model = new EuroMinigameViewModel
