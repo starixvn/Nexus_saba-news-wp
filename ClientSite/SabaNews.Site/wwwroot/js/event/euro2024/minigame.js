@@ -48,6 +48,7 @@
         });
 
         $('.stage-votes-round').click(function (event) {
+            console.log(isLogin);
             if (!isLogin) {
                 $('#joining').modal('show');
             }
@@ -157,23 +158,23 @@
     }
 
     function countDownTime() {
-        for (let i = 0; i < 2; i++) {
+        for (var i = 0; i < 2; i++) {
             var stageElemement = $('#boxStage' + (i + 1));
             var statusStage = stageElemement.data('status');
             if (statusStage == "Sắp diễn ra" || statusStage == "Sắp kết thúc") {
-                let timeCountDown = $("#stage" + (i + 1).toString()).data('timecountdown');
-                let countDown = new Date(timeCountDown).getTime(),
+                var timeCountDown = $("#stage" + (i + 1).toString()).data('timecountdown');
+                var countDown = new Date(timeCountDown).getTime(),
                     x = setInterval(function () {
-                        let now = new Date().getTime(),
+                        var now = new Date().getTime(),
                             distance = countDown - now;
 
-                        let hourShow = Math.floor((distance % (day)) / (hour)),
+                            var hourShow = Math.floor((distance % (day)) / (hour)),
                             minuteShow = Math.floor((distance % (hour)) / (minute)),
                             secondShow = Math.floor((distance % (minute)) / second)
 
-                        document.getElementById('hours' + (i + 1).toString()).innerHTML = `<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`,
-                            document.getElementById('minutes' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}:`,
-                            document.getElementById('seconds' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)})`;
+                        $('#hours' + (i + 1).toString()).innerHTML = `<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`,
+                            $('#minutes' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}:`,
+                            $('#seconds' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)})`;
                         if (minuteShow == 0 && secondShow == 0) {
                             location.reload();
                         }
@@ -187,22 +188,22 @@
             minute = second * 60,
             hour = minute * 60,
             day = hour * 24;
-        let countDown = new Date('November 16, 2022 08:00:00').getTime(),
+        var countDown = new Date('November 16, 2022 08:00:00').getTime(),
             x = setInterval(function () {
-                let now = new Date().getTime(),
+                var now = new Date().getTime(),
                     distance = countDown - now;
                 if (distance < 0) {
                     return false;
                 }
-                let dayShow = Math.floor(distance / (day)),
+                var dayShow = Math.floor(distance / (day)),
                     hourShow = Math.floor((distance % (day)) / (hour)),
                     minuteShow = Math.floor((distance % (hour)) / (minute)),
                     secondShow = Math.floor((distance % (minute)) / second)
 
-                document.getElementById('days').innerHTML = `<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`;
-                document.getElementById('hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
-                    document.getElementById('minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
-                    document.getElementById('seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
+                $('#days').innerHTML = `<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`;
+                $('#hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
+                    $('#minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
+                    $('#seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
             }, second);
     }
 
