@@ -23,7 +23,7 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/euro2024-countdown.min.css" asp-append-version="true">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" asp-append-version="true">
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
@@ -62,6 +62,9 @@
     </h2>
 
     <div class="count-day">
+        <div class="wrap-img">
+            <img src="~/images/euro2024/uni-mobile.png" alt="Alternate Text" />
+        </div>
         <ul class="counter-day">
             <li class="counter">
                 <div class="clock" id="days">
@@ -83,10 +86,10 @@
     </div>
     <div class="img-man">
         <div class="img-man-pc">
-            <img src="~/images/worldcup/minigame/before_event_man.png" alt="Alternate Text" class="img-res" />
+            <img src="~/images/euro2024/man-countdown.png" alt="Alternate Text" class="img-res" />
         </div>
         <div class="img-man-mobile">
-            <img src="~/images/worldcup/minigame/before_event_man_mobile.png" alt="Alternate Text" class="img-res" />
+            <img src="~/images/euro2024/man-countdown-mobile.png" alt="Alternate Text" class="img-res" />
         </div>
     </div>
 </section>

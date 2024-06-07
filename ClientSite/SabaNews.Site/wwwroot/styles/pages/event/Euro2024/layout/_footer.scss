@@ -28,6 +28,9 @@
     &-social{
         gap: 1.6rem;
         flex-wrap: wrap;
+        @include tableMobile{
+            width: 20rem;
+        }
         .text-follow{
             color: $white-color;
             @include Mobile{

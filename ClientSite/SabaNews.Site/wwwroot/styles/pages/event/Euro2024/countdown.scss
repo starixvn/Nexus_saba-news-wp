@@ -5,8 +5,6 @@
 
 body {
     overflow: unset;
-    background: url('../../../../images/worldcup/minigame/bg_before_event.png') $primary-bg !important;
-    background-attachment: fixed !important;
 }
 
 .disable-background {
@@ -16,110 +14,112 @@ body {
 
 //before event
 .before-event {
-    @include creen1391px {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%
+    padding-top: 7rem;
+    background: url('../../../../images/euro2024/bg-countdown.png') $primary-bg;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include tableMobile{
+        padding-top: 3.3rem;
+        background: url('../../../../images/euro2024/bg-countdown-mobie.png') $primary-bg;
+        background-position: center;
     }
-
+    @include tableMobile{
+        background: url('../../../../images/euro2024/bg-countdown-mobie.png') $primary-bg;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .ready {
-        font-size: 2.4rem;
+        font-size: 3.4rem;
         text-transform: uppercase;
         text-align: center;
-        letter-spacing: 1rem;
+        letter-spacing: .4rem;
         color: #fff;
-        margin: 6rem 0 4rem;
-
-        @include creen1391px {
-            margin: 0;
-            margin-bottom: 3rem;
-        }
-
-        @include tableMobile {
-            margin: 3rem 0 2.4rem 0;
+        line-height: normal;
+        text-shadow: 0px 1.31px 0px rgba(0, 0, 0, 0.25);
+        margin-bottom: -2.5rem;
+        font-family: Roboto;
+        @include tableMobile{
             font-size: 1.6rem;
+            letter-spacing: 1.978px;
+            margin-bottom: 0;
         }
     }
 
     .count-day {
         width: 100%;
-        max-width: 94rem;
+        max-width: 76.6rem;
         margin: 0 auto;
-        height: 11.7rem;
+        height: 14.4rem;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-
-        @include tableMobile {
-            max-width: 35rem;
-            height: 5rem;
+        background: url('../../../../images/euro2024/uni.png');
+        background-size: 100%;
+        font-family: Roboto;
+        @include tableMobile{
+            background: none;
+            height: 15rem;
         }
-
-        &:after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%, 2% 0);
-            background: rgba(255, 255, 255, 0.1);
-            position: absolute;
-            top: 0;
-            left: 0;
+        @include Mobile{
+            background: none;
+            height: 10rem;
         }
-
         .counter-day {
             list-style: none;
-            width: 100%;
             display: flex;
             justify-content: space-around;
-            height: 100%;
             align-items: center;
-
+            margin-top: 1.5rem;
+            @include tableMobile{
+                margin-top: 0;
+            }
             .counter {
-                height: 100%;
                 display: flex;
                 align-items: center;
 
                 .clock {
-                    height: 100%;
                     display: flex;
                     align-items: center;
                     position: relative;
-
+                    width: 15rem;
+                    height: 3rem;
+                    justify-content: center;
+                    @include Mobile{
+                        width: 8rem;
+                        height: .5rem;
+                    }
                     .clock-time {
-                        font-size: 10rem;
-                        color: #FABB0A;
-                        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                        font-weight: 800;
+                        font-size: 4.3rem;
+                        color: #FFCA00;
+                        font-weight: 700;
                         position: relative;
                         height: 100%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         width: 14rem;
-
-                        @include tableMobile {
-                            font-size: 4rem;
-                            width: 5rem;
+                        @include Mobile{
+                            font-size: 2.8rem;
                         }
-
                         &:after {
                             content: '';
                             display: block;
                             width: 1rem;
                             height: 1rem;
-                            background: #43BEAC;
+                            background: #FFCA00;
                             clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%);
                             position: absolute;
-                            right: -35%;
-                            top: 50%;
+                            left: 100%;
+                            top: 60%;
                             transform: translate(50%, -50%);
 
                             @include Mobile {
                                 width: .8rem;
                                 height: .8rem;
+                                left: auto;
+                                right: 0;
                             }
                         }
                     }
@@ -131,11 +131,11 @@ body {
                         bottom: -40px;
                         transform: translate(50%, -50%);
                         text-transform: uppercase;
-                        font-weight: 600;
-                        font-size: 1.8rem;
-
-                        @include tableMobile {
-                            font-size: 1.2rem;
+                        font-weight: 400;
+                        font-size: 1.3rem;
+                        letter-spacing: 1.04px;
+                        @include Mobile{
+                            font-size: .8rem;
                         }
                     }
                 }
@@ -158,13 +158,14 @@ body {
         margin-top: -10rem;
 
         @include tableMobile {
-            margin-top: 2rem;
+            margin-top: 0;
         }
 
         &-pc {
             display: block;
-
-            @include tableMobile {
+            margin-top: 3.5rem;
+            max-height: 56rem;
+            @include Mobile {
                 display: none;
             }
         }
@@ -172,9 +173,28 @@ body {
         &-mobile {
             display: none;
 
-            @include tableMobile {
+            @include Mobile {
                 display: block;
+                img{
+                    width: 100%;
+                }
             }
+        }
+    }
+}
+
+.wrap-img{
+    display: none;
+    @include tableMobile{
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%,-50%);
+        width: 100%;
+        img{
+            display: block;
+            width: 100%;
         }
     }
 }

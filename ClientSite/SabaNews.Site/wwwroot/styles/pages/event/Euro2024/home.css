@@ -1636,6 +1636,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   gap: 1.6rem;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 1024px) {
+  .footer-event-social {
+    width: 20rem;
+  }
+}
 .footer-event-social .text-follow {
   color: #fff;
 }

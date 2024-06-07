@@ -1635,6 +1635,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   gap: 1.6rem;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 1024px) {
+  .footer-event-social {
+    width: 20rem;
+  }
+}
 .footer-event-social .text-follow {
   color: #fff;
 }
@@ -1835,93 +1840,110 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 body {
   overflow: unset;
-  background: url("../../../../images/worldcup/minigame/bg_before_event.png") #143CDB !important;
-  background-attachment: fixed !important;
 }
 
 .disable-background {
   background: unset !important;
 }
 
-@media screen and (min-width: 1391px) {
+.before-event {
+  padding-top: 7rem;
+  background: url("../../../../images/euro2024/bg-countdown.png") #143CDB;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media screen and (max-width: 1024px) {
   .before-event {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-}
-.before-event .ready {
-  font-size: 2.4rem;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 1rem;
-  color: #fff;
-  margin: 6rem 0 4rem;
-}
-@media screen and (min-width: 1391px) {
-  .before-event .ready {
-    margin: 0;
-    margin-bottom: 3rem;
+    padding-top: 3.3rem;
+    background: url("../../../../images/euro2024/bg-countdown-mobie.png") #143CDB;
+    background-position: center;
   }
 }
 @media screen and (max-width: 1024px) {
+  .before-event {
+    background: url("../../../../images/euro2024/bg-countdown-mobie.png") #143CDB;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.before-event .ready {
+  font-size: 3.4rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.4rem;
+  color: #fff;
+  line-height: normal;
+  text-shadow: 0px 1.31px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: -2.5rem;
+  font-family: Roboto;
+}
+@media screen and (max-width: 1024px) {
   .before-event .ready {
-    margin: 3rem 0 2.4rem 0;
     font-size: 1.6rem;
+    letter-spacing: 1.978px;
+    margin-bottom: 0;
   }
 }
 .before-event .count-day {
   width: 100%;
-  max-width: 94rem;
+  max-width: 76.6rem;
   margin: 0 auto;
-  height: 11.7rem;
+  height: 14.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  background: url("../../../../images/euro2024/uni.png");
+  background-size: 100%;
+  font-family: Roboto;
 }
 @media screen and (max-width: 1024px) {
   .before-event .count-day {
-    max-width: 35rem;
-    height: 5rem;
+    background: none;
+    height: 15rem;
   }
 }
-.before-event .count-day:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%, 2% 0);
-  background: rgba(255, 255, 255, 0.1);
-  position: absolute;
-  top: 0;
-  left: 0;
+@media (max-width: 767px) {
+  .before-event .count-day {
+    background: none;
+    height: 10rem;
+  }
 }
 .before-event .count-day .counter-day {
   list-style: none;
-  width: 100%;
   display: flex;
   justify-content: space-around;
-  height: 100%;
   align-items: center;
+  margin-top: 1.5rem;
+}
+@media screen and (max-width: 1024px) {
+  .before-event .count-day .counter-day {
+    margin-top: 0;
+  }
 }
 .before-event .count-day .counter-day .counter {
-  height: 100%;
   display: flex;
   align-items: center;
 }
 .before-event .count-day .counter-day .counter .clock {
-  height: 100%;
   display: flex;
   align-items: center;
   position: relative;
+  width: 15rem;
+  height: 3rem;
+  justify-content: center;
+}
+@media (max-width: 767px) {
+  .before-event .count-day .counter-day .counter .clock {
+    width: 8rem;
+    height: 0.5rem;
+  }
 }
 .before-event .count-day .counter-day .counter .clock .clock-time {
-  font-size: 10rem;
-  color: #FABB0A;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-weight: 800;
+  font-size: 4.3rem;
+  color: #FFCA00;
+  font-weight: 700;
   position: relative;
   height: 100%;
   display: flex;
@@ -1929,10 +1951,9 @@ body {
   justify-content: center;
   width: 14rem;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .before-event .count-day .counter-day .counter .clock .clock-time {
-    font-size: 4rem;
-    width: 5rem;
+    font-size: 2.8rem;
   }
 }
 .before-event .count-day .counter-day .counter .clock .clock-time:after {
@@ -1940,17 +1961,19 @@ body {
   display: block;
   width: 1rem;
   height: 1rem;
-  background: #43BEAC;
+  background: #FFCA00;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   position: absolute;
-  right: -35%;
-  top: 50%;
+  left: 100%;
+  top: 60%;
   transform: translate(50%, -50%);
 }
 @media (max-width: 767px) {
   .before-event .count-day .counter-day .counter .clock .clock-time:after {
     width: 0.8rem;
     height: 0.8rem;
+    left: auto;
+    right: 0;
   }
 }
 .before-event .count-day .counter-day .counter .clock .clock-text {
@@ -1960,12 +1983,13 @@ body {
   bottom: -40px;
   transform: translate(50%, -50%);
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1.8rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 1.04px;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .before-event .count-day .counter-day .counter .clock .clock-text {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 }
 .before-event .count-day .counter-day .counter:last-child .clock .clock-time:after {
@@ -1977,13 +2001,15 @@ body {
 }
 @media screen and (max-width: 1024px) {
   .before-event .img-man {
-    margin-top: 2rem;
+    margin-top: 0;
   }
 }
 .before-event .img-man-pc {
   display: block;
+  margin-top: 3.5rem;
+  max-height: 56rem;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .before-event .img-man-pc {
     display: none;
   }
@@ -1991,8 +2017,29 @@ body {
 .before-event .img-man-mobile {
   display: none;
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 767px) {
   .before-event .img-man-mobile {
     display: block;
+  }
+  .before-event .img-man-mobile img {
+    width: 100%;
+  }
+}
+
+.wrap-img {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .wrap-img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 100%;
+  }
+  .wrap-img img {
+    display: block;
+    width: 100%;
   }
 }
