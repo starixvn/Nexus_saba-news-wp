@@ -176,8 +176,8 @@
 
                             <div id="boxStage@(i+1)" class="stage-items stage-items-1 @(status == Euro2024.OnEndStage ? "end-stage" : "") @(isActive ? "stage-votes" : "")" 
                                     data-status="@status" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
-                                <div data-stage="@(i+1)" class="stage-round  @(isActive ? "stage-votes-round active" : "") ">
-                                    <h2 class="btn-event @(isActive ? "btn-event-warning" : "btn-event-lock")">Giai Đoạn @(i + 1)</h2>
+                                <div class="stage-round  @(isActive ? "stage-votes-round active" : "") ">
+                                    <h2 class="btn-event btn-stage @(isActive ? "btn-event-warning" : "btn-event-lock")" data-stage="@(i+1)">Giai Đoạn @(i + 1)</h2>
                                     <a class="icon-stage @(isActive ? "btn-event-warning" : "btn-event-lock") @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
                                 </div>
                                 <ul class="count-and-time">

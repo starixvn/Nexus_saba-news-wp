@@ -47,7 +47,7 @@
             }
         });
 
-        $('.stage-votes-round').click(function (event) {
+        $('.stage-votes-round .btn-stage').click(function (event) {
             if (!isLogin) {
                 $('#joining').modal('show');
             }
