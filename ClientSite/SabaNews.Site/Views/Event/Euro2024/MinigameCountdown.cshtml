@@ -1,6 +1,9 @@
 ﻿@using System.Text;
 @using SabaNews.Site.Extensions;
 @using DeviceDetectorNET;
+@{
+    Layout = "_LayoutEuro2024";
+}
 @section Title {
     @Model.Header.Title
 }
@@ -50,7 +53,7 @@
     <script src="~/js/event/euro2024/minigame_countdown.js" asp-append-version="true"></script>
 }
 
-    @(await Component.InvokeAsync("HeaderEuro2024", new { cateSlug = Model.Header.Slug }))
+@(await Component.InvokeAsync("HeaderEuro2024", new { cateSlug = Model.Header.Slug }))
 
 
 <section class="before-event">
