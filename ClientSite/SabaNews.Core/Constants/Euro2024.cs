@@ -67,11 +67,17 @@ namespace SabaNews.Core.Constants
         public const string MascotUrl = "linh-vat-euro-2024-nguon-goc-va-y-nghia-289380.html";
         public const string RecordUrl = "ky-luc-giai-bong-da-euro-294250.html";
 
+        public const string MinigameSlug = "minigame";
+        public const string Minigame = "Minigame";
+        public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
+        public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
+
 
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {
             new() { Name = Homepage, Slug = "" },
+            new() { Name = Minigame, Slug = MinigameSlug, Url = $"/{HomepageSlug}/{MinigameSlug}" },
             new() { Name = LastestNews, Slug = UrlLastestNewsSlug },
             new() { Name = Fixture, Slug = UrlFixtureSlug },
             new() { Name = Standing, Slug = UrlStandingSlug },

@@ -490,9 +490,9 @@ namespace SabaNews.Site.Controllers.Event
             {
                 Header = new HeaderViewModel
                 {
-                    Title = Euro2024.TeamTitle,
-                    Description = Euro2024.TeamDescription,
-                    Slug = Euro2024.TeamSlug
+                    Title = Euro2024.TitleMinigame,
+                    Description = Euro2024.DescriptionMinigame,
+                    Slug = Euro2024.MinigameSlug
                 }
             };
             return View("~/Views/Event/Euro2024/MinigameCountdown.cshtml", model);
