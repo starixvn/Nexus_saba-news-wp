@@ -85,8 +85,8 @@ namespace SabaNews.Core.Constants
 
         public const string MinigameSlug = "minigame";
         public const string Minigame = "Minigame";
-        public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
-        public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
+        public const string MinigameTitle = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
+        public const string MinigameDescription = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
 
 
         public const int maxCountStage = 2;

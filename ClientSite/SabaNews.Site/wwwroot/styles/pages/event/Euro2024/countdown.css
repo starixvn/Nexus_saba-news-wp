@@ -436,7 +436,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 99999999;
 }
 @media screen and (max-width: 1024px) {
   .top-header {
@@ -1077,23 +1077,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     height: auto;
   }
 }
-@media screen and (min-width: 1199px) {
-  .top-header.scroll-height {
-    height: 5rem;
-  }
-  .top-header.scroll-height .wc-logo a {
-    height: 5rem;
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-  }
-  .top-header.scroll-height .wc-logo .logo-none-scroll {
-    opacity: 0;
-    visibility: hidden;
-  }
-  .top-header.scroll-height .wc-logo .logo-scroll-header {
-    opacity: 1;
-    visibility: visible;
-  }
-}
 .top-header .group-menu {
   justify-content: center;
   width: 100%;
@@ -1597,6 +1580,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   .active-nav .show-on-menu, .hidden-detail .show-on-menu {
     display: block !important;
   }
+}
+
+.auth-form input::placeholder {
+  color: #bdbdbd !important;
 }
 
 .footer-event {
