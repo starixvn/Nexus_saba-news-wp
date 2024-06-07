@@ -1752,3 +1752,11 @@
         }
     }
 }
+
+.auth-form{
+    input{
+        &::placeholder{
+            color: #bdbdbd !important;
+        }
+    }
+}

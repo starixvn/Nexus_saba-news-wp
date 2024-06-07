@@ -1793,6 +1793,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
+.auth-form input::placeholder {
+  color: #bdbdbd !important;
+}
+
 .footer-event {
   background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   border-top: 4px solid #F12F19;
