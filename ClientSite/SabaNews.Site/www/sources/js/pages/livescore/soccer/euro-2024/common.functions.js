@@ -91,26 +91,11 @@ export const getVoteResult = (match, vote) => {
     return {status, score};
 }
 
-export const getMinigameStageStartTime = stage => {
-    switch(stage) {
-        case WorldCup.MinigameStage.Stage1:
-            return dayjs(new Date(2022, 10, 16, 8, 0, 0));
-        case WorldCup.MinigameStage.Stage2:
-            return dayjs(new Date(2022, 10, 22, 8, 0, 0));
-        case WorldCup.MinigameStage.Stage3:
-            return dayjs(new Date(2022, 10, 26, 8, 0, 0));
-        case WorldCup.MinigameStage.Stage4:
-            return dayjs(new Date(2022, 10, 30, 8, 0, 0));
-        default:
-            return dayjs(new Date(2022, 10, 30, 8, 0, 0));
-    }
-}
 
 const functions = {
     getMatchByEventStage,
     getMatchesByStage,
     groupMatchesByStage,
-    getVoteResult,
-    getMinigameStageStartTime
+    getVoteResult
 };
 export default functions;

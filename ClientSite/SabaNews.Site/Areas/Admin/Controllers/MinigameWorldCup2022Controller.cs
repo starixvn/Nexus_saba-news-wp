@@ -22,7 +22,7 @@
         private readonly IExportExcelService excelService;
         private readonly IWorldCupService worldcupService;
         public MinigameWorldCup2022Controller(
-            IExportExcelService excelService, 
+            IExportExcelService excelService,
             IWorldCupService worldcupService)
         {
             this.excelService = excelService;

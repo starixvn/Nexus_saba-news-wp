@@ -6,7 +6,6 @@
     QuarterfinalsStage: 35539,
     SemifinalsStage: 35538,
     FinalStage: 35540,
-    ThirdPlace: 30541,
     MatchDetailUrl: 'euro-2024',
     Title: 'Euro 2024:',
     EightTeamMatches: [59159344, 59159342, 59159346, 59159345, 59159343, 59159341, 59159347, 59159348],

@@ -79,9 +79,15 @@
             return result.ToList();
         }
 
-        public async Task<IList<MinigameModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria)
+        public async Task<IList<MinigameModel>> GetLeagueMinigameByStageWithEmailAsync(GetLeagueMinigameByStageCriteria criteria)
         {
             var result = await baseService.GetDataAsync<MinigameModel>(criteria);
+            return result.ToList();
+        }
+
+        public async Task<IList<MinigameNotEmailModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<MinigameNotEmailModel>(criteria);
             return result.ToList();
         }
 

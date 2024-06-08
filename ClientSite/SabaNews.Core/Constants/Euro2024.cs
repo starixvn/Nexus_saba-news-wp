@@ -96,7 +96,7 @@ namespace SabaNews.Core.Constants
         public const int MinigameScoreOthers = 10;
         public const int MinigameScoreQuarterfinal = 12;
         public const int MinigameScoreSemifinal = 15;
-        public const int MinigameScoreFinal = 15;
+        public const int MinigameScoreFinal = 20;
 
         public static readonly List<string> startStages = new() {
                 TimestampMinigameStage01Start,

@@ -2,10 +2,19 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
+    using SabaNews.Criteria.Event.Minigame;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Services.Criteria.Team;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Poll;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Extensions;
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -15,13 +24,20 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         private readonly IPollService pollService;
         private readonly IEuro2024Service euro2024Service;
         private readonly IFileService fileService;
+        private readonly IDataControlService dataControlService;
 
-        public Euro2024ManagementController(IOptionService optionService, IPollService pollService, IEuro2024Service euro2024Service, IFileService fileService)
+        public Euro2024ManagementController(
+                IOptionService optionService,
+                IPollService pollService,
+                IEuro2024Service euro2024Service,
+                IFileService fileService,
+                IDataControlService dataControlService)
         {
             this.optionService = optionService;
             this.pollService = pollService;
             this.euro2024Service = euro2024Service;
             this.fileService = fileService;
+            this.dataControlService = dataControlService;
         }
         public async Task<ActionResult> Poll()
         {
@@ -53,6 +69,16 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         public IActionResult TeamPlayer(long teamId)
         {
             return View(teamId);
+        }
+
+        public IActionResult Minigame()
+        {
+            return View();
+        }
+
+        public IActionResult CountUser()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -139,6 +165,81 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         {
             var result = await optionService.UpdateOptionAsync(Euro2024.PollKey, pollId.ToString());
             return Json(result);
+        }
+
+        public async Task<ActionResult> GetDataMinigame(UserFilterMembershipEventModel model)
+        {
+            var criteria = new GetLeagueMinigameByStageCriteria
+            {
+                Stage = model.Stage,
+                LeagueId = Euro2024.LeagueId,
+                SeasonId = Euro2024.SeasonId
+            };
+            var miniGames = await euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteria);
+            var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
+            var matches =  new List<Match>();
+            if(model.Stage == Euro2024.MinigameStage1)
+            {
+                matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId).ToList();
+            }
+            else
+            {
+                matches = data.Matches.Where(m => m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            }
+            miniGames = EuroHelper.CalculatorPointer(matches, miniGames);
+            var miniGamesPaging = miniGames.Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
+            var viewModel = new AdminMinigameGridViewModel
+            {
+                MiniGames = miniGamesPaging,
+                Paging = new PagingModel
+                {
+                    CurrentPage = model.Page,
+                    PageSize = model.PageSize,
+                    TotalPages = (int)Math.Ceiling(miniGames.Count / (double)model.PageSize),
+                }
+            };
+            return PartialView("_MinigameDataGrid", viewModel);
+        }
+
+        public async Task<ActionResult> GetDetailUser(ManagementDetailMinigameViewModel param)
+        {
+            var criteriaVotesUser = new GetLeagueMinigameByUserStageCriteria
+            {
+                Stage = param.StageDetail,
+                UserId = param.UserId,
+                LeagueId = Euro2024.LeagueId,
+                SeasonId = Euro2024.SeasonId
+            };
+            var criteriaVoteMinigame = new GetLeagueMinigameByStageCriteria
+            {
+                Stage = param.StageDetail,
+                LeagueId = Euro2024.LeagueId,
+                SeasonId = Euro2024.SeasonId
+            };
+            var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
+            var matches = data.Matches.Where(m => m.Stage.StageId == Euro2024.GroupStageId || m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
+            var votes = await euro2024Service.GetLeagueMinigameByUserStageAsync(criteriaVotesUser);
+            foreach (var vote in votes)
+            {
+                var matchVote = matches.FirstOrDefault(m => m.MatchId == vote.MatchId);
+                var (_, score) = EuroHelper.GetVoteResult(matchVote, vote);
+                vote.Point = score;
+            }
+            var miniGames = await euro2024Service.GetLeagueMinigameByStageAsync(criteriaVoteMinigame);
+            miniGames = miniGames.Where(x => x.UserId == param.UserId).ToList();
+            var viewModel = new AdminDetailMinigameViewModel
+            {
+                Rank = param.Rank,
+                Totalpoint = param.Totalpoint,
+                Votes = votes,
+                StageDetail = param.StageDetail,
+                Matches = matches
+            };
+            if(miniGames.Count != 0) {
+                viewModel.Email = miniGames[0].Email;
+                viewModel.Username = miniGames[0].UserName;
+            }
+            return PartialView("_DetailPlayerVotes", viewModel);
         }
     }
 }

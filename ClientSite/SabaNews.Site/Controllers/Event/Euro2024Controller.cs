@@ -564,7 +564,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 Title = Euro2024.TitleMinigame,
                 Description = Euro2024.DescriptionMinigame,
-                Slug = Euro2024.Minigame
+                Slug = Euro2024.MinigameSlug
             };
             var matches = await GetEuroMatch();
             var model = new EuroMinigameStageViewModel
@@ -593,7 +593,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 Title = Euro2024.TitleMinigame,
                 Description = Euro2024.DescriptionMinigame,
-                Slug = Euro2024.Minigame
+                Slug = Euro2024.MinigameSlug
             };
             var matches = await GetEuroMatch();
             var model = new EuroMinigameStageViewModel

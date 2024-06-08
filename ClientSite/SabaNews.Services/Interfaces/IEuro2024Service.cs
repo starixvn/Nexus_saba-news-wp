@@ -30,7 +30,8 @@
 
         Task<IList<MinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId);
 
-        Task<IList<MinigameModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria);
+        Task<IList<MinigameNotEmailModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria);
+        Task<IList<MinigameModel>> GetLeagueMinigameByStageWithEmailAsync(GetLeagueMinigameByStageCriteria criteria);
 
         Task<IList<MinigameModel>> GetLeagueMinigameAllUsersAsync(long leagueId, long seasonId);
 
