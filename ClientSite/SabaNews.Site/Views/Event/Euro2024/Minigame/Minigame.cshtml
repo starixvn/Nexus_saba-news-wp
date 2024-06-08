@@ -61,7 +61,7 @@
     <environment exclude="Development">
         <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>  
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/minigame-standing.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/euro-2024/minigame-winner.chunk.js" asp-append-version="true"></script>
         <script src="~/minify/js/euro-2024-minigame.min.js" asp-append-version="true"></script>
@@ -214,15 +214,8 @@
         </div>
         <div class="bg-stage"></div>
     </div>
-    @if(countStageActive > 0)
-    {
-        <div id="minigame-standing" class="minigame-block"></div>
-    }
-    @if(countStageEnd > 0)
-    {
-        <div id="minigame-winners" class="minigame-block"></div>
-    }
-
+    <div id="minigame-standing" class="@(countStageActive > 0 ? "minigame-block minigame-block-standing" : "none-stage")"></div>
+    <div id="minigame-winners" class="@(countStageEnd > 0 ? "minigame-block minigame-block-winners" : "none-stage")"></div>
 </div>
 
 <div class="euro-modal">

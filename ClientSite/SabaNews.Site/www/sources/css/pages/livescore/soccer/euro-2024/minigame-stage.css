@@ -496,6 +496,7 @@ body {
 }
 .live-score-nav a {
   font-size: 1.6rem;
+  padding: 0.1rem 1.2rem;
 }
 
 .nav-select-profile-detail {

@@ -1,12 +1,6 @@
-﻿var minigame = (function ($) {
+﻿var euro2024_minigame_countdown = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
     var tab = window.location.hash;
-    const timeStartStage = [
-        "11/16/2022, 8:00:00 AM",
-        "11/22/2022, 8:00:00 AM",
-        "11/26/2022, 8:00:00 AM",
-        "11/30/2022, 8:00:00 AM"
-    ];
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
@@ -23,7 +17,7 @@
 
         $('.btn-standing').on('click', function () {
             $('html, body').animate({
-                scrollTop: 1400
+                scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
         });
 
@@ -32,41 +26,51 @@
             $(this).addClass('active');
             $('#guide').modal('show');
         });
-       
+
         $('.btn-home').click(function () {
             $('.header-nav-event li a').removeClass('active');
             $(this).addClass('active');
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });
 
-        $('.btn-nav-prediction').click(function () {
+        $('.btn-nav-prediction').click(function (event) {
             if (!isLogin) {
                 $('#joining').modal('show');
             }
             else {
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet";
+                var url = window.location.origin + "/euro-2024/minigame/du-doan-cua-toi";
+                if (event.ctrlKey) {
+                    window.open(url, '_blank');
+                } else {
+                    window.location = url;
+                }
             }
         });
 
-        $('.stage-votes-round').click(function () {
+        $('.stage-votes-round .btn-stage').click(function (event) {
             if (!isLogin) {
                 $('#joining').modal('show');
             }
             else {
                 var stage = $(this).data("stage");
-                window.location = window.location.origin + "/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/giai-doan/" + stage;
+                var url = window.location.origin + "/euro-2024/minigame/giai-doan/" + stage;
+                if (event.ctrlKey) {
+                    window.open(url, '_blank');
+                } else {
+                    window.location = url;
+                }
             }
         });
 
         $('.icon-minigame_list_user').click(function () {
             $('html, body').animate({
-                scrollTop: $("#minigame-winners").offset().top
+                scrollTop: $("#minigame-winners").offset().top - 77
             }, 500);
         });
 
         $('.icon-minigame_standing').click(function () {
             $('html, body').animate({
-                scrollTop: 1400
+                scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
         });
 
@@ -121,7 +125,7 @@
             $('.header-nav-event li a').removeClass('active');
             $(this).addClass('active');
             $('html, body').animate({
-                scrollTop: 1400
+                scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
         })
 
@@ -153,25 +157,31 @@
     }
 
     function countDownTime() {
-        for (let i = 0; i < 4; i++) {
-            var statusStage = getStatusStage(i);
+        for (let i = 1; i <= 2; i++) {
+            var stageElemement = $('#boxStage' + i);
+            var statusStage = stageElemement.data('status');
             if (statusStage == "Sắp diễn ra" || statusStage == "Sắp kết thúc") {
-                let timeCountDown = $("#stage" + (i + 1).toString()).data('timecountdown');
-                let countDown = new Date(timeCountDown).getTime(),
-                    x = setInterval(function () {
-                        let now = new Date().getTime(),
-                            distance = countDown - now;
+                var timeCountDown = $("#stage" + i).data('timecountdown');
+                var countDown = new Date(timeCountDown).getTime();
+                setInterval(function () {
+                        var now = new Date().getTime();
+                        var distance = countDown - now;
 
-                        let hourShow = Math.floor((distance % (day)) / (hour)),
+                        var hourShow = Math.floor((distance % (day)) / (hour)),
                             minuteShow = Math.floor((distance % (hour)) / (minute)),
                             secondShow = Math.floor((distance % (minute)) / second)
-
-                        document.getElementById('hours' + (i + 1).toString()).innerHTML = `<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`,
-                            document.getElementById('minutes' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}:`,
-                            document.getElementById('seconds' + (i + 1).toString()).innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)})`;
                         if (minuteShow == 0 && secondShow == 0) {
                             location.reload();
+                            return false;
                         }
+
+                        if (distance < 0) {
+                            return false;
+                        }
+
+                        $('#hours' + i).html(`<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`);
+                        $('#minutes' + i).html(`<div class="clock-time">${showTimeCountDown(minuteShow)}:`);
+                        $('#seconds' + i).html(`<div class="clock-time">${showTimeCountDown(secondShow)})`);
                     }, second);
             }
         }
@@ -182,55 +192,32 @@
             minute = second * 60,
             hour = minute * 60,
             day = hour * 24;
-        let countDown = new Date('June 14, 2024 08:00:00').getTime(),
-            x = setInterval(function () {
+        let countDown = new Date(window.timeStartStage[0]).getTime();
+        let now = new Date().getTime(),
+            distance = countDown - now;
+        if(distance > 0) {
+            setInterval(function () {
                 let now = new Date().getTime(),
                     distance = countDown - now;
-                console.log(distance);
-                if (distance < 0) {
-                    return false;
-                }
                 let dayShow = Math.floor(distance / (day)),
                     hourShow = Math.floor((distance % (day)) / (hour)),
                     minuteShow = Math.floor((distance % (hour)) / (minute)),
                     secondShow = Math.floor((distance % (minute)) / second)
-
-                document.getElementById('days').innerHTML = `<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`;
-                document.getElementById('hours').innerHTML = `<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`,
-                    document.getElementById('minutes').innerHTML = `<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`,
-                    document.getElementById('seconds').innerHTML = `<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`;
+                if(distance < 0) {
+                    location.reload();
+                    return false;
+                }
+                $('#days').html(`<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`);
+                $('#hours').html(`<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`);
+                $('#minutes').html(`<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`);
+                $('#seconds').html(`<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`);
             }, second);
+        }
     }
 
-    function getStatusStage(i) {
-        var timeSpanNow = new Date();
-        var checkNow = (new Date(timeStartStage[i]) - timeSpanNow) / 1000;
-        var statusStage;
-        if (checkNow > 0) {
-            if (checkNow > 3600) {
-                statusStage = "Chưa diễn ra";
-            }
-            else { statusStage = "Sắp diễn ra"; }
-        }
-        else {
-            var timeEnd = $("#boxStage" + (i + 1).toString()).data('timeendstage');
-            var timeSpanEnd = (new Date(timeEnd).getTime() / 1000);
-            var timeSpanNowSecond = timeSpanNow.getTime() / 1000;
-            var checkNowEnd = timeSpanEnd - timeSpanNowSecond;
-            if (checkNowEnd > 5400) {
-                statusStage = "Đang diễn ra";
-            }
-            else if (checkNowEnd <= 5400 && checkNowEnd > 1800) {
-                statusStage = "Sắp kết thúc";
-            }
-            else { statusStage = "Đã kết thúc"; }
-        }
-
-        return statusStage;
-    }
 
     function addClassBody() {
-        var statusStageOne = getStatusStage(0);
+        var statusStageOne = $('#boxStage1');
         if (statusStageOne == "Chưa diễn ra" || statusStageOne == "Sắp diễn ra") {
             document.body.classList.add('before-start-minigame')
         }
@@ -244,10 +231,7 @@
     }
 
     function init() {
-        HandleUI();
-        countDownTime();
         countDownEvent();
-        addClassBody();
     }
 
     return {
@@ -258,5 +242,5 @@
 
 
 $(document).ready(function () {
-    minigame.init();
+    euro2024_minigame_countdown.init();
 });

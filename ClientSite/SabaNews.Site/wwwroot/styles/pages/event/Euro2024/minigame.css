@@ -2569,23 +2569,30 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 
-#minigame-standing {
+.minigame-block-standing {
   min-height: 76.2rem;
   background: url("../../../../images/euro2024/minigame/bg-standing.png") #0D2E83;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-#minigame-standing .block-heading-text {
+.minigame-block-standing .block-heading-text {
   color: #fff;
 }
 @media (max-width: 767px) {
-  #minigame-standing {
+  .minigame-block-standing {
     min-height: 61.7rem;
   }
 }
 
-#minigame-winners {
+.none-stage .effect-winner {
+  display: none;
+}
+.none-stage .line-winner.show-pc, .none-stage .line-winner.show-mobile {
+  display: none;
+}
+
+.minigame-block-winners {
   min-height: 84rem;
   background: linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
   background-repeat: no-repeat;
@@ -2593,21 +2600,23 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: relative;
 }
 @media (max-width: 767px) {
-  #minigame-winners {
+  .minigame-block-winners {
     min-height: 75rem;
   }
 }
-#minigame-winners .block-heading-text {
+.minigame-block-winners .block-heading-text {
   color: #fff;
 }
-#minigame-winners .line-winner {
+.minigame-block-winners .line-winner {
+  display: block;
   position: absolute;
   bottom: 0;
 }
-#minigame-winners .line-winner img {
+.minigame-block-winners .line-winner img {
   display: block;
 }
-#minigame-winners .effect-winner {
+.minigame-block-winners .effect-winner {
+  display: block;
   position: absolute;
   top: 0;
   right: 50%;

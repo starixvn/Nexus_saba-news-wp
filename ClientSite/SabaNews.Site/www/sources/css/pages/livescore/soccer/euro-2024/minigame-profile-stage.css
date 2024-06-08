@@ -76,6 +76,7 @@
 .auth-minigame {
   padding: 0;
   margin-bottom: 1rem;
+  cursor: inherit;
 }
 .auth-minigame .avatar-user {
   width: 5rem;
@@ -487,6 +488,7 @@
 }
 .live-score-nav a {
   font-size: 1.6rem;
+  padding: 0.1rem 1.2rem;
 }
 
 .nav-select-profile-detail {
@@ -510,6 +512,10 @@
   .statistic-grid {
     margin-bottom: 10rem;
   }
+}
+
+.overflow-modal {
+  padding-right: 0 !important;
 }
 
 body {
@@ -694,6 +700,7 @@ body {
 }
 .minigame-table .table-row .team-choose .minigame-team {
   width: 11rem;
+  min-height: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;

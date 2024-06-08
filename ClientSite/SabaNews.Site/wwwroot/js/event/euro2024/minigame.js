@@ -233,7 +233,6 @@
     function init() {
         HandleUI();
         countDownTime();
-        countDownEvent();
         addClassBody();
     }
 

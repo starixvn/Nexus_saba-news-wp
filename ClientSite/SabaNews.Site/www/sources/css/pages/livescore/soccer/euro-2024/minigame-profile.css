@@ -76,6 +76,7 @@
 .auth-minigame {
   padding: 0;
   margin-bottom: 1rem;
+  cursor: inherit;
 }
 .auth-minigame .avatar-user {
   width: 5rem;
@@ -414,6 +415,10 @@
   .statistic-grid {
     margin-bottom: 10rem;
   }
+}
+
+.overflow-modal {
+  padding-right: 0 !important;
 }
 
 body {
