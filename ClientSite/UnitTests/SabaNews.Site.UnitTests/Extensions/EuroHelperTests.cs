@@ -21,7 +21,7 @@
         {
             // Arrange
             var match = fixture.Create<Match>();
-            var votes = fixture.Create<IList<UserMinigameModel>>();
+            var votes = fixture.Create<IList<MinigameModel>>();
 
             var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
             string teamName = "";
@@ -50,7 +50,7 @@
         {
             // Arrange
             var match = fixture.Create<Match>();
-            var votes = fixture.Create<IList<UserMinigameModel>>();
+            var votes = fixture.Create<IList<MinigameModel>>();
 
             var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
             //Act
@@ -65,7 +65,7 @@
         {
             // Arrange
             var match = fixture.Create<Match>();
-            var votes = fixture.Create<IList<UserMinigameModel>>();
+            var votes = fixture.Create<IList<MinigameModel>>();
 
             var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
             string iconResult = "";
@@ -87,27 +87,6 @@
             Assert.Equal(result, iconResult);
         }
 
-        [Fact]
-        public void GetMatch_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var matches = fixture.Create<IList<Match>>();
-            var vote = fixture.Create<UserMinigameModel>();
-
-            Match match = null;
-            foreach (var item in matches)
-            {
-                if (item.MatchId == vote.MatchId)
-                {
-                    match = item;
-                }
-            }
-            //Act
-            var result = EuroHelper.GetMatch(matches, vote);
-
-            // Assert
-            Assert.Equal(result, match);
-        }
 
         [Fact]
         public void GetWinScore_WhenCalled_ReturnExpectedData()
@@ -135,7 +114,7 @@
         {
             // Arrange
             var match = fixture.Create<Match>();
-            var vote = fixture.Create<UserMinigameModel>();
+            var vote = fixture.Create<MinigameModel>();
 
             const int MatchStatusFinished = 50;
             const int MatchResultWin = 1;
@@ -181,8 +160,8 @@
         public void GetUsersVote_WhenCalled_ReturnExpectedData()
         {
             // Arrange
-            var users = fixture.Create<List<UserMinigameModel>>();
-            var vote = fixture.Create<UserMinigameModel>();
+            var users = fixture.Create<List<MinigameModel>>();
+            var vote = fixture.Create<MinigameModel>();
 
             var expected = users;
             if (expected.Count == 0)
@@ -209,8 +188,8 @@
         public void HandleStandings_WhenCalled_ReturnExpectedData()
         {
             // Arrange
-            var users = fixture.Create<IList<UserMinigameModel>>();
-            var votes = fixture.Create<IList<UserMinigameModel>>();
+            var users = fixture.Create<IList<MinigameModel>>();
+            var votes = fixture.Create<IList<MinigameModel>>();
             var points = fixture.Create<List<int>>();
 
             //Act
@@ -220,54 +199,19 @@
             Assert.Equal(result.Count, users.Count);
         }
 
-        [Fact]
-        public void SortPlayersTime_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var standing = fixture.Create<List<UserMinigameModel>>();
-
-            var sortPoint = new List<UserMinigameModel>();
-            var sortPointZero = new List<UserMinigameModel>();
-            foreach (var item in standing)
-            {
-                if (sortPointZero.Count == 0)
-                {
-                    sortPointZero.Add(item);
-                }
-                else
-                {
-                    var count = sortPointZero.Where(x => x.Point == item.Point).ToList().Count;
-                    if (count > 0)
-                    {
-                        sortPointZero.Add(item);
-                    }
-                    if (count == 0 || item == standing[standing.Count - 1])
-                    {
-                        sortPointZero = sortPointZero.OrderBy(x => x.UpdatedDate).ToList();
-                        sortPoint.AddRange(sortPointZero);
-                        sortPointZero = new List<UserMinigameModel> { item };
-                    }
-                }
-            }
-            //Act
-            var result = EuroHelper.SortPlayersTime(standing);
-
-            // Assert
-            Assert.Equal(result, sortPoint);
-        }
 
         [Fact]
         public void CalculatorPointer_WhenCalled_ReturnExpectedData()
         {
             // Arrange
             var matches = fixture.Create<IList<Match>>();
-            var votes = fixture.Create<IList<UserMinigameModel>>();
+            var votes = fixture.Create<IList<MinigameModel>>();
 
             var points = new List<int>();
-            var users = new List<UserMinigameModel>();
+            var users = new List<MinigameModel>();
             foreach (var vote in votes)
             {
-                var matchVote = EuroHelper.GetMatch(matches, vote);
+                var matchVote = matches.FirstOrDefault(m => m.MatchId == vote.MatchId);
                 var (status, score) = EuroHelper.GetVoteResult(matchVote, vote);
                 points.Add(status ? score : 0);
                 users = EuroHelper.GetUsersVote(users, vote);

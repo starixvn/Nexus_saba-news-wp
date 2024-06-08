@@ -6,18 +6,23 @@
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Criteria.Event.Minigame;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Team;
+    using SabaNews.Models.Event.Minigame;
     using SabaNews.Models.Options;
     using SabaNews.Models.Poll;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Poll;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
+    using SabaNews.Site.Extensions;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -30,6 +35,7 @@
         private  IPollService pollService;
         private  IEuro2024Service euro2024Service;
         private  IFileService fileService;
+        private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
 
 
@@ -111,6 +117,20 @@
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsAssignableFrom<long>(viewResult.Model);
             Assert.Equal(teamId, viewModel);
+        }
+
+        [Fact]
+        public void  Minigame_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.Minigame();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Areas/Admin/Views/Euro2024Management/AdminMinigame.cshtml", viewResult.ViewName);
         }
 
         [Fact]
@@ -286,6 +306,69 @@
             Assert.Equal(expectedResult, jsonResult.Value);
         }
 
+        [Fact]
+        public async Task GetDataMinigameWorldCup2022_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            
+            var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
+            var param = fixture.Create<UserFilterMembershipEventModel>();
+            var expected = fixture.Create<IList<MinigameModel>>();
+            var leagueData = fixture.Create<MatchLeague>();
+            var leagueId = fixture.Create<long>();
+            param.Stage = 1;
+
+            euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteria).Returns(expected);
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => leagueId = x)).Returns(leagueData);
+
+            expected = EuroHelper.CalculatorPointer(leagueData.Matches, expected);
+            var miniGamesPaging = expected.Skip(param.PageSize * (param.Page - 1)).Take(param.PageSize).ToList();
+
+            //Act
+            var result = await controller.GetDataMinigame(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsType<AdminMinigameGridViewModel>(viewResult.Model);
+            Assert.Equal(miniGamesPaging, viewModel.MiniGames);
+        }
+
+        [Fact]
+        public async Task GetDetailUser_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<ManagementDetailMinigameViewModel>();
+            var leagueData = fixture.Create<MatchLeague>();
+            var minigames = fixture.Create<IList<MinigameNotEmailModel>>();
+            var votes = fixture.Create<IList<MinigameModel>>();
+            var leagueId = fixture.Create<long>();
+            var criteriaVotesUser = new GetLeagueMinigameByUserStageCriteria
+            {
+                Stage = param.StageDetail,
+                UserId = param.UserId
+            };
+            var criteriaVoteMinigame = new GetLeagueMinigameByStageCriteria
+            {
+                Stage = param.StageDetail,
+                LeagueId = Euro2024.LeagueId,
+                SeasonId = Euro2024.SeasonId
+            };
+           
+
+            dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => leagueId = x)).Returns(leagueData);
+            euro2024Service.GetLeagueMinigameByUserStageAsync(Arg.Do<GetLeagueMinigameByUserStageCriteria>(x => criteriaVotesUser = x)).Returns(votes);
+            euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteriaVoteMinigame = x)).Returns(minigames);
+
+            //Act
+            var result = await controller.GetDetailUser(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("_DetailPlayerVotes", viewResult.ViewName);
+        }
+
 
         #region Helpers
         private Euro2024ManagementController GetController()
@@ -294,7 +377,8 @@
             pollService = Substitute.For<IPollService>();
             euro2024Service = Substitute.For<IEuro2024Service>();
             fileService = Substitute.For<IFileService>();
-            var controller = new Euro2024ManagementController(optionService, pollService, euro2024Service, fileService);
+            dataControlService = Substitute.For<IDataControlService>();
+            var controller = new Euro2024ManagementController(optionService, pollService, euro2024Service, fileService, dataControlService);
 
             return controller;
         }

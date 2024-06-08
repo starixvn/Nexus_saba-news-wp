@@ -73,12 +73,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
 
         public IActionResult Minigame()
         {
-            return View();
-        }
-
-        public IActionResult CountUser()
-        {
-            return View();
+            return View("~/Areas/Admin/Views/Euro2024Management/AdminMinigame.cshtml");
         }
 
         [HttpPost]
