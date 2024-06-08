@@ -67,8 +67,8 @@ namespace SabaNews.Core.Constants
         public const string MascotUrl = "linh-vat-euro-2024-nguon-goc-va-y-nghia-289380.html";
         public const string RecordUrl = "ky-luc-giai-bong-da-euro-294250.html";
 
-        public const string TimestampMinigameStage01Start = "06/07/2024, 1:30:00 PM";
-        public const string TimestampMinigameStage02Start = "06/10/2024, 08:00:00 PM";
+        public const string TimestampMinigameStage01Start = "06/08/2024, 10:30:00 AM";
+        public const string TimestampMinigameStage02Start = "06/08/2024, 10:33:00 AM";
         public const string TitleMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
         public const string DescriptionMinigame = "Minigame Euro 2024 - Dự đoán hay, hàng hiệu trao tay";
 

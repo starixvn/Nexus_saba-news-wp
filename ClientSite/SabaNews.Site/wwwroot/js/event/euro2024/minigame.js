@@ -170,13 +170,18 @@
                         var hourShow = Math.floor((distance % (day)) / (hour)),
                             minuteShow = Math.floor((distance % (hour)) / (minute)),
                             secondShow = Math.floor((distance % (minute)) / second)
+                        if (minuteShow == 0 && secondShow == 0) {
+                            location.reload();
+                            return false;
+                        }
+
+                        if (distance < 0) {
+                            return false;
+                        }
 
                         $('#hours' + i).html(`<div class="clock-time">(${showTimeCountDown(hourShow)}:</div>`);
                         $('#minutes' + i).html(`<div class="clock-time">${showTimeCountDown(minuteShow)}:`);
                         $('#seconds' + i).html(`<div class="clock-time">${showTimeCountDown(secondShow)})`);
-                        if (minuteShow == 0 && secondShow == 0) {
-                            location.reload();
-                        }
                     }, second);
             }
         }
@@ -187,23 +192,27 @@
             minute = second * 60,
             hour = minute * 60,
             day = hour * 24;
-        let countDown = new Date('November 16, 2022 08:00:00').getTime(),
-            x = setInterval(function () {
+        let countDown = new Date(window.timeStartStage[0]).getTime();
+        let now = new Date().getTime(),
+            distance = countDown - now;
+        if(distance > 0) {
+            setInterval(function () {
                 let now = new Date().getTime(),
                     distance = countDown - now;
-                if (distance < 0) {
-                    return false;
-                }
                 let dayShow = Math.floor(distance / (day)),
                     hourShow = Math.floor((distance % (day)) / (hour)),
                     minuteShow = Math.floor((distance % (hour)) / (minute)),
                     secondShow = Math.floor((distance % (minute)) / second)
-
+                if(distance < 0) {
+                    location.reload();
+                    return false;
+                }
                 $('#days').html(`<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`);
                 $('#hours').html(`<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`);
                 $('#minutes').html(`<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`);
                 $('#seconds').html(`<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`);
             }, second);
+        }
     }
 
 

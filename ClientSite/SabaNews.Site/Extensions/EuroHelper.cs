@@ -253,7 +253,7 @@
             {
                 iconStage = Euro2024.IconWinner;
             }
-            else if (status == Euro2024.OnStartedStage)
+            else if (status == Euro2024.OnStartedStage ||status == Euro2024.BeforeEndStage)
             {
                 iconStage = Euro2024.IconStanding;
             }

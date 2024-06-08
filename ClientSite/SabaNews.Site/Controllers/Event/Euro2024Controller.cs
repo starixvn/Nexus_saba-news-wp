@@ -493,13 +493,19 @@ namespace SabaNews.Site.Controllers.Event
         [Route("euro-2024/minigame")]
         public async Task<IActionResult> Minigame()
         {
-            var matches = await GetEuroMatch();
             var header = new HeaderViewModel
             {
                 Title = Euro2024.TitleMinigame,
                 Description = Euro2024.DescriptionMinigame,
                 Slug = Euro2024.MinigameSlug
             };
+            var isStageOneStarted = EuroHelper.CheckStartStage(1);
+            if(!isStageOneStarted)
+            {
+                var viewModel = new EuroMinigameViewModel { Header = header };
+                return View("~/Views/Event/Euro2024/Minigame/MinigameCountDown.cshtml", viewModel);
+            }
+            var matches = await GetEuroMatch();
             var isLogin = sessionService.User != null;
             var model = new EuroMinigameViewModel
             {
