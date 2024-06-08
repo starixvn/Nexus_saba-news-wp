@@ -93,6 +93,17 @@ export class Stages extends PureComponent {
         const currentStage = this.getMatchWithStage();
         return (
             <>
+                {
+                    (stages.length > 1 && isMobile) && 
+                    <div className="nav-select-profile-detail">
+                        <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
+                            {
+                                stages.map(group =>
+                                    <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
+                            }
+                        </select>
+                    </div>
+                }
                 <ul className="stage-number">
                     <li className="detail-choose">chi tiết dự đoán - giai đoạn { window.stage }</li>
                     <li onClick={this.handleClick} className="go-back">Quay lại <i className="icon-go_back" /></li>
@@ -104,7 +115,7 @@ export class Stages extends PureComponent {
                     }
                     {
                         (stages.length > 1 && !isMobile) &&
-                        <Tabs className="live-score-nav" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
+                        <Tabs className="live-score-nav minigame-control" activeKey={selectedStageId} onSelect={this.handleSelectTab}>
                             {
                                 stages.map(group => {
                                     return (
@@ -118,19 +129,7 @@ export class Stages extends PureComponent {
                     }
                     {
                         (stages.length > 1 && isMobile) &&
-                        <>
-                            <div className="nav-select-mb">
-                                <select onChange={this.onChange} value={selectedStageId} className="custom-select minigame-nav-mobile">
-                                    {
-                                        stages.map(group =>
-                                            <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
-                                    }
-                                </select>
-                            </div>
-                            {
-                                <Grid matches={currentStage.matches} votes={votes} startNum={this.getNumberMatch(currentStage.matches)}/>
-                            }
-                        </>
+                        <Grid matches={currentStage.matches} votes={votes} startNum={this.getNumberMatch(currentStage.matches)}/>
                     }
                 </div>
             </>
