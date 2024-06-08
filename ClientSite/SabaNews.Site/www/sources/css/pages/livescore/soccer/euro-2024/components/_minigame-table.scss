@@ -201,13 +201,18 @@
     }
 }
 
-.wraper-minigame-table{
+.profile-wraper-tablle{
     border-radius: 10px;
     border: 1px solid #4C65DD;
     background: #1830A1;
     padding: 3rem;
     max-width: 80rem;
     margin: 0 auto;
+    min-height: 33.3rem;
+    @include Mobile{
+        padding: 2rem 1rem;
+        min-height: inherit;
+    }
     .block-heading{
         margin-bottom: 2rem;
         &-text{
@@ -216,5 +221,45 @@
     }
     .wrapper-scroll{
         min-height: inherit;
+    }
+    .minigame-table{
+        .minigame-table-header{
+            .table-row{
+                font-size: 1.6rem;
+                @include Mobile{
+                    font-size: 1.3rem;
+                }
+            }
+        }
+        .table-row{
+            &-score{
+                width: 10rem;
+                @include Mobile{
+                    width: 12rem;
+                }
+            }
+            &-action{
+                width: 2.4rem;
+                height: 2.4rem;
+                .view-minigame-detail{
+                    font-size: 2.4rem;
+                    &::before{
+                        color: #222222;
+                    }
+                }
+            }
+            &-time{
+                font-weight: 700;
+                width: 12rem;
+                @include Mobile{
+                    width: 6rem;
+                }
+            }
+            &-index{
+                @include Mobile{
+                    width: 3rem;
+                }
+            }
+        }
     }
 }

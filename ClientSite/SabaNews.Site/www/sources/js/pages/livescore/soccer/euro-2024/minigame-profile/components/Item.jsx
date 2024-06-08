@@ -56,6 +56,8 @@ export default class Item extends PureComponent {
                     </div>
                     <div className="table-row table-row-time">
                         {this.getTotalScore()}
+                    </div>
+                    <div className="table-row table-row-action">
                         {
                             !stageStatus.isActive && <i className="icon-icon_lock view-minigame-detail" />
                         }

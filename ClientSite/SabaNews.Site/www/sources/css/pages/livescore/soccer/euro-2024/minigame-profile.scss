@@ -12,4 +12,9 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
+.minigame-section{
+    padding: 4rem 0;
+    @include Mobile{
+        padding: 1rem;
+    }
+}

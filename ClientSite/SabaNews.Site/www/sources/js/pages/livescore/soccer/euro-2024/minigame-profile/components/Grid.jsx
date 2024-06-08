@@ -28,6 +28,7 @@ export default class Grid extends PureComponent {
                         <div className="table-row table-row-name">Giai đoạn</div>
                         <div className="table-row table-row-score">Tình trạng</div>
                         <div className="table-row table-row-time">Điểm</div>
+                        <div className="table-row table-row-action"></div>
                     </div>
                     <div className="minigame-table-body">
                         <Item stage={Euro.MinigameStage.Group}
