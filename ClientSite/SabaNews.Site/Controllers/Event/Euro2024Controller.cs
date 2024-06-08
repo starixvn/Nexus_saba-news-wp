@@ -587,7 +587,7 @@ namespace SabaNews.Site.Controllers.Event
             if (stage < Euro2024.MinigameStage1 || stage > Euro2024.MinigameStage2 || !EuroHelper.CheckStartStage(stage)
            )
             {
-                return Redirect(Url.Action("Minigame", EuroController));
+                return Redirect(Url.Action("MinigameProfile", EuroController));
             }
             var header = new HeaderViewModel
             {
@@ -634,7 +634,10 @@ namespace SabaNews.Site.Controllers.Event
                 return Json(null);
             }
             var match = await euro2024Service.GetMinigameVoteMatchAsync(new GetMinigameVotedMatchCriteria { MatchId = criteria.MatchId });
-            if (LivescoreHelper.IsLiveMatch(match.Status) || match.Status == MatchConstants.Finished || !EuroHelper.IsVoted(match.StartTime))
+            if (LivescoreHelper.IsLiveMatch(match.Status)
+                || match.Status == MatchConstants.Finished
+                || !(match.LeagueId == Euro2024.LeagueId && match.SeasonId == Euro2024.SeasonId)
+                || !EuroHelper.IsVoted(match.StartTime))
             {
                 return Json(new CommandResult { });
             }

@@ -38,12 +38,12 @@
                 $('#joining').modal('show');
             }
             else {
-                // var url = window.location.origin + "/euro-2024/minigame/du-doan-cua-toi";
-                // if (event.ctrlKey) {
-                //     window.open(url, '_blank');
-                // } else {
-                //     window.location = url;
-                // }
+                var url = window.location.origin + "/euro-2024/minigame/du-doan-cua-toi";
+                if (event.ctrlKey) {
+                    window.open(url, '_blank');
+                } else {
+                    window.location = url;
+                }
             }
         });
 
