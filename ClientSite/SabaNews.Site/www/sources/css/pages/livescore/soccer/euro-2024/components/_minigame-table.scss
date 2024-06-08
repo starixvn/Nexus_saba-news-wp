@@ -1,6 +1,10 @@
 .minigame-table{
     border-radius: 5px;
     overflow: hidden;
+    .text-no-data{
+        padding: 1rem 0;
+        text-align: center;
+    }
     .minigame-table-header{
         border-radius: 5px 5px 0px 0px;
         border-bottom: 1px solid #666;
