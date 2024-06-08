@@ -34,6 +34,11 @@ body{
     color: #E8E8D6;
     margin: 1.2rem 0 .8rem;
     border-radius: 5px;
+    @include tableMobile{
+        height: 3.2rem;
+        padding: 0 1rem;
+        margin-bottom: .6rem;
+    }
     li{
         display: flex;
         align-items: center;
@@ -133,6 +138,14 @@ body{
         text-align: center;
         line-height: 3rem;
         font-weight: 700;
+        @include Mobile{
+            width: 4rem;
+            line-height: 1.8rem !important;
+            font-size: 1.2rem !important;
+            &-name_team {
+                width: 5rem !important;
+            }
+        }
         &-index {
             flex: 1 0 38rem;
             width: auto;
@@ -165,13 +178,23 @@ body{
                 border: 2px solid rgba($color: #222, $alpha: 0);
                 cursor: pointer;
                 justify-content: center;
+                @include Mobile{
+                    width: 4.6rem;
+                }
                 img{
                     width: 2.6rem;
                     height: 2.6rem;
                     object-fit: cover;
+                    @include Mobile{
+                        width: 3.2rem;
+                        height: 3.2rem;
+                    }
                 }
                 i{
                     font-size: 3rem;
+                    @include Mobile{
+                        font-size: 2rem;
+                    }
                     &::before{
                         color: #8A1538;
                     }
@@ -182,6 +205,9 @@ body{
                     line-height: normal;
                     margin-top: .4rem;
                     color: #222;
+                    @include Mobile{
+                        display: none;
+                    }
                 }
 
                 .group-bg-logo {
@@ -191,6 +217,9 @@ body{
                     align-items: center;
                     margin: 0;
                     padding-top: .4rem;
+                    @include Mobile{
+                        padding: .5rem;
+                    }
                     i{
                         &::before{
                             color: #222;;
@@ -220,6 +249,15 @@ body{
             align-items: center;
             justify-content: center;
             margin: 0 auto;
+            @include Mobile{
+                width: 1.8rem;
+                height: 1.8rem;
+                i{
+                    &::before{
+                        font-size: 1rem;
+                    }
+                }
+            }
             &-win{
                 background: #549C2A;
             }
@@ -247,14 +285,29 @@ body{
     font-size: 1.6rem;
     text-transform: capitalize;
     justify-content: space-between;
+    @include Mobile{
+        font-size: 1.4rem;
+        padding: .6rem 0 .6rem .6rem;
+    }
     .latest-score{
         display: block;
         width: 11.5rem;
         text-align: center;
+        @include Mobile{
+            width: 5.8rem;
+        }
     }
 }
 .name-play-mobile{
     display: none;
+    @include tableMobile{
+        display: block;
+        padding: .6rem 0 0 .6rem;
+        font-size: 1.1rem;
+        line-height: normal;
+        color: #143CDB;
+        font-weight: 600;
+    }
 }
 
 
