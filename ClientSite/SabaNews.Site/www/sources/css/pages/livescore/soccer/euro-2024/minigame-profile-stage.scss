@@ -136,6 +136,9 @@ body{
         .table-row{
             @include Mobile{
                 font-size: 1.1rem !important;
+                &-score{
+                    font-size: 1.3rem !important;
+                }
             }
         }
     }

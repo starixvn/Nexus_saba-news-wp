@@ -652,6 +652,9 @@ body {
   .minigame-table .minigame-table-body .table-row {
     font-size: 1.1rem !important;
   }
+  .minigame-table .minigame-table-body .table-row-score {
+    font-size: 1.3rem !important;
+  }
 }
 .minigame-table .table-row {
   width: 10rem;
