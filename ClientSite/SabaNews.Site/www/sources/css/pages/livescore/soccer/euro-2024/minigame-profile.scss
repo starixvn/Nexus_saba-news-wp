@@ -4,7 +4,11 @@
 @import './components/minigame-section';
 @import './components/minigame-table';
 
-
+.statistic-grid {
+    @include Mobile{
+        margin-bottom: 10rem;
+    }
+}
 
 body{
     background: url('../../../../../../images/euro2024/minigame/bg-standing.png') , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);

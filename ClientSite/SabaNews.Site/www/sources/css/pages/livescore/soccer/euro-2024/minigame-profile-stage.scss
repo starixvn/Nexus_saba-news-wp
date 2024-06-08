@@ -2,120 +2,186 @@
 @import './components/dock_stage';
 @import './components/auth-user';
 @import './components/minigame-section';
-@import './components/minigame_control';
+@import './components/minigame-table';
 
-.minigame-title{
-    margin-bottom: 3rem;
+
+.statistic-grid {
     @include Mobile{
-        margin-bottom: 2.5rem;
+        margin-bottom: 10rem;
     }
-    .text{
-        padding-bottom: 1.1rem;
-        text-transform: uppercase;
-        color: #833D55;
-        @include tableMobile{
-            font-size: 2rem;
+}
+
+body{
+    background: url('../../../../../../images/euro2024/minigame/bg-standing.png') , linear-gradient(180deg, #0C1D6B 0%, #07113F 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.minigame-section{
+    padding: 4rem 0;
+    @include Mobile{
+        padding: 1rem;
+    }
+}
+.stage-number{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background: #E6EAF8;
+    height: 3.5rem;
+    justify-content: space-between;
+    padding: .8rem 2rem;
+    color: #E8E8D6;
+    margin: 1.2rem 0 .8rem;
+    border-radius: 5px;
+    li{
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: normal;
+        color: #222;
+        @include Mobile{
+            font-size: 1.3rem;
         }
-    }
-    .dots-parent{
-        background: #833D55;
-        ul{
-            background: #E8E8D6;
+        &:first-child{
+            text-transform: uppercase;
+        }
+        &.detail-choose{
+            font-weight: 700;
+        }
+        &.go-back{
+            font-weight: 600;
+            cursor: pointer;
+        }
+        i{
+            font-size: 2.4rem;
+            margin-left: .4rem;
+            &::before{
+                color: #222;
+            }
+            @include Mobile{
+                font-size: 1.5rem;
+            }
         }
     }
 }
+
+
+
+.equal-height-JlocK{
+    display: flex !important;
+    align-items: center;
+    @include Mobile{
+        display:  none !important;
+    }
+}
+
+
+
+
+
 .minigame-table{
-    .minigame-table-flex{
-        &.minigame-table-header{
-            background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-            width: 100%;
+    border-radius: 5px 5px 0 0;
+    .minigame-table-header{
+        padding: 0 1rem;
+        @include Mobile{
+            height: 4.2rem;
+            border-bottom: none;
         }
     }
     .minigame-table-body{
+        border-radius: 0;
+        max-height: 36.4rem;
+        @include Mobile{
+            max-height: 47.5rem;
+        }
         .group-items-table-detial{
-            border: 1px solid #833D55;
-            border-bottom: none;
+            border-bottom: 1px solid #8F8F8F;
+            &:last-child{
+                border-bottom: none;
+            }
             &.finish{
                 cursor: no-drop;
                 .minigame-team{
                     cursor: no-drop;
                 }
             }
+            .table-row-name_team{
+                color: #143CDB;
+            }
         }
         .group-cell-table{
             display: flex;
             align-items: center;
-            padding: .7rem 0;
+            padding: .6rem 1rem;
+            @include Mobile{
+                padding: .6rem;
+            }
             &:last-child{
                 border-bottom: none;
             }
         }
-    }
-    .table-row{
-        width: 9rem;
-        @include Mobile{
-            width: 4rem;
-            line-height: 1.8rem !important;
-            font-size: 1.2rem !important;
-            &-name_team {
-                width: 9rem !important;
+        .table-row{
+            @include Mobile{
+                font-size: 1.1rem !important;
             }
         }
+    }
+    .table-row{
+        width: 10rem;
+        text-align: center;
+        line-height: 3rem;
+        font-weight: 700;
         &-index {
-            flex: 1 0 40rem;
+            flex: 1 0 38rem;
             width: auto;
             @include Mobile{
-                flex: 1 0 17rem;
+                flex: 1 0 19rem;
             }
+        }
+        &-score{
+            color: #143CDB;
+            @include Mobile{
+                width: 3.5rem !important;
+            }
+        }
+        &-name_team{
+            width: 20rem;
         }
         .team-choose{
             display: flex;
-            padding-left: 1rem;
-            grid-gap: 2rem;
+            grid-gap: 1rem;
             @include Mobile{
-                grid-gap: 0;
-                padding-left: .4rem;
+                grid-gap: .6rem;
             }
             .minigame-team{
-                width: 9.4rem;
+                width: 11rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                border: 2px solid #E8E8D6;
                 border-radius: 5px;
+                background: rgba($color: #222, $alpha: 0.05);
+                border: 2px solid rgba($color: #222, $alpha: 0);
                 cursor: pointer;
-                @include Mobile{
-                    width: 4.8rem;
-                    height: 3.6rem;
-                    border-radius: 3px;
-                    justify-content: center;
-                }
+                justify-content: center;
                 img{
-                    width: 3.9rem;
+                    width: 2.6rem;
                     height: 2.6rem;
                     object-fit: cover;
-                    @include Mobile{
-                        width: 3.6rem;
-                        height: 2.4rem;
-                    }
                 }
                 i{
                     font-size: 3rem;
-                    @include Mobile{
-                        font-size: 2rem;
-                    }
                     &::before{
                         color: #8A1538;
                     }
                 }
                 .team-name{
                     font-weight: 700;
-                    font-size: 1.4rem;
-                    line-height: 2.8rem;
+                    font-size: 1.3rem;
+                    line-height: normal;
                     margin-top: .4rem;
-                    @include Mobile{
-                        display: none;
-                    }
+                    color: #222;
                 }
 
                 .group-bg-logo {
@@ -124,44 +190,22 @@
                     justify-content: center;
                     align-items: center;
                     margin: 0;
-                    height: 4.2rem;
-                    @include Mobile{
-                        background: none;
-                        height: auto;
+                    padding-top: .4rem;
+                    i{
+                        &::before{
+                            color: #222;;
+                        }
                     }
                 }
                 &.active{
-                    border: 2px solid #8D172F;
-                    background: #8D172F;
-                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+                    border: 2px solid #143CDB;
                     .team-name{
-                        color: #E8E8D6;
-                    }
-                    i{
-                        &::before{
-                            color: #fff;
-                        }
+                        color: #143CDB;
                     }
                     .group-bg-logo {
-                        width: 100%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: #E8E8D6;
-                        border: 2px solid #8D172F;
-                        border-radius: 3px 3px 0 0;
-                        margin: 0;
-                        height: 4.2rem;
-                        @include Mobile{
-                            background: none;
-                            height: auto;
-                        }
                         i{
                             &::before{
-                                color: #8A1538;
-                                @include Mobile{
-                                    color: #fff;
-                                }
+                                color: #143CDB;
                             }
                         }
                     }
@@ -176,15 +220,6 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto;
-            @include Mobile{
-                width: 1.8rem;
-                height: 1.8rem;
-                i{
-                    &::before{
-                        font-size: 1rem;
-                    }
-                }
-            }
             &-win{
                 background: #549C2A;
             }
@@ -199,164 +234,30 @@
     
 }
 
-.stage-number{
-    max-width: 67rem;
-    margin: 0 auto;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-    height: 3.5rem;
-    justify-content: space-between;
-    padding: 0 1.3rem 0 2rem;
-    color: #E8E8D6;
-    margin-bottom: 1rem;
-    @include tableMobile{
-        height: 3.2rem;
-        padding: 0 1rem;
-        margin-bottom: .6rem;
-    }
-    li{
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 1.4rem;
-        line-height: 1.9rem;
-        @include Mobile{
-            font-size: 1.2rem;
-            line-height: 1.8rem;
-        }
-        &:first-child{
-            text-transform: uppercase;
-        }
-        i{
-            font-size: 2.4rem;
-            margin-left: .4rem;
-            &::before{
-                color: #e8e8d6;
-            }
-            @include Mobile{
-                font-size: 1.5rem;
-            }
-        }
-    }
-}
-
-
 .total-score{
-    background: #D3D3B5;
-    border: 1px solid #833D55;
-    height: 3.9rem;
+    min-height: 4rem;
     display: flex;
     align-items: center;
-    border-top: none;
+    background: #E6EAF8;
+    border-radius: 0 0 5px 5px;
+    border-top: 1px solid #8F8F8F;
+    padding: .6rem 0 .6rem 2rem;
+    color: #143CDB;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-transform: capitalize;
     justify-content: space-between;
-    padding: 0 4rem 0 2rem;
-    @include Mobile{
-        padding: 0 1rem 0 1rem;
-    }
-    span{
-        color: #833D55;
-        font-weight: 700;
-        font-size: 1.6rem;
-        line-height: 2.8rem;
-        @include Mobile{
-            font-size: 1.3rem;
-        }
-       
+    .latest-score{
+        display: block;
+        width: 11.5rem;
+        text-align: center;
     }
 }
-
-.equal-height-JlocK{
-    display: flex !important;
-    align-items: center;
-    @include Mobile{
-        display:  none !important;
-    }
-}
-
-
-.live-score-nav{
-    border-bottom: 1px solid #C8C8B0;
-    margin-bottom: 1.2rem;
-    padding-bottom: .8rem;
-    a{
-        text-decoration: none;
-        color: #838372;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 1.4rem;
-        line-height: 1.9rem;
-        margin-right: 2rem;
-        position: relative;
-        padding-bottom: .8rem;
-        &:last-child{
-            margin-right: 0;
-        }
-        &.active{
-            color: #833D55;
-            &::after{
-                display: block;
-                content: "";
-                height: 2px;
-                width: 100%;
-                position: absolute;
-                bottom: -3px;
-                left: 0;
-                background: #833D55;
-            }
-        }
-    }
-}
-.nav-select-mb{
-    margin: 0;
-}
-
 .name-play-mobile{
     display: none;
-    @include tableMobile{
-        display: block;
-        color: #8D172F;
-        font-weight: 600;
-        font-size: 1.1rem;
-        line-height: 1;
-        padding-left: .4rem;
-        margin-top: .5rem;
-    }
 }
 
-.custom-select{
-    border: 1px solid #833D55 !important;
-    border-radius: 0 !important;
-    height: 3.2rem !important;
-    padding: 0rem 1.2rem !important;
-    margin-top: 0 !important;
-    margin-bottom: 1rem !important;
-}
 
-.minigame-table-body {
-    max-height: 46.3rem;
-    &::-webkit-scrollbar {
-        width: .8rem;
-
-        @include tableMobile {
-            display: none;
-        }
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-        border: 1px solid #833D55;
-        border-left: none;
-        border-top: none;
-        border-bottom: none;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 0;
-    }
-}
 
 
 

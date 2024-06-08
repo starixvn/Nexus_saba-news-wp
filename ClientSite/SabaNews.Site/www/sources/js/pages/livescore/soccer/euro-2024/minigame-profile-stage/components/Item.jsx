@@ -168,7 +168,8 @@ export class Item extends PureComponent {
                     </div>
                     <div className="table-row table-row-name_team">{this.getTeamVote()}</div>
                     <div className="table-row ">{this.getVoteResult(match, result)}</div>
-                    <div className="table-row">{this.getVoteScore(match, result)}</div>
+                    <div className="table-row table-row-score">{this.getVoteScore(match, result)}</div>
+                    
                 </div>
             </div>
         );

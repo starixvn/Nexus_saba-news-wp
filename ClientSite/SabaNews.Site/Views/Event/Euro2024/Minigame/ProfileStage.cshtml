@@ -16,10 +16,8 @@
     var countStageEnd = GetCountStageEndMinigame(Model.Matches);
 }
 
-    @section Styles{
-    <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
-
-    <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/euro2024-minigame.min.css" asp-append-version="true">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/euro-2024/minigame-profile-stage.chunk.css" asp-append-version="true" />
@@ -29,7 +27,7 @@
     </environment>
 }
 
-    @section Scripts{
+@section Scripts{
     <script>
         window.stage = '@Model.Stage';
     </script>
@@ -52,21 +50,8 @@
 <section class="worldcup-lastest-news minigame-section">
     @await Html.PartialAsync("~/Views/Event/Euro2024/Minigame/_MenuBar.cshtml", new MenuBarViewComponent { IsLogin = Model.IsLogin, CountStageActive = countStageActive, CountStageEnd = countStageEnd })
     <div class="statistic-grid">
-        <div class="wraper-minigame-table">
-            <div class="minigame-title">
-                <h1 class="text">
-                    Dự đoán của tôi
-                </h1>
-                <div class="dots-parent">
-                    <ul>
-                        <li class="dots-small"></li>
-                        <li class="dots-regular"></li>
-                        <li class="dots-parent-center"></li>
-                        <li class="dots-regular"></li>
-                        <li class="dots-small"></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="wraper-minigame-table profile-wraper-tablle">
+            <div class="block-heading"><h2 class="block-heading-text">Dự đoán của tôi</h2></div>
             <ul class="auth-provider auth-minigame">
                 @if (Model.User.Photo == null)
                 {
@@ -84,15 +69,10 @@
             </ul>
             <div id="app-container"></div>
         </div>
-
-
-        <div class="dock-stage-icon">
-            <img src="~/images/worldcup/minigame/winner_sticker_4.svg" alt="Alternate Text" />
-        </div>
     </div>
 </section>
 
-@await Html.PartialAsync("~/Views/Event/WorldCup2022/Minigame/_Guide.cshtml")
+@await Html.PartialAsync("~/Views/Event/Euro2024/Minigame/_Guide.cshtml")
 
 
 
