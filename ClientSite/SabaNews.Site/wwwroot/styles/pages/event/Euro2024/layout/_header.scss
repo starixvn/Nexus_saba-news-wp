@@ -501,11 +501,7 @@
 
         .nav-menu {
             width: 100%;
-            max-width: 950px;
-            // @include landscapeTablet {
-            //     width: calc(100% - 120px);
-            // }
-
+            max-width: 100.3rem;
             @include tableMobile {
                 padding-top: 4.6rem;
                 padding-bottom: 4rem;
@@ -1375,7 +1371,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    min-width:  28.8rem;
 
     .auth-login {
         text-decoration: none;

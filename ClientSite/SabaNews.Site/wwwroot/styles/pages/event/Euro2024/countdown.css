@@ -465,7 +465,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .top-header .group-menu .nav-menu {
   width: 100%;
-  max-width: 950px;
+  max-width: 100.3rem;
 }
 @media screen and (max-width: 1024px) {
   .top-header .group-menu .nav-menu {
@@ -1262,7 +1262,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-width: 28.8rem;
 }
 .header-auth-provider .auth-login {
   text-decoration: none;
