@@ -760,6 +760,7 @@ body {
 }
 .minigame-table .table-row .team-choose .minigame-team.active {
   border: 2px solid #143CDB;
+  background: rgba(20, 60, 219, 0.1);
 }
 .minigame-table .table-row .team-choose .minigame-team.active .team-name {
   color: #143CDB;
