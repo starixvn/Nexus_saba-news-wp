@@ -646,12 +646,6 @@ namespace SabaNews.Site.Controllers.Event
             return Json(result);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> GetMinigameVoteMatch([FromBody] GetMinigameVotedMatchCriteria criteria)
-        {
-            var match = await euro2024Service.GetMinigameVoteMatchAsync(criteria);
-            return Json(match);
-        }
 
         [HttpPost]
         public async Task<ActionResult> GetMinigameByUser([FromBody] GetMinigameUserVoteModel model)

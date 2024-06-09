@@ -159,13 +159,13 @@
             //Arrange
             var service = GetService();
 
-            var minigameExpected = fixture.Create<IList<MinigameModel>>();
+            var minigameExpected = fixture.Create<IList<UserMinigameModel>>();
             var userID = fixture.Create<long>();
             var leagueId = fixture.Create<long>();
             var seasonId = fixture.Create<long>();
             var criteria = fixture.Create<GetLeagueMinigameByUserCriteria>();
 
-            baseService.GetDataAsync<MinigameModel>(Arg.Any<GetLeagueMinigameByUserCriteria>()).Returns(minigameExpected);
+            baseService.GetDataAsync<UserMinigameModel>(Arg.Any<GetLeagueMinigameByUserCriteria>()).Returns(minigameExpected);
             //Act
             var actual = await service.GetMinigameByUserAsync(userID, leagueId, seasonId);
             //Assert
@@ -178,10 +178,10 @@
             //Arrange
             var service = GetService();
 
-            var minigameExpected = fixture.Create<IList<MinigameNotEmailModel>>();
+            var minigameExpected = fixture.Create<IList<UserMinigameModel>>();
             var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
 
-            baseService.GetDataAsync<MinigameNotEmailModel>(Arg.Any<GetLeagueMinigameByStageCriteria>()).Returns(minigameExpected);
+            baseService.GetDataAsync<UserMinigameModel>(Arg.Any<GetLeagueMinigameByStageCriteria>()).Returns(minigameExpected);
             //Act
             var actual = await service.GetLeagueMinigameByStageAsync(criteria);
             //Assert

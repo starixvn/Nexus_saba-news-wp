@@ -341,7 +341,7 @@
             var controller = GetController();
             var param = fixture.Create<ManagementDetailMinigameViewModel>();
             var leagueData = fixture.Create<MatchLeague>();
-            var minigames = fixture.Create<IList<MinigameNotEmailModel>>();
+            var minigames = fixture.Create<IList<MinigameModel>>();
             var votes = fixture.Create<IList<MinigameModel>>();
             var leagueId = fixture.Create<long>();
             var criteriaVotesUser = new GetLeagueMinigameByUserStageCriteria
@@ -359,7 +359,7 @@
 
             dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => leagueId = x)).Returns(leagueData);
             euro2024Service.GetLeagueMinigameByUserStageAsync(Arg.Do<GetLeagueMinigameByUserStageCriteria>(x => criteriaVotesUser = x)).Returns(votes);
-            euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteriaVoteMinigame = x)).Returns(minigames);
+            euro2024Service.GetLeagueMinigameByStageWithEmailAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteriaVoteMinigame = x)).Returns(minigames);
 
             //Act
             var result = await controller.GetDetailUser(param);

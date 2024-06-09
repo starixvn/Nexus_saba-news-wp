@@ -72,22 +72,16 @@
             return result.ToList();
         }
 
-        public async Task<IList<MinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId)
+        public async Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId)
         {
             var criteria = new GetLeagueMinigameByUserCriteria { UserId = userId, LeagueId = leagueId, SeasonId = seasonId };
-            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
+            var result = await baseService.GetDataAsync<UserMinigameModel>(criteria);
             return result.ToList();
         }
 
-        public async Task<IList<MinigameModel>> GetLeagueMinigameByStageWithEmailAsync(GetLeagueMinigameByStageCriteria criteria)
+        public async Task<IList<UserMinigameModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria)
         {
-            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
-            return result.ToList();
-        }
-
-        public async Task<IList<MinigameNotEmailModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria)
-        {
-            var result = await baseService.GetDataAsync<MinigameNotEmailModel>(criteria);
+            var result = await baseService.GetDataAsync<UserMinigameModel>(criteria);
             return result.ToList();
         }
 
@@ -108,6 +102,15 @@
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
         }
+
+
+        public async Task<IList<MinigameModel>> GetLeagueMinigameByStageWithEmailAsync(GetLeagueMinigameByStageCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
+            return result.ToList();
+        }
+
+
 
 
     }

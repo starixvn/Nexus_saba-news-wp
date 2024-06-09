@@ -219,7 +219,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 var (_, score) = EuroHelper.GetVoteResult(matchVote, vote);
                 vote.Point = score;
             }
-            var miniGames = await euro2024Service.GetLeagueMinigameByStageAsync(criteriaVoteMinigame);
+            var miniGames = await euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteriaVoteMinigame);
             miniGames = miniGames.Where(x => x.UserId == param.UserId).ToList();
             var viewModel = new AdminDetailMinigameViewModel
             {
