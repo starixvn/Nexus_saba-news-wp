@@ -28,7 +28,7 @@
 
         Task<IList<MinigameModel>> GetLeagueMinigameByUserStageAsync(GetLeagueMinigameByUserStageCriteria criteria);
 
-        Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId);
+        Task<IList<MinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId);
 
         Task<IList<UserMinigameModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria);
         Task<IList<MinigameModel>> GetLeagueMinigameByStageWithEmailAsync(GetLeagueMinigameByStageCriteria criteria);

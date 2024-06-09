@@ -72,10 +72,10 @@
             return result.ToList();
         }
 
-        public async Task<IList<UserMinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId)
+        public async Task<IList<MinigameModel>> GetMinigameByUserAsync(long userId, long leagueId, long seasonId)
         {
             var criteria = new GetLeagueMinigameByUserCriteria { UserId = userId, LeagueId = leagueId, SeasonId = seasonId };
-            var result = await baseService.GetDataAsync<UserMinigameModel>(criteria);
+            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
             return result.ToList();
         }
 

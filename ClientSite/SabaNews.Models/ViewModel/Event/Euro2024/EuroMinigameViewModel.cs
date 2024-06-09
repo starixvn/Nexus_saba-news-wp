@@ -11,7 +11,7 @@
 
         public IList<Match> Matches { get; set; }
 
-        public IList<UserMinigameModel> Votes { get; set; }
+        public IList<MinigameModel> Votes { get; set; }
 
         public UserSession User { get; set; }
 

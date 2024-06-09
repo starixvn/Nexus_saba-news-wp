@@ -1040,7 +1040,7 @@
             var userId = fixture.Create<long>();
             sessionService.User = fixture.Create<UserSession>();
 
-            var expectedVotes = fixture.Create<IList<UserMinigameModel>>();
+            var expectedVotes = fixture.Create<IList<MinigameModel>>();
             var expected = fixture.Create<MatchLeague>();
             var match = expected.Matches.First();
             match.Stage.StageId = Euro2024.GroupStageId;
@@ -1060,7 +1060,7 @@
             var viewResult = Assert.IsType<JsonResult>(result);
             var actualLeague = Assert.IsAssignableFrom<League>(viewResult.Value.GetType().GetProperty("league").GetValue(viewResult.Value));
             var actualMatches = Assert.IsAssignableFrom<IList<Match>>(viewResult.Value.GetType().GetProperty("matches").GetValue(viewResult.Value));
-            var actualVotes = Assert.IsAssignableFrom<IList<UserMinigameModel>>(viewResult.Value.GetType().GetProperty("votes").GetValue(viewResult.Value));
+            var actualVotes = Assert.IsAssignableFrom<IList<MinigameModel>>(viewResult.Value.GetType().GetProperty("votes").GetValue(viewResult.Value));
             Assert.Equal(expected.League, actualLeague);
             Assert.Equal(expectMatch, actualMatches);
             Assert.Equal(expectedVotes, actualVotes);
