@@ -448,7 +448,7 @@
 }
 @media (max-width: 767px) {
   .profile-wraper-tablle .minigame-table .minigame-table-header .table-row {
-    font-size: 1.3rem;
+    font-size: 1.3rem !important;
   }
 }
 .profile-wraper-tablle .minigame-table .table-row-score {

@@ -127,7 +127,7 @@ body{
             align-items: center;
             padding: .6rem 1rem;
             @include Mobile{
-                padding: .6rem;
+                padding: .6rem 1.3rem .6rem .6rem;
             }
             &:last-child{
                 border-bottom: none;
@@ -159,7 +159,7 @@ body{
             flex: 1 0 38rem;
             width: auto;
             @include Mobile{
-                flex: 1 0 19rem;
+                flex: 1 0 0;
             }
         }
         &-score{

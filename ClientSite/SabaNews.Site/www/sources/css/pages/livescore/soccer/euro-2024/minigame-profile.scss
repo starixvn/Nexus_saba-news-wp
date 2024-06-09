@@ -26,3 +26,11 @@ body{
         padding: 1rem;
     }
 }
+
+.minigame-table {
+    .table-row{
+        @include Mobile{
+            font-size: 1.3rem;
+        }
+    }
+}
