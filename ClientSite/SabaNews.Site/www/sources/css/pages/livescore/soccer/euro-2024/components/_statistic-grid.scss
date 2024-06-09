@@ -157,6 +157,9 @@
         }
         .icon-minigame_draw {
             font-size: 5rem;
+            &::before{
+                color: #fff;
+            }
         }
     }
 }

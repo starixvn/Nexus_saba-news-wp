@@ -2141,6 +2141,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding-right: 1rem;
   margin-bottom: 1rem;
 }
+.euro-modal .text-event-section a {
+  color: #06C;
+}
 .euro-modal .main-guide {
   padding: 0 1rem 2rem 2rem;
 }
