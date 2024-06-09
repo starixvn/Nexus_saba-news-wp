@@ -178,10 +178,10 @@
             //Arrange
             var service = GetService();
 
-            var minigameExpected = fixture.Create<IList<MinigameModel>>();
+            var minigameExpected = fixture.Create<IList<MinigameNotEmailModel>>();
             var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
 
-            baseService.GetDataAsync<MinigameModel>(Arg.Any<GetLeagueMinigameByStageCriteria>()).Returns(minigameExpected);
+            baseService.GetDataAsync<MinigameNotEmailModel>(Arg.Any<GetLeagueMinigameByStageCriteria>()).Returns(minigameExpected);
             //Act
             var actual = await service.GetLeagueMinigameByStageAsync(criteria);
             //Assert
