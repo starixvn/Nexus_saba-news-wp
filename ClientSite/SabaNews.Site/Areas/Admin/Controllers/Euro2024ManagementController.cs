@@ -5,7 +5,6 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Event.Minigame;
     using SabaNews.Livescore.Models.Match;
-    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Services.Criteria.Team;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.Euro2024;
@@ -216,7 +215,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             var votes = await euro2024Service.GetLeagueMinigameByUserStageAsync(criteriaVotesUser);
             foreach (var vote in votes)
             {
-                var matchVote = matches.FirstOrDefault(m => m.MatchId == vote.MatchId);
+                var matchVote = matches.Find(m => m.MatchId == vote.MatchId);
                 var (_, score) = EuroHelper.GetVoteResult(matchVote, vote);
                 vote.Point = score;
             }
