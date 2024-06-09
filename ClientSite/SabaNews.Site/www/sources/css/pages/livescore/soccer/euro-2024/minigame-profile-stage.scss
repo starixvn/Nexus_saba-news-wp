@@ -97,8 +97,10 @@ body{
     .minigame-table-header{
         padding: 0 1rem;
         @include Mobile{
+            padding: 0;
             height: 4.2rem;
             border-bottom: none;
+            gap: .6rem;
         }
     }
     .minigame-table-body{
@@ -128,6 +130,7 @@ body{
             padding: .6rem 1rem;
             @include Mobile{
                 padding: .6rem 1.3rem .6rem .6rem;
+                gap: .6rem;
             }
             &:last-child{
                 border-bottom: none;
@@ -148,11 +151,11 @@ body{
         line-height: 3rem;
         font-weight: 700;
         @include Mobile{
-            width: 4rem;
+            width: 5rem;
             line-height: 1.8rem !important;
             font-size: 1.2rem !important;
             &-name_team {
-                width: 5rem !important;
+                width: 6rem !important;
             }
         }
         &-index {
