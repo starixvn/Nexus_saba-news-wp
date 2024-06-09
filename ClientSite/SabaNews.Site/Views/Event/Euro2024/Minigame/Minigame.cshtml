@@ -189,7 +189,7 @@
                                     data-status="@status" data-stage="@(i+1)" data-timeendstage="@Model.Matches[Euro2024.indexMatches[i]].StartTime.AddHours(7)">
                                 <div class="stage-round  @(isActive ? "stage-votes-round active" : "") ">
                                     <h2 class="btn-event btn-stage @(isActive ? "btn-event-warning" : "btn-event-lock")" data-stage="@(i+1)">Giai Đoạn @(i + 1)</h2>
-                                    <a class="icon-stage @(isActive ? "btn-event-warning" : "btn-event-lock") @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
+                                    <a class="icon-stage @((isActive || status == Euro2024.OnEndStage) ? "btn-event-warning" : "btn-event-lock") @(string.IsNullOrEmpty(icon) ? "disable-background": "")"><i class="@icon"></i></a>
                                 </div>
                                 <ul class="count-and-time">
                                     @if (Model.IsLogin && status != Euro2024.LockStage)
