@@ -8,5 +8,7 @@
 
         public int CountStageEnd { get; set; }
 
+        public string SlugActive { get; set; }
+
     }
 }

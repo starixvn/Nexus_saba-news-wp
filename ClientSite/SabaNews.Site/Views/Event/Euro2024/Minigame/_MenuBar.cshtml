@@ -1,6 +1,6 @@
 <ul class="header-nav-event">
         <li>
-            <a href="@Url.Action("Minigame", "Euro2024")" class="btn-home">
+            <a href="@Url.Action("Minigame", "Euro2024")" class="btn-home @(Model.SlugActive == "Minigame" ? "active" : "")">
                 <i class="icon icon-minigame_home"></i>
                 <span>Sự Kiện</span>
             </a>
@@ -21,7 +21,7 @@
             if (Model.IsLogin)
             {
                 <li>
-                    <a href=@Url.Action("MinigameProfile", "Euro2024") class="click-my-prediction">
+                    <a href=@Url.Action("MinigameProfile", "Euro2024") class="click-my-prediction @(Model.SlugActive == "MinigameProfile" ? "active" : "")">
                         <i class="icon icon-minigame_my_fav"></i>
                         <span>Dự Đoán Của Tôi</span>
                     </a>
@@ -30,7 +30,7 @@
             if (Model.CountStageActive > 0)
             {
                 <li>
-                    <a href="@Url.Action("Minigame", "Euro2024")#minigame-standing" class="click-list-standing">
+                    <a href="@Url.Action("Minigame", "Euro2024")#minigame-standing" class="click-list-standing " >
                         <i class="icon icon-minigame_standing"></i>
                         <span>Bảng Xếp Hạng</span>
                     </a>

@@ -67,7 +67,6 @@
         <script src="~/minify/js/euro-2024-minigame.min.js" asp-append-version="true"></script>
     </environment>
 
-   
 }
 
 @(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
@@ -103,7 +102,7 @@
     </div>
     <ul class="header-nav-event">
         <li>
-            <a href="javascript:;" class="btn-home">
+            <a href="javascript:;" class="btn-home active">
                 <i class="icon icon-minigame_home"></i>
                 <span>Sự Kiện</span>
             </a>

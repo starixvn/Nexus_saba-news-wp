@@ -51,7 +51,7 @@
 }
 @(await Component.InvokeAsync("HeaderEuro2024" , new { cateSlug = Model.Header.Slug }))
 <section class="worldcup-lastest-news">
-    @await Html.PartialAsync("~/Views/Event/Euro2024/Minigame/_MenuBar.cshtml", new MenuBarViewComponent { IsLogin = Model.IsLogin, CountStageActive = countStageActive, CountStageEnd = countStageEnd })
+    @await Html.PartialAsync("~/Views/Event/Euro2024/Minigame/_MenuBar.cshtml", new MenuBarViewComponent { IsLogin = Model.IsLogin, CountStageActive = countStageActive, CountStageEnd = countStageEnd, SlugActive = "MinigameStage" })
 
     <div id="app-container"></div>
 
