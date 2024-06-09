@@ -222,6 +222,11 @@
 .minigame-table .minigame-table-body::-webkit-scrollbar {
   width: 0.6rem;
 }
+@media (max-width: 767px) {
+  .minigame-table .minigame-table-body::-webkit-scrollbar {
+    display: none;
+  }
+}
 .minigame-table .minigame-table-body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -230,7 +235,7 @@
   background: transparent;
 }
 .minigame-table .minigame-table-body .table-row-time {
-  width: 20.3rem;
+  width: 20rem;
 }
 @media (max-width: 767px) {
   .minigame-table .minigame-table-body .table-row-time {

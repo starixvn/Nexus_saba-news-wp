@@ -39,6 +39,9 @@
         }
         &::-webkit-scrollbar{
             width: .6rem;
+            @include Mobile{
+                display: none;
+            }
         }
         &::-webkit-scrollbar-thumb{
             background-color: rgba(0, 0, 0, 0.2);
@@ -49,7 +52,7 @@
         }
         .table-row{
             &-time{
-                width: 20.3rem;
+                width: 20rem;
                 @include Mobile{
                     width: 7.5rem;
                 }
