@@ -438,7 +438,7 @@
   border-bottom: 2px solid #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   z-index: 99;
   gap: 1rem;
@@ -478,7 +478,7 @@
   border-bottom: 2px solid #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 @media screen and (max-width: 1024px) {

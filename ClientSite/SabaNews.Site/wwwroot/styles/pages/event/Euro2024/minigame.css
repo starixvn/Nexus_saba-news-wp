@@ -2249,10 +2249,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   font-weight: 700;
   line-height: 28px;
   padding: 0.7rem 3.7rem;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.35);
   text-decoration: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: box-shadow ease-in-out 0.3s;
+}
+.btn-event:hover {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.35);
 }
 @media (max-width: 767px) {
   .btn-event {
@@ -2413,7 +2416,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .header-nav-event li a .icon:before {
   font-size: 2.4rem;
   color: rgba(255, 255, 255, 0.75);
-  transition: all ease-in-out 0.6s !important;
+  transition: all ease-in-out 0.2s !important;
 }
 .header-nav-event li a.active, .header-nav-event li a:hover {
   color: #FFCA00 !important;

@@ -16,7 +16,11 @@
                 color: #222;
             }
             .statistic-grid-item-choose{
-                color: #FFCA00;
+                span{
+                    b{
+                        color: #FFCA00;
+                    }
+                }
             }
             .finish{
                 .statistic-team{

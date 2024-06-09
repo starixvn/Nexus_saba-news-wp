@@ -4,7 +4,7 @@
   border-bottom: 2px solid #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   z-index: 99;
   gap: 1rem;
@@ -44,7 +44,7 @@
   border-bottom: 2px solid #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 @media screen and (max-width: 1024px) {
@@ -151,12 +151,18 @@
   width: 25rem;
   height: 4rem;
   border-radius: 5px;
-  background: #FFF;
   color: #143CDA;
   font-weight: 700;
   font-size: 1.6rem;
   padding: 0 0.5rem;
   margin-bottom: 1.2rem;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  background: #fff url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOC41OUwxMiAxMy4xN0wxNi41OSA4LjU5TDE4IDEwTDEyIDE2TDYgMTBMNy40MSA4LjU5WiIgZmlsbD0iIzE0M0NEQSIvPgo8L3N2Zz4K);
+  background-repeat: no-repeat !important;
+  background-position: 98% !important;
 }
 @media (max-width: 767px) {
   .custom-select {
