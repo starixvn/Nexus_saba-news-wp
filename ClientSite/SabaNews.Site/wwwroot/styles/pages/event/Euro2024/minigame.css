@@ -2591,6 +2591,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .none-stage .line-winner.show-pc, .none-stage .line-winner.show-mobile {
   display: none;
 }
+.none-stage .winner-minigame {
+  border: none;
+}
 
 .minigame-block-winners {
   min-height: 84rem;

@@ -195,6 +195,9 @@
   align-items: center;
   padding: 0 2.6rem;
 }
+.minigame-table .minigame-table-header .table-row {
+  font-size: 1.6rem;
+}
 @media (max-width: 767px) {
   .minigame-table .minigame-table-header {
     height: 3.2rem;
@@ -225,6 +228,14 @@
 }
 .minigame-table .minigame-table-body::-webkit-scrollbar-track {
   background: transparent;
+}
+.minigame-table .minigame-table-body .table-row-time {
+  width: 20.3rem;
+}
+@media (max-width: 767px) {
+  .minigame-table .minigame-table-body .table-row-time {
+    width: 7.5rem;
+  }
 }
 .minigame-table .minigame-table-items {
   border-bottom: 1px solid #666;
@@ -325,7 +336,7 @@
 }
 @media (max-width: 767px) {
   .minigame-table .table-row-name .user-name {
-    width: 18rem;
+    width: 16rem;
   }
 }
 
@@ -366,15 +377,20 @@
   text-align: center;
   font-weight: 600;
 }
+@media (max-width: 767px) {
+  .table-dropdown-score {
+    font-size: 1.3rem;
+  }
+}
 .table-dropdown-name {
   flex: 1 0 0;
 }
 .table-dropdown-time {
-  width: 20rem;
+  width: 20.5rem;
 }
 @media (max-width: 767px) {
   .table-dropdown-time {
-    width: 7.4rem;
+    width: 7.5rem;
   }
 }
 .table-dropdown-header, .table-dropdown-body {
