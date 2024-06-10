@@ -15,6 +15,7 @@
             $('#guide').modal('show');
         });
 
+
         $('.btn-standing').on('click', function () {
             $('html, body').animate({
                 scrollTop: $('#minigame-standing').offset().top - 77
