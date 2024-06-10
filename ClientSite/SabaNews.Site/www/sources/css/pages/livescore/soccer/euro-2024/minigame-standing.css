@@ -400,7 +400,7 @@
   flex: 1 0 0;
 }
 .table-dropdown-time {
-  width: 20.5rem;
+  width: 20rem;
 }
 @media (max-width: 767px) {
   .table-dropdown-time {
