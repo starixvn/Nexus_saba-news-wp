@@ -29,5 +29,8 @@
         opacity: 0.35;
         cursor: not-allowed !important;
         box-shadow: none;
+        &:hover{
+            box-shadow: none;
+        }
     }
 }

@@ -12,6 +12,7 @@
     background: #1830A1;
     position: relative;
     z-index: 9;
+    overflow: hidden;
     @include Mobile{
         margin: 0 1.2rem;
     }
@@ -22,6 +23,7 @@
         z-index: 0;
         @include Mobile{
             text-align: right;
+            right: -35px;
         }
         img{
             @include Mobile{
@@ -32,6 +34,7 @@
 }
 
 .line-winner{
+    z-index: 1;
     &.show-pc{
         display: block;
         @include Mobile{

@@ -154,7 +154,7 @@
   color: #143CDA;
   font-weight: 700;
   font-size: 1.6rem;
-  padding: 0 0.5rem;
+  padding: 0 1.2rem;
   margin-bottom: 1.2rem;
   border: none;
   -webkit-appearance: none;
@@ -504,6 +504,7 @@
   background: #1830A1;
   position: relative;
   z-index: 9;
+  overflow: hidden;
 }
 @media (max-width: 767px) {
   .winner-minigame {
@@ -519,6 +520,7 @@
 @media (max-width: 767px) {
   .winner-minigame .img-table {
     text-align: right;
+    right: -35px;
   }
 }
 @media (max-width: 767px) {
@@ -527,6 +529,9 @@
   }
 }
 
+.line-winner {
+  z-index: 1;
+}
 .line-winner.show-pc {
   display: block;
 }

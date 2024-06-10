@@ -353,7 +353,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: block;
 }
 .child-mobile-menu .main-child-menu li a.active {
-  color: #F12F19;
+  color: #FFCA00 !important;
 }
 .child-mobile-menu .multilv-menu-mobile li {
   position: relative;

@@ -231,10 +231,24 @@
         return time;
     }
 
+    function scrollNavLeft () {
+        var lastScrollTop = 0;
+        $(window).scroll(function(event){
+            var st = $(this).scrollTop();
+            if (st > lastScrollTop){
+                $('.header-nav-event').addClass('active');
+            } else {
+                $('.header-nav-event').removeClass('active');
+            }
+            lastScrollTop = st;
+         });
+    }
+
     function init() {
         HandleUI();
         countDownTime();
         addClassBody();
+        scrollNavLeft();
     }
 
     return {
