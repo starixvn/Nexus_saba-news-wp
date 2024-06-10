@@ -20,6 +20,7 @@ describe('AppContainer', () => {
 
     describe('componentDidMount', () => {
         it('calls correctly functions', () => {
+            window.stage = 1;
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();

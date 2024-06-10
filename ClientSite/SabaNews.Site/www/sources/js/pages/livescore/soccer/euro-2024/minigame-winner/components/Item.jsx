@@ -53,14 +53,14 @@ export class Item extends PureComponent {
     getPlayoffPoint = (points, stage) => points.filter(p => p.stage === stage).reduce((total, p) => total + p.point, 0);
 
     render() {
-        const { Winner, winnerLength, number, selectedStage } = this.props;
+        const { Winner, winnerLength, number, rank, selectedStage } = this.props;
         const updatedDate = Winner.updatedDate != null ? Winner.updatedDate : Winner.createdDate;
         const dateShow = DateTimeService.formatDateTime(updatedDate, 'DD/MM/YYYY, HH:mm:ss');
         return (
             <>
                 {
                     number < ShowWinnerNumber &&
-                    <div className={`minigame-table-items ${selectedStage === Euro.MinigameStage.Knockout ? 'cursor-items' : ''}`}
+                    <div className={`minigame-table-items ${(number + 1) === rank ? 'active' : ''} ${selectedStage === Euro.MinigameStage.Knockout ? 'cursor-items' : ''}`}
                         onClick={() => this.handleClick(winnerLength, number, selectedStage)}>
                         <div className="minigame-table-flex ">
                             <div className="table-row table-row-index">{number + 1}</div>

@@ -113,7 +113,7 @@ describe('Item', () => {
            container.find('.view-minigame-detail').simulate('click', event);
 
            // Assert
-           expect(window.open).toHaveBeenCalledWith('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/1', '_blank');
+           expect(window.open).toHaveBeenCalledWith('/euro-2024/minigame/du-doan-cua-toi/giai-doan/1', '_blank');
        });
 
        it('calls correctly when ctrlKey = false', () => {
@@ -134,7 +134,7 @@ describe('Item', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/world-cup-2022/su-kien-du-doan-sung-nhan-qua-khung/chi-tiet/giai-doan/1');
+            expect(window.location).toEqual('/euro-2024/minigame/du-doan-cua-toi/giai-doan/1');
       });
     });
 

@@ -76,12 +76,22 @@ export default class Winner extends PureComponent {
         return Winner.sort((a, b) => (b.point - a.point) || dayjs(a.updatedDate).diff(dayjs(b.updatedDate)))
     };
 
+    checkRank = winners  =>{
+        const userIndex = winners.findIndex(s => s.id == window.User);
+        const rank = userIndex >= 0 ? userIndex + 1 : 0
+        return rank;
+    };
+
     render() {
         const { matches, votes, selectedStage } = this.props;
         const winners = this.calculatorPointer(matches, votes);
+        const rank = this.checkRank(winners);
         return (
             <div className="wrapper-scroll wrapper-scroll-winner">
                 <div className="minigame-table table-winner">
+                    {
+                        rank > 0 && <p className="standing-me">Thứ hạng của bạn: {rank}</p>
+                    }
                     <div className="minigame-table-flex minigame-table-header">
                         <div className="table-row table-row-index">#</div>
                         <div className="table-row table-row-name">Tên</div>
@@ -90,7 +100,7 @@ export default class Winner extends PureComponent {
                     </div>
                     <div className="minigame-table-body">
                         {
-                            winners.map((item, index) => <Item key={index} number={index} Winner={item} winnerLength={winners.length} selectedStage={selectedStage} />)
+                            winners.map((item, index) => <Item key={index} rank={rank} number={index} Winner={item} winnerLength={winners.length} selectedStage={selectedStage} />)
                         }
                     </div>
                 </div>
