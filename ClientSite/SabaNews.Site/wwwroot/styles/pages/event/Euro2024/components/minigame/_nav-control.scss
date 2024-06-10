@@ -19,7 +19,7 @@
         width: 100%;
         justify-content: space-between;
         border-radius: 0;
-        padding: 13px 25px 27px 25px;
+        min-height: 5.6rem;
         background: #143CDB;
         border: none;
 
@@ -73,6 +73,9 @@
                     font-size: 2.4rem;
                     color: rgba(255, 255, 255, 0.75);
                     transition: all ease-in-out .2s !important;
+                    @include Mobile{
+                        font-size: 2.6rem;
+                    }
                 }
             }
 

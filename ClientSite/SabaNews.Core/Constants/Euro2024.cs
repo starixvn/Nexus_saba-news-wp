@@ -81,7 +81,7 @@ namespace SabaNews.Core.Constants
 
         public const string IconLock = "icon-icon_lock";
         public const string IconWinner = "icon-minigame_list_user";
-        public const string IconStanding = "icon-minigame_standing";
+        public const string IconStanding = "icon-icon-minigame_standing_full";
 
         public const string MinigameSlug = "minigame";
         public const string Minigame = "Minigame";
