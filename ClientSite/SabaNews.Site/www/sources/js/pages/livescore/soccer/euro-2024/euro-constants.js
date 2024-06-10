@@ -26,24 +26,12 @@
     }
 };
 
+export const ShowWinnerNumber = 30;
 
 
-export const StageMode = {
-    Points: 1,
-    Knockout: 2
-};
 
 export const MatchResult = {
     Draw: 0,
     Win: 1,
     Lose: 2
-}
-
-export const BannerType = {
-    DesktopTop: 'banner_desktop_url',
-    DesktopLeft: 'banner_desktop_left_url',
-    DesktopRight: 'banner_desktop_right_url',
-    MobileTop: 'banner_mobile_url',
-    MobileCenter: 'banner_mobile_center_url',
-    MobileBottom: 'banner_mobile_bottom_url',
 }

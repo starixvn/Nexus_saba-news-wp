@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import { Euro } from '../../euro-constants';
+import { Euro, ShowWinnerNumber } from '../../euro-constants';
 
 export class Item extends PureComponent {
     constructor(props) {
@@ -59,7 +59,7 @@ export class Item extends PureComponent {
         return (
             <>
                 {
-                    number < 10 &&
+                    number < ShowWinnerNumber &&
                     <div className={`minigame-table-items ${selectedStage === Euro.MinigameStage.Knockout ? 'cursor-items' : ''}`}
                         onClick={() => this.handleClick(winnerLength, number, selectedStage)}>
                         <div className="minigame-table-flex ">
@@ -90,7 +90,7 @@ export class Item extends PureComponent {
                     </div>
                 }
                 {
-                    (number < 10 && selectedStage === Euro.MinigameStage.Knockout) &&
+                    (number < ShowWinnerNumber && selectedStage === Euro.MinigameStage.Knockout) &&
                     <div className="table-dropdown detailWinners" style={{ display: 'none' }}>
                         <div className="table-dropdown-header">
                             <div className="table-dropdown-column round header-column">Vòng</div>

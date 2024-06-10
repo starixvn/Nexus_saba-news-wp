@@ -1,5 +1,4 @@
-import React from 'react';
-import { WorldCup, MatchStatus, MatchResult } from '@jsroot/common/constants';
+import { MatchStatus, MatchResult } from '@jsroot/common/constants';
 import { Euro } from './euro-constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import dayjs from 'dayjs';
