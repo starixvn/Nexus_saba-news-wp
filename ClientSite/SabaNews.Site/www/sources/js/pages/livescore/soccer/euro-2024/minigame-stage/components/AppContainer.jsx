@@ -4,14 +4,18 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { groupMatchesByStage } from '../../common.functions';
 import Stages from './Stages';
+import { Euro } from '../../euro-constants';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
+        this.stage = parseInt(window.stage, 10);
     }
     componentDidMount() {
-        this.props.getMatches();
-        this.props.getVotes();
+        if(this.stage === Euro.MinigameStage.Group || this.stage === Euro.MinigameStage.Knockout) {
+            this.props.getMatches();
+            this.props.getVotes();
+        }
     }
 
     render() {

@@ -198,7 +198,7 @@
             return status == Euro2024.OnStartedStage || status == Euro2024.BeforeEndStage;
         }
 
-        public static string GetIconStage(string status)
+         public static string GetIconStage(string status)
         {
             string iconStage;
             if (status == Euro2024.LockStage || status == Euro2024.BeforeStartedStage)
