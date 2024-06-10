@@ -331,12 +331,15 @@ body {
 .statistic-grid-item-fav {
   font-weight: 400;
   font-size: 1.3rem;
+  color: #fff;
 }
 @media screen and (max-width: 1024px) {
   .statistic-grid-item-fav {
     margin-top: 1rem;
-    color: #FFCA00;
     line-height: normal;
+  }
+  .statistic-grid-item-fav span b {
+    color: #FFCA00;
   }
 }
 .statistic-grid .statistic-team {

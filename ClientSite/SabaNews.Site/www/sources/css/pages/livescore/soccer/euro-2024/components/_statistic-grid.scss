@@ -107,10 +107,15 @@
         &-fav{
             font-weight: 400;
             font-size: 1.3rem;
+            color: #fff;
             @include tableMobile{
                 margin-top: 1rem;
-                color: #FFCA00;
                 line-height: normal;
+                span{
+                    b{
+                        color: #FFCA00;
+                    }
+                }
             }
         }
     }
