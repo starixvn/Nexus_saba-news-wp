@@ -1135,7 +1135,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .top-header .back-home-page {
   display: block;
   padding-left: 2rem;
-  flex: 1 0 15%;
+  flex: 1 0 20%;
+}
+@media (max-width: 1400px) {
+  .top-header .back-home-page {
+    flex: 1 0 15%;
+  }
 }
 @media screen and (max-width: 1024px) {
   .top-header .back-home-page {
@@ -1258,10 +1263,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .header-auth-provider {
   list-style: none;
-  width: 40%;
+  width: 34%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+@media (max-width: 1400px) {
+  .header-auth-provider {
+    width: 40%;
+  }
 }
 .header-auth-provider .auth-login {
   text-decoration: none;

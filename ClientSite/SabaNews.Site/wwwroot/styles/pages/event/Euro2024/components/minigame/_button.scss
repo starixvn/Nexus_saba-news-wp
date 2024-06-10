@@ -8,6 +8,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: box-shadow ease-in-out .3s;
+    text-align: center;
     &:hover{
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.35);
     }

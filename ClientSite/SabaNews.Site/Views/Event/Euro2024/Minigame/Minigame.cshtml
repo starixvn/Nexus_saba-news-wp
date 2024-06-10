@@ -194,11 +194,11 @@
                                 <ul class="count-and-time">
                                     @if (Model.IsLogin && status != Euro2024.LockStage)
                                     {
-                                        <li class="font-weight-bold hight-light">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/@Euro2024.NumberMatch[i]</li>
+                                        <li class="font-weight-bold">Số trận dự đoán: @GetCountVotesStage(Model.Votes, i + 1)/@Euro2024.NumberMatch[i]</li>
                                     }
                                     @if (status != Euro2024.LockStage)
                                     {
-                                        <li id="stage@(i+1)" class="status-stage-time" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
+                                        <li id="stage@(i+1)" class="status-stage-time hight-light" data-timeCountDown="@GetCountDownStage(status,Model.Matches, i)">
                                             @status
                                             @if (status == Euro2024.BeforeStartedStage || status == Euro2024.BeforeEndStage)
                                             {

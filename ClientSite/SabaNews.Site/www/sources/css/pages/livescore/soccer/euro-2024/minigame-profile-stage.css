@@ -81,12 +81,12 @@
 .auth-minigame .avatar-user {
   width: 5rem;
   height: 5rem;
-  background: #fff !important;
+  background: #FFCA00 !important;
   border-radius: 5px;
-  color: #1830A1 !important;
-  border: none !important;
+  color: #222222 !important;
+  border: 2px solid #fff !important;
   font-weight: 800;
-  font-size: 3.2rem;
+  font-size: 3rem;
   line-height: 2.8rem;
   margin-right: 1rem;
   text-transform: uppercase;
@@ -95,7 +95,7 @@
   .auth-minigame .avatar-user {
     width: 4rem;
     height: 4rem;
-    font-size: 2.6;
+    font-size: 2.6rem;
   }
 }
 .auth-minigame .auth-displayname {

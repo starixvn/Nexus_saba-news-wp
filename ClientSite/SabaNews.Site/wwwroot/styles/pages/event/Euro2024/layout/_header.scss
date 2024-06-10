@@ -1230,8 +1230,10 @@
     .back-home-page {
         display: block;
         padding-left: 2rem;
-        flex: 1 0 15%;
-
+        flex: 1 0 20%;
+        @media (max-width : 1400px) {
+            flex: 1 0 15%;
+        }
         @include tableMobile {
             display: none;
         }
@@ -1367,11 +1369,13 @@
 
 .header-auth-provider {
     list-style: none;
-    width: 40%;
+    width: 34%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
+    @media (max-width : 1400px) {
+        width: 40%;
+    }
     .auth-login {
         text-decoration: none;
         color: $white-color !important;
