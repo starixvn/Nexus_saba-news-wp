@@ -225,12 +225,22 @@
     }
 
     .toggle-pass {
+        width: 4rem;
         cursor: pointer;
         position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-
+        top: 0;
+        right: 0;
+        z-index: 999;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .icon-form {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
             &:before {
                 color: #1B71B2;
             }

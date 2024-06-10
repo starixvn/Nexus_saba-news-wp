@@ -135,6 +135,9 @@ var all = (function ($) {
                 $(this).parent().find('.icon-show').show();
             }
         });
+
+
+
         $('.auth-input').click(function (e) {
             $('.box-auth').toggleClass('active-box-auth');
     
