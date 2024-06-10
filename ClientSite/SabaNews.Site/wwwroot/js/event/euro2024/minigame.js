@@ -69,7 +69,7 @@
             }, 500);
         });
 
-        $('.icon-minigame_standing').click(function () {
+        $('.icon-icon-minigame_standing_full').click(function () {
             $('html, body').animate({
                 scrollTop: $('#minigame-standing').offset().top - 77
             }, 500);
