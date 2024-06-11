@@ -77,7 +77,7 @@ export const getVoteResult = (match, vote) => {
     const voteTeam = vote.teamId === 0 ? match.homeTeam.teamId : vote.teamId;
     const matchResult = CommonFunctions.getMatchResult(voteTeam, match);
     if(matchResult === MatchResult.Win) {
-        if(vote.teamId !== 0) {
+        if(vote.teamId !== 0 && (vote.teamId === match.homeTeam.teamId || vote.teamId === match.awayTeam.teamId )) {
             score = getWinScore(match.stage.stageId);
             status = true;
         }
