@@ -33,8 +33,6 @@
         Task<IList<UserMinigameModel>> GetLeagueMinigameByStageAsync(GetLeagueMinigameByStageCriteria criteria);
         Task<IList<MinigameModel>> GetLeagueMinigameByStageWithEmailAsync(GetLeagueMinigameByStageCriteria criteria);
 
-        Task<IList<MinigameModel>> GetLeagueMinigameAllUsersAsync(long leagueId, long seasonId);
-
         Task<MinigameMatchVotedModel> GetMinigameVoteMatchAsync(GetMinigameVotedMatchCriteria criteria);
 
         Task<CommandResult> UpdateMinigameVoteAsync(UpdateMinigameVoteCommand cmd);

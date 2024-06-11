@@ -85,13 +85,6 @@
             return result.ToList();
         }
 
-        public async Task<IList<MinigameModel>> GetLeagueMinigameAllUsersAsync(long leagueId, long seasonId)
-        {
-            var criteria = new GetLeagueMinigameAllUsersCriteria {  LeagueId = leagueId, SeasonId = seasonId };
-            var result = await baseService.GetDataAsync<MinigameModel>(criteria);
-            return result.ToList();
-        }
-
         public async Task<MinigameMatchVotedModel> GetMinigameVoteMatchAsync(GetMinigameVotedMatchCriteria criteria)
         {
             var result = await baseService.GetDataEntityAsync<MinigameMatchVotedModel>(criteria);

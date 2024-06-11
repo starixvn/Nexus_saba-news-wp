@@ -188,23 +188,6 @@
             Assert.Equal(minigameExpected, actual);
         }
 
-        [Fact]
-        public async Task GetLeagueMinigameAllUsersAsync_WhenCalled_ReturnExpectedResult()
-        {
-            //Arrange
-            var service = GetService();
-
-            var minigameExpected = fixture.Create<IList<MinigameModel>>();
-            var criteria = fixture.Create<GetLeagueMinigameAllUsersCriteria>();
-            var leagueId = fixture.Create<long>();
-            var seasonId = fixture.Create<long>();
-
-            baseService.GetDataAsync<MinigameModel>(Arg.Any<GetLeagueMinigameAllUsersCriteria>()).Returns(minigameExpected);
-            //Act
-            var actual = await service.GetLeagueMinigameAllUsersAsync(leagueId, seasonId);
-            //Assert
-            Assert.Equal(minigameExpected, actual);
-        }
 
         [Fact]
         public async Task GetMinigameVoteMatchAsync_WhenCalled_ReturnExpectedResult()
