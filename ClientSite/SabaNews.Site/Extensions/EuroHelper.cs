@@ -93,7 +93,7 @@
             
             var voteTeam = vote.TeamId == 0 ? match.HomeTeam.TeamId : vote.TeamId;
             var matchResult = LivescoreHelper.GetMatchResult(match, voteTeam);
-            if (matchResult == MatchResultWin && vote.TeamId != 0)
+            if (matchResult == MatchResultWin && (vote.TeamId == match.HomeTeam.TeamId || vote.TeamId == match.AwayTeam.TeamId))
             {
                 score = GetWinScore(match.Stage.StageId);
                 status = true;
