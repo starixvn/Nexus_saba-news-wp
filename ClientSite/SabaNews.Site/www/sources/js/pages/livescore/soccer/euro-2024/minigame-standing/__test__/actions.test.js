@@ -67,7 +67,7 @@ describe('actionCreators', () => {
             const promise = Promise.resolve(response);
             DataService.postDataAsync = jest.fn(() => promise);
             const expectedActions = [
-                { type: ActionCreators.setVotes.type, payload: response.data },
+                { type: ActionCreators.setVotes.type, payload: {stage: 1, data: response.data} },
             ];
             var expectedParams = {
                 stage: 1,

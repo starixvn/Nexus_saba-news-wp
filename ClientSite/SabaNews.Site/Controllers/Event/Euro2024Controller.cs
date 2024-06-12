@@ -610,6 +610,10 @@ namespace SabaNews.Site.Controllers.Event
         [HttpPost]
         public async Task<ActionResult> GetMinigameByStage([FromBody] GetLeagueMinigameByStageCriteria criteria)
         {
+            if(criteria.Stage > Euro2024.MinigameStage2)
+            {
+                return Json(null);
+            }
             var miniGames = await euro2024Service.GetLeagueMinigameByStageAsync(criteria);
             return Json(miniGames);
         }

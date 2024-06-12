@@ -8,7 +8,7 @@ describe('AppContainer', () => {
         matches:null, 
         stages:null, 
         league:null, 
-        votes:null,
+        votes:[],
         getMatches: jest.fn(),
         getVotes: jest.fn(),
         handleChange: jest.fn()
@@ -30,14 +30,36 @@ describe('AppContainer', () => {
             expect(result).toEqual(null);
         });
 
+        it('return correctly when data stage votes is undefined ', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                matches: [{matchId: 1, stage:{ stageId: 1}}, {matchId: 2, stage:{ stageId: 2}}],
+                votes: [[{matchId: 1, stage:{ stageId: 1} }, {matchId:2, stage:{ stageId: 2}}]]
+            }
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
+            instance.state.selectedStage = 2;
+
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toEqual(null);
+        });
+
         it('call function correct when get vote change', () => {
             // Arrange
-            const container = shallow(<AppContainer {...defaultProps} />);
+            const props = {
+                ...defaultProps,
+                votes: [[{matchId: 1, stage:{ stageId: 1} }, {matchId:2, stage:{ stageId: 2}}]]
+            }
+            const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
 
             // Act
-            instance.handleChange(2);
-            instance.handleChange(2);
+            instance.handleChange(1);
+            instance.handleChange(1);
 
             // Assert
             expect(defaultProps.getVotes).toHaveBeenCalled();

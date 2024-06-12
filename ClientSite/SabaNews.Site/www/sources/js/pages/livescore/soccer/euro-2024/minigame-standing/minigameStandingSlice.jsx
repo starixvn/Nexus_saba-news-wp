@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const minigameStandingSlice = createSlice({
     name: 'minigameStandingSlice',
     initialState: {
-        votes: null,
+        votes: [],
         matches: null,
         league: null,
         stages: null,
@@ -25,7 +25,8 @@ const minigameStandingSlice = createSlice({
             state.stages = stages;
         },
         setVotes: (state, action) => {
-            state.votes = action.payload;
+            const { data, stage } = action.payload;
+            state.votes[stage - 1] = data;
         },
         setLeague: (state, action) => {
             const league = action.payload;

@@ -18,6 +18,7 @@ const getMatches = () => async dispatch => {
 };
 
 const getVotes = stage => async dispatch => {
+    window.stage = stage;
     const url = Site.resolveClientUrl('Euro2024/GetMinigameByStage');
     var param = {
         stage: stage,
@@ -25,8 +26,11 @@ const getVotes = stage => async dispatch => {
         seasonId: Euro.seasonId
     };
     await DataService.postDataAsync(url, param).then(response => {
-        window.stage = stage;
-        dispatch(setVotes(response.data));
+        const res = {
+            data: response.data,
+            stage: stage
+        }
+        dispatch(setVotes(res));
     }).catch(Site.handleAxiosError);
 };
 

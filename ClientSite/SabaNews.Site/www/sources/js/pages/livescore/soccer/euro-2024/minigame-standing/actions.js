@@ -25,7 +25,11 @@ const getVotes = stage => async dispatch => {
         seasonId: Euro.seasonId
     };
     await DataService.postDataAsync(url, param).then(response => {
-        dispatch(setVotes(response.data));
+        const res = {
+            data: response.data,
+            stage: stage
+        }
+        dispatch(setVotes(res));
     }).catch(Site.handleAxiosError);
 };
 

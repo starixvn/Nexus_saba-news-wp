@@ -18,10 +18,28 @@ describe('AppContainer', () => {
     });
 
     describe('renders', () => {
-        it('return null when data is null', () => {
+        it('return null when data match is null', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
+
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toEqual(null);
+        });
+
+        it('return correctly when data stage votes is undefined ', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                matches: [{matchId: 1, stage:{ stageId: 1}}, {matchId: 2, stage:{ stageId: 2}}],
+                votes: [[{matchId: 1, stage:{ stageId: 1} }, {matchId:2, stage:{ stageId: 2}}]]
+            }
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
+            instance.state.selectedStage = 2;
 
             // Act
             const result = instance.render();
@@ -35,10 +53,11 @@ describe('AppContainer', () => {
             const props = {
                 ...defaultProps,
                 matches: [{matchId: 1, stage:{ stageId: 1}}, {matchId: 2, stage:{ stageId: 2}}],
-                votes: [{matchId: 1, stage:{ stageId: 1} }, {matchId:2, stage:{ stageId: 2}}]
+                votes: [[{matchId: 1, stage:{ stageId: 1} }, {matchId:2, stage:{ stageId: 2}}]]
             }
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
+            instance.state.selectedStage = 1;
 
             // Act
             const result = instance.render();

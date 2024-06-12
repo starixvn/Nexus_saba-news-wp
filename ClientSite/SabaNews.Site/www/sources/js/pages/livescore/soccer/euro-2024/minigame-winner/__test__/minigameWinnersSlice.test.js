@@ -12,7 +12,7 @@ describe('minigameWinnersSlice', () => {
 
     it('initial state correctly', () => {
         expect(minigameWinnersSlice(undefined, {})).toEqual({
-            votes: null,
+            votes: [],
             matches: null,
             league: null,
             stages: null,
@@ -74,18 +74,17 @@ describe('minigameWinnersSlice', () => {
             it('updates state correctly', () => {
                 expect(
                     minigameWinnersSlice({
-                        votes: null
+                        votes: []
                     }, {
                         type: setVotes.type,
-                        payload: [
-                                { matchId: 1, userId: 1 },
-                                { matchId: 1, userId: 2 }
-                            ]
+                        payload: {
+                            data:[{ matchId: 1, userId: 1 },{ matchId: 1, userId: 2 }],
+                            stage: 1
+                        }
                     })
                 ).toEqual({
                     votes: [
-                        { matchId: 1, userId: 1 },
-                        { matchId: 1, userId: 2 }
+                        [{ matchId: 1, userId: 1 },{ matchId: 1, userId: 2 }]
                     ]
                 });
             });

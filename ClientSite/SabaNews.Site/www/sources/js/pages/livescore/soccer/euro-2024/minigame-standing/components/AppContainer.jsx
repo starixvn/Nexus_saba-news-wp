@@ -17,8 +17,12 @@ export class AppContainer extends Component {
     }
 
     handleChange = event => {
-        this.setState({selectedStage: event.target.value});
-        this.props.getVotes(parseInt(event.target.value, 10));
+        const stage = parseInt(event.target.value, 10);
+        this.setState({selectedStage: stage});
+        if(this.props.votes[stage - 1] === undefined)
+        {
+            this.props.getVotes(stage);
+        }
     };
 
     componentDidMount() {
@@ -27,8 +31,12 @@ export class AppContainer extends Component {
     }
 
     render() {
-        const { matches, votes } = this.props;
-        if (matches === null || votes === null) {
+        const { matches } = this.props;
+        if (matches === null) {
+            return null;
+        }
+        const votes =  this.props.votes[parseInt(this.state.selectedStage, 10) - 1];
+        if(votes === undefined) {
             return null;
         }
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));

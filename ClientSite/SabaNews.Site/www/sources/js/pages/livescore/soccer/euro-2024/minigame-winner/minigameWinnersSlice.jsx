@@ -6,7 +6,7 @@ const minigameWinnersSlice = createSlice({
         matches: null,
         stages: null,
         league: null,
-        votes: null,
+        votes: [],
         teams: null
     },
     reducers: {
@@ -28,7 +28,8 @@ const minigameWinnersSlice = createSlice({
             state.league = league;
         },
         setVotes: (state, action) => {
-            state.votes = action.payload;
+            const { data, stage } = action.payload;
+            state.votes[stage - 1] = data;
         }
     }
 });

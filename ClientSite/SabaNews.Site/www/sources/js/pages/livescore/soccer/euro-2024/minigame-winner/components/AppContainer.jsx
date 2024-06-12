@@ -26,28 +26,36 @@ export class AppContainer extends Component {
 
     handleChange = stage => {
         if(stage !== this.state.selectedStage){
-            this.setState({
-                selectedStage: stage
-            });
-            this.props.getVotes(parseInt(stage, 10));
+            this.setState({ selectedStage: stage });
+            if(this.props.votes[stage - 1] === undefined)
+            {
+                this.props.getVotes(stage);
+            }
         }
     };
 
     handleChangeSelect = event => {
-        this.setState({
-            selectedStage: event.target.value
-        });
-        this.props.getVotes(parseInt(event.target.value, 10));
+        const stage = parseInt(event.target.value, 10);
+        this.setState({ selectedStage: stage });
+        if(this.props.votes[stage - 1] === undefined)
+        {
+            this.props.getVotes(stage);
+        }
     };
 
     render() {
-        const { matches, votes } = this.props;
+        const { matches } = this.props;
         const { isMobile } = this.state;
-        if(matches === null || votes === null) {
+        const activeStage = parseInt(this.state.selectedStage, 10);
+        if(matches === null) {
+            return null;
+        }
+        const votes =  this.props.votes[activeStage - 1];
+        if(votes === undefined) {
             return null;
         }
         const countStageWinners =this.state.stages.filter( x => x.value <= parseInt(window.CountStageEnd, 10));
-        const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
+        const showMatches = getMatchesByStage(matches, activeStage);
         return (
             <>
                 <div className="winner-minigame">
