@@ -58,9 +58,9 @@ export class AppContainer extends Component {
         const showMatches = getMatchesByStage(matches, activeStage);
         return (
             <>
-                <div className="winner-minigame">
-                    {
-                        countStageWinners.length > 0 && <div className="minigame-winner minigame-section">
+                {
+                    countStageWinners.length > 0 && <div className="winner-minigame">
+                        <div className="minigame-winner minigame-section">
                             <div className="wraper-minigame-table">
                                 <div className="block-heading">
                                     <h2 className="block-heading-text">
@@ -91,8 +91,8 @@ export class AppContainer extends Component {
                                 <img src="../../../../images/euro2024/minigame/item-table-2.png" alt="item" />
                             </div>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
                 <div className="line-winner show-pc">
                     <img src="../../../../images/euro2024/minigame/winner-line.png" alt="line" className="img-res"/>
                 </div>

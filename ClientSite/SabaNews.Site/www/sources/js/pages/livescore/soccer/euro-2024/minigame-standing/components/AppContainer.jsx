@@ -42,9 +42,9 @@ export class AppContainer extends Component {
         const showMatches = getMatchesByStage(matches, parseInt(this.state.selectedStage, 10));
         const countStageStanding = this.state.stages.filter(x => x.value <= parseInt(window.CountStageActive, 10));
         return (
-           <div className="standing-minigame">
-                {
-                    (countStageStanding.length > 1 || (countStageStanding.length === 1 && votes.length > 0)) &&
+            <>
+            {
+                (countStageStanding.length > 1 || (countStageStanding.length === 1 && votes.length > 0)) && <div className="standing-minigame">
                     <div className="minigame-section minigame-standing">
                         <div className="wraper-minigame-table">
                             <div className="minigame-title standing-title">
@@ -69,8 +69,9 @@ export class AppContainer extends Component {
                             <img src="../../../../images/euro2024/minigame/item-table-1.png" alt="item" />
                         </div>
                     </div>
-                }
-           </div>
+                </div>
+            }
+            </>
         );
     }
 }
