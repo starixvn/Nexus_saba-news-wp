@@ -12,6 +12,7 @@
 @import './components/social';
 @import './components/tag';
 @import './components/comments';
+@import './components/poll';
 
 // .page-items-right{
 //     position: -webkit-sticky;
@@ -1070,5 +1071,15 @@ img {
                 }
             }
         }
+    }
+}
+
+.pollevent {
+    margin-bottom: 1rem;
+    .poll{
+        border-radius: 5px;
+        border: 2px solid #e0dabf;
+        background: #fffdf4;
+        padding: 2rem;
     }
 }
