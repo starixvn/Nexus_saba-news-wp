@@ -680,6 +680,7 @@
         "inputFiles": [
             "wwwroot/js/event/euro2024/euro2024.js",
             "wwwroot/js/event/euro2024/single.js",
+            "wwwroot/js/event/euro2024/poll.js",
             "wwwroot/js/comment.js"
         ],
         "minify": {
