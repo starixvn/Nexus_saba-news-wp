@@ -203,8 +203,13 @@
                     hourShow = Math.floor((distance % (day)) / (hour)),
                     minuteShow = Math.floor((distance % (hour)) / (minute)),
                     secondShow = Math.floor((distance % (minute)) / second)
-                if(distance < 0) {
+                if(dayShow == 0 && hourShow == 0 && minuteShow == 0 && secondShow == 0 ) {
                     location.reload();
+                }
+                if((dayShow < 0 && secondShow < 0 && secondShow > -5)) {
+                    location.reload();
+                }
+                if(secondShow < -5) {
                     return false;
                 }
                 $('#days').html(`<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`);
