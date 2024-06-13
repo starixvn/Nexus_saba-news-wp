@@ -212,11 +212,23 @@
                 if(secondShow < -5) {
                     return false;
                 }
-                $('#days').html(`<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`);
-                $('#hours').html(`<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`);
-                $('#minutes').html(`<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`);
-                $('#seconds').html(`<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`);
+                if(secondShow >= 0) {
+                    $('#days').html(`<div class="clock-time">${showTimeCountDown(dayShow)}</div> <div class="clock-text">ngày</div>`);
+                    $('#hours').html(`<div class="clock-time">${showTimeCountDown(hourShow)}</div> <div class="clock-text">giờ</div>`);
+                    $('#minutes').html(`<div class="clock-time">${showTimeCountDown(minuteShow)}</div> <div class="clock-text">phút</div>`);
+                    $('#seconds').html(`<div class="clock-time">${showTimeCountDown(secondShow)}</div> <div class="clock-text">giây</div>`);
+                } else {
+                    $('#days').html(`<div class="clock-time">00</div> <div class="clock-text">ngày</div>`);
+                    $('#hours').html(`<div class="clock-time">00</div> <div class="clock-text">giờ</div>`);
+                    $('#minutes').html(`<div class="clock-time">00</div> <div class="clock-text">phút</div>`);
+                    $('#seconds').html(`<div class="clock-time">00</div> <div class="clock-text">giây</div>`);
+                }
             }, second);
+        } else {
+            $('#days').html(`<div class="clock-time">00</div> <div class="clock-text">ngày</div>`);
+            $('#hours').html(`<div class="clock-time">00</div> <div class="clock-text">giờ</div>`);
+            $('#minutes').html(`<div class="clock-time">00</div> <div class="clock-text">phút</div>`);
+            $('#seconds').html(`<div class="clock-time">00</div> <div class="clock-text">giây</div>`);
         }
     }
 
