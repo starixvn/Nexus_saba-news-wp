@@ -23,13 +23,16 @@ var euro2024 = (function ($) {
             }
             var answerId = checked.val();
             var themeId = 1;
+            var mainPollClass = $(this).parent().parent().parent().parent().attr('class');
+            var isHome = mainPollClass == "euro-poll";
+            var bodyClass = isHome ? "euro-poll" : "question-" + questionId;
             $.ajax({
                 type: "POST",
                 url: "/Euro2024/VotePoll",
-                data: { questId: questionId, answerId, themeId },
+                data: { questId: questionId, answerId, themeId, isHome },
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
-                        $('.euro-poll').html(res);
+                        $('.' + bodyClass).html(res);
                     } else {
                         $('#announcement .content').html('Đã có lỗi xảy ra, vui lòng thử lại!');
                         $('#announcement').modal('show');
@@ -52,7 +55,6 @@ var euro2024 = (function ($) {
         });
 
         $(document).on('click', '.poll-element', function () {
-            console.log(1);
             $('.poll-element').removeClass('checked');
             $(this).addClass('checked');
             $('.vote-answer').removeClass('disabled');

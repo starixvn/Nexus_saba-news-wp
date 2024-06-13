@@ -464,19 +464,14 @@ namespace SabaNews.Site.Controllers.Event
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetArticlePollData()
+        public async Task<IActionResult> GetArticlePollData(int questId, int themeId)
         {
-            var pollOption = await optionService.GetOptionAsync(Euro2024.PollKey);
-            if (pollOption == null)
-            {
-                return Json(null);
-            }
             PollViewModel result;
             var clientIP = Helper.GetClientIP(HttpContext);
             var criteria = new GetPollDetailCriteria
             {
-                QuestId = int.Parse(pollOption.OptionValue),
-                ThemeId = Euro2024.PollTheme,
+                QuestId = questId,
+                ThemeId = themeId,
                 UserIp = clientIP
             };
             result = await pollService.GetPollDetailAsync(criteria);
@@ -487,14 +482,14 @@ namespace SabaNews.Site.Controllers.Event
             return PartialView("~/Views/Event/Euro2024/_PollEuro2024.cshtml", result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId)
+         [HttpPost]
+        public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId, bool isHome)
         {
             var clientIP = Helper.GetClientIP(HttpContext);
             var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
-                return await GetPollData();
+                return isHome ? await GetPollData() : await GetArticlePollData(questId, themeId);
             }
             return Json(result);
         }
