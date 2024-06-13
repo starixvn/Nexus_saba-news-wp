@@ -37,12 +37,8 @@
 
         public static MinigameModel GetVotePredict(Match match, IList<MinigameModel> votes)
         {
-            var vote = votes.Where(x => x.MatchId == match.MatchId).ToList();
-            if (vote.Count == 0)
-            {
-                return null;
-            }
-            return vote[0];
+            var vote = votes.FirstOrDefault(x => x.MatchId == match.MatchId);
+            return vote;
         }
 
         public static string GetResultPredict(Match match, IList<MinigameModel> votes)
