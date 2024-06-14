@@ -236,6 +236,10 @@ p.has-text-align-center {
   height: 100vh;
 }
 
+.login-facebook {
+  display: none !important;
+}
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -3262,7 +3266,7 @@ button {
   background: none !important;
 }
 .event-modal-home .modal.show {
-  max-width: 82rem;
+  max-width: 60rem;
   top: 12rem;
   transform: translate(50%, 0);
   background: #fff !important;

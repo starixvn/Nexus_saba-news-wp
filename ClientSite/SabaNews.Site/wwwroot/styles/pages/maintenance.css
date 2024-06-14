@@ -235,6 +235,10 @@ p.has-text-align-center {
   height: 100vh;
 }
 
+.login-facebook {
+  display: none !important;
+}
+
 /* vietnamese */
 @font-face {
   font-family: "Montserrat";
