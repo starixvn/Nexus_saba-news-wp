@@ -3288,16 +3288,11 @@ button {
   background: none !important;
 }
 .event-modal-home .modal.show {
-  max-width: 60rem;
+  max-width: 62rem;
   top: 12rem;
   transform: translate(50%, 0);
   background: #fff !important;
   border-radius: 5px;
-}
-@media (max-width: 1440px) {
-  .event-modal-home .modal.show {
-    max-width: 52rem;
-  }
 }
 @media screen and (max-width: 1024px) {
   .event-modal-home .modal.show {
