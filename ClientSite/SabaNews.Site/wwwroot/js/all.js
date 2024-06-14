@@ -264,7 +264,7 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var hidePopupEvent = localStorage.getItem('ec-hide-popup-event-1');
+        var hidePopupEvent = localStorage.getItem('euro-hide-popup-event-1');
         if (hidePopupEvent !== "1") {
             setTimeout(function () {
                 $('#ChangeDomainModal').modal('show');
@@ -275,10 +275,10 @@ var all = (function ($) {
     
         $('#isHidePopupChangeDomain').on('change', function () {
             if ($(this).is(':checked')) {
-                localStorage.setItem("ec-hide-popup-event-1", "1");
+                localStorage.setItem("euro-hide-popup-event-1", "1");
                 $('#ChangeDomainModal').modal('hide');
             } else {
-                localStorage.setItem("ec-hide-popup-event-1", "0");
+                localStorage.setItem("euro-hide-popup-event-1", "0");
             }
         });
     }
