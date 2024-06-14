@@ -210,6 +210,10 @@ html, body {
   }
 }
 
+.login-facebook {
+  display: none !important;
+}
+
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none;
 }

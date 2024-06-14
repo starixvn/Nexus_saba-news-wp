@@ -2046,6 +2046,10 @@ html, body {
   }
 }
 
+.login-facebook {
+  display: none !important;
+}
+
 .container, .base-container {
   width: 100%;
   padding: 0 1rem;
