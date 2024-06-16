@@ -16,15 +16,19 @@
             </div>
 
             <div class="wc-table-body top-scorer-table">
+                @{
+                    int count = 0;
+                }
                 @foreach (var item in Model)
                 {
+                    count++;
                     var oriLogo = GetTeamIcon(item.TeamLogo);
                     var playerName = GetTopScorersPlayerName(item);
                     var teamName = GetGeneralName(item.TeamNameEN, item.TeamFullNameEN, item.TeamNameVN);
                     <div class="wc-table-row ">
                         <div class="wc-table-cell cell-participant">
                             <ul class="team">
-                                <li class="number">@item.Top </li>
+                                <li class="number">@count </li>
                                 <li class="team-logo"><img src="@(item.TeamLogoVN ?? oriLogo)" /></li>
                                 <li class="team-name">
                                     <span class="player-name" tabindex="0" data-toggle="tooltip" title="@playerName">@playerName
