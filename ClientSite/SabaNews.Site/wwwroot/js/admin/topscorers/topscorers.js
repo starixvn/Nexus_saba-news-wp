@@ -208,11 +208,21 @@
         });
     }
 
+    function HandleAction() {
+        $(document).on('keypress','.input-number', function (e) {
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+                e.preventDefault();
+            }
+        });
+    }
+
     function init() {
         $('.league-select').select2();
         GetSeason(leagueId);
         GetDataTopScorersGrid();
         initFilterBtn();
+        HandleAction();
     }
 
     return {
