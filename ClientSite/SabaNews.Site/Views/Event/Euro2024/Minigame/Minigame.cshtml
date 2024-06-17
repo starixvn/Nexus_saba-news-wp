@@ -3,7 +3,6 @@
 @using static SabaNews.Site.Extensions.LivescoreHelper;
 @using static SabaNews.Site.Extensions.EuroHelper;
 @using SabaNews.Site.Extensions;
-@using DeviceDetectorNET;
 @{
     Layout = "_LayoutEuro2024";
 }
@@ -18,10 +17,6 @@
 }
 
 @{
-    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
-    detector.Parse();
-    bool isMobile = detector.IsMobile();
-    bool isDesktop = detector.IsDesktop();
     var countStageActive = GetCountStageActiveMinigame(Model.Matches);
     var countStageEnd = GetCountStageEndMinigame(Model.Matches);
 }

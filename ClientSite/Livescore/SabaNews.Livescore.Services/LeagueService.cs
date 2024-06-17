@@ -231,6 +231,18 @@
             return await baseService.ExecuteNonQueryAsync(criteria);
         }
 
+        public async Task<CommandResult> DeleteTopScorerAsync(int rowNum, long leagueId, long seasonId)
+        {
+            var criteria = new DeleteTopScorersCriteria
+            {
+                RowNum = rowNum,
+                LeagueId = leagueId,
+                SeasonId = seasonId
+            };
+
+            return await baseService.ExecuteNonQueryAsync(criteria);
+        }
+
         public async Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum, long leagueId, long seasonId)
         {
             var criteria = new GetTopScorersByRowNumCriteria { RowNum = rowNum , LeagueId = leagueId, SeasonId = seasonId};

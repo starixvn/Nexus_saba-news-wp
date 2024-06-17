@@ -12,6 +12,6 @@
         public int Assists { get; set; }
         public int Top { get; set; }
         public override string GetSettingKey() => "Livescore_Top_Scorers_Insert";
-        public override bool IsValid() => true;
+        public override bool IsValid() => Top > 0 && PlayerId > 0;
     }
 }

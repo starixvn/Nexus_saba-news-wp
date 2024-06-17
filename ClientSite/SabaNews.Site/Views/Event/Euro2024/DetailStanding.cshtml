@@ -1,6 +1,5 @@
 @using SabaNews.Core.Constants
 @using SabaNews.Core.Helper;
-@using DeviceDetectorNET;
 @using static SabaNews.Site.Extensions.LivescoreHelper
 @{
     Layout = "_LayoutEuro2024";
@@ -15,12 +14,7 @@
     <meta property="og:title" content='@Model.Header.Title' />
 }
 
-@{
-    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
-    detector.Parse();
-    bool isMobile = detector.IsMobile();
-    bool isDesktop = detector.IsDesktop();
-}
+
 
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/euro2024-standing-detail.min.css" asp-append-version="true">

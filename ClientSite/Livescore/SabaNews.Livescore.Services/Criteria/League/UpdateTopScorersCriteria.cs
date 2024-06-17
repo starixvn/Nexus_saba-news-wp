@@ -13,6 +13,6 @@
         public int Top { get; set; }
         public int RowNum { get; set; }
         public override string GetSettingKey() => "Livescore_Top_Scorers_Update";
-        public override bool IsValid() => true;
+        public override bool IsValid() => Top > 0;
     }
 }

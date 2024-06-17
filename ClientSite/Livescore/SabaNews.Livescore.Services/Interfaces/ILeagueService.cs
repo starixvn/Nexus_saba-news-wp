@@ -28,6 +28,7 @@
         Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum, long leagueId, long seasonId);
         Task<CommandResult> InsertTopScorerAsync(TopScorers topScorers);
         Task<CommandResult> UpdateTopScorerAsync(TopScorers topScorers);
+        Task<CommandResult> DeleteTopScorerAsync(int rowNum, long leagueId, long seasonId);
         Task<IList<Season>> GetSeasonByLeagueIdAsync(long leagueId);
         Task<IEnumerable<MiniGame>> GetDataMinigameAsync(GetDataMinigameCriteria criteria);
         Task<IList<MiniGame>> GetDetailMinigameAsync(int UserId);

@@ -105,5 +105,12 @@
             var result = await leagueService.UpdateTopScorerAsync(topScorers);
             return Json(result);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(int rowNum, long leagueId, long seasonId)
+        {
+            var result = await leagueService.DeleteTopScorerAsync(rowNum, leagueId, seasonId);
+            return Json(result);
+        }
     }
 }

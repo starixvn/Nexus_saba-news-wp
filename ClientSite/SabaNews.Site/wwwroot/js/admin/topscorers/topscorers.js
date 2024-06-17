@@ -1,9 +1,9 @@
 ﻿var adminManagementTopScorers = (function ($) {
     var leagueId = window.leagueId;
     var seasonId = window.seasonId;
+    var rowNum = 0;
 
     function GetDataTopScorersGrid() {
-        console.log(leagueId, seasonId);
         var search = document.getElementById("search").value;
         $.ajax({
             url: "/Admin/TopScorerManagement/GetTopScorersData",
@@ -11,6 +11,7 @@
             data: { search, leagueId, seasonId },
             success: function (res) {
                 $('.data-grid').html(res);
+                HandleDelete();
                 $('.btn-Edit').on('click', function () {
                     var url = $(this).data('url');
                     $.ajax({
@@ -39,8 +40,12 @@
 
                             $("#TeamFullNameEN").select2();
                             $("#PlayerFullNameEN").select2();
+                            
 
                             $('#btn-save').on('click', function () {
+                                if(document.getElementById("editTop").value <= 0) {
+                                    return false;
+                                }
                                 document.getElementById("btn-save").style.display = "none";
                                 var url = $(this).data('url');
                                 var RowNum = $(this).data('row');
@@ -117,6 +122,9 @@
                     $("#PlayerFullNameENAdd").select2();
 
                     $('#btn-save-add').on('click', function () {
+                        if(document.getElementById("addTop").value <= 0) {
+                            return false;
+                        }
                         document.getElementById("btn-save-add").style.display = "none";
                         var url = $(this).data('url');                       
                         var Top = document.getElementById("addTop").value;
@@ -156,6 +164,47 @@
             success: function (res) {
                 $('#seasonFilter').html(res);
             }
+        });
+        
+    }
+
+    function HandleDelete() {
+        $('.btn-delete').on('click', function () {
+            rowNum = $(this).data('id');
+            $('#ConfirmModal .confirm-action').data('action', 'remove');
+            $('#ConfirmModal .modal-body').html('Are you sure you want to remove this item ?');
+            $('#ConfirmModal').modal('show');
+        });
+
+        $('.confirm-action').on('click', function () {
+            if (rowNum == 0) {
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/TopScorerManagement/Delete',
+                data: { rowNum, leagueId, seasonId },
+                success: function (response) {
+                    $('#ConfirmModal').modal('hide');
+                    if (response.isSuccessful) {
+                        $('#NoticeModal' + ' .modal-title').removeClass('title-error').addClass('title-success');
+                        $('#NoticeModal' + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+                        $('#NoticeModal' + ' .modal-body').html('Remove iteam successfully!');
+                        $('#NoticeModal').modal('show');
+
+                        setTimeout(function () {
+                            $('#NoticeModal').modal('hide');
+                            GetDataTopScorersGrid();
+                        }, 1000);
+                    } else {
+                        $('#NoticeModal' + ' .modal-title').removeClass('title-success').addClass('title-error');
+                        $('#NoticeModal' + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+                        $('#NoticeModal' + ' .modal-body').html('An error occurred while remove league, please try again');
+                        $('#NoticeModal').modal('show');
+                    }
+                }
+            })
+            url = "";
         });
     }
 

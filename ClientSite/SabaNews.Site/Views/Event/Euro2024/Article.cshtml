@@ -1,4 +1,4 @@
-@using DeviceDetectorNET
+@using static SabaNews.Site.Extensions.DeviceHelper;
 @{
     Layout = "_LayoutEuro2024";
 }
@@ -17,10 +17,7 @@
 
 
 @{
-    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
-    detector.Parse();
-    bool isMobile = detector.IsMobile();
-    bool isDesktop = detector.IsDesktop();
+    var isMobile = IsMobile(Context.Request.Headers["User-Agent"].ToString());
 }
 
 @section Styles{
@@ -267,7 +264,7 @@
                     <div class="euro-most-view-posts" data-postid="@Model.SinglePost.ID" data-cateslug="@Model.CateInfo.Slug" ></div>
                 }
             </div>
-            @if(isDesktop)
+            @if(!isMobile)
             {
                 <div class="page-items-right">
                     <div class="sticky-position">

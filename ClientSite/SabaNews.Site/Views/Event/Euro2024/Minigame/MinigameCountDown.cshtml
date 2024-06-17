@@ -1,6 +1,5 @@
 ﻿@using System.Text;
 @using SabaNews.Site.Extensions;
-@using DeviceDetectorNET;
 @using SabaNews.Core.Constants;
 @{
     Layout = "_LayoutEuro2024";
@@ -15,12 +14,6 @@
     <meta property="og:title" content='@Model.Header.Title' />
 }
 
-@{
-    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
-    detector.Parse();
-    bool isMobile = detector.IsMobile();
-    bool isDesktop = detector.IsDesktop();
-}
 
 @section Styles {
     <link rel="stylesheet" href="~/minify/styles/euro2024-countdown.min.css" asp-append-version="true">
