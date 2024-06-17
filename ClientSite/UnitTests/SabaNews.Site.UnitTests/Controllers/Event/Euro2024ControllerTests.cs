@@ -577,7 +577,7 @@
         }
 
         [Fact]
-        public async Task VotePoll_WhenVoteSuccessful_ReturnExpectedData()
+        public async Task VotePoll_WhenVoteHomeSuccessful_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
@@ -592,6 +592,7 @@
             var themeId = fixture.Create<int>();
             var clientIp = fixture.Create<string>();
             var criteria = fixture.Create<GetPollDetailCriteria>();
+            var isHome = true;
             var expected = new CommandResult { Code = 0 };
             var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
 
@@ -603,7 +604,41 @@
             pollService.VotePollAsync(Arg.Do<int>(x => questId = x), Arg.Do<int>(x => answerId = x), Arg.Do<string>(x => clientIp = x)).Returns(expected);
 
             //Act
-            var result = await controller.VotePoll(questId, answerId, themeId);
+            var result = await controller.VotePoll(questId, answerId, themeId, isHome);
+
+            // Assert
+            Assert.True(expected.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task VotePoll_WhenVoteArticleSuccessful_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Headers["x-forwarded-for"] = "";
+            controller.ControllerContext.HttpContext.Connection.RemoteIpAddress = fixture.Create<IPAddress>();
+            var questId = fixture.Create<int>();
+            var answerId = fixture.Create<int>();
+            var themeId = fixture.Create<int>();
+            var clientIp = fixture.Create<string>();
+            var criteria = fixture.Create<GetPollDetailCriteria>();
+            var isHome = false;
+            var expected = new CommandResult { Code = 0 };
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+
+            var criteriaPoll = fixture.Create<GetPollDetailCriteria>();
+            var expectedPoll = fixture.Create<PollViewModel>();
+           
+            pollService.GetPollDetailAsync(Arg.Do<GetPollDetailCriteria>(x => criteria = x)).Returns(expectedPoll);
+
+            pollService.VotePollAsync(Arg.Do<int>(x => questId = x), Arg.Do<int>(x => answerId = x), Arg.Do<string>(x => clientIp = x)).Returns(expected);
+
+            //Act
+            var result = await controller.VotePoll(questId, answerId, themeId, isHome);
 
             // Assert
             Assert.True(expected.IsSuccessful);
@@ -862,6 +897,7 @@
             var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
 
             var expectedData = fixture.Create<IList<UserMinigameModel>>();
+            criteria.Stage = 1;
             
 
             euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteria = x)).Returns(expectedData);

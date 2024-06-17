@@ -159,13 +159,13 @@
             //Arrange
             var service = GetService();
 
-            var minigameExpected = fixture.Create<IList<UserMinigameModel>>();
+            var minigameExpected = fixture.Create<IList<MinigameModel>>();
             var userID = fixture.Create<long>();
             var leagueId = fixture.Create<long>();
             var seasonId = fixture.Create<long>();
             var criteria = fixture.Create<GetLeagueMinigameByUserCriteria>();
 
-            baseService.GetDataAsync<UserMinigameModel>(Arg.Any<GetLeagueMinigameByUserCriteria>()).Returns(minigameExpected);
+            baseService.GetDataAsync<MinigameModel>(Arg.Any<GetLeagueMinigameByUserCriteria>()).Returns(minigameExpected);
             //Act
             var actual = await service.GetMinigameByUserAsync(userID, leagueId, seasonId);
             //Assert
