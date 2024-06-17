@@ -256,6 +256,8 @@
   padding: 0 2.6rem;
   height: 5.2rem;
   display: flex;
+}
+.minigame-table .minigame-table-items.cursor-items {
   cursor: pointer;
 }
 @media (max-width: 767px) {
