@@ -259,8 +259,6 @@
               display: grid;
               border-radius: 3px;
               cursor: pointer;
-              // grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem / max-content 1fr max-content;
-  
               &--eventless {
                 cursor: default;
               }

@@ -73,15 +73,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .header .header-controls .container .banner-euro-desktop img, .header .header-controls .container .skeleton-desktop img {
   display: block;
 }
-.header .header-controls .container .skeleton-banner-euro-desktop {
-  width: 32rem;
-  height: 7rem;
-}
-@media screen and (max-width: 1024px) {
-  .header .header-controls .container .skeleton-banner-euro-desktop {
-    display: none;
-  }
-}
 .header .header-controls .header-auth-provider {
   list-style: none;
   display: flex;
@@ -524,7 +515,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     bottom: 0;
     width: 100%;
     right: 50%;
-    height: 1px;
+    height: 0.1rem;
     background: #ddd;
     transform: translate(50%, 0);
   }
@@ -887,12 +878,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .languages-box {
-    padding-left: 30px;
+    padding-left: 3rem;
   }
 }
 @media (max-width: 767px) {
   .languages-box {
-    width: 70px;
+    width: 7rem;
   }
 }
 .languages-box .languages-list {
@@ -901,7 +892,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: absolute;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   background: #fff;
-  min-width: 120px;
+  min-width: 12rem;
   border-radius: 4px;
   left: -0.8rem;
   top: 3rem;

@@ -6,12 +6,9 @@
 body {
     overflow: unset;
 }
-
 .disable-background {
     background: unset !important;
 }
-
-
 //before event
 .before-event {
     padding-top: 7rem;
@@ -23,9 +20,6 @@ body {
         padding-top: 3.3rem;
         background: url('../../../../images/euro2024/bg-countdown-mobie.png') $primary-bg;
         background-position: center;
-    }
-    @include tableMobile{
-        background: url('../../../../images/euro2024/bg-countdown-mobie.png') $primary-bg;
         background-repeat: no-repeat;
         background-size: cover;
     }
