@@ -2476,8 +2476,16 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .wave-game {
-  background: linear-gradient(90deg, #09174D 0%, #061A6B 100%);
+  background: url("../../../../images/euro2024/minigame/top-bg.png"), linear-gradient(90deg, #09174D 0%, #061A6B 100%);
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 767px) {
+  .wave-game {
+    background-position: bottom;
+  }
 }
 .wave-game .line-header {
   display: block;
@@ -2512,9 +2520,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     margin: 0 auto;
   }
 }
+.main-wave .right-wave {
+  margin-top: 4rem;
+}
 @media (max-width: 767px) {
   .main-wave .right-wave {
-    max-width: 26rem;
+    max-width: 31.5rem;
     margin: 0 auto;
   }
 }
@@ -2542,9 +2553,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     gap: 2.4rem;
   }
 }
-.header-control .btn-standing {
-  max-width: 22.5rem;
-  margin: 0 auto;
+.header-control .click-number-event {
+  text-align: center;
 }
 
 .section-stage {
