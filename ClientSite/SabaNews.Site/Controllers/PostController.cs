@@ -41,17 +41,7 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
-            int postId;
-            if(slug.Contains(".html"))
-            {
-                (slug, postId) = GetPostInfoFromSlug(slug);
-                if(postId == 0)
-                {
-                    return View(Constants.EmptyBlogView);
-                }
-
-            }
-            else
+            if (!slug.Contains(".html"))
             {
                 var summary = await postService.GetPostDetailSummaryAsync(slug);
                 if(summary == null)
@@ -62,38 +52,37 @@
                 {
                     return RedirectToActionPermanent("Single", "Post", new { slug = summary.Uri });
                 }
-
             }
+            var (cleanSlug, postId) = GetPostInfoFromSlug(slug);
             var post = await postService.GetPostDetailAsync(postId);
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
             }
-            if(post.Slug != slug)
+
+            if(post.Slug != cleanSlug)
             {
                 return RedirectToActionPermanent("Single", "Post", new { slug = post.Uri });
             }
-            SavePost savePost = null;
-            var isLogin = sessionService.User != null;
-            if (isLogin)
-            {
-                savePost = sessionService.User.HandleSavePosts.Find(val => val.PostID == post.ID);
-            }
+
+            var savePost = GetLoginSavedPost(sessionService.User, post.ID);
             var (matchId, customContent) = PostHelper.GetInfoFromContent(post.PostContent);
+
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
             cateInfo.Url = Url.Action("Category", "Home", new { slug = cateInfo.Slug + CategoryKey.Suffix});
-            var domain = configuration.GetValue<string>("BaseUrl");
+
             post.SeoTitle = string.IsNullOrEmpty(post.SeoTitle) ? post.PostTitle : Helper.ReplaceStringFromVarSeo(post.SeoTitle, post.PostTitle);
             post.SeoDescription = string.IsNullOrEmpty(post.SeoDescription) ? post.PostExcerpt : Helper.ReplaceStringFromVarSeo(post.SeoDescription, post.PostTitle);
             post.PostContent = customContent;
+
             var model = new SingleViewModel
             {
                 SinglePost = post,
-                IsLogin = isLogin,
+                IsLogin = sessionService.User != null,
                 SavePost = savePost,
-                AbsoluteUrl = $"{domain}{slug}-{post.ID}.html",
+                AbsoluteUrl = $"{configuration.GetValue<string>("BaseUrl")}{cleanSlug}-{post.ID}.html",
                 IsVideo = PostHelper.IsVideo(cateParents),
                 CateInfo = cateInfo,
                 MatchId = matchId
@@ -102,17 +91,40 @@
             return View(model);
         }
 
+        private static SavePost GetLoginSavedPost(UserSession user, long postId)
+        {
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.HandleSavePosts.Find(val => val.PostID == postId);
+        }
+
         private static (string, int) GetPostInfoFromSlug(string slug)
         {
-            var postId = 0;
             slug = slug.Replace(".html","");
             var arrSlug = slug.Split("-");
-            if(!int.TryParse(arrSlug[arrSlug.Count() - 1], out postId))
+            if (!int.TryParse(arrSlug.Last(), out int postId))
             {
-                return (slug, postId);
+                return (slug, 0);
             }
             slug = slug.Replace("-" + postId, "");
             return (slug, postId);
+        }
+
+        private static CateInfo GetCateInfo(string cateName, string cateSlug)
+        {
+            var listCateSlug = cateSlug.Split(',').Select(item => item.Trim()).ToList();
+            var listCateName = cateName.Split(',').Select(item => item.Trim()).ToList();
+
+            var subCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList();
+            var subCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
+
+            var slug = subCateSlug.Any() ? subCateSlug.First() : listCateSlug.First();
+            var name = subCateName.Any() ? subCateName.First() : listCateName.First();
+
+            return new CateInfo { Slug = slug, Name = name };
         }
 
 
@@ -168,18 +180,6 @@
             return PartialView("_SameCategory", posts);
         }
 
-        private static CateInfo GetCateInfo(string cateName, string cateSlug)
-        {
-            var slug = cateSlug;
-            var name = cateName;
-            var listCateSlug = cateSlug.Split(',');
-            var listCateName = cateName.Split(',');
-            var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-            var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-            slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
-            name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
-            return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
-        }
 
         [HttpPost]
         [Route("api/post/update-post-view")]
