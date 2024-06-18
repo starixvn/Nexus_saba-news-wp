@@ -45,7 +45,7 @@
                 Top = 0
             };
             var actual = criteria.IsValid();
-            Assert.True(actual);
+            Assert.False(actual);
         }
     }
 }

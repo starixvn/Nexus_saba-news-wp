@@ -105,7 +105,7 @@
         {
             slug = slug.Replace(".html","");
             var arrSlug = slug.Split("-");
-            if (!int.TryParse(arrSlug.Last(), out int postId))
+            if (!int.TryParse(arrSlug[^1], out int postId))
             {
                 return (slug, 0);
             }
@@ -118,11 +118,11 @@
             var listCateSlug = cateSlug.Split(',').Select(item => item.Trim()).ToList();
             var listCateName = cateName.Split(',').Select(item => item.Trim()).ToList();
 
-            var subCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList();
-            var subCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
+            var subCateSlug = listCateSlug.Where(item => item != Constants.VideoSlug).ToList();
+            var subCateName = listCateName.Where(item => item != Constants.Video).ToList();
 
-            var slug = subCateSlug.Any() ? subCateSlug.First() : listCateSlug.First();
-            var name = subCateName.Any() ? subCateName.First() : listCateName.First();
+            var slug = subCateSlug.Any() ? subCateSlug[0] : listCateSlug[0];
+            var name = subCateName.Any() ? subCateName[0] : listCateName[0];
 
             return new CateInfo { Slug = slug, Name = name };
         }

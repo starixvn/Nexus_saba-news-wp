@@ -22,7 +22,8 @@
                 SeasonId =  1,
                 TeamId = 1,
                 Top = 1,
-                Goals = 10
+                Goals = 10,
+                PlayerId = 1
             };
             var actual = criteria.IsValid();
             Assert.True(actual);
@@ -37,7 +38,8 @@
                 SeasonId =  -1,
                 TeamId = 0,
                 Top = 0,
-                Goals = 10
+                Goals = 10,
+                PlayerId = 0
             };
             var actual = criteria.IsValid();
             Assert.False(actual);
