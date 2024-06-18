@@ -16,7 +16,34 @@
         [Fact]
         public void IsValid_Always_ReturnTrue()
         {
-            var criteria = new UpdateTopScorersCriteria();
+            var criteria = new UpdateTopScorersCriteria 
+            {
+                PlayerId = 1,
+                SeasonId = 1,
+                LeagueId = 1,
+                TeamId = 1,
+                Goals = 10,
+                Assists = 10,
+                Top = 1
+            };
+            var actual = criteria.IsValid();
+            Assert.True(actual);
+        }
+
+
+        [Fact]
+        public void IsValid_Always_ReturnFalse()
+        {
+            var criteria = new UpdateTopScorersCriteria 
+            {
+                PlayerId = 1,
+                SeasonId = 1,
+                LeagueId = 1,
+                TeamId = 1,
+                Goals = 10,
+                Assists = 10,
+                Top = 0
+            };
             var actual = criteria.IsValid();
             Assert.True(actual);
         }

@@ -16,9 +16,31 @@
         [Fact]
         public void IsValid_Always_ReturnTrue()
         {
-            var criteria = new InsertTopScorersCriteria();
+             var criteria = new InsertTopScorersCriteria
+            {
+                LeagueId = 1,
+                SeasonId =  1,
+                TeamId = 1,
+                Top = 1,
+                Goals = 10
+            };
             var actual = criteria.IsValid();
             Assert.True(actual);
+        }
+
+        [Fact]
+        public void IsValid_Always_ReturnFalse()
+        {
+            var criteria = new InsertTopScorersCriteria
+            {
+                LeagueId = -1,
+                SeasonId =  -1,
+                TeamId = 0,
+                Top = 0,
+                Goals = 10
+            };
+            var actual = criteria.IsValid();
+            Assert.False(actual);
         }
     }
 }

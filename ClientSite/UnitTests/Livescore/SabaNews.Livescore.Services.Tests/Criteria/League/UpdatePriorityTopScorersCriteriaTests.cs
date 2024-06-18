@@ -16,9 +16,29 @@
         [Fact]
         public void IsValid_Always_ReturnTrue()
         {
-            var criteria = new UpdatePriorityTopScorersCriteria();
+            var criteria = new UpdatePriorityTopScorersCriteria
+            {
+                IsCheck = true,
+                TopUpdate = 1,
+                RowNum = 1,
+                Top = 1
+            };
             var actual = criteria.IsValid();
             Assert.True(actual);
+        }
+
+        [Fact]
+        public void IsValid_Always_ReturnFalse()
+        {
+            var criteria = new UpdatePriorityTopScorersCriteria
+            {
+                IsCheck = true,
+                TopUpdate = 1,
+                RowNum = 1,
+                Top = 0
+            };
+            var actual = criteria.IsValid();
+            Assert.False(actual);
         }
     }
 }
