@@ -15,6 +15,9 @@ describe('Match', () => {
             },
             awayTeam: {
                 icon: ''
+            },
+            league: {
+                Id: 1
             }
         },
         searchKey: ''
