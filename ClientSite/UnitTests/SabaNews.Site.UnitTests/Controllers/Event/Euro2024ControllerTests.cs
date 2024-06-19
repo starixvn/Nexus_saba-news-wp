@@ -439,6 +439,28 @@
         }
 
         [Fact]
+        public async Task GetMostViewPosts_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var postId = fixture.Create<int>();
+            var slug = fixture.Create<string>();
+
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var cateParams = fixture.Create<PostParam>();
+            postService.GetTopPostsByCateSlugAsync(Arg.Do<PostParam>(x => cateParams = x)).Returns(expected);
+
+            //Act
+            var result = await controller.GetMostViewPost(slug, postId);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Views/Event/Euro2024/_MostViewPosts.cshtml", viewResult.ViewName);
+            var model = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, model);
+        }
+
+        [Fact]
         public async Task GetHomepageStandings_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -886,7 +908,25 @@
             Assert.Equal("url", viewResult.Url);
         }
 
-        
+        [Fact]
+        public async Task GetMinigameByStage_WhenStageMoreThanTwo_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
+
+            criteria.Stage = 3;
+            
+
+
+            //Act
+            var result = await controller.GetMinigameByStage(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Null(jsonResult.Value);
+        }
 
         [Fact]
         public async Task GetMinigameByStage_WhenParamHaveData_ReturnExpectedData()

@@ -219,6 +219,22 @@
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public async Task GetLeagueMinigameByStageWithEmailAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+
+            var minigameExpected = fixture.Create<IList<MinigameModel>>();
+            var criteria = fixture.Create<GetLeagueMinigameByStageCriteria>();
+
+            baseService.GetDataAsync<MinigameModel>(Arg.Any<GetLeagueMinigameByStageCriteria>()).Returns(minigameExpected);
+            //Act
+            var actual = await service.GetLeagueMinigameByStageWithEmailAsync(criteria);
+            //Assert
+            Assert.Equal(minigameExpected, actual);
+        }
+
         private Euro2024Service GetService()
         {
             baseService = Substitute.For<IBaseService>();
