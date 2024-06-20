@@ -6,6 +6,8 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
     using Fanex.Caching;
+    using Fanex.Data.Repository;
+    using Fanex.Logging;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Facebook;
     using Microsoft.AspNetCore.Authentication.Google;
@@ -14,7 +16,10 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Repositories;
+    using SabaNews.Livescore.Services;
     using SabaNews.Services;
     using SabaNews.Services.ExportExcel;
     using SabaNews.Services.Interfaces;
@@ -23,13 +28,30 @@
     {
         public static void RegisterServices(this IServiceCollection services)
         {
+
+            //Base Service
+            services.AddSingleton<IBaseService, BaseService>();
+            services.AddSingleton<IDynamicRepository, DynamicRepository>();
+            services.AddSingleton<IBaseRepository, BaseRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<ICacheWrapperService, CacheWrapperService>();
+            services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddScoped<IBaseMailService, BaseMailService>();
+            services.AddScoped<ISessionService, SessionService>();
+
+            //LivescoreService
+            services.AddScoped<IMatchRepository, MatchRepository>();
+            services.AddScoped<ILeagueService, LeagueService>();
+            services.AddScoped<IMatchService, MatchService>();
+
+            //Other services
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPathService, PathService>();
-            services.AddTransient<ICacheService, CacheService>();
-            services.AddTransient<ICacheWrapperService, CacheWrapperService>();
             services.AddTransient<IEmailService, EmailService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
@@ -40,7 +62,7 @@
             services.AddTransient<IStatisticService, StatisticService>();
             services.AddTransient<IPollService, PollService>();
             services.AddTransient<IBannerService, BannerService>();
-            services.AddTransient<ILogService, LogService>();
+            services.AddTransient<ILogService, Services.LogService>();
             services.AddTransient<IExportExcelService, ExportExcelService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IFileService, FileService>();

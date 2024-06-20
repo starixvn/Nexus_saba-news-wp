@@ -2,9 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Fanex.Caching;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
+    using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -18,7 +20,11 @@
     using Microsoft.Extensions.Hosting;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Repositories;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
+    using SabaNews.Livescore.Provider.API.Helpers;
+    using SabaNews.Livescore.Repositories;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Extensions;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Services;
@@ -26,6 +32,8 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Helpers;
+    using SabaNews.Livescore.SyncData.Services;
+    using SabaNews.Livescore.SyncData.Services.Interfaces;
     using Sentry;
     using StackExchange.Redis;
 
@@ -44,12 +52,10 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            SyncDataDI.RegisterDI(services, Configuration);
 
             AddConfiguration(services, Configuration);
             AddRedisConfiguration(services, Configuration);
-            AddDependencyInjection(services);
-            services.ResolveLivescoreServiceDI();
+            AddDependencyInjection(services, Configuration);
             ConfigureMqttService(services);
             AddWorker(services);
         }
@@ -134,10 +140,35 @@
             services.AddSingleton(signalRSettings);
         }
 
-        private static void AddDependencyInjection(IServiceCollection services)
+        private static void AddDependencyInjection(IServiceCollection services , IConfiguration configuration)
         {
+
+            //base service
+            services.AddSingleton<IBaseService, BaseService>();
+            services.AddSingleton<IDynamicRepository, DynamicRepository>();
+            services.AddSingleton<IBaseRepository, BaseRepository>();
+            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<ICacheWrapperService, CacheWrapperService>();
+            services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+
+            //Sync service
+            services.AddTransient<ISyncLeagueService, SyncLeagueService>();
+            services.AddTransient<ISyncTeamService, SyncTeamService>();
+            services.AddTransient<ISyncPlayerService, SyncPlayerService>();
+            services.AddTransient<ISyncSeasonService, SyncSeasonService>();
+            services.AddTransient<ISyncMatchService, SyncMatchService>();
+            services.AddTransient<ISyncHeadToHeadService, SyncHeadToHeadService>();
+            services.AddTransient<ISyncCountryService, SyncCountryService>();
+            ProviderApiHelpers.RegisterServices(services, configuration);
+
+            //livescore service
             services.AddSingleton<ILiveMatchService, LiveMatchService>();
             services.AddSingleton<IMqttClientService, MqttClientService>();
+            services.AddScoped<IMatchRepository, MatchRepository>();
+            services.AddScoped<ILeagueService, LeagueService>();
+            services.AddScoped<IMatchService, MatchService>();
+            services.AddScoped<IPushSignalService, PushSignalService>();
         }
 
         private void ConfigureMqttService(IServiceCollection services)

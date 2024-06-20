@@ -134,8 +134,6 @@
             services.AddResponseCaching();
             services.AddSingleton(Configuration);
 
-            CoreDI.RegisterService(services);
-            services.ResolveLivescoreServiceDI();
             services.AddSingleton(HtmlEncoder.Create(allowedRanges: UnicodeRanges.All ));
         
             var umSettings = Configuration.GetSection(UMSettings.SettingKey).Get<UMSettings>();

@@ -2,9 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Fanex.Caching;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
+    using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -13,12 +15,15 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.AutoJobs.Models;
     using SabaNews.AutoJobs.Workers;
     using SabaNews.Core.Extensions;
     using SabaNews.Core.Middlewares;
+    using SabaNews.Core.Repositories;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Repositories;
     using SabaNews.Livescore.Services;
     using SabaNews.Services;
@@ -107,8 +112,16 @@
 
         private static void AddDependencyInjection(IServiceCollection services)
         {
-            CoreDI.RegisterService(services);
-
+            services.AddSingleton<IBaseService, BaseService>();
+            services.AddSingleton<IDynamicRepository, DynamicRepository>();
+            services.AddSingleton<IBaseRepository, BaseRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<ICacheWrapperService, CacheWrapperService>();
+            services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddScoped<ISessionService, SessionService>();
+            
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IMatchService, MatchService>();
