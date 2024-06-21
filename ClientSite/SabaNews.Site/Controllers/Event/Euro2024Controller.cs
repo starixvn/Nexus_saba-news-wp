@@ -633,7 +633,7 @@ namespace SabaNews.Site.Controllers.Event
             {
                 return Json(null);
             }
-            var miniGames = await euro2024Service.GetLeagueMinigameByStageAsync(criteria);
+            var miniGames = await dataControlService.GetMinigameByStage(criteria);
             return Json(miniGames);
         }
 

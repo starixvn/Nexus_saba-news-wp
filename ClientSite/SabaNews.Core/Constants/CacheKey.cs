@@ -36,5 +36,6 @@
         public const string Euro2024 = "Euro2024";
         public const string GetMatchBySeason = "GetMatchBySeason";
         public const string GetLeagueSeasonStanding = "GetLeagueSeasonStanding";
+        public const string GetMinigameByStage = "GetMinigameByStage";
     }
 }

@@ -1,10 +1,12 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Criteria.Event.Minigame;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Event.Minigame;
     using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
@@ -52,5 +54,6 @@
         Task<MatchLeague> GetMatchBySeasonAsync(long leagueId, long seasonId);
 
         Task<IList<SeasonStandings>> GetLeagueSeasonStandingAsync(long leagueId, long seasonId);
+        Task<IList<UserMinigameModel>> GetMinigameByStage(GetLeagueMinigameByStageCriteria criteria);
     }
 }

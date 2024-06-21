@@ -4,10 +4,12 @@
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
+    using SabaNews.Criteria.Event.Minigame;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Models;
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Event.Minigame;
     using SabaNews.Models.Home;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
@@ -26,6 +28,7 @@
         private readonly IPostService postService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly IBannerService bannerService;
+        private readonly IEuro2024Service euro2024Service;
         private readonly bool IsUsingCache;
 
         public DataControlService(IFetchDataService fetchDataService,
@@ -33,13 +36,15 @@
             ICacheWrapperService cacheWrapperService,
             IPostService postService,
             ILogServiceProvider logServiceProvider,
-            IBannerService bannerService)
+            IBannerService bannerService,
+            IEuro2024Service euro2024Service)
         {
             this.fetchDataService = fetchDataService;
             this.cacheWrapperService = cacheWrapperService;
             this.postService = postService;
             this.logServiceProvider = logServiceProvider;
             this.bannerService = bannerService;
+            this.euro2024Service = euro2024Service;
             IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
         }
 
@@ -441,6 +446,31 @@
             }
 
             return await fetchDataService.GetEuro2024ViewModel();
+        }
+
+        public async Task<IList<UserMinigameModel>> GetMinigameByStage(GetLeagueMinigameByStageCriteria criteria)
+        {
+            if (IsUsingCache)
+            {
+                var key = $"{CacheKey.GetMinigameByStage}-{criteria.Stage}-{criteria.LeagueId}-{criteria.SeasonId}";
+                var result = await cacheWrapperService.GetAsync<IList<UserMinigameModel>>(key);
+                
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get euro 2024 data from DB---------");
+
+                    result = await euro2024Service.GetLeagueMinigameByStageAsync(criteria);
+                    await cacheWrapperService.SetAsync(key, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheEuroMinigameTimeout)
+                        });
+                }
+
+                return result;
+            }
+
+            return await euro2024Service.GetLeagueMinigameByStageAsync(criteria);
         }
     }
 }
