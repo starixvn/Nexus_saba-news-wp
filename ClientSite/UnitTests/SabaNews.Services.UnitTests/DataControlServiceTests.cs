@@ -31,6 +31,7 @@ namespace SabaNews.Services.UnitTests
         private IConfiguration configuration;
         private IBannerService bannerService;
         private IMatchService matchService;
+        private IEuro2024Service euro2024Service;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -887,8 +888,9 @@ namespace SabaNews.Services.UnitTests
             logServiceProvider = Substitute.For<ILogServiceProvider>();
             bannerService = Substitute.For<IBannerService>();
             matchService = Substitute.For<IMatchService>();
+            euro2024Service = Substitute.For<IEuro2024Service>();
 
-            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService);
+            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService, euro2024Service);
 
             return service;
         }
