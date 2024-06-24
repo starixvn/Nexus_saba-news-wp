@@ -6,11 +6,13 @@ using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using SabaNews.Core.Constants;
 using SabaNews.Core.Services;
+using SabaNews.Criteria.Event.Minigame;
 using SabaNews.Livescore.Models.League;
 using SabaNews.Livescore.Models.Match;
 using SabaNews.Livescore.Services;
 using SabaNews.Models;
 using SabaNews.Models.Banner;
+using SabaNews.Models.Event.Minigame;
 using SabaNews.Models.Home;
 using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel;
@@ -865,6 +867,61 @@ namespace SabaNews.Services.UnitTests
 
             //Act
             var actual = await service.GetEuro2024PageViewModel();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetMinigameByStage_WhenCacheHaveData_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IList<UserMinigameModel>>();
+            var param = fixture.Create<GetLeagueMinigameByStageCriteria>();
+
+            cacheWrapperService.GetAsync<IList<UserMinigameModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetMinigameByStage(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetMinigameByStage_WhenCacheReturnNull_ReturnExpectedData()
+        {
+            var service = GetDataControlService(true);
+            var key = fixture.Create<string>();
+            IList<UserMinigameModel> expectedFromCache = null;
+            var expected = fixture.Create<IList<UserMinigameModel>>();
+            var param = fixture.Create<GetLeagueMinigameByStageCriteria>();
+
+            cacheWrapperService.GetAsync<IList<UserMinigameModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => x = param)).Returns(expected);
+
+            //Act
+            var actual = await service.GetMinigameByStage(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<UserMinigameModel>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetMinigameByStage_WhenNotUsingCache_ReturnExpectedData()
+        {
+            var service = GetDataControlService(false);
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<IList<UserMinigameModel>>();
+            var param = fixture.Create<GetLeagueMinigameByStageCriteria>();
+
+            euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => x = param)).Returns(expected);
+            
+
+            //Act
+            var actual = await service.GetMinigameByStage(param);
 
             //Assert
             Assert.Equal(expected, actual);
