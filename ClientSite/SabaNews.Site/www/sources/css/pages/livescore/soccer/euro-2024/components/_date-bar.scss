@@ -108,6 +108,9 @@
                 .soccer-match-stage{
                     text-align: left;
                     margin-right: 0;
+                    @include Mobile{
+                        width: 6.4rem;
+                    }
                     span{
                         font-size: 1.2rem;
                     }
