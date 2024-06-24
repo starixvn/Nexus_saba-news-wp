@@ -940,7 +940,7 @@
             criteria.Stage = 1;
             
 
-            euro2024Service.GetLeagueMinigameByStageAsync(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteria = x)).Returns(expectedData);
+            dataControlService.GetMinigameByStage(Arg.Do<GetLeagueMinigameByStageCriteria>(x => criteria = x)).Returns(expectedData);
 
             //Act
             var result = await controller.GetMinigameByStage(criteria);
