@@ -26,8 +26,10 @@ export class AppContainer extends Component {
     componentDidUpdate() {
         const currentFixture = document.querySelector('.current');
         const ScrollToHeight = currentFixture != null ? currentFixture.offsetTop : 0;
-        const anotherHeight = 80;
+        
         if(ScrollToHeight > 0) {
+            const isMobile = window.innerWidth < 768;
+            const anotherHeight = isMobile ? 52 : 86;
             window.scroll({
                 top: ScrollToHeight - anotherHeight,
                 left: 0,
