@@ -22,14 +22,14 @@ export class AppContainer extends Component {
 
     componentDidMount() {
         this.props.getMatches();
-        
     }
     componentDidUpdate() {
         const currentFixture = document.querySelector('.current');
         const ScrollToHeight = currentFixture != null ? currentFixture.offsetTop : 0;
+        const anotherHeight = 80;
         if(ScrollToHeight > 0) {
             window.scroll({
-                top: ScrollToHeight - 70,
+                top: ScrollToHeight - anotherHeight,
                 left: 0,
                 behavior: 'smooth'
             });
