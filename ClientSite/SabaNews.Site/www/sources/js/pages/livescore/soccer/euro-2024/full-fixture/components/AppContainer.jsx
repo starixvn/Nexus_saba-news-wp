@@ -22,6 +22,18 @@ export class AppContainer extends Component {
 
     componentDidMount() {
         this.props.getMatches();
+        
+    }
+    componentDidUpdate() {
+        const currentFixture = document.querySelector('.current');
+        const ScrollToHeight = currentFixture != null ? currentFixture.offsetTop : 0;
+        if(ScrollToHeight > 0) {
+            window.scroll({
+                top: ScrollToHeight - 70,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
     }
 
     groupMatchesByDate = matches => {
