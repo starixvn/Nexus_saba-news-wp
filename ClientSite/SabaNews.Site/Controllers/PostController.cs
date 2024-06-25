@@ -11,6 +11,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
@@ -68,7 +69,7 @@
             var savePost = GetLoginSavedPost(sessionService.User, post.ID);
             var (matchId, customContent) = PostHelper.GetInfoFromContent(post.PostContent);
 
-            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
+            var cateInfo = GetCateInfo(post);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Parent = PostHelper.GetTopCateParent(cateParents);
             cateInfo.Url = Url.Action("Category", "Home", new { slug = cateInfo.Slug + CategoryKey.Suffix});
@@ -85,7 +86,8 @@
                 AbsoluteUrl = $"{configuration.GetValue<string>("BaseUrl")}{cleanSlug}-{post.ID}.html",
                 IsVideo = PostHelper.IsVideo(cateParents),
                 CateInfo = cateInfo,
-                MatchId = matchId
+                MatchId = matchId,
+                CateParents = cateParents
             };
 
             return View(model);
@@ -113,10 +115,20 @@
             return (slug, postId);
         }
 
-        private static CateInfo GetCateInfo(string cateName, string cateSlug)
+        private static CateInfo GetCateInfo(Post post)
         {
-            var listCateSlug = cateSlug.Split(',').Select(item => item.Trim()).ToList();
-            var listCateName = cateName.Split(',').Select(item => item.Trim()).ToList();
+            var listCateSlug = post.CategoriesSlug.Split(',').Select(item => item.Trim()).ToList();
+            var listCateName = post.CatesName.Split(',').Select(item => item.Trim()).ToList();
+
+            if(post.PrimaryCategory > 0)
+            {
+                var categories = post.Categories.Split(',').Select(item => item.Trim()).ToList();
+                var cateIndex = categories.FindIndex(c => c == post.PrimaryCategory.ToString());
+                if(cateIndex >= 0)
+                {
+                    return new CateInfo { Slug = listCateSlug[cateIndex], Name =  listCateName[cateIndex]};
+                }
+            }
 
             var subCateSlug = listCateSlug.Where(item => item != Constants.VideoSlug).ToList();
             var subCateName = listCateName.Where(item => item != Constants.Video).ToList();

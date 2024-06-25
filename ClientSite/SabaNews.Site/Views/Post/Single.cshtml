@@ -231,6 +231,15 @@
             </ul>
         </div>
         <div class="block block-main block-detail">
+            <ul className="breadcrumb">
+                @foreach(var m in Model.CateParents)
+                {
+                    if(m.Slug != Constants.NewPostSlug)
+                    {
+                        <li><span>@m.Name</span></li>
+                    }
+                }
+            </ul>
             @* @if (Model.IsVideo)
             {
             <div class="skeleton skeleton-vertical">
