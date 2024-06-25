@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
+const isMobile = window.innerWidth < 768;
+
 const SkeletonGrid = () => {
     const renderNav = () => {
         return(
-            <div className="live-score-nav nav nav-tabs">
+            !isMobile && <div className="live-score-nav nav nav-tabs">
                 {
                     [1,2,3,4].map((_, index) => (
                         <Skeleton key={index} width={130} height={27} className="nav-item nav-link" style={{ marginRight : '10px' , borderRadius : '5px' }}>
