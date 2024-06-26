@@ -219,20 +219,16 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 var (_, score) = EuroHelper.GetVoteResult(matchVote, vote);
                 vote.Point = score;
             }
-            var miniGames = await euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteriaVoteMinigame);
-            miniGames = miniGames.Where(x => x.UserId == param.UserId).ToList();
             var viewModel = new AdminDetailMinigameViewModel
             {
                 Rank = param.Rank,
                 Totalpoint = param.Totalpoint,
                 Votes = votes,
                 StageDetail = param.StageDetail,
-                Matches = matches
+                Matches = matches,
+                Email = param.Email,
+                Username = param.Username
             };
-            if(miniGames.Count != 0) {
-                viewModel.Email = miniGames[0].Email;
-                viewModel.Username = miniGames[0].UserName;
-            }
             return PartialView("_DetailPlayerVotes", viewModel);
         }
     }

@@ -16,11 +16,13 @@
                     var userID = $(this).data('userid');
                     var totalpoint = $(this).data('totalpoint');
                     var rank = $(this).data('rank');
+                    var username = $(this).data('username');
+                    var email = $(this).data('email');
 
                     $.ajax({
                         url: "/Admin/Euro2024Management/GetDetailUser",
                         type: 'POST',
-                        data: { stageDetail, userID, totalpoint, rank },
+                        data: { stageDetail, userID, totalpoint, rank, username, email },
                         success: function (res) {
                             $('#DetailPlayerContent .title').html('Detail Player');
                             $('#DetailPlayerContent .modal-body').html(res);

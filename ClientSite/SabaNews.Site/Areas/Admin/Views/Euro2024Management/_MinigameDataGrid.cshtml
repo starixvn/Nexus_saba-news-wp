@@ -26,7 +26,7 @@
                         <td class="text-center" width="10%">@user.Point</td>
                         <td class="text-center" width="19%">@SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(user.UpdatedDate, "dd/MM/yyyy, HH:mm:ss")</td>
                         <td class="text-center" width="6%"><i class="icon-page icon-list_alt-admin btn-detail" 
-                            data-rank='@count' data-totalpoint='@user.Point' data-userid='@user.UserId'></i></td>
+                            data-rank='@count' data-totalpoint='@user.Point' data-userid='@user.UserId' data-username="@user.UserName" data-email="@user.Email"></i></td>
                     </tr>
                 }
             }
