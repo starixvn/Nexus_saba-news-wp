@@ -236,24 +236,10 @@
                 {
                     if(m.Slug != Constants.NewPostSlug)
                     {
-                        <li><span>@m.Name</span></li>
+                        <li><a href="@Url.Action("Category", "Home", new { slug = m.Slug + CategoryKey.Suffix })">@m.Name</a></li>
                     }
                 }
             </ul>
-            @* @if (Model.IsVideo)
-            {
-            <div class="skeleton skeleton-vertical">
-            <a class="skeleton-vertical__image"></a>
-            <a class="skeleton-vertical__title"></a>
-            </div>
-            }
-            else
-            {
-            <div class="skeleton skeleton-vertical">
-            <a class="skeleton-vertical__title" style="margin-bottom:0.8rem"></a>
-            <a class="skeleton-vertical__image"></a>
-            </div>
-            } *@
 
             <div class="card-vertical card-vertical-highlight">
                 @if (Model.IsVideo)
