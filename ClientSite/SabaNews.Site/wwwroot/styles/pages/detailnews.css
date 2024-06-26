@@ -2598,7 +2598,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-wrap: nowrap;
   justify-content: center;
   flex-direction: row;
-  margin: 1.6rem 0 1.6rem 0;
+  margin: 5rem 0 1.6rem 0;
 }
 .main-social .social .item-social {
   margin-right: 1rem;
@@ -4008,6 +4008,40 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .event-txt a {
   color: #0066CC !important;
+}
+
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin-bottom: 1.6rem;
+}
+.breadcrumb li a {
+  color: #06C;
+  text-decoration: none;
+  position: relative;
+  font-size: 1.4rem;
+  margin-right: 2.8rem;
+  font-weight: 600;
+}
+.breadcrumb li a::before {
+  content: "\e97d";
+  display: inline-block;
+  position: absolute;
+  font-family: "Fraud-Sensor";
+  top: -1px;
+  right: -25px;
+  color: #888;
+  font-size: 2rem;
+  font-weight: 300;
+}
+.breadcrumb li:last-child a {
+  margin-right: 0;
+  color: #666;
+}
+.breadcrumb li:last-child a::before {
+  display: none;
 }
 
 img {

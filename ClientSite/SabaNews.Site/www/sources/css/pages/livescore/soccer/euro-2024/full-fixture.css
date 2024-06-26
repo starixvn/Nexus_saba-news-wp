@@ -865,6 +865,11 @@ body {
   text-align: left;
   margin-right: 0;
 }
+@media (max-width: 767px) {
+  .wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .soccer-match-stage {
+    width: 6.4rem;
+  }
+}
 .wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .soccer-match-stage span {
   font-size: 1.2rem;
 }

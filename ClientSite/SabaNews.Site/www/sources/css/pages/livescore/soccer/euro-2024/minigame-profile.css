@@ -465,3 +465,6 @@ body {
     font-size: 1.3rem;
   }
 }
+.minigame-table .view-minigame-detail {
+  cursor: pointer;
+}

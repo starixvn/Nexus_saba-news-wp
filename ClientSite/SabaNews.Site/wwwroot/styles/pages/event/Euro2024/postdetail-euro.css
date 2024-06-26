@@ -3710,6 +3710,38 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: block;
 }
 
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin-bottom: 1.6rem;
+}
+.breadcrumb li a {
+  color: #06C;
+  text-decoration: none;
+  position: relative;
+  font-size: 1.4rem;
+  margin-right: 2.8rem;
+}
+.breadcrumb li a::before {
+  content: "\e97d";
+  display: inline-block;
+  position: absolute;
+  font-family: "Fraud-Sensor";
+  top: -1px;
+  right: -25px;
+  color: #888;
+  font-size: 2rem;
+}
+.breadcrumb li:last-child a {
+  margin-right: 0;
+  color: #666;
+}
+.breadcrumb li:last-child a::before {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .euro-page-main {
     padding-top: 2rem;

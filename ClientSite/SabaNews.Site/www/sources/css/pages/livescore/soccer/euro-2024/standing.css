@@ -904,14 +904,14 @@ body {
   grid-area: awayParticipant;
 }
 .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__name {
-  width: 8rem;
+  width: 13rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 @media screen and (max-width: 1024px) {
   .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__name {
-    width: 16rem;
+    width: 20rem;
   }
 }
 .play-offs .draw-container .draw-wrapper .draw__bracket .bracket__series {
@@ -1171,6 +1171,11 @@ body {
 .wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .soccer-match-stage {
   text-align: left;
   margin-right: 0;
+}
+@media (max-width: 767px) {
+  .wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .soccer-match-stage {
+    width: 6.4rem;
+  }
 }
 .wc-date-bar .group-match-item .soccer-match-item .soccer-match-date-result .soccer-match-stage span {
   font-size: 1.2rem;
