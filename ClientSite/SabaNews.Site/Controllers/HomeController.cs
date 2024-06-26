@@ -98,7 +98,7 @@
         [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
-            keyword ??= "";
+            keyword ??= string.Empty;
             var start = (page - 1) * Constants.Perpage;
             var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
@@ -108,9 +108,9 @@
                 Posts = posts.ToList(),
                 Header = new HeaderViewModel
                 {
-                    Title = Constants.SearchTitle + " '" + keyword + "'",
-                    HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
-                    Description = Constants.SearchTitle + " '" + keyword + "'",
+                    Title = $"{Constants.SearchTitle} '{keyword}'",
+                    HeadTitle = $"{Constants.SearchTitle} '{keyword}'",
+                    Description = $"{Constants.SearchTitle} '{keyword}'",
                     Keyword = keyword,
                     Controller = Constants.Search
                 },
