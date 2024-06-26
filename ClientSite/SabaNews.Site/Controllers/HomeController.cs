@@ -63,7 +63,7 @@
         public async Task<IActionResult> Category(string slug)
         {
             var redirectLink = RedirectCategorySlug(slug);
-            if (redirectLink != "")
+            if (!string.IsNullOrEmpty(redirectLink))
             {
                 return RedirectPermanent(redirectLink);
             }
@@ -88,11 +88,43 @@
         {
             var redirectLink = "";
             var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
-            if(cateRedirect != null)
+            if (cateRedirect != null)
             {
                 redirectLink = cateRedirect.NewSlug;
             }
             return redirectLink;
+        }
+
+        [Route("Search/{keyword}")]
+        public async Task<IActionResult> Search(string keyword, int page = 1)
+        {
+            keyword ??= "";
+            var start = (page - 1) * Constants.Perpage;
+            var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
+            var posts = await postService.SearchPostAsync(criteria);
+            var totalItems = criteria.TotalItems;
+            var model = new BlogViewModel
+            {
+                Posts = posts.ToList(),
+                Header = new HeaderViewModel
+                {
+                    Title = Constants.SearchTitle + " '" + keyword + "'",
+                    HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
+                    Description = Constants.SearchTitle + " '" + keyword + "'",
+                    Keyword = keyword,
+                    Controller = Constants.Search
+                },
+                Paging = new PagingModel
+                {
+                    CurrentPage = page,
+                    PageSize = Constants.Perpage,
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
+                    Href = Url.Action("Search", "Home", new { keyword, page = (int?)null })
+                }
+            };
+
+            var view = (posts != null && posts.Any()) ? "Search" : "SearchNotFound";
+            return View(view, model);
         }
 
         [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
@@ -134,39 +166,6 @@
         public IActionResult OldVideo(int page = 1)
         {
             return RedirectToActionPermanent("Category", "Home", new { slug = Constants.VideoSlug + CategoryKey.Suffix });
-        }
-
-
-        [Route("Search/{keyword}")]
-        public async Task<IActionResult> Search(string keyword, int page = 1)
-        {
-            keyword ??= "";
-            var start = (page - 1) * Constants.Perpage;
-            var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
-            var posts = await postService.SearchPostAsync(criteria);
-            var totalItems = criteria.TotalItems;
-            var model = new BlogViewModel
-            {
-                Posts = posts.ToList(),
-                Header = new HeaderViewModel
-                {
-                    Title = Constants.SearchTitle + " '" + keyword + "'",
-                    HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
-                    Description = Constants.SearchTitle + " '" + keyword + "'",
-                    Keyword = keyword,
-                    Controller = Constants.Search
-                },
-                Paging = new PagingModel
-                {
-                    CurrentPage = page,
-                    PageSize = Constants.Perpage,
-                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
-                    Href = Url.Action("Search", "Home", new { keyword, page = (int?)null })
-                }
-            };
-
-            var view = (posts != null && posts.Any()) ? "Search" : "SearchNotFound";
-            return View(view, model);
         }
 
         [Route("/Search/page/{page}")]
@@ -301,7 +300,7 @@
             return RedirectPermanent("/lich-thi-dau/bong-da");
         }
 
-       
+
 
         [Route("policy")]
         public ActionResult Policy()
@@ -360,7 +359,7 @@
         public async Task<IActionResult> GetTypePostsGrid(TypePostParam param)
         {
             var start = (param.Page - 1) * param.PageSize;
-            IEnumerable<Post> posts = new List<Post>();
+            IEnumerable<Post> posts;
             if (param.Type == Constants.Search)
             {
                 posts = await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize });
@@ -425,7 +424,7 @@
         {
             var now = DateTimeUtilize.UtcNow();
             var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
-            if(now.DateTime > deadLine.DateTime)
+            if (now.DateTime > deadLine.DateTime)
             {
                 return Json(null);
             }

@@ -482,7 +482,7 @@ namespace SabaNews.Site.Controllers.Event
             return PartialView("~/Views/Event/Euro2024/_PollEuro2024.cshtml", result);
         }
 
-         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId, bool isHome)
         {
             var clientIP = Helper.GetClientIP(HttpContext);
@@ -519,7 +519,7 @@ namespace SabaNews.Site.Controllers.Event
                 Slug = Euro2024.MinigameSlug
             };
             var isStageOneStarted = EuroHelper.CheckStartStage(1);
-            if(!isStageOneStarted)
+            if (!isStageOneStarted)
             {
                 var viewModel = new EuroMinigameViewModel { Header = header };
                 return View("~/Views/Event/Euro2024/Minigame/MinigameCountDown.cshtml", viewModel);
@@ -577,7 +577,7 @@ namespace SabaNews.Site.Controllers.Event
         {
             if (sessionService.User == null)
             {
-                 return Redirect(Url.Action("Minigame", EuroController));
+                return Redirect(Url.Action("Minigame", EuroController));
             }
             var header = new HeaderViewModel
             {
@@ -629,7 +629,7 @@ namespace SabaNews.Site.Controllers.Event
         [HttpPost]
         public async Task<ActionResult> GetMinigameByStage([FromBody] GetLeagueMinigameByStageCriteria criteria)
         {
-            if(criteria.Stage > Euro2024.MinigameStage2)
+            if (criteria.Stage > Euro2024.MinigameStage2)
             {
                 return Json(null);
             }
