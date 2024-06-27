@@ -1,67 +1,42 @@
 ﻿.breadcrumb {
+    list-style: none;
     display: flex;
     align-items: center;
-    list-style: none;
-    margin-bottom: 1.3rem;
-    flex-wrap: wrap;
-
-    @include Mobile {
-        margin-top : .3rem;
+    padding-left: 0;
+    margin-bottom: 1.6rem;
+    @include Mobile{
         margin-bottom: 1.2rem;
-        display: inherit;
-        line-height: 1;
     }
-
     li {
-        color: #7D7D7D;
-        font-weight: 400;
-        font-size: 1.3rem;
-        line-height: 1;
+        color: #06C;
+        text-decoration: none;
+        position: relative;
+        font-size: 1.4rem;
+        margin-right: 2.8rem;
+        font-weight: 600;
         cursor: pointer;
-
-        span {
-            &:hover {
-                color: #0066CC;
-                text-decoration: underline;
-
-                &:after {
-                    color: inherit;
-                }
-            }
-        }
-
-        @include Mobile {
-            font-size: 1.1rem;
-            display: contents;
-        }
-
         &:last-child {
             &:after {
                 display: none;
             }
         }
 
-        &.current {
-            cursor : context-menu;
-            span {
-                color: #454545;
-
-                &:hover {
-                    text-decoration: none;
-                }
-            }
-        }
-
-        &:after {
-            display: inline-block;
-            font-family: "Fraud-Sensor";
+        &::before{
             content: '\e97d';
-            font-weight: normal;
-            margin: 0 .5rem;
-
-            @include Mobile {
-                margin: 0 .2rem;
-                line-height: 1;
+            display: inline-block;
+            position: absolute;
+            font-family: 'Fraud-Sensor';
+            top: -1px;
+            right: -25px;
+            color: #888;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+        &:last-child{
+            margin-right: 0;
+            color: #666;
+            &::before{
+                display: none;
             }
         }
     }
