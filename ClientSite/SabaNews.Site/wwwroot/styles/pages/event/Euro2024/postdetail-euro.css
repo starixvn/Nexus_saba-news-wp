@@ -3717,6 +3717,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   padding-left: 0;
   margin-bottom: 1.6rem;
 }
+@media (max-width: 767px) {
+  .breadcrumb {
+    margin-bottom: 1.2rem;
+  }
+}
 .breadcrumb li a {
   color: #06C;
   text-decoration: none;

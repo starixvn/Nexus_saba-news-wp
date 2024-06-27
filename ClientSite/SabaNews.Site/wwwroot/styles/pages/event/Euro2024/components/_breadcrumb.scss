@@ -5,6 +5,9 @@
     align-items: center;
     padding-left: 0;
     margin-bottom: 1.6rem;
+    @include Mobile{
+        margin-bottom: 1.2rem;
+    }
     li{
         a{
             color: #06C;
