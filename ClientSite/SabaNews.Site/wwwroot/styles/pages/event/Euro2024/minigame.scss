@@ -194,6 +194,9 @@
         right: 50%;
         transform: translate(50%, 0);
         z-index: 0;
+        @include Mobile{
+            display: none;
+        }
     }    
 }
 

@@ -2681,6 +2681,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   transform: translate(50%, 0);
   z-index: 0;
 }
+@media (max-width: 767px) {
+  .minigame-block-winners .effect-winner {
+    display: none;
+  }
+}
 
 @media (max-width: 767px) {
   .block-heading {
