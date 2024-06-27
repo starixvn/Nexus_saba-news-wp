@@ -25,7 +25,7 @@ export default class Item extends PureComponent {
     getStageStatus = () => {
         const { status } = this.props;
         let isActive = status.isActive;
-        if(status.status === LangHelper.getResource('Finish')) {
+        if(status.status === 'Đã kết thúc') {
             isActive = true;
         }
         return {status: status.status, isActive};
