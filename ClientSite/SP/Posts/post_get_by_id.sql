@@ -13,7 +13,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_id`(
 			- 20230818@Hank: init
             - 20240410@Hank: select custom schema.org
             - 20240410@Hank: select videoview
-            - 20240627@Hank: select primary category
+             - 20240627@Hank: select primary category
     */
 )
 GetPostDetailByIdSlug:BEGIN
@@ -23,6 +23,8 @@ GetPostDetailByIdSlug:BEGIN
     DECLARE cate_id VARCHAR(250);
     DECLARE categoriesSlug VARCHAR(250);
     
+    DROP TEMPORARY TABLE IF EXISTS tmp_postmeta;
+    CREATE TEMPORARY TABLE tmp_postmeta (post_id BIGINT, meta_key VARCHAR(255), meta_value TEXT,pImage varchar(255));
 
 	IF NOT EXISTS (SELECT 1 FROM wp_posts p WHERE p.ID = postId AND p.post_status = 'publish')
 	THEN
@@ -43,20 +45,44 @@ GetPostDetailByIdSlug:BEGIN
 	INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
 	WHERE t_r.object_id = postId;
     
-	SELECT p.ID, p.post_title as  PostTitle, p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_modified as PostDateModified,
-	p.post_content as PostContent ,p.post_excerpt as PostExcerpt, p.post_name as Slug, pp.guid as FeatureImage, p.comment_count as CommentCount, 
+    INSERT INTO tmp_postmeta (post_id, meta_key, meta_value,pImage)
+    SELECT pm.post_id, pm.meta_key, pm.meta_value, pp.guid
+    FROM wp_postmeta pm
+		left JOIN wp_posts as pp ON pp.ID = pm.meta_value AND pm.meta_key = "_thumbnail_id" AND pp.post_type="attachment"
+    WHERE pm.post_id = postId;
+    
+	SELECT distinct
+	p.ID, p.post_title as  PostTitle, p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_modified as PostDateModified,
+	p.post_content as PostContent ,p.post_excerpt as PostExcerpt, p.post_name as Slug, p.comment_count as CommentCount, 
     tags as Tags, tagsSlug as TagsSlug, cate_name as CatesName, cate_id as Categories, categoriesSlug, p.post_author as AuthorId, u.display_name as Author,
-    yi.title as SeoTitle, yi.description as SeoDescription, yi.schema_article_type as SchemaType, custom.meta_value as CustomSchema, views.meta_value as VideoViews,
-    cate.meta_value as PrimaryCategory
+    yi.title as SeoTitle, yi.description as SeoDescription, yi.schema_article_type as SchemaType
+    ,max(CASE
+		WHEN pm.meta_key = "_thumbnail_id" THEN pm.pImage 
+	END ) as FeatureImage,
+    max(CASE
+		WHEN pm.meta_key = "saswp_custom_schema_field" THEN pm.meta_value 
+	END) as CustomSchema,
+    
+    max(CASE
+		WHEN pm.meta_key = "trx_addons_video_views_count" THEN pm.meta_value 
+	END) as VideoViews,
+    
+     max(CASE
+		WHEN pm.meta_key = "_yoast_wpseo_primary_category" THEN pm.meta_value 
+	END) as PrimaryCategory
+    
     FROM wp_posts p
-    LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
-	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment"
-    LEFT JOIN wp_postmeta as custom ON custom.post_id = p.ID and custom.meta_key = "saswp_custom_schema_field"
-    LEFT JOIN wp_postmeta as views ON views.post_id = p.ID AND views.meta_key = "trx_addons_video_views_count"
-    LEFT JOIN wp_postmeta as cate ON cate.post_id = p.ID AND cate.meta_key = "_yoast_wpseo_primary_category"
+    LEFT JOIN tmp_postmeta as pm ON pm.post_id = p.ID
     LEFT JOIN wp_users as u ON u.ID = p.post_author
     LEFT JOIN wp_yoast_indexable yi ON yi.object_id = p.ID AND yi.object_type = "post" 
-    WHERE p.ID = postId AND p.post_status = 'publish';
+    WHERE p.ID = postId AND p.post_status = 'publish'
+    GROUP BY 
+		p.ID, p.post_title , p.post_date , p.post_date_gmt , p.post_modified ,
+		p.post_content ,p.post_excerpt , p.post_name ,  p.comment_count , 
+		tags , tagsSlug , cate_name , cate_id , categoriesSlug, p.post_author,
+        u.display_name, yi.title, yi.description, yi.schema_article_type ;
+    
+    DROP TEMPORARY TABLE IF EXISTS tmp_postmeta;
 END
 //
 DELIMITER ;	

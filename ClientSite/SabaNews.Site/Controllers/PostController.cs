@@ -120,10 +120,10 @@
             var listCateSlug = post.CategoriesSlug.Split(',').Select(item => item.Trim()).ToList();
             var listCateName = post.CatesName.Split(',').Select(item => item.Trim()).ToList();
 
-            if(post.PrimaryCategory > 0)
+            if(!string.IsNullOrEmpty(post.PrimaryCategory))
             {
                 var categories = post.Categories.Split(',').Select(item => item.Trim()).ToList();
-                var cateIndex = categories.FindIndex(c => c == post.PrimaryCategory.ToString());
+                var cateIndex = categories.FindIndex(c => c == post.PrimaryCategory);
                 if(cateIndex >= 0)
                 {
                     return new CateInfo { Slug = listCateSlug[cateIndex], Name =  listCateName[cateIndex]};

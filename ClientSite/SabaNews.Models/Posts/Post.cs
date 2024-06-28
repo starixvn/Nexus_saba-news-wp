@@ -37,7 +37,7 @@
         public string CustomSchema { get; set; }
         public IEnumerable<ImageInfo> Images { get; set; }
         public int VideoViews { get; set; }
-        public long PrimaryCategory { get; set; }
+        public string PrimaryCategory { get; set; }
 
         public string PostTime
         {
