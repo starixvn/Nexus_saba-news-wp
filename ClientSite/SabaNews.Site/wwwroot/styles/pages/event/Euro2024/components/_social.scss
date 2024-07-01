@@ -1,16 +1,15 @@
 .main-social {
     @include flex(center, nowrap, space-between, row);
-
+    &.fixed-social{
+        .social {
+            margin: 5rem 0 1.6rem 0;
+        }
+    }
     .social {
         padding: 0;
         list-style: none;
         @include flex(center, nowrap, center, row);
         margin: 1.6rem 0 1.6rem 0;
-        &.fixed-social{
-            .social {
-                margin: 5rem 0 1.6rem 0;
-            }
-        }
         .item-social {
             margin-right: 1rem;
 
@@ -94,7 +93,7 @@
         display: inherit;
 
         @include tableMobile {
-            margin: 0;
+            margin: 0 !important;
         }
 
         .item-social {

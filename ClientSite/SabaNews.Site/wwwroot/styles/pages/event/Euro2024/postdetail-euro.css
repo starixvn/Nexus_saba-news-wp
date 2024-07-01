@@ -3013,6 +3013,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   justify-content: space-between;
   flex-direction: row;
 }
+.main-social.fixed-social .social {
+  margin: 5rem 0 1.6rem 0;
+}
 .main-social .social {
   padding: 0;
   list-style: none;
@@ -3022,9 +3025,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   justify-content: center;
   flex-direction: row;
   margin: 1.6rem 0 1.6rem 0;
-}
-.main-social .social.fixed-social .social {
-  margin: 5rem 0 1.6rem 0;
 }
 .main-social .social .item-social {
   margin-right: 1rem;
@@ -3092,7 +3092,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 @media screen and (max-width: 1024px) {
   .fixed-social .social {
-    margin: 0;
+    margin: 0 !important;
   }
 }
 .fixed-social .social .item-social {
