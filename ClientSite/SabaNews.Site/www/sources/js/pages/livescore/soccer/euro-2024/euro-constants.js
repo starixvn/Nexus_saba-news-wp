@@ -9,7 +9,7 @@
     MatchDetailUrl: 'euro-2024',
     Title: 'Euro 2024:',
     EightTeamMatches: [59159344, 59287173, 59159346, 59159345, 59159343, 59159341, 59159347, 59159348],
-    QuaterFinalMatches: [59159349, 59159350, 59159352, 59159351],
+    QuaterFinalMatches: [59159349, 59159350, 59159351, 59159352],
     SemiFinalMatches: [59159353, 59159354],
     MinigameUrl: 'euro-2024/minigame',
     MinigameProfileUrl: 'euro-2024/minigame/du-doan-cua-toi',
