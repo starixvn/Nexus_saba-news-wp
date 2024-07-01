@@ -1198,11 +1198,11 @@ body {
   line-height: 1;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-logo {
-  margin-right: 0.6rem;
+  margin-right: 0.6rem !important;
   border-radius: 100px;
   width: 2.4rem;
   height: 2.4rem;
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-name {
   font-size: 1.2rem;
