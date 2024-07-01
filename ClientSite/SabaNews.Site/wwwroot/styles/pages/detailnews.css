@@ -2598,6 +2598,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-wrap: nowrap;
   justify-content: center;
   flex-direction: row;
+  margin: 1.6rem 0 1.6rem 0;
+}
+.main-social .social.fixed-social .social {
   margin: 5rem 0 1.6rem 0;
 }
 .main-social .social .item-social {
@@ -4126,6 +4129,9 @@ img {
   display: none;
 }
 
+.card-vertical-highlight {
+  padding-bottom: 0;
+}
 .card-vertical-highlight .card-vertical__video {
   padding: 56.5% 0 0 0 !important;
   position: relative;

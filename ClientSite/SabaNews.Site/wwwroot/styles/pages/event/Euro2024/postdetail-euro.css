@@ -3023,6 +3023,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   flex-direction: row;
   margin: 1.6rem 0 1.6rem 0;
 }
+.main-social .social.fixed-social .social {
+  margin: 5rem 0 1.6rem 0;
+}
 .main-social .social .item-social {
   margin-right: 1rem;
 }
@@ -3728,6 +3731,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   position: relative;
   font-size: 1.4rem;
   margin-right: 2.8rem;
+  font-weight: 600;
 }
 .breadcrumb li a::before {
   content: "\e97d";
@@ -3738,6 +3742,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   right: -25px;
   color: #888;
   font-size: 2rem;
+  font-weight: 300;
 }
 .breadcrumb li:last-child a {
   margin-right: 0;
