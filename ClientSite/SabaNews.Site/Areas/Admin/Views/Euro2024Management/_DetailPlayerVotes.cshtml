@@ -60,7 +60,7 @@
                                         <i class="icon-@result"></i>
                                     </span>
                                 </td>
-                                <td class="text-center" width="19%">@(vote != null ? vote.UpdatedDate.ToString("dd/MM/yyyy, HH:mm:ss") : "")</td>
+                                <td class="text-center" width="19%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.UpdatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
                                 <td class="text-center" width="6%">@(vote != null ? vote.Point : "")</td>
                             </tr>
                     }
@@ -116,7 +116,7 @@
                                             <i class="icon-@result"></i>
                                         </span>
                                     </td>
-                                    <td class="text-center" width="19%">@(vote != null ? vote.UpdatedDate.ToString("dd/MM/yyyy, HH:mm:ss") : "")</td>
+                                    <td class="text-center" width="19%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.UpdatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
                                     <td class="text-center" width="6%">@(vote != null ? vote.Point : "")</td>
                                 </tr>
                         }
