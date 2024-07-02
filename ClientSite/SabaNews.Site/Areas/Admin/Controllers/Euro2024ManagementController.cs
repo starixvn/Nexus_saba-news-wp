@@ -185,14 +185,19 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 matches = data.Matches.Where(m => m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             }
             miniGames = EuroHelper.CalculatorPointer(matches, miniGames);
+            var minigameStanding = new List<MinigameModel>();
             if(!string.IsNullOrEmpty(model.DateSort))
             {
-                miniGames = SortMinigameStanding(miniGames.ToList(), model);
+                minigameStanding = SortMinigameStanding(miniGames.ToList(), model);
+            }
+            else
+            {
+                minigameStanding = miniGames.Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
             }
             var miniGamesPaging = miniGames.Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
             var viewModel = new AdminMinigameGridViewModel
             {
-                MiniGames = miniGames,
+                MiniGames = minigameStanding,
                 DateSort = model.DateSort,
                 Paging = new PagingModel
                 {
