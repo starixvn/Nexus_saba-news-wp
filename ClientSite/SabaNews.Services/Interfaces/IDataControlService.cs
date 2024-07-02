@@ -55,5 +55,6 @@
 
         Task<IList<SeasonStandings>> GetLeagueSeasonStandingAsync(long leagueId, long seasonId);
         Task<IList<UserMinigameModel>> GetMinigameByStage(GetLeagueMinigameByStageCriteria criteria);
+        Task<IList<MinigameModel>> GetMinigameWithEmailByStage(GetLeagueMinigameByStageCriteria criteria);
     }
 }

@@ -124,6 +124,9 @@
 .table-admin {
   margin-top: 0;
 }
+.table-admin .icon-sort-admin:hover {
+  cursor: pointer;
+}
 
 .stage-select {
   width: 130px;

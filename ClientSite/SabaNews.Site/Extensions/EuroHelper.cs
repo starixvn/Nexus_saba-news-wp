@@ -138,7 +138,7 @@
                     {
                         updatedDate = votes[j].UpdatedDate;
                     }
-                    if (createdDate < votes[j].CreatedDate && users[i].UserId == votes[j].UserId)
+                    if (createdDate > votes[j].CreatedDate && users[i].UserId == votes[j].UserId)
                     {
                         createdDate = votes[j].CreatedDate;
                     }

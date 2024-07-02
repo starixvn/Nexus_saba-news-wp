@@ -37,5 +37,7 @@
         public const string GetMatchBySeason = "GetMatchBySeason";
         public const string GetLeagueSeasonStanding = "GetLeagueSeasonStanding";
         public const string GetMinigameByStage = "GetMinigameByStage";
+
+        public const string GetMinigameWithEmailByStage = "GetMinigameWithEmailByStage";
     }
 }

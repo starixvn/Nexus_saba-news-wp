@@ -22,7 +22,7 @@
                     $.ajax({
                         url: "/Admin/Euro2024Management/GetDetailUser",
                         type: 'POST',
-                        data: { stageDetail, userID, totalpoint, rank, username, email },
+                        data: { stageDetail, userID, totalpoint, rank, username, email, dateSort },
                         success: function (res) {
                             $('#DetailPlayerContent .title').html('Detail Player');
                             $('#DetailPlayerContent .modal-body').html(res);
@@ -60,7 +60,7 @@
     }
 
     function initSortEvent() {
-        $("#date-sort").on("click", function () {
+        $("#btn-sort-date").on("click", function () {
             var dateType = $(this).attr("sort-type");
             if (!dateType) {
                 dateType = "desc";
@@ -90,6 +90,7 @@
     function init() {
         GetDataCommentGrid();
         initFilterBtn();
+        
     }
 
     return {

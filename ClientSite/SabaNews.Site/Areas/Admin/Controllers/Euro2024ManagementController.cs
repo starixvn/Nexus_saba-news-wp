@@ -6,6 +6,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
     using SabaNews.Criteria.Event.Minigame;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Criteria.Team;
+    using SabaNews.Models.Event.Minigame;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.Euro2024;
     using SabaNews.Models.ViewModel.Poll;
@@ -24,6 +25,9 @@ namespace SabaNews.Site.Areas.Admin.Controllers
         private readonly IEuro2024Service euro2024Service;
         private readonly IFileService fileService;
         private readonly IDataControlService dataControlService;
+        private const string SortDesc = "desc";
+        private const string SortAsc = "asc";
+
 
         public Euro2024ManagementController(
                 IOptionService optionService,
@@ -169,7 +173,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 LeagueId = Euro2024.LeagueId,
                 SeasonId = Euro2024.SeasonId
             };
-            var miniGames = await euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteria);
+            var miniGames = await dataControlService.GetMinigameWithEmailByStage(criteria);
             var data = await dataControlService.GetMatchBySeasonAsync(Euro2024.LeagueId, Euro2024.SeasonId);
             var matches =  new List<Match>();
             if(model.Stage == Euro2024.MinigameStage1)
@@ -181,10 +185,15 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 matches = data.Matches.Where(m => m.Stage.StageId >= Euro2024.EightTeamStage).ToList();
             }
             miniGames = EuroHelper.CalculatorPointer(matches, miniGames);
+            if(!string.IsNullOrEmpty(model.DateSort))
+            {
+                miniGames = SortMinigameStanding(miniGames.ToList(), model);
+            }
             var miniGamesPaging = miniGames.Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
             var viewModel = new AdminMinigameGridViewModel
             {
-                MiniGames = miniGamesPaging,
+                MiniGames = miniGames,
+                DateSort = model.DateSort,
                 Paging = new PagingModel
                 {
                     CurrentPage = model.Page,
@@ -230,6 +239,20 @@ namespace SabaNews.Site.Areas.Admin.Controllers
                 Username = param.Username
             };
             return PartialView("_DetailPlayerVotes", viewModel);
+        }
+
+        public List<MinigameModel> SortMinigameStanding(List<MinigameModel> minigameData, UserFilterMembershipEventModel model)
+        {
+            var result = new List<MinigameModel>();
+            if (model.DateSort == SortDesc)
+            {
+                result = minigameData.OrderByDescending(x => x.CreatedDate).Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
+            }
+            if (model.DateSort == SortAsc)
+            {
+                result = minigameData.OrderBy(x => x.CreatedDate).Skip(model.PageSize * (model.Page - 1)).Take(model.PageSize).ToList();
+            }
+            return result;
         }
     }
 }

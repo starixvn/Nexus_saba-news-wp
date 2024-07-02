@@ -472,5 +472,30 @@
 
             return await euro2024Service.GetLeagueMinigameByStageAsync(criteria);
         }
+
+        public async Task<IList<MinigameModel>> GetMinigameWithEmailByStage(GetLeagueMinigameByStageCriteria criteria)
+        {
+            if (IsUsingCache)
+            {
+                var key = $"{CacheKey.GetMinigameWithEmailByStage}-{criteria.Stage}-{criteria.LeagueId}-{criteria.SeasonId}";
+                var result = await cacheWrapperService.GetAsync<IList<MinigameModel>>(key);
+                
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get euro 2024 data from DB---------");
+
+                    result = await euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteria);
+                    await cacheWrapperService.SetAsync(key, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheEuroMinigameTimeout)
+                        });
+                }
+
+                return result;
+            }
+
+            return await euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteria);
+        }
     }
 }

@@ -8,5 +8,6 @@
     {
         public IList<MinigameModel> MiniGames { get; set; }
         public PagingModel Paging { get; set; }
+        public string DateSort { get; set; }
     }
 }
