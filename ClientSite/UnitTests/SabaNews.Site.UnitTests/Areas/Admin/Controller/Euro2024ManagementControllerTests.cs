@@ -319,7 +319,7 @@
             var leagueId = fixture.Create<long>();
             param.Stage = 1;
 
-            euro2024Service.GetLeagueMinigameByStageWithEmailAsync(criteria).Returns(expected);
+            dataControlService.GetMinigameWithEmailByStage(criteria).Returns(expected);
             dataControlService.GetMatchBySeasonAsync(Arg.Do<long>(x => leagueId = x), Arg.Do<long>(x => leagueId = x)).Returns(leagueData);
 
             expected = EuroHelper.CalculatorPointer(leagueData.Matches, expected);
