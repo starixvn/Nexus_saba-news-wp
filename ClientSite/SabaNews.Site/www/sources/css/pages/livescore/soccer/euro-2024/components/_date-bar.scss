@@ -135,17 +135,17 @@
                 .soccer-team-logo{
                     margin-right: .6rem !important;
                     border-radius: 100px;
-                    width: 2.4rem;
-                    height: 2.4rem;
+                    width: 2.4rem !important;
+                    height: 2.4rem !important;
                     margin-left: 0 !important;
                     
                 } 
                 .soccer-team-name{
-                    font-size: 1.2rem;
+                    font-size: 1.2rem !important;
                     max-width: 100%;
                     font-weight: 500;
                     margin-right: .4rem;
-                    padding: 0;
+                    padding: 0 !important;
                     &.win{
                         font-weight: 700;
                     }
@@ -156,14 +156,14 @@
                 .soccer-team-result{
                     font-size: 1.2rem;
                     .total-score{
-                        width: 1.4rem;
-                        margin-right: .4rem;
+                        width: 1.4rem !important;
+                        margin-right: .4rem !important;
                     }
                 }
                 .soccer-team-status{
                     li{
-                        padding: .1rem .2rem;
-                        border: none;
+                        padding: .1rem .2rem !important;
+                        border: none !important;
                     }
                 }
             }
