@@ -47,14 +47,14 @@
     function initPaging() {
         $('.paging').on('click', function () {
             page = $(this).data('page');
-            var dateSort = $("#date-sort").attr("sort-type");
+            var dateSort = $("#btn-sort-date").attr("sort-type");
             GetDataCommentGrid(dateSort);
         });
 
         $('#page-size').on('change', function () {
             pageSize = $(this).val();
             page = 1;
-            var dateSort = $("#date-sort").attr("sort-type");
+            var dateSort = $("#btn-sort-date").attr("sort-type");
             GetDataCommentGrid(dateSort);
         });
     }
