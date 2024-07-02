@@ -488,7 +488,7 @@
                     await cacheWrapperService.SetAsync(key, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheEuroMinigameTimeout)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheAdminEuroMinigameTimeout)
                         });
                 }
 

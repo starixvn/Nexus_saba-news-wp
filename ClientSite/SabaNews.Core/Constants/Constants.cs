@@ -203,6 +203,7 @@
         public const int CacheGetMatchBySeasonTimeout = 1;
         public const int GetLeagueSeasonStandingTimeout = 2;
         public const int CacheEuroMinigameTimeout = 3;
+        public const int CacheAdminEuroMinigameTimeout = 1;
 
         public const string TokenAPIGetData = "U0FCQSBTUE9SVFMgaMOyYSB2w6BvIGN14buZYyBjaMahaSE=";
         public const int ApiRowLimit = 1000;
