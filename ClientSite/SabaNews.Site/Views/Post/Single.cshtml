@@ -1,4 +1,20 @@
 ﻿@using SabaNews.Core.Constants;
+@{
+    var schemaBreadcrum = "";
+    var position = 1;
+    foreach(var cate in Model.CateParents)
+    {
+        if(cate.Slug != Constants.NewPostSlug)
+        {
+            schemaBreadcrum += "{";
+            schemaBreadcrum +="\"@type\":\"ListItem\",";
+            schemaBreadcrum +=$"\"position\":\"{position}\",";
+            schemaBreadcrum +=$"\"item\": {{\"@id\": \"{Model.DomainUrl + cate.Slug + CategoryKey.Suffix}\", \"name\": {cate.Name} }},";
+            position++;
+        }
+        
+    }
+}
 @section Schema {
     @if(Model.IsVideo)
     {
@@ -96,6 +112,27 @@
         }
         </script>
     }
+
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement":
+        [
+            {
+                "@@type": "ListItem",
+                "position": 1,
+                "item":
+                {
+                    "@@id": "@Model.DomainUrl",
+                    "name": "Sabavn"
+                },
+                @Html.Raw(schemaBreadcrum)
+            }
+        ]
+
+    }
+    </script>
 }
 @section Metadata {
     <meta name="description"

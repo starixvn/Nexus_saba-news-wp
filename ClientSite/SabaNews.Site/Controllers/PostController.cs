@@ -78,16 +78,18 @@
             post.SeoDescription = string.IsNullOrEmpty(post.SeoDescription) ? post.PostExcerpt : Helper.ReplaceStringFromVarSeo(post.SeoDescription, post.PostTitle);
             post.PostContent = customContent;
 
+            var domainUrl = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {
                 SinglePost = post,
                 IsLogin = sessionService.User != null,
                 SavePost = savePost,
-                AbsoluteUrl = $"{configuration.GetValue<string>("BaseUrl")}{cleanSlug}-{post.ID}.html",
+                AbsoluteUrl = $"{domainUrl}{cleanSlug}-{post.ID}.html",
                 IsVideo = PostHelper.IsVideo(cateParents),
                 CateInfo = cateInfo,
                 MatchId = matchId,
-                CateParents = cateParents
+                CateParents = cateParents,
+                DomainUrl = domainUrl
             };
 
             return View(model);
