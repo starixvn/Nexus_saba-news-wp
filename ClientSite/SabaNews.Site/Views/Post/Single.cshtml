@@ -1,7 +1,12 @@
 ﻿@using SabaNews.Core.Constants;
 @{
     var schemaBreadcrum = "";
-    var position = 1;
+    var position = 2;
+    schemaBreadcrum += "{";
+    schemaBreadcrum +="\"@type\":\"ListItem\",";
+    schemaBreadcrum +="\"position\":\"1\",";
+    schemaBreadcrum +=$"\"item\": {{\"@id\": \"{Model.DomainUrl}\", \"name\": \"Sabavn\" }}";
+    schemaBreadcrum += "},";
     foreach(var cate in Model.CateParents)
     {
         if(cate.Slug != Constants.NewPostSlug)
@@ -9,11 +14,12 @@
             schemaBreadcrum += "{";
             schemaBreadcrum +="\"@type\":\"ListItem\",";
             schemaBreadcrum +=$"\"position\":\"{position}\",";
-            schemaBreadcrum +=$"\"item\": {{\"@id\": \"{Model.DomainUrl + cate.Slug + CategoryKey.Suffix}\", \"name\": {cate.Name} }},";
+            schemaBreadcrum +=$"\"item\": {{\"@id\": \"{Model.DomainUrl + cate.Slug + CategoryKey.Suffix}\", \"name\": \"{cate.Name}\" }}";
+            schemaBreadcrum += "},";
             position++;
         }
-        
     }
+    schemaBreadcrum = schemaBreadcrum.TrimEnd(',');
 }
 @section Schema {
     @if(Model.IsVideo)
@@ -119,16 +125,7 @@
         "@@type": "BreadcrumbList",
         "itemListElement":
         [
-            {
-                "@@type": "ListItem",
-                "position": 1,
-                "item":
-                {
-                    "@@id": "@Model.DomainUrl",
-                    "name": "Sabavn"
-                },
-                @Html.Raw(schemaBreadcrum)
-            }
+            @Html.Raw(schemaBreadcrum)
         ]
 
     }
