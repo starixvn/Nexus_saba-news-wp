@@ -260,11 +260,12 @@ var all = (function ($) {
                 $(this).text('Thu gọn').addClass('less'); 
               }
               $(this).siblings('li.toggleable').toggle(); 
-        }); 
+        });
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var hidePopupEvent = localStorage.getItem('euro-hide-popup-event-1');
+        var popupKey = 'ec-hide-popup';
+        var hidePopupEvent = localStorage.getItem(popupKey);
         if (hidePopupEvent !== "1") {
             setTimeout(function () {
                 $('#ChangeDomainModal').modal('show');
@@ -275,10 +276,10 @@ var all = (function ($) {
     
         $('#isHidePopupChangeDomain').on('change', function () {
             if ($(this).is(':checked')) {
-                localStorage.setItem("euro-hide-popup-event-1", "1");
+                localStorage.setItem(popupKey, "1");
                 $('#ChangeDomainModal').modal('hide');
             } else {
-                localStorage.setItem("euro-hide-popup-event-1", "0");
+                localStorage.setItem(popupKey, "0");
             }
         });
     }
