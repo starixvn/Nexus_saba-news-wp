@@ -85,12 +85,15 @@
         $('.search_user').on('click', function () {
             window.location.href = window.location.origin + "/Admin/MinigameWorldCup2022/CountUser";
         });
+
+        $('.reset-grid').on('click', function() {
+            GetDataCommentGrid();
+        });
     }
 
     function init() {
         GetDataCommentGrid();
         initFilterBtn();
-        
     }
 
     return {

@@ -32,10 +32,11 @@
             <thead>
                 <tr>
                     <th width="5%">#</th>
-                    <th width="30%">Match</th>
+                    <th width="22%">Match</th>
                     <th width="15%">Prediction</th>
                     <th width="10%">Result</th>
-                    <th width="19%">Date & Time</th>
+                    <th width="17%">Last Edit</th>
+                    <th width="17%">First Selection</th>
                     <th width="6%">Point</th>
                 </tr>
             </thead>
@@ -53,14 +54,15 @@
                         totalPoint = totalPoint + point;
                             <tr>
                                 <td class="text-center" width="5%">@count</td>
-                                <td class="text-left" width="30%">@GetTeamName(match.HomeTeam) -vs- @GetTeamName(match.AwayTeam)</td>
+                                <td class="text-left" width="22%">@GetTeamName(match.HomeTeam) -vs- @GetTeamName(match.AwayTeam)</td>
                                 <td class="text-center" width="15%">@teamVote</td>
                                 <td class="text-center" width="10%">
                                     <span class="choose choose-@result">
                                         <i class="icon-@result"></i>
                                     </span>
                                 </td>
-                                <td class="text-center" width="19%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.UpdatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
+                                <td class="text-center" width="17%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.UpdatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
+                                <td class="text-center" width="17%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.CreatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
                                 <td class="text-center" width="6%">@(vote != null ? vote.Point : "")</td>
                             </tr>
                     }
@@ -91,10 +93,11 @@
                     <thead style="width: 100% !important;">
                         <tr>
                             <th width="5%">#</th>
-                            <th width="30%">Match</th>
+                            <th width="22%">Match</th>
                             <th width="15%">Prediction</th>
                             <th width="10%">Result</th>
-                            <th width="19%">Date & Time</th>
+                            <th width="17%">Last Edit</th>
+                            <th width="17%">First Selection</th>
                             <th width="6%">Point</th>
                         </tr>
                     </thead>
@@ -109,14 +112,15 @@
                             totalPoint = totalPoint + point;
                                 <tr>
                                     <td class="text-center" width="5%">@count</td>
-                                    <td class="text-left" width="30%">@GetTeamName(match.HomeTeam) -vs- @GetTeamName(match.AwayTeam)</td>
+                                    <td class="text-left" width="22%">@GetTeamName(match.HomeTeam) -vs- @GetTeamName(match.AwayTeam)</td>
                                     <td class="text-center" width="15%">@teamVote</td>
                                     <td class="text-center" width="10%">
                                         <span class="choose choose-@result">
                                             <i class="icon-@result"></i>
                                         </span>
                                     </td>
-                                    <td class="text-center" width="19%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.UpdatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
+                                    <td class="text-center" width="17%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.UpdatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
+                                    <td class="text-center" width="17%">@(vote != null ? SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(vote.CreatedDate, "dd/MM/yyyy, HH:mm:ss") : "")</td>
                                     <td class="text-center" width="6%">@(vote != null ? vote.Point : "")</td>
                                 </tr>
                         }
