@@ -264,7 +264,7 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var popupKey = 'ec-hide-popup';
+        var popupKey = 'ec-summer-hide-popup';
         var hidePopupEvent = localStorage.getItem(popupKey);
         if (hidePopupEvent !== "1") {
             setTimeout(function () {
