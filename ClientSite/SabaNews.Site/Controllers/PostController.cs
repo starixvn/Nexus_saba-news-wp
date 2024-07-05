@@ -42,6 +42,10 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
+            if(string.IsNullOrEmpty(slug))
+            {
+                return View(Constants.EmptyBlogView);
+            }
             if (!slug.Contains(".html"))
             {
                 var summary = await postService.GetPostDetailSummaryAsync(slug);
