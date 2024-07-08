@@ -893,16 +893,16 @@ body {
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-logo {
   margin-right: 0.6rem !important;
   border-radius: 100px;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.4rem !important;
+  height: 2.4rem !important;
   margin-left: 0 !important;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-name {
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
   max-width: 100%;
   font-weight: 500;
   margin-right: 0.4rem;
-  padding: 0;
+  padding: 0 !important;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-name.win {
   font-weight: 700;
@@ -916,12 +916,12 @@ body {
   font-size: 1.2rem;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-result .total-score {
-  width: 1.4rem;
-  margin-right: 0.4rem;
+  width: 1.4rem !important;
+  margin-right: 0.4rem !important;
 }
 .wc-date-bar .group-match-item .soccer-match-item .group-team .soccer-team-status li {
-  padding: 0.1rem 0.2rem;
-  border: none;
+  padding: 0.1rem 0.2rem !important;
+  border: none !important;
 }
 .wc-date-bar .swiper-container .swiper-slide {
   background: transparent;

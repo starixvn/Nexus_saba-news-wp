@@ -163,14 +163,16 @@ body {
 .duel-participant .flex-league .column .team-logo {
   overflow: hidden;
   position: relative;
-  width: 4.4rem;
+  width: 4rem;
+  height: 4rem;
 }
 @media (max-width: 767px) {
   .duel-participant .flex-league .column .team-logo {
     order: 1;
-    width: 3.2rem;
     text-align: center;
     margin-bottom: 0.4rem;
+    width: 3.2rem;
+    height: 3.2rem;
   }
 }
 .duel-participant .flex-league .column .team-logo img {
@@ -179,6 +181,14 @@ body {
   display: block;
   margin: 0 auto;
   image-rendering: -webkit-optimize-contrast;
+  width: 4rem;
+  height: 4rem;
+}
+@media (max-width: 767px) {
+  .duel-participant .flex-league .column .team-logo img {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 }
 .duel-participant .flex-league .column .team-name {
   font-weight: 600;
@@ -2333,8 +2343,8 @@ span.number-position {
 }
 @media (max-width: 767px) {
   .duel-participant .flex-league .column .team-logo {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 .duel-participant .flex-league .column .team-logo img {
@@ -2343,6 +2353,12 @@ span.number-position {
   left: 0;
   width: 100%;
   height: 100%;
+}
+@media (max-width: 767px) {
+  .duel-participant .flex-league .column .team-logo img {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 .duel-participant .flex-league .column:hover {
   cursor: pointer;
@@ -2466,17 +2482,15 @@ span.number-position {
     flex-wrap: nowrap;
   }
 }
-.detail-fixed .sticky-header-scroll .duel-participant .flex-league .team-logo {
-  width: 3.2rem;
-}
 @media (max-width: 767px) {
-  .detail-fixed .sticky-header-scroll .duel-participant .flex-league .team-logo {
+  .detail-fixed .sticky-header-scroll .duel-participant .flex-league .team-logo img {
     width: 2.4rem;
+    height: 2.4rem;
   }
 }
 @media (max-width: 767px) {
   .detail-fixed .sticky-header-scroll .duel-participant .flex-league .team-name {
-    max-width: 9rem;
+    max-width: 8.5rem;
   }
 }
 .detail-fixed .sticky-header-scroll .duel-participant .flex-league .detail-score-wrapper {
@@ -2695,5 +2709,19 @@ span.number-position {
 @media (max-width: 767px) {
   .line-up-change-men .block-line-up-title {
     border-radius: 5px;
+  }
+}
+
+.first-pen {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  margin: 1.2rem 0;
+  color: #324A75;
+}
+@media (max-width: 767px) {
+  .first-pen {
+    font-size: 1.2rem;
   }
 }

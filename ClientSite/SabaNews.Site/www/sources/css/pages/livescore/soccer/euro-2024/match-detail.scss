@@ -176,8 +176,8 @@
                     background: transparent; 
                     border-radius: 100px;
                     @include Mobile{
-                        width: 2.4rem;
-                        height: 2.4rem;
+                        width: 3rem;
+                        height: 3rem;
                     }
                     img{
                         position: absolute;
@@ -185,6 +185,10 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
+                        @include Mobile{
+                            width: 3rem;
+                            height: 3rem;
+                        }
                     }
                 }
             }
@@ -325,16 +329,17 @@
                     }
 
                     &-logo {
-                        width: 3.2rem;
-
-                        @include Mobile {
-                            width: 2.4rem;
+                        img{
+                            @include Mobile{
+                                width: 2.4rem;
+                                height: 2.4rem;
+                            }
                         }
                     }
 
                     &-name {
                         @include Mobile {
-                            max-width: 9rem;
+                            max-width: 8.5rem;
                         }
                     }
                 }

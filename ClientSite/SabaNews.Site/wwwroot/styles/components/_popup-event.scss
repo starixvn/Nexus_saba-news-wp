@@ -93,6 +93,11 @@
             position: relative;
             .img-event{
                 display: block;
+                background: #ddd;
+                min-height: 44rem;
+                @include Mobile{
+                    min-height: 24.2rem;
+                }
                 img{
                     width: 100%;
                     height: auto;

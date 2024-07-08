@@ -3421,6 +3421,13 @@ button {
 }
 .event-modal-home .modal .modal-body .img-event {
   display: block;
+  background: #ddd;
+  min-height: 44rem;
+}
+@media (max-width: 767px) {
+  .event-modal-home .modal .modal-body .img-event {
+    min-height: 24.2rem;
+  }
 }
 .event-modal-home .modal .modal-body .img-event img {
   width: 100%;

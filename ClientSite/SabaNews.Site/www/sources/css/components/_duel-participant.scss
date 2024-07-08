@@ -67,13 +67,15 @@
                 &-logo {
                     overflow: hidden;
                     position: relative;
-                    width: 4.4rem;
+                    width: 4rem;
+                    height: 4rem;
 
                     @include Mobile {
                         order: 1;
-                        width: 3.2rem;
                         text-align: center;
                         margin-bottom: .4rem;
+                        width: 3.2rem;
+                        height: 3.2rem;
                     }
 
                     img {
@@ -82,6 +84,12 @@
                         display: block;
                         margin: 0 auto;
                         image-rendering: -webkit-optimize-contrast;
+                        width: 4rem;
+                        height: 4rem;
+                        @include Mobile{
+                            width: 3.2rem;
+                            height: 3.2rem;
+                        }
                     }
                 }
 

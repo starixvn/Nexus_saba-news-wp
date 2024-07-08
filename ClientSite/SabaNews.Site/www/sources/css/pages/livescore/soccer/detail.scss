@@ -279,10 +279,19 @@
                     }
 
                     &-logo {
-                        width: 3.2rem;
-
+                        width: 2.8rem;
+                        height: 2.8rem;
                         @include Mobile {
-                            width: 2.4rem;
+                            width: 2rem;
+                            height: 2rem;
+                        }
+                        img{
+                            width: 2.8rem;
+                            height: 2.8rem;
+                            @include Mobile {
+                                width: 2rem;
+                                height: 2rem;
+                            }
                         }
                     }
 
