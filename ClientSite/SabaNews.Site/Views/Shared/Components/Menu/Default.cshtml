@@ -128,7 +128,7 @@
                         <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
                     </li>
                      <li class="logo-event">
-                        <a href="/euro-2024"><img src="~/images/euro2024/logo-menu-home.svg" alt="logo-event" /></a>
+                        <a href="/euro-2024"><img src="~/images/euro2024/logo-menu-home.svg" alt="logo-event" width="103" height="35" /></a>
                     </li>
                     @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
                     {
@@ -298,7 +298,7 @@
             <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
         <li class="logo-event @(arrayActiveMenu.Length > 0 ? "hide-event-mobile" : "")">
-            <a href="/euro-2024"><img src="~/images/euro2024/logo-menu-home-mobile.svg" alt="logo-event" /></a>
+            <a href="/euro-2024"><img src="~/images/euro2024/logo-menu-home-mobile.svg" alt="logo-event" width="90" height="105" /></a>
         </li>
         @foreach (var activeMenu in arrayActiveMenu)
         {
