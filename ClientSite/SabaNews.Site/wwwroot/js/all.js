@@ -264,17 +264,11 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var html = '<a target="_blank" href="https://www.sabavn.com/euro-2024/minigame" class="img-event" >';
-        html += '<img src="/images/euro2024/euro_banner.jpg" loading="lazy" width="600" height="440"  asp-append-version="true" alt="Saba euro Popup" class="img-res" />';
-        html += '</a>';
         var popupKey = 'euro-hide-popup-event-1';
 
         var hidePopupEvent = localStorage.getItem(popupKey);
         if (hidePopupEvent !== "1") {
-            setTimeout(function () {
-                $('#main-popup .modal-body').html(html);
-                $('#main-popup').modal('show');
-            }, 3000);
+            $('#main-popup').modal('show');
         }
     
         $('#isHidePopupChangeDomain').on('change', function () {
@@ -324,4 +318,8 @@ var all = (function ($) {
 
 $(document).ready(function () {
     all.init();
+    $("img.lazy").lazyload({
+        effect : "fadeIn",
+        threshold : 150,
+    });
 });
