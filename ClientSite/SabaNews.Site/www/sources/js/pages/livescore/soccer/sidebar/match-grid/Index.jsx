@@ -29,7 +29,7 @@ export default class MatchGrid extends PureComponent {
         }
     };
 
-    filterPreMatches = matches => {
+    filterFixture = matches => {
         const preMatches = [];
         const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
         for (let i = 0; i < matches.length; i++) {
@@ -37,10 +37,13 @@ export default class MatchGrid extends PureComponent {
             const startTime = dayjs(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
             if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(startTime).isSameOrAfter(today)) {
                 preMatches.push(match);
+            } else if(CommonFunctions.isLiveMatch(match.status)) {
+                preMatches.push(match);
             }
         }
         return preMatches;
     };
+
 
     handleClickLeague = (event, league) => {
         const url = CommonFunctions.getLeaguePageUrl(league);
@@ -56,7 +59,7 @@ export default class MatchGrid extends PureComponent {
         const { matches } = this.props;
         let matchList = [];
         if(selectedTab === 'fixture') {
-            matchList =  this.filterPreMatches(matches);
+            matchList =  this.filterFixture(matches);
         } else if(selectedTab === 'result') {
             matchList = matches.filter(item => item.status === MatchStatus.Finished || item.status === MatchStatus.CutInHalf);
             matchList = this.sortMatches(matchList, false);
