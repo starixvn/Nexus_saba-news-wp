@@ -264,8 +264,8 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var html = '<a target="_blank" href="https://www.sabavn.com/euro-2024/minigame" class="img-event" width="600" height="440">';
-        html += '<img src="/images/euro2024/euro_banner.jpg" loading="lazy"  asp-append-version="true" alt="Saba euro Popup" class="img-res" />';
+        var html = '<a target="_blank" href="https://www.sabavn.com/euro-2024/minigame" class="img-event" >';
+        html += '<img src="/images/euro2024/euro_banner.jpg" loading="lazy" width="600" height="440"  asp-append-version="true" alt="Saba euro Popup" class="img-res" />';
         html += '</a>';
         var popupKey = 'euro-hide-popup-event-1';
 
