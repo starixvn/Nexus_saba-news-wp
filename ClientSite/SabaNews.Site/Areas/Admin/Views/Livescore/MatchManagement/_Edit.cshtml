@@ -49,7 +49,7 @@
                 Stage name origin
             </label>
             <div class="admin-text-logo">
-                <input type="text" name="table-around" readonly class="form-control custom-input bg-custom-input" value="@(Model.Stage.StageNameResource ?? Model.Stage.StageNameEN)" />
+                <input type="text" name="table-around" readonly class="form-control custom-input bg-custom-input" value="@(Model.Stage?.StageNameResource ?? Model.Stage?.StageNameEN)" />
             </div>
         </div>
         <div class="form-group-input form-group-input-right">
@@ -57,7 +57,7 @@
                 Stage name VN
             </label>
             <div class="admin-text-logo admin-text-logo-stage-vn">
-                <input type="text" value="@Model.Stage.StageNameCustom" class="form-control custom-input" id="stageNameVN" name="stageNameVN" />
+                <input type="text" value="@Model.Stage?.StageNameCustom" class="form-control custom-input" id="stageNameVN" name="stageNameVN" />
             </div>
         </div>
     </div>
