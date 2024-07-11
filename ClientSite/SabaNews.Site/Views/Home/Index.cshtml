@@ -219,7 +219,7 @@
                                     var firstPost = Model.NewPosts[0];
                                     string firstImgUrl = firstPost.FeatureImage;
                                     <a title="@firstPost.PostTitle" href="@Url.Action("Single", "Post", new { slug =  firstPost.Uri})" class="box-vertical-image hover-image">
-                                        <img class="img-res lazy"  data-original="@Url.Content(firstImgUrl)" alt="@firstPost.PostTitle"  />
+                                        <img class="img-res lazy"  src="@Url.Content(firstImgUrl)" data-original="@Url.Content(firstImgUrl)" alt="@firstPost.PostTitle"  />
                                         <noscript>
                                             <img src="@Url.Content(firstImgUrl)" class="img-res" alt="@firstPost.PostTitle"  />
                                         </noscript>
@@ -241,7 +241,7 @@
                                     {
                                         <div class="box-vertical">
                                             <a title="@item.PostTitle" href="@Url.Action("Single", "Post", new { slug =  item.Uri })" class="box-vertical-image hover-image">
-                                                <img data-original="@Url.Content(item.FeatureImage)" alt="@item.PostTitle" class="img-res lazy"  />
+                                                <img src="@Url.Content(item.FeatureImage)" data-original="@Url.Content(item.FeatureImage)" alt="@item.PostTitle" class="img-res lazy"  />
                                                  <noscript>
                                                     <img src="@Url.Content(item.FeatureImage)" alt="@item.PostTitle" />
                                                 </noscript>
@@ -291,7 +291,10 @@
                             <div class="box-vertical swiper-slide scroll-snap-items">
                                 <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri  })"
                                     class="box-vertical-image hover-image">
-                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                    <img data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy"  />
+                                    <noscript>
+                                        <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                    </noscript>
                                 </a>
                                 <div class="box-vertical-content">
                                     <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri  })">@post.PostTitle</a>
@@ -328,7 +331,10 @@
                                             <input type="hidden" name="iframe_value" value="@post.PostContent" />
                                             <div class="img-item">
                                                 <a title="@post.PostTitle" class="box-vertical-image hover-image">
-                                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                                    <img data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy"  />
+                                                    <noscript>
+                                                        <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                                    </noscript>
                                                     <div class="btn-play-video" post-id="@post.ID">
                                                         <span class="icon-play"></span>
                                                     </div>
@@ -349,7 +355,10 @@
                                 {
                                     <div class="box-horizontal scroll-snap-items card-item">
                                         <a title="@post.PostTitle" href="javascript:;" data-id="@post.ID" class="image-slider box-horizontal-image hover-none-16-9">
-                                            <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                            <img data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy"  />
+                                            <noscript>
+                                                <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                            </noscript>
                                         </a>
                                         <div class="box-horizontal-content">
                                             <h5>
@@ -382,7 +391,10 @@
                                         </h2>
                                             <div class="box-vertical">
                                                 <a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })" class="box-vertical-image hover-image">
-                                                    <img src="@Url.Content(leagues[0].FeatureImage)" alt="@leagues[0].PostTitle" class="img-res"  />
+                                                    <img data-original="@Url.Content(leagues[0].FeatureImage)" src="@Url.Content(leagues[0].FeatureImage)" alt="@leagues[0].PostTitle" class="img-res lazy"  />
+                                                    <noscript>
+                                                        <img src="@Url.Content(leagues[0].FeatureImage)" alt="@leagues[0].PostTitle" class="img-res"  />
+                                                    </noscript>
                                                 </a>
                                                 <div class="box-vertical-content">
                                                     <h4 class="heading-box-content"><a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })">@leagues[0].PostTitle</a></h4>
@@ -422,7 +434,10 @@
                                 <div class="block-event-item">
                                     <div class="box-vertical">
                                         <a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Uri })" class="box-vertical-image hover-image">
-                                            <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res"  />
+                                            <img data-original="@Url.Content(Model.BackstagePosts[0].FeatureImage)" src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res lazy"  />
+                                            <noscript>
+                                                <img src="@Url.Content(Model.BackstagePosts[0].FeatureImage)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res"  />
+                                            </noscript>
                                         </a>
                                         <div class="box-vertical-content">
                                             <h4><a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Uri })">@Model.BackstagePosts[0].PostTitle</a></h4>
@@ -442,7 +457,10 @@
                                         }
                                         <div class="box-horizontal">
                                             <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })" class="box-horizontal-image hover-none-16-9">
-                                                <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                                <img data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy"  />
+                                                <noscript>
+                                                    <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                                </noscript>
                                             </a>
                                             <div class="box-horizontal-content">
                                                 <h4 class="heading-box-content">
@@ -466,7 +484,10 @@
                                     }
                                     <div class="box-vertical">
                                         <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })" class="box-vertical-image hover-image">
-                                            <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                            <img data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res lazy"  />
+                                            <noscript>
+                                                <img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res"  />
+                                            </noscript>
                                         </a>
                                         <div class="box-vertical-content">
                                             <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
@@ -489,7 +510,10 @@
                                 </h2>
                                 <div class="box-vertical">
                                     <a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Uri })" class="box-vertical-image hover-image">
-                                        <img src="@Url.Content(Model.TransferPosts[0].FeatureImage)" alt="@Model.TransferPosts[0].PostTitle" class="img-res"  />
+                                        <img data-original="@Url.Content(Model.TransferPosts[0].FeatureImage)" src="@Url.Content(Model.TransferPosts[0].FeatureImage)" alt="@Model.TransferPosts[0].PostTitle" class="img-res lazy"  />
+                                        <noscript>
+                                            <img src="@Url.Content(Model.TransferPosts[0].FeatureImage)" alt="@Model.TransferPosts[0].PostTitle" class="img-res"  />
+                                        </noscript>
                                     </a>
                                     <div class="box-vertical-content">
                                         <h4 class="heading-box-content"><a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Uri })">@Model.TransferPosts[0].PostTitle</a></h4>
@@ -523,7 +547,10 @@
                                 </h2>
                                 <div class="box-vertical">
                                     <a title="@Model.OtherPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })" class="box-vertical-image hover-image">
-                                        <img src="@Url.Content(Model.OtherPosts[0].FeatureImage)" alt="@Model.OtherPosts[0].PostTitle" class="img-res"  />
+                                        <img data-original="@Url.Content(Model.OtherPosts[0].FeatureImage)" src="@Url.Content(Model.OtherPosts[0].FeatureImage)" alt="@Model.OtherPosts[0].PostTitle" class="img-res lazy"  />
+                                        <noscript>
+                                            <img src="@Url.Content(Model.OtherPosts[0].FeatureImage)" alt="@Model.OtherPosts[0].PostTitle" class="img-res"  />
+                                        </noscript>
                                     </a>
                                     <div class="box-vertical-content">
                                         <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })">@Model.OtherPosts[0].PostTitle</a></h4>

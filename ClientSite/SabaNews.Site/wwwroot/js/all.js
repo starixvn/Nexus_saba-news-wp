@@ -319,7 +319,7 @@ var all = (function ($) {
 $(document).ready(function () {
     all.init();
     $("img.lazy").lazyload({
-        effect : "fadeIn",
+        effect : "show",
         threshold : 150,
     });
 });
