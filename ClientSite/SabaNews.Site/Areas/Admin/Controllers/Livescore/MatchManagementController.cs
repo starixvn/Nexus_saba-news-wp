@@ -121,7 +121,7 @@
             var cmd = new UpdateMatchCommand
             {
                 MatchId = model.MatchId,
-                StageId = match.Stage.StageId,
+                StageId = match.Stage != null ? match.Stage.StageId : 0,
                 HomeTeamId = model.HomeTeamId,
                 HomeTeamNameVN = model.HomeTeamNameVN,
                 HomeTeamIconVN = homeIconVN,
