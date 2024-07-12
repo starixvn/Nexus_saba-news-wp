@@ -3319,11 +3319,11 @@ button {
 .event-modal-home .modal .modal-body .img-event {
   display: block;
   background: #ddd;
-  max-height: 44rem;
+  min-height: 44rem;
 }
 @media (max-width: 767px) {
   .event-modal-home .modal .modal-body .img-event {
-    max-height: 24.2rem;
+    min-height: 24.2rem;
   }
 }
 .event-modal-home .modal .modal-body .img-event img {
