@@ -16,7 +16,10 @@
                 <picture>
                     <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
                     <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">
-                    <img loading="lazy" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block">
+                    <img data-original="@Url.Content(featureImg)" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block lazy">
+                    <noscript>
+                        <img src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block lazy">
+                    </noscript>
                 </picture>
             </a>
             <div class="card-horizontal__content">
