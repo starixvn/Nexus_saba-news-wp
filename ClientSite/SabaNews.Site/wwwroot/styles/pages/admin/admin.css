@@ -239,19 +239,6 @@ p.has-text-align-center {
   display: none !important;
 }
 
-@keyframes tweet-skeleton {
-  0% {
-    background-color: rgb(209, 209, 209);
-  }
-  100% {
-    background-color: rgb(243, 243, 243);
-  }
-}
-.lazy {
-  background-color: rgb(209, 209, 209);
-  animation: tweet-skeleton 1s linear infinite alternate;
-}
-
 button {
   outline: none;
   border: 0;

@@ -94,6 +94,10 @@
             .img-event{
                 display: block;
                 background: #ddd;
+                max-height: 44rem;
+                @include Mobile{
+                    max-height: 24.2rem;
+                }
                 img{
                     width: 100%;
                     height: auto;

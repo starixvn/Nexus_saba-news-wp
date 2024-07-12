@@ -240,19 +240,6 @@ p.has-text-align-center {
   display: none !important;
 }
 
-@keyframes tweet-skeleton {
-  0% {
-    background-color: rgb(209, 209, 209);
-  }
-  100% {
-    background-color: rgb(243, 243, 243);
-  }
-}
-.lazy {
-  background-color: rgb(209, 209, 209);
-  animation: tweet-skeleton 1s linear infinite alternate;
-}
-
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -2910,8 +2897,17 @@ button {
   cursor: pointer;
 }
 
+@keyframes tweet-skeleton {
+  0% {
+    background-color: rgb(209, 209, 209);
+  }
+  100% {
+    background-color: rgb(243, 243, 243);
+  }
+}
 .lazy {
-  position: absolute;
+  background-color: rgb(209, 209, 209);
+  animation: tweet-skeleton 1s linear infinite alternate;
 }
 
 .thumb {
@@ -3301,6 +3297,12 @@ button {
 .event-modal-home .modal .modal-body .img-event {
   display: block;
   background: #ddd;
+  max-height: 44rem;
+}
+@media (max-width: 767px) {
+  .event-modal-home .modal .modal-body .img-event {
+    max-height: 24.2rem;
+  }
 }
 .event-modal-home .modal .modal-body .img-event img {
   width: 100%;

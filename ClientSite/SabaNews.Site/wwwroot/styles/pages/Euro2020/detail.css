@@ -240,19 +240,6 @@ p.has-text-align-center {
   display: none !important;
 }
 
-@keyframes tweet-skeleton {
-  0% {
-    background-color: rgb(209, 209, 209);
-  }
-  100% {
-    background-color: rgb(243, 243, 243);
-  }
-}
-.lazy {
-  background-color: rgb(209, 209, 209);
-  animation: tweet-skeleton 1s linear infinite alternate;
-}
-
 .font-italic {
   font-style: italic;
 }
@@ -3231,8 +3218,17 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   margin-left: 0.3rem;
 }
 
+@keyframes tweet-skeleton {
+  0% {
+    background-color: rgb(209, 209, 209);
+  }
+  100% {
+    background-color: rgb(243, 243, 243);
+  }
+}
 .lazy {
-  position: absolute;
+  background-color: rgb(209, 209, 209);
+  animation: tweet-skeleton 1s linear infinite alternate;
 }
 
 .thumb {
