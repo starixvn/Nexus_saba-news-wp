@@ -16,7 +16,10 @@
                                 <picture>
                                     <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
                                     <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block lazy">
+                                    <img asp-append-version="true" data-original="@Url.Content(featureImg)" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block lazy">
+                                    <noscript>
+                                        <img asp-append-version="true" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block lazy">
+                                    </noscript>
                                 </picture>
                             </a>
                         }

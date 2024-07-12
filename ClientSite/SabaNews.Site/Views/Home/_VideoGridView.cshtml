@@ -10,7 +10,10 @@
                 <picture>
                     <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
                     <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                    <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
+                    <img asp-append-version="true" data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
+                    <noscript>
+                        <img asp-append-version="true" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
+                    </noscript>
                 </picture>
             </a>
             <a href="@Url.Action("Single", "Post", new { slug = post.Uri })" class="card-vertical__title text-description">@post.PostTitle</a>
