@@ -270,7 +270,6 @@ var all = (function ($) {
         if (hidePopupEvent !== "1") {
             $('#main-popup').modal('show');
         }
-    
         $('#isHidePopupChangeDomain').on('change', function () {
             if ($(this).is(':checked')) {
                 localStorage.setItem(popupKey, "1");
