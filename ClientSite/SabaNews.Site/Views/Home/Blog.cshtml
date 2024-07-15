@@ -80,19 +80,19 @@
     @if (Model.Header.Controller == "Tag")
     {
         <environment include="Development">
-            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/fixture.chunk.css"
+            <link rel="stylesheet" media="all" href="~/css/dev/pages/livescore/soccer/homepage/fixture.chunk.css"
             asp-append-version="true" />
-            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/homepage/standing.chunk.css"
+            <link rel="stylesheet" media="all" href="~/css/dev/pages/livescore/soccer/homepage/standing.chunk.css"
             asp-append-version="true" />
         </environment>
         <environment exclude="Development">
-            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/fixture.chunk.css"
+            <link rel="stylesheet" media="all" href="~/css/pro/pages/livescore/soccer/homepage/fixture.chunk.css"
             asp-append-version="true" />
-            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/homepage/standing.chunk.css"
+            <link rel="stylesheet" media="all" href="~/css/pro/pages/livescore/soccer/homepage/standing.chunk.css"
             asp-append-version="true" />
         </environment>
     }
-    <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
+    <link rel="stylesheet" media="all" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
 
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory, Slugs = Model.Slugs }))

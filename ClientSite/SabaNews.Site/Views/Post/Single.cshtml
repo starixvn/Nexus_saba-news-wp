@@ -181,24 +181,24 @@
 }
 @section Styles{
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/post-detail.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" media="all" href="~/css/dev/pages/livescore/soccer/post-detail.chunk.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/post-detail.chunk.css"
+        <link rel="stylesheet" media="all" href="~/css/pro/pages/livescore/soccer/post-detail.chunk.css"
             asp-append-version="true" />
     </environment>
        
     @if (!string.IsNullOrEmpty(Model.MatchId))
     {
         <environment include="Development">
-            <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/match-detail-shortcut.chunk.css"  asp-append-version="true" />
+            <link rel="stylesheet" media="all" href="~/css/dev/pages/livescore/soccer/match-detail-shortcut.chunk.css"  asp-append-version="true" />
         </environment>
         <environment exclude="Development">
-            <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/match-detail-shortcut.chunk.css" asp-append-version="true" />
+            <link rel="stylesheet" media="all" href="~/css/pro/pages/livescore/soccer/match-detail-shortcut.chunk.css" asp-append-version="true" />
         </environment>
     }
 
-    <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
+    <link rel="stylesheet" media="all" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 
 }
 
