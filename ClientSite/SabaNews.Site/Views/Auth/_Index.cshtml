@@ -54,9 +54,18 @@
                                 <p class="error summary-eror"></p>
                                 <div class="form-modal">
                                     <input type="text" class="input-form" placeholder="@ViewResources.Name" name="name" />
+                                    <label id="name-error" class="error"></label>
+                                </div>
+                                 <div class="form-modal">
+                                    <input type="text" class="input-form" placeholder="Năm sinh" name="birthday" />
+                                </div>
+                                 <div class="form-modal">
+                                    <input type="text" class="input-form" placeholder="Số điện thoại" name="phone" />
+                                    <label id="phone-error" class="error"></label>
                                 </div>
                                 <div class="form-modal">
                                     <input type="email" class="input-form" placeholder="@ViewResources.Email" name="email" />
+                                    <label id="email-error" class="error"></label>
                                 </div>
                                 <div class="form-modal">
                                     <input type="password" id="password" class="input-form" placeholder="@ViewResources.Password" name="password" />
@@ -64,6 +73,7 @@
                                         <i class="icon-form icon-show"></i>
                                         <i class="icon-form icon-hide" style="display: none"></i>
                                     </span>
+                                    <label id="password-error" class="error"></label>
                                 </div>
                                 <div class="form-modal">
                                     <input type="password" class="input-form" placeholder="@ViewResources.ConfirmPassword" name="confirmPassword" />
@@ -71,6 +81,7 @@
                                         <i class="icon-form icon-show"></i>
                                         <i class="icon-form icon-hide" style="display: none"></i>
                                     </span>
+                                    <label id="confirmPassword-error" class="error"></label>
                                 </div>
                                 <button type="submit" class="btn-register">@ViewResources.Register</button>
                             </form>

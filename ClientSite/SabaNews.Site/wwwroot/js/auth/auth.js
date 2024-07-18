@@ -1,4 +1,5 @@
 ﻿var auth = (function ($) {
+    
     function GetModalLogin(returnUrl, openForm) {
         $.ajax({
             url: '/Auth/Index',
@@ -50,11 +51,30 @@
             let mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             err.hide();
             if(!mailFormat.test(email) || email === "") {
-                let message = email ==="" ? "Hãy nhập email" : "Email không có thật"
+                let message = email ==="" ? "Vui lòng nhập email" : "Email không có thật"
                 err.html(message)
                 err.show();
             }
         });
+
+        $('#form-register input[name=phone]').on('keypress', function (e) {
+            let val = $(this).val();
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            if ((e.which != 46 || val.indexOf('.') != -1 || val > max) && (e.which < 48 || e.which > 57)) {
+                e.preventDefault();
+            }
+        });
+
+        $('#form-register input[name=phone]').on('keyup', function() {
+            let err = $(this).parent().find("#phone-error");
+            let val = $(this).val();
+            err.html('');
+            if(val === "") {
+                let message =  "vui lòng nhập số diện thoại";
+                err.html(message)
+            }
+        });
+
 
         $('#form-login input[name=password]').on('keyup', function(){
             let err = $(this).parent().find("#password-error");
@@ -62,7 +82,7 @@
             let val = $(this).val();
             err.hide();
             if(val === "") {
-                let message = "Hãy nhập mật khẩu";
+                let message = "Vui lòng nhập mật khẩu";
                 err.html(message)
                 err.show();
             }
@@ -74,7 +94,7 @@
             let val = $(this).val();
             err.hide();
             if(val === "") {
-                let message = "Hãy nhập tên";
+                let message = "Vui lòng nhập tên";
                 err.html(message)
                 err.show();
             }
@@ -105,7 +125,7 @@
             let message = "";
             err.hide();
             if(val === "") {
-                message = "Hãy xác thực mật khẩu";
+                message = "Vui lòng xác thực mật khẩu";
             } else if(password !== val) {
                 message = "Xác thực mật khẩu sai";
             }
@@ -170,65 +190,51 @@
     }
 
     function HandleRegister() {
-        var name = document.querySelector("#form-register > div:nth-child(2) > input").value;
-        var email = document.querySelector("#form-register > div:nth-child(3) > input").value;
-        var password = document.querySelector("#password").value;
-        var confirmPassword = document.querySelector("#form-register > div:nth-child(5) > input").value;
+        var name = $("#form-register input[name=name]").val();
+        var email = $("#form-register input[name=email]").val();
+        var password = $("#form-register input[name=password]").val();
+        var confirmPassword = $("#form-register input[name=confirmPassword]").val();
+        var birthday = $('#form-register input[name=birthday]').val();
+        var phone = $('#form-register input[name=phone]').val();
+
         var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         let isValid = true;
 
-        $("#name-error").remove();
-        $("#email-error").remove();
-        $("#password-error").remove();
-        $("#confirmPassword-error").remove();
-
+        $('.error').html('');
         if(name === ""){
             isValid = false;
-            var aTag = document.createElement("label");
-            aTag.id = "name-error";
-            aTag.htmlFor = "name";
-            aTag.classList.add("error");
-            aTag.innerHTML = "Hãy nhập tên";
-            document.querySelector("#form-register > div:nth-child(2)").append(aTag);
+            $("#form-register #name-error").text('Vui lòng nhập tên');
+        }
+
+        if(phone === '') {
+            isValid = false;
+            $("#form-register #phone-error").text('Vui lòng nhập số điện thoại');
         }
 
         if (!mailFormat.test(email) || email === ""){
             isValid = false;
-            var aTag = document.createElement("label");
-            aTag.id = "email-error";
-            aTag.htmlFor = "email";
-            aTag.classList.add("error");
-            aTag.innerHTML = email === "" ? "Hãy nhập email" : "Email không có thật";
-            document.querySelector("#form-register > div:nth-child(3)").append(aTag);
+            var msg = email === "" ? "Vui lòng nhập email" : "Email không có thật";
+            $("#form-register #email-error").text(msg);
         }
 
         if (password === "" || password.length < 6){
             isValid = false;
-            var aTag = document.createElement("label");
-            aTag.id = "password-error";
-            aTag.htmlFor = "password";
-            aTag.classList.add("error");
-            aTag.innerHTML = password.length < 6 ? "Mật khẩu ít nhất 6 kí tự" : "Hãy nhập mật khẩu";
-            document.querySelector("#form-register > div:nth-child(4)").append(aTag);
+            var msg = password.length < 6 ? "Mật khẩu ít nhất 6 kí tự" : "Hãy nhập mật khẩu";
+            $("#form-register #password-error").text(msg);
         }
 
         if (confirmPassword === "" || password != confirmPassword){
             isValid = false;
-            var aTag = document.createElement("label");
-            aTag.id = "confirmPassword-error";
-            aTag.htmlFor = "confirmPassword";
-            aTag.classList.add("error");
-            aTag.innerHTML = confirmPassword === "" ? "Hãy xác thực mật khẩu" : "Xác thực mật khẩu sai";
-            document.querySelector("#form-register > div:nth-child(5)").append(aTag);
+            var msg = confirmPassword === "" ? "Vui lòng xác thực mật khẩu" : "Xác thực mật khẩu sai";
+            $("#form-register #confirmPassword-error").text(msg);
         }
-        
         if(isValid){
             $('#authModal form#form-register' + " .btn-register").prop('disabled', true);
             $('#authModal form#form-register' + " .btn-register").addClass('btn-disabled');
             $.ajax({
                 url: '/Auth/Register',
                 method: "POST",
-                data: {name, email, password, confirmPassword},
+                data: {name, phone, birthday, email, password, confirmPassword},
                 success: function (res) {
                     if (res.isSuccessful) {
                         const email = $('#authModal form#form-register').find('input[name="email"]').val();
