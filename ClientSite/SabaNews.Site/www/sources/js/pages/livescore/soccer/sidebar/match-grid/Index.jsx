@@ -32,12 +32,13 @@ export default class MatchGrid extends PureComponent {
     filterFixture = matches => {
         const preMatches = [];
         const today = dayjs(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+        const preDay = dayjs(DateTimeService.getCurrentClientDateTime()).subtract(2, 'day').format('YYYY-MM-DD');
         for (let i = 0; i < matches.length; i++) {
             const match = matches[i];
             const startTime = dayjs(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
             if (match.status !== MatchStatus.Finished && match.status !== MatchStatus.CutInHalf && dayjs(startTime).isSameOrAfter(today)) {
                 preMatches.push(match);
-            } else if(CommonFunctions.isLiveMatch(match.status)) {
+            } else if(CommonFunctions.isLiveMatch(match.status) &&  dayjs(startTime).isSameOrAfter(preDay)) {
                 preMatches.push(match);
             }
         }
