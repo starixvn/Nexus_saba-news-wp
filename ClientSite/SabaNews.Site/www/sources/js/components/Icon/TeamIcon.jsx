@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import Site from '@jsroot/common/site';
 
-const TeamIcon = ({ className, src,  alt = "alt", onClick }) => {
+const TeamIcon = ({ className, src,  alt , onClick }) => {
     const handleClick = event => {
         if(onClick) {
             onClick(event);
