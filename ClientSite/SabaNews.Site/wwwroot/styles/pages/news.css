@@ -3842,15 +3842,11 @@ button {
 @media screen and (max-width: 1024px) {
   .block-main .card-horizontal-highlight .card-horizontal__image, .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .card-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
     max-height: 100% !important;
+    border-radius: 3px 3px 0 0px;
   }
 }
 .block-main .card-horizontal-highlight .card-horizontal__image img, .block-main .card-horizontal-highlight .skeleton-horizontal__image img, .block-main .skeleton-horizontal-highlight .card-horizontal__image img, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image img {
   max-height: 26.6rem;
-}
-@media (max-width: 767px) {
-  .block-main .card-horizontal-highlight .card-horizontal__image img, .block-main .card-horizontal-highlight .skeleton-horizontal__image img, .block-main .skeleton-horizontal-highlight .card-horizontal__image img, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image img {
-    max-height: 19.6rem;
-  }
 }
 @media screen and (max-width: 1024px) {
   .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
