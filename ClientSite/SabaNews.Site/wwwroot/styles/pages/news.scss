@@ -76,11 +76,10 @@
 
             .title {
                 font-size: 1.6rem;
-                line-height: 2.8rem;
+                line-height: 2rem;
 
                 @include Mobile {
                     font-size: 2rem;
-                    line-height: 3rem;
                 }
             }
 
@@ -101,9 +100,14 @@
             }
             .card-horizontal__image, .skeleton-horizontal__image {
                 height: 100%;
-
                 @include tableMobile {
                     max-height: 100% !important;
+                }
+                img{
+                    max-height: 26.6rem;
+                    @include Mobile{
+                        max-height: 19.6rem;
+                    }
                 }
             }
 
