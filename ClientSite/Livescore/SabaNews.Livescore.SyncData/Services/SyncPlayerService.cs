@@ -46,8 +46,11 @@
                     _ = long.TryParse(entry.Key, out long teamId);
                     foreach (var player in entry.Value)
                     {
-                        player.TeamId = teamId;
-                        players.Add(player);
+                        if(teamId != 0 || !players.Exists(p => p.PlayerId == player.PlayerId && p.TeamId == teamId))
+                        {
+                            player.TeamId = teamId;
+                            players.Add(player);
+                        }
                     }
                 }
                 var json = JsonConvert.SerializeObject(players);
