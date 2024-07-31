@@ -28,7 +28,6 @@
     using SabaNews.Core.Helper;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
-    using SabaNews.Livescore.Services;
     using SabaNews.Site.Extensions;
     using SabaNews.Site.Hubs;
     using SabaNews.Site.Middlewares;

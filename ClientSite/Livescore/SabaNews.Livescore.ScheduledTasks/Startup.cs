@@ -31,7 +31,6 @@
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Interfaces;
-    using SabaNews.Livescore.SyncData.Helpers;
     using SabaNews.Livescore.SyncData.Services;
     using SabaNews.Livescore.SyncData.Services.Interfaces;
     using Sentry;

@@ -20,7 +20,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.AutoJobs.Models;
     using SabaNews.AutoJobs.Workers;
-    using SabaNews.Core.Extensions;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
