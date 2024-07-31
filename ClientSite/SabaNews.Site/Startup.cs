@@ -24,7 +24,6 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using SabaNews.Core.Extensions;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
