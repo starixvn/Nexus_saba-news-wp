@@ -1,4 +1,14 @@
+ARG CI_REGISTRY_IMAGE
+
+FROM $CI_REGISTRY_IMAGE:builder as deps
+
+RUN mkdir -p /src/packages
+
 FROM hub.nexdev.net/base/dotnet/core/sdk:6.0-alpine AS builder
+
+ENV NUGET_PACKAGES=/src/packages
+
+COPY --from=deps $NUGET_PACKAGES/. $NUGET_PACKAGES/
 
 WORKDIR /src
 
@@ -13,6 +23,8 @@ COPY ["Livescore/SabaNews.Livescore.Repositories", "Livescore/SabaNews.Livescore
 COPY ["Livescore/SabaNews.Livescore.Services", "Livescore/SabaNews.Livescore.Services"]
 COPY ["SabaNews.Site/SabaNews.Site.csproj", "SabaNews.Site/"]
 COPY ["nuget.config", ""]
+
+RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
 
 RUN dotnet restore "SabaNews.Site/SabaNews.Site.csproj"
 
