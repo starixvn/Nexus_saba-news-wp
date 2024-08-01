@@ -5,7 +5,8 @@ SET
         'https://www.sabavn.com',
         'https://sabavn.net')
 WHERE
-    post_content like '%https://www.sabavn.com%';
+    post_content like '%https://www.sabavn.com%'
+LIMIT 10000;
     
 UPDATE sabasports.wp_posts 
 SET 
