@@ -20,7 +20,9 @@
 @import '../../components/ads';
 @import '../../components/_popup-event';
 
-
+.main{
+    margin-bottom: 2rem;
+}
 
 .block {
     .profile, .controls {
@@ -149,7 +151,7 @@
 
 
 .block-extension {
-    display: inherit;
+    display: block;
 
     .controls {
         padding: 2rem;
@@ -416,6 +418,12 @@
 
             .time-save {
                 margin-bottom: 0;
+                color: #f12f19;
+                font-size: 1.6rem;
+                border-bottom: 1px solid;
+                text-transform: uppercase;
+                padding-bottom: .5rem;
+            
             }
 
             .filter {
@@ -435,6 +443,7 @@
 
             &:last-child {
                 border-bottom: none;
+                padding-bottom: 0;
             }
 
             .card-horizontal {

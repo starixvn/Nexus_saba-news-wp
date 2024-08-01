@@ -3372,6 +3372,10 @@ button {
   color: #0066CC !important;
 }
 
+.main {
+  margin-bottom: 2rem;
+}
+
 .block .profile, .block .controls {
   border: 1px solid #e5e5e5;
   background: #fff;
@@ -3478,7 +3482,7 @@ button {
 }
 
 .block-extension {
-  display: inherit;
+  display: block;
 }
 .block-extension .controls {
   padding: 2rem;
@@ -3721,6 +3725,11 @@ button {
 }
 .block-extension .controls__datetime .time-save {
   margin-bottom: 0;
+  color: #f12f19;
+  font-size: 1.6rem;
+  border-bottom: 1px solid;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
 }
 .block-extension .controls__datetime .filter {
   border: 1px solid #e5e5e5;
@@ -3737,6 +3746,7 @@ button {
 }
 .block-extension .controls__news:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 .block-extension .controls__news .card-horizontal {
   margin-top: 2rem;

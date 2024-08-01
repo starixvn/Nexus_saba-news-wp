@@ -29,7 +29,6 @@
 					<div class="controls__datetime">
 						<h4 class="time-save">@ViewResources.Today</h4>
 					</div>
-					<hr />
 				}
 				@{ var isCheck = false; }
 				@foreach (var post in Model.Posts)
@@ -37,7 +36,6 @@
 					if (isCheck)
 					{
 						isCheck = false;
-						<hr />
 					}
 					if (!isCheck && Model.ToDayPost != null && post.ID == Model.ToDayPost.PostID)
 					{
@@ -45,8 +43,8 @@
 					}
 					<div class="controls__news">
 						<div class="card-horizontal">
-							<a href="@Url.Action("Single", "Post", new { slug =  post.Uri})" class="card-horizontal__image">
-								<img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" />
+							<a href="@Url.Action("Single", "Post", new { slug =  post.Uri})" class="card-horizontal__image hover-image">
+								<img asp-append-version="true" data-original="@Url.Content(post.FeatureImage)" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy"/>
 							</a>
 							<div class="card-horizontal__content">
 								<a href="@Url.Action("Single", "Post", new { slug =  post.Uri})" class="title">@post.PostTitle </a>
