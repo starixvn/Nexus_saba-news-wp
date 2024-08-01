@@ -1,4 +1,15 @@
+ARG CI_REGISTRY_IMAGE
+
+FROM $CI_REGISTRY_IMAGE:builder as deps
+
+RUN mkdir -p /src/packages
+
+
 FROM hub.nexdev.net/base/dotnet/core/sdk:6.0-alpine AS builder
+
+ENV NUGET_PACKAGES=/src/packages
+
+COPY --from=deps $NUGET_PACKAGES/. $NUGET_PACKAGES/
 
 WORKDIR /src
 
@@ -11,6 +22,8 @@ COPY ["SabaNews.Core/SabaNews.Core.csproj", "SabaNews.Core/"]
 COPY ["Livescore/SabaNews.Livescore.Services/SabaNews.Livescore.Services.csproj", "Livescore/SabaNews.Livescore.Services/"]
 COPY ["Livescore/SabaNews.Livescore.Repositories/SabaNews.Livescore.Repositories.csproj", "Livescore/SabaNews.Livescore.Repositories/"]
 COPY ["Livescore/SabaNews.Livescore.SyncData/SabaNews.Livescore.SyncData.csproj", "Livescore/SabaNews.Livescore.SyncData/"]
+
+RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
 
 RUN dotnet restore "Livescore/SabaNews.Livescore.ScheduledTasks/SabaNews.Livescore.ScheduledTasks.csproj"
 
