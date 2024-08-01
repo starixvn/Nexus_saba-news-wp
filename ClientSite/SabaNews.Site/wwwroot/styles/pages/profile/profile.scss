@@ -464,11 +464,9 @@
 
                 .social-control {
                     @include flex(center, nowrap, space-between, row);
-                    margin-top: 1rem;
 
                     @include tableMobile {
                         display: inherit;
-                        margin-top: .5rem;
                     }
 
                     .name-category {

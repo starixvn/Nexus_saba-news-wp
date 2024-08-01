@@ -3769,12 +3769,10 @@ button {
   flex-wrap: nowrap;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 1rem;
 }
 @media screen and (max-width: 1024px) {
   .block-extension .controls__news .card-horizontal .social-control {
     display: inherit;
-    margin-top: 0.5rem;
   }
 }
 .block-extension .controls__news .card-horizontal .social-control .name-category {
