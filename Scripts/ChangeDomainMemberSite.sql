@@ -46,7 +46,16 @@ WHERE
 	
 	
 
-UPDATE sabasports.wp_team
+UPDATE sabasports.livescore_team
+SET 
+    IconVN = REPLACE(IconVN,
+        'https://www.sabavn.com',
+        'https://sabavn.net')
+WHERE
+    IconVN like '%https://www.sabavn.com%';
+
+
+UPDATE sabasports.livescore_league
 SET 
     IconVN = REPLACE(IconVN,
         'https://www.sabavn.com',
@@ -54,3 +63,11 @@ SET
 WHERE
     IconVN like '%https://www.sabavn.com%';
 	
+	
+UPDATE sabasports.livescore_league
+SET 
+    CountryIconVN = REPLACE(CountryIconVN,
+        'https://www.sabavn.com',
+        'https://sabavn.net')
+WHERE
+    CountryIconVN like '%https://www.sabavn.com%';
