@@ -36,7 +36,6 @@ WHERE
     EmailContent like '%https://www.sabavn.com%';
 	
 
-/* update banner link */
 UPDATE sabasports.wp_options 
 SET 
     option_value = REPLACE(option_value,
