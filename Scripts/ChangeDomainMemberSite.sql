@@ -7,6 +7,7 @@ SET
 WHERE
     post_content like '%https://www.sabavn.com%'
 LIMIT 10000;
+
     
 UPDATE sabasports.wp_posts 
 SET 
