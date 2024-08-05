@@ -2,25 +2,27 @@
 UPDATE sabasports.wp_posts 
 SET 
     post_content = REPLACE(post_content,
-        'vncdn.sabasports.com',
-        'cdn.sabavn.com')
+        'cdn.sabavn.com',
+        'cdn.sabavn.net')
 WHERE
-    post_content like '%vncdn.sabasports.com%';
+    post_content like '%cdn.sabavn.com%';
+LIMIT 10000;
     
 
 UPDATE sabasports.wp_posts 
 SET 
     guid = REPLACE(guid,
-        'vncdn.sabasports.com',
-        'cdn.sabavn.com')
+        'cdn.sabavn.com',
+        'cdn.sabavn.net')
 WHERE
-    guid like '%vncdn.sabasports.com%' AND post_type = "attachment";
+    guid like '%cdn.sabavn.com%' AND post_type = "attachment";
+LIMIT 10000;
 	
 
 UPDATE sabasports.wp_postmeta
 SET 
     meta_value = REPLACE(meta_value,
-        'vncdn.sabasports.com',
-        'cdn.sabavn.com')
+        'cdn.sabavn.com',
+        'cdn.sabavn.net')
 WHERE
-    meta_value like '%vncdn.sabasports.com%';
+    meta_value like '%cdn.sabavn.com%';
