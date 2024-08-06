@@ -173,11 +173,11 @@ export class AppContainer extends Component {
                                 <div className="about-livescore-text">
                                     Bước 1: Người dùng phải cần có điện thoại thông minh, dễ dàng kết nối Internet như máy tính bàn, laptop, máy tính bảng…<br />
                                     Bước 2: Người dùng truy cập trình duyệt web rồi gõ ” SABAVN” để tìm kiếm  <br />
-                                    Bước 3: Khi website SABAVN.COM hiện ra thì bạn có thể thoải mái truy cập các thông tin hay các trận đấu bóng mà bạn muốn xem.<br />
+                                    Bước 3: Khi website SABAVN.NET hiện ra thì bạn có thể thoải mái truy cập các thông tin hay các trận đấu bóng mà bạn muốn xem.<br />
                                     Ngoài ra bạn có thể đăng ký thành viên để lựa chọn thêm các giải đấu mà bạn quan tâm. SABAVN sẽ gửi thông tin cho bạn khi có các trận TRỰC TIẾP MỚI NHẤT.
                                 </div>
                                 <div className="about-livescore-text">
-                                    Các bạn hãy nhanh tay truy cập SABAVN.COM kênh xem trực tiếp bóng đá hot nhất hiện này để hòa mình vào không khí bóng đá sôi động, hình ảnh chân thực, sắc nét. Sự ủng hộ và đồng hành của các bạn sẽ luôn là động lực to lớn để kênh của chúng tôi ngày càng phát triển mạnh mẽ và có cơ hội để người dùng trải nghiệm những dịch vụ tuyệt vời nhất mà kênh của chúng tôi đem lại. Sự hài lòng của các bạn là món quà vô giá đối với chúng tôi.
+                                    Các bạn hãy nhanh tay truy cập SABAVN.NET kênh xem trực tiếp bóng đá hot nhất hiện này để hòa mình vào không khí bóng đá sôi động, hình ảnh chân thực, sắc nét. Sự ủng hộ và đồng hành của các bạn sẽ luôn là động lực to lớn để kênh của chúng tôi ngày càng phát triển mạnh mẽ và có cơ hội để người dùng trải nghiệm những dịch vụ tuyệt vời nhất mà kênh của chúng tôi đem lại. Sự hài lòng của các bạn là món quà vô giá đối với chúng tôi.
                                 </div>
                             </div>
                         )  :  (
@@ -188,7 +188,7 @@ export class AppContainer extends Component {
                                     thần không thể thiếu đối với người Việt.
                                 </div>
                                 <div className="about-livescore-text">
-                                    Tại SABAVN.com, quý độc giả sẽ tìm thấy lịch thi đấu bóng đá hôm nay của các giải đấu hàng đầu trên toàn cầu như 
+                                    Tại SABAVN.net, quý độc giả sẽ tìm thấy lịch thi đấu bóng đá hôm nay của các giải đấu hàng đầu trên toàn cầu như 
                                     Ngoại hạng Anh, FA Cup, C1, C2, C3, La Liga, Serie A, Cup Liên đoàn, Bundesliga, UEFA Nations League, cùng nhiều giải giao hữu quan trọng khác.
                                 </div>
                                 <div className="about-livescore-text">
@@ -201,7 +201,7 @@ export class AppContainer extends Component {
                                 </div>
                                 <div className="about-livescore-text">
                                     Bạn sẽ tìm thấy lịch bóng đá hôm nay của Juventus, PSG, Tottenham, và cả lịch thi đấu U19 Việt Nam, U23 Việt Nam, ĐT Việt Nam, lịch trực tiếp bóng đá V-League của HAGL, 
-                                    Hà Nội, SLNA, Thanh Hóa, Công An Hà Nội tại SABAVN.com.
+                                    Hà Nội, SLNA, Thanh Hóa, Công An Hà Nội tại SABAVN.net.
                                 </div>
                                 <div className="about-livescore-text">
                                     SABAVN không chỉ cập nhật lịch trực tiếp và lịch phát sóng bóng đá hôm nay trên các 
