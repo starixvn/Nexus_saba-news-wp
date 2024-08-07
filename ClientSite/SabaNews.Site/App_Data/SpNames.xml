@@ -118,7 +118,7 @@
     <Function Name="Auth">
         <Setting Key="user_create" SpName="user_create_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="user_get_login" SpName="user_get_login" DbName="sabasports" Plain="0" />
-        <Setting Key="user_create_token_confirm" SpName="user_create_token_confirm" DbName="sabasports" Plain="0" />
+        <Setting Key="user_create_token_confirm" SpName="user_create_token_confirm_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="user_confirm_email" SpName="user_confirm_email" DbName="sabasports" Plain="0" />
         <Setting Key="user_create_token_reset" SpName="user_create_token_reset" DbName="sabasports" Plain="0" />
         <Setting Key="user_verify_token_reset" SpName="user_verify_token_reset" DbName="sabasports" Plain="0" />

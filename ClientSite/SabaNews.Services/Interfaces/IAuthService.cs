@@ -13,7 +13,7 @@
 
         bool ComparePassword(string plainText, string encrypt);
 
-        Task<CommandResult> CreateTokenConfirmEmail(string email, string token);
+        Task<CommandResult> CreateTokenConfirmEmail(ConfirmEmailModel model);
 
         Task<CommandResult> ConfirmEmailAsync(int userId, string token);
 

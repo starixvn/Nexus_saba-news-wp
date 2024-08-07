@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Mvc;
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -60,7 +61,7 @@
             if (commandResult.IsSuccessful)
             {
                 var token = Guid.NewGuid().ToString();
-                commandResult = await authService.CreateTokenConfirmEmail(model.Email, token);
+                commandResult = await authService.CreateTokenConfirmEmail(new ConfirmEmailModel { Email = model.Email, Token = token });
                 if (!commandResult.IsSuccessful)
                 {
                     return Json(commandResult);
@@ -68,6 +69,27 @@
                 string url = Url.Action("ConfirmEmail", "Auth", new { UserId = model.Id, token }, Request.Scheme);
                 await authService.SendMailConfirmationAsync(model.Email, url);
             }
+            return Json(commandResult);
+        }
+
+         [HttpGet]
+        public IActionResult SendEmailConfirm()
+        {
+            return PartialView("_ConfirmEmail");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendEmailConfirm(string email)
+        {
+            var token = Guid.NewGuid().ToString();
+            var model = new ConfirmEmailModel { Email = email, Token = token };
+            var commandResult = await authService.CreateTokenConfirmEmail(model);
+            if (!commandResult.IsSuccessful)
+            {
+                return Json(commandResult);
+            }
+            string url = Url.Action("ConfirmEmail", "Auth", new { model.UserId, token }, Request.Scheme);
+            await authService.SendMailConfirmationAsync(email, url);
             return Json(commandResult);
         }
 
@@ -102,6 +124,8 @@
             await authService.SendMailResetPasswordAsync(user.Email, url);
             return Json(commandResult);
         }
+
+       
 
         [HttpGet]
         public async Task<IActionResult> ResetPassword(int userId, string token)

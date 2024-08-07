@@ -6,6 +6,8 @@
 
         public string Token { get; set; }
 
+        public long UserId { get; set; }
+
         public override string GetSettingKey() => "user_create_token_confirm";
 
         public override bool IsValid() => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Token);

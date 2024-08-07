@@ -1,5 +1,15 @@
 ﻿var auth = (function ($) {
-    
+    var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    const EmailEmptyErr = "Hãy nhập email";
+    const EmailIsValidErr = "Email không hợp lệ";
+    const EmailExistedErr = "Email này đã tồn tại";
+    const NameEmptyErr = "Hãy nhập tên";
+    const PasswordEmptyErr = "Hãy nhập mật khẩu";
+    const PasswordInvalidErr = "Mật khẩu phải dài ít nhất 8 ký tự và bao gồm chữ cái viết hoa, số và ký tự đặc biệt";
+    const ConfirmPasswordEmptyErr = "Hãy xác thực mật khẩu";
+    const ConfirmPasswordIsvalidErr = "Mật khẩu không hợp lệ";
+    const PhoneEmptyErr = "Hãy nhập số điện thoại";
+    const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
     function GetModalLogin(returnUrl, openForm) {
         $.ajax({
             url: '/Auth/Index',
@@ -30,6 +40,7 @@
                 });
                 HandleValidate();
                 HandleForgotPassword();
+                HandleConfirmEmail();
                 HandleModal(openForm);
             }
         });
@@ -48,10 +59,9 @@
             let err = $(this).parent().find("#email-error");
             if(err.length === 0) return false;
             let email = $(this).val();
-            let mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             err.hide();
             if(!mailFormat.test(email) || email === "") {
-                let message = email ==="" ? "Vui lòng nhập email" : "Email không có thật"
+                let message = email ==="" ? EmailEmptyErr : EmailIsValidErr
                 err.html(message)
                 err.show();
             }
@@ -70,7 +80,7 @@
             let val = $(this).val();
             err.html('');
             if(val === "") {
-                let message =  "vui lòng nhập số diện thoại";
+                let message =  PhoneEmptyErr;
                 err.html(message)
             }
         });
@@ -82,7 +92,7 @@
             let val = $(this).val();
             err.hide();
             if(val === "") {
-                let message = "Vui lòng nhập mật khẩu";
+                let message = PasswordEmptyErr;
                 err.html(message)
                 err.show();
             }
@@ -94,7 +104,7 @@
             let val = $(this).val();
             err.hide();
             if(val === "") {
-                let message = "Vui lòng nhập tên";
+                let message = NameEmptyErr;
                 err.html(message)
                 err.show();
             }
@@ -107,9 +117,9 @@
             err.hide();
             let message = "";
             if(val === "") {
-                message = "Hãy nhập mật khẩu";
-            } else if(val.length < 6) {
-                message = "Mật khẩu ít nhất 6 kí tự";
+                message = PasswordEmptyErr;
+            } else if(val.length < 8) {
+                message = PasswordInvalidErr;
             }
             if(message !== "") {
                 err.html(message)
@@ -125,9 +135,9 @@
             let message = "";
             err.hide();
             if(val === "") {
-                message = "Vui lòng xác thực mật khẩu";
+                message = ConfirmPasswordEmptyErr;
             } else if(password !== val) {
-                message = "Xác thực mật khẩu sai";
+                message = ConfirmPasswordIsvalidErr;
             }
             if(message !== "") {
                 err.html(message)
@@ -139,7 +149,6 @@
 
     function HandleLoginAcc(returnUrl) {
         var email = document.querySelector("#form-login > div:nth-child(2) > input").value;
-        var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         var password = document.querySelector("#form-login > div:nth-child(3) > input").value;
 
         $("#email-error").remove();
@@ -151,7 +160,7 @@
             aTag.id = "email-error";
             aTag.htmlFor = "email";
             aTag.classList.add("error");
-            aTag.innerHTML = email === "" ? "Hãy nhập email" : "Email không có thật";
+            aTag.innerHTML = email === "" ? EmailEmptyErr : EmailIsValidErr;
             document.querySelector("#form-login > div:nth-child(2)").append(aTag);
         }
 
@@ -161,7 +170,7 @@
             aTag.id = "password-error";
             aTag.htmlFor = "password";
             aTag.classList.add("error");
-            aTag.innerHTML = "Hãy nhập mật khẩu";
+            aTag.innerHTML = PasswordEmptyErr;
             document.querySelector("#form-login > div:nth-child(3)").append(aTag);
         }
 
@@ -196,36 +205,38 @@
         var confirmPassword = $("#form-register input[name=confirmPassword]").val();
         var birthday = $('#form-register input[name=birthday]').val();
         var phone = $('#form-register input[name=phone]').val();
-
-        var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        
         let isValid = true;
 
         $('.error').html('');
         if(name === ""){
             isValid = false;
-            $("#form-register #name-error").text('Vui lòng nhập tên');
+            $("#form-register #name-error").text(NameEmptyErr);
         }
 
         if(phone === '') {
             isValid = false;
-            $("#form-register #phone-error").text('Vui lòng nhập số điện thoại');
+            $("#form-register #phone-error").text(PhoneEmptyErr);
+        }
+        if(!phone.startsWith("0") || phone.length != 10 ) {
+            $("#form-register #phone-error").text(PhoneIsvalidErr);
         }
 
         if (!mailFormat.test(email) || email === ""){
             isValid = false;
-            var msg = email === "" ? "Vui lòng nhập email" : "Email không có thật";
+            var msg = email === "" ? EmailEmptyErr : EmailIsValidErr;
             $("#form-register #email-error").text(msg);
         }
 
-        if (password === "" || password.length < 6){
+        if (password === "" || password.length < 8){
             isValid = false;
-            var msg = password.length < 6 ? "Mật khẩu ít nhất 6 kí tự" : "Hãy nhập mật khẩu";
+            var msg = password.length < 8 ? PasswordInvalidErr : PasswordEmptyErr;
             $("#form-register #password-error").text(msg);
         }
 
         if (confirmPassword === "" || password != confirmPassword){
             isValid = false;
-            var msg = confirmPassword === "" ? "Vui lòng xác thực mật khẩu" : "Xác thực mật khẩu sai";
+            var msg = confirmPassword === "" ? ConfirmPasswordEmptyErr : ConfirmPasswordIsvalidErr;
             $("#form-register #confirmPassword-error").text(msg);
         }
         if(isValid){
@@ -281,7 +292,6 @@
 
     function HandleSubmitForgotPassword() {
         var email = document.querySelector("#form-forgot-password > div > input").value;
-        var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         if (!mailFormat.test(email) || email === ""){
             $("#email-error").remove();
             flag = false;
@@ -289,7 +299,7 @@
             aTag.id = "email-error";
             aTag.htmlFor = "email";
             aTag.classList.add("error");
-            aTag.innerHTML = email === "" ? "Hãy nhập email" : "Email không có thật";
+            aTag.innerHTML = email === "" ? EmailEmptyErr : EmailIsValidErr;
             document.querySelector("#form-forgot-password > div").append(aTag);
         }
 
@@ -317,6 +327,55 @@
                 }
             });
         }
+    }
+
+    function HandleConfirmEmail() {
+        $('#confirm-email').on('click', function () {
+            $.ajax({
+                url: '/Auth/SendEmailConfirm',
+                type: "GET",
+                dataType: 'html',
+                success: function (response) {
+                    $('#authModal').html(response);
+                    HandleSubmitConfirmEmail();
+                }
+            });
+        });
+    }
+
+    function HandleSubmitConfirmEmail() {
+        $("#form-confirm-email button").on('click', (e) => {
+            e.preventDefault();
+            var email = $('#form-confirm-email input[name="email"]').val();
+            if(!mailFormat.test(email) || email == '') {
+                var err_message = email == '' ? EmailIsValidErr : EmailExistedErr;
+                $(this).parent().find('.error').text(err_message);
+                return false;
+            }
+            var self = $(this);
+            self.prop('disabled', true);
+            self.addClass('btn-disabled');
+
+            $.ajax({
+                url: '/Auth/SendEmailConfirm',
+                method: 'POST',
+                data: { email },
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        const html = "Chúng tôi đã gửi email đến địa chỉ <b>{0}</b> để xác thực và kích hoạt tài khoản.</div>',";
+                        const bodyModal = formatString(html, email);
+                        $('#authModal .modal-body').html(bodyModal);
+                    } else {
+                        $('#authModal form#form-confirm-email').find('.summary-eror').text(res.message);
+                        self.prop('disabled', false);
+                        self.removeClass('btn-disabled');
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ': ' + errorThrown);
+                }
+            });
+        });
     }
 
     function HandleModal(openForm) {
@@ -349,7 +408,6 @@
 
     function AddEmailValidation() {
         var email = document.querySelector("#form-login > div:nth-child(2) > input").value;
-        var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         if (!mailFormat.test(email)){
             $("#email-error").remove();
             flag = false;
@@ -357,7 +415,7 @@
             aTag.id = "email-error";
             aTag.htmlFor = "email";
             aTag.classList.add("error");
-            aTag.innerHTML = "Email không có thật";
+            aTag.innerHTML = "Email không hợp lệ";
             document.querySelector("#form-login > div:nth-child(2)").append(aTag);
         }
     }

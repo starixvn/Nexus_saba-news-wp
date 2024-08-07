@@ -60,14 +60,17 @@
             return BCrypt.Verify(plainText, encrypt);
         }
 
-        public async Task<CommandResult> CreateTokenConfirmEmail(string email, string token)
+        public async Task<CommandResult> CreateTokenConfirmEmail(ConfirmEmailModel model)
         {
-            CreateTokenConfirmEmailCommand command = new CreateTokenConfirmEmailCommand
+            CreateTokenConfirmEmailCommand command = new()
             {
-                Email = email,
-                Token = token
+                Email = model.Email,
+                Token = model.Token
             };
-            return await baseService.ExecuteNonQueryAsync(command);
+            var result =  await baseService.ExecuteNonQueryAsync(command);
+            model.UserId = command.UserId;
+            return result;
+
         }
 
         public async Task<CommandResult> ConfirmEmailAsync(int userId, string token)
