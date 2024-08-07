@@ -1,5 +1,6 @@
 ﻿var auth = (function ($) {
     var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
     const EmailEmptyErr = "Hãy nhập email";
     const EmailIsValidErr = "Email không hợp lệ";
     const EmailExistedErr = "Email này đã tồn tại";
@@ -118,7 +119,7 @@
             let message = "";
             if(val === "") {
                 message = PasswordEmptyErr;
-            } else if(val.length < 8) {
+            } else if(!passwordFormat.test(val)) {
                 message = PasswordInvalidErr;
             }
             if(message !== "") {
@@ -228,7 +229,7 @@
             $("#form-register #email-error").text(msg);
         }
 
-        if (password === "" || password.length < 8){
+        if (password === "" || !passwordFormat.test(password)){
             isValid = false;
             var msg = password.length < 8 ? PasswordInvalidErr : PasswordEmptyErr;
             $("#form-register #password-error").text(msg);
