@@ -10,6 +10,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_update_info`(
     IN _phone VARCHAR(200),
     IN _gender VARCHAR(200),
     IN _photo LONGTEXT,
+    IN _yearOfBirth LONGTEXT,
     IN _isSubscribe INT,
 	OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)
@@ -17,15 +18,12 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_update_info`(
 		Creator: Hank@20220720
         Revisions:
 			- 20220720@Hank: init
+            - 20240808@Hank: update yearOfBirth field
     */
 )
 user_update_info:BEGIN
 
 	DECLARE UserExists INT;
-    DECLARE checkPhoneExist INT;
-    DECLARE checkGenderExist INT;
-    DECLARE checkPhotoExist INT;
-    DECLARE checkIsSubscribe INT;
     DECLARE checkName VARCHAR(200);
     DECLARE LogData LONGTEXT;
     
@@ -58,8 +56,7 @@ user_update_info:BEGIN
         
     END IF;
     
-    SELECT count(*) INTO checkPhoneExist FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'phone';
-    IF(checkPhoneExist > 0)
+    IF(EXISTS(SELECT * FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'phone'))
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _phone
@@ -75,8 +72,24 @@ user_update_info:BEGIN
 		_phone);
     END IF;
     
-    SELECT count(*) INTO checkGenderExist FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'gender';
-    IF(checkGenderExist > 0)
+    IF(EXISTS (SELECT *  FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'year_of_birth'))
+    THEN
+		UPDATE `wp_usermeta`
+        SET meta_value = _yearOfBirth
+        WHERE user_id = UserID AND meta_key = 'year_of_birth';
+	ELSE 
+		 INSERT INTO `wp_usermeta`
+		(`user_id`,
+		`meta_key`,
+		`meta_value`)
+		VALUES
+		(UserID,
+		'year_of_birth',
+		_yearOfBirth);
+    END IF;
+    
+    
+    IF(EXISTS(SELECT * FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'gender'))
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _gender
@@ -92,8 +105,8 @@ user_update_info:BEGIN
 		_gender);
     END IF;
     
-    SELECT count(*) INTO checkPhotoExist FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'photo';
-    IF(checkPhotoExist > 0)
+    
+    IF(EXISTS(SELECT * FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'photo'))
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _photo
@@ -109,8 +122,8 @@ user_update_info:BEGIN
 		_photo);
     END IF;
     
-    SELECT count(*) INTO checkIsSubscribe FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'is_subscribe';
-    IF(checkIsSubscribe > 0)
+    
+    IF(EXISTS(SELECT * FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'is_subscribe'))
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _isSubscribe
