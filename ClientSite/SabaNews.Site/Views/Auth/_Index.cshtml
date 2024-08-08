@@ -35,7 +35,7 @@
                                 </div>
                                 <button type="submit" class="btn-login">@ViewResources.Login</button>
                                 <a href="javascript:;" id="forgot-password">@ViewResources.ForgotPassword</a>
-                                <a href="javascript:;" id="confirm-email">Gửi mail xác thực</a>
+                                @* <a href="javascript:;" id="confirm-email">Gửi mail xác thực</a> *@
                             </form>
                         </div>
                         <div class="login-fb-google">
@@ -79,8 +79,10 @@
                                     <label id="confirmPassword-error" class="error"></label>
                                 </div>
                                  <div class="form-modal"  >
+                                    @{ var currentYear = DateTime.Now.Year; }
                                     <select  name="yearOfBirth" class="input-form" aria-placeholder="năm sinh">
-                                        @for(int i = 1990 ;  i <= DateTime.Now.Year ; i++)
+                                        <option class="default" disabled hidden value="" selected="selected">Năm sinh</option>
+                                        @for(int i = currentYear - 18 ;  i >= currentYear - 100 ; i--)
                                         {
                                             <option>@i</option>
                                         }

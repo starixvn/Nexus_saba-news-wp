@@ -6,7 +6,7 @@
     const EmailExistedErr = "Email này đã tồn tại";
     const NameEmptyErr = "Hãy nhập tên";
     const PasswordEmptyErr = "Hãy nhập mật khẩu";
-    const PasswordInvalidErr = "Mật khẩu phải dài ít nhất 8 ký tự và bao gồm chữ cái viết hoa, số và ký tự đặc biệt";
+    const PasswordIsvalidErr = "Mật khẩu phải dài ít nhất 8 ký tự và bao gồm chữ cái viết hoa, số và ký tự đặc biệt";
     const ConfirmPasswordEmptyErr = "Hãy xác thực mật khẩu";
     const ConfirmPasswordIsvalidErr = "Mật khẩu không hợp lệ";
     const PhoneEmptyErr = "Hãy nhập số điện thoại";
@@ -120,7 +120,7 @@
             if(val === "") {
                 message = PasswordEmptyErr;
             } else if(!passwordFormat.test(val)) {
-                message = PasswordInvalidErr;
+                message = PasswordIsvalidErr;
             }
             if(message !== "") {
                 err.html(message)
@@ -231,7 +231,7 @@
 
         if (password === "" || !passwordFormat.test(password)){
             isValid = false;
-            var msg = password.length < 8 ? PasswordInvalidErr : PasswordEmptyErr;
+            var msg = password == "" ? PasswordEmptyErr : PasswordIsvalidErr;
             $("#form-register #password-error").text(msg);
         }
 
