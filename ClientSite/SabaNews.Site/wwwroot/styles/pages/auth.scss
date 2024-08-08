@@ -3,7 +3,10 @@
 
 
 
-
+input::-ms-reveal,
+input::-ms-clear {
+display: none;
+}
 .main {
     @include tableMobile {
         position: relative;

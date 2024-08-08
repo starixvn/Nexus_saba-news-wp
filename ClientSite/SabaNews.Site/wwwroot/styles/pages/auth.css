@@ -2,6 +2,11 @@
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
 @media screen and (max-width: 1024px) {
   .main {
     position: relative;
