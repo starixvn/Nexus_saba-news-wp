@@ -235,12 +235,13 @@
         width: 4rem;
         cursor: pointer;
         position: absolute;
-        top: 14px;
+        top: 0;
         right: 0;
         z-index: 999;
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 4.2rem;
         .icon-form {
             height: 100%;
             display: flex;
