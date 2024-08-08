@@ -4,33 +4,36 @@ DROP PROCEDURE IF EXISTS user_create;
 DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create`(
-    IN _name NVARCHAR(100),
+	IN _name NVARCHAR(200),
     IN _email VARCHAR(100),
     IN _password VARCHAR(200),
+    IN _phone VARCHAR(20),
+    IN _yearOfBirth VARCHAR(50),
     OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100),
     OUT UserId INT
     /*
 		Creator: Hank@20220720
-      Revisions:
-			  - 20220720@Hank: init
+        Revisions:
+			- 20220720@Hank: init
+            - 20240808@Hank: _phone, _yearOfBirth
     */
 )
 User_Create:BEGIN
 
 	DECLARE UserExists INT;
     
-	SELECT 1
+	SELECT 1 
 	INTO UserExists
 	FROM `wp_users`
 	WHERE user_login = _email OR user_email = _email;
-
+    
     IF (UserExists = 1) THEN
 		SET ErrCode = 1,
 			ErrMsg = 'Email đã tồn tại';
         LEAVE User_Create;
 	END IF;
-
+    
 	INSERT INTO `wp_users`
 	(`user_login`,
 	`user_pass`,
@@ -60,7 +63,7 @@ User_Create:BEGIN
 	'nickname',
 	_name);
     
-  INSERT INTO `wp_usermeta`
+    INSERT INTO `wp_usermeta`
 	(`user_id`,
 	`meta_key`,
 	`meta_value`)
@@ -68,6 +71,24 @@ User_Create:BEGIN
 	(UserId,
 	'first_name',
 	_name);
+    
+	INSERT INTO `wp_usermeta`
+	(`user_id`,
+	`meta_key`,
+	`meta_value`)
+	VALUES
+	(UserId,
+	'phone',
+	_phone);
+    
+     INSERT INTO `wp_usermeta`
+	(`user_id`,
+	`meta_key`,
+	`meta_value`)
+	VALUES
+	(UserId,
+	'year_of_birth',
+	_yearOfBirth);
     
     INSERT INTO `wp_usermeta`
 	(`user_id`,

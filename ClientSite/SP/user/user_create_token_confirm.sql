@@ -6,18 +6,19 @@ DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create_token_confirm`(
 	IN Email VARCHAR(200),
     IN Token VARCHAR(200),
+    OUT UserId BIGINT,
     OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)
     /*
 		Creator: Hank@20220720
         Revisions:
 			- 20220720@Hank: init
+			- 20240808@Hank: add output UserId
     */
 )
 User_Create_Token_Confirm:BEGIN
 
-	DECLARE UserId INT;
-    DECLARE UMetaId INT;
+    DECLARE UMetaId BIGINT;
     SET UserId = -1;
     SET UMetaId = -1;
     
@@ -29,7 +30,15 @@ User_Create_Token_Confirm:BEGIN
     
     IF (UserId = -1) THEN
 		SET ErrCode = 1,
-			ErrMsg = 'User does not exist';
+			ErrMsg = 'User không tồn tại';
+        LEAVE User_Create_Token_Confirm;
+	END IF;
+    
+    
+    IF (EXISTS(SELECT * FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key='email_confirmed' AND um.meta_value = '1')) 
+    THEN
+		SET ErrCode = 1,
+			ErrMsg = 'User này đã đăng ký thành công';
         LEAVE User_Create_Token_Confirm;
 	END IF;
     
@@ -39,7 +48,7 @@ User_Create_Token_Confirm:BEGIN
     WHERE m.user_id = UserId AND m.meta_key = 'token_confirmed';
     
     IF (UMetaId = -1) THEN
-		INSERT INTO `wp_usermeta`
+		 INSERT INTO `wp_usermeta`
 		(`user_id`,
 		`meta_key`,
 		`meta_value`)
