@@ -25,14 +25,11 @@
   position: relative;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
 }
-.auth-form .modal-auth .modal-body {
-  padding: 0;
-}
 .auth-form .modal-auth .modal-title {
   margin-bottom: 1.5rem;
 }
 .auth-form .modal-auth .modal-resetpass, .auth-form .modal-auth .modal-body {
-  padding: 2.4rem 2rem;
+  padding: 3rem;
 }
 @media (max-width: 767px) {
   .auth-form .modal-auth .modal-resetpass, .auth-form .modal-auth .modal-body {
@@ -56,7 +53,7 @@
   text-align: center;
 }
 .auth-form .modal-auth .headig-modal {
-  text-align: left;
+  text-align: center;
   font-size: 1.6rem;
   color: #222;
   margin-bottom: 1.6rem;
@@ -126,6 +123,11 @@
 .auth-form .modal-auth .login-tab, .auth-form .modal-auth .register-tab {
   display: flex;
   margin-top: 2.4rem;
+}
+@media (max-width: 767px) {
+  .auth-form .modal-auth .login-tab, .auth-form .modal-auth .register-tab {
+    padding-bottom: 2rem;
+  }
 }
 .auth-form .modal-auth .login-tab .group-tab, .auth-form .modal-auth .register-tab .group-tab {
   padding: 0 2.4rem 0 0;

@@ -28,18 +28,13 @@
         border-radius: 0;
         position: relative;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
-        .modal-body {
-            padding: 0;
-        }
-
         .modal-title {
             margin-bottom: 1.5rem;
         }
 
         .modal-resetpass, .modal-body {
-            padding: 2.4rem 2rem;
-
-            @include Mobile {
+            padding: 3rem;
+            @include Mobile{
                 padding: 1rem;
             }
 
@@ -64,7 +59,7 @@
         }
 
         .headig-modal {
-            text-align: left;
+            text-align: center;
             font-size: 1.6rem;
             color: $color-title;
             margin-bottom: 1.6rem;
@@ -136,6 +131,9 @@
         .login-tab, .register-tab {
             display: flex;
             margin-top: 2.4rem;
+            @include Mobile{
+                padding-bottom: 2rem;
+            }
             .group-tab {
                 padding: 0 2.4rem 0 0;
                 border-right: 1px solid $border-calendar;
