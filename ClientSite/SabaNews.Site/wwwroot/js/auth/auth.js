@@ -220,8 +220,7 @@
         if(phone === '') {
             isValid = false;
             $("#form-register #phone-error").text(PhoneEmptyErr);
-        }
-        if(!phone.startsWith("0") || phone.length != 10 ) {
+        }  else if(!phone.startsWith("0") || phone.length != 10 ) {
             isValid = false;
             $("#form-register #phone-error").text(PhoneIsvalidErr);
         }
