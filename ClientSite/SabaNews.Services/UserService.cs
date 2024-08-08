@@ -48,6 +48,7 @@
                 _phone = user.Phone,
                 _gender = user.Gender,
                 _photo = user.Photo,
+                _yearOfBirth = user.YearOfBirth,
                 _isSubscribe = user.IsSubscribe
             };
             

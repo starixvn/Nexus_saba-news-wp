@@ -9,5 +9,7 @@
         public const string Gender = "gender";
 
         public const string IsSubscribe = "subscribe";
+
+        public const string YearOfBirth = "year_of_birth";
     }
 }

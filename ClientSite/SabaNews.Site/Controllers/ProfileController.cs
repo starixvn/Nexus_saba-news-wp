@@ -151,6 +151,9 @@
                 case ProfileUpdateType.Gender:
                     user.Gender = value;
                     break;
+                case ProfileUpdateType.YearOfBirth:
+                    user.YearOfBirth = value;
+                    break;
                 case ProfileUpdateType.IsSubscribe:
                     user.IsSubscribe = int.Parse(value);
                     break;

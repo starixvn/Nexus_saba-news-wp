@@ -7,7 +7,13 @@
 }
 
 @section Scripts{
-	<script src="~/minify/js/update_profile.min.js" asp-append-version="true"></script>
+	<environment include="Development">
+		<script src="~/js/profile/update_profile.js" asp-append-version="true"></script>
+	</environment>
+	<environment exclude="Development">
+		<script src="~/minify/js/update_profile.min.js" asp-append-version="true"></script>
+	</environment>
+	
 }
 
 <div class="auth-form">
@@ -267,11 +273,24 @@
 						</div>
 						<div class="right-table">
 							<div class="box-control">
-								<div class="main-fill gender-section">
+								<div class="main-fill yearOfBirth-section">
 									<ul class="txt-fill">
 										@Model.User.YearOfBirth
 									</ul>
 								</div>
+								<a href="#" class="action social-action">@(Model.User.YearOfBirth == null ?  ViewResources.Add : ViewResources.Change)</a>
+							</div>
+							<div class="box-edit-form" id="form_update_yearOfBirth">
+								<div class="title">Năm sinh</div>
+								@{ var currentYear = DateTime.Now.Year; }
+								<select  name="yearOfBirth" class="input-edit select-form">
+									@for(int i = currentYear - 18 ;  i >= currentYear - 100 ; i--)
+									{
+										<option class="orther-color">@i</option>
+									}
+								</select>
+								<button class="btn-submit-edit btn-save-yearOfBirth " data-year="@Model.User.YearOfBirth" >@ViewResources.Save</button>
+								<span class="close-edit icon-close"></span>
 							</div>
 						</div>
 					</div>

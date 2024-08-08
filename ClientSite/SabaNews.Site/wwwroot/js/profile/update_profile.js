@@ -1,4 +1,5 @@
 ﻿var update_profile = (function ($) {
+    const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
     function update_saved_post() {
         $('.remove_save_post').on('click', function () {
             var self = $(this);
@@ -209,6 +210,30 @@
             });
         });
 
+        $('.btn-save-yearOfBirth').on('click', function () {
+            var yearOfBirth = $('select[name=yearOfBirth]').val();
+            var current = $(this).data('year');
+            if (yearOfBirth === current) {
+                $('#form_update_yearOfBirth').removeClass('toggle-active-form');
+                return false;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: 'Profile/UpdateProfile',
+                data: { type: 'year_of_birth', value: yearOfBirth },
+                success: function (response) {
+                    if (response.isSuccessful) {
+                        $('#form_update_yearOfBirth').removeClass('toggle-active-form');
+                        var html = '<li class="txt-feild">' + yearOfBirth + '</li>';
+                        $('.yearOfBirth-section').find('.txt-fill').html(html);
+                    } else {
+                        location.reload();
+                    }
+                }
+            });
+        });
+
         $('#profile-forgot-password').on('click', function () {
             $.ajax({
                 url: '/Auth/ForgotPassword',
@@ -227,6 +252,7 @@
                 }
             });
         });
+        
 
         $('#isSubscribe').on('change', function () {
             var value = $('#isSubscribe').is(":checked") ? 1 : 0;
