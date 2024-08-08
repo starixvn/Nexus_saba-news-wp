@@ -11,8 +11,8 @@
 var _htmlResource = {
     ButtonCloseModal: '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
     ForgotPassword: '<div>Hãy kiểm tra email <b>{0}</b></div><div>Để xem hướng dẫn lấy lại mật khẩu.</div>',
-    RegisterSuccessfully: '<h3 class="modal-title">Đăng ký thành công</h3><div>Cảm ơn Quý độc giả đã đăng ký tài khoản tại <a href="https://www.sabavn.net/">sabavn.net</a>. Chúng tôi đã gửi email đến địa chỉ <b>{0}</b> để xác thực và kích hoạt tài khoản.</div>',
-    RemindCheckMail: '<div>Nếu bạn không tìm thấy email kích hoạt tài khoản, vui lòng xem hướng dẫn <a href="{1}/kich-hoat-tai-khoan-saba-sports">tại đây</a>.',
+    RegisterSuccessfully: '<h3 class="modal-title">XÁC THỰC TÀI KHOẢN</h3><div>Vui lòng kiểm tra email <b>{0}</b>  để xác thực và hoàn tất bước đăng ký tài khoản. Đừng quên kiểm tra cả thư mục spam/junk nhé!</div>',
+    RemindCheckMail: '',
     ResetPasswordSuccessfully: '<h3>Đổi mật khẩu thành công</h3>',
     ResetButtonLogin: '<div class="auth-input">Bấm vào <span style="color:rgb(0,0,255); cursor: pointer; text-decoration:underline" class="auth-login" data-returnUrl="/">đây</span> để đăng nhập</div>'
 };
