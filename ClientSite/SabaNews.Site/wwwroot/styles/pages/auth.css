@@ -205,6 +205,12 @@
 .form-modal .input-form::placeholder {
   color: #9EA2AB;
 }
+.form-modal .select-form {
+  color: #9EA2AB;
+}
+.form-modal .orther-color {
+  color: #222;
+}
 .form-modal .toggle-pass {
   width: 4rem;
   cursor: pointer;

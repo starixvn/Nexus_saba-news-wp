@@ -80,11 +80,11 @@
                                 </div>
                                  <div class="form-modal"  >
                                     @{ var currentYear = DateTime.Now.Year; }
-                                    <select  name="yearOfBirth" class="input-form" aria-placeholder="năm sinh">
+                                    <select  name="yearOfBirth" class="input-form select-form">
                                         <option class="default" disabled hidden value="" selected="selected">Năm sinh</option>
                                         @for(int i = currentYear - 18 ;  i >= currentYear - 100 ; i--)
                                         {
-                                            <option>@i</option>
+                                            <option class="orther-color">@i</option>
                                         }
                                     </select>
                                 </div>
