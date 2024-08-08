@@ -8,7 +8,7 @@
     const PasswordEmptyErr = "Hãy nhập mật khẩu";
     const PasswordIsvalidErr = "Mật khẩu phải dài ít nhất 8 ký tự và bao gồm chữ cái viết hoa, số và ký tự đặc biệt";
     const ConfirmPasswordEmptyErr = "Hãy xác thực mật khẩu";
-    const ConfirmPasswordIsvalidErr = "Mật khẩu không hợp lệ";
+    const ConfirmPasswordIsvalidErr = "Mật khẩu không trùng khớp";
     const PhoneEmptyErr = "Hãy nhập số điện thoại";
     const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
     function GetModalLogin(returnUrl, openForm) {
@@ -60,11 +60,10 @@
             let err = $(this).parent().find("#email-error");
             if(err.length === 0) return false;
             let email = $(this).val();
-            err.hide();
+            err.html('');
             if(!mailFormat.test(email) || email === "") {
                 let message = email ==="" ? EmailEmptyErr : EmailIsValidErr
                 err.html(message)
-                err.show();
             }
         });
 
@@ -91,11 +90,10 @@
             let err = $(this).parent().find("#password-error");
             if(err.length === 0) return false;
             let val = $(this).val();
-            err.hide();
+            err.html('');
             if(val === "") {
                 let message = PasswordEmptyErr;
                 err.html(message)
-                err.show();
             }
         });
 
@@ -103,11 +101,10 @@
             let err = $(this).parent().find("#name-error");
             if(err.length === 0) return false;
             let val = $(this).val();
-            err.hide();
+            err.html('');
             if(val === "") {
                 let message = NameEmptyErr;
                 err.html(message)
-                err.show();
             }
         });
 
@@ -115,8 +112,9 @@
             let err = $(this).parent().find("#password-error");
             if(err.length === 0) return false;
             let val = $(this).val();
-            err.hide();
+            var resetPassword =   $('#form-register input[name=confirmPassword]').val();
             let message = "";
+            err.html('');
             if(val === "") {
                 message = PasswordEmptyErr;
             } else if(!passwordFormat.test(val)) {
@@ -124,7 +122,12 @@
             }
             if(message !== "") {
                 err.html(message)
-                err.show();
+            }
+            console.log(resetPassword, val);
+            if(val !== resetPassword) {
+                $('#confirmPassword-error').html(ConfirmPasswordIsvalidErr);
+            } else {
+                $('#confirmPassword-error').html('');
             }
         });
 
@@ -134,7 +137,7 @@
             let val = $(this).val();
             let password = $(this).parent().parent().find('input[name=password]').val();
             let message = "";
-            err.hide();
+            err.html('');
             if(val === "") {
                 message = ConfirmPasswordEmptyErr;
             } else if(password !== val) {
@@ -142,7 +145,6 @@
             }
             if(message !== "") {
                 err.html(message)
-                err.show();
             }
         });
     }
@@ -208,7 +210,7 @@
         var phone = $('#form-register input[name=phone]').val();
         
         let isValid = true;
-
+        $('.error').show();
         $('.error').html('');
         if(name === ""){
             isValid = false;
@@ -235,7 +237,6 @@
             var msg = password == "" ? PasswordEmptyErr : PasswordIsvalidErr;
             $("#form-register #password-error").text(msg);
         }
-
         if (confirmPassword === "" || password != confirmPassword){
             isValid = false;
             var msg = confirmPassword === "" ? ConfirmPasswordEmptyErr : ConfirmPasswordIsvalidErr;
