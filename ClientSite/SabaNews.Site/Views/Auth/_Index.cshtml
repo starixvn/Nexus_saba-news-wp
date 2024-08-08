@@ -78,8 +78,13 @@
                                     </span>
                                     <label id="confirmPassword-error" class="error"></label>
                                 </div>
-                                 <div class="form-modal">
-                                    <input type="text" class="input-form" placeholder="Năm sinh" name="birthday" />
+                                 <div class="form-modal" name="birthday" class="input-form" aria-placeholder="năm sinh">
+                                    <select>
+                                        @for(int i = 1990 ;  i <= DateTime.Now.Year ; i++)
+                                        {
+                                            <option>@i</option>
+                                        }
+                                    </select>
                                 </div>
                                 <div class="form-modal">
                                     <input type="text" class="input-form" placeholder="Số điện thoại" name="phone" />

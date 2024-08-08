@@ -29,6 +29,8 @@
 
         public string Metadata { get; set; }
 
+        public string YearOfBirth { get; set;}
+
         public DateTime RegisterDate { get; set; }
 
         public string Role => Metadata != null && Metadata.Contains(Core.Constants.Role.Administrator) ? Core.Constants.Role.Administrator : Core.Constants.Role.Customer;

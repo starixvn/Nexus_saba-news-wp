@@ -72,7 +72,7 @@
             return Json(commandResult);
         }
 
-         [HttpGet]
+        [HttpGet]
         public IActionResult SendEmailConfirm()
         {
             return PartialView("_ConfirmEmail");

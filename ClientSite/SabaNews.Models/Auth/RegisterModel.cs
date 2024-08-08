@@ -10,7 +10,7 @@
         [Required]
         public string Phone { get; set; }
 
-        public string Birthday { get; set; }
+        public string YearOfBirth { get; set; }
 
         [Required]
         public string Email { get; set; }

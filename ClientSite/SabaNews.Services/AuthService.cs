@@ -48,7 +48,8 @@
                 _Email = model.Email,
                 _Name = model.Name,
                 _Phone = model.Phone,
-                _Password = BCrypt.HashPassword(model.Password)
+                _Password = BCrypt.HashPassword(model.Password),
+                _YearOfBirth = model.YearOfBirth
             };
             CommandResult result = await baseService.ExecuteNonQueryAsync(command);
             model.Id = command.UserId;

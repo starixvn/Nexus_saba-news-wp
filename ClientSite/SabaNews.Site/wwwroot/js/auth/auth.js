@@ -204,7 +204,7 @@
         var email = $("#form-register input[name=email]").val();
         var password = $("#form-register input[name=password]").val();
         var confirmPassword = $("#form-register input[name=confirmPassword]").val();
-        var birthday = $('#form-register input[name=birthday]').val();
+        var yearOfBirth = $('#form-register select[name=yearOfBirth]').val();
         var phone = $('#form-register input[name=phone]').val();
         
         let isValid = true;
@@ -246,7 +246,7 @@
             $.ajax({
                 url: '/Auth/Register',
                 method: "POST",
-                data: {name, phone, birthday, email, password, confirmPassword},
+                data: {name, phone, yearOfBirth, email, password, confirmPassword},
                 success: function (res) {
                     if (res.isSuccessful) {
                         const email = $('#authModal form#form-register').find('input[name="email"]').val();

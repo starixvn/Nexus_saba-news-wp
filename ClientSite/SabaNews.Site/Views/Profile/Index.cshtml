@@ -139,7 +139,7 @@
 							<div class="box-edit-form" id="form_update_phone">
 								<div class="title">@ViewResources.ProfilePhoneUpdateTitle</div>
 								<input type="number" name="phone" value="" class="input-edit" placeholder="Nhập số điện thoại" />
-								<p class="error phone-error">Vui lòng nhập số điện thoại</p>
+								<p class="error phone-error">Số điện thoại không hợp lệ</p>
 								<button class="btn-submit-edit btn-save-phone btn-disabled" data-phone="@Model.User.Phone" disabled>@ViewResources.Save</button>
 								<span class="close-edit icon-close"></span>
 							</div>
@@ -260,6 +260,22 @@
 							<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 						</div>
 					</div>
+
+					<div class="group-table">
+						<div class="left-table">
+							<div class="label-fill">Năm sinh</div>
+						</div>
+						<div class="right-table">
+							<div class="box-control">
+								<div class="main-fill gender-section">
+									<ul class="txt-fill">
+										@Model.User.YearOfBirth
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
 
 					<div class="group-table">
 						<div class="left-table">

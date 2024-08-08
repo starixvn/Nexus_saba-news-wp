@@ -89,7 +89,7 @@
     function update_profile_info() {
         $('.btn-save-phone').on('click', function () {
             var phone = $('input[name=phone]').val();
-            if (phone.trim() === "") {
+            if (phone.trim() === "" || !phone.startsWith("0") || phone.length != 10) {
                 $('.phone-error').show();
                 return false;
             }
@@ -108,6 +108,7 @@
                         $('#form_update_phone').removeClass('toggle-active-form');
                         var html = '<li class="txt-feild">' + phone + '</li>';
                         $('.phone-section').find('.txt-fill').html(html);
+                        $('.phone-error').hide();
                     } else {
                         location.reload();
                     }

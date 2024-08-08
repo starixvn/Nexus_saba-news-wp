@@ -10,6 +10,8 @@
 
         public string _Phone { get ; set;}
 
+        public string _YearOfBirth { get; set; }
+
         public int UserId { get; set; }
 
         public override string GetSettingKey() => "user_create";

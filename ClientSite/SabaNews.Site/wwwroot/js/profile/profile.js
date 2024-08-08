@@ -40,7 +40,6 @@
             setTimeout(function () {
                 self.parent().find('.tip').hide();
             }, 1000);
-           
         });
     }
 
