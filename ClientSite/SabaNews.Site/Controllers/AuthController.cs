@@ -18,6 +18,8 @@
     {
         private readonly IAuthService authService;
         private readonly ISessionService sessionService;
+        private const string LoginForm = "login";
+        private const string RegisterForm = "register";
 
         public AuthController(
             IAuthService authService,
@@ -27,9 +29,10 @@
             this.sessionService = sessionService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string openForm)
         {
-            return PartialView("_Index");
+            var form = openForm == LoginForm ? "_Login" : "_Register";
+            return PartialView(form);
         }
 
         [HttpPost]

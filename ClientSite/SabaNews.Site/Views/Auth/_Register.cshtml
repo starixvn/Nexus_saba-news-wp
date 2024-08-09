@@ -1,6 +1,4 @@
-﻿@using SabaNews.Core.Constants;
-
-@* <div class="modal auth-register" id="authModal" tabindex="-1" role="dialog">
+<div class="modal auth-register" id="authModal" tabindex="-1" role="dialog">
     <div class="modal-content modal-auth">
         <div class="modal-body">
             <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
@@ -107,60 +105,4 @@
             </div>
         </div>
     </div>
-</div> *@
-
-<div class="modal auth-login" id="authModal" tabindex="-1" role="dialog">
-    <div class="modal-content modal-auth">
-        <div class="modal-body">
-            <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="main-auth">
-                <a href="#" class="auth-logo">
-                    <img src="/images/auth-logo.svg" alt="auth logo" />
-                </a>
-                <div class="login-action">
-                    <div class="group-heading">
-                        <div class="title">Đăng Nhập</div>
-                        <div class="slogan">Chào mừng bạn trở lại SABAVN.NET</div>
-                    </div>
-                    <form id="form-login">
-                        <div class="form-group-auth">
-                            <label class="label-auth">Email</label>
-                            <div class="group-input-auth">
-                                <input type="text" class="input-auth" placeholder="@ViewResources.Name" name="name" />
-                            </div>
-                        </div>
-                        <div class="form-group-auth error">
-                            <label class="label-auth">Mật khẩu</label>
-                            <div class="group-input-auth">
-                                <input type="password" name="password" class="input-auth" placeholder="@ViewResources.Password">
-                                <span class="toggle-pass">
-                                    <i class="icon-form icon-show"></i>
-                                    <i class="icon-form icon-hide" style="display: none"></i>
-                                </span>
-                            </div>
-                            <div class="validate-error">nhập mật khẩu</div>
-                        </div>
-                        <a href="#" class="forgot-pass">Quên mật khẩu</a>
-                        <div class="submit-auth">
-                            <button class="submit" type="submit">Đăng nhập</button>
-                        </div>
-                        <div class="group-question">
-                            Bạn chưa có tài khoản? <a href="#">Tạo tài khoản ngay</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-<script>
-    $(document).ready(function () {
-        $('.social-login').each(function (i, v) {
-            var href = $(this).attr("href") + window.location.pathname;
-            $(this).attr("href", href);
-        });
-    });
-</script>

@@ -12,33 +12,20 @@
     const PhoneEmptyErr = "Hãy nhập số điện thoại";
     const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
     function GetModalLogin(returnUrl, openForm) {
+        console.log(openForm);
         $.ajax({
             url: '/Auth/Index',
-            type: 'GET',
-            dataType: 'html',
+            type: 'POST',
+            data: { openForm },
             success: function (response) {
                 $('#auth-form').html(response);
                 $('#authModal').modal('show');
 
-                document.querySelector("#form-login > div:nth-child(2) > input").addEventListener('blur', (e) => {
-                    e.preventDefault();
-                    AddEmailValidation();
-                });
-
-                document.querySelector("#form-login > div:nth-child(3) > input").addEventListener('blur', (e) => {
-                    e.preventDefault();
-                    AddPasswordValidation();
-                });
-
-                document.querySelector("#form-login > button").addEventListener('click', (e) => {
-                    e.preventDefault();
-                    HandleLoginAcc(returnUrl);
-                });
-                
-                document.querySelector("#form-register > button").addEventListener('click', (e) => {
-                    e.preventDefault();
-                    HandleRegister();
-                });
+                HandleLogin(returnUrl);
+                // document.querySelector("#form-register > button").addEventListener('click', (e) => {
+                //     e.preventDefault();
+                //     HandleRegister();
+                // });
                 HandleValidate();
                 HandleForgotPassword();
                 HandleConfirmEmail();
@@ -48,22 +35,25 @@
     }
 
     function HandleAuth() {
-        $('.auth-input .auth-login').on('click', function () {
+        $(document).on('click', '.auth-input .auth-login' , function () {
             var returnUrl = $(this).data('returnurl');
-            var openForm = $(this).data('form');
-            GetModalLogin(returnUrl, openForm);
+            GetModalLogin(returnUrl, 'login');
         });
+        $(document).on('click', '.auth-register', function() {
+            $('#authModal').modal('hide');
+            var returnUrl = $(this).data('returnurl');
+            GetModalLogin(returnUrl, 'register');
+        })
+
     }
 
     function HandleValidate() {
         $('input[name=email]').on('keyup', function(){
-            let err = $(this).parent().find("#email-error");
-            if(err.length === 0) return false;
             let email = $(this).val();
-            err.html('');
+            let err = GetErrorElement($(this));
             if(!mailFormat.test(email) || email === "") {
                 let message = email ==="" ? EmailEmptyErr : EmailIsValidErr
-                err.html(message)
+                SetErrorElement(err, message)
             }
         });
 
@@ -76,54 +66,45 @@
         });
 
         $('#form-register input[name=phone]').on('keyup', function() {
-            let err = $(this).parent().find("#phone-error");
+            let err = GetErrorElement($(this));
             let val = $(this).val();
-            err.html('');
             if(val === "") {
                 let message =  PhoneEmptyErr;
-                err.html(message)
+                SetErrorElement(err, message)
             }
         });
 
 
         $('#form-login input[name=password]').on('keyup', function(){
-            let err = $(this).parent().find("#password-error");
-            if(err.length === 0) return false;
+            let err = GetErrorElement($(this));
             let val = $(this).val();
-            err.html('');
             if(val === "") {
                 let message = PasswordEmptyErr;
-                err.html(message)
+                SetErrorElement(err, message)
             }
         });
 
         $('#form-register input[name=name]').on('keyup', function(){
-            let err = $(this).parent().find("#name-error");
-            if(err.length === 0) return false;
+            let err = GetErrorElement($(this));
             let val = $(this).val();
-            err.html('');
             if(val === "") {
                 let message = NameEmptyErr;
-                err.html(message)
+                SetErrorElement(err, message)
             }
         });
 
         $('#form-register input[name=password]').on('keyup', function(){
-            let err = $(this).parent().find("#password-error");
-            if(err.length === 0) return false;
+            let err = GetErrorElement($(this));
             let val = $(this).val();
             var resetPassword =   $('#form-register input[name=confirmPassword]').val();
-            let message = "";
-            err.html('');
             if(val === "") {
                 message = PasswordEmptyErr;
             } else if(!passwordFormat.test(val)) {
                 message = PasswordIsvalidErr;
             }
             if(message !== "") {
-                err.html(message)
+                SetErrorElement(err, message)
             }
-            console.log(resetPassword, val);
             if(val !== resetPassword) {
                 $('#confirmPassword-error').html(ConfirmPasswordIsvalidErr);
             } else {
@@ -147,37 +128,47 @@
                 err.html(message)
             }
         });
+
+        function GetErrorElement(self) {
+            let err = self.parent().parent();
+            err.removeClass('error');
+            err.find('.validate-error').html('');
+            return err;
+        }
+
+        function SetErrorElement(err, mess) {
+            err.addClass('error');
+            err.find('.validate-error').html(mess);
+        }
     }
 
 
-    function HandleLoginAcc(returnUrl) {
-        var email = document.querySelector("#form-login > div:nth-child(2) > input").value;
-        var password = document.querySelector("#form-login > div:nth-child(3) > input").value;
+    function HandleLogin(returnUrl) {
+        $('#form-login  button').on('click', function(e) {
+            e.preventDefault();
+            var email = $("#form-login  input[name=email]").val();
+            var password = $("#form-login  input[name=password]").val();
+            var isValid = true;
 
-        $("#email-error").remove();
-        $("#password-error").remove();
+            $("#form-login .form-group-auth").removeClass('error');
+            $("#form-login .validate-error").html('');
 
-        if (!mailFormat.test(email) || email === ""){
-            flag = false;
-            var aTag = document.createElement("label");
-            aTag.id = "email-error";
-            aTag.htmlFor = "email";
-            aTag.classList.add("error");
-            aTag.innerHTML = email === "" ? EmailEmptyErr : EmailIsValidErr;
-            document.querySelector("#form-login > div:nth-child(2)").append(aTag);
-        }
+            if (!mailFormat.test(email) || email === ""){
+                isValid = false
+                var message = email === "" ? EmailEmptyErr : EmailIsValidErr;
+                $("#form-login .email .validate-error").html(message);
+                $("#form-login .email").addClass("error");
+            }
 
-        var check = $("#password-error").length;
-        if (password === "" && check == 0){
-            var aTag = document.createElement("label");
-            aTag.id = "password-error";
-            aTag.htmlFor = "password";
-            aTag.classList.add("error");
-            aTag.innerHTML = PasswordEmptyErr;
-            document.querySelector("#form-login > div:nth-child(3)").append(aTag);
-        }
+            if (password === "" && $("#password-error").length == 0){
+                isValid = false
+                $("#form-login .password .validate-error").html(PasswordEmptyErr);
+                $("#form-login .password").addClass("error");
+            }
+            if(!isValid) {
+                return false;
+            }
 
-        if(mailFormat.test(email) && email != "" && password != ""){
             $.ajax({
                 url: '/Auth/Login',
                 method: "POST",
@@ -198,7 +189,7 @@
                     console.log(textStatus + ': ' + errorThrown);
                 }
             });
-        }
+        })
     }
 
     function HandleRegister() {
@@ -408,33 +399,6 @@
         });
     }
 
-    function AddEmailValidation() {
-        var email = document.querySelector("#form-login > div:nth-child(2) > input").value;
-        if (!mailFormat.test(email)){
-            $("#email-error").remove();
-            flag = false;
-            var aTag = document.createElement("label");
-            aTag.id = "email-error";
-            aTag.htmlFor = "email";
-            aTag.classList.add("error");
-            aTag.innerHTML = "Email không hợp lệ";
-            document.querySelector("#form-login > div:nth-child(2)").append(aTag);
-        }
-    }
-
-    function AddPasswordValidation() {
-        var password = document.querySelector("#form-login > div:nth-child(3) > input").value;
-        var check = $("#password-error").length;
-        if (password === "" && check === 0){
-            $("#password-error").remove();
-            var aTag = document.createElement("label");
-            aTag.id = "password-error";
-            aTag.htmlFor = "password";
-            aTag.classList.add("error");
-            aTag.innerHTML = "Hãy nhập mật khẩu";
-            document.querySelector("#form-login > div:nth-child(3)").append(aTag);
-        }
-    }
 
     function init() {
         HandleAuth();
