@@ -2,11 +2,6 @@
 @import '../abstracts/_mixins.scss';
 
 
-
-input::-ms-reveal,
-input::-ms-clear {
-display: none;
-}
 .main {
     @include tableMobile {
         position: relative;
@@ -14,271 +9,245 @@ display: none;
     }
 }
 
+.form-group-auth{
+    margin-top: 1.6rem;
+    .label-auth{
+        color: #383838;
+        font-size: 1.3rem;
+        margin-bottom: .6rem;
+        font-weight: 600;
+        line-height: normal;
+        display: block;
+    }
+    .input-auth{
+        height: 3.6rem;
+        padding: .5rem 1rem;
+        color: #222;
+        box-shadow: none;
+        border-radius: 3px;
+        border: 1px solid #d1d1d1;
+        background: #FFFDF9;
+        width: 100%;
+        @include Mobile{
+            height: 4.2rem;
+        }
+        &::placeholder{
+            color: #8F8F8F;
+        }
+    }
+    .group-input-auth{
+        position: relative;
+        .toggle-pass{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(0, -50%);
+            width: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            cursor: pointer;
+            i{
+                &::before{
+                    color: #A6A6A6;
+                }
+            }
+        }
+    }
+    .validate-error{
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: normal;
+        color: #FF3B30;
+        margin-top: .2rem;
+    }
+    &.error{
+        .input-auth{
+            border: 1px solid #FF3B30;
+        }
+    }
+}
+
+
 .auth-form {
     .show {
         position: fixed;
         z-index: 99999;
         top: 50%;
-        background: $color-fff;
         right: 50%;
         transform: translate(50%,-50%);
         width: 100%;
-        max-width: 75rem;
-        &:focus-within{
-            outline: none;
-            box-shadow: none;
-            border: none;
+        &.auth-login{
+            max-width: 42rem;
+            @include Mobile{
+                max-width: 36.9rem;
+            }
+        }
+        &.auth-register{
+            max-width: 78.4rem;
+            @include Mobile{
+                max-width: 36.9rem;
+            }
         }
     }
 
     .modal-auth {
         border: none;
-        border-radius: 0;
+        border-radius: 8px;
         position: relative;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
-        .modal-title {
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-resetpass, .modal-body {
-            padding: 3rem;
+        background: #fffdf9;
+        .modal-body {
+            padding: 3rem 4rem;
             @include Mobile{
-                padding: 1rem;
-            }
-
-            .form-resetpass {
-                max-width: 42rem;
-                margin: 0 auto;
-
-                .heading-resetpass {
-                    padding-bottom: 2rem;
-                    border-bottom: 1px solid $separator-color;
-                    text-align: center;
-                    color: $color-title;
-                    font-size: 1.8rem;
-                    font-weight: 700;
-                }
-
-                .form-title {
-                    margin: 2rem 0;
-                    text-align: center;
-                }
-            }
-        }
-
-        .headig-modal {
-            text-align: center;
-            font-size: 1.6rem;
-            color: $color-title;
-            margin-bottom: 1.6rem;
-
-            @include Mobile {
-                font-size: 1.4rem;
-            }
-        }
-
-        .close-login, .close {
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            z-index: 999999;
-            cursor: pointer;
-            color: $color-content;
-            background: $color-fff;
-            border-radius: 50%;
-            line-height: 0;
-            font-size: 2.4rem;
-            outline: none;
-            border: none;
-            @include tableMobile {
-                right: 0;
-            }
-
-            &:focus {
-                outline: none;
-            }
-        }
-
-        .nav-login {
-            @include flex(center, nowrap, center);
-            list-style: none;
-
-            li {
-                width: 50%;
-                text-align: center;
-
-
-                a {
-                    text-decoration: none;
-                    color: $color-input;
-                    font-weight: 700;
-                    font-size: 2rem;
-                    display: block;
-                    padding: 1rem 0;
-                    position: relative;
-                    cursor: pointer;
-                }
-
-                .active {
-                    color: #f12f19;
-
-                    &:after {
-                        content: '';
-                        display: block;
-                        width: 100%;
-                        height: .2rem;
-                        position: absolute;
-                        left: 0;
-                        bottom: -1px;
-                        background: #f12f19;
-                    }
-                }
-            }
-        }
-
-        .login-tab, .register-tab {
-            display: flex;
-            margin-top: 2.4rem;
-            @include Mobile{
-                padding-bottom: 2rem;
-            }
-            .group-tab {
-                padding: 0 2.4rem 0 0;
-                border-right: 1px solid $border-calendar;
-                width: 55%;
-
-                @include tableMobile {
-                    padding: 0 1.5rem;
-                }
-
-                #forgot-password,#confirm-email{
-                    text-decoration: none;
-                    text-align: center;
-                    display: block;
-                    margin-top: 2rem;
-                    color: #777;
-                }
-                #confirm-email {
-                    margin-top: .5rem;
-                }
-            }
-
-            .login-fb-google {
-                padding: 0 0 0 2.4rem;
-                width: 45%;
-
-                .social-login {
-                    text-decoration: none;
-                    width: 100%;
-                    margin: 0 auto;
-                    display: block;
-                    text-align: center;
-                    height: 4.2rem;
-                    line-height: 4.2rem;
-                    margin-bottom: 2rem;
-                    border-radius: 3px;
-                    position: relative;
-
-                    .icon-social {
-                        font-size: 2.4rem;
-                        position: absolute;
-                        left: 1rem;
-                        top: 1rem;
-                    }
-                }
-
-                .login-facebook {
-                    border: 1px solid #3B5999;
-                    color: #3B5999;
-                    font-weight: 700;
-
-                    @include Mobile {
-                        font-size: 1.2rem;
-                    }
-
-                    .icon-social {
-                        &:before {
-                            color: #3B5999;
-                        }
-                    }
-                }
-
-                .login-google {
-                    color: #4688F1;
-                    border: 1px solid #4688F1;
-                }
+                padding: 2.4rem 1.6rem;
             }
         }
     }
-}
 
-
-.form-modal {
-    margin-bottom: 2rem;
-    position: relative;
-
-    .input-form {
-        width: 100%;
-        height: 4.2rem;
-        border: 1px solid #D1D1D1;
-        background: transparent;
-        border-radius: 3px;
-        font-size: 1.5rem;
-        color: $color-title;
-        padding: 0 1.5rem;
-        outline: none;
-        &::placeholder{
-            color: #9EA2AB;
+    .auth-logo {
+        display: inline-block;
+        margin-bottom: 2.4rem;
+        @include Mobile{
+            margin-bottom: 2rem;
         }
     }
-    .select-form{
-        color: #9EA2AB;
+
+    .group-heading{
+        margin-bottom: 2.4rem;
+        @include Mobile{
+            margin-bottom: 2rem;
+        }
+        .title{
+            margin-bottom: .6rem;
+            color: #E13C29;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .slogan{
+            color: #222;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: normal;
+        }
     }
 
-    .orther-color{
-        color: $color-title;
-    }
-
-    .toggle-pass {
-        width: 4rem;
-        cursor: pointer;
+    .close-login, .close {
         position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 4.2rem;
-        .icon-form {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            justify-content: center;
-            &:before {
-                color: #444444;
+        top: 10px;
+        right: 10px;
+        width: 2rem;
+        height: 2rem;
+        z-index: 999999;
+        cursor: pointer;
+        line-height: 0;
+        outline: none;
+        border: none;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        @include tableMobile {
+            top: 24px;
+            right: 16px;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        &:focus {
+            outline: none;
+        }
+        span{
+            color: #ABABAB;
+            line-height: 0;
+            height: 0;
+            display: block;
+            font-size: 2rem;
+            @include Mobile{
+                font-size: 2.4rem;
             }
+        }
+    }
+
+    .forgot-pass{
+        display: inline-block;
+        margin-top: .6rem;
+        color: #777;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration: none;
+    }
+    .submit-auth{
+        margin-top: 2.4rem;
+        @include Mobile{
+            margin-top: 2rem;
+        }
+        .submit{
+            border: none;
+            width: 100%;
+            color: #FFF;
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: normal;
+            padding: .9rem 0;
+            border-radius: 3px;
+            background: #E13C29;
+            text-align: center;
+            cursor: pointer;
+            @include Mobile{
+                padding: 1.3rem 0;
+            }
+            &:disabled{
+                background: #DDD;
+                cursor: not-allowed;
+                user-select: none;
+                color: #A7A7A7;
+            }
+        }
+    }
+    .group-question{
+        color: #777;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 1.6rem;
+        @include Mobile{
+            margin-top: 2rem;
+        }
+        a{
+            text-decoration: none;
+            color: #3873E9;
+            font-weight: 600;
         }
     }
 }
 
-.btn-login, .btn-register, .btn-resetpass {
-    background: #f12f19;
-    border-radius: 3px;
-    cursor: pointer;
-    border: none;
-    color: $color-fff;
-    line-height: normal;
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-align: center;
-    width: 100%;
-    height: 4.2rem;
+.select-auth{
+    color: #8F8F8F !important;
+    .color-other{
+        color: #222222;
+    }
+    &:focus{
+        outline: none;
+        border: 1px solid #d1d1d1;
+    }
 }
 
-.btn-disabled {
-    background: #e0d3d3;
+
+
+.box-auth{
+    display: flex;
+    gap: 2.4rem;
+    @include Mobile{
+        display: block;
+    }
+    &-child{
+        width: 50%;
+        @include Mobile{
+            width: 100%;
+        }
+    }
 }
 
 .modal-backdrop.show {
@@ -286,30 +255,30 @@ display: none;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba($color: $color-000, $alpha: .5);
+    background: rgba($color: $color-000, $alpha: .8);
     z-index: 9999;
 }
 
-.form-modal input::placeholder {
-    @include Mobile {
-        font-size: 1.3rem !important;
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #fffdf9 inset !important;
+    background-color: transparent !important;
+}
+
+#form-register{
+    .box-auth{
+        &:nth-child(1){
+            .box-auth-child{
+                .form-group-auth {
+                    margin-top: 0;
+                    @include Mobile{
+                        margin-top: 1.6rem;
+                    }
+                }
+            }
+        }
     }
 }
 
-
-.error {
-    color: red;
-    margin-bottom: 0;
-}
-
-input.error {
-    border: 1px solid red;
-}
-
-.tab-pane {
-    display: none;
-}
-
-.tab-pane.active {
-    display: block;
-}
