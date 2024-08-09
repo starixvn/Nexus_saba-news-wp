@@ -183,6 +183,10 @@
         @include Mobile{
             margin-top: 2rem;
         }
+        &.captcha{
+            min-height: 7.8rem;
+            display: block;
+        }
         .submit{
             border: none;
             width: 100%;
@@ -223,16 +227,6 @@
     }
 }
 
-.select-auth{
-    color: #8F8F8F !important;
-    .color-other{
-        color: #222222;
-    }
-    &:focus{
-        outline: none;
-        border: 1px solid #d1d1d1;
-    }
-}
 
 
 
@@ -267,6 +261,23 @@ input:-webkit-autofill:active{
     background-color: transparent !important;
 }
 
+
+.select-auth{
+    color: #8F8F8F !important;
+    background: #fffdf9 url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMTc1IDcuMTU4MzNMMTAgMTAuOTc1TDEzLjgyNSA3LjE1ODMzTDE1IDguMzMzMzNMMTAgMTMuMzMzM0w1IDguMzMzMzNMNi4xNzUgNy4xNTgzM1oiIGZpbGw9IiM0RjRGNEYiLz4KPC9zdmc+Cg==) !important;
+    -webkit-appearance: none;
+    background-repeat: no-repeat !important;
+    background-position: 98% !important;
+    .color-other{
+        color: #222222;
+    }
+    &:focus{
+        outline: none;
+        border: 1px solid #d1d1d1;
+    }
+}
+
+
 #form-register{
     .box-auth{
         &:nth-child(1){
@@ -278,6 +289,16 @@ input:-webkit-autofill:active{
                     }
                 }
             }
+        }
+    }
+}
+
+.register-action{
+    @include Mobile{
+        height: 75vh;
+        overflow-y: scroll;
+        &::-webkit-scrollbar{
+            display: none;
         }
     }
 }

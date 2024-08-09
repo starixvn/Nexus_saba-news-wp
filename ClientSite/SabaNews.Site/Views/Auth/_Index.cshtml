@@ -1,6 +1,6 @@
 ﻿@using SabaNews.Core.Constants;
 
-<div class="modal auth-register" id="authModal" tabindex="-1" role="dialog">
+@* <div class="modal auth-register" id="authModal" tabindex="-1" role="dialog">
     <div class="modal-content modal-auth">
         <div class="modal-body">
             <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="box-auth">
                              <div class="box-auth-child">
-                                <div class="submit-auth">
+                                <div class="submit-auth captcha">
                                     <form action="" method="POST">
                                         <div class="g-recaptcha"  data-sitekey="6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4" data-action="LOGIN"></div>
                                     </form>
@@ -107,8 +107,8 @@
             </div>
         </div>
     </div>
-</div>
-@* 
+</div> *@
+
 <div class="modal auth-login" id="authModal" tabindex="-1" role="dialog">
     <div class="modal-content modal-auth">
         <div class="modal-body">
@@ -154,7 +154,7 @@
             </div>
         </div>
     </div>
-</div> *@
+</div>
 <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
 <script>
     $(document).ready(function () {

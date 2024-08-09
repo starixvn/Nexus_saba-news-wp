@@ -195,6 +195,10 @@
     margin-top: 2rem;
   }
 }
+.auth-form .submit-auth.captcha {
+  min-height: 7.8rem;
+  display: block;
+}
 .auth-form .submit-auth .submit {
   border: none;
   width: 100%;
@@ -237,17 +241,6 @@
   font-weight: 600;
 }
 
-.select-auth {
-  color: #8F8F8F !important;
-}
-.select-auth .color-other {
-  color: #222222;
-}
-.select-auth:focus {
-  outline: none;
-  border: 1px solid #d1d1d1;
-}
-
 .box-auth {
   display: flex;
   gap: 2.4rem;
@@ -283,11 +276,36 @@ input:-webkit-autofill:active {
   background-color: transparent !important;
 }
 
+.select-auth {
+  color: #8F8F8F !important;
+  background: #fffdf9 url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMTc1IDcuMTU4MzNMMTAgMTAuOTc1TDEzLjgyNSA3LjE1ODMzTDE1IDguMzMzMzNMMTAgMTMuMzMzM0w1IDguMzMzMzNMNi4xNzUgNy4xNTgzM1oiIGZpbGw9IiM0RjRGNEYiLz4KPC9zdmc+Cg==) !important;
+  -webkit-appearance: none;
+  background-repeat: no-repeat !important;
+  background-position: 98% !important;
+}
+.select-auth .color-other {
+  color: #222222;
+}
+.select-auth:focus {
+  outline: none;
+  border: 1px solid #d1d1d1;
+}
+
 #form-register .box-auth:nth-child(1) .box-auth-child .form-group-auth {
   margin-top: 0;
 }
 @media (max-width: 767px) {
   #form-register .box-auth:nth-child(1) .box-auth-child .form-group-auth {
     margin-top: 1.6rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .register-action {
+    height: 75vh;
+    overflow-y: scroll;
+  }
+  .register-action::-webkit-scrollbar {
+    display: none;
   }
 }
