@@ -96,11 +96,6 @@
     max-width: 36.9rem;
   }
 }
-.auth-form .show:focus-within {
-  outline: none;
-  box-shadow: none;
-  border: none;
-}
 .auth-form .modal-auth {
   border: none;
   border-radius: 8px;
