@@ -24,6 +24,11 @@ input::-ms-clear {
   width: 100%;
   max-width: 75rem;
 }
+.auth-form .show:focus-within {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
 .auth-form .modal-auth {
   border: none;
   border-radius: 0;

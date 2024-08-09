@@ -24,6 +24,11 @@ display: none;
         transform: translate(50%,-50%);
         width: 100%;
         max-width: 75rem;
+        &:focus-within{
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
     }
 
     .modal-auth {
