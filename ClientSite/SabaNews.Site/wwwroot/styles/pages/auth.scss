@@ -78,6 +78,11 @@
         right: 50%;
         transform: translate(50%,-50%);
         width: 100%;
+        &:focus-within{
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
         &.auth-login{
             max-width: 42rem;
             @include Mobile{
