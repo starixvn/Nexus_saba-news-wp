@@ -294,6 +294,25 @@ var all = (function ($) {
             })
         })
     }
+
+    function HandleQueryStringAction() {
+        var param = ParseQueryString(location.search);
+        if(param.action == 'login' || param.action == 'register') {
+            auth.GetModalLogin("/", param.action);
+        }
+    }
+
+    function ParseQueryString(queryString) {
+        const queryObj = {};
+        const params = queryString.substring(1).split('&'); // Remove '?' and split into key-value pairs
+
+        params.forEach(param => {
+            const [key, value] = param.split('='); // Destructure key-value pair
+            queryObj[key] = value;
+        });
+
+        return queryObj;
+    }
     function init() {
         LoadMenuHeaderMobile();
         scrollBackTop();
@@ -308,6 +327,7 @@ var all = (function ($) {
         MenuPopupHeaderPC();
         // toggleChangeDomainPopup();
         CountBannerClick();
+        HandleQueryStringAction();
     }
 
     return {
