@@ -17,6 +17,7 @@
         returnUrl = Url;
         $('.authModal').modal('hide');
         modal = openForm == 'login' ? '#modal-login' : '#modal-register';
+        $('.summary-eror').hide();
         $(modal).modal('show');
     }
 
@@ -25,6 +26,7 @@
             e.preventDefault();
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
+            $('.summary-eror').hide();
         });
         $(document).on('click', '.register-form-open', function (e) {
             e.preventDefault();
@@ -175,7 +177,8 @@
                         }
                     }
                     else {
-                        $('#authModal form#form-login').find('.summary-eror').text(res.message);
+                        $('.summary-eror').show();
+                        $('.summary-eror').text(res.message);
                         self.prop('disabled', false);
                     }
                 },
@@ -246,7 +249,8 @@
                             $(modal + ' .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
-                            $(modal + ' form#form-register').find('.summary-eror').text(res.message);
+                            $('.summary-eror').show();
+                            $('.summary-eror').text(res.message);
                             self.prop('disabled', false);
                             self.removeClass('btn-disabled');
                         }

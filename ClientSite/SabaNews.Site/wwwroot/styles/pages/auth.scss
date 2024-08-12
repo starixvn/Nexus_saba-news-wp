@@ -287,15 +287,13 @@ input:-webkit-autofill:active{
 }
 
 
-#form-register{
-    .box-auth{
-        &:first-child{
-            .box-auth-child{
-                .form-group-auth {
-                    margin-top: 0;
-                    @include Mobile{
-                        margin-top: 1.6rem;
-                    }
+.box-auth{
+    &:first-child{
+        .box-auth-child{
+            .form-group-auth {
+                margin-top: 0;
+                @include Mobile{
+                    margin-top: 1.6rem;
                 }
             }
         }
@@ -322,6 +320,7 @@ input:-webkit-autofill:active{
     border: 1px solid #FFC9C2;
     background: rgba(241, 47, 25, 0.10);
     color: #F12F19;
+    margin-bottom: 1.6rem;
 }
 
 #form-forgot-password{

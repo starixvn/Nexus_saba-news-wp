@@ -32,7 +32,8 @@
                             $('.reset-success').show();
                             $('.reset-action').hide();
                         } else {
-                            $(form).find('.summary-eror').text(res.message);
+                            $('.summary-eror').show();
+                            $('.summary-eror').text(res.message);
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
