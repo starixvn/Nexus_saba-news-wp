@@ -34,6 +34,9 @@
         &::placeholder{
             color: #8F8F8F;
         }
+        &:focus-within{
+            border: none;
+        }
     }
     .group-input-auth{
         position: relative;
@@ -56,15 +59,19 @@
         }
     }
     .validate-error{
-        font-size: 1.2rem;
-        font-weight: 400;
-        line-height: normal;
-        color: #FF3B30;
-        margin-top: .2rem;
+        display: none;
     }
     &.error{
         .input-auth{
             border: 1px solid #FF3B30;
+        }
+        .validate-error{
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: normal;
+            color: #FF3B30;
+            margin-top: .2rem;
+            display: block;
         }
     }
 }
@@ -285,7 +292,7 @@ input:-webkit-autofill:active{
 
 #form-register{
     .box-auth{
-        &:nth-child(1){
+        &:first-child{
             .box-auth-child{
                 .form-group-auth {
                     margin-top: 0;
@@ -308,3 +315,23 @@ input:-webkit-autofill:active{
     }
 }
 
+
+.summary-eror{
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: normal;
+    padding: .9rem 1.2rem;
+    border-radius: 3px;
+    border: 1px rgba(241, 47, 25, 0.10);
+    background: rgba(241, 47, 25, 0.10);
+    color: #F12F19;
+}
+
+#form-forgot-password{
+    .box-auth{
+        display: block;
+        &-child{
+            width: 100%;
+        }
+    }
+}

@@ -38,6 +38,9 @@
 .form-group-auth .input-auth::placeholder {
   color: #8F8F8F;
 }
+.form-group-auth .input-auth:focus-within {
+  border: none;
+}
 .form-group-auth .group-input-auth {
   position: relative;
 }
@@ -57,14 +60,18 @@
   color: #A6A6A6;
 }
 .form-group-auth .validate-error {
+  display: none;
+}
+.form-group-auth.error .input-auth {
+  border: 1px solid #FF3B30;
+}
+.form-group-auth.error .validate-error {
   font-size: 1.2rem;
   font-weight: 400;
   line-height: normal;
   color: #FF3B30;
   margin-top: 0.2rem;
-}
-.form-group-auth.error .input-auth {
-  border: 1px solid #FF3B30;
+  display: block;
 }
 
 .auth-form .show {
@@ -291,11 +298,11 @@ input:-webkit-autofill:active {
   border: 1px solid #d1d1d1;
 }
 
-#form-register .box-auth:nth-child(1) .box-auth-child .form-group-auth {
+#form-register .box-auth:first-child .box-auth-child .form-group-auth {
   margin-top: 0;
 }
 @media (max-width: 767px) {
-  #form-register .box-auth:nth-child(1) .box-auth-child .form-group-auth {
+  #form-register .box-auth:first-child .box-auth-child .form-group-auth {
     margin-top: 1.6rem;
   }
 }
@@ -308,4 +315,22 @@ input:-webkit-autofill:active {
   .register-action::-webkit-scrollbar {
     display: none;
   }
+}
+
+.summary-eror {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0.9rem 1.2rem;
+  border-radius: 3px;
+  border: 1px rgba(241, 47, 25, 0.1);
+  background: rgba(241, 47, 25, 0.1);
+  color: #F12F19;
+}
+
+#form-forgot-password .box-auth {
+  display: block;
+}
+#form-forgot-password .box-auth-child {
+  width: 100%;
 }
