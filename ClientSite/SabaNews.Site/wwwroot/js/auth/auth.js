@@ -22,10 +22,7 @@
                 $('#authModal').modal('show');
 
                 HandleLogin(returnUrl);
-                // document.querySelector("#form-register > button").addEventListener('click', (e) => {
-                //     e.preventDefault();
-                //     HandleRegister();
-                // });
+                HandleRegister();
                 HandleValidate();
                 HandleForgotPassword();
                 HandleConfirmEmail();
@@ -35,11 +32,12 @@
     }
 
     function HandleAuth() {
-        $(document).on('click', '.auth-input .auth-login' , function () {
+        $(document).on('click', '.auth-input .auth-login', function () {
             var returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
         });
-        $(document).on('click', '.auth-register', function() {
+        $(document).on('click', '.register-form-open', function (e) {
+            e.preventDefault();
             $('#authModal').modal('hide');
             var returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'register');
@@ -48,11 +46,11 @@
     }
 
     function HandleValidate() {
-        $('input[name=email]').on('keyup', function(){
+        $('input[name=email]').on('keyup', function () {
             let email = $(this).val();
             let err = GetErrorElement($(this));
-            if(!mailFormat.test(email) || email === "") {
-                let message = email ==="" ? EmailEmptyErr : EmailIsValidErr
+            if (!mailFormat.test(email) || email === "") {
+                let message = email === "" ? EmailEmptyErr : EmailIsValidErr
                 SetErrorElement(err, message)
             }
         });
@@ -65,67 +63,70 @@
             }
         });
 
-        $('#form-register input[name=phone]').on('keyup', function() {
+        $('#form-register input[name=phone]').on('keyup', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
-            if(val === "") {
-                let message =  PhoneEmptyErr;
+            console.log(val);
+            if (val === "") {
+                let message = PhoneEmptyErr;
                 SetErrorElement(err, message)
             }
         });
 
 
-        $('#form-login input[name=password]').on('keyup', function(){
+        $('#form-login input[name=password]').on('keyup', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
-            if(val === "") {
+            if (val === "") {
                 let message = PasswordEmptyErr;
                 SetErrorElement(err, message)
             }
         });
 
-        $('#form-register input[name=name]').on('keyup', function(){
+        $('#form-register input[name=name]').on('keyup', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
-            if(val === "") {
+            if (val === "") {
                 let message = NameEmptyErr;
                 SetErrorElement(err, message)
             }
         });
 
-        $('#form-register input[name=password]').on('keyup', function(){
+        $('#form-register input[name=password]').on('keyup', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
-            var resetPassword =   $('#form-register input[name=confirmPassword]').val();
-            if(val === "") {
+            var resetPassword = $('#form-register input[name=confirmPassword]').val();
+            var message = "";
+            if (val === "") {
                 message = PasswordEmptyErr;
-            } else if(!passwordFormat.test(val)) {
+            } else if (!passwordFormat.test(val)) {
                 message = PasswordIsvalidErr;
             }
-            if(message !== "") {
+            if (message !== "") {
                 SetErrorElement(err, message)
             }
-            if(val !== resetPassword) {
-                $('#confirmPassword-error').html(ConfirmPasswordIsvalidErr);
+            if (val !== resetPassword) {
+                $('#form-register .confirm-password-group').addClass('error');
+                $('#form-register .confirm-password-group .validate-error').html(ConfirmPasswordIsvalidErr);
             } else {
-                $('#confirmPassword-error').html('');
+                $('#form-register .confirm-password-group').removeClass('error');
+                $('#form-register .confirm-password-group .validate-error').html('');
             }
         });
 
-        $('#form-register input[name=confirmPassword]').on('keyup', function(){
-            let err = $(this).parent().find("#confirmPassword-error");
-            if(err.length === 0) return false;
+        $('#form-register input[name=confirmPassword]').on('keyup', function () {
+            let err = GetErrorElement($(this));
+            console.log(123);
             let val = $(this).val();
-            let password = $(this).parent().parent().find('input[name=password]').val();
+            let password = $('#form-register .password-group').find('input[name=password]').val();
             let message = "";
-            err.html('');
-            if(val === "") {
+            if (val === "") {
                 message = ConfirmPasswordEmptyErr;
-            } else if(password !== val) {
+            } else if (password !== val) {
                 message = ConfirmPasswordIsvalidErr;
             }
-            if(message !== "") {
-                err.html(message)
+            if (message !== "") {
+                SetErrorElement(err, message);
             }
         });
 
@@ -144,7 +145,7 @@
 
 
     function HandleLogin(returnUrl) {
-        $('#form-login  button').on('click', function(e) {
+        $('#form-login  button').on('click', function (e) {
             e.preventDefault();
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
@@ -152,27 +153,30 @@
 
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
+            var self = $(this);
+            
 
-            if (!mailFormat.test(email) || email === ""){
+            if (!mailFormat.test(email) || email === "") {
                 isValid = false
                 var message = email === "" ? EmailEmptyErr : EmailIsValidErr;
                 $("#form-login .email .validate-error").html(message);
                 $("#form-login .email").addClass("error");
             }
 
-            if (password === "" && $("#password-error").length == 0){
+            if (password === "" && $("#password-error").length == 0) {
                 isValid = false
                 $("#form-login .password .validate-error").html(PasswordEmptyErr);
                 $("#form-login .password").addClass("error");
             }
-            if(!isValid) {
+            if (!isValid) {
                 return false;
             }
+            self.prop('disabled', true);
 
             $.ajax({
                 url: '/Auth/Login',
                 method: "POST",
-                data: {email, password},
+                data: { email, password },
                 success: function (res) {
                     if (res.isSuccessful) {
                         if (typeof returnUrl === "undefined") {
@@ -181,8 +185,9 @@
                             location.href = returnUrl;
                         }
                     }
-                    else{
+                    else {
                         $('#authModal form#form-login').find('.summary-eror').text(res.message);
+                        self.prop('disabled', false);
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -193,71 +198,80 @@
     }
 
     function HandleRegister() {
-        var name = $("#form-register input[name=name]").val();
-        var email = $("#form-register input[name=email]").val();
-        var password = $("#form-register input[name=password]").val();
-        var confirmPassword = $("#form-register input[name=confirmPassword]").val();
-        var yearOfBirth = $('#form-register select[name=yearOfBirth]').val();
-        var phone = $('#form-register input[name=phone]').val();
-        
-        let isValid = true;
-        $('.error').show();
-        $('.error').html('');
-        if(name === ""){
-            isValid = false;
-            $("#form-register #name-error").text(NameEmptyErr);
-        }
+        $('#form-register .submit-register').on('click', function () {
+            var name = $("#form-register input[name=name]").val();
+            var email = $("#form-register input[name=email]").val();
+            var password = $("#form-register input[name=password]").val();
+            var confirmPassword = $("#form-register input[name=confirmPassword]").val();
+            var yearOfBirth = $('#form-register select[name=yearOfBirth]').val();
+            var phone = $('#form-register input[name=phone]').val();
+            var self = $(this);
+            let isValid = true;
 
-        if(phone === '') {
-            isValid = false;
-            $("#form-register #phone-error").text(PhoneEmptyErr);
-        }  else if(!phone.startsWith("0") || phone.length != 10 ) {
-            isValid = false;
-            $("#form-register #phone-error").text(PhoneIsvalidErr);
-        }
 
-        if (!mailFormat.test(email) || email === ""){
-            isValid = false;
-            var msg = email === "" ? EmailEmptyErr : EmailIsValidErr;
-            $("#form-register #email-error").text(msg);
-        }
+            $('#form-register .form-group-auth').removeClass('error');
+            $('#form-register .form-group-auth .validate-error').html('');
+            if (name === "") {
+                isValid = false;
+                ShowErrHandle($("#form-register .name-group"), NameEmptyErr);
+            }
 
-        if (password === "" || !passwordFormat.test(password)){
-            isValid = false;
-            var msg = password == "" ? PasswordEmptyErr : PasswordIsvalidErr;
-            $("#form-register #password-error").text(msg);
-        }
-        if (confirmPassword === "" || password != confirmPassword){
-            isValid = false;
-            var msg = confirmPassword === "" ? ConfirmPasswordEmptyErr : ConfirmPasswordIsvalidErr;
-            $("#form-register #confirmPassword-error").text(msg);
-        }
-        if(isValid){
-            $('#authModal form#form-register' + " .btn-register").prop('disabled', true);
-            $('#authModal form#form-register' + " .btn-register").addClass('btn-disabled');
-            $.ajax({
-                url: '/Auth/Register',
-                method: "POST",
-                data: {name, phone, yearOfBirth, email, password, confirmPassword},
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        const email = $('#authModal form#form-register').find('input[name="email"]').val();
-                        const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
-                        const bodyModal = formatString(html, email, window.location.origin);
-                        $('#authModal').css("max-width", "63rem");
-                        $('#authModal .modal-body').html(bodyModal);
-                        HandleCloseModal();
-                    } else {
-                        $('#authModal form#form-register').find('.summary-eror').text(res.message);
-                        $('#authModal form#form-register' + " .btn-register").prop('disabled', false);
-                        $('#authModal form#form-register' + " .btn-register").removeClass('btn-disabled');
+            if (phone === '') {
+                isValid = false;
+                ShowErrHandle($("#form-register .phone-group"), PhoneEmptyErr);
+            } else if (!phone.startsWith("0") || phone.length != 10) {
+                isValid = false;
+                ShowErrHandle($("#form-register .phone-group"), PhoneIsvalidErr);
+            }
+
+            if (!mailFormat.test(email) || email === "") {
+                isValid = false;
+                var msg = email === "" ? EmailEmptyErr : EmailIsValidErr;
+                ShowErrHandle($("#form-register .email-group"), msg);
+            }
+
+            if (password === "" || !passwordFormat.test(password)) {
+                isValid = false;
+                var msg = password == "" ? PasswordEmptyErr : PasswordIsvalidErr;
+                ShowErrHandle($("#form-register .password-group"), msg);
+            }
+            if (confirmPassword === "" || password != confirmPassword) {
+                isValid = false;
+                var msg = confirmPassword === "" ? ConfirmPasswordEmptyErr : ConfirmPasswordIsvalidErr;
+                ShowErrHandle($("#form-register .confirm-password-group"), msg);
+            }
+            if (isValid) {
+                self.prop('disabled', true);
+                self.addClass('btn-disabled');
+                $.ajax({
+                    url: '/Auth/Register',
+                    method: "POST",
+                    data: { name, phone, yearOfBirth, email, password, confirmPassword },
+                    success: function (res) {
+                        if (res.isSuccessful) {
+                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
+                            const bodyModal = formatString(html, email, window.location.origin);
+                            $('#authModal').css("max-width", "63rem");
+                            $('#authModal .modal-body').html(bodyModal);
+                            HandleCloseModal();
+                        } else {
+                            $('#authModal form#form-register').find('.summary-eror').text(res.message);
+                            self.prop('disabled', false);
+                            self.removeClass('btn-disabled');
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus + ': ' + errorThrown);
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
+                });
+            }
+        })
+
+        function ShowErrHandle(group, mess) {
+            group.addClass('error');
+            group.find('.validate-error').html(mess);
         }
+
     }
 
     function HandleCloseModal() {
@@ -285,7 +299,7 @@
 
     function HandleSubmitForgotPassword() {
         var email = document.querySelector("#form-forgot-password > div > input").value;
-        if (!mailFormat.test(email) || email === ""){
+        if (!mailFormat.test(email) || email === "") {
             $("#email-error").remove();
             flag = false;
             var aTag = document.createElement("label");
@@ -296,13 +310,13 @@
             document.querySelector("#form-forgot-password > div").append(aTag);
         }
 
-        if(mailFormat.test(email) && email != ""){
+        if (mailFormat.test(email) && email != "") {
             $("#form-forgot-password .btn-resetpass").prop('disabled', true);
             $("#form-forgot-password .btn-resetpass").addClass('btn-disabled');
             $.ajax({
                 url: '/Auth/ForgotPassword',
                 method: "POST",
-                data: {email},
+                data: { email },
                 success: function (res) {
                     if (res.isSuccessful) {
                         const emailForget = $('#authModal form#form-forgot-password').find('input[name="email"]').val();
@@ -340,7 +354,7 @@
         $("#form-confirm-email button").on('click', (e) => {
             e.preventDefault();
             var email = $('#form-confirm-email input[name="email"]').val();
-            if(!mailFormat.test(email) || email == '') {
+            if (!mailFormat.test(email) || email == '') {
                 var err_message = email == '' ? EmailIsValidErr : EmailExistedErr;
                 $(this).parent().find('.error').text(err_message);
                 return false;

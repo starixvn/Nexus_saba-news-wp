@@ -16,61 +16,65 @@
                     <form id="form-register">
                         <div class="box-auth">
                             <div class="box-auth-child">
-                                <div class="form-group-auth error">
+                                <div class="form-group-auth name-group">
                                     <label class="label-auth">@ViewResources.Name</label>
                                     <div class="group-input-auth">
                                         <input type="text" class="input-auth" placeholder="@ViewResources.Name" name="name" />
                                     </div>
-                                    <div class="validate-error">Nhập name</div>
+                                    <div class="validate-error"></div>
                                 </div>
                             </div>
                             <div class="box-auth-child">
-                                <div class="form-group-auth">
+                                <div class="form-group-auth email-group">
                                     <label class="label-auth">Email</label>
                                     <div class="group-input-auth">
-                                        <input type="email" name="email" class="input-auth" placeholder="Email">
+                                        <input type="email" name="email" class="input-auth" placeholder="Email" autocomplete="new-email">
                                     </div>
+                                    <div class="validate-error"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="box-auth">
                             <div class="box-auth-child">
-                                <div class="form-group-auth">
+                                <div class="form-group-auth password-group">
                                     <label class="label-auth">@ViewResources.Password</label>
                                     <div class="group-input-auth">
-                                        <input type="password" name="password" class="input-auth" placeholder="@ViewResources.Password">
+                                        <input type="password" name="password" class="input-auth" placeholder="@ViewResources.Password" autocomplete="new-password">
                                         <span class="toggle-pass">
                                             <i class="icon-form icon-show"></i>
                                             <i class="icon-form icon-hide" style="display: none"></i>
                                         </span>
                                     </div>
+                                    <div class="validate-error"></div>
                                 </div>
                             </div>
                             <div class="box-auth-child">
-                                <div class="form-group-auth">
+                                <div class="form-group-auth confirm-password-group">
                                     <label class="label-auth">@ViewResources.ConfirmPassword</label>
                                     <div class="group-input-auth">
-                                        <input type="password" name="confirmPassword" class="input-auth" placeholder="@ViewResources.ConfirmPassword">
+                                        <input type="password" name="confirmPassword" class="input-auth" placeholder="@ViewResources.ConfirmPassword"  autocomplete="new-confirmPassword">
                                         <span class="toggle-pass">
                                             <i class="icon-form icon-show"></i>
                                             <i class="icon-form icon-hide" style="display: none"></i>
                                         </span>
                                     </div>
+                                    <div class="validate-error"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="box-auth">
                             <div class="box-auth-child">
-                                <div class="form-group-auth">
+                                <div class="form-group-auth phone-group">
                                     <label class="label-auth">Số điện Thoại</label>
                                     <div class="group-input-auth">
                                         <input type="number" name="phone" class="input-auth" placeholder="Số điện Thoại">
                                     </div>
+                                     <div class="validate-error"></div>
                                 </div>
                             </div>
                             <div class="box-auth-child">
-                                <div class="form-group-auth">
-                                    <label class="label-auth">Email</label>
+                                <div class="form-group-auth year-group">
+                                    <label class="label-auth">Năm sinh</label>
                                     <div class="group-input-auth">
                                         <select class="input-auth select-auth" name="birthday">
                                             <option value="" selected>chọn năm sinh</option>
@@ -93,7 +97,7 @@
                              </div>
                               <div class="box-auth-child">
                                 <div class="submit-auth">
-                                    <button class="submit" type="submit" disabled>Tạo tài khoản</button>
+                                    <button class="submit submit-register" type="button" >Tạo tài khoản</button>
                                 </div>
                                 <div class="group-question">
                                     Bạn đã có tài khoản? <a href="#">Đăng nhập ngay</a>
