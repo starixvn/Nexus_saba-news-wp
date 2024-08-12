@@ -90,10 +90,11 @@
                         </div>
                         <div class="box-auth">
                              <div class="box-auth-child">
-                                <div class="submit-auth captcha">
+                                <div class="submit-auth form-group-auth captcha">
                                     <form action="" method="POST">
-                                        <div class="g-recaptcha"  data-sitekey="6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4" data-callback="formSubmit" data-action="LOGIN"></div>
+                                        <div id="register-captcha" class="g-recaptcha"  data-action="LOGIN"></div>
                                     </form>
+                                    <div class="validate-error"></div>
                                 </div>
                              </div>
                               <div class="box-auth-child">
@@ -111,8 +112,3 @@
         </div>
     </div>
 </div>
-<script>
-    function formSubmit(response) {
-        alert(response);
-    }
-</script>

@@ -1,4 +1,10 @@
-﻿var auth = (function ($) {
+﻿var onloadCallback = function() {
+    grecaptcha.render('register-captcha', {
+      'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
+    });
+  };
+
+var auth = (function ($) {
     var mailFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     var passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
     const EmailEmptyErr = "Hãy nhập email";
@@ -13,6 +19,7 @@
     const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
     var modal = "#modal-login";
     var returnUrl = "";
+
     function GetModalLogin(Url, openForm) {
         returnUrl = Url;
         $('.authModal').modal('hide');
@@ -177,7 +184,7 @@
                         }
                     }
                     else {
-                        $('.summary-eror').show();
+                        $('form#form-login').find('.summary-eror').text(res.message);
                         $('.summary-eror').text(res.message);
                         self.prop('disabled', false);
                     }
@@ -191,14 +198,14 @@
 
     function HandleRegister() {
         $('#form-register .submit-register').on('click', function () {
-            console.log(123);
-            console.log($('.g-recaptcha').val());
             var name = $("#form-register input[name=name]").val();
             var email = $("#form-register input[name=email]").val();
             var password = $("#form-register input[name=password]").val();
             var confirmPassword = $("#form-register input[name=confirmPassword]").val();
             var yearOfBirth = $('#form-register select[name=yearOfBirth]').val();
             var phone = $('#form-register input[name=phone]').val();
+            var captcha = grecaptcha.getResponse();
+            console.log(captcha);
             var self = $(this);
             let isValid = true;
 
@@ -234,6 +241,10 @@
                 var msg = confirmPassword === "" ? ConfirmPasswordEmptyErr : ConfirmPasswordIsvalidErr;
                 ShowErrHandle($("#form-register .confirm-password-group"), msg);
             }
+            if(captcha == "") {
+                isValid = false;
+                $('.captcha .validate-error').html('xác nhận captcha');
+            }
             if (isValid) {
                 self.prop('disabled', true);
                 self.addClass('btn-disabled');
@@ -249,7 +260,7 @@
                             $(modal + ' .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
-                            $('.summary-eror').show();
+                            $('form#form-register').find('.summary-eror').text(res.message);
                             $('.summary-eror').text(res.message);
                             self.prop('disabled', false);
                             self.removeClass('btn-disabled');
@@ -309,14 +320,13 @@
                 data: { email },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        const emailForget = $(modal + ' form#form-forgot-password').find('input[name="email"]').val();
                         const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
-                        const bodyModal = formatString(html, emailForget, window.location.origin);
-                        $(modal +  ' .modal-body').html(bodyModal);
+                        const bodyModal = formatString(html, email, window.location.origin);
+                        $('#modal-forgotpassword .modal-body').html(bodyModal);
                     } else {
-                        $(modal + ' form#form-forgot-password').find('.summary-eror').text(res.message);
-                        $("#form-forgot-password .btn-resetpass").prop('disabled', false);
-                        $("#form-forgot-password .btn-resetpass").removeClass('btn-disabled');
+                        $('#modal-forgotpassword form#form-forgot-password').find('.summary-eror').text(res.message);
+                        $("#modal-forgotpassword .btn-resetpass").prop('disabled', false);
+                        $("#modal-forgotpassword .btn-resetpass").removeClass('btn-disabled');
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -412,6 +422,7 @@
         HandleForgotPassword();
         HandleConfirmEmail();
         HandleModal();
+        formSubmit();
     }
 
     return {
@@ -422,8 +433,5 @@
 
 $(document).ready(function () {
     auth.init();
-    function formSubmit(response) {
-        $('#loginForm').submit()
-        return true 
-      }
 })
+
