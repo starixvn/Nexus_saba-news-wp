@@ -11,35 +11,24 @@
     const ConfirmPasswordIsvalidErr = "Mật khẩu không trùng khớp";
     const PhoneEmptyErr = "Hãy nhập số điện thoại";
     const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
-    function GetModalLogin(returnUrl, openForm) {
-        console.log(openForm);
-        $.ajax({
-            url: '/Auth/Index',
-            type: 'POST',
-            data: { openForm },
-            success: function (response) {
-                $('#auth-form').html(response);
-                $('#authModal').modal('show');
-
-                HandleLogin(returnUrl);
-                HandleRegister();
-                HandleValidate();
-                HandleForgotPassword();
-                HandleConfirmEmail();
-                HandleModal(openForm);
-            }
-        });
+    var modal = "#modal-login";
+    var returnUrl = "";
+    function GetModalLogin(Url, openForm) {
+        returnUrl = Url;
+        $('.authModal').modal('hide');
+        modal = openForm == 'login' ? '#modal-login' : '#modal-register';
+        $(modal).modal('show');
     }
 
     function HandleAuth() {
-        $(document).on('click', '.auth-input .auth-login', function () {
-            var returnUrl = $(this).data('returnurl');
+        $(document).on('click', '.auth-input .auth-login', function (e) {
+            e.preventDefault();
+            returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
         });
         $(document).on('click', '.register-form-open', function (e) {
             e.preventDefault();
-            $('#authModal').modal('hide');
-            var returnUrl = $(this).data('returnurl');
+            returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'register');
         })
 
@@ -144,7 +133,7 @@
     }
 
 
-    function HandleLogin(returnUrl) {
+    function HandleLogin() {
         $('#form-login  button').on('click', function (e) {
             e.preventDefault();
             var email = $("#form-login  input[name=email]").val();
@@ -199,6 +188,8 @@
 
     function HandleRegister() {
         $('#form-register .submit-register').on('click', function () {
+            console.log(123);
+            console.log($('.g-recaptcha').val());
             var name = $("#form-register input[name=name]").val();
             var email = $("#form-register input[name=email]").val();
             var password = $("#form-register input[name=password]").val();
@@ -251,11 +242,11 @@
                         if (res.isSuccessful) {
                             const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email, window.location.origin);
-                            $('#authModal').css("max-width", "63rem");
-                            $('#authModal .modal-body').html(bodyModal);
+                            $(modal).css("max-width", "63rem");
+                            $(modal + ' .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
-                            $('#authModal form#form-register').find('.summary-eror').text(res.message);
+                            $(modal + ' form#form-register').find('.summary-eror').text(res.message);
                             self.prop('disabled', false);
                             self.removeClass('btn-disabled');
                         }
@@ -275,24 +266,19 @@
     }
 
     function HandleCloseModal() {
-        $('#authModal').on('hidden.bs.modal', function () {
+        $('.authModal').on('hidden.bs.modal', function () {
             location.reload();
         });
     }
 
     function HandleForgotPassword() {
-        $('#forgot-password').on('click', function () {
-            $.ajax({
-                url: '/Auth/ForgotPassword',
-                type: 'GET',
-                dataType: 'html',
-                success: function (response) {
-                    $('#authModal').html(response);
-                    document.querySelector("#form-forgot-password > button").addEventListener('click', (e) => {
-                        e.preventDefault();
-                        HandleSubmitForgotPassword();
-                    });
-                }
+        $('#forgot-password').on('click', function (e) {
+            e.preventDefault();
+            $('.authModal').modal('hide');
+            $('#modal-forgotpassword').modal('show');
+            document.querySelector("#form-forgot-password > button").addEventListener('click', (e) => {
+                e.preventDefault();
+                HandleSubmitForgotPassword();
             });
         });
     }
@@ -319,12 +305,12 @@
                 data: { email },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        const emailForget = $('#authModal form#form-forgot-password').find('input[name="email"]').val();
+                        const emailForget = $(modal + ' form#form-forgot-password').find('input[name="email"]').val();
                         const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
                         const bodyModal = formatString(html, emailForget, window.location.origin);
-                        $('#authModal .modal-body').html(bodyModal);
+                        $(modal +  ' .modal-body').html(bodyModal);
                     } else {
-                        $('#authModal form#form-forgot-password').find('.summary-eror').text(res.message);
+                        $(modal + ' form#form-forgot-password').find('.summary-eror').text(res.message);
                         $("#form-forgot-password .btn-resetpass").prop('disabled', false);
                         $("#form-forgot-password .btn-resetpass").removeClass('btn-disabled');
                     }
@@ -343,7 +329,7 @@
                 type: "GET",
                 dataType: 'html',
                 success: function (response) {
-                    $('#authModal').html(response);
+                    $(modal).html(response);
                     HandleSubmitConfirmEmail();
                 }
             });
@@ -371,9 +357,9 @@
                     if (res.isSuccessful) {
                         const html = "Chúng tôi đã gửi email đến địa chỉ <b>{0}</b> để xác thực và kích hoạt tài khoản.</div>',";
                         const bodyModal = formatString(html, email);
-                        $('#authModal .modal-body').html(bodyModal);
+                        $(modal + ' .modal-body').html(bodyModal);
                     } else {
-                        $('#authModal form#form-confirm-email').find('.summary-eror').text(res.message);
+                        $(modal +  ' form#form-confirm-email').find('.summary-eror').text(res.message);
                         self.prop('disabled', false);
                         self.removeClass('btn-disabled');
                     }
@@ -416,6 +402,12 @@
 
     function init() {
         HandleAuth();
+        HandleLogin();
+        HandleRegister();
+        HandleValidate();
+        HandleForgotPassword();
+        HandleConfirmEmail();
+        HandleModal();
     }
 
     return {
@@ -426,4 +418,8 @@
 
 $(document).ready(function () {
     auth.init();
+    function formSubmit(response) {
+        $('#loginForm').submit()
+        return true 
+      }
 })

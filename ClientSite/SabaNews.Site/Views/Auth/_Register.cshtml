@@ -1,4 +1,4 @@
-<div class="modal auth-register" id="authModal" tabindex="-1" role="dialog">
+<div class="modal auth-register authModal" id="modal-register" tabindex="-1" role="dialog" style="display: none;">
     <div class="modal-content modal-auth">
         <div class="modal-body">
             <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
@@ -92,7 +92,7 @@
                              <div class="box-auth-child">
                                 <div class="submit-auth captcha">
                                     <form action="" method="POST">
-                                        <div class="g-recaptcha"  data-sitekey="6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4" data-action="LOGIN"></div>
+                                        <div class="g-recaptcha"  data-sitekey="6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4" data-callback="formSubmit" data-action="LOGIN"></div>
                                     </form>
                                 </div>
                              </div>
@@ -100,8 +100,8 @@
                                 <div class="submit-auth">
                                     <button class="submit submit-register" type="button" >Tạo tài khoản</button>
                                 </div>
-                                <div class="group-question">
-                                    Bạn đã có tài khoản? <a href="#">Đăng nhập ngay</a>
+                                <div class="group-question auth-input">
+                                    Bạn đã có tài khoản? <a href="#" class="auth-login">Đăng nhập ngay</a>
                                 </div>
                               </div>
                         </div>
@@ -111,3 +111,8 @@
         </div>
     </div>
 </div>
+<script>
+    function formSubmit(response) {
+        alert(response);
+    }
+</script>

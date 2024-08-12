@@ -1,6 +1,6 @@
 ﻿@using SabaNews.Core.Constants;
 
-<div class="modal auth-login" id="authModal" tabindex="-1" role="dialog">
+<div class="modal auth-login  authModal" id="modal-login" tabindex="-1" role="dialog" style="display: none;">
     <div class="modal-content modal-auth">
         <div class="modal-body">
             <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
@@ -35,7 +35,7 @@
                             </div>
                             <div class="validate-error"></div>
                         </div>
-                        <a href="#" class="forgot-pass">Quên mật khẩu</a>
+                        <a href="#" class="forgot-pass" id="forgot-password">Quên mật khẩu</a>
                         <div class="submit-auth">
                             <button class="submit" type="button">Đăng nhập</button>
                         </div>
@@ -48,7 +48,7 @@
         </div>
     </div>
 </div>
-<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
 <script>
     $(document).ready(function () {
         $('.social-login').each(function (i, v) {

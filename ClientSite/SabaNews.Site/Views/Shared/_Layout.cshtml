@@ -97,7 +97,11 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-        <div class="auth-form" id="auth-form"></div>
+        <div class="auth-form" id="auth-form">
+            @await Html.PartialAsync("~/Views/Auth/_Login.cshtml")
+            @await Html.PartialAsync("~/Views/Auth/_Register.cshtml")
+            @await Html.PartialAsync("~/Views/Auth/_ForgotPassword.cshtml")
+        </div>
 
         @await Html.PartialAsync("_Footer.cshtml")
     </div>
@@ -136,7 +140,7 @@
         <script src="~/js/site.js"," asp-append-version="true"></script>
         <script src="~/js/all.js"," asp-append-version="true"></script>
         <script src="~/js/post/load-component.js"," asp-append-version="true"></script>
-        
+        <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
     </environment>
     <environment exclude="Development">
         <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
