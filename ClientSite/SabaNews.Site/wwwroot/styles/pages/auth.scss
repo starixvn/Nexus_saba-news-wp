@@ -34,9 +34,6 @@
         &::placeholder{
             color: #8F8F8F;
         }
-        &:focus-within{
-            border: none;
-        }
     }
     .group-input-auth{
         position: relative;
@@ -322,7 +319,7 @@ input:-webkit-autofill:active{
     line-height: normal;
     padding: .9rem 1.2rem;
     border-radius: 3px;
-    border: 1px rgba(241, 47, 25, 0.10);
+    border: 1px solid #FFC9C2;
     background: rgba(241, 47, 25, 0.10);
     color: #F12F19;
 }

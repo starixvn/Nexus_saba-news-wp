@@ -38,9 +38,6 @@
 .form-group-auth .input-auth::placeholder {
   color: #8F8F8F;
 }
-.form-group-auth .input-auth:focus-within {
-  border: none;
-}
 .form-group-auth .group-input-auth {
   position: relative;
 }
@@ -323,7 +320,7 @@ input:-webkit-autofill:active {
   line-height: normal;
   padding: 0.9rem 1.2rem;
   border-radius: 3px;
-  border: 1px rgba(241, 47, 25, 0.1);
+  border: 1px solid #FFC9C2;
   background: rgba(241, 47, 25, 0.1);
   color: #F12F19;
 }
