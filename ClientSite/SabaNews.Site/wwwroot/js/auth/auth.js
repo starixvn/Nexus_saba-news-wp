@@ -205,7 +205,6 @@ var auth = (function ($) {
             var yearOfBirth = $('#form-register select[name=yearOfBirth]').val();
             var phone = $('#form-register input[name=phone]').val();
             var captcha = grecaptcha.getResponse();
-            console.log(captcha);
             var self = $(this);
             let isValid = true;
 
@@ -292,7 +291,7 @@ var auth = (function ($) {
             e.preventDefault();
             $('.authModal').modal('hide');
             $('#modal-forgotpassword').modal('show');
-            document.querySelector("#form-forgot-password > button").addEventListener('click', (e) => {
+            $("#form-forgot-password  .btn-resetpass").on('click', (e) => {
                 e.preventDefault();
                 HandleSubmitForgotPassword();
             });
@@ -300,7 +299,7 @@ var auth = (function ($) {
     }
 
     function HandleSubmitForgotPassword() {
-        var email = document.querySelector("#form-forgot-password > div > input").value;
+        var email = $("#form-forgot-password input[name=email]").val();
         if (!mailFormat.test(email) || email === "") {
             $("#email-error").remove();
             flag = false;
