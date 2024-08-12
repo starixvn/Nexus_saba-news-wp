@@ -184,7 +184,7 @@ var auth = (function ($) {
                         }
                     }
                     else {
-                        $('form#form-login').find('.summary-eror').text(res.message);
+                        $('.summary-eror').show();
                         $('.summary-eror').text(res.message);
                         self.prop('disabled', false);
                     }
@@ -260,7 +260,7 @@ var auth = (function ($) {
                             $(modal + ' .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
-                            $('form#form-register').find('.summary-eror').text(res.message);
+                            $('.summary-eror').show();
                             $('.summary-eror').text(res.message);
                             self.prop('disabled', false);
                             self.removeClass('btn-disabled');
@@ -324,7 +324,8 @@ var auth = (function ($) {
                         const bodyModal = formatString(html, email, window.location.origin);
                         $('#modal-forgotpassword .modal-body').html(bodyModal);
                     } else {
-                        $('#modal-forgotpassword form#form-forgot-password').find('.summary-eror').text(res.message);
+                        $('.summary-eror').show();
+                       $('.summary-eror').text(res.message);
                         $("#modal-forgotpassword .btn-resetpass").prop('disabled', false);
                         $("#modal-forgotpassword .btn-resetpass").removeClass('btn-disabled');
                     }
