@@ -331,3 +331,14 @@ input:-webkit-autofill:active{
         }
     }
 }
+
+.captcha{
+    .validate-error{
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: normal;
+        color: #FF3B30;
+        margin-top: .2rem;
+        display: block;
+    }
+}
