@@ -211,7 +211,7 @@ var auth = (function ($) {
 
 
             $('#form-register .form-group-auth').removeClass('error');
-            $('#form-register .form-group-auth .validate-error').html('');
+            $('#form-register  .validate-error').html('');
             if (name === "") {
                 isValid = false;
                 ShowErrHandle($("#form-register .name-group"), NameEmptyErr);
@@ -242,6 +242,7 @@ var auth = (function ($) {
                 ShowErrHandle($("#form-register .confirm-password-group"), msg);
             }
             if(captcha == "") {
+                console.log(123);
                 isValid = false;
                 $('.captcha .validate-error').html('xác nhận captcha');
             }
@@ -423,7 +424,6 @@ var auth = (function ($) {
         HandleForgotPassword();
         HandleConfirmEmail();
         HandleModal();
-        formSubmit();
     }
 
     return {
