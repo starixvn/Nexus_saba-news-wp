@@ -29,6 +29,7 @@
   border: 1px solid #d1d1d1;
   background: #FFFDF9;
   width: 100%;
+  font-size: 1.3rem;
 }
 @media (max-width: 767px) {
   .form-group-auth .input-auth {
