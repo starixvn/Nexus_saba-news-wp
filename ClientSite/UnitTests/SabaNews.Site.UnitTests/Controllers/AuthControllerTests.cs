@@ -29,9 +29,10 @@
         {
             // Arrange
             var controller = GetController();
+            var openForm = "login";
 
             //Act
-            var actual = controller.Index();
+            var actual = controller.Index(openForm);
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(actual) ;
@@ -156,7 +157,7 @@
             var controller = GetController();
             controller.ViewData.ModelState.Clear();
             var model = fixture.Create<RegisterModel>();
-            var token = fixture.Create<ConfirmEmailModel>();
+            var confrimTokenModel = fixture.Create<ConfirmEmailModel>();
             var successCreateUserCommand = new CommandResult { Code = 0 };
             var successCreateTokenCommand = new CommandResult { Code = 0 };
             controller.Url = Substitute.For<IUrlHelper>();
@@ -166,7 +167,7 @@
             };
             controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
             authService.CreateUserAsync(Arg.Do<RegisterModel>(x => model = x)).Returns(successCreateUserCommand);
-            authService.CreateTokenConfirmEmail(Arg.Do<ConfirmEmailModel>(x => token = x)).Returns(successCreateTokenCommand);
+            authService.CreateTokenConfirmEmail(Arg.Do<ConfirmEmailModel>(x => confrimTokenModel = x)).Returns(successCreateTokenCommand);
 
             //Act
             var result = await controller.Register(model);
@@ -185,7 +186,7 @@
             var controller = GetController();
             controller.ViewData.ModelState.Clear();
             var model = fixture.Create<RegisterModel>();
-            var token = fixture.Create<ConfirmEmailModel>();
+            var confirmTokenModel = fixture.Create<ConfirmEmailModel>();
             var successCreateUserCommand = new CommandResult { Code = 0 };
             var successCreateTokenCommand = new CommandResult { Code = 1 };
             controller.ControllerContext = new ControllerContext
@@ -194,7 +195,7 @@
             };
             controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
             authService.CreateUserAsync(Arg.Do<RegisterModel>(x => model = x)).Returns(successCreateUserCommand);
-            authService.CreateTokenConfirmEmail(Arg.Do<ConfirmEmailModel>(x => token = x)).Returns(successCreateTokenCommand);
+            authService.CreateTokenConfirmEmail(Arg.Do<ConfirmEmailModel>(x => confirmTokenModel = x)).Returns(successCreateTokenCommand);
 
             //Act
             var result = await controller.Register(model);

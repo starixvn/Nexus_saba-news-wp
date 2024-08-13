@@ -81,6 +81,7 @@
             //Arrange
             var service = GetAuthService();
             var fixture = new Fixture();
+            var model = fixture.Create<ConfirmEmailModel>();
             var email = fixture.Create<string>();
             var modal = fixture.Create<ConfirmEmailModel>();
             var expected = fixture.Create<CommandResult>();
@@ -88,13 +89,13 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<CreateTokenConfirmEmailCommand>(x => command = x)).Returns(expected);
 
             //Act
-            var actual = await service.CreateTokenConfirmEmail(modal);
+            var actual = await service.CreateTokenConfirmEmail(model);
 
             //Assert
             Assert.Equal(expected, actual);
 
-            Assert.Equal(modal.Email, command.Email);
-            Assert.Equal(modal.Token, command.Token);
+            Assert.Equal(model.Email, command.Email);
+            Assert.Equal(model.Token, command.Token);
         }
 
         [Fact]
