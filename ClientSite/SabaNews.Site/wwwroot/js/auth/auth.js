@@ -291,6 +291,7 @@ var auth = (function ($) {
             e.preventDefault();
             $('.authModal').modal('hide');
             $('#modal-forgotpassword').modal('show');
+            console.log(123);
             $("#form-forgot-password  .btn-resetpass").on('click', (e) => {
                 e.preventDefault();
                 HandleSubmitForgotPassword();
@@ -300,41 +301,39 @@ var auth = (function ($) {
 
     function HandleSubmitForgotPassword() {
         var email = $("#form-forgot-password input[name=email]").val();
-        if (!mailFormat.test(email) || email === "") {
-            $("#email-error").remove();
-            flag = false;
-            var aTag = document.createElement("label");
-            aTag.id = "email-error";
-            aTag.htmlFor = "email";
-            aTag.classList.add("error");
-            aTag.innerHTML = email === "" ? EmailEmptyErr : EmailIsValidErr;
-            document.querySelector("#form-forgot-password > div").append(aTag);
+        var isValid = true
+        if (!mailFormat.test(email) || email == "") {
+            isValid = false;
+            var msg = email === "" ? EmailEmptyErr : EmailIsValidErr;
+            $('#form-forgot-password .forgot-email').addClass('error');
+            $('#form-forgot-password .validate-error').html(msg);
         }
 
-        if (mailFormat.test(email) && email != "") {
-            $("#form-forgot-password .btn-resetpass").prop('disabled', true);
-            $("#form-forgot-password .btn-resetpass").addClass('btn-disabled');
-            $.ajax({
-                url: '/Auth/ForgotPassword',
-                method: "POST",
-                data: { email },
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
-                        const bodyModal = formatString(html, email, window.location.origin);
-                        $('#modal-forgotpassword .modal-body').html(bodyModal);
-                    } else {
-                        $('.summary-eror').show();
-                       $('.summary-eror').text(res.message);
-                        $("#modal-forgotpassword .btn-resetpass").prop('disabled', false);
-                        $("#modal-forgotpassword .btn-resetpass").removeClass('btn-disabled');
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
+        if(!isValid) {
+            return false;
         }
+        $("#form-forgot-password .btn-resetpass").prop('disabled', true);
+        $("#form-forgot-password .btn-resetpass").addClass('btn-disabled');
+        $.ajax({
+            url: '/Auth/ForgotPassword',
+            method: "POST",
+            data: { email },
+            success: function (res) {
+                if (res.isSuccessful) {
+                    const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
+                    const bodyModal = formatString(html, email, window.location.origin);
+                    $('#modal-forgotpassword .modal-body').html(bodyModal);
+                } else {
+                    $('.summary-eror').show();
+                    $('.summary-eror').text(res.message);
+                    $("#modal-forgotpassword .btn-resetpass").prop('disabled', false);
+                    $("#modal-forgotpassword .btn-resetpass").removeClass('btn-disabled');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus + ': ' + errorThrown);
+            }
+        });
     }
 
     function HandleConfirmEmail() {
