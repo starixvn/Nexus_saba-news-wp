@@ -108,8 +108,8 @@
             var service = GetUserService();
             var param = fixture.Create<GetUserReportCriteria>();
             var criteria = fixture.Create<GetUserReportCriteria>();
-            var expected = fixture.Create<IEnumerable<UserSession>>();
-            baseService.GetDataAsync<UserSession>(Arg.Do<GetUserReportCriteria>(x => criteria = x)).Returns(expected);
+            var expected = fixture.Create<IEnumerable<UserReportModel>>();
+            baseService.GetDataAsync<UserReportModel>(Arg.Do<GetUserReportCriteria>(x => criteria = x)).Returns(expected);
 
             //Act
             var actual = await service.GetUserReportAsync(param);

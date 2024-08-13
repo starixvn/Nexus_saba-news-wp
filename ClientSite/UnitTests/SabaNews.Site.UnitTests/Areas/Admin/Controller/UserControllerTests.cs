@@ -5,6 +5,7 @@
     using NSubstitute;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
+    using SabaNews.Models.User;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
@@ -40,7 +41,7 @@
             var controller = GetController();
             var param = fixture.Create<UserFilterViewModel>();
             var criteria = fixture.Create<GetUserReportCriteria>();
-            var expected = fixture.Create<IEnumerable<UserSession>>();
+            var expected = fixture.Create<IEnumerable<UserReportModel>>();
 
             userSerive.GetUserReportAsync(Arg.Do<GetUserReportCriteria>(x => criteria = x)).Returns(expected);
             //Act
@@ -61,7 +62,7 @@
             var controller = GetController();
             var param = fixture.Create<UserFilterViewModel>();
             var criteria = fixture.Create<GetUserReportCriteria>();
-            var expected = fixture.Create<IEnumerable<UserSession>>();
+            var expected = fixture.Create<IEnumerable<UserReportModel>>();
             param.Search = null;
 
             userSerive.GetUserReportAsync(Arg.Do<GetUserReportCriteria>(x => criteria = x)).Returns(expected);
