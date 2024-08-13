@@ -1,4 +1,141 @@
-﻿@import '../../abstracts/variables';
+﻿// @import '../../abstracts/variables';
+// @import '../../abstracts/mixins';
+// @import '../../base/base';
+// @import '../../layout/footer';
+// @import '../../layout/header';
+// @import '../../components/fonts';
+// @import '../../components/container';
+// @import '../../components/lazyload';
+// @import '../../components/_popup-event';
+
+// .main{
+//     margin-bottom: 4rem;
+// }
+
+// .profile-container{
+//     max-width: 108rem;
+//     display: flex;
+//     gap: 2rem;
+//     @include tableMobile{
+//         display: block;
+//     }
+//     .block-main{
+//         width: 100%;
+//         max-width: 34rem;
+//         @include tableMobile {
+//             max-width: 100%;
+//         }
+//     }
+//     .block-extension{
+//         width: 100%;
+//         border-radius: 5px;
+//         border: 1px #E5E5E5;
+//         background: #FFFDF9;
+//         box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+//         padding: 2rem;
+//     }
+// }
+
+// .input-auth{
+//     height: 3.6rem;
+//     padding: .5rem 1rem;
+//     color: #222;
+//     box-shadow: none;
+//     border-radius: 3px;
+//     border: 1px solid #d1d1d1;
+//     background: #FFFDF9;
+//     width: 100%;
+//     @include Mobile{
+//         height: 4.2rem;
+//     }
+//     &::placeholder{
+//         color: #8F8F8F;
+//     }
+// }
+// .validate-error{
+//     display: none;
+// }
+// .error{
+//     .input-auth{
+//         border: 1px solid #FF3B30;
+//     }
+//     .validate-error{
+//         font-size: 1.2rem;
+//         font-weight: 400;
+//         line-height: normal;
+//         color: #FF3B30;
+//         margin-top: .2rem;
+//         display: block;
+//     }
+// }
+// .block__title{
+//     color: #E13C29;
+//     font-family: Arial;
+//     font-size: 2rem;
+//     font-weight: 700;
+//     line-height: normal;
+//     margin-bottom: 2rem;
+// }
+
+// .profile{
+//     border-radius: 5px;
+//     border: 1px #E5E5E5;
+//     background: #FFFDF9;
+//     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+//     padding: 2rem;
+//     &__avatar {
+//         width: 6rem;
+//         height: 6rem;
+//         background: $separator-color;
+//         text-align: center;
+//         color: $color-fff;
+//         font-size: 3rem;
+//         font-weight: 700;
+//         text-transform: uppercase;
+//         border-radius: 50%;
+//         overflow: hidden;
+//         @include flex(center, nowrap, center, row);
+
+//         img {
+//             object-fit: cover;
+//             width: 100%;
+//             height: 100%;
+//         }
+//     }
+
+//     &__name {
+//         font-size: 1.8rem;
+//         color: $color-content;
+//         font-weight: 700;
+//         text-align: center;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import '../../abstracts/variables';
 @import '../../abstracts/mixins';
 
 @import '../../base/base';
