@@ -51,6 +51,8 @@
                 _Email = "Email",
                 _Password = "password",
                 UserId = 1,
+                _Phone = "12313",
+                _YearOfBirth = "1069"
             };
 
             // Act
