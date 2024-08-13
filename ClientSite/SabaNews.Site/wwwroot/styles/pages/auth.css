@@ -33,7 +33,7 @@
 }
 @media (max-width: 767px) {
   .form-group-auth .input-auth {
-    height: 4.2rem;
+    height: 4.4rem;
   }
 }
 .form-group-auth .input-auth::placeholder {
