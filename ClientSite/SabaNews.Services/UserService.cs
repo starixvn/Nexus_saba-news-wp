@@ -61,9 +61,9 @@
             return await baseService.GetDataAsync<UserSession>(criteria);
         }
 
-        public async Task<IEnumerable<UserSession>> GetUserReportAsync(GetUserReportCriteria criteria)
+        public async Task<IEnumerable<UserReportModel>> GetUserReportAsync(GetUserReportCriteria criteria)
         {
-            return await baseService.GetDataAsync<UserSession>(criteria);
+            return await baseService.GetDataAsync<UserReportModel>(criteria);
         }
 
         public async Task<CommandResult> UnSubcriteUserAsync(int UserId, string token)

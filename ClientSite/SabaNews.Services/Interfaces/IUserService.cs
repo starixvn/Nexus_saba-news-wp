@@ -19,7 +19,7 @@
 
         Task<IEnumerable<UserSession>> GetAllUserAsync(GetAllUserCriteria criteria);
 
-        Task<IEnumerable<UserSession>> GetUserReportAsync(GetUserReportCriteria criteria);
+        Task<IEnumerable<UserReportModel>> GetUserReportAsync(GetUserReportCriteria criteria);
 
         Task<CommandResult> UnSubcriteUserAsync(int UserId, string token);
 
