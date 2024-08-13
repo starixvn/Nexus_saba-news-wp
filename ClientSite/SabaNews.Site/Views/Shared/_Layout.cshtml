@@ -147,6 +147,7 @@
     <environment exclude="Development">
         <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
         <script src="~/js/lib/jquery.lazyload.min.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     </environment>
     <script>
         window.currentTime = new Date('@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(DateTime.UtcNow, "yyyy-MM-dd HH:mm:ss")');
