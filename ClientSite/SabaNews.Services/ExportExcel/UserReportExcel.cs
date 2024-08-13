@@ -2,7 +2,6 @@
 {
     using OfficeOpenXml;
     using OfficeOpenXml.Style;
-    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.User;
     using System.Collections.Generic;
 
