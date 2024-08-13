@@ -71,6 +71,18 @@
   display: block;
 }
 
+.noted {
+  color: #5C5C5C;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 2.4rem;
+  padding: 0.6rem;
+  border-radius: 3px;
+  background: #E9EFF0;
+}
+
 .auth-form .show {
   position: fixed;
   z-index: 99999;
@@ -228,7 +240,7 @@
   color: #A7A7A7;
 }
 .auth-form .group-question {
-  color: #777;
+  color: #222;
   font-size: 1.3rem;
   font-weight: 400;
   line-height: normal;
@@ -340,4 +352,31 @@ input:-webkit-autofill:active {
   color: #FF3B30;
   margin-top: 0.2rem;
   display: block;
+}
+
+#modal-forgotpassword label {
+  margin-bottom: 1.2rem;
+}
+#modal-forgotpassword .group-question {
+  display: flex;
+  align-items: center;
+}
+#modal-forgotpassword .group-question i {
+  font-size: 2.4rem;
+  margin-right: 0.6rem;
+}
+#modal-forgotpassword .group-question a {
+  margin: 0 0.4rem;
+}
+
+.check-email {
+  color: #222;
+  font-size: 1.6rem;
+  line-height: normal;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .check-email {
+    font-size: 1.3rem;
+  }
 }
