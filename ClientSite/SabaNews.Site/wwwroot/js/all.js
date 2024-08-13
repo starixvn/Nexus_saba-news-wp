@@ -289,7 +289,6 @@ var all = (function ($) {
                 url: '/api/CountBanner',
                 success: function(res)
                 {
-                    console.log(1);
                 }
             })
         })
