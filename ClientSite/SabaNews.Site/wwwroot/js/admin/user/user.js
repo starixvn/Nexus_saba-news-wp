@@ -8,7 +8,6 @@
         if (!isValidFilter(fromDate, toDate)) {
             return false;
         }
-        console.log(dateSort);
         $.ajax({
             url: "/Admin/User/GetDataUser",
             type: 'POST',
@@ -19,6 +18,32 @@
                 initPaging();
             }
         });
+    }
+
+    function ExportUser() {
+        $('.btn-exportexcel').on('click', function () {
+            console.log(123);
+            var fromDate = $('#FromDate').val();
+            var toDate = $('#ToDate').val();
+            var search = $('#search').val();
+            var dateSort = $("#date-sort").attr("sort-type");
+            if (!isValidFilter(fromDate, toDate)) {
+                return false;
+            }
+            window.location.href = window.location.origin + "/Admin/User/ExportExcel?fromDate=" + fromDate 
+                                                        + "&toDate=" + toDate
+                                                        + "&search=" + search
+                                                        + "&page=" + page
+                                                        + "&pageSize=" + pageSize;
+            // $.ajax({
+            //     url: "/Admin/User/ExportExcel",
+            //     type: 'GET',
+            //     data: { fromDate, toDate, search, dateSort, page, pageSize},
+            //     success: function (res) {
+            //     }
+            // });
+        });
+        
     }
 
     function isValidFilter(fromDate, toDate) {
@@ -85,6 +110,7 @@
     function init() {
         GetDataUserGrid();
         initEventSubmitBtn();
+        ExportUser();
     }
 
     return {

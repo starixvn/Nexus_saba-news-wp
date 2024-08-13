@@ -17,6 +17,7 @@
     public class UserControllerTests : AdminController
     {
         private IUserService userSerive;
+        private IExportExcelService excelService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -83,7 +84,8 @@
         private UserController GetController()
         {
             userSerive = Substitute.For<IUserService>();
-            var controller = new UserController(userSerive);
+            excelService = Substitute.For<IExportExcelService>();
+            var controller = new UserController(userSerive, excelService);
 
             return controller;
         }

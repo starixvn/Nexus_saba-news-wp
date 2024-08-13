@@ -11,11 +11,13 @@
 
     public class UserController : AdminController
     {
+        private readonly IExportExcelService excelService;
         private readonly IUserService userSerive;
 
-        public UserController(IUserService userSerive)
+        public UserController(IUserService userSerive, IExportExcelService excelService)
         {
             this.userSerive = userSerive;
+            this.excelService = excelService;
         }
         public ActionResult Index()
         {
@@ -57,6 +59,22 @@
             return PartialView("_UserDataGrid", model);
         }
 
-        
+        [HttpGet]
+        public async Task<ActionResult> ExportExcel(UserFilterViewModel param)
+        {
+            var search = param.Search ??= "";
+            var criteria = new GetUserReportCriteria
+            {
+                FromDate = param.FromDate.DateTime,
+                ToDate = param.ToDate.DateTime,
+                Search = search,
+                DateSort = param.DateSort,
+                Start = (param.Page - 1) * param.PageSize,
+                End = param.PageSize
+            };
+            var users = await userSerive.GetUserReportAsync(criteria);
+            var bytes = excelService.ExportUser(users);
+            return File(bytes, "application/xlsx", "UserReport.xlsx");
+        }
     }
 }
