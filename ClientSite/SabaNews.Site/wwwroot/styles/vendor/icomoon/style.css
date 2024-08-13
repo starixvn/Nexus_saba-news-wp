@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?ny0uu5');
-  src:  url('fonts/Fraud-Sensor.eot?ny0uu5#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?ny0uu5') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?ny0uu5') format('woff'),
-    url('fonts/Fraud-Sensor.svg?ny0uu5#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?luphum');
+  src:  url('fonts/Fraud-Sensor.eot?luphum#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?luphum') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?luphum') format('woff'),
+    url('fonts/Fraud-Sensor.svg?luphum#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,34 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-calendar:before {
+  content: "\e952";
+  color: #5c5c5c;
+}
+.icon-lock:before {
+  content: "\e953";
+  color: #5c5c5c;
+}
+.icon-personalcard:before {
+  content: "\e954";
+  color: #5c5c5c;
+}
+.icon-ph_gender-intersex-bold:before {
+  content: "\e955";
+  color: #5c5c5c;
+}
+.icon-phone:before {
+  content: "\e956";
+  color: #5c5c5c;
+}
+.icon-profile-user:before {
+  content: "\e957";
+  color: #5c5c5c;
+}
+.icon-status-win:before {
+  content: "\e958";
+  color: #03a700;
+}
 .icon-icon-minigame_standing_full:before {
   content: "\e951";
   color: #0f2da3;
