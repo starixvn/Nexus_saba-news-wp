@@ -1,7 +1,5 @@
 ﻿namespace SabaNews.Models.Auth
 {
-    using System.ComponentModel.DataAnnotations;
-
     public class ConfirmEmailModel
     {
         public string Email { get; set; }
