@@ -26,6 +26,7 @@ var auth = (function ($) {
 
     function GetModalLogin(Url, openForm) {
         returnUrl = Url;
+        grecaptcha.reset();
         $('.authModal').modal('hide');
         modal = openForm == 'login' ? '#modal-login' : '#modal-register';
         $('.summary-eror').hide();
@@ -41,6 +42,7 @@ var auth = (function ($) {
         });
         $(document).on('click', '.register-form-open', function (e) {
             e.preventDefault();
+            $('#form-register').trigger('reset');
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'register');
         })
@@ -244,9 +246,7 @@ var auth = (function ($) {
                         if (res.isSuccessful) {
                             const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email, window.location.origin);
-                            $(modal).css("max-width", "63rem");
-                            $(modal + ' .modal-body').html(bodyModal);
-                            HandleCloseModal();
+                            HandleNotificationPopup(bodyModal);
                         } else {
                             $('.summary-eror').show();
                             $('.summary-eror').text(res.message);
@@ -279,7 +279,6 @@ var auth = (function ($) {
             e.preventDefault();
             $('.authModal').modal('hide');
             $('#modal-forgotpassword').modal('show');
-            console.log(123);
             $("#form-forgot-password  .btn-resetpass").on('click', (e) => {
                 e.preventDefault();
                 HandleSubmitForgotPassword();
@@ -309,14 +308,14 @@ var auth = (function ($) {
             success: function (res) {
                 if (res.isSuccessful) {
                     const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
-                    const bodyModal = formatString(html, email, window.location.origin);
-                    $('#modal-forgotpassword .modal-body').html(bodyModal);
+                    const bodyModal = formatString(html, email, email);
+                    HandleNotificationPopup(bodyModal);
                 } else {
                     $('.summary-eror').show();
                     $('.summary-eror').text(res.message);
-                    $("#modal-forgotpassword .btn-resetpass").prop('disabled', false);
-                    $("#modal-forgotpassword .btn-resetpass").removeClass('btn-disabled');
                 }
+                $("#modal-forgotpassword .btn-resetpass").prop('disabled', false);
+                $("#modal-forgotpassword .btn-resetpass").removeClass('btn-disabled');
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus + ': ' + errorThrown);
@@ -325,17 +324,33 @@ var auth = (function ($) {
     }
 
     function HandleResendConfirmEmail() {
-        $('#resend-email').on('click', function () {
+        $(document).on('click', '.resend-email' , function () {
+            var email = $(this).data('email');
             $.ajax({
                 url: '/Auth/SendEmailConfirm',
-                type: "GET",
-                dataType: 'html',
-                success: function (response) {
-                    $(modal).html(response);
-                    HandleSubmitConfirmEmail();
+                type: "POST",
+                data: {email},
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        const html = "Chúng tôi đã gửi email đến địa chỉ <b>{0}</b> để xác thực và kích hoạt tài khoản.</div>',";
+                        const bodyModal = formatString(html, email);
+                        $(modal + ' .modal-body').html(bodyModal);
+                    } else {
+                        $(modal).find('.summary-eror').text(res.message);
+                        self.prop('disabled', false);
+                        self.removeClass('btn-disabled');
+                    }
+                    // $(modal).html(response);
+                    // HandleSubmitConfirmEmail();
                 }
             });
         });
+    }
+
+    function HandleNotificationPopup(body) {
+        $('.authModal').modal('hide');
+        $('#modal-noti .noti-body').html(body);
+        $('#modal-noti').modal('show');
     }
 
     function HandleSubmitConfirmEmail() {
