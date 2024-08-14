@@ -3,9 +3,9 @@
       'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
 
-    grecaptcha.render('login-captcha', {
-        'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
-      });
+    // grecaptcha.render('login-captcha', {
+    //     'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
+    //   });
   };
 
 var auth = (function ($) {
@@ -422,7 +422,7 @@ var auth = (function ($) {
         HandleAuth();
         HandleLogin();
         HandleRegister();
-        HandleValidate();
+        // HandleValidate();
         HandleForgotPassword();
         HandleConfirmEmail();
         HandleModal();
