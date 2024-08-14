@@ -263,6 +263,13 @@
   color: #3873E9;
   font-weight: 600;
 }
+.auth-form .modal-title {
+  margin-bottom: 1.6rem;
+  color: #E13C29;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: normal;
+}
 
 .box-auth {
   display: flex;
