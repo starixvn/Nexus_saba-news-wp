@@ -401,6 +401,15 @@ var auth = (function ($) {
         });
     }
 
+    $('.select-auth').on('change' , function () {
+        $(this).addClass('change-color');
+        if($(this).val()){
+            $(this).addClass('change-color');
+        }else{
+            $(this).removeClass('change-color');
+        }
+    })
+
 
     function init() {
         HandleAuth();

@@ -304,6 +304,31 @@ input:-webkit-autofill:active {
   -webkit-appearance: none;
   background-repeat: no-repeat !important;
   background-position: 98% !important;
+  color: #8F8F8F;
+  height: 3.6rem;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  border-radius: 3px;
+  border: 1px solid #d1d1d1;
+  width: 100%;
+  font-size: 1.3rem;
+  font-family: "Open Sans" !important;
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .select-auth {
+    height: 4.4rem;
+  }
+}
+.select-auth::placeholder {
+  color: #8F8F8F;
+  font-size: 1.3rem !important;
+}
+.select-auth:focus-visible {
+  outline: none;
+}
+.select-auth.change-color {
+  color: #222222;
 }
 .select-auth .color-other {
   color: #222222;
