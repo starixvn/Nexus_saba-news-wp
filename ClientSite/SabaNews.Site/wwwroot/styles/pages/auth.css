@@ -437,7 +437,9 @@ input[type=password] {
     padding: 1.6rem;
   }
 }
-#modal-noti .close-login.close {
-  top: 16px;
-  right: 16px;
+@media (max-width: 767px) {
+  #modal-noti .close-login.close {
+    top: 16px;
+    right: 16px;
+  }
 }

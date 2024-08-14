@@ -438,7 +438,9 @@ input[type="password"]{
         }
     }
     .close-login.close{
-        top: 16px;
-        right: 16px;
+        @include Mobile{
+            top: 16px;
+            right: 16px;
+        }
     }
 }
