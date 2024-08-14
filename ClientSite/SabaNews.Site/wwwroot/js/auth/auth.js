@@ -324,8 +324,8 @@ var auth = (function ($) {
         });
     }
 
-    function HandleConfirmEmail() {
-        $('#confirm-email').on('click', function () {
+    function HandleResendConfirmEmail() {
+        $('#resend-email').on('click', function () {
             $.ajax({
                 url: '/Auth/SendEmailConfirm',
                 type: "GET",
@@ -417,7 +417,7 @@ var auth = (function ($) {
         HandleRegister();
         HandleValidate();
         HandleForgotPassword();
-        HandleConfirmEmail();
+        HandleResendConfirmEmail();
         HandleModal();
     }
 
