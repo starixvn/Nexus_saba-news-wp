@@ -30,6 +30,8 @@
   background: #FFFDF9;
   width: 100%;
   font-size: 1.3rem;
+  font-family: "Open Sans" !important;
+  font-weight: 600;
 }
 @media (max-width: 767px) {
   .form-group-auth .input-auth {
@@ -38,6 +40,10 @@
 }
 .form-group-auth .input-auth::placeholder {
   color: #8F8F8F;
+  font-size: 1.3rem !important;
+}
+.form-group-auth .input-auth:focus-visible {
+  outline: none;
 }
 .form-group-auth .group-input-auth {
   position: relative;
@@ -162,8 +168,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 2rem;
-  height: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   z-index: 999999;
   cursor: pointer;
   line-height: 0;
