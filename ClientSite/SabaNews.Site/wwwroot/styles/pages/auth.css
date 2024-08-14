@@ -423,3 +423,21 @@ input:-webkit-autofill:active {
 input[type=password] {
   padding: 0.5rem 4rem 0.5rem 1rem !important;
 }
+
+#modal-noti {
+  min-width: 50rem;
+}
+@media (max-width: 767px) {
+  #modal-noti {
+    min-width: auto;
+  }
+}
+@media (max-width: 767px) {
+  #modal-noti .modal-body {
+    padding: 1.6rem;
+  }
+}
+#modal-noti .close-login.close {
+  top: 16px;
+  right: 16px;
+}
