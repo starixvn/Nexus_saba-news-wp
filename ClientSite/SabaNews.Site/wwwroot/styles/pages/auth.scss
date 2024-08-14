@@ -9,6 +9,8 @@
     }
 }
 
+
+
 .form-group-auth{
     margin-top: 1.6rem;
     .label-auth{
@@ -226,6 +228,7 @@
             border-radius: 3px;
             background: #E13C29;
             text-align: center;
+            font-family: "Open Sans";
             cursor: pointer;
             @include Mobile{
                 padding: 1.3rem 0;
@@ -419,3 +422,7 @@ input:-webkit-autofill:active{
 }
 
 
+
+input[type="password"]{
+    padding: .5rem 4rem .5rem 1rem !important;
+}

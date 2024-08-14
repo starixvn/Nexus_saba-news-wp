@@ -233,6 +233,7 @@
   border-radius: 3px;
   background: #E13C29;
   text-align: center;
+  font-family: "Open Sans";
   cursor: pointer;
 }
 @media (max-width: 767px) {
@@ -417,4 +418,8 @@ input:-webkit-autofill:active {
   .check-email {
     font-size: 1.3rem;
   }
+}
+
+input[type=password] {
+  padding: 0.5rem 4rem 0.5rem 1rem !important;
 }
