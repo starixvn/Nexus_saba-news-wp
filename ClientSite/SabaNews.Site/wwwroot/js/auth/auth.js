@@ -2,6 +2,10 @@
     grecaptcha.render('register-captcha', {
       'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
+
+    grecaptcha.render('login-captcha', {
+        'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
+      });
   };
 
 var auth = (function ($) {
@@ -143,12 +147,13 @@ var auth = (function ($) {
 
 
     function HandleLogin() {
-        $('#form-login  button').on('click', function (e) {
+        $('#form-login .submit-login').on('click', function (e) {
+            console.log(123);
             e.preventDefault();
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
             var isValid = true;
-
+            console.log(grecaptcha);
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
             var self = $(this);
@@ -241,7 +246,6 @@ var auth = (function ($) {
                 ShowErrHandle($("#form-register .confirm-password-group"), msg);
             }
             if(captcha == "") {
-                console.log(123);
                 isValid = false;
                 $('.captcha .validate-error').html('xác nhận captcha');
             }
