@@ -3,9 +3,9 @@
       'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
 
-    // grecaptcha.render('login-captcha', {
-    //     'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
-    //   });
+    grecaptcha.render('login-captcha', {
+        'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
+      });
   };
 
 var auth = (function ($) {
@@ -51,9 +51,8 @@ var auth = (function ($) {
         $('input[name=email]').on('keyup', function () {
             let email = $(this).val();
             let err = GetErrorElement($(this));
-            if (!mailFormat.test(email) || email === "") {
-                let message = email === "" ? EmailEmptyErr : EmailIsValidErr
-                SetErrorElement(err, message)
+            if (email === "") {
+                SetErrorElement(err, EmailEmptyErr)
             }
         });
 
@@ -68,7 +67,6 @@ var auth = (function ($) {
         $('#form-register input[name=phone]').on('keyup', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
-            console.log(val);
             if (val === "") {
                 let message = PhoneEmptyErr;
                 SetErrorElement(err, message)
@@ -101,31 +99,19 @@ var auth = (function ($) {
             var message = "";
             if (val === "") {
                 message = PasswordEmptyErr;
-            } else if (!passwordFormat.test(val)) {
-                message = PasswordIsvalidErr;
             }
             if (message !== "") {
                 SetErrorElement(err, message)
-            }
-            if (val !== resetPassword) {
-                $('#form-register .confirm-password-group').addClass('error');
-                $('#form-register .confirm-password-group .validate-error').html(ConfirmPasswordIsvalidErr);
-            } else {
-                $('#form-register .confirm-password-group').removeClass('error');
-                $('#form-register .confirm-password-group .validate-error').html('');
             }
         });
 
         $('#form-register input[name=confirmPassword]').on('keyup', function () {
             let err = GetErrorElement($(this));
-            console.log(123);
             let val = $(this).val();
             let password = $('#form-register .password-group').find('input[name=password]').val();
             let message = "";
             if (val === "") {
                 message = ConfirmPasswordEmptyErr;
-            } else if (password !== val) {
-                message = ConfirmPasswordIsvalidErr;
             }
             if (message !== "") {
                 SetErrorElement(err, message);
@@ -148,7 +134,6 @@ var auth = (function ($) {
 
     function HandleLogin() {
         $('#form-login .submit-login').on('click', function (e) {
-            console.log(123);
             e.preventDefault();
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
@@ -157,7 +142,6 @@ var auth = (function ($) {
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
             var self = $(this);
-            
 
             if (!mailFormat.test(email) || email === "") {
                 isValid = false
@@ -422,7 +406,7 @@ var auth = (function ($) {
         HandleAuth();
         HandleLogin();
         HandleRegister();
-        // HandleValidate();
+        HandleValidate();
         HandleForgotPassword();
         HandleConfirmEmail();
         HandleModal();
