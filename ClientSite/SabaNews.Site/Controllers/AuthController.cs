@@ -127,8 +127,7 @@
             return Json(commandResult);
         }
 
-       
-
+        //verify token
         [HttpGet]
         public async Task<IActionResult> ResetPassword(int userId, string token)
         {
@@ -138,6 +137,7 @@
             return View(commandResult.IsSuccessful);
         }
 
+        //submit new password
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
         {
