@@ -270,7 +270,8 @@ var auth = (function ($) {
 
     function HandleCloseModal() {
         $('.authModal').on('hidden.bs.modal', function () {
-            location.reload();
+            $('.auth-form .validate-error').html('');
+            $('.auth-form').find('.form-group-auth').removeClass('error');
         });
     }
 
@@ -423,7 +424,7 @@ var auth = (function ($) {
         }else{
             $(this).removeClass('change-color');
         }
-    })
+    });
 
 
     function init() {
@@ -434,6 +435,7 @@ var auth = (function ($) {
         HandleForgotPassword();
         HandleResendConfirmEmail();
         HandleModal();
+        HandleCloseModal();
     }
 
     return {
