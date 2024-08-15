@@ -40,8 +40,8 @@
                 data: $(form).serialize(),
                 success: function (res) {
                     if (res.isSuccessful) {
-                        $('.reset-success').show();
                         $('.reset-action').hide();
+                        $('.reset-success').show();
                     } else {
                         $(form).find('.summary-eror').text(res.message);
                     }

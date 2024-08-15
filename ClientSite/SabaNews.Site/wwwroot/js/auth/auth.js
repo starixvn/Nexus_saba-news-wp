@@ -307,7 +307,7 @@ var auth = (function ($) {
             data: { email },
             success: function (res) {
                 if (res.isSuccessful) {
-                    const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
+                    const html = _htmlResource.ForgotPassword;
                     const bodyModal = formatString(html, email, email);
                     HandleNotificationPopup(bodyModal);
                 } else {
