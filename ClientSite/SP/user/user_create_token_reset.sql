@@ -3,11 +3,17 @@ DROP PROCEDURE IF EXISTS user_create_token_reset;
 
 DELIMITER //
 
-CREATE DEFINER=`root`@`%` PROCEDURE `user_create_token_reset`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create_token_reset`(
 	IN Email VARCHAR(200),
     IN Token VARCHAR(200),
     OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)
+    /*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+			- 20240814@Hank: refactor code
+    */
 )
 User_Create_Token_Reset:BEGIN
 
@@ -25,30 +31,24 @@ User_Create_Token_Reset:BEGIN
     
     IF (UserId = -1) THEN
 		SET ErrCode = 1,
-			ErrMsg = 'User does not exist';
+			ErrMsg = 'Email không tồn tại';
         LEAVE User_Create_Token_Reset;
 	END IF;
     
-	SELECT 1
-	INTO UConfirm
-	FROM `wp_users` AS u
-    INNER JOIN `wp_usermeta` AS m ON u.ID = m.user_id AND m.meta_key = 'email_confirmed'
-	WHERE u.user_login = Email AND u.user_email = Email AND m.meta_value = 1;
     
-    IF (UConfirm = -1) THEN
+    IF (!EXISTS(SELECT 1 FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key='email_confirmed' AND um.meta_value = '1')) THEN
 		SET ErrCode = 1,
-			ErrMsg = 'Please confirm email first';
+			ErrMsg = 'Email không tồn tại';
         LEAVE User_Create_Token_Reset;
 	END IF;
     
     
-    SELECT m.umeta_id
-    INTO UMetaId
-    FROM `wp_usermeta` AS m
-    WHERE m.user_id = UserId AND m.meta_key = 'token_reset';
-    
-    IF (UMetaId = -1) THEN
-		 INSERT INTO `wp_usermeta`
+    IF (EXISTS(SELECT 1 FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key = 'token_reset')) THEN
+		UPDATE `wp_usermeta` as m
+		SET meta_value = Token
+		WHERE m.user_id = UserId AND m.meta_key = 'token_reset';
+	ELSE
+		INSERT INTO `wp_usermeta`
 		(`user_id`,
 		`meta_key`,
 		`meta_value`)
@@ -56,10 +56,6 @@ User_Create_Token_Reset:BEGIN
 		(UserId,
 		'token_reset',
 		Token);
-	ELSE
-		UPDATE `wp_usermeta`
-		SET meta_value = Token
-		WHERE umeta_id = UMetaId;
 	END IF;
 END
 
