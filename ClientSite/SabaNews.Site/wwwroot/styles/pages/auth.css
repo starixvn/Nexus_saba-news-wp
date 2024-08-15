@@ -419,7 +419,7 @@ input:-webkit-autofill:active {
 .check-email {
   color: #222;
   font-size: 1.6rem;
-  line-height: normal;
+  line-height: 2.6rem;
   font-weight: 400;
 }
 @media (max-width: 767px) {
@@ -442,12 +442,18 @@ input[type=password] {
 }
 @media (max-width: 767px) {
   #modal-noti .modal-body {
-    padding: 1.6rem;
+    padding: 5rem 1.6rem 1.6rem 1.6rem;
   }
 }
 @media (max-width: 767px) {
-  #modal-noti .close-login.close {
+  #modal-noti .close-login, #modal-noti .close {
     top: 16px;
     right: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  #modal-forgotpassword .modal-body {
+    padding: 5rem 1.6rem 1.6rem 1.6rem;
   }
 }

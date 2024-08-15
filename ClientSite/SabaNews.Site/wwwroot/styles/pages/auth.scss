@@ -422,7 +422,7 @@ input:-webkit-autofill:active{
 .check-email{
     color: #222;
     font-size: 1.6rem;
-    line-height: normal;
+    line-height: 2.6rem;
     font-weight: 400;
     @include Mobile{
         font-size: 1.3rem;
@@ -442,13 +442,21 @@ input[type="password"]{
     }
     .modal-body{
         @include Mobile{
-            padding: 1.6rem;
+            padding: 5rem 1.6rem 1.6rem 1.6rem;
         }
     }
-    .close-login.close{
+    .close-login,.close{
         @include Mobile{
             top: 16px;
             right: 16px;
+        }
+    }
+}
+
+#modal-forgotpassword{
+    .modal-body{
+        @include Mobile{
+            padding: 5rem 1.6rem 1.6rem 1.6rem;
         }
     }
 }
