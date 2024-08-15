@@ -14,6 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create_token_confirm`(
         Revisions:
 			- 20220720@Hank: init
 			- 20240808@Hank: add output UserId
+            - 20240815@Hank: refactor code
     */
 )
 User_Create_Token_Confirm:BEGIN
