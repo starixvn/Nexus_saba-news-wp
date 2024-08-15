@@ -17,10 +17,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create_token_confirm`(
     */
 )
 User_Create_Token_Confirm:BEGIN
-
-    DECLARE UMetaId BIGINT;
     SET UserId = -1;
-    SET UMetaId = -1;
     
 	SELECT u.ID 
 	INTO UserId
@@ -42,13 +39,13 @@ User_Create_Token_Confirm:BEGIN
         LEAVE User_Create_Token_Confirm;
 	END IF;
     
-    SELECT m.umeta_id
-    INTO UMetaId
-    FROM `wp_usermeta` AS m
-    WHERE m.user_id = UserId AND m.meta_key = 'token_confirmed';
     
-    IF (UMetaId = -1) THEN
-		 INSERT INTO `wp_usermeta`
+    IF (EXISTS(SELECT 1 FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key = 'token_confirmed')) THEN
+		UPDATE `wp_usermeta` as m 
+		SET meta_value = Token
+		WHERE m.user_id = UserId AND m.meta_key = 'token_confirmed';
+	ELSE
+		INSERT INTO `wp_usermeta`
 		(`user_id`,
 		`meta_key`,
 		`meta_value`)
@@ -56,10 +53,6 @@ User_Create_Token_Confirm:BEGIN
 		(UserId,
 		'token_confirmed',
 		Token);
-	ELSE
-		UPDATE `wp_usermeta`
-		SET meta_value = Token
-		WHERE umeta_id = UMetaId;
 	END IF;
 END
 
