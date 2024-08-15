@@ -48,7 +48,6 @@ var all = (function ($) {
             if (settings.format === 'multitoggle') multiTg()
             else cssmenu.addClass('dropdown')
             resizeFix = function () {
-                //when resize window
             };
         }
         $(".main-menu-mobile,.main-menu-pc").menumaker({
