@@ -426,6 +426,20 @@ var auth = (function ($) {
         }
     });
 
+    function countdown(button) {
+        timing = 60;
+        $('#timing').html(timing);
+        $(button).prop('disabled', true);
+        myTimer = setInterval(function() {
+          --timing;
+          $('#timing').html(timing);
+          if (timing <= 0) {
+            clearInterval(myTimer);
+            $(button).prop('disabled', false);
+          }
+        }, 1000);
+     }
+
 
     function init() {
         HandleAuth();
