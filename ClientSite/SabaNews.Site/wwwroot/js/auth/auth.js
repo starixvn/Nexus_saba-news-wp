@@ -26,7 +26,6 @@ var auth = (function ($) {
 
     function GetModalLogin(Url, openForm) {
         returnUrl = Url;
-        grecaptcha.reset();
         $('.authModal').modal('hide');
         modal = openForm == 'login' ? '#modal-login' : '#modal-register';
         $('.summary-eror').hide();
@@ -36,12 +35,14 @@ var auth = (function ($) {
     function HandleAuth() {
         $(document).on('click', '.auth-input .auth-login', function (e) {
             e.preventDefault();
+            grecaptcha.reset();
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
             $('.summary-eror').hide();
         });
         $(document).on('click', '.register-form-open', function (e) {
             e.preventDefault();
+            grecaptcha.reset();
             $('#form-register').trigger('reset');
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'register');
@@ -140,7 +141,6 @@ var auth = (function ($) {
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
             var isValid = true;
-            console.log(grecaptcha);
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
             var self = $(this);
