@@ -96,7 +96,7 @@ var auth = (function ($) {
         });
 
         $('#form-register input[name=password]').on('keyup', function () {
-            let err = GetErrorElement($(this));
+            let err = $(this).parent().parent();
             let val = $(this).val();
             var resetPassword = $('#form-register input[name=confirmPassword]').val();
             var message = "";
@@ -105,6 +105,13 @@ var auth = (function ($) {
             }
             if (message !== "") {
                 SetErrorElement(err, message)
+            }
+            if (val !== resetPassword && resetPassword != "") {
+                $('#form-register .confirm-password-group').addClass('error');
+                $('#form-register .confirm-password-group .validate-error').html(ConfirmPasswordIsvalidErr);
+            } else {
+                $('#form-register .confirm-password-group').removeClass('error');
+                $('#form-register .confirm-password-group .validate-error').html('');
             }
         });
 
@@ -115,6 +122,8 @@ var auth = (function ($) {
             let message = "";
             if (val === "") {
                 message = ConfirmPasswordEmptyErr;
+            } else if(val != password) {
+                message = ConfirmPasswordIsvalidErr
             }
             if (message !== "") {
                 SetErrorElement(err, message);
@@ -244,7 +253,7 @@ var auth = (function ($) {
                     data: { name, phone, yearOfBirth, email, password, confirmPassword },
                     success: function (res) {
                         if (res.isSuccessful) {
-                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
+                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully ;
                             const bodyModal = formatString(html, email, window.location.origin);
                             HandleNotificationPopup(bodyModal);
                         } else {
