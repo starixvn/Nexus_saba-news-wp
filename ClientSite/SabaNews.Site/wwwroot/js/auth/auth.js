@@ -51,11 +51,13 @@ var auth = (function ($) {
     }
 
     function HandleValidate() {
-        $('input[name=email]').on('keyup', function () {
+        $('input[name=email]').on('change', function () {
             let email = $(this).val();
             let err = GetErrorElement($(this));
             if (email === "") {
                 SetErrorElement(err, EmailEmptyErr)
+            } else if (!mailFormat.test(email)) {
+                SetErrorElement(err, EmailIsValidErr)
             }
         });
 
@@ -67,41 +69,46 @@ var auth = (function ($) {
             }
         });
 
-        $('#form-register input[name=phone]').on('keyup', function () {
+        $('#form-register input[name=phone]').on('change', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
             if (val === "") {
-                let message = PhoneEmptyErr;
-                SetErrorElement(err, message)
+                SetErrorElement(err, PhoneEmptyErr)
+            } else if(!val.startsWith("0") || val.length != 10) {
+                SetErrorElement(err, PhoneIsvalidErr);
             }
         });
 
 
-        $('#form-login input[name=password]').on('keyup', function () {
+        $('#form-login input[name=password]').on('change', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
             if (val === "") {
                 let message = PasswordEmptyErr;
                 SetErrorElement(err, message)
+            } else if (!passwordFormat.test(val)) {
+                SetErrorElement(err, PasswordIsvalidErr)
             }
         });
 
-        $('#form-register input[name=name]').on('keyup', function () {
+        $('#form-register input[name=name]').on('change', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
             if (val === "") {
                 let message = NameEmptyErr;
                 SetErrorElement(err, message)
-            }
+            } 
         });
 
-        $('#form-register input[name=password]').on('keyup', function () {
-            let err = $(this).parent().parent();
+        $('#form-register input[name=password]').on('change', function () {
+            let err = GetErrorElement($(this));
             let val = $(this).val();
             var resetPassword = $('#form-register input[name=confirmPassword]').val();
             var message = "";
             if (val === "") {
                 message = PasswordEmptyErr;
+            } else if(!passwordFormat.test(val)) {
+                message = PasswordIsvalidErr;
             }
             if (message !== "") {
                 SetErrorElement(err, message)
@@ -115,7 +122,7 @@ var auth = (function ($) {
             }
         });
 
-        $('#form-register input[name=confirmPassword]').on('keyup', function () {
+        $('#form-register input[name=confirmPassword]').on('change', function () {
             let err = GetErrorElement($(this));
             let val = $(this).val();
             let password = $('#form-register .password-group').find('input[name=password]').val();
