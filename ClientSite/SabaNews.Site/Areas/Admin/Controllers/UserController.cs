@@ -8,6 +8,7 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Threading.Tasks;
+    using SabaNews.Core.Constants;
 
     public class UserController : AdminController
     {
@@ -69,8 +70,8 @@
                 ToDate = param.ToDate.DateTime,
                 Search = search,
                 DateSort = param.DateSort,
-                Start = (param.Page - 1) * param.PageSize,
-                End = param.PageSize
+                Start = 0,
+                End = Constants.Total
             };
             var users = await userSerive.GetUserReportAsync(criteria);
             var bytes = excelService.ExportUser(users);
