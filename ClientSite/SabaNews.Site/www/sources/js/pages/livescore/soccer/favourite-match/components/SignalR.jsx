@@ -43,9 +43,7 @@ export class SignalR extends Component {
 
     start = async () => {
         try {
-            await this.connection.start().then(() => {
-                console.log('SignalR connected!!!'); //NOSONAR
-            });
+            await this.connection.start();
         } catch (err) {
             console.log(err); //NOSONAR
 

@@ -39,9 +39,7 @@ export class SignalR extends Component {
 
     startPostFixture = async () => {
         try {
-            await this.connection.start().then(() => {
-                console.log('SignalR connected!!!'); //NOSONAR
-            });
+            await this.connection.start();
         } catch (err) {
             setTimeout(() => {
                 this.props.getLeagues();
