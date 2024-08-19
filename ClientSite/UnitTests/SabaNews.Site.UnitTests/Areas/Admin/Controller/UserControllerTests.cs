@@ -78,6 +78,28 @@
             Assert.Equal(string.Empty, criteria.Search);
         }
 
+        [Fact]
+        public async Task GetDataUser_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<UserFilterViewModel>();
+            var criteria = fixture.Create<GetUserReportCriteria>();
+            var expected = fixture.Create<IEnumerable<UserReportModel>>();
+            param.Search = null;
+
+            userSerive.GetUserReportAsync(Arg.Do<GetUserReportCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            var actual = await controller.GetDataUser(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(actual);
+            var viewModel = Assert.IsType<UserGridViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.Users);
+            Assert.Equal("_UserDataGrid", viewResult.ViewName);
+            Assert.Equal(string.Empty, criteria.Search);
+        }
+
 
 
         #region Helpers
