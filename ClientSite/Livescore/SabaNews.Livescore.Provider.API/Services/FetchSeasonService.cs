@@ -31,7 +31,7 @@
             var param = new Dictionary<string, object>
             {
                 { ApiParams.IdGte, seasonParams.IdGte ?? 1 },
-                { ApiParams.TimeGte, seasonParams.LastUpdatedTime.HasValue ? seasonParams.LastUpdatedTime.Value.AddSeconds(1).ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.TimeGte, seasonParams.LastUpdatedTime.HasValue ? seasonParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { ApiParams.RowLimit, seasonParams.RowLimit },
                 { "isDelete", seasonParams.IsDeleted ? 1 : 0 }
             };
