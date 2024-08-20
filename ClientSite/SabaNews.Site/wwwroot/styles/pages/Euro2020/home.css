@@ -1975,36 +1975,31 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   overflow: hidden;
 }
 
+@media screen and (max-width: 1024px) {
+  .header {
+    display: block;
+  }
+}
 .header .top-header {
-  background: url(../../../images/euro2020/banner-menu.png) #0084A4 top center no-repeat;
+  background: url(../../images/euro2020/banner-menu.png) #0084a4 top center no-repeat;
   height: 16rem;
   box-shadow: none;
   padding: 0;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .header .top-header {
-    display: block;
-    top: 11rem;
-    background: none;
-    height: unset;
+    background: #fffdf9;
   }
 }
 .header .top-header .logo-euro {
   background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
-  width: 6.8rem;
-  height: 7.8rem;
-  margin: 2.1rem auto 2.1rem;
+  height: 16rem;
+  background-position: center 18px;
 }
 @media (max-width: 767px) {
   .header .top-header .logo-euro {
     display: none;
   }
-}
-.header .top-header .group-menu .nav-menu {
-  padding: 0;
-}
-.header .top-header .group-menu .nav-menu .main-menu {
-  display: none;
 }
 .header .child-mobile-menu {
   display: block;
@@ -2041,6 +2036,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     width: 100%;
     background-color: #fff;
     justify-content: flex-start;
+    border-bottom: 1px solid #ddd;
   }
 }
 .header .child-mobile-menu .menu-item {
@@ -2097,6 +2093,58 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .main {
   padding-top: 2rem !important;
+}
+
+.group-menu {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .group-menu {
+    display: block !important;
+  }
+  .group-menu .main-menu {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 1.2rem;
+    align-items: flex-start;
+    list-style: none;
+    padding: 1.2rem;
+  }
+  .group-menu .main-menu .menu-item {
+    position: relative;
+  }
+  .group-menu .main-menu .menu-item a {
+    text-decoration: none;
+    padding: 1.1rem 2rem 1.1rem 0;
+    margin-right: 0;
+    display: block;
+    line-height: normal;
+    color: #333;
+    font-weight: 600;
+  }
+  .group-menu .main-menu .menu-item::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    right: 50%;
+    height: 1px;
+    background: #e0e0e0;
+    transform: translate(50%, 0);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .hidden-body .top-header {
+    width: 100%;
+    z-index: 100;
+    display: block;
+    top: 69px !important;
+    bottom: 0;
+    position: fixed !important;
+    z-index: 10;
+  }
 }
 
 /* vietnamese */
