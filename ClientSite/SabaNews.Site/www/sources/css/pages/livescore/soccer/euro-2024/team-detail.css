@@ -95,6 +95,14 @@ body {
   }
 }
 
+.tab-content .tab-pane {
+  display: none;
+}
+
+.tab-content .tab-pane.active {
+  display: block;
+}
+
 .soccer-match-grid-main {
   margin-bottom: 3.2rem;
 }

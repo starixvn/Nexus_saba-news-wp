@@ -94,6 +94,14 @@ body {
   }
 }
 
+.tab-content .tab-pane {
+  display: none;
+}
+
+.tab-content .tab-pane.active {
+  display: block;
+}
+
 .duel-participant {
   border: 1px solid #DADADA;
   border-radius: 3px;

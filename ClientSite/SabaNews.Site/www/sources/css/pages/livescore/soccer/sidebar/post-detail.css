@@ -95,6 +95,14 @@ body {
   }
 }
 
+.tab-content .tab-pane {
+  display: none;
+}
+
+.tab-content .tab-pane.active {
+  display: block;
+}
+
 .container {
   width: 100%;
   padding: 0 1rem;
