@@ -260,7 +260,7 @@ var auth = (function ($) {
                     data: { name, phone, yearOfBirth, email, password, confirmPassword },
                     success: function (res) {
                         if (res.isSuccessful) {
-                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully ;
+                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email, window.location.origin);
                             HandleNotificationPopup(bodyModal);
                         } else {
