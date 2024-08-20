@@ -16,7 +16,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report`(
 		Creator: Hank@20220720
         Revisions:
 			- 20220720@Hank: init
-            - 20240815@Hank: _phone, _yearOfBirth
+            - 20240815@Hank: select phone, yearOfBirth
     */
 )
 BEGIN
@@ -48,9 +48,8 @@ BEGIN
     AND (display_name LIKE CONCAT('%',search, '%') OR user_email LIKE CONCAT('%',search, '%'))
 	AND um.meta_value ='a:0:{}'
 	AND m.meta_value = 1
-    ORDER BY CASE WHEN dateSort = 'desc' THEN user_registered END desc
-			,CASE WHEN dateSort = 'asc' THEN user_registered END
-			,user_email
+    ORDER BY CASE WHEN dateSort = 'asc' THEN user_registered END
+			,user_registered desc
 	LIMIT start, end;
 
 END
