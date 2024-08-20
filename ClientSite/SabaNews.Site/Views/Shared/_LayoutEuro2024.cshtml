@@ -97,15 +97,14 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-        <div class="auth-form" id="auth-form"></div>
-
+        <div id="auth-form"></div>
         @await Html.PartialAsync("~/Views/Event/Euro2024/_Footer.cshtml")
     </div>
-
-    <div id="auth-form"></div>
     <input type="hidden" id="RootUrl" value="@Url.Content("~/")" />
     @Html.AntiForgeryToken()
     <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/js/lib/jquery.lazyload.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <script>
         window.currentTime = new Date('@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(DateTime.UtcNow, "yyyy-MM-dd HH:mm:ss")');
     </script>
