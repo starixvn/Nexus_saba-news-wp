@@ -1513,78 +1513,81 @@
     }
 }
 
-.box-auth {
-    display: none;
-    background: #091B61 !important;
-    border: 1px solid #0E2A99 !important;
-    border-radius: 5px !important;
-    list-style: none !important;
-    padding: 1.6rem 1.6rem 0 !important;
-    position: absolute !important;
-    width: 24rem !important;
-    top: 6.2rem !important;
-    z-index: 99999 !important;
-    right: 10px !important;
-
-    &:before {
+.header-auth-provider{
+    .box-auth {
         display: none;
-    }
+        background: #091B61 !important;
+        border: 1px solid #0E2A99 !important;
+        border-radius: 5px !important;
+        list-style: none !important;
+        padding: 1.6rem 1.6rem 0 !important;
+        position: absolute !important;
+        width: 24rem !important;
+        top: 6.2rem !important;
+        z-index: 99999 !important;
+        right: 10px !important;
 
-    @include tableMobile {
-        top: 4.2rem !important;
-        right: 0 !important;
-    }
-
-    .auth-displayname {
-        a{
-            color: $white-color !important;
-        }
-    }
-
-    .info-user {
-        border-bottom: 1px solid #0E2A99 !important;
-
-        .item {
-            padding: 1rem 0;
-            display: block;
-            font-weight: normal;
-            color: $white-color !important;
-            text-decoration: none;
-
-            .icon-logout {
-                font-weight: bold;
-                margin-left: 6px;
-            }
-
-            &:hover {
-                color: #9A576C;
-            }
+        &:before {
+            display: none;
         }
 
-        &:last-child {
-            border-bottom: none !important;
+        @include tableMobile {
+            top: 4.2rem !important;
+            right: 0 !important;
         }
-    }
 
-    .auth-provider {
         .auth-displayname {
-            &:after {
-                display: none;
+            a{
+                color: $white-color !important;
             }
         }
 
-        .display-user {
-            @include tableMobile {
+        .info-user {
+            border-bottom: 1px solid #0E2A99 !important;
+
+            .item {
+                padding: 1rem 0;
                 display: block;
+                font-weight: normal;
+                color: $white-color !important;
+                text-decoration: none;
+
+                .icon-logout {
+                    font-weight: bold;
+                    margin-left: 6px;
+                }
+
+                &:hover {
+                    color: #9A576C;
+                }
+            }
+
+            &:last-child {
+                border-bottom: none !important;
             }
         }
 
-        .avatar-user {
-            width: 4.8rem;
-            height: 4.8rem;
+        .auth-provider {
+            .auth-displayname {
+                &:after {
+                    display: none;
+                }
+            }
+
+            .display-user {
+                @include tableMobile {
+                    display: block;
+                }
+            }
+
+            .avatar-user {
+                width: 4.8rem;
+                height: 4.8rem;
+            }
         }
     }
 }
+
 
 .active-box-auth {
     display: block;
