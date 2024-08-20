@@ -14,14 +14,19 @@
 }
 .form-group-auth .label-auth {
   color: #383838;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   margin-bottom: 0.6rem;
   font-weight: 600;
   line-height: normal;
   display: block;
 }
+@media (max-width: 767px) {
+  .form-group-auth .label-auth {
+    font-size: 1.4rem;
+  }
+}
 .form-group-auth .input-auth {
-  height: 3.6rem;
+  height: 4rem;
   padding: 0.5rem 1rem;
   color: #222;
   box-shadow: none;
@@ -29,18 +34,24 @@
   border: 1px solid #d1d1d1;
   background: #FFFDF9;
   width: 100%;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-family: "Open Sans" !important;
   font-weight: 600;
 }
 @media (max-width: 767px) {
   .form-group-auth .input-auth {
-    height: 4.4rem;
+    height: 4.2rem;
+    font-size: 1.4rem;
   }
 }
 .form-group-auth .input-auth::placeholder {
   color: #8F8F8F;
-  font-size: 1.3rem !important;
+  font-size: 1.6rem !important;
+}
+@media (max-width: 767px) {
+  .form-group-auth .input-auth::placeholder {
+    font-size: 1.4rem !important;
+  }
 }
 .form-group-auth .input-auth:focus-visible {
   outline: none;
@@ -70,7 +81,7 @@
   border: 1px solid #FF3B30;
 }
 .form-group-auth.error .validate-error {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: normal;
   color: #FF3B30;
@@ -267,6 +278,19 @@
 .auth-form .content-noti {
   margin-bottom: 1.2rem !important;
 }
+.auth-form .heading-noti {
+  color: #E13C29;
+  font-family: "Open Sans";
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+@media (max-width: 767px) {
+  .auth-form .heading-noti {
+    margin-bottom: 2rem;
+  }
+}
 
 .box-auth {
   display: flex;
@@ -309,19 +333,20 @@ input:-webkit-autofill:active {
   background-repeat: no-repeat !important;
   background-position: 98% !important;
   color: #8F8F8F;
-  height: 3.6rem;
+  height: 4rem;
   padding: 0.5rem 1rem;
   box-shadow: none;
   border-radius: 3px;
   border: 1px solid #d1d1d1;
   width: 100%;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-family: "Open Sans" !important;
   font-weight: 600;
 }
 @media (max-width: 767px) {
   .select-auth {
-    height: 4.4rem;
+    height: 4.2rem;
+    font-size: 1.4rem;
   }
 }
 .select-auth::placeholder {
@@ -370,7 +395,12 @@ input:-webkit-autofill:active {
   border: 1px solid #FFC9C2;
   background: rgba(241, 47, 25, 0.1);
   color: #F12F19;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+@media (max-width: 767px) {
+  .summary-eror {
+    margin-bottom: 2rem;
+  }
 }
 
 #form-forgot-password .box-auth {
@@ -381,7 +411,7 @@ input:-webkit-autofill:active {
 }
 
 .captcha .validate-error {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: normal;
   color: #FF3B30;
@@ -389,8 +419,17 @@ input:-webkit-autofill:active {
   display: block;
 }
 
+#modal-forgotpassword {
+  max-width: 50rem;
+}
+@media (max-width: 767px) {
+  #modal-forgotpassword {
+    max-width: 36.9rem;
+  }
+}
 #modal-forgotpassword label {
   margin-bottom: 1.2rem;
+  font-weight: 400;
 }
 #modal-forgotpassword .group-question {
   display: flex;
@@ -430,7 +469,7 @@ input[type=password] {
 }
 @media (max-width: 767px) {
   #modal-noti .modal-body {
-    padding: 5rem 1.6rem 1.6rem 1.6rem;
+    padding: 1.6rem;
   }
 }
 @media (max-width: 767px) {
@@ -442,6 +481,6 @@ input[type=password] {
 
 @media (max-width: 767px) {
   #modal-forgotpassword .modal-body {
-    padding: 5rem 1.6rem 1.6rem 1.6rem;
+    padding: 1.6rem;
   }
 }

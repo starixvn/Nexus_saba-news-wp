@@ -15,14 +15,17 @@
     margin-top: 1.6rem;
     .label-auth{
         color: #383838;
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         margin-bottom: .6rem;
         font-weight: 600;
         line-height: normal;
         display: block;
+        @include Mobile{
+            font-size: 1.4rem;
+        }
     }
     .input-auth{
-        height: 3.6rem;
+        height: 4rem;
         padding: .5rem 1rem;
         color: #222;
         box-shadow: none;
@@ -30,15 +33,19 @@
         border: 1px solid #d1d1d1;
         background: #FFFDF9;
         width: 100%;
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         font-family: "Open Sans" !important;
         font-weight: 600;
         @include Mobile{
-            height: 4.4rem;
+            height: 4.2rem;
+            font-size: 1.4rem;
         }
         &::placeholder{
             color: #8F8F8F;
-            font-size: 1.3rem !important;
+            font-size: 1.6rem !important;
+            @include Mobile{
+                font-size: 1.4rem !important;
+            }
         }
         &:focus-visible{
             outline: none;
@@ -72,7 +79,7 @@
             border: 1px solid #FF3B30;
         }
         .validate-error{
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 400;
             line-height: normal;
             color: #FF3B30;
@@ -259,6 +266,17 @@
     .content-noti{
         margin-bottom: 1.2rem !important;
     }
+    .heading-noti{
+        color: #E13C29;
+        font-family: "Open Sans";
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 2.4rem;
+        margin-bottom: 2.4rem;
+        @include Mobile{
+            margin-bottom: 2rem;
+        }
+    }
 }
 
 
@@ -304,17 +322,18 @@ input:-webkit-autofill:active{
     background-repeat: no-repeat !important;
     background-position: 98% !important;
     color: #8F8F8F;
-    height: 3.6rem;
+    height: 4rem;
     padding: .5rem 1rem;
     box-shadow: none;
     border-radius: 3px;
     border: 1px solid #d1d1d1;
     width: 100%;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-family: "Open Sans" !important;
     font-weight: 600;
     @include Mobile{
-        height: 4.4rem;
+        height: 4.2rem;
+        font-size: 1.4rem;
     }
     &::placeholder{
         color: #8F8F8F;
@@ -369,7 +388,10 @@ input:-webkit-autofill:active{
     border: 1px solid #FFC9C2;
     background: rgba(241, 47, 25, 0.10);
     color: #F12F19;
-    margin-bottom: 1.6rem;
+    margin-bottom: 2.4rem;
+    @include Mobile{
+        margin-bottom: 2rem;
+    }
 }
 
 #form-forgot-password{
@@ -383,7 +405,7 @@ input:-webkit-autofill:active{
 
 .captcha{
     .validate-error{
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 400;
         line-height: normal;
         color: #FF3B30;
@@ -392,8 +414,13 @@ input:-webkit-autofill:active{
     }
 }
 #modal-forgotpassword{
+    max-width: 50rem;
+    @include Mobile{
+        max-width: 36.9rem;
+    }
     label{
         margin-bottom: 1.2rem;
+        font-weight: 400;
     }
     .group-question{
         display: flex;
@@ -430,7 +457,7 @@ input[type="password"]{
     }
     .modal-body{
         @include Mobile{
-            padding: 5rem 1.6rem 1.6rem 1.6rem;
+            padding: 1.6rem;
         }
     }
     .close-login,.close{
@@ -444,7 +471,7 @@ input[type="password"]{
 #modal-forgotpassword{
     .modal-body{
         @include Mobile{
-            padding: 5rem 1.6rem 1.6rem 1.6rem;
+            padding: 1.6rem;
         }
     }
 }
