@@ -34,7 +34,6 @@ var auth = (function ($) {
 
     function HandleAuth() {
         $(document).on('click', '.auth-input .auth-login', function (e) {
-            console.log(1111111111111111)
             e.preventDefault();
             grecaptcha.reset();
             returnUrl = $(this).data('returnurl');
