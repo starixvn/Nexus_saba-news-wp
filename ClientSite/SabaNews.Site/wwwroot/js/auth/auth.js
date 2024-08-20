@@ -342,23 +342,23 @@ var auth = (function ($) {
 
     function HandleResendConfirmEmail() {
         $(document).on('click', '.resend-email' , function () {
+            var self = $(this);
             var email = $(this).data('email');
+            self.prop('disable', true)
+            self.addClass('btn-disabled');
             $.ajax({
                 url: '/Auth/SendEmailConfirm',
                 type: "POST",
                 data: {email},
                 success: function (res) {
                     if (res.isSuccessful) {
-                        const html = "Chúng tôi đã gửi email đến địa chỉ <b>{0}</b> để xác thực và kích hoạt tài khoản.</div>',";
-                        const bodyModal = formatString(html, email);
-                        $(modal + ' .modal-body').html(bodyModal);
+                        countdown(self);
+                        self.html('gửi lại');
                     } else {
                         $(modal).find('.summary-eror').text(res.message);
                         self.prop('disabled', false);
                         self.removeClass('btn-disabled');
                     }
-                    // $(modal).html(response);
-                    // HandleSubmitConfirmEmail();
                 }
             });
         });
@@ -444,11 +444,11 @@ var auth = (function ($) {
 
     function countdown(button) {
         timing = 60;
-        $('#timing').html(timing);
+        $(button).html(timing);
         $(button).prop('disabled', true);
         myTimer = setInterval(function() {
           --timing;
-          $('#timing').html(timing);
+          $(button).html(timing);
           if (timing <= 0) {
             clearInterval(myTimer);
             $(button).prop('disabled', false);
