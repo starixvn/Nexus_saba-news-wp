@@ -263,7 +263,7 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var popupKey = 'euro-hide-popup-event-1';
+        var popupKey = 'hide-popup-domain';
 
         var hidePopupEvent = localStorage.getItem(popupKey);
         if (hidePopupEvent !== "1") {
@@ -323,7 +323,7 @@ var all = (function ($) {
         Modal();
         getFavouriteMatchCount();
         MenuPopupHeaderPC();
-        // toggleChangeDomainPopup();
+        toggleChangeDomainPopup();
         CountBannerClick();
         HandleQueryStringAction();
     }

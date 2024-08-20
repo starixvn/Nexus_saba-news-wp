@@ -39,7 +39,7 @@
                         <div class="card-vertical card-highlight">
                             @if (Model.HotNews.Length > 0)
                             {
-                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Uri})" class="card-vertical__image">
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Uri})" class="card-vertical__image hover-image">
                                     @{
                                         short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
                                         string firstImgUrl = Model.HotNews[0].GetImageBySize(imgSize);
@@ -64,7 +64,7 @@
 
                             string featuredImg = Model.HotNews[i].GetImageBySize(ImageWidth.Width300);
                             <div class="card-@card">
-                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[i].Uri})" class="card-@(card)__image">
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[i].Uri})" class="card-@(card)__image hover-image">
                                     <picture>
                                         <source srcset="@featuredImg" type="image/webp" class="img-res">
                                         <source srcset="@featuredImg" type="image/jpeg" class="img-res">
@@ -108,7 +108,7 @@
                                 @foreach (var post in Model.Identify)
                                 {
                                     <div class="swiper-slide" id="slide-@post.ID">
-                                        <div class="img-item">
+                                        <div class="img-item hover-image">
                                             @{
                                                 string videoImg = post.GetImageBySize(ImageWidth.Width300);
                                                 <picture>
@@ -142,7 +142,7 @@
                                 {
                                     <div class="swiper-slide" id="slide-@post.ID">
                                         <input type="hidden" name="iframe_value" value="@post.PostContent" />
-                                        <div class="img-item">
+                                        <div class="img-item hover-image">
                                             @{
 
                                                 string videoImg = post.GetImageBySize(isDesktop ? ImageWidth.Width768 : ImageWidth.Width500);
@@ -172,7 +172,7 @@
                         @foreach (var post in Model.Videos)
                         {
                             <div class="card-horizontal card-item">
-                                <a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
+                                <a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image hover-image">
                                     @{
                                         string videoDesktopImg = post.GetImageBySize(ImageWidth.Width300);
 
@@ -203,7 +203,7 @@
             <div class="container">
                 <h2 class="block__title"><a href="">@ViewResources.Overview</a></h2>
                 <div class="block__content">
-                    <a class="box team" href="@Url.Action("Team", "Euro2020")">
+                    <a class="box team " href="@Url.Action("Team", "Euro2020")">
                         <picture>
                             <source srcset="~/images/euro2020/team_img.png" type="image/webp" class="img-res">
                             <source srcset="~/images/euro2020/team_img.png" type="image/jpeg" class="img-res">
