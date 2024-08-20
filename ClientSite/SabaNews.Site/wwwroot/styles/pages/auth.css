@@ -478,6 +478,9 @@ input[type=password] {
     right: 16px;
   }
 }
+#modal-noti .submit-auth {
+  margin-top: 1.6rem;
+}
 
 @media (max-width: 767px) {
   #modal-forgotpassword .modal-body {
