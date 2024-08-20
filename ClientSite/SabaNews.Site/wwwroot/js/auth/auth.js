@@ -353,7 +353,6 @@ var auth = (function ($) {
                 success: function (res) {
                     if (res.isSuccessful) {
                         countdown(self);
-                        self.html('gửi lại');
                     } else {
                         $(modal).find('.summary-eror').text(res.message);
                         self.prop('disabled', false);
@@ -452,6 +451,7 @@ var auth = (function ($) {
           if (timing <= 0) {
             clearInterval(myTimer);
             $(button).prop('disabled', false);
+            $(button).html('Gửi lại');
           }
         }, 1000);
      }
