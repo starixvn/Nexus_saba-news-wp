@@ -15,6 +15,10 @@
 	<input type="text" readonly hidden name="activeMenu" value="@ViewResources.User" />
 }
 
+@section Styles{
+    <link rel="stylesheet" href="~/styles/pages/admin/user/user.css" asp-append-version="true">
+}
+
 <section class="page-content">
 	<div id="error" class="error"></div>
 	<div class="form-filter">
@@ -33,11 +37,11 @@
 			</div>
 
 			<button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
+			<button class="label label-blue btn-link btn-exportexcel">Export excel</button>
 		</form>
 	</div>
 
 	<div class="content">
-		<div class="export-excel"><button class="label label-blue btn-link btn-exportexcel">Export excel</button></div>
 		<div class="user-grid" id="user-grid"></div>
 	</div>
 </section>
