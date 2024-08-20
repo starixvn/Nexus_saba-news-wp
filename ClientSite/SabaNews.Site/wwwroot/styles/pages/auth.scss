@@ -258,6 +258,9 @@
         font-weight: 700;
         line-height: normal;
         font-family: "Open Sans";
+        @include Mobile{
+            margin-bottom: 2rem;
+        }
     }
     .submit-noti{
         width: auto !important;

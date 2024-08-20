@@ -271,6 +271,11 @@
   line-height: normal;
   font-family: "Open Sans";
 }
+@media (max-width: 767px) {
+  .auth-form .modal-title {
+    margin-bottom: 2rem;
+  }
+}
 .auth-form .submit-noti {
   width: auto !important;
   padding: 0.7rem 2rem !important;
