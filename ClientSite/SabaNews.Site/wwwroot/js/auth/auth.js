@@ -5,9 +5,9 @@ var onloadCallback = function() {
       'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
 
-    loginCaptcha = grecaptcha.render('login-captcha', {
-        'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
-    });
+    // loginCaptcha = grecaptcha.render('login-captcha', {
+    //     'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
+    // });
   };
 
 var auth = (function ($) {
@@ -37,7 +37,6 @@ var auth = (function ($) {
     function HandleAuth() {
         $(document).on('click', '.auth-input .auth-login', function (e) {
             e.preventDefault();
-            grecaptcha.reset(loginCaptcha);
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
             $('.summary-eror').hide();
@@ -157,7 +156,6 @@ var auth = (function ($) {
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
             var isValid = true;
-            var captcha = grecaptcha.getResponse(loginCaptcha);
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
             var self = $(this);
@@ -173,10 +171,6 @@ var auth = (function ($) {
                 isValid = false
                 $("#form-login .password .validate-error").html(PasswordEmptyErr);
                 $("#form-login .password").addClass("error");
-            }
-            if(captcha == '') {
-                isValid = false;
-                $('#form-login .captcha .validate-error').html('Xác nhận captcha');
             }
             if (!isValid) {
                 return false;
