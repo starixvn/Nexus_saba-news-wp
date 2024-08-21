@@ -1,9 +1,11 @@
-﻿var onloadCallback = function() {
-    grecaptcha.render('register-captcha', {
+﻿var loginCaptcha;
+var registerCaptcha;
+var onloadCallback = function() {
+    registerCaptcha = grecaptcha.render('register-captcha', {
       'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
 
-    grecaptcha.render('login-captcha', {
+    loginCaptcha = grecaptcha.render('login-captcha', {
         'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
   };
@@ -35,14 +37,14 @@ var auth = (function ($) {
     function HandleAuth() {
         $(document).on('click', '.auth-input .auth-login', function (e) {
             e.preventDefault();
-            grecaptcha.reset();
+            grecaptcha.reset(loginCaptcha);
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
             $('.summary-eror').hide();
         });
         $(document).on('click', '.register-form-open', function (e) {
-            e.preventDefault();
-            grecaptcha.reset();
+            e.preventDefault(); 
+            grecaptcha.reset(registerCaptcha);
             $('#form-register').trigger('reset');
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'register');
@@ -86,9 +88,7 @@ var auth = (function ($) {
             if (val === "") {
                 let message = PasswordEmptyErr;
                 SetErrorElement(err, message)
-            } else if (!passwordFormat.test(val)) {
-                SetErrorElement(err, PasswordIsvalidErr)
-            }
+            } 
         });
 
         $('#form-register input[name=name]').on('change', function () {
@@ -157,6 +157,7 @@ var auth = (function ($) {
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
             var isValid = true;
+            var captcha = grecaptcha.getResponse(loginCaptcha);
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
             var self = $(this);
@@ -172,6 +173,10 @@ var auth = (function ($) {
                 isValid = false
                 $("#form-login .password .validate-error").html(PasswordEmptyErr);
                 $("#form-login .password").addClass("error");
+            }
+            if(captcha == '') {
+                isValid = false;
+                $('#form-login .captcha .validate-error').html('xác nhận captcha');
             }
             if (!isValid) {
                 return false;
@@ -211,7 +216,7 @@ var auth = (function ($) {
             var confirmPassword = $("#form-register input[name=confirmPassword]").val();
             var yearOfBirth = $('#form-register select[name=yearOfBirth]').val();
             var phone = $('#form-register input[name=phone]').val();
-            var captcha = grecaptcha.getResponse();
+            var captcha = grecaptcha.getResponse(registerCaptcha);
             var self = $(this);
             let isValid = true;
 
