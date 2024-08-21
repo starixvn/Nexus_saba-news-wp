@@ -362,10 +362,8 @@ var auth = (function ($) {
                 data: {email},
                 success: function (res) {
                     if (!res.isSuccessful) {
-                        $(modal).find('.summary-eror').text(res.message);
-                        self.prop('disabled', false);
-                        self.removeClass('btn-disabled');
-                    } 
+                        $('#modal-noti').find('.summary-eror').text(res.message);
+                    }
                     countdown(self);
                 }
             });

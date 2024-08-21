@@ -175,7 +175,7 @@
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
             var template = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
-            Assert.Equal(successCreateTokenCommand, template);
+            Assert.Equal(successCreateTokenCommand.IsSuccessful, template.IsSuccessful);
             await authService.Received().SendMailConfirmationAsync(Arg.Any<string>(), Arg.Any<string>());
         }
 

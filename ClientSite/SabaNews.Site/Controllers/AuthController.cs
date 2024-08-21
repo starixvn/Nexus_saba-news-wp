@@ -66,7 +66,7 @@
                 var createTokenResult = await authService.CreateTokenConfirmEmail(new ConfirmEmailModel { Email = model.Email, Token = token });
                 if (!createTokenResult.IsSuccessful)
                 {
-                    return Json(commandResult);
+                    return Json(createTokenResult);
                 }
                 string url = Url.Action("ConfirmEmail", "Auth", new { UserId = model.Id, token }, Request.Scheme);
                 await authService.SendMailConfirmationAsync(model.Email, url);
