@@ -60,11 +60,11 @@
                 return Json(commandResult);
             }
             commandResult = await authService.CreateUserAsync(model);
-            if (commandResult.IsSuccessful)
+            if (commandResult.IsSuccessful || commandResult.Code == 2)
             {
                 var token = Guid.NewGuid().ToString();
-                commandResult = await authService.CreateTokenConfirmEmail(new ConfirmEmailModel { Email = model.Email, Token = token });
-                if (!commandResult.IsSuccessful)
+                var createTokenResult = await authService.CreateTokenConfirmEmail(new ConfirmEmailModel { Email = model.Email, Token = token });
+                if (!createTokenResult.IsSuccessful)
                 {
                     return Json(commandResult);
                 }

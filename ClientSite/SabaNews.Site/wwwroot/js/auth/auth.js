@@ -268,7 +268,12 @@ var auth = (function ($) {
                             const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email, window.location.origin);
                             HandleNotificationPopup(bodyModal);
-                        } else {
+                        } else if(res.code == 2) {
+                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterOldEmailNotConfirm + _htmlResource.RemindCheckMail;
+                            const bodyModal = formatString(html, email, window.location.origin);
+                            HandleNotificationPopup(bodyModal);
+                        }
+                         else {
                             $('.summary-eror').show();
                             $('.summary-eror').text(res.message);
                             self.prop('disabled', false);
@@ -356,13 +361,12 @@ var auth = (function ($) {
                 type: "POST",
                 data: {email},
                 success: function (res) {
-                    if (res.isSuccessful) {
-                        countdown(self);
-                    } else {
+                    if (!res.isSuccessful) {
                         $(modal).find('.summary-eror').text(res.message);
                         self.prop('disabled', false);
                         self.removeClass('btn-disabled');
-                    }
+                    } 
+                    countdown(self);
                 }
             });
         });

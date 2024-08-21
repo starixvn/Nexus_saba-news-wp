@@ -11,6 +11,7 @@ var _htmlResource = {
     ButtonCloseModal: '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
     ForgotPassword: '<div class="check-email"><div class="heading-noti">Thông báo</div>Hãy kiểm tra email <b>{0}</b> để xem hướng dẫn tạo mật khẩu mới.</div>',
     RegisterSuccessfully: '<h3 class="modal-title">Xác thực tài khoản</h3><div class="content-noti">Vui lòng kiểm tra email <b>{0}</b>  để xác thực và hoàn tất bước đăng ký tài khoản. Đừng quên kiểm tra cả thư mục spam/junk nhé!</div>',
+    RegisterOldEmailNotConfirm: '<h3 class="modal-title">Xác thực tài khoản</h3><div class="content-noti">Email này đã tồn tại nhưng chưa được xác thực. Vui lòng kiểm tra email <b>{0}</b>  để xác thực và hoàn tất bước đăng ký tài khoản. Đừng quên kiểm tra cả thư mục spam/junk nhé!</div>',
     RemindCheckMail: '<div class="content-noti">Nếu bạn không tìm thấy email xác thực, nhấn <span>gửi lại<span></div><div class="submit-auth"><button class="submit submit-noti resend-email"  data-email="{0}">Gửi lại</button></div>',
     ResetPasswordSuccessfully: '<h3>Đổi mật khẩu thành công</h3>',
     ResetButtonLogin: '<div class="auth-input">Bấm vào <span style="color:rgb(0,0,255); cursor: pointer; text-decoration:underline" class="auth-login" data-returnUrl="/">đây</span> để đăng nhập</div>'
