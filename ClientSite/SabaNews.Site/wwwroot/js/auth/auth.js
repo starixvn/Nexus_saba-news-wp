@@ -176,7 +176,7 @@ var auth = (function ($) {
             }
             if(captcha == '') {
                 isValid = false;
-                $('#form-login .captcha .validate-error').html('xác nhận captcha');
+                $('#form-login .captcha .validate-error').html('Xác nhận captcha');
             }
             if (!isValid) {
                 return false;
