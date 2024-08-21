@@ -25,12 +25,14 @@ var auth = (function ($) {
     const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
     var modal = "#modal-login";
     var returnUrl = "";
+    let countPass = 1;
 
     function GetModalLogin(Url, openForm) {
         returnUrl = Url;
         $('.authModal').modal('hide');
         modal = openForm == 'login' ? '#modal-login' : '#modal-register';
         $('.summary-eror').hide();
+        $('#form-login .captcha').hide();
         $(modal).modal('show');
     }
 
@@ -172,6 +174,16 @@ var auth = (function ($) {
                 $("#form-login .password .validate-error").html(PasswordEmptyErr);
                 $("#form-login .password").addClass("error");
             }
+            if($('.summary-eror').text() !== ''){
+                countPass++;
+                if(countPass >= 10){
+                    $('#form-login .captcha').show();
+                    if(captcha == '') {
+                        isValid = false;
+                        $('#form-login .captcha .validate-error').html('Xác nhận captcha');
+                    }
+                }
+            }
             if (!isValid) {
                 return false;
             }
@@ -182,6 +194,7 @@ var auth = (function ($) {
                 method: "POST",
                 data: { email, password },
                 success: function (res) {
+                    console.log(res)
                     if (res.isSuccessful) {
                         if (typeof returnUrl === "undefined") {
                             location.reload();
