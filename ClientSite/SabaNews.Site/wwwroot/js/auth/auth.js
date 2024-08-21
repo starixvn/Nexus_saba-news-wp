@@ -452,11 +452,11 @@ var auth = (function ($) {
 
     function countdown(button) {
         timing = 60;
-        $(button).html(timing);
+        $(button).html(`${timing}s`);
         $(button).prop('disabled', true);
         myTimer = setInterval(function() {
           --timing;
-          $(button).html(timing);
+          $(button).html(`${timing}s`);
           if (timing <= 0) {
             clearInterval(myTimer);
             $(button).prop('disabled', false);
