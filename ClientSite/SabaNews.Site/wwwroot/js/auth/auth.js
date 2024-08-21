@@ -5,9 +5,9 @@ var onloadCallback = function() {
       'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
     });
 
-    // loginCaptcha = grecaptcha.render('login-captcha', {
-    //     'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
-    // });
+    loginCaptcha = grecaptcha.render('login-captcha', {
+        'sitekey' : '6Lc_0iIqAAAAABwLiZGn7mLKk955WasDv7nf4sT4'
+    });
   };
 
 var auth = (function ($) {
@@ -39,6 +39,7 @@ var auth = (function ($) {
     function HandleAuth() {
         $(document).on('click', '.auth-input .auth-login', function (e) {
             e.preventDefault();
+            grecaptcha.reset(loginCaptcha);
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
             $('.summary-eror').hide();
@@ -158,6 +159,7 @@ var auth = (function ($) {
             var email = $("#form-login  input[name=email]").val();
             var password = $("#form-login  input[name=password]").val();
             var isValid = true;
+            var captcha = grecaptcha.getResponse(loginCaptcha);
             $("#form-login .form-group-auth").removeClass('error');
             $("#form-login .validate-error").html('');
             var self = $(this);
@@ -184,6 +186,7 @@ var auth = (function ($) {
                     }
                 }
             }
+            
             if (!isValid) {
                 return false;
             }
@@ -369,8 +372,10 @@ var auth = (function ($) {
                 data: {email},
                 success: function (res) {
                     if (!res.isSuccessful) {
-                        $('#modal-noti').find('.summary-eror').text(res.message);
-                    }
+                        $(modal).find('.summary-eror').text(res.message);
+                        self.prop('disabled', false);
+                        self.removeClass('btn-disabled');
+                    } 
                     countdown(self);
                 }
             });
