@@ -100,6 +100,30 @@
             Assert.Equal(string.Empty, criteria.Search);
         }
 
+        [Fact]
+        public async Task ExportExcel_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+             var controller = GetController();
+            var param = fixture.Create<UserFilterViewModel>();
+            var criteria = fixture.Create<GetUserReportCriteria>();
+            var expected = fixture.Create<IEnumerable<UserReportModel>>();
+            var excelModel = fixture.Create<IEnumerable<UserReportModel>>();
+            param.Search = null;
+
+            userSerive.GetUserReportAsync(Arg.Do<GetUserReportCriteria>(x => criteria = x)).Returns(expected);
+
+            var expectedExcelResult = fixture.Create<byte[]>();
+            excelService.ExportUser(Arg.Do<IEnumerable<UserReportModel>>(x => excelModel = x)).Returns(expectedExcelResult);
+            //Act
+            var result = await controller.ExportExcel(param) as FileContentResult;
+
+            // Assert
+            Assert.Equal(expectedExcelResult, result.FileContents);
+            Assert.Equal("application/xlsx", result.ContentType);
+            Assert.Equal("UserReport.xlsx", result.FileDownloadName);
+        }
+
 
 
         #region Helpers
