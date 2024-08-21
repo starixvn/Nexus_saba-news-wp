@@ -179,6 +179,7 @@
             await authService.Received().SendMailConfirmationAsync(Arg.Any<string>(), Arg.Any<string>());
         }
 
+
         [Fact]
         public async Task Register_FailCreateToken_ReturnExpectedCommenResult()
         {
@@ -199,6 +200,76 @@
 
             //Act
             var result = await controller.Register(model);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var template = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(successCreateTokenCommand, template);
+        }
+
+        [Fact]
+        public void SendEmailConfirm_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.SendEmailConfirm();
+
+            // Assert
+
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal(viewResult, result);
+        }
+
+        [Fact]
+        public async Task SendEmailConfirm_CreateSuccessful_ReturnExpectedCommenResult()
+        {
+            // Arrange
+            var controller = GetController();
+            controller.ViewData.ModelState.Clear();
+            var email = fixture.Create<string>();
+            var confrimTokenModel = fixture.Create<ConfirmEmailModel>();
+            var successCreateUserCommand = new CommandResult { Code = 0 };
+            var successCreateTokenCommand = new CommandResult { Code = 0 };
+            controller.Url = Substitute.For<IUrlHelper>();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+            authService.CreateTokenConfirmEmail(Arg.Do<ConfirmEmailModel>(x => confrimTokenModel = x)).Returns(successCreateTokenCommand);
+
+            //Act
+            var result = await controller.SendEmailConfirm(email);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var template = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(successCreateTokenCommand.IsSuccessful, template.IsSuccessful);
+            await authService.Received().SendMailConfirmationAsync(Arg.Any<string>(), Arg.Any<string>());
+        }
+
+
+        [Fact]
+        public async Task SendEmailConfirm_FailCreateToken_ReturnExpectedCommenResult()
+        {
+            // Arrange
+            var controller = GetController();
+            controller.ViewData.ModelState.Clear();
+            var email = fixture.Create<string>();
+            var confirmTokenModel = fixture.Create<ConfirmEmailModel>();
+            var successCreateUserCommand = new CommandResult { Code = 0 };
+            var successCreateTokenCommand = new CommandResult { Code = 1 };
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+            authService.CreateTokenConfirmEmail(Arg.Do<ConfirmEmailModel>(x => confirmTokenModel = x)).Returns(successCreateTokenCommand);
+
+            //Act
+            var result = await controller.SendEmailConfirm(email);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
