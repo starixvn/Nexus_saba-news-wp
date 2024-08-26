@@ -4413,7 +4413,6 @@ button {
   background-color: #00252B;
 }
 .block-video .block__title a, .block-video .heading-category a {
-  background: transparent;
   color: #fff;
 }
 .block-video .block__title:after, .block-video .heading-category:after {

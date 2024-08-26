@@ -3768,3 +3768,7 @@ button {
 .wapper.active-fixed .button-mobile {
   z-index: 10004;
 }
+
+.play_video {
+  display: none;
+}
