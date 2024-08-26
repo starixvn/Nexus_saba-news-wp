@@ -75,35 +75,38 @@
 			</div>
 			<div class="block-body">
 				<div class="controls">
-					<div class="controls__choose">
+					<div class="security">
+						<i class="icon-Verify"></i>
+						SabaSports cam kết bảo mật thông tin của bạn
+					</div>
+					<div class="items-choose controls__choose ">
 						<div class="title">@ViewResources.ProfilePhoto</div>
-						<form enctype="multipart/form-data" method="post" id="uploadPhoto">
-							<div class="input-upload">
-								<input type="file" class="input-file" id="act-upload" name="photo">
-								<span class="txt-img"><i class="icon-upload"></i> @ViewResources.ProfileUploadNewPhoto</span>
+						<div class="group-table">
+							<form enctype="multipart/form-data" method="post" id="uploadPhoto">
 								<div class="img-upload">
 									<img id="review_photo" src="#" alt="review photo" width="150" style="display:none" />
 									<p class="error photo-error"></p>
-									<button type="submit" name="" class="save-img">Lưu hình ảnh</button>
+									<button type="submit" name="" class="save-img btn-submit-profile">Lưu hình ảnh</button>
 									<button type="button" class="cancel-upload icon-close" style="display:none"></button>
 								</div>
-							</div>
-						</form>
+								<div class="input-upload">
+									<input type="file" class="input-file" id="act-upload" name="photo">
+									<span class="txt-img"><i class="icon-upload"></i> @ViewResources.ProfileUploadNewPhoto</span>
+								</div>
+							</form>
+						</div>
 					</div>
 
-					<div class="controls__account line">
+					<div class="items-choose controls__account">
 						<div class="title">@ViewResources.ProfileAccount</div>
-
 						<div class="group-table">
 							<div class="left-table">
-								<div class="label-fill">SabaID</div>
+								<div class="label-fill"><i class="icon-profile icon-personalcard"></i> SabaID</div>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
 									<div class="main-fill">
-										<ul class="txt-fill">
-											<li class="txt-feild">@Model.User.Id</li>
-										</ul>
+										<div class="text-fill">@Model.User.Id</div>
 									</div>
 								</div>
 							</div>
@@ -111,20 +114,18 @@
 
 						<div class="group-table">
 							<div class="left-table">
-								<div class="label-fill">@ViewResources.Email</div>
+								<div class="label-fill"><i class="icon-profile icon-email1"></i> @ViewResources.Email</div>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
 									<div class="main-fill">
-										<ul class="txt-fill">
-											<li class="txt-feild">@Model.User.Email</li>
-										</ul>
+										<div class="text-fill">@Model.User.Email</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<div class="group-table">
+						@* <div class="group-table">
 							<div class="left-table">
 								<div class="label-fill">@ViewResources.ProfilePhone</div>
 							</div>
@@ -154,67 +155,69 @@
 								</div>
 								<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 							</div>
-						</div>
+						</div> *@
 
 						@if (Model.User.Password != "")
 						{
 						<div class="group-table">
 							<div class="left-table">
-								<div class="label-fill">@ViewResources.Password</div>
+								<div class="label-fill"><i class="icon-profile icon-lock"></i> @ViewResources.Password</div>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
-									<input type="password" name="password" readonly value="@Model.User.Password" class="input-password input-auth" />
+									<input type="password" name="password" readonly value="@Model.User.Password" class="input-password password-dots input-auth" />
 									<a href="#" class="action social-action">@ViewResources.ChangePassword</a>
 								</div>
 								<div class="box-edit-form" id="form_update_password">
-									<div class="title">@ViewResources.ChangePassword</div>
-									<div class="input-form">
+									<div class="title title-edit">@ViewResources.ChangePassword</div>
+									<div class="input-form error">
 										<input type="password" name="oldpassword" value="" class="input-edit input-auth" placeholder="Nhập mật khẩu cũ" />
-										<p class="error error-password old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
+										<p class="error error-password validate-error old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
 										<p class="error error-password old-password-error"></p>
-										<a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
-										<a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
+										<a href="javascript:void(0)" class="event-pass show-old-pass"><i class="icon-show"></i></a>
+										<a href="javascript:void(0)" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
 									</div>
 									<div class="input-form">
 										<input type="password" name="newpassword" value="" class="input-edit input-auth" placeholder="Tạo mật khẩu mới" />
-										<p class="error error-password new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
-										<a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
-										<a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
+										<p class="error error-password validate-error new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
+										<a href="javascript:void(0)" class="event-pass show-new-pass"><i class="icon-show"></i></a>
+										<a href="javascript:void(0)" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
 									</div>
-									<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
-									<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
+									<div class="group-submit">
+										<button class="btn-submit-edit btn-save-password btn-submit-profile btn-disabled" disabled>@ViewResources.Save</button>
+										<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
+									</div>
 									<span class="close-edit icon-close"></span>
 								</div>
 							</div>
 						</div>
-
 						}
-
 					</div>
 
 
 
-					<div class="controls__account line">
+					<div class="items-choose controls__account">
 						<div class="title">@ViewResources.ProfilePersonalInfo</div>
 						<div class="group-table">
 							<div class="left-table">
-								<div class="label-fill">@ViewResources.Name</div>
+								<div class="label-fill"><i class="icon-profile icon-profile-user"></i> @ViewResources.Name</div>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
 									<div class="main-fill name-section">
-										<ul class="txt-fill">
-											<li class="txt-feild">@Model.User.Name</li>
-										</ul>
+										<div class="text-fill">@Model.User.Name</div>
 									</div>
 									<a href="#" class="action social-action">@ViewResources.Change</a>
 								</div>
 								<div class="box-edit-form" id="form_update_name">
-									<div class="title">Họ và tên</div>
-									<input type="text" name="name" value="" class="input-edit input-auth" placeholder="Nhập họ và tên" />
-									<p class="error name-error">@ViewResources.ValidateName</p>
-									<button class="btn-submit-edit btn-save-name btn-disabled" disabled data-name="@Model.User.Name">@ViewResources.Save</button>
+									<div class="title title-edit">Họ và tên</div>
+									<div class="input-form error">
+										<input type="text" name="name" value="" class="input-edit input-auth" placeholder="Nhập họ và tên" />
+										<p class="error validate-error name-error">@ViewResources.ValidateName</p>
+									</div>
+									<div class="group-submit">
+										<button class="btn-submit-edit btn-save-name btn-submit-profile btn-disabled" disabled data-name="@Model.User.Name">@ViewResources.Save</button>
+									</div>
 									<span class="close-edit icon-close"></span>
 								</div>
 								<p class="commitment">@ViewResources.ProfileShowWhenComment</p>
@@ -223,24 +226,24 @@
 
 						<div class="group-table">
 							<div class="left-table">
-								<div class="label-fill">@ViewResources.ProfileGender</div>
+								<div class="label-fill"><i class="icon-profile icon-ph_gender-intersex-bold"></i> @ViewResources.ProfileGender</div>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
 									<div class="main-fill gender-section">
-										<ul class="txt-fill">
+										<div class="txt-fill">
 											@{ var disabled = "disabled"; }
 											@if (Model.User.Gender != null)
 											{
 												disabled = "";
-											<li class="txt-feild">@Model.User.Gender</li>
+												@Model.User.Gender
 											}
 											else
 											{
-											<li>@ViewResources.ProfileNoSelected</li>
+												@ViewResources.ProfileNoSelected
 											}
 
-										</ul>
+										</div>
 									</div>
 									<a href="#" class="action social-action">@(Model.User.Gender == null ?  ViewResources.Add : ViewResources.Change)</a>
 								</div>
@@ -317,7 +320,7 @@
 
 					</div>
 
-					<div class="controls__account line social-network">
+					<div class="items-choose controls__account social-network">
 						<div class="title">Mạng xã hội</div>
 						<div class="group-table">
 							<div class="left-table">

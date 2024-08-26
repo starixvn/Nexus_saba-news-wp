@@ -314,6 +314,8 @@
                         $('#review_photo').attr('src', '');
                         $('#review_photo').hide();
                         $('.cancel-upload').hide();
+                        $('.img-upload').hide();
+                        $('.input-upload').show();
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
                         $('.profile__avatar').html(html);
@@ -328,6 +330,7 @@
             $('#review_photo').attr('src', '');
             $('#review_photo').hide();
             $('.cancel-upload').show();
+            $('.img-upload').show();
             var files = $('input[name=photo]')[0].files[0];
             var isValid = validate_photo(files);
             if (!isValid) {
@@ -348,6 +351,8 @@
             $('#review_photo').hide();
             $('.cancel-upload').show();
             $('.save-img').hide();
+            $('.input-upload').show();
+            $('.img-upload').hide();
             $('.txt-img').css('display', 'flex');
             $(this).hide();
         });
@@ -401,6 +406,7 @@
         }
         $('.save-img').css('display', 'block');
         $('.txt-img').css('display', 'none');
+        $('.input-upload').css('display' , 'none');
 
         return isValid;
     }

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?r88h38');
-  src:  url('fonts/Fraud-Sensor.eot?r88h38#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?r88h38') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?r88h38') format('woff'),
-    url('fonts/Fraud-Sensor.svg?r88h38#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?d8iowl');
+  src:  url('fonts/Fraud-Sensor.eot?d8iowl#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?d8iowl') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?d8iowl') format('woff'),
+    url('fonts/Fraud-Sensor.svg?d8iowl#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-email1:before {
+  content: "\e95d";
+  color: #5c5c5c;
+}
+.icon-Verify:before {
+  content: "\e95c";
+  color: #2865b5;
+}
 .icon-logout1:before {
   content: "\e959";
   color: #4f4f4f;
