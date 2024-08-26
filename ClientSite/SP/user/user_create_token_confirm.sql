@@ -15,6 +15,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create_token_confirm`(
 			- 20220720@Hank: init
 			- 20240808@Hank: add output UserId
             - 20240815@Hank: refactor code
+            - 20240826@Hank: change Error Code
     */
 )
 User_Create_Token_Confirm:BEGIN
@@ -35,7 +36,7 @@ User_Create_Token_Confirm:BEGIN
     
     IF (EXISTS(SELECT * FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key='email_confirmed' AND um.meta_value = '1')) 
     THEN
-		SET ErrCode = 1,
+		SET ErrCode = 2,
 			ErrMsg = 'User này đã đăng ký thành công';
         LEAVE User_Create_Token_Confirm;
 	END IF;
