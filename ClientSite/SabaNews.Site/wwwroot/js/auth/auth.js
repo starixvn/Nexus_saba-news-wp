@@ -396,41 +396,6 @@ var auth = (function ($) {
         $('#modal-noti').modal('show');
     }
 
-    function HandleSubmitConfirmEmail() {
-        $("#form-confirm-email button").on('click', (e) => {
-            e.preventDefault();
-            var email = $('#form-confirm-email input[name="email"]').val();
-            if (!mailFormat.test(email) || email == '') {
-                var err_message = email == '' ? EmailIsValidErr : EmailExistedErr;
-                $(this).parent().find('.error').text(err_message);
-                return false;
-            }
-            var self = $(this);
-            self.prop('disabled', true);
-            self.addClass('btn-disabled');
-
-            $.ajax({
-                url: '/Auth/SendEmailConfirm',
-                method: 'POST',
-                data: { email },
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        const html = "Chúng tôi đã gửi email đến địa chỉ <b>{0}</b> để xác thực và kích hoạt tài khoản.</div>',";
-                        const bodyModal = formatString(html, email);
-                        $(modal + ' .modal-body').html(bodyModal);
-                    } else {
-                        $(modal +  ' form#form-confirm-email').find('.summary-eror').text(res.message);
-                        self.prop('disabled', false);
-                        self.removeClass('btn-disabled');
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
-        });
-    }
-
     function HandleModal(openForm) {
         if (openForm === 'register') {
             $('.nav-title').removeClass('active');
