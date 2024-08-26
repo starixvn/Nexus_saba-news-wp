@@ -17,21 +17,40 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_create`(
         Revisions:
 			- 20220720@Hank: init
             - 20240808@Hank: _phone, _yearOfBirth
+            - 20240828@Hank: check not confirm email
     */
 )
 User_Create:BEGIN
 
-	DECLARE UserExists INT;
+    SET UserId = -1;
     
-	SELECT 1 
-	INTO UserExists
-	FROM `wp_users`
-	WHERE user_login = _email OR user_email = _email;
+	SELECT u.ID
+	INTO UserId
+	FROM `wp_users` u
+	WHERE u.user_login = _email OR u.user_email = _email;
+
     
-    IF (UserExists = 1) THEN
-		SET ErrCode = 1,
+    IF (UserId != 1) THEN
+		IF (EXISTS(SELECT 1 FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key='email_confirmed' AND um.meta_value = '1')) THEN
+			SET ErrCode = 1,
 			ErrMsg = 'Email đã tồn tại';
-        LEAVE User_Create;
+			LEAVE User_Create;
+        END IF;
+        
+        IF (EXISTS(SELECT 1 FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key='email_confirmed' AND um.meta_value = '0')) THEN
+			SET ErrCode = 2,
+			ErrMsg = 'Email chưa xác thực';
+            
+            UPDATE `wp_users`
+			SET
+			`user_pass` = _password,
+			`user_nicename` = _name,
+			`display_name` = _name
+			WHERE `ID` = UserId;
+
+			LEAVE User_Create;
+        END IF;
+		
 	END IF;
     
 	INSERT INTO `wp_users`
@@ -116,6 +135,7 @@ User_Create:BEGIN
 	(UserId,
 	'is_subscribe',
 	1);
+    
 END
 
 //
