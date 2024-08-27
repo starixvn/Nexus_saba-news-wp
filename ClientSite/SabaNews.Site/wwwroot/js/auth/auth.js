@@ -380,7 +380,10 @@ var auth = (function ($) {
                             countdown(self);
                         }
                     } else {
+                        self.prop('disabled', false);
+                        self.removeClass('btn-disabled');
                         countdown(self);
+                        
                     }
                     
                 }
