@@ -33,7 +33,7 @@
         border: 1px solid #d1d1d1;
         background: #FFFDF9;
         width: 100%;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-family: "Open Sans" !important;
         font-weight: 600;
         @include Mobile{
@@ -42,7 +42,7 @@
         }
         &::placeholder{
             color: #8F8F8F;
-            font-size: 1.6rem !important;
+            font-size: 1.4rem !important;
             @include Mobile{
                 font-size: 1.4rem !important;
             }
@@ -336,7 +336,7 @@ input:-webkit-autofill:active{
     border-radius: 3px;
     border: 1px solid #d1d1d1;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-family: "Open Sans" !important;
     font-weight: 600;
     @include Mobile{
