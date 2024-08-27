@@ -149,7 +149,7 @@ var all = (function ($) {
         });
         $('.action').click(function (e) {
             e.preventDefault();
-            $(this).parent('.box-control').next().toggleClass('toggle-active-form');
+            $(this).parent().parent('.right-table').find('.box-edit-form').toggleClass('toggle-active-form');
         })
 
         $('.close-edit').click(function (e) {
