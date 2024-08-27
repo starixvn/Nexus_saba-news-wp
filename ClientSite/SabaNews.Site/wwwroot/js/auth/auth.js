@@ -42,12 +42,12 @@ var auth = (function ($) {
             grecaptcha.reset(loginCaptcha);
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'login');
-            $('.summary-eror').hide();
         });
         $(document).on('click', '.register-form-open', function (e) {
-            e.preventDefault(); 
+            e.preventDefault();
             grecaptcha.reset(registerCaptcha);
             $('#form-register').trigger('reset');
+            $('#form-register .submit-register').prop('disabled', false);
             returnUrl = $(this).data('returnurl');
             GetModalLogin(returnUrl, 'register');
         })
@@ -219,7 +219,8 @@ var auth = (function ($) {
     }
 
     function HandleRegister() {
-        $('#form-register .submit-register').on('click', function () {
+        $('#form-register .submit-register').on('click', function (e) {
+            e.preventDefault();
             var name = $("#form-register input[name=name]").val();
             var email = $("#form-register input[name=email]").val();
             var password = $("#form-register input[name=password]").val();
@@ -365,7 +366,7 @@ var auth = (function ($) {
             var self = $(this);
             var email = $(this).data('email');
             $('#modal-noti').find('.summary-eror').hide();
-            self.prop('disable', true)
+            self.prop('disabled', true)
             self.addClass('btn-disabled');
             $.ajax({
                 url: '/Auth/SendEmailConfirm',
@@ -373,18 +374,15 @@ var auth = (function ($) {
                 data: {email},
                 success: function (res) {
                     if (!res.isSuccessful) {
-                        if(res.code == 2) {
-                            $('#modal-noti').find('.summary-eror').show();
-                            $('#modal-noti').find('.summary-eror').text(res.message);
-                        } else {
+                        if(res.code === 1) {
                             $('#modal-noti').find('.summary-eror').show();
                             $('#modal-noti').find('.summary-eror').text('Không thể gửi lại. Vui lòng thử lại sau!');
+                            countdown(self);
                         }
-                       
-                        self.prop('disabled', false);
-                        self.removeClass('btn-disabled');
+                    } else {
+                        countdown(self);
                     }
-                    countdown(self);
+                    
                 }
             });
         });
@@ -392,6 +390,7 @@ var auth = (function ($) {
 
     function HandleNotificationPopup(body) {
         $('.authModal').modal('hide');
+        $('#modal-noti .summary-eror').hide();
         $('#modal-noti .noti-body').html(body);
         $('#modal-noti').modal('show');
     }
