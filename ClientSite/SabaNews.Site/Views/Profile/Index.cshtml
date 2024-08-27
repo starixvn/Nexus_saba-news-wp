@@ -133,12 +133,15 @@
 						{
 						<div class="group-table">
 							<div class="left-table">
-								<div class="label-fill"><i class="icon-profile icon-lock"></i> @ViewResources.Password</div>
+								<div class="label-fill">
+									<i class="icon-profile icon-lock"></i> @ViewResources.Password
+								</div>
+								<a href="#" class="action social-action show-mb">@ViewResources.ChangePassword</a>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
 									<input type="password" name="password" readonly value="@Model.User.Password" class="input-password password-dots input-auth" />
-									<a href="#" class="action social-action">@ViewResources.ChangePassword</a>
+									<a href="#" class="action social-action show-pc">@ViewResources.ChangePassword</a>
 								</div>
 								<div class="box-edit-form" id="form_update_password">
 									<div class="title title-edit">@ViewResources.ChangePassword</div>
@@ -173,13 +176,14 @@
 						<div class="group-table">
 							<div class="left-table">
 								<div class="label-fill"><i class="icon-profile icon-profile-user"></i> @ViewResources.Name</div>
+								<a href="#" class="action social-action show-mb">@ViewResources.Change</a>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
 									<div class="main-fill name-section">
 										<div class="text-fill">@Model.User.Name</div>
 									</div>
-									<a href="#" class="action social-action">@ViewResources.Change</a>
+									<a href="#" class="action social-action show-pc">@ViewResources.Change</a>
 								</div>
 								<p class="commitment">@ViewResources.ProfileShowWhenComment</p>
 								<div class="box-edit-form" id="form_update_name">
@@ -199,6 +203,7 @@
 						<div class="group-table">
 							<div class="left-table">
 								<div class="label-fill"><i class="icon-profile icon-ph_gender-intersex-bold"></i> @ViewResources.ProfileGender</div>
+								<a href="#" class="action social-action show-mb">@(Model.User.Gender == null ?  ViewResources.Add : ViewResources.Change)</a>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
@@ -217,7 +222,7 @@
 
 										</div>
 									</div>
-									<a href="#" class="action social-action">@(Model.User.Gender == null ?  ViewResources.Add : ViewResources.Change)</a>
+									<a href="#" class="action social-action show-pc">@(Model.User.Gender == null ?  ViewResources.Add : ViewResources.Change)</a>
 								</div>
 								<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 								<div class="box-edit-form" id="form_update_gender">
@@ -250,6 +255,7 @@
 						<div class="group-table">
 							<div class="left-table">
 								<div class="label-fill"><i class="icon-profile icon-phone"></i> @ViewResources.ProfilePhone</div>
+								<a href="#" class="action social-action show-mb">@(Model.User.Phone == null ?  ViewResources.Add : ViewResources.Change)</a>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
@@ -266,7 +272,7 @@
 
 										</div>
 									</div>
-									<a href="#" class="action social-action">@(Model.User.Phone == null ?  ViewResources.Add : ViewResources.Change)</a>
+									<a href="#" class="action social-action show-pc">@(Model.User.Phone == null ?  ViewResources.Add : ViewResources.Change)</a>
 								</div>
 								<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 								<div class="box-edit-form" id="form_update_phone">
@@ -286,6 +292,7 @@
 						<div class="group-table">
 							<div class="left-table">
 								<div class="label-fill"> <i class="icon-profile icon-calendar"></i>  Năm sinh</div>
+								<a href="#" class="action social-action show-mb">@(Model.User.YearOfBirth == null ?  ViewResources.Add : ViewResources.Change)</a>
 							</div>
 							<div class="right-table">
 								<div class="box-control">
@@ -295,7 +302,7 @@
 										</div>
 										
 									</div>
-									<a href="#" class="action social-action">@(Model.User.YearOfBirth == null ?  ViewResources.Add : ViewResources.Change)</a>
+									<a href="#" class="action social-action show-pc">@(Model.User.YearOfBirth == null ?  ViewResources.Add : ViewResources.Change)</a>
 								</div>
 								<div class="box-edit-form" id="form_update_yearOfBirth">
 									<div class="title">Năm sinh</div>

@@ -65,7 +65,6 @@
   }
   
   .checkbox-wrapper-46 .cbx {
-    margin: auto;
     -webkit-user-select: none;
     user-select: none;
     cursor: pointer;
@@ -131,6 +130,10 @@
     transition: all 0.6s ease;
   }
   
+  .checkbox-wrapper-46{
+    font-size: 1.6rem;
+  }
+
   @keyframes wave-46 {
     50% {
       transform: scale(0.9);
