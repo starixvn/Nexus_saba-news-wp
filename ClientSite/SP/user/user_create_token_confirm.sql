@@ -37,7 +37,7 @@ User_Create_Token_Confirm:BEGIN
     IF (EXISTS(SELECT * FROM wp_usermeta as um WHERE um.user_id = UserId AND um.meta_key='email_confirmed' AND um.meta_value = '1')) 
     THEN
 		SET ErrCode = 2,
-			ErrMsg = 'User này đã đăng ký thành công';
+			ErrMsg = 'Tài khoản này đã đăng ký thành công';
         LEAVE User_Create_Token_Confirm;
 	END IF;
     
