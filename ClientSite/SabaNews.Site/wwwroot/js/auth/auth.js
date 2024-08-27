@@ -374,7 +374,10 @@ var auth = (function ($) {
                 data: {email},
                 success: function (res) {
                     if (!res.isSuccessful) {
-                        if(res.code === 1) {
+                        if(res.code === 2) {
+                            $('#modal-noti').find('.summary-eror').show();
+                            $('#modal-noti').find('.summary-eror').text(res.message);
+                        } else {
                             $('#modal-noti').find('.summary-eror').show();
                             $('#modal-noti').find('.summary-eror').text('Không thể gửi lại. Vui lòng thử lại sau!');
                             countdown(self);
