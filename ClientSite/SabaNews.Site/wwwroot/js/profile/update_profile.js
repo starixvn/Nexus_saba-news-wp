@@ -241,7 +241,7 @@
                 data: { email: email },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
+                        const html = _htmlResource.ForgotPassword;
                         const bodyModal = formatString(html, email, window.location.origin);
                         $('#resetPasswordSuccesful .modal-body').html(bodyModal);
                         $('#resetPasswordSuccesful').modal('show');
