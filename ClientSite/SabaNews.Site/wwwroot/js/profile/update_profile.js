@@ -271,9 +271,9 @@
                     if (response.isSuccessful) {
                         var msg = '';
                         if (value === 1) {
-                            msg = '<div class="modal-title">Thông báo</div><div class="content-noti">Bạn đang theo dõi và nhận tin tức từ SABA Sports!</div>'
+                            msg = '<div class="modal-title">Thông báo</div><div class="check-email">Bạn đang theo dõi và nhận tin tức từ SABA Sports!</div>'
                         } else {
-                            msg = '<div class="modal-title">Thông báo</div><div class="content-noti">Bạn đã bỏ theo dõi thành công!</div>'
+                            msg = '<div class="modal-title">Thông báo</div><div class="check-email">Bạn đã bỏ theo dõi thành công!</div>'
                         }
                         $('#current_subscribe').val(value);
                         $('#resetPasswordSuccesful .modal-body').html(msg);
