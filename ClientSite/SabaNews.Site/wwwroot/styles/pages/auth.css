@@ -480,27 +480,27 @@ input:-webkit-autofill:active {
   }
 }
 
-#modal-noti {
+#modal-noti, .modal-noti {
   min-width: 50rem;
 }
 @media (max-width: 767px) {
-  #modal-noti {
+  #modal-noti, .modal-noti {
     min-width: auto;
     max-width: 36.9rem;
   }
 }
 @media (max-width: 767px) {
-  #modal-noti .modal-body {
+  #modal-noti .modal-body, .modal-noti .modal-body {
     padding: 1.6rem;
   }
 }
 @media (max-width: 767px) {
-  #modal-noti .close-login, #modal-noti .close {
+  #modal-noti .close-login, #modal-noti .close, .modal-noti .close-login, .modal-noti .close {
     top: 16px;
     right: 16px;
   }
 }
-#modal-noti .submit-auth {
+#modal-noti .submit-auth, .modal-noti .submit-auth {
   margin-top: 1.6rem;
 }
 
