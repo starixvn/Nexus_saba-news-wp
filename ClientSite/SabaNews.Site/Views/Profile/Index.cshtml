@@ -82,6 +82,20 @@
 					<div class="items-choose controls__choose ">
 						<div class="title">@ViewResources.ProfilePhoto</div>
 						<div class="group-table">
+							<ul class="auth-provider">
+								@if (Model.User.Photo == null)
+								{
+									<li class="avatar-user">@Model.User.Name.Substring(0, 1)</li>
+								}
+								else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
+								{
+									<li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+								}
+								else
+								{
+									<li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+								}
+							</ul>
 							<form enctype="multipart/form-data" method="post" id="uploadPhoto">
 								<div class="img-upload">
 									<div class="group-upload">
