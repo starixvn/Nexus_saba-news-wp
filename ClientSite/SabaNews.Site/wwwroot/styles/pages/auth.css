@@ -484,6 +484,7 @@ input[type=password] {
 @media (max-width: 767px) {
   #modal-noti {
     min-width: auto;
+    max-width: 36.9rem;
   }
 }
 @media (max-width: 767px) {

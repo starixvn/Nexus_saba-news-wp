@@ -473,6 +473,7 @@ input[type="password"]{
     min-width: 50rem;
     @include Mobile{
         min-width: auto;
+        max-width: 36.9rem;
     }
     .modal-body{
         @include Mobile{
