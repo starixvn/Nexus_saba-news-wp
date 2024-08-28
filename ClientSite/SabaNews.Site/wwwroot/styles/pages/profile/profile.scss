@@ -93,11 +93,11 @@
 }
 
 .validate-error{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 400;
     line-height: normal;
     color: #FF3B30;
-    margin-top: .2rem;
+    margin-top: .4rem;
     display: block;
 }
 
@@ -228,7 +228,10 @@
         font-family: "Open Sans";
         &-edit{
             font-weight: 700;
-            margin-bottom: .6rem;
+            margin-bottom: 1rem;
+            @include Mobile{
+                font-size: 1.4rem;
+            }
         }
     }   
 }
@@ -383,7 +386,7 @@
     margin-top: 1.6rem;
     .input-form {
         position: relative;
-        margin-bottom: .6rem;
+        margin-bottom: 1rem;
         .event-pass {
             text-decoration: none;
             position: absolute;
@@ -422,6 +425,13 @@
         color: #222;
         outline: none;
         background-color: #FFFDF9;
+        font-size: 1.4rem;
+        &::placeholder{
+            font-size: 1.4rem;
+        }
+        @include Mobile{
+            height: 4.2rem;
+        }
     }
 
 
@@ -444,12 +454,13 @@
 
 .btn-submit-profile {
     color: $color-fff;
-    padding: .6rem 1.2rem;
+    padding: .4rem 1.2rem;
     background: #E13C29;
     font-family: "Open Sans";
     border: none;
     font-weight: 600;
     border-radius: 3px;
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
@@ -460,6 +471,7 @@
 .action,.forgot-pass a, .connect{
     text-decoration: none;
     color:  #0066CC;
+    font-size: 1.3rem;
 }
 
 .controls__choose{
@@ -473,7 +485,7 @@
 
 .select-auth{
     margin-top: 1.6rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .commitment {
@@ -556,18 +568,18 @@
     }
   }
 
-.show-pc{
-    display: block;
-    @include Mobile{
-        display: none;
-    }
-}
-.show-mb{
-    display: none;
-    @include Mobile{
-        display: block;
-    }
-}
+// .show-pc{
+//     display: block;
+//     @include Mobile{
+//         display: none;
+//     }
+// }
+// .show-mb{
+//     display: none;
+//     @include Mobile{
+//         display: block;
+//     }
+// }
 .modal-noti{
     max-width: 50rem;
     @include Mobile{

@@ -2483,11 +2483,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 
 .validate-error {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: normal;
   color: #FF3B30;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
   display: block;
 }
 
@@ -2622,7 +2622,12 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .items-choose .title-edit {
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 767px) {
+  .items-choose .title-edit {
+    font-size: 1.4rem;
+  }
 }
 
 .group-table {
@@ -2790,7 +2795,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .box-edit-form .input-form {
   position: relative;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 .box-edit-form .input-form .event-pass {
   text-decoration: none;
@@ -2826,6 +2831,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #222;
   outline: none;
   background-color: #FFFDF9;
+  font-size: 1.4rem;
+}
+.box-edit-form .input-edit::placeholder {
+  font-size: 1.4rem;
+}
+@media (max-width: 767px) {
+  .box-edit-form .input-edit {
+    height: 4.2rem;
+  }
 }
 .box-edit-form .group-submit {
   display: flex;
@@ -2847,12 +2861,13 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .btn-submit-profile {
   color: #fff;
-  padding: 0.6rem 1.2rem;
+  padding: 0.4rem 1.2rem;
   background: #E13C29;
   font-family: "Open Sans";
   border: none;
   font-weight: 600;
   border-radius: 3px;
+  font-size: 1.6rem;
   cursor: pointer;
 }
 
@@ -2863,6 +2878,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .action, .forgot-pass a, .connect {
   text-decoration: none;
   color: #0066CC;
+  font-size: 1.3rem;
 }
 
 .controls__choose .group-table {
@@ -2876,7 +2892,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 
 .select-auth {
   margin-top: 1.6rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .commitment {
@@ -2959,24 +2975,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.show-pc {
-  display: block;
-}
-@media (max-width: 767px) {
-  .show-pc {
-    display: none;
-  }
-}
-
-.show-mb {
-  display: none;
-}
-@media (max-width: 767px) {
-  .show-mb {
-    display: block;
-  }
 }
 
 .modal-noti {
