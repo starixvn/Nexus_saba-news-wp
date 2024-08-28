@@ -440,6 +440,10 @@ input:-webkit-autofill:active{
     label{
         margin-bottom: 1.2rem;
         font-weight: 400;
+        font-size: 1.6rem;
+        @include Mobile{
+            font-size: 1.4rem;
+        }
     }
     .group-question{
         display: flex;

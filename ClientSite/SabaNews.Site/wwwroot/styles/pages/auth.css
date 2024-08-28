@@ -449,6 +449,12 @@ input:-webkit-autofill:active {
 #modal-forgotpassword label {
   margin-bottom: 1.2rem;
   font-weight: 400;
+  font-size: 1.6rem;
+}
+@media (max-width: 767px) {
+  #modal-forgotpassword label {
+    font-size: 1.4rem;
+  }
 }
 #modal-forgotpassword .group-question {
   display: flex;
