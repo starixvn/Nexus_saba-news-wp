@@ -280,6 +280,10 @@
     .right-table{
         width: 100%;
     }
+    .profile{
+        padding: 0;
+        border: none;
+    }
 }
 
 .left-table{
@@ -460,7 +464,10 @@
 
 .controls__choose{
     .group-table{
-        display: block;
+        gap: 1.6rem;
+        @include Mobile{
+            display: flex;
+        }
     }
 }
 
