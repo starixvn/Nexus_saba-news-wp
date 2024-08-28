@@ -265,7 +265,7 @@ var auth = (function ($) {
             }
             if(captcha == "") {
                 isValid = false;
-                $('.captcha .validate-error').html('xác nhận captcha');
+                $('.captcha .validate-error').html('Xác nhận captcha');
             }
             if (isValid) {
                 self.prop('disabled', true);
