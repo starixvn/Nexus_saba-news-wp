@@ -241,7 +241,7 @@
                 data: { email: email },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        const html = _htmlResource.ForgotPassword;
+                        const html = '<div class="modal-title">Thông báo</div><div class="check-email">Hãy kiểm tra email <b>{0}</b> để xem hướng dẫn tạo mật khẩu mới.</div>';
                         const bodyModal = formatString(html, email, window.location.origin);
                         $('#resetPasswordSuccesful .modal-body').html(bodyModal);
                         $('#resetPasswordSuccesful').modal('show');
