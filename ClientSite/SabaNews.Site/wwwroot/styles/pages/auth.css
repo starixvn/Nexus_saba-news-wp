@@ -506,3 +506,9 @@ input[type=password] {
     padding: 1.6rem;
   }
 }
+@media (max-width: 767px) {
+  #modal-forgotpassword .close-login, #modal-forgotpassword .close {
+    top: 16px;
+    right: 16px;
+  }
+}

@@ -496,4 +496,10 @@ input[type="password"]{
             padding: 1.6rem;
         }
     }
+    .close-login,.close{
+        @include Mobile{
+            top: 16px;
+            right: 16px;
+        }
+    }
 }
