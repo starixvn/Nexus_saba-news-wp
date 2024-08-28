@@ -9,6 +9,11 @@
 @import '../../components/_popup-event';
 @import '../../components/custum-input';
 
+
+html, body{
+    overflow: unset;
+}
+
 .main{
     margin-bottom: 4rem;
 }

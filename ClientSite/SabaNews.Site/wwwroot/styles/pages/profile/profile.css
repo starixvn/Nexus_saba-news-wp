@@ -2388,6 +2388,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     transform: scale(0.9);
   }
 }
+html, body {
+  overflow: unset;
+}
+
 .main {
   margin-bottom: 4rem;
 }
