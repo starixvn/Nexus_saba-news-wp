@@ -269,11 +269,11 @@
                 data: { type: 'subscribe', value: value },
                 success: function (response) {
                     if (response.isSuccessful) {
-                        var msg = "";
+                        var msg = '';
                         if (value === 1) {
-                            msg = "Bạn đang theo dõi và nhận tin tức từ SABA Sports!"
+                            msg = '<div class="modal-title">Thông báo</div><div class="content-noti">Bạn đang theo dõi và nhận tin tức từ SABA Sports!</div>'
                         } else {
-                            msg = "Bạn đã bỏ theo dõi thành công!"
+                            msg = '<div class="modal-title">Thông báo</div><div class="content-noti">Bạn đã bỏ theo dõi thành công!</div>'
                         }
                         $('#current_subscribe').val(value);
                         $('#resetPasswordSuccesful .modal-body').html(msg);

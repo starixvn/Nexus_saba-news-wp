@@ -473,7 +473,7 @@ input:-webkit-autofill:active{
 //     padding: .5rem 4rem .5rem 1rem !important;
 // }
 
-#modal-noti{
+#modal-noti,.modal-noti{
     min-width: 50rem;
     @include Mobile{
         min-width: auto;

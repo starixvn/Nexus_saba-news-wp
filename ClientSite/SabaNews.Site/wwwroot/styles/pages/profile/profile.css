@@ -2978,3 +2978,21 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     display: block;
   }
 }
+
+.modal-noti {
+  max-width: 50rem;
+}
+@media (max-width: 767px) {
+  .modal-noti {
+    max-width: 36.9rem;
+  }
+}
+
+.modal-title {
+  margin-bottom: 2.4rem;
+  color: #E13C29;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: normal;
+  font-family: "Open Sans";
+}
