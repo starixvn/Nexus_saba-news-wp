@@ -362,10 +362,11 @@ var auth = (function ($) {
     }
 
     function HandleResendConfirmEmail() {
+        $('#modal-noti').find('.summary-eror').hide();
+        $('#modal-noti').find('.summary-success').hide();
         $(document).on('click', '.resend-email' , function () {
             var self = $(this);
             var email = $(this).data('email');
-            $('#modal-noti').find('.summary-eror').hide();
             self.prop('disabled', true)
             self.addClass('btn-disabled');
             $.ajax({
@@ -375,8 +376,8 @@ var auth = (function ($) {
                 success: function (res) {
                     if (!res.isSuccessful) {
                         if(res.code === 2) {
-                            $('#modal-noti').find('.summary-eror').show();
-                            $('#modal-noti').find('.summary-eror').text(res.message);
+                            $('#modal-noti').find('.summary-success').show();
+                            $('#modal-noti').find('.summary-success').text(res.message);
                         } else {
                             $('#modal-noti').find('.summary-eror').show();
                             $('#modal-noti').find('.summary-eror').text('Không thể gửi lại. Vui lòng thử lại sau!');
