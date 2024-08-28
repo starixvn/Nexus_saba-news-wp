@@ -2820,7 +2820,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 12px;
+  top: 16px;
   right: 16px;
 }
 .box-edit-form .input-edit {
