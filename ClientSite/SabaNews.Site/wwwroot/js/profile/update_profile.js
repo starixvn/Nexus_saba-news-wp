@@ -1,5 +1,31 @@
 ﻿var update_profile = (function ($) {
     const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+    const NameEmptyErr = "Hãy nhập tên";
+    const PasswordEmptyErr = "Hãy nhập mật khẩu";
+    const PasswordIsvalidErr = "Mật khẩu phải dài ít nhất 8 ký tự và bao gồm chữ cái viết hoa, số và ký tự đặc biệt";
+    const ConfirmPasswordEmptyErr = "Hãy xác thực mật khẩu";
+    const ConfirmPasswordIsvalidErr = "Mật khẩu không trùng khớp";
+    const PhoneEmptyErr = "Hãy nhập số điện thoại";
+    const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
+
+    $('.validate-error').hide();
+
+    function ToggleFormEdit() {
+        $('.action').click(function (e) {
+            e.preventDefault();
+            $('.box-edit-form').removeClass('toggle-active-form')
+            var formBox = $(this).parents('.group-table').find('.box-edit-form');
+            formBox.addClass('toggle-active-form');
+            formBox.find('input').not('input[type=radio]').val('');
+            $('.validate-error').hide();
+            $('.input-form').removeClass('error');
+        })
+
+        $('.close-edit').click(function (e) {
+            e.preventDefault();
+            $(this).parent().removeClass('toggle-active-form');
+        })
+    }
     function update_saved_post() {
         $('.remove_save_post').on('click', function () {
             var self = $(this);
@@ -42,6 +68,7 @@
 
         $('input[name=gender]').on('click', function () {
             var val = $(this).val();
+            console.log(val);
             if (val.trim() === "") {
                 $('.btn-save-gender').prop('disabled', true);
                 $('.btn-save-gender').addClass('btn-disabled');
@@ -91,7 +118,7 @@
         $('.btn-save-phone').on('click', function () {
             var phone = $('input[name=phone]').val();
             if (phone.trim() === "" || !phone.startsWith("0") || phone.length != 10) {
-                $('.phone-error').show();
+                ShowError('.phone-error', PhoneIsvalidErr)
                 return false;
             }
             var currentPhone = $(this).data('phone');
@@ -107,9 +134,7 @@
                 success: function (response) {
                     if (response.isSuccessful) {
                         $('#form_update_phone').removeClass('toggle-active-form');
-                        var html = '<li class="txt-feild">' + phone + '</li>';
-                        $('.phone-section').find('.txt-fill').html(html);
-                        $('.phone-error').hide();
+                        UpdateInfo('.phone-section', phone)
                     } else {
                         location.reload();
                     }
@@ -119,10 +144,6 @@
 
         $('.btn-save-name').on('click', function () {
             var name = $('input[name=name]').val();
-            if (name.trim() === "") {
-                $('.name-error').show();
-                return false;
-            }
             var currentName = $(this).data('name');
             if (name === currentName) {
                 $('#form_update_name').removeClass('toggle-active-form');
@@ -136,8 +157,7 @@
                 success: function (response) {
                     if (response.isSuccessful) {
                         $('#form_update_name').removeClass('toggle-active-form');
-                        var html = '<li class="txt-feild">' + name + '</li>';
-                        $('.name-section').find('.txt-fill').html(html);
+                        UpdateInfo('.name-section', name);
                     } else {
                         location.reload();
                     }
@@ -164,9 +184,7 @@
                 success: function (response) {
                     if (response.isSuccessful) {
                         $('#form_update_gender').removeClass('toggle-active-form');
-                        var html = '<li class="txt-feild">' + gender + '</li>';
-                        $('.gender-section').find('.txt-fill').html(html);
-                        self.data('gender', gender);
+                        UpdateInfo('.gender-section', gender);
                     } else {
                         location.reload();
                     }
@@ -175,20 +193,16 @@
         });
 
         $('.btn-save-password').on('click', function () {
-            $('.old-password-length-error').hide();
-            $('.new-password-length-error').hide();
             $('.old-password-error').hide();
-            var oldPassword = $('input[name = oldpassword]').val();
+            $('.new-password-error').hide();
+            $('.old-password-error').hide();
+            var oldPassword = $('input[name =oldpassword]').val();
             var newPassword = $('input[name=newpassword]').val();
             var check = true;
-            if (oldPassword.length < 6) {
-                $('.old-password-length-error').show();
+            if (newPassword === "" || !passwordFormat.test(newPassword)) {
                 check = false;
-            }
-
-            if (newPassword.length < 6) {
-                $('.new-password-length-error').show();
-                check = check ? false : check;
+                var msg = newPassword == "" ? PasswordEmptyErr : PasswordIsvalidErr;
+                ShowError('.new-password-error', msg)
             }
             if (!check) {
                 return false;
@@ -201,10 +215,8 @@
                 success: function (response) {
                     if (response.isSuccessful) {
                         $('#form_update_password').removeClass('toggle-active-form');
-                        $('.err-password').show();
                     } else {
-                        $('.old-password-error').show();
-                        $('.old-password-error').html(response.message);
+                        ShowError('.old-password-error', response.message)
                     }
                 }
             });
@@ -225,8 +237,7 @@
                 success: function (response) {
                     if (response.isSuccessful) {
                         $('#form_update_yearOfBirth').removeClass('toggle-active-form');
-                        var html = '<li class="txt-feild">' + yearOfBirth + '</li>';
-                        $('.yearOfBirth-section').find('.txt-fill').html(html);
+                        UpdateInfo('.yearOfBirth-section',  yearOfBirth);
                     } else {
                         location.reload();
                     }
@@ -417,8 +428,19 @@
         return isValid;
     }
 
+    function ShowError(selector, msg) {
+        $(selector).show();
+        $(selector).html(msg);
+        $(selector).parent().addClass('error');
+    }
+
+    function UpdateInfo(section, info) {
+        $(section + ' .text-fill').html(info);
+    }
+
 
     function init() {
+        ToggleFormEdit();
         update_saved_post();
         validate();
         update_profile_info();

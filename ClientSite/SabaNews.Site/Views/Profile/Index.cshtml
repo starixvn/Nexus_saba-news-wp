@@ -158,16 +158,15 @@
 								</div>
 								<div class="box-edit-form" id="form_update_password">
 									<div class="title title-edit">@ViewResources.ChangePassword</div>
-									<div class="input-form error">
+									<div class="input-form">
 										<input type="password" name="oldpassword" value="" class="input-edit input-auth" placeholder="Nhập mật khẩu cũ" />
-										<p class="error error-password validate-error old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
-										<p class="error error-password old-password-error"></p>
+										<p class="error error-password validate-error old-password-error"></p>
 										<a href="javascript:void(0)" class="event-pass show-old-pass"><i class="icon-show"></i></a>
 										<a href="javascript:void(0)" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
 									</div>
 									<div class="input-form">
 										<input type="password" name="newpassword" value="" class="input-edit input-auth" placeholder="Tạo mật khẩu mới" />
-										<p class="error error-password validate-error new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
+										<p class="error error-password validate-error new-password-error"></p>
 										<a href="javascript:void(0)" class="event-pass show-new-pass"><i class="icon-show"></i></a>
 										<a href="javascript:void(0)" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
 									</div>
@@ -323,7 +322,7 @@
 									<select  name="yearOfBirth" class="input-edit select-auth">
 										@for(int i = 1904 ;  i <= 2006 ; i++)
 										{
-											<option class="orther-color">@i</option>
+											<option value="@i" class="orther-color">@i</option>
 										}
 									</select>
 									<div class="group-submit">

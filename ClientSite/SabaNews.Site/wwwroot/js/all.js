@@ -147,16 +147,6 @@ var all = (function ($) {
         $('.language-select').click(function () {
             $(this).siblings('.languages-list').toggleClass('active')
         });
-        $('.action').click(function (e) {
-            console.log(11111)
-            e.preventDefault();
-            $(this).parents('.group-table').find('.box-edit-form').toggleClass('toggle-active-form');
-        })
-
-        $('.close-edit').click(function (e) {
-            e.preventDefault();
-            $(this).parent().removeClass('toggle-active-form');
-        })
 
         $('.button-social-menu').click(function () {
             $('body').addClass('hidden-body');
