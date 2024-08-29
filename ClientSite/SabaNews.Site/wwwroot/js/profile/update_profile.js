@@ -159,11 +159,10 @@
         });
 
         $('.btn-save-password').on('click', function () {
-            $('.old-password-error').hide();
-            $('.new-password-error').hide();
-            $('.old-password-error').hide();
             var oldPassword = $('input[name =oldpassword]').val();
             var newPassword = $('input[name=newpassword]').val();
+            ResetError('.old-password-error');
+            ResetError('.new-password-error');
             var check = true;
             if (newPassword === "" || !passwordFormat.test(newPassword)) {
                 check = false;
@@ -400,6 +399,11 @@
         $(selector).show();
         $(selector).html(msg);
         $(selector).parent().addClass('error');
+    }
+
+    function ResetError(selector) {
+        $(selector).hide();
+        $(selector).parent().removeClass('error');
     }
 
     function UpdateInfo(section, info) {
