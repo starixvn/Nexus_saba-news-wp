@@ -127,19 +127,7 @@
                 return false;
             }
 
-            $.ajax({
-                type: 'POST',
-                url: 'Profile/UpdateProfile',
-                data: { type: 'phone', value: phone },
-                success: function (response) {
-                    if (response.isSuccessful) {
-                        $('#form_update_phone').removeClass('toggle-active-form');
-                        UpdateInfo('.phone-section', phone)
-                    } else {
-                        location.reload();
-                    }
-                }
-            });
+            UpdateInfoToDb('phone', phone, '#form_update_phone', '.phone-section')
         });
 
         $('.btn-save-name').on('click', function () {
@@ -150,19 +138,8 @@
                 return false;
             }
 
-            $.ajax({
-                type: 'POST',
-                url: 'Profile/UpdateProfile',
-                data: { type: 'name', value: name },
-                success: function (response) {
-                    if (response.isSuccessful) {
-                        $('#form_update_name').removeClass('toggle-active-form');
-                        UpdateInfo('.name-section', name);
-                    } else {
-                        location.reload();
-                    }
-                }
-            });
+            UpdateInfoToDb('name', name, '#form_update_name', '.name-section')
+
         });
 
         $('.btn-save-gender').on('click', function () {
@@ -177,19 +154,8 @@
                 $('#form_update_gender').removeClass('toggle-active-form');
                 return false;
             }
-            $.ajax({
-                type: 'POST',
-                url: 'Profile/UpdateProfile',
-                data: { type: 'gender', value: gender },
-                success: function (response) {
-                    if (response.isSuccessful) {
-                        $('#form_update_gender').removeClass('toggle-active-form');
-                        UpdateInfo('.gender-section', gender);
-                    } else {
-                        location.reload();
-                    }
-                }
-            });
+
+            UpdateInfoToDb('gender', gender, '#form_update_gender', '.gender-section')
         });
 
         $('.btn-save-password').on('click', function () {
@@ -229,20 +195,7 @@
                 $('#form_update_yearOfBirth').removeClass('toggle-active-form');
                 return false;
             }
-
-            $.ajax({
-                type: 'POST',
-                url: 'Profile/UpdateProfile',
-                data: { type: 'year_of_birth', value: yearOfBirth },
-                success: function (response) {
-                    if (response.isSuccessful) {
-                        $('#form_update_yearOfBirth').removeClass('toggle-active-form');
-                        UpdateInfo('.yearOfBirth-section',  yearOfBirth);
-                    } else {
-                        location.reload();
-                    }
-                }
-            });
+            UpdateInfoToDb('year_of_birth', yearOfBirth, '#form_update_yearOfBirth', '.yearOfBirth-section')
         });
 
         $('#profile-forgot-password').on('click', function () {
@@ -263,7 +216,6 @@
                 }
             });
         });
-        
 
         $('#isSubscribe').on('change', function () {
             var value = $('#isSubscribe').is(":checked") ? 1 : 0;
@@ -273,7 +225,6 @@
                 $('#resetPasswordSuccesful').modal('show');
                 return false;
             }
-            
             $.ajax({
                 type: 'POST',
                 url: 'Profile/UpdateProfile',
@@ -298,6 +249,7 @@
 
         });
     }
+
 
     function update_photo() {
         $('#uploadPhoto').on('submit', function (e) {
@@ -426,6 +378,22 @@
         $('.input-upload').css('display' , 'none');
 
         return isValid;
+    }
+
+    function UpdateInfoToDb(type, value, form, section) {
+        $.ajax({
+            type: 'POST',
+            url: 'Profile/UpdateProfile',
+            data: { type: type, value: value },
+            success: function (response) {
+                if (response.isSuccessful) {
+                    $(form).removeClass('toggle-active-form');
+                    UpdateInfo(section,  value);
+                } else {
+                    location.reload();
+                }
+            }
+        });
     }
 
     function ShowError(selector, msg) {
