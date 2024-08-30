@@ -124,16 +124,14 @@
                     list-style: none;
                     display: flex;
                     align-items: center;
-                    padding: .5rem 1.2rem;
-
                     @include tableMobile {
                         padding: 0;
                     }
 
                     .avatar-user {
-                        width: 3rem;
-                        height: 3rem;
-                        background: $separator-color;
+                        width: 3.6rem;
+                        height: 3.6rem;
+                        background: #E13C29;
                         font-weight: bold;
                         color: $color-fff;
                         border-radius: 50%;
@@ -152,15 +150,14 @@
 
                     .auth-displayname {
                         position: relative;
-                        padding-right: .8rem;
 
                         &:after {
                             border-left: 5px solid transparent;
                             border-right: 5px solid transparent;
-                            border-top: 5px solid #757575;
+                            border-top: 5px solid #4F4F4F;
                             position: absolute;
-                            top: 1rem;
-                            right: 0;
+                            top: 6px;
+                            right: -6px;
                             content: '';
 
                             @include tableMobile {
@@ -169,7 +166,30 @@
                         }
 
                         .display-user {
+                            color: #4F4F4F;
+                            font-size: 1.4rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 10.7rem;
+                            display: block;
                             @include tableMobile {
+                                display: none;
+                            }
+                        }
+                        .saba-id {
+                            background: rgba(0, 0, 0, 0.05);
+                            font-size: 1.2rem;
+                            font-weight: 600;
+                            color: #4F4F4F;
+                            line-height: normal;
+                            padding: 0 2px;
+                            display: inline-block;
+                            max-width: 11.6rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            @include Mobile{
                                 display: none;
                             }
                         }
@@ -178,17 +198,15 @@
 
                 .box-auth {
                     display: none;
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                     list-style: none;
-                    padding: 1.2rem 1.2rem 0 1.2rem;
                     background: $bg-nav;
                     position: absolute;
-                    width: 24rem;
+                    width: 26rem;
                     top: 4.8rem;
                     z-index: 99999;
-                    border: 1px solid $separator-color;
                     right: 0;
-
+                    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+                    border-radius: 5px;
                     &:before {
                         width: 1.5rem;
                         height: 1.5rem;
@@ -209,20 +227,28 @@
                     }
 
                     .info-user {
-                        border-bottom: 1px solid $separator-color;
-
+                        padding: 2.4rem 2rem 0 2rem;
+                        &:last-child{
+                            padding: 2.4rem 2rem 2.4rem 2rem;
+                        }
                         .item {
-                            padding: 1rem 0;
-                            display: block;
-                            font-weight: normal;
-
+                            display: flex;
+                            align-items: center;
+                            font-weight: 600;
+                            color: #4F4F4F;
+                            font-size: 1.6rem;
                             .icon-logout {
                                 font-weight: bold;
                                 margin-left: 6px;
                             }
 
                             &:hover {
-                                color: #087CCE;
+                                color: #E13C29;
+                                i{
+                                    &::before{
+                                        color: #E13C29;
+                                    }
+                                }
                             }
                         }
 
@@ -232,21 +258,34 @@
                     }
 
                     .auth-provider {
+                        border-bottom: 1px solid #E5E5E5;
+                        justify-content: center;
+                        padding: 1rem 0;
                         .auth-displayname {
+                            padding-right: 0;
                             &:after {
                                 display: none;
                             }
                         }
 
                         .display-user {
+                            font-size: 1.6rem;
+                            width: 18rem;
                             @include tableMobile {
                                 display: block;
                             }
                         }
 
                         .avatar-user {
-                            width: 4.8rem;
-                            height: 4.8rem;
+                            width: 4rem;
+                            height: 4rem;
+                            font-size: 2.8rem;
+                            margin: 0 .6rem 0 0;
+                        }
+                        .saba-id{
+                            @include Mobile{
+                                display: inline-block;
+                            }
                         }
                     }
                 }

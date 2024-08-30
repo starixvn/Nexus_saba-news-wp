@@ -965,7 +965,6 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   list-style: none;
   display: flex;
   align-items: center;
-  padding: 0.5rem 1.2rem;
 }
 @media screen and (max-width: 1024px) {
   .header .header-controls .header-auth-provider .auth-input .auth-provider {
@@ -973,9 +972,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user {
-  width: 3rem;
-  height: 3rem;
-  background: #e5e5e5;
+  width: 3.6rem;
+  height: 3.6rem;
+  background: #E13C29;
   font-weight: bold;
   color: #fff;
   border-radius: 50%;
@@ -992,15 +991,14 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname {
   position: relative;
-  padding-right: 0.8rem;
 }
 .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname:after {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #757575;
+  border-top: 5px solid #4F4F4F;
   position: absolute;
-  top: 1rem;
-  right: 0;
+  top: 6px;
+  right: -6px;
   content: "";
 }
 @media screen and (max-width: 1024px) {
@@ -1008,23 +1006,49 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
     display: none;
   }
 }
+.header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .display-user {
+  color: #4F4F4F;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 10.7rem;
+  display: block;
+}
 @media screen and (max-width: 1024px) {
   .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .display-user {
     display: none;
   }
 }
+.header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .saba-id {
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4F4F4F;
+  line-height: normal;
+  padding: 0 2px;
+  display: inline-block;
+  max-width: 11.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 767px) {
+  .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .saba-id {
+    display: none;
+  }
+}
 .header .header-controls .header-auth-provider .auth-input .box-auth {
   display: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   list-style: none;
-  padding: 1.2rem 1.2rem 0 1.2rem;
   background: #FFFDF9;
   position: absolute;
-  width: 24rem;
+  width: 26rem;
   top: 4.8rem;
   z-index: 99999;
-  border: 1px solid #e5e5e5;
   right: 0;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth:before {
   width: 1.5rem;
@@ -1046,25 +1070,45 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth .info-user {
-  border-bottom: 1px solid #e5e5e5;
+  padding: 2.4rem 2rem 0 2rem;
+}
+.header .header-controls .header-auth-provider .auth-input .box-auth .info-user:last-child {
+  padding: 2.4rem 2rem 2.4rem 2rem;
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item {
-  padding: 1rem 0;
-  display: block;
-  font-weight: normal;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #4F4F4F;
+  font-size: 1.6rem;
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item .icon-logout {
   font-weight: bold;
   margin-left: 6px;
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item:hover {
-  color: #087CCE;
+  color: #E13C29;
+}
+.header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item:hover i::before {
+  color: #E13C29;
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth .info-user:last-child {
   border-bottom: none;
 }
+.header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider {
+  border-bottom: 1px solid #E5E5E5;
+  justify-content: center;
+  padding: 1rem 0;
+}
+.header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .auth-displayname {
+  padding-right: 0;
+}
 .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .auth-displayname:after {
   display: none;
+}
+.header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .display-user {
+  font-size: 1.6rem;
+  width: 18rem;
 }
 @media screen and (max-width: 1024px) {
   .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .display-user {
@@ -1072,8 +1116,15 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   }
 }
 .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .avatar-user {
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.8rem;
+  margin: 0 0.6rem 0 0;
+}
+@media (max-width: 767px) {
+  .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .saba-id {
+    display: inline-block;
+  }
 }
 .header .header-controls .header-auth-provider .auth-input .active-box-auth {
   display: block;

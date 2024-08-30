@@ -131,10 +131,10 @@ html, body{
     &__avatar {
         width: 6rem;
         height: 6rem;
-        background: $separator-color;
+        background: #E13C29;
         text-align: center;
         color: $color-fff;
-        font-size: 3rem;
+        font-size: 4rem;
         font-weight: 700;
         text-transform: uppercase;
         border-radius: 50%;
@@ -154,6 +154,11 @@ html, body{
         font-weight: 700;
         margin-bottom: .6rem;
         text-transform: capitalize;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 18rem;
+        display: block;
     }
     &__date{
         font-size: 1.4rem;

@@ -71,7 +71,10 @@
                             {
                                 <li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                             }
-                            <li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
+                            <li class="auth-displayname">
+                                <a class="item display-user">@Model.User.Name</a>
+                                <span class="saba-id">ID: @Model.User.Id</span>
+                            </li>
                         </ul>
                         <ul class="box-auth">
                             <li>
@@ -88,7 +91,10 @@
                                     {
                                         <li class="avatar-user"><img class="profile_image" alt="@Model.User.Name" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                                     }
-                                    <li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
+                                    <li class="auth-displayname">
+                                        <a class="item display-user">@Model.User.Name</a>
+                                        <span class="saba-id">ID: @Model.User.Id</span>
+                                    </li>
                                 </ul>
                             </li>
                             @if (Model.IsAdmin)
@@ -97,11 +103,11 @@
                                     <a class="item" href="~/Admin/Statistic/Index">@ViewResources.Administration</a>
                                 </li>
                             }
+                            <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item"><i class="icon-profile icon-profile-circle"></i> @ViewResources.MyAccount</a></li>
                             <li class="info-user">
-                                <a class="item" href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a>
+                                <a class="item" href="@Url.Action("ListSavedPosts", "Profile")"><i class="icon-profile icon-Bookmark2"></i> Tin đã lưu</a>
                             </li>
-                            <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
-                            <li class="info-user auth-logout"><a href="~/Auth/Logout?returnUrl=@Context.Request.Path" class="item">@ViewResources.Logout<i class="icon-logout"></i> </a></li>
+                            <li class="info-user auth-logout"><a href="~/Auth/Logout?returnUrl=@Context.Request.Path" class="item"><i class="icon-profile icon-logout1"></i> @ViewResources.Logout</a></li>
                         </ul>
                     }
                     else
