@@ -1032,6 +1032,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-radius: 3px;
 }
 @media (max-width: 767px) {
   .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .saba-id {

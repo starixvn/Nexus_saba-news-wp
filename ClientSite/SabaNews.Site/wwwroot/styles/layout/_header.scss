@@ -189,6 +189,7 @@
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            border-radius: 3px;
                             @include Mobile{
                                 display: none;
                             }
