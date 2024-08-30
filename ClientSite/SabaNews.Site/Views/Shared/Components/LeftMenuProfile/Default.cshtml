@@ -39,6 +39,15 @@
 				@ViewResources.SavedPost @(@Model.HandleSavePosts.Count > 0 ? "(" + @Model.HandleSavePosts.Count + ")" : "" )
 			</a>
 		</li>
+		@if (Model.Role == Role.Administrator)
+		{
+			<li class="@(ViewBag.Page == "admin" ? "active-control" : "")">
+				<a href="~/Admin/Statistic/Index">
+					<i class="icon-profile icon-setting-2"></i>
+					Admin
+				</a>
+			</li>
+		}
 		<li>
 			<a href="~/Auth/Logout?returnUrl=/" class="profile_logout">
 				<i class="icon-profile icon-logout1"></i>
