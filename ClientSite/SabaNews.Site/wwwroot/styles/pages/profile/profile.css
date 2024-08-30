@@ -1960,6 +1960,19 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   overflow: hidden;
 }
 
+.icon-profile {
+  font-size: 2.4rem;
+  margin-right: 0.6rem;
+}
+@media (max-width: 767px) {
+  .icon-profile {
+    font-size: 2rem;
+  }
+}
+.icon-profile::before {
+  color: #4F4F4F;
+}
+
 /* vietnamese */
 @font-face {
   font-family: "Montserrat";
@@ -2864,6 +2877,13 @@ html, body {
   font-weight: 700;
 }
 .profile__control li a:hover i::before {
+  color: #E13C29;
+}
+.profile__control li.active-control a {
+  color: #E13C29;
+  font-weight: 700;
+}
+.profile__control li.active-control a i::before {
   color: #E13C29;
 }
 

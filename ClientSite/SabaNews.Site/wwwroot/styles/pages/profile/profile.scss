@@ -200,6 +200,17 @@ html, body{
                     }
                 }
             }
+            &.active-control{
+                a{
+                    color: #E13C29;
+                    font-weight: 700;
+                    i{
+                        &::before{
+                            color: #E13C29;
+                        }
+                    }
+                }
+            }
         }
     }
 }
