@@ -22,18 +22,30 @@
 				<h2 class="block__title">@ViewResources.SavedPost</h2>
 			</div>
 			<div class="block-body">
-				<div class="controls">
+				<div class="controls save-list">
 				
 					@if (Model.Posts.Length == 0)
 					{
-						<p>@ViewResources.NoSavedPosts</p>
+						<div class="security">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<g clip-path="url(#clip0_16401_12792)">
+									<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="#2865B5"/>
+								</g>
+								<defs>
+								<clipPath id="clip0_16401_12792">
+									<rect width="24" height="24" fill="white"/>
+								</clipPath>
+								</defs>
+							</svg>
+							@ViewResources.NoSavedPosts
+						</div>
 					}
-					@if (Model.ToDayPost != null)
+					@* @if (Model.ToDayPost != null)
 					{
 						<div class="controls__datetime">
 							<h4 class="time-save">@ViewResources.Today</h4>
 						</div>
-					}
+					} *@
 					@{ var isCheck = false; }
 					@foreach (var post in Model.Posts)
 					{
@@ -61,17 +73,15 @@
 										</div>
 										<div class="group-icon">
 											<a class="icon save remove_save_post" href="javascript:;" data-postid="@post.ID">
-												<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
-													<path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2"></path>
-												</svg>
+												Bỏ Lưu
 											</a>
-											@if (post.CommentCount > 0)
+											@* @if (post.CommentCount > 0)
 											{
 												<a href="@Url.Action("Single", "Post", new { slug =  post.Uri})#comment" class="icon comment">
 													<i class="icon-mode_comment_full"></i>
 												</a>
 												<span class="number">@post.CommentCount</span>
-											}
+											} *@
 										</div>
 									</div>
 								</div>

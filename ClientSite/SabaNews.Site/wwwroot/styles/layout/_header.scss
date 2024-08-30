@@ -150,6 +150,9 @@
 
                     .auth-displayname {
                         position: relative;
+                        display: flex;
+                        align-items: flex-start;
+                        flex-direction: column;
 
                         &:after {
                             border-left: 5px solid transparent;

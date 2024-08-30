@@ -34,6 +34,7 @@ html, body{
 .profile-container{
     max-width: 114rem;
     display: flex;
+    align-items: flex-start;
     gap: 2rem;
     @include tableMobile{
         display: block;
@@ -235,6 +236,13 @@ html, body{
         font-size: 1.5rem;
     }
 }
+
+.save-list{
+    .security{
+        margin-bottom: 0;
+    }
+}
+
 .items-choose{
     padding-bottom: 2rem;
     margin-bottom: 2rem;
@@ -591,18 +599,7 @@ html, body{
     }
   }
 
-// .show-pc{
-//     display: block;
-//     @include Mobile{
-//         display: none;
-//     }
-// }
-// .show-mb{
-//     display: none;
-//     @include Mobile{
-//         display: block;
-//     }
-// }
+
 .modal-noti{
     max-width: 50rem;
     @include Mobile{
@@ -617,4 +614,30 @@ html, body{
     font-weight: 700;
     line-height: normal;
     font-family: "Open Sans";
+}
+
+.card-horizontal{
+    grid-template-columns : 21.3rem 1fr;
+    @include Mobile{
+        grid-template-columns : 13.5rem 1fr;
+    }
+}
+
+.social-control {
+    display: flex;
+    margin-top: .6rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove_save_post{
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #4F4F4F;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0 .4rem;
+    text-decoration: none;
 }
