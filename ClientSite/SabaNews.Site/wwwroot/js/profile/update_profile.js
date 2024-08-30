@@ -1,11 +1,7 @@
 ﻿var update_profile = (function ($) {
     const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
-    const NameEmptyErr = "Hãy nhập tên";
     const PasswordEmptyErr = "Hãy nhập mật khẩu";
     const PasswordIsvalidErr = "Mật khẩu phải dài ít nhất 8 ký tự và bao gồm chữ cái viết hoa, số và ký tự đặc biệt";
-    const ConfirmPasswordEmptyErr = "Hãy xác thực mật khẩu";
-    const ConfirmPasswordIsvalidErr = "Mật khẩu không trùng khớp";
-    const PhoneEmptyErr = "Hãy nhập số điện thoại";
     const PhoneIsvalidErr = "Số điện thoại không hợp lệ";
 
     $('.validate-error').hide();
@@ -47,34 +43,27 @@
         $('input[name=phone]').on('keyup', function () {
             var val = $(this).val();
             if (val.trim() === "") {
-                $('.btn-save-phone').prop('disabled', true);
-                $('.btn-save-phone').addClass('btn-disabled');
+                DisabledButton('.btn-save-phone')
             } else {
-                $('.btn-save-phone').prop('disabled', false);
-                $('.btn-save-phone').removeClass('btn-disabled');
+                EnableButton('.btn-save-phone')
             }
         });
 
         $('input[name=name]').on('keyup', function () {
             var val = $(this).val();
             if (val.trim() === "") {
-                $('.btn-save-name').prop('disabled', true);
-                $('.btn-save-name').addClass('btn-disabled');
+                DisabledButton('.btn-save-name')
             } else {
-                $('.btn-save-name').prop('disabled', false);
-                $('.btn-save-name').removeClass('btn-disabled');
+                EnableButton('.btn-save-name')
             }
         });
 
         $('input[name=gender]').on('click', function () {
             var val = $(this).val();
-            console.log(val);
             if (val.trim() === "") {
-                $('.btn-save-gender').prop('disabled', true);
-                $('.btn-save-gender').addClass('btn-disabled');
+                DisabledButton('.btn-save-gender')
             } else {
-                $('.btn-save-gender').prop('disabled', false);
-                $('.btn-save-gender').removeClass('btn-disabled');
+                EnableButton('.btn-save-gender')
             }
         });
 
@@ -83,11 +72,9 @@
             var newPassword = $('input[name=newpassword]').val();
 
             if (oldPassword === "" || newPassword === "") {
-                $('.btn-save-password').prop('disabled', true);
-                $('.btn-save-password').addClass('btn-disabled');
+                DisabledButton('.btn-save-password')
             } else {
-                $('.btn-save-password').prop('disabled', false);
-                $('.btn-save-password').removeClass('btn-disabled');
+                EnableButton('.btn-save-password')
             }
         });
         $(".event-pass").on('click', function () {
@@ -143,7 +130,6 @@
         });
 
         $('.btn-save-gender').on('click', function () {
-            var self = $(this);
             var gender = $('input[name=gender]:checked').val();
             if (gender.trim() === "") {
                 $('.gender-error').show();
@@ -408,6 +394,16 @@
 
     function UpdateInfo(section, info) {
         $(section + ' .text-fill').html(info);
+    }
+
+    function DisabledButton(element) {
+        $(element).prop('disabled', true);
+        $(element).addClass('btn-disabled');
+    }
+
+    function EnableButton(element) {
+        $(element).prop('disabled', false);
+        $(element).removeClass('btn-disabled');
     }
 
 
