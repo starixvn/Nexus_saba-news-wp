@@ -210,13 +210,13 @@
                     &:before {
                         width: 1.5rem;
                         height: 1.5rem;
-                        border: solid $separator-color;
+                        // border: solid $separator-color;
                         border-width: 0 1px 1px 0;
                         content: '';
                         position: absolute;
-                        top: -.9rem;
-                        right: 2.3rem;
-                        background: $color-fff;
+                        top: -8px;
+                        right: 23px;
+                        background: #FFFDF9;
                         -webkit-transform: rotate( 225deg );
                         -ms-transform: rotate(225deg);
                         transform: rotate( 225deg );
