@@ -3341,3 +3341,22 @@ html, body {
   padding: 0 0.4rem;
   text-decoration: none;
 }
+
+@media (max-width: 767px) {
+  .save-list .card-horizontal {
+    grid-template-columns: 13rem 1fr;
+  }
+  .save-list .card-horizontal__image {
+    height: 8rem;
+  }
+  .save-list .card-horizontal__content .title {
+    font-size: 1.5rem;
+  }
+  .save-list .card-horizontal .description {
+    margin: 0.8rem 0;
+  }
+  .save-list .card-horizontal .social-control .time {
+    font-size: 1.3rem;
+    color: #828282;
+  }
+}

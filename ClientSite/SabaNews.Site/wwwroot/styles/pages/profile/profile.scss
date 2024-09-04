@@ -641,3 +641,28 @@ html, body{
     padding: 0 .4rem;
     text-decoration: none;
 }
+
+.save-list{
+ .card-horizontal{
+    @include Mobile{
+        grid-template-columns: 13rem 1fr;
+        &__image{
+            height: 8rem;
+        }
+        &__content{
+            .title{
+                font-size: 1.5rem;
+            }
+        }
+        .description{
+            margin: .8rem 0;
+        }
+        .social-control{
+            .time{
+                font-size: 1.3rem;
+                color: #828282;
+            }
+        }
+    }
+ }   
+}
