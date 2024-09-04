@@ -3360,3 +3360,13 @@ html, body {
     color: #828282;
   }
 }
+.save-list .controls__news {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #E5E5E5;
+}
+.save-list .controls__news:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
