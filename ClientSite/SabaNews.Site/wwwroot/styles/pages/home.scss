@@ -259,7 +259,7 @@
             }
         }
         .group-video{
-            @include grid(58rem auto , unset , 2rem);
+            @include grid(66% auto , unset , 2rem);
             @include tableMobile{
                 grid-template-columns: 40rem auto;
             }

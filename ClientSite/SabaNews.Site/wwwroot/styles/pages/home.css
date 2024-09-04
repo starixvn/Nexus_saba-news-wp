@@ -3940,7 +3940,7 @@ button {
 }
 .main .block-video .group-video {
   display: grid;
-  grid-template-columns: 58rem auto;
+  grid-template-columns: 66% auto;
   grid-template-rows: unset;
   grid-gap: 2rem;
 }
