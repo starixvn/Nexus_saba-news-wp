@@ -141,7 +141,9 @@ html, body{
         border-radius: 50%;
         overflow: hidden;
         @include flex(center, nowrap, center, row);
-
+        &.remove-bg{
+            background: none;
+        }
         img {
             object-fit: cover;
             width: 100%;
@@ -258,7 +260,7 @@ html, body{
         line-height: normal;
         font-family: "Open Sans";
         &-edit{
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 1rem;
             @include Mobile{
                 font-size: 1.4rem;

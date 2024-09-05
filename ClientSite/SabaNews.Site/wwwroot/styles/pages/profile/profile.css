@@ -2831,6 +2831,9 @@ html, body {
   justify-content: center;
   flex-direction: row;
 }
+.profile__avatar.remove-bg {
+  background: none;
+}
 .profile__avatar img {
   object-fit: cover;
   width: 100%;
@@ -2940,7 +2943,7 @@ html, body {
   font-family: "Open Sans";
 }
 .items-choose .title-edit {
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 @media (max-width: 767px) {

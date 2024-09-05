@@ -269,6 +269,7 @@
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
                         $('.profile__avatar').html(html);
+                        $('.profile__avatar').addClass('remove-bg');
                     } else {
                         location.reload();
                     }
