@@ -310,12 +310,20 @@
 								<div class="box-control">
 									<div class="main-fill yearOfBirth-section">
 										<div class="text-fill">
-											@Model.User.YearOfBirth
+											@if (Model.User.YearOfBirth != null)
+											{
+												@Model.User.YearOfBirth
+											}
+											else
+											{
+												<span>Chưa có năm sinh</span>
+											}
 										</div>
 										
 									</div>
 									<a href="#" class="action social-action show-pc">@(Model.User.YearOfBirth == null ?  ViewResources.Add : ViewResources.Change)</a>
 								</div>
+								<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 								<div class="box-edit-form" id="form_update_yearOfBirth">
 									<div class="title">Năm sinh</div>
 									@{ var currentYear = DateTime.Now.Year; }
