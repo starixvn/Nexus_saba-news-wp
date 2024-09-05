@@ -395,6 +395,7 @@
 
     function UpdateInfo(section, info) {
         $(section + ' .text-fill').html(info);
+        $(section).parent().find('.social-action').html('Thay đổi');
     }
 
     function DisabledButton(element) {

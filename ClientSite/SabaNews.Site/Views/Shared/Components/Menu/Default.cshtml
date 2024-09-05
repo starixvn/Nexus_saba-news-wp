@@ -97,16 +97,16 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item"><i class="icon-profile icon-profile-circle"></i> @ViewResources.MyAccount</a></li>
+                            <li class="info-user">
+                                <a class="item" href="@Url.Action("ListSavedPosts", "Profile")"><i class="icon-profile icon-Bookmark2"></i> Tin đã lưu</a>
+                            </li>
                             @if (Model.IsAdmin)
                             {
                                 <li class="info-user">
                                     <a class="item" href="~/Admin/Statistic/Index"><i class="icon-profile icon-setting-3"></i> @ViewResources.Administration</a>
                                 </li>
                             }
-                            <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item"><i class="icon-profile icon-profile-circle"></i> @ViewResources.MyAccount</a></li>
-                            <li class="info-user">
-                                <a class="item" href="@Url.Action("ListSavedPosts", "Profile")"><i class="icon-profile icon-Bookmark2"></i> Tin đã lưu</a>
-                            </li>
                             <li class="info-user auth-logout"><a href="~/Auth/Logout?returnUrl=@Context.Request.Path" class="item"><i class="icon-profile icon-logout1"></i> @ViewResources.Logout</a></li>
                         </ul>
                     }
