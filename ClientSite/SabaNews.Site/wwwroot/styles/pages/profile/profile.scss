@@ -189,13 +189,13 @@ html, body{
                 text-decoration: none;
                 color: #4F4F4F;
                 font-size: 1.6rem;
-                font-weight: 400;
+                font-weight: 600;
                 line-height: normal;
                 display: flex;
                 align-items: center;
                 &:hover{
                     color: #E13C29;
-                    font-weight: 700;
+                    font-weight: 600;
                     i{
                         &::before{
                             color: #E13C29;
@@ -223,7 +223,7 @@ html, body{
     align-items: center;
     gap: 1rem;
     color: #2865B5;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 400;
     line-height: normal;
     padding: .6rem 1.2rem;
@@ -233,9 +233,6 @@ html, body{
     margin-bottom: 2rem;
     i{
         font-size: 2.4rem;
-    }
-    @include Mobile{
-        font-size: 1.5rem;
     }
 }
 
@@ -255,16 +252,13 @@ html, body{
         border-bottom : none;
     }
     .title{
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 700;
         line-height: normal;
         font-family: "Open Sans";
         &-edit{
             font-weight: 600;
             margin-bottom: 1rem;
-            @include Mobile{
-                font-size: 1.4rem;
-            }
         }
     }   
 }
@@ -279,17 +273,14 @@ html, body{
     .label-fill{
         min-width: 15rem;
         color: #5C5C5C;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 400;
         line-height: normal;
         display: flex;
         align-items: center;
-        @include Mobile{
-            font-size: 1.4rem;
-        }
     }
     .text-fill{
-        font-size:  1.6rem;
+        font-size:  1.4rem;
         font-weight: 600;
         line-height: normal;
         @include Mobile{
@@ -493,7 +484,7 @@ html, body{
     border: none;
     font-weight: 600;
     border-radius: 3px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     cursor: pointer;
 }
 
