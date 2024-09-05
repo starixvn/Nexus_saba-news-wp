@@ -323,7 +323,7 @@ var all = (function ($) {
         Modal();
         getFavouriteMatchCount();
         MenuPopupHeaderPC();
-        toggleChangeDomainPopup();
+        // toggleChangeDomainPopup();
         CountBannerClick();
         HandleQueryStringAction();
     }
