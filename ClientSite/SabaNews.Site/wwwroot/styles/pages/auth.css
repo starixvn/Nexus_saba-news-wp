@@ -281,6 +281,12 @@
 }
 .auth-form .content-noti {
   margin-bottom: 1.2rem !important;
+  font-size: 1.6rem;
+}
+@media (max-width: 767px) {
+  .auth-form .content-noti {
+    font-size: 1.4rem;
+  }
 }
 .auth-form .heading-noti {
   color: #E13C29;

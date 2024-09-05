@@ -732,6 +732,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   justify-content: center;
   overflow: hidden;
 }
+.header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user.remove-bg {
+  background: none;
+}
 .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user img {
   object-fit: cover;
   width: 100%;

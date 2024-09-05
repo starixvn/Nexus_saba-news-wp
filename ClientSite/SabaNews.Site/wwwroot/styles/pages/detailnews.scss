@@ -18,7 +18,7 @@
 @import '../components/tag';
 @import '../components/card-vertical';
 @import '../components/card-horizontal';
-// @import '../components/skeleton-loader';
+
 @import '../components/lazyload';
 @import '../components/comments';
 @import '../components/sub-structure';
@@ -220,57 +220,29 @@ img {
     }
 }
 
-
-
-#announcement {
-    display: none;
-
-    .modal-auth {
-        position: relative;
-
-        .modal-warning {
-            padding: 3rem;
-
-            .heading-warning {
-                padding-bottom: 2rem;
-                border-bottom: 1px solid $separator-color;
-                text-align: center;
-                color: $color-title;
-                font-size: 1.8rem;
-                font-weight: 700;
-            }
-
-            .content {
-                text-align: center;
-                margin: 2rem 0;
-            }
-        }
-
-        .close-login {
-            position: absolute;
-            top: -1.6rem;
-            right: -1.6rem;
-            z-index: 999999;
-            cursor: pointer;
-            color: $color-content;
-            width: 3.2rem;
-            height: 3.2rem;
-            background: $color-fff;
-            border-radius: 50%;
-            line-height: 3.2rem;
-            font-size: 3rem;
-            outline: none;
-
-            @include tableMobile {
-                right: 0;
-            }
-
-            &:focus {
-                outline: none;
+.auth-form .show.auth-login{
+    max-width: 50rem;
+    @include Mobile{
+        max-width: 36.9rem;
+    }
+}
+.auth-form {
+    .modal-auth{
+        .modal-body{
+            @include Mobile{
+                padding: 1.6rem;
             }
         }
     }
+    .close-login{
+        @include Mobile{
+            top: 16px;
+        }
+    }
 }
+
+
+
 
 
 .button-social-menu {

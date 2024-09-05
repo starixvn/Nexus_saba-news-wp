@@ -140,6 +140,9 @@
                         align-items: center;
                         justify-content: center;
                         overflow: hidden;
+                        &.remove-bg{
+                            background: none;
+                        }
 
                         img {
                             object-fit: cover;

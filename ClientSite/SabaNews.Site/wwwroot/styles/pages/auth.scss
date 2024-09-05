@@ -271,6 +271,10 @@
     }
     .content-noti{
         margin-bottom: 1.2rem !important;
+        font-size: 1.6rem;
+        @include Mobile{
+            font-size: 1.4rem;
+        }
     }
     .heading-noti{
         color: #E13C29;

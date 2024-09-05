@@ -737,6 +737,9 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   justify-content: center;
   overflow: hidden;
 }
+.header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user.remove-bg {
+  background: none;
+}
 .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user img {
   object-fit: cover;
   width: 100%;
@@ -4360,49 +4363,24 @@ img {
   padding-top: 0 !important;
 }
 
-#announcement {
-  display: none;
+.auth-form .show.auth-login {
+  max-width: 50rem;
 }
-#announcement .modal-auth {
-  position: relative;
-}
-#announcement .modal-auth .modal-warning {
-  padding: 3rem;
-}
-#announcement .modal-auth .modal-warning .heading-warning {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #e5e5e5;
-  text-align: center;
-  color: #222;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-#announcement .modal-auth .modal-warning .content {
-  text-align: center;
-  margin: 2rem 0;
-}
-#announcement .modal-auth .close-login {
-  position: absolute;
-  top: -1.6rem;
-  right: -1.6rem;
-  z-index: 999999;
-  cursor: pointer;
-  color: #222;
-  width: 3.2rem;
-  height: 3.2rem;
-  background: #fff;
-  border-radius: 50%;
-  line-height: 3.2rem;
-  font-size: 3rem;
-  outline: none;
-}
-@media screen and (max-width: 1024px) {
-  #announcement .modal-auth .close-login {
-    right: 0;
+@media (max-width: 767px) {
+  .auth-form .show.auth-login {
+    max-width: 36.9rem;
   }
 }
-#announcement .modal-auth .close-login:focus {
-  outline: none;
+
+@media (max-width: 767px) {
+  .auth-form .modal-auth .modal-body {
+    padding: 1.6rem;
+  }
+}
+@media (max-width: 767px) {
+  .auth-form .close-login {
+    top: 16px;
+  }
 }
 
 .button-social-menu {
