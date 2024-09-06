@@ -49,9 +49,9 @@ BEGIN
     
     SELECT p.PostDate as PostDate
           ,COUNT(DISTINCT IF (p.IsVideoPost = 0, p.PostId, NULL)) AS PostCount
-          ,SUM(CASE WHEN pd.is_video_post <> 1 THEN IFNULL(pd.view_count, 0) ELSE 0 END) AS PostView
+          ,SUM(CASE WHEN p.IsVideoPost = 0 THEN IFNULL(pd.view_count, 0) ELSE 0 END) AS PostView
           ,COUNT(DISTINCT IF (p.IsVideoPost = 1, p.PostId, NULL)) AS VideoCount
-          ,SUM(CASE WHEN pd.is_video_post = 1 THEN IFNULL(pd.video_view, 0) ELSE 0 END) AS VideoView
+          ,SUM(CASE WHEN p.IsVideoPost = 1 THEN IFNULL(pd.video_view, 0) ELSE 0 END) AS VideoView
     FROM tmpPosts p 
     LEFT JOIN wp_postview_details pd ON p.PostId = pd.post_id
     GROUP BY p.PostDate
