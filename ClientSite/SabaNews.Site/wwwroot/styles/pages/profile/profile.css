@@ -3021,6 +3021,11 @@ html, body {
   text-decoration: none;
   color: #222;
 }
+.group-table .text-fill .connect-socical {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 .group-table .right-table {
   width: 100%;
 }
@@ -3220,13 +3225,13 @@ html, body {
   display: block;
 }
 
-.action, .forgot-pass a, .connect {
+.action, .forgot-pass a, .connect, .disconnect_social_login {
   text-decoration: none;
   color: #0066CC;
   font-size: 1.3rem;
 }
 @media (max-width: 767px) {
-  .action, .forgot-pass a, .connect {
+  .action, .forgot-pass a, .connect, .disconnect_social_login {
     font-size: 1.4rem;
   }
 }
@@ -3302,6 +3307,11 @@ html, body {
 }
 .social-network .group-table .label-fill {
   min-width: auto;
+}
+@media (max-width: 767px) {
+  .social-network .group-table .text-fill {
+    margin-top: 0;
+  }
 }
 
 .group-upload {

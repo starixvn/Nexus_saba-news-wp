@@ -318,6 +318,11 @@ html, body{
             text-decoration: none;
             color: #222;
         }
+        .connect-socical {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
     }
     .right-table{
         width: 100%;
@@ -514,7 +519,7 @@ html, body{
 .toggle-active-form {
     display: block
 }
-.action,.forgot-pass a, .connect{
+.action,.forgot-pass a, .connect , .disconnect_social_login{
     text-decoration: none;
     color:  #0066CC;
     font-size: 1.3rem;
@@ -588,6 +593,11 @@ html, body{
         }
         .label-fill{
             min-width: auto;
+        }
+        .text-fill{
+            @include Mobile{
+                margin-top: 0;
+            }
         }
     }
   }
