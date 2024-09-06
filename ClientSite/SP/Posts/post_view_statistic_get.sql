@@ -7,6 +7,12 @@ DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_statistic_get`(
 	fromDate DATE,
     toDate DATE
+    /*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+            - 20240906@Hank: check statistic for video article
+    */
 )
 BEGIN
     DECLARE videoCategoryId INT;
@@ -17,15 +23,16 @@ BEGIN
 
     DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
     CREATE TEMPORARY TABLE tmpVideoChilds(CategoryId INT);
-    INSERT INTO tmpVideoChilds(CategoryId)
-    VALUES(videoCategoryId);
 
     INSERT INTO tmpVideoChilds(CategoryId)
-    SELECT  term_id
-    FROM (SELECT * FROM wp_term_taxonomy
-            ORDER BY parent, term_id) wp_term_taxonomy,
-            (SELECT @pv := videoCategoryId) initialisation
-    WHERE   find_in_set(parent, @pv) > 0; 
+    SELECT  wtt.term_id
+    FROM wp_term_taxonomy as wtt 
+    WHERE wtt.taxonomy = "category" AND (wtt.term_id = videoCategoryId OR wtt.parent = videoCategoryId);
+    
+	INSERT INTO tmpVideoChilds(CategoryId)
+    SELECT  wtt.term_id
+    FROM wp_term_taxonomy as wtt 
+    WHERE wtt.taxonomy = "category" AND wtt.parent IN (SELECT wtt1.term_id FROM wp_term_taxonomy as wtt1 WHERE wtt1.parent = videoCategoryId);
 
     DROP TEMPORARY TABLE IF EXISTS tmpPosts;
     CREATE TEMPORARY TABLE tmpPosts(PostId BIGINT UNSIGNED, PostDate DATE, IsVideoPost BIT);
@@ -38,12 +45,13 @@ BEGIN
     INNER JOIN wp_term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id and tt.taxonomy = 'category'
     WHERE p.post_status = 'publish' AND p.post_type = 'post'
     AND DATE(p.post_date) BETWEEN fromDate  AND toDate;
+
     
     SELECT p.PostDate as PostDate
           ,COUNT(DISTINCT IF (p.IsVideoPost = 0, p.PostId, NULL)) AS PostCount
           ,SUM(CASE WHEN pd.is_video_post <> 1 THEN IFNULL(pd.view_count, 0) ELSE 0 END) AS PostView
           ,COUNT(DISTINCT IF (p.IsVideoPost = 1, p.PostId, NULL)) AS VideoCount
-          ,SUM(CASE WHEN pd.is_video_post = 1 THEN IFNULL(pd.view_count, 0) ELSE 0 END) AS VideoView
+          ,SUM(CASE WHEN pd.is_video_post = 1 THEN IFNULL(pd.video_view, 0) ELSE 0 END) AS VideoView
     FROM tmpPosts p 
     LEFT JOIN wp_postview_details pd ON p.PostId = pd.post_id
     GROUP BY p.PostDate

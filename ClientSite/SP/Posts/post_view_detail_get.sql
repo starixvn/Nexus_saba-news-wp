@@ -13,6 +13,12 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_detail_get`(
     pageSize INT,
     OUT totalItems INT,
     OUT totalViews INT
+    /*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+            - 20240906@Hank: check statistic for video article
+    */
 )
 BEGIN
     DECLARE startIndex INT DEFAULT 0;
@@ -24,17 +30,18 @@ BEGIN
     INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND wtt.taxonomy = "category" 
     WHERE t.slug = 'video' LIMIT 1;
 
-    DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
+	DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
     CREATE TEMPORARY TABLE tmpVideoChilds(CategoryId INT);
-    INSERT INTO tmpVideoChilds(CategoryId)
-    VALUES(videoCategoryId);
 
     INSERT INTO tmpVideoChilds(CategoryId)
-    SELECT  term_id
-    FROM (SELECT * FROM wp_term_taxonomy
-            ORDER BY parent, term_id) wp_term_taxonomy,
-            (SELECT @pv := videoCategoryId) initialisation
-    WHERE   find_in_set(parent, @pv) > 0; 
+    SELECT  wtt.term_id
+    FROM wp_term_taxonomy as wtt 
+    WHERE wtt.taxonomy = "category" AND (wtt.term_id = videoCategoryId OR wtt.parent = videoCategoryId);
+    
+	INSERT INTO tmpVideoChilds(CategoryId)
+    SELECT  wtt.term_id
+    FROM wp_term_taxonomy as wtt 
+    WHERE wtt.taxonomy = "category" AND wtt.parent IN (SELECT wtt1.term_id FROM wp_term_taxonomy as wtt1 WHERE wtt1.parent = videoCategoryId);
 
     DROP TEMPORARY TABLE IF EXISTS tmpPosts;
     CREATE TEMPORARY TABLE tmpPosts(PostId BIGINT(20));
