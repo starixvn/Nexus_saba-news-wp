@@ -265,7 +265,7 @@
                         $('.img-upload').hide();
                         $('.input-upload').show();
                         $('.controls__choose .profile').show();
-                        $('.group-table').css('display' , 'flex');
+                        $('.controls__choose .group-table').css('display' , 'flex');
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
                         $('.profile__avatar').html(html);
@@ -283,7 +283,7 @@
             $('.cancel-upload').show();
             $('.img-upload').show();
             $('.controls__choose .profile').hide();
-            $('.group-table').css('display' , 'block');
+            $('.controls__choose .group-table').css('display' , 'block');
             var files = $('input[name=photo]')[0].files[0];
             var isValid = validate_photo(files);
             if (!isValid) {
@@ -308,7 +308,7 @@
             $('.img-upload').hide();
             $('.txt-img').css('display', 'flex');
             $('.controls__choose .profile').show();
-            $('.group-table').css('display' , 'flex');
+            $('.controls__choose .group-table').css('display' , 'flex');
             $(this).hide();
         });
 
