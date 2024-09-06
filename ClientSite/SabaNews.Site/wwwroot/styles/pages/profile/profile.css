@@ -2458,6 +2458,11 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 .checkbox-wrapper-46 {
   font-size: 1.4rem;
 }
+@media (max-width: 767px) {
+  .checkbox-wrapper-46 {
+    font-size: 1.6rem;
+  }
+}
 
 @keyframes wave-46 {
   50% {
@@ -2941,6 +2946,11 @@ html, body {
   line-height: normal;
   font-family: "Open Sans";
 }
+@media (max-width: 767px) {
+  .items-choose .title {
+    font-size: 1.6rem;
+  }
+}
 .items-choose .title-edit {
   font-weight: 600;
   margin-bottom: 1rem;
@@ -2969,6 +2979,11 @@ html, body {
   display: flex;
   align-items: center;
 }
+@media (max-width: 767px) {
+  .group-table .label-fill {
+    font-size: 1.6rem;
+  }
+}
 .group-table .text-fill {
   font-size: 1.4rem;
   font-weight: 600;
@@ -2977,6 +2992,7 @@ html, body {
 @media (max-width: 767px) {
   .group-table .text-fill {
     margin-top: 0.4rem;
+    font-size: 1.6rem;
   }
 }
 .group-table .text-fill.validate {
@@ -2984,6 +3000,11 @@ html, body {
   font-size: 1.4rem;
   font-weight: 400;
   font-family: Arial;
+}
+@media (max-width: 767px) {
+  .group-table .text-fill.validate {
+    font-size: 1.6rem;
+  }
 }
 .group-table .text-fill.connect {
   font-family: Arial;
@@ -2995,6 +3016,10 @@ html, body {
   display: flex;
   align-items: center;
   gap: 2px;
+}
+.group-table .text-fill a {
+  text-decoration: none;
+  color: #222;
 }
 .group-table .right-table {
   width: 100%;
@@ -3133,6 +3158,10 @@ html, body {
   justify-content: center;
   top: 16px;
   right: 16px;
+  font-size: 2rem;
+}
+.box-edit-form .close-edit::before {
+  color: #878787;
 }
 .box-edit-form .input-edit {
   width: 100%;
@@ -3145,7 +3174,7 @@ html, body {
   font-size: 1.4rem;
 }
 .box-edit-form .input-edit::placeholder {
-  font-size: 1.4rem;
+  font-size: 1.6rem !important;
 }
 @media (max-width: 767px) {
   .box-edit-form .input-edit {
@@ -3165,6 +3194,11 @@ html, body {
   justify-content: space-between;
   flex-direction: row;
   max-width: 25.4rem;
+}
+@media (max-width: 767px) {
+  .box-edit-form .radio-group {
+    margin: 2rem 0;
+  }
 }
 .box-edit-form .btn-disabled {
   background: #BDBDBD;
@@ -3191,6 +3225,11 @@ html, body {
   color: #0066CC;
   font-size: 1.3rem;
 }
+@media (max-width: 767px) {
+  .action, .forgot-pass a, .connect {
+    font-size: 1.4rem;
+  }
+}
 
 .controls__choose .group-table {
   gap: 1.6rem;
@@ -3215,6 +3254,7 @@ html, body {
 @media (max-width: 767px) {
   .commitment {
     margin-top: 0.4rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -3279,7 +3319,9 @@ html, body {
   align-items: center;
   justify-content: center;
   top: 16px;
-  right: 18px;
+  right: 16px;
+  color: #878787;
+  font-size: 2rem;
 }
 .group-upload img#review_photo {
   width: 100px;

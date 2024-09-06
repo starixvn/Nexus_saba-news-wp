@@ -132,6 +132,9 @@
   
   .checkbox-wrapper-46{
     font-size: 1.4rem;
+    @include Mobile{
+      font-size: 1.6rem;
+    }
   }
 
   @keyframes wave-46 {

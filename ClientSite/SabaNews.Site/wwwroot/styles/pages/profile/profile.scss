@@ -256,6 +256,9 @@ html, body{
         font-weight: 700;
         line-height: normal;
         font-family: "Open Sans";
+        @include Mobile{
+            font-size: 1.6rem;
+        }
         &-edit{
             font-weight: 600;
             margin-bottom: 1rem;
@@ -278,6 +281,10 @@ html, body{
         line-height: normal;
         display: flex;
         align-items: center;
+
+        @include Mobile{
+            font-size: 1.6rem;
+        }
     }
     .text-fill{
         font-size:  1.4rem;
@@ -285,12 +292,16 @@ html, body{
         line-height: normal;
         @include Mobile{
             margin-top: .4rem;
+            font-size:  1.6rem;
         }
         &.validate{
             color: #F12F19;
             font-size: 1.4rem;
             font-weight: 400;
             font-family: Arial;
+            @include Mobile{
+                font-size: 1.6rem;
+            }
         }
         &.connect{
             font-family: Arial;
@@ -302,6 +313,10 @@ html, body{
                 align-items: center;
                 gap: 2px;
             }
+        }
+        a{
+            text-decoration: none;
+            color: #222;
         }
     }
     .right-table{
@@ -439,6 +454,10 @@ html, body{
         justify-content: center;
         top: 16px;
         right: 16px;
+        font-size: 2rem;
+        &::before{
+            color: #878787;
+        }
     }
 
     .input-edit {
@@ -451,7 +470,7 @@ html, body{
         background-color: #FFFDF9;
         font-size: 1.4rem;
         &::placeholder{
-            font-size: 1.4rem;
+            font-size: 1.6rem !important;
         }
         @include Mobile{
             height: 4.2rem;
@@ -469,6 +488,9 @@ html, body{
     .radio-group {
         @include flex(center, nowrap, space-between, row);
         max-width: 25.4rem;
+        @include Mobile{
+            margin: 2rem 0;
+        }
     }
     .btn-disabled {
         background: $border-heading;
@@ -496,6 +518,9 @@ html, body{
     text-decoration: none;
     color:  #0066CC;
     font-size: 1.3rem;
+    @include Mobile{
+        font-size: 1.4rem;
+    }
 }
 
 .controls__choose{
@@ -519,6 +544,7 @@ html, body{
     margin-top: 1rem;
     @include Mobile{
         margin-top: .4rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -582,7 +608,9 @@ html, body{
         align-items: center;
         justify-content: center;
         top: 16px;
-        right: 18px;
+        right: 16px;
+        color: #878787;
+        font-size: 2rem;
     }
     img#review_photo {
         width: 100px;
