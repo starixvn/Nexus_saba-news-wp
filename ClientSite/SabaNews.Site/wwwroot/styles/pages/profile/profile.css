@@ -3244,6 +3244,11 @@ html, body {
   margin-top: 1.6rem;
   font-size: 1.4rem;
 }
+@media (max-width: 767px) {
+  .select-auth {
+    font-size: 1.6rem !important;
+  }
+}
 
 .commitment {
   margin-bottom: 0;
