@@ -254,7 +254,7 @@ var all = (function ($) {
     }
     //change domain show popup
     function toggleChangeDomainPopup() {
-        var popupKey = 'hide-popup-domain';
+        var popupKey = 'hide-popup';
 
         var hidePopupEvent = localStorage.getItem(popupKey);
         if (hidePopupEvent !== "1") {
