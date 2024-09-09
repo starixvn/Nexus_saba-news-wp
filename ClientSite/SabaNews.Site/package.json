@@ -73,6 +73,9 @@
     "react-toastify": "^8.2.0",
     "swiper": "^6.8.4"
   },
+  "resolutions": {
+    "cheerio": "1.0.0-rc.12"
+  },
   "jest": {
     "testResultsProcessor": "jest-sonar-reporter"
   },
