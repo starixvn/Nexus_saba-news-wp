@@ -5,13 +5,14 @@
         var fromDate = $('#FromDate').val();
         var toDate = $('#ToDate').val();
         var search = $('#search').val();
+        var searchType = $('#search-type').val();
         if (!isValidFilter(fromDate, toDate)) {
             return false;
         }
         $.ajax({
             url: "/Admin/User/GetDataUser",
             type: 'POST',
-            data: { fromDate, toDate, search, dateSort, page, pageSize},
+            data: { fromDate, toDate, search, searchType, dateSort, page, pageSize},
             success: function (res) {
                 $('.user-grid').html(res);
                 initSortEvent();

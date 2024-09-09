@@ -40,6 +40,7 @@
                 FromDate = param.FromDate.DateTime,
                 ToDate = param.ToDate.DateTime,
                 Search = search,
+                SearchType = param.SearchType,
                 DateSort = param.DateSort,
                 Start = (param.Page - 1) * param.PageSize,
                 End = param.PageSize
