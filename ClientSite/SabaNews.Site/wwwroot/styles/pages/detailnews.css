@@ -2052,6 +2052,8 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
 }
 .block-extension .card-vertical:last-child {
   border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* vietnamese */

@@ -625,6 +625,8 @@ p.has-text-align-center {
 }
 .block-extension .card-vertical:last-child {
   border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .event-modal-home {
