@@ -3,7 +3,7 @@ DROP PROCEDURE IF EXISTS user_get_report;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report`(
 	IN fromDate DATE,
     IN toDate DATE,
     IN search NVARCHAR(200),
@@ -91,4 +91,4 @@ BEGIN
 END
 
 //
-DELIMITER ;	
+DELIMITER ;
