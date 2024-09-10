@@ -568,13 +568,13 @@ describe('AppContainer', () => {
         it('return correctly data', () => {
              // Arrange
             const groups = [
-                {key: 35537, matches:[{matchId: 59159341}, {matchId: 59159342}, {matchId: 59159343}, {matchId: 59159344}, {matchId: 59159345}, {matchId: 59159346}, {matchId: 59159347}, {matchId: 59159348}]},
+                {key: 35537, matches:[{matchId: 59159341}, {matchId: 59287173}, {matchId: 59159343}, {matchId: 59159344}, {matchId: 59159345}, {matchId: 59159346}, {matchId: 59159347}, {matchId: 59159348}]},
                 {key: 35539, matches: [{matchId: 59159349}, {matchId: 59159350}, {matchId: 59159351}, {matchId: 59159352}]},
                 {key: 35538, matches: [{matchId: 59159353}, {matchId: 59159354}]}
             ];
             const expected = [
-                {key: 35537, matches:[{matchId: 59159344}, {matchId: 59159342}, {matchId: 59159346}, {matchId: 59159345}, {matchId: 59159343}, {matchId: 59159341}, {matchId: 59159347}, {matchId: 59159348}]},
-                {key: 35539, matches: [{matchId: 59159349}, {matchId: 59159350}, {matchId: 59159352}, {matchId: 59159351}]},
+                {key: 35537, matches:[{matchId: 59159344}, {matchId: 59287173}, {matchId: 59159346}, {matchId: 59159345}, {matchId: 59159343}, {matchId: 59159341}, {matchId: 59159347}, {matchId: 59159348}]},
+                {key: 35539, matches: [{matchId: 59159349}, {matchId: 59159350}, {matchId: 59159351}, {matchId: 59159352}]},
                 {key: 35538, matches: [{matchId: 59159353}, {matchId: 59159354}]}
             ]
              const container = shallow(<AppContainer {...defaultProps} />);

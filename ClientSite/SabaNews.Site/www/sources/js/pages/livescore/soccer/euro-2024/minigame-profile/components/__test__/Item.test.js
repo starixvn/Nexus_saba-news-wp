@@ -68,7 +68,7 @@ describe('Item', () => {
                votes: [{matchId: 1, stage: 1}, {matchId: 2, stage: 2}],
                matches: [{matchId: 1}, {matchId: 2}, {matchId : 3, startTime: '2022-11-30'}],
                stage: 2,
-               status: { stage: 1, isActive: false, status: LangHelper.getResource('Finish') }
+               status: { stage: 1, isActive: false, status:  'Đã kết thúc'}
            }
            const container = shallow(<Item {...props} />);
            const instance = container.instance();

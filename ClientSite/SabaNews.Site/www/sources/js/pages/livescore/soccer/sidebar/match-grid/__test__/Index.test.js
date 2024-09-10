@@ -77,7 +77,7 @@ describe('MatchGrid', () => {
         });
     });
 
-    describe('filterPreMatches', () => {
+    describe('filterFixture', () => {
         it('return correctly matches when  call function', () => {
             //Arrange
             const matches = [
@@ -95,7 +95,7 @@ describe('MatchGrid', () => {
             DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2023-10-01');
             const instance = shallow(<MatchGrid {...defaultProps} />).instance();
             // Act
-            const result = instance.filterPreMatches(matches);
+            const result = instance.filterFixture(matches);
 
             // Assert
             expect(result).toEqual([{
@@ -128,12 +128,12 @@ describe('MatchGrid', () => {
             }
             const instance = shallow(<MatchGrid {...props} />).instance();
             instance.state.selectedTab = 'fixture';
-            instance.filterPreMatches  = jest.fn().mockReturnValue(matches);
+            instance.filterFixture  = jest.fn().mockReturnValue(matches);
             // Act
             const result = instance.getCurrentMatches(matches);
 
             // Assert
-            expect(instance.filterPreMatches).toHaveBeenCalled();
+            expect(instance.filterFixture).toHaveBeenCalled();
             expect(result).toEqual(matches);
         });
 
