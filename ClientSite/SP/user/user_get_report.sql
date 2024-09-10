@@ -3,11 +3,12 @@ DROP PROCEDURE IF EXISTS user_get_report;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report_xtest`(
 	IN fromDate DATE,
     IN toDate DATE,
-    IN search nvarchar(200),
-    IN dateSort nvarchar(100),
+    IN search NVARCHAR(200),
+    IN searchType NVARCHAR(200),
+    IN dateSort NVARCHAR(100),
     IN start INT,
     IN end INT,
     OUT TotalItems INT
@@ -20,15 +21,53 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report`(
     */
 )
 BEGIN
-	SELECT count(*) INTO TotalItems
-    FROM wp_users as user
-    LEFT JOIN wp_usermeta as um ON um.user_id = user.ID AND um.meta_key = 'wp_capabilities'
-    LEFT JOIN wp_usermeta as m ON m.user_id = user.ID and m.meta_key = 'email_confirmed'
-    Where DATE(user_registered) BETWEEN fromDate  AND toDate 
-    AND (display_name LIKE CONCAT('%',search, '%') OR user_email LIKE CONCAT('%',search, '%'))
-	AND um.meta_value ='a:0:{}'
-	AND m.meta_value = 1;
+	DROP TEMPORARY TABLE IF EXISTS tmp_UserIds;
+    CREATE TEMPORARY TABLE tmp_UserIds (ID BIGINT);
     
+    IF searchType = 'name' THEN
+		INSERT INTO tmp_UserIds (ID)
+        SELECT u.ID
+		FROM wp_users as u
+		LEFT JOIN wp_usermeta as m ON m.user_id = u.ID and m.meta_key = 'email_confirmed'
+		WHERE DATE(user_registered) BETWEEN fromDate  AND toDate 
+		AND u.display_name LIKE CONCAT('%',search, '%')
+		AND m.meta_value = 1;
+	ELSEIF  searchType = 'email' THEN
+		INSERT INTO tmp_UserIds (ID)
+        SELECT u.ID
+		FROM wp_users as u
+		LEFT JOIN wp_usermeta as m ON m.user_id = u.ID and m.meta_key = 'email_confirmed'
+		WHERE DATE(user_registered) BETWEEN fromDate  AND toDate 
+		AND u.user_email LIKE CONCAT('%',search, '%')
+		AND m.meta_value = 1;
+	ELSEIF  searchType = 'sabaId' THEN
+		INSERT INTO tmp_UserIds (ID)
+        SELECT u.ID
+		FROM wp_users as u
+		LEFT JOIN wp_usermeta as m ON m.user_id = u.ID and m.meta_key = 'email_confirmed'
+		WHERE u.ID LIKE CONCAT('%',search, '%')
+		AND m.meta_value = 1;
+	ELSEIF searchType = 'birthday' THEN
+		INSERT INTO tmp_UserIds (ID)
+        SELECT u.ID
+		FROM wp_users as u
+		LEFT JOIN wp_usermeta as m ON m.user_id = u.ID and m.meta_key = 'email_confirmed'
+        LEFT JOIN wp_usermeta as m1 ON m1.user_id = u.ID and m1.meta_key = 'year_of_birth'
+		WHERE DATE(user_registered) BETWEEN fromDate  AND toDate 
+		AND m1.meta_value LIKE CONCAT('%',search, '%')
+		AND m.meta_value = 1;	
+	ELSEIF searchType = 'phone' THEN
+		INSERT INTO tmp_UserIds (ID)
+        SELECT u.ID
+		FROM wp_users as u
+		LEFT JOIN wp_usermeta as m ON m.user_id = u.ID and m.meta_key = 'email_confirmed'
+        LEFT JOIN wp_usermeta as m1 ON m1.user_id = u.ID and m1.meta_key = 'phone'
+		WHERE DATE(user_registered) BETWEEN fromDate  AND toDate 
+		AND m1.meta_value LIKE CONCAT('%',search, '%')
+		AND m.meta_value = 1;	
+    END IF;
+	
+	SELECT count(*) INTO TotalItems FROM tmp_UserIds;
     
     SELECT user.ID,
 		user_email as Email,
@@ -37,20 +76,17 @@ BEGIN
 		m2.meta_value as Phone,
         m3.meta_value as YearOfBirth,
         CONVERT(IFNULL(m.meta_value, 0), SIGNED) as EmailConfirmed,
-        user_registered as RegisterDate,
-        um.meta_value as Metadata
+        user_registered as RegisterDate
     FROM wp_users as user
-    LEFT JOIN wp_usermeta as um ON um.user_id = user.ID AND um.meta_key = 'wp_capabilities'
+    INNER JOIN tmp_UserIds as tmp ON tmp.ID = user.ID 
     LEFT JOIN wp_usermeta as m ON m.user_id = user.ID and m.meta_key = 'email_confirmed'
     LEFT JOIN wp_usermeta as m2 ON m2.user_id = user.ID and m2.meta_key = 'phone'
     LEFT JOIN wp_usermeta as m3 ON m3.user_id = user.ID and m3.meta_key = 'year_of_birth'
-    Where DATE(user_registered) BETWEEN fromDate  AND toDate 
-    AND (display_name LIKE CONCAT('%',search, '%') OR user_email LIKE CONCAT('%',search, '%'))
-	AND um.meta_value ='a:0:{}'
-	AND m.meta_value = 1
     ORDER BY CASE WHEN dateSort = 'asc' THEN user_registered END
 			,user_registered desc
 	LIMIT start, end;
+    
+    DROP TEMPORARY TABLE IF EXISTS tmp_UserIds;
 
 END
 
