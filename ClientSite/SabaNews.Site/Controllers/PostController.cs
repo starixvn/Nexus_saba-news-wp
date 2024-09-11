@@ -48,15 +48,7 @@
             }
             if (!slug.Contains(".html"))
             {
-                var summary = await postService.GetPostDetailSummaryAsync(slug);
-                if(summary == null)
-                {
-                    return View(Constants.EmptyBlogView);
-                }
-                else
-                {
-                    return RedirectToActionPermanent("Single", "Post", new { slug = summary.Uri });
-                }
+                return await HandleSlugWithoutHtmlAsync(slug);
             }
             var (cleanSlug, postId) = GetPostInfoFromSlug(slug);
             var post = await postService.GetPostDetailAsync(postId);
@@ -70,6 +62,13 @@
                 return RedirectToActionPermanent("Single", "Post", new { slug = post.Uri });
             }
 
+            var viewModel = await CreateSingleViewModelAsync(post, cleanSlug);
+
+            return View(viewModel);
+        }
+
+        private async Task<SingleViewModel> CreateSingleViewModelAsync(Post post, string cleanSlug)
+        {
             var savePost = GetLoginSavedPost(sessionService.User, post.ID);
             var (matchId, customContent) = PostHelper.GetInfoFromContent(post.PostContent);
 
@@ -83,7 +82,7 @@
             post.PostContent = customContent;
 
             var domainUrl = configuration.GetValue<string>("BaseUrl");
-            var model = new SingleViewModel
+            return new SingleViewModel
             {
                 SinglePost = post,
                 IsLogin = sessionService.User != null,
@@ -95,8 +94,16 @@
                 CateParents = cateParents,
                 DomainUrl = domainUrl
             };
+        }
 
-            return View(model);
+        private async Task<IActionResult> HandleSlugWithoutHtmlAsync(string slug)
+        {
+            var summary = await postService.GetPostDetailSummaryAsync(slug);
+            if (summary == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            return RedirectToActionPermanent("Single", "Post", new { slug = summary.Uri });
         }
 
         private static SavePost GetLoginSavedPost(UserSession user, long postId)
