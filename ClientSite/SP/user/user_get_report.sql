@@ -18,6 +18,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_report`(
         Revisions:
 			- 20220720@Hank: init
             - 20240815@Hank: select phone, yearOfBirth
+			- 20240911@Hank: filter user by search type
     */
 )
 BEGIN
