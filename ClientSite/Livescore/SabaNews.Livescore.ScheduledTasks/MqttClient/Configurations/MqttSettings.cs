@@ -8,6 +8,7 @@
         public string ProxyAddress { get; set; }
         public bool ByPassLocal { get; set; }
         public string WebSocketHost { get; set; }
+        public string Username { get; set; }
         public string[] SubscribedTopics { get; set; }
     }
 }

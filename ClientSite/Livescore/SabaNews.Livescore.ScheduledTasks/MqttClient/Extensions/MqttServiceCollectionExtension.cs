@@ -31,7 +31,7 @@
                             };
                         }
                     });
-                    aspOptionBuilder.WithCredentials("0092c025");
+                    aspOptionBuilder.WithCredentials(mqttSettings.Username);
                 });
             }
 
