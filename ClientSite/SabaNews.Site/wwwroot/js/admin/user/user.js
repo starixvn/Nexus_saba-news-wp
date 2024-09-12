@@ -28,12 +28,14 @@
             var toDate = $('#ToDate').val();
             var search = $('#search').val();
             var dateSort = $("#date-sort").attr("sort-type");
+            var searchType = $('#search-type').val();
             if (!isValidFilter(fromDate, toDate)) {
                 return false;
             }
             window.location.href = window.location.origin + "/Admin/User/ExportExcel?fromDate=" + fromDate 
                                                         + "&toDate=" + toDate
                                                         + "&search=" + search
+                                                        + "&searchType=" + searchType
                                                         + "&page=" + page
                                                         + "&pageSize=" + pageSize;
             // $.ajax({
