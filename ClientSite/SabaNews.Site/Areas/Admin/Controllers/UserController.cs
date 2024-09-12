@@ -70,6 +70,7 @@
                 FromDate = param.FromDate.DateTime,
                 ToDate = param.ToDate.DateTime,
                 Search = search,
+                SearchType = param.SearchType,
                 DateSort = param.DateSort,
                 Start = 0,
                 End = Constants.Total
