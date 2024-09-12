@@ -118,6 +118,7 @@
 
             if (topic.StartsWith("/stats"))
             {
+                logger.WriteLogFileInfo($"Received Mqtt Message, topic: {topic}");
                 var match = JsonConvert.DeserializeObject<MqttLiveMatch>(json);
                 await HandleMatchDetailResponse(match);
             }
