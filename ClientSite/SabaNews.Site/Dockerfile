@@ -4,7 +4,7 @@ FROM $CI_REGISTRY_IMAGE:builder AS deps
 
 RUN mkdir -p /src/packages
 
-FROM hub.nexdev.net/base/dotnet/core/sdk:6.0-alpine AS builder
+FROM hub.nexdev.net/base/dotnet/core/sdk:8.0-alpine AS builder
 
 ENV NUGET_PACKAGES=/src/packages
 
@@ -34,7 +34,7 @@ WORKDIR "/src/SabaNews.Site"
 
 RUN dotnet publish -r linux-x64 --self-contained false -o /app
 
-FROM hub.nexdev.net/base/dotnet/core/aspnet:6.0-alpine AS base
+FROM hub.nexdev.net/base/dotnet/core/aspnet:8.0-alpine AS base
 
 WORKDIR /app
 
