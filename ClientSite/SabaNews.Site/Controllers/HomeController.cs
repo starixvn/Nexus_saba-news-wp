@@ -20,27 +20,13 @@
     using SabaNews.Site.Extensions;
     using SabaNews.Core.Helper;
 
-    public class HomeController : Controller
+    public class HomeController(IPostService postService,
+        IDataControlService dataControlService,
+        IConfiguration configuration,
+        IUserService userService,
+        IOptionService optionService) : Controller
     {
-        private readonly IDataControlService dataControlService;
-        private readonly IPostService postService;
-        private readonly IUserService userService;
-        private readonly IOptionService optionService;
-        private readonly string domain;
-
-
-        public HomeController(IPostService postService,
-            IDataControlService dataControlService,
-            IConfiguration configuration,
-            IUserService userService,
-            IOptionService optionService)
-        {
-            this.postService = postService;
-            this.dataControlService = dataControlService;
-            this.userService = userService;
-            this.optionService = optionService;
-            domain = configuration.GetValue<string>("BaseUrl");
-        }
+        private readonly string domain = configuration.GetValue<string>("BaseUrl");
 
         public async Task<IActionResult> Index()
         {

@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/SabaNews.Site/bin/Debug/net6.0/SabaNews.Site.dll",
+            "program": "${workspaceFolder}/SabaNews.Site/bin/Debug/net8.0/SabaNews.Site.dll",
             "args": ["--urls","https://localhost:6001;http://localhost:6000"],
             "cwd": "${workspaceFolder}\\SabaNews.Site",
             "stopAtEntry": false,
@@ -26,7 +26,7 @@
             "name": "SabaNews.AutoJobs",
             "type": "coreclr",
             "request": "launch",
-            "program": "${workspaceFolder}/SabaNews.AutoJobs/bin/Debug/net6.0/SabaNews.AutoJobs.dll",
+            "program": "${workspaceFolder}/SabaNews.AutoJobs/bin/Debug/net8.0/SabaNews.AutoJobs.dll",
             "args": [
                 ""
             ],
@@ -43,7 +43,7 @@
             "name": "ScheduledTasks",
             "type": "coreclr",
             "request": "launch",
-            "program": "${workspaceFolder}/Livescore/SabaNews.Livescore.ScheduledTasks/bin/Debug/net6.0/SabaNews.Livescore.ScheduledTasks.dll",
+            "program": "${workspaceFolder}/Livescore/SabaNews.Livescore.ScheduledTasks/bin/Debug/net8.0/SabaNews.Livescore.ScheduledTasks.dll",
             "cwd": "${workspaceFolder}/Livescore/SabaNews.Livescore.ScheduledTasks",
             "console": "internalConsole",
             "stopAtEntry": false,

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
@@ -63,7 +63,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.SyncData
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Services.Tests", "UnitTests\Livescore\SabaNews.Livescore.Services.Tests\SabaNews.Livescore.Services.Tests.csproj", "{CB1B1AB8-0805-40E6-999B-E99A9B61E882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.ScheduledTasks.Tests", "UnitTests\Livescore\SabaNews.Livescore.ScheduledTasks.Tests\SabaNews.Livescore.ScheduledTasks.Tests.csproj", "{D09FC435-1E2B-44AC-8C93-BF7BC89404EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.ScheduledTasks.Tests", "UnitTests\Livescore\SabaNews.Livescore.ScheduledTasks.Tests\SabaNews.Livescore.ScheduledTasks.Tests.csproj", "{D09FC435-1E2B-44AC-8C93-BF7BC89404EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

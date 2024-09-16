@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <CodeAnalysisRuleSet>..\..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
-    <ItemGroup>
-      <AdditionalFiles Include="..\..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-    </ItemGroup>
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.12" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj" />
-      <ProjectReference Include="..\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj" />
-      <ProjectReference Include="..\SabaNews.Livescore.Repositories\SabaNews.Livescore.Repositories.csproj" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj" />
+    <ProjectReference Include="..\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj" />
+    <ProjectReference Include="..\SabaNews.Livescore.Repositories\SabaNews.Livescore.Repositories.csproj" />
+  </ItemGroup>
 </Project>

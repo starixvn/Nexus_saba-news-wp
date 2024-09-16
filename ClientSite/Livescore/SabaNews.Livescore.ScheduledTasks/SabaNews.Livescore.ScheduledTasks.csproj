@@ -1,55 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
-
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <DockerfileContext>..\..</DockerfileContext>
-        <CodeAnalysisRuleSet>..\..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <None Remove="App_Data\SpNames.GC.xml" />
-        <None Remove="App_Data\SpNames.LOCAL.xml" />
-        <None Remove="App_Data\SpNames.PROD.xml" />
-        <None Remove="App_Data\SpNames.UAT.xml" />
-        <None Remove="App_Data\SpNames.xml" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <AdditionalFiles Include="..\..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-        <Content Include="App_Data\SpNames.GC.xml">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="App_Data\SpNames.LOCAL.xml">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="App_Data\SpNames.PROD.xml">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="App_Data\SpNames.UAT.xml">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="App_Data\SpNames.xml">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="MQTTnet" Version="3.1.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\SabaNews.Core\SabaNews.Core.csproj" />
-        <ProjectReference Include="..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj" />
-        <ProjectReference Include="..\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj" />
-        <ProjectReference Include="..\SabaNews.Livescore.SyncData\SabaNews.Livescore.SyncData.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Update="appsettings.GC.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="App_Data\SpNames.GC.xml" />
+    <None Remove="App_Data\SpNames.LOCAL.xml" />
+    <None Remove="App_Data\SpNames.PROD.xml" />
+    <None Remove="App_Data\SpNames.UAT.xml" />
+    <None Remove="App_Data\SpNames.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+    <Content Include="App_Data\SpNames.GC.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.LOCAL.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.PROD.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.UAT.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MQTTnet" Version="3.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SabaNews.Core\SabaNews.Core.csproj" />
+    <ProjectReference Include="..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj" />
+    <ProjectReference Include="..\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj" />
+    <ProjectReference Include="..\SabaNews.Livescore.SyncData\SabaNews.Livescore.SyncData.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.GC.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
