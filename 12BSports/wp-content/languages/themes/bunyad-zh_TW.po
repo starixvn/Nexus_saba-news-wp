@@ -1,0 +1,951 @@
+# Copyright (C) 2023 ThemeSphere
+# This file is distributed under the ThemeForest Split Licence.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartMag 9.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/smart-mag\n"
+"POT-Creation-Date: 2023-09-19T01:17:04+00:00\n"
+"PO-Revision-Date: 2024-03-01 08:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: 繁體中文\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: bunyad\n"
+"X-Loco-Version: 2.6.6; wp-6.4.3"
+
+#: partials/comment.php:43
+msgid " at "
+msgstr " 在"
+
+#: blocks/post-meta/post-meta.php:566
+#: packages/blocks/post-meta/post-meta.php:566
+msgid "%d Min Read"
+msgid_plural "%d Mins Read"
+msgstr[0] "%d 分鐘讀取數"
+
+#: page-templates/authors.php:71
+msgid "%s Articles"
+msgstr "%s 文章"
+
+#: inc/reviews/review.php:160
+msgid "%s Votes"
+msgstr "%s 票數"
+
+#: comments.php:70
+msgid "&larr; Older Comments"
+msgstr "← 舊評論"
+
+#: widgets/widget-bbp-login.php:22
+msgid "(bbPress) SmartMag Login Widget"
+msgstr "(bbPress) SmartMag 登入小工具"
+
+#: partials/single/classic-title-meta.php:39
+msgid ", "
+msgstr ","
+
+#: 404.php:28
+msgid "404"
+msgstr "404"
+
+#: partials/auth-modal/register.php:35
+msgid "A password will be e-mailed to you."
+msgstr "密碼將透過電子郵件發送給您。"
+
+#: inc/theme.php:134
+msgid "Ad Blocker Enabled!"
+msgstr "廣告攔截器已啟用！"
+
+#: comments.php:33
+msgid "Add A Comment"
+msgstr "新增評論"
+
+#: blocks/heading/heading.php:207 packages/blocks/heading/heading.php:207
+msgid "All"
+msgstr "全部"
+
+#: partials/auth-modal/register.php:11
+msgid "Already registered? %1$sLogin%2$s."
+msgstr "已經註冊？ %1$s登入%2$s。"
+
+#: page-templates/sitemap.php:96
+msgid "Archives"
+msgstr "檔案"
+
+#: partials/auth-modal/auth-modal.php:18
+msgctxt "aria"
+msgid "Sign In or Register"
+msgstr "登入或註冊"
+
+#. Template Name of the theme
+msgid "Authors List"
+msgstr "作者名單"
+
+#: widgets/widget-bbp-login.php:106
+msgctxt "bbPress"
+msgid "Don't have an account?"
+msgstr "沒有帳戶？"
+
+#: widgets/widget-bbp-login.php:124
+msgctxt "bbPress"
+msgid "Edit Profile"
+msgstr "編輯個人資料"
+
+#: widgets/widget-bbp-login.php:128
+msgctxt "bbPress"
+msgid "Favorites"
+msgstr "收藏夾"
+
+#: bbpress/loop-forums.php:33
+msgctxt "bbPress"
+msgid "Freshness"
+msgstr "新鮮"
+
+#: bbpress/loop-search-reply.php:12
+msgctxt "bbPress"
+msgid "In reply to: "
+msgstr "回覆:"
+
+#: bbpress/loop-search-reply.php:52 bbpress/loop-search-topic.php:57
+#: bbpress/loop-single-reply.php:45
+msgctxt "bbPress"
+msgid "in reply to: "
+msgstr "回覆:"
+
+#: bbpress/loop-single-topic.php:71
+msgctxt "bbPress"
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr "在： <a href=\"%1$s\">%2$s</a>"
+
+#: bbpress/loop-single-topic.php:78
+msgctxt "bbPress"
+msgid "Last post:"
+msgstr "最後發表："
+
+#: bbpress/loop-replies.php:15
+msgctxt "bbPress"
+msgid "Posted In: "
+msgstr "發表於："
+
+#: bbpress/loop-forums.php:30 bbpress/loop-single-topic.php:103
+msgctxt "bbPress"
+msgid "Posts"
+msgstr "貼文"
+
+#: bbpress/loop-single-forum.php:50
+msgctxt "bbpress"
+msgid "posts"
+msgstr "貼文"
+
+#: bbpress/loop-forums.php:29 bbpress/loop-single-topic.php:102
+msgctxt "bbPress"
+msgid "Replies"
+msgstr "回覆"
+
+#: bbpress/loop-single-forum.php:49
+msgctxt "bbpress"
+msgid "replies"
+msgstr "回覆"
+
+#: bbpress/form-search.php:14
+msgctxt "bbPress"
+msgid "Search"
+msgstr "搜尋"
+
+#: bbpress/form-search.php:11
+msgctxt "bbPress"
+msgid "Search for:"
+msgstr "搜尋:"
+
+#: bbpress/loop-single-topic.php:63
+msgctxt "bbPress"
+msgid "Started by: %1$s"
+msgstr "開始者: %1$s"
+
+#: widgets/widget-bbp-login.php:126
+msgctxt "bbPress"
+msgid "Subscriptions"
+msgstr "訂閱"
+
+#: bbpress/loop-search-topic.php:16
+msgctxt "bbPress"
+msgid "Topic: "
+msgstr "話題："
+
+#: bbpress/loop-forums.php:26
+msgctxt "bbPress"
+msgid "Topics"
+msgstr "主題"
+
+#: bbpress/loop-single-forum.php:47
+msgctxt "bbpress"
+msgid "topics"
+msgstr "主題"
+
+#: bbpress/loop-single-topic.php:99
+msgctxt "bbPress"
+msgid "Voices"
+msgstr "聲音"
+
+#: widgets/widget-bbp-login.php:119
+msgctxt "bbPress"
+msgid "Welcome back, "
+msgstr "歡迎回來，"
+
+#: bbpress/loop-single-forum.php:62
+msgctxt "bbPress Freshness Author"
+msgid "by "
+msgstr "經過"
+
+#: bbpress/loop-search-reply.php:46 bbpress/loop-search-topic.php:51
+#: bbpress/loop-single-reply.php:39
+msgctxt "bbPress Reply"
+msgid "on"
+msgstr "在"
+
+#: inc/social.php:62 partials/author.php:25
+msgid "BlogLovin"
+msgstr "部落格愛"
+
+#: blocks/breadcrumbs/breadcrumbs.php:155
+#: packages/blocks/breadcrumbs/breadcrumbs.php:155
+msgctxt "breadcrumbs"
+msgid " (Page %d)"
+msgstr "（第 %d 頁）"
+
+#: blocks/breadcrumbs/breadcrumbs.php:165
+#: packages/blocks/breadcrumbs/breadcrumbs.php:165
+msgctxt "breadcrumbs"
+msgid "Archive for \"%s\""
+msgstr "\"%s\" 的存檔"
+
+#: blocks/breadcrumbs/breadcrumbs.php:167
+#: packages/blocks/breadcrumbs/breadcrumbs.php:167
+msgctxt "breadcrumbs"
+msgid "Author: %s"
+msgstr "作者: %s"
+
+#: blocks/breadcrumbs/breadcrumbs.php:164
+#: packages/blocks/breadcrumbs/breadcrumbs.php:164
+msgctxt "breadcrumbs"
+msgid "Category: \"%s\""
+msgstr "分類: \"%s\""
+
+#: blocks/breadcrumbs/breadcrumbs.php:154
+#: packages/blocks/breadcrumbs/breadcrumbs.php:154
+msgctxt "breadcrumbs"
+msgid "Error 404"
+msgstr "錯誤404"
+
+#: blocks/breadcrumbs/breadcrumbs.php:152
+#: packages/blocks/breadcrumbs/breadcrumbs.php:152
+msgctxt "breadcrumbs"
+msgid "Home"
+msgstr "首頁"
+
+#: blocks/breadcrumbs/breadcrumbs.php:166
+#: packages/blocks/breadcrumbs/breadcrumbs.php:166
+msgctxt "breadcrumbs"
+msgid "Posts Tagged \"%s\""
+msgstr "標籤為 \"%s\" 的文章"
+
+#: blocks/breadcrumbs/breadcrumbs.php:153
+#: packages/blocks/breadcrumbs/breadcrumbs.php:153
+msgctxt "breadcrumbs"
+msgid "Search Results for \"%s\""
+msgstr "「%s」的搜尋結果"
+
+#: blocks/breadcrumbs/breadcrumbs.php:54 admin/options/layout-main.php:460
+#: packages/blocks/breadcrumbs/breadcrumbs.php:54
+msgctxt "breadcrumbs"
+msgid "You are at:"
+msgstr "你在："
+
+#: page-templates/authors.php:70
+msgid "Browse Author Articles"
+msgstr "瀏覽作者文章"
+
+#: admin/options-short.php:2253 admin/options/archives.php:150
+msgid "Browsing: %s"
+msgstr "正在瀏覽：%s"
+
+#: comments.php:159
+msgid "Cancel Reply"
+msgstr "取消回覆"
+
+#: page-templates/sitemap.php:67
+msgid "Categories"
+msgstr "分類"
+
+#: partials/header/mega-menu/category-b.php:19
+msgctxt "Categories Mega Menu"
+msgid "Featured"
+msgstr "精選"
+
+#: partials/header/mega-menu/category-b.php:67
+msgctxt "Categories Mega Menu"
+msgid "Recent"
+msgstr "最近的"
+
+#: partials/header/off-canvas-menu.php:44
+msgid "Close Menu"
+msgstr "關閉選單"
+
+#: partials/auth-modal/auth-modal.php:21
+msgid "Close modal"
+msgstr "關閉彈窗"
+
+#: comments.php:76
+msgid "Comments are closed."
+msgstr "評論被關閉。"
+
+#: inc/social-share.php:101 inc/social-share.php:102
+msgid "Copy Link"
+msgstr "複製連結"
+
+#. Description of the theme
+msgid "Designed by <a href=\"https://theme-sphere.com\">ThemeSphere</a>"
+msgstr "由<a href=\"https://theme-sphere.com\">ThemeSphere</a>設計"
+
+#: inc/social.php:148
+msgid "Discord"
+msgstr "Discord"
+
+#: inc/social.php:83
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: partials/author.php:27
+msgid "Dribble"
+msgstr "Dribble"
+
+#: partials/comment.php:24 partials/comment.php:47
+msgid "Edit"
+msgstr "編輯"
+
+#. Description of the plugin
+msgid "Elements and core functionality for SmartMag Theme."
+msgstr "SmartMag 主題的元素和核心功能。"
+
+#: inc/social-share.php:71 comments.php:108
+#: inc/integrations/woocommerce.php:241
+msgid "Email"
+msgstr "電子郵件"
+
+#: inc/social-share.php:28 inc/social-share.php:121 inc/social.php:42
+#: partials/author.php:20
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/social.php:98
+msgid "Flickr"
+msgstr "Flickr"
+
+#: inc/social.php:171
+msgid "Flipboard"
+msgstr "Flipboard"
+
+#: admin/options/posts-single.php:1342 partials/single/social-share-bot.php:16
+msgid "Follow on %s"
+msgstr "關注 %s"
+
+#: admin/options/posts-single.php:1259 partials/single/modern-header.php:102
+msgid "Follow Us"
+msgstr "關注我們"
+
+#: 404.php:44
+msgid "Go to Homepage"
+msgstr "前往首頁"
+
+#: 404.php:43
+msgid "Go to Previous Page"
+msgstr "前往上一頁"
+
+#: inc/social.php:73
+msgid "Google"
+msgstr "Google"
+
+#: inc/social.php:177
+msgid "Google News"
+msgstr "Google News"
+
+#. Theme URI of the theme
+msgid "https://smartmag.theme-sphere.com"
+msgstr "https://smartmag.theme-sphere.com"
+
+#. Author URI of the plugin
+#. Author URI of the theme
+msgid "https://theme-sphere.com"
+msgstr "https://theme-sphere.com"
+
+#: blocks/post-meta/post-meta.php:407
+#: packages/blocks/post-meta/post-meta.php:407
+msgid "In"
+msgstr "在"
+
+#: inc/social-share.php:145 inc/social.php:52 partials/author.php:23
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/social.php:113
+msgid "Last.fm"
+msgstr "Last.fm"
+
+#: comments.php:143
+msgid "Leave A Reply"
+msgstr "發表評論"
+
+#: partials/single/classic-title-meta.php:28
+msgctxt "Legacy Meta"
+msgid "By"
+msgstr "經過"
+
+#: partials/single/classic-title-meta.php:32
+msgctxt "Legacy Meta"
+msgid "on"
+msgstr "在"
+
+#: social-share/views/social-share-b.php:123
+#: social-share/views/social-share-float.php:76
+#: social-share/views/social-share.php:48
+msgid "Link copied successfully!"
+msgstr "連結複製成功！"
+
+#: inc/social-share.php:50 inc/social-share.php:169 inc/social.php:93
+#: partials/author.php:26
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: partials/pagination.php:86
+msgid "Load More"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:89 partials/auth-modal/login.php:42
+msgid "Log In"
+msgstr "登入"
+
+#: comments.php:148
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"以<a href=\"%1$s\">%2$s</a>身分登入。<a href=\"%3$s\" title=\"登出該帳戶\">登出？</a>"
+
+#: partials/auth-modal/login.php:14
+msgid "Login below or {register}."
+msgstr "在下面登入或{註冊}。"
+
+#: partials/auth-modal/login.php:10
+msgid "Login to your account below."
+msgstr "在下方登入您的帳戶。"
+
+#: inc/authenticate.php:124
+msgid "Login with %s"
+msgstr "使用 %s 登入"
+
+#: partials/header/auth.php:40
+msgid "Logout"
+msgstr "登出"
+
+#: widgets/widget-bbp-login.php:97 widgets/widget-bbp-login.php:98
+#: partials/auth-modal/login.php:50 partials/auth-modal/login.php:51
+msgid "Lost password?"
+msgstr "忘記密碼？"
+
+#: partials/header/hamburger.php:11
+msgid "Menu"
+msgstr "選單"
+
+#: comments.php:98 inc/integrations/woocommerce.php:231
+msgid "Name"
+msgstr "姓名"
+
+#: comments.php:71
+msgid "Newer Comments &rarr;"
+msgstr "較新的評論 →"
+
+#: partials/single/pagination-large.php:24
+msgid "Next"
+msgstr "下一頁"
+
+#: partials/single/post-navigation.php:22
+msgid "Next Article"
+msgstr "上一篇"
+
+#: partials/comment.php:42
+msgid "on"
+msgstr "在"
+
+#: partials/auth-modal/social.php:16
+msgid "or with email"
+msgstr "或透過電子郵件"
+
+#: inc/theme.php:135
+msgid ""
+"Our website is made possible by displaying online advertisements to our "
+"visitors. Please support us by disabling your Ad Blocker."
+msgstr "我們的網站是透過向訪客展示線上廣告而實現的。請停用您的廣告攔截器來支持我們。"
+
+#: 404.php:20 admin/options/layout-pages.php:64
+msgid "Page Not Found!"
+msgstr "找不到網頁！"
+
+#. Template Name of the theme
+msgid "Pagebuilder"
+msgstr "頁面建構器"
+
+#. Template Name of the theme
+msgid "Pagebuilder - No Paddings & Full Width"
+msgstr "頁面建構器 - 無填充和全寬"
+
+#: page-templates/sitemap.php:60
+msgid "Pages"
+msgstr "頁"
+
+#: lib/posts.php:553
+msgctxt "pagination"
+msgid "Next"
+msgstr "下一個"
+
+#: lib/posts.php:554
+msgctxt "pagination"
+msgid "Previous"
+msgstr "以前的"
+
+#: widgets/widget-bbp-login.php:83 partials/auth-modal/login.php:36
+msgid "Password"
+msgstr "密碼"
+
+#: partials/comment.php:24
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/social-share.php:42 inc/social-share.php:137 inc/social.php:57
+#: partials/author.php:22
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: comments.php:157
+msgid "Post Comment"
+msgstr "發表評論"
+
+#: blocks/post-meta/post-meta.php:652
+#: packages/blocks/post-meta/post-meta.php:652
+msgctxt "Post Meta"
+msgid "%s Article Views"
+msgstr "%s 篇文章瀏覽量"
+
+#: blocks/post-meta/post-meta.php:529
+#: packages/blocks/post-meta/post-meta.php:529
+msgctxt "Post Meta"
+msgid "By"
+msgstr "經過"
+
+#: blocks/post-meta/post-meta.php:645
+#: packages/blocks/post-meta/post-meta.php:645
+msgctxt "Post Meta"
+msgid "Views"
+msgstr "意見"
+
+#: widgets/widget-tabbed-recent.php:273
+msgid "Posts:"
+msgstr "貼文："
+
+#: partials/single/pagination-large.php:25
+msgid "Prev"
+msgstr "上一頁"
+
+#: partials/single/post-navigation.php:14
+msgid "Previous Article"
+msgstr "下一篇"
+
+#: lib/posts.php:727 admin/options/posts-listings.php:57 inc/theme.php:291
+msgid "Read More"
+msgstr "閱讀更多"
+
+#: page-templates/sitemap.php:77
+msgid "Recent Posts"
+msgstr "最新文章"
+
+#: inc/social-share.php:87 inc/social-share.php:193 inc/social.php:128
+msgid "Reddit"
+msgstr "紅迪網"
+
+#: partials/auth-modal/register.php:32
+msgid "Register"
+msgstr "登記"
+
+#: partials/auth-modal/login.php:17
+msgid "Register Now"
+msgstr "現在註冊"
+
+#: widgets/widget-bbp-login.php:107 partials/auth-modal/register.php:6
+msgid "Register Now!"
+msgstr "現在註冊！"
+
+#: admin/options/posts-single.php:1383 partials/single/related-posts.php:10
+msgid "Related *Posts*"
+msgstr "相關文章*"
+
+#: widgets/widget-bbp-login.php:94 partials/auth-modal/login.php:47
+msgid "Remember Me"
+msgstr "記住帳號"
+
+#: partials/comment.php:61
+msgid "Reply"
+msgstr "回覆"
+
+#: comments.php:144
+msgid "Reply To %s"
+msgstr "回覆%s"
+
+#: inc/social.php:67
+msgid "RSS"
+msgstr "RSS"
+
+#: comments.php:129
+msgid ""
+"Save my name, email, and website in this browser for the next time I comment."
+msgstr "在此瀏覽器中儲存我的姓名、電子郵件和網站，以便下次發表評論時使用。"
+
+#: partials/header/search.php:22 partials/header/search.php:33
+msgid "Search"
+msgstr "搜尋"
+
+#: inc/archives.php:43
+msgid "Search Results: %s (%d)"
+msgstr "搜尋結果：%s (%d)"
+
+#: partials/header/search.php:30 partials/search-modal.php:24
+msgid "Search..."
+msgstr "搜尋..."
+
+#: partials/live-search.php:52
+msgid "See All Results"
+msgstr "查看所有搜尋結果"
+
+#: social-share/views/social-share-b.php:23
+#: social-share/views/social-share-float.php:22
+#: admin/options/posts-single.php:729 admin/options/posts-single.php:1061
+msgid "Share"
+msgstr "分享"
+
+#: inc/social-share.php:29
+msgid "Share on Facebook"
+msgstr "在 Facebook 上分享"
+
+#: inc/social-share.php:51
+msgid "Share on LinkedIn"
+msgstr "在 LinkedIn 上分享"
+
+#: inc/social-share.php:43
+msgid "Share on Pinterest"
+msgstr "在 Pinterest 分享"
+
+#: inc/social-share.php:88
+msgid "Share on Reddit"
+msgstr "在 Reddit 上分享"
+
+#: inc/social-share.php:95
+msgid "Share on Telegram"
+msgstr "分享到 Telegram"
+
+#: inc/social-share.php:58
+msgid "Share on Tumblr"
+msgstr "分享到 Tumblr"
+
+#: inc/social-share.php:65
+msgid "Share on VKontakte"
+msgstr "分享到 VKontakte"
+
+#: inc/social-share.php:79
+msgid "Share on WhatsApp"
+msgstr "在 WhatsApp 上分享"
+
+#: inc/social-share.php:36
+msgid "Share on X (Twitter)"
+msgstr "在 X 上分享（推特）"
+
+#: inc/social-share.php:72
+msgid "Share via Email"
+msgstr "透過電子郵件分享"
+
+#: social-share/views/social-share.php:29
+msgid "Share."
+msgstr "分享。"
+
+#: inc/integrations/woocommerce.php:309
+msgid "Shopping Cart"
+msgstr "購物車"
+
+#: social-share/views/social-share-b.php:134
+msgid "Show More Social Sharing"
+msgstr "顯示更多社交分享"
+
+#: partials/single/pagination-large.php:13
+msgid "Showing %s of %s"
+msgstr "顯示 %s（共 %s）"
+
+#. Template Name of the theme
+msgid "Sitemap (Deprecated)"
+msgstr "網站地圖（已棄用）"
+
+#. Theme Name of the theme
+msgid "SmartMag"
+msgstr "智慧型磁鐵"
+
+#. Plugin Name of the plugin
+msgid "SmartMag Core"
+msgstr "SmartMag Core"
+
+#: inc/social.php:158
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: partials/live-search.php:23
+msgid "Sorry, no results!"
+msgstr "抱歉，未找到結果！"
+
+#: inc/social.php:103
+msgid "SoundCloud"
+msgstr "SoundCloud"
+
+#: inc/social-share.php:177
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: inc/social.php:118
+msgid "Steam"
+msgstr "Steam"
+
+#: partials/search-modal.php:27
+msgid "Submit"
+msgstr "提交"
+
+#: partials/header/scheme-switch.php:17
+msgid "Switch to Dark Design - easier on eyes."
+msgstr "切換到暗色設計 - 對眼睛更舒適"
+
+#: partials/header/scheme-switch.php:20
+msgid "Switch to Light Design."
+msgstr "切換到淺色設計"
+
+#: inc/social-share.php:94 inc/social-share.php:209 inc/social.php:138
+msgid "Telegram"
+msgstr "Telegram"
+
+#: inc/reviews/metabox/form.php:104 inc/reviews/module.php:156
+msgid "The Bad"
+msgstr "壞處"
+
+#: inc/reviews/metabox/form.php:84 inc/reviews/module.php:155
+msgid "The Good"
+msgstr "好的"
+
+#. Author of the plugin
+#. Author of the theme
+msgid "ThemeSphere"
+msgstr "ThemeSphere"
+
+#: comments.php:23
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "這篇文章受密碼保護。請輸入密碼以查看評論。"
+
+#: inc/social.php:163
+msgid "Threads"
+msgstr "Threads"
+
+#: inc/social-share.php:201 inc/social.php:133
+msgid "TikTok"
+msgstr "TikTok"
+
+#: admin/options/header/ticker.php:37 partials/header/ticker.php:31
+msgid "Trending"
+msgstr "Trending"
+
+#: inc/social-share.php:57 inc/social.php:88 partials/author.php:24
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: inc/social-share.php:185 inc/social.php:143
+msgid "Twitch"
+msgstr "Twitch"
+
+#: inc/social-share.php:35
+msgid "Twitter"
+msgstr "Twitter"
+
+#: partials/search-modal.php:32
+msgid ""
+"Type above and press %1$sEnter%2$s to search. Press %1$sEsc%2$s to cancel."
+msgstr "輸入上面內容並按 %1$sEnter%2$s 進行搜尋。按 %1$sEsc%2$s 取消。"
+
+#: blocks/post-meta/post-meta.php:493
+#: packages/blocks/post-meta/post-meta.php:493
+msgid "Updated:"
+msgstr "更新："
+
+#: inc/reviews/review.php:159
+msgid "User Ratings"
+msgstr "用戶評分"
+
+#: widgets/widget-bbp-login.php:79 partials/auth-modal/login.php:32
+msgid "Username or Email"
+msgstr "使用者名稱或電子郵件"
+
+#: comments.php:35
+msgid "View % Comments"
+msgstr "查看 % 評論"
+
+#: comments.php:34
+msgid "View 1 Comment"
+msgstr "查看 1 則評論"
+
+#: partials/header/mega-menu/category-a.php:41
+msgid "View All"
+msgstr "檢視全部"
+
+#: inc/integrations/woocommerce.php:301
+msgid "View Cart"
+msgstr "查看購物車"
+
+#: inc/social-share.php:161 inc/social.php:108
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: inc/social-share.php:64 inc/social.php:123
+msgid "VKontakte"
+msgstr "VKontakte"
+
+#: 404.php:37
+msgid ""
+"We're sorry, but we can't find the page you were looking for. It's probably "
+"some thing we've done wrong but now we know about it and we'll try to fix it."
+" In the meantime, try one of these options:"
+msgstr "很抱歉，我們找不到您要找的頁面。這可能是我們做錯了一些事情，但現在我們知道了，我們會盡力解決它。同時，請嘗試以下選項之一："
+
+#: comments.php:120 partials/author.php:19
+msgid "Website"
+msgstr "網站"
+
+#: partials/auth-modal/login.php:24
+msgid "Welcome Back!"
+msgstr "歡迎回來！"
+
+#: inc/social-share.php:78 inc/social-share.php:217 inc/social.php:153
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: inc/integrations/woocommerce.php:224
+msgctxt "woocommerce"
+msgid "Add a review"
+msgstr "新增評論"
+
+#: inc/integrations/woocommerce.php:213
+msgctxt "woocommerce"
+msgid "Average"
+msgstr "平均的"
+
+#: inc/integrations/woocommerce.php:224
+msgctxt "woocommerce"
+msgid "Be the first to review"
+msgstr "成為第一個評論的人"
+
+#: woocommerce/single-product/meta.php:27
+msgctxt "woocommerce"
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] "類別："
+
+#: inc/integrations/woocommerce.php:212
+msgctxt "woocommerce"
+msgid "Good"
+msgstr "好的"
+
+#: woocommerce/single-product/meta.php:22
+msgctxt "woocommerce"
+msgid "N/A"
+msgstr "不適用"
+
+#: inc/integrations/woocommerce.php:214
+msgctxt "woocommerce"
+msgid "Not that bad"
+msgstr "沒有那麼糟糕"
+
+#: inc/integrations/woocommerce.php:211
+msgctxt "woocommerce"
+msgid "Perfect"
+msgstr "完美的"
+
+#: inc/integrations/woocommerce.php:390
+msgctxt "woocommerce"
+msgid "Price"
+msgstr "價格"
+
+#: inc/integrations/woocommerce.php:382
+msgctxt "woocommerce"
+msgid "Qty"
+msgstr "數量"
+
+#: inc/integrations/woocommerce.php:210
+msgctxt "woocommerce"
+msgid "Rate&hellip;"
+msgstr "速度…"
+
+#: woocommerce/single-product/meta.php:21
+msgctxt "woocommerce"
+msgid "SKU:"
+msgstr "貨號："
+
+#: woocommerce/single-product/meta.php:29
+msgctxt "woocommerce"
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] "標籤："
+
+#: inc/integrations/woocommerce.php:398
+msgctxt "woocommerce"
+msgid "Total"
+msgstr "全部的"
+
+#: inc/integrations/woocommerce.php:215
+msgctxt "woocommerce"
+msgid "Very Poor"
+msgstr "很差"
+
+#: inc/integrations/woocommerce.php:209
+msgctxt "woocommerce"
+msgid "Your Rating:"
+msgstr "你的評分："
+
+#: inc/social-share.php:129 inc/social.php:47 partials/author.php:21
+msgid "X (Twitter)"
+msgstr "X（推特）"
+
+#: comments.php:153 inc/integrations/woocommerce.php:250
+msgid "Your Comment"
+msgstr "你的評論"
+
+#: partials/comment.php:54
+msgid "Your comment is awaiting moderation."
+msgstr "您的評論正在等待審核。"
+
+#: partials/auth-modal/register.php:27
+msgid "Your Email"
+msgstr "你的郵件"
+
+#: blocks/newsletter/html/newsletter.php:44
+#: packages/blocks/newsletter/html/newsletter.php:44
+msgid "Your email address.."
+msgstr "您的電子郵件地址.."
+
+#: partials/auth-modal/register.php:23
+msgid "Your Username"
+msgstr "您的使用者名稱"
+
+#: inc/social-share.php:153 inc/social.php:78
+msgid "YouTube"
+msgstr "Youtube"

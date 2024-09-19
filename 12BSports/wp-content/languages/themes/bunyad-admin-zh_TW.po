@@ -1,0 +1,6659 @@
+# Copyright (C) 2023 ThemeSphere
+# This file is distributed under the ThemeForest Split Licence.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartMag 9.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/smart-mag\n"
+"POT-Creation-Date: 2023-09-19T01:17:05+00:00\n"
+"PO-Revision-Date: 2024-01-18 07:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: 繁體中文\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: bunyad-admin\n"
+"X-Loco-Version: 2.6.6; wp-6.3.1\n"
+"X-Loco-Template: /home/www/saba_th/wp-content/themes/smart-"
+"mag/languages/bunyad-admin.pot\n"
+"X-Loco-Template-Mode: pot"
+
+#: admin/options/listings/block-headings.php:221
+msgid ""
+"\n"
+"\t\t\tThis is only applied if not overriden in block settings, i.e. only if "
+"the Heading Style \n"
+"\t\t\tin block heading is set to \"Global Default Style\"."
+msgstr ""
+"\n"
+"僅當在區塊設定中未覆蓋時才套用此功能，即僅當標題樣式\n"
+"在區塊標題中設定為「全站預設樣式」。"
+
+#: admin/options/colors-fonts.php:469
+msgid ""
+"%sRead details here%s. You can control how font is rendered while it loads. "
+"Swap is best if you have slow connection users. Block if you dont want to "
+"see a different font at all."
+msgstr "%s請在此閱讀詳細資料%s。您可以控製字體載入時的呈現方式。如果您的連線速度較慢，則交換是最好的選擇。如果您根本不想看到不同的字體，請封鎖。"
+
+#: metaboxes/options/page.php:67
+msgid "(Legacy) Show Featured Area?"
+msgstr "（舊版）顯示特色區？"
+
+#: admin/options/archives.php:52 admin/options/archives.php:74
+#: admin/options/archives.php:105
+msgid "- Custom Layout -"
+msgstr "- 自訂佈局 -"
+
+#: metaboxes/options/post.php:57
+msgid "-- Auto Detect--"
+msgstr "- 自動偵測 -"
+
+#: widgets/widget-latest-posts.php:82
+msgid "-- Not Limited --"
+msgstr "- 不限 -"
+
+#: blocks/base/loop-options.php:1704 packages/blocks/base/loop-options.php:1704
+msgid "1 Column"
+msgstr "1 欄"
+
+#: admin/options/common-data.php:149
+msgid "16:9 Wide"
+msgstr "16:9 寬屏"
+
+#: admin/options/common-data.php:153
+msgid "1:1 Square"
+msgstr "1:1 方形"
+
+#: blocks/base/loop-options.php:1705 admin/options/footer.php:156
+#: admin/options/posts-single.php:1439 admin/options/posts-single.php:1451
+#: packages/blocks/base/loop-options.php:1705
+msgid "2 Columns"
+msgstr "2 列"
+
+#: admin/options/common-data.php:151
+msgid "21:9 Ultrawide"
+msgstr "21:9 超寬"
+
+#: admin/options/common-data.php:155
+msgid "2:3 Taller"
+msgstr "2:3 高"
+
+#: blocks/base/loop-options.php:1706 admin/options/footer.php:157
+#: admin/options/posts-single.php:1438 admin/options/posts-single.php:1450
+#: packages/blocks/base/loop-options.php:1706
+msgid "3 Columns"
+msgstr "3 列"
+
+#: admin/options/footer.php:160
+msgid "3 Columns: Half + 1/4 + 1/4"
+msgstr "3 列：一半 + 1/4 + 1/4"
+
+#: admin/options/common-data.php:152
+msgid "3:2 Rectangle"
+msgstr "3:2 長方形"
+
+#: admin/options/common-data.php:154
+msgid "3:4 Tall"
+msgstr "3:4 高"
+
+#: blocks/base/loop-options.php:1707 admin/options/footer.php:158
+#: packages/blocks/base/loop-options.php:1707
+msgid "4 Columns"
+msgstr "4 列"
+
+#: admin/options/layout-pages.php:70
+msgid "404 Custom Text"
+msgstr "404 自訂文字"
+
+#: admin/options/layout-pages.php:55
+msgid "404 Page"
+msgstr "404 頁面"
+
+#: admin/options/layout-pages.php:61
+msgid "404 Title"
+msgstr "404 標題"
+
+#: admin/options/common-data.php:150
+msgid "4:3 Standard"
+msgstr "4:3 標準"
+
+#: blocks/base/loop-options.php:1708 admin/options/footer.php:159
+#: packages/blocks/base/loop-options.php:1708
+msgid "5 Columns"
+msgstr "5 欄"
+
+#: blocks/base/loop-options.php:1709 packages/blocks/base/loop-options.php:1709
+msgid "6 Columns"
+msgstr "6 列"
+
+#: blocks/base/loop-options.php:574 packages/blocks/base/loop-options.php:574
+msgid ""
+"A custom taxonomy limit instead of category or post_tag. This will disable "
+"category and tags limits from above."
+msgstr "自訂分類限制，而不是類別或 post_tag。這將停用上述的類別和標籤限制。"
+
+#: admin/options/common-data.php:195
+msgid "A2: Legacy"
+msgstr "A2：舊版"
+
+#: blocks/newsletter/options.php:136 packages/blocks/newsletter/options.php:136
+msgid "A: Minimal"
+msgstr "A: 最小"
+
+#: admin/options/common-data.php:135
+msgid "A: Minimal Button"
+msgstr "A: 最小按鈕"
+
+#: admin/options/header/navigation.php:13
+msgid "A: Normal Color"
+msgstr "A: 正常顏色"
+
+#: blocks/breadcrumbs/options.php:30 admin/options/layout-main.php:415
+#: packages/blocks/breadcrumbs/options.php:30
+msgid "A: Simple"
+msgstr "A: 簡單的"
+
+#: admin/options/header/social.php:45
+msgid "A: Small Icons"
+msgstr "A: 小圖示"
+
+#: admin/options/posts-single.php:746
+msgid "A: Squares"
+msgstr "A: 正方形"
+
+#: admin/options/common-data.php:194
+msgid "A: Stylish Box"
+msgstr "A: 時尚方框"
+
+#: blocks/base/loop-options.php:1609 packages/blocks/base/loop-options.php:1609
+msgid "A: Transparent (Dark BG Only)"
+msgstr "A: 透明（僅限深色背景）"
+
+#: widgets/widget-about.php:196
+msgid "About:"
+msgstr "關於："
+
+#: inc/custom-codes.php:23
+msgid "Above Footer"
+msgstr "頁尾上方"
+
+#: inc/custom-codes.php:15
+msgid "Above Header"
+msgstr "頁首之上"
+
+#: blocks/base/loop-options.php:647 blocks/heading/options.php:44
+#: packages/blocks/base/loop-options.php:647
+#: packages/blocks/heading/options.php:44
+msgid "Accent / Category"
+msgstr "強調/分類"
+
+#: blocks/base/loop-options.php:759 packages/blocks/base/loop-options.php:759
+msgid "Accent / Main Color"
+msgstr "強調/主色"
+
+#: blocks/base/loop-options.php:1244 blocks/heading/options.php:198
+#: admin/options/footer.php:289 admin/options/listings/block-headings.php:76
+#: packages/blocks/base/loop-options.php:1244
+#: packages/blocks/heading/options.php:198
+msgid "Accent Line Color"
+msgstr "強調線顏色"
+
+#: blocks/base/loop-options.php:1224 blocks/heading/options.php:178
+#: admin/options/footer.php:261 admin/options/listings/block-headings.php:51
+#: packages/blocks/base/loop-options.php:1224
+#: packages/blocks/heading/options.php:178
+msgid "Accent Line Weight"
+msgstr "強調線寬"
+
+#: blocks/base/loop-options.php:1234 blocks/heading/options.php:188
+#: admin/options/listings/block-headings.php:64
+#: packages/blocks/base/loop-options.php:1234
+#: packages/blocks/heading/options.php:188
+msgid "Accent Line Width"
+msgstr "強調線寬度"
+
+#: admin/options/custom-codes.php:57
+msgid "Ad / Custom Code"
+msgstr "廣告/自訂程式碼"
+
+#: blocks/codes/options.php:28 packages/blocks/codes/options.php:28
+msgid "Ad / HTML Code"
+msgstr "廣告/HTML 程式碼"
+
+#: widgets/widget-ads.php:97
+msgid "Ad Code:"
+msgstr "廣告代碼："
+
+#: inc/reviews/metabox/form.php:109
+msgid "Add A Con"
+msgstr "增加一個缺點"
+
+#: inc/reviews/metabox/form.php:88
+msgid "Add A Pro"
+msgstr "新增一個優點"
+
+#: inc/elementor/extend-container.php:126 inc/elementor/extend-section.php:140
+msgid "Add a separator line."
+msgstr "新增分隔線。"
+
+#: admin/options/posts-listings.php:36 admin/options/posts-single.php:64
+msgid "Add a shadow on featured images."
+msgstr "在特色圖像上添加陰影。"
+
+#: widgets/widget-ads.php:18
+msgid "Add advertisement code to your sidebar."
+msgstr "將廣告代碼新增至您的側邊欄。"
+
+#: admin/options/misc.php:181
+msgid ""
+"Add class .ts-first-image to the first featured image. You may use this "
+"class in lazyload plugin excludes."
+msgstr "在第一個特色圖像上添加 `.ts-first-image`  class。您可以在 lazyload 插件的排除選項中使用此 class。"
+
+#: blocks/base/loop-options.php:826 packages/blocks/base/loop-options.php:826
+msgid "Add Column Separators"
+msgstr "新增列分隔符"
+
+#: admin/options/layout-main.php:438
+msgid "Add Context?"
+msgstr "新增上下文？"
+
+#: admin/options/misc.php:179
+msgid "Add First Image Class"
+msgstr "新增第一張圖片的CSS類別"
+
+#: blocks/breadcrumbs/options.php:50 admin/options/layout-main.php:448
+#: packages/blocks/breadcrumbs/options.php:50
+msgid "Add Label?"
+msgstr "新增標籤？"
+
+#: blocks/base/loop-options.php:854 packages/blocks/base/loop-options.php:854
+msgid "Add Media Shadow"
+msgstr "添加媒體陰影"
+
+#: inc/reviews/metabox/form.php:68
+msgid "Add More Criteria"
+msgstr "添加更多標準"
+
+#: widgets/widget-tabbed-recent.php:280
+msgid "Add More Tabs"
+msgstr "新增更多選項卡"
+
+#: blocks/loops/grid/options.php:103 packages/blocks/loops/grid/options.php:103
+msgid "Add Numbers"
+msgstr "新增號碼"
+
+#: inc/elementor/extend-container.php:124 inc/elementor/extend-section.php:138
+msgid "Add Separator"
+msgstr "新增分隔符"
+
+#: blocks/base/loop-options.php:818 admin/options/listings/common.php:107
+#: packages/blocks/base/loop-options.php:818
+msgid "Add Separators"
+msgstr "新增分隔符"
+
+#: blocks/base/loop-options.php:121 packages/blocks/base/loop-options.php:121
+msgid "Add Space Below"
+msgstr "在下方加入空格"
+
+#: blocks/base/loop-options.php:673 blocks/heading/options.php:72
+#: packages/blocks/base/loop-options.php:673
+#: packages/blocks/heading/options.php:72
+msgid "Add view more text with link."
+msgstr "新增查看更多文字和連結。"
+
+#: admin/options/layout-main.php:10
+msgid "Adjust layout width or padding."
+msgstr "調整佈局寬度或填充。"
+
+#: smartmag-core.php:215
+msgctxt "Admin: Meta"
+msgid "Page Options"
+msgstr "頁面選項"
+
+#: smartmag-core.php:206
+msgctxt "Admin: Meta"
+msgid "Post Options"
+msgstr "文章選項"
+
+#: admin/options/colors-fonts.php:501
+msgid "Adobe Fonts / TypeKit"
+msgstr "Adobe 字型/TypeKit"
+
+#: admin/options/colors-fonts.php:508
+msgid "Adobe Fonts Project ID"
+msgstr "Adobe 字體項目 ID"
+
+#: admin/options/custom-codes.php:240
+msgid "Ads & Custom Codes"
+msgstr "廣告和自訂程式碼"
+
+#: blocks/codes/options.php:14 packages/blocks/codes/options.php:14
+msgid "Ads / Codes"
+msgstr "廣告/代碼"
+
+#: blocks/base/loop-options.php:328 blocks/base/loop-options.php:542
+#: blocks/loops/feat-grid/options.php:273
+#: packages/blocks/base/loop-options.php:328
+#: packages/blocks/base/loop-options.php:542
+#: packages/blocks/loops/feat-grid/options.php:273
+msgid "Advanced"
+msgstr "進階"
+
+#: widgets/widget-tabber.php:15
+msgid "Advanced tabber that supports all widgets."
+msgstr "支援所有小部件的高級選項卡。"
+
+#: admin/options/colors-fonts.php:300
+msgid "Advanced: Base Sizes/Weights"
+msgstr "高級：基本尺寸/重量"
+
+#: admin/options/layout-main.php:226
+msgid "Advanced: Global Layout"
+msgstr "進階：全站佈局"
+
+#: admin/options/misc.php:198
+msgid ""
+"Advanced: Plugins like WebP Express have a setting to inject <picture> tag "
+"when using a CDN. This will requires our bg image method to be disabled."
+msgstr ""
+"進階：像 WebP Express 這樣的插件有一個設置，可以在使用 CDN 時注入 <picture> 標籤。這將需要禁用我們的背景圖像方法。"
+
+#: admin/options.php:55
+msgid "Advanced: Skins"
+msgstr "進階：外觀"
+
+#: admin/options/footer.php:169
+msgid "Advanced: Widget Columns"
+msgstr "進階：小部件列"
+
+#: admin/options/colors-fonts.php:144
+msgid ""
+"Affects post titles, widget/block headings, h elements in posts etc. Can be "
+"overridden with more specific settings."
+msgstr "影響文章標題、小部件/區塊標題、文章中的 h 元素等。可以用更具體的設定覆蓋。"
+
+#: admin/options/listings/grid.php:159
+msgid "After Number"
+msgstr "號碼後"
+
+#: admin/options/custom-codes.php:49
+msgid "After Paragraphs"
+msgstr "段落之後"
+
+#: admin/options/misc.php:155
+msgid "Aggressive Lazy Load"
+msgstr "積極的Lazy Load"
+
+#: metaboxes/options/post.php:91
+msgid "AJAX - No Refresh"
+msgstr "AJAX - 無刷新"
+
+#: blocks/newsletter/options.php:179 blocks/social-icons/options.php:75
+#: packages/blocks/newsletter/options.php:179
+#: packages/blocks/social-icons/options.php:75
+msgid "Alignment"
+msgstr "結盟"
+
+#: admin/options/posts-single.php:235
+msgid "All Categories in Meta"
+msgstr "元資料中的所有分類"
+
+#: admin/options/posts-single.php:1741
+msgid "All settings in this section area shared between single post and pages."
+msgstr "此部分區域中的所有設定在單一貼文和頁面之間共用。"
+
+#: blocks/base/loop-options.php:398 packages/blocks/base/loop-options.php:398
+msgid "Alphabetical"
+msgstr "按字母順序"
+
+#: blocks/codes/options.php:36 admin/options/custom-codes.php:119
+#: packages/blocks/codes/options.php:36
+msgid "AMP Code"
+msgstr "AMP程式碼"
+
+#: admin/options/misc.php:80
+msgid "AMP: Enable Theme Styles"
+msgstr "AMP：啟用主題樣式"
+
+#: admin/options/custom-codes.php:27
+msgid "AMP: Head Code"
+msgstr "AMP：頭代碼"
+
+#: inc/legacy.php:116
+msgid "Animation Speed"
+msgstr "動畫速度"
+
+#: inc/legacy.php:96
+msgid "Animation Type"
+msgstr "動畫類型"
+
+#: inc/elementor/extend-container.php:37
+msgid ""
+"Applies theme paddings and widths based on device. Only for top-level "
+"containers."
+msgstr "根據設備應用主題的間距和寬度。僅適用於頂層容器。"
+
+#: admin/options/archives.php:31
+msgid "Applies to all type of archives except home."
+msgstr "適用於除家庭檔案之外的所有類型的檔案。"
+
+#: admin/options/misc.php:261
+msgid ""
+"Applies to cart, checkout, account page and single product, unless "
+"overridden. For shop page/archives, %1$sedit your shop page%2$s."
+msgstr "適用於購物車、結帳、帳戶頁面和單一產品，除非被覆蓋。對於商店頁面/檔案，%1$s編輯您的商店頁面%2$s。"
+
+#: admin/options/posts-single.php:159
+msgid "Applies to sections like related posts and comments."
+msgstr "適用於相關貼文和留言等部分。"
+
+#: admin/options/header.php:618
+msgid "Apply To Border"
+msgstr "適用於邊境"
+
+#: inc/elementor/section-options.php:40
+msgid "Archive / Main Query"
+msgstr "存檔/主要查詢"
+
+#: admin/options/archives.php:79
+msgid "Archive Custom Layout"
+msgstr "存檔自訂佈局"
+
+#: admin/options/archives.php:69
+msgid "Archive Listing Style"
+msgstr "檔案清單樣式"
+
+#: admin/options/archives.php:149
+msgid "Archive Title Format"
+msgstr "檔案標題格式"
+
+#: blocks/base/loop-options.php:460 packages/blocks/base/loop-options.php:460
+msgid "Archive: Current Category"
+msgstr "檔案：目前類別"
+
+#: admin/options/custom-codes.php:111
+msgid "Archives"
+msgstr "檔案"
+
+#: admin/options/header/navigation.php:223
+msgid "Arrow Color"
+msgstr "箭頭顏色"
+
+#: blocks/base/loop-options.php:1605 packages/blocks/base/loop-options.php:1605
+msgid "Arrows"
+msgstr "箭頭"
+
+#: admin/options/posts-single.php:150
+msgid ""
+"Article schema data can be used by Google to qualify for inclusion in Google "
+"News etc. Disable if using a Rich Schema plugin."
+msgstr "Google 可以使用文章架構資料來決定是否包含在 Google 新聞等。如果使用 Rich Schema 插件，請停用。"
+
+#: blocks/social-icons/options.php:54
+#: packages/blocks/social-icons/options.php:54
+msgid "As Background Color"
+msgstr "作為背景顏色"
+
+#: blocks/social-icons/options.php:53
+#: packages/blocks/social-icons/options.php:53
+msgid "As Icons Color"
+msgstr "作為圖示顏色"
+
+#: blocks/base/loop-options.php:433 packages/blocks/base/loop-options.php:433
+msgid "Ascending / Oldest First"
+msgstr "升序/最舊的在前"
+
+#: blocks/base/loop-options.php:533 packages/blocks/base/loop-options.php:533
+msgid "Audio"
+msgstr "聲音的"
+
+#: admin/options/header/auth.php:27
+msgid "Auth Link Text"
+msgstr "驗證連結文本"
+
+#: blocks/base/loop-options.php:1560 admin/options/common-data.php:119
+#: packages/blocks/base/loop-options.php:1560
+msgid "Author"
+msgstr "作者"
+
+#: admin/options/posts-single.php:400
+msgid "Author Box"
+msgstr "作者箱"
+
+#: admin/options/posts-global.php:341
+msgid "Author Color"
+msgstr "作者顏色"
+
+#: blocks/base/loop-options.php:311 packages/blocks/base/loop-options.php:311
+msgid "Author Image"
+msgstr "作者形象"
+
+#: admin/options/posts-global.php:301
+msgid "Author Typography"
+msgstr "作者文字風格"
+
+#: admin/options/archives.php:111
+msgid "Authors Custom Layout"
+msgstr "作者自訂佈局"
+
+#. Template Name of the theme
+msgid "Authors List"
+msgstr "作者名單"
+
+#: admin/options/archives.php:100
+msgid "Authors Listing Style"
+msgstr "作者列表風格"
+
+#: blocks/base/loop-options.php:646 blocks/base/loop-options.php:1726
+#: blocks/breadcrumbs/options.php:61 blocks/heading/options.php:43
+#: admin/options/common-data.php:171 admin/options/header.php:748
+#: admin/options/layout-main.php:398 packages/blocks/base/loop-options.php:646
+#: packages/blocks/base/loop-options.php:1726
+#: packages/blocks/breadcrumbs/options.php:61
+#: packages/blocks/heading/options.php:43
+msgid "Auto"
+msgstr "自動"
+
+#: admin/options/colors-fonts.php:44
+msgid "Auto Dark Mode"
+msgstr "自動深色模式"
+
+#: admin/options/posts-single.php:1887
+msgid "Auto-load Next Post"
+msgstr "自動載入下一篇文章"
+
+#: blocks/base/loop-options.php:139 blocks/base/loop-options.php:150
+#: blocks/base/loop-options.php:239 blocks/base/loop-options.php:248
+#: blocks/loops/feat-grid/options.php:65 blocks/loops/overlay/options.php:33
+#: admin/options/listings/common.php:121 admin/options/listings/common.php:136
+#: admin/options/listings/small.php:37
+#: packages/blocks/base/loop-options.php:139
+#: packages/blocks/base/loop-options.php:150
+#: packages/blocks/base/loop-options.php:239
+#: packages/blocks/base/loop-options.php:248
+#: packages/blocks/loops/feat-grid/options.php:65
+#: packages/blocks/loops/overlay/options.php:33
+msgid "Auto/Global"
+msgstr "自動/全站"
+
+#: blocks/base/loop-options.php:1624 packages/blocks/base/loop-options.php:1624
+msgid "Autoplay"
+msgstr "自動播放"
+
+#: admin/options/header/ticker.php:25
+msgid "Autoplay Delay (Seconds)"
+msgstr "自動播放延遲（秒）"
+
+#: blocks/base/loop-options.php:1632 packages/blocks/base/loop-options.php:1632
+msgid "Autoplay Speed"
+msgstr "自動播放速度"
+
+#: admin/options/posts-single.php:747
+msgid "B: Circles"
+msgstr "B：圓形"
+
+#: admin/options/common-data.php:136
+msgid "B: Colored Border & Text"
+msgstr "B: 彩色邊框和文字"
+
+#: admin/options/header/navigation.php:14
+msgid "B: Line Below"
+msgstr "B: 下方線條"
+
+#: blocks/newsletter/options.php:137 packages/blocks/newsletter/options.php:137
+msgid "B: Modern"
+msgstr "B: 現代"
+
+#: blocks/base/loop-options.php:1610 packages/blocks/base/loop-options.php:1610
+msgid "B: Modern Round"
+msgstr "B: 現代圓形"
+
+#: admin/options/header/social.php:46
+msgid "B: Rounded Icons"
+msgstr "B: 圓形圖示"
+
+#: admin/options/common-data.php:196 admin/options/footer.php:194
+msgid "B: Simple Text"
+msgstr "B: 簡單文字"
+
+#: blocks/breadcrumbs/options.php:31 admin/options/layout-main.php:416
+#: packages/blocks/breadcrumbs/options.php:31
+msgid "B: With Background"
+msgstr "B: 有背景"
+
+#: inc/studio/views/el-header-preview.php:6
+msgid "Back to Listing"
+msgstr "返回列表"
+
+#: blocks/newsletter/options.php:318 blocks/newsletter/options.php:385
+#: admin/options/posts-single.php:1197
+#: packages/blocks/newsletter/options.php:318
+#: packages/blocks/newsletter/options.php:385
+msgid "Background"
+msgstr "背景"
+
+#: blocks/base/loop-options.php:1295 blocks/base/loop-options.php:1509
+#: blocks/heading/options.php:249 blocks/newsletter/options.php:299
+#: admin/options/common-data.php:268 admin/options/custom-codes.php:138
+#: admin/options/footer.php:548 admin/options/header.php:443
+#: admin/options/header/buttons.php:117 admin/options/header/off-canvas.php:71
+#: admin/options/listings/cat-labels.php:37 admin/options/newsletter.php:228
+#: packages/blocks/base/loop-options.php:1295
+#: packages/blocks/base/loop-options.php:1509
+#: packages/blocks/heading/options.php:249
+#: packages/blocks/newsletter/options.php:299
+msgid "Background Color"
+msgstr "背景顏色"
+
+#: blocks/newsletter/options.php:328 admin/options/header.php:476
+#: admin/options/layout-main.php:30 admin/options/newsletter.php:251
+#: packages/blocks/newsletter/options.php:328
+msgid "Background Image"
+msgstr "背景圖"
+
+#: admin/options/posts-single.php:1799
+msgid "Bars Roundness"
+msgstr "條形圖圓角度"
+
+#: blocks/base/loop-options.php:643 blocks/heading/options.php:40
+#: packages/blocks/base/loop-options.php:643
+#: packages/blocks/heading/options.php:40
+msgid "Base Colors"
+msgstr "基色"
+
+#: blocks/social-icons/options.php:40
+#: packages/blocks/social-icons/options.php:40
+msgid "Base Icons"
+msgstr "基本圖示"
+
+#: blocks/newsletter/options.php:133 packages/blocks/newsletter/options.php:133
+msgid "Base Style"
+msgstr "底座樣式"
+
+#: admin/options/colors-fonts.php:361
+msgid "Base: Large Title"
+msgstr "底座：大標題"
+
+#: admin/options/colors-fonts.php:348
+msgid "Base: Medium Title"
+msgstr "基礎：中標題"
+
+#: admin/options/colors-fonts.php:335
+msgid "Base: Normal Title"
+msgstr "基礎：普通標題"
+
+#: admin/options/colors-fonts.php:322
+msgid "Base: Small Title"
+msgstr "底座：小標題"
+
+#: admin/options/colors-fonts.php:374
+msgid "Base: X-Large Title"
+msgstr "底座：XL 號標題"
+
+#: admin/options/colors-fonts.php:310
+msgid "Base: X-Small Title"
+msgstr "底座：X-小標題"
+
+#: inc/theme.php:648
+msgid "bbPress Sidebar"
+msgstr "bbPress 側邊欄"
+
+#: inc/custom-codes.php:27
+msgid "Below Footer"
+msgstr "頁尾下方"
+
+#: inc/custom-codes.php:19
+msgid "Below Header"
+msgstr "頁首之下"
+
+#: blocks/loops/grid/options.php:65 packages/blocks/loops/grid/options.php:65
+msgid "Below Title"
+msgstr "標題下方"
+
+#: blocks/newsletter/options.php:338 admin/options/newsletter.php:268
+#: packages/blocks/newsletter/options.php:338
+msgid "BG Opacity"
+msgstr "背景不透明度"
+
+#: blocks/loops/news-focus/options.php:43
+#: packages/blocks/loops/news-focus/options.php:43
+msgid "Big Posts"
+msgstr "大貼文"
+
+#: admin/options/posts-single.php:414
+msgid "Bio Typography"
+msgstr "簡介文字風格"
+
+#: blocks/heading/options.php:17 packages/blocks/heading/options.php:17
+msgid "Block Heading"
+msgstr "區塊標題"
+
+#: admin/options/posts-listings.php:227
+msgid "Block Heading Styles"
+msgstr "區塊標題樣式"
+
+#: widgets/widget-blocks.php:158
+msgid "Block:"
+msgstr "堵塞："
+
+#: widgets/widget-blocks.php:165
+msgid "Block: Highlights"
+msgstr "區塊：亮點"
+
+#: admin/options/posts-listings.php:284
+msgid "Blocks & Listings"
+msgstr "區塊和列表"
+
+#: widgets/widget-about.php:167 admin/options/common-data.php:72
+msgid "BlogLovin"
+msgstr "BlogLovin"
+
+#: smartmag-core.php:484
+msgid "BlogLovin URL"
+msgstr "BlogLovin 網址"
+
+#: admin/options/colors-fonts.php:110
+msgid "Body Text Color"
+msgstr "正文文字顏色"
+
+#: admin/options/posts-single.php:454
+msgid "Body Typography"
+msgstr "Body 文字風格"
+
+#: admin/options/posts-single.php:479
+msgid "Body/Text Color"
+msgstr "正文/文字顏色"
+
+#: admin/options/footer.php:32 admin/options/posts-single.php:1673
+msgid "Bold Style"
+msgstr "大膽的風格"
+
+#: admin/options/header.php:537
+msgid "Border Bottom"
+msgstr "邊框底部"
+
+#: admin/options/header.php:551
+msgid "Border Bottom Color"
+msgstr "邊框底部顏色"
+
+#: blocks/base/loop-options.php:1447 admin/options/footer.php:316
+#: admin/options/header/buttons.php:142
+#: admin/options/listings/block-headings.php:112
+#: admin/options/listings/load-more.php:79
+#: admin/options/listings/read-more.php:85 admin/options/newsletter.php:205
+#: packages/blocks/base/loop-options.php:1447
+msgid "Border Color"
+msgstr "邊框顏色"
+
+#: blocks/base/loop-options.php:1275 blocks/heading/options.php:229
+#: packages/blocks/base/loop-options.php:1275
+#: packages/blocks/heading/options.php:229
+msgid "Border Line Color"
+msgstr "邊框線顏色"
+
+#: blocks/base/loop-options.php:1265
+#: admin/options/listings/block-headings.php:100
+#: packages/blocks/base/loop-options.php:1265
+msgid "Border Line Weight"
+msgstr "邊框線寬"
+
+#: blocks/base/loop-options.php:1481 blocks/base/loop-options.php:1525
+#: admin/options/listings/cat-labels.php:71
+#: admin/options/listings/load-more.php:117
+#: packages/blocks/base/loop-options.php:1481
+#: packages/blocks/base/loop-options.php:1525
+msgid "Border Radius"
+msgstr "邊界半徑"
+
+#: admin/options/header/buttons.php:167
+msgid "Border Roundness"
+msgstr "邊界圓度"
+
+#: admin/options/header.php:492
+msgid "Border Top"
+msgstr "邊框上衣"
+
+#: admin/options/header.php:506
+msgid "Border Top Color"
+msgstr "邊框頂部顏色"
+
+#: inc/elementor/controls/groups/border.php:63
+msgid "Border Type"
+msgstr "邊框類型"
+
+#: blocks/heading/options.php:219 packages/blocks/heading/options.php:219
+msgid "Border Weight"
+msgstr "邊框粗細"
+
+#: admin/options/header.php:603
+msgid "Border Width"
+msgstr "邊框寬度"
+
+#: admin/options/posts-single.php:1397
+msgid "Both"
+msgstr "兩個都"
+
+#: inc/reviews/metabox/options.php:21 admin/options/header.php:626
+msgid "Bottom"
+msgstr "底部"
+
+#: admin/options/common-data.php:164
+msgid "Bottom Center"
+msgstr "底部中心"
+
+#: blocks/loops/feat-grid/options.php:163
+#: packages/blocks/loops/feat-grid/options.php:163
+msgid "Bottom Centered"
+msgstr "底部居中"
+
+#: blocks/loops/feat-grid/options.php:162 admin/options/common-data.php:163
+#: packages/blocks/loops/feat-grid/options.php:162
+msgid "Bottom Left"
+msgstr "左下方"
+
+#: admin/options/common-data.php:165
+msgid "Bottom Right"
+msgstr "右下角"
+
+#: admin/options/header.php:277 admin/options/header.php:751
+msgid "Bottom Row"
+msgstr "底排"
+
+#: admin/options/posts-single.php:1320
+msgid "Bottom Social Follow"
+msgstr "底部社交關注"
+
+#: admin/options/posts-single.php:1289
+msgid "Bottom Social Share"
+msgstr "底部社交分享"
+
+#: blocks/newsletter/options.php:223 admin/options/newsletter.php:169
+#: packages/blocks/newsletter/options.php:223
+msgid "Box Roundness"
+msgstr "盒子圓度"
+
+#: blocks/social-icons/options.php:135
+#: packages/blocks/social-icons/options.php:135
+msgid "Box Size"
+msgstr "盒子尺寸"
+
+#: admin/options/layout-main.php:24
+msgid "Boxed"
+msgstr "盒狀"
+
+#: metaboxes/options/page.php:128 metaboxes/options/post.php:108
+#: metaboxes/terms/category-options.php:134
+msgid "Boxed: Background Image"
+msgstr "盒狀：背景圖像"
+
+#: blocks/breadcrumbs/options.php:14 admin/options/layout-main.php:373
+#: packages/blocks/breadcrumbs/options.php:14
+msgid "Breadcrumbs"
+msgstr "麵包屑"
+
+#: blocks/breadcrumbs/options.php:57 admin/options/layout-main.php:393
+#: packages/blocks/breadcrumbs/options.php:57
+msgid "Breadcrumbs Renderer"
+msgstr "麵包屑渲染器"
+
+#: blocks/breadcrumbs/options.php:27 admin/options/layout-main.php:409
+#: packages/blocks/breadcrumbs/options.php:27
+msgid "Breadcrumbs Style"
+msgstr "麵包屑風格"
+
+#: blocks/breadcrumbs/options.php:38 admin/options/layout-main.php:423
+#: packages/blocks/breadcrumbs/options.php:38
+msgid "Breadcrumbs Width"
+msgstr "麵包屑寬度"
+
+#: inc/admin/theme-plugins.php:87
+msgid "Bunyad Demo Import"
+msgstr "Bunyad 示範導入"
+
+#: admin/options/common-data.php:129
+msgid "Button"
+msgstr "按鈕"
+
+#: admin/options/common-data.php:12 admin/options/header/buttons.php:15
+msgid "Button 1"
+msgstr "按鈕1"
+
+#: admin/options/common-data.php:13 admin/options/header/buttons.php:19
+msgid "Button 2"
+msgstr "按鈕2"
+
+#: admin/options/common-data.php:14 admin/options/header/buttons.php:23
+msgid "Button 3"
+msgstr "按鈕3"
+
+#: blocks/base/loop-options.php:1427 blocks/newsletter/options.php:285
+#: admin/options/listings/load-more.php:56
+#: admin/options/listings/read-more.php:64 admin/options/newsletter.php:140
+#: packages/blocks/base/loop-options.php:1427
+#: packages/blocks/newsletter/options.php:285
+msgid "Button Background"
+msgstr "按鈕背景"
+
+#: admin/options/header/buttons.php:52
+msgid "Button Link"
+msgstr "按鈕連結"
+
+#: blocks/base/loop-options.php:1457 admin/options/listings/load-more.php:91
+#: admin/options/listings/read-more.php:96
+#: packages/blocks/base/loop-options.php:1457
+msgid "Button Padding"
+msgstr "按鈕填充"
+
+#: admin/options/header/buttons.php:68
+msgid "Button Style"
+msgstr "按鈕樣式"
+
+#: blocks/newsletter/options.php:66 admin/options/header/buttons.php:45
+#: packages/blocks/newsletter/options.php:66
+msgid "Button Text"
+msgstr "按鈕文字"
+
+#: blocks/base/loop-options.php:1469 packages/blocks/base/loop-options.php:1469
+msgid "Button Width"
+msgstr "按鈕寬度"
+
+#: admin/options/listings/load-more.php:103
+msgid "Button Width (px)"
+msgstr "按鈕寬度（像素）"
+
+#: admin/options/posts-single.php:1073
+msgid "Buttons Height"
+msgstr "按鈕高度"
+
+#: admin/options/posts-single.php:1086
+msgid "Buttons Width"
+msgstr "按鈕寬度"
+
+#: admin/options/misc.php:90
+msgid ""
+"By default Gutenberg has its own styling. Ticking this will enable our "
+"custom styles so that the backend is similar looking to frontend."
+msgstr "預設情況下，古騰堡有自己的樣式。勾選此項目將啟用我們的自訂樣式，以便後端看起來與前端相似。"
+
+#: widgets/widget-blocks.php:185
+msgid ""
+"By default, all categories will be used. Tick categories to limit to a "
+"specific category or categories."
+msgstr "預設情況下，將使用所有分類。勾選分類以限制僅使用特定分類或分類。"
+
+#: admin/options/misc.php:157
+msgid ""
+"By default, only posts and single images are lazyloaded. Aggressive enables "
+"lazyloading on all sidebar widgets and footer as well."
+msgstr "預設情況下，僅延遲載入貼文和單一圖片。 Aggressive 還可以在所有側邊欄小工具和頁尾上啟用延遲載入。"
+
+#: widgets/widget-blocks.php:206
+msgid ""
+"By specifying an offset as 10 (for example), you can ignore 10 posts in the "
+"results."
+msgstr "將偏移量指定為 10（例如），您可以忽略結果中的 10 個貼文。"
+
+#: admin/options/common-data.php:198 admin/options/footer.php:196
+msgid "C2: Small Accent Line"
+msgstr "C2：小強調線"
+
+#: admin/options/common-data.php:197 admin/options/footer.php:195
+msgid "C: Accent & Border Below"
+msgstr "C: 強調和下方邊框"
+
+#: admin/options/posts-single.php:748
+msgid "C: Circles BG Color"
+msgstr "C: 圓形背景顏色"
+
+#: blocks/newsletter/options.php:138 packages/blocks/newsletter/options.php:138
+msgid "C: Classic"
+msgstr "C: 經典"
+
+#: admin/options/header/social.php:47
+msgid "C: Small with BG Colors"
+msgstr "C: 小型帶背景顏色"
+
+#: admin/options/common-data.php:137
+msgid "C: Solid Color Button"
+msgstr "C: 純色按鈕"
+
+#: admin/options/archives.php:160
+msgid "Can be overriden per-category by editing a category."
+msgstr "可以透過編輯分類來覆蓋每個分類。"
+
+#: blocks/loops/grid/options.php:42 blocks/loops/posts-list/options.php:36
+#: admin/options/listings/grid.php:41 admin/options/listings/list.php:36
+#: packages/blocks/loops/grid/options.php:42
+#: packages/blocks/loops/posts-list/options.php:36
+msgid "Cards"
+msgstr "牌"
+
+#: admin/options/listings/list.php:63
+msgid "Cards Box Roundness"
+msgstr "卡盒圓度"
+
+#: admin/options/layout-main.php:48
+msgid ""
+"Careful! The default layouts are optimized for all devices. Change these "
+"only if you understand the implications."
+msgstr "小心！預設佈局針對所有裝置進行了最佳化。僅當您了解其含義時才更改這些內容。"
+
+#: blocks/loops/grid/options.php:149 blocks/loops/posts-small/options.php:109
+#: packages/blocks/loops/grid/options.php:149
+#: packages/blocks/loops/posts-small/options.php:109
+msgid "Carousel"
+msgstr "輪播"
+
+#: admin/options/common-data.php:17
+msgid "Cart Icon"
+msgstr "購物車圖標"
+
+#: blocks/base/loop-options.php:708 blocks/base/loop-options.php:715
+#: admin/options/posts-single.php:1395
+#: packages/blocks/base/loop-options.php:708
+#: packages/blocks/base/loop-options.php:715
+msgid "Categories"
+msgstr "分類"
+
+#: admin/options/archives.php:274
+msgid "Categories & Archives"
+msgstr "分類與封存"
+
+#: admin/options/archives.php:159
+msgid "Categories Featured Area"
+msgstr "分類 特色區域"
+
+#: blocks/base/loop-options.php:1559 widgets/widget-tabbed-recent.php:262
+#: admin/options/common-data.php:118 packages/blocks/base/loop-options.php:1559
+msgid "Category"
+msgstr "分類"
+
+#: metaboxes/terms/category-options.php:117
+#: admin/options/listings/cat-labels.php:50 admin/options/posts-global.php:365
+msgid "Category Color"
+msgstr "分類 顏色"
+
+#: admin/options/listings/block-headings.php:159
+msgid "Category color or theme main color will be used by default."
+msgstr "預設使用分類顏色或主題主顏色。"
+
+#: admin/options/archives.php:58
+msgid "Category Custom Layout"
+msgstr "分類自訂佈局"
+
+#: blocks/base/loop-options.php:136 admin/options/listings/common.php:116
+#: packages/blocks/base/loop-options.php:136
+msgid "Category Label Overlay"
+msgstr "分類標籤覆蓋層"
+
+#: admin/options/posts-listings.php:221
+msgid "Category Labels / Overlays"
+msgstr "分類標籤/覆蓋層"
+
+#: smartmag-core.php:463
+msgid "Category Legacy: (Subcats, Featured & Recent)"
+msgstr "分類舊版：（子目錄、精選和最新）"
+
+#: metaboxes/terms/category-options.php:37 admin/options/archives.php:47
+msgid "Category Listing Style"
+msgstr "分類清單樣式"
+
+#: smartmag-core.php:462
+msgid "Category Modern"
+msgstr "分類 現代"
+
+#: blocks/base/loop-options.php:301 admin/options/posts-global.php:99
+#: admin/options/posts-single.php:245 packages/blocks/base/loop-options.php:301
+msgid "Category Style"
+msgstr "分類風格"
+
+#: admin/options/posts-global.php:278
+msgid "Category Typography"
+msgstr "分類文字風格"
+
+#: blocks/loops/posts-list/options.php:87 blocks/social-icons/options.php:83
+#: packages/blocks/loops/posts-list/options.php:87
+#: packages/blocks/social-icons/options.php:83
+msgid "Center"
+msgstr "中心"
+
+#: widgets/widget-about.php:234
+msgid "Center Align Content"
+msgstr "居中對齊內容"
+
+#: blocks/heading/options.php:110 blocks/loops/feat-grid/options.php:164
+#: blocks/newsletter/options.php:182 admin/options/common-data.php:172
+#: packages/blocks/heading/options.php:110
+#: packages/blocks/loops/feat-grid/options.php:164
+#: packages/blocks/newsletter/options.php:182
+msgid "Centered"
+msgstr "居中"
+
+#: blocks/base/loop-options.php:1155
+#: admin/options/listings/block-headings.php:23
+#: packages/blocks/base/loop-options.php:1155
+msgid "Centered (Filters Not Supported)"
+msgstr "居中（不支援過濾器）"
+
+#: admin/options/header.php:73
+msgid "Centered (Geeks Empire)"
+msgstr "居中（極客帝國）"
+
+#: admin/options/listings/common.php:73
+msgid "Centered Content"
+msgstr "內容居中"
+
+#: admin/options/colors-fonts.php:169
+msgid ""
+"Changing this affects post title colors globally. See specifics in Single "
+"Post, Posts & Listings etc."
+msgstr "更改此設定會全站影響文章標題的顏色。詳細設定請參考「單一文章」、「文章 & 列表」等部分。"
+
+#: widgets/widget-blocks.php:169
+msgid "Check docs and demo to choose the right style."
+msgstr "檢查文件和演示以選擇正確的樣式。"
+
+#: inc/elementor/extend-container.php:84 inc/elementor/extend-container.php:98
+#: inc/elementor/extend-section.php:98 inc/elementor/extend-section.php:112
+msgid "Check if this column is a sidebar."
+msgstr "檢查此列是否為側邊欄。"
+
+#: inc/elementor/extend-container.php:112 inc/elementor/extend-section.php:126
+msgid "Check if this column is adjacent to a sidebar."
+msgstr "檢查此列是否與側邊欄相鄰。"
+
+#: admin/options/common-data.php:143
+msgid "Circle/Radial Overlay"
+msgstr "圓形/徑向疊加"
+
+#: blocks/loops/grid/options.php:110 packages/blocks/loops/grid/options.php:110
+msgid "Circled"
+msgstr "有圓的"
+
+#: inc/editor.php:80
+msgid "Citation (for quote)"
+msgstr "引文（用於引用）"
+
+#: admin/options/header.php:153
+msgid "Classic 2 (NewsTime)"
+msgstr "經典2（新聞時間）"
+
+#: widgets/widget-social-follow.php:197
+msgid "Classic BG - 1 Column"
+msgstr "經典背景 - 1 欄"
+
+#: widgets/widget-social-follow.php:198
+msgid "Classic BG - 2 Columns"
+msgstr "經典 BG - 2 欄"
+
+#: admin/options/common-data.php:224
+msgid "Classic Large Posts"
+msgstr "經典大貼文"
+
+#: admin/options/header.php:158
+msgid "Clean Light (NewsBoard)"
+msgstr "清潔之光（新聞板）"
+
+#: admin/options.php:146
+msgid ""
+"Clicking the Reset button will revert all settings in the customizer except "
+"for menus, widgets and site identity."
+msgstr "按一下「重設」按鈕將恢復自訂器中除選單、小工具和網站標識之外的所有設定。"
+
+#: inc/studio/views/el-header-preview.php:12 inc/studio/views/el-header.php:14
+msgid "Close"
+msgstr "關閉"
+
+#: admin/options/custom-codes.php:85
+msgid "Code for Phones"
+msgstr "電話代碼"
+
+#: admin/options/custom-codes.php:75
+msgid "Code for Tablets"
+msgstr "平板電腦程式碼"
+
+#: admin/options/custom-codes.php:37
+msgid "Code to add at end of the body in footer."
+msgstr "加到頁尾正文末尾的程式碼。"
+
+#: admin/options/custom-codes.php:28
+msgid ""
+"Code to add in the head tag for AMP version only, when AMP is in "
+"\"transitional\" mode setting."
+msgstr "只有當 AMP 處於「過渡」模式設定時，才在 AMP 版本的 head 標籤中加入程式碼。"
+
+#: admin/options/custom-codes.php:19
+msgid "Code to add in the head tag."
+msgstr "要新增到 head 標籤中的程式碼。"
+
+#: admin/options/listings/grid.php:131
+msgid "Color"
+msgstr "顏色"
+
+#: admin/options/header.php:415 admin/options/header.php:666
+msgid "Color 1 Position"
+msgstr "顏色 1 位置"
+
+#: blocks/base/loop-options.php:83 blocks/newsletter/options.php:145
+#: admin/options/footer.php:99 admin/options/header.php:333
+#: admin/options/header/off-canvas.php:21
+#: packages/blocks/base/loop-options.php:83
+#: packages/blocks/newsletter/options.php:145
+msgid "Color Scheme"
+msgstr "配色方案"
+
+#: admin/options/common-data.php:130
+msgid "Colored Button"
+msgstr "彩色按鈕"
+
+#: admin/options/header.php:183
+msgid "Colored Compact (SmartPost)"
+msgstr "彩色小巧 (SmartPost)"
+
+#: admin/options/header.php:138
+msgid "Colored Dark (GameZone)"
+msgstr "深色（GameZone）"
+
+#: admin/options/header.php:133
+msgid "Colored Light (MagStudio)"
+msgstr "彩色光 (MagStudio)"
+
+#: admin/options/header.php:83
+msgid "Colored Mixed (SocialLife)"
+msgstr "彩色混合（社交生活）"
+
+#: admin/options/header.php:108
+msgid "Colorful (CityBuzz)"
+msgstr "色彩繽紛（CityBuzz）"
+
+#: blocks/newsletter/options.php:381 admin/options/colors-fonts.php:529
+#: packages/blocks/newsletter/options.php:381
+msgid "Colors & Typography"
+msgstr "色彩和文字風格"
+
+#: admin/options/header.php:193
+msgid "Colorul Mixed (EverydayNews)"
+msgstr "多彩混合（日常新聞）"
+
+#: blocks/base/loop-options.php:782 packages/blocks/base/loop-options.php:782
+msgid "Column Gap"
+msgstr "柱間隙"
+
+#: blocks/base/loop-options.php:795 packages/blocks/base/loop-options.php:795
+msgid "Column Gap Custom"
+msgstr "柱間隙定制"
+
+#: inc/elementor/extend-container.php:138 inc/elementor/extend-section.php:152
+msgid "Column Order"
+msgstr "列順序"
+
+#: blocks/base/loop-options.php:109 packages/blocks/base/loop-options.php:109
+msgid "Columns"
+msgstr "列"
+
+#: admin/options/posts-single.php:1446
+msgid "Columns for Full Width"
+msgstr "全寬的列數"
+
+#: blocks/base/loop-options.php:1562 widgets/widget-popular-posts.php:77
+#: admin/options/common-data.php:122 packages/blocks/base/loop-options.php:1562
+msgid "Comments"
+msgstr "評論"
+
+#: admin/options/posts-single.php:337
+msgid "Comments Area"
+msgstr "評論區"
+
+#: blocks/base/loop-options.php:397 packages/blocks/base/loop-options.php:397
+msgid "Comments Count"
+msgstr "評論數"
+
+#: admin/options/posts-listings.php:215
+msgid "Common Shared Settings"
+msgstr "通用共享設定"
+
+#: admin/options/header.php:188
+msgid "Compact (WorldMag)"
+msgstr "緊湊（世界雜誌）"
+
+#: admin/options/header.php:118
+msgid "Compact Dark (CoinBase)"
+msgstr "緊湊型深色 (CoinBase)"
+
+#: admin/options/header.php:113
+msgid "Compact Light (ProMag)"
+msgstr "緊湊型光源 (ProMag)"
+
+#: admin/options/header.php:143
+msgid "Complex Light (Health)"
+msgstr "複合光（健康）"
+
+#: inc/reviews/metabox/form.php:160
+msgid "Con"
+msgstr "缺點"
+
+#: widgets/widget-about.php:265 widgets/widget-social-follow.php:238
+msgid "Configure URLs from Customize > General Settings > Social Media Links."
+msgstr "從「自訂」>「常規設定」>「社群媒體連結」設定 URL。"
+
+#: widgets/widget-blocks.php:141
+msgid ""
+"Configures posts to show for each listing. Leave empty to use theme default "
+"number of posts."
+msgstr "配置為每個清單顯示的貼文。留空以使用主題預設貼文數。"
+
+#: inc/reviews/metabox/form.php:100
+msgid "Cons"
+msgstr "優點"
+
+#: admin/options/archives.php:215
+msgid "Container"
+msgstr "容器"
+
+#: blocks/loops/feat-grid/options.php:44
+#: packages/blocks/loops/feat-grid/options.php:44
+msgid "Container / Boxed"
+msgstr "容器 / 盒狀"
+
+#: blocks/base/loop-options.php:334 packages/blocks/base/loop-options.php:334
+msgid "Container Width"
+msgstr "容器寬度"
+
+#: blocks/base/loop-options.php:966 packages/blocks/base/loop-options.php:966
+msgid "Content Background"
+msgstr "內容背景"
+
+#: blocks/base/loop-options.php:949 packages/blocks/base/loop-options.php:949
+msgid "Content Border"
+msgstr "內容邊框"
+
+#: blocks/base/loop-options.php:199 packages/blocks/base/loop-options.php:199
+msgid "Content Centered"
+msgstr "以內容為中心"
+
+#: blocks/base/loop-options.php:938 packages/blocks/base/loop-options.php:938
+msgid "Content Margins"
+msgstr "內容邊距"
+
+#: blocks/newsletter/options.php:201 admin/options/newsletter.php:155
+#: admin/options/posts-single.php:1541 admin/options/posts-single.php:1650
+#: packages/blocks/newsletter/options.php:201
+msgid "Content Max Width"
+msgstr "內容最大寬度"
+
+#: blocks/base/loop-options.php:926 admin/options/listings/common.php:95
+#: packages/blocks/base/loop-options.php:926
+msgid "Content Paddings"
+msgstr "內容填充"
+
+#: blocks/base/loop-options.php:958 packages/blocks/base/loop-options.php:958
+msgid "Content Shadow"
+msgstr "內容陰影"
+
+#: blocks/base/loop-options.php:87 packages/blocks/base/loop-options.php:87
+msgid "Contrast (For Dark Background)"
+msgstr "對比（深色背景）"
+
+#: admin/options/common-data.php:108
+msgid "Copy Link"
+msgstr "複製連結"
+
+#: admin/options/footer.php:126
+msgid "Copyright Message"
+msgstr "版權資訊"
+
+#: admin/options.php:88
+msgid "Core Layouts"
+msgstr "核心佈局"
+
+#: admin/options/misc.php:49
+msgid "Creates a fade-in effect for images as the user scrolls down."
+msgstr "當使用者向下捲動時，為影像建立淡入效果。"
+
+#: inc/reviews/metabox/form.php:64
+msgid "Criteria"
+msgstr "標準"
+
+#: admin/options/posts-single.php:1823
+msgid "Criteria Labels Typography"
+msgstr "標準標籤文字風格"
+
+#: inc/reviews/metabox/form.php:133
+msgid "Criterion"
+msgstr "標準"
+
+#: admin/options/posts-single.php:52
+msgid "Crop Featured Image"
+msgstr "裁切特色影像"
+
+#: admin/options/posts-single.php:54
+msgid ""
+"Crop featured image for consistent sizing. Does not apply to Cover and "
+"Creative style."
+msgstr "裁剪特色圖像以獲得一致的尺寸。不適用於封面和創意風格。"
+
+#: admin/options/misc.php:190
+msgid "Currently for embedded tweets as they load very large amount of JS."
+msgstr "目前用於嵌入推文，因為它們加載了大量的 JS。"
+
+#: blocks/base/loop-options.php:374 inc/elementor/section-options.php:37
+#: inc/widgets/block-widget.php:97 admin/options/common-data.php:156
+#: packages/blocks/base/loop-options.php:374
+msgid "Custom"
+msgstr "風俗"
+
+#: admin/options/footer.php:161
+msgid "Custom (Advanced)"
+msgstr "自訂（進階）"
+
+#: blocks/social-icons/options.php:175
+#: packages/blocks/social-icons/options.php:175
+msgid "Custom Background"
+msgstr "自訂背景"
+
+#: blocks/social-icons/options.php:147
+#: packages/blocks/social-icons/options.php:147
+msgid "Custom Colors"
+msgstr "客製化顏色"
+
+#: admin/options/listings/grid.php:47
+msgid "Custom Column Gap"
+msgstr "自訂柱間隙"
+
+#: admin/options/footer.php:88
+msgid "Custom Footer: Archives"
+msgstr "自訂頁尾：檔案"
+
+#: admin/options/footer.php:58
+msgid "Custom Footer: Homepage"
+msgstr "自訂頁尾：首頁"
+
+#: admin/options/footer.php:78
+msgid "Custom Footer: Pages"
+msgstr "自訂頁尾：頁面"
+
+#: admin/options/footer.php:68
+msgid "Custom Footer: Single Posts"
+msgstr "自訂頁尾：單一文章"
+
+#: admin/options/layout-main.php:8
+msgid "Custom Layout Width/Space"
+msgstr "自訂佈局寬度/空間"
+
+#: metaboxes/terms/category-options.php:23
+msgid "Custom Listing Layout"
+msgstr "自訂清單佈局"
+
+#: admin/options/archives.php:89
+msgid "Custom Post Types Layout"
+msgstr "自訂貼文類型佈局"
+
+#: metaboxes/terms/category-options.php:109
+msgid "Custom Posts Per Page"
+msgstr "每頁自訂帖子"
+
+#: admin/options/listings/common.php:44 admin/options/posts-single.php:100
+msgid "Custom Ratio"
+msgstr "客製化比例"
+
+#: admin/options/listings/list.php:50
+msgid "Custom Row Gap"
+msgstr "自訂行間隙"
+
+#: admin/options/posts-global.php:427
+msgid "Custom Separator"
+msgstr "客製化分隔符"
+
+#: blocks/base/loop-options.php:1578 packages/blocks/base/loop-options.php:1578
+msgid "Custom Slides"
+msgstr "客製化幻燈片"
+
+#: admin/options/header/text.php:57
+msgid "Custom Width"
+msgstr "客製化寬度"
+
+#: admin/options/layout-main.php:124
+msgid "Custom Width: Percent"
+msgstr "自訂寬度：百分比"
+
+#: admin/options/layout-main.php:125
+msgid "Custom Width: Pixels"
+msgstr "自訂寬度：像素"
+
+#: admin/options/header.php:241
+msgid "Custom Wrap Width"
+msgstr "客製化包裹寬度"
+
+#: admin/options/posts-single.php:749
+msgid "D: Squares BG Color"
+msgstr "D：方塊背景顏色"
+
+#: admin/options/common-data.php:199
+msgid "D: Trendy Box"
+msgstr "D：時尚盒子"
+
+#: admin/options/footer.php:104 admin/options/header.php:339
+#: admin/options/header/off-canvas.php:27 admin/options/header/search.php:14
+msgid "Dark"
+msgstr "深色"
+
+#: blocks/newsletter/options.php:149 packages/blocks/newsletter/options.php:149
+msgid "Dark / Contrast"
+msgstr "深色/對比色"
+
+#: admin/options/colors-fonts.php:37
+msgid "Dark Mode"
+msgstr "深色模式"
+
+#: admin/options/logos.php:44
+msgid "Dark Mode Logos"
+msgstr "深色模式徽標"
+
+#: inc/elementor/extend-section.php:184 inc/elementor/extend-widgets.php:43
+#: inc/elementor/extend-widgets.php:111
+msgid "Dark Mode: Background"
+msgstr "深色模式：背景"
+
+#: inc/elementor/extend-section.php:214 inc/elementor/extend-widgets.php:73
+#: inc/elementor/extend-widgets.php:141
+msgid "Dark Mode: Border"
+msgstr "深色模式：邊框"
+
+#: admin/options/common-data.php:15
+msgid "Dark Switcher"
+msgstr "深色切換器"
+
+#: blocks/base/loop-options.php:771 packages/blocks/base/loop-options.php:771
+msgid "Dark: Accent / Main Color"
+msgstr "深色：強調色/主色"
+
+#: blocks/base/loop-options.php:1253 blocks/heading/options.php:207
+#: admin/options/footer.php:302 admin/options/listings/block-headings.php:87
+#: packages/blocks/base/loop-options.php:1253
+#: packages/blocks/heading/options.php:207
+msgid "Dark: Accent Line Color"
+msgstr "深色：強調線顏色"
+
+#: admin/options/posts-global.php:353
+msgid "Dark: Author Color"
+msgstr "深色：作者顏色"
+
+#: blocks/base/loop-options.php:975 admin/options/posts-single.php:1210
+#: packages/blocks/base/loop-options.php:975
+msgid "Dark: Background"
+msgstr "深色：背景"
+
+#: blocks/newsletter/options.php:308 admin/options/custom-codes.php:151
+#: admin/options/footer.php:371 admin/options/footer.php:560
+#: admin/options/header.php:458 admin/options/header/buttons.php:129
+#: admin/options/header/off-canvas.php:82 admin/options/newsletter.php:239
+#: packages/blocks/newsletter/options.php:308
+msgid "Dark: Background Color"
+msgstr "深色：背景顏色"
+
+#: admin/options/header.php:565
+msgid "Dark: Border Bottom"
+msgstr "深色：邊框底部"
+
+#: admin/options/footer.php:329 admin/options/header/buttons.php:154
+#: admin/options/listings/block-headings.php:123
+#: admin/options/newsletter.php:216
+msgid "Dark: Border Color"
+msgstr "深色：邊框顏色"
+
+#: blocks/base/loop-options.php:1284 blocks/heading/options.php:238
+#: packages/blocks/base/loop-options.php:1284
+#: packages/blocks/heading/options.php:238
+msgid "Dark: Border Line Color"
+msgstr "深色：邊框線顏色"
+
+#: admin/options/header.php:520
+msgid "Dark: Border Top"
+msgstr "深色：邊框上衣"
+
+#: blocks/base/loop-options.php:905 packages/blocks/base/loop-options.php:905
+msgid "Dark: Box Background"
+msgstr "深色：框背景"
+
+#: blocks/base/loop-options.php:1436 admin/options/listings/load-more.php:67
+#: admin/options/listings/read-more.php:74
+#: packages/blocks/base/loop-options.php:1436
+msgid "Dark: Button Background"
+msgstr "深色：按鈕背景"
+
+#: admin/options/posts-global.php:377
+msgid "Dark: Category Color"
+msgstr "深色：分類顏色"
+
+#: inc/elementor/controls/groups/border.php:46
+#: inc/elementor/extend-widgets.php:293 inc/elementor/extend-widgets.php:321
+#: inc/elementor/extend-widgets.php:337 inc/elementor/extend-widgets.php:354
+#: inc/elementor/widgets/links-list.php:320
+#: inc/elementor/widgets/links-list.php:355 admin/options/listings/grid.php:145
+msgid "Dark: Color"
+msgstr "深色：顏色"
+
+#: blocks/social-icons/options.php:183
+#: packages/blocks/social-icons/options.php:183
+msgid "Dark: Custom BG"
+msgstr "深色：自訂 BG"
+
+#: blocks/social-icons/options.php:156
+#: packages/blocks/social-icons/options.php:156
+msgid "Dark: Custom Colors"
+msgstr "深色：自訂顏色"
+
+#: admin/options/posts-listings.php:131
+msgid "Dark: Excerpts Color"
+msgstr "深色：摘錄顏色"
+
+#: blocks/base/loop-options.php:1192 blocks/heading/options.php:127
+#: packages/blocks/base/loop-options.php:1192
+#: packages/blocks/heading/options.php:127
+msgid "Dark: Heading Accent"
+msgstr "深色：標題重音"
+
+#: admin/options/listings/block-headings.php:147
+msgid "Dark: Heading BG"
+msgstr "深色：標題 BG"
+
+#: blocks/base/loop-options.php:1214 blocks/heading/options.php:168
+#: blocks/newsletter/options.php:254 admin/options/footer.php:221
+#: admin/options/listings/block-headings.php:169
+#: admin/options/newsletter.php:101 packages/blocks/base/loop-options.php:1214
+#: packages/blocks/heading/options.php:168
+#: packages/blocks/newsletter/options.php:254
+msgid "Dark: Heading Color"
+msgstr "深色：標題顏色"
+
+#: admin/options/colors-fonts.php:155 admin/options/posts-single.php:516
+msgid "Dark: Headings Color"
+msgstr "深色：標題顏色"
+
+#: blocks/base/loop-options.php:1136 packages/blocks/base/loop-options.php:1136
+msgid "Dark: Hover Color"
+msgstr "深色：懸停顏色"
+
+#: admin/options/header/cart.php:49 admin/options/header/hamburger.php:50
+#: admin/options/header/search.php:108 admin/options/header/switcher.php:39
+msgid "Dark: Icon Color"
+msgstr "深色：圖示顏色"
+
+#: admin/options/header/hamburger.php:79 admin/options/header/search.php:134
+#: admin/options/header/switcher.php:68
+msgid "Dark: Icon Hover"
+msgstr "深色：圖示懸停"
+
+#: admin/options/posts-single.php:928
+msgid "Dark: Icons Background"
+msgstr "深色：圖示背景"
+
+#: admin/options/header/social.php:75 admin/options/posts-global.php:416
+#: admin/options/posts-single.php:874
+msgid "Dark: Icons Color"
+msgstr "深色：圖示顏色"
+
+#: admin/options/header/social.php:89 admin/options/posts-single.php:901
+msgid "Dark: Icons Hover"
+msgstr "深色：圖示懸停"
+
+#: admin/options/posts-global.php:329
+msgid "Dark: Items Color"
+msgstr "深色：物品顏色"
+
+#: admin/options/header/auth.php:75
+msgid "Dark: Link Color"
+msgstr "深色：連結顏色"
+
+#: admin/options/footer.php:421 admin/options/footer.php:614
+#: admin/options/header/nav-small.php:135 admin/options/layout-main.php:563
+#: admin/options/posts-single.php:561
+msgid "Dark: Links Color"
+msgstr "深色：連結顏色"
+
+#: admin/options/colors-fonts.php:69
+msgid "Dark: Main Color"
+msgstr "深色：主色"
+
+#: admin/options/colors-fonts.php:126
+msgid "Dark: Main Text Color"
+msgstr "深色：主要文字顏色"
+
+#: admin/options/posts-single.php:1529 admin/options/posts-single.php:1638
+msgid "Dark: Meta Color"
+msgstr "深色：元資料顏色"
+
+#: admin/options/header/search.php:33
+msgid "Dark: Modal BG Color"
+msgstr "深色：Modal 背景色"
+
+#: admin/options/header/navigation.php:182
+msgid "Dark: Navigation Colors "
+msgstr "深色：導覽列顏色"
+
+#: admin/options/colors-fonts.php:180
+msgid "Dark: Post Titles Color"
+msgstr "深色：文章標題顏色"
+
+#: admin/options/posts-listings.php:169
+msgid "Dark: Post Titles Hover"
+msgstr "深色：文章標題懸停"
+
+#: admin/options/colors-fonts.php:97
+msgid "Dark: Site Background"
+msgstr "深色：網站背景"
+
+#: blocks/base/loop-options.php:1416 inc/elementor/extend-widgets.php:267
+#: admin/options/footer.php:396 admin/options/footer.php:586
+#: admin/options/header/buttons.php:104 admin/options/header/text.php:92
+#: admin/options/layout-main.php:588 admin/options/listings/load-more.php:44
+#: admin/options/listings/read-more.php:53 admin/options/newsletter.php:63
+#: admin/options/posts-single.php:491
+#: packages/blocks/base/loop-options.php:1416
+msgid "Dark: Text Color"
+msgstr "深色：文字顏色"
+
+#: blocks/base/loop-options.php:1117 packages/blocks/base/loop-options.php:1117
+msgid "Dark: Titles Color"
+msgstr "深色：標題顏色"
+
+#: admin/options/header/nav-small.php:153
+msgid "Dark: Top-level Hover"
+msgstr "深色：頂級懸停"
+
+#: blocks/base/loop-options.php:1561 widgets/widget-latest-reviews.php:74
+#: admin/options/common-data.php:8 admin/options/common-data.php:120
+#: packages/blocks/base/loop-options.php:1561
+msgid "Date"
+msgstr "日期"
+
+#: admin/options/header/date.php:8
+msgid "Date Format"
+msgstr "日期格式"
+
+#: blocks/base/loop-options.php:86 blocks/base/loop-options.php:125
+#: blocks/base/loop-options.php:648 blocks/base/loop-options.php:785
+#: blocks/heading/options.php:45 blocks/loops/posts-list/options.php:86
+#: inc/elementor/page-settings.php:25 metaboxes/options/page.php:12
+#: metaboxes/options/page.php:23 metaboxes/options/page.php:36
+#: metaboxes/options/post.php:23 metaboxes/options/post.php:45
+#: admin/options.php:66 admin/options/common-data.php:27
+#: admin/options/common-data.php:148 admin/options/header.php:28
+#: admin/options/layout-main.php:123 admin/options/posts-single.php:15
+#: packages/blocks/base/loop-options.php:86
+#: packages/blocks/base/loop-options.php:125
+#: packages/blocks/base/loop-options.php:648
+#: packages/blocks/base/loop-options.php:785
+#: packages/blocks/heading/options.php:45
+#: packages/blocks/loops/posts-list/options.php:86
+msgid "Default"
+msgstr "預設"
+
+#: blocks/loops/grid/options.php:64 packages/blocks/loops/grid/options.php:64
+msgid "Default (Above)"
+msgstr "預設（上）"
+
+#: metaboxes/options/post.php:34
+msgid "Default (from Customizer)"
+msgstr "預設（來自定制器）"
+
+#: admin/options/posts-single.php:970
+msgid "Default / All"
+msgstr "預設/全部"
+
+#: blocks/base/loop-options.php:1781 packages/blocks/base/loop-options.php:1781
+msgid "Default / Auto"
+msgstr "預設/自動"
+
+#: admin/options/posts-single.php:7
+msgid "Default / Background Colors"
+msgstr "預設/背景顏色"
+
+#: admin/options/footer.php:31
+msgid "Default / Classic"
+msgstr "預設/經典"
+
+#: metaboxes/terms/category-options.php:27
+msgid "Default / Customizer Setting"
+msgstr "預設/自訂設定"
+
+#: blocks/base/loop-options.php:162 blocks/base/loop-options.php:180
+#: blocks/base/loop-options.php:857 blocks/base/loop-options.php:1391
+#: metaboxes/terms/category-options.php:102 admin/options/layout-pages.php:22
+#: admin/options/posts-single.php:44 packages/blocks/base/loop-options.php:162
+#: packages/blocks/base/loop-options.php:180
+#: packages/blocks/base/loop-options.php:857
+#: packages/blocks/base/loop-options.php:1391
+msgid "Default / Global"
+msgstr "預設/全站"
+
+#: metaboxes/terms/category-options.php:41
+msgid "Default / Global Style"
+msgstr "預設/全站樣式"
+
+#: blocks/base/loop-options.php:1154 blocks/heading/options.php:109
+#: admin/options/listings/block-headings.php:22
+#: packages/blocks/base/loop-options.php:1154
+#: packages/blocks/heading/options.php:109
+msgid "Default / Left"
+msgstr "預設/左"
+
+#: blocks/newsletter/options.php:148 admin/options/colors-fonts.php:36
+#: packages/blocks/newsletter/options.php:148
+msgid "Default / Light"
+msgstr "預設/淺色"
+
+#: admin/options/common-data.php:254
+msgid "Default / Modern"
+msgstr "預設/現代"
+
+#: admin/options/posts-global.php:100
+msgid "Default category style. Note: This is not the category overlay."
+msgstr "預設分類樣式。注意：這不是分類疊加層。"
+
+#: admin/options/listings/block-headings.php:220
+msgid "Default Heading Style"
+msgstr "預設標題樣式"
+
+#: admin/options/layout-pages.php:18 admin/options/posts-single.php:40
+msgid ""
+"Default is from Main Layout settings. This setting can also be changed per "
+"post or page."
+msgstr "預設值來自主佈局設定。此設定也可以根據帖子或頁面進行更改。"
+
+#: admin/options/posts-single.php:22
+msgid "Default Post Style"
+msgstr "預設貼文樣式"
+
+#: admin/options/layout-main.php:179
+msgid "Default Sidebar"
+msgstr "預設側邊欄"
+
+#: inc/elementor/extend-section.php:275
+msgid "Default Spacing"
+msgstr "預設間距"
+
+#: admin/options/posts-listings.php:58
+msgid "Default text used on read more buttons and links."
+msgstr "用於閱讀更多按鈕和連結的預設文字。"
+
+#: metaboxes/options/page.php:9 metaboxes/options/post.php:20
+msgid ""
+"Default uses the site-wide general layout setting set in Appearance > "
+"Customize."
+msgstr "預設使用「外觀」>「自訂」中設定的網站範圍常規佈局設定。"
+
+#: blocks/base/loop-options.php:275 packages/blocks/base/loop-options.php:275
+msgid "Default/Global Meta Items"
+msgstr "預設/全站元資料項目"
+
+#: admin/options/header/hamburger.php:32
+msgid "Default: Varied Lines"
+msgstr "預設值：變化的線條"
+
+#: blocks/base/loop-options.php:432 packages/blocks/base/loop-options.php:432
+msgid "Descending / Latest First"
+msgstr "降序/最新的在前"
+
+#: admin/options/posts-listings.php:86
+msgid "Design: General"
+msgstr "設計：一般"
+
+#: admin/options/posts-single.php:1739
+msgid "Design: Post / Page"
+msgstr "設計：文章/頁面"
+
+#. Description of the theme
+msgid "Designed by <a href=\"https://theme-sphere.com\">ThemeSphere</a>"
+msgstr "由<a href=\"https://theme-sphere.com\">ThemeSphere</a>設計"
+
+#: admin/options/posts-single.php:971
+msgid "Desktop"
+msgstr "桌面"
+
+#: admin/options/header/off-canvas.php:42
+msgid "Desktops: Show Menu"
+msgstr "桌上型電腦：顯示選單"
+
+#: blocks/base/loop-options.php:606 packages/blocks/base/loop-options.php:606
+msgid "Devs: Query ID"
+msgstr "開發人員：查詢 ID"
+
+#: admin/options/footer.php:49
+msgid "Different Custom Layouts"
+msgstr "不同的自訂佈局"
+
+#: admin/options/custom-codes.php:66
+msgid "Different For Phones / Tablets"
+msgstr "手機/平板電腦不同"
+
+#: admin/options/misc.php:196
+msgid "Disable BG Image Method"
+msgstr "停用背景圖片方式"
+
+#: admin/options/misc.php:218
+msgid "Disable Elementor Assets"
+msgstr "禁用 Elementor 資產"
+
+#: metaboxes/options/post.php:66
+msgid "Disable Featured?"
+msgstr "禁用精選？"
+
+#: admin/options/posts-global.php:469
+msgid "Disable Separators"
+msgstr "禁用分隔符"
+
+#: admin/options/posts-single.php:308
+msgid ""
+"Disable to stop displaying the featured media in large posts. Can also be "
+"set per post while adding/edit a post."
+msgstr "停用以停止在大貼文中顯示特色媒體。也可以在新增/編輯貼文時針對每個貼文進行設定。"
+
+#: blocks/base/loop-options.php:141 blocks/base/loop-options.php:635
+#: blocks/base/loop-options.php:859 blocks/base/loop-options.php:1608
+#: blocks/loops/grid/options.php:107 blocks/social-icons/options.php:52
+#: inc/elementor/extend-container.php:70 inc/elementor/extend-section.php:84
+#: metaboxes/options/post.php:90 metaboxes/terms/category-options.php:64
+#: smartmag-core.php:461 admin/options/archives.php:181
+#: admin/options/common-data.php:128 admin/options/common-data.php:141
+#: admin/options/header.php:747 admin/options/header.php:827
+#: admin/options/listings/common.php:123
+#: packages/blocks/base/loop-options.php:141
+#: packages/blocks/base/loop-options.php:635
+#: packages/blocks/base/loop-options.php:859
+#: packages/blocks/base/loop-options.php:1608
+#: packages/blocks/loops/grid/options.php:107
+#: packages/blocks/social-icons/options.php:52
+msgid "Disabled"
+msgstr "已停用"
+
+#: blocks/newsletter/options.php:81 packages/blocks/newsletter/options.php:81
+msgid "Disclaimer"
+msgstr "免責聲明"
+
+#: blocks/newsletter/options.php:88 packages/blocks/newsletter/options.php:88
+msgid "Disclaimer Checkbox"
+msgstr "免責聲明複選框"
+
+#: blocks/newsletter/options.php:275 admin/options/newsletter.php:127
+#: packages/blocks/newsletter/options.php:275
+msgid "Disclaimer Typography"
+msgstr "免責聲明文字風格"
+
+#: admin/options/common-data.php:63
+msgid "Discord"
+msgstr "Discord"
+
+#: widgets/widget-flickr.php:9
+msgid "Display latest photos from flickr."
+msgstr "顯示 flickr 中的最新照片。"
+
+#: inc/reviews/metabox/options.php:15
+msgid "Display Position"
+msgstr "顯示位置"
+
+#: inc/reviews/metabox/options.php:19
+msgid "Do not display - Disabled"
+msgstr "不顯示 - 已停用"
+
+#: metaboxes/options/post.php:67
+msgid ""
+"Do not show featured Image, Video, or Gallery at the top for this post, on "
+"post page."
+msgstr "不要在貼文頁面的頂部顯示此貼文的特色圖像、影片或圖庫。"
+
+#: admin/options/posts-single.php:505
+msgid "Does not affect post/page title. Only the h1-h6 within post body."
+msgstr "不影響貼文/頁面標題。僅帖子正文內的 h1-h6。"
+
+#: admin/options/posts-single.php:246
+msgid "Does not apply to Classic or Cover post style."
+msgstr "不適用於經典或封面貼文樣式。"
+
+#: widgets/widget-about.php:249 widgets/widget-social-follow.php:217
+msgid "Drag and drop to re-order."
+msgstr "拖放以重新排序。"
+
+#: widgets/widget-about.php:169 admin/options/common-data.php:56
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: smartmag-core.php:485
+msgid "Dribble URL"
+msgstr "Dribbble 網址"
+
+#: admin/options/header.php:253
+msgid "Drop Shadow Color"
+msgstr "陰影顏色"
+
+#: admin/options/header/navigation.php:250
+msgid "Dropdown Background"
+msgstr "下拉背景"
+
+#: admin/options/header/navigation.php:261
+msgid "Dropdown Hover/Active BG"
+msgstr "下拉懸停/活動背景"
+
+#: admin/options/header/navigation.php:272
+msgid "Dropdown Links"
+msgstr "下拉連結"
+
+#: admin/options/header/navigation.php:281
+msgid "Dropdown Links Hover/Active"
+msgstr "下拉連結懸停/活動"
+
+#: admin/options/header/nav-small.php:69 admin/options/header/navigation.php:56
+msgid "Dropdown Typography"
+msgstr "下拉選單文字風格"
+
+#: admin/options/common-data.php:201 admin/options/footer.php:198
+msgid "E2: Line on Right 2"
+msgstr "E2：右側線 2"
+
+#: admin/options/common-data.php:202 admin/options/footer.php:199
+msgid "E3: Double Line on Right"
+msgstr "E3：右側雙線"
+
+#: admin/options/common-data.php:200 admin/options/footer.php:197
+msgid "E: Line on Right"
+msgstr "E：右側線"
+
+#: admin/options/posts-single.php:750
+msgid "E: Squares Light / Monochrome"
+msgstr "E：方形淺色/單色"
+
+#: blocks/base/loop-options.php:385 packages/blocks/base/loop-options.php:385
+msgid ""
+"Edit the nearest/direct parent section and configure under the Section Query."
+msgstr "編輯最近/直接父級部分並在部分查詢下進行配置。"
+
+#: admin/options/header.php:1017
+msgid "Element: Cart Icon"
+msgstr "元素：購物車圖標"
+
+#: admin/options/header.php:992
+msgid "Element: Dark Switcher"
+msgstr "元素：深色切換器"
+
+#: admin/options/header.php:1012
+msgid "Element: Date"
+msgstr "元素：日期"
+
+#: admin/options/header.php:997
+msgid "Element: Hamburger Icon"
+msgstr "元素: 漢堡圖示"
+
+#: admin/options/header.php:1022
+msgid "Element: Login/Auth"
+msgstr "元素：登入/身份驗證"
+
+#: admin/options/header.php:982
+msgid "Element: Logo"
+msgstr "元素: 標誌"
+
+#: admin/options/header.php:1007
+msgid "Element: News Ticker"
+msgstr "元素：新聞行情"
+
+#: admin/options/header.php:987
+msgid "Element: Search"
+msgstr "元素：搜尋"
+
+#: admin/options/header.php:972
+msgid "Element: Secondary Nav"
+msgstr "元素：輔助導航"
+
+#: admin/options/header.php:977
+msgid "Element: Social Icons"
+msgstr "元素：社群圖示"
+
+#. Description of the plugin
+msgid "Elements and core functionality for SmartMag Theme."
+msgstr "SmartMag 主題的元素和核心功能。"
+
+#: admin/options/posts-single.php:576
+msgid "Elements Base Gap"
+msgstr "元素基礎間隙"
+
+#: admin/options/header.php:300
+msgid "Elements Center"
+msgstr "元素中心"
+
+#: admin/options/header.php:284
+msgid "Elements Left"
+msgstr "左元素"
+
+#: admin/options/header.php:316
+msgid "Elements Right"
+msgstr "右元素"
+
+#: admin/options/header.php:1002
+msgid "Elements: Buttons"
+msgstr "元素：按鈕"
+
+#: admin/options/header.php:1027
+msgid "Elements: Text/HTML"
+msgstr "元素：文字/HTML"
+
+#: admin/options/common-data.php:107
+msgid "Email"
+msgstr "電子郵件"
+
+#: admin/options/posts-single.php:149
+msgid "Enable Article Schema"
+msgstr "啟用文章架構"
+
+#: admin/options/layout-main.php:383
+msgid "Enable Breadcrumbs"
+msgstr "啟用麵包屑導航"
+
+#: blocks/base/loop-options.php:1571 packages/blocks/base/loop-options.php:1571
+msgid "Enable Carousel"
+msgstr "啟用輪播"
+
+#: admin/options/posts-single.php:344
+msgid "Enable Comments Area"
+msgstr "啟用評論區"
+
+#: admin/options/misc.php:104
+msgid "Enable Legacy Mode"
+msgstr "啟用傳統模式"
+
+#: admin/options/misc.php:63
+msgid "Enable Lightbox for Images"
+msgstr "啟用圖像燈箱"
+
+#: admin/options/header/search.php:46
+msgid "Enable Live Search"
+msgstr "啟用即時搜尋"
+
+#: admin/options/footer.php:493
+msgid "Enable Lower Footer"
+msgstr "啟用下頁尾"
+
+#: admin/options/misc.php:32
+msgid "Enable One-Click Updates"
+msgstr "啟用一鍵更新"
+
+#: admin/options/misc.php:82
+msgid ""
+"Enable our special changes for the AMP plugin. Note: Only works when the "
+"\"Bunyad AMP\" plugin is active."
+msgstr "啟用我們對 AMP 插件的特殊變更。注意：僅當「Bunyad AMP」外掛程式處於活動狀態時才有效。"
+
+#: admin/options/listings/cat-labels.php:8
+msgid "Enable Overlay Labels"
+msgstr "啟用疊加標籤"
+
+#: admin/options/posts-global.php:185
+msgid "Enable Ranks"
+msgstr "啟用排名"
+
+#: admin/options/posts-single.php:1768
+msgid "Enable Review Schema"
+msgstr "啟用審核架構"
+
+#: inc/reviews/metabox/options.php:8
+msgid "Enable Review?"
+msgstr "啟用審核？"
+
+#: blocks/loops/feat-grid/options.php:51 admin/options/archives.php:200
+#: packages/blocks/loops/feat-grid/options.php:51
+msgid "Enable Slider"
+msgstr "啟用滑桿"
+
+#: admin/options/posts-single.php:707
+msgid "Enable Sticky Social Buttons"
+msgstr "啟用吸附式社交按鈕"
+
+#: metaboxes/options/post.php:42 admin/options/posts-single.php:32
+msgid ""
+"Enable to add extra left/right spacing to text to create a dynamic spacious "
+"feel. Especially great when used with Full Width."
+msgstr "能夠為文字添加額外的左/右間距，以營造動態寬敞的感覺。與全寬一起使用時尤其有用。"
+
+#: metaboxes/options/page.php:33
+msgid ""
+"Enable to add extra left/right spacing to text to create a dynamic spacious "
+"feel. Especially great when used with Full Width. Only works with default "
+"and some other page templates."
+msgstr "能夠為文字添加額外的左/右間距，以營造動態寬敞的感覺。與全寬一起使用時尤其有用。僅適用於預設和一些其他頁面模板。"
+
+#: admin/options/misc.php:33
+msgid ""
+"Enable to be notified of new updates in your WordPress admin panel with one-"
+"click update. REQUIRED: Activated theme license."
+msgstr "透過一鍵更新，可以在 WordPress 管理面板中收到新更新通知。必需：已啟動的主題許可證。"
+
+#: admin/options/layout-pages.php:44
+msgid ""
+"Enable to display posts only once across the home blocks - same posts will "
+"not show again in another block. Note: Does not work with AJAX - use offset "
+"feature in blocks instead."
+msgstr "啟用在主頁區塊中僅顯示一次貼文 - 相同的貼文不會在另一個區塊中再次顯示。注意：不適用於 AJAX - 請使用區塊中的偏移功能。"
+
+#: admin/options/footer.php:141
+msgid "Enable Upper Footer"
+msgstr "啟用上頁尾"
+
+#: admin/options/posts-single.php:1760
+msgid "Enable Users Ratings"
+msgstr "啟用用戶評分"
+
+#: admin/options/misc.php:96
+msgid "Enable Widgets Block Editor"
+msgstr "啟用小工具塊編輯器"
+
+#: blocks/base/loop-options.php:140 blocks/base/loop-options.php:858
+#: admin/options/listings/common.php:122
+#: packages/blocks/base/loop-options.php:140
+#: packages/blocks/base/loop-options.php:858
+msgid "Enabled"
+msgstr "啟用"
+
+#: admin/options/misc.php:41
+msgid "Enabling this feature will exclude pages from WordPress search."
+msgstr "啟用此功能將從 WordPress 搜尋中排除頁面。"
+
+#: admin/options/posts-single.php:325
+msgid ""
+"Enabling this will add a Previous and Next post link in the single post page."
+msgstr "啟用此功能將在單一貼文頁面中新增上一篇和下一篇文章連結。"
+
+#: admin/options/posts-single.php:1406
+msgid ""
+"Enabling this will allow you to use YARPP (Yet Another Related Posts Plugin) "
+"with theme styling."
+msgstr "啟用此選項將允許您使用帶有主題樣式的 YARPP（另一個相關貼文外掛程式）。"
+
+#: inc/widgets/block-widget.php:115
+msgid "Enter a tag slug or multiple slugs separated by comma."
+msgstr "輸入一個或多個標籤段，以逗號分隔。"
+
+#: metaboxes/terms/category-options.php:72 admin/options/archives.php:224
+msgid ""
+"Enter a tag slug, or multiple tag slugs separated by comma, to limit posts "
+"from."
+msgstr "輸入一個標籤段或多個以逗號分隔的標籤段，以限制發佈。"
+
+#: metaboxes/options/page.php:118
+msgid "Enter alias of a slider you created in revolution slider plugin."
+msgstr "輸入您在革命滑桿外掛程式中所建立的滑桿的別名。"
+
+#: admin/options/misc.php:20
+msgid ""
+"Enter full URLs to your social media profiles. They will be used anywhere "
+"you use social profiles such as header, sidebar etc."
+msgstr "請輸入您的社交媒體帳號的完整網址。這些網址將在您使用社交媒體帳號的任何地方，例如頁首、側邊欄等位置上使用。"
+
+#: admin/options/common-data.php:243
+msgid "Equals: 1 Column"
+msgstr "等於：1 列"
+
+#: admin/options/common-data.php:244
+msgid "Equals: 2 Column"
+msgstr "等於：2 列"
+
+#: admin/options/common-data.php:245
+msgid "Equals: 3 Columns"
+msgstr "等於：3 列"
+
+#: admin/options/common-data.php:246
+msgid "Equals: 4 Columns"
+msgstr "等於：4 列"
+
+#: admin/options/common-data.php:247
+msgid "Equals: 5 Columns"
+msgstr "等於：5 列"
+
+#: blocks/base/loop-options.php:176 packages/blocks/base/loop-options.php:176
+msgid "Excerpt Limit Lines"
+msgstr "限制線摘錄"
+
+#: blocks/base/loop-options.php:1033 packages/blocks/base/loop-options.php:1033
+msgid "Excerpt Margins"
+msgstr "摘錄邊距"
+
+#: blocks/base/loop-options.php:1045 packages/blocks/base/loop-options.php:1045
+msgid "Excerpt Visibility"
+msgstr "摘錄可見性"
+
+#: blocks/base/loop-options.php:188 admin/options/listings/common.php:17
+#: packages/blocks/base/loop-options.php:188
+msgid "Excerpt Words"
+msgstr "摘錄詞"
+
+#: admin/options/listings/large.php:38
+msgid "Excerpts"
+msgstr "摘錄"
+
+#: admin/options/posts-listings.php:120
+msgid "Excerpts Color"
+msgstr "摘錄顏色"
+
+#: blocks/base/loop-options.php:1060 packages/blocks/base/loop-options.php:1060
+msgid "Excerpts Lines Per Device"
+msgstr "每個設備的摘錄行數"
+
+#: admin/options/posts-listings.php:109
+msgid "Excerpts Top Space"
+msgstr "摘錄 頂部空間"
+
+#: blocks/base/loop-options.php:1025 admin/options/posts-listings.php:142
+#: packages/blocks/base/loop-options.php:1025
+msgid "Excerpts Typography"
+msgstr "摘錄文字風格"
+
+#: blocks/base/loop-options.php:470 packages/blocks/base/loop-options.php:470
+msgid "Exclude Categories"
+msgstr "排除分類"
+
+#: blocks/base/loop-options.php:615 packages/blocks/base/loop-options.php:615
+msgid "Exclude Current Post"
+msgstr "排除當前帖子"
+
+#: blocks/base/loop-options.php:563 packages/blocks/base/loop-options.php:563
+msgid "Exclude Post IDs"
+msgstr "排除帖子 ID"
+
+#: blocks/base/loop-options.php:549 packages/blocks/base/loop-options.php:549
+msgid "Exclude Tags"
+msgstr "排除標籤"
+
+#: admin/options/header.php:163
+msgid "Extra Light (TechDrop)"
+msgstr "額外的光線（TechDrop）"
+
+#: admin/options/posts-global.php:68
+msgid "Extra Text Labels"
+msgstr "額外的文字標籤"
+
+#: admin/options/common-data.php:203
+msgid "F: Accent Above & Border Below"
+msgstr "F：上方重音，下方邊框"
+
+#: widgets/widget-about.php:160 admin/options/common-data.php:50
+#: admin/options/common-data.php:98
+msgid "Facebook"
+msgstr "Facebook"
+
+#: smartmag-core.php:480
+msgid "Facebook URL"
+msgstr "臉書網址"
+
+#: inc/legacy.php:101
+msgid "Fade Animation"
+msgstr "淡入淡出動畫"
+
+#: blocks/newsletter/options.php:193 packages/blocks/newsletter/options.php:193
+msgid "Faded Icon Background"
+msgstr "褪色的圖標背景"
+
+#: metaboxes/terms/category-options.php:57 admin/options/archives.php:176
+msgid "Featured Area"
+msgstr "特色區域"
+
+#: blocks/loops/feat-grid/options.php:22
+#: packages/blocks/loops/feat-grid/options.php:22
+msgid "Featured Area Grids"
+msgstr "特色區域網格"
+
+#: metaboxes/terms/category-options.php:71 admin/options/archives.php:223
+msgid "Featured Filter by Tag(s)"
+msgstr "按標籤精選過濾器"
+
+#: metaboxes/options/page.php:85
+msgid "Featured Grid: 1 + 3"
+msgstr "特色格：1 + 3"
+
+#: metaboxes/options/page.php:84
+msgid "Featured Grid: 1 + 4"
+msgstr "特色格：1 + 4"
+
+#: admin/options/posts-listings.php:23 admin/options/posts-single.php:71
+msgid "Featured Image Roundness"
+msgstr "特色影像圓度"
+
+#: admin/options/posts-single.php:62
+msgid "Featured Image Shadow"
+msgstr "特色影像陰影"
+
+#: admin/options/posts-listings.php:35
+msgid "Featured Image Shadows"
+msgstr "特色影像陰影"
+
+#: metaboxes/terms/category-options.php:90 admin/options/archives.php:232
+msgid "Featured Posts"
+msgstr "精選文章"
+
+#: metaboxes/options/page.php:80 metaboxes/terms/category-options.php:79
+#: admin/options/archives.php:190
+msgid "Featured Style"
+msgstr "特色風格"
+
+#: metaboxes/options/post.php:74
+msgid "Featured Video/Audio"
+msgstr "精選視訊/音訊"
+
+#: admin/options/archives.php:210
+msgid "Featured Width"
+msgstr "特色寬度"
+
+#: blocks/newsletter/options.php:155 packages/blocks/newsletter/options.php:155
+msgid "Fields Style"
+msgstr "田野風格"
+
+#: blocks/base/loop-options.php:697 packages/blocks/base/loop-options.php:697
+msgid "Filters"
+msgstr "過濾器"
+
+#: blocks/base/loop-options.php:1337
+#: admin/options/listings/block-headings.php:242
+#: packages/blocks/base/loop-options.php:1337
+msgid "Filters Typography"
+msgstr "過濾器文字風格"
+
+#: blocks/base/loop-options.php:705 blocks/base/loop-options.php:730
+#: packages/blocks/base/loop-options.php:705
+#: packages/blocks/base/loop-options.php:730
+msgid ""
+"Filters when enabled, are displayed as links in the heading on right side."
+msgstr "啟用過濾器後，過濾器將在右側標題中顯示為連結。"
+
+#: admin/options/header.php:775 admin/options/header.php:841
+msgid "Fixed (Always Visible)"
+msgstr "固定（始終可見）"
+
+#: admin/options/header.php:770 admin/options/header.php:836
+msgid ""
+"Fixed is always visible on scroll, whereas Smart appears when the user "
+"scrolls up."
+msgstr "固定在捲動時始終可見，而智慧在用戶向上捲動時出現。"
+
+#: widgets/widget-about.php:171 admin/options/common-data.php:65
+msgid "Flickr"
+msgstr "Flickr"
+
+#: widgets/widget-flickr.php:139
+msgid "Flickr ID (<a href=\"http://www.idgettr.com\">Get Your ID</a>):"
+msgstr "Flickr ID（<a href=\"http://www.idgettr.com\">取得您的 ID</a> ）："
+
+#: admin/options/common-data.php:78
+msgid "Flipboard"
+msgstr "Flipboard"
+
+#: blocks/loops/focus-grid/options.php:23
+#: packages/blocks/loops/focus-grid/options.php:23
+msgid "Focus Grid Block"
+msgstr "焦點網格區塊"
+
+#: admin/options/posts-single.php:1256
+msgid "Follow Label"
+msgstr "追蹤標籤"
+
+#: admin/options/colors-fonts.php:467
+msgid "Fonts Display Swap"
+msgstr "字體顯示交換"
+
+#: admin/options/custom-codes.php:36
+msgid "Footer Code"
+msgstr "頁尾碼"
+
+#: admin/options/footer.php:476
+msgid "Footer Layout & General"
+msgstr "頁尾佈局和一般"
+
+#: inc/theme.php:206
+msgid "Footer Links"
+msgstr "頁尾連結"
+
+#: admin/options/footer.php:503
+msgid "Footer Logo"
+msgstr "頁尾 Logo"
+
+#: admin/options/footer.php:518
+msgid "Footer Logo Retina (2x)"
+msgstr "頁尾 Logo Retina (2x)"
+
+#: admin/options/footer.php:645
+msgid "Footer Settings"
+msgstr "頁尾設定"
+
+#: admin/options/footer.php:532
+msgid "Footer Social Icons"
+msgstr "頁尾社交圖示"
+
+#: inc/theme.php:674
+msgid "Footer Widgets"
+msgstr "頁尾小部件"
+
+#: admin/options/custom-codes.php:58
+msgid ""
+"For ads, use the code provided by your ad network such as Adsense. "
+"Shortcodes of plugins like AdRotate are also supported."
+msgstr "對於廣告，請使用廣告網路（例如 Adsense）提供的代碼。也支援 AdRotate 等外掛程式的短代碼。"
+
+#: admin/options/archives.php:39
+msgid "For archives only. Does not apply to home built in Elementor."
+msgstr "僅用於檔案。不適用於 Elementor 內建的住宅。"
+
+#: admin/options/listings/common.php:9
+msgid "For archives only. For home, set per block in pagebuilder."
+msgstr "僅用於檔案。對於主頁，在頁面建立器中按區塊設定。"
+
+#: admin/options/posts-listings.php:15
+msgid ""
+"For archives only. Post format icons (video, gallery etc.) are displayed "
+"over image. For home, set per block in pagebuilder. Small posts have "
+"separate setting."
+msgstr "僅適用於檔案頁面。文章格式圖標（如影片、相冊等）將顯示在圖像上方。對於首頁，請在頁面構建器中為每個區塊進行設定。小型文章有單獨的設定。"
+
+#: blocks/base/loop-options.php:772 packages/blocks/base/loop-options.php:772
+msgid "For dark mode."
+msgstr "對於深色模式。"
+
+#: admin/options/colors-fonts.php:251
+msgid "For headings, post titles etc. Not for block headings."
+msgstr "適用於標題、文章標題等。不適用於區塊標題。"
+
+#: admin/options/colors-fonts.php:487
+msgid "Force Disable Google Fonts"
+msgstr "強制禁用 Google 字體"
+
+#: admin/options/posts-global.php:129
+msgid "Force Disable Items"
+msgstr "強制禁用項目"
+
+#: admin/options/header.php:758
+msgid "Force Full Width"
+msgstr "強制全寬"
+
+#: blocks/loops/overlay/options.php:55
+#: packages/blocks/loops/overlay/options.php:55
+msgid "Forced Media Height"
+msgstr "強制介質高度"
+
+#: blocks/newsletter/options.php:48 admin/options/newsletter.php:30
+#: packages/blocks/newsletter/options.php:48
+msgid "Form HTML / Shortcode"
+msgstr "表單 HTML/簡碼"
+
+#: blocks/base/loop-options.php:261 admin/options/posts-listings.php:44
+#: packages/blocks/base/loop-options.php:261
+msgid "Formats Default Position"
+msgstr "格式預設位置"
+
+#: blocks/base/loop-options.php:440 packages/blocks/base/loop-options.php:440
+msgid "From Categories"
+msgstr "從分類"
+
+#: widgets/widget-popular-posts.php:85
+msgid "From past days:"
+msgstr "從過去幾天來看："
+
+#: blocks/base/loop-options.php:500 packages/blocks/base/loop-options.php:500
+msgid "From Tags"
+msgstr "來自標籤"
+
+#: blocks/loops/feat-grid/options.php:45 admin/options/archives.php:216
+#: admin/options/common-data.php:113
+#: packages/blocks/loops/feat-grid/options.php:45
+msgid "Full Browser Width"
+msgstr "全瀏覽器寬度"
+
+#: admin/options/listings/large.php:37
+msgid "Full Post"
+msgstr "全文"
+
+#: inc/studio/views/el-header-preview.php:21
+msgid "Full Preview"
+msgstr "完整預覽"
+
+#: blocks/base/loop-options.php:341 blocks/breadcrumbs/options.php:41
+#: blocks/newsletter/options.php:100 inc/elementor/page-settings.php:27
+#: metaboxes/options/page.php:14 metaboxes/options/post.php:25
+#: widgets/widget-about.php:225 admin/options/layout-main.php:23
+#: admin/options/layout-main.php:429 packages/blocks/base/loop-options.php:341
+#: packages/blocks/breadcrumbs/options.php:41
+#: packages/blocks/newsletter/options.php:100
+msgid "Full Width"
+msgstr "全寬"
+
+#: inc/elementor/extend-section.php:253
+msgid "Full-width on Mobile?"
+msgstr "行動裝置上的全角？"
+
+#: admin/options/common-data.php:204
+msgid "G: Dark BG Box"
+msgstr "G：深色 BG 盒"
+
+#: blocks/base/loop-options.php:534 packages/blocks/base/loop-options.php:534
+msgid "Gallery"
+msgstr "畫廊"
+
+#: admin/options/header.php:69
+msgid "Gaming / Bold"
+msgstr "遊戲/大膽"
+
+#: blocks/loops/feat-grid/options.php:191
+#: packages/blocks/loops/feat-grid/options.php:191
+msgid "Gap / Spacing"
+msgstr "間隙/間距"
+
+#: blocks/base/loop-options.php:1660 blocks/breadcrumbs/options.php:125
+#: blocks/codes/options.php:78 blocks/heading/options.php:315
+#: blocks/newsletter/options.php:374 blocks/social-icons/options.php:231
+#: packages/blocks/base/loop-options.php:1660
+#: packages/blocks/breadcrumbs/options.php:125
+#: packages/blocks/codes/options.php:78 packages/blocks/heading/options.php:315
+#: packages/blocks/newsletter/options.php:374
+#: packages/blocks/social-icons/options.php:231
+msgid "General"
+msgstr "一般的"
+
+#: admin/options/posts-single.php:1734
+msgid "General & Post Style"
+msgstr "一般及貼文風格"
+
+#: blocks/base/loop-options.php:636 blocks/heading/options.php:33
+#: packages/blocks/base/loop-options.php:636
+#: packages/blocks/heading/options.php:33
+msgid "Global / Default Style"
+msgstr "全站/預設樣式"
+
+#: admin/options/colors-fonts.php:23
+msgid "Global Colors"
+msgstr "全站色彩"
+
+#: widgets/widget-social-follow.php:209
+msgid "Global Inherit (From Customize > Social Follow)"
+msgstr "全站繼承（來自自訂 > 社交關注）"
+
+#: admin/options/colors-fonts.php:281
+msgid ""
+"Global post title, affects all. For more typography settings, go to Posts & "
+"Listings and edit for specifc layouts like Grid."
+msgstr "全站文章標題，影響所有內容。若需更多文字風格設定，請前往「文章 & 列表」並針對特定版型如網格進行編輯。"
+
+#: admin/options/posts-global.php:487
+msgid "Global Posts Settings"
+msgstr "全站文章設定"
+
+#: blocks/base/loop-options.php:377 packages/blocks/base/loop-options.php:377
+msgid "Global Query (for Devs)"
+msgstr "全站查詢（針對開發人員）"
+
+#: metaboxes/terms/category-options.php:61
+msgid "Global Settings"
+msgstr "全站設定"
+
+#: admin/options/colors-fonts.php:194
+msgid "Global Typography"
+msgstr "全站文字風格"
+
+#: admin/options/colors-fonts.php:438
+msgid "Google Font Settings"
+msgstr "Google 字體設定"
+
+#: admin/options/colors-fonts.php:445
+msgid "Google Fonts Charsets"
+msgstr "Google字體字元集"
+
+#: admin/options/common-data.php:77
+msgid "Google News"
+msgstr "Google News"
+
+#: admin/options/header.php:428
+msgid "Gradient Angle"
+msgstr "梯度角"
+
+#: admin/options/header.php:390 admin/options/header.php:642
+msgid "Gradient Color 1"
+msgstr "漸層色1"
+
+#: admin/options/header.php:403 admin/options/header.php:654
+msgid "Gradient Color 2"
+msgstr "漸層色2"
+
+#: admin/options/common-data.php:225
+msgid "Grid - 2 Columns"
+msgstr "網格 - 2 列"
+
+#: admin/options/common-data.php:226
+msgid "Grid - 3 Columns"
+msgstr "格 - 3 列"
+
+#: admin/options/common-data.php:239
+msgid "Grid 1: 1 Large + 4 small"
+msgstr "網格1：1大+4小"
+
+#: admin/options/common-data.php:240
+msgid "Grid 2: 1 Large + 2 small"
+msgstr "網格 2：1 個大 + 2 個小"
+
+#: admin/options/common-data.php:241
+msgid "Grid 3: 1 Large + 2 medium"
+msgstr "網格 3：1 大 + 2 中"
+
+#: admin/options/common-data.php:242
+msgid "Grid 4: 1 Large + 1 Med + 2 Small"
+msgstr "格 4：1 個大 + 1 個中 + 2 個小"
+
+#: blocks/loops/grid/options.php:22 packages/blocks/loops/grid/options.php:22
+msgid "Grid Block"
+msgstr "網格區塊"
+
+#: admin/options/archives.php:242
+msgid "Grid Gap"
+msgstr "網格間隙"
+
+#: blocks/loops/feat-grid/options.php:100
+#: blocks/loops/feat-grid/options.php:122
+#: packages/blocks/loops/feat-grid/options.php:100
+#: packages/blocks/loops/feat-grid/options.php:122
+msgid "Grid Height"
+msgstr "網格高度"
+
+#: blocks/loops/posts-list/options.php:62 admin/options/listings/list.php:42
+#: packages/blocks/loops/posts-list/options.php:62
+msgid "Grid Style on Phones"
+msgstr "手機上的網格樣式"
+
+#: blocks/loops/feat-grid/options.php:40
+#: packages/blocks/loops/feat-grid/options.php:40
+msgid "Grid Width"
+msgstr "網格寬度"
+
+#: admin/options/misc.php:88
+msgid "Gutenberg: Theme Styles in Editor"
+msgstr "古騰堡：編輯器中的主題樣式"
+
+#: admin/options/posts-single.php:504
+msgid "H1-H6 Heading Color"
+msgstr "H1-H6 標題顏色"
+
+#: admin/options/posts-single.php:466
+msgid "H1-H6 Typography"
+msgstr "H1-H6 文字風格"
+
+#: admin/options/common-data.php:205 admin/options/footer.php:200
+msgid "H: Simple Line Below"
+msgstr "H：下面的簡單線"
+
+#: admin/options/common-data.php:16
+msgid "Hamburger Icon"
+msgstr "漢堡圖示"
+
+#: admin/options/header/hamburger.php:27
+msgid "Hamburger Style"
+msgstr "漢堡風格"
+
+#: admin/options/custom-codes.php:18
+msgid "Head Tag Code"
+msgstr "Head 標籤代碼"
+
+#: admin/options/header.php:942
+msgid "Header & Nav Menu"
+msgstr "頁首 & 導覽列選單"
+
+#: admin/options/header.php:21
+msgid "Header Preset"
+msgstr "頁首預設"
+
+#: admin/options/header.php:209
+msgid "Header Skin"
+msgstr "頁首外觀"
+
+#: blocks/base/loop-options.php:1663 admin/options/posts-single.php:1380
+#: packages/blocks/base/loop-options.php:1663
+msgid "Heading"
+msgstr "標題"
+
+#: inc/reviews/metabox/options.php:38
+msgid "Heading (Optional)"
+msgstr "標題（可選）"
+
+#: admin/options/custom-codes.php:128
+msgid "Heading / Label"
+msgstr "標題/標籤"
+
+#: blocks/base/loop-options.php:1181 blocks/heading/options.php:116
+#: packages/blocks/base/loop-options.php:1181
+#: packages/blocks/heading/options.php:116
+msgid "Heading Accent Color"
+msgstr "標題強調色"
+
+#: blocks/base/loop-options.php:1151 blocks/heading/options.php:106
+#: admin/options/listings/block-headings.php:18
+#: packages/blocks/base/loop-options.php:1151
+#: packages/blocks/heading/options.php:106
+msgid "Heading Align"
+msgstr "標題對齊"
+
+#: admin/options/listings/block-headings.php:136
+msgid "Heading Background"
+msgstr "標題背景"
+
+#: blocks/newsletter/options.php:245 admin/options/footer.php:208
+#: admin/options/listings/block-headings.php:158
+#: admin/options/newsletter.php:89 packages/blocks/newsletter/options.php:245
+msgid "Heading Color"
+msgstr "標題顏色"
+
+#: blocks/base/loop-options.php:703 packages/blocks/base/loop-options.php:703
+msgid "Heading Filters"
+msgstr "標題過濾器"
+
+#: admin/options/listings/block-headings.php:232
+msgid "Heading Font"
+msgstr "標題字體"
+
+#: blocks/base/loop-options.php:664 blocks/heading/options.php:64
+#: packages/blocks/base/loop-options.php:664
+#: packages/blocks/heading/options.php:64
+msgid "Heading Link"
+msgstr "標題連結"
+
+#: admin/options/footer.php:343 admin/options/listings/block-headings.php:181
+msgid "Heading Padding"
+msgstr "標題填充"
+
+#: admin/options/posts-single.php:605
+msgid "Heading Sizes"
+msgstr "標題尺寸"
+
+#: blocks/base/loop-options.php:632 blocks/heading/options.php:30
+#: admin/options/footer.php:189 packages/blocks/base/loop-options.php:632
+#: packages/blocks/heading/options.php:30
+msgid "Heading Style"
+msgstr "標題樣式"
+
+#: blocks/base/loop-options.php:657 blocks/heading/options.php:54
+#: packages/blocks/base/loop-options.php:657
+#: packages/blocks/heading/options.php:54
+msgid "Heading Text"
+msgstr "標題文本"
+
+#: blocks/base/loop-options.php:1205 blocks/heading/options.php:159
+#: packages/blocks/base/loop-options.php:1205
+#: packages/blocks/heading/options.php:159
+msgid "Heading Text Color"
+msgstr "標題文字顏色"
+
+#: blocks/base/loop-options.php:1161 blocks/heading/options.php:140
+#: blocks/newsletter/options.php:235 admin/options/footer.php:235
+#: admin/options/listings/block-headings.php:29 admin/options/newsletter.php:76
+#: packages/blocks/base/loop-options.php:1161
+#: packages/blocks/heading/options.php:140
+#: packages/blocks/newsletter/options.php:235
+msgid "Heading Typography"
+msgstr "標題文字風格"
+
+#: inc/reviews/metabox/form.php:83 inc/reviews/metabox/form.php:103
+msgid "Heading:"
+msgstr "標題："
+
+#: admin/options/colors-fonts.php:143
+msgid "Headings Color"
+msgstr "標題顏色"
+
+#: admin/options/colors-fonts.php:249
+msgid "Headings Font"
+msgstr "標題字體"
+
+#: blocks/newsletter/options.php:29 packages/blocks/newsletter/options.php:29
+msgid "Headline / CTA"
+msgstr "標題/號召性用語"
+
+#: admin/options/header.php:358 admin/options/header/buttons.php:179
+#: admin/options/header/hamburger.php:138
+msgid "Height"
+msgstr "高度"
+
+#: blocks/base/loop-options.php:1050 packages/blocks/base/loop-options.php:1050
+msgid "Hide"
+msgstr "隱藏"
+
+#: metaboxes/options/page.php:44
+msgid "Hide Breadcrumbs"
+msgstr "隱藏麵包屑"
+
+#: admin/options/header/cart.php:26
+msgid "Hide Counters"
+msgstr "隱藏計數器"
+
+#: admin/options/header/nav-small.php:101
+#: admin/options/header/navigation.php:88
+msgid "Hide Dropdown Arrows"
+msgstr "隱藏下拉箭頭"
+
+#: inc/elementor/extend-widgets.php:209
+msgid "Hide In Dark Mode"
+msgstr "隱藏在黑暗模式下"
+
+#: inc/elementor/extend-widgets.php:223
+msgid "Hide In Light Mode"
+msgstr "隱藏在燈光模式下"
+
+#: admin/options/posts-single.php:1161
+msgid "Hide Label"
+msgstr "隱藏標籤"
+
+#: admin/options/custom-codes.php:105
+msgid "Hide On"
+msgstr "隱藏"
+
+#: admin/options/header/buttons.php:209
+msgid "Hide on Large Tablets"
+msgstr "在大型平板電腦上隱藏"
+
+#: admin/options/posts-single.php:1044
+msgid "Hide on Phones"
+msgstr "隱藏在手機上"
+
+#: blocks/loops/highlights/options.php:23
+#: packages/blocks/loops/highlights/options.php:23
+msgid "Highlights Block"
+msgstr "亮點區塊"
+
+#: admin/options/logos.php:10 admin/options/logos.php:54
+msgid "Highly recommended to use a logo image in PNG format."
+msgstr "強烈建議使用 PNG 格式的標誌圖像。"
+
+#: admin/options/custom-codes.php:110
+msgid "Homepage"
+msgstr "首頁"
+
+#: admin/options/layout-pages.php:43
+msgid "Homepage: No Duplicate Posts"
+msgstr "首頁：禁止重複文章"
+
+#: blocks/base/loop-options.php:808 packages/blocks/base/loop-options.php:808
+msgid "Horizontal spacing between posts."
+msgstr "柱子之間的水平間距。"
+
+#: admin/options/header/navigation.php:125
+msgid "Hov Line Weight"
+msgstr "霍夫線寬"
+
+#: blocks/base/loop-options.php:1127 packages/blocks/base/loop-options.php:1127
+msgid "Hover Color"
+msgstr "懸停顏色"
+
+#: blocks/social-icons/options.php:166
+#: packages/blocks/social-icons/options.php:166
+msgid "Hover Colors"
+msgstr "懸停顏色"
+
+#: blocks/loops/feat-grid/options.php:180
+#: packages/blocks/loops/feat-grid/options.php:180
+msgid "Hover Effect"
+msgstr "懸停效果"
+
+#: admin/options/header/navigation.php:235
+msgid "Hover/Active Background"
+msgstr "懸停/活動背景"
+
+#. Theme URI of the theme
+msgid "https://smartmag.theme-sphere.com"
+msgstr "https://smartmag.theme-sphere.com"
+
+#. Author URI of the plugin
+#. Author URI of the theme
+msgid "https://theme-sphere.com"
+msgstr "https://theme-sphere.com"
+
+#: admin/options/common-data.php:206
+msgid "I: Bar Line Before"
+msgstr "I：之前的小節線"
+
+#: admin/options/header/search.php:88
+msgid "Icon"
+msgstr "圖示"
+
+#: blocks/newsletter/options.php:189 packages/blocks/newsletter/options.php:189
+msgid "Icon Above"
+msgstr "上面的圖標"
+
+#: admin/options/header/cart.php:39 admin/options/header/hamburger.php:38
+#: admin/options/header/search.php:95 admin/options/header/switcher.php:25
+msgid "Icon Color"
+msgstr "圖示顏色"
+
+#: admin/options/header/hamburger.php:65 admin/options/header/search.php:122
+#: admin/options/header/switcher.php:54
+msgid "Icon Hover"
+msgstr "圖示懸停"
+
+#: blocks/social-icons/options.php:104 admin/options/header/auth.php:87
+#: admin/options/header/cart.php:61 admin/options/header/search.php:148
+#: admin/options/header/switcher.php:83 admin/options/posts-single.php:848
+#: admin/options/posts-single.php:1133
+#: packages/blocks/social-icons/options.php:104
+msgid "Icon Size"
+msgstr "圖示大小"
+
+#: admin/options/header/search.php:164
+msgid "Icon Size (Top Row)"
+msgstr "圖示大小（頂行）"
+
+#: admin/options/posts-single.php:915
+msgid "Icons Background"
+msgstr "圖示背景"
+
+#: admin/options/header/social.php:116
+msgid "Icons Box Size"
+msgstr "圖示框大小"
+
+#: admin/options/header/social.php:53 admin/options/posts-global.php:404
+#: admin/options/posts-single.php:861
+msgid "Icons Color"
+msgstr "圖示顏色"
+
+#: admin/options/header/social.php:64 admin/options/posts-single.php:888
+msgid "Icons Hover"
+msgstr "圖示懸停"
+
+#: admin/options/posts-global.php:390
+msgid "Icons Scale"
+msgstr "圖示比例"
+
+#: admin/options/header/social.php:101
+msgid "Icons Size"
+msgstr "圖示大小"
+
+#: admin/options/header/social.php:130
+msgid "Icons Space"
+msgstr "圖示空間"
+
+#: admin/options/header/social.php:40
+msgid "Icons Style"
+msgstr "圖示風格"
+
+#: blocks/base/loop-options.php:582 packages/blocks/base/loop-options.php:582
+msgid ""
+"IDs of the taxonomy items to use separated by comma, for example ids of "
+"categories under product_cat."
+msgstr "要使用的分類項目的 ID，以逗號分隔，例如 Product_cat 下分類的 ID。"
+
+#: blocks/base/loop-options.php:717 packages/blocks/base/loop-options.php:717
+msgid ""
+"If no categories are selected, it will default to showing 3 sub-categories."
+msgstr "如果未選擇分類，則預設顯示 3 個子分類。"
+
+#: admin/options/posts-single.php:237
+msgid "If unchecked, only the Primary Category is displayed."
+msgstr "如果未選中，則僅顯示主要分類。"
+
+#: blocks/base/loop-options.php:616 packages/blocks/base/loop-options.php:616
+msgid ""
+"If using on a single post sidebar, this will ignore the post being viewed."
+msgstr "如果在單一貼文側邊欄上使用，這將忽略正在查看的貼文。"
+
+#: metaboxes/options/page.php:46
+msgid "Ignore global settings and disable breadcrumbs on this page."
+msgstr "忽略全站設定並停用此頁面上的麵包屑。"
+
+#: blocks/newsletter/options.php:107 packages/blocks/newsletter/options.php:107
+msgid "Image"
+msgstr "影像"
+
+#: admin/options/listings/common.php:35 admin/options/posts-single.php:90
+msgid "Image Aspect Ratio"
+msgstr "影像長寬比"
+
+#: blocks/newsletter/options.php:96 packages/blocks/newsletter/options.php:96
+msgid "Image At Top"
+msgstr "圖片位於頂部"
+
+#: widgets/widget-latest-posts.php:106
+msgid "Image Blocks"
+msgstr "影像區塊"
+
+#: admin/options/posts-single.php:126
+msgid "Image Custom Height"
+msgstr "圖像自訂高度"
+
+#: admin/options/listings/common.php:60
+msgid "Image Margins"
+msgstr "影像邊距"
+
+#: blocks/loops/posts-list/options.php:71
+#: blocks/loops/posts-small/options.php:45
+#: packages/blocks/loops/posts-list/options.php:71
+#: packages/blocks/loops/posts-small/options.php:45
+msgid "Image Position"
+msgstr "影像位置"
+
+#: blocks/base/loop-options.php:214 blocks/base/loop-options.php:224
+#: blocks/loops/feat-grid/options.php:85
+#: packages/blocks/base/loop-options.php:214
+#: packages/blocks/base/loop-options.php:224
+#: packages/blocks/loops/feat-grid/options.php:85
+msgid "Image Ratio"
+msgstr "影像比例"
+
+#: blocks/newsletter/options.php:118 packages/blocks/newsletter/options.php:118
+msgid "Image Retina/2x"
+msgstr "影像視網膜/2x"
+
+#: widgets/widget-about.php:221
+msgid "Image Type:"
+msgstr "圖像類型："
+
+#: blocks/loops/posts-list/options.php:83
+#: packages/blocks/loops/posts-list/options.php:83
+msgid "Image Vertical Position"
+msgstr "影像垂直位置"
+
+#: blocks/loops/posts-list/options.php:95
+#: blocks/loops/posts-small/options.php:57 admin/options/listings/list.php:77
+#: admin/options/listings/small.php:51
+#: packages/blocks/loops/posts-list/options.php:95
+#: packages/blocks/loops/posts-small/options.php:57
+msgid "Image Width %"
+msgstr "影像寬度%"
+
+#: admin/options/misc.php:48
+msgid "Images Fade In (On Scroll)"
+msgstr "圖像淡入（捲動）"
+
+#: admin/options.php:48
+msgid "Import Theme Demos"
+msgstr "導入主題演示"
+
+#: admin/options/archives.php:168
+msgid ""
+"In the category feed, exclude posts already displayed in the featured area."
+msgstr "在分類提要中，排除已顯示在特色區域中的貼文。"
+
+#: admin/options/common-data.php:178
+msgid "Infinite Scroll"
+msgstr "無限捲動"
+
+#: blocks/base/loop-options.php:67 packages/blocks/base/loop-options.php:67
+msgid "Infinite Scroll (For Last Block Only)"
+msgstr "無限捲動（僅適用於最後一個區塊）"
+
+#: admin/options/header.php:351
+msgid "Inherit"
+msgstr "繼承"
+
+#: blocks/newsletter/options.php:160 packages/blocks/newsletter/options.php:160
+msgid "Inline (Not for Custom)"
+msgstr "內聯（不適用於自訂）"
+
+#: blocks/base/loop-options.php:1316 blocks/heading/options.php:270
+#: admin/options/custom-codes.php:164 admin/options/footer.php:433
+#: admin/options/footer.php:629 admin/options/header.php:681
+#: admin/options/listings/block-headings.php:194
+#: packages/blocks/base/loop-options.php:1316
+#: packages/blocks/heading/options.php:270
+msgid "Inner Padding"
+msgstr "內部內邊距"
+
+#: inc/studio/views/el-header-preview.php:27 inc/studio/views/el-items.php:20
+msgid "Insert"
+msgstr "插入"
+
+#: widgets/widget-about.php:162 admin/options/common-data.php:52
+msgid "Instagram"
+msgstr "Instagram"
+
+#: smartmag-core.php:482
+msgid "Instagram URL"
+msgstr "Instagram 網址"
+
+#: inc/elementor/extend-section.php:300
+msgid "Is Dark Section"
+msgstr "是黑暗部分"
+
+#: inc/elementor/extend-container.php:110 inc/elementor/extend-section.php:124
+msgid "Is Main Column"
+msgstr "是主欄"
+
+#: inc/elementor/extend-container.php:82 inc/elementor/extend-section.php:96
+msgid "Is Sidebar?"
+msgstr "是側邊欄嗎？"
+
+#: blocks/base/loop-options.php:283 packages/blocks/base/loop-options.php:283
+msgid "Items Above"
+msgstr "以上項目"
+
+#: admin/options/posts-global.php:23 admin/options/posts-single.php:199
+msgid "Items Above Title"
+msgstr "標題以上項目"
+
+#: blocks/base/loop-options.php:292 packages/blocks/base/loop-options.php:292
+msgid "Items Below"
+msgstr "以下項目"
+
+#: admin/options/posts-global.php:34 admin/options/posts-single.php:212
+msgid "Items Below Title"
+msgstr "標題下方的項目"
+
+#: admin/options/posts-global.php:315
+msgid "Items Color"
+msgstr "商品顏色"
+
+#: blocks/base/loop-options.php:403 packages/blocks/base/loop-options.php:403
+msgid "JetPack Plugin Views Count"
+msgstr "JetPack 插件瀏覽次數"
+
+#: blocks/loops/feat-grid/options.php:75
+#: packages/blocks/loops/feat-grid/options.php:75
+msgid ""
+"Keep an aspect ratio for main item(s) over devices. Disable to use a fixed "
+"height instead."
+msgstr "保持設備上主要項目的寬高比。停用改為使用固定高度。"
+
+#: inc/admin/editor.php:92
+msgid "L"
+msgstr "L"
+
+#: blocks/base/loop-options.php:305 packages/blocks/base/loop-options.php:305
+msgid "Label"
+msgstr "標籤"
+
+#: blocks/codes/options.php:45 packages/blocks/codes/options.php:45
+msgid "Label (Optional)"
+msgstr "標籤（可選）"
+
+#: admin/options/header/ticker.php:43
+msgid "Label Color"
+msgstr "標籤顏色"
+
+#: admin/options/posts-single.php:1178
+msgid "Label Font Size"
+msgstr "標籤字體大小"
+
+#: admin/options/header/ticker.php:66
+msgid "Label Margins"
+msgstr "標籤邊距"
+
+#: admin/options/listings/common.php:130
+msgid "Label Position"
+msgstr "標籤位置"
+
+#: blocks/breadcrumbs/options.php:69 admin/options/layout-main.php:457
+#: packages/blocks/breadcrumbs/options.php:69
+msgid "Label Text"
+msgstr "標籤文字"
+
+#: admin/options/header/ticker.php:55
+msgid "Label Typography"
+msgstr "標籤文字風格"
+
+#: admin/options/posts-global.php:105 admin/options/posts-single.php:251
+msgid "Label/Badge"
+msgstr "標籤/徽章"
+
+#: inc/reviews/metabox/form.php:135
+msgid "Label:"
+msgstr "標籤："
+
+#: blocks/newsletter/options.php:171 inc/admin/editor.php:61
+#: packages/blocks/newsletter/options.php:171
+msgid "Large"
+msgstr "大的"
+
+#: inc/admin/editor.php:91
+msgid "large"
+msgstr "大的"
+
+#: blocks/loops/large/options.php:22 packages/blocks/loops/large/options.php:22
+msgid "Large Block"
+msgstr "大塊"
+
+#: admin/options/posts-single.php:1025
+msgid "Large Buttons"
+msgstr "大按鈕"
+
+#: admin/options/common-data.php:260
+msgid "Large Centered"
+msgstr "大中心"
+
+#: blocks/base/loop-options.php:787 packages/blocks/base/loop-options.php:787
+msgid "Large Gap"
+msgstr "間隙大"
+
+#: blocks/loops/grid/options.php:43 packages/blocks/loops/grid/options.php:43
+msgid "Large Post"
+msgstr "大郵報"
+
+#: inc/elementor/extend-section.php:278
+msgid "Large Spacing"
+msgstr "大間距"
+
+#: blocks/loops/grid/options.php:50 packages/blocks/loops/grid/options.php:50
+msgid "Large Style"
+msgstr "大型風格"
+
+#: blocks/loops/feat-grid/options.php:262
+#: packages/blocks/loops/feat-grid/options.php:262
+msgid "Large Title Size"
+msgstr "大標題尺寸"
+
+#: blocks/base/loop-options.php:340 packages/blocks/base/loop-options.php:340
+msgid "Large: 66% of Width"
+msgstr "大：寬度的 66%"
+
+#: inc/admin/editor.php:97
+msgid "larger"
+msgstr "更大"
+
+#: widgets/widget-about.php:173 admin/options/common-data.php:71
+msgid "Last.fm"
+msgstr "Last.fm"
+
+#: widgets/widget-blocks.php:152
+msgid "Latest First - Descending"
+msgstr "最新第一 - 降序"
+
+#: blocks/base/loop-options.php:1661 packages/blocks/base/loop-options.php:1661
+msgid "Layout"
+msgstr "佈局"
+
+#: admin/options/layout-main.php:54
+msgid "Layout Main Width"
+msgstr "佈局主寬度"
+
+#: inc/elementor/page-settings.php:21
+msgid "Layout Style"
+msgstr "佈局樣式"
+
+#: metaboxes/options/page.php:7 metaboxes/options/post.php:18
+#: admin/options/layout-main.php:17
+msgid "Layout Type"
+msgstr "佈局類型"
+
+#: admin/options/layout-main.php:68
+msgid "Layout Width Percent"
+msgstr "佈局寬度百分比"
+
+#: admin/options/posts-listings.php:275
+msgid "Layout: Featured Grids"
+msgstr "佈局：特色網格"
+
+#: admin/options/posts-listings.php:245
+msgid "Layout: Grid Posts"
+msgstr "佈局：網格柱"
+
+#: admin/options/posts-listings.php:263
+msgid "Layout: Large / Classic"
+msgstr "佈局：大/經典"
+
+#: admin/options/posts-listings.php:251
+msgid "Layout: List Posts"
+msgstr "版面：列出貼文"
+
+#: admin/options/header.php:952
+msgid "Layout: Main Header"
+msgstr "佈局：頁首"
+
+#: admin/options/header.php:962
+msgid "Layout: Mobile Header"
+msgstr "佈局：手機版頁首"
+
+#: admin/options/posts-listings.php:257
+msgid "Layout: Overlays"
+msgstr "佈局：覆蓋效果"
+
+#: admin/options/posts-listings.php:269
+msgid "Layout: Small Posts & Legacy Widgets"
+msgstr "版面：小貼文和舊版小工具"
+
+#: admin/options/misc.php:144
+msgid "Lazy Loader Type"
+msgstr "Lazy Load類型"
+
+#: admin/options/misc.php:188
+msgid "Lazyload Embeds"
+msgstr "延遲加載嵌入"
+
+#: admin/options/misc.php:137
+msgid "LazyLoad Images"
+msgstr "延遲載入圖片"
+
+#: blocks/loops/posts-list/options.php:74
+#: blocks/loops/posts-small/options.php:48 blocks/newsletter/options.php:183
+#: blocks/social-icons/options.php:79
+#: packages/blocks/loops/posts-list/options.php:74
+#: packages/blocks/loops/posts-small/options.php:48
+#: packages/blocks/newsletter/options.php:183
+#: packages/blocks/social-icons/options.php:79
+msgid "Left"
+msgstr "左邊"
+
+#: blocks/loops/grid/options.php:54 packages/blocks/loops/grid/options.php:54
+msgid "Legacy (Not Recommended)"
+msgstr "舊版（不建議）"
+
+#: admin/options/header.php:88
+msgid "Legacy / Classic"
+msgstr "傳統/經典"
+
+#: metaboxes/options/page.php:86
+msgid "Legacy / Classic Slider"
+msgstr "傳統/經典滑桿"
+
+#: admin/options/common-data.php:231
+msgid "Legacy Classic Large"
+msgstr "傳統經典大號"
+
+#: admin/options/listings/large.php:32
+msgid "Legacy Style: Body"
+msgstr "傳統風格：身體"
+
+#: admin/options.php:69 admin/options/common-data.php:261
+msgid "Legacy/Classic"
+msgstr "舊版/經典"
+
+#: admin/options/common-data.php:262
+msgid "Legacy/Classic: Title Above"
+msgstr "舊版/經典：標題同上"
+
+#: admin/options/header.php:216
+msgid "Legacy: Classic"
+msgstr "舊版：經典"
+
+#: metaboxes/options/post.php:97
+msgid "Legacy: Featured Post"
+msgstr "舊版：特色文章"
+
+#: admin/options/misc.php:114
+msgid "Legacy: If you used custom FA4 icons before SmartMag v5.0, enable this."
+msgstr "舊版：如果您在 SmartMag v5.0 之前使用自訂 FA4 圖示，請啟用此選項。"
+
+#: admin/options/misc.php:112
+msgid "Legacy: Load FontAwesome 4"
+msgstr "舊版：載入 FontAwesome 4"
+
+#: admin/options/logos.php:88
+msgid "Legacy: Text Logo"
+msgstr "舊版：文字標誌"
+
+#: admin/options/footer.php:105 admin/options/header.php:338
+#: admin/options/header/off-canvas.php:26 admin/options/header/search.php:13
+msgid "Light"
+msgstr "淺色"
+
+#: widgets/widget-social-follow.php:199
+msgid "Light - 1 Columns"
+msgstr "淺色 - 1 列"
+
+#: widgets/widget-social-follow.php:202
+msgid "Light - 2 Col Multiline"
+msgstr "淺色 - 2 列多線"
+
+#: widgets/widget-social-follow.php:200
+msgid "Light - 2 Columns"
+msgstr "淺色 - 2 列"
+
+#: admin/options/posts-single.php:10
+msgid "Light Circles"
+msgstr "淺色圓圈"
+
+#: admin/options/posts-single.php:8
+msgid "Light Style"
+msgstr "淺色風格"
+
+#: admin/options/header/navigation.php:178
+msgid "Light: Navigation Colors"
+msgstr "淺色：導覽列顏色"
+
+#: admin/options/misc.php:71
+msgid "Lightbox on Small Screens"
+msgstr "小螢幕上的燈箱"
+
+#: widgets/widget-blocks.php:172
+msgid "Limit Categories:"
+msgstr "限制分類："
+
+#: admin/options/misc.php:40
+msgid "Limit Search To Posts"
+msgstr "將搜尋限制為帖子"
+
+#: blocks/base/loop-options.php:158 packages/blocks/base/loop-options.php:158
+msgid "Limit Title to Lines"
+msgstr "將標題限制為行"
+
+#: widgets/widget-latest-posts.php:80
+msgid "Limit to Category:"
+msgstr "限制分類："
+
+#: admin/options/header/ticker.php:17
+msgid "Limit to Tags"
+msgstr "限制標籤"
+
+#: admin/options/header/hamburger.php:108
+msgid "Line Weight"
+msgstr "線寬"
+
+#: admin/options/header/auth.php:65
+msgid "Link Color"
+msgstr "連結顏色"
+
+#: admin/options/posts-single.php:315
+msgid "Linked Featured Image"
+msgstr "連結特色圖片"
+
+#: widgets/widget-about.php:170 admin/options/common-data.php:58
+#: admin/options/common-data.php:101
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: smartmag-core.php:486
+msgid "LinkedIn URL"
+msgstr "LinkedIn 網址"
+
+#: admin/options/footer.php:409 admin/options/footer.php:599
+#: admin/options/header/nav-small.php:126 admin/options/layout-main.php:551
+#: admin/options/posts-single.php:529
+msgid "Links Color"
+msgstr "連結顏色"
+
+#: inc/elementor/widgets/links-list.php:45
+msgid "Links List"
+msgstr "連結列表"
+
+#: admin/options/posts-single.php:542
+msgid "Links Underline"
+msgstr "連結底線"
+
+#: widgets/widget-latest-posts.php:105
+msgid "List"
+msgstr "清單"
+
+#: blocks/loops/posts-list/options.php:23
+#: packages/blocks/loops/posts-list/options.php:23
+msgid "List Block"
+msgstr "清單區塊"
+
+#: admin/options/common-data.php:230
+msgid "List Style"
+msgstr "清單樣式"
+
+#: widgets/widget-blocks.php:163
+msgid "Listing: Grid Overlay Style"
+msgstr "清單：網格覆蓋樣式"
+
+#: widgets/widget-blocks.php:161
+msgid "Listing: Modern Grid"
+msgstr "清單：現代網格"
+
+#: widgets/widget-blocks.php:162
+msgid "Listing: Modern Grid - 2 Columns"
+msgstr "清單：現代網格 - 2 列"
+
+#: widgets/widget-blocks.php:164
+msgid "Listing: Timeline Style"
+msgstr "清單：時間軸樣式"
+
+#: admin/options/archives.php:29
+msgid "Listings Sidebar"
+msgstr "列表側邊欄"
+
+#: admin/options/header/search.php:55
+msgid "Live Search Results"
+msgstr "即時搜尋結果"
+
+#: admin/options/header/search.php:47
+msgid ""
+"Live search shows results using AJAX as you type, in the top bar search."
+msgstr "即時搜尋會在您鍵入時使用 AJAX 在頂部搜尋欄中顯示結果。"
+
+#: blocks/base/loop-options.php:65 admin/options/common-data.php:177
+#: packages/blocks/base/loop-options.php:65
+msgid "Load More Button"
+msgstr "載入更多按鈕"
+
+#: blocks/base/loop-options.php:1388 admin/options/listings/load-more.php:8
+#: admin/options/posts-listings.php:239
+#: packages/blocks/base/loop-options.php:1388
+msgid "Load More Style"
+msgstr "載入更多樣式"
+
+#: admin/options/common-data.php:23
+msgid "Login/Auth"
+msgstr "登入/驗證"
+
+#: widgets/widget-about.php:224
+msgid "Logo"
+msgstr "標識"
+
+#: widgets/widget-about.php:208
+msgid "Logo / Image:"
+msgstr "形象標識："
+
+#: admin/options/logos.php:9 admin/options/logos.php:53
+msgid "Logo Image"
+msgstr "形象標識"
+
+#: admin/options/logos.php:19 admin/options/logos.php:64
+msgid "Logo Image Retina (2x)"
+msgstr "Retina 標誌影像 (2x)"
+
+#: admin/options/header/logo.php:16
+msgid "Logo Padding"
+msgstr "徽標填充"
+
+#: widgets/widget-about.php:215
+msgid "Logo Retina/2x:"
+msgstr "標誌視網膜/2x："
+
+#: widgets/widget-about.php:202
+msgid "Logo Text:"
+msgstr "標誌文字："
+
+#: widgets/widget-bbp-login.php:181
+msgid "Lost Password URI:"
+msgstr "遺失密碼 URI："
+
+#: admin/options/footer.php:488
+msgid "Lower Footer"
+msgstr "下頁尾"
+
+#: inc/admin/editor.php:86
+msgid "M"
+msgstr "中號"
+
+#: blocks/newsletter/options.php:40 admin/options/newsletter.php:13
+#: packages/blocks/newsletter/options.php:40
+msgid "MailChimp"
+msgstr "郵件黑猩猩"
+
+#: blocks/newsletter/options.php:74 admin/options/newsletter.php:20
+#: packages/blocks/newsletter/options.php:74
+msgid "MailChimp Submit URL"
+msgstr "MailChimp 提交 URL"
+
+#: blocks/base/loop-options.php:454 packages/blocks/base/loop-options.php:454
+msgid "Main Category"
+msgstr "主分類"
+
+#: admin/options/colors-fonts.php:31
+msgid "Main Color Scheme"
+msgstr "主要配色方案"
+
+#: admin/options/header/auth.php:14 admin/options/header/cart.php:14
+#: admin/options/header/hamburger.php:13 admin/options/header/search.php:71
+#: admin/options/header/social.php:14 admin/options/header/switcher.php:13
+msgid "Main Header"
+msgstr "主頁首"
+
+#: admin/options/archives.php:254
+msgid "Main Image Ratio"
+msgstr "主圖像比例"
+
+#: admin/options/layout-main.php:606
+msgid "Main Layout & Sidebar"
+msgstr "主要佈局和側邊欄"
+
+#: admin/options/layout-main.php:81
+msgid "Main Layout Padding"
+msgstr "主佈局填充"
+
+#: admin/options/common-data.php:7
+msgid "Main Nav"
+msgstr "主要導航"
+
+#: inc/theme.php:204
+msgid "Main Navigation"
+msgstr "主導航"
+
+#: inc/theme.php:205
+msgid "Main Navigation - Mobile Optional"
+msgstr "主導航 - 移動可選"
+
+#: blocks/base/loop-options.php:376 packages/blocks/base/loop-options.php:376
+msgid "Main Query / Archive"
+msgstr "主要查詢/存檔"
+
+#: admin/options/header.php:274 admin/options/header.php:750
+#: admin/options/header.php:829
+msgid "Main Row"
+msgstr "主排"
+
+#: inc/theme.php:623
+msgid "Main Sidebar"
+msgstr "主側邊欄"
+
+#: metaboxes/terms/category-options.php:125
+msgid "Main Site Color"
+msgstr "主網站顏色"
+
+#: admin/options/colors-fonts.php:55
+msgid "Main Theme Color"
+msgstr "主題色"
+
+#: admin/options/layout-main.php:234
+msgid "Main Wrap Margins"
+msgstr "主要包裹區域的邊距"
+
+#: admin/options/layout-main.php:192
+msgid ""
+"Make the sidebar always stick around while scrolling. Note: Does not affect "
+"sidebars within Elementor homepage."
+msgstr "使側邊欄在滾動時始終保持不變。注意：不影響 Elementor 主頁內的側邊欄。"
+
+#: inc/elementor/extend-container.php:67 inc/elementor/extend-section.php:81
+msgid ""
+"Makes column sticky while scrolling. Native sticky is faster on slower "
+"laptops, but smart sticky has better UX."
+msgstr "當滾動時使列固定。在性能較差的筆記型電腦上，原生固定速度較快，但智慧固定提供更好的使用者體驗。"
+
+#: blocks/base/loop-options.php:1543 blocks/breadcrumbs/options.php:87
+#: admin/options/custom-codes.php:175 admin/options/layout-main.php:524
+#: packages/blocks/base/loop-options.php:1543
+#: packages/blocks/breadcrumbs/options.php:87
+msgid "Margins"
+msgstr "邊距"
+
+#: inc/elementor/extend-container.php:35
+msgid "Match Theme Spacing"
+msgstr "匹配主題間距"
+
+#: blocks/loops/feat-grid/options.php:303
+#: packages/blocks/loops/feat-grid/options.php:303
+msgid "Max Title Width"
+msgstr "最大標題寬度"
+
+#: blocks/loops/posts-list/options.php:108
+#: blocks/loops/posts-small/options.php:70
+#: packages/blocks/loops/posts-list/options.php:108
+#: packages/blocks/loops/posts-small/options.php:70
+msgid "Max Width"
+msgstr "最大寬度"
+
+#: admin/options/listings/list.php:96
+msgid "Max Width %"
+msgstr "最大寬度%"
+
+#: admin/options/listings/small.php:66
+msgid "Max Width (px)"
+msgstr "最大寬度（像素）"
+
+#: admin/options/header/ticker.php:90
+msgid "Max Width of Titles"
+msgstr "標題最大寬度"
+
+#: blocks/loops/grid/options.php:76 packages/blocks/loops/grid/options.php:76
+msgid "Media Embeds"
+msgstr "媒體嵌入"
+
+#: blocks/loops/grid/options.php:61 packages/blocks/loops/grid/options.php:61
+msgid "Media Location"
+msgstr "媒體位置"
+
+#: blocks/loops/posts-list/options.php:131
+#: packages/blocks/loops/posts-list/options.php:131
+msgid "Media Margin/Gap"
+msgstr "媒體邊際/差距"
+
+#: blocks/base/loop-options.php:845 packages/blocks/base/loop-options.php:845
+msgid "Media/Image Roundness"
+msgstr "媒體/影像圓度"
+
+#: blocks/base/loop-options.php:128 packages/blocks/base/loop-options.php:128
+msgid "Medium"
+msgstr "中等的"
+
+#: blocks/loops/feat-grid/options.php:251
+#: packages/blocks/loops/feat-grid/options.php:251
+msgid "Medium Title Size"
+msgstr "中標題尺寸"
+
+#: blocks/base/loop-options.php:339 packages/blocks/base/loop-options.php:339
+msgid "Medium: 50% of Width"
+msgstr "中：寬度的 50%"
+
+#: smartmag-core.php:456
+msgid "Mega Menu"
+msgstr "超級選單"
+
+#: smartmag-core.php:464
+msgid "Mega Menu for Links"
+msgstr "連結的巨型選單"
+
+#: admin/options/header/navigation.php:301
+msgid "Mega Menu: Sub-Nav BG"
+msgstr "Mega Menu:子導航 BG"
+
+#: admin/options/header/navigation.php:312
+msgid "Mega Menu: Sub-Nav Border"
+msgstr "Mega Menu:子導航邊框"
+
+#: admin/options/header/navigation.php:158
+msgid "Mega: Inherit Titles Hover"
+msgstr "Mega: 懸停繼承標題"
+
+#: admin/options/header/nav-small.php:34 admin/options/header/navigation.php:21
+msgid "Menu Font Family"
+msgstr "選單字體"
+
+#: admin/options/header/navigation.php:8
+msgid "Menu Hover Style"
+msgstr "選單懸停樣式"
+
+#: blocks/newsletter/options.php:58 packages/blocks/newsletter/options.php:58
+msgid "Message"
+msgstr "訊息"
+
+#: blocks/newsletter/options.php:265 admin/options/newsletter.php:114
+#: packages/blocks/newsletter/options.php:265
+msgid "Message Typography"
+msgstr "訊息文字風格"
+
+#: admin/options/posts-single.php:1579
+msgid "Meta Below Margins"
+msgstr "邊界下的元數據"
+
+#: admin/options/posts-global.php:255
+msgid "Meta Font"
+msgstr "元資料字體"
+
+#: blocks/loops/feat-grid/options.php:172
+#: packages/blocks/loops/feat-grid/options.php:172
+msgid "Meta On Hover"
+msgstr "游標懸停時的元資料"
+
+#: admin/options/posts-single.php:376
+msgid "Meta Size"
+msgstr "元資料尺寸"
+
+#: admin/options/listings/small.php:83 admin/options/posts-single.php:1458
+msgid "Meta: Above Title"
+msgstr "元資料：標題之上"
+
+#: admin/options/listings/small.php:92 admin/options/posts-single.php:1469
+msgid "Meta: Below Title"
+msgstr "元資料：標題之下"
+
+#: admin/options/listings/feat-grids.php:8
+msgid "Meta: Items Above Title"
+msgstr "元資料：標題上方的項目"
+
+#: admin/options/listings/feat-grids.php:18
+msgid "Meta: Items Below Title"
+msgstr "元資料：標題下方的項目"
+
+#: admin/options/footer.php:647
+msgid "Middle footer is activated by adding an instagram widget."
+msgstr "中頁腳透過添加 Instagram 小工具來啟動。"
+
+#: admin/options/header.php:78
+msgid "Minimal Dark (Informed)"
+msgstr "最小黑暗（知情）"
+
+#: admin/options/posts-global.php:112
+msgid "Minimum Comments or Hide"
+msgstr "最少評論或隱藏"
+
+#: admin/options/posts-global.php:166
+msgid "Minimum number of views before they are shown in meta."
+msgstr "在元資料中顯示之前的最少瀏覽次數。"
+
+#: admin/options/posts-global.php:165
+msgid "Minimum Views or Hide"
+msgstr "最小瀏覽次數或隱藏"
+
+#: admin/options.php:120
+msgid "Misc. Features"
+msgstr "雜項。特徵"
+
+#: admin/options/misc.php:27
+msgid "Miscellaneous Settings"
+msgstr "雜項設定"
+
+#: admin/options/header.php:168
+msgid "Mixed (Blogger)"
+msgstr "混合（部落客）"
+
+#: admin/options/header.php:103
+msgid "Mixed (Financial)"
+msgstr "混合（金融）"
+
+#: admin/options/header.php:123
+msgid "Mixed (Fitness)"
+msgstr "混合（健身）"
+
+#: admin/options/header/auth.php:19 admin/options/header/cart.php:19
+#: admin/options/header/hamburger.php:18 admin/options/header/search.php:76
+#: admin/options/header/social.php:19 admin/options/header/switcher.php:18
+msgid "Mobile Header"
+msgstr "手機版頁首"
+
+#: admin/options/logos.php:31 admin/options/logos.php:77
+msgid "Mobile Logo Retina (2x - Optional)"
+msgstr "行動標誌 Retina（2x - 可選）"
+
+#: admin/options/header/off-canvas.php:33
+msgid "Mobile: Show Widgets"
+msgstr "行動裝置：顯示小部件"
+
+#: admin/options/header/search.php:21
+msgid "Modal BG Color"
+msgstr "Modal 背景顏色"
+
+#: widgets/widget-social-follow.php:196
+msgid "Modern BG - 1 Column"
+msgstr "現代 BG - 1 欄"
+
+#: widgets/widget-social-follow.php:201
+msgid "Modern BG - 2 Col Multiline"
+msgstr "現代 BG - 2 列多線"
+
+#: widgets/widget-social-follow.php:195
+msgid "Modern BG - 2 Columns"
+msgstr "現代背景 - 2 欄"
+
+#: admin/options/header.php:32
+msgid "Modern Dark (GoodNews)"
+msgstr "現代黑暗（好消息）"
+
+#: admin/options/common-data.php:259
+msgid "Modern Featured Top"
+msgstr "現代特色頂部"
+
+#: admin/options/common-data.php:256
+msgid "Modern Large"
+msgstr "現代化大型"
+
+#: admin/options/common-data.php:257
+msgid "Modern Large Bold"
+msgstr "現代大粗體"
+
+#: admin/options/common-data.php:258
+msgid "Modern Large Image"
+msgstr "現代大圖像"
+
+#: admin/options/header.php:128
+msgid "Modern Light (GossipMag)"
+msgstr "現代之光（GossipMag）"
+
+#: admin/options/header.php:36
+msgid "Modern Light (Tech)"
+msgstr "現代光（科技）"
+
+#: admin/options/header.php:178
+msgid "Modern Mixed (FridayMag)"
+msgstr "現代混合（星期五雜誌）"
+
+#: inc/admin/editor.php:71
+msgid "Modern Quote"
+msgstr "現代報價"
+
+#: admin/options/header.php:173
+msgid "Modern Tech (TechBlog)"
+msgstr "現代科技（科技部落格）"
+
+#: blocks/base/loop-options.php:395 widgets/widget-blocks.php:147
+#: packages/blocks/base/loop-options.php:395
+msgid "Modified Date"
+msgstr "修改日期"
+
+#: blocks/base/loop-options.php:1359 blocks/heading/options.php:295
+#: packages/blocks/base/loop-options.php:1359
+#: packages/blocks/heading/options.php:295
+msgid "More Link Padding"
+msgstr "更多連結填充"
+
+#: blocks/base/loop-options.php:1351 blocks/heading/options.php:287
+#: packages/blocks/base/loop-options.php:1351
+#: packages/blocks/heading/options.php:287
+msgid "More Link Typography"
+msgstr "更多連結文字風格"
+
+#: inc/editor.php:99
+msgid "More Styles"
+msgstr "更多款式"
+
+#: metaboxes/options/post.php:92
+msgid "Multi-page - Refresh for next page"
+msgstr "多頁 - 刷新下一頁"
+
+#: metaboxes/options/post.php:84
+msgid "Multi-page Content Slideshow?"
+msgstr "多頁內容投影片？"
+
+#: inc/elementor/extend-container.php:71 inc/elementor/extend-section.php:85
+#: admin/options/layout-main.php:205
+msgid "Native Sticky"
+msgstr "原生吸附"
+
+#: admin/options/layout-main.php:201
+msgid ""
+"Native sticky is faster on slower laptops, but smart sticky has better UX."
+msgstr "原生吸附在性能較差的筆記型電腦上運行更快，但智能吸附提供了更好的使用者體驗。"
+
+#: blocks/base/loop-options.php:1616 packages/blocks/base/loop-options.php:1616
+msgid "Navigation Dots"
+msgstr "導覽列點"
+
+#: blocks/base/loop-options.php:1640 packages/blocks/base/loop-options.php:1640
+msgid "Navigation Dots Distance"
+msgstr "導覽列點距離"
+
+#: admin/options/header/nav-small.php:79 admin/options/header/navigation.php:66
+msgid "Navigation Height"
+msgstr "導覽列高度"
+
+#: admin/options/header.php:957
+msgid "Navigation Menu"
+msgstr "導覽列選單"
+
+#: blocks/loops/news-focus/options.php:23
+#: packages/blocks/loops/news-focus/options.php:23
+msgid "News Focus Block"
+msgstr "新聞焦點板塊"
+
+#: admin/options/common-data.php:18
+msgid "News Ticker"
+msgstr "新聞動態"
+
+#: admin/options/newsletter.php:298
+msgid "Newsletter / Subscribe"
+msgstr "電子報/訂閱"
+
+#: blocks/newsletter/options.php:15 packages/blocks/newsletter/options.php:15
+msgid "Newsletter Form"
+msgstr "通訊表格"
+
+#: inc/elementor/page-settings.php:48 metaboxes/options/page.php:25
+#: metaboxes/options/page.php:38 metaboxes/options/post.php:47
+#: widgets/widget-blocks.php:191 widgets/widget-social-follow.php:211
+msgid "No"
+msgstr "不"
+
+#: blocks/newsletter/options.php:161 packages/blocks/newsletter/options.php:161
+msgid "No Extra Style"
+msgstr "沒有額外的風格"
+
+#: admin/options/header/navigation.php:137
+msgid "No Line Padding"
+msgstr "無線填充"
+
+#: admin/options/common-data.php:28 admin/options/layout-main.php:184
+#: admin/options/layout-pages.php:23 admin/options/posts-single.php:45
+msgid "No Sidebar"
+msgstr "無側邊欄"
+
+#: blocks/base/loop-options.php:126 blocks/base/loop-options.php:459
+#: blocks/base/loop-options.php:707 blocks/loops/feat-grid/options.php:184
+#: blocks/newsletter/options.php:99 blocks/newsletter/options.php:192
+#: inc/elementor/extend-section.php:276 inc/elementor/section-options.php:36
+#: metaboxes/options/page.php:72 packages/blocks/base/loop-options.php:126
+#: packages/blocks/base/loop-options.php:459
+#: packages/blocks/base/loop-options.php:707
+#: packages/blocks/loops/feat-grid/options.php:184
+#: packages/blocks/newsletter/options.php:99
+#: packages/blocks/newsletter/options.php:192
+msgid "None"
+msgstr "沒有任何"
+
+#: metaboxes/terms/category-options.php:28
+msgid "None / Disabled"
+msgstr "無/停用"
+
+#: blocks/loops/grid/options.php:39 blocks/loops/grid/options.php:53
+#: blocks/loops/posts-list/options.php:35 admin/options/common-data.php:267
+#: admin/options/listings/grid.php:39 admin/options/listings/list.php:35
+#: packages/blocks/loops/grid/options.php:39
+#: packages/blocks/loops/grid/options.php:53
+#: packages/blocks/loops/posts-list/options.php:35
+msgid "Normal"
+msgstr "普通的"
+
+#: admin/options/misc.php:149
+msgid "Normal - Load Images on scroll"
+msgstr "正常 - 捲動時載入圖片"
+
+#: admin/options/custom-codes.php:120
+msgid ""
+"Normal code cannot be used in AMP pages. If you use AMP, get the AMP code "
+"from your ad network."
+msgstr "普通代碼不能在 AMP 頁面中使用。如果您使用 AMP，請從您的廣告網路取得 AMP 代碼。"
+
+#: blocks/newsletter/options.php:101 packages/blocks/newsletter/options.php:101
+msgid "Normal Image"
+msgstr "正常影像"
+
+#: admin/options/posts-global.php:106 admin/options/posts-single.php:252
+msgid "Normal Text"
+msgstr "普通文字"
+
+#: admin/options/colors-fonts.php:446
+msgid ""
+"Not generally required. Sometimes, an additional character sets maybe "
+"necessary."
+msgstr "一般不需要。有時，可能需要額外的字元集。"
+
+#: blocks/newsletter/options.php:359 blocks/social-icons/options.php:216
+#: packages/blocks/newsletter/options.php:359
+#: packages/blocks/social-icons/options.php:216
+msgid "Not recommended except for minimal style."
+msgstr "除了簡約風格外，不推薦。"
+
+#: metaboxes/terms/category-options.php:126
+msgid ""
+"Not Recommended! Setting this color will change the entire site main color "
+"when viewing this category or posts that belong to this category."
+msgstr "不建議！設定此顏色將在查看該類別或屬於該類別的貼文時改變整個網站的主顏色。"
+
+#: admin/options/misc.php:98
+msgid ""
+"NOT RECOMMENDED: This will convert your widgets to legacy and many widgets "
+"and plugins may not work with new WordPress widgets block editor."
+msgstr "不建議：這會將您的小部件轉換為舊版，許多小部件和外掛程式可能無法與新的 WordPress 小部件塊編輯器一起使用。"
+
+#: admin/options/logos.php:89
+msgid ""
+"NOT RECOMMENDED: Use an image logo instead. An image logo is really "
+"important for a real site branding and SEO."
+msgstr "不推薦：改用圖像標誌。圖像徽標對於真正的網站品牌和搜尋引擎優化非常重要。"
+
+#: widgets/widget-popular-posts.php:89
+msgid ""
+"Note that it may take a few hours before views are counted. It will fallback "
+"to comments sorting type until then."
+msgstr "請注意，可能需要幾個小時才能計算觀看次數。在那之前它將回退到評論排序類型。"
+
+#: widgets/widget-about.php:264 widgets/widget-social-follow.php:237
+msgid "Note:"
+msgstr "筆記："
+
+#: admin/options/footer.php:534 admin/options/header/off-canvas.php:97
+#: admin/options/header/social.php:29
+msgid "NOTE: Configure these icons URLs from %1$sSocial Media Links%2$s."
+msgstr "注意：從 %1$s社交媒體連結%2$s 配置這些圖示 URL。"
+
+#: blocks/loops/feat-grid/options.php:41
+#: packages/blocks/loops/feat-grid/options.php:41
+msgid ""
+"Note: If setting to full width, make sure the container section is also set "
+"to full width."
+msgstr "注意：如果設定為全寬，請確保容器部分也設定為全寬。"
+
+#: blocks/base/loop-options.php:112 packages/blocks/base/loop-options.php:112
+msgid ""
+"Note: Make sure the container column/section is large enough for best look."
+msgstr "註：請確保容器的列/區段足夠大以獲得最佳外觀。"
+
+#: blocks/base/loop-options.php:419 packages/blocks/base/loop-options.php:419
+msgid ""
+"Number of days to use for the views sort. Max limit is 90 days for Jetpack."
+msgstr "用於視圖排序的天數。 Jetpack 的最長期限為 90 天。"
+
+#: admin/options/custom-codes.php:50
+msgid "Number of paragraphs to insert the ad after."
+msgstr "在其後插入廣告的段落數。"
+
+#: widgets/widget-flickr.php:145
+msgid "Number of Photos:"
+msgstr "照片數量："
+
+#: blocks/base/loop-options.php:48 admin/options/header/ticker.php:8
+#: packages/blocks/base/loop-options.php:48
+msgid "Number of Posts"
+msgstr "文章數量"
+
+#: metaboxes/terms/category-options.php:91 admin/options/archives.php:233
+msgid "Number of posts for featured area."
+msgstr "特色區域的貼文數量。"
+
+#: metaboxes/options/page.php:95
+msgid ""
+"Number of posts to show on the left side of the slider. 3 are displayed on "
+"the right as a post grid."
+msgstr "顯示在滑桿左側的貼文數。 3 在右側顯示為帖子網格。"
+
+#: widgets/widget-latest-posts.php:116 widgets/widget-latest-reviews.php:68
+#: widgets/widget-popular-posts.php:70
+msgid "Number of posts to show:"
+msgstr "要顯示的貼文數量："
+
+#: blocks/base/loop-options.php:350 packages/blocks/base/loop-options.php:350
+msgid "Number of posts to skip lazyload on for LCP performance."
+msgstr "要跳過 Lazy Load 以提高 LCP 性能的文章數量。"
+
+#: widgets/widget-blocks.php:138
+msgid "Number of Posts:"
+msgstr "文章數："
+
+#: metaboxes/options/page.php:92
+msgid "Number of Slides"
+msgstr "玻片數量"
+
+#: admin/options/posts-single.php:1423
+msgid "Number on Full Width Posts"
+msgstr "全寬的文章數"
+
+#: widgets/widget-latest-posts.php:107
+msgid "Numbered List (No Thumbnails)"
+msgstr "編號列表（無縮圖）"
+
+#: admin/options/listings/grid.php:88
+msgid "Numbers Font"
+msgstr "數字字體"
+
+#: admin/options/listings/grid.php:116
+msgid "Numbers Typography: Circled"
+msgstr "數字文字風格：圓圈"
+
+#: admin/options/listings/grid.php:101
+msgid "Numbers Typography: Simple"
+msgstr "數字文字風格：簡單"
+
+#: inc/theme.php:661
+msgid "Off-Canvas Widgets"
+msgstr "畫布外小部件"
+
+#: admin/options/header.php:967
+msgid "Offcanvas / Hamburger Menu"
+msgstr "側拉式選單 / 漢堡選單"
+
+#: widgets/widget-blocks.php:203
+msgid "Offset: (Advanced)"
+msgstr "偏移量：（進階）"
+
+#: admin/options/header.php:59
+msgid "Old Dark (Zine)"
+msgstr "老黑（雜誌）"
+
+#: admin/options/header.php:54
+msgid "Old Light (Trendy)"
+msgstr "老燈（時尚）"
+
+#: widgets/widget-blocks.php:153
+msgid "Oldest First - Ascending"
+msgstr "最舊的在前 - 升序"
+
+#: admin/options/layout-main.php:494
+msgid "On Archives"
+msgstr "關於檔案"
+
+#: admin/options/layout-main.php:485
+msgid "On Pages"
+msgstr "在頁面上"
+
+#: admin/options/layout-main.php:476
+msgid "On Post/Single"
+msgstr "在文章/單一頁面上"
+
+#: admin/options/layout-main.php:467
+msgid "On Search Page"
+msgstr "在搜尋頁面上"
+
+#: blocks/newsletter/options.php:159 packages/blocks/newsletter/options.php:159
+msgid "One Per Row"
+msgstr "每行一個"
+
+#: admin/options/header.php:242
+msgid "Only applies when using site width option above or for any of the rows."
+msgstr "僅當使用上面的站點寬度選項或任何行時才適用。"
+
+#: widgets/widget-blocks.php:212
+msgid ""
+"Only for advanced users! You can use a custom post type here - multiples "
+"supported when separated by comma. Leave empty to use the default format."
+msgstr "僅適用於高級用戶！您可以在此處使用自訂貼文類型 - 以逗號分隔時支援多個。留空以使用預設格式。"
+
+#: admin/options/footer.php:410 admin/options/footer.php:600
+msgid "Only used for links in compatible widgets."
+msgstr "僅用於相容小部件中的連結。"
+
+#: admin/options/footer.php:385 admin/options/footer.php:575
+msgid "Only used for text in compatible widgets. Not used for links."
+msgstr "僅用於相容小部件中的文字。不用於連結。"
+
+#: admin/options/header/buttons.php:59
+msgid "Open in New Tab"
+msgstr "在新分頁中開啟"
+
+#: blocks/base/loop-options.php:608 packages/blocks/base/loop-options.php:608
+msgid ""
+"Optional custom query ID to modify query args using the "
+"bunyad_block_query_args filter."
+msgstr "可選的自訂查詢 ID，用於使用 Bunyad_block_query_args 過濾器修改查詢參數。"
+
+#: metaboxes/options/post.php:14
+msgid "Optional Sub-title/text thats displayed below main post title."
+msgstr "可選的副標題/文字顯示在主貼文標題下方。"
+
+#: blocks/base/loop-options.php:1588 blocks/base/loop-options.php:1597
+#: packages/blocks/base/loop-options.php:1588
+#: packages/blocks/base/loop-options.php:1597
+msgid "Optional. Auto by default."
+msgstr "選擇性的。預設情況下，自動設定。"
+
+#: blocks/base/loop-options.php:666 blocks/base/loop-options.php:691
+#: blocks/heading/options.php:90 packages/blocks/base/loop-options.php:666
+#: packages/blocks/base/loop-options.php:691
+#: packages/blocks/heading/options.php:90
+msgid "Optional. By default, main category link will be used."
+msgstr "選填項目。預設情況下，將使用主要分類連結。"
+
+#: blocks/base/loop-options.php:659 packages/blocks/base/loop-options.php:659
+msgid ""
+"Optional. By default, main category name will be used. Note: Some heading "
+"styles can have multi-color headings when used with asterisks, example: "
+"World *News*"
+msgstr "選填項目。預設情況下，將使用主要分類名稱。請注意：某些標題風格在與星號一起使用時，可能會產生多色標題，例如：World *News*。"
+
+#: blocks/base/loop-options.php:1579 packages/blocks/base/loop-options.php:1579
+msgid "Optional. Columns number by default."
+msgstr "選填項目。預設情況下，使用的列數。"
+
+#: metaboxes/options/page.php:110
+msgid ""
+"Optional: ADVANCED! If you only want to show a set of selected pre-selected "
+"posts. Enter post ids separated by comma."
+msgstr "可選：高級！如果您只想顯示一組選定的預選貼文。輸入貼文 ID，以逗號分隔。"
+
+#: metaboxes/options/page.php:102
+msgid ""
+"Optional: To limit slider to certain tag or tags. If multiple, separate tag "
+"slugs by comma."
+msgstr "可選：將滑桿限制為某些標籤或多個標籤。如果有多個，請用逗號分隔標籤段。"
+
+#: blocks/base/loop-options.php:456 packages/blocks/base/loop-options.php:456
+msgid "OPTIONAL: Will also be used for heading link, text and color if set."
+msgstr "可選：也將用於標題連結、文字和顏色（如果設定）。"
+
+#: widgets/widget-blocks.php:196
+msgid "or Limit with Tags: (optional)"
+msgstr "或帶有標籤的限制：（可選）"
+
+#: widgets/widget-latest-reviews.php:72
+msgid "Order By:"
+msgstr "訂購方式："
+
+#: admin/options.php:110
+msgid "Other Layouts"
+msgstr "其他佈局"
+
+#: blocks/newsletter/options.php:41 admin/options/newsletter.php:14
+#: packages/blocks/newsletter/options.php:41
+msgid "Others (HTML / Shortcode)"
+msgstr "其他（HTML/簡碼）"
+
+#: inc/reviews/metabox/form.php:71
+msgid "Overall rating auto-calculated:"
+msgstr "自動計算的總體評分："
+
+#: admin/options/common-data.php:227
+msgid "Overlay - 2 Columns"
+msgstr "覆蓋 - 2 列"
+
+#: admin/options/common-data.php:228
+msgid "Overlay - 3 Columns"
+msgstr "覆蓋 - 3 列"
+
+#: admin/options/common-data.php:229
+msgid "Overlay - 4 Columns"
+msgstr "覆蓋 - 4 列"
+
+#: blocks/loops/overlay/options.php:19
+#: packages/blocks/loops/overlay/options.php:19
+msgid "Overlay Block"
+msgstr "覆蓋區塊"
+
+#: admin/options/posts-single.php:1717
+msgid "Overlay Color"
+msgstr "覆蓋層顏色"
+
+#: blocks/loops/feat-grid/options.php:158
+#: packages/blocks/loops/feat-grid/options.php:158
+msgid "Overlay Content Position"
+msgstr "覆蓋內容位置"
+
+#: admin/options/listings/cat-labels.php:95
+msgid "Overlay Margins"
+msgstr "覆蓋邊距"
+
+#: blocks/loops/feat-grid/options.php:203
+#: packages/blocks/loops/feat-grid/options.php:203
+msgid "Overlay Pad (Large Items)"
+msgstr "覆蓋墊（大件物品）"
+
+#: blocks/loops/feat-grid/options.php:215
+#: packages/blocks/loops/feat-grid/options.php:215
+msgid "Overlay Pad (Medium Items)"
+msgstr "覆蓋墊（中型物品）"
+
+#: blocks/loops/feat-grid/options.php:226
+#: packages/blocks/loops/feat-grid/options.php:226
+msgid "Overlay Pad (Small Items)"
+msgstr "覆蓋墊（小件）"
+
+#: blocks/loops/overlay/options.php:44 admin/options/listings/overlay.php:30
+#: packages/blocks/loops/overlay/options.php:44
+msgid "Overlay Paddings"
+msgstr "覆蓋填充"
+
+#: blocks/base/loop-options.php:147 admin/options/listings/cat-labels.php:17
+#: packages/blocks/base/loop-options.php:147
+msgid "Overlay Position"
+msgstr "覆蓋位置"
+
+#: blocks/loops/feat-grid/options.php:147
+#: packages/blocks/loops/feat-grid/options.php:147
+msgid "Overlay Style"
+msgstr "覆蓋樣式"
+
+#: metaboxes/terms/category-options.php:110
+msgid ""
+"Override default posts per page setting for this category. Leave empty for "
+"default from Settings."
+msgstr "覆蓋此分類的預設每頁文章數設置。保留空白以使用設置中的預設值。"
+
+#: blocks/base/loop-options.php:1304 blocks/base/loop-options.php:1533
+#: blocks/breadcrumbs/options.php:98 blocks/heading/options.php:258
+#: blocks/newsletter/options.php:212 blocks/social-icons/options.php:193
+#: admin/options/header/buttons.php:197
+#: admin/options/listings/cat-labels.php:84
+#: packages/blocks/base/loop-options.php:1304
+#: packages/blocks/base/loop-options.php:1533
+#: packages/blocks/breadcrumbs/options.php:98
+#: packages/blocks/heading/options.php:258
+#: packages/blocks/newsletter/options.php:212
+#: packages/blocks/social-icons/options.php:193
+msgid "Padding"
+msgstr "內邊距(Padding)"
+
+#: inc/elementor/page-settings.php:43
+msgid "Page Heading"
+msgstr "頁面標題"
+
+#: blocks/base/loop-options.php:66 admin/options/common-data.php:176
+#: packages/blocks/base/loop-options.php:66
+msgid "Page Numbers"
+msgstr "頁碼"
+
+#: blocks/base/loop-options.php:64 packages/blocks/base/loop-options.php:64
+msgid "Page Numbers AJAX"
+msgstr "頁碼 AJAX"
+
+#: admin/options/layout-pages.php:29
+msgid "Page Titles Typography"
+msgstr "頁面標題文字風格"
+
+#. Template Name of the theme
+msgid "Pagebuilder"
+msgstr "頁面建立器"
+
+#. Template Name of the theme
+msgid "Pagebuilder - No Paddings & Full Width"
+msgstr "頁面構建器 - 無間距 & 全寬"
+
+#: admin/options/layout-main.php:503
+msgid "Pagebuilder Pages (Except Home)"
+msgstr "頁面建立器頁面（首頁除外）"
+
+#: admin/options/custom-codes.php:112
+msgid "Pages"
+msgstr "頁數"
+
+#: admin/options/layout-pages.php:82
+msgid "Pages Layouts"
+msgstr "頁面佈局"
+
+#: admin/options/misc.php:259
+msgid "Pages Sidebar"
+msgstr "頁面側邊欄"
+
+#: blocks/base/loop-options.php:54 packages/blocks/base/loop-options.php:54
+msgid "Pagination"
+msgstr "分頁"
+
+#: blocks/base/loop-options.php:1377 packages/blocks/base/loop-options.php:1377
+msgid "Pagination Margins"
+msgstr "分頁邊距"
+
+#: blocks/base/loop-options.php:61 metaboxes/terms/category-options.php:98
+#: admin/options/archives.php:38 packages/blocks/base/loop-options.php:61
+msgid "Pagination Type"
+msgstr "分頁類型"
+
+#: admin/options/posts-single.php:589
+msgid "Paragraphs Gap"
+msgstr "段落間隙"
+
+#: admin/options/newsletter.php:21
+msgid ""
+"Paste the whole form or just the URL in action of the form. See docs to "
+"learn more."
+msgstr "貼上整個表單或僅貼上表單操作中的 URL。請參閱文件以了解更多資訊。"
+
+#: inc/reviews/metabox/options.php:30
+msgid "Percentage"
+msgstr "百分比"
+
+#: admin/options/misc.php:126
+msgid "Performance"
+msgstr "性能"
+
+#: admin/options/posts-single.php:973
+msgid "Phone"
+msgstr "手機"
+
+#: widgets/widget-about.php:163 admin/options/common-data.php:53
+#: admin/options/common-data.php:100
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: smartmag-core.php:483
+msgid "Pinterest URL"
+msgstr "Pinterest 網址"
+
+#: admin/options/custom-codes.php:97
+msgid "Place a box around the ad, with a background color."
+msgstr "在廣告周圍放置一個帶有背景顏色的方塊。"
+
+#: admin/options/colors-fonts.php:235
+msgid "Placeholder to use in your settings."
+msgstr "在您的設定中使用的佔位符。"
+
+#: blocks/base/loop-options.php:304 packages/blocks/base/loop-options.php:304
+msgid "Plain Text"
+msgstr "純文字"
+
+#: inc/admin/import.php:689
+msgid ""
+"Please install and activate the required plugin \"Bunyad Demo Import\" from "
+"%1$sthis page%2$s."
+msgstr "請從%1$s此頁面%2$s安裝並啟用所需的外掛程式「Bunyad Demo Import」。"
+
+#: admin/options/posts-global.php:229
+msgid "Plugin Settings"
+msgstr "插件設定"
+
+#: inc/reviews/metabox/options.php:31
+msgid "Points"
+msgstr "積分"
+
+#: admin/options/posts-single.php:613
+msgid "Post Body H1"
+msgstr "文章主體 H1"
+
+#: admin/options/posts-single.php:627
+msgid "Post Body H2"
+msgstr "文章主體 H2"
+
+#: admin/options/posts-single.php:640
+msgid "Post Body H3"
+msgstr "文章主體 H3"
+
+#: admin/options/posts-single.php:653
+msgid "Post Body H4"
+msgstr "文章主體 H4"
+
+#: admin/options/posts-single.php:666
+msgid "Post Body H5"
+msgstr "文章主體 H5"
+
+#: admin/options/posts-single.php:679
+msgid "Post Body H6"
+msgstr "文章主體 H6"
+
+#: blocks/base/loop-options.php:896 packages/blocks/base/loop-options.php:896
+msgid "Post Box Background"
+msgstr "郵政信箱背景"
+
+#: blocks/base/loop-options.php:878 packages/blocks/base/loop-options.php:878
+msgid "Post Box Border"
+msgstr "郵政信箱邊框"
+
+#: blocks/base/loop-options.php:915 packages/blocks/base/loop-options.php:915
+msgid "Post Box Paddings"
+msgstr "郵政信箱襯墊"
+
+#: blocks/base/loop-options.php:887 admin/options/listings/grid.php:60
+#: packages/blocks/base/loop-options.php:887
+msgid "Post Box Roundness"
+msgstr "信箱圓度"
+
+#: blocks/base/loop-options.php:870 packages/blocks/base/loop-options.php:870
+msgid "Post Box Shadow"
+msgstr "信箱陰影"
+
+#: admin/options/common-data.php:255
+msgid "Post Cover - Overlay"
+msgstr "文章封面 - 覆蓋層"
+
+#: blocks/base/loop-options.php:834 packages/blocks/base/loop-options.php:834
+msgid "Post Format Icon Scale"
+msgstr "文章格式圖示比例"
+
+#: admin/options/listings/small.php:43 admin/options/posts-listings.php:14
+msgid "Post Format Icons"
+msgstr "文章格式圖示"
+
+#: blocks/base/loop-options.php:254 packages/blocks/base/loop-options.php:254
+msgid "Post Formats Icons"
+msgstr "文章格式圖示"
+
+#: blocks/base/loop-options.php:521 blocks/base/loop-options.php:565
+#: packages/blocks/base/loop-options.php:521
+#: packages/blocks/base/loop-options.php:565
+msgid "Post IDs separated by commas, ex: 25, 34"
+msgstr "文章 ID 以逗號分隔，例如：25, 34"
+
+#: blocks/base/loop-options.php:269 admin/options/posts-single.php:181
+#: packages/blocks/base/loop-options.php:269
+msgid "Post Meta"
+msgstr "文章元資料"
+
+#: blocks/base/loop-options.php:985 packages/blocks/base/loop-options.php:985
+msgid "Post Meta Above Margins"
+msgstr "在邊距之上文章元資料"
+
+#: blocks/base/loop-options.php:997 packages/blocks/base/loop-options.php:997
+msgid "Post Meta Below Margins"
+msgstr "在邊距以下文章元資料"
+
+#: admin/options/posts-single.php:1518 admin/options/posts-single.php:1627
+msgid "Post Meta Color"
+msgstr "文章元資料顏色"
+
+#: blocks/base/loop-options.php:1014 packages/blocks/base/loop-options.php:1014
+msgid "Post Meta Icons Size"
+msgstr "文章元資料圖示大小"
+
+#: admin/options/posts-single.php:16
+msgid "Post Meta Right"
+msgstr "文章元資料右側"
+
+#: blocks/base/loop-options.php:1007 packages/blocks/base/loop-options.php:1007
+msgid "Post Meta Typography"
+msgstr "文章元資料文字風格"
+
+#: admin/options/posts-single.php:189
+msgid "Post Meta: Global Items"
+msgstr "文章元資料：全站項目"
+
+#: metaboxes/options/post.php:30
+msgid "Post Style"
+msgstr "文章樣式"
+
+#: admin/options/posts-single.php:1880
+msgid "Post Style: Cover"
+msgstr "文章樣式： 封面"
+
+#: admin/options/posts-single.php:1874
+msgid "Post Style: Large"
+msgstr "文章風格：大型"
+
+#: admin/options/posts-single.php:1868
+msgid "Post Style: Modern"
+msgstr "文章風格：現代"
+
+#: admin/options/posts-single.php:1485 admin/options/posts-single.php:1593
+#: admin/options/posts-single.php:1705
+msgid "Post Title Size"
+msgstr "文章標題大小"
+
+#: admin/options/posts-single.php:443
+msgid "Post Title Typography"
+msgstr "文章標題文字風格"
+
+#: admin/options/colors-fonts.php:168
+msgid "Post Titles Color"
+msgstr "文章標題顏色"
+
+#: admin/options/posts-listings.php:158
+msgid "Post Titles Hover"
+msgstr "文章標題游標懸停"
+
+#: admin/options/posts-listings.php:97
+msgid "Post Titles Space"
+msgstr "文章標題空間"
+
+#: admin/options/listings/overlay.php:42
+msgid "Post Titles Style"
+msgstr "文章標題樣式"
+
+#: blocks/base/loop-options.php:1077 admin/options/colors-fonts.php:279
+#: packages/blocks/base/loop-options.php:1077
+msgid "Post Titles Typography"
+msgstr "文章標題文字風格"
+
+#: blocks/base/loop-options.php:591 packages/blocks/base/loop-options.php:591
+msgid "Post Type"
+msgstr "文章類型"
+
+#: widgets/widget-blocks.php:209
+msgid "Post Types: (Advanced)"
+msgstr "文章類型：（進階）"
+
+#: admin/options/posts-global.php:233
+msgid "Post Views Settings"
+msgstr "文章瀏覽量設定"
+
+#: blocks/base/loop-options.php:409 packages/blocks/base/loop-options.php:409
+msgid "Post Views: 30 Days"
+msgstr "文章瀏覽量：30 天"
+
+#: blocks/base/loop-options.php:408 packages/blocks/base/loop-options.php:408
+msgid "Post Views: All Time"
+msgstr "文章瀏覽量：所有時間"
+
+#: blocks/base/loop-options.php:410 packages/blocks/base/loop-options.php:410
+msgid "Post Views: Custom Days"
+msgstr "文章瀏覽量：自訂日"
+
+#: admin/options/custom-codes.php:113
+msgid "Posts"
+msgstr "文章"
+
+#: admin/options.php:100
+msgid "Posts & Listings"
+msgstr "文章和列表"
+
+#: admin/options/posts-global.php:247
+msgid "Posts Meta Design"
+msgstr "文章元資料設計"
+
+#: blocks/base/loop-options.php:1662 packages/blocks/base/loop-options.php:1662
+msgid "Posts Source"
+msgstr "文章來源"
+
+#: admin/options/posts-global.php:157
+msgid "Posts Views & Ranks"
+msgstr "文章瀏覽量和排名"
+
+#: admin/options/misc.php:172
+msgid "Preload Featured Image"
+msgstr "預先載入特色圖片"
+
+#: admin/options/misc.php:174
+msgid ""
+"Preload the main image on single pages and the first featured grid image on "
+"home."
+msgstr "在單頁上預先載入主圖像，並在主頁上預先載入第一個特色網格圖片。"
+
+#: admin/options/header.php:947
+msgid "Premade Headers / Presets"
+msgstr "預製頁首"
+
+#: admin/options.php:61
+msgid "Premade Skin"
+msgstr "預製皮膚"
+
+#: blocks/social-icons/options.php:36
+#: packages/blocks/social-icons/options.php:36
+msgid "Preset Style"
+msgstr "預設風格"
+
+#: metaboxes/options/post.php:53
+msgid "Primary Category"
+msgstr "主要類別"
+
+#: admin/options/colors-fonts.php:200
+msgid "Primary Font"
+msgstr "主要字體"
+
+#: inc/reviews/metabox/form.php:149
+msgid "Pro"
+msgstr "優點"
+
+#: admin/options/misc.php:251
+msgid "Product Page - Image Zoom"
+msgstr "產品頁面 - 圖像縮放"
+
+#: inc/reviews/metabox/form.php:80
+msgid "Pros"
+msgstr "優點"
+
+#: admin/options/posts-single.php:1835
+msgid "Pros/Cons Typography"
+msgstr "優缺點排版"
+
+#: blocks/base/loop-options.php:394 widgets/widget-blocks.php:146
+#: packages/blocks/base/loop-options.php:394
+msgid "Published Date"
+msgstr "發布日期"
+
+#: blocks/base/loop-options.php:371 packages/blocks/base/loop-options.php:371
+msgid "Query Type"
+msgstr "查詢類型"
+
+#: inc/editor.php:73
+msgid "Quote - Modern"
+msgstr "報價 - 現代"
+
+#: inc/editor.php:85
+msgid "Quote Left - Modern"
+msgstr "左引號 - 現代"
+
+#: inc/editor.php:92
+msgid "Quote Right - Modern"
+msgstr "正確引用 - 現代"
+
+#: blocks/base/loop-options.php:396 widgets/widget-blocks.php:148
+#: packages/blocks/base/loop-options.php:396
+msgid "Random"
+msgstr "隨機的"
+
+#: blocks/breadcrumbs/options.php:63 admin/options/layout-main.php:400
+#: packages/blocks/breadcrumbs/options.php:63
+msgid "RankMath Plugin"
+msgstr "RankMath 插件"
+
+#: blocks/base/loop-options.php:399 widgets/widget-latest-reviews.php:75
+#: packages/blocks/base/loop-options.php:399
+msgid "Rating"
+msgstr "評分"
+
+#: admin/options/posts-single.php:1787
+msgid "Rating Bars Height"
+msgstr "評分欄高度"
+
+#: inc/reviews/metabox/form.php:222
+msgid "Rating cannot be greater than %d."
+msgstr "評分不能大於 %d。"
+
+#: inc/reviews/metabox/form.php:138
+msgid "Rating:"
+msgstr "評分："
+
+#: blocks/base/loop-options.php:236 admin/options/listings/common.php:26
+#: packages/blocks/base/loop-options.php:236
+msgid "Read More"
+msgstr "閱讀更多"
+
+#: admin/options/posts-listings.php:233
+msgid "Read More Styles"
+msgstr "了解更多款式"
+
+#: admin/options/posts-listings.php:55
+msgid "Read More Text"
+msgstr "閱讀更多文字"
+
+#: blocks/base/loop-options.php:1563 admin/options/common-data.php:123
+#: packages/blocks/base/loop-options.php:1563
+msgid "Read Time"
+msgstr "閱讀時間"
+
+#: admin/options/posts-global.php:175
+msgid "Readable Numbers"
+msgstr "可讀數字"
+
+#: inc/elementor/extend-container.php:140 inc/elementor/extend-section.php:154
+msgid "Rearrange columns by setting order for each."
+msgstr "透過設定每個列的順序來重新排列列。"
+
+#: admin/options/common-data.php:60 admin/options/common-data.php:103
+msgid "Reddit"
+msgstr "Reddit"
+
+#: admin/options/colors-fonts.php:511
+msgid "Refer to the %sdocumentation%s to learn about using Typekit."
+msgstr "請參閱 %s文檔%s 以了解如何使用 Typekit。"
+
+#: inc/admin/import.php:400
+msgid "Regenerate Thumbnails"
+msgstr "重新產生縮圖"
+
+#: widgets/widget-bbp-login.php:176
+msgid "Register URI:"
+msgstr "註冊網址："
+
+#: inc/admin/editor.php:85
+msgid "regular"
+msgstr "常規的"
+
+#: admin/options/posts-single.php:1750
+msgid "Related Posts"
+msgstr "相關文章"
+
+#: admin/options/posts-single.php:1433
+msgid "Related Posts Columns"
+msgstr "相關文章欄數"
+
+#: admin/options/posts-single.php:1390
+msgid "Related Posts Match By"
+msgstr "相關貼文符合依據"
+
+#: admin/options/posts-single.php:1414
+msgid "Related Posts Number"
+msgstr "相關文章數"
+
+#: widgets/widget-tabbed-recent.php:275
+msgid "remove"
+msgstr "消除"
+
+#: admin/options/header/nav-small.php:113
+#: admin/options/header/navigation.php:113
+msgid "Remove First Item Left Space"
+msgstr "移除第一項目的左側空間"
+
+#: admin/options.php:145
+msgid "Reset All Settings"
+msgstr "重置所有設定"
+
+#: admin/options.php:140
+msgid "Reset Settings"
+msgstr "重新設定"
+
+#: blocks/base/loop-options.php:491 packages/blocks/base/loop-options.php:491
+msgid "Review Posts Only"
+msgstr "僅限評論貼文"
+
+#: inc/reviews/metabox/options.php:63
+msgid "Review Type/Schema"
+msgstr "審核類型/架構"
+
+#: blocks/base/loop-options.php:245 admin/options/posts-single.php:1755
+#: packages/blocks/base/loop-options.php:245
+msgid "Reviews"
+msgstr "評論"
+
+#: admin/options/listings/small.php:31 admin/options/posts-listings.php:65
+msgid "Reviews Style"
+msgstr "評論風格"
+
+#: metaboxes/options/page.php:116
+msgid "Revolution Slider Alias"
+msgstr "革命滑塊別名"
+
+#: metaboxes/options/page.php:61
+msgid "Revolution Slider Plugin"
+msgstr "革命滑桿插件"
+
+#: blocks/loops/posts-list/options.php:75
+#: blocks/loops/posts-small/options.php:49 blocks/social-icons/options.php:87
+#: packages/blocks/loops/posts-list/options.php:75
+#: packages/blocks/loops/posts-small/options.php:49
+#: packages/blocks/social-icons/options.php:87
+msgid "Right"
+msgstr "正確的"
+
+#: inc/legacy.php:124
+msgid "Right Side: Limit to Category"
+msgstr "右側：分類限制"
+
+#: inc/legacy.php:132
+msgid "Right Side: Limit to Tag"
+msgstr "右側：限制標籤"
+
+#: inc/elementor/page-settings.php:26 metaboxes/options/page.php:13
+#: metaboxes/options/post.php:24 admin/options/common-data.php:29
+#: admin/options/layout-main.php:185 admin/options/layout-pages.php:24
+#: admin/options/posts-single.php:46
+msgid "Right Sidebar"
+msgstr "右側邊欄"
+
+#: widgets/widget-about.php:242
+msgid "Rounded / Circular Image?"
+msgstr "圓形/圓形圖像？"
+
+#: blocks/social-icons/options.php:41
+#: packages/blocks/social-icons/options.php:41
+msgid "Rounded Monochrome"
+msgstr "圓形單色"
+
+#: blocks/newsletter/options.php:194 packages/blocks/newsletter/options.php:194
+msgid "Rounded Top Icon"
+msgstr "圓形頂部圖標"
+
+#: blocks/base/loop-options.php:1327
+#: admin/options/listings/block-headings.php:207
+#: admin/options/posts-single.php:834 admin/options/posts-single.php:1147
+#: packages/blocks/base/loop-options.php:1327
+msgid "Roundness"
+msgstr "圓度"
+
+#: blocks/social-icons/options.php:126
+#: packages/blocks/social-icons/options.php:126
+msgid "Roundness / Radius"
+msgstr "圓度/半徑"
+
+#: blocks/base/loop-options.php:806 packages/blocks/base/loop-options.php:806
+msgid "Row Gap"
+msgstr "行距"
+
+#: widgets/widget-about.php:166 admin/options/common-data.php:73
+msgid "RSS"
+msgstr "RSS"
+
+#: inc/admin/editor.php:80
+msgid "S"
+msgstr "S"
+
+#: admin/options/colors-fonts.php:263
+msgid "Same Heading Font in Post Body"
+msgstr "文章正文中的相同標題字體"
+
+#: admin/options/header/hamburger.php:94
+msgid "Scale Size"
+msgstr "秤尺寸"
+
+#: inc/reviews/metabox/options.php:133
+msgid "Schema: Application Category"
+msgstr "架構：應用程式類別"
+
+#: inc/reviews/metabox/options.php:90
+msgid "Schema: Author / Brand / Org"
+msgstr "架構：作者/品牌/組織"
+
+#: inc/reviews/metabox/options.php:98
+msgid "Schema: Author Type"
+msgstr "架構：作者類型"
+
+#: inc/reviews/metabox/options.php:173
+msgid "Schema: Currency"
+msgstr "架構：貨幣"
+
+#: inc/reviews/metabox/options.php:117
+msgid "Schema: Item Name (Optional)"
+msgstr "架構：專案名稱（可選）"
+
+#: inc/reviews/metabox/options.php:109
+msgid "Schema: Official Link"
+msgstr "架構：官方連結"
+
+#: inc/reviews/metabox/options.php:125
+msgid "Schema: Operating System"
+msgstr "架構：作業系統"
+
+#: inc/reviews/metabox/options.php:166
+msgid "Schema: Price"
+msgstr "架構：價格"
+
+#: admin/options/common-data.php:11
+msgid "Search"
+msgstr "搜尋"
+
+#: admin/options/header/search.php:89
+msgid "Search Form"
+msgstr "搜尋表格"
+
+#: admin/options/archives.php:122
+msgid "Search Listing Style"
+msgstr "搜尋清單樣式"
+
+#: admin/options/header/search.php:8
+msgid "Search Modal Scheme"
+msgstr "搜尋Modal方案"
+
+#: admin/options/header/search.php:83
+msgid "Search Type"
+msgstr "搜尋類型"
+
+#: admin/options/colors-fonts.php:216
+msgid "Secondary Font"
+msgstr "輔助字體"
+
+#: admin/options/common-data.php:9
+msgid "Secondary Nav"
+msgstr "二級導航"
+
+#: inc/elementor/extend-section.php:54 inc/elementor/module.php:369
+msgid "Section Query"
+msgstr "欄位查詢"
+
+#: blocks/base/loop-options.php:375 packages/blocks/base/loop-options.php:375
+msgid "Section Query (Parent Section)"
+msgstr "部分查詢（父部分）"
+
+#: admin/options/posts-single.php:158
+msgid "Sections Heading Style"
+msgstr "章節標題樣式"
+
+#: admin/options/posts-single.php:167
+msgid "Sections Heading Tag"
+msgstr "章節標題標籤"
+
+#: inc/admin/theme-updates.php:166
+msgid "See Changelog"
+msgstr "查看變更日誌"
+
+#: admin/options/footer.php:26
+msgid "Select layout"
+msgstr "選擇佈局"
+
+#: metaboxes/terms/category-options.php:49
+msgid "Select layout sidebar preference for this category listing."
+msgstr "選擇此分類列表的側邊欄偏好設定。"
+
+#: admin/options/header/nav-small.php:21
+msgid "Select Menu"
+msgstr "選擇選單"
+
+#: admin/options/layout-main.php:18
+msgid ""
+"Select whether you want a boxed or a full-width layout. It affects every "
+"page and the whole layout."
+msgstr "選擇您想要盒裝佈局還是全角佈局。它影響每個頁面和整個佈局。"
+
+#: blocks/base/loop-options.php:741 blocks/heading/options.php:95
+#: packages/blocks/base/loop-options.php:741
+#: packages/blocks/heading/options.php:95
+msgid "SEO: Heading Tag"
+msgstr "SEO：標題標籤"
+
+#: blocks/base/loop-options.php:74 packages/blocks/base/loop-options.php:74
+msgid "SEO: Pagination Links"
+msgstr "SEO：分頁鏈接"
+
+#: blocks/base/loop-options.php:93 packages/blocks/base/loop-options.php:93
+msgid "SEO: Titles Tag"
+msgstr "SEO：標題標籤"
+
+#: widgets/widget-blocks.php:200
+msgid "Separate tags with comma. e.g. cooking,sports"
+msgstr "用逗號分隔標籤。例如烹飪、運動"
+
+#: admin/options/header/navigation.php:291
+msgid "Separator Lines"
+msgstr "分隔線"
+
+#: admin/options/posts-global.php:454
+msgid "Separator Scale"
+msgstr "分離秤"
+
+#: admin/options/posts-global.php:441
+msgid "Separator Spacing"
+msgstr "分隔符號間距"
+
+#: admin/options/posts-single.php:1270 admin/options/posts-single.php:1352
+msgid "Services"
+msgstr "服務"
+
+#: admin/options/posts-single.php:807
+msgid "Services Height"
+msgstr "服務高度"
+
+#: admin/options/header/social.php:26
+msgid "Services to Show"
+msgstr "展示服務"
+
+#: admin/options/posts-single.php:794
+msgid "Services Width"
+msgstr "服務寬度"
+
+#: admin/options/posts-listings.php:24 admin/options/posts-single.php:72
+msgid "Set custom border radius for featured images."
+msgstr "為特色圖像設定自訂邊框半徑。"
+
+#: admin/options/header/search.php:56
+msgid "Set the number of results to show when using the live search."
+msgstr "設定使用即時搜尋時顯示的結果數。"
+
+#: admin/options/footer.php:170
+msgid ""
+"Sets the columns width and number of columns. Other examples: 1/2+1/2, "
+"1/4+1/4+1/2, 1/2+1/4+1/4+1/4"
+msgstr "設定列寬和列數。其他範例：1/2+1/2、1/4+1/4+1/2、1/2+1/4+1/4+1/4"
+
+#: blocks/newsletter/options.php:39 packages/blocks/newsletter/options.php:39
+msgid "Settings From Customizer"
+msgstr "來自定制器的設置"
+
+#: admin/options/misc.php:238
+msgid "Settings here only apply if you have WooCommerce installed."
+msgstr "只有當您安裝了 WooCommerce 時，此處的設定才適用。"
+
+#: admin/options/posts-single.php:992 admin/options/posts-single.php:1692
+msgid "Share Location"
+msgstr "分享位置"
+
+#: admin/options/posts-single.php:768 admin/options/posts-single.php:1013
+#: admin/options/posts-single.php:1305
+msgid "Share Services"
+msgstr "共享服務"
+
+#: admin/options/posts-single.php:742 admin/options/posts-single.php:981
+msgid "Share Style"
+msgstr "分享風格"
+
+#: admin/options/posts-single.php:727 admin/options/posts-single.php:1059
+msgid "Share Text"
+msgstr "分享文字"
+
+#: admin/options/posts-single.php:1681
+msgid "Share Top Style"
+msgstr "分享熱門款式"
+
+#: admin/options/posts-single.php:780
+msgid "Share Typography"
+msgstr "分享文字風格"
+
+#: admin/options/newsletter.php:42
+msgid "Shared Styling"
+msgstr "共享造型"
+
+#: admin/options/misc.php:243
+msgid "Shop Products / Page"
+msgstr "商店產品/頁面"
+
+#: inc/theme.php:635
+msgid "Shop Sidebar"
+msgstr "商店側邊欄"
+
+#: blocks/base/loop-options.php:1049 packages/blocks/base/loop-options.php:1049
+msgid "Show"
+msgstr "展示"
+
+#: admin/options/posts-global.php:176
+msgid "Show 10k instead of 10,000 and so on."
+msgstr "顯示 10k 而不是 10,000，依此類推。"
+
+#: admin/options/posts-global.php:60
+msgid "Show All Categories"
+msgstr "顯示所有分類"
+
+#: admin/options/archives.php:140
+msgid "Show Archive Title"
+msgstr "顯示檔案標題"
+
+#: admin/options/posts-single.php:406
+msgid "Show Author Box"
+msgstr "顯示作者框"
+
+#: admin/options/posts-global.php:120 admin/options/posts-single.php:225
+msgid "Show Author Image"
+msgstr "顯示作者圖片"
+
+#: blocks/loops/feat-grid/options.php:173
+#: packages/blocks/loops/feat-grid/options.php:173
+msgid "Show bottom meta on hover only."
+msgstr "只在游標懸停時顯示底部元資料。"
+
+#: admin/options/archives.php:132
+msgid "Show Category Descriptions"
+msgstr "顯示分類描述"
+
+#: widgets/widget-blocks.php:188
+msgid "Show Category Overlays?"
+msgstr "顯示分類覆蓋層？"
+
+#: admin/options/posts-single.php:354
+msgid "Show Comments Button"
+msgstr "顯示評論按鈕"
+
+#: blocks/loops/grid/options.php:89 packages/blocks/loops/grid/options.php:89
+msgid "Show Content"
+msgstr "展示內容"
+
+#: widgets/widget-social-follow.php:207
+msgid "Show Counters:"
+msgstr "顯示櫃檯："
+
+#: admin/options/listings/common.php:8
+msgid "Show Excerpt"
+msgstr "顯示摘錄"
+
+#: blocks/base/loop-options.php:169 packages/blocks/base/loop-options.php:169
+msgid "Show Excerpts"
+msgstr "顯示摘錄"
+
+#: admin/options/posts-single.php:306
+msgid "Show Featured Image Area"
+msgstr "顯示特色影像區域"
+
+#: admin/options/posts-single.php:1243 admin/options/posts-single.php:1327
+msgid "Show Follow Buttons"
+msgstr "顯示關注按鈕"
+
+#: admin/options/header/auth.php:36
+msgid "Show Icon"
+msgstr "顯示圖示"
+
+#: admin/options/misc.php:65
+msgid ""
+"Show images such as featured images, WordPress galleries etc. in a lightbox "
+"on click."
+msgstr "點擊即可在燈箱中顯示特色圖像、WordPress 畫廊等圖像。"
+
+#: admin/options/layout-main.php:513
+msgid "Show Last/Title Item on Single"
+msgstr "在單一頁面上顯示最後/標題項目。"
+
+#: metaboxes/terms/category-options.php:62 admin/options/archives.php:182
+msgid "Show Latest Posts/Use a tag filter"
+msgstr "顯示最新貼文/使用標籤過濾器"
+
+#: admin/options/header/auth.php:45
+msgid "Show Logout"
+msgstr "顯示註銷"
+
+#: blocks/base/loop-options.php:206 packages/blocks/base/loop-options.php:206
+msgid "Show Media/Image"
+msgstr "顯示媒體/圖片"
+
+#: admin/options/posts-single.php:1104
+msgid "Show More Button Width"
+msgstr "顯示更多按鈕寬度"
+
+#: admin/options/posts-single.php:324
+msgid "Show Next/Previous Post"
+msgstr "顯示下一篇/上一篇文章"
+
+#: admin/options/posts-single.php:964
+msgid "Show On Devices"
+msgstr "在設備上顯示"
+
+#: metaboxes/options/page.php:19
+msgid "Show Page Title?"
+msgstr "顯示頁面標題？"
+
+#: admin/options/posts-single.php:296
+msgid "Show Post Tags"
+msgstr "顯示貼文標籤"
+
+#: blocks/base/loop-options.php:319 packages/blocks/base/loop-options.php:319
+msgid "Show Post Title"
+msgstr "顯示貼文標題"
+
+#: metaboxes/terms/category-options.php:63 admin/options/archives.php:183
+msgid "Show Posts Marked for Featured Slider"
+msgstr "顯示標記為特色滑桿的帖子"
+
+#: blocks/base/loop-options.php:530 packages/blocks/base/loop-options.php:530
+msgid "Show posts of specific post formats only. Defaults to standard posts."
+msgstr "僅顯示特定文章格式的帖子。預設為標準帖子。"
+
+#: inc/reviews/metabox/options.php:26
+msgid "Show Rating As"
+msgstr "顯示評分為"
+
+#: admin/options/posts-single.php:1371
+msgid "Show Related Posts"
+msgstr "顯示相關貼文"
+
+#: admin/options/posts-single.php:954 admin/options/posts-single.php:1296
+msgid "Show Share Buttons"
+msgstr "顯示分享按鈕"
+
+#: admin/options/posts-single.php:717 admin/options/posts-single.php:1035
+msgid "Show Share Text"
+msgstr "顯示分享文字"
+
+#: metaboxes/terms/category-options.php:48
+msgid "Show Sidebar"
+msgstr "顯示側邊欄"
+
+#: widgets/widget-social-follow.php:14
+msgid "Show social follower buttons."
+msgstr "顯示社交追蹤者按鈕。"
+
+#: admin/options/layout-main.php:162
+msgid "Sidebar Gap"
+msgstr "側邊欄間隙"
+
+#: admin/options/layout-main.php:214
+msgid "Sidebar Separator Line"
+msgstr "側邊欄分隔線"
+
+#: admin/options/layout-main.php:252
+msgid "Sidebar Styling"
+msgstr "側邊欄樣式"
+
+#: admin/options/layout-main.php:116 admin/options/layout-main.php:143
+msgid "Sidebar Width"
+msgstr "側邊欄寬度"
+
+#: admin/options/layout-main.php:131
+msgid "Sidebar Width Percent"
+msgstr "側邊欄寬度百分比"
+
+#: blocks/loops/grid/options.php:108 packages/blocks/loops/grid/options.php:108
+msgid "Simple A: Before Title (Centered)"
+msgstr "簡單 A：標題之前（居中）"
+
+#: blocks/loops/grid/options.php:109 packages/blocks/loops/grid/options.php:109
+msgid "Simple B: Before Content"
+msgstr "簡單B：內容之前"
+
+#: admin/options/header.php:64
+msgid "Simple Dark (Sports)"
+msgstr "簡單深色（運動）"
+
+#: admin/options/header.php:93
+msgid "Simple Dark 2 (News)"
+msgstr "簡單黑暗 2（新聞）"
+
+#: blocks/newsletter/options.php:195 packages/blocks/newsletter/options.php:195
+msgid "Simple Icon"
+msgstr "簡單的圖標"
+
+#: admin/options/posts-single.php:11
+msgid "Simple Icons"
+msgstr "簡單的圖標"
+
+#: admin/options/header.php:41
+msgid "Simple Light (Tech 2)"
+msgstr "簡單的光（技術 2）"
+
+#: admin/options/common-data.php:131
+msgid "Simple Text"
+msgstr "簡單文字"
+
+#: admin/options/layout-pages.php:17
+msgid "Single Page Sidebar"
+msgstr "單頁側邊欄"
+
+#: admin/options/posts-single.php:1729
+msgid "Single Post Page"
+msgstr "單一文章頁面"
+
+#: admin/options/posts-single.php:39
+msgid "Single Post/Page Sidebar"
+msgstr "單一文章/頁面側邊欄"
+
+#: inc/custom-codes.php:31
+msgid "Single Post: Above Content"
+msgstr "單篇文章：以上內容"
+
+#: inc/custom-codes.php:37
+msgid "Single Post: Below Content"
+msgstr "單篇文章：以下內容"
+
+#: inc/custom-codes.php:43
+msgid "Single: Below Author Box"
+msgstr "單一頁面：在作者框下方"
+
+#: inc/custom-codes.php:49
+msgid "Single: Between Content"
+msgstr "單：內容之間"
+
+#: admin/options/colors-fonts.php:84
+msgid "Site Background Color"
+msgstr "網站背景顏色"
+
+#: admin/options/footer.php:39
+msgid "Site Custom Footer"
+msgstr "網站自訂頁尾"
+
+#: admin/options/common-data.php:6
+msgid "Site Logo"
+msgstr "網站標誌"
+
+#: admin/options/logos.php:98
+msgid "Site Logos"
+msgstr "網站標誌"
+
+#: blocks/breadcrumbs/options.php:42 admin/options/common-data.php:114
+#: admin/options/layout-main.php:430 packages/blocks/breadcrumbs/options.php:42
+msgid "Site Width"
+msgstr "網站寬度"
+
+#: admin/options/common-data.php:112
+msgid "Site Width + Full BG"
+msgstr "站點寬度+完整背景"
+
+#. Template Name of the theme
+msgid "Sitemap (Deprecated)"
+msgstr "網站地圖（已棄用）"
+
+#: blocks/newsletter/options.php:167 packages/blocks/newsletter/options.php:167
+msgid "Size / Spacing"
+msgstr "尺寸/間距"
+
+#: admin/options.php:42
+msgid "Skins & Demos"
+msgstr "外觀和示範"
+
+#: admin/options/archives.php:167
+msgid "Skip Featured Posts In Feed"
+msgstr "跳過動態中的精選帖子"
+
+#: blocks/base/loop-options.php:485 packages/blocks/base/loop-options.php:485
+msgid "Skip first X posts."
+msgstr "跳過前 X 則貼文。"
+
+#: admin/options/misc.php:162
+msgid "Skip Lazyload"
+msgstr "跳過延遲加載"
+
+#: blocks/base/loop-options.php:348 packages/blocks/base/loop-options.php:348
+msgid "Skip Lazyload on Images"
+msgstr "跳過圖像上的延遲加載"
+
+#: blocks/base/loop-options.php:484 packages/blocks/base/loop-options.php:484
+msgid "Skip Posts / Offset"
+msgstr "跳過帖子/偏移"
+
+#: blocks/base/loop-options.php:552 packages/blocks/base/loop-options.php:552
+msgid "Skip posts using these tags."
+msgstr "跳過使用這些標籤的貼文。"
+
+#: inc/legacy.php:102
+msgid "Slide Animation"
+msgstr "幻燈片動畫"
+
+#: inc/legacy.php:108
+msgid "Slide Delay/Speed"
+msgstr "滑動延遲/速度"
+
+#: metaboxes/options/page.php:100
+msgid "Slider Limit by Tag"
+msgstr "按標籤限制滑桿"
+
+#: metaboxes/options/page.php:108
+msgid "Slider Manual Post Ids"
+msgstr "滑桿手動貼文 ID"
+
+#: blocks/base/loop-options.php:1596 packages/blocks/base/loop-options.php:1596
+msgid "Slides: Phones"
+msgstr "幻燈片：手機"
+
+#: blocks/base/loop-options.php:1587 packages/blocks/base/loop-options.php:1587
+msgid "Slides: Tablets"
+msgstr "幻燈片：平板電腦"
+
+#: blocks/base/loop-options.php:127 blocks/loops/grid/options.php:40
+#: blocks/newsletter/options.php:172 packages/blocks/base/loop-options.php:127
+#: packages/blocks/loops/grid/options.php:40
+#: packages/blocks/newsletter/options.php:172
+msgid "Small"
+msgstr "小的"
+
+#: inc/admin/editor.php:79
+msgid "small"
+msgstr "小的"
+
+#: admin/options/common-data.php:142
+msgid "Small Bar Overlay"
+msgstr "小型條形覆蓋"
+
+#: admin/options/posts-single.php:9
+msgid "Small Circles"
+msgstr "小圓圈"
+
+#: blocks/base/loop-options.php:786 packages/blocks/base/loop-options.php:786
+msgid "Small Gap"
+msgstr "小間隙"
+
+#: blocks/loops/posts-small/options.php:22
+#: packages/blocks/loops/posts-small/options.php:22
+msgid "Small List Block"
+msgstr "小列表區塊"
+
+#: inc/elementor/extend-section.php:277
+msgid "Small Spacing"
+msgstr "小間距"
+
+#: blocks/loops/highlights/options.php:43
+#: blocks/loops/news-focus/options.php:34
+#: packages/blocks/loops/highlights/options.php:43
+#: packages/blocks/loops/news-focus/options.php:34
+msgid "Small Style"
+msgstr "小款式"
+
+#: admin/options/listings/grid.php:74
+msgid "Small Style: Titles"
+msgstr "小樣式：標題"
+
+#: blocks/loops/feat-grid/options.php:240
+#: packages/blocks/loops/feat-grid/options.php:240
+msgid "Small Title Size"
+msgstr "小標題尺寸"
+
+#: blocks/loops/focus-grid/options.php:33
+#: blocks/loops/highlights/options.php:55
+#: blocks/loops/news-focus/options.php:51
+#: packages/blocks/loops/focus-grid/options.php:33
+#: packages/blocks/loops/highlights/options.php:55
+#: packages/blocks/loops/news-focus/options.php:51
+msgid "Small Titles Typography"
+msgstr "小標題文字風格"
+
+#: blocks/base/loop-options.php:338 packages/blocks/base/loop-options.php:338
+msgid "Small: 1 Column or In Sidebar"
+msgstr "小：1 列或在側欄中"
+
+#: admin/options/header.php:776 admin/options/header.php:842
+msgid "Smart (On Scrolling Up)"
+msgstr "智慧（向上捲動）"
+
+#: admin/options/misc.php:150
+msgid "Smart - Preload Images on Desktops"
+msgstr "智慧 - 在桌面上預先載入圖像"
+
+#: admin/options/header.php:214
+msgid "Smart Header 1"
+msgstr "智慧頁首1"
+
+#: admin/options/header.php:215
+msgid "Smart Header 2"
+msgstr "智慧頁首2"
+
+#: inc/elementor/extend-container.php:72 inc/elementor/extend-section.php:86
+#: admin/options/layout-main.php:206
+msgid "Smart Sticky"
+msgstr "智慧型貼上"
+
+#. Theme Name of the theme
+msgid "SmartMag"
+msgstr "智慧型磁鐵"
+
+#: widgets/widget-social-follow.php:13
+msgid "SmartMag - Social Follow & Counters"
+msgstr "SmartMag - 社交關注和計數器"
+
+#: inc/elementor/module.php:70
+msgid "SmartMag Blocks"
+msgstr "SmartMag Blocks"
+
+#: metaboxes/terms/category-options.php:136
+msgid ""
+"SmartMag can use an image as body background in boxed layout. Note: It is "
+"not a repeating pattern. A large photo is to be used as background."
+msgstr "SmartMag 可以使用圖像作為盒裝佈局中的正文背景。注意：這不是重複模式。一張大照片將用作背景。"
+
+#. Plugin Name of the plugin
+msgid "SmartMag Core"
+msgstr "SmartMag Core"
+
+#: widgets/widget-ads.php:16
+msgid "SmartMag Legacy - Advertisement"
+msgstr "SmartMag Legacy - 廣告"
+
+#: blocks/social-icons/options.php:15
+#: packages/blocks/social-icons/options.php:15
+msgid "SmartMag Social Icons"
+msgstr "SmartMag 社群圖示"
+
+#: metaboxes/terms/category-options.php:118
+msgid ""
+"SmartMag uses this for category overlay labels, heading color in home blocks,"
+" and in some styles of main navigation."
+msgstr "SmartMag 使用這個選項來設置分類標籤的覆蓋標籤、首頁區塊的標題顏色，以及某些主導航風格。"
+
+#: admin/options/common-data.php:66
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: inc/social.php:22
+msgid "Social Follow & Count"
+msgstr "社交追蹤和計數"
+
+#: admin/options/common-data.php:10 admin/options/header/off-canvas.php:94
+msgid "Social Icons"
+msgstr "社群圖示"
+
+#: widgets/widget-social-follow.php:216
+msgid "Social Icons:"
+msgstr "社群圖示："
+
+#: widgets/widget-about.php:248
+msgid "Social Icons: (optional)"
+msgstr "社群圖示：（可選）"
+
+#: admin/options/misc.php:19
+msgid "Social Media Links"
+msgstr "社群媒體連結"
+
+#: blocks/social-icons/options.php:61
+#: packages/blocks/social-icons/options.php:61
+msgid "Social Services"
+msgstr "社會服務"
+
+#: admin/options/posts-single.php:1745
+msgid "Social Sharing"
+msgstr "社群分享"
+
+#: inc/admin/editor.php:51
+msgid "Solid Background"
+msgstr "純色背景"
+
+#: admin/options/header/buttons.php:74
+msgid "Solid Color"
+msgstr "純色"
+
+#: blocks/base/loop-options.php:391 packages/blocks/base/loop-options.php:391
+msgid "Sort By"
+msgstr "排序方式"
+
+#: widgets/widget-blocks.php:144
+msgid "Sort By:"
+msgstr "排序方式："
+
+#: blocks/base/loop-options.php:418 packages/blocks/base/loop-options.php:418
+msgid "Sort Days"
+msgstr "排序天數"
+
+#: blocks/base/loop-options.php:429 packages/blocks/base/loop-options.php:429
+msgid "Sort Order"
+msgstr "排序"
+
+#: widgets/widget-popular-posts.php:75
+msgid "Sorting Type:"
+msgstr "排序方式："
+
+#: widgets/widget-about.php:172 admin/options/common-data.php:68
+msgid "SoundCloud"
+msgstr "SoundCloud"
+
+#: admin/options/footer.php:248 admin/options/listings/block-headings.php:40
+msgid "Space / Margin Below"
+msgstr "下方空間/邊距"
+
+#: blocks/base/loop-options.php:1169 blocks/heading/options.php:148
+#: packages/blocks/base/loop-options.php:1169
+#: packages/blocks/heading/options.php:148
+msgid "Space Below"
+msgstr "下面的空間"
+
+#: inc/elementor/extend-section.php:271
+msgid "Space Between Columns (Vertical)"
+msgstr "列之間的空間（垂直）"
+
+#: admin/options/header/nav-small.php:90 admin/options/header/navigation.php:77
+msgid "Space Between Items"
+msgstr "項目之間的空間"
+
+#: admin/options/header/hamburger.php:153 admin/options/header/search.php:180
+#: admin/options/header/switcher.php:98
+msgid "Space Right"
+msgstr "空間權"
+
+#: blocks/base/loop-options.php:123 packages/blocks/base/loop-options.php:123
+msgid ""
+"Space to add below the block. Note: Columns in Elementor also add additional "
+"space below via \"Widgets Space\" setting."
+msgstr "在塊下方新增空間。注意：Elementor 中的列還透過「小部件空間」設定在下面添加額外的空間。"
+
+#: blocks/social-icons/options.php:115
+#: packages/blocks/social-icons/options.php:115
+msgid "Spacing / Gap"
+msgstr "間距/間隙"
+
+#: admin/options/posts-single.php:820 admin/options/posts-single.php:1119
+msgid "Spacing Between"
+msgstr "間距"
+
+#: blocks/loops/feat-grid/options.php:192
+#: packages/blocks/loops/feat-grid/options.php:192
+msgid "Spacing between posts."
+msgstr "柱子之間的間距。"
+
+#: metaboxes/options/page.php:31 metaboxes/options/post.php:40
+#: admin/options/posts-single.php:30
+msgid "Spacious / Narrow Style?"
+msgstr "寬敞/狹窄的風格？"
+
+#: blocks/base/loop-options.php:528 packages/blocks/base/loop-options.php:528
+msgid "Specific Post Formats"
+msgstr "特定文章格式"
+
+#: blocks/base/loop-options.php:519 packages/blocks/base/loop-options.php:519
+msgid "Specific Post IDs"
+msgstr "特定文章 ID"
+
+#: blocks/social-icons/options.php:42
+#: packages/blocks/social-icons/options.php:42
+msgid "Squares with Background Color"
+msgstr "具有背景顏色的正方形"
+
+#: inc/reviews/metabox/options.php:32
+msgid "Stars"
+msgstr "星星"
+
+#: admin/options/common-data.php:144
+msgid "Stars (In Post Meta)"
+msgstr "星星（在文章元資料中）"
+
+#: widgets/widget-about.php:175 admin/options/common-data.php:70
+msgid "Steam"
+msgstr "Steam"
+
+#: admin/options/header.php:735 admin/options/header.php:741
+#: admin/options/header.php:821
+msgid "Sticky Bar"
+msgstr "黏條"
+
+#: inc/elementor/extend-container.php:65 inc/elementor/extend-section.php:79
+msgid "Sticky Column"
+msgstr "吸附列"
+
+#: admin/options/header.php:784 admin/options/header.php:850
+msgid "Sticky Custom Height"
+msgstr "吸附自訂高度"
+
+#: inc/elementor/extend-container.php:96 inc/elementor/extend-section.php:110
+#: admin/options/layout-main.php:191
+msgid "Sticky Sidebar"
+msgstr "吸附側欄"
+
+#: admin/options/layout-main.php:200
+msgid "Sticky Sidebar Type"
+msgstr "吸附側邊欄類型"
+
+#: admin/options/posts-single.php:700
+msgid "Sticky Social Share"
+msgstr "吸附社交分享"
+
+#: admin/options/header.php:769 admin/options/header.php:835
+msgid "Sticky Type"
+msgstr "吸附類型"
+
+#: blocks/base/loop-options.php:1665 blocks/breadcrumbs/options.php:128
+#: blocks/heading/options.php:318 blocks/loops/feat-grid/options.php:32
+#: blocks/loops/grid/options.php:36 blocks/loops/posts-list/options.php:32
+#: blocks/loops/posts-small/options.php:31 blocks/newsletter/options.php:377
+#: blocks/social-icons/options.php:234
+#: packages/blocks/base/loop-options.php:1665
+#: packages/blocks/breadcrumbs/options.php:128
+#: packages/blocks/heading/options.php:318
+#: packages/blocks/loops/feat-grid/options.php:32
+#: packages/blocks/loops/grid/options.php:36
+#: packages/blocks/loops/posts-list/options.php:32
+#: packages/blocks/loops/posts-small/options.php:31
+#: packages/blocks/newsletter/options.php:377
+#: packages/blocks/social-icons/options.php:234
+msgid "Style"
+msgstr "風格"
+
+#: admin/options/header/hamburger.php:33
+msgid "Style 2: Simple"
+msgstr "風格二：簡約"
+
+#: blocks/loops/feat-grid/options.php:151
+#: packages/blocks/loops/feat-grid/options.php:151
+msgid "Style A - Bottom Shade"
+msgstr "款式 A - 底色"
+
+#: blocks/loops/highlights/options.php:46
+#: blocks/loops/news-focus/options.php:37
+#: blocks/loops/posts-small/options.php:34
+#: packages/blocks/loops/highlights/options.php:46
+#: packages/blocks/loops/news-focus/options.php:37
+#: packages/blocks/loops/posts-small/options.php:34
+msgid "Style A: With Thumbs"
+msgstr "款式 A：用拇指"
+
+#: blocks/loops/feat-grid/options.php:152
+#: packages/blocks/loops/feat-grid/options.php:152
+msgid "Style B - Full Overlay"
+msgstr "樣式 B - 全覆蓋"
+
+#: blocks/loops/highlights/options.php:47
+#: blocks/loops/news-focus/options.php:38
+#: blocks/loops/posts-small/options.php:35
+#: packages/blocks/loops/highlights/options.php:47
+#: packages/blocks/loops/news-focus/options.php:38
+#: packages/blocks/loops/posts-small/options.php:35
+msgid "Style B: Arrows / No Thumbs"
+msgstr "樣式 B: 箭頭/無縮圖"
+
+#: admin/options/newsletter.php:193
+msgid "Style B: Modern"
+msgstr "風格 B：現代"
+
+#: admin/options/newsletter.php:197
+msgid "Style C: Classic"
+msgstr "風格C：經典"
+
+#: admin/options/posts-listings.php:66
+msgid "Style for showing review numbers in posts blocks and listings."
+msgstr "在貼文區塊和清單中顯示評論編號的樣式。"
+
+#: admin/options/listings/grid.php:34 admin/options/listings/list.php:30
+msgid "Style Variation"
+msgstr "風格變化"
+
+#: widgets/widget-social-follow.php:193
+msgid "Style:"
+msgstr "風格："
+
+#: admin/options/listings/read-more.php:23
+msgid "Style: Basic Text"
+msgstr "風格：基本文本"
+
+#: blocks/base/loop-options.php:1679 packages/blocks/base/loop-options.php:1679
+msgid "Style: Block Heading"
+msgstr "樣式：塊標題"
+
+#: admin/options/listings/read-more.php:15
+msgid "Style: Button"
+msgstr "款式: 紐帶"
+
+#: blocks/base/loop-options.php:1689 packages/blocks/base/loop-options.php:1689
+msgid "Style: Category Labels"
+msgstr "樣式：分類標籤"
+
+#: admin/options/listings/read-more.php:19
+msgid "Style: Colored Button"
+msgstr "款式: 彩色紐扣"
+
+#: blocks/base/loop-options.php:1674 packages/blocks/base/loop-options.php:1674
+msgid "Style: Content & Box"
+msgstr "風格：內容和盒子"
+
+#: blocks/base/loop-options.php:1684 packages/blocks/base/loop-options.php:1684
+msgid "Style: Pagination"
+msgstr "風格：分頁"
+
+#: blocks/base/loop-options.php:1669 packages/blocks/base/loop-options.php:1669
+msgid "Style: Post Titles"
+msgstr "風格：文章標題"
+
+#: blocks/loops/grid/options.php:41 admin/options/listings/grid.php:40
+#: packages/blocks/loops/grid/options.php:41
+msgid "Stylish"
+msgstr "時髦的"
+
+#: metaboxes/options/post.php:10
+msgid "Sub Title"
+msgstr "副標題"
+
+#: blocks/newsletter/options.php:36 admin/options/newsletter.php:8
+#: packages/blocks/newsletter/options.php:36
+msgid "Subscribe Service"
+msgstr "訂閱服務"
+
+#: admin/options/posts-single.php:1506 admin/options/posts-single.php:1615
+msgid "Subtitle Color"
+msgstr "字幕顏色"
+
+#: admin/options/posts-single.php:1496 admin/options/posts-single.php:1605
+msgid "Subtitle Typography"
+msgstr "副標題文字風格"
+
+#: admin/options/posts-single.php:1847
+msgid "Summary Typography"
+msgstr "摘要文字風格"
+
+#: admin/options/posts-single.php:972
+msgid "Tablet"
+msgstr "平板"
+
+#: widgets/widget-tabbed-recent.php:10
+msgid "Tabs: Recent, category1, category2..."
+msgstr "選項卡：最近、分類 1、分類 2..."
+
+#: blocks/base/loop-options.php:709 blocks/base/loop-options.php:728
+#: admin/options/posts-single.php:1396
+#: packages/blocks/base/loop-options.php:709
+#: packages/blocks/base/loop-options.php:728
+msgid "Tags"
+msgstr "標籤"
+
+#: widgets/widget-flickr.php:151
+msgid "Tags (comma separated, optional):"
+msgstr "標籤（逗號分隔，可選）："
+
+#: blocks/base/loop-options.php:572 packages/blocks/base/loop-options.php:572
+msgid "Taxonomy"
+msgstr "分類"
+
+#: blocks/base/loop-options.php:580 packages/blocks/base/loop-options.php:580
+msgid "Taxonomy Terms IDs"
+msgstr "分類術語 ID"
+
+#: admin/options/common-data.php:64 admin/options/common-data.php:105
+msgid "Telegram"
+msgstr "Telegram"
+
+#: admin/options/colors-fonts.php:233
+msgid "Tertiary Font"
+msgstr "第三字型"
+
+#: blocks/base/loop-options.php:1407 blocks/base/loop-options.php:1517
+#: admin/options/footer.php:384 admin/options/footer.php:574
+#: admin/options/header/buttons.php:92 admin/options/header/text.php:80
+#: admin/options/layout-main.php:576 admin/options/listings/cat-labels.php:58
+#: admin/options/listings/load-more.php:33
+#: admin/options/listings/read-more.php:43 admin/options/newsletter.php:51
+#: packages/blocks/base/loop-options.php:1407
+#: packages/blocks/base/loop-options.php:1517
+msgid "Text Color"
+msgstr "文字顏色"
+
+#: admin/options/posts-single.php:1339
+msgid "Text Format"
+msgstr "文字格式"
+
+#: admin/options/posts-global.php:76 admin/options/posts-single.php:259
+msgid "Text Labels"
+msgstr "文字標籤"
+
+#: admin/options/posts-single.php:364
+msgid "Text Typography"
+msgstr "文字風格"
+
+#: admin/options/header/text.php:48
+msgid "Text/HTML"
+msgstr "文字/HTML"
+
+#: admin/options/common-data.php:19 admin/options/header/text.php:14
+msgid "Text/HTML 1"
+msgstr "文字/HTML 1"
+
+#: admin/options/common-data.php:20 admin/options/header/text.php:18
+msgid "Text/HTML 2"
+msgstr "文字/HTML 2"
+
+#: admin/options/common-data.php:21 admin/options/header/text.php:22
+msgid "Text/HTML 3"
+msgstr "文字/HTML 3"
+
+#: admin/options/common-data.php:22 admin/options/header/text.php:26
+msgid "Text/HTML 4"
+msgstr "文字/HTML 4"
+
+#: blocks/base/loop-options.php:336 packages/blocks/base/loop-options.php:336
+msgid "The block will select image sizing based on specified container width."
+msgstr "此區塊將根據指定的容器寬度選擇圖片大小。"
+
+#: inc/admin/dashboard.php:182
+msgid ""
+"The Bunyad Demo Import plugin is not installed. Please activate it from "
+"%1$sSmartMag > Install Plugins.%2$s"
+msgstr "Bunyad 示範導入插件未安裝。請從 %1$sSmartMag > 安裝插件啟動它。%2$s"
+
+#: blocks/breadcrumbs/options.php:62 admin/options/layout-main.php:399
+#: packages/blocks/breadcrumbs/options.php:62
+msgid "Theme Breadcrumbs"
+msgstr "主題麵包屑"
+
+#: inc/elementor/extend-widgets.php:247
+msgid "Theme Content Style"
+msgstr "主題內容風格"
+
+#. Author of the plugin
+#. Author of the theme
+msgid "ThemeSphere"
+msgstr "ThemeSphere"
+
+#: blocks/base/loop-options.php:1497 packages/blocks/base/loop-options.php:1497
+msgid ""
+"These only apply to category overlay label style, when enabled for this "
+"block."
+msgstr "當為此區塊啟用時，這些僅適用於類別覆蓋標籤樣式。"
+
+#: blocks/newsletter/options.php:168 packages/blocks/newsletter/options.php:168
+msgid ""
+"These presets will not apply if typography or spacing settings were modified "
+"via Customizer."
+msgstr "如果透過自訂功能進行了文字風格或間距設置的修改，則這些預設設置將不會套用。"
+
+#: admin/options/newsletter.php:43
+msgid "These will apply to all styles, globally."
+msgstr "這些將適用於全站所有風格。"
+
+#: admin/options.php:68
+msgid "TheZine"
+msgstr "雜誌"
+
+#: admin/options/posts-single.php:1761 admin/options/posts-single.php:1769
+msgid ""
+"This feature adds a user rating area below criterion to allow readers to "
+"click and vote."
+msgstr "該功能在標準下方添加了用戶評分區域，以允許讀者點擊並投票。"
+
+#: inc/elementor/extend-section.php:273
+msgid ""
+"This is different from Gap as it only applies vertically between columns "
+"excluding the left-most and right-most column.. Gap applies in both "
+"directions and also at beginning and end.."
+msgstr "這與間隙不同，因為它僅適用於垂直列之間，不包括最左邊和最右邊的列。間隙適用於兩個方向以及開始和結束處。"
+
+#: admin/options/layout-main.php:180
+msgid "This setting can be changed per post or page."
+msgstr "此設定可以針對每個貼文或頁面進行變更。"
+
+#: admin/options/logos.php:21 admin/options/logos.php:66
+msgid "This will be used for higher resolution devices like iPhone/Macbook."
+msgstr "這將用於 iPhone/Macbook 等更高解析度的裝置。"
+
+#: admin/options/common-data.php:67
+msgid "Threads"
+msgstr "Threads"
+
+#: admin/options/header/ticker.php:34
+msgid "Ticker Label"
+msgstr "滾動標籤"
+
+#: admin/options/common-data.php:61
+msgid "TikTok"
+msgstr "抖音"
+
+#: admin/options/common-data.php:232
+msgid "Timeline (Deprecated)"
+msgstr "時間軸（已棄用）"
+
+#: admin/options/colors-fonts.php:387
+msgid "Title Bold Weight"
+msgstr "標題粗體字重"
+
+#: admin/options/posts-single.php:1568
+msgid "Title Margins"
+msgstr "標題邊距"
+
+#: admin/options/colors-fonts.php:399
+msgid "Title Semi-bold Weight"
+msgstr "標題 半粗體 粗細"
+
+#: admin/options/layout-main.php:342
+msgid "Title Space Below"
+msgstr "標題下方空格"
+
+#: admin/options/posts-single.php:1811
+msgid "Title Typography"
+msgstr "標題文字風格"
+
+#: widgets/widget-about.php:190 widgets/widget-bbp-login.php:171
+#: widgets/widget-blocks.php:133 widgets/widget-flickr.php:133
+#: widgets/widget-latest-posts.php:75 widgets/widget-latest-reviews.php:65
+#: widgets/widget-popular-posts.php:67 widgets/widget-social-follow.php:187
+msgid "Title:"
+msgstr "標題："
+
+#: widgets/widget-ads.php:103
+msgid "Title: (Optional)"
+msgstr "標題：（可選）"
+
+#: blocks/base/loop-options.php:1108 packages/blocks/base/loop-options.php:1108
+msgid "Titles Color"
+msgstr "標題顏色"
+
+#: blocks/base/loop-options.php:1085 packages/blocks/base/loop-options.php:1085
+msgid "Titles Margins"
+msgstr "標題邊距"
+
+#: blocks/base/loop-options.php:1097 packages/blocks/base/loop-options.php:1097
+msgid "Titles Paddings"
+msgstr "標題填充"
+
+#: blocks/loops/feat-grid/options.php:61 blocks/loops/overlay/options.php:29
+#: packages/blocks/loops/feat-grid/options.php:61
+#: packages/blocks/loops/overlay/options.php:29
+msgid "Titles Style"
+msgstr "標題風格"
+
+#: admin/options/posts-listings.php:98
+msgid ""
+"Titles top/bottom spacing. Does not apply to overlay or featured grid blocks."
+msgstr "標題頂部/底部間距。不適用於覆蓋或特色網格區塊。"
+
+#: admin/options/header/ticker.php:78 admin/options/layout-main.php:303
+#: admin/options/listings/common.php:82
+msgid "Titles Typography"
+msgstr "標題文字風格"
+
+#: blocks/loops/feat-grid/options.php:295
+#: packages/blocks/loops/feat-grid/options.php:295
+msgid "Titles Typpography: Large"
+msgstr "標題版式：大"
+
+#: blocks/loops/feat-grid/options.php:287
+#: packages/blocks/loops/feat-grid/options.php:287
+msgid "Titles Typpography: Medium"
+msgstr "標題排版：中"
+
+#: blocks/loops/feat-grid/options.php:279
+#: packages/blocks/loops/feat-grid/options.php:279
+msgid "Titles Typpography: Small"
+msgstr "標題排版：小"
+
+#: admin/options/posts-global.php:186
+msgid ""
+"To show a different color with hot icon when posts have more than defined "
+"views."
+msgstr "為了在文章擁有超過指定觀看次數時，顯示帶有熱門圖示的不同顏色。"
+
+#: inc/reviews/metabox/options.php:20 admin/options/header.php:625
+msgid "Top"
+msgstr "頂部"
+
+#: admin/options/common-data.php:161
+msgid "Top Center"
+msgstr "頂部中心"
+
+#: blocks/loops/feat-grid/options.php:165
+#: packages/blocks/loops/feat-grid/options.php:165
+msgid "Top Centered"
+msgstr "頂部居中"
+
+#: blocks/loops/feat-grid/options.php:166 admin/options/common-data.php:160
+#: packages/blocks/loops/feat-grid/options.php:166
+msgid "Top Left"
+msgstr "左上方"
+
+#: admin/options/common-data.php:162
+msgid "Top Right"
+msgstr "右上"
+
+#: admin/options/header.php:271 admin/options/header.php:749
+#: admin/options/header.php:828
+msgid "Top Row"
+msgstr "頂部列"
+
+#: admin/options/posts-single.php:1236
+msgid "Top Social Follow"
+msgstr "熱門社交關注"
+
+#: admin/options/posts-single.php:946
+msgid "Top Social Share"
+msgstr "熱門社交分享"
+
+#: admin/options/header/nav-small.php:144
+#: admin/options/header/navigation.php:214
+msgid "Top-level Hover"
+msgstr "頂層懸停"
+
+#: admin/options/header/navigation.php:205
+msgid "Top-level Links Color"
+msgstr "頂層連結顏色"
+
+#: admin/options/header/nav-small.php:46 admin/options/header/navigation.php:33
+msgid "Top-Level Typography"
+msgstr "頂層文字風格"
+
+#: admin/options/header.php:98
+msgid "Traditional (PrimeMag)"
+msgstr "傳統 (PrimeMag)"
+
+#: admin/options/header/buttons.php:73
+msgid "Transparent"
+msgstr "透明的"
+
+#: admin/options.php:67
+msgid "Trendy"
+msgstr "時髦的"
+
+#: widgets/widget-about.php:165 admin/options/common-data.php:57
+#: admin/options/common-data.php:102
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: smartmag-core.php:487
+msgid "Tumblr URL"
+msgstr "Tumblr 網址"
+
+#: admin/options/common-data.php:62
+msgid "Twitch"
+msgstr "Twitch"
+
+#: widgets/widget-latest-posts.php:102
+msgid "Type:"
+msgstr "類型："
+
+#: blocks/base/loop-options.php:1398 blocks/base/loop-options.php:1502
+#: blocks/breadcrumbs/options.php:109 admin/options/header/auth.php:102
+#: admin/options/header/buttons.php:80 admin/options/header/off-canvas.php:51
+#: admin/options/header/text.php:68 admin/options/layout-main.php:538
+#: admin/options/listings/cat-labels.php:27
+#: admin/options/listings/load-more.php:21
+#: admin/options/listings/read-more.php:31 admin/options/posts-global.php:267
+#: admin/options/posts-single.php:274
+#: packages/blocks/base/loop-options.php:1398
+#: packages/blocks/base/loop-options.php:1502
+#: packages/blocks/breadcrumbs/options.php:109
+msgid "Typography"
+msgstr "文字風格"
+
+#: inc/admin/theme-updates.php:105
+msgid "Update Now"
+msgstr "現在更新"
+
+#: admin/options/common-data.php:121
+msgid "Updated"
+msgstr "更新"
+
+#: metaboxes/options/page.php:134 metaboxes/options/post.php:114
+#: metaboxes/terms/category-options.php:141
+msgid "Upload"
+msgstr "上傳"
+
+#: metaboxes/options/page.php:133 metaboxes/options/post.php:113
+#: metaboxes/terms/category-options.php:140
+msgid "Upload This Picture"
+msgstr "上傳這張圖片"
+
+#: admin/options/footer.php:359
+msgid "Upper Background Color"
+msgstr "上部背景顏色"
+
+#: admin/options/footer.php:482
+msgid "Upper Footer"
+msgstr "上頁尾"
+
+#: admin/options/logos.php:32 admin/options/logos.php:78
+msgid ""
+"Use a different logo for mobile devices. Upload a logo twice the normal "
+"width and height."
+msgstr "為行動裝置使用不同的標誌。上傳兩倍於正常寬度和高度的標誌。"
+
+#: metaboxes/options/page.php:135 metaboxes/options/post.php:115
+#: metaboxes/terms/category-options.php:142
+msgid "Use as Background"
+msgstr "用作背景"
+
+#: blocks/loops/feat-grid/options.php:74
+#: packages/blocks/loops/feat-grid/options.php:74
+msgid "Use Aspect Ratio"
+msgstr "使用長寬比"
+
+#: blocks/social-icons/options.php:49
+#: packages/blocks/social-icons/options.php:49
+msgid "Use Brand Colors"
+msgstr "使用品牌顏色"
+
+#: admin/options/posts-single.php:117
+msgid "Use Custom Height"
+msgstr "使用自訂高度"
+
+#: admin/options/custom-codes.php:67
+msgid ""
+"Use different codes for mobile, tablets. When enabled, main code above is "
+"only shown on Desktop."
+msgstr "對於手機、平板電腦使用不同的代碼。啟用後，上面的主要程式碼僅顯示在桌面上。"
+
+#: admin/options/header.php:759
+msgid "Use full width row for sticky even if selected row is site width."
+msgstr "即使所選行是站點寬度，也請使用全寬行進行黏性。"
+
+#: admin/options/header.php:371
+msgid "Use Gradient BG"
+msgstr "使用漸變 BG"
+
+#: admin/options/header.php:582
+msgid "Use Gradient Border"
+msgstr "使用漸層邊框"
+
+#: admin/options/header/logo.php:28
+msgid "Use H1 on Home Logo for SEO"
+msgstr "在主頁標誌上使用 H1 進行 SEO"
+
+#: metaboxes/options/page.php:74
+msgid "Use Latest Posts from Whole Site"
+msgstr "使用整個網站的最新帖子"
+
+#: admin/options/posts-global.php:90
+msgid "Use Modified Date"
+msgstr "使用修改日期"
+
+#: metaboxes/options/page.php:73
+msgid "Use Posts Marked as \"Featured Slider Post?\""
+msgstr "使用標記為「特色滑桿貼文」的貼文？"
+
+#: admin/options/posts-single.php:1405
+msgid "Use YARPP Plugin? (Advanced)"
+msgstr "使用 YARPP 插件？ （進階的）"
+
+#: admin/options/colors-fonts.php:218
+msgid "Used for headings, meta, navigation and so on."
+msgstr "用於標題、元資料、導覽列等。"
+
+#: blocks/base/loop-options.php:760 packages/blocks/base/loop-options.php:760
+msgid ""
+"Used for hovers, heading text (unless changed in Heading Settings) and "
+"accent, and so on."
+msgstr "用於懸停、標題文字（除非在標題設定中更改）和重音等。"
+
+#: metaboxes/options/post.php:98
+msgid ""
+"Used for legacy elements only like Classic Slider, or Category Legacy Mega "
+"Menu."
+msgstr "僅用於傳統元素，例如經典滑桿或類別傳統超級選單。"
+
+#: blocks/loops/feat-grid/options.php:241
+#: blocks/loops/feat-grid/options.php:252
+#: blocks/loops/feat-grid/options.php:263
+#: blocks/loops/feat-grid/options.php:304
+#: packages/blocks/loops/feat-grid/options.php:241
+#: packages/blocks/loops/feat-grid/options.php:252
+#: packages/blocks/loops/feat-grid/options.php:263
+#: packages/blocks/loops/feat-grid/options.php:304
+msgid "Used for small slices of the grid."
+msgstr "用於網格的小切片。"
+
+#: admin/options/colors-fonts.php:202
+msgid ""
+"Used for text mainly. Select from list or click and type your own Google "
+"Font name (or TypeKit if you have configured it)."
+msgstr "主要用於文字。從清單中選擇或按一下並輸入您自己的 Google 字體名稱（或 TypeKit，如果您已設定）。"
+
+#: admin/options/archives.php:201
+msgid ""
+"Uses a static grid by default. Enabling a slider changes mobile view as well."
+msgstr "預設使用靜態網格。啟用滑桿也會改變移動視圖。"
+
+#: blocks/loops/feat-grid/options.php:52
+#: packages/blocks/loops/feat-grid/options.php:52
+msgid ""
+"Uses a static grid by default. Enabling a slider changes mobile view as well."
+" Note: Make sure to increase number of posts."
+msgstr "預設使用靜態網格。啟用滑桿也會改變移動視圖。注意：一定要增加貼文數量。"
+
+#: inc/reviews/metabox/options.php:45
+msgid "Verdict"
+msgstr "判決"
+
+#: admin/options/posts-single.php:1775
+msgid "Verdict Box Roundness"
+msgstr "判定框圓度"
+
+#: inc/reviews/metabox/options.php:53
+msgid "Verdict Summary"
+msgstr "判決摘要"
+
+#: blocks/loops/posts-list/options.php:54
+#: packages/blocks/loops/posts-list/options.php:54
+msgid "Vertical Centered"
+msgstr "垂直居中"
+
+#: blocks/base/loop-options.php:796 packages/blocks/base/loop-options.php:796
+msgid "Vertical spacing between posts."
+msgstr "柱子之間的垂直間距。"
+
+#: blocks/base/loop-options.php:532 packages/blocks/base/loop-options.php:532
+msgid "Video"
+msgstr "影片"
+
+#: blocks/base/loop-options.php:671 blocks/heading/options.php:70
+#: packages/blocks/base/loop-options.php:671
+#: packages/blocks/heading/options.php:70
+msgid "View More"
+msgstr "看更多"
+
+#: blocks/base/loop-options.php:689 blocks/base/loop-options.php:1345
+#: blocks/heading/options.php:88 blocks/heading/options.php:281
+#: packages/blocks/base/loop-options.php:689
+#: packages/blocks/base/loop-options.php:1345
+#: packages/blocks/heading/options.php:88
+#: packages/blocks/heading/options.php:281
+msgid "View More Link"
+msgstr "查看更多連結"
+
+#: blocks/base/loop-options.php:678 blocks/heading/options.php:77
+#: packages/blocks/base/loop-options.php:678
+#: packages/blocks/heading/options.php:77
+msgid "View More Style"
+msgstr "看更多款式"
+
+#: admin/options/common-data.php:124
+msgid "Views Count"
+msgstr "觀看次數"
+
+#: admin/options/posts-global.php:195
+msgid "Views for Hot"
+msgstr "熱門瀏覽量"
+
+#: admin/options/posts-global.php:206
+msgid "Views for Trend"
+msgstr "趨勢觀點"
+
+#: admin/options/posts-global.php:217
+msgid "Views for Viral"
+msgstr "病毒式傳播的觀看次數"
+
+#: widgets/widget-about.php:164 admin/options/common-data.php:54
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: widgets/widget-about.php:174 admin/options/common-data.php:69
+#: admin/options/common-data.php:104
+msgid "VKontakte"
+msgstr "VKontakte"
+
+#: admin/options/common-data.php:59 admin/options/common-data.php:106
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: blocks/newsletter/options.php:156 packages/blocks/newsletter/options.php:156
+msgid ""
+"When using a Custom form provided by shortcode or HTML, No Style might be "
+"the preferred option."
+msgstr "當使用短代碼或 HTML 提供的自訂表單時，無樣式可能是首選選項。"
+
+#: metaboxes/options/post.php:79
+msgid ""
+"When using Video or Audio post format, enter a link of the video or audio "
+"from a service like YouTube, Vimeo, SoundCloud. Shortcodes also supported."
+msgstr "使用影片或音訊發布格式時，輸入 YouTube、Vimeo、SoundCloud 等服務的影片或音訊的連結。也支援短代碼。"
+
+#: admin/options/misc.php:57
+msgid ""
+"When Yoast SEO plugin is enabled, use primary categories from Yoast SEO "
+"unless overridden by theme post options."
+msgstr "啟用 Yoast SEO 外掛後，請使用 Yoast SEO 中的主要分類，除非被主題貼文選項覆蓋。"
+
+#: metaboxes/options/post.php:62
+msgid ""
+"When you have multiple categories for a post, auto detection chooses one in "
+"alphabetical order. These labels are shown above image in category listings."
+msgstr "當您的貼文有多個類別時，自動偵測會按字母順序選擇一個類別。這些標籤顯示在類別清單中的圖像上方。"
+
+#: admin/options/header.php:148
+msgid "Wide Light (SmartTimes)"
+msgstr "寬光（SmartTimes）"
+
+#: inc/elementor/extend-section.php:279
+msgid "Wide Spacing"
+msgstr "寬間距"
+
+#: admin/options/layout-main.php:355
+msgid "Widget Bottom Spacing"
+msgstr "小部件底部間距"
+
+#: admin/options/footer.php:151
+msgid "Widget Columns"
+msgstr "小部件列"
+
+#: admin/options/footer.php:181
+msgid "Widget Headings"
+msgstr "小部件標題"
+
+#: blocks/codes/options.php:62 blocks/newsletter/options.php:358
+#: blocks/social-icons/options.php:215 packages/blocks/codes/options.php:62
+#: packages/blocks/newsletter/options.php:358
+#: packages/blocks/social-icons/options.php:215
+msgid "Widget Title (Optional)"
+msgstr "小部件標題（可選）"
+
+#: admin/options/layout-main.php:261
+msgid "Widget Titles Style"
+msgstr "小部件標題樣式"
+
+#: inc/theme.php:663
+msgid "Widgets below navigation in off-canvas/mobile menu."
+msgstr "畫布外/移動選單中導覽下方的小工具。"
+
+#: inc/theme.php:650
+msgid "Widgets for default sidebar on bbPress/Forums page."
+msgstr "bbPress/論壇頁面上預設側邊欄的小工具。"
+
+#: inc/theme.php:637
+msgid "Widgets in this area will be shown in the default sidebar on Shop page."
+msgstr "該區域的小工具將顯示在商店頁面的預設側邊欄中。"
+
+#: inc/theme.php:625
+msgid "Widgets in this area will be shown in the default sidebar."
+msgstr "該區域中的小部件將顯示在預設側欄中。"
+
+#: inc/theme.php:678
+msgid "Widgets in this area will be shown in the footer."
+msgstr "該區域中的小工具將顯示在頁尾中。"
+
+#: admin/options/header.php:231 admin/options/header.php:346
+#: admin/options/header/hamburger.php:123
+msgid "Width"
+msgstr "寬度"
+
+#: admin/options/header.php:232
+msgid "Width can be overriden below, under each row."
+msgstr "可以在每行下方覆蓋寬度。"
+
+#: blocks/base/loop-options.php:504 packages/blocks/base/loop-options.php:504
+msgid "Will limit posts to selected tags."
+msgstr "將限制貼文到選定的標籤。"
+
+#: admin/options/posts-single.php:317
+msgid "Will open the featured image in the lightbox when clicked."
+msgstr "點擊時將打開燈箱中的特色圖像。"
+
+#: admin/options/misc.php:237
+msgid "WooCommerce/Shop"
+msgstr "WooCommerce/商店"
+
+#: admin/options/custom-codes.php:96
+msgid "Wrapper Box"
+msgstr "包裝盒"
+
+#: widgets/widget-about.php:161 admin/options/common-data.php:51
+#: admin/options/common-data.php:99
+msgid "X (Twitter)"
+msgstr "X（推特）"
+
+#: smartmag-core.php:481
+msgid "X (Twitter) URL"
+msgstr "X（推特）網址"
+
+#: blocks/base/loop-options.php:788 packages/blocks/base/loop-options.php:788
+msgid "X-Large Gap"
+msgstr "超大間隙"
+
+#: blocks/newsletter/options.php:173 packages/blocks/newsletter/options.php:173
+msgid "X-Small"
+msgstr "X 小號"
+
+#: inc/admin/editor.php:98
+msgid "XL"
+msgstr "XL"
+
+#: inc/elementor/page-settings.php:47 metaboxes/options/page.php:24
+#: metaboxes/options/page.php:37 metaboxes/options/post.php:46
+#: widgets/widget-blocks.php:190 widgets/widget-social-follow.php:210
+msgid "Yes"
+msgstr "是的"
+
+#: blocks/breadcrumbs/options.php:64 admin/options/layout-main.php:401
+#: packages/blocks/breadcrumbs/options.php:64
+msgid "Yoast"
+msgstr "酵母菌"
+
+#: admin/options/misc.php:56
+msgid "Yoast SEO Primary Category"
+msgstr "Yoast SEO 主要類別"
+
+#: inc/admin/import.php:679
+msgid ""
+"You can import demo settings or full demo content from %1$s this page %2$s."
+msgstr "您可以從 %1$s 此頁面 %2$s 匯入演示設定或完整演示內容。"
+
+#: metaboxes/options/post.php:85
+msgid ""
+"You can use <!--nextpage--> to split a page into multi-page content "
+"slideshow."
+msgstr "您可以使用 <!--nextpage--> 將頁面拆分為多頁內容幻燈片。"
+
+#: widgets/widget-about.php:168 admin/options/common-data.php:55
+msgid "Youtube"
+msgstr "Youtube"
+
+#: blocks/loops/feat-grid/options.php:185
+#: packages/blocks/loops/feat-grid/options.php:185
+msgid "Zoom Image"
+msgstr "縮放影像"

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  wp:
+    build: .
+    container_name: bet12-wp
+    restart: always
+    ports:
+       - "8000:80"
+    volumes:
+      - ./wp-admin:/var/www/html/wp-admin  # Mount the local WordPress files
+      - ./wp-content/themes/smart-mag:/var/www/html/wp-content/themes/smart-mag

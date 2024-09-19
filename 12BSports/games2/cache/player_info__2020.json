@@ -1,0 +1,1 @@
+{"get":"players","parameters":{"league":"4","team":"","season":"2020"},"errors":{"team":"The Team field cannot be empty."},"results":0,"paging":{"current":1,"total":1},"response":[],"timestamp":1717362333}

@@ -1,0 +1,848 @@
+# Translation of Plugins - Custom Sidebars &#8211; Dynamic Sidebar Widget Area Manager - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Custom Sidebars &#8211; Dynamic Sidebar Widget Area Manager - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-07-02 17:27:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Custom Sidebars &#8211; Dynamic Sidebar Widget Area Manager - Stable (latest release)\n"
+
+#: views/widgets-delete.php:11
+msgid "Please confirm that you want to delete this sidebar."
+msgstr "確定要刪除這個資訊欄？"
+
+#: inc/class-custom-sidebars.php:1107
+msgid "Configure Custom Sidebars"
+msgstr "設定 Custom Sidebars"
+
+#. Author of the plugin
+msgid "WebFactory Ltd"
+msgstr "WebFactory Ltd"
+
+#. Author URI of the plugin
+msgid "https://www.webfactoryltd.com/"
+msgstr "https://www.webfactoryltd.com/"
+
+#: inc/class-custom-sidebars.php:114
+msgid "%1$sCustom Sidebars Notice %2$sStarting from version 5.7, WordPress will be using Gutenberg's block-based Widget Screen. Custom Sidebars is not compatible due to the fact that once Full Site Editing is in place, such plugins will not be required anymore. Therefore Custom Sidebars has been discontinued. If you have existing sidebars that you need to modify, you can switch back to a legacy Widgets screen by adding %3$s in your theme's functions.php file. You can read more about this %4$shere%5$s."
+msgstr "%1$sCustom Sidebars 通知%2$s從 WordPress 5.7 開始使用區塊小工具畫面。待全站編輯功能完備後，便不再需要與 Custom Sidebars 類似功能的外掛，因此 Custom Sidebars 與區塊小工具畫面不相容，並且不會再加入新功能。如果需要修改這個網站上的現有資訊欄，網站管理員可以將 %3$s 新增至佈景主題的 functions.php 檔案中，切換回傳統小工具畫面。如需進一步了解，請參考%4$s這篇文章%5$s。"
+
+#: inc/class-custom-sidebars.php:146
+msgid "Unauthorized"
+msgstr "未經授權的操作！"
+
+#: inc/class-custom-sidebars.php:155
+msgid "Notice dismissed for user %d"
+msgstr "已為 ID 為 %d 的使用者關閉通知"
+
+#: inc/class-custom-sidebars-cloning.php:206
+msgid "Clone"
+msgstr "再製"
+
+#: inc/class-custom-sidebars-editor.php:146
+#: inc/class-custom-sidebars-editor.php:162
+#: inc/class-custom-sidebars-export.php:102
+msgid "You do not have permission for this"
+msgstr "目前的登入身分沒有執行這項操作的權限。"
+
+#: inc/class-custom-sidebars-editor.php:232
+#: inc/class-custom-sidebars-editor.php:372
+#: inc/class-custom-sidebars-editor.php:678
+msgid "You have no permission to do this operation."
+msgstr "目前的登入身分沒有進行這項操作的權限。"
+
+#: inc/class-custom-sidebars-editor.php:250
+msgid "Sidebar-name cannot be empty"
+msgstr "資訊欄名稱不能留空。"
+
+#: inc/class-custom-sidebars-editor.php:271
+#: inc/class-custom-sidebars-editor.php:380
+msgid "The sidebar does not exist"
+msgstr "資訊欄不存在。"
+
+#: inc/class-custom-sidebars-editor.php:304
+msgid "Created new sidebar <strong>%1$s</strong>"
+msgstr "<strong>[%1$s]</strong> 資訊欄已建立。"
+
+#: inc/class-custom-sidebars-editor.php:312
+msgid "Updated sidebar <strong>%1$s</strong>"
+msgstr "<strong>[%1$s]</strong> 資訊欄已更新。"
+
+#: inc/class-custom-sidebars-editor.php:323
+#: inc/class-custom-sidebars-editor.php:398
+msgid "The sidebar was not found"
+msgstr "找不到符合條件的資訊欄。"
+
+#: inc/class-custom-sidebars-editor.php:388
+msgid "Deleted sidebar <strong>%1$s</strong>"
+msgstr "<strong>[%1$s]</strong> 資訊欄已刪除。"
+
+#: inc/class-custom-sidebars-editor.php:455
+#: inc/class-custom-sidebars-visibility.php:156 views/metabox.php:76
+msgid "Front Page"
+msgstr "靜態首頁"
+
+#: inc/class-custom-sidebars-editor.php:456
+#: inc/class-custom-sidebars-visibility.php:161
+msgid "Search Results"
+msgstr "搜尋結果"
+
+#: inc/class-custom-sidebars-editor.php:457
+#: inc/class-custom-sidebars-visibility.php:162
+msgid "Not Found (404)"
+msgstr "404 錯誤"
+
+#: inc/class-custom-sidebars-editor.php:882
+msgid "Updated sidebar <strong>%1$s</strong> settings."
+msgstr "資訊欄 <strong>[%1$s]</strong> 設定已更新。"
+
+#: inc/class-custom-sidebars-editor.php:937 views/widgets.php:17
+msgid "Sidebars"
+msgstr "資訊欄"
+
+#: inc/class-custom-sidebars-editor.php:1174
+msgctxt "Column name on entries list."
+msgid "Custom Sidebars"
+msgstr "Custom Sidebars"
+
+#: inc/class-custom-sidebars-editor.php:1359
+msgid "Custom sidebars configuration is allowed for:"
+msgstr "可設定 Custom Sidebars 的使用者角色:"
+
+#: inc/class-custom-sidebars-editor.php:1382
+msgid "Allowed to replace sidebars:"
+msgstr "允許替換資訊欄:"
+
+#: inc/class-custom-sidebars-editor.php:1388
+msgid "Allow entry author to change sidebars"
+msgstr "開放項目作者變更資訊欄"
+
+#: inc/class-custom-sidebars-editor.php:1399
+msgid "Allow Custom Taxonomies in Sidebar Location:"
+msgstr "在 [資訊欄位置] 中允許自訂分類法:"
+
+#: inc/class-custom-sidebars-editor.php:1410
+msgid "After turn on any Custom Taxonomy you need to reload this screen to be able choose it in Sidebar Location."
+msgstr "啟用任何自訂分類法後，必須重新載入這個畫面，才能在 [資訊欄位置] 中選取。"
+
+#: inc/class-custom-sidebars-explain.php:225
+msgid "Sidebar Debug"
+msgstr "資訊欄偵錯模式"
+
+#: inc/class-custom-sidebars-explain.php:229
+msgid "Turn on Custom Sidebars explain mode."
+msgstr "啟用 Custom Sidebars 說明模式"
+
+#: inc/class-custom-sidebars-explain.php:236
+msgid "Turn off Custom Sidebars explain mode."
+msgstr "停用 Custom Sidebars 說明模式"
+
+#: inc/class-custom-sidebars-export.php:66 views/widgets.php:46
+msgid "Import / Export Sidebars"
+msgstr "匯入/匯出資訊欄"
+
+#: inc/class-custom-sidebars-export.php:289
+#: inc/class-custom-sidebars-export.php:384
+msgid "You do not have permission for export sidebars."
+msgstr "目前的登入身分沒有匯出資訊欄的權限。"
+
+#: inc/class-custom-sidebars-export.php:398
+#: inc/class-custom-sidebars-export.php:440
+msgid "No file was uploaded"
+msgstr "沒有上傳任何檔案。"
+
+#: inc/class-custom-sidebars-export.php:405
+msgid "Import file is too big"
+msgstr "匯入的檔案太大。"
+
+#: inc/class-custom-sidebars-export.php:411
+msgid "Something went wrong"
+msgstr "執行時發生錯誤。"
+
+#: inc/class-custom-sidebars-export.php:434
+msgid "Unexpected import format"
+msgstr "未預期的匯入格式。"
+
+#: inc/class-custom-sidebars-export.php:469
+msgid "You do not have permission for import sidebars."
+msgstr "目前的登入身分沒有匯入資訊欄的權限。"
+
+#: inc/class-custom-sidebars-export.php:520
+msgid "Something unexpected happened and we could not finish the import. Please try again."
+msgstr "發生未預期的狀況導致無法完成匯入程序。請再試一次。"
+
+#: inc/class-custom-sidebars-export.php:728
+msgid "Imported %d custom sidebar!"
+msgid_plural "Imported %d custom sidebars!"
+msgstr[0] "%d 個自訂資訊欄已匯入。"
+
+#: inc/class-custom-sidebars-export.php:742
+msgid "Plugin options were imported!"
+msgstr "外掛設定已匯入。"
+
+#: inc/class-custom-sidebars-export.php:793
+msgid "Imported %d widget!"
+msgid_plural "Imported %d widgets!"
+msgstr[0] "%d 個小工具已匯入。"
+
+#: inc/class-custom-sidebars-visibility.php:158
+msgid "Single Page"
+msgstr "單篇頁面"
+
+#: inc/class-custom-sidebars-visibility.php:160
+msgid "Archives"
+msgstr "彙整頁面"
+
+#: inc/class-custom-sidebars-visibility.php:163 views/widgets-export.php:43
+msgid "Preview"
+msgstr "預覽"
+
+#: inc/class-custom-sidebars-visibility.php:164
+msgid "Archive: Day"
+msgstr "彙整頁面: 日期"
+
+#: inc/class-custom-sidebars-visibility.php:165
+msgid "Archive: Month"
+msgstr "彙整頁面: 月份"
+
+#: inc/class-custom-sidebars-visibility.php:166
+msgid "Archive: Year"
+msgstr "彙整頁面: 年份"
+
+#: inc/class-custom-sidebars-visibility.php:200
+msgid "Visibility"
+msgstr "可見度"
+
+#: inc/class-custom-sidebars-visibility.php:209
+msgid "<b>Show</b> widget if:"
+msgstr "<b>顯示</b>小工具，條件:"
+
+#: inc/class-custom-sidebars-visibility.php:210
+msgid "<b>Hide</b> widget if:"
+msgstr "<b>隱藏</b>小工具，條件:"
+
+#: inc/class-custom-sidebars-visibility.php:214
+msgid "Filters"
+msgstr "篩選條件"
+
+#: inc/class-custom-sidebars-visibility.php:218
+msgid "Date"
+msgstr "日期"
+
+#: inc/class-custom-sidebars-visibility.php:223
+msgid "Guests"
+msgstr "網站訪客"
+
+#: inc/class-custom-sidebars-visibility.php:228
+msgid "Roles"
+msgstr "使用者角色"
+
+#: inc/class-custom-sidebars-visibility.php:233
+msgid "Membership"
+msgstr "成員資格"
+
+#: inc/class-custom-sidebars-visibility.php:239
+msgid "Membership2"
+msgstr "成員資格 2"
+
+#: inc/class-custom-sidebars-visibility.php:245 views/import.php:365
+msgid "Special Pages"
+msgstr "指定頁面"
+
+#: inc/class-custom-sidebars-visibility.php:250
+msgid "For Post Type"
+msgstr "指定內容類型"
+
+#: inc/class-custom-sidebars-visibility.php:252
+msgid "Taxonomy"
+msgstr "分類法"
+
+#: inc/class-custom-sidebars-visibility.php:269
+msgid "Always"
+msgstr "永遠顯示"
+
+#: inc/class-custom-sidebars-visibility.php:276
+#: inc/class-custom-sidebars-visibility.php:281
+#: inc/class-custom-sidebars-visibility.php:290
+#: inc/class-custom-sidebars-visibility.php:309
+#: inc/class-custom-sidebars-visibility.php:329
+#: inc/class-custom-sidebars-visibility.php:348
+#: inc/class-custom-sidebars-visibility.php:367
+#: inc/class-custom-sidebars-visibility.php:451
+msgid "AND"
+msgstr "及"
+
+#: inc/class-custom-sidebars-visibility.php:277
+msgid "User is not logged-in (Guest)"
+msgstr "未登入的使用者 (網站訪客)"
+
+#: inc/class-custom-sidebars-visibility.php:282
+msgid "User is logged-in (Member)"
+msgstr "已登入的使用者 (網站成員)"
+
+#: inc/class-custom-sidebars-visibility.php:291
+msgid "User has role"
+msgstr "隸屬指定使用者角色的使用者"
+
+#: inc/class-custom-sidebars-visibility.php:310
+msgid "User has Membership Level"
+msgstr "隸屬指定成員資格等級的使用者"
+
+#: inc/class-custom-sidebars-visibility.php:318
+#: inc/class-custom-sidebars-visibility.php:338
+msgid "(inactive)"
+msgstr "(已停用)"
+
+#: inc/class-custom-sidebars-visibility.php:330
+msgid "User has Membership"
+msgstr "具備成員資格的使用者"
+
+#: inc/class-custom-sidebars-visibility.php:349
+msgid "On these special pages"
+msgstr "在以下指定頁面"
+
+#: inc/class-custom-sidebars-visibility.php:368
+msgid "On any page of these types"
+msgstr "指定內容類型的全部頁面"
+
+#: inc/class-custom-sidebars-visibility.php:386
+msgid "Only for specific %s"
+msgstr "僅指定 [%s] 項目"
+
+#: inc/class-custom-sidebars-visibility.php:387
+msgid "Only these %s:"
+msgstr "僅下列 [%s] 項目:"
+
+#: inc/class-custom-sidebars.php:261
+msgid "Now you can create and edit custom sidebars in your <a href=\"%1$s\">Widgets screen</a>!"
+msgstr "請在 [<a href=\"%1$s\">小工具</a>] 畫面建立及編輯自訂小工具。"
+
+#: inc/class-custom-sidebars.php:280
+msgid ""
+"<strong>Accessibility mode is not supported by the\n"
+"\t\t\t\t\t\t%1$s plugin.</strong><br /><a href=\"%2$s\">Click here</a>\n"
+"\t\t\t\t\t\tto disable accessibility mode and use the %1$s plugin!"
+msgstr "<strong>%1$s 不支援無障礙模式。</strong><br />點擊<a href=\"%2$s\">這裡</a>以停用無障礙模式並使用 %1$s。"
+
+#: inc/class-custom-sidebars.php:1128
+msgid "Create a custom sidebar to get started."
+msgstr "建立自訂資訊欄以開始。"
+
+#: inc/class-custom-sidebars.php:1135
+msgid "max"
+msgstr "小於或等於最大寬度"
+
+#: inc/class-custom-sidebars.php:1136
+msgid "min"
+msgstr "大於或等於最小寬度"
+
+#: inc/class-custom-sidebars.php:1141
+msgid "Hide"
+msgstr "隱藏"
+
+#: inc/class-custom-sidebars.php:1142
+msgid "Show"
+msgstr "顯示"
+
+#: inc/external/wdev-frash/module.php:377
+msgid "We're happy that you've chosen to install %s! Are you interested in how to make the most of this plugin? How would you like a quick 5 day email crash course with actionable advice on building your membership site? Only the info you want, no subscription!"
+msgstr "非常感謝採用 %s。如果想要了解發揮這個外掛最大效益的方式，或是想了解建置會員網站可行建議的 5 日電子郵件速成課程，直接取得，無須訂閱。"
+
+#: inc/external/wdev-frash/module.php:392
+#: inc/external/wdev-frash/module.php:427
+msgid "Thanks :)"
+msgstr "謝謝 :)"
+
+#: inc/external/wdev-frash/module.php:395
+#: inc/external/wdev-frash/module.php:434
+msgid "Saving"
+msgstr "正在儲存..."
+
+#: inc/external/wdev-frash/module.php:396
+#: inc/external/wdev-frash/module.php:435
+msgid "No thanks"
+msgstr "不用了，謝謝"
+
+#: inc/external/wdev-frash/module.php:412
+msgid "Hey %s, you've been using %s for a while now, and we hope you're happy with it."
+msgstr "%s，你好！這個網站使用 %s 已有一段時間，我們希望使用者對這個外掛感到滿意。"
+
+#: inc/external/wdev-frash/module.php:412
+msgid "We've spent countless hours developing this free plugin for you, and we would really appreciate it if you dropped us a quick rating!"
+msgstr "我們用了不少時間開發這個免費外掛，如果你為這個外掛撰寫好評，我們會非常感謝。"
+
+#: inc/external/wdev-frash/module.php:430
+msgid "Rate %s"
+msgstr "為 %s 進行評等"
+
+#: inc/external/wpmu-lib/inc/class-thelib-html.php:1743
+msgid "Clear"
+msgstr "清除"
+
+#: inc/external/wpmu-lib/inc/class-thelib-html.php:1748
+msgid "Browse"
+msgstr "瀏覽"
+
+#: inc/external/wpmu-lib/inc/class-thelib-ui.php:535
+msgid "Dismiss this notice."
+msgstr "關閉這項通知"
+
+#: inc/integrations/class-custom-sidebars-integration-polylang.php:66
+msgid "Polylang"
+msgstr "Polylang"
+
+#: inc/integrations/class-custom-sidebars-integration-polylang.php:67
+#: inc/integrations/class-custom-sidebars-integration-wml.php:53
+#: inc/integrations/class-custom-sidebars-integration-wpml.php:50
+msgid "Language"
+msgstr "語言"
+
+#: inc/integrations/class-custom-sidebars-integration-wml.php:52
+msgid "WP Multilang"
+msgstr "WP Multilang"
+
+#: inc/integrations/class-custom-sidebars-integration-wpml.php:49
+msgid "WPML"
+msgstr "WPML"
+
+#. Plugin Name of the plugin
+#: views/bulk-edit.php:23 views/import.php:129 views/widgets.php:47
+msgid "Custom Sidebars"
+msgstr "Custom Sidebars"
+
+#: views/bulk-edit.php:35
+msgid "&mdash; No Change &mdash;"
+msgstr "&mdash; 不變更 &mdash;"
+
+#: views/col-sidebars.php:32
+msgid "Not available for %s"
+msgstr "無法供〈%s〉使用"
+
+#: views/col-sidebars.php:45
+msgid "Home Page"
+msgstr "首頁"
+
+#: views/col-sidebars.php:47 views/metabox.php:79
+msgid "Blog Page"
+msgstr "部落格頁面"
+
+#: views/col-sidebars.php:49 views/metabox.php:83
+msgid "WooCommerce Shop"
+msgstr "WooCommerce 商店"
+
+#: views/import.php:68 views/widgets-export.php:34
+msgid "Import"
+msgstr "匯入"
+
+#: views/import.php:75
+msgid "Filename"
+msgstr "檔案名稱"
+
+#: views/import.php:79
+msgid "Exported on"
+msgstr "匯出日期"
+
+#: views/import.php:85
+msgid "WordPress Settings"
+msgstr "WordPress 設定"
+
+#: views/import.php:96
+msgid "WordPress Version"
+msgstr "WordPress 版本"
+
+#: views/import.php:101
+msgid "Plugin Version"
+msgstr "外掛版本"
+
+#: views/import.php:103
+msgid "Unknown"
+msgstr "未知"
+
+#: views/import.php:106
+msgid "Theme"
+msgstr "佈景主題"
+
+#: views/import.php:131
+msgid "Mark the sidebars that you want to import."
+msgstr "請選取要匯入的資訊欄。"
+
+#: views/import.php:136
+msgid "Also import all widgets of the selected sidebars."
+msgstr "一併匯入選取的資訊欄的全部小工具"
+
+#: views/import.php:143 views/widgets-editor.php:15
+msgid "Name"
+msgstr "名稱"
+
+#: views/import.php:144 views/widgets-editor.php:20
+msgid "Description"
+msgstr "內容說明"
+
+#: views/import.php:145
+msgid "Note"
+msgstr "注意事項"
+
+#: views/import.php:146
+msgid "Widgets"
+msgstr "小工具"
+
+#: views/import.php:153
+msgid "New sidebar will be created"
+msgstr "新的資訊欄已建立。"
+
+#: views/import.php:155
+msgid "Existing sidebar will be replaced!"
+msgstr "現有的資訊欄會由匯入的資訊欄替換。"
+
+#: views/import.php:223
+msgid "(Theme sidebar)"
+msgstr "(佈景主題的資訊欄)"
+
+#: views/import.php:251
+msgid "Configuration"
+msgstr "設定"
+
+#: views/import.php:255 views/import.php:258
+msgid "Replaceable Sidebars"
+msgstr "可替換的資訊欄"
+
+#: views/import.php:277
+msgid "By Post Type"
+msgstr "依據內容類型"
+
+#: views/import.php:306
+msgid "Post-Type Archives"
+msgstr "內容類型彙整頁面"
+
+#: views/import.php:327
+msgid "By Category"
+msgstr "依據分類"
+
+#: views/import.php:347 views/widgets-location.php:157
+#: views/widgets-location.php:178
+msgid "Category Archives"
+msgstr "分類彙整頁面"
+
+#: views/import.php:368
+msgid "Main Blog Page"
+msgstr "主要部落格頁面"
+
+#: views/import.php:370 views/widgets-location.php:189
+msgid "Author Archives"
+msgstr "作者彙整頁面"
+
+#: views/import.php:371
+msgid "Tag Archives"
+msgstr "標籤彙整頁面"
+
+#: views/import.php:372
+msgid "Search Results Page"
+msgstr "搜尋結果頁面"
+
+#: views/import.php:382
+msgid "Replace the current plugin configuration with the imported configuration."
+msgstr "以匯入的組態取代目前的外掛組態"
+
+#: views/metabox.php:35
+msgid "To change the sidebar for %s"
+msgstr "為〈%s〉變更資訊欄"
+
+#: views/metabox.php:43
+msgid "Go to the <a href=\"%1$s\">Widgets page</a>"
+msgstr "前往 [<a href=\"%1$s\">小工具</a>] 頁面"
+
+#: views/metabox.php:49
+msgid "Click on \"Sidebar Location\""
+msgstr "點擊 [資訊欄位置]"
+
+#: views/metabox.php:53
+msgid "Open the \"Archive-Types\" tab"
+msgstr "開啟 [彙整頁面類型] 分頁"
+
+#: views/metabox.php:58
+msgid "Choose \"%s\""
+msgstr "選取〈%s〉"
+
+#: views/metabox.php:89
+msgid "Here you can replace the default sidebars. Simply select what sidebar you want to show for this post!"
+msgstr "如有需要，可以在這裡更換預設的資訊欄。請直接選取想要在這篇內容顯示的資訊欄即可。"
+
+#: views/metabox.php:116
+msgid "All sidebars have been locked, you cannot replace them. Go to <a href=\"%s\">the widgets page</a> to unlock a sidebar."
+msgstr "全部資訊欄已鎖定，無法進行替換。請前往 [<a href=\"%s\">小工具</a>] 頁面將資訊欄解除鎖定。"
+
+#: views/widgets-delete.php:17
+msgid "Yes, delete it"
+msgstr "確認刪除"
+
+#: views/widgets-editor.php:16
+msgid "Sidebar name here..."
+msgstr "請輸入資訊欄名稱..."
+
+#: views/widgets-editor.php:17
+msgid "The name should be unique."
+msgstr "名稱必須唯一。"
+
+#: views/widgets-editor.php:21
+msgid "Sidebar description here..."
+msgstr "請輸入資訊欄內容說明..."
+
+#: views/widgets-editor.php:27
+msgid "Caution:"
+msgstr "警告:"
+
+#: views/widgets-editor.php:28
+msgid "Before-after title-widget properties define the html code that will wrap the widgets and their titles in the sidebars, more info about them on the <a href=\"http://justintadlock.com/archives/2010/11/08/sidebars-in-wordpress\" target=\"_blank\">Justin Tadlock Blog</a>. Do not use these fields if you are not sure what you are doing, it can break the design of your site. Leave these fields blank to use the theme sidebars design."
+msgstr "標題/小工具的前方/後方屬性定義了將小工具及其標題包裝在資訊欄中的 HTML 程式碼，如需進一步了解相關資訊，請參考這篇 <a href=\"https://justintadlock.com/archives/2010/11/08/sidebars-in-wordpress\" target=\"_blank\">Justin Tadlock 撰寫的文章</a>。如果不確定這些欄位的作用，請不要使用這些欄位，誤用這些欄位可能會破壞這個網站的外觀設計。欄位留空代表使用佈景主題資訊欄的預設設計。"
+
+#: views/widgets-editor.php:39
+msgid "Before Title"
+msgstr "標題前方"
+
+#: views/widgets-editor.php:43
+msgid "After Title"
+msgstr "標題後方"
+
+#: views/widgets-editor.php:49
+msgid "Before Widget"
+msgstr "小工具前方"
+
+#: views/widgets-editor.php:53
+msgid "After Widget"
+msgstr "小工具後方"
+
+#: views/widgets-editor.php:60
+msgid "Advanced - Edit custom wrapper code"
+msgstr "進階 - 編輯自訂包裝項目程式碼"
+
+#: views/widgets-editor.php:64 views/widgets.php:43
+msgid "Create Sidebar"
+msgstr "新增資訊欄"
+
+#: views/widgets-export.php:10 views/widgets-export.php:28
+msgid "Export"
+msgstr "匯出"
+
+#: views/widgets-export.php:16
+msgid "This will generate a complete export file containing all your sidebars and the current sidebar configuration."
+msgstr "這項操作會產生包含這個網站全部資訊欄及資訊欄目前組態的完整匯出檔案。"
+
+#: views/widgets-export.php:23
+msgid "Optional description for the export file:"
+msgstr "匯出檔案的內容說明 (選填):"
+
+#: views/widgets-export.php:38
+msgid "Select a file to import"
+msgstr "選取檔案以匯入"
+
+#: views/widgets-location.php:30
+msgid "Replaced by another sidebar:"
+msgstr "替換為另一個資訊欄:"
+
+#: views/widgets-location.php:38
+msgid "As <strong>%1$s</strong> for selected %2$s"
+msgstr "在選取的%2$s中替換 <strong>[%1$s]</strong> 資訊欄"
+
+#: views/widgets-location.php:51
+msgid "Click here to pick available %1$s"
+msgstr "點擊這裡以選取可用的〈%1$s〉"
+
+#: views/widgets-location.php:76
+msgid "To attach this sidebar to a unique Post or Page please visit that <a href=\"%1$s\">Post</a> or <a href=\"%2$s\">Page</a> & set it up via the sidebars metabox."
+msgstr "如需將這個資訊欄附加至指定的文章或頁面，請前往 [<a href=\"%1$s\">文章</a>] 或 [<a href=\"%2$s\">頁面</a>] 清單畫面，並在單篇內容的 [資訊欄] 中繼資料區塊中進行設定。"
+
+#: views/widgets-location.php:88
+msgid "There are no replaceable sidebars. Please allow at least one as replaceable."
+msgstr "沒有可以進行替換的資訊欄。請允許至少一個資訊欄可進行替換。"
+
+#: views/widgets-location.php:98 views/widgets-location.php:150
+#: views/widgets-location.php:206 views/widgets-location.php:240
+msgid "Click to toggle"
+msgstr "點擊以切換"
+
+#: views/widgets-location.php:99
+msgid "For all Single Entries matching selected criteria"
+msgstr "符合選取規則的全部單篇項目"
+
+#: views/widgets-location.php:102
+msgid "These replacements will be applied to every single post that matches a certain post type or category."
+msgstr "以下替換項目一經套用，便會在指定內容類型或分類的單篇內容中生效。"
+
+#: views/widgets-location.php:110
+msgid "categories"
+msgstr "分類"
+
+#: views/widgets-location.php:122
+msgid "Post Types"
+msgstr "內容類型"
+
+#: views/widgets-location.php:151
+msgid "For Archives"
+msgstr "指定彙整頁面"
+
+#: views/widgets-location.php:154
+msgid "These replacements will be applied to Archive Type posts and pages."
+msgstr "以下替換項目一經套用，便會在指定彙整頁面類型的內容中生效。"
+
+#: views/widgets-location.php:156 views/widgets-location.php:167
+msgid "Archive Types"
+msgstr "彙整頁面類型"
+
+#: views/widgets-location.php:158
+msgid "Authors"
+msgstr "作者彙整頁面"
+
+#: views/widgets-location.php:207
+msgid "For Screen Sizes"
+msgstr "指定螢幕尺寸"
+
+#: views/widgets-location.php:210
+msgid "Those settings do not load unload sidebars, it only hide or show widgets, NOT SIDEBARS, depend on media screen width."
+msgstr "這項設定不會載入已卸載的資訊欄，僅依照媒體螢幕寬度設定隱藏或顯示小工具，而非資訊欄。"
+
+#: views/widgets-location.php:214
+msgctxt "media screen width table"
+msgid "Screen"
+msgstr "螢幕條件"
+
+#: views/widgets-location.php:215
+msgctxt "media screen width table"
+msgid "Show"
+msgstr "顯示"
+
+#: views/widgets-location.php:216
+msgctxt "media screen width table"
+msgid "Screen width"
+msgstr "螢幕寬度"
+
+#: views/widgets-location.php:223
+msgid "There is no defined rules."
+msgstr "尚無任何已定義的規則。"
+
+#: views/widgets-location.php:226
+msgid "Add new rule"
+msgstr "新增規則"
+
+#: views/widgets-location.php:241
+msgid "3rd party plugins"
+msgstr "第三方外掛"
+
+#: views/widgets-location.php:244
+msgid "These replacements will be applied to 3rd party plugins."
+msgstr "以下替換項目一經套用，便會在第三方外掛中生效。"
+
+#: views/widgets-location.php:285 views/widgets.php:42
+msgid "Save Changes"
+msgstr "儲存設定"
+
+#: views/widgets.php:21
+msgid "Create a new sidebar"
+msgstr "建立資訊欄"
+
+#: views/widgets.php:40
+msgid "Edit [Sidebar]"
+msgstr "編輯 (資訊欄)"
+
+#: views/widgets.php:41
+msgid "New Custom Sidebar"
+msgstr "新增自訂資訊欄"
+
+#: views/widgets.php:44
+msgid "Delete Sidebar"
+msgstr "刪除資訊欄"
+
+#: views/widgets.php:45
+msgid "Define where you want this sidebar to appear."
+msgstr "設定這個資訊欄要出現的位置"
+
+#: views/widgets.php:48
+msgid "Theme Sidebars"
+msgstr "佈景主題的資訊欄"
+
+#: views/widgets.php:49
+msgid "Couldn't load data from WordPress..."
+msgstr "無法從 WordPress 載入資料..."
+
+#: views/widgets.php:50 views/widgets.php:105
+msgid "This sidebar can be replaced on certain pages"
+msgstr "這個資訊欄可在指定頁面替換。"
+
+#: views/widgets.php:51
+msgid "Activate this option to replace the sidebar with one of your custom sidebars."
+msgstr "啟用這項設定後，便能"
+
+#: views/widgets.php:52
+msgid "Filter..."
+msgstr "篩選..."
+
+#: views/widgets.php:69
+msgid "Delete this sidebar."
+msgstr "刪除這個資訊欄"
+
+#: views/widgets.php:78
+msgid "Edit this sidebar."
+msgstr "編輯這個資訊欄"
+
+#: views/widgets.php:80
+msgid "Edit"
+msgstr "編輯"
+
+#: views/widgets.php:87
+msgid "Where do you want to show the sidebar?"
+msgstr "這個資訊欄的顯示位置"
+
+#: views/widgets.php:89
+msgid "Sidebar Location"
+msgstr "資訊欄位置"
+
+#: views/widgets.php:106
+msgid "This sidebar will always be same on all pages"
+msgstr "這個資訊欄在全部頁面會保持相同。"
+
+#: views/widgets.php:115
+msgid "Allow this sidebar to be replaced"
+msgstr "允許替換這個資訊欄"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/custom-sidebars/"
+msgstr "https://wordpress.org/plugins/custom-sidebars/"
+
+#. Description of the plugin
+msgid "Allows you to create widgetized areas and custom sidebars. Replace whole sidebars or single widgets for specific posts and pages."
+msgstr "這個外掛能建立小工具區域及自訂資訊欄，還能替換全部資訊欄或指定文章/頁面的個別小工具。"
+
+#: inc/class-custom-sidebars-editor.php:476
+#: inc/class-custom-sidebars-editor.php:479
+#: inc/class-custom-sidebars-editor.php:485
+#: inc/class-custom-sidebars-editor.php:487
+#: inc/class-custom-sidebars-editor.php:559
+#: inc/class-custom-sidebars-editor.php:561
+#: inc/class-custom-sidebars-editor.php:615 views/metabox.php:85
+msgid "%s Archives"
+msgstr "〈%s〉彙整頁面"
+
+#: inc/class-custom-sidebars-editor.php:458
+msgid "Any Author Archive"
+msgstr "全部作者彙整頁面"
+
+#: inc/class-custom-sidebars-editor.php:459 views/import.php:369
+msgid "Date Archives"
+msgstr "日期彙整頁面"
+
+#: inc/class-custom-sidebars-editor.php:527
+#: inc/class-custom-sidebars-visibility.php:157 views/metabox.php:80
+msgid "Post Index"
+msgstr "文章彙整頁面"
+
+#: inc/class-custom-sidebars-editor.php:531
+msgid "%1$s Archives"
+msgstr "〈%1$s〉彙整頁面"
+
+#: views/widgets-delete.php:16 views/widgets-editor.php:63
+#: views/widgets-location.php:284
+msgid "Cancel"
+msgstr "取消"

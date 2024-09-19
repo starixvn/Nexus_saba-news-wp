@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17.599" height="17.597" viewBox="0 0 14.071 17.357">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff9490"/>
+      <stop offset="0.517" stop-color="#d83e38"/>
+      <stop offset="1" stop-color="#d63a34"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_2001" data-name="Group 2001" transform="translate(-339.306 -386.643)">
+    <g id="Group_2000" data-name="Group 2000" transform="translate(-4733 9241.644)">
+      <rect id="Rectangle_1875" data-name="Rectangle 1875" width="0.918" height="12.298" transform="translate(5072.761 -8850)" fill="#9da1aa"/>
+      <path id="Path_772" data-name="Path 772" d="M7.727,0V11.239H0Z" transform="translate(5084 -8855) rotate(90)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Group_1999" data-name="Group 1999" transform="translate(339.306 399.273)">
+      <path id="Path_771" data-name="Path 771" d="M20.523.321a.443.443,0,0,1,.422,0l4.327,3.422c.533.281.369,1.252-.212,1.252h-13c-.581,0-.745-.971-.212-1.252Z" transform="translate(-11.525 -0.267)" fill="#49b752"/>
+      <g id="Group_1998" data-name="Group 1998" transform="translate(1.765 1.573)">
+        <line id="Line_75" data-name="Line 75" y1="2.698" x2="7.429" transform="translate(0 -0.347)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5"/>
+        <line id="Line_76" data-name="Line 76" x2="10.292" transform="translate(0 2.352)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5"/>
+        <line id="Line_77" data-name="Line 77" x2="1.687" y2="1.698" transform="translate(4.429 0.653)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

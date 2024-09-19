@@ -1,0 +1,854 @@
+[2024-09-03 07:15:26][notice]Start restoring themes.
+[2024-09-03 07:15:26][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part001.zip
+[2024-09-03 07:15:27][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part001.zip succeeded.
+[2024-09-03 07:15:27][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_themes.zip index:0
+[2024-09-03 07:15:29][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_themes.zip index:0 finished.
+[2024-09-03 07:15:29][notice]End restore themes.
+[2024-09-03 07:15:30][notice]Start restoring plugin.
+[2024-09-03 07:15:30][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part001.zip
+[2024-09-03 07:15:32][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part001.zip succeeded.
+[2024-09-03 07:15:32][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:0
+[2024-09-03 07:15:32][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:0 finished.
+[2024-09-03 07:15:32][notice]End restore plugin.
+[2024-09-03 07:15:34][notice]Start restoring plugin.
+[2024-09-03 07:15:34][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:1000
+[2024-09-03 07:15:35][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:1000 finished.
+[2024-09-03 07:15:35][notice]End restore plugin.
+[2024-09-03 07:15:36][notice]Start restoring plugin.
+[2024-09-03 07:15:36][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:2000
+[2024-09-03 07:15:37][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:2000 finished.
+[2024-09-03 07:15:37][notice]End restore plugin.
+[2024-09-03 07:15:38][notice]Start restoring plugin.
+[2024-09-03 07:15:38][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:3000
+[2024-09-03 07:15:38][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:3000 finished.
+[2024-09-03 07:15:38][notice]End restore plugin.
+[2024-09-03 07:15:40][notice]Start restoring plugin.
+[2024-09-03 07:15:40][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:4000
+[2024-09-03 07:15:40][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:4000 finished.
+[2024-09-03 07:15:40][notice]End restore plugin.
+[2024-09-03 07:15:42][notice]Start restoring plugin.
+[2024-09-03 07:15:42][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:5000
+[2024-09-03 07:15:43][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:5000 finished.
+[2024-09-03 07:15:43][notice]End restore plugin.
+[2024-09-03 07:15:44][notice]Start restoring plugin.
+[2024-09-03 07:15:44][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:6000
+[2024-09-03 07:15:45][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:6000 finished.
+[2024-09-03 07:15:45][notice]End restore plugin.
+[2024-09-03 07:15:46][notice]Start restoring plugin.
+[2024-09-03 07:15:46][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:7000
+[2024-09-03 07:15:46][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_plugin.zip index:7000 finished.
+[2024-09-03 07:15:46][notice]End restore plugin.
+[2024-09-03 07:15:48][notice]Start restoring wp-content.
+[2024-09-03 07:15:48][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part008.zip
+[2024-09-03 07:15:48][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part008.zip succeeded.
+[2024-09-03 07:15:48][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_content.zip index:0
+[2024-09-03 07:15:49][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_content.zip index:0 finished.
+[2024-09-03 07:15:49][notice]End restore wp-content.
+[2024-09-03 07:15:50][notice]Start restoring upload.
+[2024-09-03 07:15:50][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part003.zip
+[2024-09-03 07:15:57][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part003.zip succeeded.
+[2024-09-03 07:15:57][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part002.zip index:0
+[2024-09-03 07:15:58][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part002.zip index:0 finished.
+[2024-09-03 07:15:58][notice]End restore upload.
+[2024-09-03 07:16:00][notice]Start restoring upload.
+[2024-09-03 07:16:00][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part002.zip index:1000
+[2024-09-03 07:16:01][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part002.zip index:1000 finished.
+[2024-09-03 07:16:01][notice]End restore upload.
+[2024-09-03 07:16:02][notice]Start restoring upload.
+[2024-09-03 07:16:02][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part002.zip index:2000
+[2024-09-03 07:16:03][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part002.zip index:2000 finished.
+[2024-09-03 07:16:03][notice]End restore upload.
+[2024-09-03 07:16:04][notice]Start restoring upload.
+[2024-09-03 07:16:04][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part002.zip
+[2024-09-03 07:16:11][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part002.zip succeeded.
+[2024-09-03 07:16:11][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part001.zip index:0
+[2024-09-03 07:16:12][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part001.zip index:0 finished.
+[2024-09-03 07:16:12][notice]End restore upload.
+[2024-09-03 07:16:14][notice]Start restoring upload.
+[2024-09-03 07:16:14][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part001.zip index:1000
+[2024-09-03 07:16:15][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part001.zip index:1000 finished.
+[2024-09-03 07:16:15][notice]End restore upload.
+[2024-09-03 07:16:16][notice]Start restoring upload.
+[2024-09-03 07:16:16][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part001.zip index:2000
+[2024-09-03 07:16:17][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part001.zip index:2000 finished.
+[2024-09-03 07:16:17][notice]End restore upload.
+[2024-09-03 07:16:18][notice]Start restoring upload.
+[2024-09-03 07:16:18][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part005.zip
+[2024-09-03 07:16:25][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part005.zip succeeded.
+[2024-09-03 07:16:25][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:0
+[2024-09-03 07:16:26][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:0 finished.
+[2024-09-03 07:16:26][notice]End restore upload.
+[2024-09-03 07:16:27][notice]Start restoring upload.
+[2024-09-03 07:16:27][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:1000
+[2024-09-03 07:16:28][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:1000 finished.
+[2024-09-03 07:16:28][notice]End restore upload.
+[2024-09-03 07:16:29][notice]Start restoring upload.
+[2024-09-03 07:16:29][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:2000
+[2024-09-03 07:16:30][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:2000 finished.
+[2024-09-03 07:16:30][notice]End restore upload.
+[2024-09-03 07:16:31][notice]Start restoring upload.
+[2024-09-03 07:16:31][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:3000
+[2024-09-03 07:16:32][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part004.zip index:3000 finished.
+[2024-09-03 07:16:32][notice]End restore upload.
+[2024-09-03 07:16:33][notice]Start restoring upload.
+[2024-09-03 07:16:33][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part004.zip
+[2024-09-03 07:16:40][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part004.zip succeeded.
+[2024-09-03 07:16:40][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:0
+[2024-09-03 07:16:41][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:0 finished.
+[2024-09-03 07:16:41][notice]End restore upload.
+[2024-09-03 07:16:43][notice]Start restoring upload.
+[2024-09-03 07:16:43][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:1000
+[2024-09-03 07:16:44][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:1000 finished.
+[2024-09-03 07:16:44][notice]End restore upload.
+[2024-09-03 07:16:45][notice]Start restoring upload.
+[2024-09-03 07:16:45][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:2000
+[2024-09-03 07:16:46][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:2000 finished.
+[2024-09-03 07:16:46][notice]End restore upload.
+[2024-09-03 07:16:47][notice]Start restoring upload.
+[2024-09-03 07:16:47][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:3000
+[2024-09-03 07:16:47][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part003.zip index:3000 finished.
+[2024-09-03 07:16:47][notice]End restore upload.
+[2024-09-03 07:16:49][notice]Start restoring upload.
+[2024-09-03 07:16:49][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part006.zip
+[2024-09-03 07:16:56][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part006.zip succeeded.
+[2024-09-03 07:16:56][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:0
+[2024-09-03 07:16:57][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:0 finished.
+[2024-09-03 07:16:57][notice]End restore upload.
+[2024-09-03 07:16:59][notice]Start restoring upload.
+[2024-09-03 07:16:59][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:1000
+[2024-09-03 07:17:00][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:1000 finished.
+[2024-09-03 07:17:00][notice]End restore upload.
+[2024-09-03 07:17:01][notice]Start restoring upload.
+[2024-09-03 07:17:01][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:2000
+[2024-09-03 07:17:02][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:2000 finished.
+[2024-09-03 07:17:02][notice]End restore upload.
+[2024-09-03 07:17:03][notice]Start restoring upload.
+[2024-09-03 07:17:03][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:3000
+[2024-09-03 07:17:04][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part005.zip index:3000 finished.
+[2024-09-03 07:17:04][notice]End restore upload.
+[2024-09-03 07:17:05][notice]Start restoring upload.
+[2024-09-03 07:17:05][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part007.zip
+[2024-09-03 07:17:12][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part007.zip succeeded.
+[2024-09-03 07:17:12][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:0
+[2024-09-03 07:17:13][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:0 finished.
+[2024-09-03 07:17:13][notice]End restore upload.
+[2024-09-03 07:17:14][notice]Start restoring upload.
+[2024-09-03 07:17:14][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:1000
+[2024-09-03 07:17:15][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:1000 finished.
+[2024-09-03 07:17:15][notice]End restore upload.
+[2024-09-03 07:17:16][notice]Start restoring upload.
+[2024-09-03 07:17:16][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:2000
+[2024-09-03 07:17:17][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:2000 finished.
+[2024-09-03 07:17:17][notice]End restore upload.
+[2024-09-03 07:17:18][notice]Start restoring upload.
+[2024-09-03 07:17:18][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:3000
+[2024-09-03 07:17:19][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:3000 finished.
+[2024-09-03 07:17:19][notice]End restore upload.
+[2024-09-03 07:17:20][notice]Start restoring upload.
+[2024-09-03 07:17:20][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:4000
+[2024-09-03 07:17:21][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:4000 finished.
+[2024-09-03 07:17:21][notice]End restore upload.
+[2024-09-03 07:17:22][notice]Start restoring upload.
+[2024-09-03 07:17:22][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:5000
+[2024-09-03 07:17:23][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part006.zip index:5000 finished.
+[2024-09-03 07:17:23][notice]End restore upload.
+[2024-09-03 07:17:24][notice]Start restoring upload.
+[2024-09-03 07:17:24][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part008.zip
+[2024-09-03 07:17:26][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part008.zip succeeded.
+[2024-09-03 07:17:26][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part007.zip index:0
+[2024-09-03 07:17:27][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part007.zip index:0 finished.
+[2024-09-03 07:17:27][notice]End restore upload.
+[2024-09-03 07:17:29][notice]Start restoring upload.
+[2024-09-03 07:17:29][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part007.zip index:1000
+[2024-09-03 07:17:30][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part007.zip index:1000 finished.
+[2024-09-03 07:17:30][notice]End restore upload.
+[2024-09-03 07:17:31][notice]Start restoring upload.
+[2024-09-03 07:17:31][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part007.zip index:2000
+[2024-09-03 07:17:31][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_uploads.part007.zip index:2000 finished.
+[2024-09-03 07:17:31][notice]End restore upload.
+[2024-09-03 07:17:33][notice]Start restoring wp-core.
+[2024-09-03 07:17:33][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part008.zip
+[2024-09-03 07:17:34][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part008.zip succeeded.
+[2024-09-03 07:17:34][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_core.zip
+[2024-09-03 07:17:35][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_core.zip succeeded.
+[2024-09-03 07:17:35][notice]End restore wp-core.
+[2024-09-03 07:17:38][notice]Start restoring databases.
+[2024-09-03 07:17:38][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part001.zip
+[2024-09-03 07:17:38][notice]Extracting file:localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_all.part001.zip finished.
+[2024-09-03 07:17:38][notice]Extracting file:/home/u760805657/domains/12bsportsvn.com/public_html/wp-content/wpvividbackups/localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_db.zip
+[2024-09-03 07:17:38][notice]Extracting file:/home/u760805657/domains/12bsportsvn.com/public_html/wp-content/wpvividbackups/localhost_mansionindo_wpvivid-66cc285e9dfd6_2024-08-26-14-01_backup_db.zip finished.
+[2024-09-03 07:17:38][notice]End restore databases.
+[2024-09-03 07:17:40][notice]Start restoring databases.
+[2024-09-03 07:17:40][notice]Start restoring sql file offset:0
+[2024-09-03 07:17:40][notice]The test to drop table succeeds.
+[2024-09-03 07:17:40][notice]Drop table if exist tmpc5fc82_popularpostsdata
+[2024-09-03 07:17:40][notice]Creating table tmpc5fc82_popularpostsdata
+[2024-09-03 07:17:40][notice]Drop table if exist tmpc5fc82_wfblockediplog
+[2024-09-03 07:17:40][notice]Creating table tmpc5fc82_wfblockediplog
+[2024-09-03 07:17:40][notice]Drop table if exist tmpc5fc82_wfcrawlers
+[2024-09-03 07:17:40][notice]Creating table tmpc5fc82_wfcrawlers
+[2024-09-03 07:17:40][notice]Drop table if exist tmpc5fc82_wffilechanges
+[2024-09-03 07:17:40][notice]Creating table tmpc5fc82_wffilechanges
+[2024-09-03 07:17:40][notice]Drop table if exist tmpc5fc82_wflocs
+[2024-09-03 07:17:40][notice]Creating table tmpc5fc82_wflocs
+[2024-09-03 07:17:40][notice]Drop table if exist tmpc5fc82_wfls_role_counts
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfls_role_counts
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfls_settings
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfls_settings
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfnotifications
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfnotifications
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfreversecache
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfreversecache
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfsecurityevents
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfsecurityevents
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wftrafficrates
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wftrafficrates
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfwaffailures
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfwaffailures
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wpmailsmtp_debug_events
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wpmailsmtp_debug_events
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wpmailsmtp_tasks_meta
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wpmailsmtp_tasks_meta
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_actionscheduler_claims
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_actionscheduler_claims
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_actionscheduler_groups
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_actionscheduler_groups
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_bvg_reset_password
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_bvg_reset_password
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_e_events
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_e_events
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_links
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_links
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfhoover
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfhoover
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wflivetraffichuman
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wflivetraffichuman
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfls_2fa_secrets
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfls_2fa_secrets
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_yoast_migrations
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_yoast_migrations
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_actionscheduler_logs
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_actionscheduler_logs
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_commentmeta
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_commentmeta
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_e_submissions_values
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_e_submissions_values
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_litespeed_url
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_litespeed_url
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_termmeta
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_termmeta
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wflogins
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wflogins
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_yoast_primary_term
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_yoast_primary_term
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_users
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_users
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfblocks7
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfblocks7
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfhits
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfhits
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfsnipcache
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfsnipcache
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_yoast_prominent_words
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_yoast_prominent_words
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_usermeta
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_usermeta
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfpendingissues
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfpendingissues
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_comments
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_comments
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_litespeed_url_file
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_litespeed_url_file
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_popularpostssummary
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_popularpostssummary
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_actionscheduler_actions
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_actionscheduler_actions
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_e_submissions_actions_log
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_e_submissions_actions_log
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfissues
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfissues
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_wfstatus
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_wfstatus
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_e_submissions
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_e_submissions
+[2024-09-03 07:17:41][notice]Drop table if exist tmpc5fc82_term_taxonomy
+[2024-09-03 07:17:41][notice]Creating table tmpc5fc82_term_taxonomy
+[2024-09-03 07:17:42][notice]Drop table if exist tmpc5fc82_yoast_indexable_hierarchy
+[2024-09-03 07:17:42][notice]Creating table tmpc5fc82_yoast_indexable_hierarchy
+[2024-09-03 07:17:42][notice]Drop table if exist tmpc5fc82_terms
+[2024-09-03 07:17:42][notice]Creating table tmpc5fc82_terms
+[2024-09-03 07:17:43][notice]Drop table if exist tmpc5fc82_yoast_seo_links
+[2024-09-03 07:17:43][notice]Creating table tmpc5fc82_yoast_seo_links
+[2024-09-03 07:17:44][notice]Drop table if exist tmpc5fc82_wfconfig
+[2024-09-03 07:17:44][notice]Creating table tmpc5fc82_wfconfig
+[2024-09-03 07:17:44][notice]Drop table if exist tmpc5fc82_wfknownfilelist
+[2024-09-03 07:17:44][notice]Creating table tmpc5fc82_wfknownfilelist
+[2024-09-03 07:17:45][notice]Reading sql file completed offset:5242903
+[2024-09-03 07:17:45][notice]End restore databases.
+[2024-09-03 07:17:47][notice]Start restoring databases.
+[2024-09-03 07:17:47][notice]Start restoring sql file offset:5242903
+[2024-09-03 07:17:47][notice]The test to drop table succeeds.
+[2024-09-03 07:17:48][notice]Drop table if exist tmpc5fc82_options
+[2024-09-03 07:17:48][notice]Creating table tmpc5fc82_options
+[2024-09-03 07:17:48][notice]Drop table if exist tmpc5fc82_term_relationships
+[2024-09-03 07:17:48][notice]Creating table tmpc5fc82_term_relationships
+[2024-09-03 07:17:51][notice]Drop table if exist tmpc5fc82_yoast_indexable
+[2024-09-03 07:17:51][notice]Creating table tmpc5fc82_yoast_indexable
+[2024-09-03 07:17:52][notice]Reading sql file completed offset:10486808
+[2024-09-03 07:17:52][notice]End restore databases.
+[2024-09-03 07:17:53][notice]Start restoring databases.
+[2024-09-03 07:17:53][notice]Start restoring sql file offset:10486808
+[2024-09-03 07:17:53][notice]The test to drop table succeeds.
+[2024-09-03 07:17:54][notice]Drop table if exist tmpc5fc82_wffilemods
+[2024-09-03 07:17:54][notice]Creating table tmpc5fc82_wffilemods
+[2024-09-03 07:17:55][notice]Reading sql file completed offset:15730012
+[2024-09-03 07:17:55][notice]End restore databases.
+[2024-09-03 07:17:56][notice]Start restoring databases.
+[2024-09-03 07:17:56][notice]Start restoring sql file offset:15730012
+[2024-09-03 07:17:56][notice]The test to drop table succeeds.
+[2024-09-03 07:17:57][notice]Drop table if exist tmpc5fc82_postmeta
+[2024-09-03 07:17:57][notice]Creating table tmpc5fc82_postmeta
+[2024-09-03 07:17:58][notice]Reading sql file completed offset:20973289
+[2024-09-03 07:17:58][notice]End restore databases.
+[2024-09-03 07:18:01][notice]Start restoring databases.
+[2024-09-03 07:18:01][notice]Start restoring sql file offset:20973289
+[2024-09-03 07:18:01][notice]The test to drop table succeeds.
+[2024-09-03 07:18:02][notice]Reading sql file completed offset:26216480
+[2024-09-03 07:18:02][notice]End restore databases.
+[2024-09-03 07:18:03][notice]Start restoring databases.
+[2024-09-03 07:18:03][notice]Start restoring sql file offset:26216480
+[2024-09-03 07:18:04][notice]The test to drop table succeeds.
+[2024-09-03 07:18:04][notice]Drop table if exist tmpc5fc82_posts
+[2024-09-03 07:18:04][notice]Creating table tmpc5fc82_posts
+[2024-09-03 07:18:04][notice]Reading sql file completed offset:31464515
+[2024-09-03 07:18:04][notice]End restore databases.
+[2024-09-03 07:18:06][notice]Start restoring databases.
+[2024-09-03 07:18:06][notice]Start restoring sql file offset:31464515
+[2024-09-03 07:18:06][notice]The test to drop table succeeds.
+[2024-09-03 07:18:07][notice]Reading sql file completed offset:36715844
+[2024-09-03 07:18:07][notice]End restore databases.
+[2024-09-03 07:18:10][notice]Start restoring databases.
+[2024-09-03 07:18:10][notice]Start restoring sql file offset:36715844
+[2024-09-03 07:18:10][notice]The test to drop table succeeds.
+[2024-09-03 07:18:10][notice]Reading sql file completed offset:41960738
+[2024-09-03 07:18:10][notice]End restore databases.
+[2024-09-03 07:18:13][notice]Start restoring databases.
+[2024-09-03 07:18:13][notice]Start restoring sql file offset:41960738
+[2024-09-03 07:18:13][notice]The test to drop table succeeds.
+[2024-09-03 07:18:13][notice]Reading sql file completed offset:47224088
+[2024-09-03 07:18:13][notice]End restore databases.
+[2024-09-03 07:18:15][notice]Start restoring databases.
+[2024-09-03 07:18:15][notice]Start restoring sql file offset:47224088
+[2024-09-03 07:18:16][notice]The test to drop table succeeds.
+[2024-09-03 07:18:16][notice]Reading sql file completed offset:52474547
+[2024-09-03 07:18:16][notice]End restore databases.
+[2024-09-03 07:18:18][notice]Start restoring databases.
+[2024-09-03 07:18:18][notice]Start restoring sql file offset:52474547
+[2024-09-03 07:18:18][notice]The test to drop table succeeds.
+[2024-09-03 07:18:18][notice]Start replacing table tmpc5fc82_popularpostsdata offset:0
+[2024-09-03 07:18:18][notice]
+[2024-09-03 07:18:18][notice]Counting of rows in tmpc5fc82_popularpostsdata: 156
+[2024-09-03 07:18:18][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:18][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:18][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_popularpostsdata Replaced row: 0\/156;"}
+[2024-09-03 07:18:18][notice]End restore databases.
+[2024-09-03 07:18:20][notice]Start restoring databases.
+[2024-09-03 07:18:20][notice]Start replacing table tmpc5fc82_wfblockediplog offset:0
+[2024-09-03 07:18:20][notice]
+[2024-09-03 07:18:20][notice]Counting of rows in tmpc5fc82_wfblockediplog: 0
+[2024-09-03 07:18:20][notice]End restore databases.
+[2024-09-03 07:18:21][notice]Start restoring databases.
+[2024-09-03 07:18:21][notice]Start replacing table tmpc5fc82_wfcrawlers offset:0
+[2024-09-03 07:18:21][notice]
+[2024-09-03 07:18:21][notice]Counting of rows in tmpc5fc82_wfcrawlers: 0
+[2024-09-03 07:18:21][notice]End restore databases.
+[2024-09-03 07:18:24][notice]Start restoring databases.
+[2024-09-03 07:18:24][notice]Start replacing table tmpc5fc82_wffilechanges offset:0
+[2024-09-03 07:18:24][notice]
+[2024-09-03 07:18:24][notice]Counting of rows in tmpc5fc82_wffilechanges: 0
+[2024-09-03 07:18:24][notice]End restore databases.
+[2024-09-03 07:18:25][notice]Start restoring databases.
+[2024-09-03 07:18:25][notice]Start replacing table tmpc5fc82_wflocs offset:0
+[2024-09-03 07:18:25][notice]
+[2024-09-03 07:18:25][notice]Counting of rows in tmpc5fc82_wflocs: 1
+[2024-09-03 07:18:25][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:25][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:25][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wflocs Replaced row: 0\/1;"}
+[2024-09-03 07:18:25][notice]End restore databases.
+[2024-09-03 07:18:27][notice]Start restoring databases.
+[2024-09-03 07:18:27][notice]Start replacing table tmpc5fc82_wfls_role_counts offset:0
+[2024-09-03 07:18:27][notice]
+[2024-09-03 07:18:27][notice]Counting of rows in tmpc5fc82_wfls_role_counts: 0
+[2024-09-03 07:18:27][notice]End restore databases.
+[2024-09-03 07:18:30][notice]Start restoring databases.
+[2024-09-03 07:18:30][notice]Start replacing table tmpc5fc82_wfls_settings offset:0
+[2024-09-03 07:18:30][notice]
+[2024-09-03 07:18:30][notice]Counting of rows in tmpc5fc82_wfls_settings: 30
+[2024-09-03 07:18:30][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:30][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:30][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfls_settings Replaced row: 0\/30;"}
+[2024-09-03 07:18:30][notice]End restore databases.
+[2024-09-03 07:18:32][notice]Start restoring databases.
+[2024-09-03 07:18:32][notice]Start replacing table tmpc5fc82_wfnotifications offset:0
+[2024-09-03 07:18:32][notice]
+[2024-09-03 07:18:32][notice]Counting of rows in tmpc5fc82_wfnotifications: 17
+[2024-09-03 07:18:32][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:32][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:32][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfnotifications Replaced row: 0\/17;"}
+[2024-09-03 07:18:32][notice]End restore databases.
+[2024-09-03 07:18:34][notice]Start restoring databases.
+[2024-09-03 07:18:34][notice]Start replacing table tmpc5fc82_wfreversecache offset:0
+[2024-09-03 07:18:34][notice]
+[2024-09-03 07:18:34][notice]Counting of rows in tmpc5fc82_wfreversecache: 1
+[2024-09-03 07:18:34][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:34][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:34][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfreversecache Replaced row: 0\/1;"}
+[2024-09-03 07:18:34][notice]End restore databases.
+[2024-09-03 07:18:35][notice]Start restoring databases.
+[2024-09-03 07:18:35][notice]Start replacing table tmpc5fc82_wfsecurityevents offset:0
+[2024-09-03 07:18:35][notice]
+[2024-09-03 07:18:35][notice]Counting of rows in tmpc5fc82_wfsecurityevents: 0
+[2024-09-03 07:18:35][notice]End restore databases.
+[2024-09-03 07:18:38][notice]Start restoring databases.
+[2024-09-03 07:18:38][notice]Start replacing table tmpc5fc82_wftrafficrates offset:0
+[2024-09-03 07:18:38][notice]
+[2024-09-03 07:18:38][notice]Counting of rows in tmpc5fc82_wftrafficrates: 0
+[2024-09-03 07:18:38][notice]End restore databases.
+[2024-09-03 07:18:40][notice]Start restoring databases.
+[2024-09-03 07:18:40][notice]Start replacing table tmpc5fc82_wfwaffailures offset:0
+[2024-09-03 07:18:40][notice]
+[2024-09-03 07:18:40][notice]Counting of rows in tmpc5fc82_wfwaffailures: 0
+[2024-09-03 07:18:40][notice]End restore databases.
+[2024-09-03 07:18:42][notice]Start restoring databases.
+[2024-09-03 07:18:42][notice]Start replacing table tmpc5fc82_wpmailsmtp_debug_events offset:0
+[2024-09-03 07:18:42][notice]
+[2024-09-03 07:18:42][notice]Counting of rows in tmpc5fc82_wpmailsmtp_debug_events: 0
+[2024-09-03 07:18:42][notice]End restore databases.
+[2024-09-03 07:18:44][notice]Start restoring databases.
+[2024-09-03 07:18:44][notice]Start replacing table tmpc5fc82_wpmailsmtp_tasks_meta offset:0
+[2024-09-03 07:18:44][notice]
+[2024-09-03 07:18:44][notice]Counting of rows in tmpc5fc82_wpmailsmtp_tasks_meta: 1
+[2024-09-03 07:18:44][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:44][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:44][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wpmailsmtp_tasks_meta Replaced row: 0\/1;"}
+[2024-09-03 07:18:44][notice]End restore databases.
+[2024-09-03 07:18:46][notice]Start restoring databases.
+[2024-09-03 07:18:46][notice]Start replacing table tmpc5fc82_actionscheduler_claims offset:0
+[2024-09-03 07:18:46][notice]
+[2024-09-03 07:18:46][notice]Counting of rows in tmpc5fc82_actionscheduler_claims: 0
+[2024-09-03 07:18:46][notice]End restore databases.
+[2024-09-03 07:18:48][notice]Start restoring databases.
+[2024-09-03 07:18:48][notice]Start replacing table tmpc5fc82_actionscheduler_groups offset:0
+[2024-09-03 07:18:48][notice]
+[2024-09-03 07:18:48][notice]Counting of rows in tmpc5fc82_actionscheduler_groups: 2
+[2024-09-03 07:18:48][notice]Replacing the row in 0 line.
+[2024-09-03 07:18:48][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:18:48][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_actionscheduler_groups Replaced row: 0\/2;"}
+[2024-09-03 07:18:48][notice]End restore databases.
+[2024-09-03 07:18:50][notice]Start restoring databases.
+[2024-09-03 07:18:50][notice]Start replacing table tmpc5fc82_bvg_reset_password offset:0
+[2024-09-03 07:18:50][notice]
+[2024-09-03 07:18:50][notice]Counting of rows in tmpc5fc82_bvg_reset_password: 0
+[2024-09-03 07:18:50][notice]End restore databases.
+[2024-09-03 07:18:52][notice]Start restoring databases.
+[2024-09-03 07:18:52][notice]Start replacing table tmpc5fc82_e_events offset:0
+[2024-09-03 07:18:52][notice]
+[2024-09-03 07:18:52][notice]Counting of rows in tmpc5fc82_e_events: 0
+[2024-09-03 07:18:52][notice]End restore databases.
+[2024-09-03 07:18:54][notice]Start restoring databases.
+[2024-09-03 07:18:54][notice]Start replacing table tmpc5fc82_links offset:0
+[2024-09-03 07:18:54][notice]
+[2024-09-03 07:18:54][notice]Counting of rows in tmpc5fc82_links: 0
+[2024-09-03 07:18:54][notice]End restore databases.
+[2024-09-03 07:18:56][notice]Start restoring databases.
+[2024-09-03 07:18:56][notice]Start replacing table tmpc5fc82_wfhoover offset:0
+[2024-09-03 07:18:56][notice]
+[2024-09-03 07:18:56][notice]Counting of rows in tmpc5fc82_wfhoover: 0
+[2024-09-03 07:18:56][notice]End restore databases.
+[2024-09-03 07:18:58][notice]Start restoring databases.
+[2024-09-03 07:18:58][notice]Start replacing table tmpc5fc82_wflivetraffichuman offset:0
+[2024-09-03 07:18:58][notice]
+[2024-09-03 07:18:58][notice]Counting of rows in tmpc5fc82_wflivetraffichuman: 0
+[2024-09-03 07:18:58][notice]End restore databases.
+[2024-09-03 07:19:00][notice]Start restoring databases.
+[2024-09-03 07:19:00][notice]Start replacing table tmpc5fc82_wfls_2fa_secrets offset:0
+[2024-09-03 07:19:00][notice]
+[2024-09-03 07:19:00][notice]Counting of rows in tmpc5fc82_wfls_2fa_secrets: 0
+[2024-09-03 07:19:00][notice]End restore databases.
+[2024-09-03 07:19:02][notice]Start restoring databases.
+[2024-09-03 07:19:02][notice]Start replacing table tmpc5fc82_yoast_migrations offset:0
+[2024-09-03 07:19:02][notice]
+[2024-09-03 07:19:02][notice]Counting of rows in tmpc5fc82_yoast_migrations: 26
+[2024-09-03 07:19:02][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:02][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:02][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_yoast_migrations Replaced row: 0\/26;"}
+[2024-09-03 07:19:02][notice]End restore databases.
+[2024-09-03 07:19:04][notice]Start restoring databases.
+[2024-09-03 07:19:04][notice]Start replacing table tmpc5fc82_actionscheduler_logs offset:0
+[2024-09-03 07:19:04][notice]
+[2024-09-03 07:19:04][notice]Counting of rows in tmpc5fc82_actionscheduler_logs: 43
+[2024-09-03 07:19:04][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:04][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:04][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_actionscheduler_logs Replaced row: 0\/43;"}
+[2024-09-03 07:19:04][notice]End restore databases.
+[2024-09-03 07:19:06][notice]Start restoring databases.
+[2024-09-03 07:19:06][notice]Start replacing table tmpc5fc82_commentmeta offset:0
+[2024-09-03 07:19:06][notice]
+[2024-09-03 07:19:06][notice]Counting of rows in tmpc5fc82_commentmeta: 0
+[2024-09-03 07:19:06][notice]End restore databases.
+[2024-09-03 07:19:08][notice]Start restoring databases.
+[2024-09-03 07:19:08][notice]Start replacing table tmpc5fc82_e_submissions_values offset:0
+[2024-09-03 07:19:08][notice]
+[2024-09-03 07:19:08][notice]Counting of rows in tmpc5fc82_e_submissions_values: 0
+[2024-09-03 07:19:08][notice]End restore databases.
+[2024-09-03 07:19:10][notice]Start restoring databases.
+[2024-09-03 07:19:10][notice]Start replacing table tmpc5fc82_litespeed_url offset:0
+[2024-09-03 07:19:10][notice]
+[2024-09-03 07:19:10][notice]Counting of rows in tmpc5fc82_litespeed_url: 0
+[2024-09-03 07:19:10][notice]End restore databases.
+[2024-09-03 07:19:13][notice]Start restoring databases.
+[2024-09-03 07:19:13][notice]Start replacing table tmpc5fc82_termmeta offset:0
+[2024-09-03 07:19:13][notice]
+[2024-09-03 07:19:13][notice]Counting of rows in tmpc5fc82_termmeta: 32
+[2024-09-03 07:19:13][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:13][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:13][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_termmeta Replaced row: 0\/32;"}
+[2024-09-03 07:19:13][notice]End restore databases.
+[2024-09-03 07:19:15][notice]Start restoring databases.
+[2024-09-03 07:19:15][notice]Start replacing table tmpc5fc82_wflogins offset:0
+[2024-09-03 07:19:15][notice]
+[2024-09-03 07:19:15][notice]Counting of rows in tmpc5fc82_wflogins: 62
+[2024-09-03 07:19:15][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:15][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:15][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wflogins Replaced row: 0\/62;"}
+[2024-09-03 07:19:15][notice]End restore databases.
+[2024-09-03 07:19:17][notice]Start restoring databases.
+[2024-09-03 07:19:17][notice]Start replacing table tmpc5fc82_yoast_primary_term offset:0
+[2024-09-03 07:19:17][notice]
+[2024-09-03 07:19:17][notice]Counting of rows in tmpc5fc82_yoast_primary_term: 0
+[2024-09-03 07:19:17][notice]End restore databases.
+[2024-09-03 07:19:19][notice]Start restoring databases.
+[2024-09-03 07:19:19][notice]Start replacing table tmpc5fc82_users offset:0
+[2024-09-03 07:19:19][notice]
+[2024-09-03 07:19:19][notice]Counting of rows in tmpc5fc82_users: 9
+[2024-09-03 07:19:19][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:19][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:19][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_users Replaced row: 0\/9;"}
+[2024-09-03 07:19:19][notice]End restore databases.
+[2024-09-03 07:19:21][notice]Start restoring databases.
+[2024-09-03 07:19:21][notice]Start replacing table tmpc5fc82_wfblocks7 offset:0
+[2024-09-03 07:19:21][notice]
+[2024-09-03 07:19:21][notice]Counting of rows in tmpc5fc82_wfblocks7: 0
+[2024-09-03 07:19:21][notice]End restore databases.
+[2024-09-03 07:19:23][notice]Start restoring databases.
+[2024-09-03 07:19:23][notice]Start replacing table tmpc5fc82_wfhits offset:0
+[2024-09-03 07:19:23][notice]
+[2024-09-03 07:19:23][notice]Counting of rows in tmpc5fc82_wfhits: 10
+[2024-09-03 07:19:23][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:23][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:23][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfhits Replaced row: 0\/10;"}
+[2024-09-03 07:19:23][notice]End restore databases.
+[2024-09-03 07:19:25][notice]Start restoring databases.
+[2024-09-03 07:19:25][notice]Start replacing table tmpc5fc82_wfsnipcache offset:0
+[2024-09-03 07:19:25][notice]
+[2024-09-03 07:19:25][notice]Counting of rows in tmpc5fc82_wfsnipcache: 1
+[2024-09-03 07:19:25][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:25][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:25][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfsnipcache Replaced row: 0\/1;"}
+[2024-09-03 07:19:25][notice]End restore databases.
+[2024-09-03 07:19:27][notice]Start restoring databases.
+[2024-09-03 07:19:27][notice]Start replacing table tmpc5fc82_yoast_prominent_words offset:0
+[2024-09-03 07:19:27][notice]
+[2024-09-03 07:19:27][notice]Counting of rows in tmpc5fc82_yoast_prominent_words: 0
+[2024-09-03 07:19:27][notice]End restore databases.
+[2024-09-03 07:19:29][notice]Start restoring databases.
+[2024-09-03 07:19:29][notice]Start replacing table tmpc5fc82_usermeta offset:0
+[2024-09-03 07:19:29][notice]
+[2024-09-03 07:19:29][notice]Counting of rows in tmpc5fc82_usermeta: 287
+[2024-09-03 07:19:29][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:29][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:29][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_usermeta Replaced row: 0\/287;"}
+[2024-09-03 07:19:29][notice]End restore databases.
+[2024-09-03 07:19:31][notice]Start restoring databases.
+[2024-09-03 07:19:31][notice]Start replacing table tmpc5fc82_wfpendingissues offset:0
+[2024-09-03 07:19:31][notice]
+[2024-09-03 07:19:31][notice]Counting of rows in tmpc5fc82_wfpendingissues: 1
+[2024-09-03 07:19:31][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:31][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:31][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfpendingissues Replaced row: 0\/1;"}
+[2024-09-03 07:19:31][notice]End restore databases.
+[2024-09-03 07:19:33][notice]Start restoring databases.
+[2024-09-03 07:19:33][notice]Start replacing table tmpc5fc82_comments offset:0
+[2024-09-03 07:19:33][notice]
+[2024-09-03 07:19:33][notice]Counting of rows in tmpc5fc82_comments: 0
+[2024-09-03 07:19:33][notice]End restore databases.
+[2024-09-03 07:19:35][notice]Start restoring databases.
+[2024-09-03 07:19:35][notice]Start replacing table tmpc5fc82_litespeed_url_file offset:0
+[2024-09-03 07:19:35][notice]
+[2024-09-03 07:19:35][notice]Counting of rows in tmpc5fc82_litespeed_url_file: 0
+[2024-09-03 07:19:35][notice]End restore databases.
+[2024-09-03 07:19:37][notice]Start restoring databases.
+[2024-09-03 07:19:37][notice]Start replacing table tmpc5fc82_popularpostssummary offset:0
+[2024-09-03 07:19:37][notice]
+[2024-09-03 07:19:37][notice]Counting of rows in tmpc5fc82_popularpostssummary: 308
+[2024-09-03 07:19:37][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:37][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:37][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_popularpostssummary Replaced row: 0\/308;"}
+[2024-09-03 07:19:37][notice]End restore databases.
+[2024-09-03 07:19:39][notice]Start restoring databases.
+[2024-09-03 07:19:39][notice]Start replacing table tmpc5fc82_actionscheduler_actions offset:0
+[2024-09-03 07:19:39][notice]
+[2024-09-03 07:19:39][notice]Counting of rows in tmpc5fc82_actionscheduler_actions: 15
+[2024-09-03 07:19:39][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:39][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:39][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_actionscheduler_actions Replaced row: 0\/15;"}
+[2024-09-03 07:19:39][notice]End restore databases.
+[2024-09-03 07:19:41][notice]Start restoring databases.
+[2024-09-03 07:19:41][notice]Start replacing table tmpc5fc82_e_submissions_actions_log offset:0
+[2024-09-03 07:19:41][notice]
+[2024-09-03 07:19:41][notice]Counting of rows in tmpc5fc82_e_submissions_actions_log: 0
+[2024-09-03 07:19:41][notice]End restore databases.
+[2024-09-03 07:19:43][notice]Start restoring databases.
+[2024-09-03 07:19:43][notice]Start replacing table tmpc5fc82_wfissues offset:0
+[2024-09-03 07:19:43][notice]
+[2024-09-03 07:19:43][notice]Counting of rows in tmpc5fc82_wfissues: 17
+[2024-09-03 07:19:43][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:43][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:43][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfissues Replaced row: 0\/17;"}
+[2024-09-03 07:19:43][notice]End restore databases.
+[2024-09-03 07:19:45][notice]Start restoring databases.
+[2024-09-03 07:19:45][notice]Start replacing table tmpc5fc82_wfstatus offset:0
+[2024-09-03 07:19:45][notice]
+[2024-09-03 07:19:45][notice]Counting of rows in tmpc5fc82_wfstatus: 1242
+[2024-09-03 07:19:45][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:45][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:45][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfstatus Replaced row: 0\/1242;"}
+[2024-09-03 07:19:45][notice]End restore databases.
+[2024-09-03 07:19:47][notice]Start restoring databases.
+[2024-09-03 07:19:47][notice]Start replacing table tmpc5fc82_e_submissions offset:0
+[2024-09-03 07:19:47][notice]
+[2024-09-03 07:19:47][notice]Counting of rows in tmpc5fc82_e_submissions: 0
+[2024-09-03 07:19:47][notice]End restore databases.
+[2024-09-03 07:19:49][notice]Start restoring databases.
+[2024-09-03 07:19:49][notice]Start replacing table tmpc5fc82_term_taxonomy offset:0
+[2024-09-03 07:19:49][notice]
+[2024-09-03 07:19:49][notice]Counting of rows in tmpc5fc82_term_taxonomy: 2454
+[2024-09-03 07:19:49][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:49][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:49][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_term_taxonomy Replaced row: 0\/2454;"}
+[2024-09-03 07:19:49][notice]End restore databases.
+[2024-09-03 07:19:51][notice]Start restoring databases.
+[2024-09-03 07:19:51][notice]Start replacing table tmpc5fc82_yoast_indexable_hierarchy offset:0
+[2024-09-03 07:19:51][notice]
+[2024-09-03 07:19:51][notice]Counting of rows in tmpc5fc82_yoast_indexable_hierarchy: 5690
+[2024-09-03 07:19:51][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:51][notice]Replacing the row in 5000 line.
+[2024-09-03 07:19:51][notice]Replacing row completed. Current row:10000
+[2024-09-03 07:19:51][notice]{"result":"success","replace_row":10000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_yoast_indexable_hierarchy Replaced row: 5000\/5690;"}
+[2024-09-03 07:19:51][notice]End restore databases.
+[2024-09-03 07:19:53][notice]Start restoring databases.
+[2024-09-03 07:19:53][notice]Start replacing table tmpc5fc82_terms offset:0
+[2024-09-03 07:19:53][notice]
+[2024-09-03 07:19:53][notice]Counting of rows in tmpc5fc82_terms: 1808
+[2024-09-03 07:19:53][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:53][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:53][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_terms Replaced row: 0\/1808;"}
+[2024-09-03 07:19:53][notice]End restore databases.
+[2024-09-03 07:19:55][notice]Start restoring databases.
+[2024-09-03 07:19:55][notice]Start replacing table tmpc5fc82_yoast_seo_links offset:0
+[2024-09-03 07:19:55][notice]
+[2024-09-03 07:19:55][notice]Counting of rows in tmpc5fc82_yoast_seo_links: 10574
+[2024-09-03 07:19:55][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:55][notice]Replacing the row in 5000 line.
+[2024-09-03 07:19:55][notice]Replacing the row in 10000 line.
+[2024-09-03 07:19:55][notice]Replacing row completed. Current row:15000
+[2024-09-03 07:19:55][notice]{"result":"success","replace_row":15000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_yoast_seo_links Replaced row: 10000\/10574;"}
+[2024-09-03 07:19:55][notice]End restore databases.
+[2024-09-03 07:19:58][notice]Start restoring databases.
+[2024-09-03 07:19:58][notice]Start replacing table tmpc5fc82_wfconfig offset:0
+[2024-09-03 07:19:58][notice]
+[2024-09-03 07:19:58][notice]Counting of rows in tmpc5fc82_wfconfig: 282
+[2024-09-03 07:19:58][notice]Replacing the row in 0 line.
+[2024-09-03 07:19:58][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:19:58][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfconfig Replaced row: 0\/282;"}
+[2024-09-03 07:19:58][notice]End restore databases.
+[2024-09-03 07:20:00][notice]Start restoring databases.
+[2024-09-03 07:20:00][notice]Start replacing table tmpc5fc82_wfknownfilelist offset:0
+[2024-09-03 07:20:00][notice]
+[2024-09-03 07:20:00][notice]Counting of rows in tmpc5fc82_wfknownfilelist: 11487
+[2024-09-03 07:20:00][notice]Replacing the row in 0 line.
+[2024-09-03 07:20:00][notice]Replacing the row in 5000 line.
+[2024-09-03 07:20:00][notice]Replacing the row in 10000 line.
+[2024-09-03 07:20:00][notice]Replacing row completed. Current row:15000
+[2024-09-03 07:20:00][notice]{"result":"success","replace_row":15000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_wfknownfilelist Replaced row: 10000\/11487;"}
+[2024-09-03 07:20:00][notice]End restore databases.
+[2024-09-03 07:20:03][notice]Start restoring databases.
+[2024-09-03 07:20:03][notice]Start replacing table tmpc5fc82_options offset:0
+[2024-09-03 07:20:03][notice]
+[2024-09-03 07:20:03][notice]Counting of rows in tmpc5fc82_options: 544
+[2024-09-03 07:20:03][notice]Replacing the row in 0 line.
+[2024-09-03 07:20:03][notice]Replacing row completed. Current row:5000
+[2024-09-03 07:20:03][notice]{"result":"success","replace_row":5000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_options Replaced row: 0\/544;"}
+[2024-09-03 07:20:03][notice]End restore databases.
+[2024-09-03 07:20:05][notice]Start restoring databases.
+[2024-09-03 07:20:05][notice]Start replacing table tmpc5fc82_term_relationships offset:0
+[2024-09-03 07:20:05][notice]
+[2024-09-03 07:20:05][Warning]Skipping table tmpc5fc82_term_relationships
+[2024-09-03 07:20:05][notice]End restore databases.
+[2024-09-03 07:20:07][notice]Start restoring databases.
+[2024-09-03 07:20:07][notice]Start replacing table tmpc5fc82_yoast_indexable offset:0
+[2024-09-03 07:20:07][notice]
+[2024-09-03 07:20:07][notice]Counting of rows in tmpc5fc82_yoast_indexable: 5691
+[2024-09-03 07:20:07][notice]Replacing the row in 0 line.
+[2024-09-03 07:20:08][notice]Replacing the row in 5000 line.
+[2024-09-03 07:20:08][notice]Replacing row completed. Current row:10000
+[2024-09-03 07:20:08][notice]{"result":"success","replace_row":10000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_yoast_indexable Replaced row: 5000\/5691;"}
+[2024-09-03 07:20:08][notice]End restore databases.
+[2024-09-03 07:20:11][notice]Start restoring databases.
+[2024-09-03 07:20:11][notice]Start replacing table tmpc5fc82_wffilemods offset:0
+[2024-09-03 07:20:11][notice]
+[2024-09-03 07:20:11][Warning]Skipping table tmpc5fc82_wffilemods
+[2024-09-03 07:20:11][notice]End restore databases.
+[2024-09-03 07:20:13][notice]Start restoring databases.
+[2024-09-03 07:20:13][notice]Start replacing table tmpc5fc82_postmeta offset:0
+[2024-09-03 07:20:13][notice]
+[2024-09-03 07:20:13][notice]Counting of rows in tmpc5fc82_postmeta: 13386
+[2024-09-03 07:20:13][notice]Replacing the row in 0 line.
+[2024-09-03 07:20:13][notice]Replacing the row in 5000 line.
+[2024-09-03 07:20:13][notice]Replacing the row in 10000 line.
+[2024-09-03 07:20:13][notice]Replacing row completed. Current row:15000
+[2024-09-03 07:20:13][notice]{"result":"success","replace_row":15000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_postmeta Replaced row: 10000\/13386;"}
+[2024-09-03 07:20:13][notice]End restore databases.
+[2024-09-03 07:20:16][notice]Start restoring databases.
+[2024-09-03 07:20:16][notice]Start replacing table tmpc5fc82_posts offset:0
+[2024-09-03 07:20:16][notice]
+[2024-09-03 07:20:16][notice]Counting of rows in tmpc5fc82_posts: 7283
+[2024-09-03 07:20:16][notice]Replacing the row in 0 line.
+[2024-09-03 07:20:16][notice]Replacing the row in 5000 line.
+[2024-09-03 07:20:17][notice]Replacing row completed. Current row:10000
+[2024-09-03 07:20:17][notice]{"result":"success","replace_row":10000,"max_replace_row":10000,"current_replace_table_finish":true,"last_msg":"Importing sql file table: tmpc5fc82_posts Replaced row: 5000\/7283;"}
+[2024-09-03 07:20:17][notice]
+[2024-09-03 07:20:17][notice]UPDATE tmpc5fc82_options SET option_value="https://12bsportsvn.com" WHERE option_name="siteurl";
+[2024-09-03 07:20:17][notice]update query len:96
+[2024-09-03 07:20:17][notice]UPDATE tmpc5fc82_options SET option_value="https://12bsportsvn.com" WHERE option_name="home";
+[2024-09-03 07:20:17][notice]update query len:93
+[2024-09-03 07:20:17][notice]Restore db success
+[2024-09-03 07:20:17][notice]End restore databases.
+[2024-09-03 07:20:19][notice]Restore db success,now start rename temp table name prefix to new site prefix.
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_actionscheduler_actions
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_actionscheduler_claims
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_actionscheduler_groups
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_actionscheduler_logs
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_bvg_reset_password
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_commentmeta
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_comments
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_e_events
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_e_submissions
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_e_submissions_actions_log
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_e_submissions_values
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_links
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_litespeed_url
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_litespeed_url_file
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_options
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_popularpostsdata
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_popularpostssummary
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_postmeta
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_posts
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_term_relationships
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_term_taxonomy
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_termmeta
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_terms
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_usermeta
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_users
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfblockediplog
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfblocks7
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfconfig
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfcrawlers
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wffilechanges
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wffilemods
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfhits
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfhoover
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfissues
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfknownfilelist
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wflivetraffichuman
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wflocs
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wflogins
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfls_2fa_secrets
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfls_role_counts
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfls_settings
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfnotifications
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfpendingissues
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfreversecache
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfsecurityevents
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfsnipcache
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfstatus
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wftrafficrates
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wfwaffailures
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wpmailsmtp_debug_events
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_wpmailsmtp_tasks_meta
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_yoast_indexable
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_yoast_indexable_hierarchy
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_yoast_migrations
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_yoast_primary_term
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_yoast_prominent_words
+[2024-09-03 07:20:19][notice]DROP TABLE IF EXISTS wp_yoast_seo_links
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_actionscheduler_actions TO wp_actionscheduler_actions
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_actionscheduler_claims TO wp_actionscheduler_claims
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_actionscheduler_groups TO wp_actionscheduler_groups
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_actionscheduler_logs TO wp_actionscheduler_logs
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_bvg_reset_password TO wp_bvg_reset_password
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_commentmeta TO wp_commentmeta
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_comments TO wp_comments
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_e_events TO wp_e_events
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_e_submissions TO wp_e_submissions
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_e_submissions_actions_log TO wp_e_submissions_actions_log
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_e_submissions_values TO wp_e_submissions_values
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_links TO wp_links
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_litespeed_url TO wp_litespeed_url
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_litespeed_url_file TO wp_litespeed_url_file
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_options TO wp_options
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_popularpostsdata TO wp_popularpostsdata
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_popularpostssummary TO wp_popularpostssummary
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_postmeta TO wp_postmeta
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_posts TO wp_posts
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_term_relationships TO wp_term_relationships
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_term_taxonomy TO wp_term_taxonomy
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_termmeta TO wp_termmeta
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_terms TO wp_terms
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_usermeta TO wp_usermeta
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_users TO wp_users
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfblockediplog TO wp_wfblockediplog
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfblocks7 TO wp_wfblocks7
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfconfig TO wp_wfconfig
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfcrawlers TO wp_wfcrawlers
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wffilechanges TO wp_wffilechanges
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wffilemods TO wp_wffilemods
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfhits TO wp_wfhits
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfhoover TO wp_wfhoover
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfissues TO wp_wfissues
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfknownfilelist TO wp_wfknownfilelist
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wflivetraffichuman TO wp_wflivetraffichuman
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wflocs TO wp_wflocs
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wflogins TO wp_wflogins
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfls_2fa_secrets TO wp_wfls_2fa_secrets
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfls_role_counts TO wp_wfls_role_counts
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfls_settings TO wp_wfls_settings
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfnotifications TO wp_wfnotifications
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfpendingissues TO wp_wfpendingissues
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfreversecache TO wp_wfreversecache
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfsecurityevents TO wp_wfsecurityevents
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfsnipcache TO wp_wfsnipcache
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfstatus TO wp_wfstatus
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wftrafficrates TO wp_wftrafficrates
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wfwaffailures TO wp_wfwaffailures
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wpmailsmtp_debug_events TO wp_wpmailsmtp_debug_events
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_wpmailsmtp_tasks_meta TO wp_wpmailsmtp_tasks_meta
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_yoast_indexable TO wp_yoast_indexable
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_yoast_indexable_hierarchy TO wp_yoast_indexable_hierarchy
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_yoast_migrations TO wp_yoast_migrations
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_yoast_primary_term TO wp_yoast_primary_term
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_yoast_prominent_words TO wp_yoast_prominent_words
+[2024-09-03 07:20:19][notice]RENAME TABLE tmpc5fc82_yoast_seo_links TO wp_yoast_seo_links
+[2024-09-03 14:20:19][notice]Replacing table prefix succeeded.
+[2024-09-03 14:20:19][notice]Delete migration option failed.
+[2024-09-03 14:20:19][notice]Deleting temp files.
