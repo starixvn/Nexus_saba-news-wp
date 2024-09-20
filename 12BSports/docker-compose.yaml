@@ -10,3 +10,5 @@ services:
     volumes:
       - ./wp-admin:/var/www/html/wp-admin  # Mount the local WordPress files
       - ./wp-content/themes/smart-mag:/var/www/html/wp-content/themes/smart-mag
+      - ./wp-content/themes/SABA-Sports-ID:/var/www/html/wp-content/themes/SABA-Sports-ID
+      - ./bvg:/var/www/html/bvg

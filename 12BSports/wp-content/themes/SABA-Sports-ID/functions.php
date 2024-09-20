@@ -636,11 +636,11 @@ add_action('wp_footer', 'add_custom_js_to_star_player_page');
 /* 240425 彭彭 For  歐洲杯 */
 
 function games_scripts() {
+    error_log(123);
 	$version = date('YmdHis'); // 获取当前时间作为版本号
-	wp_enqueue_script('games-js', get_template_directory_uri() . '../../../../bvg/games.js', array('jquery'), $version, true);
+	wp_enqueue_script('games-js', home_url() . '/bvg/games.js', array('jquery'), $version, true);
   }
   add_action('wp_enqueue_scripts', 'games_scripts');
-  
 
 // 全局變量用於存儲聯賽名稱和賽季數據
 $GLOBALS['league_and_season_cache1'] = array();

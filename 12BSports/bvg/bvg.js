@@ -52,7 +52,7 @@ jQuery(document).ready( function () {
     }); 
     }
 
-    if (window.location.href == "https://12bsportsvn.com/") {
+    if (window.location.href == "http://localhost:8000/") {
         jQuery.ajax({
             url:"/bvg/bvg.php",
             type:"POST",
@@ -217,6 +217,7 @@ function update_schedule(type){
     } else if(type == 'Tennis') {
         query = "query_live_score_tennis";
     }
+    console.log(123);
 
     jQuery.ajax({
         url: "/bvg/bvg.php",
