@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 header('Content-Type: application/json; charset=utf-8');
 session_start();
 require_once '../vendor/autoload.php';
-include_once("/home/u760805657/domains/12bsportsvn.com/public_html/saba/Connections/smplPDO.php");
+include_once("../saba/Connections/smplPDO.php");
 
 //include_once('../functions/mail.php'); 
 //require __DIR__ . '/../vendor/autoload.php';
