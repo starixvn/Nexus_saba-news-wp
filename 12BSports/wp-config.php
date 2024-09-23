@@ -22,7 +22,7 @@ define( 'WP_CACHE', false );
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', '12BSports' );
+define( 'DB_NAME', '12B' );
 
 /** Database username */
 define( 'DB_USER', 'root' );
