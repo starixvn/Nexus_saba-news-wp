@@ -1376,3 +1376,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 }
 add_action('wp_footer', 'language_switcher_scripts');
+
+
+add_filter('jpeg_quality', function($arg){return 100;});
+add_filter('wp_editor_set_quality', function($arg){return 100;});
