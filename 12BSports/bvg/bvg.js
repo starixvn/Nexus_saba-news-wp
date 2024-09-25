@@ -52,7 +52,7 @@ jQuery(document).ready( function () {
     }); 
     }
 
-    if (window.location.href == "http://localhost:8000/") {
+    if (window.location.href == "https://12bsportsvn.com/") {
         jQuery.ajax({
             url:"/bvg/bvg.php",
             type:"POST",
