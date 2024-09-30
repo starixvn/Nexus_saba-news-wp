@@ -110,5 +110,4 @@ $props = Bunyad::archives()->process_props($props);
 		</div>
 	<?php endif; ?>
 </div>
-
 <?php get_footer(); ?>
