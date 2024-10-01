@@ -17,7 +17,7 @@ $block = $props['block'];
 if (!is_object($block)) {
 	return;
 }
-
+var_dump('test header');
 $widget_area = 'smartmag-off-canvas';
 $classes     = [
 	'mobile-menu-container off-canvas',
