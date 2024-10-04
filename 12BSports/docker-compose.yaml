@@ -8,7 +8,7 @@ services:
     ports:
        - "8000:80"
     volumes:
-      # - ./wp-config.DEV.php:/var/www/html/wp-config.php
+      - ./wp-config.php:/var/www/html/wp-config.php
       - ./wp-admin:/var/www/html/wp-admin  # Mount the local WordPress files
       - ./wp-content/themes/smart-mag:/var/www/html/wp-content/themes/smart-mag
       - ./wp-content/themes/SABA-Sports-ID:/var/www/html/wp-content/themes/SABA-Sports-ID
