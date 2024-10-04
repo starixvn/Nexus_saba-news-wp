@@ -70,7 +70,7 @@ if (!has_nav_menu('smartmag-mobile') && Bunyad::amp()->active()) {
 		<?php endif;?>
 
 		<?php if (is_active_sidebar($widget_area)): ?>
-			<div class="off-canvas-widgets">mobile-menu-container
+			<div class="off-canvas-widgets">
 				<?php dynamic_sidebar($widget_area); ?>
 			</div>
 		<?php endif; ?>
