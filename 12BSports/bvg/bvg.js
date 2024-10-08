@@ -52,13 +52,13 @@ jQuery(document).ready( function () {
     }); 
     }
 
-    if (window.location.href == "https://12bsportsvn.com/") {
+    if (window.location.href == "/") {
         jQuery.ajax({
             url:"/bvg/bvg.php",
             type:"POST",
             dataType:'json',
             data:{
-                'act'     : "query_schedule", 
+                'act'     : "query_schedule",
             },
             success:function(Jdata){
                 if (Jdata.code == 200) {
