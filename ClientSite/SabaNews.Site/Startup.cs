@@ -148,17 +148,7 @@
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            var isUM = bool.Parse(Configuration.GetSection("UMSettings:Enabled").Value);
-            if (isUM)
-            {
-                app.UseWhen(
-                context => !context.Request.Path.StartsWithSegments("/maintenance", StringComparison.OrdinalIgnoreCase),
-                appBuilder =>
-                {
-                    appBuilder.UseMiddleware<MaintenanceMiddleware>();
-                });
-            }
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -167,6 +157,7 @@
             {
                 app.UseMiddleware<ErrorHandler>();
                 app.UseHsts();
+                app.UseHttpsRedirection();
 
                 app.Use((context, next) =>
                 {
@@ -178,6 +169,16 @@
                         context.Request.Scheme = "https";
                     }
                     return next();
+                });
+            }
+            var isUM = bool.Parse(Configuration.GetSection("UMSettings:Enabled").Value);
+            if (isUM)
+            {
+                app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/maintenance", StringComparison.OrdinalIgnoreCase),
+                appBuilder =>
+                {
+                    appBuilder.UseMiddleware<MaintenanceMiddleware>();
                 });
             }
             app.Use(async (ctx, next) =>
@@ -194,6 +195,7 @@
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.All
             });
+            app.UseResponseCaching();
             app.UseResponseCompression();
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -208,15 +210,12 @@
                 }
             });
 
-            app.UseCookiePolicy();
             app.UseRouting();
-            app.UseSession();
+
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseResponseCaching();
-
-            app.UseHttpsRedirection();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
