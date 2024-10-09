@@ -228,19 +228,21 @@
 
         public async Task<WorldCupViewModel> GetWorldCupViewModel()
         {
-            var lastestNews = await postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetFiveItems);
-            var commentary = await postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetFiveItems);
-            var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
-            var storyPost = await postService.GetPostsBySlugAsync(WorldCup2022.StoryPostSlug, Constants.FromFirstItem, Constants.GetFourItems, Constants.storyPostType);
-            var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
+            var lastestNews =  postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetFiveItems);
+            var commentary =  postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetFiveItems);
+            var videos =  postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            var storyPost =  postService.GetPostsBySlugAsync(WorldCup2022.StoryPostSlug, Constants.FromFirstItem, Constants.GetFourItems, Constants.storyPostType);
+            var cate =  postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
+
+            await Task.WhenAll(lastestNews, commentary, videos, storyPost, cate);
             
             var Model = new WorldCupViewModel
             {
-                LastestNews = lastestNews,
-                Commentary = commentary,
-                Videos = videos,
-                StoryPost = storyPost,
-                Category = cate,
+                LastestNews = lastestNews.Result,
+                Commentary = commentary.Result,
+                Videos = videos.Result,
+                StoryPost = storyPost.Result,
+                Category = cate.Result,
             };
             return Model;
         }
