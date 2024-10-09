@@ -8,7 +8,11 @@
 */
 
 // this code loads the parent's stylesheet (leave it in place unless you know what you're doing)
- 
+
+var_dump(is_singular());
+var_dump(is_front_page());
+var_dump(is_archive());
+var_dump(is_home());
 function your_theme_enqueue_styles() {
 
     $parent_style = 'parent-style';
@@ -255,8 +259,6 @@ function toggle_logged_in_menu_items() {
   <?php
 }
 add_action( 'wp_head', 'toggle_logged_in_menu_items' );
-
-
 /** 230205顯示使用者名稱 **/
 function yh_display_display_name_wp_menu( $menu_items ) {
     global $current_user;
