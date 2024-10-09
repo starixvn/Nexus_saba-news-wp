@@ -1,7 +1,7 @@
 var allGames = []; // 用于保存从API获取的所有游戏数据
 var currentIndex = 0; // 已加载的数据的当前索引
 var increment = 10; // 每次加载数据的数量
-
+var body = jQuery('body');
 
 jQuery(document).ready( function () {
 
@@ -52,7 +52,7 @@ jQuery(document).ready( function () {
     }); 
     }
 
-    if (window.location.href == "/") {
+    if (body.hasClass('home')) {
         jQuery.ajax({
             url:"/bvg/bvg.php",
             type:"POST",

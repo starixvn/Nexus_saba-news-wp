@@ -9,12 +9,8 @@
 
 // this code loads the parent's stylesheet (leave it in place unless you know what you're doing)
 
-var_dump(is_singular());
-var_dump(is_front_page());
-var_dump(is_archive());
-var_dump(is_home());
-function your_theme_enqueue_styles() {
 
+function your_theme_enqueue_styles() {
     $parent_style = 'parent-style';
 
     wp_enqueue_style( $parent_style, 
