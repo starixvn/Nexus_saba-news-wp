@@ -61,6 +61,7 @@ jQuery(document).ready( function () {
                 'act'     : "query_schedule",
             },
             success:function(Jdata){
+                console.log(Jdata);
                 if (Jdata.code == 200) {
                     var html = '';
                 
@@ -217,7 +218,6 @@ function update_schedule(type){
     } else if(type == 'Tennis') {
         query = "query_live_score_tennis";
     }
-    console.log(123);
 
     jQuery.ajax({
         url: "/bvg/bvg.php",
@@ -294,10 +294,10 @@ function update_schedule(type){
                     var awayTeamIcon =  '/bvg/tennis.png';
                     jQuery.each(Jdata.game, function(index, game) {
 
-                        var matchStatus = ''; 
+                        var matchStatus = '';
                         if (game.MatchTime === null || game.MatchTime === '') {
                             matchStatus = '<div class="saba-match-status">Coming Soon</div>';
-                        }    
+                        }
                         else {
                             matchStatus = '<div class="saba-match-status" style="color: red;">LIVE</div>';
                         }
