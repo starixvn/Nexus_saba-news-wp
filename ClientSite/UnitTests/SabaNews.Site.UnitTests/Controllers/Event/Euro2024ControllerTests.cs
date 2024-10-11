@@ -1002,7 +1002,7 @@
             var matchStartDate = DateTime.Parse("2021-10-10 10:00:00");
 
             var expectedMatch = new MinigameMatchVotedModel { MatchId = 1, Status = 0, StartTime = matchStartDate, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId};
-            var expectedData = fixture.Create<CommandResult>();
+            var expectedData = new CommandResult { };
             sessionService.User = fixture.Create<UserSession>();
 
             euro2024Service.GetMinigameVoteMatchAsync(Arg.Do<GetMinigameVotedMatchCriteria>(x => criteria = x)).Returns(expectedMatch);

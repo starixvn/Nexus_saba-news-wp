@@ -291,7 +291,7 @@
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get {cacheKey} data from DB---------");
-    
+
                     result = await postService.GetPostsBySlugAsync(slug, Constants.FromFirstItem, Constants.GetTenItems);
                     await cacheWrapperService.SetAsync(cacheKey, result,
                         new CacheItemOptions
@@ -316,7 +316,7 @@
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get recent posts data from DB---------");
 
-                    result = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
+                    result = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems });
                     await cacheWrapperService.SetAsync(CacheKey.RecentPost, result,
                         new CacheItemOptions
                         {
@@ -327,7 +327,7 @@
                 return result;
             }
 
-            return await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems});
+            return await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetElevenItems });
         }
 
         public async Task<IList<Match>> GetTodayMatches()
@@ -454,7 +454,7 @@
             {
                 var key = $"{CacheKey.GetMinigameByStage}-{criteria.Stage}-{criteria.LeagueId}-{criteria.SeasonId}";
                 var result = await cacheWrapperService.GetAsync<IList<UserMinigameModel>>(key);
-                
+
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get euro 2024 data from DB---------");
@@ -479,7 +479,7 @@
             {
                 var key = $"{CacheKey.GetMinigameWithEmailByStage}-{criteria.Stage}-{criteria.LeagueId}-{criteria.SeasonId}";
                 var result = await cacheWrapperService.GetAsync<IList<MinigameModel>>(key);
-                
+
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get euro 2024 data from DB---------");
