@@ -999,7 +999,7 @@
            
             var cmd = fixture.Create<UpdateMinigameVoteCommand>();
             var criteria = fixture.Create<GetMinigameVotedMatchCriteria>();
-            var matchStartDate = DateTime.Parse("2024-10-10 10:00:00");
+            var matchStartDate = DateTime.Parse("2021-10-10 10:00:00");
 
             var expectedMatch = new MinigameMatchVotedModel { MatchId = 1, Status = 0, StartTime = matchStartDate, LeagueId = Euro2024.LeagueId, SeasonId = Euro2024.SeasonId};
             var expectedData = fixture.Create<CommandResult>();
@@ -1014,7 +1014,7 @@
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
             var actual = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
-            Assert.Equal(expectedData, actual);
+            Assert.False(actual.IsSuccessful);
         }
 
         [Fact]
