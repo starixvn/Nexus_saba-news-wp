@@ -110,6 +110,6 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&  $_SERVER['HTTP_X_FORWARDED_PRO
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
-
+define( 'WP_ENABLE_GA', false );
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
