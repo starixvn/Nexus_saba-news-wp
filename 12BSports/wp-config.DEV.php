@@ -25,20 +25,19 @@ define( 'WP_CACHE', false );
 define( 'DB_NAME', '12B' );
 
 /** Database username */
-define( 'DB_USER', 'sabasports' );
+define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'sabasports1234AA' );
+define( 'DB_PASSWORD', '1234aa' );
 
 /** Database hostname */
-define( 'DB_HOST', '10.18.200.84:3336' );
+define( 'DB_HOST', '10.18.200.83:3336' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-
 /**#@+
  * Authentication unique keys and salts.
  *
@@ -104,5 +103,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
 
+
+define( 'WP_ENABLE_GA', false );
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
