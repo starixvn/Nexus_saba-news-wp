@@ -11,7 +11,8 @@
 ?>">
 
 <head>
-<?php if(WP_ENABLE_GA):?>
+<?php $is_enable_ga = !defined('WP_ENABLE_GA') ||  WP_ENABLE_GA; ?>
+<?php if($is_enable_ga):?>
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -44,7 +45,7 @@
 
 <body <?php body_class(); ?>>
 
-<?php if(WP_ENABLE_GA):?>
+<?php if($is_enable_ga):?>
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GL33HG4"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
