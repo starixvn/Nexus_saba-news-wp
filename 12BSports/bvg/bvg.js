@@ -61,7 +61,6 @@ jQuery(document).ready( function () {
                 'act'     : "query_schedule",
             },
             success:function(Jdata){
-                console.log(Jdata);
                 if (Jdata.code == 200) {
                     var html = '';
                 
