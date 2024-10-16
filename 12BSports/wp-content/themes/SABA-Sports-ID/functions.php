@@ -7,6 +7,13 @@
 
 */
 
+function load_data_scripts() {
+    $version = time(); // 获取当前时间作为版本号
+    wp_enqueue_script('load-data-js', home_url() . '/wp-includes/js/load-data.js', array('jquery'), $version, true);
+  }
+  add_action('wp_enqueue_scripts', 'load_data_scripts');
+
+
 // this code loads the parent's stylesheet (leave it in place unless you know what you're doing)
 function your_theme_enqueue_styles() {
     $parent_style = 'parent-style';
