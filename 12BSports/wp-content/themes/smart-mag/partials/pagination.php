@@ -83,7 +83,7 @@ $pagination_type = $props['pagination_type'];
 				'class'     => $classes,
 				'data-page' => intval($paged)
 			]);?>>
-				<?php esc_html_e('Load More', 'bunyad'); ?> 
+				<?php esc_html_e('Xem thêm', 'bunyad'); ?> 
 				<i class="icon tsi tsi-repeat"></i>
 		</a>
 	</div>	
