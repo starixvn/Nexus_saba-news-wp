@@ -1,20 +1,37 @@
 var loadData = (function(jQuery) {
 
     function GetVideoData() {
-        console.log(123);
         jQuery.ajax({
             url:"/wp-data.php",
             type:"POST",
-            dataType:'json',
             data:{
-                'act'     : "get_home_video"
+                'act'     : "home_video"
             },
+            dataType:'json',
             success:function(Jdata){
-                console.log(Jdata);
+                console.log(1111);
+                
+                // var numVideos = 0;
+                // var html = '<div class="block block-video">';
+                //     html += '<h2 class="block__title">Video</h2>';
+                //     html += '<div class="group-video">';
+                //         html += '<div class="box-vertical">';
+                // jQuery.each(Jdata.data, function(index, post) {
+                //     numVideos++;
+                //     var display = numVideos == 1 ? "block" : "none";
+                //     html += '<div style="display:'+ display +';" class="box-play-video" id="slide-'+ post.ID +'">';
+                //     html += '<input type="hidden" name="iframe_value" value="'+ post.post_content +'" />';
+                //     html += '<div class="img-item">';
+                //     html += '<a title="'+ post.post_title +'" class="box-vertical-image hover-image">'
+                //     html += '<img src="'+ post.post_title +'" alt="@post.PostTitle" class="img-res lazy"  />'
+                // });
+                jQuery('.home-video').html(Jdata.data);
             }, error:function(){
-
+                
             }
         })
+
+        jQuery('#first-video').
     }
     function init() {
         GetVideoData();
