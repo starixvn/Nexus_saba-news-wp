@@ -17,7 +17,6 @@ if ((isset($_REQUEST["act"])) && ($_REQUEST["act"] == "home_video")) {
 			<div class="group-video">
 				<div class="box-vertical">
 	';
-	$info['code'] = 200;
     $info['data'] = $myposts;
 }
 
