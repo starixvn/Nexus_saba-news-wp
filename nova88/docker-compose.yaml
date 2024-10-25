@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  wp:
+    build: .
+    container_name: nova88-wp
+    restart: always
+    ports:
+       - "8888:80"
+    volumes:
+      - ./wp-config.DEV.php:/var/www/html/wp-config.php
