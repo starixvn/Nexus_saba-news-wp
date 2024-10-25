@@ -1,6 +1,6 @@
 <?php
 ini_set('memory_limit', '256M');
-define( 'WP_CACHE', true );
+define( 'WP_CACHE', false );
 /**
  * The base configuration for WordPress
  *
