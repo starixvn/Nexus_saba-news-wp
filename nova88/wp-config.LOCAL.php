@@ -86,10 +86,6 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-/* 網址設定 */
-define('WP_HOME','https://newsnova88vn.com');
-define('WP_SITEURL','https://newsnova88vn.com');
-
 
 
 /* That's all, stop editing! Happy publishing. */
