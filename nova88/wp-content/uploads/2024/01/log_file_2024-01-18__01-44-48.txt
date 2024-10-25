@@ -1,0 +1,74 @@
+
+---Downloaded files---
+The import files for: TechDrop were successfully downloaded!
+Initial max execution time = 300
+Files info:
+Site URL = https://saba-id.bvg.tw
+Data file = /home/www/saba_id/wp-content/themes/smart-mag/inc/demos/tech-drop.xml
+Widget file = /home/www/saba_id/wp-content/themes/smart-mag/inc/demos/tech-drop-widgets.json
+Customizer file = /home/www/saba_id/wp-content/themes/smart-mag/inc/demos/tech-drop-customizer.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing content---
+[WARNING] Failed to import "Contact Form Example": Invalid post type wpcf7_contact_form
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---Importing widgets---
+smartmag-bbpress : Sidebar does not exist in theme (moving widget to Inactive)
+
+SmartMag - Latest Posts - No Title - Imported to Inactive
+
+主側邊欄 : 
+
+SmartMag Block - Grid - No Title - Imported
+SmartMag - Latest Posts - No Title - Imported
+SmartMag - Ads / Code - No Title - Imported
+
+畫布外小部件 : 
+
+SmartMag - Newsletter - No Title - Imported
+SmartMag - Latest Posts - No Title - Imported
+
+頁尾小部件 : 
+
+SmartMag - About Widget - About Us - Imported
+SmartMag - Latest Posts - No Title - Imported
+SmartMag - Latest Posts - No Title - Imported
+
+

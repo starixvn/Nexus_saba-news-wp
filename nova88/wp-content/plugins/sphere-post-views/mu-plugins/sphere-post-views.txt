@@ -1,0 +1,39 @@
+<?php
+/**
+ * Plugin Name: Sphere Post Views Performance
+ * Description: For performance improvement of default AJAX endpoint.
+ * Plugin URI: https://theme-sphere.com
+ * Author: ThemeSphere
+ * Author URI: https://theme-sphere.com
+ * Version: 1.0.0
+ * License: GPLv2 or later
+ * Requires at least: 5.5
+ * Requires PHP: 7.1
+ */
+
+/*
+ * To Setup
+ *  - Rename to sphere-posts-views.php and copy this file to wp-content/mu-plugins/
+ *  - That's all.
+ * 
+ * Notes: 
+ *  - Enabling this will disable all normal plugins on the AJAX request, so if you wish
+ *    to use the filters/hooks of Sphere Post Views, you will have to create another
+ *    mu-plugin of your own.
+ */
+
+defined('ABSPATH') || exit;
+
+if (empty($_GET['sphere_post_views']) || !wp_doing_ajax()) {
+	return;
+}
+
+$filter_plugins = function($plugins) {
+	$plugins = (array) $plugins ?: [];
+	return array_filter($plugins, function($plugin) {
+		return $plugin === 'sphere-post-views/sphere-post-views.php';
+	});
+};
+
+add_filter('option_active_plugins', $filter_plugins);
+add_filter('site_option_active_sitewide_plugins', $filter_plugins);

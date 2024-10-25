@@ -1,0 +1,8 @@
+*** Yoast SEO premium Changelog ***
+
+
+2024-03-15 - version 22.3
+* add -  Introducing the option to generate titles and descriptions for category and tag pages on your website (taxonomies). Optimize your site for higher click-through-rates at the touch of a button.
+* update -  Bumps the minimum required version of Yoast SEO to 22.3.
+* update -  Sets the WordPress tested up to version to 6.5.
+

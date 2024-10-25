@@ -1,0 +1,57 @@
+.bunyad-import .intro-text {
+	padding: 10px 15px;
+	margin-top: 25px;
+	margin-bottom: 32px;
+    border-left: 4px solid #0073aa;
+}
+
+.bunyad-import .intro-text p {
+	max-width: 1200px;
+}
+
+.bunyad-import .intro-text hr {
+	margin: 14px 0;
+}
+
+.bunyad-import [name=import_type] {
+	width: 90px;
+}
+
+.bunyad-import .spinner {
+	display: inline-block;
+	float: none;
+	visibility: visible;
+	margin: 0;
+	margin-right: 3px;
+    margin-bottom: 1px;	
+}
+
+.bunyad-import .theme-browser {
+	margin-top: 25px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	grid-gap: 38px;
+}
+
+.bunyad-import .theme {
+	width: auto !important;
+	margin: 0 !important;
+}
+
+.bunyad-import .theme-browser .theme-name {
+	font-size: 14px;
+}
+
+.bunyad-import .theme-actions {
+	opacity: 1 !important;
+}
+
+.bunyad-depends-modal .plugin-names {
+	list-style: decimal inside;
+	margin-left: 10px;
+}
+
+.bunyad-depends-modal .form-buttons {
+	margin: -15px;
+	margin-top: 20px;
+}

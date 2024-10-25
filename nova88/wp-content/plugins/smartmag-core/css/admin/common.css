@@ -1,0 +1,353 @@
+/**
+ * Common CSS for Core admin.
+ */
+.cf:before, .cf:after { content: " "; display: table; }
+.cf:after { clear: both; }
+
+/**
+ * Metaboxes CSS
+ */
+.bunyad-meta { 
+	margin: 5px 0 15px 0; 
+}
+
+.bunyad-meta-editor {
+	/* margin: 0 auto; */
+	max-width: 1050px;
+	padding: 20px 0;
+	box-shadow: 0 0 25px rgba(0, 0, 0, .05);
+	border-radius: 5px;
+	border: 1px solid #efefef;
+}
+
+.bunyad-meta .option { 
+	display: flex;
+	overflow: hidden;
+	padding: 18px 25px;
+	border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 1024px) {
+	.bunyad-meta .option { 
+		flex-direction: column;
+		gap: 15px;
+	}
+}
+
+.bunyad-meta .option:hover {
+	background: #f9f9f9; 
+}
+
+.bunyad-meta .option:last-child { 
+	border-bottom: 0; 
+}
+
+.bunyad-meta .label {
+	flex: 0 0 auto;
+	width: max(230px, 20%);
+	max-width: 30%;
+	display: block;
+	font-weight: 600;
+}
+@media (max-width: 1024px) {
+	.bunyad-meta .label {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.bunyad-meta .field {
+	padding-left: 10px;
+	display: block;
+	box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+	.bunyad-meta .field {
+		max-width: calc(100% - 230px);
+	}
+}
+
+.bunyad-meta :where(.field) > p {
+	margin-top: 0;
+}
+
+.bunyad-meta input:where([type=number], [type=text], [type=url], [type=email]),
+.bunyad-meta select {
+	padding: 2px 11px;
+	line-height: 26px;
+	min-height: initial;
+	max-width: 100%;
+}
+
+.bunyad-meta input:where(:not([size])):where([type=number], [type=text], [type=url], [type=email]) {
+	width: 350px;
+	max-width: 100%;
+}
+
+.bunyad-meta select {
+	width: 350px;
+}
+
+.bunyad-meta .description {
+	margin-top: 8px;
+	font-size: .93em;
+}
+
+.bunyad-meta .field textarea {
+	max-width: 100%;
+	margin: 3px 0;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.bunyad-meta .radio-option label {
+	line-height: 19px;
+}
+
+.bunyad-meta .radio-option label span { 
+	margin-left: 5px; 
+}
+
+/* form elements */
+.bunyad-meta .color-picker-element { 
+	display: none; 
+	position: absolute; 
+	background-color: #fcfcfc; 
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 4px 0 rgba(0,0,0, 0.2);
+	box-shadow: 0px 1px 4px 0 rgba(0,0,0, 0.2);
+	z-index: 1;
+}
+
+.mce_bunyad_shortcodesList {
+	font-size: 14px;	
+}
+
+.bunyad-meta .image-upload {
+	display: none;
+	max-width: 350px;
+	margin-top: 15px;
+}
+
+.bunyad-meta .image-upload.visible {
+	display: block;
+}
+
+.bunyad-meta .image-upload img {
+	max-width: 100%;
+}
+
+.bunyad-meta .remove-image {
+	margin-left: 5px;
+}
+
+.bunyad-meta .remove-image, 
+.bunyad-meta .image-type {
+	display: none !important;
+}
+
+.bunyad-meta .remove-image.visible, 
+.bunyad-meta .image-type.visible {
+	display: inline-block !important;
+}
+
+.bunyad-group-fields:has(div) {
+	background: rgba(0, 0, 0, .02);
+	border: 1px solid #efefef;
+	border-radius: 4px;
+	width: 580px;
+	max-width: 100%;
+}
+.bunyad-group-fields.ui-sortable {
+	cursor: grab;
+}
+
+.bunyad-group-item {
+	padding: 11px 15px;
+	border-bottom: 1px solid #efefef;
+	display: flex;
+	align-items: center;
+}
+
+.bunyad-group-item:last-child {
+	border: 0;
+}
+
+.bunyad-group-item .group-label {
+	margin-right: 6px;
+	font-weight: 600;
+}
+
+@media (max-width: 500px) {
+	.bunyad-group-item.criterion {
+		flex-direction: column;
+    	align-items: flex-start;
+    	gap: 15px;
+	}
+}
+
+.bunyad-group-fields .delete {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	margin-right: 10px;
+	margin-left: -5px;
+	padding: 5px;
+	color: #a00;
+	font-size: 18px;
+}
+
+.bunyad-group-fields label {
+	display: inline-flex;
+	align-items: center;
+	max-width: calc(100% - 15px);
+}
+.bunyad-group-fields label input {
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+/* Default Form Table Extras */
+
+.bunyad-meta .input[type="number"] {
+	width: 75px;
+	padding-right: 0;
+}
+
+/* Extras for Review */
+.bunyad-review .input-rating {
+	width: 250px;
+	margin-left: 7px;
+	margin-right: 14px;
+}
+
+.bunyad-review .option-sep {
+	border-top: 5px solid #fafafa;
+}
+
+.bunyad-review .is-schema-option {
+	padding-left: 30px;
+	border-left: 5px solid #eee;
+}
+
+/**
+ * Widgets
+ */
+ 
+.bunyad-note {
+	font-size: 12px;
+	margin-top: 20px;
+}
+
+.bunyad-cta-group {
+	border: 1px solid #e5e5e5;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	background: #fafafa;
+	padding: 10px 15px;
+	cursor: move;
+}
+
+.bunyad-cta-group p:first-child {
+	margin-top: 0;
+}
+
+/**
+ * Blocks Widgets
+ */ 
+.bunyad-widget-option {
+	margin: 20px 0;
+}
+
+.bunyad-widget-option .label {
+	font-weight: 500;
+	padding-bottom: 6px;
+	line-height: 1.5;
+	display: block;
+}
+
+@media (max-width: 1400px) {
+	.bunyad-widget-option .label {
+		font-size: 13px;
+	}
+}
+
+.bunyad-widget-option input[type="checkbox"] {
+	margin-top: 0;
+}
+
+.bunyad-widget-desc,
+.bunyad-widget-option .small-desc {
+	margin-top: 0;
+	padding-top: 8px;
+	font-size: 12px;
+	font-style: normal;
+	color: #72777c;
+}
+
+.bunyad-widget-option .small-desc {
+	margin: 0;
+	padding-bottom: 5px;
+}
+
+.bunyad-widget-option textarea {
+	width: 100%;
+	min-height: 75px;
+}
+
+.bunyad-widget-option-inline {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 8px;
+	align-items: center;
+}
+
+.bunyad-widget-option-inline .label {
+	padding-bottom: 2px;
+}
+
+.bunyad-widget-option-inline .small-desc {
+	order: 3;
+	grid-column: span 2;
+	margin-top: 6px;
+}
+
+.bunyad-widget-tab {
+	background: #fdfdfd;
+	padding: 0 15px;
+	margin: 20px 0;
+	border: 1px solid #efefef;
+}
+
+.bunyad-widget-tab:first-child {
+	margin-top: 25px;
+}
+
+.bunyad-widget-tab:last-child {
+	margin-bottom: 25px;
+}
+
+.bunyad-widget-tab .heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 -15px;
+	padding: 0 15px;
+	background: #f8f8f8;
+	border-top: 1px solid #f0f0f0;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 40px;
+}
+
+.bunyad-widget-tab .heading > span {
+	order: -1;
+	font-size: 13px;
+}
+
+

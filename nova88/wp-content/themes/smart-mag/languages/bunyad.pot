@@ -1,0 +1,997 @@
+# Copyright (C) 2023 ThemeSphere
+# This file is distributed under the ThemeForest Split Licence.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartMag 9.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/smart-mag\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-11-22T00:18:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.0\n"
+"X-Domain: bunyad\n"
+
+#. Plugin Name of the plugin
+msgid "SmartMag Core"
+msgstr ""
+
+#. Description of the plugin
+msgid "Elements and core functionality for SmartMag Theme."
+msgstr ""
+
+#. Author of the plugin
+#. Author of the theme
+msgid "ThemeSphere"
+msgstr ""
+
+#. Author URI of the plugin
+#. Author URI of the theme
+msgid "https://theme-sphere.com"
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:54
+#: admin/options/layout-main.php:460
+#: packages/blocks/breadcrumbs/breadcrumbs.php:54
+msgctxt "breadcrumbs"
+msgid "You are at:"
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:152
+#: packages/blocks/breadcrumbs/breadcrumbs.php:152
+msgctxt "breadcrumbs"
+msgid "Home"
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:153
+#: packages/blocks/breadcrumbs/breadcrumbs.php:153
+msgctxt "breadcrumbs"
+msgid "Search Results for \"%s\""
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:154
+#: packages/blocks/breadcrumbs/breadcrumbs.php:154
+msgctxt "breadcrumbs"
+msgid "Error 404"
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:155
+#: packages/blocks/breadcrumbs/breadcrumbs.php:155
+msgctxt "breadcrumbs"
+msgid " (Page %d)"
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:164
+#: packages/blocks/breadcrumbs/breadcrumbs.php:164
+msgctxt "breadcrumbs"
+msgid "Category: \"%s\""
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:165
+#: packages/blocks/breadcrumbs/breadcrumbs.php:165
+msgctxt "breadcrumbs"
+msgid "Archive for \"%s\""
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:166
+#: packages/blocks/breadcrumbs/breadcrumbs.php:166
+msgctxt "breadcrumbs"
+msgid "Posts Tagged \"%s\""
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:167
+#: packages/blocks/breadcrumbs/breadcrumbs.php:167
+msgctxt "breadcrumbs"
+msgid "Author: %s"
+msgstr ""
+
+#: blocks/heading/heading.php:207
+#: packages/blocks/heading/heading.php:207
+msgid "All"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:407
+#: packages/blocks/post-meta/post-meta.php:407
+msgid "In"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:493
+#: packages/blocks/post-meta/post-meta.php:493
+msgid "Updated:"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:529
+#: packages/blocks/post-meta/post-meta.php:529
+msgctxt "Post Meta"
+msgid "By"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:566
+#: packages/blocks/post-meta/post-meta.php:566
+msgid "%d Min Read"
+msgid_plural "%d Mins Read"
+msgstr[0] ""
+msgstr[1] ""
+
+#: blocks/post-meta/post-meta.php:645
+#: packages/blocks/post-meta/post-meta.php:645
+msgctxt "Post Meta"
+msgid "Views"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:652
+#: packages/blocks/post-meta/post-meta.php:652
+msgctxt "Post Meta"
+msgid "%s Article Views"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:84
+#: inc/reviews/module.php:155
+msgid "The Good"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:104
+#: inc/reviews/module.php:156
+msgid "The Bad"
+msgstr ""
+
+#: inc/reviews/review.php:159
+msgid "User Ratings"
+msgstr ""
+
+#: inc/reviews/review.php:160
+msgid "%s Votes"
+msgstr ""
+
+#: inc/social-share.php:28
+#: inc/social-share.php:121
+#: inc/social.php:42
+#: partials/author.php:20
+msgid "Facebook"
+msgstr ""
+
+#: inc/social-share.php:29
+msgid "Share on Facebook"
+msgstr ""
+
+#: inc/social-share.php:35
+msgid "Twitter"
+msgstr ""
+
+#: inc/social-share.php:36
+msgid "Share on X (Twitter)"
+msgstr ""
+
+#: inc/social-share.php:42
+#: inc/social-share.php:137
+#: inc/social.php:57
+#: partials/author.php:22
+msgid "Pinterest"
+msgstr ""
+
+#: inc/social-share.php:43
+msgid "Share on Pinterest"
+msgstr ""
+
+#: inc/social-share.php:50
+#: inc/social-share.php:169
+#: inc/social.php:93
+#: partials/author.php:26
+msgid "LinkedIn"
+msgstr ""
+
+#: inc/social-share.php:51
+msgid "Share on LinkedIn"
+msgstr ""
+
+#: inc/social-share.php:57
+#: inc/social.php:88
+#: partials/author.php:24
+msgid "Tumblr"
+msgstr ""
+
+#: inc/social-share.php:58
+msgid "Share on Tumblr"
+msgstr ""
+
+#: inc/social-share.php:64
+#: inc/social.php:123
+msgid "VKontakte"
+msgstr ""
+
+#: inc/social-share.php:65
+msgid "Share on VKontakte"
+msgstr ""
+
+#: inc/social-share.php:71
+#: comments.php:108
+#: inc/integrations/woocommerce.php:241
+msgid "Email"
+msgstr ""
+
+#: inc/social-share.php:72
+msgid "Share via Email"
+msgstr ""
+
+#: inc/social-share.php:78
+#: inc/social-share.php:217
+#: inc/social.php:153
+msgid "WhatsApp"
+msgstr ""
+
+#: inc/social-share.php:79
+msgid "Share on WhatsApp"
+msgstr ""
+
+#: inc/social-share.php:87
+#: inc/social-share.php:193
+#: inc/social.php:128
+msgid "Reddit"
+msgstr ""
+
+#: inc/social-share.php:88
+msgid "Share on Reddit"
+msgstr ""
+
+#: inc/social-share.php:94
+#: inc/social-share.php:209
+#: inc/social.php:138
+msgid "Telegram"
+msgstr ""
+
+#: inc/social-share.php:95
+msgid "Share on Telegram"
+msgstr ""
+
+#: inc/social-share.php:101
+#: inc/social-share.php:102
+msgid "Copy Link"
+msgstr ""
+
+#: inc/social-share.php:129
+#: inc/social.php:47
+#: partials/author.php:21
+msgid "X (Twitter)"
+msgstr ""
+
+#: inc/social-share.php:145
+#: inc/social.php:52
+#: partials/author.php:23
+msgid "Instagram"
+msgstr ""
+
+#: inc/social-share.php:153
+#: inc/social.php:78
+msgid "YouTube"
+msgstr ""
+
+#: inc/social-share.php:161
+#: inc/social.php:108
+msgid "Vimeo"
+msgstr ""
+
+#: inc/social-share.php:177
+msgid "Soundcloud"
+msgstr ""
+
+#: inc/social-share.php:185
+#: inc/social.php:143
+msgid "Twitch"
+msgstr ""
+
+#: inc/social-share.php:201
+#: inc/social.php:133
+msgid "TikTok"
+msgstr ""
+
+#: lib/posts.php:553
+msgctxt "pagination"
+msgid "Next"
+msgstr ""
+
+#: lib/posts.php:554
+msgctxt "pagination"
+msgid "Previous"
+msgstr ""
+
+#: lib/posts.php:727
+#: admin/options/posts-listings.php:57
+#: inc/theme.php:291
+msgid "Read More"
+msgstr ""
+
+#: social-share/views/social-share-b.php:23
+#: social-share/views/social-share-float.php:22
+#: admin/options/posts-single.php:729
+#: admin/options/posts-single.php:1061
+msgid "Share"
+msgstr ""
+
+#: social-share/views/social-share-b.php:123
+#: social-share/views/social-share-float.php:76
+#: social-share/views/social-share.php:48
+msgid "Link copied successfully!"
+msgstr ""
+
+#: social-share/views/social-share-b.php:134
+msgid "Show More Social Sharing"
+msgstr ""
+
+#: social-share/views/social-share.php:29
+msgid "Share."
+msgstr ""
+
+#: widgets/widget-bbp-login.php:22
+msgid "(bbPress) SmartMag Login Widget"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:79
+#: partials/auth-modal/login.php:32
+msgid "Username or Email"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:83
+#: partials/auth-modal/login.php:36
+msgid "Password"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:89
+#: partials/auth-modal/login.php:42
+msgid "Log In"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:94
+#: partials/auth-modal/login.php:47
+msgid "Remember Me"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:97
+#: widgets/widget-bbp-login.php:98
+#: partials/auth-modal/login.php:50
+#: partials/auth-modal/login.php:51
+msgid "Lost password?"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:106
+msgctxt "bbPress"
+msgid "Don't have an account?"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:107
+#: partials/auth-modal/register.php:6
+msgid "Register Now!"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:119
+msgctxt "bbPress"
+msgid "Welcome back, "
+msgstr ""
+
+#: widgets/widget-bbp-login.php:124
+msgctxt "bbPress"
+msgid "Edit Profile"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:126
+msgctxt "bbPress"
+msgid "Subscriptions"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:128
+msgctxt "bbPress"
+msgid "Favorites"
+msgstr ""
+
+#: widgets/widget-tabbed-recent.php:273
+msgid "Posts:"
+msgstr ""
+
+#. Theme Name of the theme
+msgid "SmartMag"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://smartmag.theme-sphere.com"
+msgstr ""
+
+#. Description of the theme
+msgid "Designed by <a href=\"https://theme-sphere.com\">ThemeSphere</a>"
+msgstr ""
+
+#: 404.php:20
+#: admin/options/layout-pages.php:64
+msgid "Page Not Found!"
+msgstr ""
+
+#: 404.php:28
+msgid "404"
+msgstr ""
+
+#: 404.php:37
+msgid "We're sorry, but we can't find the page you were looking for. It's probably some thing we've done wrong but now we know about it and we'll try to fix it. In the meantime, try one of these options:"
+msgstr ""
+
+#: 404.php:43
+msgid "Go to Previous Page"
+msgstr ""
+
+#: 404.php:44
+msgid "Go to Homepage"
+msgstr ""
+
+#: admin/options-short.php:2253
+#: admin/options/archives.php:150
+msgid "Browsing: %s"
+msgstr ""
+
+#: admin/options/header/ticker.php:37
+#: partials/header/ticker.php:31
+msgid "Trending"
+msgstr ""
+
+#: admin/options/posts-single.php:1259
+#: partials/single/modern-header.php:102
+msgid "Follow Us"
+msgstr ""
+
+#: admin/options/posts-single.php:1342
+#: partials/single/social-share-bot.php:16
+msgid "Follow on %s"
+msgstr ""
+
+#: admin/options/posts-single.php:1383
+#: partials/single/related-posts.php:10
+msgid "Related *Posts*"
+msgstr ""
+
+#: bbpress/form-search.php:11
+msgctxt "bbPress"
+msgid "Search for:"
+msgstr ""
+
+#: bbpress/form-search.php:14
+msgctxt "bbPress"
+msgid "Search"
+msgstr ""
+
+#: bbpress/loop-forums.php:26
+msgctxt "bbPress"
+msgid "Topics"
+msgstr ""
+
+#: bbpress/loop-forums.php:29
+#: bbpress/loop-single-topic.php:102
+msgctxt "bbPress"
+msgid "Replies"
+msgstr ""
+
+#: bbpress/loop-forums.php:30
+#: bbpress/loop-single-topic.php:103
+msgctxt "bbPress"
+msgid "Posts"
+msgstr ""
+
+#: bbpress/loop-forums.php:33
+msgctxt "bbPress"
+msgid "Freshness"
+msgstr ""
+
+#: bbpress/loop-replies.php:15
+msgctxt "bbPress"
+msgid "Posted In: "
+msgstr ""
+
+#: bbpress/loop-search-reply.php:12
+msgctxt "bbPress"
+msgid "In reply to: "
+msgstr ""
+
+#: bbpress/loop-search-reply.php:46
+#: bbpress/loop-search-topic.php:51
+#: bbpress/loop-single-reply.php:39
+msgctxt "bbPress Reply"
+msgid "on"
+msgstr ""
+
+#: bbpress/loop-search-reply.php:52
+#: bbpress/loop-search-topic.php:57
+#: bbpress/loop-single-reply.php:45
+msgctxt "bbPress"
+msgid "in reply to: "
+msgstr ""
+
+#: bbpress/loop-search-topic.php:16
+msgctxt "bbPress"
+msgid "Topic: "
+msgstr ""
+
+#: bbpress/loop-single-forum.php:47
+msgctxt "bbpress"
+msgid "topics"
+msgstr ""
+
+#: bbpress/loop-single-forum.php:49
+msgctxt "bbpress"
+msgid "replies"
+msgstr ""
+
+#: bbpress/loop-single-forum.php:50
+msgctxt "bbpress"
+msgid "posts"
+msgstr ""
+
+#: bbpress/loop-single-forum.php:62
+msgctxt "bbPress Freshness Author"
+msgid "by "
+msgstr ""
+
+#: bbpress/loop-single-topic.php:63
+msgctxt "bbPress"
+msgid "Started by: %1$s"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:71
+msgctxt "bbPress"
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:78
+msgctxt "bbPress"
+msgid "Last post:"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:99
+msgctxt "bbPress"
+msgid "Voices"
+msgstr ""
+
+#: blocks/newsletter/html/newsletter.php:44
+#: packages/blocks/newsletter/html/newsletter.php:44
+msgid "Your email address.."
+msgstr ""
+
+#: comments.php:23
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:33
+msgid "Add A Comment"
+msgstr ""
+
+#: comments.php:34
+msgid "View 1 Comment"
+msgstr ""
+
+#: comments.php:35
+msgid "View % Comments"
+msgstr ""
+
+#: comments.php:70
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:71
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:76
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:98
+#: inc/integrations/woocommerce.php:231
+msgid "Name"
+msgstr ""
+
+#: comments.php:120
+#: partials/author.php:19
+msgid "Website"
+msgstr ""
+
+#: comments.php:129
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+
+#: comments.php:143
+msgid "Leave A Reply"
+msgstr ""
+
+#: comments.php:144
+msgid "Reply To %s"
+msgstr ""
+
+#: comments.php:148
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr ""
+
+#: comments.php:153
+#: inc/integrations/woocommerce.php:250
+msgid "Your Comment"
+msgstr ""
+
+#: comments.php:157
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:159
+msgid "Cancel Reply"
+msgstr ""
+
+#: inc/archives.php:43
+msgid "Search Results: %s (%d)"
+msgstr ""
+
+#: inc/authenticate.php:124
+msgid "Login with %s"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:209
+msgctxt "woocommerce"
+msgid "Your Rating:"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:210
+msgctxt "woocommerce"
+msgid "Rate&hellip;"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:211
+msgctxt "woocommerce"
+msgid "Perfect"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:212
+msgctxt "woocommerce"
+msgid "Good"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:213
+msgctxt "woocommerce"
+msgid "Average"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:214
+msgctxt "woocommerce"
+msgid "Not that bad"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:215
+msgctxt "woocommerce"
+msgid "Very Poor"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:224
+msgctxt "woocommerce"
+msgid "Add a review"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:224
+msgctxt "woocommerce"
+msgid "Be the first to review"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:301
+msgid "View Cart"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:309
+msgid "Shopping Cart"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:382
+msgctxt "woocommerce"
+msgid "Qty"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:390
+msgctxt "woocommerce"
+msgid "Price"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:398
+msgctxt "woocommerce"
+msgid "Total"
+msgstr ""
+
+#: inc/social.php:62
+#: partials/author.php:25
+msgid "BlogLovin"
+msgstr ""
+
+#: inc/social.php:67
+msgid "RSS"
+msgstr ""
+
+#: inc/social.php:73
+msgid "Google"
+msgstr ""
+
+#: inc/social.php:83
+msgid "Dribbble"
+msgstr ""
+
+#: inc/social.php:98
+msgid "Flickr"
+msgstr ""
+
+#: inc/social.php:103
+msgid "SoundCloud"
+msgstr ""
+
+#: inc/social.php:113
+msgid "Last.fm"
+msgstr ""
+
+#: inc/social.php:118
+msgid "Steam"
+msgstr ""
+
+#: inc/social.php:148
+msgid "Discord"
+msgstr ""
+
+#: inc/social.php:158
+msgid "Snapchat"
+msgstr ""
+
+#: inc/social.php:163
+msgid "Threads"
+msgstr ""
+
+#: inc/social.php:171
+msgid "Flipboard"
+msgstr ""
+
+#: inc/social.php:177
+msgid "Google News"
+msgstr ""
+
+#: inc/theme.php:134
+msgid "Ad Blocker Enabled!"
+msgstr ""
+
+#: inc/theme.php:135
+msgid "Our website is made possible by displaying online advertisements to our visitors. Please support us by disabling your Ad Blocker."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Authors List"
+msgstr ""
+
+#: page-templates/authors.php:70
+msgid "Browse Author Articles"
+msgstr ""
+
+#: page-templates/authors.php:71
+msgid "%s Articles"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Pagebuilder"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Pagebuilder - No Paddings & Full Width"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Sitemap (Deprecated)"
+msgstr ""
+
+#: page-templates/sitemap.php:60
+msgid "Pages"
+msgstr ""
+
+#: page-templates/sitemap.php:67
+msgid "Categories"
+msgstr ""
+
+#: page-templates/sitemap.php:77
+msgid "Recent Posts"
+msgstr ""
+
+#: page-templates/sitemap.php:96
+msgid "Archives"
+msgstr ""
+
+#: partials/auth-modal/auth-modal.php:18
+msgctxt "aria"
+msgid "Sign In or Register"
+msgstr ""
+
+#: partials/auth-modal/auth-modal.php:21
+msgid "Close modal"
+msgstr ""
+
+#: partials/auth-modal/login.php:10
+msgid "Login to your account below."
+msgstr ""
+
+#: partials/auth-modal/login.php:14
+msgid "Login below or {register}."
+msgstr ""
+
+#: partials/auth-modal/login.php:17
+msgid "Register Now"
+msgstr ""
+
+#: partials/auth-modal/login.php:24
+msgid "Welcome Back!"
+msgstr ""
+
+#: partials/auth-modal/register.php:11
+msgid "Already registered? %1$sLogin%2$s."
+msgstr ""
+
+#: partials/auth-modal/register.php:23
+msgid "Your Username"
+msgstr ""
+
+#: partials/auth-modal/register.php:27
+msgid "Your Email"
+msgstr ""
+
+#: partials/auth-modal/register.php:32
+msgid "Register"
+msgstr ""
+
+#: partials/auth-modal/register.php:35
+msgid "A password will be e-mailed to you."
+msgstr ""
+
+#: partials/auth-modal/social.php:16
+msgid "or with email"
+msgstr ""
+
+#: partials/author.php:27
+msgid "Dribble"
+msgstr ""
+
+#: partials/comment.php:24
+msgid "Pingback:"
+msgstr ""
+
+#: partials/comment.php:24
+#: partials/comment.php:47
+msgid "Edit"
+msgstr ""
+
+#: partials/comment.php:42
+msgid "on"
+msgstr ""
+
+#: partials/comment.php:43
+msgid " at "
+msgstr ""
+
+#: partials/comment.php:54
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: partials/comment.php:61
+msgid "Reply"
+msgstr ""
+
+#: partials/header/auth.php:40
+msgid "Logout"
+msgstr ""
+
+#: partials/header/hamburger.php:11
+msgid "Menu"
+msgstr ""
+
+#: partials/header/mega-menu/category-a.php:41
+msgid "View All"
+msgstr ""
+
+#: partials/header/mega-menu/category-b.php:19
+msgctxt "Categories Mega Menu"
+msgid "Featured"
+msgstr ""
+
+#: partials/header/mega-menu/category-b.php:67
+msgctxt "Categories Mega Menu"
+msgid "Recent"
+msgstr ""
+
+#: partials/header/off-canvas-menu.php:44
+msgid "Close Menu"
+msgstr ""
+
+#: partials/header/scheme-switch.php:17
+msgid "Switch to Dark Design - easier on eyes."
+msgstr ""
+
+#: partials/header/scheme-switch.php:20
+msgid "Switch to Light Design."
+msgstr ""
+
+#: partials/header/search.php:22
+#: partials/header/search.php:33
+msgid "Search"
+msgstr ""
+
+#: partials/header/search.php:30
+#: partials/search-modal.php:24
+msgid "Search..."
+msgstr ""
+
+#: partials/live-search.php:23
+msgid "Sorry, no results!"
+msgstr ""
+
+#: partials/live-search.php:52
+msgid "See All Results"
+msgstr ""
+
+#: partials/pagination.php:86
+msgid "Load More"
+msgstr ""
+
+#: partials/search-modal.php:27
+msgid "Submit"
+msgstr ""
+
+#: partials/search-modal.php:32
+msgid "Type above and press %1$sEnter%2$s to search. Press %1$sEsc%2$s to cancel."
+msgstr ""
+
+#: partials/single/classic-title-meta.php:28
+msgctxt "Legacy Meta"
+msgid "By"
+msgstr ""
+
+#: partials/single/classic-title-meta.php:32
+msgctxt "Legacy Meta"
+msgid "on"
+msgstr ""
+
+#: partials/single/classic-title-meta.php:39
+msgid ", "
+msgstr ""
+
+#: partials/single/pagination-large.php:13
+msgid "Showing %s of %s"
+msgstr ""
+
+#: partials/single/pagination-large.php:24
+msgid "Next"
+msgstr ""
+
+#: partials/single/pagination-large.php:25
+msgid "Prev"
+msgstr ""
+
+#: partials/single/post-navigation.php:14
+msgid "Previous Article"
+msgstr ""
+
+#: partials/single/post-navigation.php:22
+msgid "Next Article"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:21
+msgctxt "woocommerce"
+msgid "SKU:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:22
+msgctxt "woocommerce"
+msgid "N/A"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:27
+msgctxt "woocommerce"
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/meta.php:29
+msgctxt "woocommerce"
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] ""
+msgstr[1] ""

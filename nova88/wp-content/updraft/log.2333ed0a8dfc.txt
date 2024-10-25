@@ -1,0 +1,1035 @@
+0000.000 (0) Opened log file at time: Tue, 22 Oct 2024 02:57:43 +0000 on https://newsnova88vn.com
+0000.009 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.6 WP: 6.6.2 PHP: 8.2.20 (litespeed, Linux saba-web2 6.8.0-1016-gcp #18~22.04.1-Ubuntu SMP Tue Oct  8 14:58:58 UTC 2024 x86_64) MySQL: 8.0.31-google (max packet size=33554432) WPLANG: en_US Server: LiteSpeed safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 78.7M | 80M) multisite: N openssl: OpenSSL 3.0.2 15 Mar 2022 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.017 (0) Free space on disk containing Updraft's temporary directory: 16881 MB
+0000.025 (0) Tasks: Backup files: 1 (schedule: manual) Backup DB: 1 (schedule: manual)
+0000.035 (0) Semaphore (fd, wp_options) being initialised
+0000.063 (0) Requesting semaphore lock (fd) (apparently not via scheduler)
+0000.083 (0) Set semaphore last lock (fd) time to 2024-10-22 02:57:44
+0000.091 (0) Semaphore lock (fd) complete
+0000.116 (0) Backup run: resumption=0, nonce=2333ed0a8dfc, file_nonce=2333ed0a8dfc begun at=1729565863 (1s ago), job type=backup
+0000.133 (0) Scheduling a resumption (1) after 300 seconds (1729566164) in case this run gets aborted
+0000.177 (0) Checking if we have a zip executable available
+0000.202 (0) Creation of backups of directories: beginning
+0000.235 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0000.468 (0) Total entities for the zip file: 1856 directories, 8997 files (0 skipped as non-modified), 147.7 MB
+0000.485 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 100 files added (on-disk size: 0 KB)
+0000.496 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 200 files added (on-disk size: 0 KB)
+0000.509 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 300 files added (on-disk size: 0 KB)
+0000.521 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 400 files added (on-disk size: 0 KB)
+0000.534 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 500 files added (on-disk size: 0 KB)
+0000.551 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 600 files added (on-disk size: 0 KB)
+0000.569 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 700 files added (on-disk size: 0 KB)
+0000.589 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 800 files added (on-disk size: 0 KB)
+0000.605 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 900 files added (on-disk size: 0 KB)
+0000.620 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0000.630 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (8.3 MB, 8997 files batched, 1001 (1001) added so far); re-opening (prior size: 0 KB)
+0002.196 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1100 files added (on-disk size: 3352 KB)
+0002.212 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1200 files added (on-disk size: 3352 KB)
+0002.229 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1300 files added (on-disk size: 3352 KB)
+0002.247 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1400 files added (on-disk size: 3352 KB)
+0002.263 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1500 files added (on-disk size: 3352 KB)
+0002.278 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1600 files added (on-disk size: 3352 KB)
+0002.293 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1700 files added (on-disk size: 3352 KB)
+0002.309 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1800 files added (on-disk size: 3352 KB)
+0002.326 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 1900 files added (on-disk size: 3352 KB)
+0002.340 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2000 files added (on-disk size: 3352 KB)
+0002.351 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (7.2 MB, 8997 files batched, 1001 (2002) added so far); re-opening (prior size: 3352 KB)
+0003.258 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2100 files added (on-disk size: 6346.6 KB)
+0003.267 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2200 files added (on-disk size: 6346.6 KB)
+0003.276 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2300 files added (on-disk size: 6346.6 KB)
+0003.284 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2400 files added (on-disk size: 6346.6 KB)
+0003.292 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2500 files added (on-disk size: 6346.6 KB)
+0003.301 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2600 files added (on-disk size: 6346.6 KB)
+0003.309 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2700 files added (on-disk size: 6346.6 KB)
+0003.318 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2800 files added (on-disk size: 6346.6 KB)
+0003.326 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 2900 files added (on-disk size: 6346.6 KB)
+0003.334 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3000 files added (on-disk size: 6346.6 KB)
+0003.342 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (21.1 MB, 8997 files batched, 1001 (3003) added so far); re-opening (prior size: 6346.6 KB)
+0005.066 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3100 files added (on-disk size: 10341.3 KB)
+0005.077 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3200 files added (on-disk size: 10341.3 KB)
+0005.087 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3300 files added (on-disk size: 10341.3 KB)
+0005.097 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3400 files added (on-disk size: 10341.3 KB)
+0005.107 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3500 files added (on-disk size: 10341.3 KB)
+0005.118 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3600 files added (on-disk size: 10341.3 KB)
+0005.127 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3700 files added (on-disk size: 10341.3 KB)
+0005.136 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3800 files added (on-disk size: 10341.3 KB)
+0005.146 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 3900 files added (on-disk size: 10341.3 KB)
+0005.154 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4000 files added (on-disk size: 10341.3 KB)
+0005.161 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (11.4 MB, 8997 files batched, 1001 (4004) added so far); re-opening (prior size: 10341.3 KB)
+0006.802 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4100 files added (on-disk size: 13907.3 KB)
+0006.811 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4200 files added (on-disk size: 13907.3 KB)
+0006.821 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4300 files added (on-disk size: 13907.3 KB)
+0006.831 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4400 files added (on-disk size: 13907.3 KB)
+0006.840 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4500 files added (on-disk size: 13907.3 KB)
+0006.849 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4600 files added (on-disk size: 13907.3 KB)
+0006.858 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4700 files added (on-disk size: 13907.3 KB)
+0006.867 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4800 files added (on-disk size: 13907.3 KB)
+0006.875 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 4900 files added (on-disk size: 13907.3 KB)
+0006.883 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5000 files added (on-disk size: 13907.3 KB)
+0006.889 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (19.1 MB, 8997 files batched, 1001 (5005) added so far); re-opening (prior size: 13907.3 KB)
+0008.952 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5100 files added (on-disk size: 19111.4 KB)
+0008.962 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5200 files added (on-disk size: 19111.4 KB)
+0008.975 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5300 files added (on-disk size: 19111.4 KB)
+0008.983 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5400 files added (on-disk size: 19111.4 KB)
+0008.993 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5500 files added (on-disk size: 19111.4 KB)
+0009.001 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5600 files added (on-disk size: 19111.4 KB)
+0009.010 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5700 files added (on-disk size: 19111.4 KB)
+0009.019 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5800 files added (on-disk size: 19111.4 KB)
+0009.028 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 5900 files added (on-disk size: 19111.4 KB)
+0009.037 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6000 files added (on-disk size: 19111.4 KB)
+0009.044 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (15.6 MB, 8997 files batched, 1001 (6006) added so far); re-opening (prior size: 19111.4 KB)
+0010.556 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6100 files added (on-disk size: 24781.9 KB)
+0010.567 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6200 files added (on-disk size: 24781.9 KB)
+0010.579 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6300 files added (on-disk size: 24781.9 KB)
+0010.597 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 MB added on this batch (25 MB, 8997 files batched, 379 (6385) added so far); re-opening (prior size: 24781.9 KB)
+0012.541 (0) A useful amount of data was added after this amount of zip processing: 2.5 s (normalised: 2.5 s, rate: 10170 KB/s)
+0012.558 (0) Performance is good - will increase the amount of data we attempt to batch (time=2.5194489955902, normalised_time=2.5172021384111, max_time=12.549358844757, data points known=1, old_max_bytes=26214400, new_max_bytes=78414182)
+0012.597 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6400 files added (on-disk size: 30456.8 KB)
+0012.606 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6500 files added (on-disk size: 30456.8 KB)
+0012.616 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6600 files added (on-disk size: 30456.8 KB)
+0012.626 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6700 files added (on-disk size: 30456.8 KB)
+0012.635 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6800 files added (on-disk size: 30456.8 KB)
+0012.646 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 6900 files added (on-disk size: 30456.8 KB)
+0012.656 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7000 files added (on-disk size: 30456.8 KB)
+0012.666 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7100 files added (on-disk size: 30456.8 KB)
+0012.676 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7200 files added (on-disk size: 30456.8 KB)
+0012.684 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7300 files added (on-disk size: 30456.8 KB)
+0012.695 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (13.3 MB, 8997 files batched, 1001 (7386) added so far); re-opening (prior size: 30456.8 KB)
+0014.581 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7400 files added (on-disk size: 34086.9 KB)
+0014.594 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7500 files added (on-disk size: 34086.9 KB)
+0014.604 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7600 files added (on-disk size: 34086.9 KB)
+0014.615 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7700 files added (on-disk size: 34086.9 KB)
+0014.625 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7800 files added (on-disk size: 34086.9 KB)
+0014.635 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 7900 files added (on-disk size: 34086.9 KB)
+0014.646 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8000 files added (on-disk size: 34086.9 KB)
+0014.657 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8100 files added (on-disk size: 34086.9 KB)
+0014.667 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8200 files added (on-disk size: 34086.9 KB)
+0014.675 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8300 files added (on-disk size: 34086.9 KB)
+0014.685 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (16.6 MB, 8997 files batched, 1001 (8387) added so far); re-opening (prior size: 34086.9 KB)
+0019.779 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8400 files added (on-disk size: 40542.5 KB)
+0019.796 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8500 files added (on-disk size: 40542.5 KB)
+0019.811 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8600 files added (on-disk size: 40542.5 KB)
+0019.828 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8700 files added (on-disk size: 40542.5 KB)
+0019.840 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8800 files added (on-disk size: 40542.5 KB)
+0019.856 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.tmp: 8900 files added (on-disk size: 40542.5 KB)
+0022.570 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.list-temp.tmp)
+0022.651 (0) Successfully created zip file manifest (size: 715565)
+0023.795 (0) Created plugins zip (0) - 43546.5 KB in 23.5 s (1849.8 KB/s) (sha1: 24831947252cec2eab31ca167852d798f62810bd, sha256: 3a9acd6ccf50ea13551015d744a115ca6326c3c8a5a62c6744bbbf00dd34d308)
+0023.839 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0023.861 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0025.452 (0) Google Drive: creating path: /UpdraftPlus
+0028.189 (0) Google Drive: quota usage: used=35.2 MB, total=5038080 MB, available=5038044.8 MB
+0028.199 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0029.009 (0) Googledrive chunked upload: 2.4 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 82.6 / 86)
+0029.198 (0) Googledrive chunked upload: 7.1 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 82.6 / 86)
+0029.407 (0) Googledrive chunked upload: 16.5 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 82.6 / 86)
+0029.663 (0) Googledrive chunked upload: 35.3 % uploaded (15728640 - increasing chunk size to 16384 KB - memory usage: 82.6 / 86)
+0030.159 (0) Googledrive chunked upload: 72.9 % uploaded (32505856 - increasing chunk size to 32768 KB - memory usage: 82.6 / 86)
+0031.692 (0) Googledrive chunked upload: 100 % uploaded (32505856)
+0031.711 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip uploaded in 3.5 seconds
+0031.718 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip
+0031.740 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip: OK
+0031.770 (0) Beginning creation of dump of themes (split every: 400 MB)
+0031.793 (0) Total entities for the zip file: 111 directories, 677 files (0 skipped as non-modified), 81.2 MB
+0031.802 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0031.811 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0031.820 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0031.829 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.tmp: 400 files added (on-disk size: 0 KB)
+0031.837 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 74.8 MB added on this batch (75.2 MB, 677 files batched, 428 (428) added so far); re-opening (prior size: 0 KB)
+0033.511 (0) A useful amount of data was added after this amount of zip processing: 2.5 s (normalised: 2.5 s, rate: 30942 KB/s)
+0033.523 (0) Performance is good - will increase the amount of data we attempt to batch (time=2.4891529083252, normalised_time=2.4748320296972, max_time=33.517127990723, data points known=1, old_max_bytes=78414182, new_max_bytes=209715200)
+0033.541 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.tmp: 500 files added (on-disk size: 13400.4 KB)
+0033.551 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.tmp: 600 files added (on-disk size: 13400.4 KB)
+0033.895 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.list-temp.tmp)
+0033.903 (0) Successfully created zip file manifest (size: 41630)
+0034.074 (0) Created themes zip (0) - 17458 KB in 2.3 s (7629.7 KB/s) (sha1: f3393462b7ccec64a3ba537c4f6c4e6f9502468b, sha256: 1b2ce5ade7757266a8bfad3628d46249bdabf5ba92a542bfe30594b45a1c3de0)
+0034.095 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0034.104 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0035.258 (0) Google Drive: quota usage: used=77.8 MB, total=5038080 MB, available=5038002.2 MB
+0035.268 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0036.225 (0) Googledrive chunked upload: 5.9 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 81.2 / 86)
+0036.433 (0) Googledrive chunked upload: 17.6 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 81.2 / 86)
+0036.628 (0) Googledrive chunked upload: 41.1 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 81.2 / 86)
+0036.864 (0) Googledrive chunked upload: 88 % uploaded (15728640 - increasing chunk size to 16384 KB - memory usage: 81.2 / 86)
+0038.325 (0) Googledrive chunked upload: 100 % uploaded (15728640)
+0038.344 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip uploaded in 3.07 seconds
+0038.353 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip
+0038.371 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip: OK
+0038.394 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0038.402 (0) Looking for candidates to backup in: /home/www/newsnova88vn.com/wp-content/uploads
+0038.410 (0) finding files: popup: adding to list (1)
+0038.417 (0) finding files: 2021: adding to list (2)
+0038.424 (0) finding files: 2022: adding to list (3)
+0038.431 (0) finding files: 2024: adding to list (4)
+0038.438 (0) finding files: wpseo-redirects: adding to list (5)
+0038.444 (0) finding files: elementor: adding to list (6)
+0038.451 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0038.710 (0) Total entities for the zip file: 20 directories, 28430 files (0 skipped as non-modified), 1519.3 MB
+0038.720 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 100 files added (on-disk size: 0 KB)
+0038.729 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 200 files added (on-disk size: 0 KB)
+0038.738 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 300 files added (on-disk size: 0 KB)
+0038.747 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 400 files added (on-disk size: 0 KB)
+0038.756 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 500 files added (on-disk size: 0 KB)
+0038.764 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 600 files added (on-disk size: 0 KB)
+0038.773 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 700 files added (on-disk size: 0 KB)
+0038.784 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 800 files added (on-disk size: 0 KB)
+0038.794 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 900 files added (on-disk size: 0 KB)
+0038.804 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0038.812 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (54.2 MB, 28430 files batched, 1001 (1001) added so far); re-opening (prior size: 0 KB)
+0040.233 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1100 files added (on-disk size: 55638.4 KB)
+0040.242 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1200 files added (on-disk size: 55638.4 KB)
+0040.250 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1300 files added (on-disk size: 55638.4 KB)
+0040.258 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1400 files added (on-disk size: 55638.4 KB)
+0040.267 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1500 files added (on-disk size: 55638.4 KB)
+0040.275 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1600 files added (on-disk size: 55638.4 KB)
+0040.284 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1700 files added (on-disk size: 55638.4 KB)
+0040.292 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1800 files added (on-disk size: 55638.4 KB)
+0040.301 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 1900 files added (on-disk size: 55638.4 KB)
+0040.309 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2000 files added (on-disk size: 55638.4 KB)
+0040.315 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (39.6 MB, 28430 files batched, 1001 (2002) added so far); re-opening (prior size: 55638.4 KB)
+0042.033 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2100 files added (on-disk size: 96369 KB)
+0042.046 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2200 files added (on-disk size: 96369 KB)
+0042.055 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2300 files added (on-disk size: 96369 KB)
+0042.068 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2400 files added (on-disk size: 96369 KB)
+0042.079 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2500 files added (on-disk size: 96369 KB)
+0042.090 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2600 files added (on-disk size: 96369 KB)
+0042.101 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2700 files added (on-disk size: 96369 KB)
+0042.112 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2800 files added (on-disk size: 96369 KB)
+0042.124 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 2900 files added (on-disk size: 96369 KB)
+0042.136 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3000 files added (on-disk size: 96369 KB)
+0042.144 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (38 MB, 28430 files batched, 1001 (3003) added so far); re-opening (prior size: 96369 KB)
+0044.339 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3100 files added (on-disk size: 135491.9 KB)
+0044.349 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3200 files added (on-disk size: 135491.9 KB)
+0044.361 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3300 files added (on-disk size: 135491.9 KB)
+0044.371 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3400 files added (on-disk size: 135491.9 KB)
+0044.382 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3500 files added (on-disk size: 135491.9 KB)
+0044.391 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3600 files added (on-disk size: 135491.9 KB)
+0044.401 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3700 files added (on-disk size: 135491.9 KB)
+0044.411 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3800 files added (on-disk size: 135491.9 KB)
+0044.421 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 3900 files added (on-disk size: 135491.9 KB)
+0044.430 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4000 files added (on-disk size: 135491.9 KB)
+0044.442 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (45.8 MB, 28430 files batched, 1001 (4004) added so far); re-opening (prior size: 135491.9 KB)
+0046.603 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4100 files added (on-disk size: 182572.7 KB)
+0046.614 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4200 files added (on-disk size: 182572.7 KB)
+0046.623 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4300 files added (on-disk size: 182572.7 KB)
+0046.631 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4400 files added (on-disk size: 182572.7 KB)
+0046.639 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4500 files added (on-disk size: 182572.7 KB)
+0046.647 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4600 files added (on-disk size: 182572.7 KB)
+0046.655 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4700 files added (on-disk size: 182572.7 KB)
+0046.664 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4800 files added (on-disk size: 182572.7 KB)
+0046.673 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 4900 files added (on-disk size: 182572.7 KB)
+0046.682 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5000 files added (on-disk size: 182572.7 KB)
+0046.690 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (54.1 MB, 28430 files batched, 1001 (5005) added so far); re-opening (prior size: 182572.7 KB)
+0049.082 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5100 files added (on-disk size: 238158.8 KB)
+0049.091 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5200 files added (on-disk size: 238158.8 KB)
+0049.100 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5300 files added (on-disk size: 238158.8 KB)
+0049.109 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5400 files added (on-disk size: 238158.8 KB)
+0049.118 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5500 files added (on-disk size: 238158.8 KB)
+0049.126 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5600 files added (on-disk size: 238158.8 KB)
+0049.135 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5700 files added (on-disk size: 238158.8 KB)
+0049.143 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5800 files added (on-disk size: 238158.8 KB)
+0049.152 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 5900 files added (on-disk size: 238158.8 KB)
+0049.162 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6000 files added (on-disk size: 238158.8 KB)
+0049.169 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (64.3 MB, 28430 files batched, 1001 (6006) added so far); re-opening (prior size: 238158.8 KB)
+0052.139 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6100 files added (on-disk size: 304183.2 KB)
+0052.154 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6200 files added (on-disk size: 304183.2 KB)
+0052.169 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6300 files added (on-disk size: 304183.2 KB)
+0052.181 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6400 files added (on-disk size: 304183.2 KB)
+0052.196 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6500 files added (on-disk size: 304183.2 KB)
+0052.209 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6600 files added (on-disk size: 304183.2 KB)
+0052.223 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6700 files added (on-disk size: 304183.2 KB)
+0052.239 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6800 files added (on-disk size: 304183.2 KB)
+0052.255 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 6900 files added (on-disk size: 304183.2 KB)
+0052.269 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7000 files added (on-disk size: 304183.2 KB)
+0052.281 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (44.1 MB, 28430 files batched, 1001 (7007) added so far); re-opening (prior size: 304183.2 KB)
+0055.561 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7100 files added (on-disk size: 349472.9 KB)
+0055.579 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7200 files added (on-disk size: 349472.9 KB)
+0055.600 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7300 files added (on-disk size: 349472.9 KB)
+0055.615 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7400 files added (on-disk size: 349472.9 KB)
+0055.636 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7500 files added (on-disk size: 349472.9 KB)
+0055.655 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7600 files added (on-disk size: 349472.9 KB)
+0055.675 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7700 files added (on-disk size: 349472.9 KB)
+0055.695 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7800 files added (on-disk size: 349472.9 KB)
+0055.715 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 7900 files added (on-disk size: 349472.9 KB)
+0055.734 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8000 files added (on-disk size: 349472.9 KB)
+0055.743 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (35.3 MB, 28430 files batched, 1001 (8008) added so far); re-opening (prior size: 349472.9 KB)
+0059.669 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8100 files added (on-disk size: 385803.1 KB)
+0059.679 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8200 files added (on-disk size: 385803.1 KB)
+0059.687 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8300 files added (on-disk size: 385803.1 KB)
+0059.695 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8400 files added (on-disk size: 385803.1 KB)
+0059.704 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8500 files added (on-disk size: 385803.1 KB)
+0059.713 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.tmp: 8600 files added (on-disk size: 385803.1 KB)
+0059.723 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (21.2 MB, 655 (8663) files added so far); last ratio: 1; re-opening (prior size: 385803.1 KB)
+0062.562 (0) Zip size is at/near split limit (398 MB / 400 MB) - bumping index (from: 0)
+0074.182 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.list-temp.tmp)
+0074.198 (0) Successfully created zip file manifest (size: 562695)
+0074.214 (0) Created uploads zip (0) - 407574.1 KB in 24.1 s (16902.2 KB/s) (checksums: sha1: 77f5e409265693669fc393e77f44b30fabe64a97, sha256: 4c932613255ba7f49f406062511be2ee4cd74097cef4d7ff8203b98768782ffb)
+0074.255 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0074.263 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0075.524 (0) Google Drive: quota usage: used=94.8 MB, total=5038080 MB, available=5037985.2 MB
+0075.534 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0076.517 (0) Googledrive chunked upload: 0.3 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 89.1 / 92)
+0076.712 (0) Googledrive chunked upload: 0.8 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 89.1 / 92)
+0076.874 (0) Googledrive chunked upload: 1.8 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 89.1 / 92)
+0077.082 (0) Googledrive chunked upload: 3.8 % uploaded (15728640 - increasing chunk size to 16384 KB - memory usage: 89.1 / 92)
+0077.833 (0) Googledrive chunked upload: 7.8 % uploaded (32505856 - increasing chunk size to 32768 KB - memory usage: 89.1 / 92)
+0078.777 (0) Googledrive chunked upload: 15.8 % uploaded (66060288 - increasing chunk size to 65536 KB - memory usage: 89.1 / 92)
+0080.180 (0) Googledrive chunked upload: 31.9 % uploaded (133169152)
+0081.904 (0) Googledrive chunked upload: 48 % uploaded (200278016)
+0083.477 (0) Googledrive chunked upload: 64.1 % uploaded (267386880)
+0085.426 (0) Googledrive chunked upload: 80.1 % uploaded (334495744)
+0086.962 (0) Googledrive chunked upload: 96.2 % uploaded (401604608)
+0089.004 (0) Googledrive chunked upload: 100 % uploaded (401604608)
+0089.035 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip uploaded in 13.49 seconds
+0089.045 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip
+0089.203 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip: OK
+0089.222 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 MB, 1 (8664) files added so far); re-opening (prior size: 0 KB)
+0089.243 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 8700 files added (on-disk size: 6.8 KB)
+0089.257 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 8800 files added (on-disk size: 6.8 KB)
+0089.267 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 8900 files added (on-disk size: 6.8 KB)
+0089.277 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9000 files added (on-disk size: 6.8 KB)
+0089.288 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9100 files added (on-disk size: 6.8 KB)
+0089.297 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9200 files added (on-disk size: 6.8 KB)
+0089.308 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9300 files added (on-disk size: 6.8 KB)
+0089.319 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9400 files added (on-disk size: 6.8 KB)
+0089.330 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9500 files added (on-disk size: 6.8 KB)
+0089.341 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9600 files added (on-disk size: 6.8 KB)
+0089.351 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (38.6 MB, 28430 files batched, 1001 (9665) added so far); re-opening (prior size: 6.8 KB)
+0090.591 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9700 files added (on-disk size: 39669.8 KB)
+0090.605 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9800 files added (on-disk size: 39669.8 KB)
+0090.621 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 9900 files added (on-disk size: 39669.8 KB)
+0090.640 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10000 files added (on-disk size: 39669.8 KB)
+0090.655 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10100 files added (on-disk size: 39669.8 KB)
+0090.670 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10200 files added (on-disk size: 39669.8 KB)
+0090.684 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10300 files added (on-disk size: 39669.8 KB)
+0090.698 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10400 files added (on-disk size: 39669.8 KB)
+0090.713 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10500 files added (on-disk size: 39669.8 KB)
+0090.727 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10600 files added (on-disk size: 39669.8 KB)
+0090.741 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (35.7 MB, 28430 files batched, 1001 (10666) added so far); re-opening (prior size: 39669.8 KB)
+0092.186 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10700 files added (on-disk size: 76427 KB)
+0092.196 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10800 files added (on-disk size: 76427 KB)
+0092.206 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 10900 files added (on-disk size: 76427 KB)
+0092.216 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11000 files added (on-disk size: 76427 KB)
+0092.225 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11100 files added (on-disk size: 76427 KB)
+0092.235 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11200 files added (on-disk size: 76427 KB)
+0092.245 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11300 files added (on-disk size: 76427 KB)
+0092.254 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11400 files added (on-disk size: 76427 KB)
+0092.263 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11500 files added (on-disk size: 76427 KB)
+0092.273 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11600 files added (on-disk size: 76427 KB)
+0092.281 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (47.9 MB, 28430 files batched, 1001 (11667) added so far); re-opening (prior size: 76427 KB)
+0093.976 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11700 files added (on-disk size: 125589 KB)
+0093.985 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11800 files added (on-disk size: 125589 KB)
+0093.995 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 11900 files added (on-disk size: 125589 KB)
+0094.004 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12000 files added (on-disk size: 125589 KB)
+0094.013 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12100 files added (on-disk size: 125589 KB)
+0094.022 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12200 files added (on-disk size: 125589 KB)
+0094.032 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12300 files added (on-disk size: 125589 KB)
+0094.041 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12400 files added (on-disk size: 125589 KB)
+0094.050 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12500 files added (on-disk size: 125589 KB)
+0094.059 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12600 files added (on-disk size: 125589 KB)
+0094.068 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (53 MB, 28430 files batched, 1001 (12668) added so far); re-opening (prior size: 125589 KB)
+0096.686 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12700 files added (on-disk size: 180065.6 KB)
+0096.706 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12800 files added (on-disk size: 180065.6 KB)
+0096.731 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 12900 files added (on-disk size: 180065.6 KB)
+0096.756 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13000 files added (on-disk size: 180065.6 KB)
+0096.778 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13100 files added (on-disk size: 180065.6 KB)
+0096.801 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13200 files added (on-disk size: 180065.6 KB)
+0096.826 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13300 files added (on-disk size: 180065.6 KB)
+0096.849 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13400 files added (on-disk size: 180065.6 KB)
+0096.874 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13500 files added (on-disk size: 180065.6 KB)
+0096.888 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13600 files added (on-disk size: 180065.6 KB)
+0096.898 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (65 MB, 28430 files batched, 1001 (13669) added so far); re-opening (prior size: 180065.6 KB)
+0100.224 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13700 files added (on-disk size: 246756 KB)
+0100.235 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13800 files added (on-disk size: 246756 KB)
+0100.244 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 13900 files added (on-disk size: 246756 KB)
+0100.254 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14000 files added (on-disk size: 246756 KB)
+0100.263 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14100 files added (on-disk size: 246756 KB)
+0100.272 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14200 files added (on-disk size: 246756 KB)
+0100.282 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14300 files added (on-disk size: 246756 KB)
+0100.291 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14400 files added (on-disk size: 246756 KB)
+0100.300 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14500 files added (on-disk size: 246756 KB)
+0100.309 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14600 files added (on-disk size: 246756 KB)
+0100.319 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (57.4 MB, 28430 files batched, 1001 (14670) added so far); re-opening (prior size: 246756 KB)
+0103.446 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14700 files added (on-disk size: 305741.9 KB)
+0103.461 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14800 files added (on-disk size: 305741.9 KB)
+0103.487 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 14900 files added (on-disk size: 305741.9 KB)
+0103.510 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15000 files added (on-disk size: 305741.9 KB)
+0103.557 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15100 files added (on-disk size: 305741.9 KB)
+0103.592 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15200 files added (on-disk size: 305741.9 KB)
+0103.626 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15300 files added (on-disk size: 305741.9 KB)
+0103.661 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15400 files added (on-disk size: 305741.9 KB)
+0103.696 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15500 files added (on-disk size: 305741.9 KB)
+0103.724 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15600 files added (on-disk size: 305741.9 KB)
+0103.750 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (57.9 MB, 28430 files batched, 1001 (15671) added so far); re-opening (prior size: 305741.9 KB)
+0107.351 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15700 files added (on-disk size: 365241.7 KB)
+0107.366 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15800 files added (on-disk size: 365241.7 KB)
+0107.384 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 15900 files added (on-disk size: 365241.7 KB)
+0107.406 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 16000 files added (on-disk size: 365241.7 KB)
+0107.422 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 16100 files added (on-disk size: 365241.7 KB)
+0107.438 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 16200 files added (on-disk size: 365241.7 KB)
+0107.451 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 16300 files added (on-disk size: 365241.7 KB)
+0107.468 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.tmp: 16400 files added (on-disk size: 365241.7 KB)
+0107.480 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (39.4 MB, 735 (16406) files added so far); last ratio: 1; re-opening (prior size: 365241.7 KB)
+0110.923 (0) Zip size is at/near split limit (396.2 MB / 400 MB) - bumping index (from: 1)
+0121.859 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.list-temp.tmp)
+0121.878 (0) Successfully created zip file manifest (size: 482122)
+0121.898 (0) Created uploads zip (1) - 405706.7 KB in 36.7 s (11050.4 KB/s) (checksums: sha1: 02db9a75c30bd1b2a054956533e0d574e9897469, sha256: 860b0f820659058d1c08ab80f9d60adddded5a0ecb01f0284e42f46aa39d18a6)
+0121.944 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0121.952 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0123.128 (0) Google Drive: quota usage: used=492.8 MB, total=5038080 MB, available=5037587.2 MB
+0123.145 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0124.164 (0) Googledrive chunked upload: 0.3 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 88.7 / 92)
+0124.419 (0) Googledrive chunked upload: 0.8 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 88.7 / 92)
+0124.674 (0) Googledrive chunked upload: 1.8 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 88.7 / 92)
+0124.931 (0) Googledrive chunked upload: 3.8 % uploaded (15728640 - increasing chunk size to 16384 KB - memory usage: 88.7 / 92)
+0125.645 (0) Googledrive chunked upload: 7.8 % uploaded (32505856 - increasing chunk size to 32768 KB - memory usage: 88.7 / 92)
+0126.451 (0) Googledrive chunked upload: 15.9 % uploaded (66060288 - increasing chunk size to 65536 KB - memory usage: 88.7 / 92)
+0127.993 (0) Googledrive chunked upload: 32.1 % uploaded (133169152)
+0129.473 (0) Googledrive chunked upload: 48.2 % uploaded (200278016)
+0131.802 (0) Googledrive chunked upload: 64.4 % uploaded (267386880)
+0133.182 (0) Googledrive chunked upload: 80.5 % uploaded (334495744)
+0134.876 (0) Googledrive chunked upload: 96.7 % uploaded (401604608)
+0136.462 (0) Googledrive chunked upload: 100 % uploaded (401604608)
+0136.487 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip uploaded in 13.33 seconds
+0136.494 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip
+0136.585 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip: OK
+0136.601 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.5 MB, 1 (16407) files added so far); re-opening (prior size: 0 KB)
+0136.625 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 16500 files added (on-disk size: 559.2 KB)
+0136.636 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 16600 files added (on-disk size: 559.2 KB)
+0136.645 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 16700 files added (on-disk size: 559.2 KB)
+0136.655 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 16800 files added (on-disk size: 559.2 KB)
+0136.664 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 16900 files added (on-disk size: 559.2 KB)
+0136.673 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17000 files added (on-disk size: 559.2 KB)
+0136.682 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17100 files added (on-disk size: 559.2 KB)
+0136.692 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17200 files added (on-disk size: 559.2 KB)
+0136.705 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17300 files added (on-disk size: 559.2 KB)
+0136.713 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17400 files added (on-disk size: 559.2 KB)
+0136.720 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (60.5 MB, 28430 files batched, 1001 (17408) added so far); re-opening (prior size: 559.2 KB)
+0138.442 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17500 files added (on-disk size: 62655.6 KB)
+0138.457 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17600 files added (on-disk size: 62655.6 KB)
+0138.473 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17700 files added (on-disk size: 62655.6 KB)
+0138.489 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17800 files added (on-disk size: 62655.6 KB)
+0138.504 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 17900 files added (on-disk size: 62655.6 KB)
+0138.522 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18000 files added (on-disk size: 62655.6 KB)
+0138.545 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18100 files added (on-disk size: 62655.6 KB)
+0138.572 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18200 files added (on-disk size: 62655.6 KB)
+0138.596 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18300 files added (on-disk size: 62655.6 KB)
+0138.618 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18400 files added (on-disk size: 62655.6 KB)
+0138.636 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (67.8 MB, 28430 files batched, 1001 (18409) added so far); re-opening (prior size: 62655.6 KB)
+0140.680 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18500 files added (on-disk size: 132201.3 KB)
+0140.693 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18600 files added (on-disk size: 132201.3 KB)
+0140.704 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18700 files added (on-disk size: 132201.3 KB)
+0140.718 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18800 files added (on-disk size: 132201.3 KB)
+0140.734 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 18900 files added (on-disk size: 132201.3 KB)
+0140.747 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19000 files added (on-disk size: 132201.3 KB)
+0140.762 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19100 files added (on-disk size: 132201.3 KB)
+0140.776 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19200 files added (on-disk size: 132201.3 KB)
+0140.791 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19300 files added (on-disk size: 132201.3 KB)
+0140.801 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19400 files added (on-disk size: 132201.3 KB)
+0140.809 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (58 MB, 28430 files batched, 1001 (19410) added so far); re-opening (prior size: 132201.3 KB)
+0143.090 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19500 files added (on-disk size: 191747.4 KB)
+0143.100 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19600 files added (on-disk size: 191747.4 KB)
+0143.109 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19700 files added (on-disk size: 191747.4 KB)
+0143.118 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19800 files added (on-disk size: 191747.4 KB)
+0143.128 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 19900 files added (on-disk size: 191747.4 KB)
+0143.137 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20000 files added (on-disk size: 191747.4 KB)
+0143.146 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20100 files added (on-disk size: 191747.4 KB)
+0143.154 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20200 files added (on-disk size: 191747.4 KB)
+0143.163 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20300 files added (on-disk size: 191747.4 KB)
+0143.170 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20400 files added (on-disk size: 191747.4 KB)
+0143.178 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (57.9 MB, 28430 files batched, 1001 (20411) added so far); re-opening (prior size: 191747.4 KB)
+0145.912 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20500 files added (on-disk size: 251188.8 KB)
+0145.921 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20600 files added (on-disk size: 251188.8 KB)
+0145.931 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20700 files added (on-disk size: 251188.8 KB)
+0145.942 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20800 files added (on-disk size: 251188.8 KB)
+0145.952 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 20900 files added (on-disk size: 251188.8 KB)
+0145.961 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21000 files added (on-disk size: 251188.8 KB)
+0145.971 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21100 files added (on-disk size: 251188.8 KB)
+0145.981 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21200 files added (on-disk size: 251188.8 KB)
+0145.990 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21300 files added (on-disk size: 251188.8 KB)
+0146.000 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21400 files added (on-disk size: 251188.8 KB)
+0146.009 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (58.7 MB, 28430 files batched, 1001 (21412) added so far); re-opening (prior size: 251188.8 KB)
+0149.292 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21500 files added (on-disk size: 311502.4 KB)
+0149.303 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21600 files added (on-disk size: 311502.4 KB)
+0149.313 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21700 files added (on-disk size: 311502.4 KB)
+0149.323 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21800 files added (on-disk size: 311502.4 KB)
+0149.333 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 21900 files added (on-disk size: 311502.4 KB)
+0149.344 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22000 files added (on-disk size: 311502.4 KB)
+0149.355 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22100 files added (on-disk size: 311502.4 KB)
+0149.366 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22200 files added (on-disk size: 311502.4 KB)
+0149.376 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22300 files added (on-disk size: 311502.4 KB)
+0149.388 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22400 files added (on-disk size: 311502.4 KB)
+0149.397 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (64.8 MB, 28430 files batched, 1001 (22413) added so far); re-opening (prior size: 311502.4 KB)
+0153.265 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22500 files added (on-disk size: 378049.2 KB)
+0153.276 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22600 files added (on-disk size: 378049.2 KB)
+0153.286 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22700 files added (on-disk size: 378049.2 KB)
+0153.297 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.tmp: 22800 files added (on-disk size: 378049.2 KB)
+0153.306 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (28.1 MB, 438 (22851) files added so far); last ratio: 1; re-opening (prior size: 378049.2 KB)
+0156.292 (0) Zip size is at/near split limit (397.3 MB / 400 MB) - bumping index (from: 2)
+0161.504 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.list-temp.tmp)
+0161.535 (0) Successfully created zip file manifest (size: 393898)
+0161.558 (0) Created uploads zip (2) - 406878.4 KB in 34.4 s (11829.1 KB/s) (checksums: sha1: cf6221dbdc3173cc5f3d70f205da144a5a44c384, sha256: ea4eb7eaf06b13a5769aa6b6153cebade71da24ac1f34bc9576fd56e4477cf86)
+0161.618 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0161.627 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0162.939 (0) Google Drive: quota usage: used=889 MB, total=5038080 MB, available=5037191 MB
+0162.948 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0164.991 (0) Googledrive chunked upload: 0.3 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 88.6 / 92)
+0165.208 (0) Googledrive chunked upload: 0.8 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 88.6 / 92)
+0165.598 (0) Googledrive chunked upload: 1.8 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 88.6 / 92)
+0165.833 (0) Googledrive chunked upload: 3.8 % uploaded (15728640 - increasing chunk size to 16384 KB - memory usage: 88.6 / 92)
+0166.333 (0) Googledrive chunked upload: 7.8 % uploaded (32505856 - increasing chunk size to 32768 KB - memory usage: 88.6 / 92)
+0167.619 (0) Googledrive chunked upload: 15.9 % uploaded (66060288 - increasing chunk size to 65536 KB - memory usage: 88.6 / 92)
+0169.082 (0) Googledrive chunked upload: 32 % uploaded (133169152)
+0170.672 (0) Googledrive chunked upload: 48.1 % uploaded (200278016)
+0172.442 (0) Googledrive chunked upload: 64.2 % uploaded (267386880)
+0174.274 (0) Googledrive chunked upload: 80.3 % uploaded (334495744)
+0175.854 (0) Googledrive chunked upload: 96.4 % uploaded (401604608)
+0177.507 (0) Googledrive chunked upload: 100 % uploaded (401604608)
+0177.542 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip uploaded in 14.59 seconds
+0177.551 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip
+0177.655 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip: OK
+0177.674 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.1 MB, 1 (22852) files added so far); re-opening (prior size: 0 KB)
+0177.702 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 22900 files added (on-disk size: 84.2 KB)
+0177.715 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23000 files added (on-disk size: 84.2 KB)
+0177.730 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23100 files added (on-disk size: 84.2 KB)
+0177.743 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23200 files added (on-disk size: 84.2 KB)
+0177.757 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23300 files added (on-disk size: 84.2 KB)
+0177.768 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23400 files added (on-disk size: 84.2 KB)
+0177.778 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23500 files added (on-disk size: 84.2 KB)
+0177.789 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23600 files added (on-disk size: 84.2 KB)
+0177.798 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23700 files added (on-disk size: 84.2 KB)
+0177.808 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23800 files added (on-disk size: 84.2 KB)
+0177.817 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (57.7 MB, 28430 files batched, 1001 (23853) added so far); re-opening (prior size: 84.2 KB)
+0179.400 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 23900 files added (on-disk size: 59287 KB)
+0179.420 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24000 files added (on-disk size: 59287 KB)
+0179.434 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24100 files added (on-disk size: 59287 KB)
+0179.446 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24200 files added (on-disk size: 59287 KB)
+0179.459 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24300 files added (on-disk size: 59287 KB)
+0179.470 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24400 files added (on-disk size: 59287 KB)
+0179.485 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24500 files added (on-disk size: 59287 KB)
+0179.502 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24600 files added (on-disk size: 59287 KB)
+0179.526 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24700 files added (on-disk size: 59287 KB)
+0179.548 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24800 files added (on-disk size: 59287 KB)
+0179.569 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (62.5 MB, 28430 files batched, 1001 (24854) added so far); re-opening (prior size: 59287 KB)
+0181.786 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 24900 files added (on-disk size: 123497 KB)
+0181.802 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25000 files added (on-disk size: 123497 KB)
+0181.814 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25100 files added (on-disk size: 123497 KB)
+0181.830 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25200 files added (on-disk size: 123497 KB)
+0181.840 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25300 files added (on-disk size: 123497 KB)
+0181.849 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25400 files added (on-disk size: 123497 KB)
+0181.864 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25500 files added (on-disk size: 123497 KB)
+0181.878 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25600 files added (on-disk size: 123497 KB)
+0181.892 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25700 files added (on-disk size: 123497 KB)
+0181.902 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25800 files added (on-disk size: 123497 KB)
+0181.910 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (58.8 MB, 28430 files batched, 1001 (25855) added so far); re-opening (prior size: 123497 KB)
+0184.449 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 25900 files added (on-disk size: 183923.5 KB)
+0184.472 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26000 files added (on-disk size: 183923.5 KB)
+0184.491 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26100 files added (on-disk size: 183923.5 KB)
+0184.517 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26200 files added (on-disk size: 183923.5 KB)
+0184.539 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26300 files added (on-disk size: 183923.5 KB)
+0184.555 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26400 files added (on-disk size: 183923.5 KB)
+0184.580 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26500 files added (on-disk size: 183923.5 KB)
+0184.598 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26600 files added (on-disk size: 183923.5 KB)
+0184.614 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26700 files added (on-disk size: 183923.5 KB)
+0184.644 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26800 files added (on-disk size: 183923.5 KB)
+0184.662 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (60.4 MB, 28430 files batched, 1001 (26856) added so far); re-opening (prior size: 183923.5 KB)
+0187.962 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 26900 files added (on-disk size: 245889.7 KB)
+0187.980 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27000 files added (on-disk size: 245889.7 KB)
+0187.991 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27100 files added (on-disk size: 245889.7 KB)
+0188.006 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27200 files added (on-disk size: 245889.7 KB)
+0188.023 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27300 files added (on-disk size: 245889.7 KB)
+0188.046 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27400 files added (on-disk size: 245889.7 KB)
+0188.066 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27500 files added (on-disk size: 245889.7 KB)
+0188.081 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27600 files added (on-disk size: 245889.7 KB)
+0188.100 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27700 files added (on-disk size: 245889.7 KB)
+0188.114 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27800 files added (on-disk size: 245889.7 KB)
+0188.126 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (60.7 MB, 28430 files batched, 1001 (27857) added so far); re-opening (prior size: 245889.7 KB)
+0191.215 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 27900 files added (on-disk size: 308230.2 KB)
+0191.226 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 28000 files added (on-disk size: 308230.2 KB)
+0191.236 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 28100 files added (on-disk size: 308230.2 KB)
+0191.247 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 28200 files added (on-disk size: 308230.2 KB)
+0191.258 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 28300 files added (on-disk size: 308230.2 KB)
+0191.268 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.tmp: 28400 files added (on-disk size: 308230.2 KB)
+0193.790 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.list-temp.tmp)
+0193.809 (0) Successfully created zip file manifest (size: 340590)
+0198.311 (0) Created uploads zip (3) - 340221.2 KB in 36.7 s (9261.7 KB/s) (sha1: 8b0779fd55fb085784ccd505ab9ee9ba51b4976f, sha256: c61873909072c11c4c76b93468ed7bb7e9e080abf44991e6564c12645ac18abd)
+0198.344 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0198.357 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0199.656 (0) Google Drive: quota usage: used=1286.4 MB, total=5038080 MB, available=5036793.6 MB
+0199.666 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0200.724 (0) Googledrive chunked upload: 0.3 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 81.9 / 92)
+0200.945 (0) Googledrive chunked upload: 0.9 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 81.9 / 92)
+0201.137 (0) Googledrive chunked upload: 2.1 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 81.9 / 92)
+0201.758 (0) Googledrive chunked upload: 4.5 % uploaded (15728640 - increasing chunk size to 16384 KB - memory usage: 81.9 / 92)
+0202.081 (0) Googledrive chunked upload: 9.3 % uploaded (32505856 - increasing chunk size to 32768 KB - memory usage: 81.9 / 92)
+0203.412 (0) Googledrive chunked upload: 19 % uploaded (66060288 - increasing chunk size to 65536 KB - memory usage: 81.9 / 92)
+0204.865 (0) Googledrive chunked upload: 38.2 % uploaded (133169152)
+0206.630 (0) Googledrive chunked upload: 57.5 % uploaded (200278016)
+0208.778 (0) Googledrive chunked upload: 76.8 % uploaded (267386880)
+0210.314 (0) Googledrive chunked upload: 96 % uploaded (334495744)
+0212.174 (0) Googledrive chunked upload: 100 % uploaded (334495744)
+0212.196 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip uploaded in 12.52 seconds
+0212.204 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip
+0212.266 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip: OK
+0212.284 (0) No backup of mu-plugins: excluded by user's options
+0212.308 (0) Beginning backup of other directories found in the content directory (index: 0)
+0212.319 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0212.333 (0) Looking for candidates to backup in: /home/www/newsnova88vn.com/wp-content
+0212.343 (0) finding files: upgrade: skipping: excluded by options
+0212.352 (0) finding files: wflogs: adding to list (1)
+0212.361 (0) finding files: languages: adding to list (2)
+0212.371 (0) finding files: uploads: skipping: this is the uploads directory
+0212.380 (0) finding files: litespeed: adding to list (3)
+0212.389 (0) finding files: object-cache.php: adding to list (4)
+0212.402 (0) finding files: themes: skipping: this is the themes directory
+0212.413 (0) finding files: plugins: skipping: this is the plugins directory
+0212.425 (0) finding files: updraft: skipping: this is the updraft directory
+0212.436 (0) finding files: upgrade-temp-backup: adding to list (5)
+0212.447 (0) finding files: .litespeed_conf.dat: adding to list (6)
+0212.470 (0) finding files: index.php: adding to list (7)
+0212.502 (0) Total entities for the zip file: 7 directories, 684 files (0 skipped as non-modified), 27.5 MB
+0212.516 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.tmp: 100 files added (on-disk size: 0 KB)
+0212.528 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.tmp: 200 files added (on-disk size: 0 KB)
+0212.539 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.tmp: 300 files added (on-disk size: 0 KB)
+0212.555 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.tmp: 400 files added (on-disk size: 0 KB)
+0212.569 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.tmp: 500 files added (on-disk size: 0 KB)
+0212.580 (0) Zip: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.tmp: 600 files added (on-disk size: 0 KB)
+0219.722 (0) Creating zip file manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.list-temp.tmp)
+0219.731 (0) Successfully created zip file manifest (size: 50388)
+0219.981 (0) Created others zip (0) - 9776.5 KB in 7.5 s (1305.2 KB/s) (sha1: b1503809ac16a601fd38f46706ff5b3642352fb2, sha256: 3718920c75a5fe24aa5e898be6b9288790869b4cc2406e2bb65537785408e7de)
+0220.005 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0220.012 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0221.983 (0) Google Drive: quota usage: used=1618.6 MB, total=5038080 MB, available=5036461.4 MB
+0221.993 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0222.845 (0) Googledrive chunked upload: 10.5 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 81.2 / 92)
+0222.985 (0) Googledrive chunked upload: 31.4 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 81.2 / 92)
+0223.188 (0) Googledrive chunked upload: 73.3 % uploaded (7340032 - increasing chunk size to 8192 KB - memory usage: 81.2 / 92)
+0224.598 (0) Googledrive chunked upload: 100 % uploaded (7340032)
+0224.622 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip uploaded in 2.62 seconds
+0224.629 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip
+0224.647 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip: OK
+0224.684 (0) Saving backup status to database (elements: 11)
+0224.698 (0) Beginning creation of database dump (WordPress DB)
+0224.706 (0) SQL compatibility mode is: NO_AUTO_VALUE_ON_ZERO,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+0224.961 (0) Table wp_options: Total expected rows (via COUNT): 876
+0225.170 (0) Table wp_options: Rows added in this batch (next record: 148204): 872 (uncompressed bytes in this segment=5599239) in 0.42 seconds
+0225.201 (0) Table wp_options: finishing file(s) (2, 837.7 KB)
+0225.222 (0) Table wp_users: Total expected rows (via COUNT): 25
+0225.229 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0225.244 (0) Table wp_users: Rows added in this batch (next record: 26): 25 (uncompressed bytes in this segment=5861) in 0.03 seconds
+0225.265 (0) Table wp_users: finishing file(s) (2, 2.3 KB)
+0225.298 (0) Table wp_usermeta: Total expected rows (via COUNT): 825
+0225.305 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0225.328 (0) Table wp_usermeta: Rows added in this batch (next record: 1121): 825 (uncompressed bytes in this segment=55285) in 0.04 seconds
+0225.359 (0) Table wp_usermeta: finishing file(s) (2, 10.9 KB)
+0225.657 (0) Table wp_actionscheduler_actions: Total expected rows (via COUNT): 31
+0225.772 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0225.791 (0) Table wp_actionscheduler_actions: Rows added in this batch (next record: 13343): 31 (uncompressed bytes in this segment=17063) in 0.28 seconds
+0225.828 (0) Table wp_actionscheduler_actions: finishing file(s) (2, 1.8 KB)
+0225.859 (0) Table wp_actionscheduler_claims: Total expected rows (via COUNT): 0
+0225.878 (0) Table wp_actionscheduler_claims: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=623) in 0.02 seconds
+0225.906 (0) Table wp_actionscheduler_claims: finishing file(s) (2, 0.4 KB)
+0225.933 (0) Table wp_actionscheduler_groups: Total expected rows (via COUNT): 2
+0225.940 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0225.958 (0) Table wp_actionscheduler_groups: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=729) in 0.03 seconds
+0225.983 (0) Table wp_actionscheduler_groups: finishing file(s) (2, 0.4 KB)
+0226.016 (0) Table wp_actionscheduler_logs: Total expected rows (via COUNT): 91
+0226.024 (0) Table is relatively small; fetch_rows will thus be: 100 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0226.044 (0) Table wp_actionscheduler_logs: Rows added in this batch (next record: 613): 91 (uncompressed bytes in this segment=8838) in 0.04 seconds
+0226.070 (0) Table wp_actionscheduler_logs: finishing file(s) (2, 1.5 KB)
+0226.109 (0) Table wp_commentmeta: Total expected rows (via COUNT): 0
+0226.127 (0) Table wp_commentmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=757) in 0.03 seconds
+0226.161 (0) Table wp_commentmeta: finishing file(s) (2, 0.4 KB)
+0226.194 (0) Table wp_comments: Total expected rows (via COUNT): 0
+0226.210 (0) Table wp_comments: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1950) in 0.03 seconds
+0226.233 (0) Table wp_comments: finishing file(s) (2, 0.5 KB)
+0226.266 (0) Table wp_links: Total expected rows (via COUNT): 0
+0226.274 (0) Table wp_links: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1520) in 0.02 seconds
+0226.298 (0) Table wp_links: finishing file(s) (2, 0.5 KB)
+0226.409 (0) Table wp_postmeta: Total expected rows (approximate): 16735
+0226.835 (0) Table wp_postmeta: Rows added in this batch (next record: 28272): 16820 (uncompressed bytes in this segment=9865526) in 0.52 seconds
+0226.889 (0) Table wp_postmeta: finishing file(s) (2, 564 KB)
+0227.474 (0) Table wp_posts: Total expected rows (approximate): 4495
+0227.859 (0) Table wp_posts: Rows added in this batch (next record: 16419): 5469 (uncompressed bytes in this segment=12510322) in 0.95 seconds
+0227.888 (0) Table wp_posts: finishing file(s) (2, 972.6 KB)
+0227.907 (0) Table wp_term_relationships: Total expected rows (approximate): 1147
+0227.927 (0) Table wp_term_relationships: Rows added in this batch (next record: 100000): 1147 (uncompressed bytes in this segment=21538) in 0.02 seconds
+0227.949 (0) Table wp_term_relationships: finishing file(s) (2, 3.9 KB)
+0227.993 (0) Table wp_term_taxonomy: Total expected rows (via COUNT): 907
+0228.016 (0) Table wp_term_taxonomy: Rows added in this batch (next record: 2737): 907 (uncompressed bytes in this segment=34720) in 0.04 seconds
+0228.047 (0) Table wp_term_taxonomy: finishing file(s) (2, 5.5 KB)
+0228.082 (0) Table wp_termmeta: Total expected rows (via COUNT): 78
+0228.090 (0) Table is relatively small; fetch_rows will thus be: 100 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0228.108 (0) Table wp_termmeta: Rows added in this batch (next record: 98): 78 (uncompressed bytes in this segment=11247) in 0.04 seconds
+0228.141 (0) Table wp_termmeta: finishing file(s) (2, 1.7 KB)
+0228.169 (0) Table wp_terms: Total expected rows (via COUNT): 261
+0228.177 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0228.198 (0) Table wp_terms: Rows added in this batch (next record: 2737): 261 (uncompressed bytes in this segment=13539) in 0.03 seconds
+0228.229 (0) Table wp_terms: finishing file(s) (2, 4.7 KB)
+0228.238 (0) Skipping table (lacks our prefix (wp_)): saba_banner_positions
+0228.247 (0) Skipping table (lacks our prefix (wp_)): saba_banner_preview
+0228.256 (0) Skipping table (lacks our prefix (wp_)): saba_banner_reviews
+0228.264 (0) Skipping table (lacks our prefix (wp_)): saba_banners
+0228.272 (0) Skipping table (lacks our prefix (wp_)): saba_mapping
+0228.305 (0) Table wp_bvg_reset_password: Total expected rows (approximate): 0
+0228.324 (0) Table wp_bvg_reset_password: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=574) in 0.03 seconds
+0228.350 (0) Table wp_bvg_reset_password: finishing file(s) (2, 0.3 KB)
+0228.379 (0) Table wp_e_events: Total expected rows (via COUNT): 0
+0228.388 (0) Table wp_e_events: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=571) in 0.02 seconds
+0228.410 (0) Table wp_e_events: finishing file(s) (2, 0.4 KB)
+0228.440 (0) Table wp_e_submissions: Total expected rows (via COUNT): 0
+0228.449 (0) Table wp_e_submissions: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=2474) in 0.02 seconds
+0228.471 (0) Table wp_e_submissions: finishing file(s) (2, 0.7 KB)
+0228.501 (0) Table wp_e_submissions_actions_log: Total expected rows (via COUNT): 0
+0228.509 (0) Table wp_e_submissions_actions_log: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1331) in 0.02 seconds
+0228.530 (0) Table wp_e_submissions_actions_log: finishing file(s) (2, 0.5 KB)
+0228.569 (0) Table wp_e_submissions_values: Total expected rows (via COUNT): 0
+0228.577 (0) Table wp_e_submissions_values: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=760) in 0.02 seconds
+0228.609 (0) Table wp_e_submissions_values: finishing file(s) (2, 0.4 KB)
+0228.641 (0) Table wp_litespeed_crawler: Total expected rows (via COUNT): 0
+0228.649 (0) Table wp_litespeed_crawler: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=878) in 0.02 seconds
+0228.676 (0) Table wp_litespeed_crawler: finishing file(s) (2, 0.5 KB)
+0228.718 (0) Table wp_litespeed_crawler_blacklist: Total expected rows (via COUNT): 0
+0228.729 (0) Table wp_litespeed_crawler_blacklist: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=934) in 0.03 seconds
+0228.764 (0) Table wp_litespeed_crawler_blacklist: finishing file(s) (2, 0.5 KB)
+0228.800 (0) Table wp_litespeed_url: Total expected rows (via COUNT): 0
+0228.810 (0) Table wp_litespeed_url: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=715) in 0.02 seconds
+0228.837 (0) Table wp_litespeed_url: finishing file(s) (2, 0.4 KB)
+0228.867 (0) Table wp_litespeed_url_file: Total expected rows (via COUNT): 0
+0228.876 (0) Table wp_litespeed_url_file: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1162) in 0.02 seconds
+0228.906 (0) Table wp_litespeed_url_file: finishing file(s) (2, 0.5 KB)
+0228.934 (0) Table wp_popularpostsdata: Total expected rows (via COUNT): 187
+0228.942 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0228.962 (0) Table wp_popularpostsdata: Rows added in this batch (next record: 16404): 187 (uncompressed bytes in this segment=11629) in 0.03 seconds
+0228.984 (0) Table wp_popularpostsdata: finishing file(s) (2, 3 KB)
+0229.010 (0) Table wp_popularpostssummary: Total expected rows (via COUNT): 846
+0229.033 (0) Table wp_popularpostssummary: Rows added in this batch (next record: 1173): 846 (uncompressed bytes in this segment=47511) in 0.03 seconds
+0229.059 (0) Table wp_popularpostssummary: finishing file(s) (2, 7.8 KB)
+0229.087 (0) Table wp_wfblockediplog: Total expected rows (approximate): 13
+0229.097 (0) Table wp_wfblockediplog: Rows added in this batch (next record: 1000): 17 (uncompressed bytes in this segment=1832) in 0.01 seconds
+0229.119 (0) Table wp_wfblockediplog: finishing file(s) (2, 0.6 KB)
+0229.141 (0) Table wp_wfblocks7: Total expected rows (via COUNT): 0
+0229.149 (0) Table wp_wfblocks7: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=934) in 0.01 seconds
+0229.171 (0) Table wp_wfblocks7: finishing file(s) (2, 0.5 KB)
+0229.190 (0) Table wp_wfconfig: Total expected rows (approximate): 279
+0229.242 (0) Table wp_wfconfig: Rows added in this batch (next record: 1000): 282 (uncompressed bytes in this segment=897624) in 0.05 seconds
+0229.265 (0) Table wp_wfconfig: finishing file(s) (2, 445.5 KB)
+0229.292 (0) Table wp_wfcrawlers: Total expected rows (approximate): 19
+0229.300 (0) Table wp_wfcrawlers: Rows added in this batch (next record: 1000): 17 (uncompressed bytes in this segment=2998) in 0.01 seconds
+0229.320 (0) Table wp_wfcrawlers: finishing file(s) (2, 0.7 KB)
+0229.344 (0) Table wp_wffilechanges: Total expected rows (approximate): 0
+0229.354 (0) Table wp_wffilechanges: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=614) in 0.01 seconds
+0229.377 (0) Table wp_wffilechanges: finishing file(s) (2, 0.3 KB)
+0229.399 (0) Table wp_wffilemods: Total expected rows (approximate): 10123
+0229.857 (0) Table wp_wffilemods: Rows added in this batch (next record: 12000): 10625 (uncompressed bytes in this segment=3814548) in 0.46 seconds
+0229.884 (0) Table wp_wffilemods: finishing file(s) (2, 1118.5 KB)
+0229.945 (0) Table wp_wfhits: Total expected rows (via COUNT): 500
+0229.965 (0) Table wp_wfhits: Rows added in this batch (next record: 1382): 500 (uncompressed bytes in this segment=327968) in 0.06 seconds
+0229.988 (0) Table wp_wfhits: finishing file(s) (2, 18.8 KB)
+0230.013 (0) Table wp_wfhoover: Total expected rows (via COUNT): 0
+0230.022 (0) Table wp_wfhoover: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=646) in 0.01 seconds
+0230.049 (0) Table wp_wfhoover: finishing file(s) (2, 0.4 KB)
+0230.075 (0) Table wp_wfissues: Total expected rows (via COUNT): 19
+0230.083 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0230.101 (0) Table wp_wfissues: Rows added in this batch (next record: 3742): 19 (uncompressed bytes in this segment=25724) in 0.03 seconds
+0230.126 (0) Table wp_wfissues: finishing file(s) (2, 5.8 KB)
+0230.148 (0) Table wp_wfknownfilelist: Total expected rows (approximate): 9926
+0230.344 (0) Table wp_wfknownfilelist: Rows added in this batch (next record: 10625): 10625 (uncompressed bytes in this segment=1847985) in 0.20 seconds
+0230.368 (0) Table wp_wfknownfilelist: finishing file(s) (2, 148.3 KB)
+0230.393 (0) Table wp_wflivetraffichuman: Total expected rows (approximate): 0
+0230.401 (0) Table wp_wflivetraffichuman: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=667) in 0.01 seconds
+0230.425 (0) Table wp_wflivetraffichuman: finishing file(s) (2, 0.4 KB)
+0230.449 (0) Table wp_wflocs: Total expected rows (approximate): 5
+0230.458 (0) Table wp_wflocs: Rows added in this batch (next record: 1000): 5 (uncompressed bytes in this segment=1517) in 0.01 seconds
+0230.484 (0) Table wp_wflocs: finishing file(s) (2, 0.7 KB)
+0230.545 (0) Table wp_wflogins: Total expected rows (via COUNT): 147
+0230.554 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0230.577 (0) Table wp_wflogins: Rows added in this batch (next record: 147): 147 (uncompressed bytes in this segment=33853) in 0.07 seconds
+0230.605 (0) Table wp_wflogins: finishing file(s) (2, 4 KB)
+0230.631 (0) Table wp_wfls_2fa_secrets: Total expected rows (via COUNT): 0
+0230.649 (0) Table wp_wfls_2fa_secrets: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=741) in 0.02 seconds
+0230.677 (0) Table wp_wfls_2fa_secrets: finishing file(s) (2, 0.4 KB)
+0230.705 (0) Table wp_wfls_role_counts: Total expected rows (approximate): 0
+0230.718 (0) Table wp_wfls_role_counts: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=586) in 0.02 seconds
+0230.742 (0) Table wp_wfls_role_counts: finishing file(s) (2, 0.4 KB)
+0230.765 (0) Table wp_wfls_settings: Total expected rows (approximate): 30
+0230.776 (0) Table wp_wfls_settings: Rows added in this batch (next record: 1000): 30 (uncompressed bytes in this segment=2164) in 0.01 seconds
+0230.801 (0) Table wp_wfls_settings: finishing file(s) (2, 1 KB)
+0230.825 (0) Table wp_wfnotifications: Total expected rows (approximate): 15
+0230.834 (0) Table wp_wfnotifications: Rows added in this batch (next record: 1000): 15 (uncompressed bytes in this segment=4021) in 0.01 seconds
+0230.856 (0) Table wp_wfnotifications: finishing file(s) (2, 1.2 KB)
+0230.882 (0) Table wp_wfpendingissues: Total expected rows (via COUNT): 0
+0230.890 (0) Table wp_wfpendingissues: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1237) in 0.01 seconds
+0230.912 (0) Table wp_wfpendingissues: finishing file(s) (2, 0.5 KB)
+0230.933 (0) Table wp_wfreversecache: Total expected rows (approximate): 10
+0230.941 (0) Table wp_wfreversecache: Rows added in this batch (next record: 1000): 11 (uncompressed bytes in this segment=1494) in 0.01 seconds
+0230.961 (0) Table wp_wfreversecache: finishing file(s) (2, 0.6 KB)
+0230.995 (0) Table wp_wfsecurityevents: Total expected rows (via COUNT): 0
+0231.003 (0) Table wp_wfsecurityevents: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=836) in 0.01 seconds
+0231.022 (0) Table wp_wfsecurityevents: finishing file(s) (2, 0.4 KB)
+0231.046 (0) Table wp_wfsnipcache: Total expected rows (via COUNT): 0
+0231.054 (0) Table wp_wfsnipcache: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=855) in 0.01 seconds
+0231.073 (0) Table wp_wfsnipcache: finishing file(s) (2, 0.4 KB)
+0231.100 (0) Table wp_wfstatus: Total expected rows (via COUNT): 950
+0231.118 (0) Table wp_wfstatus: Rows added in this batch (next record: 29848): 950 (uncompressed bytes in this segment=96096) in 0.03 seconds
+0231.140 (0) Table wp_wfstatus: finishing file(s) (2, 16.8 KB)
+0231.162 (0) Table wp_wftrafficrates: Total expected rows (approximate): 0
+0231.170 (0) Table wp_wftrafficrates: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=620) in 0.01 seconds
+0231.191 (0) Table wp_wftrafficrates: finishing file(s) (2, 0.4 KB)
+0231.214 (0) Table wp_wfwaffailures: Total expected rows (via COUNT): 0
+0231.222 (0) Table wp_wfwaffailures: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=583) in 0.01 seconds
+0231.243 (0) Table wp_wfwaffailures: finishing file(s) (2, 0.4 KB)
+0231.268 (0) Table wp_wpaicg: Total expected rows (via COUNT): 1
+0231.276 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0231.292 (0) Table wp_wpaicg: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=2207) in 0.03 seconds
+0231.315 (0) Table wp_wpaicg: finishing file(s) (2, 0.7 KB)
+0231.357 (0) Table wp_wpaicg_chatlogs: Total expected rows (via COUNT): 0
+0231.378 (0) Table wp_wpaicg_chatlogs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=863) in 0.04 seconds
+0231.415 (0) Table wp_wpaicg_chatlogs: finishing file(s) (2, 0.4 KB)
+0231.448 (0) Table wp_wpaicg_chattokens: Total expected rows (via COUNT): 0
+0231.458 (0) Table wp_wpaicg_chattokens: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=906) in 0.02 seconds
+0231.485 (0) Table wp_wpaicg_chattokens: finishing file(s) (2, 0.4 KB)
+0231.525 (0) Table wp_wpaicg_form_feedback: Total expected rows (via COUNT): 0
+0231.534 (0) Table wp_wpaicg_form_feedback: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1118) in 0.02 seconds
+0231.563 (0) Table wp_wpaicg_form_feedback: finishing file(s) (2, 0.5 KB)
+0231.609 (0) Table wp_wpaicg_form_logs: Total expected rows (via COUNT): 0
+0231.620 (0) Table wp_wpaicg_form_logs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1312) in 0.03 seconds
+0231.658 (0) Table wp_wpaicg_form_logs: finishing file(s) (2, 0.4 KB)
+0231.689 (0) Table wp_wpaicg_formtokens: Total expected rows (via COUNT): 0
+0231.700 (0) Table wp_wpaicg_formtokens: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=906) in 0.02 seconds
+0231.733 (0) Table wp_wpaicg_formtokens: finishing file(s) (2, 0.4 KB)
+0231.772 (0) Table wp_wpaicg_image_logs: Total expected rows (via COUNT): 0
+0231.783 (0) Table wp_wpaicg_image_logs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1055) in 0.02 seconds
+0231.814 (0) Table wp_wpaicg_image_logs: finishing file(s) (2, 0.4 KB)
+0231.849 (0) Table wp_wpaicg_imagetokens: Total expected rows (via COUNT): 0
+0231.861 (0) Table wp_wpaicg_imagetokens: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=912) in 0.02 seconds
+0231.893 (0) Table wp_wpaicg_imagetokens: finishing file(s) (2, 0.4 KB)
+0231.931 (0) Table wp_wpaicg_prompt_feedback: Total expected rows (via COUNT): 0
+0231.940 (0) Table wp_wpaicg_prompt_feedback: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1130) in 0.02 seconds
+0231.966 (0) Table wp_wpaicg_prompt_feedback: finishing file(s) (2, 0.5 KB)
+0232.020 (0) Table wp_wpaicg_promptbase_logs: Total expected rows (via COUNT): 0
+0232.030 (0) Table wp_wpaicg_promptbase_logs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1348) in 0.04 seconds
+0232.063 (0) Table wp_wpaicg_promptbase_logs: finishing file(s) (2, 0.4 KB)
+0232.094 (0) Table wp_wpaicg_prompttokens: Total expected rows (via COUNT): 0
+0232.103 (0) Table wp_wpaicg_prompttokens: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=918) in 0.02 seconds
+0232.131 (0) Table wp_wpaicg_prompttokens: finishing file(s) (2, 0.4 KB)
+0232.166 (0) Table wp_wpaicg_token_logs: Total expected rows (via COUNT): 0
+0232.175 (0) Table wp_wpaicg_token_logs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=867) in 0.02 seconds
+0232.202 (0) Table wp_wpaicg_token_logs: finishing file(s) (2, 0.4 KB)
+0232.233 (0) Table wp_wpmailsmtp_debug_events: Total expected rows (via COUNT): 0
+0232.245 (0) Table wp_wpmailsmtp_debug_events: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=744) in 0.02 seconds
+0232.276 (0) Table wp_wpmailsmtp_debug_events: finishing file(s) (2, 0.4 KB)
+0232.316 (0) Table wp_wpmailsmtp_tasks_meta: Total expected rows (via COUNT): 1
+0232.324 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0232.340 (0) Table wp_wpmailsmtp_tasks_meta: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=806) in 0.04 seconds
+0232.368 (0) Table wp_wpmailsmtp_tasks_meta: finishing file(s) (2, 0.4 KB)
+0232.404 (0) Table wp_yoast_indexable: Total expected rows (approximate): 1081
+0232.461 (0) Table wp_yoast_indexable: Rows added in this batch (next record: 6913): 1149 (uncompressed bytes in this segment=620718) in 0.07 seconds
+0232.494 (0) Table wp_yoast_indexable: finishing file(s) (2, 80.2 KB)
+0232.519 (0) Table wp_yoast_indexable_hierarchy: Total expected rows (approximate): 2315
+0232.545 (0) Table wp_yoast_indexable_hierarchy: Rows added in this batch (next record: 3000): 2315 (uncompressed bytes in this segment=42272) in 0.03 seconds
+0232.570 (0) Table wp_yoast_indexable_hierarchy: finishing file(s) (2, 6.7 KB)
+0232.598 (0) Table wp_yoast_migrations: Total expected rows (via COUNT): 26
+0232.606 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0232.621 (0) Table wp_yoast_migrations: Rows added in this batch (next record: 26): 26 (uncompressed bytes in this segment=1316) in 0.03 seconds
+0232.645 (0) Table wp_yoast_migrations: finishing file(s) (2, 0.6 KB)
+0232.671 (0) Table wp_yoast_primary_term: Total expected rows (via COUNT): 207
+0232.679 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0232.695 (0) Table wp_yoast_primary_term: Rows added in this batch (next record: 273): 207 (uncompressed bytes in this segment=17735) in 0.03 seconds
+0232.718 (0) Table wp_yoast_primary_term: finishing file(s) (2, 4.1 KB)
+0232.744 (0) Table wp_yoast_prominent_words: Total expected rows (via COUNT): 0
+0232.760 (0) Table wp_yoast_prominent_words: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=767) in 0.02 seconds
+0232.782 (0) Table wp_yoast_prominent_words: finishing file(s) (2, 0.4 KB)
+0232.810 (0) Table wp_yoast_seo_links: Total expected rows (via COUNT): 1166
+0232.833 (0) Table wp_yoast_seo_links: Rows added in this batch (next record: 14097): 1166 (uncompressed bytes in this segment=208742) in 0.03 seconds
+0232.865 (0) Table wp_yoast_seo_links: finishing file(s) (2, 28.2 KB)
+0232.876 (0) PHP event: code E_WARNING: filemtime(): stat failed for /home/www/newsnova88vn.com/wp-content/updraft/backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz (line 1925, wp-content/plugins/updraftplus/backup.php)
+0232.890 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_options.table.tmpr148205.gz (1/76/fopen): adding to final database dump
+0232.904 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_options.table.gz (2/76/fopen): adding to final database dump
+0232.913 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_users.table.tmpr27.gz (3/76/fopen): adding to final database dump
+0232.922 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_users.table.gz (4/76/fopen): adding to final database dump
+0232.931 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_usermeta.table.tmpr1122.gz (5/76/fopen): adding to final database dump
+0232.941 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_usermeta.table.gz (6/76/fopen): adding to final database dump
+0232.953 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_actions.table.tmpr13344.gz (7/76/fopen): adding to final database dump
+0232.963 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_actions.table.gz (8/76/fopen): adding to final database dump
+0232.972 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_claims.table.tmpr0.gz (9/76/fopen): adding to final database dump
+0232.981 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_claims.table.gz (10/76/fopen): adding to final database dump
+0232.990 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_groups.table.tmpr3.gz (11/76/fopen): adding to final database dump
+0232.999 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_groups.table.gz (12/76/fopen): adding to final database dump
+0233.009 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_logs.table.tmpr614.gz (13/76/fopen): adding to final database dump
+0233.018 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_actionscheduler_logs.table.gz (14/76/fopen): adding to final database dump
+0233.030 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_commentmeta.table.tmpr0.gz (15/76/fopen): adding to final database dump
+0233.040 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_commentmeta.table.gz (16/76/fopen): adding to final database dump
+0233.050 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_comments.table.tmpr0.gz (17/76/fopen): adding to final database dump
+0233.061 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_comments.table.gz (18/76/fopen): adding to final database dump
+0233.073 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_links.table.tmpr0.gz (19/76/fopen): adding to final database dump
+0233.082 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_links.table.gz (20/76/fopen): adding to final database dump
+0233.089 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_postmeta.table.tmpr28273.gz (21/76/fopen): adding to final database dump
+0233.099 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_postmeta.table.gz (22/76/fopen): adding to final database dump
+0233.107 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_posts.table.tmpr16420.gz (23/76/fopen): adding to final database dump
+0233.119 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_posts.table.gz (24/76/fopen): adding to final database dump
+0233.125 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_term_relationships.table.tmpr100001.gz (25/76/fopen): adding to final database dump
+0233.133 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_term_relationships.table.gz (26/76/fopen): adding to final database dump
+0233.140 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_term_taxonomy.table.tmpr2738.gz (27/76/fopen): adding to final database dump
+0233.147 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_term_taxonomy.table.gz (28/76/fopen): adding to final database dump
+0233.155 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_termmeta.table.tmpr99.gz (29/76/fopen): adding to final database dump
+0233.163 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_termmeta.table.gz (30/76/fopen): adding to final database dump
+0233.170 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_terms.table.tmpr2738.gz (31/76/fopen): adding to final database dump
+0233.176 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_terms.table.gz (32/76/fopen): adding to final database dump
+0233.183 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_bvg_reset_password.table.tmpr1.gz (33/76/fopen): adding to final database dump
+0233.191 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_bvg_reset_password.table.gz (34/76/fopen): adding to final database dump
+0233.197 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_events.table.tmpr0.gz (35/76/fopen): adding to final database dump
+0233.205 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_events.table.gz (36/76/fopen): adding to final database dump
+0233.211 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_submissions.table.tmpr0.gz (37/76/fopen): adding to final database dump
+0233.219 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_submissions.table.gz (38/76/fopen): adding to final database dump
+0233.225 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_submissions_actions_log.table.tmpr0.gz (39/76/fopen): adding to final database dump
+0233.232 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_submissions_actions_log.table.gz (40/76/fopen): adding to final database dump
+0233.239 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_submissions_values.table.tmpr0.gz (41/76/fopen): adding to final database dump
+0233.247 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_e_submissions_values.table.gz (42/76/fopen): adding to final database dump
+0233.253 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_crawler.table.tmpr0.gz (43/76/fopen): adding to final database dump
+0233.260 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_crawler.table.gz (44/76/fopen): adding to final database dump
+0233.268 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_crawler_blacklist.table.tmpr0.gz (45/76/fopen): adding to final database dump
+0233.275 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_crawler_blacklist.table.gz (46/76/fopen): adding to final database dump
+0233.282 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_url.table.tmpr0.gz (47/76/fopen): adding to final database dump
+0233.289 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_url.table.gz (48/76/fopen): adding to final database dump
+0233.297 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_url_file.table.tmpr0.gz (49/76/fopen): adding to final database dump
+0233.304 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_litespeed_url_file.table.gz (50/76/fopen): adding to final database dump
+0233.310 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_popularpostsdata.table.tmpr16405.gz (51/76/fopen): adding to final database dump
+0233.317 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_popularpostsdata.table.gz (52/76/fopen): adding to final database dump
+0233.324 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_popularpostssummary.table.tmpr1174.gz (53/76/fopen): adding to final database dump
+0233.331 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_popularpostssummary.table.gz (54/76/fopen): adding to final database dump
+0233.338 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfblockediplog.table.tmpr1001.gz (55/76/fopen): adding to final database dump
+0233.344 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfblockediplog.table.gz (56/76/fopen): adding to final database dump
+0233.352 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfblocks7.table.tmpr0.gz (57/76/fopen): adding to final database dump
+0233.358 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfblocks7.table.gz (58/76/fopen): adding to final database dump
+0233.365 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfconfig.table.tmpr1001.gz (59/76/fopen): adding to final database dump
+0233.374 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfconfig.table.gz (60/76/fopen): adding to final database dump
+0233.539 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfcrawlers.table.tmpr1001.gz (61/76/fopen): adding to final database dump
+0233.712 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfcrawlers.table.gz (62/76/fopen): adding to final database dump
+0233.770 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wffilechanges.table.tmpr1.gz (63/76/fopen): adding to final database dump
+0233.840 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wffilechanges.table.gz (64/76/fopen): adding to final database dump
+0233.868 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wffilemods.table.tmpr12001.gz (65/76/fopen): adding to final database dump
+0233.886 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wffilemods.table.gz (66/76/fopen): adding to final database dump
+0233.895 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfhits.table.tmpr1383.gz (67/76/fopen): adding to final database dump
+0233.903 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfhits.table.gz (68/76/fopen): adding to final database dump
+0233.911 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfhoover.table.tmpr0.gz (69/76/fopen): adding to final database dump
+0233.919 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfhoover.table.gz (70/76/fopen): adding to final database dump
+0233.929 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfissues.table.tmpr3743.gz (71/76/fopen): adding to final database dump
+0233.938 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfissues.table.gz (72/76/fopen): adding to final database dump
+0233.946 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfknownfilelist.table.tmpr10626.gz (73/76/fopen): adding to final database dump
+0233.956 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfknownfilelist.table.gz (74/76/fopen): adding to final database dump
+0233.963 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wflivetraffichuman.table.tmpr1.gz (75/76/fopen): adding to final database dump
+0233.975 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wflivetraffichuman.table.gz (76/76/fopen): adding to final database dump
+0233.982 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wflocs.table.tmpr1001.gz (77/76/fopen): adding to final database dump
+0233.990 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wflocs.table.gz (78/76/fopen): adding to final database dump
+0233.998 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wflogins.table.tmpr148.gz (79/76/fopen): adding to final database dump
+0234.006 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wflogins.table.gz (80/76/fopen): adding to final database dump
+0234.013 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfls_2fa_secrets.table.tmpr0.gz (81/76/fopen): adding to final database dump
+0234.021 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfls_2fa_secrets.table.gz (82/76/fopen): adding to final database dump
+0234.030 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfls_role_counts.table.tmpr1.gz (83/76/fopen): adding to final database dump
+0234.038 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfls_role_counts.table.gz (84/76/fopen): adding to final database dump
+0234.047 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfls_settings.table.tmpr1001.gz (85/76/fopen): adding to final database dump
+0234.056 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfls_settings.table.gz (86/76/fopen): adding to final database dump
+0234.066 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfnotifications.table.tmpr1001.gz (87/76/fopen): adding to final database dump
+0234.074 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfnotifications.table.gz (88/76/fopen): adding to final database dump
+0234.085 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfpendingissues.table.tmpr0.gz (89/76/fopen): adding to final database dump
+0234.095 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfpendingissues.table.gz (90/76/fopen): adding to final database dump
+0234.105 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfreversecache.table.tmpr1001.gz (91/76/fopen): adding to final database dump
+0234.115 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfreversecache.table.gz (92/76/fopen): adding to final database dump
+0234.124 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfsecurityevents.table.tmpr0.gz (93/76/fopen): adding to final database dump
+0234.134 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfsecurityevents.table.gz (94/76/fopen): adding to final database dump
+0234.143 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfsnipcache.table.tmpr0.gz (95/76/fopen): adding to final database dump
+0234.152 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfsnipcache.table.gz (96/76/fopen): adding to final database dump
+0234.161 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfstatus.table.tmpr29849.gz (97/76/fopen): adding to final database dump
+0234.171 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfstatus.table.gz (98/76/fopen): adding to final database dump
+0234.180 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wftrafficrates.table.tmpr1.gz (99/76/fopen): adding to final database dump
+0234.201 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wftrafficrates.table.gz (100/76/fopen): adding to final database dump
+0234.212 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfwaffailures.table.tmpr0.gz (101/76/fopen): adding to final database dump
+0234.221 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wfwaffailures.table.gz (102/76/fopen): adding to final database dump
+0234.230 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg.table.tmpr2.gz (103/76/fopen): adding to final database dump
+0234.239 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg.table.gz (104/76/fopen): adding to final database dump
+0234.248 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_chatlogs.table.tmpr0.gz (105/76/fopen): adding to final database dump
+0234.256 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_chatlogs.table.gz (106/76/fopen): adding to final database dump
+0234.265 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_chattokens.table.tmpr0.gz (107/76/fopen): adding to final database dump
+0234.273 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_chattokens.table.gz (108/76/fopen): adding to final database dump
+0234.280 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_form_feedback.table.tmpr0.gz (109/76/fopen): adding to final database dump
+0234.288 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_form_feedback.table.gz (110/76/fopen): adding to final database dump
+0234.295 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_form_logs.table.tmpr0.gz (111/76/fopen): adding to final database dump
+0234.303 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_form_logs.table.gz (112/76/fopen): adding to final database dump
+0234.310 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_formtokens.table.tmpr0.gz (113/76/fopen): adding to final database dump
+0234.319 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_formtokens.table.gz (114/76/fopen): adding to final database dump
+0234.327 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_image_logs.table.tmpr0.gz (115/76/fopen): adding to final database dump
+0234.335 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_image_logs.table.gz (116/76/fopen): adding to final database dump
+0234.343 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_imagetokens.table.tmpr0.gz (117/76/fopen): adding to final database dump
+0234.350 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_imagetokens.table.gz (118/76/fopen): adding to final database dump
+0234.360 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_prompt_feedback.table.tmpr0.gz (119/76/fopen): adding to final database dump
+0234.368 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_prompt_feedback.table.gz (120/76/fopen): adding to final database dump
+0234.376 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_promptbase_logs.table.tmpr0.gz (121/76/fopen): adding to final database dump
+0234.386 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_promptbase_logs.table.gz (122/76/fopen): adding to final database dump
+0234.400 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_prompttokens.table.tmpr0.gz (123/76/fopen): adding to final database dump
+0234.411 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_prompttokens.table.gz (124/76/fopen): adding to final database dump
+0234.421 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_token_logs.table.tmpr0.gz (125/76/fopen): adding to final database dump
+0234.430 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpaicg_token_logs.table.gz (126/76/fopen): adding to final database dump
+0234.438 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpmailsmtp_debug_events.table.tmpr0.gz (127/76/fopen): adding to final database dump
+0234.445 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpmailsmtp_debug_events.table.gz (128/76/fopen): adding to final database dump
+0234.453 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpmailsmtp_tasks_meta.table.tmpr2.gz (129/76/fopen): adding to final database dump
+0234.461 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_wpmailsmtp_tasks_meta.table.gz (130/76/fopen): adding to final database dump
+0234.468 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_indexable.table.tmpr6914.gz (131/76/fopen): adding to final database dump
+0234.476 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_indexable.table.gz (132/76/fopen): adding to final database dump
+0234.483 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_indexable_hierarchy.table.tmpr3001.gz (133/76/fopen): adding to final database dump
+0234.490 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_indexable_hierarchy.table.gz (134/76/fopen): adding to final database dump
+0234.497 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_migrations.table.tmpr27.gz (135/76/fopen): adding to final database dump
+0234.506 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_migrations.table.gz (136/76/fopen): adding to final database dump
+0234.514 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_primary_term.table.tmpr274.gz (137/76/fopen): adding to final database dump
+0234.521 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_primary_term.table.gz (138/76/fopen): adding to final database dump
+0234.528 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_prominent_words.table.tmpr0.gz (139/76/fopen): adding to final database dump
+0234.537 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_prominent_words.table.gz (140/76/fopen): adding to final database dump
+0234.545 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_seo_links.table.tmpr14098.gz (141/76/fopen): adding to final database dump
+0234.555 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db-table-wp_yoast_seo_links.table.gz (142/76/fopen): adding to final database dump
+0234.588 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz: finished writing out complete database file (4316.1 KB)
+0234.659 (0) Total database tables backed up: 71 (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz, size: 4419810, sha1: 3933ea029ca2b3db3224d1cba047cb1431b1567e, sha256: 9c9521c070d719553192ad73474fffd12ce87fe765a44d84c7b85f0c146c9c45)
+0234.694 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip: plugins: This file has already been successfully uploaded
+0234.701 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip: themes: This file has already been successfully uploaded
+0234.708 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip: uploads: This file has already been successfully uploaded
+0234.716 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip: uploads: This file has already been successfully uploaded
+0234.724 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip: uploads: This file has already been successfully uploaded
+0234.731 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip: uploads: This file has already been successfully uploaded
+0234.738 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip: others: This file has already been successfully uploaded
+0234.744 (0) backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz: db: This file has not yet been successfully uploaded: will queue
+0234.751 (0) Saving backup history. Total backup size: 1.6 GB
+0234.765 (0) Requesting upload of the files that have not yet been successfully uploaded (1)
+0234.786 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0234.793 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-4473c6b99e085595574e62c7c0e544e4)
+0236.005 (0) Google Drive: quota usage: used=1628.2 MB, total=5038080 MB, available=5036451.8 MB
+0236.016 (0) Google Drive: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz: Attempting to upload to Google Drive (into folder id: 1vt4FUDtZ7Umh2OHegFhLZS2zZG6yjRv4)
+0236.832 (0) Googledrive chunked upload: 23.7 % uploaded (1048576 - increasing chunk size to 2048 KB - memory usage: 81.3 / 110)
+0236.994 (0) Googledrive chunked upload: 71.2 % uploaded (3145728 - increasing chunk size to 4096 KB - memory usage: 81.3 / 110)
+0238.153 (0) Googledrive chunked upload: 100 % uploaded (3145728)
+0238.176 (0) Google Drive: OK: Archive backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz uploaded in 2.15 seconds
+0238.184 (0) Recording as successfully uploaded: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz
+0238.200 (0) Deleting local file: backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-db.gz: OK
+0238.218 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0238.226 (0) Number of backup sets in history: 1; groups (db): 1
+0238.234 (0) Examining (for databases) backup set with group_id=0, nonce=2333ed0a8dfc, datestamp=1729565863 (Oct 22 2024 02:57:43)
+0238.241 (0) This backup set is the backup set just made, so will not be deleted.
+0238.241 (0) Number of backup sets in history: 1; groups (files): 1
+0238.249 (0) Examining (for files) backup set with nonce=2333ed0a8dfc, datestamp=1729565863 (Oct 22 2024 02:57:43)
+0238.249 (0) This backup set is the backup set just made, so will not be deleted.
+0238.256 (0) This backup set is the backup set just made, so will not be deleted.
+0238.256 (0) This backup set is the backup set just made, so will not be deleted.
+0238.257 (0) This backup set is the backup set just made, so will not be deleted.
+0238.257 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0238.264 (0) Retain: saving new backup history (sets now: 1) and finishing retain operation
+0238.280 (0) Resume backup (2333ed0a8dfc, 0): finish run
+0238.300 (0) Decremented the semaphore (fd) by 1
+0238.312 (0) Semaphore (fd) unlocked
+0238.319 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0238.345 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-plugins.zip.list.tmp)
+0238.352 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-themes.zip.list.tmp)
+0238.360 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads.zip.list.tmp)
+0238.368 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads2.zip.list.tmp)
+0238.404 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads3.zip.list.tmp)
+0238.413 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-uploads4.zip.list.tmp)
+0238.420 (0) Deleting zip manifest (backup_2024-10-22-0957_Nova88Vietnam_2333ed0a8dfc-others.zip.list.tmp)
+0238.427 (0) No email will/can be sent - the user has not configured an email address.
+0238.435 (0) The backup succeeded and is now complete

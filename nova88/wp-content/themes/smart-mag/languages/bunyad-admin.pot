@@ -1,0 +1,7095 @@
+# Copyright (C) 2023 ThemeSphere
+# This file is distributed under the ThemeForest Split Licence.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartMag 9.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/smart-mag\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-11-22T00:18:48+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.0\n"
+"X-Domain: bunyad-admin\n"
+
+#. Plugin Name of the plugin
+msgid "SmartMag Core"
+msgstr ""
+
+#. Description of the plugin
+msgid "Elements and core functionality for SmartMag Theme."
+msgstr ""
+
+#. Author of the plugin
+#. Author of the theme
+msgid "ThemeSphere"
+msgstr ""
+
+#. Author URI of the plugin
+#. Author URI of the theme
+msgid "https://theme-sphere.com"
+msgstr ""
+
+#: blocks/base/loop-options.php:48
+#: admin/options/header/ticker.php:8
+#: packages/blocks/base/loop-options.php:48
+msgid "Number of Posts"
+msgstr ""
+
+#: blocks/base/loop-options.php:54
+#: packages/blocks/base/loop-options.php:54
+msgid "Pagination"
+msgstr ""
+
+#: blocks/base/loop-options.php:61
+#: metaboxes/terms/category-options.php:98
+#: admin/options/archives.php:38
+#: packages/blocks/base/loop-options.php:61
+msgid "Pagination Type"
+msgstr ""
+
+#: blocks/base/loop-options.php:64
+#: packages/blocks/base/loop-options.php:64
+msgid "Page Numbers AJAX"
+msgstr ""
+
+#: blocks/base/loop-options.php:65
+#: admin/options/common-data.php:177
+#: packages/blocks/base/loop-options.php:65
+msgid "Load More Button"
+msgstr ""
+
+#: blocks/base/loop-options.php:66
+#: admin/options/common-data.php:176
+#: packages/blocks/base/loop-options.php:66
+msgid "Page Numbers"
+msgstr ""
+
+#: blocks/base/loop-options.php:67
+#: packages/blocks/base/loop-options.php:67
+msgid "Infinite Scroll (For Last Block Only)"
+msgstr ""
+
+#: blocks/base/loop-options.php:74
+#: packages/blocks/base/loop-options.php:74
+msgid "SEO: Pagination Links"
+msgstr ""
+
+#: blocks/base/loop-options.php:83
+#: blocks/newsletter/options.php:145
+#: admin/options/footer.php:99
+#: admin/options/header.php:333
+#: admin/options/header/off-canvas.php:21
+#: packages/blocks/base/loop-options.php:83
+#: packages/blocks/newsletter/options.php:145
+msgid "Color Scheme"
+msgstr ""
+
+#: blocks/base/loop-options.php:86
+#: blocks/base/loop-options.php:125
+#: blocks/base/loop-options.php:648
+#: blocks/base/loop-options.php:785
+#: blocks/heading/options.php:45
+#: blocks/loops/posts-list/options.php:86
+#: inc/elementor/page-settings.php:25
+#: metaboxes/options/page.php:12
+#: metaboxes/options/page.php:23
+#: metaboxes/options/page.php:36
+#: metaboxes/options/post.php:23
+#: metaboxes/options/post.php:45
+#: admin/options.php:66
+#: admin/options/common-data.php:27
+#: admin/options/common-data.php:148
+#: admin/options/header.php:28
+#: admin/options/layout-main.php:123
+#: admin/options/posts-single.php:15
+#: packages/blocks/base/loop-options.php:86
+#: packages/blocks/base/loop-options.php:125
+#: packages/blocks/base/loop-options.php:648
+#: packages/blocks/base/loop-options.php:785
+#: packages/blocks/heading/options.php:45
+#: packages/blocks/loops/posts-list/options.php:86
+msgid "Default"
+msgstr ""
+
+#: blocks/base/loop-options.php:87
+#: packages/blocks/base/loop-options.php:87
+msgid "Contrast (For Dark Background)"
+msgstr ""
+
+#: blocks/base/loop-options.php:93
+#: packages/blocks/base/loop-options.php:93
+msgid "SEO: Titles Tag"
+msgstr ""
+
+#: blocks/base/loop-options.php:109
+#: packages/blocks/base/loop-options.php:109
+msgid "Columns"
+msgstr ""
+
+#: blocks/base/loop-options.php:112
+#: packages/blocks/base/loop-options.php:112
+msgid "Note: Make sure the container column/section is large enough for best look."
+msgstr ""
+
+#: blocks/base/loop-options.php:121
+#: packages/blocks/base/loop-options.php:121
+msgid "Add Space Below"
+msgstr ""
+
+#: blocks/base/loop-options.php:123
+#: packages/blocks/base/loop-options.php:123
+msgid "Space to add below the block. Note: Columns in Elementor also add additional space below via \"Widgets Space\" setting."
+msgstr ""
+
+#: blocks/base/loop-options.php:126
+#: blocks/base/loop-options.php:459
+#: blocks/base/loop-options.php:707
+#: blocks/loops/feat-grid/options.php:184
+#: blocks/newsletter/options.php:99
+#: blocks/newsletter/options.php:192
+#: inc/elementor/extend-section.php:276
+#: inc/elementor/section-options.php:36
+#: metaboxes/options/page.php:72
+#: packages/blocks/base/loop-options.php:126
+#: packages/blocks/base/loop-options.php:459
+#: packages/blocks/base/loop-options.php:707
+#: packages/blocks/loops/feat-grid/options.php:184
+#: packages/blocks/newsletter/options.php:99
+#: packages/blocks/newsletter/options.php:192
+msgid "None"
+msgstr ""
+
+#: blocks/base/loop-options.php:127
+#: blocks/loops/grid/options.php:40
+#: blocks/newsletter/options.php:172
+#: packages/blocks/base/loop-options.php:127
+#: packages/blocks/loops/grid/options.php:40
+#: packages/blocks/newsletter/options.php:172
+msgid "Small"
+msgstr ""
+
+#: blocks/base/loop-options.php:128
+#: packages/blocks/base/loop-options.php:128
+msgid "Medium"
+msgstr ""
+
+#: blocks/base/loop-options.php:136
+#: admin/options/listings/common.php:116
+#: packages/blocks/base/loop-options.php:136
+msgid "Category Label Overlay"
+msgstr ""
+
+#: blocks/base/loop-options.php:139
+#: blocks/base/loop-options.php:150
+#: blocks/base/loop-options.php:239
+#: blocks/base/loop-options.php:248
+#: blocks/loops/feat-grid/options.php:65
+#: blocks/loops/overlay/options.php:33
+#: admin/options/listings/common.php:121
+#: admin/options/listings/common.php:136
+#: admin/options/listings/small.php:37
+#: packages/blocks/base/loop-options.php:139
+#: packages/blocks/base/loop-options.php:150
+#: packages/blocks/base/loop-options.php:239
+#: packages/blocks/base/loop-options.php:248
+#: packages/blocks/loops/feat-grid/options.php:65
+#: packages/blocks/loops/overlay/options.php:33
+msgid "Auto/Global"
+msgstr ""
+
+#: blocks/base/loop-options.php:140
+#: blocks/base/loop-options.php:858
+#: admin/options/listings/common.php:122
+#: packages/blocks/base/loop-options.php:140
+#: packages/blocks/base/loop-options.php:858
+msgid "Enabled"
+msgstr ""
+
+#: blocks/base/loop-options.php:141
+#: blocks/base/loop-options.php:635
+#: blocks/base/loop-options.php:859
+#: blocks/base/loop-options.php:1608
+#: blocks/loops/grid/options.php:107
+#: blocks/social-icons/options.php:52
+#: inc/elementor/extend-container.php:70
+#: inc/elementor/extend-section.php:84
+#: metaboxes/options/post.php:90
+#: metaboxes/terms/category-options.php:64
+#: smartmag-core.php:461
+#: admin/options/archives.php:181
+#: admin/options/common-data.php:128
+#: admin/options/common-data.php:141
+#: admin/options/header.php:747
+#: admin/options/header.php:827
+#: admin/options/listings/common.php:123
+#: packages/blocks/base/loop-options.php:141
+#: packages/blocks/base/loop-options.php:635
+#: packages/blocks/base/loop-options.php:859
+#: packages/blocks/base/loop-options.php:1608
+#: packages/blocks/loops/grid/options.php:107
+#: packages/blocks/social-icons/options.php:52
+msgid "Disabled"
+msgstr ""
+
+#: blocks/base/loop-options.php:147
+#: admin/options/listings/cat-labels.php:17
+#: packages/blocks/base/loop-options.php:147
+msgid "Overlay Position"
+msgstr ""
+
+#: blocks/base/loop-options.php:158
+#: packages/blocks/base/loop-options.php:158
+msgid "Limit Title to Lines"
+msgstr ""
+
+#: blocks/base/loop-options.php:162
+#: blocks/base/loop-options.php:180
+#: blocks/base/loop-options.php:857
+#: blocks/base/loop-options.php:1391
+#: metaboxes/terms/category-options.php:102
+#: admin/options/layout-pages.php:22
+#: admin/options/posts-single.php:44
+#: packages/blocks/base/loop-options.php:162
+#: packages/blocks/base/loop-options.php:180
+#: packages/blocks/base/loop-options.php:857
+#: packages/blocks/base/loop-options.php:1391
+msgid "Default / Global"
+msgstr ""
+
+#: blocks/base/loop-options.php:169
+#: packages/blocks/base/loop-options.php:169
+msgid "Show Excerpts"
+msgstr ""
+
+#: blocks/base/loop-options.php:176
+#: packages/blocks/base/loop-options.php:176
+msgid "Excerpt Limit Lines"
+msgstr ""
+
+#: blocks/base/loop-options.php:188
+#: admin/options/listings/common.php:17
+#: packages/blocks/base/loop-options.php:188
+msgid "Excerpt Words"
+msgstr ""
+
+#: blocks/base/loop-options.php:199
+#: packages/blocks/base/loop-options.php:199
+msgid "Content Centered"
+msgstr ""
+
+#: blocks/base/loop-options.php:206
+#: packages/blocks/base/loop-options.php:206
+msgid "Show Media/Image"
+msgstr ""
+
+#: blocks/base/loop-options.php:214
+#: blocks/base/loop-options.php:224
+#: blocks/loops/feat-grid/options.php:85
+#: packages/blocks/base/loop-options.php:214
+#: packages/blocks/base/loop-options.php:224
+#: packages/blocks/loops/feat-grid/options.php:85
+msgid "Image Ratio"
+msgstr ""
+
+#: blocks/base/loop-options.php:236
+#: admin/options/listings/common.php:26
+#: packages/blocks/base/loop-options.php:236
+msgid "Read More"
+msgstr ""
+
+#: blocks/base/loop-options.php:245
+#: admin/options/posts-single.php:1755
+#: packages/blocks/base/loop-options.php:245
+msgid "Reviews"
+msgstr ""
+
+#: blocks/base/loop-options.php:254
+#: packages/blocks/base/loop-options.php:254
+msgid "Post Formats Icons"
+msgstr ""
+
+#: blocks/base/loop-options.php:261
+#: admin/options/posts-listings.php:44
+#: packages/blocks/base/loop-options.php:261
+msgid "Formats Default Position"
+msgstr ""
+
+#: blocks/base/loop-options.php:269
+#: admin/options/posts-single.php:181
+#: packages/blocks/base/loop-options.php:269
+msgid "Post Meta"
+msgstr ""
+
+#: blocks/base/loop-options.php:275
+#: packages/blocks/base/loop-options.php:275
+msgid "Default/Global Meta Items"
+msgstr ""
+
+#: blocks/base/loop-options.php:283
+#: packages/blocks/base/loop-options.php:283
+msgid "Items Above"
+msgstr ""
+
+#: blocks/base/loop-options.php:292
+#: packages/blocks/base/loop-options.php:292
+msgid "Items Below"
+msgstr ""
+
+#: blocks/base/loop-options.php:301
+#: admin/options/posts-global.php:99
+#: admin/options/posts-single.php:245
+#: packages/blocks/base/loop-options.php:301
+msgid "Category Style"
+msgstr ""
+
+#: blocks/base/loop-options.php:304
+#: packages/blocks/base/loop-options.php:304
+msgid "Plain Text"
+msgstr ""
+
+#: blocks/base/loop-options.php:305
+#: packages/blocks/base/loop-options.php:305
+msgid "Label"
+msgstr ""
+
+#: blocks/base/loop-options.php:311
+#: packages/blocks/base/loop-options.php:311
+msgid "Author Image"
+msgstr ""
+
+#: blocks/base/loop-options.php:319
+#: packages/blocks/base/loop-options.php:319
+msgid "Show Post Title"
+msgstr ""
+
+#: blocks/base/loop-options.php:328
+#: blocks/base/loop-options.php:542
+#: blocks/loops/feat-grid/options.php:273
+#: packages/blocks/base/loop-options.php:328
+#: packages/blocks/base/loop-options.php:542
+#: packages/blocks/loops/feat-grid/options.php:273
+msgid "Advanced"
+msgstr ""
+
+#: blocks/base/loop-options.php:334
+#: packages/blocks/base/loop-options.php:334
+msgid "Container Width"
+msgstr ""
+
+#: blocks/base/loop-options.php:336
+#: packages/blocks/base/loop-options.php:336
+msgid "The block will select image sizing based on specified container width."
+msgstr ""
+
+#: blocks/base/loop-options.php:338
+#: packages/blocks/base/loop-options.php:338
+msgid "Small: 1 Column or In Sidebar"
+msgstr ""
+
+#: blocks/base/loop-options.php:339
+#: packages/blocks/base/loop-options.php:339
+msgid "Medium: 50% of Width"
+msgstr ""
+
+#: blocks/base/loop-options.php:340
+#: packages/blocks/base/loop-options.php:340
+msgid "Large: 66% of Width"
+msgstr ""
+
+#: blocks/base/loop-options.php:341
+#: blocks/breadcrumbs/options.php:41
+#: blocks/newsletter/options.php:100
+#: inc/elementor/page-settings.php:27
+#: metaboxes/options/page.php:14
+#: metaboxes/options/post.php:25
+#: widgets/widget-about.php:225
+#: admin/options/layout-main.php:23
+#: admin/options/layout-main.php:429
+#: packages/blocks/base/loop-options.php:341
+#: packages/blocks/breadcrumbs/options.php:41
+#: packages/blocks/newsletter/options.php:100
+msgid "Full Width"
+msgstr ""
+
+#: blocks/base/loop-options.php:348
+#: packages/blocks/base/loop-options.php:348
+msgid "Skip Lazyload on Images"
+msgstr ""
+
+#: blocks/base/loop-options.php:350
+#: packages/blocks/base/loop-options.php:350
+msgid "Number of posts to skip lazyload on for LCP performance."
+msgstr ""
+
+#: blocks/base/loop-options.php:371
+#: packages/blocks/base/loop-options.php:371
+msgid "Query Type"
+msgstr ""
+
+#: blocks/base/loop-options.php:374
+#: inc/elementor/section-options.php:37
+#: inc/widgets/block-widget.php:97
+#: admin/options/common-data.php:156
+#: packages/blocks/base/loop-options.php:374
+msgid "Custom"
+msgstr ""
+
+#: blocks/base/loop-options.php:375
+#: packages/blocks/base/loop-options.php:375
+msgid "Section Query (Parent Section)"
+msgstr ""
+
+#: blocks/base/loop-options.php:376
+#: packages/blocks/base/loop-options.php:376
+msgid "Main Query / Archive"
+msgstr ""
+
+#: blocks/base/loop-options.php:377
+#: packages/blocks/base/loop-options.php:377
+msgid "Global Query (for Devs)"
+msgstr ""
+
+#: blocks/base/loop-options.php:385
+#: packages/blocks/base/loop-options.php:385
+msgid "Edit the nearest/direct parent section and configure under the Section Query."
+msgstr ""
+
+#: blocks/base/loop-options.php:391
+#: packages/blocks/base/loop-options.php:391
+msgid "Sort By"
+msgstr ""
+
+#: blocks/base/loop-options.php:394
+#: widgets/widget-blocks.php:146
+#: packages/blocks/base/loop-options.php:394
+msgid "Published Date"
+msgstr ""
+
+#: blocks/base/loop-options.php:395
+#: widgets/widget-blocks.php:147
+#: packages/blocks/base/loop-options.php:395
+msgid "Modified Date"
+msgstr ""
+
+#: blocks/base/loop-options.php:396
+#: widgets/widget-blocks.php:148
+#: packages/blocks/base/loop-options.php:396
+msgid "Random"
+msgstr ""
+
+#: blocks/base/loop-options.php:397
+#: packages/blocks/base/loop-options.php:397
+msgid "Comments Count"
+msgstr ""
+
+#: blocks/base/loop-options.php:398
+#: packages/blocks/base/loop-options.php:398
+msgid "Alphabetical"
+msgstr ""
+
+#: blocks/base/loop-options.php:399
+#: widgets/widget-latest-reviews.php:75
+#: packages/blocks/base/loop-options.php:399
+msgid "Rating"
+msgstr ""
+
+#: blocks/base/loop-options.php:403
+#: packages/blocks/base/loop-options.php:403
+msgid "JetPack Plugin Views Count"
+msgstr ""
+
+#: blocks/base/loop-options.php:408
+#: packages/blocks/base/loop-options.php:408
+msgid "Post Views: All Time"
+msgstr ""
+
+#: blocks/base/loop-options.php:409
+#: packages/blocks/base/loop-options.php:409
+msgid "Post Views: 30 Days"
+msgstr ""
+
+#: blocks/base/loop-options.php:410
+#: packages/blocks/base/loop-options.php:410
+msgid "Post Views: Custom Days"
+msgstr ""
+
+#: blocks/base/loop-options.php:418
+#: packages/blocks/base/loop-options.php:418
+msgid "Sort Days"
+msgstr ""
+
+#: blocks/base/loop-options.php:419
+#: packages/blocks/base/loop-options.php:419
+msgid "Number of days to use for the views sort. Max limit is 90 days for Jetpack."
+msgstr ""
+
+#: blocks/base/loop-options.php:429
+#: packages/blocks/base/loop-options.php:429
+msgid "Sort Order"
+msgstr ""
+
+#: blocks/base/loop-options.php:432
+#: packages/blocks/base/loop-options.php:432
+msgid "Descending / Latest First"
+msgstr ""
+
+#: blocks/base/loop-options.php:433
+#: packages/blocks/base/loop-options.php:433
+msgid "Ascending / Oldest First"
+msgstr ""
+
+#: blocks/base/loop-options.php:440
+#: packages/blocks/base/loop-options.php:440
+msgid "From Categories"
+msgstr ""
+
+#: blocks/base/loop-options.php:454
+#: packages/blocks/base/loop-options.php:454
+msgid "Main Category"
+msgstr ""
+
+#: blocks/base/loop-options.php:456
+#: packages/blocks/base/loop-options.php:456
+msgid "OPTIONAL: Will also be used for heading link, text and color if set."
+msgstr ""
+
+#: blocks/base/loop-options.php:460
+#: packages/blocks/base/loop-options.php:460
+msgid "Archive: Current Category"
+msgstr ""
+
+#: blocks/base/loop-options.php:470
+#: packages/blocks/base/loop-options.php:470
+msgid "Exclude Categories"
+msgstr ""
+
+#: blocks/base/loop-options.php:484
+#: packages/blocks/base/loop-options.php:484
+msgid "Skip Posts / Offset"
+msgstr ""
+
+#: blocks/base/loop-options.php:485
+#: packages/blocks/base/loop-options.php:485
+msgid "Skip first X posts."
+msgstr ""
+
+#: blocks/base/loop-options.php:491
+#: packages/blocks/base/loop-options.php:491
+msgid "Review Posts Only"
+msgstr ""
+
+#: blocks/base/loop-options.php:500
+#: packages/blocks/base/loop-options.php:500
+msgid "From Tags"
+msgstr ""
+
+#: blocks/base/loop-options.php:504
+#: packages/blocks/base/loop-options.php:504
+msgid "Will limit posts to selected tags."
+msgstr ""
+
+#: blocks/base/loop-options.php:519
+#: packages/blocks/base/loop-options.php:519
+msgid "Specific Post IDs"
+msgstr ""
+
+#: blocks/base/loop-options.php:521
+#: blocks/base/loop-options.php:565
+#: packages/blocks/base/loop-options.php:521
+#: packages/blocks/base/loop-options.php:565
+msgid "Post IDs separated by commas, ex: 25, 34"
+msgstr ""
+
+#: blocks/base/loop-options.php:528
+#: packages/blocks/base/loop-options.php:528
+msgid "Specific Post Formats"
+msgstr ""
+
+#: blocks/base/loop-options.php:530
+#: packages/blocks/base/loop-options.php:530
+msgid "Show posts of specific post formats only. Defaults to standard posts."
+msgstr ""
+
+#: blocks/base/loop-options.php:532
+#: packages/blocks/base/loop-options.php:532
+msgid "Video"
+msgstr ""
+
+#: blocks/base/loop-options.php:533
+#: packages/blocks/base/loop-options.php:533
+msgid "Audio"
+msgstr ""
+
+#: blocks/base/loop-options.php:534
+#: packages/blocks/base/loop-options.php:534
+msgid "Gallery"
+msgstr ""
+
+#: blocks/base/loop-options.php:549
+#: packages/blocks/base/loop-options.php:549
+msgid "Exclude Tags"
+msgstr ""
+
+#: blocks/base/loop-options.php:552
+#: packages/blocks/base/loop-options.php:552
+msgid "Skip posts using these tags."
+msgstr ""
+
+#: blocks/base/loop-options.php:563
+#: packages/blocks/base/loop-options.php:563
+msgid "Exclude Post IDs"
+msgstr ""
+
+#: blocks/base/loop-options.php:572
+#: packages/blocks/base/loop-options.php:572
+msgid "Taxonomy"
+msgstr ""
+
+#: blocks/base/loop-options.php:574
+#: packages/blocks/base/loop-options.php:574
+msgid "A custom taxonomy limit instead of category or post_tag. This will disable category and tags limits from above."
+msgstr ""
+
+#: blocks/base/loop-options.php:580
+#: packages/blocks/base/loop-options.php:580
+msgid "Taxonomy Terms IDs"
+msgstr ""
+
+#: blocks/base/loop-options.php:582
+#: packages/blocks/base/loop-options.php:582
+msgid "IDs of the taxonomy items to use separated by comma, for example ids of categories under product_cat."
+msgstr ""
+
+#: blocks/base/loop-options.php:591
+#: packages/blocks/base/loop-options.php:591
+msgid "Post Type"
+msgstr ""
+
+#: blocks/base/loop-options.php:606
+#: packages/blocks/base/loop-options.php:606
+msgid "Devs: Query ID"
+msgstr ""
+
+#: blocks/base/loop-options.php:608
+#: packages/blocks/base/loop-options.php:608
+msgid "Optional custom query ID to modify query args using the bunyad_block_query_args filter."
+msgstr ""
+
+#: blocks/base/loop-options.php:615
+#: packages/blocks/base/loop-options.php:615
+msgid "Exclude Current Post"
+msgstr ""
+
+#: blocks/base/loop-options.php:616
+#: packages/blocks/base/loop-options.php:616
+msgid "If using on a single post sidebar, this will ignore the post being viewed."
+msgstr ""
+
+#: blocks/base/loop-options.php:632
+#: blocks/heading/options.php:30
+#: admin/options/footer.php:189
+#: packages/blocks/base/loop-options.php:632
+#: packages/blocks/heading/options.php:30
+msgid "Heading Style"
+msgstr ""
+
+#: blocks/base/loop-options.php:636
+#: blocks/heading/options.php:33
+#: packages/blocks/base/loop-options.php:636
+#: packages/blocks/heading/options.php:33
+msgid "Global / Default Style"
+msgstr ""
+
+#: blocks/base/loop-options.php:643
+#: blocks/heading/options.php:40
+#: packages/blocks/base/loop-options.php:643
+#: packages/blocks/heading/options.php:40
+msgid "Base Colors"
+msgstr ""
+
+#: blocks/base/loop-options.php:646
+#: blocks/base/loop-options.php:1726
+#: blocks/breadcrumbs/options.php:61
+#: blocks/heading/options.php:43
+#: admin/options/common-data.php:171
+#: admin/options/header.php:748
+#: admin/options/layout-main.php:398
+#: packages/blocks/base/loop-options.php:646
+#: packages/blocks/base/loop-options.php:1726
+#: packages/blocks/breadcrumbs/options.php:61
+#: packages/blocks/heading/options.php:43
+msgid "Auto"
+msgstr ""
+
+#: blocks/base/loop-options.php:647
+#: blocks/heading/options.php:44
+#: packages/blocks/base/loop-options.php:647
+#: packages/blocks/heading/options.php:44
+msgid "Accent / Category"
+msgstr ""
+
+#: blocks/base/loop-options.php:657
+#: blocks/heading/options.php:54
+#: packages/blocks/base/loop-options.php:657
+#: packages/blocks/heading/options.php:54
+msgid "Heading Text"
+msgstr ""
+
+#: blocks/base/loop-options.php:659
+#: packages/blocks/base/loop-options.php:659
+msgid "Optional. By default, main category name will be used. Note: Some heading styles can have multi-color headings when used with asterisks, example: World *News*"
+msgstr ""
+
+#: blocks/base/loop-options.php:664
+#: blocks/heading/options.php:64
+#: packages/blocks/base/loop-options.php:664
+#: packages/blocks/heading/options.php:64
+msgid "Heading Link"
+msgstr ""
+
+#: blocks/base/loop-options.php:666
+#: blocks/base/loop-options.php:691
+#: blocks/heading/options.php:90
+#: packages/blocks/base/loop-options.php:666
+#: packages/blocks/base/loop-options.php:691
+#: packages/blocks/heading/options.php:90
+msgid "Optional. By default, main category link will be used."
+msgstr ""
+
+#: blocks/base/loop-options.php:671
+#: blocks/heading/options.php:70
+#: packages/blocks/base/loop-options.php:671
+#: packages/blocks/heading/options.php:70
+msgid "View More"
+msgstr ""
+
+#: blocks/base/loop-options.php:673
+#: blocks/heading/options.php:72
+#: packages/blocks/base/loop-options.php:673
+#: packages/blocks/heading/options.php:72
+msgid "Add view more text with link."
+msgstr ""
+
+#: blocks/base/loop-options.php:678
+#: blocks/heading/options.php:77
+#: packages/blocks/base/loop-options.php:678
+#: packages/blocks/heading/options.php:77
+msgid "View More Style"
+msgstr ""
+
+#: blocks/base/loop-options.php:689
+#: blocks/base/loop-options.php:1345
+#: blocks/heading/options.php:88
+#: blocks/heading/options.php:281
+#: packages/blocks/base/loop-options.php:689
+#: packages/blocks/base/loop-options.php:1345
+#: packages/blocks/heading/options.php:88
+#: packages/blocks/heading/options.php:281
+msgid "View More Link"
+msgstr ""
+
+#: blocks/base/loop-options.php:697
+#: packages/blocks/base/loop-options.php:697
+msgid "Filters"
+msgstr ""
+
+#: blocks/base/loop-options.php:703
+#: packages/blocks/base/loop-options.php:703
+msgid "Heading Filters"
+msgstr ""
+
+#: blocks/base/loop-options.php:705
+#: blocks/base/loop-options.php:730
+#: packages/blocks/base/loop-options.php:705
+#: packages/blocks/base/loop-options.php:730
+msgid "Filters when enabled, are displayed as links in the heading on right side."
+msgstr ""
+
+#: blocks/base/loop-options.php:708
+#: blocks/base/loop-options.php:715
+#: admin/options/posts-single.php:1395
+#: packages/blocks/base/loop-options.php:708
+#: packages/blocks/base/loop-options.php:715
+msgid "Categories"
+msgstr ""
+
+#: blocks/base/loop-options.php:709
+#: blocks/base/loop-options.php:728
+#: admin/options/posts-single.php:1396
+#: packages/blocks/base/loop-options.php:709
+#: packages/blocks/base/loop-options.php:728
+msgid "Tags"
+msgstr ""
+
+#: blocks/base/loop-options.php:717
+#: packages/blocks/base/loop-options.php:717
+msgid "If no categories are selected, it will default to showing 3 sub-categories."
+msgstr ""
+
+#: blocks/base/loop-options.php:741
+#: blocks/heading/options.php:95
+#: packages/blocks/base/loop-options.php:741
+#: packages/blocks/heading/options.php:95
+msgid "SEO: Heading Tag"
+msgstr ""
+
+#: blocks/base/loop-options.php:759
+#: packages/blocks/base/loop-options.php:759
+msgid "Accent / Main Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:760
+#: packages/blocks/base/loop-options.php:760
+msgid "Used for hovers, heading text (unless changed in Heading Settings) and accent, and so on."
+msgstr ""
+
+#: blocks/base/loop-options.php:771
+#: packages/blocks/base/loop-options.php:771
+msgid "Dark: Accent / Main Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:772
+#: packages/blocks/base/loop-options.php:772
+msgid "For dark mode."
+msgstr ""
+
+#: blocks/base/loop-options.php:782
+#: packages/blocks/base/loop-options.php:782
+msgid "Column Gap"
+msgstr ""
+
+#: blocks/base/loop-options.php:786
+#: packages/blocks/base/loop-options.php:786
+msgid "Small Gap"
+msgstr ""
+
+#: blocks/base/loop-options.php:787
+#: packages/blocks/base/loop-options.php:787
+msgid "Large Gap"
+msgstr ""
+
+#: blocks/base/loop-options.php:788
+#: packages/blocks/base/loop-options.php:788
+msgid "X-Large Gap"
+msgstr ""
+
+#: blocks/base/loop-options.php:795
+#: packages/blocks/base/loop-options.php:795
+msgid "Column Gap Custom"
+msgstr ""
+
+#: blocks/base/loop-options.php:796
+#: packages/blocks/base/loop-options.php:796
+msgid "Vertical spacing between posts."
+msgstr ""
+
+#: blocks/base/loop-options.php:806
+#: packages/blocks/base/loop-options.php:806
+msgid "Row Gap"
+msgstr ""
+
+#: blocks/base/loop-options.php:808
+#: packages/blocks/base/loop-options.php:808
+msgid "Horizontal spacing between posts."
+msgstr ""
+
+#: blocks/base/loop-options.php:818
+#: admin/options/listings/common.php:107
+#: packages/blocks/base/loop-options.php:818
+msgid "Add Separators"
+msgstr ""
+
+#: blocks/base/loop-options.php:826
+#: packages/blocks/base/loop-options.php:826
+msgid "Add Column Separators"
+msgstr ""
+
+#: blocks/base/loop-options.php:834
+#: packages/blocks/base/loop-options.php:834
+msgid "Post Format Icon Scale"
+msgstr ""
+
+#: blocks/base/loop-options.php:845
+#: packages/blocks/base/loop-options.php:845
+msgid "Media/Image Roundness"
+msgstr ""
+
+#: blocks/base/loop-options.php:854
+#: packages/blocks/base/loop-options.php:854
+msgid "Add Media Shadow"
+msgstr ""
+
+#: blocks/base/loop-options.php:870
+#: packages/blocks/base/loop-options.php:870
+msgid "Post Box Shadow"
+msgstr ""
+
+#: blocks/base/loop-options.php:878
+#: packages/blocks/base/loop-options.php:878
+msgid "Post Box Border"
+msgstr ""
+
+#: blocks/base/loop-options.php:887
+#: admin/options/listings/grid.php:60
+#: packages/blocks/base/loop-options.php:887
+msgid "Post Box Roundness"
+msgstr ""
+
+#: blocks/base/loop-options.php:896
+#: packages/blocks/base/loop-options.php:896
+msgid "Post Box Background"
+msgstr ""
+
+#: blocks/base/loop-options.php:905
+#: packages/blocks/base/loop-options.php:905
+msgid "Dark: Box Background"
+msgstr ""
+
+#: blocks/base/loop-options.php:915
+#: packages/blocks/base/loop-options.php:915
+msgid "Post Box Paddings"
+msgstr ""
+
+#: blocks/base/loop-options.php:926
+#: admin/options/listings/common.php:95
+#: packages/blocks/base/loop-options.php:926
+msgid "Content Paddings"
+msgstr ""
+
+#: blocks/base/loop-options.php:938
+#: packages/blocks/base/loop-options.php:938
+msgid "Content Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:949
+#: packages/blocks/base/loop-options.php:949
+msgid "Content Border"
+msgstr ""
+
+#: blocks/base/loop-options.php:958
+#: packages/blocks/base/loop-options.php:958
+msgid "Content Shadow"
+msgstr ""
+
+#: blocks/base/loop-options.php:966
+#: packages/blocks/base/loop-options.php:966
+msgid "Content Background"
+msgstr ""
+
+#: blocks/base/loop-options.php:975
+#: admin/options/posts-single.php:1210
+#: packages/blocks/base/loop-options.php:975
+msgid "Dark: Background"
+msgstr ""
+
+#: blocks/base/loop-options.php:985
+#: packages/blocks/base/loop-options.php:985
+msgid "Post Meta Above Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:997
+#: packages/blocks/base/loop-options.php:997
+msgid "Post Meta Below Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:1007
+#: packages/blocks/base/loop-options.php:1007
+msgid "Post Meta Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1014
+#: packages/blocks/base/loop-options.php:1014
+msgid "Post Meta Icons Size"
+msgstr ""
+
+#: blocks/base/loop-options.php:1025
+#: admin/options/posts-listings.php:142
+#: packages/blocks/base/loop-options.php:1025
+msgid "Excerpts Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1033
+#: packages/blocks/base/loop-options.php:1033
+msgid "Excerpt Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:1045
+#: packages/blocks/base/loop-options.php:1045
+msgid "Excerpt Visibility"
+msgstr ""
+
+#: blocks/base/loop-options.php:1049
+#: packages/blocks/base/loop-options.php:1049
+msgid "Show"
+msgstr ""
+
+#: blocks/base/loop-options.php:1050
+#: packages/blocks/base/loop-options.php:1050
+msgid "Hide"
+msgstr ""
+
+#: blocks/base/loop-options.php:1060
+#: packages/blocks/base/loop-options.php:1060
+msgid "Excerpts Lines Per Device"
+msgstr ""
+
+#: blocks/base/loop-options.php:1077
+#: admin/options/colors-fonts.php:279
+#: packages/blocks/base/loop-options.php:1077
+msgid "Post Titles Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1085
+#: packages/blocks/base/loop-options.php:1085
+msgid "Titles Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:1097
+#: packages/blocks/base/loop-options.php:1097
+msgid "Titles Paddings"
+msgstr ""
+
+#: blocks/base/loop-options.php:1108
+#: packages/blocks/base/loop-options.php:1108
+msgid "Titles Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1117
+#: packages/blocks/base/loop-options.php:1117
+msgid "Dark: Titles Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1127
+#: packages/blocks/base/loop-options.php:1127
+msgid "Hover Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1136
+#: packages/blocks/base/loop-options.php:1136
+msgid "Dark: Hover Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1151
+#: blocks/heading/options.php:106
+#: admin/options/listings/block-headings.php:18
+#: packages/blocks/base/loop-options.php:1151
+#: packages/blocks/heading/options.php:106
+msgid "Heading Align"
+msgstr ""
+
+#: blocks/base/loop-options.php:1154
+#: blocks/heading/options.php:109
+#: admin/options/listings/block-headings.php:22
+#: packages/blocks/base/loop-options.php:1154
+#: packages/blocks/heading/options.php:109
+msgid "Default / Left"
+msgstr ""
+
+#: blocks/base/loop-options.php:1155
+#: admin/options/listings/block-headings.php:23
+#: packages/blocks/base/loop-options.php:1155
+msgid "Centered (Filters Not Supported)"
+msgstr ""
+
+#: blocks/base/loop-options.php:1161
+#: blocks/heading/options.php:140
+#: blocks/newsletter/options.php:235
+#: admin/options/footer.php:235
+#: admin/options/listings/block-headings.php:29
+#: admin/options/newsletter.php:76
+#: packages/blocks/base/loop-options.php:1161
+#: packages/blocks/heading/options.php:140
+#: packages/blocks/newsletter/options.php:235
+msgid "Heading Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1169
+#: blocks/heading/options.php:148
+#: packages/blocks/base/loop-options.php:1169
+#: packages/blocks/heading/options.php:148
+msgid "Space Below"
+msgstr ""
+
+#: blocks/base/loop-options.php:1181
+#: blocks/heading/options.php:116
+#: packages/blocks/base/loop-options.php:1181
+#: packages/blocks/heading/options.php:116
+msgid "Heading Accent Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1192
+#: blocks/heading/options.php:127
+#: packages/blocks/base/loop-options.php:1192
+#: packages/blocks/heading/options.php:127
+msgid "Dark: Heading Accent"
+msgstr ""
+
+#: blocks/base/loop-options.php:1205
+#: blocks/heading/options.php:159
+#: packages/blocks/base/loop-options.php:1205
+#: packages/blocks/heading/options.php:159
+msgid "Heading Text Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1214
+#: blocks/heading/options.php:168
+#: blocks/newsletter/options.php:254
+#: admin/options/footer.php:221
+#: admin/options/listings/block-headings.php:169
+#: admin/options/newsletter.php:101
+#: packages/blocks/base/loop-options.php:1214
+#: packages/blocks/heading/options.php:168
+#: packages/blocks/newsletter/options.php:254
+msgid "Dark: Heading Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1224
+#: blocks/heading/options.php:178
+#: admin/options/footer.php:261
+#: admin/options/listings/block-headings.php:51
+#: packages/blocks/base/loop-options.php:1224
+#: packages/blocks/heading/options.php:178
+msgid "Accent Line Weight"
+msgstr ""
+
+#: blocks/base/loop-options.php:1234
+#: blocks/heading/options.php:188
+#: admin/options/listings/block-headings.php:64
+#: packages/blocks/base/loop-options.php:1234
+#: packages/blocks/heading/options.php:188
+msgid "Accent Line Width"
+msgstr ""
+
+#: blocks/base/loop-options.php:1244
+#: blocks/heading/options.php:198
+#: admin/options/footer.php:289
+#: admin/options/listings/block-headings.php:76
+#: packages/blocks/base/loop-options.php:1244
+#: packages/blocks/heading/options.php:198
+msgid "Accent Line Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1253
+#: blocks/heading/options.php:207
+#: admin/options/footer.php:302
+#: admin/options/listings/block-headings.php:87
+#: packages/blocks/base/loop-options.php:1253
+#: packages/blocks/heading/options.php:207
+msgid "Dark: Accent Line Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1265
+#: admin/options/listings/block-headings.php:100
+#: packages/blocks/base/loop-options.php:1265
+msgid "Border Line Weight"
+msgstr ""
+
+#: blocks/base/loop-options.php:1275
+#: blocks/heading/options.php:229
+#: packages/blocks/base/loop-options.php:1275
+#: packages/blocks/heading/options.php:229
+msgid "Border Line Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1284
+#: blocks/heading/options.php:238
+#: packages/blocks/base/loop-options.php:1284
+#: packages/blocks/heading/options.php:238
+msgid "Dark: Border Line Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1295
+#: blocks/base/loop-options.php:1509
+#: blocks/heading/options.php:249
+#: blocks/newsletter/options.php:299
+#: admin/options/common-data.php:268
+#: admin/options/custom-codes.php:138
+#: admin/options/footer.php:548
+#: admin/options/header.php:443
+#: admin/options/header/buttons.php:117
+#: admin/options/header/off-canvas.php:71
+#: admin/options/listings/cat-labels.php:37
+#: admin/options/newsletter.php:228
+#: packages/blocks/base/loop-options.php:1295
+#: packages/blocks/base/loop-options.php:1509
+#: packages/blocks/heading/options.php:249
+#: packages/blocks/newsletter/options.php:299
+msgid "Background Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1304
+#: blocks/base/loop-options.php:1533
+#: blocks/breadcrumbs/options.php:98
+#: blocks/heading/options.php:258
+#: blocks/newsletter/options.php:212
+#: blocks/social-icons/options.php:193
+#: admin/options/header/buttons.php:197
+#: admin/options/listings/cat-labels.php:84
+#: packages/blocks/base/loop-options.php:1304
+#: packages/blocks/base/loop-options.php:1533
+#: packages/blocks/breadcrumbs/options.php:98
+#: packages/blocks/heading/options.php:258
+#: packages/blocks/newsletter/options.php:212
+#: packages/blocks/social-icons/options.php:193
+msgid "Padding"
+msgstr ""
+
+#: blocks/base/loop-options.php:1316
+#: blocks/heading/options.php:270
+#: admin/options/custom-codes.php:164
+#: admin/options/footer.php:433
+#: admin/options/footer.php:629
+#: admin/options/header.php:681
+#: admin/options/listings/block-headings.php:194
+#: packages/blocks/base/loop-options.php:1316
+#: packages/blocks/heading/options.php:270
+msgid "Inner Padding"
+msgstr ""
+
+#: blocks/base/loop-options.php:1327
+#: admin/options/listings/block-headings.php:207
+#: admin/options/posts-single.php:834
+#: admin/options/posts-single.php:1147
+#: packages/blocks/base/loop-options.php:1327
+msgid "Roundness"
+msgstr ""
+
+#: blocks/base/loop-options.php:1337
+#: admin/options/listings/block-headings.php:242
+#: packages/blocks/base/loop-options.php:1337
+msgid "Filters Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1351
+#: blocks/heading/options.php:287
+#: packages/blocks/base/loop-options.php:1351
+#: packages/blocks/heading/options.php:287
+msgid "More Link Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1359
+#: blocks/heading/options.php:295
+#: packages/blocks/base/loop-options.php:1359
+#: packages/blocks/heading/options.php:295
+msgid "More Link Padding"
+msgstr ""
+
+#: blocks/base/loop-options.php:1377
+#: packages/blocks/base/loop-options.php:1377
+msgid "Pagination Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:1388
+#: admin/options/listings/load-more.php:8
+#: admin/options/posts-listings.php:239
+#: packages/blocks/base/loop-options.php:1388
+msgid "Load More Style"
+msgstr ""
+
+#: blocks/base/loop-options.php:1398
+#: blocks/base/loop-options.php:1502
+#: blocks/breadcrumbs/options.php:109
+#: admin/options/header/auth.php:102
+#: admin/options/header/buttons.php:80
+#: admin/options/header/off-canvas.php:51
+#: admin/options/header/text.php:68
+#: admin/options/layout-main.php:538
+#: admin/options/listings/cat-labels.php:27
+#: admin/options/listings/load-more.php:21
+#: admin/options/listings/read-more.php:31
+#: admin/options/posts-global.php:267
+#: admin/options/posts-single.php:274
+#: packages/blocks/base/loop-options.php:1398
+#: packages/blocks/base/loop-options.php:1502
+#: packages/blocks/breadcrumbs/options.php:109
+msgid "Typography"
+msgstr ""
+
+#: blocks/base/loop-options.php:1407
+#: blocks/base/loop-options.php:1517
+#: admin/options/footer.php:384
+#: admin/options/footer.php:574
+#: admin/options/header/buttons.php:92
+#: admin/options/header/text.php:80
+#: admin/options/layout-main.php:576
+#: admin/options/listings/cat-labels.php:58
+#: admin/options/listings/load-more.php:33
+#: admin/options/listings/read-more.php:43
+#: admin/options/newsletter.php:51
+#: packages/blocks/base/loop-options.php:1407
+#: packages/blocks/base/loop-options.php:1517
+msgid "Text Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1416
+#: inc/elementor/extend-widgets.php:267
+#: admin/options/footer.php:396
+#: admin/options/footer.php:586
+#: admin/options/header/buttons.php:104
+#: admin/options/header/text.php:92
+#: admin/options/layout-main.php:588
+#: admin/options/listings/load-more.php:44
+#: admin/options/listings/read-more.php:53
+#: admin/options/newsletter.php:63
+#: admin/options/posts-single.php:491
+#: packages/blocks/base/loop-options.php:1416
+msgid "Dark: Text Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1427
+#: blocks/newsletter/options.php:285
+#: admin/options/listings/load-more.php:56
+#: admin/options/listings/read-more.php:64
+#: admin/options/newsletter.php:140
+#: packages/blocks/base/loop-options.php:1427
+#: packages/blocks/newsletter/options.php:285
+msgid "Button Background"
+msgstr ""
+
+#: blocks/base/loop-options.php:1436
+#: admin/options/listings/load-more.php:67
+#: admin/options/listings/read-more.php:74
+#: packages/blocks/base/loop-options.php:1436
+msgid "Dark: Button Background"
+msgstr ""
+
+#: blocks/base/loop-options.php:1447
+#: admin/options/footer.php:316
+#: admin/options/header/buttons.php:142
+#: admin/options/listings/block-headings.php:112
+#: admin/options/listings/load-more.php:79
+#: admin/options/listings/read-more.php:85
+#: admin/options/newsletter.php:205
+#: packages/blocks/base/loop-options.php:1447
+msgid "Border Color"
+msgstr ""
+
+#: blocks/base/loop-options.php:1457
+#: admin/options/listings/load-more.php:91
+#: admin/options/listings/read-more.php:96
+#: packages/blocks/base/loop-options.php:1457
+msgid "Button Padding"
+msgstr ""
+
+#: blocks/base/loop-options.php:1469
+#: packages/blocks/base/loop-options.php:1469
+msgid "Button Width"
+msgstr ""
+
+#: blocks/base/loop-options.php:1481
+#: blocks/base/loop-options.php:1525
+#: admin/options/listings/cat-labels.php:71
+#: admin/options/listings/load-more.php:117
+#: packages/blocks/base/loop-options.php:1481
+#: packages/blocks/base/loop-options.php:1525
+msgid "Border Radius"
+msgstr ""
+
+#: blocks/base/loop-options.php:1497
+#: packages/blocks/base/loop-options.php:1497
+msgid "These only apply to category overlay label style, when enabled for this block."
+msgstr ""
+
+#: blocks/base/loop-options.php:1543
+#: blocks/breadcrumbs/options.php:87
+#: admin/options/custom-codes.php:175
+#: admin/options/layout-main.php:524
+#: packages/blocks/base/loop-options.php:1543
+#: packages/blocks/breadcrumbs/options.php:87
+msgid "Margins"
+msgstr ""
+
+#: blocks/base/loop-options.php:1559
+#: widgets/widget-tabbed-recent.php:262
+#: admin/options/common-data.php:118
+#: packages/blocks/base/loop-options.php:1559
+msgid "Category"
+msgstr ""
+
+#: blocks/base/loop-options.php:1560
+#: admin/options/common-data.php:119
+#: packages/blocks/base/loop-options.php:1560
+msgid "Author"
+msgstr ""
+
+#: blocks/base/loop-options.php:1561
+#: widgets/widget-latest-reviews.php:74
+#: admin/options/common-data.php:8
+#: admin/options/common-data.php:120
+#: packages/blocks/base/loop-options.php:1561
+msgid "Date"
+msgstr ""
+
+#: blocks/base/loop-options.php:1562
+#: widgets/widget-popular-posts.php:77
+#: admin/options/common-data.php:122
+#: packages/blocks/base/loop-options.php:1562
+msgid "Comments"
+msgstr ""
+
+#: blocks/base/loop-options.php:1563
+#: admin/options/common-data.php:123
+#: packages/blocks/base/loop-options.php:1563
+msgid "Read Time"
+msgstr ""
+
+#: blocks/base/loop-options.php:1571
+#: packages/blocks/base/loop-options.php:1571
+msgid "Enable Carousel"
+msgstr ""
+
+#: blocks/base/loop-options.php:1578
+#: packages/blocks/base/loop-options.php:1578
+msgid "Custom Slides"
+msgstr ""
+
+#: blocks/base/loop-options.php:1579
+#: packages/blocks/base/loop-options.php:1579
+msgid "Optional. Columns number by default."
+msgstr ""
+
+#: blocks/base/loop-options.php:1587
+#: packages/blocks/base/loop-options.php:1587
+msgid "Slides: Tablets"
+msgstr ""
+
+#: blocks/base/loop-options.php:1588
+#: blocks/base/loop-options.php:1597
+#: packages/blocks/base/loop-options.php:1588
+#: packages/blocks/base/loop-options.php:1597
+msgid "Optional. Auto by default."
+msgstr ""
+
+#: blocks/base/loop-options.php:1596
+#: packages/blocks/base/loop-options.php:1596
+msgid "Slides: Phones"
+msgstr ""
+
+#: blocks/base/loop-options.php:1605
+#: packages/blocks/base/loop-options.php:1605
+msgid "Arrows"
+msgstr ""
+
+#: blocks/base/loop-options.php:1609
+#: packages/blocks/base/loop-options.php:1609
+msgid "A: Transparent (Dark BG Only)"
+msgstr ""
+
+#: blocks/base/loop-options.php:1610
+#: packages/blocks/base/loop-options.php:1610
+msgid "B: Modern Round"
+msgstr ""
+
+#: blocks/base/loop-options.php:1616
+#: packages/blocks/base/loop-options.php:1616
+msgid "Navigation Dots"
+msgstr ""
+
+#: blocks/base/loop-options.php:1624
+#: packages/blocks/base/loop-options.php:1624
+msgid "Autoplay"
+msgstr ""
+
+#: blocks/base/loop-options.php:1632
+#: packages/blocks/base/loop-options.php:1632
+msgid "Autoplay Speed"
+msgstr ""
+
+#: blocks/base/loop-options.php:1640
+#: packages/blocks/base/loop-options.php:1640
+msgid "Navigation Dots Distance"
+msgstr ""
+
+#: blocks/base/loop-options.php:1660
+#: blocks/breadcrumbs/options.php:125
+#: blocks/codes/options.php:78
+#: blocks/heading/options.php:315
+#: blocks/newsletter/options.php:374
+#: blocks/social-icons/options.php:231
+#: packages/blocks/base/loop-options.php:1660
+#: packages/blocks/breadcrumbs/options.php:125
+#: packages/blocks/codes/options.php:78
+#: packages/blocks/heading/options.php:315
+#: packages/blocks/newsletter/options.php:374
+#: packages/blocks/social-icons/options.php:231
+msgid "General"
+msgstr ""
+
+#: blocks/base/loop-options.php:1661
+#: packages/blocks/base/loop-options.php:1661
+msgid "Layout"
+msgstr ""
+
+#: blocks/base/loop-options.php:1662
+#: packages/blocks/base/loop-options.php:1662
+msgid "Posts Source"
+msgstr ""
+
+#: blocks/base/loop-options.php:1663
+#: admin/options/posts-single.php:1380
+#: packages/blocks/base/loop-options.php:1663
+msgid "Heading"
+msgstr ""
+
+#: blocks/base/loop-options.php:1665
+#: blocks/breadcrumbs/options.php:128
+#: blocks/heading/options.php:318
+#: blocks/loops/feat-grid/options.php:32
+#: blocks/loops/grid/options.php:36
+#: blocks/loops/posts-list/options.php:32
+#: blocks/loops/posts-small/options.php:31
+#: blocks/newsletter/options.php:377
+#: blocks/social-icons/options.php:234
+#: packages/blocks/base/loop-options.php:1665
+#: packages/blocks/breadcrumbs/options.php:128
+#: packages/blocks/heading/options.php:318
+#: packages/blocks/loops/feat-grid/options.php:32
+#: packages/blocks/loops/grid/options.php:36
+#: packages/blocks/loops/posts-list/options.php:32
+#: packages/blocks/loops/posts-small/options.php:31
+#: packages/blocks/newsletter/options.php:377
+#: packages/blocks/social-icons/options.php:234
+msgid "Style"
+msgstr ""
+
+#: blocks/base/loop-options.php:1669
+#: packages/blocks/base/loop-options.php:1669
+msgid "Style: Post Titles"
+msgstr ""
+
+#: blocks/base/loop-options.php:1674
+#: packages/blocks/base/loop-options.php:1674
+msgid "Style: Content & Box"
+msgstr ""
+
+#: blocks/base/loop-options.php:1679
+#: packages/blocks/base/loop-options.php:1679
+msgid "Style: Block Heading"
+msgstr ""
+
+#: blocks/base/loop-options.php:1684
+#: packages/blocks/base/loop-options.php:1684
+msgid "Style: Pagination"
+msgstr ""
+
+#: blocks/base/loop-options.php:1689
+#: packages/blocks/base/loop-options.php:1689
+msgid "Style: Category Labels"
+msgstr ""
+
+#: blocks/base/loop-options.php:1704
+#: packages/blocks/base/loop-options.php:1704
+msgid "1 Column"
+msgstr ""
+
+#: blocks/base/loop-options.php:1705
+#: admin/options/footer.php:156
+#: admin/options/posts-single.php:1439
+#: admin/options/posts-single.php:1451
+#: packages/blocks/base/loop-options.php:1705
+msgid "2 Columns"
+msgstr ""
+
+#: blocks/base/loop-options.php:1706
+#: admin/options/footer.php:157
+#: admin/options/posts-single.php:1438
+#: admin/options/posts-single.php:1450
+#: packages/blocks/base/loop-options.php:1706
+msgid "3 Columns"
+msgstr ""
+
+#: blocks/base/loop-options.php:1707
+#: admin/options/footer.php:158
+#: packages/blocks/base/loop-options.php:1707
+msgid "4 Columns"
+msgstr ""
+
+#: blocks/base/loop-options.php:1708
+#: admin/options/footer.php:159
+#: packages/blocks/base/loop-options.php:1708
+msgid "5 Columns"
+msgstr ""
+
+#: blocks/base/loop-options.php:1709
+#: packages/blocks/base/loop-options.php:1709
+msgid "6 Columns"
+msgstr ""
+
+#: blocks/base/loop-options.php:1781
+#: packages/blocks/base/loop-options.php:1781
+msgid "Default / Auto"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:14
+#: admin/options/layout-main.php:373
+#: packages/blocks/breadcrumbs/options.php:14
+msgid "Breadcrumbs"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:27
+#: admin/options/layout-main.php:409
+#: packages/blocks/breadcrumbs/options.php:27
+msgid "Breadcrumbs Style"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:30
+#: admin/options/layout-main.php:415
+#: packages/blocks/breadcrumbs/options.php:30
+msgid "A: Simple"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:31
+#: admin/options/layout-main.php:416
+#: packages/blocks/breadcrumbs/options.php:31
+msgid "B: With Background"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:38
+#: admin/options/layout-main.php:423
+#: packages/blocks/breadcrumbs/options.php:38
+msgid "Breadcrumbs Width"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:42
+#: admin/options/common-data.php:114
+#: admin/options/layout-main.php:430
+#: packages/blocks/breadcrumbs/options.php:42
+msgid "Site Width"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:50
+#: admin/options/layout-main.php:448
+#: packages/blocks/breadcrumbs/options.php:50
+msgid "Add Label?"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:57
+#: admin/options/layout-main.php:393
+#: packages/blocks/breadcrumbs/options.php:57
+msgid "Breadcrumbs Renderer"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:62
+#: admin/options/layout-main.php:399
+#: packages/blocks/breadcrumbs/options.php:62
+msgid "Theme Breadcrumbs"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:63
+#: admin/options/layout-main.php:400
+#: packages/blocks/breadcrumbs/options.php:63
+msgid "RankMath Plugin"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:64
+#: admin/options/layout-main.php:401
+#: packages/blocks/breadcrumbs/options.php:64
+msgid "Yoast"
+msgstr ""
+
+#: blocks/breadcrumbs/options.php:69
+#: admin/options/layout-main.php:457
+#: packages/blocks/breadcrumbs/options.php:69
+msgid "Label Text"
+msgstr ""
+
+#: blocks/codes/options.php:14
+#: packages/blocks/codes/options.php:14
+msgid "Ads / Codes"
+msgstr ""
+
+#: blocks/codes/options.php:28
+#: packages/blocks/codes/options.php:28
+msgid "Ad / HTML Code"
+msgstr ""
+
+#: blocks/codes/options.php:36
+#: admin/options/custom-codes.php:119
+#: packages/blocks/codes/options.php:36
+msgid "AMP Code"
+msgstr ""
+
+#: blocks/codes/options.php:45
+#: packages/blocks/codes/options.php:45
+msgid "Label (Optional)"
+msgstr ""
+
+#: blocks/codes/options.php:62
+#: blocks/newsletter/options.php:358
+#: blocks/social-icons/options.php:215
+#: packages/blocks/codes/options.php:62
+#: packages/blocks/newsletter/options.php:358
+#: packages/blocks/social-icons/options.php:215
+msgid "Widget Title (Optional)"
+msgstr ""
+
+#: blocks/heading/options.php:17
+#: packages/blocks/heading/options.php:17
+msgid "Block Heading"
+msgstr ""
+
+#: blocks/heading/options.php:110
+#: blocks/loops/feat-grid/options.php:164
+#: blocks/newsletter/options.php:182
+#: admin/options/common-data.php:172
+#: packages/blocks/heading/options.php:110
+#: packages/blocks/loops/feat-grid/options.php:164
+#: packages/blocks/newsletter/options.php:182
+msgid "Centered"
+msgstr ""
+
+#: blocks/heading/options.php:219
+#: packages/blocks/heading/options.php:219
+msgid "Border Weight"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:22
+#: packages/blocks/loops/feat-grid/options.php:22
+msgid "Featured Area Grids"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:40
+#: packages/blocks/loops/feat-grid/options.php:40
+msgid "Grid Width"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:41
+#: packages/blocks/loops/feat-grid/options.php:41
+msgid "Note: If setting to full width, make sure the container section is also set to full width."
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:44
+#: packages/blocks/loops/feat-grid/options.php:44
+msgid "Container / Boxed"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:45
+#: admin/options/archives.php:216
+#: admin/options/common-data.php:113
+#: packages/blocks/loops/feat-grid/options.php:45
+msgid "Full Browser Width"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:51
+#: admin/options/archives.php:200
+#: packages/blocks/loops/feat-grid/options.php:51
+msgid "Enable Slider"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:52
+#: packages/blocks/loops/feat-grid/options.php:52
+msgid "Uses a static grid by default. Enabling a slider changes mobile view as well. Note: Make sure to increase number of posts."
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:61
+#: blocks/loops/overlay/options.php:29
+#: packages/blocks/loops/feat-grid/options.php:61
+#: packages/blocks/loops/overlay/options.php:29
+msgid "Titles Style"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:74
+#: packages/blocks/loops/feat-grid/options.php:74
+msgid "Use Aspect Ratio"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:75
+#: packages/blocks/loops/feat-grid/options.php:75
+msgid "Keep an aspect ratio for main item(s) over devices. Disable to use a fixed height instead."
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:100
+#: blocks/loops/feat-grid/options.php:122
+#: packages/blocks/loops/feat-grid/options.php:100
+#: packages/blocks/loops/feat-grid/options.php:122
+msgid "Grid Height"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:147
+#: packages/blocks/loops/feat-grid/options.php:147
+msgid "Overlay Style"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:151
+#: packages/blocks/loops/feat-grid/options.php:151
+msgid "Style A - Bottom Shade"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:152
+#: packages/blocks/loops/feat-grid/options.php:152
+msgid "Style B - Full Overlay"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:158
+#: packages/blocks/loops/feat-grid/options.php:158
+msgid "Overlay Content Position"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:162
+#: admin/options/common-data.php:163
+#: packages/blocks/loops/feat-grid/options.php:162
+msgid "Bottom Left"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:163
+#: packages/blocks/loops/feat-grid/options.php:163
+msgid "Bottom Centered"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:165
+#: packages/blocks/loops/feat-grid/options.php:165
+msgid "Top Centered"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:166
+#: admin/options/common-data.php:160
+#: packages/blocks/loops/feat-grid/options.php:166
+msgid "Top Left"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:172
+#: packages/blocks/loops/feat-grid/options.php:172
+msgid "Meta On Hover"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:173
+#: packages/blocks/loops/feat-grid/options.php:173
+msgid "Show bottom meta on hover only."
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:180
+#: packages/blocks/loops/feat-grid/options.php:180
+msgid "Hover Effect"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:185
+#: packages/blocks/loops/feat-grid/options.php:185
+msgid "Zoom Image"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:191
+#: packages/blocks/loops/feat-grid/options.php:191
+msgid "Gap / Spacing"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:192
+#: packages/blocks/loops/feat-grid/options.php:192
+msgid "Spacing between posts."
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:203
+#: packages/blocks/loops/feat-grid/options.php:203
+msgid "Overlay Pad (Large Items)"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:215
+#: packages/blocks/loops/feat-grid/options.php:215
+msgid "Overlay Pad (Medium Items)"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:226
+#: packages/blocks/loops/feat-grid/options.php:226
+msgid "Overlay Pad (Small Items)"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:240
+#: packages/blocks/loops/feat-grid/options.php:240
+msgid "Small Title Size"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:241
+#: blocks/loops/feat-grid/options.php:252
+#: blocks/loops/feat-grid/options.php:263
+#: blocks/loops/feat-grid/options.php:304
+#: packages/blocks/loops/feat-grid/options.php:241
+#: packages/blocks/loops/feat-grid/options.php:252
+#: packages/blocks/loops/feat-grid/options.php:263
+#: packages/blocks/loops/feat-grid/options.php:304
+msgid "Used for small slices of the grid."
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:251
+#: packages/blocks/loops/feat-grid/options.php:251
+msgid "Medium Title Size"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:262
+#: packages/blocks/loops/feat-grid/options.php:262
+msgid "Large Title Size"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:279
+#: packages/blocks/loops/feat-grid/options.php:279
+msgid "Titles Typpography: Small"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:287
+#: packages/blocks/loops/feat-grid/options.php:287
+msgid "Titles Typpography: Medium"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:295
+#: packages/blocks/loops/feat-grid/options.php:295
+msgid "Titles Typpography: Large"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:303
+#: packages/blocks/loops/feat-grid/options.php:303
+msgid "Max Title Width"
+msgstr ""
+
+#: blocks/loops/focus-grid/options.php:23
+#: packages/blocks/loops/focus-grid/options.php:23
+msgid "Focus Grid Block"
+msgstr ""
+
+#: blocks/loops/focus-grid/options.php:33
+#: blocks/loops/highlights/options.php:55
+#: blocks/loops/news-focus/options.php:51
+#: packages/blocks/loops/focus-grid/options.php:33
+#: packages/blocks/loops/highlights/options.php:55
+#: packages/blocks/loops/news-focus/options.php:51
+msgid "Small Titles Typography"
+msgstr ""
+
+#: blocks/loops/grid/options.php:22
+#: packages/blocks/loops/grid/options.php:22
+msgid "Grid Block"
+msgstr ""
+
+#: blocks/loops/grid/options.php:39
+#: blocks/loops/grid/options.php:53
+#: blocks/loops/posts-list/options.php:35
+#: admin/options/common-data.php:267
+#: admin/options/listings/grid.php:39
+#: admin/options/listings/list.php:35
+#: packages/blocks/loops/grid/options.php:39
+#: packages/blocks/loops/grid/options.php:53
+#: packages/blocks/loops/posts-list/options.php:35
+msgid "Normal"
+msgstr ""
+
+#: blocks/loops/grid/options.php:41
+#: admin/options/listings/grid.php:40
+#: packages/blocks/loops/grid/options.php:41
+msgid "Stylish"
+msgstr ""
+
+#: blocks/loops/grid/options.php:42
+#: blocks/loops/posts-list/options.php:36
+#: admin/options/listings/grid.php:41
+#: admin/options/listings/list.php:36
+#: packages/blocks/loops/grid/options.php:42
+#: packages/blocks/loops/posts-list/options.php:36
+msgid "Cards"
+msgstr ""
+
+#: blocks/loops/grid/options.php:43
+#: packages/blocks/loops/grid/options.php:43
+msgid "Large Post"
+msgstr ""
+
+#: blocks/loops/grid/options.php:50
+#: packages/blocks/loops/grid/options.php:50
+msgid "Large Style"
+msgstr ""
+
+#: blocks/loops/grid/options.php:54
+#: packages/blocks/loops/grid/options.php:54
+msgid "Legacy (Not Recommended)"
+msgstr ""
+
+#: blocks/loops/grid/options.php:61
+#: packages/blocks/loops/grid/options.php:61
+msgid "Media Location"
+msgstr ""
+
+#: blocks/loops/grid/options.php:64
+#: packages/blocks/loops/grid/options.php:64
+msgid "Default (Above)"
+msgstr ""
+
+#: blocks/loops/grid/options.php:65
+#: packages/blocks/loops/grid/options.php:65
+msgid "Below Title"
+msgstr ""
+
+#: blocks/loops/grid/options.php:76
+#: packages/blocks/loops/grid/options.php:76
+msgid "Media Embeds"
+msgstr ""
+
+#: blocks/loops/grid/options.php:89
+#: packages/blocks/loops/grid/options.php:89
+msgid "Show Content"
+msgstr ""
+
+#: blocks/loops/grid/options.php:103
+#: packages/blocks/loops/grid/options.php:103
+msgid "Add Numbers"
+msgstr ""
+
+#: blocks/loops/grid/options.php:108
+#: packages/blocks/loops/grid/options.php:108
+msgid "Simple A: Before Title (Centered)"
+msgstr ""
+
+#: blocks/loops/grid/options.php:109
+#: packages/blocks/loops/grid/options.php:109
+msgid "Simple B: Before Content"
+msgstr ""
+
+#: blocks/loops/grid/options.php:110
+#: packages/blocks/loops/grid/options.php:110
+msgid "Circled"
+msgstr ""
+
+#: blocks/loops/grid/options.php:149
+#: blocks/loops/posts-small/options.php:109
+#: packages/blocks/loops/grid/options.php:149
+#: packages/blocks/loops/posts-small/options.php:109
+msgid "Carousel"
+msgstr ""
+
+#: blocks/loops/highlights/options.php:23
+#: packages/blocks/loops/highlights/options.php:23
+msgid "Highlights Block"
+msgstr ""
+
+#: blocks/loops/highlights/options.php:43
+#: blocks/loops/news-focus/options.php:34
+#: packages/blocks/loops/highlights/options.php:43
+#: packages/blocks/loops/news-focus/options.php:34
+msgid "Small Style"
+msgstr ""
+
+#: blocks/loops/highlights/options.php:46
+#: blocks/loops/news-focus/options.php:37
+#: blocks/loops/posts-small/options.php:34
+#: packages/blocks/loops/highlights/options.php:46
+#: packages/blocks/loops/news-focus/options.php:37
+#: packages/blocks/loops/posts-small/options.php:34
+msgid "Style A: With Thumbs"
+msgstr ""
+
+#: blocks/loops/highlights/options.php:47
+#: blocks/loops/news-focus/options.php:38
+#: blocks/loops/posts-small/options.php:35
+#: packages/blocks/loops/highlights/options.php:47
+#: packages/blocks/loops/news-focus/options.php:38
+#: packages/blocks/loops/posts-small/options.php:35
+msgid "Style B: Arrows / No Thumbs"
+msgstr ""
+
+#: blocks/loops/large/options.php:22
+#: packages/blocks/loops/large/options.php:22
+msgid "Large Block"
+msgstr ""
+
+#: blocks/loops/news-focus/options.php:23
+#: packages/blocks/loops/news-focus/options.php:23
+msgid "News Focus Block"
+msgstr ""
+
+#: blocks/loops/news-focus/options.php:43
+#: packages/blocks/loops/news-focus/options.php:43
+msgid "Big Posts"
+msgstr ""
+
+#: blocks/loops/overlay/options.php:19
+#: packages/blocks/loops/overlay/options.php:19
+msgid "Overlay Block"
+msgstr ""
+
+#: blocks/loops/overlay/options.php:44
+#: admin/options/listings/overlay.php:30
+#: packages/blocks/loops/overlay/options.php:44
+msgid "Overlay Paddings"
+msgstr ""
+
+#: blocks/loops/overlay/options.php:55
+#: packages/blocks/loops/overlay/options.php:55
+msgid "Forced Media Height"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:23
+#: packages/blocks/loops/posts-list/options.php:23
+msgid "List Block"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:54
+#: packages/blocks/loops/posts-list/options.php:54
+msgid "Vertical Centered"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:62
+#: admin/options/listings/list.php:42
+#: packages/blocks/loops/posts-list/options.php:62
+msgid "Grid Style on Phones"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:71
+#: blocks/loops/posts-small/options.php:45
+#: packages/blocks/loops/posts-list/options.php:71
+#: packages/blocks/loops/posts-small/options.php:45
+msgid "Image Position"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:74
+#: blocks/loops/posts-small/options.php:48
+#: blocks/newsletter/options.php:183
+#: blocks/social-icons/options.php:79
+#: packages/blocks/loops/posts-list/options.php:74
+#: packages/blocks/loops/posts-small/options.php:48
+#: packages/blocks/newsletter/options.php:183
+#: packages/blocks/social-icons/options.php:79
+msgid "Left"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:75
+#: blocks/loops/posts-small/options.php:49
+#: blocks/social-icons/options.php:87
+#: packages/blocks/loops/posts-list/options.php:75
+#: packages/blocks/loops/posts-small/options.php:49
+#: packages/blocks/social-icons/options.php:87
+msgid "Right"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:83
+#: packages/blocks/loops/posts-list/options.php:83
+msgid "Image Vertical Position"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:87
+#: blocks/social-icons/options.php:83
+#: packages/blocks/loops/posts-list/options.php:87
+#: packages/blocks/social-icons/options.php:83
+msgid "Center"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:95
+#: blocks/loops/posts-small/options.php:57
+#: admin/options/listings/list.php:77
+#: admin/options/listings/small.php:51
+#: packages/blocks/loops/posts-list/options.php:95
+#: packages/blocks/loops/posts-small/options.php:57
+msgid "Image Width %"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:108
+#: blocks/loops/posts-small/options.php:70
+#: packages/blocks/loops/posts-list/options.php:108
+#: packages/blocks/loops/posts-small/options.php:70
+msgid "Max Width"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:131
+#: packages/blocks/loops/posts-list/options.php:131
+msgid "Media Margin/Gap"
+msgstr ""
+
+#: blocks/loops/posts-small/options.php:22
+#: packages/blocks/loops/posts-small/options.php:22
+msgid "Small List Block"
+msgstr ""
+
+#: blocks/newsletter/options.php:15
+#: packages/blocks/newsletter/options.php:15
+msgid "Newsletter Form"
+msgstr ""
+
+#: blocks/newsletter/options.php:29
+#: packages/blocks/newsletter/options.php:29
+msgid "Headline / CTA"
+msgstr ""
+
+#: blocks/newsletter/options.php:36
+#: admin/options/newsletter.php:8
+#: packages/blocks/newsletter/options.php:36
+msgid "Subscribe Service"
+msgstr ""
+
+#: blocks/newsletter/options.php:39
+#: packages/blocks/newsletter/options.php:39
+msgid "Settings From Customizer"
+msgstr ""
+
+#: blocks/newsletter/options.php:40
+#: admin/options/newsletter.php:13
+#: packages/blocks/newsletter/options.php:40
+msgid "MailChimp"
+msgstr ""
+
+#: blocks/newsletter/options.php:41
+#: admin/options/newsletter.php:14
+#: packages/blocks/newsletter/options.php:41
+msgid "Others (HTML / Shortcode)"
+msgstr ""
+
+#: blocks/newsletter/options.php:48
+#: admin/options/newsletter.php:30
+#: packages/blocks/newsletter/options.php:48
+msgid "Form HTML / Shortcode"
+msgstr ""
+
+#: blocks/newsletter/options.php:58
+#: packages/blocks/newsletter/options.php:58
+msgid "Message"
+msgstr ""
+
+#: blocks/newsletter/options.php:66
+#: admin/options/header/buttons.php:45
+#: packages/blocks/newsletter/options.php:66
+msgid "Button Text"
+msgstr ""
+
+#: blocks/newsletter/options.php:74
+#: admin/options/newsletter.php:20
+#: packages/blocks/newsletter/options.php:74
+msgid "MailChimp Submit URL"
+msgstr ""
+
+#: blocks/newsletter/options.php:81
+#: packages/blocks/newsletter/options.php:81
+msgid "Disclaimer"
+msgstr ""
+
+#: blocks/newsletter/options.php:88
+#: packages/blocks/newsletter/options.php:88
+msgid "Disclaimer Checkbox"
+msgstr ""
+
+#: blocks/newsletter/options.php:96
+#: packages/blocks/newsletter/options.php:96
+msgid "Image At Top"
+msgstr ""
+
+#: blocks/newsletter/options.php:101
+#: packages/blocks/newsletter/options.php:101
+msgid "Normal Image"
+msgstr ""
+
+#: blocks/newsletter/options.php:107
+#: packages/blocks/newsletter/options.php:107
+msgid "Image"
+msgstr ""
+
+#: blocks/newsletter/options.php:118
+#: packages/blocks/newsletter/options.php:118
+msgid "Image Retina/2x"
+msgstr ""
+
+#: blocks/newsletter/options.php:133
+#: packages/blocks/newsletter/options.php:133
+msgid "Base Style"
+msgstr ""
+
+#: blocks/newsletter/options.php:136
+#: packages/blocks/newsletter/options.php:136
+msgid "A: Minimal"
+msgstr ""
+
+#: blocks/newsletter/options.php:137
+#: packages/blocks/newsletter/options.php:137
+msgid "B: Modern"
+msgstr ""
+
+#: blocks/newsletter/options.php:138
+#: packages/blocks/newsletter/options.php:138
+msgid "C: Classic"
+msgstr ""
+
+#: blocks/newsletter/options.php:148
+#: admin/options/colors-fonts.php:36
+#: packages/blocks/newsletter/options.php:148
+msgid "Default / Light"
+msgstr ""
+
+#: blocks/newsletter/options.php:149
+#: packages/blocks/newsletter/options.php:149
+msgid "Dark / Contrast"
+msgstr ""
+
+#: blocks/newsletter/options.php:155
+#: packages/blocks/newsletter/options.php:155
+msgid "Fields Style"
+msgstr ""
+
+#: blocks/newsletter/options.php:156
+#: packages/blocks/newsletter/options.php:156
+msgid "When using a Custom form provided by shortcode or HTML, No Style might be the preferred option."
+msgstr ""
+
+#: blocks/newsletter/options.php:159
+#: packages/blocks/newsletter/options.php:159
+msgid "One Per Row"
+msgstr ""
+
+#: blocks/newsletter/options.php:160
+#: packages/blocks/newsletter/options.php:160
+msgid "Inline (Not for Custom)"
+msgstr ""
+
+#: blocks/newsletter/options.php:161
+#: packages/blocks/newsletter/options.php:161
+msgid "No Extra Style"
+msgstr ""
+
+#: blocks/newsletter/options.php:167
+#: packages/blocks/newsletter/options.php:167
+msgid "Size / Spacing"
+msgstr ""
+
+#: blocks/newsletter/options.php:168
+#: packages/blocks/newsletter/options.php:168
+msgid "These presets will not apply if typography or spacing settings were modified via Customizer."
+msgstr ""
+
+#: blocks/newsletter/options.php:171
+#: inc/admin/editor.php:61
+#: packages/blocks/newsletter/options.php:171
+msgid "Large"
+msgstr ""
+
+#: blocks/newsletter/options.php:173
+#: packages/blocks/newsletter/options.php:173
+msgid "X-Small"
+msgstr ""
+
+#: blocks/newsletter/options.php:179
+#: blocks/social-icons/options.php:75
+#: packages/blocks/newsletter/options.php:179
+#: packages/blocks/social-icons/options.php:75
+msgid "Alignment"
+msgstr ""
+
+#: blocks/newsletter/options.php:189
+#: packages/blocks/newsletter/options.php:189
+msgid "Icon Above"
+msgstr ""
+
+#: blocks/newsletter/options.php:193
+#: packages/blocks/newsletter/options.php:193
+msgid "Faded Icon Background"
+msgstr ""
+
+#: blocks/newsletter/options.php:194
+#: packages/blocks/newsletter/options.php:194
+msgid "Rounded Top Icon"
+msgstr ""
+
+#: blocks/newsletter/options.php:195
+#: packages/blocks/newsletter/options.php:195
+msgid "Simple Icon"
+msgstr ""
+
+#: blocks/newsletter/options.php:201
+#: admin/options/newsletter.php:155
+#: admin/options/posts-single.php:1541
+#: admin/options/posts-single.php:1650
+#: packages/blocks/newsletter/options.php:201
+msgid "Content Max Width"
+msgstr ""
+
+#: blocks/newsletter/options.php:223
+#: admin/options/newsletter.php:169
+#: packages/blocks/newsletter/options.php:223
+msgid "Box Roundness"
+msgstr ""
+
+#: blocks/newsletter/options.php:245
+#: admin/options/footer.php:208
+#: admin/options/listings/block-headings.php:158
+#: admin/options/newsletter.php:89
+#: packages/blocks/newsletter/options.php:245
+msgid "Heading Color"
+msgstr ""
+
+#: blocks/newsletter/options.php:265
+#: admin/options/newsletter.php:114
+#: packages/blocks/newsletter/options.php:265
+msgid "Message Typography"
+msgstr ""
+
+#: blocks/newsletter/options.php:275
+#: admin/options/newsletter.php:127
+#: packages/blocks/newsletter/options.php:275
+msgid "Disclaimer Typography"
+msgstr ""
+
+#: blocks/newsletter/options.php:308
+#: admin/options/custom-codes.php:151
+#: admin/options/footer.php:371
+#: admin/options/footer.php:560
+#: admin/options/header.php:458
+#: admin/options/header/buttons.php:129
+#: admin/options/header/off-canvas.php:82
+#: admin/options/newsletter.php:239
+#: packages/blocks/newsletter/options.php:308
+msgid "Dark: Background Color"
+msgstr ""
+
+#: blocks/newsletter/options.php:318
+#: blocks/newsletter/options.php:385
+#: admin/options/posts-single.php:1197
+#: packages/blocks/newsletter/options.php:318
+#: packages/blocks/newsletter/options.php:385
+msgid "Background"
+msgstr ""
+
+#: blocks/newsletter/options.php:328
+#: admin/options/header.php:476
+#: admin/options/layout-main.php:30
+#: admin/options/newsletter.php:251
+#: packages/blocks/newsletter/options.php:328
+msgid "Background Image"
+msgstr ""
+
+#: blocks/newsletter/options.php:338
+#: admin/options/newsletter.php:268
+#: packages/blocks/newsletter/options.php:338
+msgid "BG Opacity"
+msgstr ""
+
+#: blocks/newsletter/options.php:359
+#: blocks/social-icons/options.php:216
+#: packages/blocks/newsletter/options.php:359
+#: packages/blocks/social-icons/options.php:216
+msgid "Not recommended except for minimal style."
+msgstr ""
+
+#: blocks/newsletter/options.php:381
+#: admin/options/colors-fonts.php:529
+#: packages/blocks/newsletter/options.php:381
+msgid "Colors & Typography"
+msgstr ""
+
+#: blocks/social-icons/options.php:15
+#: packages/blocks/social-icons/options.php:15
+msgid "SmartMag Social Icons"
+msgstr ""
+
+#: blocks/social-icons/options.php:36
+#: packages/blocks/social-icons/options.php:36
+msgid "Preset Style"
+msgstr ""
+
+#: blocks/social-icons/options.php:40
+#: packages/blocks/social-icons/options.php:40
+msgid "Base Icons"
+msgstr ""
+
+#: blocks/social-icons/options.php:41
+#: packages/blocks/social-icons/options.php:41
+msgid "Rounded Monochrome"
+msgstr ""
+
+#: blocks/social-icons/options.php:42
+#: packages/blocks/social-icons/options.php:42
+msgid "Squares with Background Color"
+msgstr ""
+
+#: blocks/social-icons/options.php:49
+#: packages/blocks/social-icons/options.php:49
+msgid "Use Brand Colors"
+msgstr ""
+
+#: blocks/social-icons/options.php:53
+#: packages/blocks/social-icons/options.php:53
+msgid "As Icons Color"
+msgstr ""
+
+#: blocks/social-icons/options.php:54
+#: packages/blocks/social-icons/options.php:54
+msgid "As Background Color"
+msgstr ""
+
+#: blocks/social-icons/options.php:61
+#: packages/blocks/social-icons/options.php:61
+msgid "Social Services"
+msgstr ""
+
+#: blocks/social-icons/options.php:104
+#: admin/options/header/auth.php:87
+#: admin/options/header/cart.php:61
+#: admin/options/header/search.php:148
+#: admin/options/header/switcher.php:83
+#: admin/options/posts-single.php:848
+#: admin/options/posts-single.php:1133
+#: packages/blocks/social-icons/options.php:104
+msgid "Icon Size"
+msgstr ""
+
+#: blocks/social-icons/options.php:115
+#: packages/blocks/social-icons/options.php:115
+msgid "Spacing / Gap"
+msgstr ""
+
+#: blocks/social-icons/options.php:126
+#: packages/blocks/social-icons/options.php:126
+msgid "Roundness / Radius"
+msgstr ""
+
+#: blocks/social-icons/options.php:135
+#: packages/blocks/social-icons/options.php:135
+msgid "Box Size"
+msgstr ""
+
+#: blocks/social-icons/options.php:147
+#: packages/blocks/social-icons/options.php:147
+msgid "Custom Colors"
+msgstr ""
+
+#: blocks/social-icons/options.php:156
+#: packages/blocks/social-icons/options.php:156
+msgid "Dark: Custom Colors"
+msgstr ""
+
+#: blocks/social-icons/options.php:166
+#: packages/blocks/social-icons/options.php:166
+msgid "Hover Colors"
+msgstr ""
+
+#: blocks/social-icons/options.php:175
+#: packages/blocks/social-icons/options.php:175
+msgid "Custom Background"
+msgstr ""
+
+#: blocks/social-icons/options.php:183
+#: packages/blocks/social-icons/options.php:183
+msgid "Dark: Custom BG"
+msgstr ""
+
+#: inc/editor.php:73
+msgid "Quote - Modern"
+msgstr ""
+
+#: inc/editor.php:80
+msgid "Citation (for quote)"
+msgstr ""
+
+#: inc/editor.php:85
+msgid "Quote Left - Modern"
+msgstr ""
+
+#: inc/editor.php:92
+msgid "Quote Right - Modern"
+msgstr ""
+
+#: inc/editor.php:99
+msgid "More Styles"
+msgstr ""
+
+#: inc/elementor/controls/groups/border.php:46
+#: inc/elementor/extend-widgets.php:293
+#: inc/elementor/extend-widgets.php:321
+#: inc/elementor/extend-widgets.php:337
+#: inc/elementor/extend-widgets.php:354
+#: inc/elementor/widgets/links-list.php:320
+#: inc/elementor/widgets/links-list.php:355
+#: admin/options/listings/grid.php:145
+msgid "Dark: Color"
+msgstr ""
+
+#: inc/elementor/controls/groups/border.php:63
+msgid "Border Type"
+msgstr ""
+
+#: inc/elementor/extend-container.php:35
+msgid "Match Theme Spacing"
+msgstr ""
+
+#: inc/elementor/extend-container.php:37
+msgid "Applies theme paddings and widths based on device. Only for top-level containers."
+msgstr ""
+
+#: inc/elementor/extend-container.php:65
+#: inc/elementor/extend-section.php:79
+msgid "Sticky Column"
+msgstr ""
+
+#: inc/elementor/extend-container.php:67
+#: inc/elementor/extend-section.php:81
+msgid "Makes column sticky while scrolling. Native sticky is faster on slower laptops, but smart sticky has better UX."
+msgstr ""
+
+#: inc/elementor/extend-container.php:71
+#: inc/elementor/extend-section.php:85
+#: admin/options/layout-main.php:205
+msgid "Native Sticky"
+msgstr ""
+
+#: inc/elementor/extend-container.php:72
+#: inc/elementor/extend-section.php:86
+#: admin/options/layout-main.php:206
+msgid "Smart Sticky"
+msgstr ""
+
+#: inc/elementor/extend-container.php:82
+#: inc/elementor/extend-section.php:96
+msgid "Is Sidebar?"
+msgstr ""
+
+#: inc/elementor/extend-container.php:84
+#: inc/elementor/extend-container.php:98
+#: inc/elementor/extend-section.php:98
+#: inc/elementor/extend-section.php:112
+msgid "Check if this column is a sidebar."
+msgstr ""
+
+#: inc/elementor/extend-container.php:96
+#: inc/elementor/extend-section.php:110
+#: admin/options/layout-main.php:191
+msgid "Sticky Sidebar"
+msgstr ""
+
+#: inc/elementor/extend-container.php:110
+#: inc/elementor/extend-section.php:124
+msgid "Is Main Column"
+msgstr ""
+
+#: inc/elementor/extend-container.php:112
+#: inc/elementor/extend-section.php:126
+msgid "Check if this column is adjacent to a sidebar."
+msgstr ""
+
+#: inc/elementor/extend-container.php:124
+#: inc/elementor/extend-section.php:138
+msgid "Add Separator"
+msgstr ""
+
+#: inc/elementor/extend-container.php:126
+#: inc/elementor/extend-section.php:140
+msgid "Add a separator line."
+msgstr ""
+
+#: inc/elementor/extend-container.php:138
+#: inc/elementor/extend-section.php:152
+msgid "Column Order"
+msgstr ""
+
+#: inc/elementor/extend-container.php:140
+#: inc/elementor/extend-section.php:154
+msgid "Rearrange columns by setting order for each."
+msgstr ""
+
+#: inc/elementor/extend-section.php:54
+#: inc/elementor/module.php:369
+msgid "Section Query"
+msgstr ""
+
+#: inc/elementor/extend-section.php:184
+#: inc/elementor/extend-widgets.php:43
+#: inc/elementor/extend-widgets.php:111
+msgid "Dark Mode: Background"
+msgstr ""
+
+#: inc/elementor/extend-section.php:214
+#: inc/elementor/extend-widgets.php:73
+#: inc/elementor/extend-widgets.php:141
+msgid "Dark Mode: Border"
+msgstr ""
+
+#: inc/elementor/extend-section.php:253
+msgid "Full-width on Mobile?"
+msgstr ""
+
+#: inc/elementor/extend-section.php:271
+msgid "Space Between Columns (Vertical)"
+msgstr ""
+
+#: inc/elementor/extend-section.php:273
+msgid "This is different from Gap as it only applies vertically between columns excluding the left-most and right-most column.. Gap applies in both directions and also at beginning and end.."
+msgstr ""
+
+#: inc/elementor/extend-section.php:275
+msgid "Default Spacing"
+msgstr ""
+
+#: inc/elementor/extend-section.php:277
+msgid "Small Spacing"
+msgstr ""
+
+#: inc/elementor/extend-section.php:278
+msgid "Large Spacing"
+msgstr ""
+
+#: inc/elementor/extend-section.php:279
+msgid "Wide Spacing"
+msgstr ""
+
+#: inc/elementor/extend-section.php:300
+msgid "Is Dark Section"
+msgstr ""
+
+#: inc/elementor/extend-widgets.php:209
+msgid "Hide In Dark Mode"
+msgstr ""
+
+#: inc/elementor/extend-widgets.php:223
+msgid "Hide In Light Mode"
+msgstr ""
+
+#: inc/elementor/extend-widgets.php:247
+msgid "Theme Content Style"
+msgstr ""
+
+#: inc/elementor/module.php:70
+msgid "SmartMag Blocks"
+msgstr ""
+
+#: inc/elementor/page-settings.php:21
+msgid "Layout Style"
+msgstr ""
+
+#: inc/elementor/page-settings.php:26
+#: metaboxes/options/page.php:13
+#: metaboxes/options/post.php:24
+#: admin/options/common-data.php:29
+#: admin/options/layout-main.php:185
+#: admin/options/layout-pages.php:24
+#: admin/options/posts-single.php:46
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/elementor/page-settings.php:43
+msgid "Page Heading"
+msgstr ""
+
+#: inc/elementor/page-settings.php:47
+#: metaboxes/options/page.php:24
+#: metaboxes/options/page.php:37
+#: metaboxes/options/post.php:46
+#: widgets/widget-blocks.php:190
+#: widgets/widget-social-follow.php:210
+msgid "Yes"
+msgstr ""
+
+#: inc/elementor/page-settings.php:48
+#: metaboxes/options/page.php:25
+#: metaboxes/options/page.php:38
+#: metaboxes/options/post.php:47
+#: widgets/widget-blocks.php:191
+#: widgets/widget-social-follow.php:211
+msgid "No"
+msgstr ""
+
+#: inc/elementor/section-options.php:40
+msgid "Archive / Main Query"
+msgstr ""
+
+#: inc/elementor/widgets/links-list.php:45
+msgid "Links List"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:64
+msgid "Criteria"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:68
+msgid "Add More Criteria"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:71
+msgid "Overall rating auto-calculated:"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:80
+msgid "Pros"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:83
+#: inc/reviews/metabox/form.php:103
+msgid "Heading:"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:88
+msgid "Add A Pro"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:100
+msgid "Cons"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:109
+msgid "Add A Con"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:133
+msgid "Criterion"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:135
+msgid "Label:"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:138
+msgid "Rating:"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:149
+msgid "Pro"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:160
+msgid "Con"
+msgstr ""
+
+#: inc/reviews/metabox/form.php:222
+msgid "Rating cannot be greater than %d."
+msgstr ""
+
+#: inc/reviews/metabox/options.php:8
+msgid "Enable Review?"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:15
+msgid "Display Position"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:19
+msgid "Do not display - Disabled"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:20
+#: admin/options/header.php:625
+msgid "Top"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:21
+#: admin/options/header.php:626
+msgid "Bottom"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:26
+msgid "Show Rating As"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:30
+msgid "Percentage"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:31
+msgid "Points"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:32
+msgid "Stars"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:38
+msgid "Heading (Optional)"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:45
+msgid "Verdict"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:53
+msgid "Verdict Summary"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:63
+msgid "Review Type/Schema"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:90
+msgid "Schema: Author / Brand / Org"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:98
+msgid "Schema: Author Type"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:109
+msgid "Schema: Official Link"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:117
+msgid "Schema: Item Name (Optional)"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:125
+msgid "Schema: Operating System"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:133
+msgid "Schema: Application Category"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:166
+msgid "Schema: Price"
+msgstr ""
+
+#: inc/reviews/metabox/options.php:173
+msgid "Schema: Currency"
+msgstr ""
+
+#: inc/studio/views/el-header-preview.php:6
+msgid "Back to Listing"
+msgstr ""
+
+#: inc/studio/views/el-header-preview.php:12
+#: inc/studio/views/el-header.php:14
+msgid "Close"
+msgstr ""
+
+#: inc/studio/views/el-header-preview.php:21
+msgid "Full Preview"
+msgstr ""
+
+#: inc/studio/views/el-header-preview.php:27
+#: inc/studio/views/el-items.php:20
+msgid "Insert"
+msgstr ""
+
+#: inc/widgets/block-widget.php:115
+msgid "Enter a tag slug or multiple slugs separated by comma."
+msgstr ""
+
+#: metaboxes/options/page.php:7
+#: metaboxes/options/post.php:18
+#: admin/options/layout-main.php:17
+msgid "Layout Type"
+msgstr ""
+
+#: metaboxes/options/page.php:9
+#: metaboxes/options/post.php:20
+msgid "Default uses the site-wide general layout setting set in Appearance > Customize."
+msgstr ""
+
+#: metaboxes/options/page.php:19
+msgid "Show Page Title?"
+msgstr ""
+
+#: metaboxes/options/page.php:31
+#: metaboxes/options/post.php:40
+#: admin/options/posts-single.php:30
+msgid "Spacious / Narrow Style?"
+msgstr ""
+
+#: metaboxes/options/page.php:33
+msgid "Enable to add extra left/right spacing to text to create a dynamic spacious feel. Especially great when used with Full Width. Only works with default and some other page templates."
+msgstr ""
+
+#: metaboxes/options/page.php:44
+msgid "Hide Breadcrumbs"
+msgstr ""
+
+#: metaboxes/options/page.php:46
+msgid "Ignore global settings and disable breadcrumbs on this page."
+msgstr ""
+
+#: metaboxes/options/page.php:61
+msgid "Revolution Slider Plugin"
+msgstr ""
+
+#: metaboxes/options/page.php:67
+msgid "(Legacy) Show Featured Area?"
+msgstr ""
+
+#: metaboxes/options/page.php:73
+msgid "Use Posts Marked as \"Featured Slider Post?\""
+msgstr ""
+
+#: metaboxes/options/page.php:74
+msgid "Use Latest Posts from Whole Site"
+msgstr ""
+
+#: metaboxes/options/page.php:80
+#: metaboxes/terms/category-options.php:79
+#: admin/options/archives.php:190
+msgid "Featured Style"
+msgstr ""
+
+#: metaboxes/options/page.php:84
+msgid "Featured Grid: 1 + 4"
+msgstr ""
+
+#: metaboxes/options/page.php:85
+msgid "Featured Grid: 1 + 3"
+msgstr ""
+
+#: metaboxes/options/page.php:86
+msgid "Legacy / Classic Slider"
+msgstr ""
+
+#: metaboxes/options/page.php:92
+msgid "Number of Slides"
+msgstr ""
+
+#: metaboxes/options/page.php:95
+msgid "Number of posts to show on the left side of the slider. 3 are displayed on the right as a post grid."
+msgstr ""
+
+#: metaboxes/options/page.php:100
+msgid "Slider Limit by Tag"
+msgstr ""
+
+#: metaboxes/options/page.php:102
+msgid "Optional: To limit slider to certain tag or tags. If multiple, separate tag slugs by comma."
+msgstr ""
+
+#: metaboxes/options/page.php:108
+msgid "Slider Manual Post Ids"
+msgstr ""
+
+#: metaboxes/options/page.php:110
+msgid "Optional: ADVANCED! If you only want to show a set of selected pre-selected posts. Enter post ids separated by comma."
+msgstr ""
+
+#: metaboxes/options/page.php:116
+msgid "Revolution Slider Alias"
+msgstr ""
+
+#: metaboxes/options/page.php:118
+msgid "Enter alias of a slider you created in revolution slider plugin."
+msgstr ""
+
+#: metaboxes/options/page.php:128
+#: metaboxes/options/post.php:108
+#: metaboxes/terms/category-options.php:134
+msgid "Boxed: Background Image"
+msgstr ""
+
+#: metaboxes/options/page.php:133
+#: metaboxes/options/post.php:113
+#: metaboxes/terms/category-options.php:140
+msgid "Upload This Picture"
+msgstr ""
+
+#: metaboxes/options/page.php:134
+#: metaboxes/options/post.php:114
+#: metaboxes/terms/category-options.php:141
+msgid "Upload"
+msgstr ""
+
+#: metaboxes/options/page.php:135
+#: metaboxes/options/post.php:115
+#: metaboxes/terms/category-options.php:142
+msgid "Use as Background"
+msgstr ""
+
+#: metaboxes/options/post.php:10
+msgid "Sub Title"
+msgstr ""
+
+#: metaboxes/options/post.php:14
+msgid "Optional Sub-title/text thats displayed below main post title."
+msgstr ""
+
+#: metaboxes/options/post.php:30
+msgid "Post Style"
+msgstr ""
+
+#: metaboxes/options/post.php:34
+msgid "Default (from Customizer)"
+msgstr ""
+
+#: metaboxes/options/post.php:42
+#: admin/options/posts-single.php:32
+msgid "Enable to add extra left/right spacing to text to create a dynamic spacious feel. Especially great when used with Full Width."
+msgstr ""
+
+#: metaboxes/options/post.php:53
+msgid "Primary Category"
+msgstr ""
+
+#: metaboxes/options/post.php:57
+msgid "-- Auto Detect--"
+msgstr ""
+
+#: metaboxes/options/post.php:62
+msgid "When you have multiple categories for a post, auto detection chooses one in alphabetical order. These labels are shown above image in category listings."
+msgstr ""
+
+#: metaboxes/options/post.php:66
+msgid "Disable Featured?"
+msgstr ""
+
+#: metaboxes/options/post.php:67
+msgid "Do not show featured Image, Video, or Gallery at the top for this post, on post page."
+msgstr ""
+
+#: metaboxes/options/post.php:74
+msgid "Featured Video/Audio"
+msgstr ""
+
+#: metaboxes/options/post.php:79
+msgid "When using Video or Audio post format, enter a link of the video or audio from a service like YouTube, Vimeo, SoundCloud. Shortcodes also supported."
+msgstr ""
+
+#: metaboxes/options/post.php:84
+msgid "Multi-page Content Slideshow?"
+msgstr ""
+
+#: metaboxes/options/post.php:85
+msgid "You can use <!--nextpage--> to split a page into multi-page content slideshow."
+msgstr ""
+
+#: metaboxes/options/post.php:91
+msgid "AJAX - No Refresh"
+msgstr ""
+
+#: metaboxes/options/post.php:92
+msgid "Multi-page - Refresh for next page"
+msgstr ""
+
+#: metaboxes/options/post.php:97
+msgid "Legacy: Featured Post"
+msgstr ""
+
+#: metaboxes/options/post.php:98
+msgid "Used for legacy elements only like Classic Slider, or Category Legacy Mega Menu."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:23
+msgid "Custom Listing Layout"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:27
+msgid "Default / Customizer Setting"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:28
+msgid "None / Disabled"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:37
+#: admin/options/archives.php:47
+msgid "Category Listing Style"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:41
+msgid "Default / Global Style"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:48
+msgid "Show Sidebar"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:49
+msgid "Select layout sidebar preference for this category listing."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:57
+#: admin/options/archives.php:176
+msgid "Featured Area"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:61
+msgid "Global Settings"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:62
+#: admin/options/archives.php:182
+msgid "Show Latest Posts/Use a tag filter"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:63
+#: admin/options/archives.php:183
+msgid "Show Posts Marked for Featured Slider"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:71
+#: admin/options/archives.php:223
+msgid "Featured Filter by Tag(s)"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:72
+#: admin/options/archives.php:224
+msgid "Enter a tag slug, or multiple tag slugs separated by comma, to limit posts from."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:90
+#: admin/options/archives.php:232
+msgid "Featured Posts"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:91
+#: admin/options/archives.php:233
+msgid "Number of posts for featured area."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:109
+msgid "Custom Posts Per Page"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:110
+msgid "Override default posts per page setting for this category. Leave empty for default from Settings."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:117
+#: admin/options/listings/cat-labels.php:50
+#: admin/options/posts-global.php:365
+msgid "Category Color"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:118
+msgid "SmartMag uses this for category overlay labels, heading color in home blocks, and in some styles of main navigation."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:125
+msgid "Main Site Color"
+msgstr ""
+
+#: metaboxes/terms/category-options.php:126
+msgid "Not Recommended! Setting this color will change the entire site main color when viewing this category or posts that belong to this category."
+msgstr ""
+
+#: metaboxes/terms/category-options.php:136
+msgid "SmartMag can use an image as body background in boxed layout. Note: It is not a repeating pattern. A large photo is to be used as background."
+msgstr ""
+
+#: smartmag-core.php:206
+msgctxt "Admin: Meta"
+msgid "Post Options"
+msgstr ""
+
+#: smartmag-core.php:215
+msgctxt "Admin: Meta"
+msgid "Page Options"
+msgstr ""
+
+#: smartmag-core.php:456
+msgid "Mega Menu"
+msgstr ""
+
+#: smartmag-core.php:462
+msgid "Category Modern"
+msgstr ""
+
+#: smartmag-core.php:463
+msgid "Category Legacy: (Subcats, Featured & Recent)"
+msgstr ""
+
+#: smartmag-core.php:464
+msgid "Mega Menu for Links"
+msgstr ""
+
+#: smartmag-core.php:480
+msgid "Facebook URL"
+msgstr ""
+
+#: smartmag-core.php:481
+msgid "X (Twitter) URL"
+msgstr ""
+
+#: smartmag-core.php:482
+msgid "Instagram URL"
+msgstr ""
+
+#: smartmag-core.php:483
+msgid "Pinterest URL"
+msgstr ""
+
+#: smartmag-core.php:484
+msgid "BlogLovin URL"
+msgstr ""
+
+#: smartmag-core.php:485
+msgid "Dribble URL"
+msgstr ""
+
+#: smartmag-core.php:486
+msgid "LinkedIn URL"
+msgstr ""
+
+#: smartmag-core.php:487
+msgid "Tumblr URL"
+msgstr ""
+
+#: widgets/widget-about.php:160
+#: admin/options/common-data.php:50
+#: admin/options/common-data.php:98
+msgid "Facebook"
+msgstr ""
+
+#: widgets/widget-about.php:161
+#: admin/options/common-data.php:51
+#: admin/options/common-data.php:99
+msgid "X (Twitter)"
+msgstr ""
+
+#: widgets/widget-about.php:162
+#: admin/options/common-data.php:52
+msgid "Instagram"
+msgstr ""
+
+#: widgets/widget-about.php:163
+#: admin/options/common-data.php:53
+#: admin/options/common-data.php:100
+msgid "Pinterest"
+msgstr ""
+
+#: widgets/widget-about.php:164
+#: admin/options/common-data.php:54
+msgid "Vimeo"
+msgstr ""
+
+#: widgets/widget-about.php:165
+#: admin/options/common-data.php:57
+#: admin/options/common-data.php:102
+msgid "Tumblr"
+msgstr ""
+
+#: widgets/widget-about.php:166
+#: admin/options/common-data.php:73
+msgid "RSS"
+msgstr ""
+
+#: widgets/widget-about.php:167
+#: admin/options/common-data.php:72
+msgid "BlogLovin"
+msgstr ""
+
+#: widgets/widget-about.php:168
+#: admin/options/common-data.php:55
+msgid "Youtube"
+msgstr ""
+
+#: widgets/widget-about.php:169
+#: admin/options/common-data.php:56
+msgid "Dribbble"
+msgstr ""
+
+#: widgets/widget-about.php:170
+#: admin/options/common-data.php:58
+#: admin/options/common-data.php:101
+msgid "LinkedIn"
+msgstr ""
+
+#: widgets/widget-about.php:171
+#: admin/options/common-data.php:65
+msgid "Flickr"
+msgstr ""
+
+#: widgets/widget-about.php:172
+#: admin/options/common-data.php:68
+msgid "SoundCloud"
+msgstr ""
+
+#: widgets/widget-about.php:173
+#: admin/options/common-data.php:71
+msgid "Last.fm"
+msgstr ""
+
+#: widgets/widget-about.php:174
+#: admin/options/common-data.php:69
+#: admin/options/common-data.php:104
+msgid "VKontakte"
+msgstr ""
+
+#: widgets/widget-about.php:175
+#: admin/options/common-data.php:70
+msgid "Steam"
+msgstr ""
+
+#: widgets/widget-about.php:190
+#: widgets/widget-bbp-login.php:171
+#: widgets/widget-blocks.php:133
+#: widgets/widget-flickr.php:133
+#: widgets/widget-latest-posts.php:75
+#: widgets/widget-latest-reviews.php:65
+#: widgets/widget-popular-posts.php:67
+#: widgets/widget-social-follow.php:187
+msgid "Title:"
+msgstr ""
+
+#: widgets/widget-about.php:196
+msgid "About:"
+msgstr ""
+
+#: widgets/widget-about.php:202
+msgid "Logo Text:"
+msgstr ""
+
+#: widgets/widget-about.php:208
+msgid "Logo / Image:"
+msgstr ""
+
+#: widgets/widget-about.php:215
+msgid "Logo Retina/2x:"
+msgstr ""
+
+#: widgets/widget-about.php:221
+msgid "Image Type:"
+msgstr ""
+
+#: widgets/widget-about.php:224
+msgid "Logo"
+msgstr ""
+
+#: widgets/widget-about.php:234
+msgid "Center Align Content"
+msgstr ""
+
+#: widgets/widget-about.php:242
+msgid "Rounded / Circular Image?"
+msgstr ""
+
+#: widgets/widget-about.php:248
+msgid "Social Icons: (optional)"
+msgstr ""
+
+#: widgets/widget-about.php:249
+#: widgets/widget-social-follow.php:217
+msgid "Drag and drop to re-order."
+msgstr ""
+
+#: widgets/widget-about.php:264
+#: widgets/widget-social-follow.php:237
+msgid "Note:"
+msgstr ""
+
+#: widgets/widget-about.php:265
+#: widgets/widget-social-follow.php:238
+msgid "Configure URLs from Customize > General Settings > Social Media Links."
+msgstr ""
+
+#: widgets/widget-ads.php:16
+msgid "SmartMag Legacy - Advertisement"
+msgstr ""
+
+#: widgets/widget-ads.php:18
+msgid "Add advertisement code to your sidebar."
+msgstr ""
+
+#: widgets/widget-ads.php:97
+msgid "Ad Code:"
+msgstr ""
+
+#: widgets/widget-ads.php:103
+msgid "Title: (Optional)"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:176
+msgid "Register URI:"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:181
+msgid "Lost Password URI:"
+msgstr ""
+
+#: widgets/widget-blocks.php:138
+msgid "Number of Posts:"
+msgstr ""
+
+#: widgets/widget-blocks.php:141
+msgid "Configures posts to show for each listing. Leave empty to use theme default number of posts."
+msgstr ""
+
+#: widgets/widget-blocks.php:144
+msgid "Sort By:"
+msgstr ""
+
+#: widgets/widget-blocks.php:152
+msgid "Latest First - Descending"
+msgstr ""
+
+#: widgets/widget-blocks.php:153
+msgid "Oldest First - Ascending"
+msgstr ""
+
+#: widgets/widget-blocks.php:158
+msgid "Block:"
+msgstr ""
+
+#: widgets/widget-blocks.php:161
+msgid "Listing: Modern Grid"
+msgstr ""
+
+#: widgets/widget-blocks.php:162
+msgid "Listing: Modern Grid - 2 Columns"
+msgstr ""
+
+#: widgets/widget-blocks.php:163
+msgid "Listing: Grid Overlay Style"
+msgstr ""
+
+#: widgets/widget-blocks.php:164
+msgid "Listing: Timeline Style"
+msgstr ""
+
+#: widgets/widget-blocks.php:165
+msgid "Block: Highlights"
+msgstr ""
+
+#: widgets/widget-blocks.php:169
+msgid "Check docs and demo to choose the right style."
+msgstr ""
+
+#: widgets/widget-blocks.php:172
+msgid "Limit Categories:"
+msgstr ""
+
+#: widgets/widget-blocks.php:185
+msgid "By default, all categories will be used. Tick categories to limit to a specific category or categories."
+msgstr ""
+
+#: widgets/widget-blocks.php:188
+msgid "Show Category Overlays?"
+msgstr ""
+
+#: widgets/widget-blocks.php:196
+msgid "or Limit with Tags: (optional)"
+msgstr ""
+
+#: widgets/widget-blocks.php:200
+msgid "Separate tags with comma. e.g. cooking,sports"
+msgstr ""
+
+#: widgets/widget-blocks.php:203
+msgid "Offset: (Advanced)"
+msgstr ""
+
+#: widgets/widget-blocks.php:206
+msgid "By specifying an offset as 10 (for example), you can ignore 10 posts in the results."
+msgstr ""
+
+#: widgets/widget-blocks.php:209
+msgid "Post Types: (Advanced)"
+msgstr ""
+
+#: widgets/widget-blocks.php:212
+msgid "Only for advanced users! You can use a custom post type here - multiples supported when separated by comma. Leave empty to use the default format."
+msgstr ""
+
+#: widgets/widget-flickr.php:9
+msgid "Display latest photos from flickr."
+msgstr ""
+
+#: widgets/widget-flickr.php:139
+msgid "Flickr ID (<a href=\"http://www.idgettr.com\">Get Your ID</a>):"
+msgstr ""
+
+#: widgets/widget-flickr.php:145
+msgid "Number of Photos:"
+msgstr ""
+
+#: widgets/widget-flickr.php:151
+msgid "Tags (comma separated, optional):"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:80
+msgid "Limit to Category:"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:82
+msgid "-- Not Limited --"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:102
+msgid "Type:"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:105
+msgid "List"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:106
+msgid "Image Blocks"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:107
+msgid "Numbered List (No Thumbnails)"
+msgstr ""
+
+#: widgets/widget-latest-posts.php:116
+#: widgets/widget-latest-reviews.php:68
+#: widgets/widget-popular-posts.php:70
+msgid "Number of posts to show:"
+msgstr ""
+
+#: widgets/widget-latest-reviews.php:72
+msgid "Order By:"
+msgstr ""
+
+#: widgets/widget-popular-posts.php:75
+msgid "Sorting Type:"
+msgstr ""
+
+#: widgets/widget-popular-posts.php:85
+msgid "From past days:"
+msgstr ""
+
+#: widgets/widget-popular-posts.php:89
+msgid "Note that it may take a few hours before views are counted. It will fallback to comments sorting type until then."
+msgstr ""
+
+#: widgets/widget-social-follow.php:13
+msgid "SmartMag - Social Follow & Counters"
+msgstr ""
+
+#: widgets/widget-social-follow.php:14
+msgid "Show social follower buttons."
+msgstr ""
+
+#: widgets/widget-social-follow.php:193
+msgid "Style:"
+msgstr ""
+
+#: widgets/widget-social-follow.php:195
+msgid "Modern BG - 2 Columns"
+msgstr ""
+
+#: widgets/widget-social-follow.php:196
+msgid "Modern BG - 1 Column"
+msgstr ""
+
+#: widgets/widget-social-follow.php:197
+msgid "Classic BG - 1 Column"
+msgstr ""
+
+#: widgets/widget-social-follow.php:198
+msgid "Classic BG - 2 Columns"
+msgstr ""
+
+#: widgets/widget-social-follow.php:199
+msgid "Light - 1 Columns"
+msgstr ""
+
+#: widgets/widget-social-follow.php:200
+msgid "Light - 2 Columns"
+msgstr ""
+
+#: widgets/widget-social-follow.php:201
+msgid "Modern BG - 2 Col Multiline"
+msgstr ""
+
+#: widgets/widget-social-follow.php:202
+msgid "Light - 2 Col Multiline"
+msgstr ""
+
+#: widgets/widget-social-follow.php:207
+msgid "Show Counters:"
+msgstr ""
+
+#: widgets/widget-social-follow.php:209
+msgid "Global Inherit (From Customize > Social Follow)"
+msgstr ""
+
+#: widgets/widget-social-follow.php:216
+msgid "Social Icons:"
+msgstr ""
+
+#: widgets/widget-tabbed-recent.php:10
+msgid "Tabs: Recent, category1, category2..."
+msgstr ""
+
+#: widgets/widget-tabbed-recent.php:275
+msgid "remove"
+msgstr ""
+
+#: widgets/widget-tabbed-recent.php:280
+msgid "Add More Tabs"
+msgstr ""
+
+#: widgets/widget-tabber.php:15
+msgid "Advanced tabber that supports all widgets."
+msgstr ""
+
+#. Theme Name of the theme
+msgid "SmartMag"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://smartmag.theme-sphere.com"
+msgstr ""
+
+#. Description of the theme
+msgid "Designed by <a href=\"https://theme-sphere.com\">ThemeSphere</a>"
+msgstr ""
+
+#: admin/options.php:42
+msgid "Skins & Demos"
+msgstr ""
+
+#: admin/options.php:48
+msgid "Import Theme Demos"
+msgstr ""
+
+#: admin/options.php:55
+msgid "Advanced: Skins"
+msgstr ""
+
+#: admin/options.php:61
+msgid "Premade Skin"
+msgstr ""
+
+#: admin/options.php:67
+msgid "Trendy"
+msgstr ""
+
+#: admin/options.php:68
+msgid "TheZine"
+msgstr ""
+
+#: admin/options.php:69
+#: admin/options/common-data.php:261
+msgid "Legacy/Classic"
+msgstr ""
+
+#: admin/options.php:88
+msgid "Core Layouts"
+msgstr ""
+
+#: admin/options.php:100
+msgid "Posts & Listings"
+msgstr ""
+
+#: admin/options.php:110
+msgid "Other Layouts"
+msgstr ""
+
+#: admin/options.php:120
+msgid "Misc. Features"
+msgstr ""
+
+#: admin/options.php:140
+msgid "Reset Settings"
+msgstr ""
+
+#: admin/options.php:145
+msgid "Reset All Settings"
+msgstr ""
+
+#: admin/options.php:146
+msgid "Clicking the Reset button will revert all settings in the customizer except for menus, widgets and site identity."
+msgstr ""
+
+#: admin/options/archives.php:29
+msgid "Listings Sidebar"
+msgstr ""
+
+#: admin/options/archives.php:31
+msgid "Applies to all type of archives except home."
+msgstr ""
+
+#: admin/options/archives.php:39
+msgid "For archives only. Does not apply to home built in Elementor."
+msgstr ""
+
+#: admin/options/archives.php:52
+#: admin/options/archives.php:74
+#: admin/options/archives.php:105
+msgid "- Custom Layout -"
+msgstr ""
+
+#: admin/options/archives.php:58
+msgid "Category Custom Layout"
+msgstr ""
+
+#: admin/options/archives.php:69
+msgid "Archive Listing Style"
+msgstr ""
+
+#: admin/options/archives.php:79
+msgid "Archive Custom Layout"
+msgstr ""
+
+#: admin/options/archives.php:89
+msgid "Custom Post Types Layout"
+msgstr ""
+
+#: admin/options/archives.php:100
+msgid "Authors Listing Style"
+msgstr ""
+
+#: admin/options/archives.php:111
+msgid "Authors Custom Layout"
+msgstr ""
+
+#: admin/options/archives.php:122
+msgid "Search Listing Style"
+msgstr ""
+
+#: admin/options/archives.php:132
+msgid "Show Category Descriptions"
+msgstr ""
+
+#: admin/options/archives.php:140
+msgid "Show Archive Title"
+msgstr ""
+
+#: admin/options/archives.php:149
+msgid "Archive Title Format"
+msgstr ""
+
+#: admin/options/archives.php:159
+msgid "Categories Featured Area"
+msgstr ""
+
+#: admin/options/archives.php:160
+msgid "Can be overriden per-category by editing a category."
+msgstr ""
+
+#: admin/options/archives.php:167
+msgid "Skip Featured Posts In Feed"
+msgstr ""
+
+#: admin/options/archives.php:168
+msgid "In the category feed, exclude posts already displayed in the featured area."
+msgstr ""
+
+#: admin/options/archives.php:201
+msgid "Uses a static grid by default. Enabling a slider changes mobile view as well."
+msgstr ""
+
+#: admin/options/archives.php:210
+msgid "Featured Width"
+msgstr ""
+
+#: admin/options/archives.php:215
+msgid "Container"
+msgstr ""
+
+#: admin/options/archives.php:242
+msgid "Grid Gap"
+msgstr ""
+
+#: admin/options/archives.php:254
+msgid "Main Image Ratio"
+msgstr ""
+
+#: admin/options/archives.php:274
+msgid "Categories & Archives"
+msgstr ""
+
+#: admin/options/colors-fonts.php:23
+msgid "Global Colors"
+msgstr ""
+
+#: admin/options/colors-fonts.php:31
+msgid "Main Color Scheme"
+msgstr ""
+
+#: admin/options/colors-fonts.php:37
+msgid "Dark Mode"
+msgstr ""
+
+#: admin/options/colors-fonts.php:44
+msgid "Auto Dark Mode"
+msgstr ""
+
+#: admin/options/colors-fonts.php:55
+msgid "Main Theme Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:69
+msgid "Dark: Main Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:84
+msgid "Site Background Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:97
+msgid "Dark: Site Background"
+msgstr ""
+
+#: admin/options/colors-fonts.php:110
+msgid "Body Text Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:126
+msgid "Dark: Main Text Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:143
+msgid "Headings Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:144
+msgid "Affects post titles, widget/block headings, h elements in posts etc. Can be overridden with more specific settings."
+msgstr ""
+
+#: admin/options/colors-fonts.php:155
+#: admin/options/posts-single.php:516
+msgid "Dark: Headings Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:168
+msgid "Post Titles Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:169
+msgid "Changing this affects post title colors globally. See specifics in Single Post, Posts & Listings etc."
+msgstr ""
+
+#: admin/options/colors-fonts.php:180
+msgid "Dark: Post Titles Color"
+msgstr ""
+
+#: admin/options/colors-fonts.php:194
+msgid "Global Typography"
+msgstr ""
+
+#: admin/options/colors-fonts.php:200
+msgid "Primary Font"
+msgstr ""
+
+#: admin/options/colors-fonts.php:202
+msgid "Used for text mainly. Select from list or click and type your own Google Font name (or TypeKit if you have configured it)."
+msgstr ""
+
+#: admin/options/colors-fonts.php:216
+msgid "Secondary Font"
+msgstr ""
+
+#: admin/options/colors-fonts.php:218
+msgid "Used for headings, meta, navigation and so on."
+msgstr ""
+
+#: admin/options/colors-fonts.php:233
+msgid "Tertiary Font"
+msgstr ""
+
+#: admin/options/colors-fonts.php:235
+msgid "Placeholder to use in your settings."
+msgstr ""
+
+#: admin/options/colors-fonts.php:249
+msgid "Headings Font"
+msgstr ""
+
+#: admin/options/colors-fonts.php:251
+msgid "For headings, post titles etc. Not for block headings."
+msgstr ""
+
+#: admin/options/colors-fonts.php:263
+msgid "Same Heading Font in Post Body"
+msgstr ""
+
+#: admin/options/colors-fonts.php:281
+msgid "Global post title, affects all. For more typography settings, go to Posts & Listings and edit for specifc layouts like Grid."
+msgstr ""
+
+#: admin/options/colors-fonts.php:300
+msgid "Advanced: Base Sizes/Weights"
+msgstr ""
+
+#: admin/options/colors-fonts.php:310
+msgid "Base: X-Small Title"
+msgstr ""
+
+#: admin/options/colors-fonts.php:322
+msgid "Base: Small Title"
+msgstr ""
+
+#: admin/options/colors-fonts.php:335
+msgid "Base: Normal Title"
+msgstr ""
+
+#: admin/options/colors-fonts.php:348
+msgid "Base: Medium Title"
+msgstr ""
+
+#: admin/options/colors-fonts.php:361
+msgid "Base: Large Title"
+msgstr ""
+
+#: admin/options/colors-fonts.php:374
+msgid "Base: X-Large Title"
+msgstr ""
+
+#: admin/options/colors-fonts.php:387
+msgid "Title Bold Weight"
+msgstr ""
+
+#: admin/options/colors-fonts.php:399
+msgid "Title Semi-bold Weight"
+msgstr ""
+
+#: admin/options/colors-fonts.php:438
+msgid "Google Font Settings"
+msgstr ""
+
+#: admin/options/colors-fonts.php:445
+msgid "Google Fonts Charsets"
+msgstr ""
+
+#: admin/options/colors-fonts.php:446
+msgid "Not generally required. Sometimes, an additional character sets maybe necessary."
+msgstr ""
+
+#: admin/options/colors-fonts.php:467
+msgid "Fonts Display Swap"
+msgstr ""
+
+#: admin/options/colors-fonts.php:469
+msgid "%sRead details here%s. You can control how font is rendered while it loads. Swap is best if you have slow connection users. Block if you dont want to see a different font at all."
+msgstr ""
+
+#: admin/options/colors-fonts.php:487
+msgid "Force Disable Google Fonts"
+msgstr ""
+
+#: admin/options/colors-fonts.php:501
+msgid "Adobe Fonts / TypeKit"
+msgstr ""
+
+#: admin/options/colors-fonts.php:508
+msgid "Adobe Fonts Project ID"
+msgstr ""
+
+#: admin/options/colors-fonts.php:511
+msgid "Refer to the %sdocumentation%s to learn about using Typekit."
+msgstr ""
+
+#: admin/options/common-data.php:6
+msgid "Site Logo"
+msgstr ""
+
+#: admin/options/common-data.php:7
+msgid "Main Nav"
+msgstr ""
+
+#: admin/options/common-data.php:9
+msgid "Secondary Nav"
+msgstr ""
+
+#: admin/options/common-data.php:10
+#: admin/options/header/off-canvas.php:94
+msgid "Social Icons"
+msgstr ""
+
+#: admin/options/common-data.php:11
+msgid "Search"
+msgstr ""
+
+#: admin/options/common-data.php:12
+#: admin/options/header/buttons.php:15
+msgid "Button 1"
+msgstr ""
+
+#: admin/options/common-data.php:13
+#: admin/options/header/buttons.php:19
+msgid "Button 2"
+msgstr ""
+
+#: admin/options/common-data.php:14
+#: admin/options/header/buttons.php:23
+msgid "Button 3"
+msgstr ""
+
+#: admin/options/common-data.php:15
+msgid "Dark Switcher"
+msgstr ""
+
+#: admin/options/common-data.php:16
+msgid "Hamburger Icon"
+msgstr ""
+
+#: admin/options/common-data.php:17
+msgid "Cart Icon"
+msgstr ""
+
+#: admin/options/common-data.php:18
+msgid "News Ticker"
+msgstr ""
+
+#: admin/options/common-data.php:19
+#: admin/options/header/text.php:14
+msgid "Text/HTML 1"
+msgstr ""
+
+#: admin/options/common-data.php:20
+#: admin/options/header/text.php:18
+msgid "Text/HTML 2"
+msgstr ""
+
+#: admin/options/common-data.php:21
+#: admin/options/header/text.php:22
+msgid "Text/HTML 3"
+msgstr ""
+
+#: admin/options/common-data.php:22
+#: admin/options/header/text.php:26
+msgid "Text/HTML 4"
+msgstr ""
+
+#: admin/options/common-data.php:23
+msgid "Login/Auth"
+msgstr ""
+
+#: admin/options/common-data.php:28
+#: admin/options/layout-main.php:184
+#: admin/options/layout-pages.php:23
+#: admin/options/posts-single.php:45
+msgid "No Sidebar"
+msgstr ""
+
+#: admin/options/common-data.php:59
+#: admin/options/common-data.php:106
+msgid "WhatsApp"
+msgstr ""
+
+#: admin/options/common-data.php:60
+#: admin/options/common-data.php:103
+msgid "Reddit"
+msgstr ""
+
+#: admin/options/common-data.php:61
+msgid "TikTok"
+msgstr ""
+
+#: admin/options/common-data.php:62
+msgid "Twitch"
+msgstr ""
+
+#: admin/options/common-data.php:63
+msgid "Discord"
+msgstr ""
+
+#: admin/options/common-data.php:64
+#: admin/options/common-data.php:105
+msgid "Telegram"
+msgstr ""
+
+#: admin/options/common-data.php:66
+msgid "Snapchat"
+msgstr ""
+
+#: admin/options/common-data.php:67
+msgid "Threads"
+msgstr ""
+
+#: admin/options/common-data.php:77
+msgid "Google News"
+msgstr ""
+
+#: admin/options/common-data.php:78
+msgid "Flipboard"
+msgstr ""
+
+#: admin/options/common-data.php:107
+msgid "Email"
+msgstr ""
+
+#: admin/options/common-data.php:108
+msgid "Copy Link"
+msgstr ""
+
+#: admin/options/common-data.php:112
+msgid "Site Width + Full BG"
+msgstr ""
+
+#: admin/options/common-data.php:121
+msgid "Updated"
+msgstr ""
+
+#: admin/options/common-data.php:124
+msgid "Views Count"
+msgstr ""
+
+#: admin/options/common-data.php:129
+msgid "Button"
+msgstr ""
+
+#: admin/options/common-data.php:130
+msgid "Colored Button"
+msgstr ""
+
+#: admin/options/common-data.php:131
+msgid "Simple Text"
+msgstr ""
+
+#: admin/options/common-data.php:135
+msgid "A: Minimal Button"
+msgstr ""
+
+#: admin/options/common-data.php:136
+msgid "B: Colored Border & Text"
+msgstr ""
+
+#: admin/options/common-data.php:137
+msgid "C: Solid Color Button"
+msgstr ""
+
+#: admin/options/common-data.php:142
+msgid "Small Bar Overlay"
+msgstr ""
+
+#: admin/options/common-data.php:143
+msgid "Circle/Radial Overlay"
+msgstr ""
+
+#: admin/options/common-data.php:144
+msgid "Stars (In Post Meta)"
+msgstr ""
+
+#: admin/options/common-data.php:149
+msgid "16:9 Wide"
+msgstr ""
+
+#: admin/options/common-data.php:150
+msgid "4:3 Standard"
+msgstr ""
+
+#: admin/options/common-data.php:151
+msgid "21:9 Ultrawide"
+msgstr ""
+
+#: admin/options/common-data.php:152
+msgid "3:2 Rectangle"
+msgstr ""
+
+#: admin/options/common-data.php:153
+msgid "1:1 Square"
+msgstr ""
+
+#: admin/options/common-data.php:154
+msgid "3:4 Tall"
+msgstr ""
+
+#: admin/options/common-data.php:155
+msgid "2:3 Taller"
+msgstr ""
+
+#: admin/options/common-data.php:161
+msgid "Top Center"
+msgstr ""
+
+#: admin/options/common-data.php:162
+msgid "Top Right"
+msgstr ""
+
+#: admin/options/common-data.php:164
+msgid "Bottom Center"
+msgstr ""
+
+#: admin/options/common-data.php:165
+msgid "Bottom Right"
+msgstr ""
+
+#: admin/options/common-data.php:178
+msgid "Infinite Scroll"
+msgstr ""
+
+#: admin/options/common-data.php:194
+msgid "A: Stylish Box"
+msgstr ""
+
+#: admin/options/common-data.php:195
+msgid "A2: Legacy"
+msgstr ""
+
+#: admin/options/common-data.php:196
+#: admin/options/footer.php:194
+msgid "B: Simple Text"
+msgstr ""
+
+#: admin/options/common-data.php:197
+#: admin/options/footer.php:195
+msgid "C: Accent & Border Below"
+msgstr ""
+
+#: admin/options/common-data.php:198
+#: admin/options/footer.php:196
+msgid "C2: Small Accent Line"
+msgstr ""
+
+#: admin/options/common-data.php:199
+msgid "D: Trendy Box"
+msgstr ""
+
+#: admin/options/common-data.php:200
+#: admin/options/footer.php:197
+msgid "E: Line on Right"
+msgstr ""
+
+#: admin/options/common-data.php:201
+#: admin/options/footer.php:198
+msgid "E2: Line on Right 2"
+msgstr ""
+
+#: admin/options/common-data.php:202
+#: admin/options/footer.php:199
+msgid "E3: Double Line on Right"
+msgstr ""
+
+#: admin/options/common-data.php:203
+msgid "F: Accent Above & Border Below"
+msgstr ""
+
+#: admin/options/common-data.php:204
+msgid "G: Dark BG Box"
+msgstr ""
+
+#: admin/options/common-data.php:205
+#: admin/options/footer.php:200
+msgid "H: Simple Line Below"
+msgstr ""
+
+#: admin/options/common-data.php:206
+msgid "I: Bar Line Before"
+msgstr ""
+
+#: admin/options/common-data.php:224
+msgid "Classic Large Posts"
+msgstr ""
+
+#: admin/options/common-data.php:225
+msgid "Grid - 2 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:226
+msgid "Grid - 3 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:227
+msgid "Overlay - 2 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:228
+msgid "Overlay - 3 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:229
+msgid "Overlay - 4 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:230
+msgid "List Style"
+msgstr ""
+
+#: admin/options/common-data.php:231
+msgid "Legacy Classic Large"
+msgstr ""
+
+#: admin/options/common-data.php:232
+msgid "Timeline (Deprecated)"
+msgstr ""
+
+#: admin/options/common-data.php:239
+msgid "Grid 1: 1 Large + 4 small"
+msgstr ""
+
+#: admin/options/common-data.php:240
+msgid "Grid 2: 1 Large + 2 small"
+msgstr ""
+
+#: admin/options/common-data.php:241
+msgid "Grid 3: 1 Large + 2 medium"
+msgstr ""
+
+#: admin/options/common-data.php:242
+msgid "Grid 4: 1 Large + 1 Med + 2 Small"
+msgstr ""
+
+#: admin/options/common-data.php:243
+msgid "Equals: 1 Column"
+msgstr ""
+
+#: admin/options/common-data.php:244
+msgid "Equals: 2 Column"
+msgstr ""
+
+#: admin/options/common-data.php:245
+msgid "Equals: 3 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:246
+msgid "Equals: 4 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:247
+msgid "Equals: 5 Columns"
+msgstr ""
+
+#: admin/options/common-data.php:254
+msgid "Default / Modern"
+msgstr ""
+
+#: admin/options/common-data.php:255
+msgid "Post Cover - Overlay"
+msgstr ""
+
+#: admin/options/common-data.php:256
+msgid "Modern Large"
+msgstr ""
+
+#: admin/options/common-data.php:257
+msgid "Modern Large Bold"
+msgstr ""
+
+#: admin/options/common-data.php:258
+msgid "Modern Large Image"
+msgstr ""
+
+#: admin/options/common-data.php:259
+msgid "Modern Featured Top"
+msgstr ""
+
+#: admin/options/common-data.php:260
+msgid "Large Centered"
+msgstr ""
+
+#: admin/options/common-data.php:262
+msgid "Legacy/Classic: Title Above"
+msgstr ""
+
+#: admin/options/custom-codes.php:18
+msgid "Head Tag Code"
+msgstr ""
+
+#: admin/options/custom-codes.php:19
+msgid "Code to add in the head tag."
+msgstr ""
+
+#: admin/options/custom-codes.php:27
+msgid "AMP: Head Code"
+msgstr ""
+
+#: admin/options/custom-codes.php:28
+msgid "Code to add in the head tag for AMP version only, when AMP is in \"transitional\" mode setting."
+msgstr ""
+
+#: admin/options/custom-codes.php:36
+msgid "Footer Code"
+msgstr ""
+
+#: admin/options/custom-codes.php:37
+msgid "Code to add at end of the body in footer."
+msgstr ""
+
+#: admin/options/custom-codes.php:49
+msgid "After Paragraphs"
+msgstr ""
+
+#: admin/options/custom-codes.php:50
+msgid "Number of paragraphs to insert the ad after."
+msgstr ""
+
+#: admin/options/custom-codes.php:57
+msgid "Ad / Custom Code"
+msgstr ""
+
+#: admin/options/custom-codes.php:58
+msgid "For ads, use the code provided by your ad network such as Adsense. Shortcodes of plugins like AdRotate are also supported."
+msgstr ""
+
+#: admin/options/custom-codes.php:66
+msgid "Different For Phones / Tablets"
+msgstr ""
+
+#: admin/options/custom-codes.php:67
+msgid "Use different codes for mobile, tablets. When enabled, main code above is only shown on Desktop."
+msgstr ""
+
+#: admin/options/custom-codes.php:75
+msgid "Code for Tablets"
+msgstr ""
+
+#: admin/options/custom-codes.php:85
+msgid "Code for Phones"
+msgstr ""
+
+#: admin/options/custom-codes.php:96
+msgid "Wrapper Box"
+msgstr ""
+
+#: admin/options/custom-codes.php:97
+msgid "Place a box around the ad, with a background color."
+msgstr ""
+
+#: admin/options/custom-codes.php:105
+msgid "Hide On"
+msgstr ""
+
+#: admin/options/custom-codes.php:110
+msgid "Homepage"
+msgstr ""
+
+#: admin/options/custom-codes.php:111
+msgid "Archives"
+msgstr ""
+
+#: admin/options/custom-codes.php:112
+msgid "Pages"
+msgstr ""
+
+#: admin/options/custom-codes.php:113
+msgid "Posts"
+msgstr ""
+
+#: admin/options/custom-codes.php:120
+msgid "Normal code cannot be used in AMP pages. If you use AMP, get the AMP code from your ad network."
+msgstr ""
+
+#: admin/options/custom-codes.php:128
+msgid "Heading / Label"
+msgstr ""
+
+#: admin/options/custom-codes.php:240
+msgid "Ads & Custom Codes"
+msgstr ""
+
+#: admin/options/footer.php:26
+msgid "Select layout"
+msgstr ""
+
+#: admin/options/footer.php:31
+msgid "Default / Classic"
+msgstr ""
+
+#: admin/options/footer.php:32
+#: admin/options/posts-single.php:1673
+msgid "Bold Style"
+msgstr ""
+
+#: admin/options/footer.php:39
+msgid "Site Custom Footer"
+msgstr ""
+
+#: admin/options/footer.php:49
+msgid "Different Custom Layouts"
+msgstr ""
+
+#: admin/options/footer.php:58
+msgid "Custom Footer: Homepage"
+msgstr ""
+
+#: admin/options/footer.php:68
+msgid "Custom Footer: Single Posts"
+msgstr ""
+
+#: admin/options/footer.php:78
+msgid "Custom Footer: Pages"
+msgstr ""
+
+#: admin/options/footer.php:88
+msgid "Custom Footer: Archives"
+msgstr ""
+
+#: admin/options/footer.php:104
+#: admin/options/header.php:339
+#: admin/options/header/off-canvas.php:27
+#: admin/options/header/search.php:14
+msgid "Dark"
+msgstr ""
+
+#: admin/options/footer.php:105
+#: admin/options/header.php:338
+#: admin/options/header/off-canvas.php:26
+#: admin/options/header/search.php:13
+msgid "Light"
+msgstr ""
+
+#: admin/options/footer.php:126
+msgid "Copyright Message"
+msgstr ""
+
+#: admin/options/footer.php:141
+msgid "Enable Upper Footer"
+msgstr ""
+
+#: admin/options/footer.php:151
+msgid "Widget Columns"
+msgstr ""
+
+#: admin/options/footer.php:160
+msgid "3 Columns: Half + 1/4 + 1/4"
+msgstr ""
+
+#: admin/options/footer.php:161
+msgid "Custom (Advanced)"
+msgstr ""
+
+#: admin/options/footer.php:169
+msgid "Advanced: Widget Columns"
+msgstr ""
+
+#: admin/options/footer.php:170
+msgid "Sets the columns width and number of columns. Other examples: 1/2+1/2, 1/4+1/4+1/2, 1/2+1/4+1/4+1/4"
+msgstr ""
+
+#: admin/options/footer.php:181
+msgid "Widget Headings"
+msgstr ""
+
+#: admin/options/footer.php:248
+#: admin/options/listings/block-headings.php:40
+msgid "Space / Margin Below"
+msgstr ""
+
+#: admin/options/footer.php:329
+#: admin/options/header/buttons.php:154
+#: admin/options/listings/block-headings.php:123
+#: admin/options/newsletter.php:216
+msgid "Dark: Border Color"
+msgstr ""
+
+#: admin/options/footer.php:343
+#: admin/options/listings/block-headings.php:181
+msgid "Heading Padding"
+msgstr ""
+
+#: admin/options/footer.php:359
+msgid "Upper Background Color"
+msgstr ""
+
+#: admin/options/footer.php:385
+#: admin/options/footer.php:575
+msgid "Only used for text in compatible widgets. Not used for links."
+msgstr ""
+
+#: admin/options/footer.php:409
+#: admin/options/footer.php:599
+#: admin/options/header/nav-small.php:126
+#: admin/options/layout-main.php:551
+#: admin/options/posts-single.php:529
+msgid "Links Color"
+msgstr ""
+
+#: admin/options/footer.php:410
+#: admin/options/footer.php:600
+msgid "Only used for links in compatible widgets."
+msgstr ""
+
+#: admin/options/footer.php:421
+#: admin/options/footer.php:614
+#: admin/options/header/nav-small.php:135
+#: admin/options/layout-main.php:563
+#: admin/options/posts-single.php:561
+msgid "Dark: Links Color"
+msgstr ""
+
+#: admin/options/footer.php:476
+msgid "Footer Layout & General"
+msgstr ""
+
+#: admin/options/footer.php:482
+msgid "Upper Footer"
+msgstr ""
+
+#: admin/options/footer.php:488
+msgid "Lower Footer"
+msgstr ""
+
+#: admin/options/footer.php:493
+msgid "Enable Lower Footer"
+msgstr ""
+
+#: admin/options/footer.php:503
+msgid "Footer Logo"
+msgstr ""
+
+#: admin/options/footer.php:518
+msgid "Footer Logo Retina (2x)"
+msgstr ""
+
+#: admin/options/footer.php:532
+msgid "Footer Social Icons"
+msgstr ""
+
+#: admin/options/footer.php:534
+#: admin/options/header/off-canvas.php:97
+#: admin/options/header/social.php:29
+msgid "NOTE: Configure these icons URLs from %1$sSocial Media Links%2$s."
+msgstr ""
+
+#: admin/options/footer.php:645
+msgid "Footer Settings"
+msgstr ""
+
+#: admin/options/footer.php:647
+msgid "Middle footer is activated by adding an instagram widget."
+msgstr ""
+
+#: admin/options/header.php:21
+msgid "Header Preset"
+msgstr ""
+
+#: admin/options/header.php:32
+msgid "Modern Dark (GoodNews)"
+msgstr ""
+
+#: admin/options/header.php:36
+msgid "Modern Light (Tech)"
+msgstr ""
+
+#: admin/options/header.php:41
+msgid "Simple Light (Tech 2)"
+msgstr ""
+
+#: admin/options/header.php:54
+msgid "Old Light (Trendy)"
+msgstr ""
+
+#: admin/options/header.php:59
+msgid "Old Dark (Zine)"
+msgstr ""
+
+#: admin/options/header.php:64
+msgid "Simple Dark (Sports)"
+msgstr ""
+
+#: admin/options/header.php:69
+msgid "Gaming / Bold"
+msgstr ""
+
+#: admin/options/header.php:73
+msgid "Centered (Geeks Empire)"
+msgstr ""
+
+#: admin/options/header.php:78
+msgid "Minimal Dark (Informed)"
+msgstr ""
+
+#: admin/options/header.php:83
+msgid "Colored Mixed (SocialLife)"
+msgstr ""
+
+#: admin/options/header.php:88
+msgid "Legacy / Classic"
+msgstr ""
+
+#: admin/options/header.php:93
+msgid "Simple Dark 2 (News)"
+msgstr ""
+
+#: admin/options/header.php:98
+msgid "Traditional (PrimeMag)"
+msgstr ""
+
+#: admin/options/header.php:103
+msgid "Mixed (Financial)"
+msgstr ""
+
+#: admin/options/header.php:108
+msgid "Colorful (CityBuzz)"
+msgstr ""
+
+#: admin/options/header.php:113
+msgid "Compact Light (ProMag)"
+msgstr ""
+
+#: admin/options/header.php:118
+msgid "Compact Dark (CoinBase)"
+msgstr ""
+
+#: admin/options/header.php:123
+msgid "Mixed (Fitness)"
+msgstr ""
+
+#: admin/options/header.php:128
+msgid "Modern Light (GossipMag)"
+msgstr ""
+
+#: admin/options/header.php:133
+msgid "Colored Light (MagStudio)"
+msgstr ""
+
+#: admin/options/header.php:138
+msgid "Colored Dark (GameZone)"
+msgstr ""
+
+#: admin/options/header.php:143
+msgid "Complex Light (Health)"
+msgstr ""
+
+#: admin/options/header.php:148
+msgid "Wide Light (SmartTimes)"
+msgstr ""
+
+#: admin/options/header.php:153
+msgid "Classic 2 (NewsTime)"
+msgstr ""
+
+#: admin/options/header.php:158
+msgid "Clean Light (NewsBoard)"
+msgstr ""
+
+#: admin/options/header.php:163
+msgid "Extra Light (TechDrop)"
+msgstr ""
+
+#: admin/options/header.php:168
+msgid "Mixed (Blogger)"
+msgstr ""
+
+#: admin/options/header.php:173
+msgid "Modern Tech (TechBlog)"
+msgstr ""
+
+#: admin/options/header.php:178
+msgid "Modern Mixed (FridayMag)"
+msgstr ""
+
+#: admin/options/header.php:183
+msgid "Colored Compact (SmartPost)"
+msgstr ""
+
+#: admin/options/header.php:188
+msgid "Compact (WorldMag)"
+msgstr ""
+
+#: admin/options/header.php:193
+msgid "Colorul Mixed (EverydayNews)"
+msgstr ""
+
+#: admin/options/header.php:209
+msgid "Header Skin"
+msgstr ""
+
+#: admin/options/header.php:214
+msgid "Smart Header 1"
+msgstr ""
+
+#: admin/options/header.php:215
+msgid "Smart Header 2"
+msgstr ""
+
+#: admin/options/header.php:216
+msgid "Legacy: Classic"
+msgstr ""
+
+#: admin/options/header.php:231
+#: admin/options/header.php:346
+#: admin/options/header/hamburger.php:123
+msgid "Width"
+msgstr ""
+
+#: admin/options/header.php:232
+msgid "Width can be overriden below, under each row."
+msgstr ""
+
+#: admin/options/header.php:241
+msgid "Custom Wrap Width"
+msgstr ""
+
+#: admin/options/header.php:242
+msgid "Only applies when using site width option above or for any of the rows."
+msgstr ""
+
+#: admin/options/header.php:253
+msgid "Drop Shadow Color"
+msgstr ""
+
+#: admin/options/header.php:271
+#: admin/options/header.php:749
+#: admin/options/header.php:828
+msgid "Top Row"
+msgstr ""
+
+#: admin/options/header.php:274
+#: admin/options/header.php:750
+#: admin/options/header.php:829
+msgid "Main Row"
+msgstr ""
+
+#: admin/options/header.php:277
+#: admin/options/header.php:751
+msgid "Bottom Row"
+msgstr ""
+
+#: admin/options/header.php:284
+msgid "Elements Left"
+msgstr ""
+
+#: admin/options/header.php:300
+msgid "Elements Center"
+msgstr ""
+
+#: admin/options/header.php:316
+msgid "Elements Right"
+msgstr ""
+
+#: admin/options/header.php:351
+msgid "Inherit"
+msgstr ""
+
+#: admin/options/header.php:358
+#: admin/options/header/buttons.php:179
+#: admin/options/header/hamburger.php:138
+msgid "Height"
+msgstr ""
+
+#: admin/options/header.php:371
+msgid "Use Gradient BG"
+msgstr ""
+
+#: admin/options/header.php:390
+#: admin/options/header.php:642
+msgid "Gradient Color 1"
+msgstr ""
+
+#: admin/options/header.php:403
+#: admin/options/header.php:654
+msgid "Gradient Color 2"
+msgstr ""
+
+#: admin/options/header.php:415
+#: admin/options/header.php:666
+msgid "Color 1 Position"
+msgstr ""
+
+#: admin/options/header.php:428
+msgid "Gradient Angle"
+msgstr ""
+
+#: admin/options/header.php:492
+msgid "Border Top"
+msgstr ""
+
+#: admin/options/header.php:506
+msgid "Border Top Color"
+msgstr ""
+
+#: admin/options/header.php:520
+msgid "Dark: Border Top"
+msgstr ""
+
+#: admin/options/header.php:537
+msgid "Border Bottom"
+msgstr ""
+
+#: admin/options/header.php:551
+msgid "Border Bottom Color"
+msgstr ""
+
+#: admin/options/header.php:565
+msgid "Dark: Border Bottom"
+msgstr ""
+
+#: admin/options/header.php:582
+msgid "Use Gradient Border"
+msgstr ""
+
+#: admin/options/header.php:603
+msgid "Border Width"
+msgstr ""
+
+#: admin/options/header.php:618
+msgid "Apply To Border"
+msgstr ""
+
+#: admin/options/header.php:735
+#: admin/options/header.php:741
+#: admin/options/header.php:821
+msgid "Sticky Bar"
+msgstr ""
+
+#: admin/options/header.php:758
+msgid "Force Full Width"
+msgstr ""
+
+#: admin/options/header.php:759
+msgid "Use full width row for sticky even if selected row is site width."
+msgstr ""
+
+#: admin/options/header.php:769
+#: admin/options/header.php:835
+msgid "Sticky Type"
+msgstr ""
+
+#: admin/options/header.php:770
+#: admin/options/header.php:836
+msgid "Fixed is always visible on scroll, whereas Smart appears when the user scrolls up."
+msgstr ""
+
+#: admin/options/header.php:775
+#: admin/options/header.php:841
+msgid "Fixed (Always Visible)"
+msgstr ""
+
+#: admin/options/header.php:776
+#: admin/options/header.php:842
+msgid "Smart (On Scrolling Up)"
+msgstr ""
+
+#: admin/options/header.php:784
+#: admin/options/header.php:850
+msgid "Sticky Custom Height"
+msgstr ""
+
+#: admin/options/header.php:942
+msgid "Header & Nav Menu"
+msgstr ""
+
+#: admin/options/header.php:947
+msgid "Premade Headers / Presets"
+msgstr ""
+
+#: admin/options/header.php:952
+msgid "Layout: Main Header"
+msgstr ""
+
+#: admin/options/header.php:957
+msgid "Navigation Menu"
+msgstr ""
+
+#: admin/options/header.php:962
+msgid "Layout: Mobile Header"
+msgstr ""
+
+#: admin/options/header.php:967
+msgid "Offcanvas / Hamburger Menu"
+msgstr ""
+
+#: admin/options/header.php:972
+msgid "Element: Secondary Nav"
+msgstr ""
+
+#: admin/options/header.php:977
+msgid "Element: Social Icons"
+msgstr ""
+
+#: admin/options/header.php:982
+msgid "Element: Logo"
+msgstr ""
+
+#: admin/options/header.php:987
+msgid "Element: Search"
+msgstr ""
+
+#: admin/options/header.php:992
+msgid "Element: Dark Switcher"
+msgstr ""
+
+#: admin/options/header.php:997
+msgid "Element: Hamburger Icon"
+msgstr ""
+
+#: admin/options/header.php:1002
+msgid "Elements: Buttons"
+msgstr ""
+
+#: admin/options/header.php:1007
+msgid "Element: News Ticker"
+msgstr ""
+
+#: admin/options/header.php:1012
+msgid "Element: Date"
+msgstr ""
+
+#: admin/options/header.php:1017
+msgid "Element: Cart Icon"
+msgstr ""
+
+#: admin/options/header.php:1022
+msgid "Element: Login/Auth"
+msgstr ""
+
+#: admin/options/header.php:1027
+msgid "Elements: Text/HTML"
+msgstr ""
+
+#: admin/options/header/auth.php:14
+#: admin/options/header/cart.php:14
+#: admin/options/header/hamburger.php:13
+#: admin/options/header/search.php:71
+#: admin/options/header/social.php:14
+#: admin/options/header/switcher.php:13
+msgid "Main Header"
+msgstr ""
+
+#: admin/options/header/auth.php:19
+#: admin/options/header/cart.php:19
+#: admin/options/header/hamburger.php:18
+#: admin/options/header/search.php:76
+#: admin/options/header/social.php:19
+#: admin/options/header/switcher.php:18
+msgid "Mobile Header"
+msgstr ""
+
+#: admin/options/header/auth.php:27
+msgid "Auth Link Text"
+msgstr ""
+
+#: admin/options/header/auth.php:36
+msgid "Show Icon"
+msgstr ""
+
+#: admin/options/header/auth.php:45
+msgid "Show Logout"
+msgstr ""
+
+#: admin/options/header/auth.php:65
+msgid "Link Color"
+msgstr ""
+
+#: admin/options/header/auth.php:75
+msgid "Dark: Link Color"
+msgstr ""
+
+#: admin/options/header/buttons.php:52
+msgid "Button Link"
+msgstr ""
+
+#: admin/options/header/buttons.php:59
+msgid "Open in New Tab"
+msgstr ""
+
+#: admin/options/header/buttons.php:68
+msgid "Button Style"
+msgstr ""
+
+#: admin/options/header/buttons.php:73
+msgid "Transparent"
+msgstr ""
+
+#: admin/options/header/buttons.php:74
+msgid "Solid Color"
+msgstr ""
+
+#: admin/options/header/buttons.php:167
+msgid "Border Roundness"
+msgstr ""
+
+#: admin/options/header/buttons.php:209
+msgid "Hide on Large Tablets"
+msgstr ""
+
+#: admin/options/header/cart.php:26
+msgid "Hide Counters"
+msgstr ""
+
+#: admin/options/header/cart.php:39
+#: admin/options/header/hamburger.php:38
+#: admin/options/header/search.php:95
+#: admin/options/header/switcher.php:25
+msgid "Icon Color"
+msgstr ""
+
+#: admin/options/header/cart.php:49
+#: admin/options/header/hamburger.php:50
+#: admin/options/header/search.php:108
+#: admin/options/header/switcher.php:39
+msgid "Dark: Icon Color"
+msgstr ""
+
+#: admin/options/header/date.php:8
+msgid "Date Format"
+msgstr ""
+
+#: admin/options/header/hamburger.php:27
+msgid "Hamburger Style"
+msgstr ""
+
+#: admin/options/header/hamburger.php:32
+msgid "Default: Varied Lines"
+msgstr ""
+
+#: admin/options/header/hamburger.php:33
+msgid "Style 2: Simple"
+msgstr ""
+
+#: admin/options/header/hamburger.php:65
+#: admin/options/header/search.php:122
+#: admin/options/header/switcher.php:54
+msgid "Icon Hover"
+msgstr ""
+
+#: admin/options/header/hamburger.php:79
+#: admin/options/header/search.php:134
+#: admin/options/header/switcher.php:68
+msgid "Dark: Icon Hover"
+msgstr ""
+
+#: admin/options/header/hamburger.php:94
+msgid "Scale Size"
+msgstr ""
+
+#: admin/options/header/hamburger.php:108
+msgid "Line Weight"
+msgstr ""
+
+#: admin/options/header/hamburger.php:153
+#: admin/options/header/search.php:180
+#: admin/options/header/switcher.php:98
+msgid "Space Right"
+msgstr ""
+
+#: admin/options/header/logo.php:16
+msgid "Logo Padding"
+msgstr ""
+
+#: admin/options/header/logo.php:28
+msgid "Use H1 on Home Logo for SEO"
+msgstr ""
+
+#: admin/options/header/nav-small.php:21
+msgid "Select Menu"
+msgstr ""
+
+#: admin/options/header/nav-small.php:34
+#: admin/options/header/navigation.php:21
+msgid "Menu Font Family"
+msgstr ""
+
+#: admin/options/header/nav-small.php:46
+#: admin/options/header/navigation.php:33
+msgid "Top-Level Typography"
+msgstr ""
+
+#: admin/options/header/nav-small.php:69
+#: admin/options/header/navigation.php:56
+msgid "Dropdown Typography"
+msgstr ""
+
+#: admin/options/header/nav-small.php:79
+#: admin/options/header/navigation.php:66
+msgid "Navigation Height"
+msgstr ""
+
+#: admin/options/header/nav-small.php:90
+#: admin/options/header/navigation.php:77
+msgid "Space Between Items"
+msgstr ""
+
+#: admin/options/header/nav-small.php:101
+#: admin/options/header/navigation.php:88
+msgid "Hide Dropdown Arrows"
+msgstr ""
+
+#: admin/options/header/nav-small.php:113
+#: admin/options/header/navigation.php:113
+msgid "Remove First Item Left Space"
+msgstr ""
+
+#: admin/options/header/nav-small.php:144
+#: admin/options/header/navigation.php:214
+msgid "Top-level Hover"
+msgstr ""
+
+#: admin/options/header/nav-small.php:153
+msgid "Dark: Top-level Hover"
+msgstr ""
+
+#: admin/options/header/navigation.php:8
+msgid "Menu Hover Style"
+msgstr ""
+
+#: admin/options/header/navigation.php:13
+msgid "A: Normal Color"
+msgstr ""
+
+#: admin/options/header/navigation.php:14
+msgid "B: Line Below"
+msgstr ""
+
+#: admin/options/header/navigation.php:125
+msgid "Hov Line Weight"
+msgstr ""
+
+#: admin/options/header/navigation.php:137
+msgid "No Line Padding"
+msgstr ""
+
+#: admin/options/header/navigation.php:158
+msgid "Mega: Inherit Titles Hover"
+msgstr ""
+
+#: admin/options/header/navigation.php:178
+msgid "Light: Navigation Colors"
+msgstr ""
+
+#: admin/options/header/navigation.php:182
+msgid "Dark: Navigation Colors "
+msgstr ""
+
+#: admin/options/header/navigation.php:205
+msgid "Top-level Links Color"
+msgstr ""
+
+#: admin/options/header/navigation.php:223
+msgid "Arrow Color"
+msgstr ""
+
+#: admin/options/header/navigation.php:235
+msgid "Hover/Active Background"
+msgstr ""
+
+#: admin/options/header/navigation.php:250
+msgid "Dropdown Background"
+msgstr ""
+
+#: admin/options/header/navigation.php:261
+msgid "Dropdown Hover/Active BG"
+msgstr ""
+
+#: admin/options/header/navigation.php:272
+msgid "Dropdown Links"
+msgstr ""
+
+#: admin/options/header/navigation.php:281
+msgid "Dropdown Links Hover/Active"
+msgstr ""
+
+#: admin/options/header/navigation.php:291
+msgid "Separator Lines"
+msgstr ""
+
+#: admin/options/header/navigation.php:301
+msgid "Mega Menu: Sub-Nav BG"
+msgstr ""
+
+#: admin/options/header/navigation.php:312
+msgid "Mega Menu: Sub-Nav Border"
+msgstr ""
+
+#: admin/options/header/off-canvas.php:33
+msgid "Mobile: Show Widgets"
+msgstr ""
+
+#: admin/options/header/off-canvas.php:42
+msgid "Desktops: Show Menu"
+msgstr ""
+
+#: admin/options/header/search.php:8
+msgid "Search Modal Scheme"
+msgstr ""
+
+#: admin/options/header/search.php:21
+msgid "Modal BG Color"
+msgstr ""
+
+#: admin/options/header/search.php:33
+msgid "Dark: Modal BG Color"
+msgstr ""
+
+#: admin/options/header/search.php:46
+msgid "Enable Live Search"
+msgstr ""
+
+#: admin/options/header/search.php:47
+msgid "Live search shows results using AJAX as you type, in the top bar search."
+msgstr ""
+
+#: admin/options/header/search.php:55
+msgid "Live Search Results"
+msgstr ""
+
+#: admin/options/header/search.php:56
+msgid "Set the number of results to show when using the live search."
+msgstr ""
+
+#: admin/options/header/search.php:83
+msgid "Search Type"
+msgstr ""
+
+#: admin/options/header/search.php:88
+msgid "Icon"
+msgstr ""
+
+#: admin/options/header/search.php:89
+msgid "Search Form"
+msgstr ""
+
+#: admin/options/header/search.php:164
+msgid "Icon Size (Top Row)"
+msgstr ""
+
+#: admin/options/header/social.php:26
+msgid "Services to Show"
+msgstr ""
+
+#: admin/options/header/social.php:40
+msgid "Icons Style"
+msgstr ""
+
+#: admin/options/header/social.php:45
+msgid "A: Small Icons"
+msgstr ""
+
+#: admin/options/header/social.php:46
+msgid "B: Rounded Icons"
+msgstr ""
+
+#: admin/options/header/social.php:47
+msgid "C: Small with BG Colors"
+msgstr ""
+
+#: admin/options/header/social.php:53
+#: admin/options/posts-global.php:404
+#: admin/options/posts-single.php:861
+msgid "Icons Color"
+msgstr ""
+
+#: admin/options/header/social.php:64
+#: admin/options/posts-single.php:888
+msgid "Icons Hover"
+msgstr ""
+
+#: admin/options/header/social.php:75
+#: admin/options/posts-global.php:416
+#: admin/options/posts-single.php:874
+msgid "Dark: Icons Color"
+msgstr ""
+
+#: admin/options/header/social.php:89
+#: admin/options/posts-single.php:901
+msgid "Dark: Icons Hover"
+msgstr ""
+
+#: admin/options/header/social.php:101
+msgid "Icons Size"
+msgstr ""
+
+#: admin/options/header/social.php:116
+msgid "Icons Box Size"
+msgstr ""
+
+#: admin/options/header/social.php:130
+msgid "Icons Space"
+msgstr ""
+
+#: admin/options/header/text.php:48
+msgid "Text/HTML"
+msgstr ""
+
+#: admin/options/header/text.php:57
+msgid "Custom Width"
+msgstr ""
+
+#: admin/options/header/ticker.php:17
+msgid "Limit to Tags"
+msgstr ""
+
+#: admin/options/header/ticker.php:25
+msgid "Autoplay Delay (Seconds)"
+msgstr ""
+
+#: admin/options/header/ticker.php:34
+msgid "Ticker Label"
+msgstr ""
+
+#: admin/options/header/ticker.php:43
+msgid "Label Color"
+msgstr ""
+
+#: admin/options/header/ticker.php:55
+msgid "Label Typography"
+msgstr ""
+
+#: admin/options/header/ticker.php:66
+msgid "Label Margins"
+msgstr ""
+
+#: admin/options/header/ticker.php:78
+#: admin/options/layout-main.php:303
+#: admin/options/listings/common.php:82
+msgid "Titles Typography"
+msgstr ""
+
+#: admin/options/header/ticker.php:90
+msgid "Max Width of Titles"
+msgstr ""
+
+#: admin/options/layout-main.php:8
+msgid "Custom Layout Width/Space"
+msgstr ""
+
+#: admin/options/layout-main.php:10
+msgid "Adjust layout width or padding."
+msgstr ""
+
+#: admin/options/layout-main.php:18
+msgid "Select whether you want a boxed or a full-width layout. It affects every page and the whole layout."
+msgstr ""
+
+#: admin/options/layout-main.php:24
+msgid "Boxed"
+msgstr ""
+
+#: admin/options/layout-main.php:48
+msgid "Careful! The default layouts are optimized for all devices. Change these only if you understand the implications."
+msgstr ""
+
+#: admin/options/layout-main.php:54
+msgid "Layout Main Width"
+msgstr ""
+
+#: admin/options/layout-main.php:68
+msgid "Layout Width Percent"
+msgstr ""
+
+#: admin/options/layout-main.php:81
+msgid "Main Layout Padding"
+msgstr ""
+
+#: admin/options/layout-main.php:116
+#: admin/options/layout-main.php:143
+msgid "Sidebar Width"
+msgstr ""
+
+#: admin/options/layout-main.php:124
+msgid "Custom Width: Percent"
+msgstr ""
+
+#: admin/options/layout-main.php:125
+msgid "Custom Width: Pixels"
+msgstr ""
+
+#: admin/options/layout-main.php:131
+msgid "Sidebar Width Percent"
+msgstr ""
+
+#: admin/options/layout-main.php:162
+msgid "Sidebar Gap"
+msgstr ""
+
+#: admin/options/layout-main.php:179
+msgid "Default Sidebar"
+msgstr ""
+
+#: admin/options/layout-main.php:180
+msgid "This setting can be changed per post or page."
+msgstr ""
+
+#: admin/options/layout-main.php:192
+msgid "Make the sidebar always stick around while scrolling. Note: Does not affect sidebars within Elementor homepage."
+msgstr ""
+
+#: admin/options/layout-main.php:200
+msgid "Sticky Sidebar Type"
+msgstr ""
+
+#: admin/options/layout-main.php:201
+msgid "Native sticky is faster on slower laptops, but smart sticky has better UX."
+msgstr ""
+
+#: admin/options/layout-main.php:214
+msgid "Sidebar Separator Line"
+msgstr ""
+
+#: admin/options/layout-main.php:226
+msgid "Advanced: Global Layout"
+msgstr ""
+
+#: admin/options/layout-main.php:234
+msgid "Main Wrap Margins"
+msgstr ""
+
+#: admin/options/layout-main.php:252
+msgid "Sidebar Styling"
+msgstr ""
+
+#: admin/options/layout-main.php:261
+msgid "Widget Titles Style"
+msgstr ""
+
+#: admin/options/layout-main.php:342
+msgid "Title Space Below"
+msgstr ""
+
+#: admin/options/layout-main.php:355
+msgid "Widget Bottom Spacing"
+msgstr ""
+
+#: admin/options/layout-main.php:383
+msgid "Enable Breadcrumbs"
+msgstr ""
+
+#: admin/options/layout-main.php:438
+msgid "Add Context?"
+msgstr ""
+
+#: admin/options/layout-main.php:467
+msgid "On Search Page"
+msgstr ""
+
+#: admin/options/layout-main.php:476
+msgid "On Post/Single"
+msgstr ""
+
+#: admin/options/layout-main.php:485
+msgid "On Pages"
+msgstr ""
+
+#: admin/options/layout-main.php:494
+msgid "On Archives"
+msgstr ""
+
+#: admin/options/layout-main.php:503
+msgid "Pagebuilder Pages (Except Home)"
+msgstr ""
+
+#: admin/options/layout-main.php:513
+msgid "Show Last/Title Item on Single"
+msgstr ""
+
+#: admin/options/layout-main.php:606
+msgid "Main Layout & Sidebar"
+msgstr ""
+
+#: admin/options/layout-pages.php:17
+msgid "Single Page Sidebar"
+msgstr ""
+
+#: admin/options/layout-pages.php:18
+#: admin/options/posts-single.php:40
+msgid "Default is from Main Layout settings. This setting can also be changed per post or page."
+msgstr ""
+
+#: admin/options/layout-pages.php:29
+msgid "Page Titles Typography"
+msgstr ""
+
+#: admin/options/layout-pages.php:43
+msgid "Homepage: No Duplicate Posts"
+msgstr ""
+
+#: admin/options/layout-pages.php:44
+msgid "Enable to display posts only once across the home blocks - same posts will not show again in another block. Note: Does not work with AJAX - use offset feature in blocks instead."
+msgstr ""
+
+#: admin/options/layout-pages.php:55
+msgid "404 Page"
+msgstr ""
+
+#: admin/options/layout-pages.php:61
+msgid "404 Title"
+msgstr ""
+
+#: admin/options/layout-pages.php:70
+msgid "404 Custom Text"
+msgstr ""
+
+#: admin/options/layout-pages.php:82
+msgid "Pages Layouts"
+msgstr ""
+
+#: admin/options/listings/block-headings.php:136
+msgid "Heading Background"
+msgstr ""
+
+#: admin/options/listings/block-headings.php:147
+msgid "Dark: Heading BG"
+msgstr ""
+
+#: admin/options/listings/block-headings.php:159
+msgid "Category color or theme main color will be used by default."
+msgstr ""
+
+#: admin/options/listings/block-headings.php:220
+msgid "Default Heading Style"
+msgstr ""
+
+#: admin/options/listings/block-headings.php:221
+msgid ""
+"\n"
+"\t\t\tThis is only applied if not overriden in block settings, i.e. only if the Heading Style \n"
+"\t\t\tin block heading is set to \"Global Default Style\"."
+msgstr ""
+
+#: admin/options/listings/block-headings.php:232
+msgid "Heading Font"
+msgstr ""
+
+#: admin/options/listings/cat-labels.php:8
+msgid "Enable Overlay Labels"
+msgstr ""
+
+#: admin/options/listings/cat-labels.php:95
+msgid "Overlay Margins"
+msgstr ""
+
+#: admin/options/listings/common.php:8
+msgid "Show Excerpt"
+msgstr ""
+
+#: admin/options/listings/common.php:9
+msgid "For archives only. For home, set per block in pagebuilder."
+msgstr ""
+
+#: admin/options/listings/common.php:35
+#: admin/options/posts-single.php:90
+msgid "Image Aspect Ratio"
+msgstr ""
+
+#: admin/options/listings/common.php:44
+#: admin/options/posts-single.php:100
+msgid "Custom Ratio"
+msgstr ""
+
+#: admin/options/listings/common.php:60
+msgid "Image Margins"
+msgstr ""
+
+#: admin/options/listings/common.php:73
+msgid "Centered Content"
+msgstr ""
+
+#: admin/options/listings/common.php:130
+msgid "Label Position"
+msgstr ""
+
+#: admin/options/listings/feat-grids.php:8
+msgid "Meta: Items Above Title"
+msgstr ""
+
+#: admin/options/listings/feat-grids.php:18
+msgid "Meta: Items Below Title"
+msgstr ""
+
+#: admin/options/listings/grid.php:34
+#: admin/options/listings/list.php:30
+msgid "Style Variation"
+msgstr ""
+
+#: admin/options/listings/grid.php:47
+msgid "Custom Column Gap"
+msgstr ""
+
+#: admin/options/listings/grid.php:74
+msgid "Small Style: Titles"
+msgstr ""
+
+#: admin/options/listings/grid.php:88
+msgid "Numbers Font"
+msgstr ""
+
+#: admin/options/listings/grid.php:101
+msgid "Numbers Typography: Simple"
+msgstr ""
+
+#: admin/options/listings/grid.php:116
+msgid "Numbers Typography: Circled"
+msgstr ""
+
+#: admin/options/listings/grid.php:131
+msgid "Color"
+msgstr ""
+
+#: admin/options/listings/grid.php:159
+msgid "After Number"
+msgstr ""
+
+#: admin/options/listings/large.php:32
+msgid "Legacy Style: Body"
+msgstr ""
+
+#: admin/options/listings/large.php:37
+msgid "Full Post"
+msgstr ""
+
+#: admin/options/listings/large.php:38
+msgid "Excerpts"
+msgstr ""
+
+#: admin/options/listings/list.php:50
+msgid "Custom Row Gap"
+msgstr ""
+
+#: admin/options/listings/list.php:63
+msgid "Cards Box Roundness"
+msgstr ""
+
+#: admin/options/listings/list.php:96
+msgid "Max Width %"
+msgstr ""
+
+#: admin/options/listings/load-more.php:103
+msgid "Button Width (px)"
+msgstr ""
+
+#: admin/options/listings/overlay.php:42
+msgid "Post Titles Style"
+msgstr ""
+
+#: admin/options/listings/read-more.php:15
+msgid "Style: Button"
+msgstr ""
+
+#: admin/options/listings/read-more.php:19
+msgid "Style: Colored Button"
+msgstr ""
+
+#: admin/options/listings/read-more.php:23
+msgid "Style: Basic Text"
+msgstr ""
+
+#: admin/options/listings/small.php:31
+#: admin/options/posts-listings.php:65
+msgid "Reviews Style"
+msgstr ""
+
+#: admin/options/listings/small.php:43
+#: admin/options/posts-listings.php:14
+msgid "Post Format Icons"
+msgstr ""
+
+#: admin/options/listings/small.php:66
+msgid "Max Width (px)"
+msgstr ""
+
+#: admin/options/listings/small.php:83
+#: admin/options/posts-single.php:1458
+msgid "Meta: Above Title"
+msgstr ""
+
+#: admin/options/listings/small.php:92
+#: admin/options/posts-single.php:1469
+msgid "Meta: Below Title"
+msgstr ""
+
+#: admin/options/logos.php:9
+#: admin/options/logos.php:53
+msgid "Logo Image"
+msgstr ""
+
+#: admin/options/logos.php:10
+#: admin/options/logos.php:54
+msgid "Highly recommended to use a logo image in PNG format."
+msgstr ""
+
+#: admin/options/logos.php:19
+#: admin/options/logos.php:64
+msgid "Logo Image Retina (2x)"
+msgstr ""
+
+#: admin/options/logos.php:21
+#: admin/options/logos.php:66
+msgid "This will be used for higher resolution devices like iPhone/Macbook."
+msgstr ""
+
+#: admin/options/logos.php:31
+#: admin/options/logos.php:77
+msgid "Mobile Logo Retina (2x - Optional)"
+msgstr ""
+
+#: admin/options/logos.php:32
+#: admin/options/logos.php:78
+msgid "Use a different logo for mobile devices. Upload a logo twice the normal width and height."
+msgstr ""
+
+#: admin/options/logos.php:44
+msgid "Dark Mode Logos"
+msgstr ""
+
+#: admin/options/logos.php:88
+msgid "Legacy: Text Logo"
+msgstr ""
+
+#: admin/options/logos.php:89
+msgid "NOT RECOMMENDED: Use an image logo instead. An image logo is really important for a real site branding and SEO."
+msgstr ""
+
+#: admin/options/logos.php:98
+msgid "Site Logos"
+msgstr ""
+
+#: admin/options/misc.php:19
+msgid "Social Media Links"
+msgstr ""
+
+#: admin/options/misc.php:20
+msgid "Enter full URLs to your social media profiles. They will be used anywhere you use social profiles such as header, sidebar etc."
+msgstr ""
+
+#: admin/options/misc.php:27
+msgid "Miscellaneous Settings"
+msgstr ""
+
+#: admin/options/misc.php:32
+msgid "Enable One-Click Updates"
+msgstr ""
+
+#: admin/options/misc.php:33
+msgid "Enable to be notified of new updates in your WordPress admin panel with one-click update. REQUIRED: Activated theme license."
+msgstr ""
+
+#: admin/options/misc.php:40
+msgid "Limit Search To Posts"
+msgstr ""
+
+#: admin/options/misc.php:41
+msgid "Enabling this feature will exclude pages from WordPress search."
+msgstr ""
+
+#: admin/options/misc.php:48
+msgid "Images Fade In (On Scroll)"
+msgstr ""
+
+#: admin/options/misc.php:49
+msgid "Creates a fade-in effect for images as the user scrolls down."
+msgstr ""
+
+#: admin/options/misc.php:56
+msgid "Yoast SEO Primary Category"
+msgstr ""
+
+#: admin/options/misc.php:57
+msgid "When Yoast SEO plugin is enabled, use primary categories from Yoast SEO unless overridden by theme post options."
+msgstr ""
+
+#: admin/options/misc.php:63
+msgid "Enable Lightbox for Images"
+msgstr ""
+
+#: admin/options/misc.php:65
+msgid "Show images such as featured images, WordPress galleries etc. in a lightbox on click."
+msgstr ""
+
+#: admin/options/misc.php:71
+msgid "Lightbox on Small Screens"
+msgstr ""
+
+#: admin/options/misc.php:80
+msgid "AMP: Enable Theme Styles"
+msgstr ""
+
+#: admin/options/misc.php:82
+msgid "Enable our special changes for the AMP plugin. Note: Only works when the \"Bunyad AMP\" plugin is active."
+msgstr ""
+
+#: admin/options/misc.php:88
+msgid "Gutenberg: Theme Styles in Editor"
+msgstr ""
+
+#: admin/options/misc.php:90
+msgid "By default Gutenberg has its own styling. Ticking this will enable our custom styles so that the backend is similar looking to frontend."
+msgstr ""
+
+#: admin/options/misc.php:96
+msgid "Enable Widgets Block Editor"
+msgstr ""
+
+#: admin/options/misc.php:98
+msgid "NOT RECOMMENDED: This will convert your widgets to legacy and many widgets and plugins may not work with new WordPress widgets block editor."
+msgstr ""
+
+#: admin/options/misc.php:104
+msgid "Enable Legacy Mode"
+msgstr ""
+
+#: admin/options/misc.php:112
+msgid "Legacy: Load FontAwesome 4"
+msgstr ""
+
+#: admin/options/misc.php:114
+msgid "Legacy: If you used custom FA4 icons before SmartMag v5.0, enable this."
+msgstr ""
+
+#: admin/options/misc.php:126
+msgid "Performance"
+msgstr ""
+
+#: admin/options/misc.php:137
+msgid "LazyLoad Images"
+msgstr ""
+
+#: admin/options/misc.php:144
+msgid "Lazy Loader Type"
+msgstr ""
+
+#: admin/options/misc.php:149
+msgid "Normal - Load Images on scroll"
+msgstr ""
+
+#: admin/options/misc.php:150
+msgid "Smart - Preload Images on Desktops"
+msgstr ""
+
+#: admin/options/misc.php:155
+msgid "Aggressive Lazy Load"
+msgstr ""
+
+#: admin/options/misc.php:157
+msgid "By default, only posts and single images are lazyloaded. Aggressive enables lazyloading on all sidebar widgets and footer as well."
+msgstr ""
+
+#: admin/options/misc.php:162
+msgid "Skip Lazyload"
+msgstr ""
+
+#: admin/options/misc.php:172
+msgid "Preload Featured Image"
+msgstr ""
+
+#: admin/options/misc.php:174
+msgid "Preload the main image on single pages and the first featured grid image on home."
+msgstr ""
+
+#: admin/options/misc.php:179
+msgid "Add First Image Class"
+msgstr ""
+
+#: admin/options/misc.php:181
+msgid "Add class .ts-first-image to the first featured image. You may use this class in lazyload plugin excludes."
+msgstr ""
+
+#: admin/options/misc.php:188
+msgid "Lazyload Embeds"
+msgstr ""
+
+#: admin/options/misc.php:190
+msgid "Currently for embedded tweets as they load very large amount of JS."
+msgstr ""
+
+#: admin/options/misc.php:196
+msgid "Disable BG Image Method"
+msgstr ""
+
+#: admin/options/misc.php:198
+msgid "Advanced: Plugins like WebP Express have a setting to inject <picture> tag when using a CDN. This will requires our bg image method to be disabled."
+msgstr ""
+
+#: admin/options/misc.php:218
+msgid "Disable Elementor Assets"
+msgstr ""
+
+#: admin/options/misc.php:237
+msgid "WooCommerce/Shop"
+msgstr ""
+
+#: admin/options/misc.php:238
+msgid "Settings here only apply if you have WooCommerce installed."
+msgstr ""
+
+#: admin/options/misc.php:243
+msgid "Shop Products / Page"
+msgstr ""
+
+#: admin/options/misc.php:251
+msgid "Product Page - Image Zoom"
+msgstr ""
+
+#: admin/options/misc.php:259
+msgid "Pages Sidebar"
+msgstr ""
+
+#: admin/options/misc.php:261
+msgid "Applies to cart, checkout, account page and single product, unless overridden. For shop page/archives, %1$sedit your shop page%2$s."
+msgstr ""
+
+#: admin/options/newsletter.php:21
+msgid "Paste the whole form or just the URL in action of the form. See docs to learn more."
+msgstr ""
+
+#: admin/options/newsletter.php:42
+msgid "Shared Styling"
+msgstr ""
+
+#: admin/options/newsletter.php:43
+msgid "These will apply to all styles, globally."
+msgstr ""
+
+#: admin/options/newsletter.php:193
+msgid "Style B: Modern"
+msgstr ""
+
+#: admin/options/newsletter.php:197
+msgid "Style C: Classic"
+msgstr ""
+
+#: admin/options/newsletter.php:298
+msgid "Newsletter / Subscribe"
+msgstr ""
+
+#: admin/options/posts-global.php:23
+#: admin/options/posts-single.php:199
+msgid "Items Above Title"
+msgstr ""
+
+#: admin/options/posts-global.php:34
+#: admin/options/posts-single.php:212
+msgid "Items Below Title"
+msgstr ""
+
+#: admin/options/posts-global.php:60
+msgid "Show All Categories"
+msgstr ""
+
+#: admin/options/posts-global.php:68
+msgid "Extra Text Labels"
+msgstr ""
+
+#: admin/options/posts-global.php:76
+#: admin/options/posts-single.php:259
+msgid "Text Labels"
+msgstr ""
+
+#: admin/options/posts-global.php:90
+msgid "Use Modified Date"
+msgstr ""
+
+#: admin/options/posts-global.php:100
+msgid "Default category style. Note: This is not the category overlay."
+msgstr ""
+
+#: admin/options/posts-global.php:105
+#: admin/options/posts-single.php:251
+msgid "Label/Badge"
+msgstr ""
+
+#: admin/options/posts-global.php:106
+#: admin/options/posts-single.php:252
+msgid "Normal Text"
+msgstr ""
+
+#: admin/options/posts-global.php:112
+msgid "Minimum Comments or Hide"
+msgstr ""
+
+#: admin/options/posts-global.php:120
+#: admin/options/posts-single.php:225
+msgid "Show Author Image"
+msgstr ""
+
+#: admin/options/posts-global.php:129
+msgid "Force Disable Items"
+msgstr ""
+
+#: admin/options/posts-global.php:157
+msgid "Posts Views & Ranks"
+msgstr ""
+
+#: admin/options/posts-global.php:165
+msgid "Minimum Views or Hide"
+msgstr ""
+
+#: admin/options/posts-global.php:166
+msgid "Minimum number of views before they are shown in meta."
+msgstr ""
+
+#: admin/options/posts-global.php:175
+msgid "Readable Numbers"
+msgstr ""
+
+#: admin/options/posts-global.php:176
+msgid "Show 10k instead of 10,000 and so on."
+msgstr ""
+
+#: admin/options/posts-global.php:185
+msgid "Enable Ranks"
+msgstr ""
+
+#: admin/options/posts-global.php:186
+msgid "To show a different color with hot icon when posts have more than defined views."
+msgstr ""
+
+#: admin/options/posts-global.php:195
+msgid "Views for Hot"
+msgstr ""
+
+#: admin/options/posts-global.php:206
+msgid "Views for Trend"
+msgstr ""
+
+#: admin/options/posts-global.php:217
+msgid "Views for Viral"
+msgstr ""
+
+#: admin/options/posts-global.php:229
+msgid "Plugin Settings"
+msgstr ""
+
+#: admin/options/posts-global.php:233
+msgid "Post Views Settings"
+msgstr ""
+
+#: admin/options/posts-global.php:247
+msgid "Posts Meta Design"
+msgstr ""
+
+#: admin/options/posts-global.php:255
+msgid "Meta Font"
+msgstr ""
+
+#: admin/options/posts-global.php:278
+msgid "Category Typography"
+msgstr ""
+
+#: admin/options/posts-global.php:301
+msgid "Author Typography"
+msgstr ""
+
+#: admin/options/posts-global.php:315
+msgid "Items Color"
+msgstr ""
+
+#: admin/options/posts-global.php:329
+msgid "Dark: Items Color"
+msgstr ""
+
+#: admin/options/posts-global.php:341
+msgid "Author Color"
+msgstr ""
+
+#: admin/options/posts-global.php:353
+msgid "Dark: Author Color"
+msgstr ""
+
+#: admin/options/posts-global.php:377
+msgid "Dark: Category Color"
+msgstr ""
+
+#: admin/options/posts-global.php:390
+msgid "Icons Scale"
+msgstr ""
+
+#: admin/options/posts-global.php:427
+msgid "Custom Separator"
+msgstr ""
+
+#: admin/options/posts-global.php:441
+msgid "Separator Spacing"
+msgstr ""
+
+#: admin/options/posts-global.php:454
+msgid "Separator Scale"
+msgstr ""
+
+#: admin/options/posts-global.php:469
+msgid "Disable Separators"
+msgstr ""
+
+#: admin/options/posts-global.php:487
+msgid "Global Posts Settings"
+msgstr ""
+
+#: admin/options/posts-listings.php:15
+msgid "For archives only. Post format icons (video, gallery etc.) are displayed over image. For home, set per block in pagebuilder. Small posts have separate setting."
+msgstr ""
+
+#: admin/options/posts-listings.php:23
+#: admin/options/posts-single.php:71
+msgid "Featured Image Roundness"
+msgstr ""
+
+#: admin/options/posts-listings.php:24
+#: admin/options/posts-single.php:72
+msgid "Set custom border radius for featured images."
+msgstr ""
+
+#: admin/options/posts-listings.php:35
+msgid "Featured Image Shadows"
+msgstr ""
+
+#: admin/options/posts-listings.php:36
+#: admin/options/posts-single.php:64
+msgid "Add a shadow on featured images."
+msgstr ""
+
+#: admin/options/posts-listings.php:55
+msgid "Read More Text"
+msgstr ""
+
+#: admin/options/posts-listings.php:58
+msgid "Default text used on read more buttons and links."
+msgstr ""
+
+#: admin/options/posts-listings.php:66
+msgid "Style for showing review numbers in posts blocks and listings."
+msgstr ""
+
+#: admin/options/posts-listings.php:86
+msgid "Design: General"
+msgstr ""
+
+#: admin/options/posts-listings.php:97
+msgid "Post Titles Space"
+msgstr ""
+
+#: admin/options/posts-listings.php:98
+msgid "Titles top/bottom spacing. Does not apply to overlay or featured grid blocks."
+msgstr ""
+
+#: admin/options/posts-listings.php:109
+msgid "Excerpts Top Space"
+msgstr ""
+
+#: admin/options/posts-listings.php:120
+msgid "Excerpts Color"
+msgstr ""
+
+#: admin/options/posts-listings.php:131
+msgid "Dark: Excerpts Color"
+msgstr ""
+
+#: admin/options/posts-listings.php:158
+msgid "Post Titles Hover"
+msgstr ""
+
+#: admin/options/posts-listings.php:169
+msgid "Dark: Post Titles Hover"
+msgstr ""
+
+#: admin/options/posts-listings.php:215
+msgid "Common Shared Settings"
+msgstr ""
+
+#: admin/options/posts-listings.php:221
+msgid "Category Labels / Overlays"
+msgstr ""
+
+#: admin/options/posts-listings.php:227
+msgid "Block Heading Styles"
+msgstr ""
+
+#: admin/options/posts-listings.php:233
+msgid "Read More Styles"
+msgstr ""
+
+#: admin/options/posts-listings.php:245
+msgid "Layout: Grid Posts"
+msgstr ""
+
+#: admin/options/posts-listings.php:251
+msgid "Layout: List Posts"
+msgstr ""
+
+#: admin/options/posts-listings.php:257
+msgid "Layout: Overlays"
+msgstr ""
+
+#: admin/options/posts-listings.php:263
+msgid "Layout: Large / Classic"
+msgstr ""
+
+#: admin/options/posts-listings.php:269
+msgid "Layout: Small Posts & Legacy Widgets"
+msgstr ""
+
+#: admin/options/posts-listings.php:275
+msgid "Layout: Featured Grids"
+msgstr ""
+
+#: admin/options/posts-listings.php:284
+msgid "Blocks & Listings"
+msgstr ""
+
+#: admin/options/posts-single.php:7
+msgid "Default / Background Colors"
+msgstr ""
+
+#: admin/options/posts-single.php:8
+msgid "Light Style"
+msgstr ""
+
+#: admin/options/posts-single.php:9
+msgid "Small Circles"
+msgstr ""
+
+#: admin/options/posts-single.php:10
+msgid "Light Circles"
+msgstr ""
+
+#: admin/options/posts-single.php:11
+msgid "Simple Icons"
+msgstr ""
+
+#: admin/options/posts-single.php:16
+msgid "Post Meta Right"
+msgstr ""
+
+#: admin/options/posts-single.php:22
+msgid "Default Post Style"
+msgstr ""
+
+#: admin/options/posts-single.php:39
+msgid "Single Post/Page Sidebar"
+msgstr ""
+
+#: admin/options/posts-single.php:52
+msgid "Crop Featured Image"
+msgstr ""
+
+#: admin/options/posts-single.php:54
+msgid "Crop featured image for consistent sizing. Does not apply to Cover and Creative style."
+msgstr ""
+
+#: admin/options/posts-single.php:62
+msgid "Featured Image Shadow"
+msgstr ""
+
+#: admin/options/posts-single.php:117
+msgid "Use Custom Height"
+msgstr ""
+
+#: admin/options/posts-single.php:126
+msgid "Image Custom Height"
+msgstr ""
+
+#: admin/options/posts-single.php:149
+msgid "Enable Article Schema"
+msgstr ""
+
+#: admin/options/posts-single.php:150
+msgid "Article schema data can be used by Google to qualify for inclusion in Google News etc. Disable if using a Rich Schema plugin."
+msgstr ""
+
+#: admin/options/posts-single.php:158
+msgid "Sections Heading Style"
+msgstr ""
+
+#: admin/options/posts-single.php:159
+msgid "Applies to sections like related posts and comments."
+msgstr ""
+
+#: admin/options/posts-single.php:167
+msgid "Sections Heading Tag"
+msgstr ""
+
+#: admin/options/posts-single.php:189
+msgid "Post Meta: Global Items"
+msgstr ""
+
+#: admin/options/posts-single.php:235
+msgid "All Categories in Meta"
+msgstr ""
+
+#: admin/options/posts-single.php:237
+msgid "If unchecked, only the Primary Category is displayed."
+msgstr ""
+
+#: admin/options/posts-single.php:246
+msgid "Does not apply to Classic or Cover post style."
+msgstr ""
+
+#: admin/options/posts-single.php:296
+msgid "Show Post Tags"
+msgstr ""
+
+#: admin/options/posts-single.php:306
+msgid "Show Featured Image Area"
+msgstr ""
+
+#: admin/options/posts-single.php:308
+msgid "Disable to stop displaying the featured media in large posts. Can also be set per post while adding/edit a post."
+msgstr ""
+
+#: admin/options/posts-single.php:315
+msgid "Linked Featured Image"
+msgstr ""
+
+#: admin/options/posts-single.php:317
+msgid "Will open the featured image in the lightbox when clicked."
+msgstr ""
+
+#: admin/options/posts-single.php:324
+msgid "Show Next/Previous Post"
+msgstr ""
+
+#: admin/options/posts-single.php:325
+msgid "Enabling this will add a Previous and Next post link in the single post page."
+msgstr ""
+
+#: admin/options/posts-single.php:337
+msgid "Comments Area"
+msgstr ""
+
+#: admin/options/posts-single.php:344
+msgid "Enable Comments Area"
+msgstr ""
+
+#: admin/options/posts-single.php:354
+msgid "Show Comments Button"
+msgstr ""
+
+#: admin/options/posts-single.php:364
+msgid "Text Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:376
+msgid "Meta Size"
+msgstr ""
+
+#: admin/options/posts-single.php:400
+msgid "Author Box"
+msgstr ""
+
+#: admin/options/posts-single.php:406
+msgid "Show Author Box"
+msgstr ""
+
+#: admin/options/posts-single.php:414
+msgid "Bio Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:443
+msgid "Post Title Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:454
+msgid "Body Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:466
+msgid "H1-H6 Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:479
+msgid "Body/Text Color"
+msgstr ""
+
+#: admin/options/posts-single.php:504
+msgid "H1-H6 Heading Color"
+msgstr ""
+
+#: admin/options/posts-single.php:505
+msgid "Does not affect post/page title. Only the h1-h6 within post body."
+msgstr ""
+
+#: admin/options/posts-single.php:542
+msgid "Links Underline"
+msgstr ""
+
+#: admin/options/posts-single.php:576
+msgid "Elements Base Gap"
+msgstr ""
+
+#: admin/options/posts-single.php:589
+msgid "Paragraphs Gap"
+msgstr ""
+
+#: admin/options/posts-single.php:605
+msgid "Heading Sizes"
+msgstr ""
+
+#: admin/options/posts-single.php:613
+msgid "Post Body H1"
+msgstr ""
+
+#: admin/options/posts-single.php:627
+msgid "Post Body H2"
+msgstr ""
+
+#: admin/options/posts-single.php:640
+msgid "Post Body H3"
+msgstr ""
+
+#: admin/options/posts-single.php:653
+msgid "Post Body H4"
+msgstr ""
+
+#: admin/options/posts-single.php:666
+msgid "Post Body H5"
+msgstr ""
+
+#: admin/options/posts-single.php:679
+msgid "Post Body H6"
+msgstr ""
+
+#: admin/options/posts-single.php:700
+msgid "Sticky Social Share"
+msgstr ""
+
+#: admin/options/posts-single.php:707
+msgid "Enable Sticky Social Buttons"
+msgstr ""
+
+#: admin/options/posts-single.php:717
+#: admin/options/posts-single.php:1035
+msgid "Show Share Text"
+msgstr ""
+
+#: admin/options/posts-single.php:727
+#: admin/options/posts-single.php:1059
+msgid "Share Text"
+msgstr ""
+
+#: admin/options/posts-single.php:742
+#: admin/options/posts-single.php:981
+msgid "Share Style"
+msgstr ""
+
+#: admin/options/posts-single.php:746
+msgid "A: Squares"
+msgstr ""
+
+#: admin/options/posts-single.php:747
+msgid "B: Circles"
+msgstr ""
+
+#: admin/options/posts-single.php:748
+msgid "C: Circles BG Color"
+msgstr ""
+
+#: admin/options/posts-single.php:749
+msgid "D: Squares BG Color"
+msgstr ""
+
+#: admin/options/posts-single.php:750
+msgid "E: Squares Light / Monochrome"
+msgstr ""
+
+#: admin/options/posts-single.php:768
+#: admin/options/posts-single.php:1013
+#: admin/options/posts-single.php:1305
+msgid "Share Services"
+msgstr ""
+
+#: admin/options/posts-single.php:780
+msgid "Share Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:794
+msgid "Services Width"
+msgstr ""
+
+#: admin/options/posts-single.php:807
+msgid "Services Height"
+msgstr ""
+
+#: admin/options/posts-single.php:820
+#: admin/options/posts-single.php:1119
+msgid "Spacing Between"
+msgstr ""
+
+#: admin/options/posts-single.php:915
+msgid "Icons Background"
+msgstr ""
+
+#: admin/options/posts-single.php:928
+msgid "Dark: Icons Background"
+msgstr ""
+
+#: admin/options/posts-single.php:946
+msgid "Top Social Share"
+msgstr ""
+
+#: admin/options/posts-single.php:954
+#: admin/options/posts-single.php:1296
+msgid "Show Share Buttons"
+msgstr ""
+
+#: admin/options/posts-single.php:964
+msgid "Show On Devices"
+msgstr ""
+
+#: admin/options/posts-single.php:970
+msgid "Default / All"
+msgstr ""
+
+#: admin/options/posts-single.php:971
+msgid "Desktop"
+msgstr ""
+
+#: admin/options/posts-single.php:972
+msgid "Tablet"
+msgstr ""
+
+#: admin/options/posts-single.php:973
+msgid "Phone"
+msgstr ""
+
+#: admin/options/posts-single.php:992
+#: admin/options/posts-single.php:1692
+msgid "Share Location"
+msgstr ""
+
+#: admin/options/posts-single.php:1025
+msgid "Large Buttons"
+msgstr ""
+
+#: admin/options/posts-single.php:1044
+msgid "Hide on Phones"
+msgstr ""
+
+#: admin/options/posts-single.php:1073
+msgid "Buttons Height"
+msgstr ""
+
+#: admin/options/posts-single.php:1086
+msgid "Buttons Width"
+msgstr ""
+
+#: admin/options/posts-single.php:1104
+msgid "Show More Button Width"
+msgstr ""
+
+#: admin/options/posts-single.php:1161
+msgid "Hide Label"
+msgstr ""
+
+#: admin/options/posts-single.php:1178
+msgid "Label Font Size"
+msgstr ""
+
+#: admin/options/posts-single.php:1236
+msgid "Top Social Follow"
+msgstr ""
+
+#: admin/options/posts-single.php:1243
+#: admin/options/posts-single.php:1327
+msgid "Show Follow Buttons"
+msgstr ""
+
+#: admin/options/posts-single.php:1256
+msgid "Follow Label"
+msgstr ""
+
+#: admin/options/posts-single.php:1270
+#: admin/options/posts-single.php:1352
+msgid "Services"
+msgstr ""
+
+#: admin/options/posts-single.php:1289
+msgid "Bottom Social Share"
+msgstr ""
+
+#: admin/options/posts-single.php:1320
+msgid "Bottom Social Follow"
+msgstr ""
+
+#: admin/options/posts-single.php:1339
+msgid "Text Format"
+msgstr ""
+
+#: admin/options/posts-single.php:1371
+msgid "Show Related Posts"
+msgstr ""
+
+#: admin/options/posts-single.php:1390
+msgid "Related Posts Match By"
+msgstr ""
+
+#: admin/options/posts-single.php:1397
+msgid "Both"
+msgstr ""
+
+#: admin/options/posts-single.php:1405
+msgid "Use YARPP Plugin? (Advanced)"
+msgstr ""
+
+#: admin/options/posts-single.php:1406
+msgid "Enabling this will allow you to use YARPP (Yet Another Related Posts Plugin) with theme styling."
+msgstr ""
+
+#: admin/options/posts-single.php:1414
+msgid "Related Posts Number"
+msgstr ""
+
+#: admin/options/posts-single.php:1423
+msgid "Number on Full Width Posts"
+msgstr ""
+
+#: admin/options/posts-single.php:1433
+msgid "Related Posts Columns"
+msgstr ""
+
+#: admin/options/posts-single.php:1446
+msgid "Columns for Full Width"
+msgstr ""
+
+#: admin/options/posts-single.php:1485
+#: admin/options/posts-single.php:1593
+#: admin/options/posts-single.php:1705
+msgid "Post Title Size"
+msgstr ""
+
+#: admin/options/posts-single.php:1496
+#: admin/options/posts-single.php:1605
+msgid "Subtitle Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:1506
+#: admin/options/posts-single.php:1615
+msgid "Subtitle Color"
+msgstr ""
+
+#: admin/options/posts-single.php:1518
+#: admin/options/posts-single.php:1627
+msgid "Post Meta Color"
+msgstr ""
+
+#: admin/options/posts-single.php:1529
+#: admin/options/posts-single.php:1638
+msgid "Dark: Meta Color"
+msgstr ""
+
+#: admin/options/posts-single.php:1568
+msgid "Title Margins"
+msgstr ""
+
+#: admin/options/posts-single.php:1579
+msgid "Meta Below Margins"
+msgstr ""
+
+#: admin/options/posts-single.php:1681
+msgid "Share Top Style"
+msgstr ""
+
+#: admin/options/posts-single.php:1717
+msgid "Overlay Color"
+msgstr ""
+
+#: admin/options/posts-single.php:1729
+msgid "Single Post Page"
+msgstr ""
+
+#: admin/options/posts-single.php:1734
+msgid "General & Post Style"
+msgstr ""
+
+#: admin/options/posts-single.php:1739
+msgid "Design: Post / Page"
+msgstr ""
+
+#: admin/options/posts-single.php:1741
+msgid "All settings in this section area shared between single post and pages."
+msgstr ""
+
+#: admin/options/posts-single.php:1745
+msgid "Social Sharing"
+msgstr ""
+
+#: admin/options/posts-single.php:1750
+msgid "Related Posts"
+msgstr ""
+
+#: admin/options/posts-single.php:1760
+msgid "Enable Users Ratings"
+msgstr ""
+
+#: admin/options/posts-single.php:1761
+#: admin/options/posts-single.php:1769
+msgid "This feature adds a user rating area below criterion to allow readers to click and vote."
+msgstr ""
+
+#: admin/options/posts-single.php:1768
+msgid "Enable Review Schema"
+msgstr ""
+
+#: admin/options/posts-single.php:1775
+msgid "Verdict Box Roundness"
+msgstr ""
+
+#: admin/options/posts-single.php:1787
+msgid "Rating Bars Height"
+msgstr ""
+
+#: admin/options/posts-single.php:1799
+msgid "Bars Roundness"
+msgstr ""
+
+#: admin/options/posts-single.php:1811
+msgid "Title Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:1823
+msgid "Criteria Labels Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:1835
+msgid "Pros/Cons Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:1847
+msgid "Summary Typography"
+msgstr ""
+
+#: admin/options/posts-single.php:1868
+msgid "Post Style: Modern"
+msgstr ""
+
+#: admin/options/posts-single.php:1874
+msgid "Post Style: Large"
+msgstr ""
+
+#: admin/options/posts-single.php:1880
+msgid "Post Style: Cover"
+msgstr ""
+
+#: admin/options/posts-single.php:1887
+msgid "Auto-load Next Post"
+msgstr ""
+
+#: inc/admin/dashboard.php:182
+msgid "The Bunyad Demo Import plugin is not installed. Please activate it from %1$sSmartMag > Install Plugins.%2$s"
+msgstr ""
+
+#: inc/admin/editor.php:51
+msgid "Solid Background"
+msgstr ""
+
+#: inc/admin/editor.php:71
+msgid "Modern Quote"
+msgstr ""
+
+#: inc/admin/editor.php:79
+msgid "small"
+msgstr ""
+
+#: inc/admin/editor.php:80
+msgid "S"
+msgstr ""
+
+#: inc/admin/editor.php:85
+msgid "regular"
+msgstr ""
+
+#: inc/admin/editor.php:86
+msgid "M"
+msgstr ""
+
+#: inc/admin/editor.php:91
+msgid "large"
+msgstr ""
+
+#: inc/admin/editor.php:92
+msgid "L"
+msgstr ""
+
+#: inc/admin/editor.php:97
+msgid "larger"
+msgstr ""
+
+#: inc/admin/editor.php:98
+msgid "XL"
+msgstr ""
+
+#: inc/admin/import.php:400
+msgid "Regenerate Thumbnails"
+msgstr ""
+
+#: inc/admin/import.php:679
+msgid "You can import demo settings or full demo content from %1$s this page %2$s."
+msgstr ""
+
+#: inc/admin/import.php:689
+msgid "Please install and activate the required plugin \"Bunyad Demo Import\" from %1$sthis page%2$s."
+msgstr ""
+
+#: inc/admin/theme-plugins.php:87
+msgid "Bunyad Demo Import"
+msgstr ""
+
+#: inc/admin/theme-updates.php:105
+msgid "Update Now"
+msgstr ""
+
+#: inc/admin/theme-updates.php:166
+msgid "See Changelog"
+msgstr ""
+
+#: inc/custom-codes.php:15
+msgid "Above Header"
+msgstr ""
+
+#: inc/custom-codes.php:19
+msgid "Below Header"
+msgstr ""
+
+#: inc/custom-codes.php:23
+msgid "Above Footer"
+msgstr ""
+
+#: inc/custom-codes.php:27
+msgid "Below Footer"
+msgstr ""
+
+#: inc/custom-codes.php:31
+msgid "Single Post: Above Content"
+msgstr ""
+
+#: inc/custom-codes.php:37
+msgid "Single Post: Below Content"
+msgstr ""
+
+#: inc/custom-codes.php:43
+msgid "Single: Below Author Box"
+msgstr ""
+
+#: inc/custom-codes.php:49
+msgid "Single: Between Content"
+msgstr ""
+
+#: inc/legacy.php:96
+msgid "Animation Type"
+msgstr ""
+
+#: inc/legacy.php:101
+msgid "Fade Animation"
+msgstr ""
+
+#: inc/legacy.php:102
+msgid "Slide Animation"
+msgstr ""
+
+#: inc/legacy.php:108
+msgid "Slide Delay/Speed"
+msgstr ""
+
+#: inc/legacy.php:116
+msgid "Animation Speed"
+msgstr ""
+
+#: inc/legacy.php:124
+msgid "Right Side: Limit to Category"
+msgstr ""
+
+#: inc/legacy.php:132
+msgid "Right Side: Limit to Tag"
+msgstr ""
+
+#: inc/social.php:22
+msgid "Social Follow & Count"
+msgstr ""
+
+#: inc/theme.php:204
+msgid "Main Navigation"
+msgstr ""
+
+#: inc/theme.php:205
+msgid "Main Navigation - Mobile Optional"
+msgstr ""
+
+#: inc/theme.php:206
+msgid "Footer Links"
+msgstr ""
+
+#: inc/theme.php:623
+msgid "Main Sidebar"
+msgstr ""
+
+#: inc/theme.php:625
+msgid "Widgets in this area will be shown in the default sidebar."
+msgstr ""
+
+#: inc/theme.php:635
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/theme.php:637
+msgid "Widgets in this area will be shown in the default sidebar on Shop page."
+msgstr ""
+
+#: inc/theme.php:648
+msgid "bbPress Sidebar"
+msgstr ""
+
+#: inc/theme.php:650
+msgid "Widgets for default sidebar on bbPress/Forums page."
+msgstr ""
+
+#: inc/theme.php:661
+msgid "Off-Canvas Widgets"
+msgstr ""
+
+#: inc/theme.php:663
+msgid "Widgets below navigation in off-canvas/mobile menu."
+msgstr ""
+
+#: inc/theme.php:674
+msgid "Footer Widgets"
+msgstr ""
+
+#: inc/theme.php:678
+msgid "Widgets in this area will be shown in the footer."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Authors List"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Pagebuilder"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Pagebuilder - No Paddings & Full Width"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Sitemap (Deprecated)"
+msgstr ""

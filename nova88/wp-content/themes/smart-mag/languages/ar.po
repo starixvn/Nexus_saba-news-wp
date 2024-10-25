@@ -1,0 +1,978 @@
+# Copyright (C) 2022 ThemeSphere
+# This file is distributed under the ThemeForest Split Licence.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartMag 8.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/smart-mag\n"
+"Last-Translator: Shane Doe\n"
+"Language-Team: العربية\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-11-02T16:57:26+00:00\n"
+"PO-Revision-Date: 2022-11-20 16:37+0000\n"
+"X-Domain: bunyad\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.3; wp-6.1.1"
+
+#. Plugin Name of the plugin
+msgid "SmartMag Core"
+msgstr ""
+
+#. Description of the plugin
+msgid "Elements and core functionality for SmartMag Theme."
+msgstr ""
+
+#. Author of the plugin
+#. Author of the theme
+msgid "ThemeSphere"
+msgstr ""
+
+#. Author URI of the plugin
+#. Author URI of the theme
+msgid "https://theme-sphere.com"
+msgstr ""
+
+#: blocks/breadcrumbs/breadcrumbs.php:45 admin/options/layout-main.php:424 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:45
+msgctxt "breadcrumbs"
+msgid "You are at:"
+msgstr "أنت الآن تتصفح:"
+
+#: blocks/breadcrumbs/breadcrumbs.php:142 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:142
+msgctxt "breadcrumbs"
+msgid "Home"
+msgstr "الرئيسية"
+
+#: blocks/breadcrumbs/breadcrumbs.php:143 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:143
+msgctxt "breadcrumbs"
+msgid "Category: \"%s\""
+msgstr "تصنيف: \"%s\""
+
+#: blocks/breadcrumbs/breadcrumbs.php:144 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:144
+msgctxt "breadcrumbs"
+msgid "Archive for \"%s\""
+msgstr "%s"
+
+#: blocks/breadcrumbs/breadcrumbs.php:145 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:145
+msgctxt "breadcrumbs"
+msgid "Search Results for \"%s\""
+msgstr "نتائج البحث عن: %s"
+
+#: blocks/breadcrumbs/breadcrumbs.php:146 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:146
+msgctxt "breadcrumbs"
+msgid "Posts Tagged \"%s\""
+msgstr "%s"
+
+#: blocks/breadcrumbs/breadcrumbs.php:147 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:147
+msgctxt "breadcrumbs"
+msgid "Error 404"
+msgstr "404"
+
+#: blocks/breadcrumbs/breadcrumbs.php:148 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:148
+msgctxt "breadcrumbs"
+msgid "Author: %s"
+msgstr "كاتب: %s"
+
+#: blocks/breadcrumbs/breadcrumbs.php:149 
+#: packages/blocks/breadcrumbs/breadcrumbs.php:149
+msgctxt "breadcrumbs"
+msgid " (Page %d)"
+msgstr "(صفحه %d)"
+
+#: blocks/breadcrumbs/options.php:14 packages/blocks/breadcrumbs/options.php:14
+msgid "Breadcrumbs"
+msgstr ""
+
+#: blocks/codes/options.php:14 packages/blocks/codes/options.php:14
+msgid "Ads / Codes"
+msgstr ""
+
+#: blocks/heading/heading.php:200 packages/blocks/heading/heading.php:200
+msgid "All"
+msgstr "الكل"
+
+#: blocks/heading/options.php:17 packages/blocks/heading/options.php:17
+msgid "Block Heading"
+msgstr ""
+
+#: blocks/loops/feat-grid/options.php:22 
+#: packages/blocks/loops/feat-grid/options.php:22
+msgid "Featured Area Grids"
+msgstr ""
+
+#: blocks/loops/focus-grid/options.php:23 
+#: packages/blocks/loops/focus-grid/options.php:23
+msgid "Focus Grid Block"
+msgstr ""
+
+#: blocks/loops/grid/options.php:22 packages/blocks/loops/grid/options.php:22
+msgid "Grid Block"
+msgstr ""
+
+#: blocks/loops/highlights/options.php:23 
+#: packages/blocks/loops/highlights/options.php:23
+msgid "Highlights Block"
+msgstr ""
+
+#: blocks/loops/large/options.php:22 packages/blocks/loops/large/options.php:22
+msgid "Large Block"
+msgstr ""
+
+#: blocks/loops/news-focus/options.php:23 
+#: packages/blocks/loops/news-focus/options.php:23
+msgid "News Focus Block"
+msgstr ""
+
+#: blocks/loops/overlay/options.php:19 
+#: packages/blocks/loops/overlay/options.php:19
+msgid "Overlay Block"
+msgstr ""
+
+#: blocks/loops/posts-list/options.php:23 
+#: packages/blocks/loops/posts-list/options.php:23
+msgid "List Block"
+msgstr ""
+
+#: blocks/loops/posts-small/options.php:22 
+#: packages/blocks/loops/posts-small/options.php:22
+msgid "Small List Block"
+msgstr ""
+
+#: blocks/newsletter/options.php:15 packages/blocks/newsletter/options.php:15
+msgid "Newsletter Form"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:387 
+#: packages/blocks/post-meta/post-meta.php:387
+msgid "In"
+msgstr ""
+
+#: blocks/post-meta/post-meta.php:473 
+#: packages/blocks/post-meta/post-meta.php:473
+msgid "Updated:"
+msgstr "آخر تحديث:"
+
+#: blocks/post-meta/post-meta.php:509 
+#: packages/blocks/post-meta/post-meta.php:509
+msgctxt "Post Meta"
+msgid "By"
+msgstr "بواسطة"
+
+#: blocks/post-meta/post-meta.php:546 
+#: packages/blocks/post-meta/post-meta.php:546
+msgid "%d Min Read"
+msgid_plural "%d Mins Read"
+msgstr[0] "%d دقائق"
+msgstr[1] "%d دقائق"
+msgstr[2] "%d دقائق"
+msgstr[3] "%d دقائق"
+msgstr[4] "%d دقائق"
+msgstr[5] "%d دقائق"
+
+#: blocks/post-meta/post-meta.php:625 
+#: packages/blocks/post-meta/post-meta.php:625
+msgctxt "Post Meta"
+msgid "Views"
+msgstr "زيارة"
+
+#: blocks/post-meta/post-meta.php:632 
+#: packages/blocks/post-meta/post-meta.php:632
+msgctxt "Post Meta"
+msgid "%s Article Views"
+msgstr ""
+
+#: blocks/social-icons/options.php:15 
+#: packages/blocks/social-icons/options.php:15
+msgid "SmartMag Social Icons"
+msgstr ""
+
+#: inc/reviews/review.php:127
+msgid "User Ratings"
+msgstr "التقييم"
+
+#: inc/reviews/review.php:128
+msgid "%s Votes"
+msgstr "%s تصنيفات"
+
+#: inc/social-share.php:28 widgets/widget-social-follow.php:138 
+#: inc/social.php:42 partials/author.php:20
+msgid "Facebook"
+msgstr "فيسبوك"
+
+#: inc/social-share.php:29
+msgid "Share on Facebook"
+msgstr "أنشرها على الفيسبوك"
+
+#: inc/social-share.php:35 widgets/widget-social-follow.php:146 
+#: inc/social.php:47 partials/author.php:21
+msgid "Twitter"
+msgstr "تويتر"
+
+#: inc/social-share.php:36
+msgid "Share on Twitter"
+msgstr "تويتر"
+
+#: inc/social-share.php:42 widgets/widget-social-follow.php:154 
+#: inc/social.php:57 partials/author.php:22
+msgid "Pinterest"
+msgstr "بينتيريست"
+
+#: inc/social-share.php:43
+msgid "Share on Pinterest"
+msgstr "بينتيريست"
+
+#: inc/social-share.php:50 widgets/widget-social-follow.php:186 
+#: inc/social.php:93 partials/author.php:26
+msgid "LinkedIn"
+msgstr "لينكدإن"
+
+#: inc/social-share.php:51
+msgid "Share on LinkedIn"
+msgstr "لينكدإن"
+
+#: inc/social-share.php:57 inc/social.php:88 partials/author.php:24
+msgid "Tumblr"
+msgstr ""
+
+#: inc/social-share.php:58
+msgid "Share on Tumblr"
+msgstr "Tumblr"
+
+#: inc/social-share.php:64 inc/social.php:123
+msgid "VKontakte"
+msgstr ""
+
+#: inc/social-share.php:65
+msgid "Share on VKontakte"
+msgstr "VKontakte"
+
+#: inc/social-share.php:71 comments.php:107 
+#: inc/integrations/woocommerce.php:244
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: inc/social-share.php:72
+msgid "Share via Email"
+msgstr "إرسال لصديق"
+
+#: inc/social-share.php:78 widgets/widget-social-follow.php:234 
+#: inc/social.php:153
+msgid "WhatsApp"
+msgstr "واتساب"
+
+#: inc/social-share.php:79
+msgid "Share on WhatsApp"
+msgstr "واتساب"
+
+#: inc/social-share.php:87 widgets/widget-social-follow.php:210 
+#: inc/social.php:128
+msgid "Reddit"
+msgstr "رديت"
+
+#: inc/social-share.php:88
+msgid "Share on Reddit"
+msgstr "رديت"
+
+#: inc/social-share.php:94 widgets/widget-social-follow.php:226 
+#: inc/social.php:138
+msgid "Telegram"
+msgstr "تيلقرام"
+
+#: inc/social-share.php:95
+msgid "Share on Telegram"
+msgstr "تيلقرام"
+
+#: lib/posts.php:546
+msgctxt "pagination"
+msgid "Next"
+msgstr "التالي"
+
+#: lib/posts.php:547
+msgctxt "pagination"
+msgid "Previous"
+msgstr "السابق"
+
+#: lib/posts.php:720 admin/options/posts-listings.php:48 inc/theme.php:281
+msgid "Read More"
+msgstr "قراءة المزيد"
+
+#: social-share/views/social-share-b.php:64
+msgid "Show More Social Sharing"
+msgstr ""
+
+#: social-share/views/social-share-float.php:18 
+#: admin/options/posts-single.php:824
+msgid "Share"
+msgstr "شاركها"
+
+#: social-share/views/social-share.php:25
+msgid "Share."
+msgstr "شاركها."
+
+#: widgets/widget-bbp-login.php:22
+msgid "(bbPress) SmartMag Login Widget"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:79 partials/auth-modal/login.php:32
+msgid "Username or Email"
+msgstr "اسم المستخدم أو البريد الالكتروني"
+
+#: widgets/widget-bbp-login.php:83 partials/auth-modal/login.php:36
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: widgets/widget-bbp-login.php:89 partials/auth-modal/login.php:42
+msgid "Log In"
+msgstr "تسجيل الدخول"
+
+#: widgets/widget-bbp-login.php:94 partials/auth-modal/login.php:47
+msgid "Remember Me"
+msgstr "تذكرني"
+
+#: widgets/widget-bbp-login.php:97 widgets/widget-bbp-login.php:98 
+#: partials/auth-modal/login.php:50 partials/auth-modal/login.php:51
+msgid "Lost password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: widgets/widget-bbp-login.php:106
+msgctxt "bbPress"
+msgid "Don't have an account?"
+msgstr "ليس لديك حساب؟"
+
+#: widgets/widget-bbp-login.php:107 partials/auth-modal/register.php:6
+msgid "Register Now!"
+msgstr "سجل الان!"
+
+#: widgets/widget-bbp-login.php:119
+msgctxt "bbPress"
+msgid "Welcome back, "
+msgstr "مرحبًا بعودتك "
+
+#: widgets/widget-bbp-login.php:124
+msgctxt "bbPress"
+msgid "Edit Profile"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:126
+msgctxt "bbPress"
+msgid "Subscriptions"
+msgstr ""
+
+#: widgets/widget-bbp-login.php:128
+msgctxt "bbPress"
+msgid "Favorites"
+msgstr ""
+
+#: widgets/widget-social-follow.php:162 inc/social.php:52 
+#: partials/author.php:23
+msgid "Instagram"
+msgstr "الانستغرام"
+
+#: widgets/widget-social-follow.php:170 inc/social.php:78
+msgid "YouTube"
+msgstr "يوتيوب"
+
+#: widgets/widget-social-follow.php:178 inc/social.php:108
+msgid "Vimeo"
+msgstr "فيميو"
+
+#: widgets/widget-social-follow.php:194
+msgid "Soundcloud"
+msgstr ""
+
+#: widgets/widget-social-follow.php:202 inc/social.php:143
+msgid "Twitch"
+msgstr "تويتش"
+
+#: widgets/widget-social-follow.php:218 inc/social.php:133
+msgid "TikTok"
+msgstr "تيكتوك"
+
+#: widgets/widget-tabbed-recent.php:273
+msgid "Posts:"
+msgstr "مقالات:"
+
+#. Theme Name of the theme
+msgid "SmartMag"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://smartmag.theme-sphere.com"
+msgstr ""
+
+#. Description of the theme
+msgid "Designed by <a href=\"https://theme-sphere.com\">ThemeSphere</a>"
+msgstr ""
+
+#: 404.php:20 admin/options/layout-pages.php:64
+msgid "Page Not Found!"
+msgstr "الصفحة غير موجودة!"
+
+#: 404.php:28
+msgid "404"
+msgstr ""
+
+#: 404.php:37
+msgid ""
+"We're sorry, but we can't find the page you were looking for. It's probably "
+"some thing we've done wrong but now we know about it and we'll try to fix it."
+" In the meantime, try one of these options:"
+msgstr ""
+
+#: 404.php:43
+msgid "Go to Previous Page"
+msgstr "الصفحة السابقة"
+
+#: 404.php:44
+msgid "Go to Homepage"
+msgstr "الصفحة الرئيسية"
+
+#: admin/options/header/ticker.php:37 partials/header/ticker.php:31
+msgid "Trending"
+msgstr "أخبار شائعة"
+
+#: admin/options/posts-single.php:1054 partials/single/related-posts.php:10
+msgid "Related *Posts*"
+msgstr "المقالات *ذات الصلة*"
+
+#: bbpress/form-search.php:11
+msgctxt "bbPress"
+msgid "Search for:"
+msgstr "بحث:"
+
+#: bbpress/form-search.php:14
+msgctxt "bbPress"
+msgid "Search"
+msgstr "بحث"
+
+#: bbpress/loop-forums.php:26
+msgctxt "bbPress"
+msgid "Topics"
+msgstr ""
+
+#: bbpress/loop-forums.php:29 bbpress/loop-single-topic.php:102
+msgctxt "bbPress"
+msgid "Replies"
+msgstr ""
+
+#: bbpress/loop-forums.php:30 bbpress/loop-single-topic.php:103
+msgctxt "bbPress"
+msgid "Posts"
+msgstr "مقالات"
+
+#: bbpress/loop-forums.php:33
+msgctxt "bbPress"
+msgid "Freshness"
+msgstr ""
+
+#: bbpress/loop-replies.php:15
+msgctxt "bbPress"
+msgid "Posted In: "
+msgstr ""
+
+#: bbpress/loop-search-reply.php:12
+msgctxt "bbPress"
+msgid "In reply to: "
+msgstr "ردًا على:"
+
+#: bbpress/loop-search-reply.php:46 bbpress/loop-search-topic.php:51 
+#: bbpress/loop-single-reply.php:39
+msgctxt "bbPress Reply"
+msgid "on"
+msgstr ""
+
+#: bbpress/loop-search-reply.php:52 bbpress/loop-search-topic.php:57 
+#: bbpress/loop-single-reply.php:45
+msgctxt "bbPress"
+msgid "in reply to: "
+msgstr "ردًا على:"
+
+#: bbpress/loop-search-topic.php:16
+msgctxt "bbPress"
+msgid "Topic: "
+msgstr ""
+
+#: bbpress/loop-single-forum.php:47
+msgctxt "bbpress"
+msgid "topics"
+msgstr ""
+
+#: bbpress/loop-single-forum.php:49
+msgctxt "bbpress"
+msgid "replies"
+msgstr ""
+
+#: bbpress/loop-single-forum.php:50
+msgctxt "bbpress"
+msgid "posts"
+msgstr "مقالات"
+
+#: bbpress/loop-single-forum.php:62
+msgctxt "bbPress Freshness Author"
+msgid "by "
+msgstr "بواسطة"
+
+#: bbpress/loop-single-topic.php:63
+msgctxt "bbPress"
+msgid "Started by: %1$s"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:71
+msgctxt "bbPress"
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:78
+msgctxt "bbPress"
+msgid "Last post:"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:99
+msgctxt "bbPress"
+msgid "Voices"
+msgstr ""
+
+#: blocks/newsletter/html/newsletter.php:44 
+#: packages/blocks/newsletter/html/newsletter.php:44
+msgid "Your email address.."
+msgstr "أدخل بريدك الإلكتروني.."
+
+#: comments.php:23
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"هذه المقالة محمية بكلمة مرور. لمشاهدة التعليقات، قم بكتابة كلمة المرور."
+
+#: comments.php:33
+msgid "Add A Comment"
+msgstr "اترك تعليقاً"
+
+#: comments.php:34
+msgid "View 1 Comment"
+msgstr "تعليق واحد"
+
+#: comments.php:35
+msgid "View % Comments"
+msgstr " %s تعليقات"
+
+#: comments.php:69
+msgid "&larr; Older Comments"
+msgstr "&larr; التعليقات الأقدم"
+
+#: comments.php:70
+msgid "Newer Comments &rarr;"
+msgstr "التعليقات الأحدث &rarr;"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "التعليقات مغلقة."
+
+#: comments.php:97 inc/integrations/woocommerce.php:234
+msgid "Name"
+msgstr "الاسم"
+
+#: comments.php:119 partials/author.php:19
+msgid "Website"
+msgstr "موقع الويب"
+
+#: comments.php:128
+msgid ""
+"Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+"احفظ اسمي، بريدي الإلكتروني، والموقع الإلكتروني في هذا المتصفح لاستخدامها "
+"المرة المقبلة في تعليقي."
+
+#: comments.php:142
+msgid "Leave A Reply"
+msgstr "اترك تعليقاً"
+
+#: comments.php:143
+msgid "Reply To %s"
+msgstr "رد على %s"
+
+#: comments.php:147
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"<a href=\"%1$s\">متّصل بالاسم %2$s</a>. <a href=\"%3$s\">تسجيل الخروج؟</a>"
+
+#: comments.php:152 inc/integrations/woocommerce.php:253
+msgid "Your Comment"
+msgstr "التعليق"
+
+#: comments.php:156
+msgid "Post Comment"
+msgstr "إرسال التعليق"
+
+#: comments.php:158
+msgid "Cancel Reply"
+msgstr "إلغاء الرد"
+
+#: inc/archives.php:33
+msgid "Browsing: %s"
+msgstr "%s"
+
+#: inc/archives.php:39
+msgid "Search Results: %s (%d)"
+msgstr "نتائج البحث عن: %s (%d)"
+
+#: inc/authenticate.php:124
+msgid "Login with %s"
+msgstr "تسجيل الدخول باستخدام %s"
+
+#: inc/integrations/woocommerce.php:212
+msgctxt "woocommerce"
+msgid "Your Rating:"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:213
+msgctxt "woocommerce"
+msgid "Rate&hellip;"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:214
+msgctxt "woocommerce"
+msgid "Perfect"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:215
+msgctxt "woocommerce"
+msgid "Good"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:216
+msgctxt "woocommerce"
+msgid "Average"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:217
+msgctxt "woocommerce"
+msgid "Not that bad"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:218
+msgctxt "woocommerce"
+msgid "Very Poor"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:227
+msgctxt "woocommerce"
+msgid "Add a review"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:227
+msgctxt "woocommerce"
+msgid "Be the first to review"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:304
+msgid "View Cart"
+msgstr "عرض عربة التسوق"
+
+#: inc/integrations/woocommerce.php:312
+msgid "Shopping Cart"
+msgstr "عربة التسوق"
+
+#: inc/integrations/woocommerce.php:385
+msgctxt "woocommerce"
+msgid "Qty"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:393
+msgctxt "woocommerce"
+msgid "Price"
+msgstr ""
+
+#: inc/integrations/woocommerce.php:401
+msgctxt "woocommerce"
+msgid "Total"
+msgstr ""
+
+#: inc/social.php:62 partials/author.php:25
+msgid "BlogLovin"
+msgstr ""
+
+#: inc/social.php:67
+msgid "RSS"
+msgstr ""
+
+#: inc/social.php:73
+msgid "Google"
+msgstr ""
+
+#: inc/social.php:83
+msgid "Dribbble"
+msgstr ""
+
+#: inc/social.php:98
+msgid "Flickr"
+msgstr "فليكر"
+
+#: inc/social.php:103
+msgid "SoundCloud"
+msgstr ""
+
+#: inc/social.php:113
+msgid "Last.fm"
+msgstr ""
+
+#: inc/social.php:118
+msgid "Steam"
+msgstr ""
+
+#: inc/social.php:148
+msgid "Discord"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Authors List"
+msgstr "الكُتّاب"
+
+#: page-templates/authors.php:70
+msgid "Browse Author Articles"
+msgstr ""
+
+#: page-templates/authors.php:71
+msgid "%s Articles"
+msgstr " %s مقالات"
+
+#. Template Name of the theme
+msgid "Pagebuilder"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Pagebuilder - No Paddings & Full Width"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Sitemap (Deprecated)"
+msgstr ""
+
+#: page-templates/sitemap.php:60
+msgid "Pages"
+msgstr "صفحات"
+
+#: page-templates/sitemap.php:67
+msgid "Categories"
+msgstr "تصنيفات"
+
+#: page-templates/sitemap.php:77
+msgid "Recent Posts"
+msgstr "أخر المقالات"
+
+#: page-templates/sitemap.php:96
+msgid "Archives"
+msgstr "أرشيفات"
+
+#: partials/auth-modal/auth-modal.php:18
+msgctxt "aria"
+msgid "Sign In or Register"
+msgstr "تسجيل الدخول أو التسجيل"
+
+#: partials/auth-modal/auth-modal.php:21
+msgid "Close modal"
+msgstr "إغلاق"
+
+#: partials/auth-modal/login.php:10
+msgid "Login to your account below."
+msgstr ""
+
+#: partials/auth-modal/login.php:14
+msgid "Login below or {register}."
+msgstr "تسجيل الدخول أدناه أو {register}"
+
+#: partials/auth-modal/login.php:17
+msgid "Register Now"
+msgstr "سجل الان"
+
+#: partials/auth-modal/login.php:24
+msgid "Welcome Back!"
+msgstr "مرحبًا بعودتك!"
+
+#: partials/auth-modal/register.php:11
+msgid "Already registered? %1$sLogin%2$s."
+msgstr "%1$sتسجيل الدخول%2$s"
+
+#: partials/auth-modal/register.php:23
+msgid "Your Username"
+msgstr "اسم المستخدم"
+
+#: partials/auth-modal/register.php:27
+msgid "Your Email"
+msgstr "البريد الإلكتروني"
+
+#: partials/auth-modal/register.php:32
+msgid "Register"
+msgstr "تسجيل"
+
+#: partials/auth-modal/register.php:35
+msgid "A password will be e-mailed to you."
+msgstr ""
+
+#: partials/auth-modal/social.php:16
+msgid "or with email"
+msgstr "أو بالبريد الإلكتروني"
+
+#: partials/author.php:27
+msgid "Dribble"
+msgstr ""
+
+#: partials/comment.php:24
+msgid "Pingback:"
+msgstr "تنبيه:"
+
+#: partials/comment.php:24 partials/comment.php:47
+msgid "Edit"
+msgstr "تعديل"
+
+#: partials/comment.php:42
+msgid "on"
+msgstr ""
+
+#: partials/comment.php:43
+msgid " at "
+msgstr ""
+
+#: partials/comment.php:54
+msgid "Your comment is awaiting moderation."
+msgstr "تعليقك في انتظار المراجعة."
+
+#: partials/comment.php:61
+msgid "Reply"
+msgstr "رد"
+
+#: partials/header/auth.php:40
+msgid "Logout"
+msgstr "تسجيل خروج"
+
+#: partials/header/hamburger.php:11
+msgid "Menu"
+msgstr "قائمة"
+
+#: partials/header/mega-menu/category-a.php:41
+msgid "View All"
+msgstr "مشاهدة الكل"
+
+#: partials/header/mega-menu/category-b.php:19
+msgctxt "Categories Mega Menu"
+msgid "Featured"
+msgstr ""
+
+#: partials/header/mega-menu/category-b.php:67
+msgctxt "Categories Mega Menu"
+msgid "Recent"
+msgstr ""
+
+#: partials/header/scheme-switch.php:17
+msgid "Switch to Dark Design - easier on eyes."
+msgstr "الوضع المظلم."
+
+#: partials/header/scheme-switch.php:20
+msgid "Switch to Light Design."
+msgstr ""
+
+#: partials/header/search.php:22 partials/header/search.php:33
+msgid "Search"
+msgstr "بحث"
+
+#: partials/header/search.php:30 partials/search-modal.php:24
+msgid "Search..."
+msgstr "بحث..."
+
+#: partials/live-search.php:23
+msgid "Sorry, no results!"
+msgstr "لا توجد نتائج."
+
+#: partials/live-search.php:52
+msgid "See All Results"
+msgstr "عرض كل النتائج"
+
+#: partials/pagination.php:86
+msgid "Load More"
+msgstr "تحميل المزيد"
+
+#: partials/search-modal.php:27
+msgid "Submit"
+msgstr "إرسال"
+
+#: partials/search-modal.php:32
+msgid ""
+"Type above and press %1$sEnter%2$s to search. Press %1$sEsc%2$s to cancel."
+msgstr "اكتب كلمة البحث ثم اضغط على زر %1$sEnter%2$s "
+
+#: partials/single/classic-title-meta.php:28
+msgctxt "Legacy Meta"
+msgid "By"
+msgstr "بواسطة"
+
+#: partials/single/classic-title-meta.php:32
+msgctxt "Legacy Meta"
+msgid "on"
+msgstr ""
+
+#: partials/single/classic-title-meta.php:39
+msgid ", "
+msgstr ""
+
+#: partials/single/pagination-large.php:13
+msgid "Showing %s of %s"
+msgstr "عرض %s من %s"
+
+#: partials/single/pagination-large.php:24
+msgid "Next"
+msgstr "التالي"
+
+#: partials/single/pagination-large.php:25
+msgid "Prev"
+msgstr "السابق"
+
+#: partials/single/post-navigation.php:14
+msgid "Previous Article"
+msgstr "السابق"
+
+#: partials/single/post-navigation.php:22
+msgid "Next Article"
+msgstr "التالي"
+
+#: woocommerce/single-product/meta.php:21
+msgctxt "woocommerce"
+msgid "SKU:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:22
+msgctxt "woocommerce"
+msgid "N/A"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:27
+msgctxt "woocommerce"
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] "تصنيف:"
+msgstr[1] "تصنيف:"
+msgstr[2] "تصنيفات:"
+msgstr[3] "تصنيفات:"
+msgstr[4] "تصنيفات:"
+msgstr[5] "تصنيفات:"
+
+#: woocommerce/single-product/meta.php:29
+msgctxt "woocommerce"
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
