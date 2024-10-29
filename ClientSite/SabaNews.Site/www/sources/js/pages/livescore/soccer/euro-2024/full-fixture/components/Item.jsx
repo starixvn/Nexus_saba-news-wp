@@ -96,7 +96,7 @@ export default class Item extends PureComponent {
                         >
                             <div className="euro-match-team">
                                 <div className="euro-match-team-home">
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
+                                    <TeamIcon alt={CommonFunctions.getTeamName(match.homeTeam)} className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.homeTeam)} />
                                     <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                     <div className="column column-left home-team">
                                         <ul className="soccer-team-status">
@@ -105,7 +105,7 @@ export default class Item extends PureComponent {
                                     </div>
                                 </div>
                                 <div className="euro-match-team-away">
-                                    <TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
+                                    <TeamIcon alt={CommonFunctions.getTeamName(match.awayTeam)} className="soccer-team-logo" src={CommonFunctions.getTeamIcon(match.awayTeam)} />
                                     <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                     <div className="column column-left home-team">
                                         <ul className="soccer-team-status">
