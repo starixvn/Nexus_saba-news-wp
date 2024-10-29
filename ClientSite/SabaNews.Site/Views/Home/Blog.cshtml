@@ -5,7 +5,7 @@
     if (Model.Header.Controller == "Tag" && string.IsNullOrEmpty(Model.Header.Description))
     {
         limitSidebarItem = 10;
-        description = "MỚI NHẤT: ";
+        description = "Tin MỚI NHẤT về " + Model.Header.HeadTitle +  ": ";
         int i = 0;
         foreach (var post in Model.Posts)
         {
