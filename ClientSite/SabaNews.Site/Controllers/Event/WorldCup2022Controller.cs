@@ -675,7 +675,7 @@
                 SinglePost = postWC,
                 IsLogin = isUserLogin,
                 SavePost = savePostWC,
-                AbsoluteUrl = $"{domain}{slug}",
+                AbsoluteUrl = $"{domain}world-cup-2022/{slug}",
                 IsVideo = PostHelper.IsVideo(cateParentsWC),
                 CateInfo = cateInfoWC
             };
