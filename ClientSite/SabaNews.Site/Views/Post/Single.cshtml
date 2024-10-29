@@ -133,9 +133,9 @@
 }
 @section Metadata {
     <meta name="description"
-        content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : "&nbsp;" )' />
+        content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : @Model.SinglePost.SeoTitle )' />
     <meta property="og:url" content='@Model.AbsoluteUrl' />
-    <meta property="og:description" content="&nbsp;" />
+    <meta property="og:description" content="@Model.SinglePost.SeoDescription" />
     <meta property="og:title" content='@Model.SinglePost.SeoTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@Model.AbsoluteUrl" />
