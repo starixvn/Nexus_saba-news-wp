@@ -386,7 +386,7 @@ namespace SabaNews.Site.Controllers.Event
                 SinglePost = post,
                 IsLogin = isUserLogin,
                 SavePost = savePost,
-                AbsoluteUrl = $"{domain}{slug}",
+                AbsoluteUrl = $"{domain}euro-2024/{post.Uri}",
                 IsVideo = PostHelper.IsVideo(cateParents),
                 CateInfo = cateInfo,
                 MatchId = matchId
