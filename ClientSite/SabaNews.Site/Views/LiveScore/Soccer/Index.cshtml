@@ -43,6 +43,7 @@
     @Model.Header.Title
 }
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.CategorySlug }))
+<h1 style="display: none;">Lịch thi đấu bóng đá hôm nay</h1>
 <div id="app-container"></div>
 @await Html.PartialAsync(ViewResources.SidebarBannerView)
 @section Schema {
