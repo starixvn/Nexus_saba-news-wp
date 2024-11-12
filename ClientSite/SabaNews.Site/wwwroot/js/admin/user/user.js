@@ -23,7 +23,6 @@
 
     function ExportUser() {
         $('.btn-exportexcel').on('click', function () {
-            console.log(123);
             var fromDate = $('#FromDate').val();
             var toDate = $('#ToDate').val();
             var search = $('#search').val();
