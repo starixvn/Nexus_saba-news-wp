@@ -24,11 +24,6 @@
         IPollService pollService,
         IDataControlService dataControlService) : Controller
     {
-        private readonly IPostService postService = postService;
-        private readonly IConfiguration configuration = configuration;
-        private readonly ISessionService sessionService = sessionService;
-        private readonly IPollService pollService = pollService;
-        private readonly IDataControlService dataControlService = dataControlService;
 
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
