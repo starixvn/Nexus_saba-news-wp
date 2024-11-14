@@ -18,26 +18,17 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
 
-    public class PostController : Controller
+    public class PostController(IPostService postService,
+        IConfiguration configuration,
+        ISessionService sessionService,
+        IPollService pollService,
+        IDataControlService dataControlService) : Controller
     {
-        private readonly IPostService postService;
-        private readonly IConfiguration configuration;
-        private readonly ISessionService sessionService;
-        private readonly IPollService pollService;
-        private readonly IDataControlService dataControlService;
-
-        public PostController(IPostService postService,
-            IConfiguration configuration,
-            ISessionService sessionService,
-            IPollService pollService,
-            IDataControlService dataControlService)
-        {
-            this.postService = postService;
-            this.configuration = configuration;
-            this.sessionService = sessionService;
-            this.pollService = pollService;
-            this.dataControlService = dataControlService;
-        }
+        private readonly IPostService postService = postService;
+        private readonly IConfiguration configuration = configuration;
+        private readonly ISessionService sessionService = sessionService;
+        private readonly IPollService pollService = pollService;
+        private readonly IDataControlService dataControlService = dataControlService;
 
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
