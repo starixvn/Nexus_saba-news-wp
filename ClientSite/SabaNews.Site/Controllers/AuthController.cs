@@ -13,20 +13,12 @@
     using SabaNews.Models.Auth;
     using SabaNews.Services.Interfaces;
 
-    public class AuthController : Controller
+    public class AuthController(
+        IAuthService authService,
+        ISessionService sessionService) : Controller
     {
-        private readonly IAuthService authService;
-        private readonly ISessionService sessionService;
         private const string LoginForm = "login";
         private const string RegisterForm = "register";
-
-        public AuthController(
-            IAuthService authService,
-            ISessionService sessionService)
-        {
-            this.authService = authService;
-            this.sessionService = sessionService;
-        }
 
         public IActionResult Index(string openForm)
         {

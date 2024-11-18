@@ -21,31 +21,14 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
 
-    public class ProfileController : Controller
+    public class ProfileController(
+        IUserService userService,
+        ISessionService sessionService,
+        IPostService postService,
+        IAuthService authService,
+        IPathService pathService,
+        IEmailService emailService) : Controller
     {
-        private readonly IUserService userService;
-        private readonly ISessionService sessionService;
-        private readonly IPostService postService;
-        private readonly IAuthService authService;
-        private readonly IPathService pathService;
-        private readonly IEmailService emailService;
-
-        public ProfileController(
-            IUserService userService,
-            ISessionService sessionService,
-            IPostService postService,
-            IAuthService authService,
-            IPathService pathService,
-            IEmailService emailService)
-        {
-            this.userService = userService;
-            this.sessionService = sessionService;
-            this.postService = postService;
-            this.authService = authService;
-            this.pathService = pathService;
-            this.emailService = emailService;
-        }
-
         [Route("Profile")]
         public async Task<IActionResult> Index()
         {
