@@ -19,35 +19,19 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
 
-    public class RobotsController : Controller
+    public class RobotsController(
+        IDataControlService dataControlService,
+        IConfiguration configuration,
+        IPostService postService,
+        ICacheWrapperService cacheService,
+        IMatchService matchService) : Controller
     {
-        private readonly IDataControlService dataControlService;
-        private readonly IPostService postService;
-        private readonly ICacheWrapperService cacheService;
-        private readonly IConfiguration configuration;
-        private readonly IMatchService matchService;
-
         private const string RssCacheKey = "RSSCacheConfig";
         private const string articleDaySlug = "article-day-";
         private const string articleYearSlug = "article-year-";
         private const string xmlSuffix = ".xml";
         private const string xmlType = "text/xml";
-        private readonly string domain;
-
-        public RobotsController(
-            IDataControlService dataControlService,
-            IConfiguration configuration,
-            IPostService postService,
-            ICacheWrapperService cacheService,
-            IMatchService matchService)
-        {
-            this.dataControlService = dataControlService;
-            this.postService = postService;
-            this.configuration = configuration;
-            this.cacheService = cacheService;
-            this.matchService = matchService;
-            domain = configuration.GetValue<string>("BaseUrl");
-        }
+        private readonly string domain = configuration.GetValue<string>("BaseUrl");
 
         [Route("/robots.txt")]
         public ContentResult RobotsTxt()

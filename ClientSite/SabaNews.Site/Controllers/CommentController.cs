@@ -14,19 +14,8 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class CommentController : Controller
+    public class CommentController(ICommentService commentService, ISessionService sessionService) : Controller
     {
-        private readonly ICommentService commentService;
-        private readonly ISessionService sessionService;
-
-
-        public CommentController(ICommentService commentService, ISessionService sessionService)
-        {
-            this.commentService = commentService;
-            this.sessionService = sessionService;
-        }
-
-
         [Route("/comments/getchildren")]
         public async Task<IActionResult> GetChildrenComment(int postID, int commentID)
         {

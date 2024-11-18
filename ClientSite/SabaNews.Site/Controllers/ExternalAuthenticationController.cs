@@ -14,22 +14,11 @@
     using SabaNews.Models.Auth;
     using SabaNews.Services.Interfaces;
 
-    public class ExternalAuthenticationController : Controller
+    public class ExternalAuthenticationController(
+        IExternalAuthService externalAuthService,
+        ISessionService sessionService,
+        IUserService userService) : Controller
     {
-        private readonly IExternalAuthService externalAuthService;
-        private readonly ISessionService sessionService;
-        private readonly IUserService userService;
-
-        public ExternalAuthenticationController(
-            IExternalAuthService externalAuthService,
-            ISessionService sessionService,
-            IUserService userService)
-        {
-            this.externalAuthService = externalAuthService;
-            this.sessionService = sessionService;
-            this.userService = userService;
-        }
-
         public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
         {
             string redirectUrl = Url.Action("ExternalResponse", "ExternalAuthentication", new { provider, returnUrl }, Request.Scheme);
