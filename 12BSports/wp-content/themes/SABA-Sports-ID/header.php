@@ -6,7 +6,6 @@
  */
 
 ?><!DOCTYPE html>
-<html lang="vi">
 <html <?php language_attributes(); ?> class="<?php 
 	echo esc_attr(apply_filters('bunyad_html_root_class', '')); 
 ?>">
