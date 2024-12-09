@@ -147,7 +147,6 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "query_live_score_soccer") {
     $today = date('Y-m-d');
     $yesterday = date('Y-m-d', strtotime('-1 day'));
   
-    //如果存在$_REQUEST["date"]，且有值，則使用$_REQUEST["date"]的日期
     if (isset($_REQUEST["date"]) && $_REQUEST["date"] != 0) {
         $today = $_REQUEST["date"];
         $yesterday = date('Y-m-d', strtotime($today . ' -1 day'));
@@ -155,92 +154,66 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "query_live_score_soccer") {
 
     // 获取当天和前一天的比赛数据
     $todayGames = fetchGamesByDate($today, $headers, $_REQUEST["type"]);
-    $yesterdayGames = fetchGamesByDate($yesterday, $headers , $_REQUEST["type"]);
+    $yesterdayGames = fetchGamesByDate($yesterday, $headers, $_REQUEST["type"]);
 
     $todayGames['Result']['Match'] = adjustGameTimes_soccer($todayGames['Result']['Match']);
     $yesterdayGames['Result']['Match'] = adjustGameTimes_soccer($yesterdayGames['Result']['Match']);
 
-    $LeagueEn = '';
-    if (isset($_REQUEST["game"]) && $_REQUEST["game"] !='all') {
-        switch ($_REQUEST["game"]) {
-		
-            case "FRA": 
-            $LeagueEn = "FRA Ligue 1";
-            break;
-            
-            case "GER":
-            $LeagueEn = "GER Bundesliga";
-            break;
-    
-            case "ITA":
-            $LeagueEn = "ITA Serie A";
-            break;
-    
-            case "SPA":
-            $LeagueEn = "SPA La Liga";
-            break;
-    
-            case "IND":
-            $LeagueEn = "Indonesia ISC";
-            break;
-    
-            case "ENG":
-            $LeagueEn = "ENG Premier League";
-            break; 
-        }
-    }
+    // Allowed League IDs
+   $allowedLeagueIds = [
+    11997, 14638, 11999, 14649, 12002, 12015, 12593, 12052, 14844, 14852,
+    14853, 14843, 63751, 17000, 11998, 17486, 12036, 12053, 12047, 16763,
+    12030, 42030, 53736, 12017, 14640, 14991, 15653, 15514, 14863, 12992,
+    14785, 14870, 14678, 12051, 12050, 12354, 12022, 13558, 12061, 25391,
+    13766, 12025, 12253, 12006, 12008, 13779, 12023, 12041, 12040, 12009,
+    12007, 12005, 12079, 12038, 12042, 12088, 13997, 12062, 14209, 12046,
+    12078, 12027, 16948, 12029, 16604, 12306, 12455, 12063, 12843, 30878,
+    12309, 12247, 12184, 14502, 12404, 12141, 12145, 12064, 12031, 12035,
+    12032, 33500, 12034, 12016, 12892, 13916, 12502, 13915, 12350, 12189,
+    12388, 42378, 13813, 47129, 39427, 14647, 14677, 12001, 12000
+];
 
     // 把$today格式從Y-m-d變成m-d
     $today = date('m-d', strtotime($today));
     $yesterday = date('m-d', strtotime($yesterday));
   
     $allGames = array_merge(
-        array_filter($todayGames['Result']['Match'], function($game) use ($today,$LeagueEn) {
-            $leagueMatch = empty($LeagueEn) || $game['LeagueEn'] === $LeagueEn;
-            return $game['MeiDonDate'] === $today  && $game['DateShareZh'] === $today && $leagueMatch && $game['Status'] != 99;
+        array_filter($todayGames['Result']['Match'], function($game) use ($today, $allowedLeagueIds) {
+            return $game['MeiDonDate'] === $today 
+                && $game['DateShareZh'] === $today 
+                && in_array($game['LeagueId'], $allowedLeagueIds)
+                && $game['Status'] != 99;
         }),
-        array_filter($yesterdayGames['Result']['Match'], function($game) use ($today,$LeagueEn) {
-            // 过滤条件: 昨天的比赛，但时间调整后成为今天的
-            $leagueMatch = empty($LeagueEn) || $game['LeagueEn'] === $LeagueEn;
-            return $game['MeiDonDate'] === $today && $leagueMatch   && $game['Status'] != 99;
+        array_filter($yesterdayGames['Result']['Match'], function($game) use ($today, $allowedLeagueIds) {
+            return $game['MeiDonDate'] === $today 
+                && in_array($game['LeagueId'], $allowedLeagueIds)
+                && $game['Status'] != 99;
         })
     );
- 
-   // 根据比赛日期和时间排序
+
+    // 根据比赛日期和时间排序
     usort($allGames, function($a, $b) {
-        // 首先根据 'DateShareZh' 排序
         if ($a['MeiDonDate'] !== $b['MeiDonDate']) {
             return strcmp($a['MeiDonDate'], $b['MeiDonDate']);
         }
-        // 如果 'DateShareZh' 相同，则根据 'Schedule' 排序
         return strcmp($a['Schedule'], $b['Schedule']);
     });
 
     usort($allGames, function($a, $b) {
-        // 定义MatchStatus的排序顺序
         $order = [10 => 1, 20 => 2, 30 => 3, 40 => 4, 0 => 5, 50 => 6, 60 => 7];
-        
-        // 获取每个MatchStatus对应的排序权重，未定义的状态权重最大
         $rankA = isset($order[$a['Status']]) ? $order[$a['Status']] : max($order) + 1;
         $rankB = isset($order[$b['Status']]) ? $order[$b['Status']] : max($order) + 1;
-        
-        // 比较权重
-        if ($rankA == $rankB) return 0;
-        return ($rankA < $rankB) ? -1 : 1;
+        return $rankA <=> $rankB;
     });
 
     if (isset($_REQUEST["schedule"]) && $_REQUEST["schedule"] == 1) {
         $topFourGames = array_slice($allGames, 0, 4);
-
         $info['code'] = 200;
         $info['game'] = $topFourGames;  
     } else {
         $info['code'] = 200; 
         $info['games'] = $allGames; 
     }
-     
-    
- 
 }
 
 
