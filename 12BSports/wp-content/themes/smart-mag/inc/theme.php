@@ -743,8 +743,8 @@ class Bunyad_Theme_SmartMag
 				break;
 		}
 
-		$before_title = '<div class="widget-title '. esc_attr($title_class) .'"><h5 class="heading">';
-		$after_title  = '</h5></div>';
+		$before_title = '<div class="widget-title '. esc_attr($title_class) .'"><h3 class="heading">';
+		$after_title  = '</h3></div>';
 
 		return [
 			'class'  => $title_class,
