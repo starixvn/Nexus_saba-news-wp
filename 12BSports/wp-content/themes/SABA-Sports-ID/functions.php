@@ -7,19 +7,19 @@
 
 */
 
-add_action('template_redirect', 'post_redirect_to_new_url');
-function post_redirect_to_new_url() {
-    global $post;
-    if (is_single($post->ID)) {
-        global $wp;
-        $url = $wp->request;
-        if(!str_contains($url, ".html")) {
-            $new_url = "/{$post->post_name}-{$post->ID}.html";
-            wp_redirect($new_url, 301);
-            exit;
-        }
-    }
-}
+// add_action('template_redirect', 'post_redirect_to_new_url');
+// function post_redirect_to_new_url() {
+//     global $post;
+//     if (is_single($post->ID)) {
+//         global $wp;
+//         $url = $wp->request;
+//         if(!str_contains($url, ".html")) {
+//             $new_url = "/{$post->post_name}-{$post->ID}.html";
+//             wp_redirect($new_url, 301);
+//             exit;
+//         }
+//     }
+// }
 
 function load_data_scripts() {
     $version = time(); // 获取当前时间作为版本号
