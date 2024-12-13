@@ -22,7 +22,8 @@
 // }
 
 add_action('template_redirect', function() {
-    if (strpos($_SERVER['REQUEST_URI'], "/login/") === 0  &&  !empty($_SERVER['QUERY_STRING'])) {
+    $uri = $_SERVER['REQUEST_URI'];
+    if ((strpos($uri, "/login/") === 0 || strpos($uri, "/login") === 0)  &&  !empty($_SERVER['QUERY_STRING'])) {
         status_header(410);
     }
 });
