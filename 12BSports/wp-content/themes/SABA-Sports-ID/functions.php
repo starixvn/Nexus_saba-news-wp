@@ -21,6 +21,12 @@
 //     }
 // }
 
+add_action('template_redirect', function() {
+    if (strpos($_SERVER['REQUEST_URI'], "/login/") === 0  &&  !empty($_SERVER['QUERY_STRING'])) {
+        status_header(410);
+    }
+});
+
 function load_data_scripts() {
     $version = time(); // 获取当前时间作为版本号
     wp_enqueue_script('load-data-js', home_url() . '/wp-includes/js/load-data.js', array('jquery'), $version, true);
