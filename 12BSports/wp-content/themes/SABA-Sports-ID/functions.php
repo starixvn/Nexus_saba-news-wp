@@ -7,19 +7,26 @@
 
 */
 
-// add_action('template_redirect', 'post_redirect_to_new_url');
-// function post_redirect_to_new_url() {
-//     global $post;
-//     if (is_single($post->ID)) {
-//         global $wp;
-//         $url = $wp->request;
-//         if(!str_contains($url, ".html")) {
-//             $new_url = "/{$post->post_name}-{$post->ID}.html";
-//             wp_redirect($new_url, 301);
-//             exit;
-//         }
-//     }
-// }
+add_action('template_redirect', 'post_redirect_to_new_url');
+function post_redirect_to_new_url() {
+    $uri = $_SERVER['REQUEST_URI'];
+    $uriParts = explode('/', trim($uri, '/'));
+    if(count($uriParts) >= 2 && str_contains($uriParts[0], "12bsportsvn") && !str_contains($uriParts[count($uriParts) - 1], "12bsportsvn")) {
+        $new_uri = '/' . $uriParts[count($uriParts) - 1] . '.html';
+        wp_redirect($new_uri, 301);
+        exit;
+    }
+    // global $post;
+    // if (is_single($post->ID)) {
+    //     global $wp;
+    //     $url = $wp->request;
+    //     if(!str_contains($url, ".html")) {
+    //         $new_url = "/{$post->post_name}-{$post->ID}.html";
+    //         wp_redirect($new_url, 301);
+    //         exit;
+    //     }
+    // }
+}
 
 add_action('template_redirect', function() {
     $uri = $_SERVER['REQUEST_URI'];
