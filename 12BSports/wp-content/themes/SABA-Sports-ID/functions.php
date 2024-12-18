@@ -12,18 +12,22 @@ function post_redirect_to_new_url() {
     $uri = $_SERVER['REQUEST_URI'];
     $uriParts = explode('/', trim($uri, '/'));
     if(count($uriParts) >= 2 && str_contains($uriParts[0], "12bsportsvn") && !str_contains($uriParts[count($uriParts) - 1], "12bsportsvn")) {
-        $new_uri = '/' . $uriParts[count($uriParts) - 1] . '.html';
-        wp_redirect($new_uri, 301);
-        exit;
+        $slug = $uriParts[count($uriParts) - 1];
+        $slugParts = explode('-', $slug);
+        if($slugParts[count($slugParts) - 1] <= POST_ID_REDIRECT) {
+            $new_uri = '/' . $uriParts[count($uriParts) - 1] . '.html';
+            wp_redirect($new_uri, 301);
+            exit;
+        }
     }
 }
 
-add_action('template_redirect', function() {
-    $uri = $_SERVER['REQUEST_URI'];
-    if ((strpos($uri, "/login/") === 0 || strpos($uri, "/login") === 0)  &&  !empty($_SERVER['QUERY_STRING'])) {
-        status_header(410);
-    }
-});
+// add_action('template_redirect', function() {
+//     $uri = $_SERVER['REQUEST_URI'];
+//     if ((strpos($uri, "/login/") === 0 || strpos($uri, "/login") === 0)  &&  !empty($_SERVER['QUERY_STRING'])) {
+//         status_header(410);
+//     }
+// });
 
 function load_data_scripts() {
     $version = time(); // 获取当前时间作为版本号

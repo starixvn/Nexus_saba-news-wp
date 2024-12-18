@@ -96,6 +96,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 define( 'FS_METHOD', 'direct' );
 define( 'WP_AUTO_UPDATE_CORE', 'minor' );
+define( 'POST_ID_REDIRECT', 19676 );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
