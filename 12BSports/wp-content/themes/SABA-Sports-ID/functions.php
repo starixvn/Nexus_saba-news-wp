@@ -11,7 +11,7 @@ add_action('template_redirect', 'post_redirect_to_new_url');
 function post_redirect_to_new_url() {
     $uri = $_SERVER['REQUEST_URI'];
     $uriParts = explode('/', trim($uri, '/'));
-    if(count($uriParts) >= 2 && (str_contains($uriParts[0], "12bsportsvn") || str_contains($uriParts[0], "mon-the-thao")) && !str_contains($uriParts[count($uriParts) - 1], "12bsportsvn")) {
+    if(count($uriParts) >= 2 && str_contains($uriParts[0], "12bsportsvn") && !str_contains($uriParts[count($uriParts) - 1], "12bsportsvn")) {
         $slug = $uriParts[count($uriParts) - 1];
         $slugParts = explode('-', $slug);
         if($slugParts[count($slugParts) - 1] <= POST_ID_REDIRECT) {
