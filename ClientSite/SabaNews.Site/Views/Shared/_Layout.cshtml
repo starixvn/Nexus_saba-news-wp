@@ -2,6 +2,7 @@
 @inject IConfiguration configuration
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     @{
         if (configuration.GetValue<bool>("IsShowGoogleAnalytics"))
@@ -35,11 +36,13 @@
     @RenderSection("Schema", false)
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, maximum-scale=5 user-scalable=no" >
+    <meta name="viewport" content="width=device-width, maximum-scale=5 user-scalable=no">
     <title>@RenderSection("Title", false)</title>
     @RenderSection("Metadata", false)
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="preload stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="preload stylesheet">
     <link rel="preconnect" href="https://www.googleadservices.com/">
     <link rel="preload" href="~/styles/vendor/icomoon/fonts/icomoon.ttf?284o61" as="font" crossorigin="anonymous">
     <link href="~/images/favicon/app_57x57.png" rel="apple-touch-icon" sizes="57x57" />
@@ -69,8 +72,8 @@
         {
             <!-- Google Tag Manager (noscript) -->
             <noscript>
-                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBMWSGP"
-                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBMWSGP" height="0" width="0"
+                    style="display:none;visibility:hidden"></iframe>
             </noscript>
             <!-- End Google Tag Manager (noscript) -->
 
@@ -115,7 +118,8 @@
                     </button>
                     <div class="modal-body">
                         <div class="img-event">
-                            <img data-original="/images/banner/domain.webp" src="/images/banner/domain.webp"  width="500" height="334"  asp-append-version="true" alt="Saba euro Popup" class="img-res lazy" />
+                            <img data-original="/images/banner/domain.webp" src="/images/banner/domain.webp" width="500"
+                                height="334" asp-append-version="true" alt="Saba euro Popup" class="img-res lazy" />
                         </div>
                     </div>
                 </div>
@@ -134,20 +138,22 @@
     <input type="hidden" id="RootUrl" value="@Url.Content("~/")" />
     @Html.AntiForgeryToken()
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.min.js"," asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap-modal.js"," asp-append-version="true"></script>
-        <script src="~/js/auth/auth.js"," asp-append-version="true"></script>
-        <script src="~/js/common.js"," asp-append-version="true"></script>
-        <script src="~/js/site.js"," asp-append-version="true"></script>
-        <script src="~/js/all.js"," asp-append-version="true"></script>
-        <script src="~/js/post/load-component.js"," asp-append-version="true"></script>
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        <script src="~/lib/jquery/dist/jquery.min.js" ," asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap-modal.js" ," asp-append-version="true"></script>
+        <script src="~/js/auth/auth.js" ," asp-append-version="true"></script>
+        <script src="~/js/common.js" ," asp-append-version="true"></script>
+        <script src="~/js/site.js" ," asp-append-version="true"></script>
+        <script src="~/js/all.js" ," asp-append-version="true"></script>
+        <script src="~/js/post/load-component.js" ," asp-append-version="true"></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async
+            defer></script>
 
     </environment>
     <environment exclude="Development">
         <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
         <script src="~/js/lib/jquery.lazyload.min.js"></script>
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async
+            defer></script>
     </environment>
     <script>
         window.currentTime = new Date('@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(DateTime.UtcNow, "yyyy-MM-dd HH:mm:ss")');
@@ -155,4 +161,5 @@
     @RenderSection("Scripts", false)
 
 </body>
+
 </html>
