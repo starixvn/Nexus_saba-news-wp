@@ -11,11 +11,25 @@ add_action('template_redirect', 'post_redirect_to_new_url');
 function post_redirect_to_new_url() {
     $uri = $_SERVER['REQUEST_URI'];
     $uriParts = explode('/', trim($uri, '/'));
-    if(count($uriParts) >= 3 && str_contains($uriParts[0], "12bsportsvn") && !str_contains($uriParts[count($uriParts) - 1], "12bsportsvn")) {
+    if(count($uriParts) >= 3 && str_contains($uriParts[0], "12bsportsvn") && !str_contains($uriParts[count($uriParts) - 1], "12bsportsvn") && $uriParts[count($uriParts) - 2] != "page") {
         $slug = $uriParts[count($uriParts) - 1];
         $slugParts = explode('-', $slug);
         if($slugParts[count($slugParts) - 1] <= POST_ID_REDIRECT) {
             $new_uri = '/' . $uriParts[count($uriParts) - 1] . '.html';
+            wp_redirect($new_uri, 301);
+            exit;
+        }
+    }
+
+    if($uriParts[0] == "mon-the-thao") {
+        $single = get_posts(array( 
+            'name' => $uriParts[count($uriParts) - 1],
+            'post_type' => 'post',
+            'post_status' => 'publish'
+        ));
+        if ( count($single) > 0 ){
+            $p = $single[0];
+            $new_uri = "/{$p->post_name}-{$p->ID}.html}";
             wp_redirect($new_uri, 301);
             exit;
         }
