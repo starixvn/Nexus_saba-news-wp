@@ -2,6 +2,7 @@
 {
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Constants.Livescore;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
@@ -312,7 +313,9 @@
                     criteria.ToTime = currentDate.AddMonths(TotalMonths).ToEndOfDay();
                 }
                 var (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
-                result.Add(new MatchLeagueModel { League = league, Matches = matches });
+                var preMatches = matches.Where(item => item.Status != MatchConstants.Finished && item.StartTime.Date >= DateTime.UtcNow.Date).Take(20);
+                var postMatches = matches.Where(item => item.Status == MatchConstants.Finished || item.Status == MatchConstants.CutInHalf).OrderByDescending(item => item.StartTime).Take(20);
+                result.Add(new MatchLeagueModel { League = league, Matches = preMatches.Concat(postMatches).ToList() });
             }
             return result;
         }
