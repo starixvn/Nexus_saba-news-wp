@@ -3,7 +3,10 @@
         "outputFileName": "wwwroot/minify/styles/home.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/home.css"
+            "wwwroot/styles/pages/home.css",
+            "wwwroot/lib/swipper/css/swiper.min.css",
+            "wwwroot/css/pro/pages/livescore/soccer/homepage/fixture.chunk.css",
+            "wwwroot/css/pro/pages/livescore/soccer/homepage/standing.chunk.css"
         ]
     },
     {
@@ -327,6 +330,8 @@
     {
         "outputFileName": "wwwroot/minify/js/home.min.js",
         "inputFiles": [
+            "wwwroot/js/pro/lib/lang-vi-VN.chunk.js",
+            "wwwroot/js/pro/lib/react-vendor.chunk.js",
             "wwwroot/js/home.js"
         ],
         "minify": {
