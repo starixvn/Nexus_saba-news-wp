@@ -7,6 +7,33 @@
 
 */
 
+
+function yoast_noindex_specific_category_posts($robots) {
+    $index_category = array('bong-da-anh-12bsportsvn', 'ngoai-hang-anh-12bsportsvn', 'fa-cup-12bsportsvn', 'dt-anh-12bsportsvn', 
+        'nhan-dinh-bong-da-12bsportsvn', 'nhan-dinh-aff-cup-12bsportsvn', 'nhan-dinh-bundesliga-12bsportsvn', 'nhan-dinh-c1-champions-league-12bsportsvn',
+        'nhan-dinh-c2-europa-league-12bsportsvn', 'nhan-dinh-euro-12bsportsvn', 'nhan-dinh-fa-cup-12bsportsvn', 'nhan-dinh-la-liga-12bsportsvn',
+        'nhan-dinh-cup-lien-doan-anh-12bsportsvn', 'nhan-dinh-ligue-1-12bsportsvn', 'nhan-dinh-nations-league-12bsportsvn', 'nhan-dinh-ngoai-hang-anh-12bsportsvn',
+        'nhan-dinh-sea-games-12bsportsvn', 'nhan-dinh-serie-a-12bsportsvn', 'nhan-dinh-v-league-12bsportsvn', 'nhan-dinh-world-cup-12bsportsvn');
+    if (is_single() && !has_category($index_category)) {
+        $robots= "noindex, nofollow";
+    }
+    return $robots;
+}
+add_filter('wpseo_robots', 'yoast_noindex_specific_category_posts');
+
+add_filter('wpseo_sitemap_entry', function($url, $type, $post) {
+    // Replace 'your-category-slug' with the slug of the category you want to exclude
+    $index_category = array('bong-da-anh-12bsportsvn', 'ngoai-hang-anh-12bsportsvn', 'fa-cup-12bsportsvn', 'dt-anh-12bsportsvn', 
+        'nhan-dinh-bong-da-12bsportsvn', 'nhan-dinh-aff-cup-12bsportsvn', 'nhan-dinh-bundesliga-12bsportsvn', 'nhan-dinh-c1-champions-league-12bsportsvn',
+        'nhan-dinh-c2-europa-league-12bsportsvn', 'nhan-dinh-euro-12bsportsvn', 'nhan-dinh-fa-cup-12bsportsvn', 'nhan-dinh-la-liga-12bsportsvn',
+        'nhan-dinh-cup-lien-doan-anh-12bsportsvn', 'nhan-dinh-ligue-1-12bsportsvn', 'nhan-dinh-nations-league-12bsportsvn', 'nhan-dinh-ngoai-hang-anh-12bsportsvn',
+        'nhan-dinh-sea-games-12bsportsvn', 'nhan-dinh-serie-a-12bsportsvn', 'nhan-dinh-v-league-12bsportsvn', 'nhan-dinh-world-cup-12bsportsvn');
+    if ($type === 'post' && !has_category($index_category, $post)) {
+        return false; // Exclude the post
+    }
+    return $url;
+}, 10, 3);
+
 add_action('template_redirect', 'post_redirect_to_new_url');
 function post_redirect_to_new_url() {
     $uri = $_SERVER['REQUEST_URI'];
