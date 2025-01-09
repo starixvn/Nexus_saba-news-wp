@@ -62,7 +62,7 @@
 
         public static string GetSitemapForYear(int year, string domain)
         {
-            XElement root = new(xmlns + urlset);
+            XElement root = new(xmlns + sitemapIndex);
             var currentDate = DateTimeUtilize.DateTime(year, 12, 31, 23, 59, 59);
             var firstDateOfYear = DateTimeUtilize.DateTime(year, 1, 1);
             while (currentDate >= firstDateOfYear)
