@@ -313,7 +313,7 @@
                     criteria.ToTime = currentDate.AddMonths(TotalMonths).ToEndOfDay();
                 }
                 var (league, matches) = await matchService.GetMatchBySeasonAsync(criteria);
-                var preMatches = matches.Where(item => item.Status != MatchConstants.Finished && item.StartTime.Date >= DateTime.UtcNow.Date).Take(20);
+                var preMatches = matches.Where(item => item.Status != MatchConstants.Finished && item.StartTime.Date >= DateTimeUtilize.UtcNow().Date).Take(20);
                 var postMatches = matches.Where(item => item.Status == MatchConstants.Finished || item.Status == MatchConstants.CutInHalf).OrderByDescending(item => item.StartTime).Take(20);
                 result.Add(new MatchLeagueModel { League = league, Matches = preMatches.Concat(postMatches).ToList() });
             }
