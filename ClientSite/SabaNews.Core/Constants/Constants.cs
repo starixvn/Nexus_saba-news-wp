@@ -3,7 +3,7 @@
     public static class Constants
     {
         public const int Home = 587;
-        public const int PostsId = 175; 
+        public const int PostsId = 175;
 
         public const string HomeSlug = "home-3";
         public const string NewPostSlug = "tin-the-thao";
@@ -39,7 +39,7 @@
         public const string DateSearch = "DateSearch";
         public const string Football = "Bóng đá";
         public const string Video = "Video";
-        public const string OtherPosts = "Các môn khác"; 
+        public const string OtherPosts = "Các môn khác";
 
         public const string EmptyBlogView = "~/Views/Home/EmptyBlog.cshtml";
         public const string BlogView = "Blog";
@@ -213,5 +213,29 @@
         public const string TokenIsValidMessage = "Token is invalid";
         public const string RowLimitMessage = "RowLimit max is 1000";
         public const string TodayLiveFixtureTag = "truc-tiep-bong-da-hom-nay";
+
+        public static readonly string[] ExcludedCategories = {
+                "bong-da-anh",
+                "ngoai-hang-anh",
+                "dt-anh",
+                "nhan-dinh-ngoai-hang-anh",
+                "fa-cup",
+                "nhan-dinh-fa-cup",
+                "cup-lien-doan-anh",
+                "nhan-dinh-cup-lien-doan-anh",
+                "nhan-dinh-bong-da",
+                "nhan-dinh-c1-champions-league",
+                "nhan-dinh-la-liga",
+                "nhan-dinh-serie-a",
+                "nhan-dinh-bundesliga",
+                "nhan-dinh-ligue-1",
+                "nhan-dinh-v-league",
+                "nhan-dinh-c2-europa-league",
+                "nhan-dinh-world-cup",
+                "nhan-dinh-euro",
+                "nhan-dinh-nations-league",
+                "nhan-dinh-aff-cup",
+                "nhan-dinh-sea-games"
+            };
     }
 }
