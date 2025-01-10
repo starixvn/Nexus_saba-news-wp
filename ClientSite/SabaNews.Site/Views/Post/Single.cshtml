@@ -131,6 +131,35 @@
     }
     </script>
 }
+
+@{
+    var excludedCategories  = new[] {
+        "bong-da-anh",
+        "ngoai-hang-anh", 
+        "dt-anh", 
+        "nhan-dinh-ngoai-hang-anh",
+        "fa-cup",
+        "nhan-dinh-fa-cup",
+        "cup-lien-doan-anh",
+        "nhan-dinh-cup-lien-doan-anh",
+        "nhan-dinh-bong-da",
+        "nhan-dinh-c1-champions-league",
+        "nhan-dinh-la-liga",
+        "nhan-dinh-serie-a",
+        "nhan-dinh-bundesliga",
+        "nhan-dinh-ligue-1",
+        "nhan-dinh-v-league",
+        "nhan-dinh-c2-europa-league",
+        "nhan-dinh-world-cup",
+        "nhan-dinh-euro",
+        "nhan-dinh-nations-league",
+        "nhan-dinh-aff-cup",
+        "nhan-dinh-sea-games"
+    };
+    string currentSlug = Model.CateInfo.Slug as string ?? string.Empty;
+    bool isExcludedCategory = excludedCategories.Contains(currentSlug, StringComparer.OrdinalIgnoreCase);
+}
+
 @section Metadata {
     <meta name="description"
         content='@(Model.SinglePost.SeoDescription != "" ? Model.SinglePost.SeoDescription : @Model.SinglePost.SeoTitle )' />
@@ -140,7 +169,15 @@
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@Model.AbsoluteUrl" />
     <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
-    <meta name="robots" content="index,follow,noarchive,max-image-preview:large" />
+    <meta name="robots" content="noindex, follow,noarchive,max-image-preview:large" />
+
+    @if (isExcludedCategory)
+    {
+        <meta name="robots" content="index, follow,noarchive,max-image-preview:large" />
+    }
+    else {
+        <meta name="robots" content="noindex, follow,noarchive,max-image-preview:large" />
+    }
 }
 
 @section Title{
