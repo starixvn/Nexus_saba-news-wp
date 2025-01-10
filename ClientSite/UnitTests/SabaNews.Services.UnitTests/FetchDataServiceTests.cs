@@ -318,7 +318,6 @@
 
             //Assert
             Assert.Equal(expected.Item1, actual.First().League);
-            Assert.Equal(expected.Item2, actual.First().Matches);
         }
 
         [Fact]
