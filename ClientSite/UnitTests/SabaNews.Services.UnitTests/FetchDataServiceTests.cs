@@ -5,6 +5,7 @@
     using Newtonsoft.Json;
     using NSubstitute;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Constants.Livescore;
     using SabaNews.Core.Helper;
     using SabaNews.Criteria.Posts;
     using SabaNews.Livescore.Models.League;
@@ -307,6 +308,9 @@
             };
             var expectedOptionList = Helper.ParseJsonToList<FixtureHomepage>(option.OptionValue);
             var expected = fixture.Create<(League, IList<Match>)>();
+            var preMatches = expected.Item2.Where(item => item.Status != MatchConstants.Finished && item.StartTime.Date >= DateTimeUtilize.UtcNow().Date).Take(20);
+            var postMatches = expected.Item2.Where(item => item.Status == MatchConstants.Finished || item.Status == MatchConstants.CutInHalf).OrderByDescending(item => item.StartTime).Take(20);
+            var matchExpected = preMatches.Concat(postMatches).ToList();
             var expectedResult = new List<MatchLeagueModel>();
             expectedResult.Add(new MatchLeagueModel{League = expected.Item1, Matches = expected.Item2});
             expectedResult.Add(new MatchLeagueModel{League = expected.Item1, Matches = expected.Item2});
@@ -318,6 +322,7 @@
 
             //Assert
             Assert.Equal(expected.Item1, actual.First().League);
+            Assert.Equal(matchExpected, actual.First().Matches);
         }
 
         [Fact]
