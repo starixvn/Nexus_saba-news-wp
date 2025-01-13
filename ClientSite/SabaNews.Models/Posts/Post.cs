@@ -38,6 +38,7 @@
         public IEnumerable<ImageInfo> Images { get; set; }
         public int VideoViews { get; set; }
         public string PrimaryCategory { get; set; }
+        public List<string> ListCategories { get; set; }
 
         public string PostTime
         {

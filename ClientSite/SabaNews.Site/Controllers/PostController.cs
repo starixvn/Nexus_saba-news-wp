@@ -66,7 +66,7 @@
             post.SeoTitle = string.IsNullOrEmpty(post.SeoTitle) ? post.PostTitle : Helper.ReplaceStringFromVarSeo(post.SeoTitle, post.PostTitle);
             post.SeoDescription = string.IsNullOrEmpty(post.SeoDescription) ? post.PostExcerpt : Helper.ReplaceStringFromVarSeo(post.SeoDescription, post.PostTitle);
             post.PostContent = customContent;
-
+            post.ListCategories = post.CategoriesSlug.Split(',').Select(item => item.Trim()).ToList();
             var domainUrl = configuration.GetValue<string>("BaseUrl");
             return new SingleViewModel
             {
@@ -78,7 +78,8 @@
                 CateInfo = cateInfo,
                 MatchId = matchId,
                 CateParents = cateParents,
-                DomainUrl = domainUrl
+                DomainUrl = domainUrl,
+                IsIndex = post.ListCategories.Any(s => Constants.ExcludedCategories.Contains(s, System.StringComparer.OrdinalIgnoreCase))
             };
         }
 

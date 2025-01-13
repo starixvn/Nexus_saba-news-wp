@@ -34,6 +34,7 @@
                 "@Model.SinglePost.FeatureImage"
             ],
             "uploadDate": "@Html.Raw(Model.SinglePost.PostDate.ToString("yyyy-MM-ddTHH:mm:sszzz"))",
+    using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
             "interactionStatistic": {
                 "@@type": "InteractionCounter",
                 "interactionType": "https://schema.org/WatchAction",
@@ -134,7 +135,6 @@
 
 @{
     string currentSlug = Model.CateInfo.Slug as string ?? string.Empty;
-    bool isExcludedCategory = Constants.ExcludedCategories.Contains(currentSlug, StringComparer.OrdinalIgnoreCase);
 }
 
 @section Metadata {
@@ -147,7 +147,7 @@
     <link rel="canonical" href="@Model.AbsoluteUrl" />
     <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
 
-    @if (isExcludedCategory)
+    @if (Model.IsIndex)
     {
         <meta name="robots" content="index, follow,noarchive,max-image-preview:large" />
     }

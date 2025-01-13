@@ -23,5 +23,6 @@
         public string CateParent { get; set; }
         public string MatchId { get; set; }
         public string DomainUrl { get; set; }
+        public bool IsIndex { get; set;}
     }
 }
