@@ -79,7 +79,7 @@
                 MatchId = matchId,
                 CateParents = cateParents,
                 DomainUrl = domainUrl,
-                IsIndex = post.ListCategories.Any(s => Constants.ExcludedCategories.Contains(s, System.StringComparer.OrdinalIgnoreCase))
+                IsIndex = post.ListCategories.Exists(s => Constants.ExcludedCategories.Contains(s, System.StringComparer.OrdinalIgnoreCase))
             };
         }
 
