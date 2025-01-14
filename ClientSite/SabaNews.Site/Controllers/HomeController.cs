@@ -274,6 +274,12 @@
             return View(model);
         }
 
+        [Route("Home/Category")]
+        public IActionResult RedirectOldCategory(string slug)
+        {
+            return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix});
+        }
+
         [Route("thong-bao-thay-doi-ten-mien")]
         public ActionResult ChangeDomain()
         {
