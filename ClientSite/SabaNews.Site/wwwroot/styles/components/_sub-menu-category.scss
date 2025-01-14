@@ -32,8 +32,8 @@
         }
     }
 
-
     .sub-item {
+        list-style: none; 
         margin-right: 2.2rem;
         font-weight: bold;
 
@@ -120,6 +120,7 @@
         .group-parent-sub{
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             overflow: hidden;
             height: 2.9rem;
             width: calc(100% - 3rem);
