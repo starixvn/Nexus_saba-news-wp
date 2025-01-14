@@ -3546,10 +3546,10 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   height: 11rem;
   display: block;
 }
-.box-horizontal-content h5, .box-horizontal-content .heading-box-content {
+.box-horizontal-content h5, .box-horizontal-content h4, .box-horizontal-content .heading-box-content {
   line-height: 1.5;
 }
-.box-horizontal-content h5 a, .box-horizontal-content .heading-box-content a {
+.box-horizontal-content h5 a, .box-horizontal-content h4 a, .box-horizontal-content .heading-box-content a {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.4rem;
@@ -3557,7 +3557,7 @@ textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button
   color: #222;
   transition: color 0.3s ease;
 }
-.box-horizontal-content h5 a:hover, .box-horizontal-content .heading-box-content a:hover {
+.box-horizontal-content h5 a:hover, .box-horizontal-content h4 a:hover, .box-horizontal-content .heading-box-content a:hover {
   color: #eb5342;
 }
 .box-horizontal.box-video .box-horizontal-image {
