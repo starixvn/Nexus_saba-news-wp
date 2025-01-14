@@ -69,5 +69,13 @@ namespace SabaNews.Core.Constants
             new CateSlugRedirect { OldSlug = "nhan-dinh-cup-c1-sabavn", NewSlug = "nhan-dinh-c1-champions-league-sabavn" },
             new CateSlugRedirect { OldSlug = "nhan-dinh-cup-c2-sabavn", NewSlug = "nhan-dinh-c2-europa-league-sabavn" },
         };
+
+        public static readonly Dictionary<string, string> LinkRedirectList = new Dictionary<string, string>
+        {
+            { "/href=%22https://www.sabavn.net/sao-man-united-lap-cong-trong-ngay-dt-phap-gay-that-vong%22", "/sao-man-united-lap-cong-trong-ngay-dt-phap-gay-that-vong-53435.html" },
+            { "/world-cup-2022/tin-the-thao/doi-tuyen/world-cup/", "/world-cup-sabavn" },
+        };
+            
+
     }
 }
