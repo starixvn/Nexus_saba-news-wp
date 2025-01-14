@@ -222,7 +222,7 @@
                                 </picture>
                             </a>
                             <div class="card-horizontal__content">
-                                @if(postIndex <= 3)
+                                @if(postIndex <= 10)
                                 {
                                     <h2><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a></h2>
                                 }

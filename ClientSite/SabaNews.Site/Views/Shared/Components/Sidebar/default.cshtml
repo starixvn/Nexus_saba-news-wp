@@ -9,9 +9,9 @@
 
 
 <div class="block-sticky">
-    <h3 class="block__title @(Model.IsMostViewPosts ? "hotnews-title" : "")">
+    <h2 class="block__title @(Model.IsMostViewPosts ? "hotnews-title" : "")">
         <a href="@titleUrl">@ViewData[ViewResources.ViewDataHeadTitle]</a>
-    </h3>
+    </h2>
     <div class="block__content">
         <div class="block-item">
             @foreach (var post in Model.Posts)

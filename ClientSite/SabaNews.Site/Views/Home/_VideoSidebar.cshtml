@@ -1,6 +1,6 @@
 
 <div class="block__content">
-    <h3 class="block__title"><a href="@Url.Action("Category", "Home", new {slug = "video-sabavn"} )">Video</a></h3>
+    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new {slug = "video-sabavn"} )">Video</a></h2>
     @foreach (var post in Model)
     {
         string featureImg = post.FeatureImage;
@@ -16,7 +16,7 @@
                 </picture>
             </a>
             <div class="card-horizontal__content">
-                <h4><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a></h4>
+                <a class="title" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
             </div>
         </div>
     }
