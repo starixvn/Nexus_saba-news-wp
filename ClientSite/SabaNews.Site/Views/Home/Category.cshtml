@@ -264,7 +264,7 @@
         </div>
         <div class="banner-scroll banner-mobile-bottom" style="display: none;"></div>
         <div class="block block-extension">
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory })
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory, IsCatePage = true})
             <div id="fixture-category"></div>
             <div id="standing-category"></div>
             <div class="video-sidebar"></div>

@@ -219,9 +219,9 @@
 
         [HttpPost]
         [Route("api/post/sidebar-posts")]
-        public IActionResult GetSidebarPosts(string cateSlug, int postID, int limitItem)
+        public IActionResult GetSidebarPosts(string cateSlug, int postID, int limitItem, bool isCatePage)
         {
-            return ViewComponent("Sidebar", new { cateSlug, postID, limitItem });
+            return ViewComponent("Sidebar", new { cateSlug, postID, limitItem, isCatePage });
         }
 
         [HttpPost]

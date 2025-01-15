@@ -1,6 +1,6 @@
 @using SabaNews.Core.Constants;
 <div class="block-guess">
-    <h3 class="block__title"><a href="@Url.Action("Category", "Home", new {slug = ViewBag.Slug + CategoryKey.Suffix} )">Nhận định bóng đá</a></h3>
+    <div class="block__title"><a href="@Url.Action("Category", "Home", new {slug = ViewBag.Slug + CategoryKey.Suffix} )">Nhận định bóng đá</a></div>
     <div class="block__content">
         <div class="block-item">
             @{
@@ -23,7 +23,7 @@
                                 </picture>
                             </a>
                         }
-                        <h3><a class="card-vertical__title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h3>
+                        <a class="card-vertical__title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
                         <p class="card-vertical__datetime">
                             <span>@post.PostTime</span>
                         </p>
