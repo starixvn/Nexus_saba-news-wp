@@ -1,10 +1,8 @@
 ﻿namespace SabaNews.Core.Middlewares
 {
-    using System;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Services;
+    using System.Threading.Tasks;
 
     public class RedirectOldUrl
     {
