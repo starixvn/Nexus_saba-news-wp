@@ -74,6 +74,8 @@ namespace SabaNews.Core.Constants
         {
             { "/href=%22https://www.sabavn.net/sao-man-united-lap-cong-trong-ngay-dt-phap-gay-that-vong%22", "/sao-man-united-lap-cong-trong-ngay-dt-phap-gay-that-vong-53435.html" },
             { "/world-cup-2022/tin-the-thao/doi-tuyen/world-cup/", "/world-cup-sabavn" },
+            { "/https://www.sabavn.net/juventus-chat-vat-thoat-thua-tren-san-nha", "/juventus-chat-vat-thoat-thua-tren-san-nha-183817.html" },
+            { "/href=%22https://www.sabavn.net/bom-tan-man-united-gap-han-o-clb-lan-dtqg%22", "/bom-tan-man-united-gap-han-o-clb-lan-dtqg-53375.html" },
             { "/com/world-cup-2022/nhan-dinh/nhung-doi-bong-manh-de-bi-loai-som-o-world-cup-2022", "/nhung-doi-bong-manh-de-bi-loai-som-o-world-cup-2022-135631.html" },
             { "/%E2%80%9Dhttps://www.sabavn.net/chuyen-nhuong-mu-andre-onana-chuan-bi-mua-nha-o-manchester-ten-hag-sap-tai-ngo-tro-cung%22", "/chuyen-nhuong-mu-andre-onana-chuan-bi-mua-nha-o-manchester-ten-hag-sap-tai-ngo-tro-cung-200776.html" },
             { "/https://www.sabavn.net/cdv-tu-suong-tren-khan-dai-doi-mat-an-tu-1-nam", "/cdv-tu-suong-tren-khan-dai-doi-mat-an-tu-1-nam-58371.html" },
