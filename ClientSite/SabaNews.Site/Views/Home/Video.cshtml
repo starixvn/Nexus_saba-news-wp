@@ -103,7 +103,7 @@
                     @foreach (var menu in subMenu)
                     {
                         var link = Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix });
-                        <h2 class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
+                        <li class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></li>
                     }
                 </div>
             }
@@ -113,7 +113,7 @@
                     <div class="group-parent-sub">
                         @foreach (var menu in Model.GetSubMenu(item1))
                         {
-                            <h2 class="sub-item @item2 @menu.PostId @(item2 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                            <li class="sub-item @item2 @menu.PostId @(item2 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></li>
                         }
                     </div>
                     <span class="button-dropdown-category"><i class="icon-button-dot"></i></span>
@@ -123,7 +123,7 @@
                 <div class="sub-category child-sub">
                     @foreach (var menu in Model.GetSubMenu(item2))
                     {
-                        <h2 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></h2>
+                        <li class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@Url.Action("Category", "Home", new {slug = menu.CateSlug + CategoryKey.Suffix })">@menu.MenuTitle</a></li>
                     }
                 </div>
             </div>

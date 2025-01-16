@@ -36,6 +36,8 @@
         list-style: none; 
         margin-right: 2.2rem;
         font-weight: bold;
+        display: flex;
+        align-items: center;
 
         &:last-child {
             margin-right: 0;
@@ -120,7 +122,6 @@
         .group-parent-sub{
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             overflow: hidden;
             height: 2.9rem;
             width: calc(100% - 3rem);

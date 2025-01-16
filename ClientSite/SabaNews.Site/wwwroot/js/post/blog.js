@@ -166,13 +166,13 @@
             var count = $('.child-sub').children().length;
             var className = $(this).parent().attr('class');
             if(active && noWrapped){
-                $(this).parent().replaceWith('<li class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></li>')
+                $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
             }else if(count > 0){
                 $('.child-sub').find('.sub-item a').each(function () {
                     var className = $(this).parent().attr('class');
                     var active = $(this).parent().hasClass('active');
                     if(active){
-                        $(this).parent().replaceWith('<li class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></li>');
+                        $(this).parent().replaceWith('<h1 class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></>');
                         $('.group-parent-sub').find('.sub-item a').each(function() {
                             var className = $(this).parent().attr('class');
                             $(this).parent().replaceWith('<li class ="' + className + '"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></li>')
@@ -188,7 +188,7 @@
             var active = $(this).parent().hasClass('active');
             var className = $(this).parent().attr('class');
             if(active){
-                $(this).parent().replaceWith('<li class ="' + className +'"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></li>')
+                $(this).parent().replaceWith('<h1 class ="' + className +'"><a href="'+ $(this).attr("href") +'">'+ $(this).text() +'</a></h1>')
             }
         });
     }
