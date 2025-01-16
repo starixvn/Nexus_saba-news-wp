@@ -83,7 +83,6 @@ namespace SabaNews.Core.Constants
             { "/href=%22https://www.sabavn.net/top-5-bom-tan-sap-no-tai-ngoai-hang-anh-nhung-ngoi-sao-tram-trieu%22", "/top-5-bom-tan-sap-no-tai-ngoai-hang-anh-nhung-ngoi-sao-tram-trieu-46298.html" },
             { "/%E2%80%9Dhttps://www.sabavn.net/goc-nhin-da-den-luc-cuoc-tinh-giua-liverpool-va-thiago-khep-lai%22", "/goc-nhin-da-den-luc-cuoc-tinh-giua-liverpool-va-thiago-khep-lai-200630.html" },
             { "/tin-tuc/bong-da/bong-da-trong-nuoc/", "/bong-da-viet-nam-sabavn" },
-            { "/Home/Category", "/" },
             { "/https://www.sabavn.net/inter-milan-bai-tran-truoc-doi-bong-nuoc-phap", "/inter-milan-bai-tran-truoc-doi-bong-nuoc-phap-121015.html" }
 
         };
