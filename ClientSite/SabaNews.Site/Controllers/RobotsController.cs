@@ -39,10 +39,6 @@
             var sb = new StringBuilder();
             sb.AppendLine("User-agent: *")
                 .AppendLine("allow: /")
-                //.AppendLine("Disallow: /?post_types=*")
-                //.AppendLine("Disallow: /js/*")
-                //.AppendLine("Disallow: /css/*")
-                //.AppendLine("Disallow: /minify/*")
                 .Append("Sitemap: ")
                 .Append(domain)
                 .AppendLine("sitemap.xml")
