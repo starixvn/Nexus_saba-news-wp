@@ -55,7 +55,7 @@ export default class Fixture extends PureComponent {
         const group = this.groupMatches(data);
         return (
             <div className="livescore-post-detail">
-                <h3 className="block__title"><a onClick={this.handleClickFixture}>{title}</a></h3>
+                <div className="block__title"><a onClick={this.handleClickFixture}>{title}</a></div>
                 {
                     data === null && <SkeletonGrid />
                 }

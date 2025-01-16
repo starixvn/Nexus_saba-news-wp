@@ -21,7 +21,7 @@
             this.dataControlService = dataControlService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0, int limitItem = 0)
+        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0, int limitItem = 0, bool isCatePage = true)
         {
             IEnumerable<Post> posts;
             bool isMostViewPosts;
@@ -49,7 +49,8 @@
             var Model = new SideBarViewModel
             {
                 Posts = posts,
-                IsMostViewPosts = isMostViewPosts
+                IsMostViewPosts = isMostViewPosts,
+                IsCatePage = isCatePage
             };
 
             return View(Model);

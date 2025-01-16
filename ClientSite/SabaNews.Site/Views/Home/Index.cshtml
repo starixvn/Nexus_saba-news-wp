@@ -173,7 +173,9 @@
                 <div class="columns columns-left">
                     <div class="wraper-hot-news">
                         <div class="block__title">
-                            <a href="@Url.Action("Category", "Home", new { slug =   Constants.NewPostSlug + CategoryKey.Suffix })">@ViewResources.RecentsPost</a>
+                            <h2>
+                                <a href="@Url.Action("Category", "Home", new { slug =   Constants.NewPostSlug + CategoryKey.Suffix })">@ViewResources.RecentsPost</a>
+                            </h2>
                         </div>
                         <ul class="list-hot-news" id="row">
                             @{
@@ -292,8 +294,8 @@
                                     </noscript>
                                 </a>
                                 <div class="box-vertical-content">
-                                    <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri  })">@post.PostTitle</a>
-                                    </h4>
+                                    <h3 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri  })">@post.PostTitle</a>
+                                    </h3>
                                 </div>
                             </div>
                         }
@@ -337,9 +339,9 @@
                                             </div>
                                             <div style="display:none;" class="play_video"></div>
                                             <div class="box-vertical-content">
-                                                <h4>
+                                                <h3>
                                                     <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
-                                                </h4>
+                                                </h3>
                                             </div>
                                         </div>
                                     }
@@ -356,9 +358,9 @@
                                             </noscript>
                                         </a>
                                         <div class="box-horizontal-content">
-                                            <h5>
+                                            <h4>
                                                 <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a>
-                                            </h5>
+                                            </h4>
                                         </div>
                                     </div>
                                 }
@@ -392,7 +394,7 @@
                                                     </noscript>
                                                 </a>
                                                 <div class="box-vertical-content">
-                                                    <h4 class="heading-box-content"><a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })">@leagues[0].PostTitle</a></h4>
+                                                    <h3 class="heading-box-content"><a title="@leagues[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  leagues[0].Uri })">@leagues[0].PostTitle</a></h3>
                                                     <div class="list-event-title">
                                                         @{
                                                             var LeaguePostsIndex = 0;
@@ -401,7 +403,7 @@
                                                                 if(LeaguePostsIndex <= 1){
                                                                     continue;
                                                                 }
-                                                                <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
+                                                                <h3 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h3>
                                                             }
                                                         }
                                                     </div>
@@ -435,7 +437,7 @@
                                             </noscript>
                                         </a>
                                         <div class="box-vertical-content">
-                                            <h4><a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Uri })">@Model.BackstagePosts[0].PostTitle</a></h4>
+                                            <h3><a title="@Model.BackstagePosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Uri })">@Model.BackstagePosts[0].PostTitle</a></h3>
                                             <p>@Model.BackstagePosts[0].PostExcerpt</p>
                                         </div>
                                     </div>
@@ -458,9 +460,9 @@
                                                 </noscript>
                                             </a>
                                             <div class="box-horizontal-content">
-                                                <h4 class="heading-box-content">
+                                                <h3 class="heading-box-content">
                                                     <a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a>
-                                                </h4>
+                                                </h3>
                                             </div>
                                         </div>
                                     }
@@ -485,7 +487,7 @@
                                             </noscript>
                                         </a>
                                         <div class="box-vertical-content">
-                                            <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
+                                            <h3 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h3>
                                         </div>
                                     </div>
                                 }
@@ -511,7 +513,7 @@
                                         </noscript>
                                     </a>
                                     <div class="box-vertical-content">
-                                        <h4 class="heading-box-content"><a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Uri })">@Model.TransferPosts[0].PostTitle</a></h4>
+                                        <h3 class="heading-box-content"><a title="@Model.TransferPosts[0].PostTitle" href="@Url.Action("Single", "Post", new { slug =  Model.TransferPosts[0].Uri })">@Model.TransferPosts[0].PostTitle</a></h3>
                                         <div class="list-event-title">
                                             @{
                                                 var TransferPostIndex = 0;
@@ -522,7 +524,7 @@
                                                     {
                                                         continue;
                                                     }
-                                                    <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
+                                                    <h3 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h3>
                                                 }
                                             }
                                         </div>
@@ -548,7 +550,7 @@
                                         </noscript>
                                     </a>
                                     <div class="box-vertical-content">
-                                        <h4 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })">@Model.OtherPosts[0].PostTitle</a></h4>
+                                        <h3 class="heading-box-content"><a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Uri })">@Model.OtherPosts[0].PostTitle</a></h3>
                                         <div class="list-event-title">
                                             @{
                                                 var OtherPostIndex = 0;
@@ -559,7 +561,7 @@
                                                     {
                                                         continue;
                                                     }
-                                                    <h4 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h4>
+                                                    <h3 class="heading-box-content"><a title="@post.PostTitle" href="@Url.Action("Single", "Post", new { slug =  post.Uri })">@post.PostTitle</a></h3>
                                                 }
                                             }
                                         </div>
@@ -575,9 +577,11 @@
                 <div class="columns columns-right">
                     <div class="hotnews-block">
                         <div class="block__title">
-                            <a href="javascipts:;">
-                                @ViewResources.MostViewTitle
-                            </a>
+                            <h2>
+                                <a href="javascipts:;">
+                                    @ViewResources.MostViewTitle
+                                </a>
+                            </h2>
                         </div>
                         <ul class="list-hotnews">
                             @{

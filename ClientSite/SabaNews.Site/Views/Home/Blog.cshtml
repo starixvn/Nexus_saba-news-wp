@@ -195,7 +195,7 @@
         </div>
         <div class="banner-scroll banner-mobile-bottom" style="display: none;"></div>
         <div class="block block-extension">
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory, LimitItem = limitSidebarItem })
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory, LimitItem = limitSidebarItem, IsCatePage = true})
             @if (Model.Header.Controller == "Tag")
             {
                 <div id="fixture-homepage"></div>

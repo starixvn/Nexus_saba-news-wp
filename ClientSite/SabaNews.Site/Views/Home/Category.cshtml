@@ -131,7 +131,6 @@
                     <select class="select_ad"   onChange="window.location.href=this.value">
                         @foreach (var item in coMenu)
                         {
-
                             var selected = menu.PostId == item.PostId ? "selected" : "";
                             <!option class="@selected" @selected value="@getMenuLink(item)">@item.MenuTitle</!option>
                         }
@@ -144,7 +143,7 @@
                     @foreach (var menu in subMenu)
                     {
                         var link = @getMenuLink(menu);
-                        <h2 class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></h2>
+                        <li class="sub-item @(Model.Slug == menu.CateSlug ? "active" : "")"><a href="@link">@menu.MenuTitle</a></li>
                     }
                 </div>
             }
@@ -154,7 +153,7 @@
                     <div class="group-parent-sub">
                         @foreach (var menu in Model.GetSubMenu(item1))
                         {
-                            <h2 class="sub-item @(item2 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>
+                            <li class="sub-item @(item2 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></li>
                         }
                     </div>
                     <span class="button-dropdown-category"><i class="icon-button-dot"></i></span>
@@ -164,7 +163,7 @@
                 <div class="sub-category child-sub">
                     @foreach (var menu in Model.GetSubMenu(item2))
                     {
-                        <h2 class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></h2>
+                        <li class="sub-item @item3 @(item3 == menu.PostId ? "active" : "")"><a href="@getMenuLink(menu)">@menu.MenuTitle</a></li>
                     }
                 </div>
             </div>
@@ -223,7 +222,7 @@
                                 </picture>
                             </a>
                             <div class="card-horizontal__content">
-                                @if(postIndex <= 3)
+                                @if(postIndex <= 10)
                                 {
                                     <h2><a class="title" href="@Url.Action("Single", "Post", new { slug = post.Uri })">@post.PostTitle</a></h2>
                                 }
@@ -265,7 +264,7 @@
         </div>
         <div class="banner-scroll banner-mobile-bottom" style="display: none;"></div>
         <div class="block block-extension">
-            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory })
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory, IsCatePage = true})
             <div id="fixture-category"></div>
             <div id="standing-category"></div>
             <div class="video-sidebar"></div>

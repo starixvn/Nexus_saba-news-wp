@@ -44,10 +44,11 @@
             var postID = block.data("postid");
             var cateSlug = block.data("cateslug");
             var limitItem = block.data("limititem");
+            var isCatePage = block.data("iscatepage");
             $.ajax({
                 url: "/api/post/sidebar-posts",
                 type: "POST",
-                data: { postID, cateSlug, limitItem },
+                data: { postID, cateSlug, limitItem, isCatePage },
                 success: function (res) {
                     block.html(res);
                 },

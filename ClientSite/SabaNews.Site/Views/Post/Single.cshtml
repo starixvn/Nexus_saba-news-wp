@@ -441,7 +441,7 @@
         }
        <div class="block block-extension">
             @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId =
-            Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
+            Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent, IsCatePage = false })
             <div id="guess-section" data-slug="@Constants.GuessSlug" data-limit="@Constants.GetEightItems"></div>
             <div id="fixture-detail"></div>
         </div>

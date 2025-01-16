@@ -6,5 +6,6 @@
     {
         public IEnumerable<Post> Posts { get; set; }
         public bool IsMostViewPosts { get; set; }
+        public bool IsCatePage {get; set;}
     }
 }
