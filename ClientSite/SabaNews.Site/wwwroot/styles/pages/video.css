@@ -3589,6 +3589,8 @@ button {
   list-style: none;
   margin-right: 2.2rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 .sub-category .sub-item:last-child {
   margin-right: 0;
@@ -3661,7 +3663,6 @@ button {
 .sub-category.parent-sub .group-parent-sub {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   overflow: hidden;
   height: 2.9rem;
   width: calc(100% - 3rem);
