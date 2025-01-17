@@ -181,6 +181,7 @@
                     appBuilder.UseMiddleware<MaintenanceMiddleware>();
                 });
             }
+            app.UseMiddleware<RedirectOldUrl>();
             app.Use(async (ctx, next) =>
             {
                 await next();
