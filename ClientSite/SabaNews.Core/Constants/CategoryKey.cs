@@ -86,7 +86,15 @@ namespace SabaNews.Core.Constants
             { "/https://www.sabavn.net/inter-milan-bai-tran-truoc-doi-bong-nuoc-phap", "/inter-milan-bai-tran-truoc-doi-bong-nuoc-phap-121015.html" }
 
         };
-            
+
+        public static readonly HashSet<string> deprecatedPaths = new()
+        {
+            "/dt-nu-viet-nam-tung-gat-hai-thanh-cong-nao-trong-qua-khu” class=",
+            "/ban-sac-mourinho-len-tieng-as-roma-tien-vao-chung-ket-europa-league” class=",
+            "/nhan-dinh-viettel-vs-nam-dinh-19h15-ngay-11-07-chu-nha-di-tiep” class=",
+            "/link 1"
+        };
+
 
     }
 }
