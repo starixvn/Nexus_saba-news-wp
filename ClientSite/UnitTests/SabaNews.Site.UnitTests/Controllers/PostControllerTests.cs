@@ -447,9 +447,10 @@
             var postId = fixture.Create<int>();
             var slug = fixture.Create<string>();
             var limitItem = 5;
+            bool isCatePage = true;
 
             //Act
-            var result = controller.GetSidebarPosts(slug, postId, limitItem);
+            var result = controller.GetSidebarPosts(slug, postId, limitItem, isCatePage);
 
             // Assert
             Assert.IsType<ViewComponentResult>(result);
