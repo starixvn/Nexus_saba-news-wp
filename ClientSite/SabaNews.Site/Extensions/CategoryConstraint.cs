@@ -9,7 +9,7 @@ namespace SabaNews.Site.Extensions
         public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values,  RouteDirection routeDirection)
         {
             string slug = values[routeKey].ToString();
-            return slug.EndsWith(CategoryKey.Suffix);
+            return !slug.EndsWith(".html");
         }
     }
 }

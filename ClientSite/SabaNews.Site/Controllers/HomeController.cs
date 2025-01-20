@@ -48,11 +48,10 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
-            slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
-                return View(Constants.EmptyBlogView);
+                return RedirectToActionPermanent("Single", "Post", new { slug });
             }
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var menuCategory = PostHelper.GetMenuActive(menus.ToList(), viewModel.CateParents, slug);

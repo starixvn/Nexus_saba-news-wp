@@ -45,7 +45,7 @@ namespace SabaNews.Core.Constants
 
         public const string Prefix = "category-";
 
-        public const string Suffix = "-sabavn";
+        public const string Suffix = "";
 
         public const string HotNewsTag = "diem-tin-bong-da-hom-nay";
 
