@@ -48,11 +48,6 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
-            var redirectLink = RedirectCategorySlug(slug);
-            if (!string.IsNullOrEmpty(redirectLink))
-            {
-                return RedirectPermanent(redirectLink);
-            }
             slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
@@ -68,17 +63,6 @@
             viewModel.HeadTitle = string.IsNullOrEmpty(menuCategory.CurrentName) ? viewModel.Category.Title : menuCategory.CurrentName;
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
             return View(view, viewModel);
-        }
-
-        private static string RedirectCategorySlug(string slug)
-        {
-            var redirectLink = "";
-            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
-            if (cateRedirect != null)
-            {
-                redirectLink = cateRedirect.NewSlug;
-            }
-            return redirectLink;
         }
 
         [Route("Search/{keyword}")]
