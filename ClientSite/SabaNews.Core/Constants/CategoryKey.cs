@@ -92,9 +92,9 @@ namespace SabaNews.Core.Constants
             "/dt-nu-viet-nam-tung-gat-hai-thanh-cong-nao-trong-qua-khu” class=",
             "/ban-sac-mourinho-len-tieng-as-roma-tien-vao-chung-ket-europa-league” class=",
             "/nhan-dinh-viettel-vs-nam-dinh-19h15-ngay-11-07-chu-nha-di-tiep” class=",
-            "/link 201",
+            "/link 1",
             "/“U22 Việt Nam đá chưa ổn”",
-            "/Tại sao Caicedo là mảnh ghép hoàn hảo với Chelsea?",
+            "/Tại sao Caicedo là mảnh ghép hoàn hảo với Chelsea",
             "/de-gea-tu-choi-inter-muon-tro-lai-la-liga” class=",
             "/GÓC CHIẾN HUẬT: John Stones – ‘tiền vệ’ mới của Man City",
             "/Chấp nhận lỗ nặng, Chelsea quyết ‘tống khứ’ Lukaku khỏi đội hình",
@@ -112,7 +112,7 @@ namespace SabaNews.Core.Constants
             "/CHUYỆN LẠ! Qua một đêm, Son Heung-min trẻ lại một tuổi",
             "/co-dong-vien-my-noi-gi-sau-thang-loi-truoc-dt-nu-viet-nam” class=",
             "/huyen-thoai-man-united-chi-ra-diem-den-tuyet-voi-cho-maguire” class=",
-            "/Erik ten Hag nói gì khi De Gea chia tay MU sau 12 năm?",
+            "/Erik ten Hag nói gì khi De Gea chia tay MU sau 12 năm",
             "/HLV Mai Đức Chung lý giải vì sao Huỳnh Như bỏ lỡ nhiều cơ hội",
             "/ly-do-tran-ra-quan-world-cup-cua-dt-nu-viet-nam-bu-gio-tan-17-phut” class=",
             "/hlv-arteta-giai-thich-ly-do-xhaka-roi-arsenal” class=",
@@ -121,7 +121,5 @@ namespace SabaNews.Core.Constants
             "/benzema-co-mbappe-real-se-ghi-ban-nhieu-gap-doi đôi”",
             "/nguoi-trong-cuoc-noi-gi-truoc-tran-dau-giua-dt-nu-viet-nam-va-dt-nu-my” class="
         };
-
-
     }
 }
