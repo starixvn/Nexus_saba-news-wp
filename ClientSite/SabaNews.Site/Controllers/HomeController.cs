@@ -51,7 +51,7 @@
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
-                return RedirectToActionPermanent("Single", "Post", new { slug });
+                return await HandleSlugWithoutHtmlAsync(slug);
             }
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var menuCategory = PostHelper.GetMenuActive(menus.ToList(), viewModel.CateParents, slug);
@@ -409,6 +409,16 @@
             }
             var cmd = await optionService.CountOptionValueAsync(OptionKey.BannerClickCount);
             return Json(cmd);
+        }
+
+        private async Task<IActionResult> HandleSlugWithoutHtmlAsync(string slug)
+        {
+            var summary = await postService.GetPostDetailSummaryAsync(slug);
+            if (summary == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            return RedirectToActionPermanent("Single", "Post", new { slug = summary.Uri });
         }
     }
 }
