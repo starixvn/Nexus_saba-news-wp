@@ -7,8 +7,12 @@ namespace SabaNews.Site.Extensions
     {
         public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values,  RouteDirection routeDirection)
         {
-            string slug = values[routeKey].ToString();
-            return !slug.EndsWith(".html");
+            if (values.TryGetValue(routeKey, out var value) && value is string slug)
+            {
+                return !slug.EndsWith(".html");
+            }
+
+            return false;
         }
     }
 }

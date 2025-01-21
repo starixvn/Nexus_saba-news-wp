@@ -19,15 +19,14 @@
             if (path.Value.EndsWith("-sabavn"))
             {
                 context.Response.Redirect(path.Value[..^7], permanent: true);
+                return;
             }
             if (CategoryKey.LinkRedirectList.TryGetValue(path, out var newUrl))
             {
-                context.Response.Redirect(newUrl, permanent: true); // 301 Redirect
+                context.Response.Redirect(newUrl, permanent: true); 
+                return;
             }
-            else
-            {
-                await next(context);
-            }
+            await next(context);
         }
     }
 }

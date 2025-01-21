@@ -99,34 +99,15 @@
         [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
         public ActionResult OldCategories(string slug1 = null, string slug2 = null, string slug3 = null)
         {
-            string slug;
-            if (slug3 != null)
-            {
-                slug = slug3;
-            }
-            else if (slug2 != null)
-            {
-                slug = slug2;
-            }
-            else if (slug1 != null)
-            {
-                slug = slug1;
-            }
-            else
-            {
-                slug = Constants.NewPostSlug;
-            }
-            return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix });
+            var slug = slug3 ?? slug2 ?? slug1 ?? Constants.NewPostSlug;
+            return RedirectToActionPermanent("Category", "Home", new { slug  });
         }
 
         [Route("/tin-the-thao/{slug?}/page/{page}")]
         [Route("/tin-the-thao/page/{page}")]
         public IActionResult OldCategory(string slug = null, int page = 1)
         {
-            if (slug == null)
-            {
-                slug = Constants.NewPostSlug;
-            }
+            slug ??= Constants.NewPostSlug;
             return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix });
         }
 
@@ -293,33 +274,15 @@
         [Route("api/post/category-posts")]
         public async Task<IActionResult> GetCategoryGrid(CategoryPostParams param)
         {
-            var slug = param.Slug ??= Constants.NewPostSlug;
-            int pageSize = param.PageSize;
-            var start = (param.Page - 1) * pageSize;
+            var slug = param.Slug ?? Constants.NewPostSlug;
+            var start = (param.Page - 1) * param.PageSize;
             if (param.IsVideo)
             {
-                start = param.Page > Constants.SecondPage ? (param.Page - 1) * pageSize + 1 : Constants.GetTenItems;
+                start = param.Page > Constants.SecondPage ? (param.Page - 1) * param.PageSize + 1 : Constants.GetTenItems;
             }
-            IEnumerable<Post> posts;
-            if (slug == Constants.NewPostSlug)
-            {
-                var paramGetRecent = new GetRecentPostsParam
-                {
-                    Start = start,
-                    End = pageSize
-                };
-                posts = await postService.GetRecentPostsAsync(paramGetRecent);
-            }
-            else
-            {
-                var criteria = new GetPostsByCateSlugPagingCriteria
-                {
-                    _CategorySlug = slug,
-                    _Start = start,
-                    _End = pageSize
-                };
-                posts = await postService.GetPostsByCateSlugPagingAsync(criteria);
-            }
+            IEnumerable<Post> posts = slug == Constants.NewPostSlug
+                ? await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = start, End = param.PageSize })
+                : await postService.GetPostsByCateSlugPagingAsync(new GetPostsByCateSlugPagingCriteria { _CategorySlug = slug, _Start = start, _End = param.PageSize });
             if (!posts.Any())
             {
                 return Ok(false);
@@ -338,27 +301,19 @@
         public async Task<IActionResult> GetTypePostsGrid(TypePostParam param)
         {
             var start = (param.Page - 1) * param.PageSize;
-            IEnumerable<Post> posts;
-            if (param.Type == Constants.Search)
+            IEnumerable<Post> posts = param.Type switch
             {
-                posts = await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize });
-            }
-            else if (param.Type == Constants.Tag)
-            {
-                posts = await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
-            }
-            else if (param.Type == Constants.Author)
-            {
-                posts = await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize });
-            }
-            else
+                Constants.Search => await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize }),
+                Constants.Tag => await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize }),
+                Constants.Author => await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize }),
+                _ => null
+            };
+
+            if (posts == null || !posts.Any())
             {
                 return Ok(false);
             }
-            if (!posts.Any())
-            {
-                return Ok(false);
-            }
+
             ViewBag.CurrentPage = param.Page;
             return PartialView("~/Views/Home/_CategoryGridView.cshtml", posts);
         }
