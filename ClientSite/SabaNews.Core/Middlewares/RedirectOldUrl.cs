@@ -16,11 +16,9 @@
         public async Task InvokeAsync(HttpContext context)
         {
             var path = context.Request.Path;
-            if (CategoryKey.deprecatedPaths.Contains(path.Value))
+            if (path.Value.EndsWith("-sabavn"))
             {
-                context.Response.StatusCode = StatusCodes.Status410Gone;
-                await context.Response.WriteAsync("This resource is no longer available.");
-                return;
+                context.Response.Redirect(path.Value[..^7], permanent: true);
             }
             if (CategoryKey.LinkRedirectList.TryGetValue(path, out var newUrl))
             {
