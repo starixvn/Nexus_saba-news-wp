@@ -96,7 +96,7 @@
             return View(view, model);
         }
 
-        [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
+        [Route("/tin-the-thao/{slug1}/{slug2?}/{slug3?}")]
         public ActionResult OldCategories(string slug1 = null, string slug2 = null, string slug3 = null)
         {
             var slug = slug3 ?? slug2 ?? slug1 ?? Constants.NewPostSlug;
