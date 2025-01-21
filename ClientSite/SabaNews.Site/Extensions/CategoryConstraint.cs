@@ -2,7 +2,6 @@ namespace SabaNews.Site.Extensions
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
-    using SabaNews.Core.Constants;
 
     public class CategoryConstraint : IRouteConstraint
     {
