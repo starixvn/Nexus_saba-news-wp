@@ -1,14 +1,9 @@
 ﻿namespace SabaNews.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
@@ -18,15 +13,35 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
-    using SabaNews.Core.Helper;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
 
-    public class HomeController(IPostService postService,
-        IDataControlService dataControlService,
-        IConfiguration configuration,
-        IUserService userService,
-        IOptionService optionService) : Controller
+    public class HomeController : Controller
     {
-        private readonly string domain = configuration.GetValue<string>("BaseUrl");
+        private readonly IPostService postService;
+        private readonly IDataControlService dataControlService;
+        private readonly IConfiguration configuration;
+        private readonly IUserService userService;
+        private readonly IOptionService optionService;
+        private readonly string domain;
+
+        public HomeController(IPostService postService,
+            IDataControlService dataControlService,
+            IConfiguration configuration,
+            IUserService userService,
+            IOptionService optionService)
+        {
+            this.postService = postService;
+            this.dataControlService = dataControlService;
+            this.configuration = configuration;
+            this.userService = userService;
+            this.optionService = optionService;
+            this.domain = configuration.GetValue<string>("BaseUrl");
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -53,13 +68,16 @@
             {
                 return await HandleSlugWithoutHtmlAsync(slug);
             }
+
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var menuCategory = PostHelper.GetMenuActive(menus.ToList(), viewModel.CateParents, slug);
+
             viewModel.Header.ActiveCategory = menuCategory.ActiveMenu ?? slug;
             viewModel.Menus = menus;
             viewModel.MenuItems = menuCategory.MenuItems;
             viewModel.Category.Url = $"{domain}{slug}{CategoryKey.Suffix}";
             viewModel.HeadTitle = string.IsNullOrEmpty(menuCategory.CurrentName) ? viewModel.Category.Title : menuCategory.CurrentName;
+
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
             return View(view, viewModel);
         }
@@ -72,6 +90,7 @@
             var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
+
             var model = new BlogViewModel
             {
                 Posts = posts.ToList(),
@@ -92,7 +111,7 @@
                 }
             };
 
-            var view = (posts != null && posts.Any()) ? "Search" : "SearchNotFound";
+            var view = posts.Any() ? "Search" : "SearchNotFound";
             return View(view, model);
         }
 
