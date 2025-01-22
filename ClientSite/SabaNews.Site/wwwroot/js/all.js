@@ -315,7 +315,7 @@ var all = (function ($) {
         getFavouriteMatchCount();
         MenuPopupHeaderPC();
         // toggleChangeDomainPopup();
-        CountBannerClick();
+        //CountBannerClick();
         HandleQueryStringAction();
     }
 

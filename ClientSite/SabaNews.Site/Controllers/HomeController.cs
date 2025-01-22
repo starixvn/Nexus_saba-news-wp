@@ -71,11 +71,11 @@
 
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var menuCategory = PostHelper.GetMenuActive(menus.ToList(), viewModel.CateParents, slug);
-
+            var baseUrl = configuration.GetValue<string>("BaseUrl");
             viewModel.Header.ActiveCategory = menuCategory.ActiveMenu ?? slug;
             viewModel.Menus = menus;
             viewModel.MenuItems = menuCategory.MenuItems;
-            viewModel.Category.Url = $"{domain}{slug}{CategoryKey.Suffix}";
+            viewModel.Category.Url = $"{baseUrl}{slug}{CategoryKey.Suffix}";
             viewModel.HeadTitle = string.IsNullOrEmpty(menuCategory.CurrentName) ? viewModel.Category.Title : menuCategory.CurrentName;
 
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
@@ -370,19 +370,6 @@
             posts = posts.Take(limitItem);
             ViewBag.Slug = slug;
             return PartialView("_CategorySidebar", posts);
-        }
-        [HttpPost]
-        [Route("api/CountBanner")]
-        public async Task<IActionResult> UpdateBannerCount()
-        {
-            var now = DateTimeUtilize.UtcNow();
-            var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
-            if (now.DateTime > deadLine.DateTime)
-            {
-                return Json(null);
-            }
-            var cmd = await optionService.CountOptionValueAsync(OptionKey.BannerClickCount);
-            return Json(cmd);
         }
 
         private async Task<IActionResult> HandleSlugWithoutHtmlAsync(string slug)
