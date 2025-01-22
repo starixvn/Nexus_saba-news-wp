@@ -825,8 +825,7 @@
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             userService = Substitute.For<IUserService>();
-            optionService =  Substitute.For<IOptionService>();;
-            var controller = new HomeController(postService, dataControlService, configuration, userService, optionService);
+            var controller = new HomeController(postService, dataControlService, configuration, userService);
 
             return controller;
         }

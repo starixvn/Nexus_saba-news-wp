@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
@@ -26,20 +25,17 @@
         private readonly IDataControlService dataControlService;
         private readonly IConfiguration configuration;
         private readonly IUserService userService;
-        private readonly IOptionService optionService;
         private readonly string domain;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
-            IUserService userService,
-            IOptionService optionService)
+            IUserService userService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
             this.userService = userService;
-            this.optionService = optionService;
             this.domain = configuration.GetValue<string>("BaseUrl");
         }
 
