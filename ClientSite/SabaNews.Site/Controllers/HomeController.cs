@@ -1,11 +1,5 @@
 ﻿namespace SabaNews.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -18,15 +12,32 @@
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
-    using SabaNews.Core.Helper;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
 
-    public class HomeController(IPostService postService,
-        IDataControlService dataControlService,
-        IConfiguration configuration,
-        IUserService userService,
-        IOptionService optionService) : Controller
+    public class HomeController : Controller
     {
-        private readonly string domain = configuration.GetValue<string>("BaseUrl");
+        private readonly IPostService postService;
+        private readonly IDataControlService dataControlService;
+        private readonly IConfiguration configuration;
+        private readonly IUserService userService;
+        private readonly string domain;
+
+        public HomeController(IPostService postService,
+            IDataControlService dataControlService,
+            IConfiguration configuration,
+            IUserService userService)
+        {
+            this.postService = postService;
+            this.dataControlService = dataControlService;
+            this.configuration = configuration;
+            this.userService = userService;
+            this.domain = configuration.GetValue<string>("BaseUrl");
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -48,37 +59,23 @@
         [Route("/{slug:categoryslug}")]
         public async Task<IActionResult> Category(string slug)
         {
-            var redirectLink = RedirectCategorySlug(slug);
-            if (!string.IsNullOrEmpty(redirectLink))
-            {
-                return RedirectPermanent(redirectLink);
-            }
-            slug = slug.Replace(CategoryKey.Suffix, "");
             var viewModel = await dataControlService.GetCategoryViewModel(slug);
             if (viewModel == null)
             {
-                return View(Constants.EmptyBlogView);
+                return await HandleSlugWithoutHtmlAsync(slug);
             }
+
             var menus = await dataControlService.GetMenuData(MenuType.DetailMenu);
             var menuCategory = PostHelper.GetMenuActive(menus.ToList(), viewModel.CateParents, slug);
+            var baseUrl = configuration.GetValue<string>("BaseUrl");
             viewModel.Header.ActiveCategory = menuCategory.ActiveMenu ?? slug;
             viewModel.Menus = menus;
             viewModel.MenuItems = menuCategory.MenuItems;
-            viewModel.Category.Url = $"{domain}{slug}{CategoryKey.Suffix}";
+            viewModel.Category.Url = $"{baseUrl}{slug}{CategoryKey.Suffix}";
             viewModel.HeadTitle = string.IsNullOrEmpty(menuCategory.CurrentName) ? viewModel.Category.Title : menuCategory.CurrentName;
+
             var view = viewModel.IsVideo ? Constants.VideoView : Constants.CategoryView;
             return View(view, viewModel);
-        }
-
-        private static string RedirectCategorySlug(string slug)
-        {
-            var redirectLink = "";
-            var cateRedirect = CategoryKey.CateRedirectList.FirstOrDefault(item => item.OldSlug == slug);
-            if (cateRedirect != null)
-            {
-                redirectLink = cateRedirect.NewSlug;
-            }
-            return redirectLink;
         }
 
         [Route("Search/{keyword}")]
@@ -89,6 +86,7 @@
             var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
+
             var model = new BlogViewModel
             {
                 Posts = posts.ToList(),
@@ -109,41 +107,22 @@
                 }
             };
 
-            var view = (posts != null && posts.Any()) ? "Search" : "SearchNotFound";
+            var view = posts.Any() ? "Search" : "SearchNotFound";
             return View(view, model);
         }
 
-        [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
+        [Route("/tin-the-thao/{slug1}/{slug2?}/{slug3?}")]
         public ActionResult OldCategories(string slug1 = null, string slug2 = null, string slug3 = null)
         {
-            string slug;
-            if (slug3 != null)
-            {
-                slug = slug3;
-            }
-            else if (slug2 != null)
-            {
-                slug = slug2;
-            }
-            else if (slug1 != null)
-            {
-                slug = slug1;
-            }
-            else
-            {
-                slug = Constants.NewPostSlug;
-            }
-            return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix });
+            var slug = slug3 ?? slug2 ?? slug1 ?? Constants.NewPostSlug;
+            return RedirectToActionPermanent("Category", "Home", new { slug  });
         }
 
         [Route("/tin-the-thao/{slug?}/page/{page}")]
         [Route("/tin-the-thao/page/{page}")]
         public IActionResult OldCategory(string slug = null, int page = 1)
         {
-            if (slug == null)
-            {
-                slug = Constants.NewPostSlug;
-            }
+            slug ??= Constants.NewPostSlug;
             return RedirectToActionPermanent("Category", "Home", new { slug = slug + CategoryKey.Suffix });
         }
 
@@ -310,33 +289,15 @@
         [Route("api/post/category-posts")]
         public async Task<IActionResult> GetCategoryGrid(CategoryPostParams param)
         {
-            var slug = param.Slug ??= Constants.NewPostSlug;
-            int pageSize = param.PageSize;
-            var start = (param.Page - 1) * pageSize;
+            var slug = param.Slug ?? Constants.NewPostSlug;
+            var start = (param.Page - 1) * param.PageSize;
             if (param.IsVideo)
             {
-                start = param.Page > Constants.SecondPage ? (param.Page - 1) * pageSize + 1 : Constants.GetTenItems;
+                start = param.Page > Constants.SecondPage ? (param.Page - 1) * param.PageSize + 1 : Constants.GetTenItems;
             }
-            IEnumerable<Post> posts;
-            if (slug == Constants.NewPostSlug)
-            {
-                var paramGetRecent = new GetRecentPostsParam
-                {
-                    Start = start,
-                    End = pageSize
-                };
-                posts = await postService.GetRecentPostsAsync(paramGetRecent);
-            }
-            else
-            {
-                var criteria = new GetPostsByCateSlugPagingCriteria
-                {
-                    _CategorySlug = slug,
-                    _Start = start,
-                    _End = pageSize
-                };
-                posts = await postService.GetPostsByCateSlugPagingAsync(criteria);
-            }
+            IEnumerable<Post> posts = slug == Constants.NewPostSlug
+                ? await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = start, End = param.PageSize })
+                : await postService.GetPostsByCateSlugPagingAsync(new GetPostsByCateSlugPagingCriteria { _CategorySlug = slug, _Start = start, _End = param.PageSize });
             if (!posts.Any())
             {
                 return Ok(false);
@@ -355,27 +316,19 @@
         public async Task<IActionResult> GetTypePostsGrid(TypePostParam param)
         {
             var start = (param.Page - 1) * param.PageSize;
-            IEnumerable<Post> posts;
-            if (param.Type == Constants.Search)
+            IEnumerable<Post> posts = param.Type switch
             {
-                posts = await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize });
-            }
-            else if (param.Type == Constants.Tag)
-            {
-                posts = await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
-            }
-            else if (param.Type == Constants.Author)
-            {
-                posts = await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize });
-            }
-            else
+                Constants.Search => await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize }),
+                Constants.Tag => await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize }),
+                Constants.Author => await postService.GetPostsByAuthor(new GetPostsByAuthorCriteria { AuthorId = long.Parse(param.Keyword), Start = start, End = param.PageSize }),
+                _ => null
+            };
+
+            if (posts == null || !posts.Any())
             {
                 return Ok(false);
             }
-            if (!posts.Any())
-            {
-                return Ok(false);
-            }
+
             ViewBag.CurrentPage = param.Page;
             return PartialView("~/Views/Home/_CategoryGridView.cshtml", posts);
         }
@@ -414,18 +367,15 @@
             ViewBag.Slug = slug;
             return PartialView("_CategorySidebar", posts);
         }
-        [HttpPost]
-        [Route("api/CountBanner")]
-        public async Task<IActionResult> UpdateBannerCount()
+
+        private async Task<IActionResult> HandleSlugWithoutHtmlAsync(string slug)
         {
-            var now = DateTimeUtilize.UtcNow();
-            var deadLine = DateTimeUtilize.DateTime(2024, 02, 04, 17, 0, 0);
-            if (now.DateTime > deadLine.DateTime)
+            var summary = await postService.GetPostDetailSummaryAsync(slug);
+            if (summary == null)
             {
-                return Json(null);
+                return View(Constants.EmptyBlogView);
             }
-            var cmd = await optionService.CountOptionValueAsync(OptionKey.BannerClickCount);
-            return Json(cmd);
+            return RedirectToActionPermanent("Single", "Post", new { slug = summary.Uri });
         }
     }
 }

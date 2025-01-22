@@ -2,14 +2,17 @@ namespace SabaNews.Site.Extensions
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
-    using SabaNews.Core.Constants;
 
     public class CategoryConstraint : IRouteConstraint
     {
         public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values,  RouteDirection routeDirection)
         {
-            string slug = values[routeKey].ToString();
-            return slug.EndsWith(CategoryKey.Suffix);
+            if (values.TryGetValue(routeKey, out var value) && value is string slug)
+            {
+                return !slug.EndsWith(".html");
+            }
+
+            return false;
         }
     }
 }

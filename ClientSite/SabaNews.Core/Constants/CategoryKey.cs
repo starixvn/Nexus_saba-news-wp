@@ -45,7 +45,7 @@ namespace SabaNews.Core.Constants
 
         public const string Prefix = "category-";
 
-        public const string Suffix = "-sabavn";
+        public const string Suffix = "";
 
         public const string HotNewsTag = "diem-tin-bong-da-hom-nay";
 
@@ -86,7 +86,40 @@ namespace SabaNews.Core.Constants
             { "/https://www.sabavn.net/inter-milan-bai-tran-truoc-doi-bong-nuoc-phap", "/inter-milan-bai-tran-truoc-doi-bong-nuoc-phap-121015.html" }
 
         };
-            
 
+        public static readonly HashSet<string> deprecatedPaths = new()
+        {
+            "/dt-nu-viet-nam-tung-gat-hai-thanh-cong-nao-trong-qua-khu” class=",
+            "/ban-sac-mourinho-len-tieng-as-roma-tien-vao-chung-ket-europa-league” class=",
+            "/nhan-dinh-viettel-vs-nam-dinh-19h15-ngay-11-07-chu-nha-di-tiep” class=",
+            "/link 1",
+            "/“U22 Việt Nam đá chưa ổn”",
+            "/Tại sao Caicedo là mảnh ghép hoàn hảo với Chelsea",
+            "/de-gea-tu-choi-inter-muon-tro-lai-la-liga” class=",
+            "/GÓC CHIẾN HUẬT: John Stones – ‘tiền vệ’ mới của Man City",
+            "/Chấp nhận lỗ nặng, Chelsea quyết ‘tống khứ’ Lukaku khỏi đội hình",
+            "/dt-nu-viet-nam-gianh-ve-vao-ban-ket-du-thua-Thái Lan",
+            "/Chung kết FA Cup 2023: Khi cả Man United và Man City đều có sứ mệnh riêng",
+            "/Chuyển nhượng Barca hè 2023: Toàn bộ những thương vụ đã thực hiện",
+            "/nhachu-tich-ldbd-italia-thua-nhan-mac-loi-lon-noi-thang-ve-tuong-lai-mancini class=",
+            "/4-dieu-graham-potter-can-cai-thien-cho-chelsea class=",
+            "/MU, Arsenal chú ý! Conte đang giúp Tottenham tăng tốc",
+            "/sao-man-united-danh-gia-onana-va-mount” class=",
+            "/link 3",
+            "/golden-state-warriors-tro-thanh-doi-bong-ro-gia-tri-nhat-the-gioi",
+            "/link 2",
+            "/link 3https://www.sabavn.net/golden-state-warriors-tro-thanh-doi-bong-ro-gia-tri-nhat-the-gioi",
+            "/CHUYỆN LẠ! Qua một đêm, Son Heung-min trẻ lại một tuổi",
+            "/co-dong-vien-my-noi-gi-sau-thang-loi-truoc-dt-nu-viet-nam” class=",
+            "/huyen-thoai-man-united-chi-ra-diem-den-tuyet-voi-cho-maguire” class=",
+            "/Erik ten Hag nói gì khi De Gea chia tay MU sau 12 năm",
+            "/HLV Mai Đức Chung lý giải vì sao Huỳnh Như bỏ lỡ nhiều cơ hội",
+            "/ly-do-tran-ra-quan-world-cup-cua-dt-nu-viet-nam-bu-gio-tan-17-phut” class=",
+            "/hlv-arteta-giai-thich-ly-do-xhaka-roi-arsenal” class=",
+            "/Tuchel lần đầu tiên lên tiếng sau khi bị Chelsea sa thải",
+            "/chi-34-trieu-bang-man-united-se-co-nguoi-thay-the-ca-fred-va-mctominay” class=",
+            "/benzema-co-mbappe-real-se-ghi-ban-nhieu-gap-doi đôi”",
+            "/nguoi-trong-cuoc-noi-gi-truoc-tran-dau-giua-dt-nu-viet-nam-va-dt-nu-my” class="
+        };
     }
 }

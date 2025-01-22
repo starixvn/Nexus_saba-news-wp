@@ -65,20 +65,26 @@
             Assert.Equal(expectedViewModel.Category.Title, viewModel.Header.Title);
         }
 
+
         [Fact]
-        public async Task Category_WhenOldSlug_RedirectToNewSlug()
+        public async Task Category_WhenDataIsNull_RedirectToPost()
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
-            string slug = "viet-nam" + CategoryKey.Suffix;
-
+            string slug = Constants.NewPostSlug + CategoryKey.Suffix;
+            BlogViewModel expectedViewModel = null;
+            var postExpected = fixture.Create<Post>();
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
+            postService.GetPostDetailSummaryAsync(Arg.Do<string>(x => slug = x)).Returns(postExpected);
             //Act
             var result = await controller.Category(slug);
 
             // Assert
-            var redirectResult = Assert.IsType<RedirectResult>(result);
-            Assert.Equal(CategoryKey.VNFootballSlug + CategoryKey.Suffix, redirectResult.Url);
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Post", redirectResult.ControllerName);
+            Assert.Equal("Single", redirectResult.ActionName);
         }
 
         [Fact]
@@ -89,9 +95,10 @@
             GetDefaultContext(controller);
             string slug = Constants.NewPostSlug + CategoryKey.Suffix;
             BlogViewModel expectedViewModel = null;
+            Post postExpected = null;
             var param = fixture.Create<GetPostsByCateSlugsParam>();
             dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x)).Returns(expectedViewModel);
-
+            postService.GetPostDetailSummaryAsync(Arg.Do<string>(x => slug = x)).Returns(postExpected);
             //Act
             var result = await controller.Category(slug);
 
@@ -818,8 +825,7 @@
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             userService = Substitute.For<IUserService>();
-            optionService =  Substitute.For<IOptionService>();;
-            var controller = new HomeController(postService, dataControlService, configuration, userService, optionService);
+            var controller = new HomeController(postService, dataControlService, configuration, userService);
 
             return controller;
         }
